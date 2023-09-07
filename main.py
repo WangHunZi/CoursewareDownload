@@ -2,11 +2,6 @@ import re,os,random
 import requests
 from bs4 import BeautifulSoup
 
-# 定义一个函数，用于将特殊字符替换为下划线
-def sanitize_filename(filename):
-    # 使用正则表达式替换特殊字符为下划线
-    return re.sub(r'[\\/:*?"<>|]', '_', filename)
-
 url = "https://jyywiki.cn/OS/2023/"             # 目标网页的URL
 
 jupyter_links = []                              # 获取Jupyter课件的网页链接
