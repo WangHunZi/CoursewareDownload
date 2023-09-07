@@ -1,0 +1,364 @@
+<!DOCTYPE html><html class="h-100">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="../../../static/css/base.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
+
+  <style>
+    .font-sans {
+      font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+    }
+    .font-serif {
+      font-family: 'Source Serif Pro', 'Songti SC', 'SimSun', 'Serif', serif;
+    }
+  </style>
+  <link rel="stylesheet" href="../../../static/katex/katex.min.css">
+  <script defer src="../../../static/katex/katex.min.js"></script>
+  <script defer src="../../../static/katex/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+            // customised options
+            // &#8226; auto-render specific keys, e.g.:
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ],
+            // &#8226; rendering keys, e.g.:
+            throwOnError : false
+          });
+      });
+  </script>
+
+
+  
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="../../../static/reveal/reveal.css">
+<link rel="stylesheet" href="../../../static/reveal/theme/simple.css" id="theme">
+
+<style>
+.reveal .slide-number {
+  font-size: 26px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, .3);
+}
+
+.reveal .full-screen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.reveal .slides {
+  border: 1.5px #ddd solid;
+  border-radius: 7px;
+  text-align: left;
+  font-weight: 300;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  font-family: 'Lato', 'SimHei', 'STXihei', 'Droid Sans';
+  font-weight: 400;
+}
+
+.reveal p, .reveal li, .reveal center {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Droid Sans';
+}
+
+.reveal li + li {
+  margin-top: 10px;
+}
+
+.reveal ul {
+  display: block;
+  margin-right: 15px;
+}
+
+.reveal p, .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5 {
+  padding:  0 25px 0 25px;
+}
+
+.reveal table {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Sans Serif';
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.reveal th {
+  background-color: #eee;
+}
+
+.reveal tr:nth-child(even) {
+  background-color: #efffff;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  text-align: left;
+  margin: 0 0 20px 0;
+ color: #222; 
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
+
+
+.reveal h1 {
+  margin: 0 10 0 10;
+  font-size: 60px;
+}
+.reveal .middle h1 {
+  text-align: center;
+}
+
+.reveal h2 {
+  font-size: 48px;
+  border-bottom: 2px solid rgb(106, 0, 95);
+  padding-bottom: 5px;
+}
+.reveal h3 { font-size: 1.15em; }
+.reveal h4 { font-size: 1.05em; }
+
+.reveal .center {
+  text-align: center;
+}
+
+.reveal .middle {
+  height: 728px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.reveal pre {
+  font-size: 28px;
+ 
+  background-color: #eee;
+
+  border-radius: 3mm;
+  padding: 10px 10px 10px 10px;
+}
+
+.reveal pre code {
+  max-height: none;
+}
+
+.reveal code {
+  font-family: 'Inconsolata', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif', Monospace;
+}
+
+.reveal .middle blockquote {
+  text-align: center;
+  color: rgb(106, 0, 95);
+  background: none;
+  box-shadow: none;
+}
+
+.reveal .middle blockquote a {
+  color: inherit;
+}
+
+.reveal blockquote p, .reveal blockquote li {
+  font-family: 'Lato', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif';
+}
+
+section .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reveal .author-block {
+  margin: 75px 0 35px 0;
+}
+.reveal .author-affiliation img {
+  margin: 15px 0 0 0;
+}
+.reveal .author-block p, .reveal .author-affiliation p  {
+  font-family: 'Kaiti', 'STKaiti', 'Serif', 'Times', 'Times New Roman';
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+.reveal .author-affiliation {
+  display: inline-block;
+  font-size: 90%;
+}
+.reveal hr {
+  border: 10px solid rgba(0, 0, 0, 0);
+}
+.reveal li {
+  margin-top: 10px;
+}
+</style>
+
+  <title>&#27515;&#38145;</title>
+</head>
+
+<body class="d-flex flex-column h-100">
+  
+  
+
+<div class="reveal">
+<div class="slides">
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="12.2.slides.html" class=" text-amber-900">&#27515;&#38145;</a></h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="deadlock" class=" text-xl mt-2 pb-2 font-sans">&#27515;&#38145; (Deadlock)</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">A deadlock is a state in which each member of a group is waiting for another member, including itself, to take action.</p>
+</blockquote>
+<p class=" font-serif my-1">&#20986;&#29616;&#32447;&#31243; &#8220;&#20114;&#30456;&#31561;&#24453;&#8221; &#30340;&#24773;&#20917;</p>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/deadlock-car.jpg" width="600px"></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="aa-deadlock" class=" text-xl mt-2 pb-2 font-sans">AA-Deadlock</h2>
+<p class=" font-serif my-1">Model checker &#21487;&#20197;&#21578;&#35785;&#20320;&#20026;&#20160;&#20040;</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lk</span><span class="p">);</span>
+<span class="c1">// lk = LOCKED;</span>
+<span class="n">lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lk</span><span class="p">);</span>
+<span class="c1">// while (xchg(&amp;lk, LOCKED) == LOCKED) ;</span>
+</code></pre></div>
+
+<hr>
+<p class=" font-serif my-1">&#30475;&#36215;&#26469;&#24456;&#20667;&#65292;&#20320;&#35273;&#24471;&#33258;&#24049;&#19981;&#20250;&#29359;&#36825;&#38169;&#35823;&#65311;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#19981;&#65292;&#20320;&#20250;&#29359;&#30340;&#65281;</li>
+<li class=" ml-8">&#30495;&#23454;&#31995;&#32479;&#30340;&#22797;&#26434;&#24615;&#31561;&#30528;&#20320;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22810;&#23618;&#20989;&#25968;&#35843;&#29992;</li>
+<li class=" ml-8">&#38544;&#34255;&#30340;&#25511;&#21046;&#27969;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="abba-deadlock" class=" text-xl mt-2 pb-2 font-sans">ABBA-Deadlock</h2>
+<p class=" font-serif my-1">&#21746; &#9794; &#23398;&#23478;&#21507;&#39277;&#38382;&#39064;</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">Tphilosopher</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">P</span><span class="p">(</span><span class="o">&amp;</span><span class="n">avail</span><span class="p">[</span><span class="n">lhs</span><span class="p">]);</span>
+<span class="w">  </span><span class="n">P</span><span class="p">(</span><span class="o">&amp;</span><span class="n">avail</span><span class="p">[</span><span class="n">rhs</span><span class="p">]);</span>
+<span class="w">  </span><span class="c1">// ...</span>
+<span class="w">  </span><span class="n">V</span><span class="p">(</span><span class="o">&amp;</span><span class="n">avail</span><span class="p">[</span><span class="n">lhs</span><span class="p">]);</span>
+<span class="w">  </span><span class="n">V</span><span class="p">(</span><span class="o">&amp;</span><span class="n">avail</span><span class="p">[</span><span class="n">rhs</span><span class="p">]);</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<ul class=" list-disc font-serif">
+<li class=" ml-8">$T_1$: P(1) - &#25104;&#21151;, P(2) - &#31561;&#24453;</li>
+<li class=" ml-8">$T_2$: P(2) - &#25104;&#21151;, P(3) - &#31561;&#24453;</li>
+<li class=" ml-8">$T_3$: P(3) - &#25104;&#21151;, P(4) - &#31561;&#24453;</li>
+<li class=" ml-8">$T_4$: P(4) - &#25104;&#21151;, P(5) - &#31561;&#24453;</li>
+<li class=" ml-8">$T_5$: P(5) - &#25104;&#21151;, P(1) - &#31561;&#24453;</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#27515;&#38145;&#20135;&#29983;&#30340;&#24517;&#35201;&#26465;&#20214;</h2>
+<p class=" font-serif my-1"><a href="https://dl.acm.org/doi/10.1145/356586.356588" class=" text-amber-900">System deadlocks (1971)</a>&#65306;&#27515;&#38145;&#20135;&#29983;&#30340;&#22235;&#20010;&#24517;&#35201;&#26465;&#20214;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#29992; &#8220;&#36164;&#28304;&#8221; &#26469;&#25551;&#36848;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#29366;&#24577;&#26426;&#35270;&#35282;&#65306;&#23601;&#26159; &#8220;&#24403;&#21069;&#29366;&#24577;&#19979;&#25345;&#26377;&#30340;&#38145; (&#26657;&#22253;&#21345;/&#29699;)&#8221;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ol class=" list-decimal font-serif">
+<li class=" ml-8">Mutual-exclusion - &#19968;&#24352;&#26657;&#22253;&#21345;&#21482;&#33021;&#34987;&#19968;&#20010;&#20154;&#25317;&#26377;</li>
+<li class=" ml-8">Wait-for - &#19968;&#20010;&#20154;&#31561;&#20854;&#20182;&#26657;&#22253;&#21345;&#26102;&#65292;&#19981;&#20250;&#37322;&#25918;&#24050;&#26377;&#30340;&#26657;&#22253;&#21345;</li>
+<li class=" ml-8">No-preemption - &#19981;&#33021;&#25250;&#22842;&#20182;&#20154;&#30340;&#26657;&#22253;&#21345;</li>
+<li class=" ml-8">Circular-chain - &#24418;&#25104;&#26657;&#22253;&#21345;&#30340;&#24490;&#29615;&#31561;&#24453;&#20851;&#31995;</li>
+</ol>
+<hr>
+<p class=" font-serif my-1">&#22235;&#20010;&#26465;&#20214; &#8220;&#32570;&#19968;&#19981;&#21487;&#8221;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25171;&#30772;&#20219;&#20309;&#19968;&#20010;&#21363;&#21487;&#36991;&#20813;&#27515;&#38145;</li>
+<li class=" ml-8">&#22312;&#31243;&#24207;&#36923;&#36753;&#27491;&#30830;&#30340;&#21069;&#25552;&#19979; &#8220;&#25171;&#30772;&#8221; &#26681;&#26412;&#27809;&#37027;&#20040;&#23481;&#26131;&#8230;&#8230;</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+  
+</div>
+</div>
+
+<script src="../../../static/reveal/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    
+    width: 1024, height: 768,
+    
+    slideNumber: 'c/t',
+    controlsTutorial: false,
+    progress: false,
+    hash: true,
+    center: false,
+    autoAnimateUnmatched: true,
+    autoAnimateEasing: 'ease-out',
+    autoAnimateDuration: 0.3,
+    transitionSpeed: 'fast'
+  });
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,399 @@
+<!DOCTYPE html><html class="h-100">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="../../../static/css/base.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
+
+  <style>
+    .font-sans {
+      font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+    }
+    .font-serif {
+      font-family: 'Source Serif Pro', 'Songti SC', 'SimSun', 'Serif', serif;
+    }
+  </style>
+  <link rel="stylesheet" href="../../../static/katex/katex.min.css">
+  <script defer src="../../../static/katex/katex.min.js"></script>
+  <script defer src="../../../static/katex/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+            // customised options
+            // &#8226; auto-render specific keys, e.g.:
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ],
+            // &#8226; rendering keys, e.g.:
+            throwOnError : false
+          });
+      });
+  </script>
+
+
+  
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="../../../static/reveal/reveal.css">
+<link rel="stylesheet" href="../../../static/reveal/theme/simple.css" id="theme">
+
+<style>
+.reveal .slide-number {
+  font-size: 26px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, .3);
+}
+
+.reveal .full-screen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.reveal .slides {
+  border: 1.5px #ddd solid;
+  border-radius: 7px;
+  text-align: left;
+  font-weight: 300;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  font-family: 'Lato', 'SimHei', 'STXihei', 'Droid Sans';
+  font-weight: 400;
+}
+
+.reveal p, .reveal li, .reveal center {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Droid Sans';
+}
+
+.reveal li + li {
+  margin-top: 10px;
+}
+
+.reveal ul {
+  display: block;
+  margin-right: 15px;
+}
+
+.reveal p, .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5 {
+  padding:  0 25px 0 25px;
+}
+
+.reveal table {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Sans Serif';
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.reveal th {
+  background-color: #eee;
+}
+
+.reveal tr:nth-child(even) {
+  background-color: #efffff;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  text-align: left;
+  margin: 0 0 20px 0;
+ color: #222; 
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
+
+
+.reveal h1 {
+  margin: 0 10 0 10;
+  font-size: 60px;
+}
+.reveal .middle h1 {
+  text-align: center;
+}
+
+.reveal h2 {
+  font-size: 48px;
+  border-bottom: 2px solid rgb(106, 0, 95);
+  padding-bottom: 5px;
+}
+.reveal h3 { font-size: 1.15em; }
+.reveal h4 { font-size: 1.05em; }
+
+.reveal .center {
+  text-align: center;
+}
+
+.reveal .middle {
+  height: 728px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.reveal pre {
+  font-size: 28px;
+ 
+  background-color: #eee;
+
+  border-radius: 3mm;
+  padding: 10px 10px 10px 10px;
+}
+
+.reveal pre code {
+  max-height: none;
+}
+
+.reveal code {
+  font-family: 'Inconsolata', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif', Monospace;
+}
+
+.reveal .middle blockquote {
+  text-align: center;
+  color: rgb(106, 0, 95);
+  background: none;
+  box-shadow: none;
+}
+
+.reveal .middle blockquote a {
+  color: inherit;
+}
+
+.reveal blockquote p, .reveal blockquote li {
+  font-family: 'Lato', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif';
+}
+
+section .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reveal .author-block {
+  margin: 75px 0 35px 0;
+}
+.reveal .author-affiliation img {
+  margin: 15px 0 0 0;
+}
+.reveal .author-block p, .reveal .author-affiliation p  {
+  font-family: 'Kaiti', 'STKaiti', 'Serif', 'Times', 'Times New Roman';
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+.reveal .author-affiliation {
+  display: inline-block;
+  font-size: 90%;
+}
+.reveal hr {
+  border: 10px solid rgba(0, 0, 0, 0);
+}
+.reveal li {
+  margin-top: 10px;
+}
+</style>
+
+  <title>&#21746; &#9794; &#23398;&#23478;&#21507;&#39277;&#38382;&#39064;</title>
+</head>
+
+<body class="d-flex flex-column h-100">
+  
+  
+
+<div class="reveal">
+<div class="slides">
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="10.3.slides.html" class=" text-amber-900">&#21746; &#9794; &#23398;&#23478;&#21507;&#39277;&#38382;&#39064;</a></h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="e-w-dijkstra-1960" class=" text-xl mt-2 pb-2 font-sans">&#21746;&#23398;&#23478;&#21507;&#39277;&#38382;&#39064; (E. W. Dijkstra, 1960)</h2>
+<p class=" font-serif my-1">&#32463;&#20856;&#21516;&#27493;&#38382;&#39064;&#65306;&#21746;&#23398;&#23478; (&#32447;&#31243;) &#26377;&#26102;&#24605;&#32771;&#65292;&#26377;&#26102;&#21507;&#39277;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21507;&#39277;&#38656;&#35201;&#21516;&#26102;&#24471;&#21040;&#24038;&#25163;&#21644;&#21491;&#25163;&#30340;&#21449;&#23376;</li>
+<li class=" ml-8">&#24403;&#21449;&#23376;&#34987;&#20854;&#20182;&#20154;&#21344;&#26377;&#26102;&#65292;&#24517;&#39035;&#31561;&#24453;&#65292;&#22914;&#20309;&#23436;&#25104;&#21516;&#27493;&#65311;</li>
+</ul>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/dining-philosophers.jpg" width="500px"></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#22833;&#36133;&#19982;&#25104;&#21151;&#30340;&#23581;&#35797;</h2>
+<p class=" font-serif my-1">&#22833;&#36133;&#30340;&#23581;&#35797;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25226;&#20449;&#21495;&#37327;&#24403;&#20114;&#26021;&#38145;&#65306;&#20808;&#25343;&#19968;&#25226;&#21449;&#23376;&#65292;&#20877;&#25343;&#21478;&#19968;&#25226;&#21449;&#23376;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#25104;&#21151;&#30340;&#23581;&#35797; (&#19975;&#33021;&#30340;&#26041;&#27861;)</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#define CAN_EAT (avail[lhs] &amp;&amp; avail[rhs])</span>
+<span class="n">mutex_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mutex</span><span class="p">);</span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">CAN_EAT</span><span class="p">)</span>
+<span class="w">  </span><span class="n">cond_wait</span><span class="p">(</span><span class="o">&amp;</span><span class="n">cv</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">mutex</span><span class="p">);</span>
+<span class="n">avail</span><span class="p">[</span><span class="n">lhs</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">avail</span><span class="p">[</span><span class="n">rhs</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="n">mutex_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mutex</span><span class="p">);</span>
+
+<span class="n">mutex_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mutex</span><span class="p">);</span>
+<span class="n">avail</span><span class="p">[</span><span class="n">lhs</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">avail</span><span class="p">[</span><span class="n">rhs</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="n">cond_broadcast</span><span class="p">(</span><span class="o">&amp;</span><span class="n">cv</span><span class="p">);</span>
+<span class="n">mutex_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mutex</span><span class="p">);</span>
+</code></pre></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25104;&#21151;&#30340;&#23581;&#35797;&#65306;&#20449;&#21495;&#37327;</h2>
+<p class=" font-serif my-1">Trick: &#27515;&#38145;&#20250;&#22312; 5 &#20010;&#21746;&#23398;&#23478; &#8220;&#21516;&#26102;&#21507;&#39277;&#8221; &#26102;&#21457;&#29983;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#30772;&#22351;&#36825;&#20010;&#26465;&#20214;&#21363;&#21487;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20445;&#35777;&#20219;&#20309;&#26102;&#20505;&#33267;&#22810;&#21482;&#26377; 4 &#20010;&#20154;&#21487;&#20197;&#21507;&#39277;</li>
+<li class=" ml-8">&#30452;&#35266;&#29702;&#35299;&#65306;&#22823;&#23478;&#20808;&#20174;&#26700;&#19978;&#36864;&#20986;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#34955;&#23376;&#37324;&#26377; 4 &#24352;&#21345;</li>
+<li class=" ml-8">&#25343;&#21040;&#21345;&#30340;&#21487;&#20197;&#19978;&#26700;&#21507;&#39277; (&#25343;&#21449;&#23376;)</li>
+<li class=" ml-8">&#21507;&#23436;&#20197;&#21518;&#25226;&#21345;&#24402;&#36824;&#21040;&#34955;&#23376;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class=" ml-8">&#20219;&#24847; 4 &#20010;&#20154;&#24819;&#21507;&#39277;&#65292;&#24635;&#26377;&#19968;&#20010;&#21487;&#20197;&#25343;&#36215;&#24038;&#21491;&#25163;&#30340;&#21449;&#23376;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25945;&#31185;&#20070;&#19978;&#26377;&#21478;&#19968;&#31181;&#35299;&#20915;&#26041;&#27861; (lock ordering&#65307;&#20043;&#21518;&#20250;&#35762;)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#20294;&#36825;&#30495;&#30340;&#23545;&#21527;&#65311;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="../../../pages/OS/2023/c/philosopher-check.py" class=" text-amber-900">philosopher-check.py</a></li>
+<li class=" ml-8">&#22312;&#24517;&#35201;&#30340;&#26102;&#20505;&#20351;&#29992; model checker</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#21453;&#24605;&#65306;&#20998;&#24067;&#19982;&#38598;&#20013;</h2>
+<p class=" font-serif my-1">&#8220;Leader/follower&#8221; - &#26377;&#19968;&#20010;&#38598;&#20013;&#30340; &#8220;&#24635;&#25511;&#8221;&#65292;&#32780;&#38750; &#8220;&#21508;&#33258;&#21327;&#35843;&#8221;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22312;&#21487;&#38752;&#30340;&#28040;&#24687;&#26426;&#21046;&#19978;&#23454;&#29616;&#20219;&#21153;&#20998;&#27966;<ul class=" list-disc font-serif">
+<li class=" ml-8">Leader &#20018;&#34892;&#22788;&#29702;&#25152;&#26377;&#35831;&#27714; (&#20363;&#22914;&#65306;&#26465;&#20214;&#21464;&#37327;&#26381;&#21153;)</li>
+</ul>
+</li>
+</ul>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">Tphilosopher</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">send</span><span class="p">(</span><span class="n">Twaiter</span><span class="p">,</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">EAT</span><span class="p">);</span>
+<span class="w">  </span><span class="n">receive</span><span class="p">(</span><span class="n">Twatier</span><span class="p">);</span><span class="w"> </span><span class="c1">// &#31561;&#24453; waiter &#25226;&#20004;&#25226;&#21449;&#23376;&#36882;&#32473;&#21746;&#23398;&#23478;</span>
+<span class="w">  </span><span class="n">eat</span><span class="p">();</span>
+<span class="w">  </span><span class="n">send</span><span class="p">(</span><span class="n">Twaiter</span><span class="p">,</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">DONE</span><span class="p">);</span><span class="w"> </span><span class="c1">// &#24402;&#36824;&#21449;&#23376;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">Twaiter</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">status</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">receive</span><span class="p">(</span><span class="n">Any</span><span class="p">);</span>
+<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">status</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">&#21453;&#24605;&#65306;&#20998;&#24067;&#19982;&#38598;&#20013; (cont'd)</h2>
+<p class=" font-serif my-1">&#20320;&#21487;&#33021;&#20250;&#35273;&#24471;&#65292;&#31649;&#21449;&#23376;&#30340;&#20154;&#26159;&#24615;&#33021;&#29942;&#39048;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#19968;&#22823;&#26700;&#20154;&#21507;&#39277;&#65292;&#27599;&#20010;&#20154;&#37117;&#21483;&#26381;&#21153;&#21592;&#30340;&#24863;&#35273;</li>
+<li class=" ml-8">Premature optimization is the root of all evil (D. E. Knuth)</li>
+</ul>
+<hr>
+<p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/google-fs.png" width="700px"></p>
+<p class=" font-serif my-1"><red>&#25243;&#24320; workload &#35848;&#20248;&#21270;&#23601;&#26159;&#32781;&#27969;&#27667;</red></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21507;&#39277;&#30340;&#26102;&#38388;&#36890;&#24120;&#36828;&#36828;&#22823;&#20110;&#35831;&#27714;&#26381;&#21153;&#21592;&#30340;&#26102;&#38388;</li>
+<li class=" ml-8">&#22914;&#26524;&#19968;&#20010; manager &#25630;&#19981;&#23450;&#65292;&#21487;&#20197;&#20998;&#22810;&#20010; (fast/slow path)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25226;&#31995;&#32479;&#35774;&#35745;&#22909;&#65292;&#38598;&#20013;&#31649;&#29702;&#21487;&#20197;&#19981;&#26159;&#29942;&#39048;&#65306;<a href="https://pdos.csail.mit.edu/6.824/papers/gfs.pdf" class=" text-amber-900">The Google File System</a> (SOSP'03) &#24320;&#21551;&#22823;&#25968;&#25454;&#26102;&#20195;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+  
+</div>
+</div>
+
+<script src="../../../static/reveal/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    
+    width: 1024, height: 768,
+    
+    slideNumber: 'c/t',
+    controlsTutorial: false,
+    progress: false,
+    hash: true,
+    center: false,
+    autoAnimateUnmatched: true,
+    autoAnimateEasing: 'ease-out',
+    autoAnimateDuration: 0.3,
+    transitionSpeed: 'fast'
+  });
+</script>
+
+
+</body>
+
+</html>

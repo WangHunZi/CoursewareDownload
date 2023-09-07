@@ -1,0 +1,367 @@
+<!DOCTYPE html><html class="h-100">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="../../../static/css/base.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
+
+  <style>
+    .font-sans {
+      font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+    }
+    .font-serif {
+      font-family: 'Source Serif Pro', 'Songti SC', 'SimSun', 'Serif', serif;
+    }
+  </style>
+  <link rel="stylesheet" href="../../../static/katex/katex.min.css">
+  <script defer src="../../../static/katex/katex.min.js"></script>
+  <script defer src="../../../static/katex/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+            // customised options
+            // &#8226; auto-render specific keys, e.g.:
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ],
+            // &#8226; rendering keys, e.g.:
+            throwOnError : false
+          });
+      });
+  </script>
+
+
+  
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="../../../static/reveal/reveal.css">
+<link rel="stylesheet" href="../../../static/reveal/theme/simple.css" id="theme">
+
+<style>
+.reveal .slide-number {
+  font-size: 26px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, .3);
+}
+
+.reveal .full-screen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.reveal .slides {
+  border: 1.5px #ddd solid;
+  border-radius: 7px;
+  text-align: left;
+  font-weight: 300;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  font-family: 'Lato', 'SimHei', 'STXihei', 'Droid Sans';
+  font-weight: 400;
+}
+
+.reveal p, .reveal li, .reveal center {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Droid Sans';
+}
+
+.reveal li + li {
+  margin-top: 10px;
+}
+
+.reveal ul {
+  display: block;
+  margin-right: 15px;
+}
+
+.reveal p, .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5 {
+  padding:  0 25px 0 25px;
+}
+
+.reveal table {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Sans Serif';
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.reveal th {
+  background-color: #eee;
+}
+
+.reveal tr:nth-child(even) {
+  background-color: #efffff;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  text-align: left;
+  margin: 0 0 20px 0;
+ color: #222; 
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
+
+
+.reveal h1 {
+  margin: 0 10 0 10;
+  font-size: 60px;
+}
+.reveal .middle h1 {
+  text-align: center;
+}
+
+.reveal h2 {
+  font-size: 48px;
+  border-bottom: 2px solid rgb(106, 0, 95);
+  padding-bottom: 5px;
+}
+.reveal h3 { font-size: 1.15em; }
+.reveal h4 { font-size: 1.05em; }
+
+.reveal .center {
+  text-align: center;
+}
+
+.reveal .middle {
+  height: 728px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.reveal pre {
+  font-size: 28px;
+ 
+  background-color: #eee;
+
+  border-radius: 3mm;
+  padding: 10px 10px 10px 10px;
+}
+
+.reveal pre code {
+  max-height: none;
+}
+
+.reveal code {
+  font-family: 'Inconsolata', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif', Monospace;
+}
+
+.reveal .middle blockquote {
+  text-align: center;
+  color: rgb(106, 0, 95);
+  background: none;
+  box-shadow: none;
+}
+
+.reveal .middle blockquote a {
+  color: inherit;
+}
+
+.reveal blockquote p, .reveal blockquote li {
+  font-family: 'Lato', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif';
+}
+
+section .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reveal .author-block {
+  margin: 75px 0 35px 0;
+}
+.reveal .author-affiliation img {
+  margin: 15px 0 0 0;
+}
+.reveal .author-block p, .reveal .author-affiliation p  {
+  font-family: 'Kaiti', 'STKaiti', 'Serif', 'Times', 'Times New Roman';
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+.reveal .author-affiliation {
+  display: inline-block;
+  font-size: 90%;
+}
+.reveal hr {
+  border: 10px solid rgba(0, 0, 0, 0);
+}
+.reveal li {
+  margin-top: 10px;
+}
+</style>
+
+  <title>&#25968;&#25454;&#31454;&#20105;</title>
+</head>
+
+<body class="d-flex flex-column h-100">
+  
+  
+
+<div class="reveal">
+<div class="slides">
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="12.3.slides.html" class=" text-amber-900">&#25968;&#25454;&#31454;&#20105;</a></h1>
+<p class=" font-serif my-1"><br></p>
+<p class=" font-serif my-1">(&#25152;&#20197;&#19981;&#19978;&#38145;&#19981;&#23601;&#27809;&#26377;&#27515;&#38145;&#20102;&#21527;&#65311;)</p></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25968;&#25454;&#31454;&#20105;</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1"><red>&#19981;&#21516;&#30340;&#32447;&#31243;</red>&#21516;&#26102;&#35775;&#38382;<red>&#21516;&#19968;&#20869;&#23384;</red>&#65292;&#19988;<red>&#33267;&#23569;&#26377;&#19968;&#20010;&#26159;&#20889;</red>&#12290;</p>
+</blockquote>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20004;&#20010;&#20869;&#23384;&#35775;&#38382;&#22312; &#8220;&#36187;&#36305;&#8221;&#65292;&#8220;&#36305;&#36194;&#8221; &#30340;&#25805;&#20316;&#20808;&#25191;&#34892;</li>
+<li class=" ml-8">&#20363;&#23376;&#65306;&#20849;&#20139;&#20869;&#23384;&#19978;&#23454;&#29616;&#30340; Peterson &#31639;&#27861;</li>
+</ul>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/race.jpg" width="500px"></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">&#25968;&#25454;&#31454;&#20105; (cont'd)</h2>
+<p class=" font-serif my-1"><red>&#8220;&#36305;&#36194;&#8221; &#24182;&#27809;&#26377;&#24819;&#35937;&#20013;&#37027;&#20040;&#31616;&#21333;</red></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Weak memory model &#20801;&#35768;&#19981;&#21516;&#35266;&#27979;&#32773;&#30475;&#21040;&#19981;&#21516;&#32467;&#26524;</li>
+<li class=" ml-8">Since C11: <a href="https://en.cppreference.com/w/c/language/memory_model" class=" text-amber-900">data race is undefined behavior</a></li>
+</ul>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/mem-weak.png" width="450px"></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25968;&#25454;&#31454;&#20105;&#65306;&#20320;&#21482;&#35201;&#35760;&#24471;</h2>
+<p class=" font-serif my-1"><br> <br> <br> <br></p>
+<h1 class="center text-2xl mt-2 font-sans">&#29992;&#38145;&#20445;&#25252;&#22909;&#20849;&#20139;&#25968;&#25454;</h1>
+<p class=" font-serif my-1"><br></p>
+<h1 class="center text-2xl mt-2 font-sans">&#28040;&#28781;&#19968;&#20999;&#25968;&#25454;&#31454;&#20105;</h1></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25968;&#25454;&#31454;&#20105;&#65306;&#20363;&#23376;</h2>
+<p class=" font-serif my-1">&#20197;&#19979;&#20195;&#30721;&#27010;&#25324;&#20102;&#20320;&#20204;&#36935;&#21040;&#25968;&#25454;&#31454;&#20105;&#30340;&#22823;&#37096;&#20998;&#24773;&#20917;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#19981;&#35201;&#31505;&#65292;&#20320;&#20204;&#30340; bug &#20960;&#20046;&#37117;&#26159;&#36825;&#20004;&#31181;&#24773;&#20917;&#30340;&#21464;&#31181;</li>
+</ul>
+<hr>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="c1">// Case #1: &#19978;&#38169;&#20102;&#38145;</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">thread1</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">spin_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lk1</span><span class="p">);</span><span class="w"> </span><span class="n">sum</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="n">spin_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lk1</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">thread2</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">spin_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lk2</span><span class="p">);</span><span class="w"> </span><span class="n">sum</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="n">spin_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lk2</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+
+<hr>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="c1">// Case #2: &#24536;&#35760;&#19978;&#38145;</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">thread1</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">spin_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lk1</span><span class="p">);</span><span class="w"> </span><span class="n">sum</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="n">spin_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lk1</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">thread2</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">sum</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20026;&#20160;&#20040;&#19981;&#35201;&#31505;&#65311;</h2>
+<p class=" font-serif my-1"><red>&#19981;&#21516;&#30340;&#32447;&#31243;</red>&#21516;&#26102;&#35775;&#38382;<red>&#21516;&#19968;&#20869;&#23384;</red>&#65292;&#19988;<red>&#33267;&#23569;&#26377;&#19968;&#20010;&#26159;&#20889;</red></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#8220;&#20869;&#23384;&#8221; &#21487;&#20197;&#26159;&#22320;&#22336;&#31354;&#38388;&#20013;&#30340;&#20219;&#20309;&#20869;&#23384;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21487;&#20197;&#26159;&#20840;&#37096;&#21464;&#37327;</li>
+<li class=" ml-8">&#21487;&#20197;&#26159;&#22534;&#21306;&#20998;&#37197;&#30340;&#21464;&#37327;</li>
+<li class=" ml-8">&#21487;&#20197;&#26159;&#26632;</li>
+</ul>
+</li>
+<li class=" ml-8">&#8220;&#35775;&#38382;&#8221; &#21487;&#20197;&#26159;&#20219;&#20309;&#20195;&#30721;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21487;&#33021;&#21457;&#29983;&#22312;&#20320;&#30340;&#20195;&#30721;&#37324;</li>
+<li class=" ml-8">&#21487;&#20197;&#21457;&#29983;&#22312;&#26694;&#26550;&#20195;&#30721;&#37324;</li>
+<li class=" ml-8">&#21487;&#33021;&#26159;&#19968;&#34892;&#20320;&#27809;&#26377;&#35835;&#21040;&#36807;&#30340;&#27719;&#32534;&#20195;&#30721;</li>
+<li class=" ml-8">&#21487;&#33021;&#26102;&#19968;&#26465; ret &#25351;&#20196;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+  
+</div>
+</div>
+
+<script src="../../../static/reveal/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    
+    width: 1024, height: 768,
+    
+    slideNumber: 'c/t',
+    controlsTutorial: false,
+    progress: false,
+    hash: true,
+    center: false,
+    autoAnimateUnmatched: true,
+    autoAnimateEasing: 'ease-out',
+    autoAnimateDuration: 0.3,
+    transitionSpeed: 'fast'
+  });
+</script>
+
+
+</body>
+
+</html>

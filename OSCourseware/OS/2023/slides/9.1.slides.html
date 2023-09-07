@@ -1,0 +1,406 @@
+<!DOCTYPE html><html class="h-100">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="../../../static/css/base.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
+
+  <style>
+    .font-sans {
+      font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+    }
+    .font-serif {
+      font-family: 'Source Serif Pro', 'Songti SC', 'SimSun', 'Serif', serif;
+    }
+  </style>
+  <link rel="stylesheet" href="../../../static/katex/katex.min.css">
+  <script defer src="../../../static/katex/katex.min.js"></script>
+  <script defer src="../../../static/katex/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+            // customised options
+            // &#8226; auto-render specific keys, e.g.:
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ],
+            // &#8226; rendering keys, e.g.:
+            throwOnError : false
+          });
+      });
+  </script>
+
+
+  
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="../../../static/reveal/reveal.css">
+<link rel="stylesheet" href="../../../static/reveal/theme/simple.css" id="theme">
+
+<style>
+.reveal .slide-number {
+  font-size: 26px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, .3);
+}
+
+.reveal .full-screen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.reveal .slides {
+  border: 1.5px #ddd solid;
+  border-radius: 7px;
+  text-align: left;
+  font-weight: 300;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  font-family: 'Lato', 'SimHei', 'STXihei', 'Droid Sans';
+  font-weight: 400;
+}
+
+.reveal p, .reveal li, .reveal center {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Droid Sans';
+}
+
+.reveal li + li {
+  margin-top: 10px;
+}
+
+.reveal ul {
+  display: block;
+  margin-right: 15px;
+}
+
+.reveal p, .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5 {
+  padding:  0 25px 0 25px;
+}
+
+.reveal table {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Sans Serif';
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.reveal th {
+  background-color: #eee;
+}
+
+.reveal tr:nth-child(even) {
+  background-color: #efffff;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  text-align: left;
+  margin: 0 0 20px 0;
+ color: #222; 
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
+
+
+.reveal h1 {
+  margin: 0 10 0 10;
+  font-size: 60px;
+}
+.reveal .middle h1 {
+  text-align: center;
+}
+
+.reveal h2 {
+  font-size: 48px;
+  border-bottom: 2px solid rgb(106, 0, 95);
+  padding-bottom: 5px;
+}
+.reveal h3 { font-size: 1.15em; }
+.reveal h4 { font-size: 1.05em; }
+
+.reveal .center {
+  text-align: center;
+}
+
+.reveal .middle {
+  height: 728px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.reveal pre {
+  font-size: 28px;
+ 
+  background-color: #eee;
+
+  border-radius: 3mm;
+  padding: 10px 10px 10px 10px;
+}
+
+.reveal pre code {
+  max-height: none;
+}
+
+.reveal code {
+  font-family: 'Inconsolata', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif', Monospace;
+}
+
+.reveal .middle blockquote {
+  text-align: center;
+  color: rgb(106, 0, 95);
+  background: none;
+  box-shadow: none;
+}
+
+.reveal .middle blockquote a {
+  color: inherit;
+}
+
+.reveal blockquote p, .reveal blockquote li {
+  font-family: 'Lato', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif';
+}
+
+section .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reveal .author-block {
+  margin: 75px 0 35px 0;
+}
+.reveal .author-affiliation img {
+  margin: 15px 0 0 0;
+}
+.reveal .author-block p, .reveal .author-affiliation p  {
+  font-family: 'Kaiti', 'STKaiti', 'Serif', 'Times', 'Times New Roman';
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+.reveal .author-affiliation {
+  display: inline-block;
+  font-size: 90%;
+}
+.reveal hr {
+  border: 10px solid rgba(0, 0, 0, 0);
+}
+.reveal li {
+  margin-top: 10px;
+}
+</style>
+
+  <title>&#21516;&#27493;&#38382;&#39064;</title>
+</head>
+
+<body class="d-flex flex-column h-100">
+  
+  
+
+<div class="reveal">
+<div class="slides">
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="9.1.slides.html" class=" text-amber-900">&#21516;&#27493;&#38382;&#39064;</a></h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="synchronization" class=" text-xl mt-2 pb-2 font-sans">&#21516;&#27493; (Synchronization)</h2>
+<p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/gearbox.gif" width="400px"></p>
+<p class=" font-serif my-1">&#20004;&#20010;&#25110;&#20004;&#20010;&#20197;&#19978;&#38543;&#26102;&#38388;&#21464;&#21270;&#30340;&#37327;&#22312;&#21464;&#21270;&#36807;&#31243;&#20013;&#20445;&#25345;&#19968;&#23450;&#30340;&#30456;&#23545;&#20851;&#31995;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21516;&#27493;&#30005;&#36335; (&#19968;&#20010;&#26102;&#38047;&#25511;&#21046;&#25152;&#26377;&#35302;&#21457;&#22120;)</li>
+<li class=" ml-8">iPhone/iCloud &#21516;&#27493; (&#25163;&#26426; vs &#30005;&#33041; vs &#20113;&#31471;)</li>
+<li class=" ml-8">&#21464;&#36895;&#31665;&#21516;&#27493;&#22120; (&#21512;&#24182;&#24555;&#24930;&#36895;&#40831;&#36718;)</li>
+<li class=" ml-8">&#21516;&#27493;&#30005;&#26426; (&#36716;&#23376;&#19982;&#30913;&#22330;&#36716;&#36895;&#19968;&#33268;)</li>
+<li class=" ml-8">&#21516;&#27493;&#30005;&#36335; (&#25152;&#26377;&#35302;&#21457;&#22120;&#22312;&#36793;&#27839;&#21516;&#26102;&#35302;&#21457;)</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#24322;&#27493; (Asynchronous) = &#19981;&#38656;&#35201;&#21516;&#27493;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#19978;&#36848;&#24456;&#22810;&#20363;&#23376;&#37117;&#26377;&#24322;&#27493;&#29256;&#26412; (&#24322;&#27493;&#30005;&#26426;&#12289;&#24322;&#27493;&#30005;&#36335;&#12289;&#24322;&#27493;&#32447;&#31243;)</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#24182;&#21457;&#31243;&#24207;&#20013;&#30340;&#21516;&#27493;</h2>
+<p class=" font-serif my-1">&#24182;&#21457;&#31243;&#24207;&#30340;&#27493;&#35843;&#24456;&#38590;&#20445;&#25345; &#8220;&#23436;&#20840;&#19968;&#33268;&#8221;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#32447;&#31243;&#21516;&#27493;&#65306;<red>&#22312;&#26576;&#20010;&#26102;&#38388;&#28857;&#20849;&#21516;&#36798;&#21040;&#20114;&#30456;&#24050;&#30693;&#30340;&#29366;&#24577;</red></li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#20877;&#27425;&#25226;&#32447;&#31243;&#24819;&#35937;&#25104;&#25105;&#20204;&#33258;&#24049;</p>
+<p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/ge.jpg" width="190px"></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">NPY&#65306;&#31561;&#25105;&#27927;&#20010;&#22836;&#23601;&#20986;&#38376;/&#31561;&#25105;&#25171;&#23436;&#36825;&#23616;&#28216;&#25103;&#23601;&#26469;</li>
+<li class=" ml-8">&#33293;&#21451;&#65306;&#31561;&#25105;&#20462;&#22909;&#36825;&#20010; bug &#23601;&#21507;&#39277;</li>
+<li class=" ml-8">&#23548;&#24072;&#65306;&#31561;&#25105;&#20986;&#24046;&#22238;&#26469;&#23601;&#35752;&#35770;&#36825;&#20010;&#35838;&#39064;</li>
+<li class=" ml-8">jyy: <del>&#31561;&#25105;&#25104;&#20026;&#21367;&#29579;&#23601;&#36538;&#24179;</del><ul class=" list-disc font-serif">
+<li class=" ml-8">&#8220;&#20808;&#21040;&#20808;&#31561;&#8221;&#65292;<red>&#22312;&#26465;&#20214;&#36798;&#25104;&#30340;&#30636;&#38388;&#20877;&#27425;&#24674;&#22797;&#24182;&#34892;</red></li>
+<li class=" ml-8">&#21516;&#26102;&#24320;&#22987;&#20986;&#21435;&#29609;/&#21507;&#39277;/&#35752;&#35770;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="-" class=" text-xl mt-2 pb-2 font-sans">&#29983;&#20135;&#32773;-&#28040;&#36153;&#32773;&#38382;&#39064;&#65306;&#23398;&#24223;&#20320;&#23601;&#36194;&#20102;</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1"><red>99% &#30340;&#23454;&#38469;&#24182;&#21457;&#38382;&#39064;&#37117;&#21487;&#20197;&#29992;&#29983;&#20135;&#32773;-&#28040;&#36153;&#32773;&#35299;&#20915;</red>&#12290;</p>
+</blockquote>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">Tproduce</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">"("</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">Tconsume</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">")"</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+
+<p class=" font-serif my-1">&#22312; <code>printf</code> &#21069;&#21518;&#22686;&#21152;&#20195;&#30721;&#65292;&#20351;&#24471;&#25171;&#21360;&#30340;&#25324;&#21495;&#24207;&#21015;&#28385;&#36275;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#19968;&#23450;&#26159;&#26576;&#20010;&#21512;&#27861;&#25324;&#21495;&#24207;&#21015;&#30340;&#21069;&#32512;</li>
+<li class=" ml-8">&#25324;&#21495;&#23884;&#22871;&#30340;&#28145;&#24230;&#19981;&#36229;&#36807; $n$<ul class=" list-disc font-serif">
+<li class=" ml-8">$n=3$, <code>((())())(((</code> &#21512;&#27861;</li>
+<li class=" ml-8">$n=3$, <code>(((())))</code>, <code>(()))</code> &#19981;&#21512;&#27861;</li>
+</ul>
+</li>
+<li class=" ml-8">&#29983;&#20135;&#32773;-&#28040;&#36153;&#32773;&#38382;&#39064;&#20013;&#30340;&#21516;&#27493;<ul class=" list-disc font-serif">
+<li class=" ml-8">Tproduce: &#31561;&#21040;&#26377;&#31354;&#20301;&#26102;&#25165;&#33021;&#25171;&#21360;&#24038;&#25324;&#21495;</li>
+<li class=" ml-8">Tconsume: &#31561;&#21040;&#26377;&#22810;&#20313;&#30340;&#24038;&#25324;&#21495;&#26102;&#25165;&#33021;&#25171;&#21360;&#21491;&#25324;&#21495;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="-" class=" text-xl mt-2 pb-2 font-sans">&#35745;&#31639;&#22270;&#12289;&#35843;&#24230;&#22120;&#21644;&#29983;&#20135;&#32773;-&#28040;&#36153;&#32773;&#38382;&#39064;</h2>
+<p class=" font-serif my-1">&#20026;&#20160;&#20040;&#21483; &#8220;&#29983;&#20135;&#32773;-&#28040;&#36153;&#32773;&#8221; &#32780;&#19981;&#26159; &#8220;&#25324;&#21495;&#38382;&#39064;&#8221;&#65311;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#24038;&#25324;&#21495;&#65306;&#29983;&#20135;&#36164;&#28304; (&#20219;&#21153;)&#12289;&#25918;&#20837;&#38431;&#21015;</li>
+<li class=" ml-8">&#21491;&#25324;&#21495;&#65306;&#20174;&#38431;&#21015;&#21462;&#20986;&#36164;&#28304; (&#20219;&#21153;) &#25191;&#34892;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#24182;&#34892;&#35745;&#31639;&#22522;&#30784;&#65306;&#35745;&#31639;&#22270;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#35745;&#31639;&#20219;&#21153;&#26500;&#25104;&#26377;&#21521;&#26080;&#29615;&#22270;<ul class=" list-disc font-serif">
+<li class=" ml-8">$(u, v) \in E$ &#34920;&#31034; $v$ &#35201;&#29992;&#21040;&#21069; $u$ &#30340;&#20540;</li>
+</ul>
+</li>
+<li class=" ml-8">&#21482;&#35201;&#35843;&#24230;&#22120; (&#29983;&#20135;&#32773;) &#20998;&#37197;&#20219;&#21153;&#25928;&#29575;&#22815;&#39640;&#65292;&#31639;&#27861;&#23601;&#33021;&#24182;&#34892;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#29983;&#20135;&#32773;&#25226;&#20219;&#21153;&#25918;&#20837;&#38431;&#21015;&#20013;</li>
+<li class=" ml-8">&#28040;&#36153;&#32773; (workers) &#20174;&#38431;&#21015;&#20013;&#21462;&#20986;&#20219;&#21153;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="-" class=" text-xl mt-2 pb-2 font-sans">&#29983;&#20135;&#32773;-&#28040;&#36153;&#32773;&#65306;&#23454;&#29616;</h2>
+<p class=" font-serif my-1">&#33021;&#21542;&#29992;&#20114;&#26021;&#38145;&#23454;&#29616;&#25324;&#21495;&#38382;&#39064;&#65311;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#24038;&#25324;&#21495;&#65306;&#23884;&#22871;&#28145;&#24230; (&#38431;&#21015;) &#19981;&#36275; $n$ &#26102;&#25165;&#33021;&#25171;&#21360;</li>
+<li class=" ml-8">&#21491;&#25324;&#21495;&#65306;&#23884;&#22871;&#28145;&#24230; (&#38431;&#21015;) $&gt;1$ &#26102;&#25165;&#33021;&#25171;&#21360;<ul class=" list-disc font-serif">
+<li class=" ml-8"><red>&#24403;&#28982;&#26159;&#31561;&#21040;&#28385;&#36275;&#26465;&#20214;&#26102;&#20877;&#25171;&#21360;&#20102;</red> (&#20195;&#30721;&#28436;&#31034;)<ul class=" list-disc font-serif">
+<li class=" ml-8"><red>&#29992;&#20114;&#26021;&#38145;&#20445;&#25345;&#26465;&#20214;&#25104;&#31435;</red></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/matrix-pods.jpg" width="400px"></p>
+<p class=" font-serif my-1">&#24182;&#21457;&#65306;&#23567;&#24515;&#65281;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21387;&#21147;&#27979;&#35797; + &#35266;&#23519;&#36755;&#20986;&#32467;&#26524;</li>
+<li class=" ml-8">&#33258;&#21160;&#35266;&#23519;&#36755;&#20986;&#32467;&#26524;&#65306;<a href="../../../pages/OS/2023/c/pc-check.py" class=" text-amber-900">pc-check.py</a></li>
+<li class=" ml-8">&#26410;&#26469;&#65306;copilot &#35266;&#23519;&#36755;&#20986;&#32467;&#26524;&#65292;&#24182;&#32473;&#20986;&#20462;&#22797;&#24314;&#35758;</li>
+<li class=" ml-8">&#26356;&#36828;&#30340;&#26410;&#26469;&#65306;<del>&#25105;&#20204;&#37117;&#19981;&#38656;&#35201;&#19981;&#23384;&#22312;&#20102;</del></li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+  
+</div>
+</div>
+
+<script src="../../../static/reveal/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    
+    width: 1024, height: 768,
+    
+    slideNumber: 'c/t',
+    controlsTutorial: false,
+    progress: false,
+    hash: true,
+    center: false,
+    autoAnimateUnmatched: true,
+    autoAnimateEasing: 'ease-out',
+    autoAnimateDuration: 0.3,
+    transitionSpeed: 'fast'
+  });
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,597 @@
+<!DOCTYPE html><html class="h-100">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="../../../static/css/base.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
+
+  <style>
+    .font-sans {
+      font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+    }
+    .font-serif {
+      font-family: 'Source Serif Pro', 'Songti SC', 'SimSun', 'Serif', serif;
+    }
+  </style>
+  <link rel="stylesheet" href="../../../static/katex/katex.min.css">
+  <script defer src="../../../static/katex/katex.min.js"></script>
+  <script defer src="../../../static/katex/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+            // customised options
+            // &#8226; auto-render specific keys, e.g.:
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ],
+            // &#8226; rendering keys, e.g.:
+            throwOnError : false
+          });
+      });
+  </script>
+
+
+  
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="../../../static/reveal/reveal.css">
+<link rel="stylesheet" href="../../../static/reveal/theme/simple.css" id="theme">
+
+<style>
+.reveal .slide-number {
+  font-size: 26px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, .3);
+}
+
+.reveal .full-screen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.reveal .slides {
+  border: 1.5px #ddd solid;
+  border-radius: 7px;
+  text-align: left;
+  font-weight: 300;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  font-family: 'Lato', 'SimHei', 'STXihei', 'Droid Sans';
+  font-weight: 400;
+}
+
+.reveal p, .reveal li, .reveal center {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Droid Sans';
+}
+
+.reveal li + li {
+  margin-top: 10px;
+}
+
+.reveal ul {
+  display: block;
+  margin-right: 15px;
+}
+
+.reveal p, .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5 {
+  padding:  0 25px 0 25px;
+}
+
+.reveal table {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Sans Serif';
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.reveal th {
+  background-color: #eee;
+}
+
+.reveal tr:nth-child(even) {
+  background-color: #efffff;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  text-align: left;
+  margin: 0 0 20px 0;
+ color: #222; 
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
+
+
+.reveal h1 {
+  margin: 0 10 0 10;
+  font-size: 60px;
+}
+.reveal .middle h1 {
+  text-align: center;
+}
+
+.reveal h2 {
+  font-size: 48px;
+  border-bottom: 2px solid rgb(106, 0, 95);
+  padding-bottom: 5px;
+}
+.reveal h3 { font-size: 1.15em; }
+.reveal h4 { font-size: 1.05em; }
+
+.reveal .center {
+  text-align: center;
+}
+
+.reveal .middle {
+  height: 728px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.reveal pre {
+  font-size: 28px;
+ 
+  background-color: #eee;
+
+  border-radius: 3mm;
+  padding: 10px 10px 10px 10px;
+}
+
+.reveal pre code {
+  max-height: none;
+}
+
+.reveal code {
+  font-family: 'Inconsolata', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif', Monospace;
+}
+
+.reveal .middle blockquote {
+  text-align: center;
+  color: rgb(106, 0, 95);
+  background: none;
+  box-shadow: none;
+}
+
+.reveal .middle blockquote a {
+  color: inherit;
+}
+
+.reveal blockquote p, .reveal blockquote li {
+  font-family: 'Lato', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif';
+}
+
+section .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reveal .author-block {
+  margin: 75px 0 35px 0;
+}
+.reveal .author-affiliation img {
+  margin: 15px 0 0 0;
+}
+.reveal .author-block p, .reveal .author-affiliation p  {
+  font-family: 'Kaiti', 'STKaiti', 'Serif', 'Times', 'Times New Roman';
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+.reveal .author-affiliation {
+  display: inline-block;
+  font-size: 90%;
+}
+.reveal hr {
+  border: 10px solid rgba(0, 0, 0, 0);
+}
+.reveal li {
+  margin-top: 10px;
+}
+</style>
+
+  <title>&#30446;&#24405;&#26641;&#31649;&#29702;</title>
+</head>
+
+<body class="d-flex flex-column h-100">
+  
+  
+
+<div class="reveal">
+<div class="slides">
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="27.4.slides.html" class=" text-amber-900">&#30446;&#24405;&#26641;&#31649;&#29702;</a></h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#34394;&#25311;&#30913;&#30424;&#37027;&#20040;&#22810;&#65292;&#24590;&#20040;&#25214;&#21040;&#24819;&#35201;&#30340;&#65311;</h2>
+<p class=" font-serif my-1">&#20449;&#24687;&#30340;&#23616;&#37096;&#24615;&#65306;&#23558;&#34394;&#25311;&#30913;&#30424; (&#25991;&#20214;) &#32452;&#32455;&#25104;&#23618;&#27425;&#32467;&#26500;</p>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/nju-lib.jpg" width="800px"></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#21033;&#29992;&#20449;&#24687;&#30340;&#23616;&#37096;&#24615;&#32452;&#32455;&#34394;&#25311;&#30913;&#30424;</h2>
+<p class=" font-serif my-1">&#30446;&#24405;&#26641;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#36923;&#36753;&#30456;&#20851;&#30340;&#25968;&#25454;&#23384;&#25918;&#22312;&#30456;&#36817;&#30340;&#30446;&#24405;</li>
+</ul>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>.
+&#9492;&#9472;&#9472; &#23398;&#20064;&#36164;&#26009;
+    &#9500;&#9472;&#9472; .&#23398;&#20064;&#36164;&#26009;(&#38544;&#34255;)
+    &#9500;&#9472;&#9472; &#38382;&#39064;&#27714;&#35299;1
+    &#9500;&#9472;&#9472; &#38382;&#39064;&#27714;&#35299;2
+    &#9500;&#9472;&#9472; &#38382;&#39064;&#27714;&#35299;3
+    &#9500;&#9472;&#9472; &#38382;&#39064;&#27714;&#35299;4
+    &#9492;&#9472;&#9472; &#25805;&#20316;&#31995;&#32479;
+</code></pre></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25991;&#20214;&#31995;&#32479;&#30340; &#8220;&#26681;&#8221;</h2>
+<p class=" font-serif my-1">&#26641;&#24635;&#24471;&#26377;&#20010;&#26681;&#32467;&#28857;</p>
+<p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/IBM-PC-5150.jpg" width="350px"></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Windows: &#27599;&#20010;<red>&#35774;&#22791;</red> (&#39537;&#21160;&#22120;) &#26159;&#19968;&#26869;&#26641;<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>C:\</code> &#8220;C &#30424;&#26681;&#30446;&#24405;&#8221;<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>C:\Program Files\</code>, <code>C:\Windows</code>, <code>C:\Users</code>, ...</li>
+</ul>
+</li>
+<li class=" ml-8">&#20248;&#30424;&#20998;&#37197;&#32473;&#26032;&#30340;&#30424;&#31526;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20026;&#20160;&#20040;&#27809;&#26377; <code>A:\</code>, <code>B:\</code>?</li>
+<li class=" ml-8">&#31616;&#21333;&#12289;&#31895;&#26292;&#12289;&#26041;&#20415;&#65292;&#20294; <code>game.iso</code> &#19968;&#24230;&#38750;&#24120;&#40635;&#28902;&#8230;&#8230;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class=" ml-8">UNIX/Linux<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21482;&#26377;&#19968;&#20010;&#26681; <code>/</code><ul class=" list-disc font-serif">
+<li class=" ml-8">&#31532;&#20108;&#20010;&#35774;&#22791;&#21602;&#65311;</li>
+<li class=" ml-8">&#20248;&#30424;&#21602;&#65311;&#65311;&#65311;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#30446;&#24405;&#26641;&#30340;&#25340;&#25509;</h2>
+<p class=" font-serif my-1">UNIX: &#20801;&#35768;&#20219;&#24847;&#30446;&#24405; &#8220;&#25346;&#36733; (mount)&#8221; &#19968;&#20010;<red>&#35774;&#22791;</red>&#20195;&#34920;&#30340;&#30446;&#24405;&#26641;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#38750;&#24120;&#28789;&#27963;&#30340;&#35774;&#35745;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21487;&#20197;&#25226;&#35774;&#22791;&#25346;&#36733;&#21040;&#20219;&#20309;&#24819;&#35201;&#30340;&#20301;&#32622;</li>
+<li class=" ml-8">Linux &#23433;&#35013;&#26102;&#30340; &#8220;mount point&#8221;<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>/</code>, <code>/home</code>, <code>/var</code> &#21487;&#20197;&#26159;&#29420;&#31435;&#30340;&#30913;&#30424;&#35774;&#22791;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">mount &#31995;&#32479;&#35843;&#29992;</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">mount</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">source</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">target</span><span class="p">,</span>
+<span class="w">          </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">filesystemtype</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">mountflags</span><span class="p">,</span>
+<span class="w">          </span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">data</span><span class="p">);</span>
+</code></pre></div>
+
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>mount /dev/sdb /mnt</code> (RTFM)<ul class=" list-disc font-serif">
+<li class=" ml-8">Linux mount &#24037;&#20855;&#33021;&#33258;&#21160;&#26816;&#27979;&#25991;&#20214;&#31995;&#32479; (busybox &#19981;&#33021;)</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="linux" class=" text-xl mt-2 pb-2 font-sans">&#30495;&#27491;&#30340; Linux &#21551;&#21160;&#27969;&#31243;</h2>
+<p class=" font-serif my-1">Linux-minimal &#36816;&#34892;&#22312; &#8220;initramfs&#8221; &#27169;&#24335;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Initial RAM file system</li>
+<li class=" ml-8">&#23436;&#25972;&#30340;&#25991;&#20214;&#31995;&#32479;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21487;&#20197;&#21253;&#21547;&#35774;&#22791;&#39537;&#21160;&#31561;&#20219;&#20309;&#25991;&#20214;</li>
+<li class=" ml-8">&#20294;&#19981;&#20855;&#26377; &#8220;&#25345;&#20037;&#21270;&#8221; &#30340;&#33021;&#21147;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#26368;&#23567; &#8220;&#30495;&#27491;&#8221; Linux &#30340;&#21551;&#21160;&#27969;&#31243;</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span>/bin
+busybox<span class="w"> </span>mknod<span class="w"> </span>/dev/sda<span class="w"> </span>b<span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">0</span>
+busybox<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/newroot
+busybox<span class="w"> </span>mount<span class="w"> </span>-t<span class="w"> </span>ext2<span class="w"> </span>/dev/sda<span class="w"> </span>/newroot
+<span class="nb">exec</span><span class="w"> </span>busybox<span class="w"> </span>switch_root<span class="w"> </span>/newroot/<span class="w"> </span>/etc/init
+</code></pre></div>
+
+<p class=" font-serif my-1">&#36890;&#36807; <code>pivot_root</code> (2) &#23454;&#29616;&#26681;&#25991;&#20214;&#31995;&#32479;&#30340;&#20999;&#25442;</p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25991;&#20214;&#30340;&#25346;&#36733;</h2>
+<p class=" font-serif my-1">&#25991;&#20214;&#30340;&#25346;&#36733;&#24341;&#20837;&#20102;&#19968;&#20010;&#24494;&#22937;&#30340;&#24490;&#29615;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25991;&#20214; = &#30913;&#30424;&#19978;&#30340;&#34394;&#25311;&#30913;&#30424;</li>
+<li class=" ml-8">&#25346;&#36733;&#25991;&#20214; = &#22312;&#34394;&#25311;&#30913;&#30424;&#19978;&#34394;&#25311;&#20986;&#30340;&#34394;&#25311;&#30913;&#30424; &#129300;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Linux &#30340;&#22788;&#29702;&#26041;&#24335;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21019;&#24314;&#19968;&#20010; loopback (&#22238;&#29615;) &#35774;&#22791;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#35774;&#22791;&#39537;&#21160;&#25226;&#35774;&#22791;&#30340; read/write &#32763;&#35793;&#25104;&#25991;&#20214;&#30340; read/write</li>
+</ul>
+</li>
+<li class=" ml-8">&#35266;&#23519; <a href="../../../pages/OS/2021/demos/disk-img.tar.gz" class=" text-amber-900">disk-img.tar.gz</a> &#30340;&#25346;&#36733;<ul class=" list-disc font-serif">
+<li class=" ml-8">lsblk &#26597;&#30475;&#31995;&#32479;&#20013;&#30340; block devices (strace)</li>
+<li class=" ml-8">strace &#35266;&#23519;&#25346;&#36733;&#30340;&#27969;&#31243;<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>ioctl(3, LOOP_CTL_GET_FREE)</code></li>
+<li class=" ml-8"><code>ioctl(4, LOOP_SET_FD, 3)</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="filesystem-hierarchy-standard-fhs" class=" text-xl mt-2 pb-2 font-sans"><a href="http://refspecs.linuxfoundation.org/FHS_3.0/fhs/index.html" class=" text-amber-900">Filesystem Hierarchy Standard</a> (FHS)</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">FHS enables <em>software and user</em> to predict the location of installed files and directories.</p>
+</blockquote>
+<p class=" font-serif my-1">&#20363;&#23376;&#65306;macOS &#26159; UNIX &#30340;&#20869;&#26680; (BSD), &#20294;&#19981;&#36981;&#24490; Linux FHS</p>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/fhs.jpg" width="700px"></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#30446;&#24405;&#31649;&#29702;&#65306;&#21019;&#24314;/&#21024;&#38500;/&#36941;&#21382;</h2>
+<p class=" font-serif my-1">&#36825;&#20010;&#31616;&#21333;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">mkdir<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21019;&#24314;&#19968;&#20010;&#30446;&#24405;</li>
+<li class=" ml-8">&#21487;&#20197;&#35774;&#32622;&#35775;&#38382;&#26435;&#38480;</li>
+</ul>
+</li>
+<li class=" ml-8">rmdir<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21024;&#38500;&#19968;&#20010;&#31354;&#30446;&#24405;</li>
+<li class=" ml-8">&#27809;&#26377; &#8220;&#36882;&#24402;&#21024;&#38500;&#8221; &#30340;&#31995;&#32479;&#35843;&#29992;<ul class=" list-disc font-serif">
+<li class=" ml-8">(&#24212;&#29992;&#23618;&#33021;&#23454;&#29616;&#30340;&#65292;&#23601;&#19981;&#35201;&#22312;&#25805;&#20316;&#31995;&#32479;&#23618;&#23454;&#29616;)</li>
+<li class=" ml-8"><code>rm -rf</code> &#20250;&#36941;&#21382;&#30446;&#24405;&#65292;&#36880;&#20010;&#21024;&#38500; (&#35797;&#35797; strace)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class=" ml-8">getdents<ul class=" list-disc font-serif">
+<li class=" ml-8">&#36820;&#22238; <code>count</code> &#20010;&#30446;&#24405;&#39033; (ls, find, tree &#37117;&#20351;&#29992;&#36825;&#20010;)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20197;&#28857;&#24320;&#22836;&#30340;&#30446;&#24405;&#20250;&#34987;&#31995;&#32479;&#35843;&#29992;&#36820;&#22238;&#65292;&#21482;&#26159; ls &#27809;&#26377;&#26174;&#31034;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26356;&#20154;&#31867;&#21451;&#22909;&#30340;&#30446;&#24405;&#35775;&#38382;&#26041;&#24335;</h2>
+<p class=" font-serif my-1">&#21512;&#36866;&#30340; API + &#21512;&#36866;&#30340;&#32534;&#31243;&#35821;&#35328;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="https://www.gnu.org/software/libc/manual/html_node/Calling-Glob.html" class=" text-amber-900">Globbing</a></li>
+</ul>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">Path</span><span class="p">(</span><span class="s1">'/proc'</span><span class="p">)</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">'*/status'</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">parts</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> \
+        <span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s1">'cmdline'</span><span class="p">)</span><span class="o">.</span><span class="n">read_text</span><span class="p">()</span> <span class="ow">or</span> <span class="s1">'[kernel]'</span><span class="p">)</span>
+</code></pre></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="hard" class=" text-xl mt-2 pb-2 font-sans">&#30828; (hard) &#38142;&#25509;</h2>
+<p class=" font-serif my-1">&#38656;&#27714;&#65306;&#31995;&#32479;&#20013;&#21487;&#33021;&#26377;&#21516;&#19968;&#20010;&#36816;&#34892;&#24211;&#30340;&#22810;&#20010;&#29256;&#26412;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>libc-2.27.so</code>, <code>libc-2.26.so</code>, ...</li>
+<li class=" ml-8">&#36824;&#38656;&#35201;&#19968;&#20010; &#8220;&#24403;&#21069;&#29256;&#26412;&#30340; libc&#8221;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#31243;&#24207;&#38656;&#35201;&#38142;&#25509; &#8220;<code>libc.so.6</code>&#8221;&#65292;&#33021;&#21542;&#36991;&#20813;&#25991;&#20214;&#30340;&#19968;&#20221;&#25335;&#36125;&#65311;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#30828;&#36830;&#25509;&#65306;&#20801;&#35768;&#19968;&#20010;&#25991;&#20214;&#34987;&#22810;&#20010;&#30446;&#24405;&#24341;&#29992;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#30446;&#24405;&#20013;&#20165;&#23384;&#20648;&#25351;&#21521;&#25991;&#20214;&#25968;&#25454;&#30340;&#25351;&#38024;</li>
+<li class=" ml-8">&#38142;&#25509;&#30446;&#24405; &#10060;</li>
+<li class=" ml-8">&#36328;&#25991;&#20214;&#31995;&#32479; &#10060;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#22823;&#37096;&#20998; UNIX &#25991;&#20214;&#31995;&#32479;&#25152;&#26377;&#25991;&#20214;&#37117;&#26159;&#30828;&#36830;&#25509; (<code>ls -i</code> &#26597;&#30475;)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21024;&#38500;&#30340;&#31995;&#32479;&#35843;&#29992;&#31216;&#20026; &#8220;unlink&#8221; (&#24341;&#29992;&#35745;&#25968;)</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="symbolic" class=" text-xl mt-2 pb-2 font-sans">&#36719; (symbolic) &#38142;&#25509;</h2>
+<p class=" font-serif my-1">&#36719;&#38142;&#25509;&#65306;&#22312;&#25991;&#20214;&#37324;&#23384;&#20648;&#19968;&#20010; &#8220;&#36339;&#36716;&#25552;&#31034;&#8221;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#36719;&#38142;&#25509;&#20063;&#26159;&#19968;&#20010;&#25991;&#20214;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#24403;&#24341;&#29992;&#36825;&#20010;&#25991;&#20214;&#26102;&#65292;&#21435;&#25214;&#21478;&#19968;&#20010;&#25991;&#20214;</li>
+<li class=" ml-8">&#21478;&#19968;&#20010;&#25991;&#20214;&#30340;&#32477;&#23545;/&#30456;&#23545;&#36335;&#24452;&#20197;&#25991;&#26412;&#24418;&#24335;&#23384;&#20648;&#22312;&#25991;&#20214;&#37324;</li>
+<li class=" ml-8">&#21487;&#20197;&#36328;&#25991;&#20214;&#31995;&#32479;&#12289;&#21487;&#20197;&#38142;&#25509;&#30446;&#24405;&#12289;&#8230;&#8230;</li>
+</ul>
+</li>
+<li class=" ml-8">&#31867;&#20284; &#8220;&#24555;&#25463;&#26041;&#24335;&#8221;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#38142;&#25509;&#25351;&#21521;&#30340;&#20301;&#32622;&#24403;&#21069;&#19981;&#23384;&#22312;&#20063;&#27809;&#20851;&#31995;</li>
+<li class=" ml-8"><code>~/usb</code> &#8594; <code>/media/jyy-usb</code></li>
+<li class=" ml-8"><code>~/Desktop</code> &#8594; <code>/mnt/c/Users/jyy/Desktop</code> (WSL)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1"><code>ln -s</code> &#21019;&#24314;&#36719;&#38142;&#25509;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>symlink</code> &#31995;&#32479;&#35843;&#29992;</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#36719;&#38142;&#25509;&#24102;&#26469;&#30340;&#40635;&#28902;</h2>
+<p class=" font-serif my-1">&#8220;&#20219;&#24847;&#38142;&#25509;&#8221; &#20801;&#35768;&#21019;&#24314;&#20219;&#24847;&#26377;&#21521;&#22270; &#128514;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20801;&#35768;&#22810;&#27425;&#38388;&#25509;&#38142;&#25509;<ul class=" list-disc font-serif">
+<li class=" ml-8">a &#8594; b &#8594; c (&#36882;&#24402;&#35299;&#26512;)</li>
+</ul>
+</li>
+<li class=" ml-8">&#21487;&#20197;&#21019;&#24314;&#36719;&#36830;&#25509;&#30340;&#30828;&#38142;&#25509; (&#22240;&#20026;&#36719;&#38142;&#25509;&#20063;&#26159;&#25991;&#20214;)<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>ls -i</code> &#21487;&#20197;&#30475;&#21040; </li>
+</ul>
+</li>
+<li class=" ml-8">&#20801;&#35768;&#25104;&#29615;<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>find -L A | tr -d '/'</code></li>
+<li class=" ml-8">&#21487;&#20197;&#20570;&#25104;&#19968;&#20010; &#8220;&#36855;&#23467;&#28216;&#25103;&#8221;<ul class=" list-disc font-serif">
+<li class=" ml-8">ssh &#36827;&#20837;&#28216;&#25103;&#65292;&#36827;&#20837;&#21517;&#20026; end &#30340;&#30446;&#24405;&#32988;&#21033;</li>
+<li class=" ml-8">&#21482;&#20801;&#35768; ls (-i), cd, pwd</li>
+</ul>
+</li>
+<li class=" ml-8">&#25152;&#26377;&#22788;&#29702;&#31526;&#21495;&#38142;&#25509;&#30340;&#31243;&#24207; (tree, find, ...) &#37117;&#35201;&#32771;&#34385;&#36882;&#24402;&#30340;&#24773;&#20917;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+  
+</div>
+</div>
+
+<script src="../../../static/reveal/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    
+    width: 1024, height: 768,
+    
+    slideNumber: 'c/t',
+    controlsTutorial: false,
+    progress: false,
+    hash: true,
+    center: false,
+    autoAnimateUnmatched: true,
+    autoAnimateEasing: 'ease-out',
+    autoAnimateDuration: 0.3,
+    transitionSpeed: 'fast'
+  });
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,398 @@
+<!DOCTYPE html><html class="h-100">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="../../../static/css/base.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
+
+  <style>
+    .font-sans {
+      font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+    }
+    .font-serif {
+      font-family: 'Source Serif Pro', 'Songti SC', 'SimSun', 'Serif', serif;
+    }
+  </style>
+  <link rel="stylesheet" href="../../../static/katex/katex.min.css">
+  <script defer src="../../../static/katex/katex.min.js"></script>
+  <script defer src="../../../static/katex/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+            // customised options
+            // &#8226; auto-render specific keys, e.g.:
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ],
+            // &#8226; rendering keys, e.g.:
+            throwOnError : false
+          });
+      });
+  </script>
+
+
+  
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="../../../static/reveal/reveal.css">
+<link rel="stylesheet" href="../../../static/reveal/theme/simple.css" id="theme">
+
+<style>
+.reveal .slide-number {
+  font-size: 26px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, .3);
+}
+
+.reveal .full-screen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.reveal .slides {
+  border: 1.5px #ddd solid;
+  border-radius: 7px;
+  text-align: left;
+  font-weight: 300;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  font-family: 'Lato', 'SimHei', 'STXihei', 'Droid Sans';
+  font-weight: 400;
+}
+
+.reveal p, .reveal li, .reveal center {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Droid Sans';
+}
+
+.reveal li + li {
+  margin-top: 10px;
+}
+
+.reveal ul {
+  display: block;
+  margin-right: 15px;
+}
+
+.reveal p, .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5 {
+  padding:  0 25px 0 25px;
+}
+
+.reveal table {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Sans Serif';
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.reveal th {
+  background-color: #eee;
+}
+
+.reveal tr:nth-child(even) {
+  background-color: #efffff;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  text-align: left;
+  margin: 0 0 20px 0;
+ color: #222; 
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
+
+
+.reveal h1 {
+  margin: 0 10 0 10;
+  font-size: 60px;
+}
+.reveal .middle h1 {
+  text-align: center;
+}
+
+.reveal h2 {
+  font-size: 48px;
+  border-bottom: 2px solid rgb(106, 0, 95);
+  padding-bottom: 5px;
+}
+.reveal h3 { font-size: 1.15em; }
+.reveal h4 { font-size: 1.05em; }
+
+.reveal .center {
+  text-align: center;
+}
+
+.reveal .middle {
+  height: 728px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.reveal pre {
+  font-size: 28px;
+ 
+  background-color: #eee;
+
+  border-radius: 3mm;
+  padding: 10px 10px 10px 10px;
+}
+
+.reveal pre code {
+  max-height: none;
+}
+
+.reveal code {
+  font-family: 'Inconsolata', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif', Monospace;
+}
+
+.reveal .middle blockquote {
+  text-align: center;
+  color: rgb(106, 0, 95);
+  background: none;
+  box-shadow: none;
+}
+
+.reveal .middle blockquote a {
+  color: inherit;
+}
+
+.reveal blockquote p, .reveal blockquote li {
+  font-family: 'Lato', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif';
+}
+
+section .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reveal .author-block {
+  margin: 75px 0 35px 0;
+}
+.reveal .author-affiliation img {
+  margin: 15px 0 0 0;
+}
+.reveal .author-block p, .reveal .author-affiliation p  {
+  font-family: 'Kaiti', 'STKaiti', 'Serif', 'Times', 'Times New Roman';
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+.reveal .author-affiliation {
+  display: inline-block;
+  font-size: 90%;
+}
+.reveal hr {
+  border: 10px solid rgba(0, 0, 0, 0);
+}
+.reveal li {
+  margin-top: 10px;
+}
+</style>
+
+  <title>&#25345;&#20037;&#21270;&#23384;&#20648;&#65306;&#22353;</title>
+</head>
+
+<body class="d-flex flex-column h-100">
+  
+  
+
+<div class="reveal">
+<div class="slides">
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="25.3.slides.html" class=" text-amber-900">&#25345;&#20037;&#21270;&#23384;&#20648;&#65306;&#22353;</a></h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#22353;&#65306;&#22825;&#28982;&#23481;&#26131; &#8220;&#38405;&#35835;&#8221; &#30340;&#25968;&#25454;&#23384;&#20648;</h2>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/sos-on-beach.jpg" width="500px"></p>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/fortran-card.jpg" width="600px"></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="compact-disk-cd-1980" class=" text-xl mt-2 pb-2 font-sans">Compact Disk (CD, 1980)</h2>
+<p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/compactdisc.jpg" width="300px"></p>
+<p class=" font-serif my-1">&#22312;&#21453;&#23556;&#24179;&#38754; (1) &#19978;&#25366;&#19978;&#31895;&#31961;&#30340;&#22353; (0)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#28608;&#20809;&#25195;&#36807;&#34920;&#38754;&#65292;&#23601;&#33021;&#35835;&#20986;&#22353;&#30340;&#20449;&#24687;&#26469;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#39134;&#21033;&#28006; (&#30879;&#29255;) &#21644;&#32034;&#23612; (&#25968;&#23383;&#38899;&#39057;) &#21457;&#26126;</li>
+<li class=" ml-8">~700 MiB&#65292;&#22312;&#24403;&#26102;&#26159;&#38750;&#24120;&#24040;&#22823;&#30340;&#23481;&#37327;</li>
+</ul>
+</li>
+</ul>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/cdplay.gif" width="500px"></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="cd-rw" class=" text-xl mt-2 pb-2 font-sans">CD-RW</h2>
+<p class=" font-serif my-1">&#33021;&#21542;&#20811;&#26381;&#21482;&#35835;&#30340;&#38480;&#21046;&#65311;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#26041;&#27861; 1<ul class=" list-disc font-serif">
+<li class=" ml-8">&#29992;&#28608;&#20809;&#22120;&#28903;&#20986;&#19968;&#20010;&#22353;&#26469; (&#8220;&#21051;&#30424;&#8221;)</li>
+<li class=" ml-8">&#20351;&#29992;&#25345;&#20037;&#21270;&#25968;&#25454;&#32467;&#26500; (append-only)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#26041;&#27861; 2&#65306;&#25913;&#21464;&#26448;&#26009;&#30340;&#21453;&#20809;&#29305;&#24615;<ul class=" list-disc font-serif">
+<li class=" ml-8">PCM (Phase-change Material)</li>
+<li class=" ml-8"><a href="https://www.scientificamerican.com/article/how-do-rewriteable-cds-wo/" class=" text-amber-900">How do rewriteable CDs work?</a></li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25366;&#22353;&#30340;&#25216;&#26415;&#36827;&#23637;</h2>
+<p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/ps5-drive.jpg" width="500px"></p>
+<p class=" font-serif my-1">CD (740 MB)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">780nm &#32418;&#22806;&#28608;&#20809;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">DVD (4.7 GB)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">635nm &#32418;&#33394;&#28608;&#20809;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Blue Ray (100 GB)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">405nm &#34013;&#32043;&#33394;&#28608;&#20809;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">(&#22312;&#23454;&#29992;&#26041;&#38754;&#36880;&#28176;&#34987;&#32593;&#32476;&#28120;&#27760;)</p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20809;&#30424;&#65306;&#20316;&#20026;&#23384;&#20648;&#35774;&#22791;&#30340;&#20998;&#26512;</h2>
+<p class=" font-serif my-1">&#20998;&#26512;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20215;&#26684;<ul class=" list-disc font-serif">
+<li class=" ml-8"><green>&#24456;&#20302;</green> (&#32780;&#19988;&#24456;&#23481;&#26131;&#36890;&#36807; &#8220;&#21387;&#30424;&#8221; &#22797;&#21046;)</li>
+</ul>
+</li>
+<li class=" ml-8">&#23481;&#37327;<ul class=" list-disc font-serif">
+<li class=" ml-8"><green>&#39640;</green></li>
+</ul>
+</li>
+<li class=" ml-8">&#35835;&#20889;&#36895;&#24230;<ul class=" list-disc font-serif">
+<li class=" ml-8"><green>&#39034;&#24207;&#35835;&#21462;&#36895;&#24230;&#39640;&#65307;&#38543;&#26426;&#35835;&#21462;&#21193;&#24378;</green></li>
+<li class=" ml-8"><red>&#20889;&#20837;&#36895;&#24230;&#20302;</red> (&#25366;&#22353;&#23481;&#26131;&#22635;&#22353;&#38590;)</li>
+</ul>
+</li>
+<li class=" ml-8">&#21487;&#38752;&#24615;<ul class=" list-disc font-serif">
+<li class=" ml-8"><green>&#39640;</green></li>
+</ul>
+</li>
+</ul>
+<p class=" font-serif my-1">&#20170;&#22825;&#30340;&#24212;&#29992;&#22330;&#26223;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20316;&#20026;&#25968;&#23383;&#25910;&#34255;</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#8220;&#25366;&#22353;&#8221;&#65306;&#19981;&#27490;&#26159;&#25968;&#25454;&#23384;&#20648;</h2>
+<p class=" font-serif my-1"><br></p>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/EUV.png" width="900px"></p></div>
+        
+      
+      </section>
+    
+    </section>
+  
+</div>
+</div>
+
+<script src="../../../static/reveal/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    
+    width: 1024, height: 768,
+    
+    slideNumber: 'c/t',
+    controlsTutorial: false,
+    progress: false,
+    hash: true,
+    center: false,
+    autoAnimateUnmatched: true,
+    autoAnimateEasing: 'ease-out',
+    autoAnimateDuration: 0.3,
+    transitionSpeed: 'fast'
+  });
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,402 @@
+<!DOCTYPE html><html class="h-100">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="../../../static/css/base.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
+
+  <style>
+    .font-sans {
+      font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+    }
+    .font-serif {
+      font-family: 'Source Serif Pro', 'Songti SC', 'SimSun', 'Serif', serif;
+    }
+  </style>
+  <link rel="stylesheet" href="../../../static/katex/katex.min.css">
+  <script defer src="../../../static/katex/katex.min.js"></script>
+  <script defer src="../../../static/katex/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+            // customised options
+            // &#8226; auto-render specific keys, e.g.:
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ],
+            // &#8226; rendering keys, e.g.:
+            throwOnError : false
+          });
+      });
+  </script>
+
+
+  
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="../../../static/reveal/reveal.css">
+<link rel="stylesheet" href="../../../static/reveal/theme/simple.css" id="theme">
+
+<style>
+.reveal .slide-number {
+  font-size: 26px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, .3);
+}
+
+.reveal .full-screen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.reveal .slides {
+  border: 1.5px #ddd solid;
+  border-radius: 7px;
+  text-align: left;
+  font-weight: 300;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  font-family: 'Lato', 'SimHei', 'STXihei', 'Droid Sans';
+  font-weight: 400;
+}
+
+.reveal p, .reveal li, .reveal center {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Droid Sans';
+}
+
+.reveal li + li {
+  margin-top: 10px;
+}
+
+.reveal ul {
+  display: block;
+  margin-right: 15px;
+}
+
+.reveal p, .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5 {
+  padding:  0 25px 0 25px;
+}
+
+.reveal table {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Sans Serif';
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.reveal th {
+  background-color: #eee;
+}
+
+.reveal tr:nth-child(even) {
+  background-color: #efffff;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  text-align: left;
+  margin: 0 0 20px 0;
+ color: #222; 
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
+
+
+.reveal h1 {
+  margin: 0 10 0 10;
+  font-size: 60px;
+}
+.reveal .middle h1 {
+  text-align: center;
+}
+
+.reveal h2 {
+  font-size: 48px;
+  border-bottom: 2px solid rgb(106, 0, 95);
+  padding-bottom: 5px;
+}
+.reveal h3 { font-size: 1.15em; }
+.reveal h4 { font-size: 1.05em; }
+
+.reveal .center {
+  text-align: center;
+}
+
+.reveal .middle {
+  height: 728px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.reveal pre {
+  font-size: 28px;
+ 
+  background-color: #eee;
+
+  border-radius: 3mm;
+  padding: 10px 10px 10px 10px;
+}
+
+.reveal pre code {
+  max-height: none;
+}
+
+.reveal code {
+  font-family: 'Inconsolata', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif', Monospace;
+}
+
+.reveal .middle blockquote {
+  text-align: center;
+  color: rgb(106, 0, 95);
+  background: none;
+  box-shadow: none;
+}
+
+.reveal .middle blockquote a {
+  color: inherit;
+}
+
+.reveal blockquote p, .reveal blockquote li {
+  font-family: 'Lato', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif';
+}
+
+section .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reveal .author-block {
+  margin: 75px 0 35px 0;
+}
+.reveal .author-affiliation img {
+  margin: 15px 0 0 0;
+}
+.reveal .author-block p, .reveal .author-affiliation p  {
+  font-family: 'Kaiti', 'STKaiti', 'Serif', 'Times', 'Times New Roman';
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+.reveal .author-affiliation {
+  display: inline-block;
+  font-size: 90%;
+}
+.reveal hr {
+  border: 10px solid rgba(0, 0, 0, 0);
+}
+.reveal li {
+  margin-top: 10px;
+}
+</style>
+
+  <title>Linux &#25805;&#20316;&#31995;&#32479;</title>
+</head>
+
+<body class="d-flex flex-column h-100">
+  
+  
+
+<div class="reveal">
+<div class="slides">
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="linux" class=" text-2xl mt-2 font-sans"><a href="16.1.slides.html" class=" text-amber-900">Linux &#25805;&#20316;&#31995;&#32479;</a></h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="25-aug-1991-the-birthday-of-linux" class=" text-xl mt-2 pb-2 font-sans">25 Aug 1991, The Birthday of Linux</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">Hello, everybody out there using minix &#8211; I&#8217;m doing a (free) operating system (just a hobby, won&#8217;t be big and professional like gnu) for 386(486) AT clones. This has been brewing since April, and is starting to get ready.</p>
+<p class=" font-serif my-1">&#8212;&#8212; Linus Torvalds (&#26102;&#24180; 21 &#23681;)</p>
+</blockquote>
+<hr>
+<p class=" font-serif my-1">&#31867;&#20284;&#20110; &#8220;&#25105;&#20889;&#20102;&#19968;&#20010;&#21152;&#24378;&#29256;&#30340;&#25805;&#20316;&#31995;&#32479;&#23454;&#39564;&#65292;&#29616;&#22312;&#19982;&#22823;&#23478;&#20998;&#20139;&#8221;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21457;&#24067;&#22312; comp.os.minix<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22240;&#20026;&#36824;&#20381;&#36182; Minix &#30340;&#24037;&#20855;&#38142; (&#20174;&#38646;&#24320;&#22987;&#20570;&#19996;&#35199;&#26159;&#19981;&#29616;&#23454;&#30340;)</li>
+<li class=" ml-8">&#36305;&#30340;&#37117;&#26159; GNU &#30340;&#31243;&#24207;&#65306;gcc, bash, ...</li>
+</ul>
+</li>
+<li class=" ml-8">&#20174;&#27492;&#25913;&#21464;&#19990;&#30028;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#8220;Just for fun: the story of an accidental revolutionary&#8221;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="minix" class=" text-xl mt-2 pb-2 font-sans">Minix?</h2>
+<p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/minix2-book.jpg" width="220px"></p>
+<p class=" font-serif my-1">Minix: &#23436;&#20840;&#29992;&#20110;&#25945;&#23398;&#30340;&#30495;&#23454;&#25805;&#20316;&#31995;&#32479;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">by Andrew S. Tanenbaum</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#24180;&#36731;&#20154;&#30340;&#31532;&#19968;&#20010; &#8220;&#20840;&#21151;&#33021;&#8221; &#25805;&#20316;&#31995;&#32479;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Minix1 (1987): UNIXv7 &#20860;&#23481;<ul class=" list-disc font-serif">
+<li class=" ml-8">Linus &#23454;&#29616; Linux &#30340;&#36215;&#28857;</li>
+</ul>
+</li>
+<li class=" ml-8"><a href="http://download.minix3.org/previous-versions/Intel-2.0.4/" class=" text-amber-900">Minix2</a> (1997): POSIX &#20860;&#23481;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#26356;&#21152;&#23436;&#22791;&#30340;&#31995;&#32479;&#65292;&#20070;&#21518;&#38468;&#20840;&#37096;&#20869;&#26680;&#20195;&#30721;</li>
+</ul>
+</li>
+</ul>
+<p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/minix3-desktop.png" width="240px"></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="http://minix3.org" class=" text-amber-900">Minix3</a> (2006): POSIX/NetBSD &#20860;&#23481;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#19968;&#24230;&#26159;&#19990;&#30028;&#19978;&#24212;&#29992;&#26368;&#24191;&#30340;&#25805;&#20316;&#31995;&#32479;<ul class=" list-disc font-serif">
+<li class=" ml-8">Intel ME &#20154;&#25163;&#19968;&#20010;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="tanenbaumlinus-linux-is-obsolete-debate" class=" text-xl mt-2 pb-2 font-sans">Tanenbaum/Linus "Linux is Obsolete" Debate</h2>
+<p class=" font-serif my-1">&#22312; comp.os.minix &#19978;&#20851;&#20110; Linux &#30340;&#35752;&#35770;&#36234;&#26469;&#36234;&#22810;&#20102;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Andrew Tanenbaum &#20570;&#20986;&#20102; &#8220;&#23448;&#26041;&#22238;&#24212;&#8221;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#35273;&#24471; &#8220;&#22826;&#33853;&#21518;&#8221;</li>
+</ul>
+</li>
+<li class=" ml-8">Linus &#23436;&#20840;&#19981;&#26381;&#27668;<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="https://www.oreilly.com/openbook/opensources/book/appa.html" class=" text-amber-900">&#20840;&#25991;</a></li>
+</ul>
+</li>
+<li class=" ml-8">Ken Thompson &#20063;&#21442;&#19982;&#20102;&#35752;&#35770;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20182;&#24050;&#32463;&#22312; ~10 &#24180;&#21069;&#33719;&#24471;&#20102;&#22270;&#28789;&#22870;&#8230;&#8230;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#21518;&#26469;&#22823;&#23478;&#30693;&#36947;&#30340;&#25925;&#20107;</h2>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/kernel-loc.png" width="900px"></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Linux 2.0 &#24341;&#20837;&#22810;&#22788;&#29702;&#22120; (Big Kernel Lock, &#20869;&#26680;&#19981;&#33021;&#24182;&#34892;)</li>
+<li class=" ml-8">Linux 2.4 &#20869;&#26680;&#24182;&#34892;</li>
+<li class=" ml-8">2002 &#24180;&#25165;&#24341;&#20837; Read-Copy-Update (RCU) &#26080;&#38145;&#21516;&#27493;</li>
+<li class=" ml-8">2003 &#24180; Linux 2.6 &#21457;&#24067;&#65292;&#38543;&#20113;&#35745;&#31639;&#24320;&#22987;&#36215;&#39134;</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="linux" class=" text-xl mt-2 pb-2 font-sans">Linux &#30340; &#8220;&#20004;&#38754;&#8221;</h2>
+<p class=" font-serif my-1">Kernel</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21152;&#36733;&#31532;&#19968;&#20010;&#36827;&#31243;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#30456;&#24403;&#20110;&#22312;&#25805;&#20316;&#31995;&#32479;&#20013; &#8220;&#25918;&#32622;&#19968;&#20010;&#20301;&#20110;&#21021;&#22987;&#29366;&#24577;&#30340;&#29366;&#24577;&#26426;&#8221;</li>
+<li class=" ml-8">Single user model (&#39640;&#26435;&#38480;)</li>
+</ul>
+</li>
+<li class=" ml-8">&#21253;&#21547;&#19968;&#20123;&#36827;&#31243;&#21487;&#25805;&#32437;&#30340;&#25805;&#20316;&#31995;&#32479;&#23545;&#35937;</li>
+<li class=" ml-8">&#38500;&#27492;&#20043;&#22806; &#8220;&#20160;&#20040;&#20063;&#27809;&#26377;&#8221;<ul class=" list-disc font-serif">
+<li class=" ml-8">Linux &#21464;&#20026;&#19968;&#20010;&#20013;&#26029; (&#31995;&#32479;&#35843;&#29992;) &#22788;&#29702;&#31243;&#24207;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Linux Kernel &#31995;&#32479;&#35843;&#29992;&#19978;&#30340;&#21457;&#34892;&#29256;&#21644;&#24212;&#29992;&#29983;&#24577;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#31995;&#32479;&#24037;&#20855; <a href="https://www.gnu.org/software/coreutils/coreutils.html" class=" text-amber-900">coreutils</a>, <a href="https://www.gnu.org/software/binutils/" class=" text-amber-900">binutils</a>, <a href="https://systemd.io" class=" text-amber-900">systemd</a>, ...</li>
+<li class=" ml-8">&#26700;&#38754;&#31995;&#32479; Gnome, xfce, Android</li>
+<li class=" ml-8">&#24212;&#29992;&#31243;&#24207; file manager, vscode, ...</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+  
+</div>
+</div>
+
+<script src="../../../static/reveal/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    
+    width: 1024, height: 768,
+    
+    slideNumber: 'c/t',
+    controlsTutorial: false,
+    progress: false,
+    hash: true,
+    center: false,
+    autoAnimateUnmatched: true,
+    autoAnimateEasing: 'ease-out',
+    autoAnimateDuration: 0.3,
+    transitionSpeed: 'fast'
+  });
+</script>
+
+
+</body>
+
+</html>

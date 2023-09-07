@@ -1,0 +1,400 @@
+<!DOCTYPE html><html class="h-100">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="../../../static/css/base.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
+
+  <style>
+    .font-sans {
+      font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+    }
+    .font-serif {
+      font-family: 'Source Serif Pro', 'Songti SC', 'SimSun', 'Serif', serif;
+    }
+  </style>
+  <link rel="stylesheet" href="../../../static/katex/katex.min.css">
+  <script defer src="../../../static/katex/katex.min.js"></script>
+  <script defer src="../../../static/katex/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+            // customised options
+            // &#8226; auto-render specific keys, e.g.:
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ],
+            // &#8226; rendering keys, e.g.:
+            throwOnError : false
+          });
+      });
+  </script>
+
+
+  
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="../../../static/reveal/reveal.css">
+<link rel="stylesheet" href="../../../static/reveal/theme/simple.css" id="theme">
+
+<style>
+.reveal .slide-number {
+  font-size: 26px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, .3);
+}
+
+.reveal .full-screen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.reveal .slides {
+  border: 1.5px #ddd solid;
+  border-radius: 7px;
+  text-align: left;
+  font-weight: 300;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  font-family: 'Lato', 'SimHei', 'STXihei', 'Droid Sans';
+  font-weight: 400;
+}
+
+.reveal p, .reveal li, .reveal center {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Droid Sans';
+}
+
+.reveal li + li {
+  margin-top: 10px;
+}
+
+.reveal ul {
+  display: block;
+  margin-right: 15px;
+}
+
+.reveal p, .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5 {
+  padding:  0 25px 0 25px;
+}
+
+.reveal table {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Sans Serif';
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.reveal th {
+  background-color: #eee;
+}
+
+.reveal tr:nth-child(even) {
+  background-color: #efffff;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  text-align: left;
+  margin: 0 0 20px 0;
+ color: #222; 
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
+
+
+.reveal h1 {
+  margin: 0 10 0 10;
+  font-size: 60px;
+}
+.reveal .middle h1 {
+  text-align: center;
+}
+
+.reveal h2 {
+  font-size: 48px;
+  border-bottom: 2px solid rgb(106, 0, 95);
+  padding-bottom: 5px;
+}
+.reveal h3 { font-size: 1.15em; }
+.reveal h4 { font-size: 1.05em; }
+
+.reveal .center {
+  text-align: center;
+}
+
+.reveal .middle {
+  height: 728px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.reveal pre {
+  font-size: 28px;
+ 
+  background-color: #eee;
+
+  border-radius: 3mm;
+  padding: 10px 10px 10px 10px;
+}
+
+.reveal pre code {
+  max-height: none;
+}
+
+.reveal code {
+  font-family: 'Inconsolata', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif', Monospace;
+}
+
+.reveal .middle blockquote {
+  text-align: center;
+  color: rgb(106, 0, 95);
+  background: none;
+  box-shadow: none;
+}
+
+.reveal .middle blockquote a {
+  color: inherit;
+}
+
+.reveal blockquote p, .reveal blockquote li {
+  font-family: 'Lato', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif';
+}
+
+section .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reveal .author-block {
+  margin: 75px 0 35px 0;
+}
+.reveal .author-affiliation img {
+  margin: 15px 0 0 0;
+}
+.reveal .author-block p, .reveal .author-affiliation p  {
+  font-family: 'Kaiti', 'STKaiti', 'Serif', 'Times', 'Times New Roman';
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+.reveal .author-affiliation {
+  display: inline-block;
+  font-size: 90%;
+}
+.reveal hr {
+  border: 10px solid rgba(0, 0, 0, 0);
+}
+.reveal li {
+  margin-top: 10px;
+}
+</style>
+
+  <title>&#25805;&#20316;&#31995;&#32479; &#8220;&#29609;&#20855;&#8221;&#65306;&#35774;&#35745;&#19982;&#23454;&#29616;</title>
+</head>
+
+<body class="d-flex flex-column h-100">
+  
+  
+
+<div class="reveal">
+<div class="slides">
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="4.2.slides.html" class=" text-amber-900">&#25805;&#20316;&#31995;&#32479; &#8220;&#29609;&#20855;&#8221;&#65306;&#35774;&#35745;&#19982;&#23454;&#29616;</a></h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="api" class=" text-xl mt-2 pb-2 font-sans">&#25805;&#20316;&#31995;&#32479;&#29609;&#20855;&#65306;API</h2>
+<p class=" font-serif my-1">&#22235;&#20010; &#8220;&#31995;&#32479;&#35843;&#29992;&#8221; API</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">choose(xs): &#36820;&#22238; <code>xs</code> &#20013;&#30340;&#19968;&#20010;&#38543;&#26426;&#36873;&#39033;</li>
+<li class=" ml-8">write(s): &#36755;&#20986;&#23383;&#31526;&#20018; <code>s</code></li>
+<li class=" ml-8">spawn(fn): &#21019;&#24314;&#19968;&#20010;&#21487;&#36816;&#34892;&#30340;&#29366;&#24577;&#26426; <code>fn</code></li>
+<li class=" ml-8">sched(): &#38543;&#26426;&#20999;&#25442;&#21040;&#20219;&#24847;&#29366;&#24577;&#26426;&#25191;&#34892;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#38500;&#27492;&#20043;&#22806;&#65292;&#25152;&#26377;&#30340;&#20195;&#30721;&#37117;&#26159;&#30830;&#23450; (deterministic) &#30340;&#32431;&#31929;&#35745;&#31639;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20801;&#35768;&#20351;&#29992; list, dict &#31561;&#25968;&#25454;&#32467;&#26500;</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25805;&#20316;&#31995;&#32479;&#29609;&#20855;&#65306;&#24212;&#29992;&#31243;&#24207;</h2>
+<p class=" font-serif my-1">&#25805;&#20316;&#31995;&#32479;&#29609;&#20855;&#65306;<red>&#25105;&#20204;&#21487;&#20197;&#21160;&#25163;&#25226;&#29366;&#24577;&#26426;&#30011;&#20986;&#26469;</red>&#65281;</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">def</span> <span class="nf">Tprint</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">count</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+        <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">sys_write</span><span class="p">(</span><span class="sa">f</span><span class="s1">'#</span><span class="si">{</span><span class="n">count</span><span class="si">:</span><span class="s1">02</span><span class="si">}</span><span class="s1"> Hello from </span><span class="si">{</span><span class="n">name</span><span class="si">}{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+        <span class="n">sys_sched</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">sys_choose</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+    <span class="n">sys_write</span><span class="p">(</span><span class="sa">f</span><span class="s1">'#Thread = </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="s1">'ABCDE'</span><span class="p">[:</span><span class="n">n</span><span class="p">]:</span>
+        <span class="n">sys_spawn</span><span class="p">(</span><span class="n">Tprint</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+    <span class="n">sys_sched</span><span class="p">()</span>
+</code></pre></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#23454;&#29616;&#31995;&#32479;&#35843;&#29992;</h2>
+<p class=" font-serif my-1">&#26377;&#20123; &#8220;&#31995;&#32479;&#35843;&#29992;&#8221; &#30340;&#23454;&#29616;&#26159;&#26174;&#32780;&#26131;&#35265;&#30340;</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">def</span> <span class="nf">sys_write</span><span class="p">(</span><span class="n">s</span><span class="p">):</span> <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">sys_choose</span><span class="p">(</span><span class="n">xs</span><span class="p">):</span> <span class="k">return</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">sys_spawn</span><span class="p">(</span><span class="n">t</span><span class="p">):</span> <span class="n">runnables</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+</code></pre></div>
+
+<hr>
+<p class=" font-serif my-1">&#26377;&#20123;&#23601;&#22256;&#38590;&#20102;</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">def</span> <span class="nf">sys_sched</span><span class="p">():</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">'No idea how'</span><span class="p">)</span>
+</code></pre></div>
+
+<p class=" font-serif my-1">&#25105;&#20204;&#38656;&#35201;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#23553;&#23384;&#24403;&#21069;&#29366;&#24577;&#26426;&#30340;&#29366;&#24577;</li>
+<li class=" ml-8">&#24674;&#22797;&#21478;&#19968;&#20010; &#8220;&#34987;&#23553;&#23384;&#8221; &#29366;&#24577;&#26426;&#30340;&#25191;&#34892;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#27809;&#38169;&#65292;&#25105;&#20204;&#31163;&#30495;&#27491;&#30340; &#8220;&#20998;&#26102;&#25805;&#20316;&#31995;&#32479;&#8221; &#23601;&#21482;&#24046;&#36825;&#19968;&#27493;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="python" class=" text-xl mt-2 pb-2 font-sans">&#65039;&#127798;&#65039; &#20511;&#29992; Python &#30340;&#35821;&#35328;&#26426;&#21046;</h2>
+<p class=" font-serif my-1">Generator objects (&#26080;&#26632;&#21327;&#31243;/&#36731;&#37327;&#32423;&#32447;&#31243;/...)</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">def</span> <span class="nf">numbers</span><span class="p">():</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="k">yield</span> <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">i</span><span class="si">:</span><span class="s1">b</span><span class="si">}</span><span class="s1">'</span>  <span class="c1"># &#8220;&#23553;&#23384;&#8221; &#29366;&#24577;&#26426;&#29366;&#24577;</span>
+        <span class="n">i</span> <span class="o">+=</span> <span class="n">ret</span>
+</code></pre></div>
+
+<hr>
+<p class=" font-serif my-1">&#20351;&#29992;&#26041;&#27861;&#65306;</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">n</span> <span class="o">=</span> <span class="n">numbers</span><span class="p">()</span>  <span class="c1"># &#23553;&#23384;&#29366;&#24577;&#26426;&#21021;&#22987;&#29366;&#24577;</span>
+<span class="n">n</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>  <span class="c1"># &#24674;&#22797;&#23553;&#23384;&#30340;&#29366;&#24577;</span>
+<span class="n">n</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># &#24674;&#22797;&#23553;&#23384;&#30340;&#29366;&#24577; (&#24182;&#20256;&#20837;&#36820;&#22238;&#20540;)</span>
+</code></pre></div>
+
+<p class=" font-serif my-1">&#23436;&#32654;&#36866;&#21512;&#25105;&#20204;&#23454;&#29616;&#25805;&#20316;&#31995;&#32479;&#29609;&#20855; (os-model.py)</p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#29609;&#20855;&#30340;&#24847;&#20041;</h2>
+<p class=" font-serif my-1">&#25105;&#20204;&#24182;&#27809;&#26377;&#33073;&#31163;&#30495;&#23454;&#30340;&#25805;&#20316;&#31995;&#32479;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#8220;&#31616;&#21270;&#8221; &#20102;&#25805;&#20316;&#31995;&#32479;&#30340; API<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22312;&#26242;&#26102;&#19981;&#35201;&#36807;&#24230;&#20851;&#27880;&#32454;&#33410;&#30340;&#26102;&#20505;&#29702;&#35299;&#25805;&#20316;&#31995;&#32479;</li>
+</ul>
+</li>
+<li class=" ml-8">&#32454;&#33410;&#20063;&#20250;&#26377;&#30340;&#65292;&#20294;&#19981;&#26159;&#29616;&#22312;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#23398;&#20064;&#36335;&#32447;&#65306;&#20808; 100% &#29702;&#35299;&#29609;&#20855;&#65292;&#20877;&#29702;&#35299;&#30495;&#23454;&#31995;&#32479;&#21644;&#29609;&#20855;&#30340;&#24046;&#24322;</li>
+</ul>
+</li>
+</ul>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">sys_write</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">"%s"</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">sys_sched</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">usleep</span><span class="p">(</span><span class="n">rand</span><span class="p">()</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">10000</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">sys_choose</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">rand</span><span class="p">()</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">sys_spawn</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="n">fn</span><span class="p">)(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">),</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">pthread_create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">threads</span><span class="p">[</span><span class="n">nthreads</span><span class="o">++</span><span class="p">],</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">fn</span><span class="p">,</span><span class="w"> </span><span class="n">args</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+        
+      
+      </section>
+    
+    </section>
+  
+</div>
+</div>
+
+<script src="../../../static/reveal/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    
+    width: 1024, height: 768,
+    
+    slideNumber: 'c/t',
+    controlsTutorial: false,
+    progress: false,
+    hash: true,
+    center: false,
+    autoAnimateUnmatched: true,
+    autoAnimateEasing: 'ease-out',
+    autoAnimateDuration: 0.3,
+    transitionSpeed: 'fast'
+  });
+</script>
+
+
+</body>
+
+</html>

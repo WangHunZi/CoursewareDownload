@@ -1,0 +1,416 @@
+<!DOCTYPE html><html class="h-100">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="../../../static/css/base.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
+
+  <style>
+    .font-sans {
+      font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+    }
+    .font-serif {
+      font-family: 'Source Serif Pro', 'Songti SC', 'SimSun', 'Serif', serif;
+    }
+  </style>
+  <link rel="stylesheet" href="../../../static/katex/katex.min.css">
+  <script defer src="../../../static/katex/katex.min.js"></script>
+  <script defer src="../../../static/katex/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+            // customised options
+            // &#8226; auto-render specific keys, e.g.:
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ],
+            // &#8226; rendering keys, e.g.:
+            throwOnError : false
+          });
+      });
+  </script>
+
+
+  
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="../../../static/reveal/reveal.css">
+<link rel="stylesheet" href="../../../static/reveal/theme/simple.css" id="theme">
+
+<style>
+.reveal .slide-number {
+  font-size: 26px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, .3);
+}
+
+.reveal .full-screen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.reveal .slides {
+  border: 1.5px #ddd solid;
+  border-radius: 7px;
+  text-align: left;
+  font-weight: 300;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  font-family: 'Lato', 'SimHei', 'STXihei', 'Droid Sans';
+  font-weight: 400;
+}
+
+.reveal p, .reveal li, .reveal center {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Droid Sans';
+}
+
+.reveal li + li {
+  margin-top: 10px;
+}
+
+.reveal ul {
+  display: block;
+  margin-right: 15px;
+}
+
+.reveal p, .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5 {
+  padding:  0 25px 0 25px;
+}
+
+.reveal table {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Sans Serif';
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.reveal th {
+  background-color: #eee;
+}
+
+.reveal tr:nth-child(even) {
+  background-color: #efffff;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  text-align: left;
+  margin: 0 0 20px 0;
+ color: #222; 
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
+
+
+.reveal h1 {
+  margin: 0 10 0 10;
+  font-size: 60px;
+}
+.reveal .middle h1 {
+  text-align: center;
+}
+
+.reveal h2 {
+  font-size: 48px;
+  border-bottom: 2px solid rgb(106, 0, 95);
+  padding-bottom: 5px;
+}
+.reveal h3 { font-size: 1.15em; }
+.reveal h4 { font-size: 1.05em; }
+
+.reveal .center {
+  text-align: center;
+}
+
+.reveal .middle {
+  height: 728px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.reveal pre {
+  font-size: 28px;
+ 
+  background-color: #eee;
+
+  border-radius: 3mm;
+  padding: 10px 10px 10px 10px;
+}
+
+.reveal pre code {
+  max-height: none;
+}
+
+.reveal code {
+  font-family: 'Inconsolata', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif', Monospace;
+}
+
+.reveal .middle blockquote {
+  text-align: center;
+  color: rgb(106, 0, 95);
+  background: none;
+  box-shadow: none;
+}
+
+.reveal .middle blockquote a {
+  color: inherit;
+}
+
+.reveal blockquote p, .reveal blockquote li {
+  font-family: 'Lato', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif';
+}
+
+section .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reveal .author-block {
+  margin: 75px 0 35px 0;
+}
+.reveal .author-affiliation img {
+  margin: 15px 0 0 0;
+}
+.reveal .author-block p, .reveal .author-affiliation p  {
+  font-family: 'Kaiti', 'STKaiti', 'Serif', 'Times', 'Times New Roman';
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+.reveal .author-affiliation {
+  display: inline-block;
+  font-size: 90%;
+}
+.reveal hr {
+  border: 10px solid rgba(0, 0, 0, 0);
+}
+.reveal li {
+  margin-top: 10px;
+}
+</style>
+
+  <title>(UNIX) Shell</title>
+</head>
+
+<body class="d-flex flex-column h-100">
+  
+  
+
+<div class="reveal">
+<div class="slides">
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="unix-shell" class=" text-2xl mt-2 font-sans"><a href="19.1.slides.html" class=" text-amber-900">(UNIX) Shell</a></h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="api" class=" text-xl mt-2 pb-2 font-sans">&#20026;&#29992;&#25143;&#23553;&#35013;&#25805;&#20316;&#31995;&#32479; API</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">&#25105;&#20204;&#38656;&#35201;&#19968;&#20010; &#8220;&#29992;&#25143;&#33021;&#30452;&#25509;&#25805;&#20316;&#8221; &#30340;&#31243;&#24207;&#31649;&#29702;&#25805;&#20316;&#31995;&#32479;&#23545;&#35937;&#12290;</p>
+</blockquote>
+<hr>
+<p class=" font-serif my-1">&#38656;&#27714;&#20998;&#26512;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25105;&#20204;&#27599;&#22825;&#37117;&#25343;&#25805;&#20316;&#31995;&#32479;&#20570;&#20160;&#20040;&#65311;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21551;&#21160;&#24212;&#29992;&#31243;&#24207;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21363;&#26102;&#36890;&#20449;</li>
+<li class=" ml-8">&#24433;&#38899;&#23089;&#20048;</li>
+<li class=" ml-8"><del>&#29983;&#20135;&#23398;&#26415;&#22403;&#22334;</del></li>
+</ul>
+</li>
+<li class=" ml-8">&#27809;&#20102;</li>
+</ul>
+</li>
+<li class=" ml-8">&#25105;&#20204;&#38656;&#35201;&#19968;&#20010;&#31243;&#24207;&#33021;<red>&#21327;&#35843;&#22810;&#20010;&#24212;&#29992;&#31243;&#24207;</red></li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="api" class=" text-xl mt-2 pb-2 font-sans">&#20026;&#29992;&#25143;&#23553;&#35013;&#25805;&#20316;&#31995;&#32479; API</h2>
+<p class=" font-serif my-1">Shell: Kernel &#30340; &#8220;&#22806;&#22771;&#8221;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#8220;&#19982;<red>&#20154;&#31867;&#30452;&#25509;&#20132;&#20114;</red>&#30340;&#31532;&#19968;&#20010;&#31243;&#24207;&#8221;</li>
+</ul>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/win11.jpg" width="900px"></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="the-unix-shell" class=" text-xl mt-2 pb-2 font-sans">The UNIX Shell</h2>
+<p class=" font-serif my-1">&#8220;&#32456;&#31471;&#8221; &#26102;&#20195;&#30340;&#20255;&#22823;&#35774;&#35745;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#8220;Command-line interface&#8221; (CLI) &#30340;&#24005;&#23792;</li>
+</ul>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/doge-ui.jpeg" width="800px"></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="the-unix-shell-contd" class=" text-xl mt-2 pb-2 font-sans">The UNIX Shell (cont'd)</h2>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/light-saber.jpg" width="800px"></p>
+<p class=" font-serif my-1"><red>Shell &#26159;&#19968;&#38376; &#8220;&#25226;&#29992;&#25143;&#25351;&#20196;&#32763;&#35793;&#25104;&#31995;&#32479;&#35843;&#29992;&#8221; &#30340;&#32534;&#31243;&#35821;&#35328;</red></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21407;&#26469;&#25105;&#20204;&#19968;&#30452;&#22312;&#32534;&#31243;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#30452;&#21040;&#26377;&#20102; Graphical Shell (GUI)</li>
+<li class=" ml-8">Windows, Gnome, Symbian, Android</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="unix" class=" text-xl mt-2 pb-2 font-sans">&#33086;&#27668;&#26377;&#28857;&#23567;&#21476;&#24618;&#30340; UNIX &#19990;&#30028;</h2>
+<p class=" font-serif my-1">&#8220;Unix is user-friendly; it's just choosy about who its friends are.&#8221;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20294;&#22914;&#26524;&#25226; shell &#29702;&#35299;&#25104;&#32534;&#31243;&#35821;&#35328;&#65292;&#8220;&#19981;&#22909;&#29992;&#8221; &#22909;&#20687;&#20063;&#27809;&#20160;&#20040;&#27611;&#30149;&#20102;<ul class=" list-disc font-serif">
+<li class=" ml-8"><del>&#20320;&#35265;&#36807;&#21738;&#20010;&#32534;&#31243;&#35821;&#35328; &#8220;&#22909;&#29992;&#8221; &#30340;&#65311;</del></li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/xkcd-tar.png" width="900px"></p>
+<p class=" font-serif my-1"></p><center>(UNIX &#19990;&#30028;&#26377;&#24456;&#22810;&#21382;&#21490;&#36951;&#30041;&#32422;&#23450;)</center></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="the-shell-programming-language" class=" text-xl mt-2 pb-2 font-sans">The Shell Programming Language</h2>
+<p class=" font-serif my-1"><red>&#22522;&#20110;&#25991;&#26412;&#26367;&#25442;&#30340;&#24555;&#36895;&#24037;&#20316;&#27969;&#25645;&#24314;</red></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#37325;&#23450;&#21521;: <code>cmd &gt; file &lt; file 2&gt; /dev/null</code></li>
+<li class=" ml-8">&#39034;&#24207;&#32467;&#26500;: <code>cmd1; cmd2</code>, <code>cmd1 &amp;&amp; cmd2</code>, <code>cmd1 || cmd2</code></li>
+<li class=" ml-8">&#31649;&#36947;: <code>cmd1 | cmd2</code></li>
+<li class=" ml-8">&#39044;&#22788;&#29702;: <code>$()</code>, <code>&lt;()</code></li>
+<li class=" ml-8">&#21464;&#37327;/&#29615;&#22659;&#21464;&#37327;&#12289;&#25511;&#21046;&#27969;&#8230;&#8230;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Job control</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#31867;&#27604;&#31383;&#21475;&#31649;&#29702;&#22120;&#37324;&#30340; &#8220;&#21449;&#8221;&#12289;&#8220;&#26368;&#23567;&#21270;&#8221;<ul class=" list-disc font-serif">
+<li class=" ml-8">jobs, fg, bg, wait</li>
+<li class=" ml-8">(&#20170;&#22825;&#30340; GUI &#24182;&#27809;&#26377;&#27604; CLI &#22810;&#20570;&#22826;&#22810;&#20107;)</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20154;&#24037;&#26234;&#33021;&#26102;&#20195;&#65292;&#25105;&#20204;&#20026;&#20160;&#20040;&#36824;&#35201;&#35835;&#25163;&#20876;&#65311;</h2>
+<p class=" font-serif my-1">&#20170;&#22825;&#30340;&#20154;&#24037;&#26234;&#33021;&#36824;&#26159; &#8220;&#34987;&#21160;&#8221; &#30340;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#23427;&#36824;&#19981;&#33021;&#24456;&#22909;&#22320;&#21578;&#35785;&#20320;&#65292;&#20320;&#24212;&#35813;&#21435;&#25214;&#20160;&#20040;</li>
+<li class=" ml-8">Manual &#26159;&#19968;&#20010; complete source<ul class=" list-disc font-serif">
+<li class=" ml-8">&#24403;&#28982;&#65292;AI &#21487;&#20197;&#24110;&#21161;&#20320;&#26356;&#24555;&#36895;&#22320;&#27983;&#35272;&#25163;&#20876;&#12289;&#29702;&#35299;&#31243;&#24207;&#30340;&#34892;&#20026;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Let's RTFM, with ChatGPT Copilot!</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">man sh - command interpreter</li>
+<li class=" ml-8">Read the friendly manual &#128515;</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+  
+</div>
+</div>
+
+<script src="../../../static/reveal/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    
+    width: 1024, height: 768,
+    
+    slideNumber: 'c/t',
+    controlsTutorial: false,
+    progress: false,
+    hash: true,
+    center: false,
+    autoAnimateUnmatched: true,
+    autoAnimateEasing: 'ease-out',
+    autoAnimateDuration: 0.3,
+    transitionSpeed: 'fast'
+  });
+</script>
+
+
+</body>
+
+</html>

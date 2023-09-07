@@ -1,0 +1,427 @@
+<!DOCTYPE html><html class="h-100">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="../../../static/css/base.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
+
+  <style>
+    .font-sans {
+      font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+    }
+    .font-serif {
+      font-family: 'Source Serif Pro', 'Songti SC', 'SimSun', 'Serif', serif;
+    }
+  </style>
+  <link rel="stylesheet" href="../../../static/katex/katex.min.css">
+  <script defer src="../../../static/katex/katex.min.js"></script>
+  <script defer src="../../../static/katex/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+            // customised options
+            // &#8226; auto-render specific keys, e.g.:
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ],
+            // &#8226; rendering keys, e.g.:
+            throwOnError : false
+          });
+      });
+  </script>
+
+
+  
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="../../../static/reveal/reveal.css">
+<link rel="stylesheet" href="../../../static/reveal/theme/simple.css" id="theme">
+
+<style>
+.reveal .slide-number {
+  font-size: 26px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, .3);
+}
+
+.reveal .full-screen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.reveal .slides {
+  border: 1.5px #ddd solid;
+  border-radius: 7px;
+  text-align: left;
+  font-weight: 300;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  font-family: 'Lato', 'SimHei', 'STXihei', 'Droid Sans';
+  font-weight: 400;
+}
+
+.reveal p, .reveal li, .reveal center {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Droid Sans';
+}
+
+.reveal li + li {
+  margin-top: 10px;
+}
+
+.reveal ul {
+  display: block;
+  margin-right: 15px;
+}
+
+.reveal p, .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5 {
+  padding:  0 25px 0 25px;
+}
+
+.reveal table {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Sans Serif';
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.reveal th {
+  background-color: #eee;
+}
+
+.reveal tr:nth-child(even) {
+  background-color: #efffff;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  text-align: left;
+  margin: 0 0 20px 0;
+ color: #222; 
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
+
+
+.reveal h1 {
+  margin: 0 10 0 10;
+  font-size: 60px;
+}
+.reveal .middle h1 {
+  text-align: center;
+}
+
+.reveal h2 {
+  font-size: 48px;
+  border-bottom: 2px solid rgb(106, 0, 95);
+  padding-bottom: 5px;
+}
+.reveal h3 { font-size: 1.15em; }
+.reveal h4 { font-size: 1.05em; }
+
+.reveal .center {
+  text-align: center;
+}
+
+.reveal .middle {
+  height: 728px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.reveal pre {
+  font-size: 28px;
+ 
+  background-color: #eee;
+
+  border-radius: 3mm;
+  padding: 10px 10px 10px 10px;
+}
+
+.reveal pre code {
+  max-height: none;
+}
+
+.reveal code {
+  font-family: 'Inconsolata', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif', Monospace;
+}
+
+.reveal .middle blockquote {
+  text-align: center;
+  color: rgb(106, 0, 95);
+  background: none;
+  box-shadow: none;
+}
+
+.reveal .middle blockquote a {
+  color: inherit;
+}
+
+.reveal blockquote p, .reveal blockquote li {
+  font-family: 'Lato', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif';
+}
+
+section .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reveal .author-block {
+  margin: 75px 0 35px 0;
+}
+.reveal .author-affiliation img {
+  margin: 15px 0 0 0;
+}
+.reveal .author-block p, .reveal .author-affiliation p  {
+  font-family: 'Kaiti', 'STKaiti', 'Serif', 'Times', 'Times New Roman';
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+.reveal .author-affiliation {
+  display: inline-block;
+  font-size: 90%;
+}
+.reveal hr {
+  border: 10px solid rgba(0, 0, 0, 0);
+}
+.reveal li {
+  margin-top: 10px;
+}
+</style>
+
+  <title>&#20449;&#21495;&#37327;</title>
+</head>
+
+<body class="d-flex flex-column h-100">
+  
+  
+
+<div class="reveal">
+<div class="slides">
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="10.1.slides.html" class=" text-amber-900">&#20449;&#21495;&#37327;</a></h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="-" class=" text-xl mt-2 pb-2 font-sans">&#22797;&#20064;&#65306;&#29983;&#20135;&#32773;-&#28040;&#36153;&#32773;&#12289;&#20114;&#26021;&#12289;&#26465;&#20214;&#21464;&#37327;</h2>
+<p class=" font-serif my-1">&#25171;&#21360; &#8220;&#21512;&#27861;&#8221; &#30340;&#25324;&#21495;&#24207;&#21015; <code>(())()</code></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#24038;&#25324;&#21495;&#23545;&#24212; push</li>
+<li class=" ml-8">&#21491;&#25324;&#21495;&#23545;&#24212; pop</li>
+</ul>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#define CAN_PRODUCE (count &lt; n)</span>
+<span class="cp">#define CAN_CONSUME (count &gt; 0)</span>
+
+<span class="n">wait_until</span><span class="p">(</span><span class="n">CAN_PRODUCE</span><span class="p">)</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="p">(</span><span class="n">mutex</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">count</span><span class="o">++</span><span class="p">;</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">"("</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">wait_until</span><span class="p">(</span><span class="n">CAN_CONSUME</span><span class="p">)</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="p">(</span><span class="n">mutex</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">count</span><span class="o">--</span><span class="p">;</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">")"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20449;&#21495;&#37327;&#65306;&#19968;&#31181;&#26465;&#20214;&#21464;&#37327;&#30340;&#29305;&#20363;</h2>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">P</span><span class="p">(</span><span class="n">sem_t</span><span class="w"> </span><span class="o">*</span><span class="n">sem</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// wait</span>
+<span class="w">  </span><span class="n">wait_until</span><span class="p">(</span><span class="n">sem</span><span class="o">-&gt;</span><span class="n">count</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">sem</span><span class="o">-&gt;</span><span class="n">count</span><span class="o">--</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">V</span><span class="p">(</span><span class="n">sem_t</span><span class="w"> </span><span class="o">*</span><span class="n">sem</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// post (signal)</span>
+<span class="w">  </span><span class="n">atomic</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">sem</span><span class="o">-&gt;</span><span class="n">count</span><span class="o">++</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<hr>
+<p class=" font-serif my-1">&#27491;&#26159;&#22240;&#20026;&#26465;&#20214;&#30340;&#29305;&#27530;&#24615;&#65292;&#20449;&#21495;&#37327;&#19981;&#38656;&#35201; broadcast</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">P &#22833;&#36133;&#26102;&#31435;&#21363;&#30561;&#30496;&#31561;&#24453;</li>
+<li class=" ml-8">&#25191;&#34892; V &#26102;&#65292;&#21796;&#37266;&#20219;&#24847;&#31561;&#24453;&#30340;&#32447;&#31243;</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="1" class=" text-xl mt-2 pb-2 font-sans">&#29702;&#35299;&#20449;&#21495;&#37327; (1)</h2>
+<p class=" font-serif my-1">&#21021;&#22987;&#26102; count = 1 &#30340;&#29305;&#27530;&#24773;&#20917;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20114;&#26021;&#38145;&#26159;&#20449;&#21495;&#37327;&#30340;&#29305;&#20363;</li>
+</ul>
+<hr>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#define YES 1</span>
+<span class="cp">#define NO 0</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">lock</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">wait_until</span><span class="p">(</span><span class="n">count</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">YES</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NO</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">unlock</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">YES</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="2" class=" text-xl mt-2 pb-2 font-sans">&#29702;&#35299;&#20449;&#21495;&#37327; (2)</h2>
+<p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/ball-bag.jpg" width="300px"></p>
+<p class=" font-serif my-1">P - prolaag (try + decrease/down/wait/acquire)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#35797;&#30528;&#20174;&#34955;&#23376;&#37324;&#21462;&#19968;&#20010;&#29699;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22914;&#26524;&#25343;&#21040;&#20102;&#65292;&#31163;&#24320;</li>
+<li class=" ml-8">&#22914;&#26524;&#34955;&#23376;&#31354;&#20102;&#65292;&#25490;&#38431;&#31561;&#24453;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">V - verhoog (increase/up/post/signal/release)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#24448;&#34955;&#23376;&#37324;&#25918;&#19968;&#20010;&#29699;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22914;&#26524;&#26377;&#20154;&#22312;&#31561;&#29699;&#65292;&#20182;&#23601;&#21487;&#20197;&#25343;&#36208;&#21018;&#25918;&#36827;&#21435;&#30340;&#29699;&#20102;</li>
+<li class=" ml-8">&#25918;&#29699;-&#25343;&#29699;&#30340;&#36807;&#31243;&#23454;&#29616;&#20102;&#21516;&#27493;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="3" class=" text-xl mt-2 pb-2 font-sans">&#29702;&#35299;&#20449;&#21495;&#37327; (3)</h2>
+<p class=" font-serif my-1">&#25193;&#23637;&#30340;&#20114;&#26021;&#38145;&#65306;&#19968;&#20010;&#25163;&#29615; &#8594; $n$ &#20010;&#25163;&#29615;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#35753;&#26356;&#22810;&#21516;&#23398;&#21487;&#20197;&#36827;&#20837;&#26356;&#34915;&#23460;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#31649;&#29702;&#21592;&#21487;&#20197;&#25345;&#26377;&#20219;&#24847;&#25968;&#37327;&#30340;&#25163;&#29615; (count, &#26356;&#34915;&#23460;&#23481;&#37327;&#19978;&#38480;)</li>
+<li class=" ml-8">&#20808;&#36827;&#20837;&#26356;&#34915;&#23460;&#30340;&#21516;&#23398;&#20808;&#36827;&#20837;&#28216;&#27891;&#27744;</li>
+<li class=" ml-8">&#25163;&#29615;&#29992;&#23436;&#21518;&#38656;&#35201;&#31561;&#21516;&#23398;&#20986;&#26469;</li>
+</ul>
+</li>
+<li class=" ml-8">&#20449;&#21495;&#37327;&#23545;&#24212;&#20102; &#8220;&#36164;&#28304;&#25968;&#37327;&#8221;</li>
+</ul>
+<p class=" font-serif my-1"></p><center><img alt="" class="inline" src="../../../pages/OS/img/locker.jpg" width="333px"> v.s. <img alt="" class="inline" src="../../../pages/OS/img/pool-2.jpg" width="330px"></center></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="-" class=" text-xl mt-2 pb-2 font-sans">&#20449;&#21495;&#37327;&#65306;&#23454;&#29616;&#20248;&#38597;&#30340;&#29983;&#20135;&#32773;-&#28040;&#36153;&#32773;</h2>
+<p class=" font-serif my-1">&#20449;&#21495;&#37327;&#35774;&#35745;&#30340;&#37325;&#28857;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#32771;&#34385; &#8220;&#29699;&#8221;/&#8220;&#25163;&#29615;&#8221; (&#27599;&#19968;&#21333;&#20301;&#30340; &#8220;<red>&#36164;&#28304;</red>&#8221;) &#26159;&#20160;&#20040;</li>
+<li class=" ml-8">&#29983;&#20135;&#32773;/&#28040;&#36153;&#32773; = &#25226;&#29699;&#20174;&#19968;&#20010;&#34955;&#23376;&#37324;&#25918;&#21040;&#21478;&#19968;&#20010;&#34955;&#23376;&#37324;</li>
+</ul>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">Tproduce</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">P</span><span class="p">(</span><span class="o">&amp;</span><span class="n">empty</span><span class="p">);</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">"("</span><span class="p">);</span><span class="w"> </span><span class="c1">// &#27880;&#24847;&#20849;&#20139;&#25968;&#25454;&#32467;&#26500;&#35775;&#38382;&#38656;&#20114;&#26021;</span>
+<span class="w">  </span><span class="n">V</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fill</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">Tconsume</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">P</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fill</span><span class="p">);</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">")"</span><span class="p">);</span>
+<span class="w">  </span><span class="n">V</span><span class="p">(</span><span class="o">&amp;</span><span class="n">empty</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+        
+      
+      </section>
+    
+    </section>
+  
+</div>
+</div>
+
+<script src="../../../static/reveal/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    
+    width: 1024, height: 768,
+    
+    slideNumber: 'c/t',
+    controlsTutorial: false,
+    progress: false,
+    hash: true,
+    center: false,
+    autoAnimateUnmatched: true,
+    autoAnimateEasing: 'ease-out',
+    autoAnimateDuration: 0.3,
+    transitionSpeed: 'fast'
+  });
+</script>
+
+
+</body>
+
+</html>

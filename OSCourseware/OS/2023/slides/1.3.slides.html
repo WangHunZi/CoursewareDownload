@@ -1,0 +1,805 @@
+<!DOCTYPE html><html class="h-100">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="../../../static/css/base.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
+
+  <style>
+    .font-sans {
+      font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+    }
+    .font-serif {
+      font-family: 'Source Serif Pro', 'Songti SC', 'SimSun', 'Serif', serif;
+    }
+  </style>
+  <link rel="stylesheet" href="../../../static/katex/katex.min.css">
+  <script defer src="../../../static/katex/katex.min.js"></script>
+  <script defer src="../../../static/katex/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+            // customised options
+            // &#8226; auto-render specific keys, e.g.:
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ],
+            // &#8226; rendering keys, e.g.:
+            throwOnError : false
+          });
+      });
+  </script>
+
+
+  
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="../../../static/reveal/reveal.css">
+<link rel="stylesheet" href="../../../static/reveal/theme/simple.css" id="theme">
+
+<style>
+.reveal .slide-number {
+  font-size: 26px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, .3);
+}
+
+.reveal .full-screen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.reveal .slides {
+  border: 1.5px #ddd solid;
+  border-radius: 7px;
+  text-align: left;
+  font-weight: 300;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  font-family: 'Lato', 'SimHei', 'STXihei', 'Droid Sans';
+  font-weight: 400;
+}
+
+.reveal p, .reveal li, .reveal center {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Droid Sans';
+}
+
+.reveal li + li {
+  margin-top: 10px;
+}
+
+.reveal ul {
+  display: block;
+  margin-right: 15px;
+}
+
+.reveal p, .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5 {
+  padding:  0 25px 0 25px;
+}
+
+.reveal table {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Sans Serif';
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.reveal th {
+  background-color: #eee;
+}
+
+.reveal tr:nth-child(even) {
+  background-color: #efffff;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  text-align: left;
+  margin: 0 0 20px 0;
+ color: #222; 
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
+
+
+.reveal h1 {
+  margin: 0 10 0 10;
+  font-size: 60px;
+}
+.reveal .middle h1 {
+  text-align: center;
+}
+
+.reveal h2 {
+  font-size: 48px;
+  border-bottom: 2px solid rgb(106, 0, 95);
+  padding-bottom: 5px;
+}
+.reveal h3 { font-size: 1.15em; }
+.reveal h4 { font-size: 1.05em; }
+
+.reveal .center {
+  text-align: center;
+}
+
+.reveal .middle {
+  height: 728px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.reveal pre {
+  font-size: 28px;
+ 
+  background-color: #eee;
+
+  border-radius: 3mm;
+  padding: 10px 10px 10px 10px;
+}
+
+.reveal pre code {
+  max-height: none;
+}
+
+.reveal code {
+  font-family: 'Inconsolata', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif', Monospace;
+}
+
+.reveal .middle blockquote {
+  text-align: center;
+  color: rgb(106, 0, 95);
+  background: none;
+  box-shadow: none;
+}
+
+.reveal .middle blockquote a {
+  color: inherit;
+}
+
+.reveal blockquote p, .reveal blockquote li {
+  font-family: 'Lato', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif';
+}
+
+section .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reveal .author-block {
+  margin: 75px 0 35px 0;
+}
+.reveal .author-affiliation img {
+  margin: 15px 0 0 0;
+}
+.reveal .author-block p, .reveal .author-affiliation p  {
+  font-family: 'Kaiti', 'STKaiti', 'Serif', 'Times', 'Times New Roman';
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+.reveal .author-affiliation {
+  display: inline-block;
+  font-size: 90%;
+}
+.reveal hr {
+  border: 10px solid rgba(0, 0, 0, 0);
+}
+.reveal li {
+  margin-top: 10px;
+}
+</style>
+
+  <title>&#20160;&#20040;&#26159;&#25805;&#20316;&#31995;&#32479;</title>
+</head>
+
+<body class="d-flex flex-column h-100">
+  
+  
+
+<div class="reveal">
+<div class="slides">
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="what" class=" text-2xl mt-2 font-sans"><a href="1.3.slides.html" class=" text-amber-900">(What) &#20160;&#20040;&#26159;&#25805;&#20316;&#31995;&#32479;&#65311;</a></h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20160;&#20040;&#26159;&#25805;&#20316;&#31995;&#32479;&#65311;</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">Operating System: A body of software, in fact, that is responsible for <em>making it easy to run programs</em> (even allowing you to seemingly run many at the same time), allowing programs to share memory, enabling programs to interact with devices, and other fun stuff like that. (OSTEP)</p>
+</blockquote></div>
+        
+      
+         <div class="fragment"> 
+        <div><hr>
+<p class=" font-serif my-1">&#24456;&#22810;&#30097;&#28857;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#8220;programs&#8221; &#23601;&#23436;&#20102;&#65311;&#37027;&#20040;&#22810;&#22797;&#26434;&#30340;&#31243;&#24207;&#21602;&#65281;</li>
+<li class=" ml-8">&#8220;shared memory, interact with devices, ...&#8221;&#65311;</li>
+</ul></div>
+         </div> 
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">&#20160;&#20040;&#26159;&#25805;&#20316;&#31995;&#32479;&#65311; (cont'd)</h2>
+<p class=" font-serif my-1">&#8220;&#31649;&#29702;&#36719;/&#30828;&#20214;&#36164;&#28304;&#12289;&#20026;&#31243;&#24207;&#25552;&#20379;&#26381;&#21153;&#8221; &#30340;&#31243;&#24207;&#65311;</p>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/os-classify.jpg" width="768px"></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#29702;&#35299;&#25805;&#20316;&#31995;&#32479;</h2>
+<p class=" font-serif my-1">&#8220;&#31934;&#20934;&#8221; &#30340;&#25945;&#31185;&#20070;&#23450;&#20041;&#27627;&#26080;&#24847;&#20041; (&#20294;&#20316;&#32773;&#24471;&#34987;&#36843;&#21435;&#20889;)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#23450;&#20041;&#26159; &#8220;&#20840;&#37096;&#8221; &#30340;&#19968;&#20010;&#26497;&#31616;&#34920;&#36798;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22914;&#26524;&#21482;&#24819; &#8220;&#20102;&#35299;&#8221;&#65292;&#37027;&#21487;&#20197;&#35835;&#19968;&#19979;&#23450;&#20041;</li>
+<li class=" ml-8">&#22914;&#26524;&#24819;&#23398;&#20064;&#25805;&#20316;&#31995;&#32479;&#65292;&#23601;&#24517;&#39035;&#29702;&#35299; &#8220;&#20840;&#37096;&#8221;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#25805;&#20316;&#31995;&#32479; &#8220;&#20840;&#37096;&#8221; &#30340; overview&#65306;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25805;&#20316;&#31995;&#32479;&#22914;&#20309;&#20174;&#19968;&#24320;&#22987;&#21464;&#25104;&#29616;&#22312;&#36825;&#26679;&#30340;&#65311;</li>
+<li class=" ml-8">&#19977;&#20010;&#37325;&#35201;&#30340;&#32447;&#32034;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#30828;&#20214; (&#35745;&#31639;&#26426;)</li>
+<li class=" ml-8">&#36719;&#20214; (&#31243;&#24207;)</li>
+<li class=" ml-8">&#25805;&#20316;&#31995;&#32479; (&#31649;&#29702;&#30828;&#20214;&#21644;&#36719;&#20214;&#30340;&#36719;&#20214;)</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#22797;&#20064;&#65306;&#29702;&#35299;&#35745;&#31639;&#26426;&#30828;&#20214; (&#30005;&#36335;)</h2>
+<p class=" font-serif my-1">&#21069;&#23548;&#30693;&#35782;&#65306;&#25968;&#23383;&#36923;&#36753;&#30005;&#36335;/&#35745;&#31639;&#26426;&#31995;&#32479;&#22522;&#30784;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#19968;&#20010;&#26497;&#31616;&#30340;&#20844;&#29702;&#31995;&#32479; (&#23548;&#32447;&#12289;&#26102;&#38047;&#12289;&#36923;&#36753;&#38376;&#12289;&#35302;&#21457;&#22120;)</li>
+<li class=" ml-8">&#24314;&#31435;&#22312;&#20844;&#29702;&#20307;&#31995;&#19978;&#30340;&#25968;&#23383;&#31995;&#32479;&#35774;&#35745; (&#21253;&#25324;&#35745;&#31639;&#26426;)<ul class=" list-disc font-serif">
+<li class=" ml-8"><red>&#21069;&#23548;&#35838;&#31243;&#30446;&#26631;&#65306;&#33021;&#26681;&#25454;&#38656;&#27714;&#23454;&#29616;&#25968;&#23383;&#31995;&#32479;</red></li>
+</ul>
+</li>
+</ul>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/logisim.jpg" width="500px"></p>
+<p class=" font-serif my-1"></p><center>(&#29992;&#19968;&#20010;&#31243;&#24207;&#26469;&#22797;&#20064;)</center></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="logisim-demo" class=" text-xl mt-2 pb-2 font-sans">Logisim Demo</h2>
+<p class=" font-serif my-1">&#25968;&#23383;&#30005;&#36335;&#27169;&#25311;&#22120;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22522;&#26412;&#26500;&#20214;&#65306;wire, reg, NAND, NOT, AND, NOR</li>
+<li class=" ml-8">&#27599;&#19968;&#20010;&#26102;&#38047;&#21608;&#26399;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20808;&#35745;&#31639; wire &#30340;&#20540;</li>
+<li class=" ml-8">&#22312;&#21608;&#26399;&#32467;&#26463;&#26102;&#25226;&#20540;&#38145;&#23384;&#33267; reg</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#20250;&#32534;&#31243;&#65292;&#20320;&#23601;&#25317;&#26377;&#20840;&#19990;&#30028;&#65281;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21516;&#26679;&#30340;&#26041;&#24335;&#21487;&#20197;&#27169;&#25311;&#20219;&#20309;&#25968;&#23383;&#31995;&#32479; (&#21253;&#25324;&#35745;&#31639;&#26426;&#31995;&#32479;)</li>
+<li class=" ml-8">&#21516;&#26102;&#36824;&#20307;&#39564;&#20102; UNIX &#21746;&#23398;<ul class=" list-disc font-serif">
+<li class=" ml-8">Make each program do one thing well</li>
+<li class=" ml-8">Expect the output of every program to become the input to another</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#22797;&#20064;&#65306;&#29702;&#35299;&#35745;&#31639;&#26426;&#36719;&#20214; (&#31243;&#24207;)</h2>
+<p class=" font-serif my-1">&#21069;&#23548;&#35838;&#31243;&#65306;C &#31243;&#24207;&#35774;&#35745;/&#35745;&#31639;&#26426;&#31995;&#32479;&#22522;&#30784;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#39640;&#32423;&#35821;&#35328;&#20195;&#30721; &#8594; &#25351;&#20196;&#24207;&#21015; &#8594; &#20108;&#36827;&#21046;&#25991;&#20214; &#8594; &#22788;&#29702;&#22120;&#25191;&#34892;<ul class=" list-disc font-serif">
+<li class=" ml-8"><red>&#21069;&#23548;&#35838;&#31243;&#30446;&#26631;&#65306;&#33021;&#23558;&#38656;&#27714;&#23454;&#29616;&#65307;&#25484;&#25569;&#24037;&#20855;&#20351;&#29992;&#65307;&#38405;&#35835;&#27719;&#32534;&#25351;&#20196;</red></li>
+</ul>
+</li>
+</ul>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/talks/img/pal.png" width="600px"></p>
+<p class=" font-serif my-1"></p><center>(&#20063;&#29992;&#19968;&#20010;&#31243;&#24207;&#26469;&#22797;&#20064;)</center></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="rvemu-demo" class=" text-xl mt-2 pb-2 font-sans">RVEmu Demo</h2>
+<p class=" font-serif my-1">&#22914;&#26524;&#20320;&#30340;&#25351;&#20196;&#21644;&#35774;&#22791;&#23454;&#29616;&#24471;&#22815;&#23436;&#21892;&#65292;&#23601;&#33021;&#30452;&#25509;&#21551;&#21160; Linux</p>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/NEMU-boot-linux.gif" width="600"></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#29702;&#35299;&#25805;&#20316;&#31995;&#32479;</h2>
+<p class=" font-serif my-1">&#26412;&#35838;&#31243;&#35752;&#35770;<red>&#29421;&#20041;&#30340;&#25805;&#20316;&#31995;&#32479;</red></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25805;&#20316;&#31995;&#32479;&#65306;&#30828;&#20214;&#21644;&#36719;&#20214;&#30340;&#20013;&#38388;&#23618;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#23545;&#21333;&#26426; (&#22810;&#22788;&#29702;&#22120;) &#20316;&#20986;&#25277;&#35937;</li>
+<li class=" ml-8">&#25903;&#25745;&#22810;&#20010;&#31243;&#24207;&#25191;&#34892;</li>
+</ul>
+</li>
+<li class=" ml-8">&#23398;&#26415;&#30028;&#35848;&#35770;&#30340; &#8220;&#25805;&#20316;&#31995;&#32479;&#8221; &#26159;&#26356;&#24191;&#20041;&#30340; &#8220;System&#8221;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20363;&#23376;&#65306;&#23545;&#22810;&#21488;&#35745;&#31639;&#26426;&#25277;&#35937; (&#20998;&#24067;&#24335;&#31995;&#32479;)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#29702;&#35299;&#25805;&#20316;&#31995;&#32479;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#29702;&#35299;&#30828;&#20214; (&#35745;&#31639;&#26426;) &#21644;&#36719;&#20214; (&#31243;&#24207;) &#30340;&#21457;&#23637;&#21382;&#21490;</li>
+<li class=" ml-8"><red>&#22841;&#22312;&#20013;&#38388;&#30340;&#23601;&#26159;&#25805;&#20316;&#31995;&#32479;</red></li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="eniac-1946214" class=" text-xl mt-2 pb-2 font-sans">ENIAC: 1946.2.14</h2>
+<p class=" font-serif my-1">&#8220;&#22270;&#28789;&#26426;&#8221; &#30340;&#25968;&#23383;&#30005;&#36335;&#23454;&#29616;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25191;&#34892;&#23436;&#19968;&#26465;&#25351;&#20196;&#21518;&#65292;&#21487;&#20197;&#26681;&#25454;&#32467;&#26524;&#36339;&#36716;&#21040;&#20219;&#24847;&#19968;&#26465;&#25351;&#20196; (&#29992;&#29289;&#29702;&#32447;&#36335; &#8220;hard-wire&#8221;)</li>
+<li class=" ml-8">&#37325;&#32534;&#31243;&#38656;&#35201;&#37325;&#26032;&#25509;&#32447;&#65306;<a href="https://www.cs.drexel.edu/~bls96/eniac/" class=" text-amber-900">Emulator</a> and <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=8467000" class=" text-amber-900">Programming the ENIAC</a></li>
+</ul>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/eniacrun.jpg" width="650px"></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="1940s" class=" text-xl mt-2 pb-2 font-sans">1940s &#30340;&#35745;&#31639;&#26426;&#30828;&#20214;</h2>
+<p class=" font-serif my-1">&#30005;&#23376;&#35745;&#31639;&#26426;&#30340;&#23454;&#29616;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#36923;&#36753;&#38376;&#65306;<a href="https://www.bilibili.com/video/av59005720" class=" text-amber-900">&#30495;&#31354;&#30005;&#23376;&#31649;</a></li>
+<li class=" ml-8">&#23384;&#20648;&#22120;&#65306;&#24310;&#36831;&#32447; (delay lines)</li>
+<li class=" ml-8">&#36755;&#20837;/&#36755;&#20986;&#65306;&#25171;&#23380;&#32440;&#24102;/&#25351;&#31034;&#28783;</li>
+</ul>
+<p class=" font-serif my-1"></p><center>
+<img alt="" class="inline" src="../../../pages/OS/img/vaccum-tube.gif" width="250px">
+<img alt="" class="inline" src="../../../pages/OS/img/throw-ball.gif" width="300px">
+<img alt="" class="inline" src="../../../pages/OS/img/delay-memory-fig2-s.gif" width="400px">
+</center></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="1940s" class=" text-xl mt-2 pb-2 font-sans">1940s &#30340;&#35745;&#31639;&#26426;&#36719;&#20214;</h2>
+<p class=" font-serif my-1">&#25171;&#21360;&#24179;&#26041;&#25968;&#12289;&#32032;&#25968;&#34920;&#12289;&#35745;&#31639;&#24377;&#36947;&#8230;&#8230;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#35299;&#37322;&#20102;&#12298;&#31243;&#24207;&#35774;&#35745;&#12299;&#25945;&#35838;&#20070;&#19978;&#32463;&#20856;&#20064;&#39064;&#30340;&#26469;&#28304;<ul class=" list-disc font-serif">
+<li class=" ml-8">(&#26159;&#26102;&#20505;&#25913;&#19968;&#25913;&#20102;)</li>
+</ul>
+</li>
+<li class=" ml-8">&#22823;&#23478;&#36824;&#22312;&#21644;&#30495;&#27491;&#30340; &#8220;bugs&#8221; &#25112;&#26007;</li>
+</ul>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/first-bug.webp" width="400px"></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="1940s" class=" text-xl mt-2 pb-2 font-sans">1940s &#30340;&#25805;&#20316;&#31995;&#32479;</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">&#27809;&#26377;&#25805;&#20316;&#31995;&#32479;&#12290;</p>
+</blockquote>
+<p class=" font-serif my-1">&#33021;&#25226;&#31243;&#24207;&#25918;&#19978;&#21435;&#23601;&#24456;&#20102;&#19981;&#36215;&#20102;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#31243;&#24207;&#30452;&#25509;&#29992;&#25351;&#20196;&#25805;&#20316;&#30828;&#20214;</li>
+<li class=" ml-8">&#19981;&#38656;&#35201;&#30011;&#34503;&#28155;&#36275;&#30340;&#31243;&#24207;&#26469;&#31649;&#29702;&#23427;</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="1950s" class=" text-xl mt-2 pb-2 font-sans">1950s &#30340;&#35745;&#31639;&#26426;&#30828;&#20214;</h2>
+<p class=" font-serif my-1">&#26356;&#24555;&#26356;&#23567;&#30340;&#36923;&#36753;&#38376; (&#26230;&#20307;&#31649;)&#12289;&#26356;&#22823;&#30340;&#20869;&#23384; (&#30913;&#33455;)&#12289;&#20016;&#23500;&#30340; I/O &#35774;&#22791;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">I/O &#35774;&#22791;&#30340;&#36895;&#24230;&#24050;&#32463;&#20005;&#37325;&#20302;&#20110;&#22788;&#29702;&#22120;&#30340;&#36895;&#24230;&#65292;&#20013;&#26029;&#26426;&#21046;&#20986;&#29616; (1953)</li>
+</ul>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/ERA-1101.jpg" width="360px"></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="1950s" class=" text-xl mt-2 pb-2 font-sans">1950s &#30340;&#35745;&#31639;&#26426;&#36719;&#20214;</h2>
+<p class=" font-serif my-1">&#26356;&#22797;&#26434;&#30340;&#36890;&#29992;&#30340;&#25968;&#20540;&#35745;&#31639;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#39640;&#32423;&#35821;&#35328;&#21644; API &#35806;&#29983; (Fortran, 1957)&#65306;&#19968;&#34892;&#20195;&#30721;&#65292;&#19968;&#24352;&#21345;&#29255;<ul class=" list-disc font-serif">
+<li class=" ml-8">80 &#34892;&#30340;&#35268;&#33539;&#27839;&#29992;&#33267;&#20170; (&#32454;&#33410;&#65306;&#25171;&#21360;&#26426;&#20250;&#21360;&#21047;&#26412;&#34892;&#20195;&#30721;)</li>
+</ul>
+</li>
+</ul>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/fortran-card.jpg" width="900px"></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="1950s-contd" class=" text-xl mt-2 pb-2 font-sans">1950s &#30340;&#35745;&#31639;&#26426;&#36719;&#20214; (cont'd)</h2>
+<p class=" font-serif my-1">Fortran &#24050;&#32463; &#8220;&#36275;&#22815;&#22909;&#29992;&#8221;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#33258;&#28982;&#31185;&#23398;&#12289;&#24037;&#31243;&#26426;&#26800;&#12289;&#20891;&#20107;&#8230;&#8230;&#23545;&#35745;&#31639;&#26426;&#30340;&#38656;&#27714;&#26292;&#28072;</li>
+</ul>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>C---- THIS PROGRAM READS INPUT FROM THE CARD READER,
+C---- 3 INTEGERS IN EACH CARD, CALCULATE AND OUTPUT
+C---- THE SUM OF THEM.
+  100 READ(5,10) I1, I2, I3
+   10 FORMAT(3I5)
+      IF (I1.EQ.0 .AND. I2.EQ.0 .AND. I3.EQ.0) GOTO 200
+      ISUM = I1 + I2 + I3
+      WRITE(6,20) I1, I2, I3, ISUM
+   20 FORMAT(7HSUM OF , I5, 2H, , I5, 5H AND , I5,
+     *   4H IS , I6)
+      GOTO 100
+  200 STOP
+      END
+</code></pre></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="1950s" class=" text-xl mt-2 pb-2 font-sans">1950s &#30340;&#25805;&#20316;&#31995;&#32479;</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">&#24211;&#20989;&#25968; + &#31649;&#29702;&#31243;&#24207;&#25490;&#38431;&#36816;&#34892;&#30340;&#35843;&#24230;&#20195;&#30721;&#12290;</p>
+</blockquote>
+<p class=" font-serif my-1">&#20889;&#31243;&#24207; (&#25139;&#32440;&#24102;)&#12289;&#36305;&#31243;&#24207;&#37117;&#26159;&#38750;&#24120;&#36153;&#20107;&#30340;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#35745;&#31639;&#26426;&#38750;&#24120;&#36149; ($\$50,000-\$1,000,000$)&#65292;&#19968;&#20010;&#23398;&#26657;&#21482;&#26377;&#19968;&#21488;</li>
+<li class=" ml-8">&#31639;&#21147;&#25104;&#20026;&#19968;&#31181;&#26381;&#21153;&#65306;<red>&#22810;&#29992;&#25143;&#36718;&#27969;&#20849;&#20139;&#35745;&#31639;&#26426;</red>&#65292;operator &#36127;&#36131;&#35843;&#24230;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1"><red>&#25805;&#20316;&#31995;&#32479;</red>&#30340;&#27010;&#24565;&#24320;&#22987;&#24418;&#25104;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25805;&#20316; (operate) &#20219;&#21153; (jobs) &#30340;&#31995;&#32479; (system)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#8220;&#25209;&#22788;&#29702;&#31995;&#32479;&#8221; = &#31243;&#24207;&#30340;&#33258;&#21160;&#20999;&#25442; (&#25442;&#21345;) + &#24211;&#20989;&#25968; API</li>
+<li class=" ml-8">Disk Operating Systems (DOS)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25805;&#20316;&#31995;&#32479;&#20013;&#24320;&#22987;&#20986;&#29616; &#8220;&#35774;&#22791;&#8221;&#12289;&#8220;&#25991;&#20214;&#8221;&#12289;&#8220;&#20219;&#21153;&#8221; &#31561;&#23545;&#35937;&#21644; API</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="1960s" class=" text-xl mt-2 pb-2 font-sans">1960s &#30340;&#35745;&#31639;&#26426;&#30828;&#20214;</h2>
+<p class=" font-serif my-1">&#38598;&#25104;&#30005;&#36335;&#12289;&#24635;&#32447;&#20986;&#29616;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#26356;&#24555;&#30340;&#22788;&#29702;&#22120;</li>
+<li class=" ml-8">&#26356;&#24555;&#12289;&#26356;&#22823;&#30340;&#20869;&#23384;&#65307;&#34394;&#25311;&#23384;&#20648;&#20986;&#29616;<ul class=" list-disc font-serif">
+<li class=" ml-8"><red>&#21487;&#20197;&#21516;&#26102;&#36733;&#20837;&#22810;&#20010;&#31243;&#24207;&#32780;&#19981;&#29992; &#8220;&#25442;&#21345;&#8221; &#20102;</red></li>
+</ul>
+</li>
+<li class=" ml-8">&#26356;&#20016;&#23500;&#30340; I/O &#35774;&#22791;&#65307;&#23436;&#21892;&#30340;&#20013;&#26029;/&#24322;&#24120;&#26426;&#21046;</li>
+</ul>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/sketchpad.jpg" width="600px"></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="1960s" class=" text-xl mt-2 pb-2 font-sans">1960s &#30340;&#35745;&#31639;&#26426;&#36719;&#20214;</h2>
+<p class=" font-serif my-1">&#26356;&#22810;&#30340;&#39640;&#32423;&#35821;&#35328;&#21644;&#32534;&#35793;&#22120;&#20986;&#29616;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">COBOL (1960), APL (1962), BASIC (1965)<ul class=" list-disc font-serif">
+<li class=" ml-8">Bill Gates &#21644; Paul Allen &#22312; 1975 &#24180;&#23454;&#29616;&#20102; Altair 8800 &#19978;&#30340; BASIC &#35299;&#37322;&#22120;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#35745;&#31639;&#26426;&#31185;&#23398;&#23478;&#20204;&#24050;&#32463;&#22312;&#20170;&#22825;&#38590;&#20197;&#24819;&#35937;&#30340;&#35745;&#31639;&#21147;&#19979;&#24320;&#21457;&#24778;&#22855;&#30340;&#31243;&#24207;</p>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/spacewar.jpg" width="800px"></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="1960s" class=" text-xl mt-2 pb-2 font-sans">1960s &#30340;&#25805;&#20316;&#31995;&#32479;</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">&#33021;&#36733;&#20837;&#22810;&#20010;&#31243;&#24207;&#21040;&#20869;&#23384;&#19988;&#35843;&#24230;&#23427;&#20204;&#30340;&#31649;&#29702;&#31243;&#24207;&#12290;</p>
+</blockquote>
+<p class=" font-serif my-1">&#20026;&#38450;&#27490;&#31243;&#24207;&#20043;&#38388;&#24418;&#25104;&#24178;&#25200;&#65292;&#25805;&#20316;&#31995;&#32479;&#33258;&#28982;&#22320;&#23558;&#20849;&#20139;&#36164;&#28304; (&#22914;&#35774;&#22791;) &#20197; API &#24418;&#24335;&#31649;&#29702;&#36215;&#26469;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#26377;&#20102;&#36827;&#31243; (process) &#30340;&#27010;&#24565;</li>
+<li class=" ml-8">&#36827;&#31243;&#22312;&#25191;&#34892; I/O &#26102;&#65292;&#21487;&#20197;&#23558; CPU &#35753;&#32473;&#21478;&#19968;&#20010;&#36827;&#31243;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22312;&#22810;&#20010;&#22320;&#22336;&#31354;&#38388;&#38548;&#31163;&#30340;&#31243;&#24207;&#20043;&#38388;<red>&#20999;&#25442;</red></li>
+<li class=" ml-8">&#34394;&#25311;&#23384;&#20648;&#20351;&#19968;&#20010;&#31243;&#24207;&#20986; bug &#19981;&#20250; crash &#25972;&#20010;&#31995;&#32479;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#25805;&#20316;&#31995;&#32479;&#20013;&#33258;&#28982;&#22320;&#22686;&#21152;&#36827;&#31243;&#31649;&#29702; API</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#26082;&#28982;&#21487;&#20197;&#22312;&#31243;&#24207;&#20043;&#38388;<red>&#20999;&#25442;</red>&#65292;&#20026;&#20160;&#20040;&#19981;&#35753;&#23427;&#20204;<red>&#23450;&#26102;&#20999;&#25442;</red>&#21602;&#65311;</li>
+<li class=" ml-8">Multics (MIT, 1965)&#65306;&#29616;&#20195;&#20998;&#26102;&#25805;&#20316;&#31995;&#32479;&#35806;&#29983;</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="1970s" class=" text-xl mt-2 pb-2 font-sans">1970s+ &#30340;&#35745;&#31639;&#26426;&#30828;&#20214;</h2>
+<p class=" font-serif my-1">&#38598;&#25104;&#30005;&#36335;&#31354;&#21069;&#21457;&#23637;&#65292;&#20010;&#20154;&#30005;&#33041;&#20852;&#36215;&#65292;&#8220;&#35745;&#31639;&#26426;&#8221; &#24050;&#19982;&#20170;&#26085;&#26080;&#22823;&#24322;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">CISC &#25351;&#20196;&#38598;&#65307;&#20013;&#26029;&#12289;I/O&#12289;&#24322;&#24120;&#12289;MMU&#12289;&#32593;&#32476;</li>
+<li class=" ml-8">&#20010;&#20154;&#35745;&#31639;&#26426; (PC &#26426;)&#12289;&#36229;&#32423;&#35745;&#31639;&#26426;&#8230;&#8230;</li>
+</ul>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/apple2.jpg" width="500px"></p>
+<p class=" font-serif my-1"></p><center>Apple II</center></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="1970s" class=" text-xl mt-2 pb-2 font-sans">1970s+ &#30340;&#35745;&#31639;&#26426;&#36719;&#20214;</h2>
+<p class=" font-serif my-1">PASCAL (1970), C (1972), &#8230;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20170;&#22825;&#33021;&#21150;&#21040;&#30340;&#65292;&#37027;&#20010;&#26102;&#20195;&#24050;&#32463;&#37117;&#33021;&#21150;&#21040;&#20102;&#8212;&#8212;&#19978;&#22825;&#20837;&#22320;&#12289;&#22270;&#20687;&#22768;&#38899;&#35270;&#39057;&#12289;&#20154;&#24037;&#26234;&#33021;&#8230;&#8230;</li>
+<li class=" ml-8">&#20010;&#20154;&#24320;&#21457;&#32773; (Geek Network) &#36208;&#19978;&#33310;&#21488;</li>
+</ul>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/wordstar.jpg" width="500px"></p>
+<p class=" font-serif my-1"></p><center>Wordstar (1979)</center></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="1970s" class=" text-xl mt-2 pb-2 font-sans">1970s+ &#30340;&#25805;&#20316;&#31995;&#32479;</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">&#20998;&#26102;&#31995;&#32479;&#36208;&#21521;&#25104;&#29087;&#65292;UNIX &#35806;&#29983;&#24182;&#36208;&#21521;&#23436;&#21892;&#65292;&#22880;&#23450;&#20102;&#29616;&#20195;&#25805;&#20316;&#31995;&#32479;&#30340;&#24418;&#24577;&#12290;</p>
+</blockquote>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">1973: &#20449;&#21495; API&#12289;&#31649;&#36947; (&#23545;&#35937;)&#12289;grep (&#24212;&#29992;&#31243;&#24207;)</li>
+<li class=" ml-8">1983: BSD socket (&#23545;&#35937;)</li>
+<li class=" ml-8">1984: procfs (&#23545;&#35937;)&#8230;&#8230; </li>
+<li class=" ml-8">UNIX &#34893;&#29983;&#20986;&#30340;&#22823;&#23478;&#26063;<ul class=" list-disc font-serif">
+<li class=" ml-8">1BSD (1977), GNU (1983), MacOS (1984), AIX (1986), Minix (1987), Windows (1985), Linux 0.01 (1991), Windows NT (1993), Debian (1996), Windows XP (2002), Ubuntu (2004), iOS (2007), Android (2008), Windows 10 (2015), &#8230;&#8230;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20170;&#22825;&#30340;&#25805;&#20316;&#31995;&#32479;</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">&#36890;&#36807; &#8220;&#34394;&#25311;&#21270;&#8221; &#30828;&#20214;&#36164;&#28304;&#20026;&#31243;&#24207;&#36816;&#34892;&#25552;&#20379;&#26381;&#21153;&#30340;&#36719;&#20214;&#12290;</p>
+</blockquote>
+<p class=" font-serif my-1">&#31354;&#21069;&#22797;&#26434;&#30340;&#31995;&#32479;&#20043;&#19968;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#26356;&#22797;&#26434;&#30340;&#22788;&#29702;&#22120;&#21644;&#20869;&#23384;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#38750;&#23545;&#31216;&#22810;&#22788;&#29702;&#22120; (ARM big.LITTLE; Intel P/E-cores)</li>
+<li class=" ml-8">Non-uniform Memory Access (NUMA)</li>
+<li class=" ml-8">&#26356;&#22810;&#30340;&#30828;&#20214;&#26426;&#21046; Intel-VT/AMD-V, TrustZone/<del>SGX</del>, TSX, ...</li>
+</ul>
+</li>
+<li class=" ml-8">&#26356;&#22810;&#30340;&#35774;&#22791;&#21644;&#36164;&#28304;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#32593;&#21345;&#12289;SSD&#12289;GPU&#12289;FPGA...</li>
+</ul>
+</li>
+<li class=" ml-8">&#22797;&#26434;&#30340;&#24212;&#29992;&#38656;&#27714;&#21644;&#24212;&#29992;&#29615;&#22659;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#26381;&#21153;&#22120;&#12289;&#20010;&#20154;&#30005;&#33041;&#12289;&#26234;&#33021;&#25163;&#26426;&#12289;&#25163;&#34920;&#12289;&#25163;&#29615;&#12289;IoT/&#24494;&#25511;&#21046;&#22120;&#8230;&#8230;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#35838;&#31243;&#20869;&#23481;&#27010;&#36848;</h2>
+<p class=" font-serif my-1">&#25805;&#20316;&#31995;&#32479;&#65306;&#36719;&#20214;&#30828;&#20214;&#20043;&#38388;&#30340;&#26725;&#26753;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#26412;&#35838;&#31243;&#20013;&#30340;&#36719;&#20214;&#65306;&#22810;&#32447;&#31243; Linux &#24212;&#29992;&#31243;&#24207;</li>
+<li class=" ml-8">&#26412;&#35838;&#31243;&#20013;&#30340;&#30828;&#20214;&#65306;&#29616;&#20195;&#22810;&#22788;&#29702;&#22120;&#31995;&#32479;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">(&#35774;&#35745;/&#24212;&#29992;&#35270;&#35282;) &#25805;&#20316;&#31995;&#32479;&#20026;&#24212;&#29992;&#25552;&#20379;&#20160;&#20040;&#26381;&#21153;&#65311;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><red>&#25805;&#20316;&#31995;&#32479; = &#23545;&#35937; + API</red></li>
+<li class=" ml-8">&#35838;&#31243;&#28041;&#21450;&#65306;POSIX + &#37096;&#20998; Linux &#29305;&#24615;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">(&#23454;&#29616;/&#30828;&#20214;&#35270;&#35282;) &#22914;&#20309;&#23454;&#29616;&#25805;&#20316;&#31995;&#32479;&#25552;&#20379;&#30340;&#26381;&#21153;&#65311;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><red>&#25805;&#20316;&#31995;&#32479; = C &#31243;&#24207;</red><ul class=" list-disc font-serif">
+<li class=" ml-8">&#23436;&#25104;&#21021;&#22987;&#21270;&#21518;&#23601;&#25104;&#20026; interrupt/trap/fault handler</li>
+</ul>
+</li>
+<li class=" ml-8">&#35838;&#31243;&#28041;&#21450;&#65306;xv6, &#33258;&#21046;&#36855;&#20320;&#25805;&#20316;&#31995;&#32479;</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+  
+</div>
+</div>
+
+<script src="../../../static/reveal/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    
+    width: 1024, height: 768,
+    
+    slideNumber: 'c/t',
+    controlsTutorial: false,
+    progress: false,
+    hash: true,
+    center: false,
+    autoAnimateUnmatched: true,
+    autoAnimateEasing: 'ease-out',
+    autoAnimateDuration: 0.3,
+    transitionSpeed: 'fast'
+  });
+</script>
+
+
+</body>
+
+</html>

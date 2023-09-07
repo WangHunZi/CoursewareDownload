@@ -1,0 +1,367 @@
+<!DOCTYPE html><html class="h-100">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="../../../static/css/base.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
+
+  <style>
+    .font-sans {
+      font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+    }
+    .font-serif {
+      font-family: 'Source Serif Pro', 'Songti SC', 'SimSun', 'Serif', serif;
+    }
+  </style>
+  <link rel="stylesheet" href="../../../static/katex/katex.min.css">
+  <script defer src="../../../static/katex/katex.min.js"></script>
+  <script defer src="../../../static/katex/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+            // customised options
+            // &#8226; auto-render specific keys, e.g.:
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ],
+            // &#8226; rendering keys, e.g.:
+            throwOnError : false
+          });
+      });
+  </script>
+
+
+  
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="../../../static/reveal/reveal.css">
+<link rel="stylesheet" href="../../../static/reveal/theme/simple.css" id="theme">
+
+<style>
+.reveal .slide-number {
+  font-size: 26px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, .3);
+}
+
+.reveal .full-screen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.reveal .slides {
+  border: 1.5px #ddd solid;
+  border-radius: 7px;
+  text-align: left;
+  font-weight: 300;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  font-family: 'Lato', 'SimHei', 'STXihei', 'Droid Sans';
+  font-weight: 400;
+}
+
+.reveal p, .reveal li, .reveal center {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Droid Sans';
+}
+
+.reveal li + li {
+  margin-top: 10px;
+}
+
+.reveal ul {
+  display: block;
+  margin-right: 15px;
+}
+
+.reveal p, .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5 {
+  padding:  0 25px 0 25px;
+}
+
+.reveal table {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Sans Serif';
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.reveal th {
+  background-color: #eee;
+}
+
+.reveal tr:nth-child(even) {
+  background-color: #efffff;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  text-align: left;
+  margin: 0 0 20px 0;
+ color: #222; 
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
+
+
+.reveal h1 {
+  margin: 0 10 0 10;
+  font-size: 60px;
+}
+.reveal .middle h1 {
+  text-align: center;
+}
+
+.reveal h2 {
+  font-size: 48px;
+  border-bottom: 2px solid rgb(106, 0, 95);
+  padding-bottom: 5px;
+}
+.reveal h3 { font-size: 1.15em; }
+.reveal h4 { font-size: 1.05em; }
+
+.reveal .center {
+  text-align: center;
+}
+
+.reveal .middle {
+  height: 728px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.reveal pre {
+  font-size: 28px;
+ 
+  background-color: #eee;
+
+  border-radius: 3mm;
+  padding: 10px 10px 10px 10px;
+}
+
+.reveal pre code {
+  max-height: none;
+}
+
+.reveal code {
+  font-family: 'Inconsolata', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif', Monospace;
+}
+
+.reveal .middle blockquote {
+  text-align: center;
+  color: rgb(106, 0, 95);
+  background: none;
+  box-shadow: none;
+}
+
+.reveal .middle blockquote a {
+  color: inherit;
+}
+
+.reveal blockquote p, .reveal blockquote li {
+  font-family: 'Lato', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif';
+}
+
+section .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reveal .author-block {
+  margin: 75px 0 35px 0;
+}
+.reveal .author-affiliation img {
+  margin: 15px 0 0 0;
+}
+.reveal .author-block p, .reveal .author-affiliation p  {
+  font-family: 'Kaiti', 'STKaiti', 'Serif', 'Times', 'Times New Roman';
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+.reveal .author-affiliation {
+  display: inline-block;
+  font-size: 90%;
+}
+.reveal hr {
+  border: 10px solid rgba(0, 0, 0, 0);
+}
+.reveal li {
+  margin-top: 10px;
+}
+</style>
+
+  <title>&#27515;&#38145;&#30340;&#24212;&#23545;</title>
+</head>
+
+<body class="d-flex flex-column h-100">
+  
+  
+
+<div class="reveal">
+<div class="slides">
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="13.1.slides.html" class=" text-amber-900">&#27515;&#38145;&#30340;&#24212;&#23545;</a></h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#22238;&#39038;&#65306;&#27515;&#38145;&#20135;&#29983;&#30340;&#24517;&#35201;&#26465;&#20214;</h2>
+<p class=" font-serif my-1"><a href="https://dl.acm.org/doi/10.1145/356586.356588" class=" text-amber-900">System deadlocks (1971)</a>&#65306;&#27515;&#38145;&#20135;&#29983;&#30340;&#22235;&#20010;&#24517;&#35201;&#26465;&#20214;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#29992; &#8220;&#36164;&#28304;&#8221; &#26469;&#25551;&#36848;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#29366;&#24577;&#26426;&#35270;&#35282;&#65306;&#23601;&#26159; &#8220;&#24403;&#21069;&#29366;&#24577;&#19979;&#25345;&#26377;&#30340;&#38145; (&#26657;&#22253;&#21345;/&#29699;)&#8221;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ol class=" list-decimal font-serif">
+<li class=" ml-8">Mutual-exclusion - &#19968;&#24352;&#26657;&#22253;&#21345;&#21482;&#33021;&#34987;&#19968;&#20010;&#20154;&#25317;&#26377;</li>
+<li class=" ml-8">Wait-for - &#19968;&#20010;&#20154;&#31561;&#20854;&#20182;&#26657;&#22253;&#21345;&#26102;&#65292;&#19981;&#20250;&#37322;&#25918;&#24050;&#26377;&#30340;&#26657;&#22253;&#21345;</li>
+<li class=" ml-8">No-preemption - &#19981;&#33021;&#25250;&#22842;&#20182;&#20154;&#30340;&#26657;&#22253;&#21345;</li>
+<li class=" ml-8">Circular-chain - &#24418;&#25104;&#26657;&#22253;&#21345;&#30340;&#24490;&#29615;&#31561;&#24453;&#20851;&#31995;</li>
+</ol></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">&#24212;&#23545;&#27515;&#38145;&#65306;&#27515;&#38145;&#20135;&#29983;&#30340;&#24517;&#35201;&#26465;&#20214; (cont'd)</h2>
+<p class=" font-serif my-1">&#31449;&#30528;&#35828;&#35805;&#19981;&#33136;&#30140;&#30340;&#25945;&#31185;&#20070;&#65306;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#8220;&#29702;&#35299;&#20102;&#27515;&#38145;&#30340;&#21407;&#22240;&#65292;&#23588;&#20854;&#26159;&#20135;&#29983;&#27515;&#38145;&#30340;&#22235;&#20010;&#24517;&#35201;&#26465;&#20214;&#65292;&#23601;&#21487;&#20197;&#26368;&#22823;&#21487;&#33021;&#22320;&#36991;&#20813;&#12289;&#39044;&#38450;&#21644;&#35299;&#38500;&#27515;&#38145;&#12290;&#25152;&#20197;&#65292;&#22312;&#31995;&#32479;&#35774;&#35745;&#12289;&#36827;&#31243;&#35843;&#24230;&#31561;&#26041;&#38754;&#27880;&#24847;&#22914;&#20309;&#19981;&#35753;&#36825;&#22235;&#20010;&#24517;&#35201;&#26465;&#20214;&#25104;&#31435;&#65292;&#22914;&#20309;&#30830;&#23450;&#36164;&#28304;&#30340;&#21512;&#29702;&#20998;&#37197;&#31639;&#27861;&#65292;&#36991;&#20813;&#36827;&#31243;&#27704;&#20037;&#21344;&#25454;&#31995;&#32479;&#36164;&#28304;&#12290;&#27492;&#22806;&#65292;&#20063;&#35201;&#38450;&#27490;&#36827;&#31243;&#22312;&#22788;&#20110;&#31561;&#24453;&#29366;&#24577;&#30340;&#24773;&#20917;&#19979;&#21344;&#29992;&#36164;&#28304;&#12290;&#22240;&#27492;&#65292;&#23545;&#36164;&#28304;&#30340;&#20998;&#37197;&#35201;&#32473;&#20104;&#21512;&#29702;&#30340;&#35268;&#21010;&#12290;&#8221;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#19981;&#33021;&#31216;&#20026;&#26159;&#19968;&#20010;&#21512;&#29702;&#30340; argument</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#23545;&#20110;&#29609;&#20855;&#31995;&#32479;/&#27169;&#22411;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25105;&#20204;&#21487;&#20197;&#30452;&#25509;&#35777;&#26126;&#31995;&#32479;&#26159; deadlock-free &#30340;</li>
+</ul>
+</li>
+<li class=" ml-8">&#23545;&#20110;&#30495;&#27491;&#30340;&#22797;&#26434;&#31995;&#32479;<ul class=" list-disc font-serif">
+<li class=" ml-8"><red>Bullshit</red></li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#22914;&#20309;&#22312;&#23454;&#38469;&#31995;&#32479;&#20013;&#36991;&#20813;&#27515;&#38145;&#65311;</h2>
+<p class=" font-serif my-1">&#22235;&#20010;&#26465;&#20214;&#20013;&#26368;&#23481;&#26131;&#36798;&#25104;&#30340;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#36991;&#20813;&#24490;&#29615;&#31561;&#24453;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Lock ordering</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20219;&#24847;&#26102;&#21051;&#31995;&#32479;&#20013;&#30340;&#38145;&#37117;&#26159;&#26377;&#38480;&#30340;</li>
+<li class=" ml-8">&#20005;&#26684;&#25353;&#29031;&#22266;&#23450;&#30340;&#39034;&#24207;&#33719;&#24471;&#25152;&#26377;&#38145; (Lock Ordering)&#65292;&#23601;&#21487;&#20197;&#28040;&#28781;&#24490;&#29615;&#31561;&#24453;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#8220;&#22312;&#20219;&#24847;&#26102;&#21051;&#33719;&#24471; &#8220;&#26368;&#38752;&#21518;&#8221; &#38145;&#30340;&#32447;&#31243;&#24635;&#26159;&#21487;&#20197;&#32487;&#32493;&#25191;&#34892;&#8221;</li>
+</ul>
+</li>
+<li class=" ml-8">&#20363;&#23376;&#65306;&#20462;&#22797;&#21746;&#23398;&#23478;&#21507;&#39277;&#38382;&#39064;</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="lock-ordering-linux-kernel-rmapc" class=" text-xl mt-2 pb-2 font-sans">Lock Ordering: &#24212;&#29992; (Linux Kernel: rmap.c)</h2>
+<p class=" font-serif my-1"><img alt="" src="../../../pages/OS/img/kernel-rmap.png" width="800px"></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="emmm" class=" text-xl mt-2 pb-2 font-sans">Emmm&#8230;&#8230;</h2>
+<p class=" font-serif my-1">Textbooks will tell you that if you always lock in the same order, you will never get this kind of deadlock. <red><em>Practice will tell you that this approach doesn't scale</em></red>: when I create a new lock, I don't understand enough of the kernel to figure out where in the 5000 lock hierarchy it will fit.</p>
+<p class=" font-serif my-1">The best locks are encapsulated: they <em>never get exposed in headers</em>, and are <em>never held around calls to non-trivial functions outside the same file</em>. You can read through this code and see that it will never deadlock, because it never tries to grab another lock while it has that one. People using your code don't even need to know you are using a lock.</p>
+<p class=" font-serif my-1">&#8212;&#8212; <em><a href="https://www.kernel.org/doc/html/latest/kernel-hacking/locking.html" class=" text-amber-900">Unreliable Guide to Locking</a></em> by Rusty Russell</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#26368;&#32456;&#29359;&#38169;&#30340;&#36824;&#26159;&#20154;</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+  
+</div>
+</div>
+
+<script src="../../../static/reveal/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    
+    width: 1024, height: 768,
+    
+    slideNumber: 'c/t',
+    controlsTutorial: false,
+    progress: false,
+    hash: true,
+    center: false,
+    autoAnimateUnmatched: true,
+    autoAnimateEasing: 'ease-out',
+    autoAnimateDuration: 0.3,
+    transitionSpeed: 'fast'
+  });
+</script>
+
+
+</body>
+
+</html>

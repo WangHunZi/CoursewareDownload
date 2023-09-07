@@ -1,0 +1,336 @@
+<!DOCTYPE html><html class="h-100">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="../../../static/css/base.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
+
+  <style>
+    .font-sans {
+      font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+    }
+    .font-serif {
+      font-family: 'Source Serif Pro', 'Songti SC', 'SimSun', 'Serif', serif;
+    }
+  </style>
+  <link rel="stylesheet" href="../../../static/katex/katex.min.css">
+  <script defer src="../../../static/katex/katex.min.js"></script>
+  <script defer src="../../../static/katex/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+            // customised options
+            // &#8226; auto-render specific keys, e.g.:
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ],
+            // &#8226; rendering keys, e.g.:
+            throwOnError : false
+          });
+      });
+  </script>
+
+
+  
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="../../../static/reveal/reveal.css">
+<link rel="stylesheet" href="../../../static/reveal/theme/simple.css" id="theme">
+
+<style>
+.reveal .slide-number {
+  font-size: 26px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, .3);
+}
+
+.reveal .full-screen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.reveal .slides {
+  border: 1.5px #ddd solid;
+  border-radius: 7px;
+  text-align: left;
+  font-weight: 300;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  font-family: 'Lato', 'SimHei', 'STXihei', 'Droid Sans';
+  font-weight: 400;
+}
+
+.reveal p, .reveal li, .reveal center {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Droid Sans';
+}
+
+.reveal li + li {
+  margin-top: 10px;
+}
+
+.reveal ul {
+  display: block;
+  margin-right: 15px;
+}
+
+.reveal p, .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5 {
+  padding:  0 25px 0 25px;
+}
+
+.reveal table {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Sans Serif';
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.reveal th {
+  background-color: #eee;
+}
+
+.reveal tr:nth-child(even) {
+  background-color: #efffff;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  text-align: left;
+  margin: 0 0 20px 0;
+ color: #222; 
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
+
+
+.reveal h1 {
+  margin: 0 10 0 10;
+  font-size: 60px;
+}
+.reveal .middle h1 {
+  text-align: center;
+}
+
+.reveal h2 {
+  font-size: 48px;
+  border-bottom: 2px solid rgb(106, 0, 95);
+  padding-bottom: 5px;
+}
+.reveal h3 { font-size: 1.15em; }
+.reveal h4 { font-size: 1.05em; }
+
+.reveal .center {
+  text-align: center;
+}
+
+.reveal .middle {
+  height: 728px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.reveal pre {
+  font-size: 28px;
+ 
+  background-color: #eee;
+
+  border-radius: 3mm;
+  padding: 10px 10px 10px 10px;
+}
+
+.reveal pre code {
+  max-height: none;
+}
+
+.reveal code {
+  font-family: 'Inconsolata', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif', Monospace;
+}
+
+.reveal .middle blockquote {
+  text-align: center;
+  color: rgb(106, 0, 95);
+  background: none;
+  box-shadow: none;
+}
+
+.reveal .middle blockquote a {
+  color: inherit;
+}
+
+.reveal blockquote p, .reveal blockquote li {
+  font-family: 'Lato', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif';
+}
+
+section .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reveal .author-block {
+  margin: 75px 0 35px 0;
+}
+.reveal .author-affiliation img {
+  margin: 15px 0 0 0;
+}
+.reveal .author-block p, .reveal .author-affiliation p  {
+  font-family: 'Kaiti', 'STKaiti', 'Serif', 'Times', 'Times New Roman';
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+.reveal .author-affiliation {
+  display: inline-block;
+  font-size: 90%;
+}
+.reveal hr {
+  border: 10px solid rgba(0, 0, 0, 0);
+}
+.reveal li {
+  margin-top: 10px;
+}
+</style>
+
+  <title>&#22810;&#22788;&#29702;&#22120;&#19978;&#30340;&#25805;&#20316;&#31995;&#32479;&#20869;&#26680;</title>
+</head>
+
+<body class="d-flex flex-column h-100">
+  
+  
+
+<div class="reveal">
+<div class="slides">
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="14.1.slides.html" class=" text-amber-900">&#22810;&#22788;&#29702;&#22120;&#19978;&#30340;&#25805;&#20316;&#31995;&#32479;&#20869;&#26680;</a></h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="abstractmachine-trm" class=" text-xl mt-2 pb-2 font-sans">AbstractMachine: TRM</h2>
+<p class=" font-serif my-1">Turing Machine: &#19968;&#20010;&#22788;&#29702;&#22120;&#65292;&#19968;&#20010;&#22320;&#22336;&#31354;&#38388;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#8220;&#26080;&#24773;&#30340;&#25191;&#34892;&#25351;&#20196;&#30340;&#26426;&#22120;&#8221; (rvemu) &#30340;&#25277;&#35937;</li>
+<li class=" ml-8">&#21487;&#29992;&#30340;&#20869;&#23384;&#26159;&#38745;&#24577;&#21464;&#37327;&#21644; <code>heap</code></li>
+<li class=" ml-8">&#21482;&#33021;&#25191;&#34892;&#35745;&#31639;&#25351;&#20196;&#21644; putch, halt</li>
+</ul>
+<hr>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/turing-machine.gif" width="650px"></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="abstractmachine-mpe" class=" text-xl mt-2 pb-2 font-sans">AbstractMachine: MPE</h2>
+<p class=" font-serif my-1">Multiprocessing Extension: &#22810;&#20010;&#22788;&#29702;&#22120;&#65292;&#19968;&#20010;&#22320;&#22336;&#31354;&#38388;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21487;&#29992;&#30340;&#22320;&#22336;&#31354;&#38388;&#20381;&#28982;&#26159;&#38745;&#24577;&#21464;&#37327;&#21644; <code>heap</code> (&#22788;&#29702;&#22120;&#38388;&#20849;&#20139;)</li>
+<li class=" ml-8">&#8220;&#22810;&#20010; Turing Machine&#65292;&#20849;&#20139;&#19968;&#20010;&#32440;&#24102;&#8221;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#29366;&#24577;&#26426;&#27169;&#22411;&#21457;&#29983;&#20102;&#25913;&#21464;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#29366;&#24577;&#65306;&#20849;&#20139;&#20869;&#23384;&#21644;&#27599;&#20010;&#22788;&#29702;&#22120;&#30340;&#20869;&#37096;&#29366;&#24577; $$(M, R_1, R_2, \ldots, R_n)$$</li>
+<li class=" ml-8">&#29366;&#24577;&#36801;&#31227;&#65306;&#22788;&#29702;&#22120; $t$ &#20998;&#38548;&#20986;&#19968;&#20010; &#8220;&#21333;&#22788;&#29702;&#22120;&#35745;&#31639;&#26426;&#8221;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25191;&#34892; $(M, R_t) \to (M', R_t')$
+$$(M, R_1, R_2, \ldots, R_n) \to (M', R_1, R_2, \ldots, R_t', \ldots, R_n)$$</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="l1" class=" text-xl mt-2 pb-2 font-sans">&#31616;&#26131;&#22810;&#22788;&#29702;&#22120;&#20869;&#26680; (L1 &#30340;&#27169;&#22411;)</h2>
+<p class=" font-serif my-1">&#19982;&#22810;&#32447;&#31243;&#31243;&#24207;&#23436;&#20840;&#19968;&#33268;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21516;&#27493;&#20165;&#33021;&#36890;&#36807;&#21407;&#23376;&#25351;&#20196;&#22914; <code>xchg</code> &#23454;&#29616;</li>
+</ul>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">uint8_t</span><span class="w"> </span><span class="n">shm</span><span class="p">[</span><span class="n">MEM_SIZE</span><span class="p">];</span><span class="w"> </span><span class="c1">// Shared memory</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">Tprocessor</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">cpu_state</span><span class="w"> </span><span class="n">s</span><span class="p">;</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">fetch_decode_exec</span><span class="p">(</span><span class="o">&amp;</span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="n">shm</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">NPROC</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">create</span><span class="p">(</span><span class="n">Tprocessor</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+        
+      
+      </section>
+    
+    </section>
+  
+</div>
+</div>
+
+<script src="../../../static/reveal/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    
+    width: 1024, height: 768,
+    
+    slideNumber: 'c/t',
+    controlsTutorial: false,
+    progress: false,
+    hash: true,
+    center: false,
+    autoAnimateUnmatched: true,
+    autoAnimateEasing: 'ease-out',
+    autoAnimateDuration: 0.3,
+    transitionSpeed: 'fast'
+  });
+</script>
+
+
+</body>
+
+</html>

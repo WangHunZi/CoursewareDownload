@@ -1,0 +1,530 @@
+<!DOCTYPE html><html class="h-100">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="../../../static/css/base.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
+
+  <style>
+    .font-sans {
+      font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+    }
+    .font-serif {
+      font-family: 'Source Serif Pro', 'Songti SC', 'SimSun', 'Serif', serif;
+    }
+  </style>
+  <link rel="stylesheet" href="../../../static/katex/katex.min.css">
+  <script defer src="../../../static/katex/katex.min.js"></script>
+  <script defer src="../../../static/katex/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+            // customised options
+            // &#8226; auto-render specific keys, e.g.:
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ],
+            // &#8226; rendering keys, e.g.:
+            throwOnError : false
+          });
+      });
+  </script>
+
+
+  
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="../../../static/reveal/reveal.css">
+<link rel="stylesheet" href="../../../static/reveal/theme/simple.css" id="theme">
+
+<style>
+.reveal .slide-number {
+  font-size: 26px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, .3);
+}
+
+.reveal .full-screen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.reveal .slides {
+  border: 1.5px #ddd solid;
+  border-radius: 7px;
+  text-align: left;
+  font-weight: 300;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  font-family: 'Lato', 'SimHei', 'STXihei', 'Droid Sans';
+  font-weight: 400;
+}
+
+.reveal p, .reveal li, .reveal center {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Droid Sans';
+}
+
+.reveal li + li {
+  margin-top: 10px;
+}
+
+.reveal ul {
+  display: block;
+  margin-right: 15px;
+}
+
+.reveal p, .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5 {
+  padding:  0 25px 0 25px;
+}
+
+.reveal table {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Sans Serif';
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.reveal th {
+  background-color: #eee;
+}
+
+.reveal tr:nth-child(even) {
+  background-color: #efffff;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  text-align: left;
+  margin: 0 0 20px 0;
+ color: #222; 
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
+
+
+.reveal h1 {
+  margin: 0 10 0 10;
+  font-size: 60px;
+}
+.reveal .middle h1 {
+  text-align: center;
+}
+
+.reveal h2 {
+  font-size: 48px;
+  border-bottom: 2px solid rgb(106, 0, 95);
+  padding-bottom: 5px;
+}
+.reveal h3 { font-size: 1.15em; }
+.reveal h4 { font-size: 1.05em; }
+
+.reveal .center {
+  text-align: center;
+}
+
+.reveal .middle {
+  height: 728px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.reveal pre {
+  font-size: 28px;
+ 
+  background-color: #eee;
+
+  border-radius: 3mm;
+  padding: 10px 10px 10px 10px;
+}
+
+.reveal pre code {
+  max-height: none;
+}
+
+.reveal code {
+  font-family: 'Inconsolata', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif', Monospace;
+}
+
+.reveal .middle blockquote {
+  text-align: center;
+  color: rgb(106, 0, 95);
+  background: none;
+  box-shadow: none;
+}
+
+.reveal .middle blockquote a {
+  color: inherit;
+}
+
+.reveal blockquote p, .reveal blockquote li {
+  font-family: 'Lato', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif';
+}
+
+section .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reveal .author-block {
+  margin: 75px 0 35px 0;
+}
+.reveal .author-affiliation img {
+  margin: 15px 0 0 0;
+}
+.reveal .author-block p, .reveal .author-affiliation p  {
+  font-family: 'Kaiti', 'STKaiti', 'Serif', 'Times', 'Times New Roman';
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+.reveal .author-affiliation {
+  display: inline-block;
+  font-size: 90%;
+}
+.reveal hr {
+  border: 10px solid rgba(0, 0, 0, 0);
+}
+.reveal li {
+  margin-top: 10px;
+}
+</style>
+
+  <title>&#30828;&#20214;&#19982;&#31243;&#24207;&#21592;&#30340;&#32422;&#23450;</title>
+</head>
+
+<body class="d-flex flex-column h-100">
+  
+  
+
+<div class="reveal">
+<div class="slides">
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="3.2.slides.html" class=" text-amber-900">&#30828;&#20214;&#19982;&#31243;&#24207;&#21592;&#30340;&#32422;&#23450;</a></h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="bare-metal" class=" text-xl mt-2 pb-2 font-sans">Bare-metal &#19982;&#31243;&#24207;&#21592;&#30340;&#32422;&#23450;</h2>
+<p class=" font-serif my-1">Bare-metal &#19982;&#21378;&#21830;&#30340;&#32422;&#23450;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">CPU Reset &#21518;&#30340;&#29366;&#24577; (&#23492;&#23384;&#22120;&#20540;)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21378;&#21830;&#33258;&#30001;&#22788;&#29702;&#36825;&#20010;&#22320;&#22336;&#19978;&#30340;&#20540;</li>
+<li class=" ml-8">Memory-mapped I/O</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#21378;&#21830;&#20026;&#25805;&#20316;&#31995;&#32479;&#24320;&#21457;&#32773;&#25552;&#20379; Firmware</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#31649;&#29702;&#30828;&#20214;&#21644;&#31995;&#32479;&#37197;&#32622;</li>
+<li class=" ml-8"><red>&#25226;&#23384;&#20648;&#35774;&#22791;&#19978;&#30340;&#20195;&#30721;&#21152;&#36733;&#21040;&#20869;&#23384;</red><ul class=" list-disc font-serif">
+<li class=" ml-8">&#20363;&#22914;&#23384;&#20648;&#20171;&#36136;&#19978;&#30340;&#31532;&#20108;&#32423; loader (&#21152;&#36733;&#22120;)</li>
+<li class=" ml-8">&#25110;&#32773;&#30452;&#25509;&#21152;&#36733;&#25805;&#20316;&#31995;&#32479; (&#23884;&#20837;&#24335;&#31995;&#32479;)</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="x86-family-cpu-reset" class=" text-xl mt-2 pb-2 font-sans">x86 Family: CPU Reset</h2>
+<p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/intel-cpu-reset.png" width="420px"></p>
+<p class=" font-serif my-1">CPU Reset (<a href="https://software.intel.com/en-us/articles/intel-sdm" class=" text-amber-900">Intel&#174; 64 and IA-32 Architectures Software Developer&#8217;s Manual</a>, Volume 3A/3B)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#23492;&#23384;&#22120;&#20250;&#26377;&#30830;&#23450;&#30340;&#21021;&#22987;&#29366;&#24577;<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>EIP = 0x0000fff0</code></li>
+<li class=" ml-8"><code>CR0 = 0x60000010</code><ul class=" list-disc font-serif">
+<li class=" ml-8">&#22788;&#29702;&#22120;&#22788;&#20110; 16-bit &#27169;&#24335;</li>
+</ul>
+</li>
+<li class=" ml-8"><code>EFLAGS = 0x00000002</code><ul class=" list-disc font-serif">
+<li class=" ml-8">Interrupt disabled</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class=" ml-8">TFM (5,000 &#39029;+)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#26368;&#38656;&#35201;&#30340; Volume 3A &#21482;&#26377; ~400 &#39029; (&#25105;&#20204;&#26356;&#38656;&#35201; AI)</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="cpu-reset" class=" text-xl mt-2 pb-2 font-sans">&#20854;&#20182;&#24179;&#21488;&#19978;&#30340; CPU Reset</h2>
+<p class=" font-serif my-1">Reset &#21518;&#22788;&#29702;&#22120;&#37117;&#20174;&#22266;&#23450;&#22320;&#22336; (Reset Vector) &#21551;&#21160;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">MIPS: 0xbfc00000<ul class=" list-disc font-serif">
+<li class=" ml-8">Specification &#35268;&#23450;</li>
+</ul>
+</li>
+<li class=" ml-8">ARM: 0x00000000<ul class=" list-disc font-serif">
+<li class=" ml-8">Specification &#35268;&#23450;</li>
+<li class=" ml-8">&#20801;&#35768;&#37197;&#32622; Reset Vector Base Address Register</li>
+</ul>
+</li>
+<li class=" ml-8">RISC-V: Implementation defined<ul class=" list-disc font-serif">
+<li class=" ml-8">&#32473;&#21378;&#21830;&#26368;&#22823;&#31243;&#24230;&#30340;&#33258;&#30001;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Firmware &#36127;&#36131;&#21152;&#36733;&#25805;&#20316;&#31995;&#32479;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#24320;&#21457;&#26495;&#65306;&#30452;&#25509;&#25226;&#21152;&#36733;&#22120;&#20889;&#20837; ROM</li>
+<li class=" ml-8">QEMU&#65306;<code>-kernel</code> &#21487;&#20197;&#32469;&#36807; Firmware &#30452;&#25509;&#21152;&#36733;&#20869;&#26680; (<a href="https://www.qemu.org/docs/master/system/invocation.html#hxtool-8" class=" text-amber-900">RTFM</a>)</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="x86-cpu-reset" class=" text-xl mt-2 pb-2 font-sans">x86 CPU Reset &#20043;&#21518;&#65306;&#21040;&#24213;&#25191;&#34892;&#20102;&#20160;&#20040;&#65311;</h2>
+<p class=" font-serif my-1">&#29366;&#24577;&#26426; (&#21021;&#22987;&#29366;&#24577;) &#24320;&#22987;&#25191;&#34892;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20174; PC &#21462;&#25351;&#20196;&#12289;&#35793;&#30721;&#12289;&#25191;&#34892;&#8230;&#8230;</li>
+<li class=" ml-8">&#24320;&#22987;&#25191;&#34892;&#21378;&#21830; &#8220;&#23433;&#25490;&#22909;&#8221; &#30340; Firmware &#20195;&#30721;<ul class=" list-disc font-serif">
+<li class=" ml-8">x86 Reset Vector &#26159;&#19968;&#26465;&#21521; Firmware &#36339;&#36716;&#30340; jmp &#25351;&#20196;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/bios-firmware.png" width="400px"></p>
+<p class=" font-serif my-1">Firmware: <a href="https://www.zhihu.com/question/21672895" class=" text-amber-900">BIOS vs. UEFI</a></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#19968;&#20010;&#23567; &#8220;&#25805;&#20316;&#31995;&#32479;&#8221;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#31649;&#29702;&#12289;&#37197;&#32622;&#30828;&#20214;&#65307;&#21152;&#36733;&#25805;&#20316;&#31995;&#32479;</li>
+</ul>
+</li>
+<li class=" ml-8">Legacy BIOS (Basic I/O System)<ul class=" list-disc font-serif">
+<li class=" ml-8">IBM PC &#25152;&#26377;&#35774;&#22791;/BIOS &#20013;&#26029;&#26159;&#26377; specification &#30340; (&#25104;&#23601;&#20102; &#8220;&#20860;&#23481;&#26426;&#8221;)</li>
+</ul>
+</li>
+<li class=" ml-8">UEFI (Unified Extensible Firmware Interface)</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="uefi" class=" text-xl mt-2 pb-2 font-sans">&#20026;&#20160;&#20040;&#38656;&#35201; UEFI&#65311;</h2>
+<p class=" font-serif my-1">&#20170;&#22825;&#30340; Firmware &#38754;&#20020;&#40635;&#28902;&#24471;&#22810;&#30340;&#30828;&#20214;&#65306;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25351;&#32441;&#38145;&#12289;USB &#36716;&#25509;&#22120;&#19978;&#30340; Linux-to-Go &#20248;&#30424;&#12289;&#23665;&#23528;&#32593;&#21345;&#19978;&#30340; PXE &#32593;&#32476;&#21551;&#21160;&#12289;USB &#34013;&#29273;&#36716;&#25509;&#22120;&#36830;&#25509;&#30340;&#34013;&#29273;&#38190;&#30424;&#12289;&#8230;&#8230;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#36825;&#20123;&#35774;&#22791;&#37117;&#38656;&#35201; &#8220;&#39537;&#21160;&#31243;&#24207;&#8221; &#25165;&#33021;&#35775;&#38382;</li>
+<li class=" ml-8">&#35299;&#20915; BIOS &#36880;&#28176;&#30862;&#29255;&#21270;&#30340;&#38382;&#39064;</li>
+</ul>
+</li>
+</ul>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/UEFI-booting-seq.png" width="500px"></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="legacy-bios" class=" text-xl mt-2 pb-2 font-sans">&#22238;&#21040; Legacy BIOS: &#32422;&#23450;</h2>
+<p class=" font-serif my-1">BIOS &#25552;&#20379;&#26426;&#21046;&#65292;&#23558;<red>&#31243;&#24207;&#21592;&#30340;&#20195;&#30721;</red>&#36733;&#20837;&#20869;&#23384;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Legacy BIOS &#25226;&#31532;&#19968;&#20010;&#21487;&#24341;&#23548;&#35774;&#22791;&#30340;&#31532;&#19968;&#20010; 512 &#23383;&#33410;&#21152;&#36733;&#21040;&#29289;&#29702;&#20869;&#23384;&#30340; <code>7c00</code> &#20301;&#32622;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#27492;&#26102;&#22788;&#29702;&#22120;&#22788;&#20110; 16-bit &#27169;&#24335;</li>
+<li class=" ml-8">&#35268;&#23450; <code>CS:IP = 0x7c00</code>, <code>(R[CS] &lt;&lt; 4) | R[IP] == 0x7c00</code><ul class=" list-disc font-serif">
+<li class=" ml-8">&#21487;&#33021;&#24615;1&#65306;<code>CS = 0x07c0, IP = 0</code></li>
+<li class=" ml-8">&#21487;&#33021;&#24615;2&#65306;<code>CS = 0, IP = 0x7c00</code></li>
+</ul>
+</li>
+<li class=" ml-8">&#20854;&#20182;&#27809;&#26377;&#20219;&#20309;&#32422;&#26463;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#34429;&#28982;&#26368;&#22810;&#21482;&#26377; 446 &#23383;&#33410;&#20195;&#30721; (64B &#20998;&#21306;&#34920; + 2B &#26631;&#35782;)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20294;&#25511;&#21046;&#26435;&#24050;&#32463;&#22238;&#21040;&#31243;&#24207;&#21592;&#25163;&#20013;&#20102;&#65281;</li>
+<li class=" ml-8">&#20320;&#29978;&#33267;&#21487;&#20197;&#35753; ChatGPT &#32473;&#20320;&#20889;&#19968;&#20010; Hello World<ul class=" list-disc font-serif">
+<li class=" ml-8">&#24403;&#28982;&#65292;&#20182;&#26159;&#25220;&#20316;&#19994;&#30340; (&#32780;&#19988;&#26159;&#26377;&#20123;&#23567;&#38382;&#39064;&#30340;)</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#33021;&#19981;&#33021;&#30475;&#19968;&#19979;&#20195;&#30721;&#65311;</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">Talk is cheap. Show me the code. 
+&#8212;&#8212;Linus Torvalds</p>
+</blockquote>
+<p class=" font-serif my-1">&#26377;&#27809;&#26377;&#21487;&#33021;&#25105;&#20204;&#30495;&#30340;&#21435;&#30475;&#20174; CPU Reset &#20197;&#21518;&#27599;&#19968;&#26465;&#25351;&#20196;&#30340;&#25191;&#34892;&#65311;</p></div>
+        
+      
+         <div class="fragment"> 
+        <div><hr>
+<p class=" font-serif my-1"><red>&#35745;&#31639;&#26426;&#31995;&#32479;&#20844;&#29702;&#65306;&#20320;&#24819;&#21040;&#30340;&#23601;&#19968;&#23450;&#26377;&#20154;&#20570;&#21040;</red></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#27169;&#25311;&#26041;&#26696;&#65306;QEMU<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20256;&#22855;&#40657;&#23458;&#12289;&#22825;&#25165;&#31243;&#24207;&#21592; <a href="https://www.zhihu.com/question/28388113" class=" text-amber-900">Fabrice Bellard</a> &#30340;&#26480;&#20316;<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="https://www.usenix.org/legacy/publications/library/proceedings/usenix05/tech/freenix/full_papers/bellard/bellard.pdf" class=" text-amber-900">QEMU, A fast and portable dynamic translator</a> (USENIX ATC'05)</li>
+<li class=" ml-8">Android Virtual Device, VirtualBox, ... &#32972;&#21518;&#37117;&#26159; QEMU</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class=" ml-8">&#30495;&#26426;&#26041;&#26696;&#65306;JTAG (Joint Test Action Group) debugger<ul class=" list-disc font-serif">
+<li class=" ml-8">&#19968;&#31995;&#21015; (&#29289;&#29702;) &#35843;&#35797;&#23492;&#23384;&#22120;&#65292;&#21487;&#20197;&#23454;&#29616; gdb &#25509;&#21475; (!!!)</li>
+</ul>
+</li>
+</ul></div>
+         </div> 
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="uefi" class=" text-xl mt-2 pb-2 font-sans">&#65039;&#127798;&#65039; UEFI &#19978;&#30340;&#25805;&#20316;&#31995;&#32479;&#21152;&#36733;</h2>
+<p class=" font-serif my-1">&#26631;&#20934;&#21270;&#30340;&#21152;&#36733;&#27969;&#31243;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#30913;&#30424;&#24517;&#39035;&#25353; GPT (GUID Partition Table) &#26041;&#24335;&#26684;&#24335;&#21270;</li>
+<li class=" ml-8">&#39044;&#30041;&#19968;&#20010; FAT32 &#20998;&#21306; (lsblk/fdisk &#21487;&#20197;&#30475;&#21040;)</li>
+<li class=" ml-8">Firmware &#33021;&#22815;&#21152;&#36733;&#20219;&#24847;&#22823;&#23567;&#30340; PE &#21487;&#25191;&#34892;&#25991;&#20214; <code>.efi</code><ul class=" list-disc font-serif">
+<li class=" ml-8">&#27809;&#26377; legacy boot 512 &#23383;&#33410;&#38480;&#21046;</li>
+<li class=" ml-8">EFI &#24212;&#29992;&#21487;&#20197;&#36820;&#22238; firmware</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#26356;&#22909;&#30340;&#31243;&#24207;&#25903;&#25345;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#35774;&#22791;&#39537;&#21160;&#26694;&#26550;</li>
+<li class=" ml-8">&#26356;&#22810;&#30340;&#21151;&#33021;&#65292;&#20363;&#22914; Secure Boot&#65292;&#21482;&#33021;&#21551;&#21160; &#8220;&#20449;&#20219;&#8221; &#30340;&#25805;&#20316;&#31995;&#32479;</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="hacking-firmware-1998" class=" text-xl mt-2 pb-2 font-sans">&#23567;&#25554;&#26354;&#65306;Hacking Firmware (1998)</h2>
+<p class=" font-serif my-1">Firmware &#36890;&#24120;&#26159;&#21482;&#35835;&#30340; (&#24403;&#28982;&#8230;&#8230;)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Intel 430TX (Pentium) &#33455;&#29255;&#32452;&#20801;&#35768;<red>&#20889;&#20837; Flash ROM</red><ul class=" list-disc font-serif">
+<li class=" ml-8">&#21482;&#35201;&#21521; Flash BIOS &#20889;&#20837;&#29305;&#23450;&#24207;&#21015;&#65292;Flash ROM &#23601;&#21464;&#20026;&#21487;&#20889;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#30041;&#32473; Firmware &#26356;&#26032;&#30340;&#36890;&#36947;</li>
+</ul>
+</li>
+<li class=" ml-8">&#35201;&#24471;&#21040;&#36825;&#20010;&#24207;&#21015;&#20854;&#23454;&#24182;&#19981;&#22256;&#38590;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20284;&#20046;&#25991;&#26723;&#37324;&#23601;&#26377; &#129300; Boom&#8230;&#8230;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">CIH &#30149;&#27602;&#30340;&#20316;&#32773;&#38472;&#30408;&#35946;&#34987;&#36910;&#25429;&#65292;&#20294;&#24182;&#26410;&#34987;&#23450;&#32618;</p>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/cih-virus.gif" width="480px"></p></div>
+        
+      
+      </section>
+    
+    </section>
+  
+</div>
+</div>
+
+<script src="../../../static/reveal/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    
+    width: 1024, height: 768,
+    
+    slideNumber: 'c/t',
+    controlsTutorial: false,
+    progress: false,
+    hash: true,
+    center: false,
+    autoAnimateUnmatched: true,
+    autoAnimateEasing: 'ease-out',
+    autoAnimateDuration: 0.3,
+    transitionSpeed: 'fast'
+  });
+</script>
+
+
+</body>
+
+</html>

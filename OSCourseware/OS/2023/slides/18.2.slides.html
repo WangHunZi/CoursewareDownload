@@ -1,0 +1,401 @@
+<!DOCTYPE html><html class="h-100">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="../../../static/css/base.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
+
+  <style>
+    .font-sans {
+      font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+    }
+    .font-serif {
+      font-family: 'Source Serif Pro', 'Songti SC', 'SimSun', 'Serif', serif;
+    }
+  </style>
+  <link rel="stylesheet" href="../../../static/katex/katex.min.css">
+  <script defer src="../../../static/katex/katex.min.js"></script>
+  <script defer src="../../../static/katex/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+            // customised options
+            // &#8226; auto-render specific keys, e.g.:
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ],
+            // &#8226; rendering keys, e.g.:
+            throwOnError : false
+          });
+      });
+  </script>
+
+
+  
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="../../../static/reveal/reveal.css">
+<link rel="stylesheet" href="../../../static/reveal/theme/simple.css" id="theme">
+
+<style>
+.reveal .slide-number {
+  font-size: 26px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, .3);
+}
+
+.reveal .full-screen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.reveal .slides {
+  border: 1.5px #ddd solid;
+  border-radius: 7px;
+  text-align: left;
+  font-weight: 300;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  font-family: 'Lato', 'SimHei', 'STXihei', 'Droid Sans';
+  font-weight: 400;
+}
+
+.reveal p, .reveal li, .reveal center {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Droid Sans';
+}
+
+.reveal li + li {
+  margin-top: 10px;
+}
+
+.reveal ul {
+  display: block;
+  margin-right: 15px;
+}
+
+.reveal p, .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5 {
+  padding:  0 25px 0 25px;
+}
+
+.reveal table {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Sans Serif';
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.reveal th {
+  background-color: #eee;
+}
+
+.reveal tr:nth-child(even) {
+  background-color: #efffff;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  text-align: left;
+  margin: 0 0 20px 0;
+ color: #222; 
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
+
+
+.reveal h1 {
+  margin: 0 10 0 10;
+  font-size: 60px;
+}
+.reveal .middle h1 {
+  text-align: center;
+}
+
+.reveal h2 {
+  font-size: 48px;
+  border-bottom: 2px solid rgb(106, 0, 95);
+  padding-bottom: 5px;
+}
+.reveal h3 { font-size: 1.15em; }
+.reveal h4 { font-size: 1.05em; }
+
+.reveal .center {
+  text-align: center;
+}
+
+.reveal .middle {
+  height: 728px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.reveal pre {
+  font-size: 28px;
+ 
+  background-color: #eee;
+
+  border-radius: 3mm;
+  padding: 10px 10px 10px 10px;
+}
+
+.reveal pre code {
+  max-height: none;
+}
+
+.reveal code {
+  font-family: 'Inconsolata', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif', Monospace;
+}
+
+.reveal .middle blockquote {
+  text-align: center;
+  color: rgb(106, 0, 95);
+  background: none;
+  box-shadow: none;
+}
+
+.reveal .middle blockquote a {
+  color: inherit;
+}
+
+.reveal blockquote p, .reveal blockquote li {
+  font-family: 'Lato', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif';
+}
+
+section .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reveal .author-block {
+  margin: 75px 0 35px 0;
+}
+.reveal .author-affiliation img {
+  margin: 15px 0 0 0;
+}
+.reveal .author-block p, .reveal .author-affiliation p  {
+  font-family: 'Kaiti', 'STKaiti', 'Serif', 'Times', 'Times New Roman';
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+.reveal .author-affiliation {
+  display: inline-block;
+  font-size: 90%;
+}
+.reveal hr {
+  border: 10px solid rgba(0, 0, 0, 0);
+}
+.reveal li {
+  margin-top: 10px;
+}
+</style>
+
+  <title>&#20195;&#30721;&#39118;&#26684;&#19982;&#32500;&#25252;</title>
+</head>
+
+<body class="d-flex flex-column h-100">
+  
+  
+
+<div class="reveal">
+<div class="slides">
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="18.2.slides.html" class=" text-amber-900">&#29992;&#22909;&#24037;&#20855;</a></h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="info-inferiors-pmap" class=" text-xl mt-2 pb-2 font-sans">&#22238;&#21040;&#31528;&#25305;&#30340; info inferiors &#21644; pmap</h2>
+<p class=" font-serif my-1">&#20320;&#20204;&#19968;&#23450;&#19981;&#20250;&#24895;&#24847;&#29992;&#30340;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#23601;&#20687;&#20320;&#19981;&#24076;&#26395;&#29992;&#27719;&#32534;&#20889;&#20195;&#30721;<ul class=" list-disc font-serif">
+<li class=" ml-8">AskGPT: Can I print process memory maps inside gdb? </li>
+<li class=" ml-8">AskGPT: Can I visualize a process-internal data structure in gdb?<ul class=" list-disc font-serif">
+<li class=" ml-8">(GPT &#27809;&#32473;&#25105; &#8220;&#24778;&#21916;&#8221;&#65292;&#20294;&#25105;&#27809;&#26377;&#20182;&#37027;&#20040;&#22909;&#30340;&#35760;&#24518;&#35835;&#21462;&#33021;&#21147;)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class=" ml-8">&#26381;&#27668;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25105;&#21313;&#22810;&#24180; RTFM &#31215;&#32047;&#30340;&#32463;&#39564;&#65292;&#22312; AI &#38754;&#21069;&#19968;&#25991;&#19981;&#20540;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#35745;&#31639;&#26426;&#31995;&#32479;&#20844;&#29702;</h2>
+<ol class=" list-decimal font-serif">
+<li class=" ml-8">&#26426;&#22120;&#27704;&#36828;&#26159;&#23545;&#30340;<ul class=" list-disc font-serif">
+<li class=" ml-8">(ICS PA/OS Labs: &#24597;&#26159;&#19981;&#29992;&#22810;&#35828;&#20102;)</li>
+</ul>
+</li>
+<li class=" ml-8">&#26410;&#27979;&#20195;&#30721;&#27704;&#36828;&#26159;&#38169;&#30340;<ul class=" list-disc font-serif">
+<li class=" ml-8">(ICS PA/OS Labs: &#24597;&#26159;&#19981;&#29992;&#22810;&#35828;&#20102;)</li>
+</ul>
+</li>
+<li class=" ml-8"><red>&#35753;&#20320;&#24863;&#21040;&#19981;&#36866;&#30340; tedious &#24037;&#20316;&#65292;&#19968;&#23450;&#26377;&#21150;&#27861;&#25552;&#39640;&#25928;&#29575;</red><ul class=" list-disc font-serif">
+<li class=" ml-8">&#25512;&#35770;&#65306;&#25105;&#20204;&#24212;&#35813;&#20998;&#36776;&#20986;&#20160;&#20040;&#24037;&#20316;&#26159; tedious &#30340;</li>
+</ul>
+</li>
+</ol>
+<hr>
+<p class=" font-serif my-1">&#8220;&#19977;&#30465;&#21566;&#36523;&#65306;&#28378;&#21435;&#32534;&#31243;&#20102;&#21527;&#65311;&#20889;&#27979;&#35797;&#29992;&#20363;&#20102;&#21527;&#65311;&#22238;&#30475;&#33258;&#24049;&#30340;&#24037;&#20316;&#27969;&#31243;&#20102;&#21527;&#65311;&#8221;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">AI &#26500;&#24314;&#23398;&#20064;&#38454;&#26799;</li>
+<li class=" ml-8">&#22312;&#26041;&#26041;&#38754;&#38754;&#24378;&#36843;&#25105;&#20204;&#19977;&#30465;&#21566;&#36523;</li>
+<li class=" ml-8">&#20154;&#31867;&#25991;&#26126;&#36827;&#20837;&#26032;&#32426;&#20803;</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26356;&#36827;&#19968;&#27493;&#65306;&#36830;&#25509;&#20004;&#20010;&#19990;&#30028;</h2>
+<p class=" font-serif my-1">&#31243;&#24207; = &#35745;&#31639;&#26426;&#31995;&#32479; = &#29366;&#24577;&#26426;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#35843;&#35797;&#22120;&#30340;&#26412;&#36136;&#26159; &#8220;&#26816;&#26597;&#29366;&#24577;&#8221;</li>
+<li class=" ml-8">&#25105;&#20204;&#33021;&#19981;&#33021;&#29992;&#33258;&#24049;&#24819;&#35201;&#30340;&#26041;&#24335;&#21435;&#26816;&#26597;&#29366;&#24577;&#65311;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20363;&#22914;&#65292;&#20687; model checker &#37027;&#26679;&#25226;&#19968;&#20010;&#38142;&#34920;&#32472;&#21046;&#20986;&#26469;&#65311;</li>
+</ul>
+</li>
+<li class=" ml-8">AskGPT: How to use Python to parse and check/visualize C/C++ program state in GDB?<ul class=" list-disc font-serif">
+<li class=" ml-8">GPT-4 &#29978;&#33267;&#32473;&#20986;&#20102;&#27491;&#30830;&#30340;<a href="https://sourceware.org/gdb/onlinedocs/gdb/Python-API.html" class=" text-amber-900">&#25991;&#26723; URL</a></li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#28982;&#21518;&#25105;&#20204;&#23601;&#21487;&#20197;&#20570;&#20219;&#20309;&#20107;&#20102;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="https://sourceware.org/gdb/onlinedocs/gdb/TUI-Windows-In-Python.html#TUI-Windows-In-Python" class=" text-amber-900">TUI Window API</a></li>
+<li class=" ml-8">&#29978;&#33267;&#65292;&#25105;&#20204;&#21487;&#20197;&#20570;&#21478;&#19968;&#20010; debugging front-end<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="https://www.gdbgui.com" class=" text-amber-900">gdbgui</a></li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#35843;&#35797;&#22256;&#38590;&#30340;&#26681;&#26412;&#21407;&#22240;</h2>
+<p class=" font-serif my-1">&#25105;&#20204;&#21482;&#33021;&#26816;&#26597;&#19968;&#20010;&#30636;&#38388;&#30340;&#29366;&#24577;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Reverse debugging &#30340;&#25104;&#26412;&#36824;&#26159;&#22826;&#39640;&#20102;</li>
+<li class=" ml-8">&#32780;&#19988; time-travel &#20063;&#24456;&#38590;&#25805;&#20316;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22914;&#26524;&#25105;&#20204;&#33021;&#31934;&#31616;&#29366;&#24577;&#23601;&#22909;&#20102;&#65281;</li>
+<li class=" ml-8">&#31934;&#31616;&#29366;&#24577;&#19981;&#23601;&#34892;&#20102;&#21527;&#8230;&#8230;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#33258;&#24049;&#21160;&#25163;&#20570;&#24037;&#20855;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#35843;&#35797; thread-os</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25105;&#20204;&#38656;&#35201;&#30340;&#65306;&#24819;&#35937;&#21147;</h2>
+<p class=" font-serif my-1">The UNIX Philosophy</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Keep it simple, stupid</li>
+<li class=" ml-8">&#25226; gdb &#29366;&#24577;&#23548;&#20986; serialize &#21040;&#25991;&#20214;/&#31649;&#36947;&#20013;</li>
+<li class=" ml-8">&#30001;&#21478;&#19968;&#20010;&#31243;&#24207;&#36127;&#36131;&#22788;&#29702;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#23601;&#20687;&#25105;&#20204;&#30340; interactive state space explorer</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">assertions &#20063;&#19981;&#19968;&#23450;&#35201;&#20889;&#22312; C &#20195;&#30721;&#37324;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#23548;&#20986;&#30340;&#29366;&#24577;&#21487;&#20197;&#20570;&#20219;&#20309; trace analysis</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+  
+</div>
+</div>
+
+<script src="../../../static/reveal/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    
+    width: 1024, height: 768,
+    
+    slideNumber: 'c/t',
+    controlsTutorial: false,
+    progress: false,
+    hash: true,
+    center: false,
+    autoAnimateUnmatched: true,
+    autoAnimateEasing: 'ease-out',
+    autoAnimateDuration: 0.3,
+    transitionSpeed: 'fast'
+  });
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,379 @@
+<!DOCTYPE html><html class="h-100">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="../../../static/css/base.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
+
+  <style>
+    .font-sans {
+      font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+    }
+    .font-serif {
+      font-family: 'Source Serif Pro', 'Songti SC', 'SimSun', 'Serif', serif;
+    }
+  </style>
+  <link rel="stylesheet" href="../../../static/katex/katex.min.css">
+  <script defer src="../../../static/katex/katex.min.js"></script>
+  <script defer src="../../../static/katex/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+            // customised options
+            // &#8226; auto-render specific keys, e.g.:
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ],
+            // &#8226; rendering keys, e.g.:
+            throwOnError : false
+          });
+      });
+  </script>
+
+
+  
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="../../../static/reveal/reveal.css">
+<link rel="stylesheet" href="../../../static/reveal/theme/simple.css" id="theme">
+
+<style>
+.reveal .slide-number {
+  font-size: 26px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, .3);
+}
+
+.reveal .full-screen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.reveal .slides {
+  border: 1.5px #ddd solid;
+  border-radius: 7px;
+  text-align: left;
+  font-weight: 300;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  font-family: 'Lato', 'SimHei', 'STXihei', 'Droid Sans';
+  font-weight: 400;
+}
+
+.reveal p, .reveal li, .reveal center {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Droid Sans';
+}
+
+.reveal li + li {
+  margin-top: 10px;
+}
+
+.reveal ul {
+  display: block;
+  margin-right: 15px;
+}
+
+.reveal p, .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5 {
+  padding:  0 25px 0 25px;
+}
+
+.reveal table {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Sans Serif';
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.reveal th {
+  background-color: #eee;
+}
+
+.reveal tr:nth-child(even) {
+  background-color: #efffff;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  text-align: left;
+  margin: 0 0 20px 0;
+ color: #222; 
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
+
+
+.reveal h1 {
+  margin: 0 10 0 10;
+  font-size: 60px;
+}
+.reveal .middle h1 {
+  text-align: center;
+}
+
+.reveal h2 {
+  font-size: 48px;
+  border-bottom: 2px solid rgb(106, 0, 95);
+  padding-bottom: 5px;
+}
+.reveal h3 { font-size: 1.15em; }
+.reveal h4 { font-size: 1.05em; }
+
+.reveal .center {
+  text-align: center;
+}
+
+.reveal .middle {
+  height: 728px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.reveal pre {
+  font-size: 28px;
+ 
+  background-color: #eee;
+
+  border-radius: 3mm;
+  padding: 10px 10px 10px 10px;
+}
+
+.reveal pre code {
+  max-height: none;
+}
+
+.reveal code {
+  font-family: 'Inconsolata', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif', Monospace;
+}
+
+.reveal .middle blockquote {
+  text-align: center;
+  color: rgb(106, 0, 95);
+  background: none;
+  box-shadow: none;
+}
+
+.reveal .middle blockquote a {
+  color: inherit;
+}
+
+.reveal blockquote p, .reveal blockquote li {
+  font-family: 'Lato', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif';
+}
+
+section .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reveal .author-block {
+  margin: 75px 0 35px 0;
+}
+.reveal .author-affiliation img {
+  margin: 15px 0 0 0;
+}
+.reveal .author-block p, .reveal .author-affiliation p  {
+  font-family: 'Kaiti', 'STKaiti', 'Serif', 'Times', 'Times New Roman';
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+.reveal .author-affiliation {
+  display: inline-block;
+  font-size: 90%;
+}
+.reveal hr {
+  border: 10px solid rgba(0, 0, 0, 0);
+}
+.reveal li {
+  margin-top: 10px;
+}
+</style>
+
+  <title>&#21407;&#23376;&#24615;&#21644;&#39034;&#24207;&#36829;&#21453;</title>
+</head>
+
+<body class="d-flex flex-column h-100">
+  
+  
+
+<div class="reveal">
+<div class="slides">
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="12.4.slides.html" class=" text-amber-900">&#21407;&#23376;&#24615;&#21644;&#39034;&#24207;&#36829;&#21453;</a></h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#24182;&#21457;&#32534;&#31243;&#30340;&#26412;&#36136;</h2>
+<p class=" font-serif my-1">&#20154;&#31867;&#26159; sequential creature</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25105;&#20204;&#21482;&#33021;&#29992; sequential &#30340;&#26041;&#24335;&#26469;&#29702;&#35299;&#24182;&#21457;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#31243;&#24207;&#20998;&#25104;&#33509;&#24178; &#8220;&#22359;&#8221;&#65292;&#27599;&#19968;&#22359;&#30475;&#36215;&#26469;&#37117;&#27809;&#34987;&#25171;&#26029; (&#21407;&#23376;)</li>
+<li class=" ml-8">&#20855;&#26377;&#36923;&#36753;&#20808;&#21518;&#30340; &#8220;&#22359;&#8221; &#34987;&#27491;&#30830;&#21516;&#27493;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20363;&#23376;&#65306;produce &#8594; (happens-before) &#8594; consume</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#24182;&#21457;&#25511;&#21046;&#30340;&#26426;&#21046;&#23436;&#20840;&#26159; &#8220;&#21518;&#26524;&#33258;&#36127;&#8221; &#30340;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20114;&#26021;&#38145; (lock/unlock) &#23454;&#29616;&#21407;&#23376;&#24615;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#24536;&#35760;&#19978;&#38145;&#8212;&#8212;&#21407;&#23376;&#24615;&#36829;&#21453; (Atomicity Violation, AV)</li>
+</ul>
+</li>
+<li class=" ml-8">&#26465;&#20214;&#21464;&#37327;/&#20449;&#21495;&#37327; (wait/signal) &#23454;&#29616;&#20808;&#21518;&#39034;&#24207;&#21516;&#27493;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#24536;&#35760;&#21516;&#27493;&#8212;&#8212;&#39034;&#24207;&#36829;&#21453; (Order Violation, OV)</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#37027;&#20040;&#65292;&#31243;&#24207;&#21592;&#29992;&#30340;&#23545;&#19981;&#23545;&#21602;&#65311;</h2>
+<p class=" font-serif my-1">&#8220;Empirical study&#8221; &#23454;&#35777;&#30740;&#31350;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25910;&#38598;&#20102; 105 &#20010;&#30495;&#23454;&#31995;&#32479;&#30340;&#24182;&#21457; bugs<ul class=" list-disc font-serif">
+<li class=" ml-8">MySQL (14/9), Apache (13/4), Mozilla (41/16), OpenOffice (6/2)</li>
+<li class=" ml-8">&#35266;&#23519;&#26159;&#21542;&#23384;&#22312;&#26377;&#24847;&#20041;&#30340;&#32467;&#35770;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1"><red>97% &#30340;&#38750;&#27515;&#38145;&#24182;&#21457; bug &#37117;&#26159;&#21407;&#23376;&#24615;&#25110;&#39034;&#24207;&#38169;&#35823;</red></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#8220;&#20154;&#31867;&#30340;&#30830;&#26159; sequential creature&#8221;</li>
+<li class=" ml-8"><a href="https://dl.acm.org/doi/10.1145/1346281.1346323" class=" text-amber-900">Learning from mistakes - A comprehensive study on real world concurrency bug characteristics</a> (ASPLOS'08, Most Influential Paper Award)</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="av" class=" text-xl mt-2 pb-2 font-sans">&#21407;&#23376;&#24615;&#36829;&#21453; (AV)</h2>
+<p class=" font-serif my-1">&#8220;ABA&#8221;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25105;&#20197;&#20026;&#19968;&#27573;&#20195;&#30721;&#27809;&#21861;&#20107;&#21602;&#65292;&#20294;&#34987;&#20154;&#24378;&#21183;&#25554;&#20837;&#20102;</li>
+<li class=" ml-8">&#21363;&#20415;&#20998;&#21035;&#19978;&#38145; (&#28040;&#38500;&#25968;&#25454;&#31454;&#20105;)&#65292;&#20381;&#28982;&#26159; AV<ul class=" list-disc font-serif">
+<li class=" ml-8">Diablo I &#37324;&#22797;&#21046;&#29289;&#21697;&#30340;&#20363;&#23376;</li>
+<li class=" ml-8">Therac-25 &#20013; &#8220;&#31227;&#21160; Mirror + &#35774;&#32622;&#29366;&#24577;&#8221;</li>
+</ul>
+</li>
+</ul>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/av-bug.png" width="900px"></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">&#21407;&#23376;&#24615;&#36829;&#21453; (cont'd)</h2>
+<p class=" font-serif my-1">&#25805;&#20316;&#31995;&#32479;&#20013;&#36824;&#26377;&#26356;&#22810;&#30340;&#20849;&#20139;&#29366;&#24577;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#8220;TOCTTOU&#8221; - time of check to time of use</li>
+</ul>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/tocttou.png" width="640px"></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="https://www.usenix.org/legacy/events/fast05/tech/full_papers/wei/wei.pdf" class=" text-amber-900">TOCTTOU vulnerabilities in UNIX-style file systems: An anatomical study</a> (FAST'05); &#25105;&#20204;&#21487;&#20197;&#29992;&#36827;&#31243;&#27169;&#22411;&#22797;&#29616;&#36825;&#20010;&#38382;&#39064;&#65281;</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="ov" class=" text-xl mt-2 pb-2 font-sans">&#39034;&#24207;&#36829;&#21453; (OV)</h2>
+<p class=" font-serif my-1">&#8220;BA&#8221;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#24590;&#20040;&#23601;&#27809;&#25353;&#25105;&#39044;&#24819;&#30340;&#39034;&#24207;&#26469;&#21602;&#65311;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20363;&#23376;&#65306;concurrent use after free  </li>
+</ul>
+</li>
+</ul>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/ov-bug.png" width="900px"></p></div>
+        
+      
+      </section>
+    
+    </section>
+  
+</div>
+</div>
+
+<script src="../../../static/reveal/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    
+    width: 1024, height: 768,
+    
+    slideNumber: 'c/t',
+    controlsTutorial: false,
+    progress: false,
+    hash: true,
+    center: false,
+    autoAnimateUnmatched: true,
+    autoAnimateEasing: 'ease-out',
+    autoAnimateDuration: 0.3,
+    transitionSpeed: 'fast'
+  });
+</script>
+
+
+</body>
+
+</html>

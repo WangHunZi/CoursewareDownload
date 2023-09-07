@@ -1,0 +1,374 @@
+<!DOCTYPE html><html class="h-100">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="../../../static/css/base.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
+
+  <style>
+    .font-sans {
+      font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+    }
+    .font-serif {
+      font-family: 'Source Serif Pro', 'Songti SC', 'SimSun', 'Serif', serif;
+    }
+  </style>
+  <link rel="stylesheet" href="../../../static/katex/katex.min.css">
+  <script defer src="../../../static/katex/katex.min.js"></script>
+  <script defer src="../../../static/katex/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+            // customised options
+            // &#8226; auto-render specific keys, e.g.:
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ],
+            // &#8226; rendering keys, e.g.:
+            throwOnError : false
+          });
+      });
+  </script>
+
+
+  
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="../../../static/reveal/reveal.css">
+<link rel="stylesheet" href="../../../static/reveal/theme/simple.css" id="theme">
+
+<style>
+.reveal .slide-number {
+  font-size: 26px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, .3);
+}
+
+.reveal .full-screen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.reveal .slides {
+  border: 1.5px #ddd solid;
+  border-radius: 7px;
+  text-align: left;
+  font-weight: 300;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  font-family: 'Lato', 'SimHei', 'STXihei', 'Droid Sans';
+  font-weight: 400;
+}
+
+.reveal p, .reveal li, .reveal center {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Droid Sans';
+}
+
+.reveal li + li {
+  margin-top: 10px;
+}
+
+.reveal ul {
+  display: block;
+  margin-right: 15px;
+}
+
+.reveal p, .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5 {
+  padding:  0 25px 0 25px;
+}
+
+.reveal table {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Sans Serif';
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.reveal th {
+  background-color: #eee;
+}
+
+.reveal tr:nth-child(even) {
+  background-color: #efffff;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  text-align: left;
+  margin: 0 0 20px 0;
+ color: #222; 
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
+
+
+.reveal h1 {
+  margin: 0 10 0 10;
+  font-size: 60px;
+}
+.reveal .middle h1 {
+  text-align: center;
+}
+
+.reveal h2 {
+  font-size: 48px;
+  border-bottom: 2px solid rgb(106, 0, 95);
+  padding-bottom: 5px;
+}
+.reveal h3 { font-size: 1.15em; }
+.reveal h4 { font-size: 1.05em; }
+
+.reveal .center {
+  text-align: center;
+}
+
+.reveal .middle {
+  height: 728px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.reveal pre {
+  font-size: 28px;
+ 
+  background-color: #eee;
+
+  border-radius: 3mm;
+  padding: 10px 10px 10px 10px;
+}
+
+.reveal pre code {
+  max-height: none;
+}
+
+.reveal code {
+  font-family: 'Inconsolata', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif', Monospace;
+}
+
+.reveal .middle blockquote {
+  text-align: center;
+  color: rgb(106, 0, 95);
+  background: none;
+  box-shadow: none;
+}
+
+.reveal .middle blockquote a {
+  color: inherit;
+}
+
+.reveal blockquote p, .reveal blockquote li {
+  font-family: 'Lato', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif';
+}
+
+section .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reveal .author-block {
+  margin: 75px 0 35px 0;
+}
+.reveal .author-affiliation img {
+  margin: 15px 0 0 0;
+}
+.reveal .author-block p, .reveal .author-affiliation p  {
+  font-family: 'Kaiti', 'STKaiti', 'Serif', 'Times', 'Times New Roman';
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+.reveal .author-affiliation {
+  display: inline-block;
+  font-size: 90%;
+}
+.reveal hr {
+  border: 10px solid rgba(0, 0, 0, 0);
+}
+.reveal li {
+  margin-top: 10px;
+}
+</style>
+
+  <title>&#25805;&#20316;&#31995;&#32479;&#23545;&#35937;&#30340;&#23553;&#35013;</title>
+</head>
+
+<body class="d-flex flex-column h-100">
+  
+  
+
+<div class="reveal">
+<div class="slides">
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="20.3.slides.html" class=" text-amber-900">&#25805;&#20316;&#31995;&#32479;&#23545;&#35937;&#19982;&#29615;&#22659;</a></h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="stdioh" class=" text-xl mt-2 pb-2 font-sans"><a href="https://www.cplusplus.com/reference/cstdio/" class=" text-amber-900">stdio.h</a>: &#20320;&#29087;&#24713;&#30340;&#21619;&#36947;</h2>
+<p class=" font-serif my-1"><code>FILE *</code> &#32972;&#21518;&#20854;&#23454;&#26159;&#19968;&#20010;&#25991;&#20214;&#25551;&#36848;&#31526;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25105;&#20204;&#21487;&#20197;&#29992; gdb &#26597;&#30475;&#20855;&#20307;&#30340; <code>FILE *</code><ul class=" list-disc font-serif">
+<li class=" ml-8">&#20363;&#22914; stdout</li>
+</ul>
+</li>
+<li class=" ml-8">&#23553;&#35013;&#20102;&#25991;&#20214;&#25551;&#36848;&#31526;&#19978;&#30340;&#31995;&#32479;&#35843;&#29992; (fseek, fgetpos, ftell, feof, ...)</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">vprintf &#31995;&#21015;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20351;&#29992;&#20102; <code>stdarg.h</code> &#30340;&#21442;&#25968;&#21015;&#34920;</li>
+</ul>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">vfprintf</span><span class="p">(</span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">stream</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">format</span><span class="p">,</span><span class="w"> </span><span class="kt">va_list</span><span class="w"> </span><span class="n">ap</span><span class="p">);</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">vasprintf</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">ret</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">format</span><span class="p">,</span><span class="w"> </span><span class="kt">va_list</span><span class="w"> </span><span class="n">ap</span><span class="p">);</span>
+</code></pre></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="popen-pclose" class=" text-xl mt-2 pb-2 font-sans">popen &#21644; pclose</h2>
+<p class=" font-serif my-1">&#25105;&#20204;&#22312;&#28216;&#25103;&#20462;&#25913;&#22120;&#20013;&#20351;&#29992;&#20102;&#23427;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#19968;&#20010;&#35774;&#35745;&#26377;&#32570;&#38519;&#30340; API<ul class=" list-disc font-serif">
+<li class=" ml-8">Since a pipe is by definition unidirectional, the type argument may specify only reading or writing, <em>not both</em>; the resulting stream is correspondingly read-only or write-only.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#39640;&#24773;&#21830; API (&#29616;&#20195;&#32534;&#31243;&#35821;&#35328;)</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">subprocess</span><span class="o">.</span><span class="n">check_output</span><span class="p">([</span><span class="s1">'cat'</span><span class="p">],</span>
+  <span class="nb">input</span><span class="o">=</span><span class="sa">b</span><span class="s1">'Hello World'</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">STDOUT</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kd">let</span><span class="w"> </span><span class="n">dir_checksum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Exec</span>::<span class="n">shell</span><span class="p">(</span><span class="s">"find . -type f"</span><span class="p">)</span>
+<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">Exec</span>::<span class="n">cmd</span><span class="p">(</span><span class="s">"sort"</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Exec</span>::<span class="n">cmd</span><span class="p">(</span><span class="s">"sha1sum"</span><span class="p">)</span>
+<span class="p">}.</span><span class="n">capture</span><span class="p">()</span><span class="o">?</span><span class="p">.</span><span class="n">stdout_str</span><span class="p">();</span>
+</code></pre></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="err-error-perror" class=" text-xl mt-2 pb-2 font-sans">err, error, perror</h2>
+<p class=" font-serif my-1">&#25152;&#26377; API &#37117;&#21487;&#33021;&#22833;&#36133;</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>$ gcc nonexist.c
+gcc: error: nonexist.c: No such file or directory
+</code></pre></div>
+
+<hr>
+<p class=" font-serif my-1">&#36825;&#20010; &#8220;No such file or directory&#8221; &#20284;&#20046;&#35265;&#24471;&#26377;&#28857;&#22810;&#65311;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>cat nonexist.c, wc nonexist.c</code> &#37117;&#26159;&#21516;&#26679;&#30340; error message</li>
+<li class=" ml-8">&#36825;&#19981;&#26159;&#24039;&#21512;&#65281;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25105;&#20204;&#20063;&#21487;&#20197; &#8220;&#23665;&#23528;&#8221; &#20986;&#21516;&#26679;&#30340;&#25928;&#26524;</li>
+<li class=" ml-8"><code>warn("%s", fname);</code> (&#35266;&#23519; strace)<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>err</code> &#21487;&#20197;&#39069;&#22806;&#36864;&#20986;&#31243;&#24207;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class=" ml-8">errno &#26159;&#36827;&#31243;&#20849;&#20139;&#36824;&#26159;&#32447;&#31243;&#29420;&#20139;&#65311;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#36825;&#19979;&#30693;&#36947;&#21327;&#31243;&#30340;&#36731;&#37327;&#20102;&#21543;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="environ-7" class=" text-xl mt-2 pb-2 font-sans">environ (7)</h2>
+<p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/GET.jpg" width="400px"></p>
+<p class=" font-serif my-1">&#25105;&#20204;&#20063;&#21487;&#20197;&#23454;&#29616;&#33258;&#24049;&#30340; env.c</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#38382;&#39064;&#26469;&#20102;&#65306;environ &#26159;&#35841;&#36171;&#20540;&#30340;&#65311;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#26159;&#26102;&#20505;&#35831;&#20986;&#25105;&#20204;&#30340;&#32769;&#26379;&#21451; watch point &#20102;</li>
+</ul>
+</li>
+<li class=" ml-8">RTFM: <a href="../../../pages/OS/manuals/sysv-abi.pdf" class=" text-amber-900">System V ABI</a><ul class=" list-disc font-serif">
+<li class=" ml-8">p33</li>
+<li class=" ml-8">Figure 3.9 Initial Process Stack</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+  
+</div>
+</div>
+
+<script src="../../../static/reveal/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    
+    width: 1024, height: 768,
+    
+    slideNumber: 'c/t',
+    controlsTutorial: false,
+    progress: false,
+    hash: true,
+    center: false,
+    autoAnimateUnmatched: true,
+    autoAnimateEasing: 'ease-out',
+    autoAnimateDuration: 0.3,
+    transitionSpeed: 'fast'
+  });
+</script>
+
+
+</body>
+
+</html>

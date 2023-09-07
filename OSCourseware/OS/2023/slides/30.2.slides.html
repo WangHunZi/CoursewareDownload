@@ -1,0 +1,341 @@
+<!DOCTYPE html><html class="h-100">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="../../../static/css/base.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
+
+  <style>
+    .font-sans {
+      font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+    }
+    .font-serif {
+      font-family: 'Source Serif Pro', 'Songti SC', 'SimSun', 'Serif', serif;
+    }
+  </style>
+  <link rel="stylesheet" href="../../../static/katex/katex.min.css">
+  <script defer src="../../../static/katex/katex.min.js"></script>
+  <script defer src="../../../static/katex/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+            // customised options
+            // &#8226; auto-render specific keys, e.g.:
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ],
+            // &#8226; rendering keys, e.g.:
+            throwOnError : false
+          });
+      });
+  </script>
+
+
+  
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="../../../static/reveal/reveal.css">
+<link rel="stylesheet" href="../../../static/reveal/theme/simple.css" id="theme">
+
+<style>
+.reveal .slide-number {
+  font-size: 26px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, .3);
+}
+
+.reveal .full-screen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.reveal .slides {
+  border: 1.5px #ddd solid;
+  border-radius: 7px;
+  text-align: left;
+  font-weight: 300;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  font-family: 'Lato', 'SimHei', 'STXihei', 'Droid Sans';
+  font-weight: 400;
+}
+
+.reveal p, .reveal li, .reveal center {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Droid Sans';
+}
+
+.reveal li + li {
+  margin-top: 10px;
+}
+
+.reveal ul {
+  display: block;
+  margin-right: 15px;
+}
+
+.reveal p, .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5 {
+  padding:  0 25px 0 25px;
+}
+
+.reveal table {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Sans Serif';
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.reveal th {
+  background-color: #eee;
+}
+
+.reveal tr:nth-child(even) {
+  background-color: #efffff;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  text-align: left;
+  margin: 0 0 20px 0;
+ color: #222; 
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
+
+
+.reveal h1 {
+  margin: 0 10 0 10;
+  font-size: 60px;
+}
+.reveal .middle h1 {
+  text-align: center;
+}
+
+.reveal h2 {
+  font-size: 48px;
+  border-bottom: 2px solid rgb(106, 0, 95);
+  padding-bottom: 5px;
+}
+.reveal h3 { font-size: 1.15em; }
+.reveal h4 { font-size: 1.05em; }
+
+.reveal .center {
+  text-align: center;
+}
+
+.reveal .middle {
+  height: 728px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.reveal pre {
+  font-size: 28px;
+ 
+  background-color: #eee;
+
+  border-radius: 3mm;
+  padding: 10px 10px 10px 10px;
+}
+
+.reveal pre code {
+  max-height: none;
+}
+
+.reveal code {
+  font-family: 'Inconsolata', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif', Monospace;
+}
+
+.reveal .middle blockquote {
+  text-align: center;
+  color: rgb(106, 0, 95);
+  background: none;
+  box-shadow: none;
+}
+
+.reveal .middle blockquote a {
+  color: inherit;
+}
+
+.reveal blockquote p, .reveal blockquote li {
+  font-family: 'Lato', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif';
+}
+
+section .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reveal .author-block {
+  margin: 75px 0 35px 0;
+}
+.reveal .author-affiliation img {
+  margin: 15px 0 0 0;
+}
+.reveal .author-block p, .reveal .author-affiliation p  {
+  font-family: 'Kaiti', 'STKaiti', 'Serif', 'Times', 'Times New Roman';
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+.reveal .author-affiliation {
+  display: inline-block;
+  font-size: 90%;
+}
+.reveal hr {
+  border: 10px solid rgba(0, 0, 0, 0);
+}
+.reveal li {
+  margin-top: 10px;
+}
+</style>
+
+  <title>jyy &#30340;&#35838;&#31243;&#24635;&#32467;</title>
+</head>
+
+<body class="d-flex flex-column h-100">
+  
+  
+
+<div class="reveal">
+<div class="slides">
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="jyy" class=" text-2xl mt-2 font-sans"><a href="30.2.slides.html" class=" text-amber-900">jyy &#30340;&#35838;&#31243;&#24635;&#32467;</a></h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#19978;&#25805;&#20316;&#31995;&#32479;&#35838;&#30340;&#20048;&#36259;</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">&#22312;&#35838;&#22530;&#19978;&#26102;&#65292;&#20320;&#21487;&#20197;&#24605;&#32771;&#19968;&#20123;&#24050;&#32463;&#24456;&#28165;&#26970;&#30340;&#22522;&#26412;&#19996;&#35199;&#12290;&#36825;&#20123;&#30693;&#35782;&#26159;&#24456;&#26377;&#36259;&#12289;&#20196;&#20154;&#24841;&#24555;&#30340;&#65292;&#37325;&#28201;&#19968;&#36941;&#21448;&#20309;&#22952;&#65311;&#21478;&#19968;&#26041;&#38754;&#65292;&#26377;&#27809;&#26377;&#26356;&#22909;&#30340;&#20171;&#32461;&#26041;&#24335;&#65311;&#26377;&#20160;&#20040;&#30456;&#20851;&#30340;&#26032;&#38382;&#39064;&#65311;&#20320;&#33021;&#19981;&#33021;&#36171;&#20104;&#36825;&#20123;&#26087;&#30693;&#35782;&#26032;&#29983;&#21629;&#65311;&#8230;&#8230;&#20294;&#22914;&#26524;&#20320;&#30495;&#30340;&#26377;&#20160;&#20040;&#26032;&#24819;&#27861;&#65292;&#33021;&#20174;&#26032;&#35282;&#24230;&#30475;&#20107;&#29289;&#65292;&#20320;&#20250;&#35273;&#24471;&#24456;&#24841;&#24555;&#12290;</p>
+<p class=" font-serif my-1">&#23398;&#29983;&#38382;&#30340;&#38382;&#39064;&#65292;&#26377;&#26102;&#20063;&#33021;&#25552;&#20379;&#26032;&#30340;&#30740;&#31350;&#26041;&#21521;&#12290;&#20182;&#20204;&#32463;&#24120;&#25552;&#20986;&#19968;&#20123;&#25105;&#26366;&#32463;&#24605;&#32771;&#36807;&#12289;&#20294;&#26242;&#26102;&#25918;&#24323;&#12289;&#21364;&#37117;&#26159;&#20123;&#24847;&#20041;&#24456;&#28145;&#36828;&#30340;&#38382;&#39064;&#65292;&#37325;&#26032;&#24819;&#24819;&#36825;&#20123;&#38382;&#39064;&#65292;&#30475;&#30475;&#33021;&#21542;&#26377;&#25152;&#31361;&#30772;&#65292;&#20063;&#24456;&#26377;&#24847;&#24605;&#12290;</p>
+<p class=" font-serif my-1">&#23398;&#29983;&#26410;&#24517;&#29702;&#35299;&#25105;&#24819;&#22238;&#31572;&#30340;&#26041;&#21521;&#65292;&#25110;&#32773;&#26159;&#25105;&#24819;&#24605;&#32771;&#30340;&#23618;&#27425;&#65307;&#20294;&#20182;&#20204;&#38382;&#25105;&#36825;&#20010;&#38382;&#39064;&#65292;&#21364;&#24448;&#24448;&#25552;&#37266;&#20102;&#25105;&#30456;&#20851;&#30340;&#38382;&#39064;&#12290;&#21333;&#21333;&#38752;&#33258;&#24049;&#65292;&#26159;&#19981;&#23481;&#26131;&#33719;&#24471;&#36825;&#31181;&#21551;&#31034;&#30340;&#12290; &#8212;&#8212; Richard Feynman</p>
+</blockquote></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20845;&#21608;&#30446;&#30340;&#20027;&#35201;&#25913;&#36827;</h2>
+<p class=" font-serif my-1">&#35838;&#31243;&#20027;&#32447;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#30495;&#27491;&#23454;&#29616;&#20102; &#8220;everything is a state machine&#8221;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#23454;&#29616;&#20102;&#31532;&#20116;&#21608;&#30446;&#31435;&#30340; flag</li>
+<li class=" ml-8">&#19968;&#20010;&#36275;&#22815;&#25104;&#29087;&#30340; model checker</li>
+</ul>
+</li>
+<li class=" ml-8">Jupyter notebook &#21644; lecture notes &#30340;&#25913;&#36827;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#20195;&#30721;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#26356;&#22909;&#30340;&#20195;&#30721;&#31034;&#20363;</li>
+<li class=" ml-8">&#20294;&#20284;&#20046;&#22240;&#20026;&#35838;&#26102;&#65292;&#23637;&#31034;&#24471;&#20195;&#30721;&#21464;&#23569;&#20102;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">AI</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Copilot &#36880;&#28176;&#24212;&#35813;&#25104;&#20026;&#35838;&#31243;&#30340;&#19968;&#37096;&#20998;</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#33258;&#25105;&#25209;&#35780;&#19982;&#19971;&#21608;&#30446;</h2>
+<p class=" font-serif my-1">&#35838;&#31243;&#20027;&#32447;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20173;&#28982;&#27424;&#30528;&#30340;&#20195;&#30721;<ul class=" list-disc font-serif">
+<li class=" ml-8">RAID &#27169;&#25311;&#22120;</li>
+<li class=" ml-8">...</li>
+</ul>
+</li>
+<li class=" ml-8">&#37325;&#20889;&#35838;&#31243;&#32593;&#31449;/Online Judge<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25972;&#25913;&#39033;&#30446;&#65292;&#20877;&#20877;&#20877;&#27425;&#26410;&#33021;&#22914;&#24895;</li>
+</ul>
+</li>
+<li class=" ml-8">&#36824;&#19981;&#22815; friendly<ul class=" list-disc font-serif">
+<li class=" ml-8">&#26159;&#30340;&#8230;&#8230;</li>
+</ul>
+</li>
+<li class=" ml-8">&#20063;&#35768;&#38656;&#35201;&#19968;&#20010;&#22242;&#38431;&#20102;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#20854;&#20182;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#27426;&#36814;&#22823;&#23478;&#25552;&#24314;&#35758;/&#24847;&#35265;</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+  
+</div>
+</div>
+
+<script src="../../../static/reveal/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    
+    width: 1024, height: 768,
+    
+    slideNumber: 'c/t',
+    controlsTutorial: false,
+    progress: false,
+    hash: true,
+    center: false,
+    autoAnimateUnmatched: true,
+    autoAnimateEasing: 'ease-out',
+    autoAnimateDuration: 0.3,
+    transitionSpeed: 'fast'
+  });
+</script>
+
+
+</body>
+
+</html>

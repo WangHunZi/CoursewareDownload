@@ -1,0 +1,376 @@
+<!DOCTYPE html><html class="h-100">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="../../../static/css/base.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
+
+  <style>
+    .font-sans {
+      font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+    }
+    .font-serif {
+      font-family: 'Source Serif Pro', 'Songti SC', 'SimSun', 'Serif', serif;
+    }
+  </style>
+  <link rel="stylesheet" href="../../../static/katex/katex.min.css">
+  <script defer src="../../../static/katex/katex.min.js"></script>
+  <script defer src="../../../static/katex/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+            // customised options
+            // &#8226; auto-render specific keys, e.g.:
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ],
+            // &#8226; rendering keys, e.g.:
+            throwOnError : false
+          });
+      });
+  </script>
+
+
+  
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="../../../static/reveal/reveal.css">
+<link rel="stylesheet" href="../../../static/reveal/theme/simple.css" id="theme">
+
+<style>
+.reveal .slide-number {
+  font-size: 26px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, .3);
+}
+
+.reveal .full-screen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.reveal .slides {
+  border: 1.5px #ddd solid;
+  border-radius: 7px;
+  text-align: left;
+  font-weight: 300;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  font-family: 'Lato', 'SimHei', 'STXihei', 'Droid Sans';
+  font-weight: 400;
+}
+
+.reveal p, .reveal li, .reveal center {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Droid Sans';
+}
+
+.reveal li + li {
+  margin-top: 10px;
+}
+
+.reveal ul {
+  display: block;
+  margin-right: 15px;
+}
+
+.reveal p, .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5 {
+  padding:  0 25px 0 25px;
+}
+
+.reveal table {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Sans Serif';
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.reveal th {
+  background-color: #eee;
+}
+
+.reveal tr:nth-child(even) {
+  background-color: #efffff;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  text-align: left;
+  margin: 0 0 20px 0;
+ color: #222; 
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
+
+
+.reveal h1 {
+  margin: 0 10 0 10;
+  font-size: 60px;
+}
+.reveal .middle h1 {
+  text-align: center;
+}
+
+.reveal h2 {
+  font-size: 48px;
+  border-bottom: 2px solid rgb(106, 0, 95);
+  padding-bottom: 5px;
+}
+.reveal h3 { font-size: 1.15em; }
+.reveal h4 { font-size: 1.05em; }
+
+.reveal .center {
+  text-align: center;
+}
+
+.reveal .middle {
+  height: 728px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.reveal pre {
+  font-size: 28px;
+ 
+  background-color: #eee;
+
+  border-radius: 3mm;
+  padding: 10px 10px 10px 10px;
+}
+
+.reveal pre code {
+  max-height: none;
+}
+
+.reveal code {
+  font-family: 'Inconsolata', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif', Monospace;
+}
+
+.reveal .middle blockquote {
+  text-align: center;
+  color: rgb(106, 0, 95);
+  background: none;
+  box-shadow: none;
+}
+
+.reveal .middle blockquote a {
+  color: inherit;
+}
+
+.reveal blockquote p, .reveal blockquote li {
+  font-family: 'Lato', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif';
+}
+
+section .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reveal .author-block {
+  margin: 75px 0 35px 0;
+}
+.reveal .author-affiliation img {
+  margin: 15px 0 0 0;
+}
+.reveal .author-block p, .reveal .author-affiliation p  {
+  font-family: 'Kaiti', 'STKaiti', 'Serif', 'Times', 'Times New Roman';
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+.reveal .author-affiliation {
+  display: inline-block;
+  font-size: 90%;
+}
+.reveal hr {
+  border: 10px solid rgba(0, 0, 0, 0);
+}
+.reveal li {
+  margin-top: 10px;
+}
+</style>
+
+  <title>&#38745;&#24577;&#38142;&#25509;&#21644;&#21152;&#36733;</title>
+</head>
+
+<body class="d-flex flex-column h-100">
+  
+  
+
+<div class="reveal">
+<div class="slides">
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="21.2.slides.html" class=" text-amber-900">&#38745;&#24577;&#38142;&#25509;&#21644;&#21152;&#36733;</a></h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="elf-loader" class=" text-xl mt-2 pb-2 font-sans">&#22312;&#25805;&#20316;&#31995;&#32479;&#19978;&#23454;&#29616; ELF Loader</h2>
+<p class=" font-serif my-1">&#21152;&#36733;&#22120; (loader) &#30340;&#32844;&#36131;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#35299;&#26512;&#25968;&#25454;&#32467;&#26500;</li>
+<li class=" ml-8">&#21019;&#24314;&#36827;&#31243;&#21021;&#22987;&#29366;&#24577;<ul class=" list-disc font-serif">
+<li class=" ml-8">argv, envp, ...</li>
+<li class=" ml-8">&#20877;&#19968;&#27425;&#65292;<a href="../../../pages/OS/manuals/sysv-abi.pdf" class=" text-amber-900">System V ABI</a></li>
+</ul>
+</li>
+<li class=" ml-8">&#36339;&#36716;&#25191;&#34892;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#20195;&#30721;&#31034;&#20363;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#33021;&#27491;&#30830;&#22788;&#29702;&#21442;&#25968;/&#29615;&#22659;&#21464;&#37327; <a href="../../../pages/OS/2023/v/env.c" class=" text-amber-900">env.c</a></li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="boot-block-loader" class=" text-xl mt-2 pb-2 font-sans">Boot Block Loader</h2>
+<p class=" font-serif my-1">&#21152;&#36733;&#25805;&#20316;&#31995;&#32479;&#20869;&#26680;&#65311;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20063;&#26159;&#19968;&#20010; ELF &#25991;&#20214;</li>
+<li class=" ml-8">&#35299;&#26512;&#25968;&#25454;&#32467;&#26500; + &#22797;&#21046;&#21040;&#20869;&#23384; + &#36339;&#36716; </li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#20043;&#21069;&#32473;&#22823;&#23478;&#30475;&#36807;&#19968;&#30524;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20570;&#24471;&#20107;&#24773;&#19982;&#38745;&#24577;&#21152;&#36733;&#22120;&#23436;&#20840;&#19968;&#26679;</li>
+<li class=" ml-8">&#27809;&#26377; mmap &#24590;&#20040;&#21150;&#65311;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#29992; I/O &#25351;&#20196;&#25226;&#25968;&#25454;&#20174;&#30913;&#30424;&#25644;&#21040;&#20869;&#23384;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="elf" class=" text-xl mt-2 pb-2 font-sans">ELF &#25991;&#20214;&#26159;&#22914;&#20309;&#29983;&#25104;&#30340;&#65311;</h2>
+<p class=" font-serif my-1">&#19968;&#20010;&#23383;&#33410;&#19968;&#20010;&#23383;&#33410; &#8220;&#20889;&#20986;&#26469;&#8221; &#30340;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>printf("\x7f");</code></li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#32477;&#22823;&#37096;&#20998;&#25351;&#20196;&#37117;&#26159;&#32534;&#35793;&#26102;&#23601;&#23436;&#20840;&#30830;&#23450;&#22909;&#30340;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20294;&#26377;&#23569;&#37096;&#20998;&#19981;&#33021;</li>
+<li class=" ml-8">&#20363;&#22914; printf &#30340;&#22320;&#22336;<ul class=" list-disc font-serif">
+<li class=" ml-8">call &#20250;&#32534;&#35793;&#25104; <code>e8 00 00 00</code><ul class=" list-disc font-serif">
+<li class=" ml-8">&#22797;&#20064;&#39064;&#65306;offset 0 &#26159;&#36339;&#36716;&#21040;&#21738;&#26465;&#25351;&#20196;&#65292;&#20026;&#20160;&#20040;&#65311;</li>
+</ul>
+</li>
+<li class=" ml-8">&#36830;&#25509;&#26102;&#38656;&#35201; relocate<ul class=" list-disc font-serif">
+<li class=" ml-8">&#36825;&#20063;&#26159; ELF &#8220;&#25968;&#25454;&#32467;&#26500;&#8221; &#30340;&#19968;&#37096;&#20998;</li>
+<li class=" ml-8">&#20320;&#21487;&#20197;&#29702;&#35299;&#25104; &#8220;<code>ADDR_OF(puts) + 4</code>&#8221; &#36825;&#31181;&#36816;&#31639;&#35268;&#21017;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="ics" class=" text-xl mt-2 pb-2 font-sans">&#20026;&#20160;&#20040; ICS &#35838;&#30340; &#8220;&#38142;&#25509;&#21644;&#21152;&#36733;&#8221; &#22914;&#27492;&#20725;&#30828;&#65311;</h2>
+<p class=" font-serif my-1">&#22240;&#20026; ELF &#19981;&#26159;&#19968;&#20010;&#22909;&#30340; &#8220;&#25551;&#36848;&#29366;&#24577;&#26426;&#25968;&#25454;&#32467;&#26500;&#8221; &#30340;&#26684;&#24335;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#24443;&#24213;&#36829;&#32972;&#20102;&#20449;&#24687;&#30340;&#23616;&#37096;&#24615;&#21407;&#21017;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21547;&#20041;&#38544;&#26214;&#30340; <code>R_X86_64_32</code>, <code>R_X86_64_PLT32</code></li>
+<li class=" ml-8">&#19981;&#38752;&#35299;&#26512;&#26681;&#26412;&#19981;&#21487;&#33021;&#30475;&#25026;</li>
+<li class=" ml-8">&#22823;&#37327;&#30340; &#8220;&#25351;&#38024;&#8221; (&#20154;&#31867;&#26080;&#27861;&#38405;&#35835;&#30340;&#20559;&#31227;&#37327;)</li>
+<li class=" ml-8">&#31561;&#20110;&#30452;&#25509;&#35753;&#20320;&#21435;&#35835;&#19968;&#20010;&#20869;&#23384;&#25968;&#25454;&#32467;&#26500;&#30340; core dump</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#32473;&#25105;&#19968;&#20010;&#26426;&#20250;&#37325;&#26032;&#35774;&#35745;&#65311;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21487;&#20197;&#20570;&#20010; JSON-based&#65292;&#21487;&#35835;&#30340;&#26684;&#24335;<ul class=" list-disc font-serif">
+<li class=" ml-8">FLE: A Fast, Legible, and Expedient Binary Format<ul class=" list-disc font-serif">
+<li class=" ml-8">(&#36825;&#20010;&#21517;&#23383;&#20063;&#26159; GPT &#32473;&#25105;&#36215;&#30340;)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+  
+</div>
+</div>
+
+<script src="../../../static/reveal/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    
+    width: 1024, height: 768,
+    
+    slideNumber: 'c/t',
+    controlsTutorial: false,
+    progress: false,
+    hash: true,
+    center: false,
+    autoAnimateUnmatched: true,
+    autoAnimateEasing: 'ease-out',
+    autoAnimateDuration: 0.3,
+    transitionSpeed: 'fast'
+  });
+</script>
+
+
+</body>
+
+</html>

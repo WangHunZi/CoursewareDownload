@@ -1,0 +1,447 @@
+<!DOCTYPE html><html class="h-100">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="../../../static/css/base.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
+
+  <style>
+    .font-sans {
+      font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+    }
+    .font-serif {
+      font-family: 'Source Serif Pro', 'Songti SC', 'SimSun', 'Serif', serif;
+    }
+  </style>
+  <link rel="stylesheet" href="../../../static/katex/katex.min.css">
+  <script defer src="../../../static/katex/katex.min.js"></script>
+  <script defer src="../../../static/katex/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+            // customised options
+            // &#8226; auto-render specific keys, e.g.:
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ],
+            // &#8226; rendering keys, e.g.:
+            throwOnError : false
+          });
+      });
+  </script>
+
+
+  
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="../../../static/reveal/reveal.css">
+<link rel="stylesheet" href="../../../static/reveal/theme/simple.css" id="theme">
+
+<style>
+.reveal .slide-number {
+  font-size: 26px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, .3);
+}
+
+.reveal .full-screen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.reveal .slides {
+  border: 1.5px #ddd solid;
+  border-radius: 7px;
+  text-align: left;
+  font-weight: 300;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  font-family: 'Lato', 'SimHei', 'STXihei', 'Droid Sans';
+  font-weight: 400;
+}
+
+.reveal p, .reveal li, .reveal center {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Droid Sans';
+}
+
+.reveal li + li {
+  margin-top: 10px;
+}
+
+.reveal ul {
+  display: block;
+  margin-right: 15px;
+}
+
+.reveal p, .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5 {
+  padding:  0 25px 0 25px;
+}
+
+.reveal table {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Sans Serif';
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.reveal th {
+  background-color: #eee;
+}
+
+.reveal tr:nth-child(even) {
+  background-color: #efffff;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  text-align: left;
+  margin: 0 0 20px 0;
+ color: #222; 
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
+
+
+.reveal h1 {
+  margin: 0 10 0 10;
+  font-size: 60px;
+}
+.reveal .middle h1 {
+  text-align: center;
+}
+
+.reveal h2 {
+  font-size: 48px;
+  border-bottom: 2px solid rgb(106, 0, 95);
+  padding-bottom: 5px;
+}
+.reveal h3 { font-size: 1.15em; }
+.reveal h4 { font-size: 1.05em; }
+
+.reveal .center {
+  text-align: center;
+}
+
+.reveal .middle {
+  height: 728px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.reveal pre {
+  font-size: 28px;
+ 
+  background-color: #eee;
+
+  border-radius: 3mm;
+  padding: 10px 10px 10px 10px;
+}
+
+.reveal pre code {
+  max-height: none;
+}
+
+.reveal code {
+  font-family: 'Inconsolata', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif', Monospace;
+}
+
+.reveal .middle blockquote {
+  text-align: center;
+  color: rgb(106, 0, 95);
+  background: none;
+  box-shadow: none;
+}
+
+.reveal .middle blockquote a {
+  color: inherit;
+}
+
+.reveal blockquote p, .reveal blockquote li {
+  font-family: 'Lato', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif';
+}
+
+section .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reveal .author-block {
+  margin: 75px 0 35px 0;
+}
+.reveal .author-affiliation img {
+  margin: 15px 0 0 0;
+}
+.reveal .author-block p, .reveal .author-affiliation p  {
+  font-family: 'Kaiti', 'STKaiti', 'Serif', 'Times', 'Times New Roman';
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+.reveal .author-affiliation {
+  display: inline-block;
+  font-size: 90%;
+}
+.reveal hr {
+  border: 10px solid rgba(0, 0, 0, 0);
+}
+.reveal li {
+  margin-top: 10px;
+}
+</style>
+
+  <title>&#35843;&#35797; &#8220;&#20219;&#20309;&#38382;&#39064;&#8221;</title>
+</head>
+
+<body class="d-flex flex-column h-100">
+  
+  
+
+<div class="reveal">
+<div class="slides">
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="8.2.slides.html" class=" text-amber-900">&#35843;&#35797; &#8220;&#20219;&#20309;&#38382;&#39064;&#8221;</a></h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20320;&#20204;&#26159;&#21542;&#36935;&#21040;&#36807;&#20197;&#19979;&#20196;&#20154;&#25235;&#29378;&#30340;&#24773;&#20917;&#65311;</h2>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>bash: curl: command not found
+</code></pre></div>
+
+<hr>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>fatal error: 'sys/cdefs.h': No such file or directory
+#include &lt;sys/cdefs.h&gt;
+</code></pre></div>
+
+<hr>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>make[2]: *** run: No such file or directory.  Stop.
+Makefile:31: recipe for target 'run' failed
+make[1]: *** [run] Error 2
+...
+</code></pre></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#35745;&#31639;&#26426;&#19990;&#30028;&#65306;&#19968;&#20999;&#30342;&#21487;&#35843;&#35797;</h2>
+<p class=" font-serif my-1">&#31243;&#24207; = &#35745;&#31639;&#26426;&#31995;&#32479; = &#29366;&#24577;&#26426;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><red>&#26426;&#22120;&#27704;&#36828;&#26159;&#23545;&#30340;</red></li>
+<li class=" ml-8">UNIX &#19990;&#30028;&#37324;&#20320;&#20570;&#20219;&#20309;&#20107;&#24773;&#37117;&#26159;&#22312;<red>&#32534;&#31243;</red><ul class=" list-disc font-serif">
+<li class=" ml-8">&#22240;&#27492;&#37197;&#32622;&#38169;&#12289;make &#38169;&#31561;&#65292;&#37117;&#26159;<red>&#31243;&#24207;</red>&#25110;<red>&#36755;&#20837;/&#37197;&#32622;</red>&#26377; bug</li>
+<li class=" ml-8">(&#36755;&#20837;/&#37197;&#32622;&#21487;&#20197;&#30475;&#25104;&#26159;&#31243;&#24207;&#30340;&#19968;&#37096;&#20998;)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1"><red>&#25152;&#26377;&#38382;&#39064;&#37117;&#21487;&#20197;&#29992;&#35843;&#35797;&#29702;&#35770;&#35299;&#20915;</red></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20320;&#20889;&#20102;&#19968;&#20010;&#31243;&#24207;&#65292;&#29616;&#22312;&#36825;&#20010;&#31243;&#24207;&#20986; bug &#20102; (&#20363;&#22914; Segmentation Fault)&#65292;&#20320;&#26159;&#24590;&#26679;&#25490;&#26597;&#36825;&#20010;&#38382;&#39064;&#30340;&#65311;<ul class=" list-disc font-serif">
+<li class=" ml-8">curl: command not found</li>
+<li class=" ml-8"><code>'sys/cdefs.h'</code>: No such file or directory</li>
+<li class=" ml-8">make: run: No such file or directory</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20351;&#29992;&#35843;&#35797;&#29702;&#35770;</h2>
+<p class=" font-serif my-1">Debug (fault localization) &#30340;&#22522;&#26412;&#29702;&#35770;&#22238;&#39038;&#65306;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Fault (&#31243;&#24207;/&#36755;&#20837;/&#37197;&#32622;&#38169;) &#8594; Error &#8594; Failure (&#21487;&#35266;&#27979;)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#32477;&#22823;&#37096;&#20998;&#24037;&#20855;&#30340; Failure &#37117;&#26377; &#8220;&#21407;&#22240;&#25253;&#21578;&#8221;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22240;&#27492;&#33021;&#24110;&#21161;&#20320;&#24555;&#36895;&#23450;&#20301; fault</li>
+</ul>
+</li>
+<li class=" ml-8"><code>man perror</code>&#65306;&#26631;&#20934;&#24211;&#26377;&#25171;&#21360; error message &#30340;&#20989;&#25968;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#22914;&#26524;&#38382;&#39064;&#19981;&#33021;&#24110;&#20320;&#23450;&#20301;&#21040; fault/error&#65311;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><red>&#20986;&#38169;&#21407;&#22240;&#25253;&#21578;&#19981;&#20934;&#30830;&#25110;&#19981;&#22815;&#35814;&#32454;</red></li>
+<li class=" ml-8"><red>&#31243;&#24207;&#25191;&#34892;&#30340;&#36807;&#31243;&#19981;&#22815;&#35814;&#32454;</red><ul class=" list-disc font-serif">
+<li class=" ml-8">&#26082;&#28982;&#25105;&#20204;&#26377;&#38656;&#27714;&#65292;&#37027;&#21035;&#20154;&#32943;&#23450;&#20063;&#20250;&#26377;&#36825;&#20010;&#38656;&#27714;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#19968;&#23450;&#26377;&#20449;&#24687;&#33021;&#24110;&#21161;&#25105;&#20204;&#65281;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">&#20351;&#29992;&#35843;&#35797;&#29702;&#35770; (cont'd)</h2>
+<p class=" font-serif my-1">&#27491;&#30830;&#30340;&#26041;&#27861;&#65306;&#29702;&#35299;&#31243;&#24207; (&#29366;&#24577;&#26426;) &#30340;<red>&#25191;&#34892;&#36807;&#31243;</red></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>ssh</code>&#65306;&#20351;&#29992; <code>-v</code> &#36873;&#39033;&#26816;&#26597;&#26085;&#24535;</li>
+<li class=" ml-8"><code>gcc</code>&#65306;&#20351;&#29992; <code>-v</code> &#36873;&#39033;&#25171;&#21360;&#21508;&#31181;&#36807;&#31243;</li>
+<li class=" ml-8"><code>make</code>&#65306;&#20351;&#29992; <code>-n</code> &#36873;&#39033;&#26597;&#30475;&#23436;&#25972;&#21629;&#20196;<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>make -nB | grep -ve '^\(echo\|mkdir\)'</code> &#21487;&#20197;&#26597;&#30475;&#23436;&#25972;&#32534;&#35793; nemu &#30340;&#32534;&#35793;&#36807;&#31243;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#21508;&#20010;&#24037;&#20855;&#26222;&#36941;&#25552;&#20379;&#35843;&#35797;&#21151;&#33021;&#65292;&#24110;&#21161;&#29992;&#25143;/&#24320;&#21457;&#32773;&#20102;&#35299;&#31243;&#24207;&#30340;<red>&#34892;&#20026;</red></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="syscdefsh" class=" text-xl mt-2 pb-2 font-sans">&#20363;&#23376;&#65306;&#25214;&#19981;&#21040; <code>sys/cdefs.h</code></h2>
+<p class=" font-serif my-1"><code>'sys/cdefs.h': No such file or directory</code>&#65292;&#25214;&#19981;&#21040;&#25991;&#20214; (&#36825;&#30475;&#36215;&#26469;&#26159;&#29992; <code>perror()</code> &#25171;&#21360;&#20986;&#26469;&#30340;&#21734;&#65281;)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>#include</code> = &#22797;&#21046;&#31896;&#36148;&#65292;&#33258;&#28982;&#20250;&#32463;&#36807;&#36335;&#24452;&#35299;&#26512;</li>
+<li class=" ml-8">(&#25240;&#33150;20&#20998;&#38047;) &#26126;&#26126; <code>/usr/include/x86_64-linux-gnu/sys/cdefs.h</code> &#26159;&#23384;&#22312;&#30340; (<code>man 1 locate</code>) &#8594; &#26497;&#24230;&#25387;&#36133;&#65292;&#20307;&#39564;&#26497;&#24046;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#25512;&#29702;&#65306;<code>#include &lt;&gt;</code> &#19968;&#23450;&#26377;&#19968;&#20123;&#25628;&#32034;&#36335;&#24452;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20026;&#20160;&#20040;&#20004;&#20010;&#32534;&#35793;&#36873;&#39033;&#65292;&#19968;&#20010;&#36890;&#36807;&#65292;&#19968;&#20010;&#19981;&#36890;&#36807;&#65311;<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>gcc -m32 -v</code> v.s. <code>gcc -v</code></li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#36825;&#26159;&#26631;&#20934;&#30340;&#35299;&#20915;&#38382;&#39064;&#21150;&#27861;&#65306;<red>&#33258;&#24049;&#21160;&#25163;&#25490;&#26597;</red></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22312;&#38754;&#23545;&#22797;&#26434;/&#23567;&#20247;&#38382;&#39064;&#26102;&#27604; STFW/ChatGPT &#26377;&#25928;</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="1" class=" text-xl mt-2 pb-2 font-sans">&#26356;&#22810;&#30340;&#26696;&#20363; 1&#65306;&#35270;&#39057;&#25773;&#25918;&#32763;&#36710;</h2>
+<p class=" font-serif my-1">&#35270;&#39057;&#25773;&#25918;&#32763;&#36710;&#20102;&#65292;&#20294;&#25105;&#27809;&#32763;&#36710;&#65281;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#31243;&#24207;&#21592;&#30340;&#26412;&#33021;&#65306;&#26426;&#22120;&#27704;&#36828;&#26159;&#23545;&#30340;</li>
+</ul>
+<p class=" font-serif my-1"></p><center>
+<video width="854" height="480" controls="controls" src="../../../pages/OS/img/diablo-item-clone.mp4" type="video/mp4"></video>
+<p class=" font-serif my-1"></p></center></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="2-noi-linux-on-usb" class=" text-xl mt-2 pb-2 font-sans">&#26356;&#22810;&#30340;&#26696;&#20363; 2: NOI Linux on USB</h2>
+<p class=" font-serif my-1">ubuntu-noi.iso</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#19981;&#21487;&#24341;&#23548;</li>
+<li class=" ml-8">&#21253;&#21547;&#20102;&#27531;&#32570;&#30340; UEFI Boot Loader</li>
+<li class=" ml-8">ISO9660 (&#21482;&#35835;) &#38236;&#20687;</li>
+<li class=" ml-8">&#128514;&#128514;&#128514;&#128514;&#128514;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#37325;&#20570;&#19968;&#20010;&#24341;&#23548;&#30424;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#33021;&#27491;&#30830;&#24341;&#23548;&#12289;&#30475;&#21040;&#23433;&#35013; (splash) &#30028;&#38754;</li>
+<li class=" ml-8">Unable to find a medium containing a live file system<ul class=" list-disc font-serif">
+<li class=" ml-8">&#32593;&#19978;&#32473;&#20986;&#30340;&#21508;&#31181;&#26041;&#26696; (&#21253;&#25324;&#25300;&#20102;&#20877;&#25554;) &#37117;&#26080;&#26524;</li>
+<li class=" ml-8">RTFSC</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+  
+</div>
+</div>
+
+<script src="../../../static/reveal/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    
+    width: 1024, height: 768,
+    
+    slideNumber: 'c/t',
+    controlsTutorial: false,
+    progress: false,
+    hash: true,
+    center: false,
+    autoAnimateUnmatched: true,
+    autoAnimateEasing: 'ease-out',
+    autoAnimateDuration: 0.3,
+    transitionSpeed: 'fast'
+  });
+</script>
+
+
+</body>
+
+</html>
