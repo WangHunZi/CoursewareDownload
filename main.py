@@ -7,9 +7,6 @@ def sanitize_filename(filename):
     # 使用正则表达式替换特殊字符为下划线
     return re.sub(r'[\\/:*?"<>|]', '_', filename)
 
-# def file_path_position(file_path, position):
-
-
 url = "https://jyywiki.cn/OS/2023/"             # 目标网页的URL
 
 jupyter_links = []                              # 获取Jupyter课件的网页链接
