@@ -1,0 +1,831 @@
+<!DOCTYPE html><html class="h-100">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="../../../static/css/base.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
+
+  <style>
+    .font-sans {
+      font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+    }
+    .font-serif {
+      font-family: 'Source Serif Pro', 'Songti SC', 'SimSun', 'Serif', serif;
+    }
+  </style>
+  <link rel="stylesheet" href="../../../static/katex/katex.min.css">
+  <script defer src="../../../static/katex/katex.min.js"></script>
+  <script defer src="../../../static/katex/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+            // customised options
+            // &#8226; auto-render specific keys, e.g.:
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ],
+            // &#8226; rendering keys, e.g.:
+            throwOnError : false
+          });
+      });
+  </script>
+
+
+  
+
+<style>
+.article {
+  -webkit-hyphens: auto;
+}
+form {
+  margin-block-end: 0;
+}
+img {
+  display: inline-block;
+}
+code { font-size: 85%; }
+pre {
+  font-size: 95%;
+  line-height: 120%;
+}
+blockquote {
+  font-size: 95%;
+}
+p {
+  font-size: 105%;
+  text-indent: 2em;
+}
+li {
+  font-size: 105%;
+}
+blockquote p {
+  text-indent: 0em;
+}
+.float-right {
+  padding-left: 10px;
+}
+.float-left {
+  padding-right: 10px;
+}
+a {
+  color: rgb(29 78 216);
+}
+strong {
+  font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+}
+.box        {
+  border-radius: 2px; padding: 1px 4px 2px 4px;
+  font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+  font-size: 95%;
+}
+.box-blue,  .badge-primary  { background-color: rgba(66, 139, 202, 0.5); color: #1d4ed8; }
+.box-green, .badge-success  { background-color: rgba(92, 184, 92, 0.5);  color: #15803d; }
+.box-red,   .badge-danger   { background-color: rgba(217, 83, 79, 0.5);  color: #b91c1c; }
+.box-yellow,.badge-warning  { background-color: rgba(240, 173, 78, 0.5); color: #a16207; }
+.box-gray   { background-color: #a0a0a0; }
+
+.badge {
+  padding: 1 4 1 4;
+  display: inline-block;
+  border-radius: 0.25rem;
+  border: 1px solid;
+}
+.message p {
+  text-indent: 0em;
+  margin-top: 1px;
+}
+.message h1, h2, h3, h4, h5 {
+  font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+}
+.message h2 {
+  font-size: 120%;
+  margin-top: 5px;
+  margin-bottom: 2px;
+}
+.message li {
+  list-style: disc;
+  margin-left: 2em;
+}
+li > p {
+  text-indent: 0em;
+}
+block-quote h4 {
+  float: left;
+  display: inline-block;
+}
+.center {
+  display: block;
+  margin: auto;
+}
+hr {
+  margin-top: 20px;
+  padding-bottom: 20px;
+}
+
+.fa-gradient {
+	background: -webkit-gradient(linear, left top, left bottom, from(rgb(99, 27, 103)), to(#333));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+</style>
+
+
+  <title>L2: &#20869;&#26680;&#32447;&#31243;&#31649;&#29702; (kmt)</title>
+</head>
+
+<body class="d-flex flex-column h-100">
+  
+  
+
+<div>
+
+<div class="px-2 py-1 w-full fixed z-50 bg-gradient-to-r from-black via-purple-700 via-purple-500 shadow-lg" style="-webkit-backdrop-filter: saturate(150%) blur(4px); backdrop-filter: saturate(150%) blur(4px)">
+  <form>
+    <a href="../../../index.html"><span class="text-lg px-2 text-white">Yanyan's Wiki</span></a>
+    <a href="../index.html"><span class="text-sm px-2 text-white">&#25805;&#20316;&#31995;&#32479; (2023)</span></a>
+    <input maxlength="9" id="token-input" class="float-right appearance-none border border-transparent px-2 py-1 w-20 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-xs focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent font-mono" type="text" placeholder="TOKEN" oninput="login();">
+  </form>
+</div>
+
+<div class="article container mx-auto md:px-8 lg:px-8 xl:px-8 2xl:px-8 shadow-lg border pb-8 pt-10 max-w-screen-md text-justify divide-y-2 divide-white">
+  <div><h1 id="l2-kmt" class=" text-2xl mt-2 font-sans">L2: &#20869;&#26680;&#32447;&#31243;&#31649;&#29702; (kmt)</h1>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<h4 id="_1" class=" pt-2 pb-2 font-sans float-left text-sm box border mr-1 mt-1 box-red" style=" padding-bottom: 0;">&#9200; &#25130;&#27490;&#26085;&#26399;</h4>
+<p class=" font-serif my-1"><strong>Soft Deadline: 2023 &#24180; 5 &#26376; 14 &#26085; 23:59:59&#12290;</strong></p>
+<p class=" font-serif my-1"><red><strong>&#26412;&#23454;&#39564;&#22312; L1 &#20195;&#30721;&#30340;&#22522;&#30784;&#19978;&#23436;&#25104;</strong>&#12290;&#20294;&#22914;&#26524;&#20320;&#23436;&#20840;&#27809;&#26377;&#23436;&#25104; L1&#65292;&#20381;&#28982;&#21487;&#20197;&#21512;&#24182;&#20195;&#30721;&#24182;&#24320;&#22987; L2 (&#20363;&#22914;&#20351;&#29992;&#19968;&#20010;&#38750;&#24120;&#31616;&#21333;&#30340; kalloc/kfree &#23454;&#29616;)&#12290;</red></p>
+<p class=" font-serif my-1">&#22312;&#21629;&#20196;&#34892;&#20013; <code>git pull origin L2</code> &#19979;&#36733;&#26694;&#26550;&#20195;&#30721;&#12290;</p>
+<p class=" font-serif my-1"><strong><red>&#26412;&#27425;&#23454;&#39564;&#25552;&#20132;&#26102;&#65292;&#38656;&#35201;&#35774;&#32622;&#29615;&#22659;&#21464;&#37327; <code>MODULE</code> &#20026; <code>L2</code></red></strong> (&#22914;&#26524;&#20320;&#23558; export &#20889;&#22312;&#20102; Makefile &#37324;&#65292;&#38656;&#35201;&#30456;&#24212;&#20316;&#20986;&#20462;&#25913;&#65292;&#21542;&#21017;&#23558;&#25552;&#20132;&#21040;&#36807;&#24448;&#30340;&#23454;&#39564;)&#12290;</p>
+<p class=" font-serif my-1">&#26412;&#27425;&#23454;&#39564;&#30340;&#25253;&#21578;&#30452;&#25509;&#22312; <code>kernel/</code> &#30446;&#24405;&#19979;&#21407;&#20808;&#30340;&#23454;&#39564;&#25253;&#21578;&#22522;&#30784;&#19978;&#28155;&#21152;&#12290;</p>
+<p class=" font-serif my-1"><strong>&#25298;&#32477;&#20869;&#21367;</strong>&#65306;&#38500;&#38750;&#29305;&#27530;&#24773;&#20917;&#65292;&#26412;&#27425;&#23454;&#39564;&#30340;&#23454;&#39564;&#25253;&#21578;<strong>&#19981;&#24314;&#35758;&#36229;&#36807; 2 &#39029; A4 &#32440;</strong>&#12290;&#35831;&#22312;&#23454;&#39564;&#25253;&#21578;&#20013;&#25551;&#36848;&#20320;&#22312;&#23454;&#39564;&#20013;&#36935;&#21040;&#30340;&#29305;&#21035;&#20540;&#24471;&#19968;&#25552;&#30340;&#20107;&#20214;&#65292;&#20363;&#22914;&#20320;&#20195;&#30721;&#30340;&#26550;&#26500;&#35774;&#35745;&#12289;&#29305;&#21035;&#31934;&#24039;&#30340;&#23454;&#29616;&#12289;&#36935;&#21040;&#21360;&#35937;&#28145;&#21051;&#30340; bug &#31561;&#12290;</p>
+</blockquote>
+<p class=" font-serif my-1"><oj-status course="OS2023" module="L2"><div class="divide-y divide-dashed">
+    <div class="flex font-semibold">
+      OS2023-L2 &#25552;&#20132;&#32467;&#26524;
+    </div>
+    
+  </div>
+</oj-status></p>
+<h2 id="1" class=" text-xl mt-2 pb-2 font-sans">1. &#32972;&#26223;</h2>
+<p class=" font-serif my-1">&#25105;&#20204;&#24050;&#32463;&#22312;&#35838;&#22530;&#19978;&#23637;&#31034;&#20102;&#22914;&#20309;&#21033;&#29992;&#20013;&#26029;&#26426;&#21046;&#23454;&#29616;&#29366;&#24577;&#26426;&#20043;&#38388;&#30340;&#20999;&#25442;&#65306;&#22312;&#32447;&#31243;&#25191;&#34892;&#26102;&#20013;&#26029;&#21040;&#26469;&#65292;&#25805;&#20316;&#31995;&#32479;&#20195;&#30721;&#24320;&#22987;&#25191;&#34892;&#24182;&#20445;&#23384;&#22788;&#29702;&#22120;&#36816;&#34892;&#30340;&#23492;&#23384;&#22120;&#29616;&#22330;&#65307;&#22312;&#20013;&#26029;&#36820;&#22238;&#26102;&#65292;&#21487;&#20197;&#36873;&#25321;&#20219;&#20309;&#19968;&#20010;&#36827;&#31243;/&#32447;&#31243;&#24050;&#32463;&#20445;&#23384;&#30340;&#23492;&#23384;&#22120;&#29616;&#22330;&#24674;&#22797;&#12290;&#22312;&#36825;&#20010;&#23454;&#39564;&#20013;&#65292;&#25105;&#20204;&#25193;&#23637;&#35838;&#22530;&#19978;&#30340;&#31034;&#20363;&#20195;&#30721;&#65292;&#23454;&#29616;&#22810;&#22788;&#29702;&#22120;&#25805;&#20316;&#31995;&#32479;&#20869;&#26680;&#20013;&#30340;&#20869;&#26680;&#32447;&#31243; API (&#23601;&#20687; pthreads &#24211;&#65292;&#25110;&#26159;&#35838;&#22530;&#19978;&#23637;&#31034;&#30340; <code>thread.h</code>)&#12290;&#22312;&#23436;&#25104;&#36825;&#20010;&#23454;&#39564;&#21518;&#65292;&#20320;&#23601;&#24471;&#21040;&#20102;&#19968;&#20010;&#30495;&#27491;&#21487;&#20197;&#24182;&#34892;&#36816;&#34892;&#22810;&#20219;&#21153;&#30340;&#23884;&#20837;&#24335;&#25805;&#20316;&#31995;&#32479;&#12290; </p>
+<h2 id="2" class=" text-xl mt-2 pb-2 font-sans">2. &#23454;&#39564;&#25551;&#36848;</h2>
+<h3 id="21" class=" text-lg mt-2 pb-2 font-sans">2.1 &#23454;&#39564;&#24635;&#35272;</h3>
+<p class=" font-serif my-1">&#36825;&#20010;&#23454;&#39564;&#22312; pmm &#30340;&#22522;&#30784;&#19978;&#65292;&#22686;&#21152;&#20013;&#26029;&#21644;&#32447;&#31243;&#31649;&#29702;&#30340;&#21151;&#33021;&#65292;&#20801;&#35768;&#25805;&#20316;&#31995;&#32479;&#20195;&#30721;&#27880;&#20876;&#20013;&#26029;&#21457;&#29983;&#26102;&#30340;&#22238;&#35843;&#20989;&#25968;&#21644;&#21019;&#24314;&#32447;&#31243;&#65306;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#30456;&#27604; Lab1, os &#27169;&#22359;&#20013;&#26032;&#22686;&#20102; <code>trap</code> &#21644; <code>on_irq</code> &#20004;&#20010;&#20989;&#25968;&#65292;&#20998;&#21035;&#26159;&#31995;&#32479;&#20013;&#21807;&#19968;&#20013;&#26029;/&#31995;&#32479;&#35843;&#29992;&#30340;&#20837;&#21475;&#21644;&#20013;&#26029;&#22788;&#29702;&#31243;&#24207;&#30340;&#22238;&#35843;&#27880;&#20876;&#65307;</li>
+<li class=" ml-8">pmm &#27169;&#22359;&#20445;&#25345;&#19981;&#21464;&#65292;&#20320;&#21487;&#20197;&#27839;&#29992; Lab1 &#30340;&#23454;&#29616;&#65292;&#20294;&#22240;&#20026;&#36825;&#20010;&#23454;&#39564;&#20013;&#22810;&#20102;&#20013;&#26029;&#65292;&#20320;&#38656;&#35201;&#23545;&#20320;&#24050;&#26377;&#30340;&#20195;&#30721;&#20570;&#19968;&#20123;&#23567;&#30340;&#22686;&#24378;&#65292;&#20027;&#35201;&#26159;&#33258;&#26059;&#38145;&#38656;&#35201;&#20445;&#35777;&#19981;&#34987;&#20013;&#26029;&#25171;&#26029;&#65307;</li>
+<li class=" ml-8">&#26032;&#22686;&#20102; kmt &#27169;&#22359;&#65292;&#20320;&#38656;&#35201;&#23436;&#25104; <code>struct task</code>, <code>struct spinlock</code>, <code>struct semaphore</code> &#30340;&#23450;&#20041;&#24182;&#23454;&#29616;&#20854;&#20013;&#20840;&#37096;&#30340; API&#12290;</li>
+</ul>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<h4 id="_2" class=" pt-2 pb-2 font-sans float-left text-sm box border mr-1 mt-1 box-blue" style=" padding-bottom: 0;">&#19981;&#29992;&#23450;&#20041;&#32467;&#26500;&#20307;&#20063;&#33021;&#32534;&#35793;&#36890;&#36807;&#65311;</h4>
+<p class=" font-serif my-1">&#27809;&#38169;&#12290;&#21482;&#35201;&#25105;&#20204;&#19981;&#24341;&#29992; <code>struct task</code> &#30340;&#20219;&#20309;&#25104;&#21592;&#65292;&#25105;&#20204;&#22312;&#20195;&#30721;&#20013;&#20351;&#29992; <code>struct task</code> (&#25110;&#23427;&#30340;&#21035;&#21517; <code>task_t</code>) &#23601;&#19981;&#20250;&#24341;&#36215;&#38382;&#39064;&#12290;&#20363;&#22914;&#65292;&#20026;&#20989;&#25968;&#20256;&#36882; <code>struct task *</code> &#30340;&#25351;&#38024;&#26159;&#27809;&#38382;&#39064;&#30340;&#12290;&#20294;&#22240;&#20026;&#20320;&#38656;&#35201;&#23454;&#29616;&#20855;&#20307;&#25805;&#20316;&#36825;&#20123;&#32467;&#26500;&#20307;&#30340;&#20989;&#25968;&#65292;&#22240;&#27492;&#20320;&#38656;&#35201;&#23450;&#20041;&#23427;&#20204;&#12290;</p>
+<p class=" font-serif my-1">&#20320;&#21487;&#20197;&#25226;&#20320;&#20204;&#30340;&#23450;&#20041;&#25918;&#22312; <code>include/</code> &#30446;&#24405;&#19979;&#30340;&#26576;&#20010;&#22836;&#25991;&#20214;&#37324;&#12290;</p>
+</blockquote>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="n">Context</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="n">handler_t</span><span class="p">)(</span><span class="n">Event</span><span class="p">,</span><span class="w"> </span><span class="n">Context</span><span class="w"> </span><span class="o">*</span><span class="p">);</span>
+<span class="n">MODULE</span><span class="p">(</span><span class="n">os</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">init</span><span class="p">)();</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">run</span><span class="p">)();</span>
+<span class="w">  </span><span class="n">Context</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="n">trap</span><span class="p">)(</span><span class="n">Event</span><span class="w"> </span><span class="n">ev</span><span class="p">,</span><span class="w"> </span><span class="n">Context</span><span class="w"> </span><span class="o">*</span><span class="n">context</span><span class="p">);</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">on_irq</span><span class="p">)(</span><span class="kt">int</span><span class="w"> </span><span class="n">seq</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">event</span><span class="p">,</span><span class="w"> </span><span class="n">handler_t</span><span class="w"> </span><span class="n">handler</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="n">MODULE</span><span class="p">(</span><span class="n">pmm</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">void</span><span class="w">  </span><span class="p">(</span><span class="o">*</span><span class="n">init</span><span class="p">)();</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="n">alloc</span><span class="p">)(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">size</span><span class="p">);</span>
+<span class="w">  </span><span class="kt">void</span><span class="w">  </span><span class="p">(</span><span class="o">*</span><span class="n">free</span><span class="p">)(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">ptr</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">task</span><span class="w"> </span><span class="n">task_t</span><span class="p">;</span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">spinlock</span><span class="w"> </span><span class="n">spinlock_t</span><span class="p">;</span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">semaphore</span><span class="w"> </span><span class="n">sem_t</span><span class="p">;</span>
+<span class="n">MODULE</span><span class="p">(</span><span class="n">kmt</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">init</span><span class="p">)();</span>
+<span class="w">  </span><span class="kt">int</span><span class="w">  </span><span class="p">(</span><span class="o">*</span><span class="n">create</span><span class="p">)(</span><span class="n">task_t</span><span class="w"> </span><span class="o">*</span><span class="n">task</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">entry</span><span class="p">)(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">arg</span><span class="p">),</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">arg</span><span class="p">);</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">teardown</span><span class="p">)(</span><span class="n">task_t</span><span class="w"> </span><span class="o">*</span><span class="n">task</span><span class="p">);</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">spin_init</span><span class="p">)(</span><span class="n">spinlock_t</span><span class="w"> </span><span class="o">*</span><span class="n">lk</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">name</span><span class="p">);</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">spin_lock</span><span class="p">)(</span><span class="n">spinlock_t</span><span class="w"> </span><span class="o">*</span><span class="n">lk</span><span class="p">);</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">spin_unlock</span><span class="p">)(</span><span class="n">spinlock_t</span><span class="w"> </span><span class="o">*</span><span class="n">lk</span><span class="p">);</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">sem_init</span><span class="p">)(</span><span class="n">sem_t</span><span class="w"> </span><span class="o">*</span><span class="n">sem</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="p">);</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">sem_wait</span><span class="p">)(</span><span class="n">sem_t</span><span class="w"> </span><span class="o">*</span><span class="n">sem</span><span class="p">);</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">sem_signal</span><span class="p">)(</span><span class="n">sem_t</span><span class="w"> </span><span class="o">*</span><span class="n">sem</span><span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div>
+
+<h3 id="22-os-operating-systems" class=" text-lg mt-2 pb-2 font-sans">2.2 OS (Operating Systems) &#27169;&#22359;</h3>
+<h4 id="221" class=" pt-2 pb-2 font-sans">2.2.1 &#25805;&#20316;&#31995;&#32479;&#30340;&#20027;&#24490;&#29615;</h4>
+<p class=" font-serif my-1">os &#27169;&#22359;&#26159;&#25805;&#20316;&#31995;&#32479;&#20027;&#24490;&#29615;&#30340;&#20195;&#30721;&#65292;&#20027;&#35201;&#36127;&#36131;&#31995;&#32479;&#30340;&#21021;&#22987;&#21270;&#21644;&#20013;&#26029;&#21709;&#24212;&#12290;&#25105;&#20204;&#22312;&#19978;&#19968;&#20010;&#23454;&#39564;&#30340;&#26694;&#26550;&#20195;&#30721;&#20013;&#65292;&#24050;&#32463;&#21253;&#21547;&#20102;&#20197;&#19979;&#20989;&#25968;&#65306;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>os-&gt;init()</code> &#20250;&#22312;&#31995;&#32479;&#21551;&#21160;&#26102;&#34987;&#21551;&#21160;&#30340;&#31532;&#19968;&#20010;&#22788;&#29702;&#22120;&#35843;&#29992; (&#20165;&#21021;&#22987;&#21270;&#19968;&#27425;)&#65292;&#23427;&#22312;&#21333;&#22788;&#29702;&#22120;&#29366;&#24577;&#19979;&#23436;&#25104;&#24517;&#35201;&#30340;&#21021;&#22987;&#21270;&#8212;&#8212;&#22240;&#27492;&#20320;&#19981;&#29992;&#25285;&#24515;&#25968;&#25454;&#31454;&#20105;&#31561;&#40635;&#28902;&#65307;</li>
+<li class=" ml-8"><code>os-&gt;run()</code> &#26159;&#25805;&#20316;&#31995;&#32479;&#21551;&#21160;&#21518;&#27599;&#20010;&#22788;&#29702;&#22120;&#24517;&#39035;&#25191;&#34892;&#30340;&#19968;&#20123;&#20195;&#30721;&#12290;&#25105;&#20204;&#20551;&#35774; <code>os-&gt;run()</code> &#26102;&#24050;&#32463;&#23436;&#25104;&#20102;&#25152;&#26377;&#21021;&#22987;&#21270;&#24037;&#20316;&#65292;&#27599;&#20010;&#22788;&#29702;&#22120;&#37117;&#20250;&#35843;&#29992;&#21516;&#19968;&#20221; <code>os-&gt;run</code>&#12290;</li>
+</ul>
+<p class=" font-serif my-1">&#20320;&#21487;&#33021;&#20250;&#20462;&#25913;&#20320;&#24050;&#26377;&#30340;&#23454;&#29616;&#65292;&#20363;&#22914;&#20320;&#29616;&#22312;&#30340; <code>os-&gt;init()</code> &#30475;&#36215;&#26469;&#21487;&#33021;&#38271;&#36825;&#26679;&#65306;</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">os_init</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">pmm</span><span class="o">-&gt;</span><span class="n">init</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p class=" font-serif my-1">&#20294;&#20320;&#21487;&#33021;&#20250;&#22312;&#20854;&#20013;&#22686;&#21152; kmt &#27169;&#22359;&#30340;&#21021;&#22987;&#21270;&#65306;</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">os_init</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">pmm</span><span class="o">-&gt;</span><span class="n">init</span><span class="p">();</span>
+<span class="w">  </span><span class="n">kmt</span><span class="o">-&gt;</span><span class="n">init</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<h4 id="os-run" class=" pt-2 pb-2 font-sans float-left text-sm box border mr-1 mt-1 box-blue" style=" padding-bottom: 0;"><code>os-&gt;run()</code> &#30340;&#34892;&#20026;&#25913;&#21464;</h4>
+<p class=" font-serif my-1">&#19982;&#19978;&#20010;&#23454;&#39564;&#19981;&#21516;&#65292;&#25105;&#20204;<strong>&#20250;</strong>&#35843;&#29992;&#20320;&#30340; <code>os-&gt;run()</code>&#12290;&#22240;&#27492;&#22914;&#26524;&#20320;&#26377;&#20219;&#20309;&#27979;&#35797;&#20195;&#30721; (&#22914;&#21019;&#24314;&#19968;&#20123;&#29992;&#25143;&#32447;&#31243;&#30340; <code>kmt-&gt;create</code>)&#65292;&#21487;&#20197;&#32771;&#34385;&#20197;&#19979;&#20004;&#31181;&#26041;&#27861;&#65306;</p>
+<ol class=" list-decimal font-serif">
+<li class=" ml-8">(&#19981;&#25512;&#33616;) &#20889;&#22312; <code>main</code> &#20989;&#25968;&#20013;&#65292;Online Judge &#20250;&#20351;&#29992;&#21478;&#19968;&#20221; framework&#65292;&#25152;&#20197;&#20320;&#25554;&#20837;&#30340;&#25152;&#26377;&#27979;&#35797;&#20195;&#30721;&#37117;&#19981;&#20250;&#34987;&#25191;&#34892;&#12290;</li>
+<li class=" ml-8">(&#25512;&#33616;) &#20889;&#22312; <code>os-&gt;init</code> &#20013;&#65292;&#20294;&#20351;&#29992;&#19968;&#20123;&#39044;&#32534;&#35793;&#25351;&#20196;&#30830;&#20445;&#22312; Online Judge &#26102;&#27979;&#35797;&#20195;&#30721;&#19981;&#20250;&#34987;&#25191;&#34892; (&#21551;&#21160;&#19968;&#20010; &#8220;&#31354;&#30340;&#8221; &#25805;&#20316;&#31995;&#32479;)&#12290;</li>
+</ol>
+</blockquote>
+<p class=" font-serif my-1">&#29702;&#35299; os &#27169;&#22359;&#65292;&#35201;&#20174;&#31243;&#24207;&#25191;&#34892;&#30340;&#20837;&#21475;&#24320;&#22987;&#65292;&#20197;&#19979;&#26159;&#26694;&#26550;&#20195;&#30721;&#25191;&#34892;&#30340;&#27969;&#31243;&#65306;</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">ioe_init</span><span class="p">();</span>
+<span class="w">  </span><span class="n">cte_init</span><span class="p">(</span><span class="n">os</span><span class="o">-&gt;</span><span class="n">trap</span><span class="p">);</span>
+<span class="w">  </span><span class="n">os</span><span class="o">-&gt;</span><span class="n">init</span><span class="p">();</span>
+<span class="w">  </span><span class="n">mpe_init</span><span class="p">(</span><span class="n">os</span><span class="o">-&gt;</span><span class="n">run</span><span class="p">);</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p class=" font-serif my-1">&#22312;&#27599;&#20010;&#22788;&#29702;&#22120;&#35843;&#29992; <code>os-&gt;run</code> &#25191;&#34892; (&#24182;&#26368;&#32456;&#34987;&#20013;&#26029;) &#21518;&#65292;&#25805;&#20316;&#31995;&#32479;&#23601;&#21270;&#36523;&#25104;&#20026;&#20102;&#20013;&#26029;&#22788;&#29702;&#31243;&#24207;&#12290;&#35843;&#29992; <code>mpe_init()</code> &#20043;&#21518;&#65292;&#25152;&#26377;&#30340;&#22788;&#29702;&#22120;&#37117;&#24320;&#22987;&#25191;&#34892; <code>os-&gt;run()</code>&#65292;&#25805;&#20316;&#31995;&#32479;&#27491;&#24335;&#21551;&#21160;&#65292;&#32780;&#21551;&#21160;&#20195;&#30721;&#23601;&#25104;&#20026;&#20102;&#24403;&#21069;&#22788;&#29702;&#22120;&#19978;&#30340;&#31532;&#19968;&#20010;&#32447;&#31243;&#8212;&#8212;&#36825;&#20010;&#32447;&#31243;&#26159;&#36825;&#20010;&#22788;&#29702;&#22120;&#19978;&#30340; &#8220;idle&#8221; &#32447;&#31243;&#65306;&#24403;&#31995;&#32479;&#20013;&#27809;&#26377;&#32447;&#31243;&#21487;&#20197;&#34987;&#35843;&#24230;&#30340;&#26102;&#20505;&#65292;&#25105;&#20204;&#30340;&#22788;&#29702;&#22120;&#20063;&#24517;&#39035;&#25191;&#34892;&#28857;&#20160;&#20040;&#65292;&#30452;&#21040;&#19979;&#19968;&#27425;&#20013;&#26029;&#21040;&#26469;&#65292;&#22240;&#27492;&#23427;&#21487;&#20197;&#26159;&#19968;&#20010;&#27515;&#24490;&#29615;&#65306;</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">os_run</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">iset</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p class=" font-serif my-1">&#20027;&#24490;&#29615;&#30340;&#21478;&#19968;&#37096;&#20998;&#26159;&#26412;&#27425;&#23454;&#39564;&#26032;&#22686;&#30340;&#20013;&#26029;&#22788;&#29702;&#31243;&#24207;&#30340;&#20837;&#21475;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>os-&gt;trap(ev, context)</code>: &#20013;&#26029;/&#24322;&#24120;&#22788;&#29702;&#31243;&#24207;&#30340;&#21807;&#19968;&#20837;&#21475;&#12290;&#20013;&#26029;&#21518;&#65292;AbstractMachine &#20250;&#23558;&#25152;&#26377;&#23492;&#23384;&#22120;&#20445;&#23384;&#21040;&#22534;&#26632;&#19978; (&#23601;&#20687; xv6 &#37027;&#26679;)&#65292;&#28982;&#21518;&#35843;&#29992; <code>os-&gt;trap()</code>&#65292;&#24182;&#19988;&#22312;&#20989;&#25968;&#36820;&#22238;&#21518;&#65292;&#23558; <code>os-&gt;trap()</code> &#36820;&#22238;&#30340;&#23492;&#23384;&#22120;&#29616;&#22330;&#24674;&#22797;&#21040; CPU &#19978;&#12290;</li>
+</ul>
+<p class=" font-serif my-1">&#30452;&#21040; <code>mpe_init()</code> &#20043;&#21069;&#65292;&#37117;&#21482;&#26377;&#19968;&#20010;&#22788;&#29702;&#22120;&#22312;&#25191;&#34892; (&#32534;&#21495;&#20026; 0 &#30340; CPU&#65292;&#27492;&#26102;&#35843;&#29992; <code>cpu_current()</code> &#20250;&#36820;&#22238; <code>0</code>)&#12290;&#22312;&#19978;&#38754;&#30340;&#20195;&#30721;&#20013;&#65292;<code>cte_init(os-&gt;trap)</code> &#25351;&#23450;&#20102;<code>os-&gt;trap</code> &#26159;&#21807;&#19968;&#30340;&#20013;&#26029;&#22788;&#29702;&#31243;&#24207;&#65292;&#25152;&#26377;&#30340;&#22788;&#29702;&#22120;&#21457;&#29983;&#20013;&#26029;&#37117;&#20250;&#32479;&#19968;&#35843;&#29992; <code>os-&gt;trap()</code>&#12290;&#22312;&#20013;&#26029;&#30340;&#26102;&#20505;&#20570;&#20160;&#20040;&#23436;&#20840;&#26159;&#30001;&#20320;&#20915;&#23450;&#30340;&#12290;</p>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<h4 id="_3" class=" pt-2 pb-2 font-sans float-left text-sm box border mr-1 mt-1 box-blue" style=" padding-bottom: 0;">&#23567;&#24515;&#22810;&#22788;&#29702;&#22120;&#20013;&#26029;</h4>
+<p class=" font-serif my-1">&#22240;&#20026;&#27599;&#20010;&#22788;&#29702;&#22120;&#37117;&#20250;&#34987;&#20013;&#26029;&#65292;&#36825;&#35753; <code>os-&gt;trap()</code> &#21464;&#25104;&#20102;&#34987;&#24182;&#34892;&#25191;&#34892;&#30340;&#20195;&#30721;&#12290;&#22240;&#27492;&#65292;&#22914;&#26524;&#37324;&#38754;&#26377;&#20219;&#20309;&#20849;&#20139;&#21464;&#37327;&#65292;&#20320;&#38656;&#35201;&#29992;&#33258;&#26059;&#38145;&#20445;&#25252;&#22909; (&#24182;&#19988;&#35201;&#23567;&#24515;&#27515;&#38145;&#65292;&#24182;&#23567;&#24515;&#22320;&#31649;&#29702;&#20013;&#26029;&#26631;&#24535;&#20301;)&#65292;&#28040;&#28781;&#25968;&#25454;&#31454;&#20105;&#8212;&#8212;&#36824;&#35760;&#24471; &#8220;&#21487;&#35265;&#24615;&#8221; &#30340;&#20363;&#23376;&#21527;&#65311;</p>
+</blockquote>
+<h4 id="222" class=" pt-2 pb-2 font-sans">2.2.2 &#20013;&#26029;&#22788;&#29702;&#31243;&#24207;</h4>
+<p class=" font-serif my-1">os &#27169;&#22359;&#30340;&#21478;&#19968;&#20010;&#37325;&#35201;&#21151;&#33021;&#26159;&#31649;&#29702;&#31995;&#32479;&#20013;&#30340;&#20013;&#26029;&#22788;&#29702;&#31243;&#24207;&#8212;&#8212;&#25105;&#20204;&#24182;&#19981;&#24076;&#26395;&#22823;&#23478;&#22312;&#27599;&#24403;&#26377;&#19968;&#20010;&#26032;&#30340;&#21151;&#33021;&#20197;&#21518;&#65292;&#37117;&#30452;&#25509;&#21435;&#25913; <code>os-&gt;trap</code> &#30340;&#20195;&#30721;&#65292;&#22240;&#27492;&#25105;&#20204;&#25552;&#20379;&#20102;&#21478;&#19968;&#20010; API:</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>os-&gt;on_irq(seq, event, handler)</code>: &#27880;&#20876;&#19968;&#20010;&#22312;&#20013;&#26029;&#26102;&#35843;&#29992;&#30340; callback&#12290;</li>
+</ul>
+<p class=" font-serif my-1"><code>on_irq</code> &#30340;&#21547;&#20041;&#26159;&#22312; <code>os-&gt;trap(ev, ctx)</code> &#25191;&#34892;&#26102;&#65292;&#24403; <code>ev.event</code> (&#20107;&#20214;&#32534;&#21495;) &#21644; <code>event</code> &#21305;&#37197;&#26102;&#65292;&#35843;&#29992; <code>handler(event, ctx);</code>&#12290;&#20854;&#20013;&#65306;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>seq</code> &#20915;&#23450;&#20102; handler &#34987;&#35843;&#29992;&#30340;&#39034;&#24207;&#65292;<code>seq</code> &#23567;&#30340; handler &#20808;&#34987;&#35843;&#29992;&#12290;<code>seq</code> &#30456;&#21516;&#30340;&#25353;&#20219;&#24847;&#39034;&#24207;&#35843;&#29992;&#65307;</li>
+<li class=" ml-8">&#24403; <code>event == EVENT_NULL</code> &#26102;&#65292;&#22312;&#20219;&#20309;&#20013;&#26029;/&#24322;&#24120;&#26102;&#37117;&#35843;&#29992; <code>handler</code>&#65307;</li>
+<li class=" ml-8">&#25105;&#20204;&#20801;&#35768;&#19968;&#20010;&#19988;&#20165;&#19968;&#20010; handler &#36820;&#22238;&#19968;&#20010; <code>Context</code>&#65292;&#22312;&#20013;&#26029;&#36820;&#22238;&#26102;&#24674;&#22797;&#21040;&#36825;&#20010; conetxt&#12290;&#24403;&#22810;&#20010; handler &#37117;&#36820;&#22238; context &#26102;&#65292;&#26159; undefined behavior&#12290;</li>
+</ul>
+<p class=" font-serif my-1">&#22914;&#26524;&#25105;&#20204;&#30475; xv6 &#30340;&#20195;&#30721; (<code>trap.c</code>)&#65292;&#25105;&#20204;&#20250;&#30475;&#21040;&#20013;&#26029;&#21040;&#26469;&#26102;&#30340; if-else &#32467;&#26500;&#65306;</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">irq</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">plic_claim</span><span class="p">();</span>
+
+<span class="k">if</span><span class="p">(</span><span class="n">irq</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">UART0_IRQ</span><span class="p">){</span>
+<span class="w">  </span><span class="n">uartintr</span><span class="p">();</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">irq</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">VIRTIO0_IRQ</span><span class="p">){</span>
+<span class="w">  </span><span class="n">virtio_disk_intr</span><span class="p">();</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">irq</span><span class="p">){</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">"unexpected interrupt irq=%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">irq</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p class=" font-serif my-1">&#25105;&#20204;&#29992; <code>on_irq</code> &#26426;&#21046;&#23454;&#29616;&#20102;&#19978;&#36848;&#20195;&#30721;&#30340;&#28789;&#27963;&#25511;&#21046;: os &#27169;&#22359;&#29616;&#22312;&#21464;&#24471;&#38750;&#24120;&#31616;&#21333;&#65292;&#23427;&#29978;&#33267;&#23436;&#20840;&#19981;&#38656;&#35201;&#30693;&#36947;&#20854;&#20182;&#20219;&#20309;&#27169;&#22359;&#30340;&#23384;&#22312;&#12290;&#22312;&#21442;&#32771;&#20195;&#30721;&#20013;&#65292;<code>os-&gt;trap()</code> &#30340;&#23454;&#29616;&#31867;&#20284;&#20110;&#65306;</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">static</span><span class="w"> </span><span class="n">Context</span><span class="w"> </span><span class="o">*</span><span class="nf">os_trap</span><span class="p">(</span><span class="n">Event</span><span class="w"> </span><span class="n">ev</span><span class="p">,</span><span class="w"> </span><span class="n">Context</span><span class="w"> </span><span class="o">*</span><span class="n">ctx</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Context</span><span class="w"> </span><span class="o">*</span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">h</span><span class="o">:</span><span class="w"> </span><span class="n">handlers_sorted_by_seq</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">h</span><span class="p">.</span><span class="n">event</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">EVENT_NULL</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="n">event</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">ev</span><span class="p">.</span><span class="n">event</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">Context</span><span class="w"> </span><span class="o">*</span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="n">handler</span><span class="p">(</span><span class="n">ev</span><span class="p">,</span><span class="w"> </span><span class="n">ctx</span><span class="p">);</span>
+<span class="w">      </span><span class="n">panic_on</span><span class="p">(</span><span class="n">r</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">next</span><span class="p">,</span><span class="w"> </span><span class="s">"returning multiple contexts"</span><span class="p">);</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">r</span><span class="p">)</span><span class="w"> </span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="n">panic_on</span><span class="p">(</span><span class="o">!</span><span class="n">next</span><span class="p">,</span><span class="w"> </span><span class="s">"returning NULL context"</span><span class="p">);</span>
+<span class="w">  </span><span class="n">panic_on</span><span class="p">(</span><span class="n">sane_context</span><span class="p">(</span><span class="n">next</span><span class="p">),</span><span class="w"> </span><span class="s">"returning to invalid context"</span><span class="p">);</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">next</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<h4 id="assertions" class=" pt-2 pb-2 font-sans float-left text-sm box border mr-1 mt-1 box-blue" style=" padding-bottom: 0;">&#38450;&#24481;&#24615;&#30340; Assertions</h4>
+<p class=" font-serif my-1">&#27880;&#24847;&#21040;&#19978;&#36848;&#20195;&#30721;&#20013;&#19968;&#20123;&#38450;&#24481;&#24615;&#30340; assertions&#65292;&#23427;&#20204;&#26816;&#26597; specifications &#26159;&#21542;&#34987;&#36829;&#21453;&#12290;&#22312;&#31243;&#24207;&#30340;&#21508;&#20010;&#22320;&#26041;&#28155;&#21152;&#38450;&#24481;&#24615;&#30340; assertions &#33021;&#26368;&#22823;&#31243;&#24230;&#20445;&#25252;&#20320;&#20204;&#19981;&#21463;&#20260;&#23475;&#8212;&#8212;&#20363;&#22914;&#22312;&#26576;&#20010;&#32597;&#35265;&#30340;&#25191;&#34892;&#36335;&#24452;&#19978;&#65292;&#20320;&#24536;&#35760;&#36820;&#22238; context&#65292;&#25110;&#26159; context &#24050;&#32463;&#34987;&#25439;&#22351;&#65292;&#20320;&#20250;&#24471;&#21040; assertion failure &#32780;&#19981;&#26159;&#34394;&#25311;&#26426;&#30340;&#31070;&#31192;&#37325;&#21551;&#12290;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>sane_context</code> &#22914;&#20309;&#23454;&#29616;&#65311;&#19981;&#22952;&#21487;&#20197;&#32771;&#34385;&#20363;&#22914; <code>cs</code>, <code>rip</code>, <code>rflags</code> &#31561;&#23492;&#23384;&#22120;&#21512;&#27861;&#30340;&#20540;&#12290;</li>
+</ul>
+<p class=" font-serif my-1">&#27492;&#22806;&#65292;&#24403;&#21069;&#30340; assert failure &#21482;&#33021;&#25171;&#21360;&#20986;&#22833;&#36133;&#30340;&#20301;&#32622;&#12290;&#22914;&#26524;&#20320;&#20889;&#19968;&#23567;&#27573;&#20195;&#30721;&#65292;&#33021;&#22815;&#25171;&#21360;&#20986; call stack frame&#65292;&#37027;&#20250;&#26497;&#22823;&#31243;&#24230;&#31616;&#21270;&#20320;&#20204;&#35843;&#35797;&#30340;&#36807;&#31243;&#8212;&#8212;&#34429;&#28982;&#36825;&#19981;&#26159;&#24517;&#39035;&#30340;&#12290;</p>
+</blockquote>
+<p class=" font-serif my-1">&#20511;&#21161; <code>os-&gt;on_irq</code>&#65292;&#25105;&#20204;&#21487;&#20197; &#8220;&#27880;&#20876;&#8221; &#33509;&#24178;&#20013;&#26029;&#22788;&#29702;&#31243;&#24207;&#65292;&#22312;&#36866;&#24403;&#30340;&#26102;&#26426;&#20570;&#36866;&#24403;&#30340;&#20107;&#24773;&#8212;&#8212;&#36825;&#31867;&#20284;&#20110; &#8220;&#38754;&#21521;&#20999;&#38754;&#32534;&#31243;&#8221; (<a href="https://en.wikipedia.org/wiki/Aspect-oriented_programming" class=" text-amber-900">Aspected-Oriented Programming, AOP</a>) &#30340;&#35774;&#35745;&#12290;&#27492;&#26102;&#65292;&#25105;&#20204;&#30340; os &#27169;&#22359;&#24182;&#19981;&#38656;&#35201;&#30693;&#36947;&#31995;&#32479;&#20013;&#26377;&#22810;&#23569;&#20013;&#26029;&#12289;&#22810;&#23569;&#35774;&#22791;&#39537;&#21160;&#31243;&#24207;&#21487;&#33021;&#20250;&#22788;&#29702;&#20013;&#26029;&#65292;&#20363;&#22914;&#65292;&#22914;&#26524;&#25105;&#20204;&#24076;&#26395;&#22312; I/O &#35774;&#22791;&#21457;&#29983;&#20013;&#26029;&#26102;&#65292;&#21521;&#38190;&#30424;&#39537;&#21160;&#30340;&#20449;&#21495;&#37327;&#25191;&#34892;&#19968;&#20010; V &#25805;&#20316;&#65292;&#25105;&#20204;&#21482;&#38656;&#35201;&#65306;</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">static</span><span class="w"> </span><span class="n">Context</span><span class="w"> </span><span class="o">*</span><span class="nf">input_notify</span><span class="p">(</span><span class="n">Event</span><span class="w"> </span><span class="n">ev</span><span class="p">,</span><span class="w"> </span><span class="n">Context</span><span class="w"> </span><span class="o">*</span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">kmt</span><span class="o">-&gt;</span><span class="n">sem_signal</span><span class="p">(</span><span class="o">&amp;</span><span class="n">sem_kbdirq</span><span class="p">);</span><span class="w"> </span><span class="c1">// &#22312;IO&#35774;&#22791;&#20013;&#26029;&#21040;&#26469;&#26102;&#65292;&#25191;&#34892;V&#25805;&#20316;&#21796;&#37266;&#19968;&#20010;&#32447;&#31243;</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">input_init</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// seq == 100 &#26159;&#38543;&#24847;&#35774;&#32622;&#22320;&#65292;&#25105;&#20204;&#24182;&#19981;&#22312;&#24847;&#20309;&#26102;&#35843;&#29992;</span>
+<span class="w">  </span><span class="n">os</span><span class="o">-&gt;</span><span class="n">on_irq</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="n">EVENT_IRQ_IODEV</span><span class="p">,</span><span class="w"> </span><span class="n">input_notify</span><span class="p">);</span><span class="w"> </span>
+<span class="w">  </span><span class="p">...</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p class=" font-serif my-1">&#29978;&#33267;&#22312; jyy &#30340;&#21442;&#32771;&#23454;&#29616;&#20013;&#65292;&#23492;&#23384;&#22120;&#29616;&#22330;&#20445;&#23384;&#12289;&#25191;&#34892;&#35843;&#24230;&#31243;&#24207;&#30340;&#20195;&#30721;&#65292;&#20063;&#37117;&#26159;&#29992; <code>on_irq</code> &#27880;&#20876;&#30340; (&#23613;&#31649;&#20320;&#24182;&#19981;&#24517;&#35201;&#36825;&#20040;&#20570;&#65292;&#21487;&#20197;&#25226;&#36825;&#37096;&#20998;&#20195;&#30721;&#30452;&#25509;&#20889;&#22312; <code>os-&gt;trap</code> &#20013;)&#65306;</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="c1">// thread.c&#65292;&#32447;&#31243;&#31649;&#29702;</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">kmt_init</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">...</span>
+<span class="w">  </span><span class="n">os</span><span class="o">-&gt;</span><span class="n">on_irq</span><span class="p">(</span><span class="n">INT_MIN</span><span class="p">,</span><span class="w"> </span><span class="n">EVENT_NULL</span><span class="p">,</span><span class="w"> </span><span class="n">kmt_context_save</span><span class="p">);</span><span class="w">   </span><span class="c1">// &#24635;&#26159;&#26368;&#20808;&#35843;&#29992;</span>
+<span class="w">  </span><span class="n">os</span><span class="o">-&gt;</span><span class="n">on_irq</span><span class="p">(</span><span class="n">INT_MAX</span><span class="p">,</span><span class="w"> </span><span class="n">EVENT_NULL</span><span class="p">,</span><span class="w"> </span><span class="n">kmt_schedule</span><span class="p">);</span><span class="w">       </span><span class="c1">// &#24635;&#26159;&#26368;&#21518;&#35843;&#29992;</span>
+<span class="w">  </span><span class="p">...</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p class=" font-serif my-1">&#22914;&#26524;&#19978;&#36848;&#20195;&#30721;&#34987;&#25191;&#34892;&#65292;&#37027;&#20040;&#25353;&#29031;&#27880;&#20876;&#26102;&#30340; sequence number &#36827;&#34892;&#35843;&#29992;&#65306;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22312;&#26102;&#38047;&#20013;&#26029;&#21457;&#29983;&#26102;&#20381;&#27425;&#35843;&#29992; <code>kmt_context_save</code> (<code>INT_MIN</code>) &#21644; <code>kmt_schedule</code> (<code>INT_MAX</code>)&#65307;</li>
+<li class=" ml-8">&#22312;&#38190;&#30424;&#20013;&#26029;&#21457;&#29983;&#26102;&#20381;&#27425;&#35843;&#29992; <code>kmt_context_save</code> (<code>INT_MIN</code>), <code>input_notify</code> (<code>100</code>), &#21644; <code>kmt_schedule</code> (<code>INT_MAX</code>)</li>
+</ul>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1"><red><strong>&#32447;&#31243;/&#20013;&#26029;&#23433;&#20840;&#24615;</strong></red>&#65306;&#27599;&#20010;&#22788;&#29702;&#22120;&#37117;&#20250;&#20998;&#21035;&#21709;&#24212;&#20013;&#26029;&#8212;&#8212;<code>iset</code> &#20165;&#23545;&#24403;&#21069;&#25191;&#34892;&#30340;&#22788;&#29702;&#22120;&#26377;&#25928;&#12290;&#22240;&#27492;&#65292;&#20320;&#21487;&#20197;&#20551;&#35774; <code>os-&gt;on_irq</code> &#22312;&#21333;&#22788;&#29702;&#22120;&#12289;&#20013;&#26029;&#20851;&#38381;&#19979; <code>os-&gt;run</code> &#34987;&#35843;&#29992;&#20043;&#21069;&#20840;&#37096;&#25191;&#34892;&#23436;&#27605;&#12290;</p>
+</blockquote>
+<h3 id="23-pmm-physical-memory-management" class=" text-lg mt-2 pb-2 font-sans">2.3 PMM (Physical Memory Management) &#27169;&#22359;</h3>
+<p class=" font-serif my-1">pmm &#19982;&#20043;&#21069;&#34892;&#20026;&#19968;&#33268;&#65292;&#20294;&#22240;&#20026;&#23427;&#34987;&#35843;&#29992;&#30340;&#22330;&#26223;&#22686;&#21152;&#20102; (&#24182;&#19981;&#26159;&#27599;&#20010; CPU &#21482;&#26159;&#36830;&#32493;&#19981;&#26029;&#22320;&#25191;&#34892;&#20195;&#30721;&#65292;&#32780;&#26159; CPU &#21487;&#33021;&#34987;&#20013;&#26029;)&#65292;&#25105;&#20204;&#38656;&#35201;&#31245;&#31245;&#23545;&#23427;&#36827;&#34892;&#25913;&#36827;&#65306;</p>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1"><red><strong>&#32447;&#31243;/&#20013;&#26029;&#23433;&#20840;&#24615;</strong></red>&#65306;&#20801;&#35768;&#20219;&#24847;&#32447;&#31243;/&#20013;&#26029;&#22788;&#29702;&#31243;&#24207;&#35843;&#29992; <code>pmm-&gt;alloc</code> &#21644; <code>pmm-&gt;free</code>&#12290;</p>
+</blockquote>
+<p class=" font-serif my-1">&#20855;&#20307;&#26469;&#35828;&#65292;&#25105;&#20204;&#35201;&#27714;:</p>
+<ol class=" list-decimal font-serif">
+<li class=" ml-8">&#21487;&#20197;&#22312;&#20013;&#26029;&#37324;&#35843;&#29992; <code>pmm-&gt;alloc()</code> &#21644; <code>pmm-&gt;free()</code>&#65307;</li>
+<li class=" ml-8">&#20869;&#23384;&#20998;&#37197;/&#22238;&#25910;&#26102;&#65292;&#31616;&#21333;&#36215;&#35265;&#65292;&#19981;&#20801;&#35768;&#34987;&#20013;&#26029;&#12290;</li>
+</ol>
+<p class=" font-serif my-1">&#21487;&#20197;&#29992;&#20197;&#19979;&#26041;&#27861;&#31616;&#21333;&#20570;&#21040;&#65306;</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="nf">kalloc_safe</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">size</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ienabled</span><span class="p">();</span>
+<span class="w">  </span><span class="n">iset</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kalloc</span><span class="p">(</span><span class="n">size</span><span class="p">);</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="n">iset</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">ret</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">kfree_safe</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">ptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ienabled</span><span class="p">();</span>
+<span class="w">  </span><span class="n">iset</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+<span class="w">  </span><span class="n">kfree</span><span class="p">(</span><span class="n">ptr</span><span class="p">);</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="n">iset</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p class=" font-serif my-1">&#25105;&#20204;&#19981;&#25512;&#33616;&#20320;&#22312; pmm &#20013;&#20351;&#29992; <code>kmt-&gt;spinlock</code>&#65292;&#32780;&#26159;&#20445;&#25345;&#29616;&#26377;&#30340;&#23454;&#29616;&#19981;&#21464;&#65292;&#22240;&#20026;&#20320;&#21487;&#33021;&#22312; <code>kmt-&gt;init()</code> &#30340;&#26102;&#20505;&#35843;&#29992; <code>pmm-&gt;alloc()</code>&#65292;&#27492;&#26102;&#33258;&#26059;&#38145;&#21487;&#33021;&#36824;&#27809;&#26377;&#23436;&#25104;&#24517;&#35201;&#30340;&#21021;&#22987;&#21270;&#12290;</p>
+<h3 id="24-kmt-kernel-multi-threading" class=" text-lg mt-2 pb-2 font-sans">2.4 KMT (Kernel Multi-Threading) &#27169;&#22359;</h3>
+<h4 id="241" class=" pt-2 pb-2 font-sans">2.4.1 &#27169;&#22359;&#21021;&#22987;&#21270;</h4>
+<p class=" font-serif my-1"><code>kmt-&gt;init()</code> &#36127;&#36131;&#21021;&#22987;&#21270;&#24517;&#35201;&#30340;&#25968;&#25454;&#65292;&#20363;&#22914;&#20998;&#37197;&#19968;&#20123;&#37325;&#35201;&#30340;&#25968;&#25454;&#32467;&#26500;&#12290;&#25105;&#20204;&#39044;&#26399;&#20320;&#20250;&#22312; <code>os-&gt;init()</code> &#26102;&#35843;&#29992; <code>kmt-&gt;init()</code>&#12290;&#25972;&#20010;&#31995;&#32479;&#21551;&#21160;&#21482;&#35843;&#29992;&#19968;&#27425; <code>kmt-&gt;init()</code>&#12290;</p>
+<h4 id="242" class=" pt-2 pb-2 font-sans">2.4.2 &#32447;&#31243;&#31649;&#29702;</h4>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">int</span><span class="w">  </span><span class="p">(</span><span class="o">*</span><span class="n">create</span><span class="p">)(</span><span class="n">task_t</span><span class="w"> </span><span class="o">*</span><span class="n">task</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">entry</span><span class="p">)(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">arg</span><span class="p">),</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">arg</span><span class="p">);</span>
+<span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">teardown</span><span class="p">)(</span><span class="n">task_t</span><span class="w"> </span><span class="o">*</span><span class="n">task</span><span class="p">);</span>
+</code></pre></div>
+
+<p class=" font-serif my-1">&#20854;&#20013; <code>create</code> &#22312;&#31995;&#32479;&#20013;&#21019;&#24314;&#19968;&#20010;&#32447;&#31243; (<code>task_t</code> &#24212;&#24403;&#20107;&#20808;&#34987;&#20998;&#37197;&#22909;)&#65292;&#36825;&#20010;&#32447;&#31243;&#31435;&#21363;&#23601;&#21487;&#20197;&#34987;&#35843;&#24230;&#25191;&#34892; (&#20294;&#35843;&#29992; create &#26102;&#20013;&#26029;&#21487;&#33021;&#22788;&#20110;&#20851;&#38381;&#29366;&#24577;&#65292;&#22312;&#25171;&#24320;&#20013;&#26029;&#21518;&#23427;&#25165;&#33719;&#24471;&#34987;&#35843;&#24230;&#25191;&#34892;&#30340;&#26435;&#21033;)&#12290;&#25105;&#20204;&#20551;&#35774; <code>create</code> &#21019;&#24314;&#30340;&#32447;&#31243;&#27704;&#19981;&#36820;&#22238;&#8212;&#8212;&#20294;&#23427;&#26377;&#21487;&#33021;&#22312;&#27704;&#36828;&#19981;&#20250;&#34987;&#35843;&#24230;&#25191;&#34892;&#30340;&#24773;&#20917;&#19979;&#34987;&#35843;&#29992; <code>kmt-&gt;teardown</code> &#22238;&#25910;&#12290;</p>
+<p class=" font-serif my-1"><code>teardown</code> &#30456;&#24212;&#22238;&#25910;&#20026;&#32447;&#31243;&#20998;&#37197;&#30340;&#36164;&#28304;&#8212;&#8212;&#20363;&#22914;&#20320;&#21487;&#33021;&#20250;&#20026; <code>task_t</code> &#21160;&#24577;&#20998;&#37197;&#20869;&#23384;&#65306;</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">kmt_create</span><span class="p">(</span><span class="n">task_t</span><span class="w"> </span><span class="o">*</span><span class="n">task</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">entry</span><span class="p">)(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">arg</span><span class="p">),</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">arg</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">...</span>
+<span class="w">  </span><span class="n">task</span><span class="o">-&gt;</span><span class="n">stack</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pmm</span><span class="o">-&gt;</span><span class="n">alloc</span><span class="p">(</span><span class="n">STACK_SIZE</span><span class="p">);</span><span class="w"> </span><span class="c1">// &#21160;&#24577;&#20998;&#37197;&#20869;&#26680;&#26632;</span>
+<span class="w">  </span><span class="p">...</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p class=" font-serif my-1">&#36825;&#37096;&#20998;&#30340;&#20869;&#23384;&#38656;&#35201;&#22312; <code>teardown()</code> &#26102;&#34987;&#22238;&#25910;&#12290;&#32447;&#31243;&#21482;&#26377;&#22312;&#27704;&#36828;&#19981;&#20250;&#34987;&#35843;&#24230;&#21040;&#22788;&#29702;&#22120;&#19978;&#25191;&#34892;&#30340;&#21069;&#25552;&#19979;&#25165;&#33021;&#34987;&#22238;&#25910;&#12290;&#20320;&#21487;&#20197;&#20551;&#35774;&#22238;&#25910;&#30340;&#26102;&#20505;&#32447;&#31243;&#19981;&#20877;&#25345;&#26377;&#20219;&#20309;&#33258;&#26059;&#38145;&#25110;&#22312;&#20449;&#21495;&#37327;&#19978;&#31561;&#24453;&#12290;</p>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1"><red><strong>&#32447;&#31243;/&#20013;&#26029;&#23433;&#20840;&#24615;</strong></red>&#65306;&#20801;&#35768;&#20219;&#24847;&#32447;&#31243;&#35843;&#29992; <code>create</code>/<code>teardown</code>&#12290;&#19981;&#20250;&#22312;&#20013;&#26029;&#22788;&#29702;&#31243;&#24207;&#20013;&#35843;&#29992; <code>create</code>/<code>teardown</code>&#12290;</p>
+</blockquote>
+<h4 id="243" class=" pt-2 pb-2 font-sans">2.4.3 &#33258;&#26059;&#38145;</h4>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">spin_init</span><span class="p">)(</span><span class="n">spinlock_t</span><span class="w"> </span><span class="o">*</span><span class="n">lk</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">name</span><span class="p">);</span>
+<span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">spin_lock</span><span class="p">)(</span><span class="n">spinlock_t</span><span class="w"> </span><span class="o">*</span><span class="n">lk</span><span class="p">);</span>
+<span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">spin_unlock</span><span class="p">)(</span><span class="n">spinlock_t</span><span class="w"> </span><span class="o">*</span><span class="n">lk</span><span class="p">);</span>
+</code></pre></div>
+
+<p class=" font-serif my-1">lock-unlock &#23454;&#29616;&#20445;&#25252;&#19968;&#27573;&#24378;&#21407;&#23376;&#24615; (&#20219;&#20309;&#20854;&#20182;&#32447;&#31243;&#12289;&#20013;&#26029;&#22788;&#29702;&#31243;&#24207;&#12289;&#20854;&#20182;&#22788;&#29702;&#22120;&#37117;&#19981;&#33021;&#21516;&#26102;&#24471;&#21040;&#21516;&#19968;&#25226;&#38145;)&#65306;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20801;&#35768;&#22312;&#20013;&#26029;&#22788;&#29702;&#31243;&#24207;&#20013;&#35843;&#29992;&#33258;&#26059;&#38145;&#65307;</li>
+<li class=" ml-8">&#20801;&#35768;&#20219;&#24847;&#22312;&#20219;&#24847;&#22788;&#29702;&#22120;&#30340;&#20219;&#24847;&#32447;&#31243;&#20013;&#35843;&#29992;&#33258;&#26059;&#38145;&#65307;</li>
+<li class=" ml-8"><code>spin_lock</code> &#23558;&#20250;&#20851;&#38381;&#22788;&#29702;&#22120;&#30340;&#20013;&#26029;&#65292;&#22240;&#27492;&#23545;&#19968;&#20010;&#22788;&#29702;&#22120;&#32780;&#35328;&#65292;&#25345;&#26377;&#20219;&#20309;&#19968;&#20010;&#33258;&#26059;&#38145;&#20043;&#21518;&#23601;&#19981;&#20250;&#20877;&#21457;&#29983;&#32447;&#31243;&#20999;&#25442;&#65307;</li>
+<li class=" ml-8"><code>spin_unlock</code> &#22312;&#35299;&#38500;&#26368;&#21518;&#19968;&#20010;&#24403;&#21069;&#22788;&#29702;&#22120;&#25345;&#26377;&#30340;&#33258;&#26059;&#38145;&#20043;&#21518;&#65292;&#38656;&#35201;&#23558;&#22788;&#29702;&#22120;&#30340;&#20013;&#26029;&#29366;&#24577;&#24674;&#22797;&#12290;&#20363;&#22914;&#22312;&#20013;&#26029;&#22788;&#29702;&#31243;&#24207;&#20013;&#65292;&#20013;&#26029;&#26159;&#20851;&#38381;&#30340;&#65292;&#22240;&#27492; <code>spin_unlock</code> &#19981;&#24212;&#35813;&#25171;&#24320;&#20013;&#26029;&#65307;&#20294;&#22312;&#19968;&#33324;&#30340;&#32447;&#31243;&#20013;&#65292;<code>spin_unlock</code> &#21518;&#24212;&#24403;&#24674;&#22797;&#22788;&#29702;&#22120;&#30340;&#20013;&#26029;&#12290;</li>
+</ul>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1"><red><strong>&#32447;&#31243;/&#20013;&#26029;&#23433;&#20840;&#24615;</strong></red>&#65306;&#20801;&#35768;&#20219;&#24847;&#32447;&#31243;&#35843;&#29992; <code>spin_init</code>, <code>spin_lock</code> &#21644; <code>spin_unlock</code>&#12290;&#20013;&#26029;&#22788;&#29702;&#31243;&#24207;&#20801;&#35768;&#35843;&#29992; <code>spin_lock</code> &#21644; <code>spin_unlock</code>&#12290;</p>
+</blockquote>
+<h4 id="244" class=" pt-2 pb-2 font-sans">2.4.4 &#20449;&#21495;&#37327;</h4>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">sem_init</span><span class="p">)(</span><span class="n">sem_t</span><span class="w"> </span><span class="o">*</span><span class="n">sem</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="p">);</span>
+<span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">sem_wait</span><span class="p">)(</span><span class="n">sem_t</span><span class="w"> </span><span class="o">*</span><span class="n">sem</span><span class="p">);</span>
+<span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">sem_signal</span><span class="p">)(</span><span class="n">sem_t</span><span class="w"> </span><span class="o">*</span><span class="n">sem</span><span class="p">);</span>
+</code></pre></div>
+
+<p class=" font-serif my-1">&#22312;&#20449;&#21495;&#37327;&#21021;&#22987;&#21270;&#26102;&#65292;<code>value</code> &#25351;&#23450;&#20102;&#23427;&#21021;&#22987;&#30340;&#25968;&#20540;&#12290;&#21021;&#22987;&#26102; <code>value == 1</code> &#21487;&#20197;&#25226;&#20449;&#21495;&#37327;&#24403;&#20114;&#26021;&#38145;&#65307;&#21021;&#22987;&#26102; <code>value == 0</code> &#21487;&#20197;&#25226;&#20449;&#21495;&#37327;&#20316;&#20026;&#29983;&#20135;&#32773;-&#28040;&#36153;&#32773;&#32531;&#20914;&#21306;&#31649;&#29702;&#23454;&#29616;&#12290;<code>sem_wait</code> &#21644; <code>sem_signal</code> &#20998;&#21035;&#23545;&#24212;&#20102; P/V &#25805;&#20316;&#12290;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20801;&#35768;&#22312;&#32447;&#31243;&#20013;&#25191;&#34892;&#20449;&#21495;&#37327;&#30340; <code>sem_wait</code> &#25805;&#20316;&#12290;&#22312; P &#25805;&#20316;&#25191;&#34892;&#27809;&#26377;&#30456;&#24212;&#36164;&#28304;&#26102;&#65292;&#32447;&#31243;&#23558;&#34987;&#38459;&#22622; (&#19981;&#20877;&#34987;&#35843;&#24230;&#25191;&#34892;)&#12290;&#20013;&#26029;&#27809;&#26377;&#23545;&#24212;&#30340;&#32447;&#31243;&#12289;&#19981;&#33021;&#38459;&#22622;&#65292;&#22240;&#27492;&#19981;&#33021;&#22312;&#20013;&#26029;&#26102;&#35843;&#29992; <code>sem_wait</code>&#65307;</li>
+<li class=" ml-8">&#20801;&#35768;&#22312;&#20219;&#24847;&#29366;&#24577;&#19979;&#20219;&#24847;&#25191;&#34892; <code>sem_signal</code>&#65292;&#21253;&#25324;&#20219;&#20309;&#22788;&#29702;&#22120;&#20013;&#30340;&#20219;&#20309;&#32447;&#31243;&#21644;&#20219;&#20309;&#22788;&#29702;&#22120;&#30340;&#20219;&#20309;&#20013;&#26029;&#12290;</li>
+</ul>
+<p class=" font-serif my-1">&#22312;&#20449;&#21495;&#37327;&#23454;&#29616;&#26102;&#65292;&#22823;&#32422;&#38656;&#35201;&#20570;&#20197;&#19979;&#20960;&#20214;&#20107; (&#20219;&#20309;&#19968;&#26412;&#25805;&#20316;&#31995;&#32479;&#25945;&#26448;&#19978;&#37117;&#20250;&#25552;&#21040;&#31867;&#20284;&#30340;&#23454;&#29616;)&#65306;</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">sem_wait</span><span class="p">(</span><span class="n">sem_t</span><span class="w"> </span><span class="o">*</span><span class="n">sem</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">spin_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">sem</span><span class="o">-&gt;</span><span class="n">lock</span><span class="p">);</span><span class="w"> </span><span class="c1">// &#33719;&#24471;&#33258;&#26059;&#38145;</span>
+<span class="w">  </span><span class="n">sem</span><span class="o">-&gt;</span><span class="n">count</span><span class="o">--</span><span class="p">;</span><span class="w"> </span><span class="c1">// &#33258;&#26059;&#38145;&#20445;&#35777;&#21407;&#23376;&#24615;</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(...)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// &#27809;&#26377;&#36164;&#28304;&#65292;&#38656;&#35201;&#31561;&#24453;</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="n">mark_as_not_runnable</span><span class="p">(</span><span class="n">current</span><span class="p">);</span><span class="w"> </span><span class="c1">// &#24403;&#21069;&#32447;&#31243;&#19981;&#33021;&#20877;&#25191;&#34892;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="n">spin_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">sem</span><span class="o">-&gt;</span><span class="n">unlock</span><span class="p">);</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(...)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// &#22914;&#26524; P &#22833;&#36133;&#65292;&#19981;&#33021;&#32487;&#32493;&#25191;&#34892;</span>
+<span class="w">              </span><span class="c1">// (&#27880;&#24847;&#27492;&#26102;&#21487;&#33021;&#26377;&#32447;&#31243;&#25191;&#34892; V &#25805;&#20316;)</span>
+<span class="w">    </span><span class="n">yield</span><span class="p">();</span><span class="w"> </span><span class="c1">// &#24341;&#21457;&#19968;&#27425;&#19978;&#19979;&#25991;&#20999;&#25442;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1"><red><strong>&#32447;&#31243;/&#20013;&#26029;&#23433;&#20840;&#24615;</strong></red>&#65306;&#38656;&#35201;&#23454;&#29616;&#22810;&#22788;&#29702;&#22120;&#23433;&#20840;&#24615;&#12290;&#20801;&#35768;&#20219;&#24847;&#32447;&#31243;&#35843;&#29992; <code>sem_init</code>, <code>sem_wait</code> &#21644; <code>sem_signal</code>&#12290;&#20013;&#26029;&#22788;&#29702;&#31243;&#24207;&#19981;&#21487;&#30561;&#30496;&#65292;&#20294;&#21487;&#20197;&#35843;&#29992; <code>sem_signal</code>&#12290;</p>
+</blockquote>
+<h2 id="3" class=" text-xl mt-2 pb-2 font-sans">3. &#27491;&#30830;&#24615;&#26631;&#20934;</h2>
+<p class=" font-serif my-1">native &#22788;&#20110;&#38271;&#20037;&#27809;&#26377;&#32500;&#25252;&#30340;&#38454;&#27573;&#65292;&#22240;&#27492;&#20026;&#20102;&#23454;&#39564;&#30340;&#31283;&#23450;&#24615;&#65292;&#25105;&#20204;&#24635;&#26159;&#20197; qemu (x86-64 &#21644; i386) &#20026;&#20934;&#12290;Online Judge &#35780;&#27979;&#26102;&#21482;&#26377; <code>x86-qemu</code> &#21644; <code>x86_64-qemu</code>&#12290;</p>
+<p class=" font-serif my-1">&#25105;&#20204;&#27979;&#35797;&#20195;&#30721;&#30340;&#26102;&#20505;&#65292;&#20250;&#26367;&#25442;&#25105;&#20204;&#30340; <code>framework</code> &#30446;&#24405;&#65292;&#22240;&#27492;&#20320;&#23545;&#20854;&#20013;&#25991;&#20214; (&#20363;&#22914; <code>kernel.h</code>) &#30340;&#20219;&#20309;&#20462;&#25913;&#37117;&#20250;&#34987;&#28040;&#38500;&#12290;&#27880;&#24847;&#21040;&#25105;&#20204;&#30340;&#27979;&#35797;&#20195;&#30721;&#38656;&#35201;&#25968;&#25454;&#32467;&#26500; (<code>sem_t</code> &#31561;) &#30340;&#23450;&#20041;&#65292;&#32780;&#36825;&#20123;&#23450;&#20041;&#24182;&#19981;&#22312; <code>kernel.h</code> &#20013;&#65292;&#22240;&#27492;&#20320;&#38656;&#35201;&#22312; <code>os.h</code> &#20013;&#21253;&#21547;&#23427;&#20204;&#65292;&#21542;&#21017;&#27979;&#35797;&#20195;&#30721;&#23558;&#26080;&#27861;&#32534;&#35793;&#12290;</p>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<h4 id="_4" class=" pt-2 pb-2 font-sans float-left text-sm box border mr-1 mt-1 box-red" style=" padding-bottom: 0;">&#9888;&#65039;&#9888;&#65039;&#9888;&#65039; &#37325;&#35201;&#30340;&#27880;&#24847;&#20107;&#39033;</h4>
+<p class=" font-serif my-1">&#25105;&#20204;&#30340;&#20195;&#30721; (<code>main</code>) &#30475;&#36215;&#26469;&#26159;&#36825;&#26679;&#30340;&#65306;</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#include &amp;lt;klib.h&amp;gt;</span>
+<span class="cp">#include &amp;lt;klib-macros.h&amp;gt;</span>
+<span class="cp">#include &amp;lt;am.h&amp;gt;</span>
+<span class="cp">#include &amp;lt;common.h&amp;gt;</span>
+<span class="cp">#include &amp;lt;os.h&amp;gt;</span>
+
+<span class="p">...</span><span class="w"> </span><span class="c1">// &#27492;&#22788;&#30465;&#30053;&#27979;&#35797;&#20195;&#30721;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="n">main</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">ioe_init</span><span class="p">();</span>
+<span class="w">  </span><span class="n">cte_init</span><span class="p">(</span><span class="n">os</span><span class="o">-&gt;</span><span class="n">trap</span><span class="p">);</span>
+<span class="w">  </span><span class="n">os</span><span class="o">-&gt;</span><span class="n">init</span><span class="p">();</span>
+
+<span class="w">  </span><span class="n">init_workload</span><span class="p">(</span><span class="n">args</span><span class="p">);</span>
+<span class="w">  </span><span class="n">mpe_init</span><span class="p">(</span><span class="n">os</span><span class="o">-&gt;</span><span class="n">run</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p class=" font-serif my-1">&#27880;&#24847;&#21040;&#25105;&#20204;&#30340;&#27979;&#35797;&#20195;&#30721;&#38656;&#35201;&#25968;&#25454;&#32467;&#26500; (<code>sem_t</code> &#31561;) &#30340;&#23450;&#20041;&#65292;&#32780;&#36825;&#20123;&#23450;&#20041;&#24182;&#19981;&#22312; <code>kernel.h</code> &#20013;&#65292;&#22240;&#27492;&#20320;&#38656;&#35201;&#22312; <code>common.h</code> &#20013;&#21253;&#21547;&#23427;&#20204;&#65292;&#21542;&#21017;&#27979;&#35797;&#20195;&#30721;&#23558;&#26080;&#27861;&#32534;&#35793;&#12290;</p>
+<p class=" font-serif my-1">&#27492;&#22806;&#65292;<strong>&#19981;&#35201;&#25171;&#21360;&#22810;&#20313;&#30340;&#36755;&#20986;</strong>&#12290;&#22312;&#20219;&#20309;&#26102;&#20505; (&#38145;&#12289;&#20013;&#26029;&#12289;&#8230;&#8230;) &#26102;&#25171;&#21360;&#22810;&#20313;&#30340;&#36755;&#20986;&#37117;&#21487;&#33021;&#23548;&#33268; Wrong Answer&#12290;&#22240;&#27492;&#25105;&#20204;&#24314;&#35758;&#20320;&#20351;&#29992;&#33258;&#24049;&#30340; log &#25110; printk &#20989;&#25968; (&#32780;&#19981;&#26159; printf; &#25105;&#20204;&#30340;&#27979;&#35797;&#31243;&#24207;&#20250;&#20351;&#29992; printf)&#65292;&#19988;&#23427;&#20204;&#30340;&#34892;&#20026;&#30001;&#39044;&#32534;&#35793;&#25351;&#20196;&#25511;&#21046;&#65292;&#20165;&#22312;&#20320;&#26412;&#22320;&#32534;&#35793;&#26102;&#25165;&#25171;&#21360;&#25968;&#25454;&#12290;</p>
+<p class=" font-serif my-1">&#24403;&#28982;&#20102;&#65292;&#31995;&#32479;&#21551;&#21160;&#26102; (<code>mpe_init</code> &#20043;&#21069;) &#25171;&#21360;&#23569;&#37327;&#26085;&#24535;&#26159;&#27809;&#38382;&#39064;&#30340;&#12290;</p>
+</blockquote>
+<h3 id="31-safety-liveness" class=" text-lg mt-2 pb-2 font-sans">3.1 Safety &#21644; Liveness</h3>
+<p class=" font-serif my-1">&#22312;&#20219;&#24847;&#26102;&#21051;&#65292;&#25805;&#20316;&#31995;&#32479;&#20013;&#37117;&#21487;&#33021;&#26377;&#22810;&#20010;&#32447;&#31243;&#65292;&#20320;&#38656;&#35201;&#35774;&#35745;&#35843;&#24230;&#30340;&#31574;&#30053;&#22312;&#22810;&#20010;&#22788;&#29702;&#22120;&#20013;&#35843;&#24230;&#36825;&#20123;&#32447;&#31243;&#65292;&#20351;&#31995;&#32479;&#20013;&#33021;&#22815;&#34987;&#25191;&#34892;&#30340;&#32447;&#31243;&#23613;&#21487;&#33021;&#19981;&#21457;&#29983;&#39269;&#39295;&#12290;</p>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<h4 id="hard-tests" class=" pt-2 pb-2 font-sans float-left text-sm box border mr-1 mt-1 box-blue" style=" padding-bottom: 0;">&#19968;&#20010;&#29305;&#21035;&#30340;&#27491;&#30830;&#24615;&#35201;&#27714; (&#20165;&#38024;&#23545; Hard Tests)</h4>
+<p class=" font-serif my-1">&#22312;&#32447;&#31243;&#25968;&#19981;&#36807;&#22810;&#30340;&#21069;&#25552; (&#21313;&#20960;) &#19979;&#65292;&#25105;&#20204;&#35201;&#27714;&#27599;&#20010;&#21487;&#36816;&#34892;&#30340;&#32447;&#31243;&#65292;&#32473;&#23450;&#36275;&#22815;&#38271; (&#20363;&#22914;&#25968;&#31186;) &#30340;&#26102;&#38388;&#65292;&#33021;&#22815;&#34987;&#35843;&#24230;&#21040;&#27599;&#20010;&#22788;&#29702;&#22120;&#19978;&#25191;&#34892;&#12290;&#36825;&#20010;&#38656;&#27714;&#30475;&#36215;&#26469;&#24456;&#31616;&#21333;&#65306;&#31245;&#24494;&#25913;&#19968;&#25913; <code>thread-os.c</code> &#30340;&#35843;&#24230;&#22120;&#23601;&#34892;&#20102;&#12290;&#20294;&#20320;&#35201;&#35686;&#24789;&#20102;&#65281;&#36825;&#21487;&#33021;&#27604;&#20320;&#24819;&#35937;&#30340;&#22256;&#38590;&#24471;&#22810;&#12290;</p>
+</blockquote>
+<p class=" font-serif my-1">&#32463;&#36807; Lab1 &#30340;&#27927;&#31036;&#65292;&#20320;&#20204;&#24212;&#35813;&#24847;&#35782;&#21040;&#65292;&#20889;&#20986;&#27491;&#30830;&#30340;&#31243;&#24207;&#35201;&#20174;&#31616;&#21333;&#12289;&#26377;&#25928;&#30340;&#31574;&#30053;&#24320;&#22987;&#65292;&#30450;&#30446;&#20351;&#29992;&#22797;&#26434;&#30340;&#31574;&#30053;&#21482;&#20250;&#35753;&#20320;&#38519;&#20837; Wrong Answer &#30340;&#27877;&#28525;&#12290;</p>
+<h3 id="32" class=" text-lg mt-2 pb-2 font-sans">3.2 &#23448;&#26041;&#27979;&#35797;&#29992;&#20363;</h3>
+<p class=" font-serif my-1">&#23448;&#26041;&#27979;&#35797;&#29992;&#20363;&#20351;&#20320;&#30340; &#8220;&#25805;&#20316;&#31995;&#32479;&#8221; &#30475;&#36215;&#26469;&#26356;&#20687;&#26159;&#20010;&#25805;&#20316;&#31995;&#32479;&#12290;&#20294;&#23427;&#24182;&#19981;&#33021;&#20316;&#20026; &#8220;&#21387;&#21147;&#27979;&#35797;&#8221; &#26469;&#24110;&#21161;&#20320;&#26816;&#26597; kmt &#23454;&#29616;&#30340;&#27491;&#30830;&#24615;&#12290;&#25105;&#20204;&#20026;&#22823;&#23478;&#25552;&#20379;&#20102; dev &#27169;&#22359;&#21450;&#20854;&#23454;&#29616; (&#24050;&#32463;&#21253;&#21547;&#22312;&#26694;&#26550;&#20195;&#30721;&#20013;)&#65306;</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">device</span><span class="w"> </span><span class="n">device_t</span><span class="p">;</span>
+<span class="n">MODULE</span><span class="p">(</span><span class="n">dev</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">init</span><span class="p">)();</span>
+<span class="w">  </span><span class="n">device_t</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="n">lookup</span><span class="p">)(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">name</span><span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div>
+
+<p class=" font-serif my-1">&#25105;&#20204;&#30340;&#23448;&#26041;&#27979;&#35797;&#29992;&#20363;&#36824;&#21253;&#21547;&#20102;&#20197;&#19979;&#35774;&#22791;&#30340;&#39537;&#21160; (&#25105;&#20204;&#23558;&#20250;&#22312;&#35838;&#31243;&#36827;&#23637;&#21040;&#19968;&#21322;&#24038;&#21491;&#30340;&#26102;&#20505;&#35762;&#35299;&#35774;&#22791;&#22312;&#25805;&#20316;&#31995;&#32479;&#19978;&#30340;&#25277;&#35937;&#65292;&#27492;&#26102;&#20250;&#35762;&#35299;&#20160;&#20040;&#26159;&#35774;&#22791;&#39537;&#21160;&#31243;&#24207;)&#65306;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>input</code>&#65292;&#25903;&#25345;&#35835;&#21462;&#38190;&#30424;&#30340;&#36755;&#20837;&#65307;</li>
+<li class=" ml-8"><code>fb</code>&#65292;&#25903;&#25345;&#19968;&#20010;&#36719;&#20214;&#27169;&#25311;&#30340; 2D &#26174;&#31034;&#21152;&#36895;&#22120;&#30340;&#20889;&#20837; (&#25105;&#20204;&#25171;&#31639;&#26410;&#26469;&#25226;&#36825;&#20010;&#26174;&#31034;&#21152;&#36895;&#22120;&#29992;&#30495;&#27491;&#30340;&#30828;&#20214;&#23454;&#29616;)&#65307;</li>
+<li class=" ml-8"><code>tty1</code>, <code>tty2</code>, &#20004;&#20010;&#25903;&#25345;&#35835;&#20889;&#30340;&#34394;&#25311;&#32456;&#31471;&#65292;&#20351;&#29992; Alt-1, Alt-2 &#22312;&#34394;&#25311;&#20013;&#26029;&#20043;&#38388;&#20999;&#25442;&#65307;</li>
+<li class=" ml-8"><code>sda</code>, &#25903;&#25345;&#35835;&#20889;&#30340;&#29289;&#29702;&#30913;&#30424;&#12290;&#20320;&#21487;&#20197;&#20174;&#20013;&#35835;&#20986;&#25805;&#20316;&#31995;&#32479;&#20869;&#26680;&#30340; ELF &#25991;&#20214;&#12290;</li>
+</ul>
+<p class=" font-serif my-1">&#22312;&#36825;&#20010;&#23454;&#39564;&#20013;&#65292;&#20320;&#24182;&#19981;&#38656;&#35201;&#35843;&#35797;&#27491;&#30830;&#25152;&#26377;&#30340;&#35774;&#22791;&#39537;&#21160;&#31243;&#24207; (&#20294;&#35843;&#35797;&#19981;&#36890;&#36807;&#19968;&#33324;&#24847;&#21619;&#30528; Online Judge &#20250;&#27979;&#35797;&#22833;&#36133;)&#12290;&#20294;&#22312;&#19979;&#19968;&#20010;&#23454;&#39564;&#20013;&#65292;&#25105;&#20204;&#20250;&#29992;&#21040;&#36825;&#20123;&#35774;&#22791;&#39537;&#21160;&#31243;&#24207;&#12290;</p>
+<p class=" font-serif my-1">&#20195;&#30721;&#21512;&#24182;&#21518;&#65292;&#20320;&#38656;&#35201;&#22312; <code>os-&gt;init()</code> &#20013;&#25163;&#24037;&#28155;&#21152;&#35774;&#22791;&#27169;&#22359;&#30340;&#21021;&#22987;&#21270; <code>dev-&gt;init()</code>&#12290;&#22914;&#26524;&#23454;&#29616;&#27491;&#30830;&#65292;&#23601;&#33021;&#23436;&#25104;&#20013;&#26029;&#22788;&#29702;&#31243;&#24207; (&#21644;&#33509;&#24178;&#35774;&#22791;&#30456;&#20851;&#32447;&#31243;) &#30340;&#21021;&#22987;&#21270;&#12290;&#20320;&#19981;&#38656;&#35201;&#28155;&#21152;&#39069;&#22806;&#30340;&#20195;&#30721;&#65292;&#23601;&#33021;&#30475;&#21040;&#38378;&#28865;&#30340;&#20809;&#26631;&#65292;&#24182;&#19988;&#33021;&#30475;&#21040;&#36755;&#20837;&#23383;&#31526;&#30340;&#22238;&#26174;&#12290;</p>
+<p class=" font-serif my-1">&#27492;&#21518;&#65292;&#20320;&#23601;&#21487;&#20197;&#21019;&#24314;&#33509;&#24178;&#35775;&#38382;&#35774;&#22791;&#30340;&#32447;&#31243;&#65292;&#20363;&#22914;&#20320;&#21487;&#20197;&#20026;&#27599;&#20010; tty &#35774;&#22791;&#21019;&#24314;&#19968;&#20010;&#32447;&#31243;&#65306;</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">tty_reader</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">arg</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">device_t</span><span class="w"> </span><span class="o">*</span><span class="n">tty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dev</span><span class="o">-&gt;</span><span class="n">lookup</span><span class="p">(</span><span class="n">arg</span><span class="p">);</span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">cmd</span><span class="p">[</span><span class="mi">128</span><span class="p">],</span><span class="w"> </span><span class="n">resp</span><span class="p">[</span><span class="mi">128</span><span class="p">],</span><span class="w"> </span><span class="n">ps</span><span class="p">[</span><span class="mi">16</span><span class="p">];</span>
+<span class="w">  </span><span class="n">snprintf</span><span class="p">(</span><span class="n">ps</span><span class="p">,</span><span class="w"> </span><span class="mi">16</span><span class="p">,</span><span class="w"> </span><span class="s">"(%s) $ "</span><span class="p">,</span><span class="w"> </span><span class="n">arg</span><span class="p">);</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">tty</span><span class="o">-&gt;</span><span class="n">ops</span><span class="o">-&gt;</span><span class="n">write</span><span class="p">(</span><span class="n">tty</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">ps</span><span class="p">,</span><span class="w"> </span><span class="n">strlen</span><span class="p">(</span><span class="n">ps</span><span class="p">));</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">nread</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tty</span><span class="o">-&gt;</span><span class="n">ops</span><span class="o">-&gt;</span><span class="n">read</span><span class="p">(</span><span class="n">tty</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">cmd</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="n">cmd</span><span class="p">[</span><span class="n">nread</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">'\0'</span><span class="p">;</span>
+<span class="w">    </span><span class="n">sprintf</span><span class="p">(</span><span class="n">resp</span><span class="p">,</span><span class="w"> </span><span class="s">"tty reader task: got %d character(s).</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">strlen</span><span class="p">(</span><span class="n">cmd</span><span class="p">));</span>
+<span class="w">    </span><span class="n">tty</span><span class="o">-&gt;</span><span class="n">ops</span><span class="o">-&gt;</span><span class="n">write</span><span class="p">(</span><span class="n">tty</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">resp</span><span class="p">,</span><span class="w"> </span><span class="n">strlen</span><span class="p">(</span><span class="n">resp</span><span class="p">));</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">os_init</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">...</span>
+<span class="w">  </span><span class="n">kmt</span><span class="o">-&gt;</span><span class="n">create</span><span class="p">(</span><span class="n">task_alloc</span><span class="p">(),</span><span class="w"> </span><span class="s">"tty_reader"</span><span class="p">,</span><span class="w"> </span><span class="n">tty_reader</span><span class="p">,</span><span class="w"> </span><span class="s">"tty1"</span><span class="p">);</span>
+<span class="w">  </span><span class="n">kmt</span><span class="o">-&gt;</span><span class="n">create</span><span class="p">(</span><span class="n">task_alloc</span><span class="p">(),</span><span class="w"> </span><span class="s">"tty_reader"</span><span class="p">,</span><span class="w"> </span><span class="n">tty_reader</span><span class="p">,</span><span class="w"> </span><span class="s">"tty2"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/lab2-drv.png" width="500px"></p>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<h4 id="_5" class=" pt-2 pb-2 font-sans float-left text-sm box border mr-1 mt-1 box-blue" style=" padding-bottom: 0;">&#24573;&#28982;&#23601;&#26377; &#8220;&#25805;&#20316;&#31995;&#32479;&#8221; &#30340;&#26679;&#23376;&#20102;&#65281;</h4>
+<p class=" font-serif my-1">&#21703;&#65281;&#20570;&#23436;&#23454;&#39564;&#25105;&#22909;&#20687;&#26377; &#8220;&#25805;&#20316;&#31995;&#32479;&#8221; &#30340;&#24863;&#35273;&#20102;&#65281;&#28982;&#21518;&#20877;&#30475;&#30475; trivial-os.c &#30340;&#20195;&#30721;&#65292;&#20223;&#20315;&#25105;&#30475;&#21040;&#20102;&#20889;&#20986;&#19968;&#20010;&#30495;&#27491;&#25805;&#20316;&#31995;&#32479;&#30340;&#24076;&#26395;&#12290;&#27809;&#38169;&#8212;&#8212;&#20320;&#22312;&#36825;&#20010;&#23454;&#39564;&#20013;&#27963;&#19979;&#26469;&#65292;&#23601;&#24847;&#21619;&#30528;&#20320;&#24050;&#32463;&#25484;&#25569;&#25805;&#20316;&#31995;&#32479;&#21407;&#29702;&#20013;&#26368;&#37325;&#35201;&#30340;&#37096;&#20998;&#65306;&#22914;&#20309;&#23454;&#29616;&#22788;&#29702;&#22120;&#30340;&#20998;&#26102;&#34394;&#25311;&#21270;&#12290;&#25509;&#19979;&#26469;&#65292;&#20320;&#21482;&#38656;&#35201;&#29702;&#35299;&#65306;</p>
+<ol class=" list-decimal font-serif">
+<li class=" ml-8">&#25991;&#20214;&#31995;&#32479;&#26159;&#30913;&#30424;&#19978;&#30340;&#25968;&#25454;&#32467;&#26500;&#65307;</li>
+<li class=" ml-8">&#36827;&#31243;&#26159;&#25317;&#26377;&#29420;&#31435;&#22320;&#22336;&#31354;&#38388;&#30340;&#32447;&#31243;&#65292;</li>
+</ol>
+<p class=" font-serif my-1">&#20320;&#20854;&#23454;&#23601;&#22312; high-level &#19978;&#23545;&#29616;&#20195;&#25805;&#20316;&#31995;&#32479;&#26377;&#20102;&#19968;&#20010;&#20934;&#30830;&#30340;&#35748;&#35782; (&#24403;&#28982;&#36824;&#26377;&#26080;&#25968;&#32454;&#33410;)&#65292;&#36825;&#38376;&#35838;&#30340;&#30446;&#26631;&#20063;&#23601;&#36798;&#21040;&#20102;&#12290;&#22240;&#20026;&#25105;&#20204;&#23545;&#20320;&#30340; <code>include/</code> &#30446;&#24405;&#20013;&#30340;&#20195;&#30721;&#19981;&#20570;&#20219;&#20309;&#38480;&#21046;&#65292;&#20320;&#21487;&#33021;&#20250;&#20986;&#29616;&#19968;&#20123;&#35832;&#22914;&#32467;&#26500;&#20307;&#26410;&#23450;&#20041;&#31561;&#38382;&#39064;&#65292;&#29031;&#24120;&#35299;&#20915;&#21363;&#21487;&#12290;&#22914;&#26524;&#21457;&#29616;&#27979;&#35797;&#29992;&#20363;&#20013;&#30340; bugs&#65292;&#35831;&#21521;&#25105;&#20204;&#25253;&#21578;&#12290;</p>
+<p class=" font-serif my-1"><strong>&#21478;&#22806;&#65292;&#25552;&#20132;&#26102;&#35831;&#19981;&#35201;&#28608;&#27963;&#23448;&#26041;&#27979;&#35797;&#29992;&#20363; (&#20363;&#22914;&#21551;&#21160; <code>dev</code> &#27169;&#22359;)&#65292;&#23427;&#21487;&#33021;&#20250;&#23548;&#33268;&#27979;&#35797;&#22833;&#36133;</strong>&#12290;</p>
+</blockquote>
+<h3 id="33-online-judge" class=" text-lg mt-2 pb-2 font-sans">3.3 Online Judge &#19978;&#30340;&#27979;&#35797;&#29992;&#20363;</h3>
+<p class=" font-serif my-1">&#19982; L1 &#31867;&#20284;&#65292;&#25105;&#20204;&#30340;&#27979;&#35797;&#20195;&#30721;&#20250;&#20351;&#29992; Online Judge &#30340; <code>framework</code> &#20195;&#30721; (&#21253;&#21547;&#19968;&#20123;&#27979;&#35797;&#29992;&#20363;&#12289;&#39069;&#22806;&#30340;&#36816;&#34892;&#26102;&#26816;&#26597;&#31561;)&#12290;&#26694;&#26550;&#20195;&#30721;&#20250;&#35843;&#29992;&#20320;&#30340; <code>os-&gt;init()</code> &#21644; <code>os-&gt;run()</code>&#65292;&#23601;&#20687;&#19979;&#38754;&#30340;&#20195;&#30721;&#37027;&#26679;&#65306;</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">producer</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">arg</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">consumer</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">arg</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">create_threads</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">...</span>
+<span class="w">  </span><span class="n">kmt</span><span class="o">-&gt;</span><span class="n">create</span><span class="p">(</span><span class="n">pmm</span><span class="o">-&gt;</span><span class="n">alloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">task_t</span><span class="p">)),</span>
+<span class="w">              </span><span class="s">"test-thread-1"</span><span class="p">,</span><span class="w"> </span><span class="n">producer</span><span class="p">,</span><span class="w"> </span><span class="n">xxx</span><span class="p">);</span>
+<span class="w">  </span><span class="n">kmt</span><span class="o">-&gt;</span><span class="n">create</span><span class="p">(</span><span class="n">pmm</span><span class="o">-&gt;</span><span class="n">alloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">task_t</span><span class="p">)),</span>
+<span class="w">              </span><span class="s">"test-thread-2"</span><span class="p">,</span><span class="w"> </span><span class="n">consumer</span><span class="p">,</span><span class="w"> </span><span class="n">yyy</span><span class="p">);</span>
+<span class="w">  </span><span class="p">...</span>
+<span class="p">}</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">ioe_init</span><span class="p">();</span>
+<span class="w">  </span><span class="n">cte_init</span><span class="p">(</span><span class="n">os</span><span class="o">-&gt;</span><span class="n">trap</span><span class="p">);</span>
+<span class="w">  </span><span class="n">os</span><span class="o">-&gt;</span><span class="n">init</span><span class="p">();</span>
+<span class="w">  </span><span class="n">create_threads</span><span class="p">();</span>
+<span class="w">  </span><span class="n">mpe_init</span><span class="p">(</span><span class="n">os</span><span class="o">-&gt;</span><span class="n">run</span><span class="p">);</span><span class="w"> </span><span class="c1">// all cores call os-&gt;run()</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p class=" font-serif my-1">&#25105;&#20204;&#30340; producer/consumer &#21487;&#33021;&#23601;&#20687;&#19978;&#35838;&#30340;&#20363;&#23376;&#37027;&#26679;&#65292;&#31649;&#29702; empty &#21644; fill &#20004;&#20010;&#20449;&#21495;&#37327;&#65292;&#20998;&#21035;&#25171;&#21360;&#24038;&#25324;&#21495;&#21644;&#21491;&#25324;&#21495;&#65292;&#28982;&#21518;&#25105;&#20204;&#20250;&#26816;&#26597;&#36755;&#20986;&#26159;&#21542;&#28385;&#36275; (1) &#26159;&#21512;&#27861;&#25324;&#21495;&#24207;&#21015;&#30340;&#19968;&#20010;&#21069;&#32512;; (2) &#25324;&#21495;&#23884;&#22871;&#30340;&#28145;&#24230;&#26159;&#21542;&#36229;&#36807;&#35201;&#27714;&#12290;&#19982; Lab1 &#19968;&#26679;&#65292;&#25105;&#20204;&#22312;&#27979;&#35797;&#26102;&#20250;&#38142;&#25509;&#19968;&#20010;&#25105;&#20204;&#23454;&#29616;&#27491;&#30830;&#30340; klib&#65292;&#25152;&#20197;&#22823;&#23478;&#21363;&#20415; klib &#26377; bug&#65292;&#20063;&#19981;&#24517;&#22826;&#36807;&#25285;&#24515;&#12290;</p>
+<h2 id="4" class=" text-xl mt-2 pb-2 font-sans">4. &#23454;&#39564;&#25351;&#21335;</h2>
+<h3 id="41" class=" text-lg mt-2 pb-2 font-sans">4.1 &#22352;&#19979;&#26469;&#65292;&#35835;&#19968;&#35835;&#20195;&#30721;</h3>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<h4 id="_6" class=" pt-2 pb-2 font-sans float-left text-sm box border mr-1 mt-1 box-blue" style=" padding-bottom: 0;">&#19981;&#30693;&#36947;&#23454;&#39564;&#35201;&#27714;&#22312;&#35828;&#20160;&#20040;&#65311;</h4>
+<p class=" font-serif my-1">&#25343;&#21040;&#36825;&#20010;&#23454;&#39564;&#30340;&#31532;&#19968;&#24863;&#35273;&#23601;&#26159;&#65306;&#23454;&#39564;&#35201;&#27714;&#20063;&#22826; tmd &#38271;&#20102;&#12290;&#36825;&#29609;&#24847;&#36824;&#35201; Online Judge&#65292;&#36824;&#19981;&#24471;&#27515;&#20154;&#20102;&#65311;&#36825;&#26159;&#24456;&#27491;&#24120;&#30340;&#12290;&#19981;&#35201;&#24908;&#65292;&#22240;&#20026;&#20320;&#20204;&#24050;&#32463;&#26377;&#36807; Lab1 &#30340;&#32463;&#39564;&#65292;&#29616;&#22312;&#20320;&#20204;&#21487;&#20197;&#22810;&#33457;&#19968;&#28857;&#26102;&#38388;&#26469;&#35835;&#20195;&#30721;&#20102;&#12290;</p>
+</blockquote>
+<p class=" font-serif my-1">&#25105;&#20204;&#25512;&#33616;&#22823;&#23478;&#38405;&#35835;&#30340;&#20004;&#20221;&#20195;&#30721;&#65306;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="../../../pages/OS/2023/c/thread-os-singlecpu/thread-os.c" class=" text-amber-900">thread-os.c</a>: &#19968;&#20010;&#21333;&#22788;&#29702;&#22120;&#12289;&#20998;&#26102;&#35843;&#24230;&#22266;&#23450;&#25968;&#37327;&#32447;&#31243;&#12289;round-robin &#35843;&#24230;&#30340;&#23884;&#20837;&#24335;&#25805;&#20316;&#31995;&#32479;&#12290;&#35838;&#22530;&#19978;&#25105;&#20204;&#35762;&#35299;&#20102;&#22914;&#20309;&#35843;&#35797;&#23427;</li>
+<li class=" ml-8">xv6 &#30340;&#20195;&#30721;&#12290;&#38543;&#30528;&#35838;&#31243;&#30340;&#28145;&#20837;&#65292;&#25105;&#20204;&#20063;&#20250;&#22312;&#35838;&#22530;&#19978;&#35762;&#35299;&#36825;&#37096;&#20998;&#20195;&#30721;</li>
+</ul>
+<p class=" font-serif my-1">&#19978;&#35838;&#26102;&#30340;&#20195;&#30721;&#35843;&#35797;&#28436;&#31034;&#23545;&#23454;&#39564;&#30340;&#29983;&#23384;&#26159;&#33267;&#20851;&#37325;&#35201;&#30340;&#12290;&#20363;&#22914;&#65292;&#20320;&#24212;&#35813; <code>thread-os</code> &#22312;&#19968;&#27425;&#26102;&#38047;&#20013;&#26029;&#21518;&#30340;&#20195;&#30721;&#65292;&#32467;&#21512; AbstractMachine &#30340;&#25991;&#26723;&#65292;&#20320;&#23601;&#33021;&#23545;&#20013;&#26029;&#21040;&#24213;&#21457;&#29983;&#20102;&#20160;&#20040;&#12289;AbstractMachine &#21040;&#24213;&#20570;&#20102;&#20160;&#20040;&#26377;&#26356;&#21152;&#28145;&#20837;&#30340;&#35748;&#35782;&#8212;&#8212;&#26356;&#37325;&#35201;&#30340;&#26159;&#65292;<code>thread-os.c</code> &#26159;&#22823;&#23478;&#23454;&#29616; Lab2 &#30340;&#19968;&#20010; &#8220;&#22522;&#30784;&#24615;&#8221; &#30340;&#26694;&#26550;&#12290;&#19981;&#35201;&#24536;&#35760;&#20102;&#65292;&#25105;&#20204;&#30340; Lab2 &#23601;&#26159;&#35201;&#23454;&#29616;&#20016;&#23500;&#29256;&#30340; <code>thread-os.c</code>!</p>
+<p class=" font-serif my-1">&#32780; <code>thread-os.c</code> &#20013;&#27604;&#36739;&#37325;&#35201;&#30340;&#26159;&#65292;&#39318;&#20808;&#23427;&#27880;&#20876;&#20102;&#31995;&#32479;&#20840;&#23616;&#30340;&#20013;&#26029;&#22788;&#29702;&#20989;&#25968;&#65306;</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">cte_init</span><span class="p">(</span><span class="n">on_interrupt</span><span class="p">);</span>
+</code></pre></div>
+
+<p class=" font-serif my-1">&#32780;&#36825;&#20010;&#20989;&#25968;&#22312;&#25105;&#20204;&#30340;&#23454;&#39564;&#20013;&#30340;&#23545;&#24212;&#23601;&#26159; <code>os-&gt;trap()</code>&#12290;&#20110;&#26159;&#20320;&#20250;&#30693;&#36947; <code>os-&gt;trap</code> &#30340;&#20195;&#30721;&#20250;&#21644; <code>on_interrupt</code> &#27604;&#36739;&#20687;&#65306;</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">Context</span><span class="w"> </span><span class="o">*</span><span class="nf">on_interrupt</span><span class="p">(</span><span class="n">Event</span><span class="w"> </span><span class="n">ev</span><span class="p">,</span><span class="w"> </span><span class="n">Context</span><span class="w"> </span><span class="o">*</span><span class="n">ctx</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">current</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">tasks</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span><span class="w">  </span><span class="c1">// First trap</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">context</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ctx</span><span class="p">;</span>
+<span class="w">    </span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">context</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p class=" font-serif my-1">&#32780;&#20320;&#20877;&#21435;&#30475; <code>os-&gt;trap</code> &#21644; <code>os-&gt;on_irq</code> &#30340;&#23454;&#39564;&#35201;&#27714;&#65292;&#20320;&#23601;&#33021;&#21457;&#29616;&#25105;&#20204;&#23454;&#39564;&#30340;&#38656;&#27714;&#21512;&#24773;&#21512;&#29702;&#12290;&#22914;&#26524;&#20320;&#27809;&#26377;&#24456;&#22909;&#22320;&#29702;&#35299;&#36825;&#20123;&#20195;&#30721;&#30340;&#24037;&#20316;&#21407;&#29702;&#32780;&#30450;&#30446;&#22320; &#8220;&#30452;&#25509;&#21160;&#25163;&#19978;&#23454;&#39564;&#8221;&#65292;&#24456;&#21487;&#33021;&#20250;&#36935;&#21040;&#24456;&#22823;&#30340;&#25387;&#25240;&#8212;&#8212;&#20320;&#30340;&#31243;&#24207;&#24456;&#21487;&#33021;&#20250;&#20986;&#29616;&#21508;&#31181;&#22855;&#24618;&#30340;&#38382;&#39064;&#65292;&#32780;&#20320;&#21364;&#19981;&#30693;&#36947;&#20174;&#20309;&#19979;&#25163;&#12290;&#20294;&#22914;&#26524;&#20320;&#35843;&#35797;&#36807; thread-os &#25110;&#32773; xv6 &#30340;&#20195;&#30721;&#65292;&#21017;&#20250;&#26356;&#26377;&#24213;&#27668;&#19968;&#20123;&#12290;</p>
+<h3 id="42" class=" text-lg mt-2 pb-2 font-sans">4.2 &#25805;&#20316;&#31995;&#32479;&#19978;&#30340;&#31243;&#24207;</h3>
+<p class=" font-serif my-1">&#29616;&#22312;&#65292;&#25105;&#20204;&#30340;&#25805;&#20316;&#31995;&#32479;&#36824;&#19981;&#25903;&#25345;&#36827;&#31243;&#12289;&#25991;&#20214;&#31995;&#32479;&#31561;&#65292;&#20294;&#30340;&#30830;&#26377;&#20102;&#23436;&#21892;&#30340;&#29289;&#29702;&#20869;&#23384;&#31649;&#29702;&#21644;&#32447;&#31243;&#31649;&#29702; API&#12290;&#25442;&#21477;&#35805;&#35828;&#65292;&#25105;&#20204;&#23454;&#29616;&#30340;&#26159;&#19968;&#20010;&#25903;&#25345;&#32447;&#31243;&#30340; &#8220;&#23884;&#20837;&#24335;&#25805;&#20316;&#31995;&#32479;&#8221;&#65292;&#23427;&#33021;&#36816;&#34892;&#22312;&#27809;&#26377; MMU &#30340;&#30828;&#20214;&#19978;&#12290;</p>
+<p class=" font-serif my-1">&#20026;&#36825;&#26679;&#30340;&#19968;&#20010;&#25805;&#20316;&#31995;&#32479;&#32534;&#20889; &#8220;&#24212;&#29992;&#31243;&#24207;&#8221;&#65292;&#23601;&#26159;&#30452;&#25509;&#22312;&#25805;&#20316;&#31995;&#32479;&#20195;&#30721;&#20013;&#38745;&#24577;&#38142;&#25509;&#19968;&#20123;&#20989;&#25968;&#65292;&#36825;&#20123;&#20989;&#25968;&#21487;&#20197;&#20316;&#20026;&#32447;&#31243;&#30340;&#20837;&#21475;&#65292;&#24182;&#19988;&#20989;&#25968;&#21487;&#20197;&#20219;&#24847;&#35775;&#38382;&#20869;&#26680;&#25968;&#25454;&#12289;&#30452;&#25509;&#20197;&#20989;&#25968;&#35843;&#29992;&#30340;&#24418;&#24335;&#35843;&#29992;&#25805;&#20316;&#31995;&#32479;&#20869;&#30340; API&#12290;&#20026;&#20102;&#26356;&#22909;&#22320;&#29702;&#35299;&#23454;&#39564;&#35201;&#27714;&#65292;&#25105;&#20204;&#19981;&#22952;&#32473;&#20986;&#19968;&#20010;&#35838;&#22530;&#19978; &#8220;&#29983;&#20135;&#32773;-&#28040;&#36153;&#32773;&#8221; &#22312;&#25105;&#20204;&#25805;&#20316;&#31995;&#32479;&#19978;&#36816;&#34892;&#30340;&#20363;&#23376;&#12290;</p>
+<p class=" font-serif my-1">&#39318;&#20808;&#65292;&#25105;&#20204;&#23450;&#20041;&#20449;&#21495;&#37327; (kmt &#23454;&#39564;&#38656;&#27714;&#37096;&#20998;)&#65292;&#24182;&#19988;&#29992;&#23439;&#21253;&#35013;&#19968;&#19979; P/V &#25805;&#20316; (&#36825;&#19968;&#27493;&#23436;&#20840;&#19981;&#24517;&#35201;&#65292;&#21482;&#26159;&#20026;&#20102;&#35753;&#25105;&#20204;&#30340;&#20195;&#30721;&#30475;&#36215;&#26469;&#21644;&#35838;&#22530;&#19978;&#35762;&#35299;&#24471;&#19968;&#26679;)&#65306;</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">sem_t</span><span class="w"> </span><span class="n">empty</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="p">;</span>
+<span class="cp">#define P kmt-&gt;sem_wait</span>
+<span class="cp">#define V kmt-&gt;sem_signal</span>
+</code></pre></div>
+
+<p class=" font-serif my-1">&#25509;&#19979;&#26469;&#65292;&#25105;&#20204;&#20889;&#20986;&#20010;&#29983;&#20135;&#32773;/&#28040;&#36153;&#32773;&#32447;&#31243;&#30340;&#20195;&#30721;&#65292;&#23601;&#36319;&#25105;&#20204;&#35838;&#22530;&#19978;&#23637;&#31034;&#30340; <code>threads.h</code> &#23436;&#20840;&#19968;&#26679;&#65306;</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">Tproduce</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">arg</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">P</span><span class="p">(</span><span class="o">&amp;</span><span class="n">empty</span><span class="p">);</span><span class="w"> </span><span class="n">putch</span><span class="p">(</span><span class="sc">'('</span><span class="p">);</span><span class="w"> </span><span class="n">V</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fill</span><span class="p">);</span><span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">Tconsume</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">arg</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">P</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fill</span><span class="p">);</span><span class="w">  </span><span class="n">putch</span><span class="p">(</span><span class="sc">')'</span><span class="p">);</span><span class="w"> </span><span class="n">V</span><span class="p">(</span><span class="o">&amp;</span><span class="n">empty</span><span class="p">);</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+
+<p class=" font-serif my-1">&#28982;&#21518;&#65292;&#25105;&#20204;&#22312;&#25805;&#20316;&#31995;&#32479;&#21021;&#22987;&#21270; (<code>os-&gt;init</code>) &#20013;&#21019;&#24314;&#33509;&#24178;&#20010;&#29983;&#20135;&#32773;/&#28040;&#36153;&#32773;&#32447;&#31243;&#65292;&#20854;&#20013;&#21033;&#29992;&#20102;&#29289;&#29702;&#20869;&#23384;&#30340;&#20998;&#37197;&#65306;</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="n">task_t</span><span class="w"> </span><span class="o">*</span><span class="nf">task_alloc</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">pmm</span><span class="o">-&gt;</span><span class="n">alloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">task_t</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">os_init</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">pmm</span><span class="o">-&gt;</span><span class="n">init</span><span class="p">();</span>
+<span class="w">  </span><span class="n">kmt</span><span class="o">-&gt;</span><span class="n">init</span><span class="p">();</span><span class="w"> </span><span class="c1">// &#27169;&#22359;&#20808;&#21021;&#22987;&#21270;</span>
+
+<span class="cp">#ifdef DEBUG_LOCAL</span>
+<span class="w">  </span><span class="n">kmt</span><span class="o">-&gt;</span><span class="n">sem_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">empty</span><span class="p">,</span><span class="w"> </span><span class="s">"empty"</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="p">);</span>
+<span class="w">  </span><span class="n">kmt</span><span class="o">-&gt;</span><span class="n">sem_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fill</span><span class="p">,</span><span class="w">  </span><span class="s">"fill"</span><span class="p">,</span><span class="w">  </span><span class="mi">0</span><span class="p">);</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">NPROD</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">kmt</span><span class="o">-&gt;</span><span class="n">create</span><span class="p">(</span><span class="n">task_alloc</span><span class="p">(),</span><span class="w"> </span><span class="s">"producer"</span><span class="p">,</span><span class="w"> </span><span class="n">Tproduce</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">NCONS</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">kmt</span><span class="o">-&gt;</span><span class="n">create</span><span class="p">(</span><span class="n">task_alloc</span><span class="p">(),</span><span class="w"> </span><span class="s">"consumer"</span><span class="p">,</span><span class="w"> </span><span class="n">Tconsume</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="cp">#endif</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p class=" font-serif my-1">&#27880;&#24847;&#21040;&#19978;&#38754;&#30340; <code>DEBUG_LOCAL</code> &#23439;&#12290;&#20320;&#20204;&#21487;&#20197;&#25226;&#36825;&#20010;&#23439;&#30340;&#23450;&#20041;&#21152;&#36733;&#20320;&#20204;&#30340; <code>CFLAGS</code> &#37324;&#65292;&#36825;&#26679;&#20320;&#20204;&#22312;&#26412;&#22320;&#35843;&#35797;&#30340;&#26102;&#20505;&#23601;&#20250;&#21019;&#24314;&#29992;&#20110;&#27979;&#35797;&#30340;&#32447;&#31243;&#65292;&#20294;&#22312; Online Judge &#19978;&#21017;&#19981;&#20250;&#12290;&#36825;&#20010;&#34892;&#20026;&#23545;&#22823;&#23478;&#26469;&#35828;&#24456;&#37325;&#35201;&#65306;&#20320;&#20204;&#25171;&#21360;&#20219;&#20309;&#22810;&#20313;&#30340;&#36755;&#20986;&#65292;&#37117;&#21487;&#33021;&#23548;&#33268; Wrong Answer&#12290;&#36825;&#20010;&#25216;&#24039;&#21516;&#26679;&#21487;&#20197;&#29992;&#20110;&#22312; Online Judge &#19978;&#20851;&#38381;&#39069;&#22806;&#30340;&#36816;&#34892;&#26102;&#26816;&#26597;&#65292;&#25552;&#39640;&#31243;&#24207;&#30340;&#25191;&#34892;&#36895;&#24230;&#12290;</p>
+<p class=" font-serif my-1">&#22914;&#26524;&#20320;&#30340;&#20195;&#30721;&#23454;&#29616;&#27491;&#30830;&#65292;&#22312;&#27169;&#25311;&#22120;&#19978;&#36816;&#34892; (&#21487;&#20197;&#20351;&#29992; <code>smp=2</code>, <code>smp=4</code> &#31561;&#36816;&#34892;&#21551;&#21160;&#22810;&#20010;&#22788;&#29702;&#22120;) &#33021;&#22815;&#30475;&#21040;&#25171;&#21360;&#20986;&#27491;&#30830;&#30340;&#25324;&#21495;&#24207;&#21015;&#65306;&#24635;&#26159;&#21512;&#27861;&#25324;&#21495;&#24207;&#21015;&#30340;&#21069;&#32512;&#65292;&#19988;&#25324;&#21495;&#23884;&#22871;&#30340;&#28145;&#24230;&#19981;&#36229;&#36807; 5&#12290;&#24102;&#30528;&#36825;&#26679;&#30340;&#19968;&#20010;&#20855;&#20307;&#30340;&#25805;&#20316;&#31995;&#32479;&#30340;&#23567; &#8220;&#27979;&#35797;&#8221;&#65292;&#20320;&#33021;&#26356;&#22909;&#22320;&#29702;&#35299;&#26694;&#26550;&#20195;&#30721;&#8212;&#8212;&#23427;&#20854;&#23454;&#24182;&#19981;&#22797;&#26434;&#12290;</p>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<h4 id="_7" class=" pt-2 pb-2 font-sans float-left text-sm box border mr-1 mt-1 box-blue" style=" padding-bottom: 0;">&#22914;&#26524;&#20195;&#30721;&#23454;&#29616;&#30340;&#27491;&#30830;&#65311;</h4>
+<p class=" font-serif my-1">&#20320;&#20204;&#22312;&#32534;&#31243;&#30340;&#26102;&#20505;&#65292;&#19968;&#23450;&#20250;&#36935;&#21040;&#26080;&#25968;&#35809;&#24322;&#30340; bug&#65292;&#36305;&#30528;&#36305;&#30528;&#34394;&#25311;&#26426;&#23601;&#25346;&#20102;&#65292;&#32780;&#19988;&#38169;&#24471;&#38750;&#24120;&#31163;&#35889;&#65292;&#23436;&#20840;&#19981;&#30693;&#36947;&#21457;&#29983;&#20102;&#20160;&#20040;&#12290;&#23545;&#20110;&#24182;&#21457;&#31243;&#24207;&#65292;&#26356;&#38590;&#21463;&#30340;&#26159;&#21487;&#33021;&#35201;&#36816;&#34892;&#24456;&#22810;&#27425;&#65292;&#25110;&#32773;&#22312;&#26576;&#20010;&#29305;&#23450;&#30340;&#26465;&#20214;&#19979; bug &#25165;&#20250;&#35302;&#21457;&#12290;&#20294;&#20320;&#37117;&#30456;&#20449; (1) &#26426;&#22120;&#27704;&#36828;&#26159;&#23545;&#30340;; (2) &#26410;&#27979;&#20195;&#30721;&#27704;&#36828;&#26159;&#38169;&#30340;&#12290;</p>
+<p class=" font-serif my-1">&#24403;&#28982;&#65292;&#25105;&#20204;&#19981;&#25490;&#38500; AbstractMachine &#26377; bug&#12289;gcc &#26377; bug&#12289;qemu &#26377; bug&#65292;&#29978;&#33267;&#26159;&#20320;&#30340;&#22788;&#29702;&#22120;&#26377; bug&#12290;&#20294;&#26368;&#32456;&#26080;&#35770;&#26159;&#21738;&#37324;&#30340;&#38382;&#39064;&#65292;&#21482;&#35201;&#20351;&#29992;&#27491;&#30830;&#30340;&#32534;&#31243;&#26041;&#24335;&#65292;&#20320;&#26368;&#32456;&#37117;&#33021;&#25214;&#21040;&#36825;&#20010; bug&#65292;&#26426;&#22120;&#27704;&#36828;&#26159;&#23545;&#30340;&#12290;&#22788;&#29702;&#22120;&#30340; bug &#26159;&#23427;&#30340;&#19968;&#20010; &#8220;feature&#8221;&#12290;</p>
+</blockquote>
+<h3 id="43-bug" class=" text-lg mt-2 pb-2 font-sans">4.3 &#22312; Bug &#20013;&#27963;&#19979;&#26469;</h3>
+<p class=" font-serif my-1">&#22240;&#27492;&#20320;&#23454;&#38469;&#22238;&#36807;&#22836;&#30475;&#65292;&#36825;&#20010;&#23454;&#39564;&#24182;&#19981;&#38656;&#35201;&#23454;&#29616;&#22810;&#23569;&#20195;&#30721;&#8212;&#8212;&#27604;&#36739;&#32039;&#20945;&#30340;&#21442;&#32771;&#23454;&#29616;&#20165;&#20165;&#23567;&#20960;&#30334;&#34892;&#20195;&#30721;&#8212;&#8212;&#19981;&#23601;&#26159;&#32447;&#31243;&#12289;&#33258;&#26059;&#38145;&#21644;&#20449;&#21495;&#37327;&#65292;&#21152;&#19978;&#19968;&#20123;&#38646;&#30862;&#30340;&#20195;&#30721; (&#20013;&#26029;&#22788;&#29702;&#30340;&#20837;&#21475;&#31561;) &#22043;&#65281;&#37027;&#20026;&#20160;&#20040;&#23454;&#39564;&#35201;&#27714;&#35201;&#20889;&#37027;&#20040;&#38271;&#21602;&#65311;&#36824;&#29305;&#21035;&#29992;&#32418;&#33394;&#23383;&#21644;&#28784;&#33394;&#30340;&#24213;&#33394;&#26631;&#20986; &#8220;&#32447;&#31243;/&#20013;&#26029;&#8221; &#23433;&#20840;&#65311;&#26159;&#22240;&#20026;&#25105;&#20204;&#24076;&#26395;&#20320;&#30340;&#20195;&#30721;&#22312;&#22810;&#22788;&#29702;&#22120;&#12289;&#20013;&#26029;&#37117;&#23384;&#22312;&#30340;&#24773;&#20917;&#19979;&#20445;&#25345;&#27491;&#30830;&#12290;&#36825;&#19981;&#26159;&#19968;&#21477;&#31354;&#35805;&#65292;&#20320;&#19979;&#38754;&#20250;&#30475;&#21040;&#23427;&#23454;&#38469;&#30340;&#20855;&#20307;&#21547;&#20041;&#12290;&#25110;&#32773;&#35828;&#65292;&#20320;&#21482;&#26377;&#22312;&#20570;&#23436;&#23454;&#39564;&#20197;&#21518;&#65292;&#25165;&#20250;&#23545;&#19979;&#38754;&#36825;&#20123;&#35805;&#20135;&#29983;&#30495;&#27491;&#30340;&#29702;&#35299;&#65306;</p>
+<ol class=" list-decimal font-serif">
+<li class=" ml-8">&#20195;&#30721;&#21487;&#20197;&#22312;&#22810;&#20010;&#22788;&#29702;&#22120;&#19978;&#34987;<strong>&#21516;&#26102;</strong>&#35843;&#29992;&#12290;&#22240;&#27492;&#20320;&#38656;&#35201;&#23567;&#24515;&#22320;&#20445;&#35777;&#21407;&#23376;&#24615;&#12289;&#39034;&#24207;&#12289;&#21487;&#35265;&#24615;&#12290;&#21315;&#19975;&#23567;&#24515;&#65306;<code>kmt-&gt;create()</code>, <code>kmt-&gt;sem_signal()</code> &#31561;&#25152;&#26377;&#20989;&#25968;&#37117;&#21487;&#33021;&#21516;&#26102;&#22312;&#22810;&#20010;&#22788;&#29702;&#22120;&#19978;&#34987;&#35843;&#29992;&#12290;&#20320;&#29616;&#22312;&#35273;&#24471;&#36825;&#21477;&#35805;&#24456;&#21487;&#31505;&#65292;&#20320;&#26089;&#23601;&#30693;&#36947;&#65292;&#20294;&#20320;&#35843;&#36807; bug &#23601;&#30693;&#36947;&#21385;&#23475;&#20102;&#12290;</li>
+<li class=" ml-8">&#22312;&#20013;&#26029;&#22788;&#29702;&#31243;&#24207;&#20013;&#21487;&#20197;&#35843;&#29992;&#33258;&#26059;&#38145;&#12290;&#23454;&#38469;&#19978;&#65292;&#19968;&#20010; CPU &#30340;&#20013;&#26029;&#22788;&#29702;&#31243;&#24207;&#21487;&#20197;&#21644;&#21478;&#19968;&#20010; CPU &#35775;&#38382;&#21516;&#19968;&#20010;&#20849;&#20139;&#25968;&#25454;&#32467;&#26500; (&#20363;&#22914;&#22312;&#20013;&#26029;&#20013;&#21521;&#38142;&#34920;&#37324;&#25554;&#20837;&#19968;&#20010;&#20803;&#32032;&#65292;&#36825;&#20010;&#38142;&#34920;&#34987;&#21478;&#19968;&#20010;&#32447;&#31243;&#35835;&#21462;)&#65292;&#22240;&#27492;&#33258;&#26059;&#38145;&#26159;&#20445;&#35777;&#27491;&#30830;&#24615;&#30340;&#37325;&#35201;&#25163;&#27573;&#12290;</li>
+<li class=" ml-8">&#23567;&#24515;&#25968;&#25454;&#31454;&#20105;&#12290;&#19968;&#20999;&#20849;&#20139;&#30340;&#25968;&#25454;&#37117;&#21487;&#33021;&#20250;&#20135;&#29983;&#25968;&#25454;&#31454;&#20105;&#8212;&#8212;&#22914;&#26524;&#20320;&#27809;&#26377;&#20445;&#25252;&#22909;&#30340;&#35805;&#12290;&#26377;&#20123;&#20869;&#23384;&#35775;&#38382;&#24708;&#24708;&#22312;&#20320;&#24847;&#24819;&#19981;&#21040;&#30340;&#26102;&#20505;&#21457;&#29983;&#65292;&#20363;&#22914;&#23545;&#22534;&#26632;&#30340;&#35775;&#38382;&#8212;&#8212;&#25105;&#20204;&#24050;&#32463;&#20570;&#20986;&#20102;&#25552;&#31034;&#65292;&#23567;&#24515;&#65281;&#23567;&#24515;&#65281;</li>
+</ol>
+<p class=" font-serif my-1">&#24456;&#24555;&#20889;&#30528;&#20889;&#30528;&#20320;&#23601;&#20250;&#21457;&#29616;&#33258;&#24049;&#30340;&#20195;&#30721;&#20986; bug &#20102;&#65292;&#26377;&#21487;&#33021;&#26159;&#24182;&#21457;&#30340;&#65292;&#26377;&#21487;&#33021;&#21482;&#26159;&#39034;&#24207;&#30340;&#36923;&#36753;&#23454;&#29616;&#38169;&#20102;&#12290;&#22914;&#26524;&#20986;&#29616;&#20102;&#33707;&#21517;&#20854;&#22937;&#30340;&#24322;&#24120;&#12289;&#34394;&#25311;&#26426;&#31070;&#31192;&#37325;&#21551;&#31561;&#24773;&#20917;&#19981;&#35201;&#24778;&#24908;&#65292;<strong>&#26426;&#22120;&#27704;&#36828;&#26159;&#23545;&#30340;</strong>&#65292;&#22352;&#19979;&#26469;&#35843;&#20195;&#30721;&#21543;&#12290;</p>
+<h4 id="431" class=" pt-2 pb-2 font-sans">4.3.1 &#35843;&#35797;&#29702;&#35770;&#65306;&#20877;&#27425;&#22797;&#20064;</h4>
+<p class=" font-serif my-1">&#22312;&#36825;&#20004;&#20010;&#23398;&#26399;&#30340;&#35838;&#31243;&#37324;&#65292;&#25105;&#20204;&#21453;&#22797;&#25552;&#21040;&#20102;&#35843;&#35797;&#29702;&#35770;&#8212;&#8212;&#25105;&#20204;&#29359;&#19979;&#30340; bug &#26159; fault&#65292;&#23427;&#22312;&#36816;&#34892;&#26102;&#23548;&#33268;&#31995;&#32479;&#26576;&#20010;&#25968;&#20540;&#19981;&#31526;&#21512;&#39044;&#26399; (specification), &#36825;&#26159;&#19968;&#20010; error&#65292;&#32780;&#21482;&#26377;&#26368;&#32456;&#34394;&#25311;&#26426;&#31070;&#31192;&#21345;&#27515;/&#37325;&#21551;/&#36755;&#20986;&#22855;&#24618;&#20869;&#23481;&#65292;&#25105;&#25165;&#30495;&#27491;&#35777;&#26126;&#20102;&#31243;&#24207;&#37324; bug &#30340;&#23384;&#22312; (failure)&#12290;&#25105;&#24314;&#35758;&#22823;&#23478;&#20877;&#22797;&#20064;&#19968;&#19979;&#25105;&#20204;&#35838;&#31243;&#30340;&#35270;&#39057; (&#24182;&#21457; bug)&#65292;&#25105;&#20204;&#35797;&#22270;&#29992;&#36825;&#27425;&#35838;&#31243;&#26469;&#21551;&#21457;&#20320;&#65292;&#23454;&#29616;&#21487;&#38752;&#36719;&#20214;&#31995;&#32479;&#26159;&#26377;&#36857;&#21487;&#24490;&#30340;&#12290;</p>
+<p class=" font-serif my-1">&#20026;&#20102;&#35753; bug (fault) &#26356;&#23481;&#26131;&#34987;&#25214;&#21040;&#65292;&#25105;&#20204;&#26377;&#20004;&#20010;&#24819;&#27861;&#65306;</p>
+<ol class=" list-decimal font-serif">
+<li class=" ml-8">fault &#8594; error, &#35753;&#26356;&#22810;&#30340; bug &#33021;&#22312;&#36816;&#34892;&#26102;&#34987;&#35302;&#21457;&#20986;&#26469;&#12290;&#36825;&#26159;&#36890;&#36807;&#35814;&#23613;&#30340;&#27979;&#35797;&#23454;&#29616;&#30340;&#8212;&#8212;&#20320;&#20204;&#24050;&#32463;&#22312; Lab1 &#37324;&#39281;&#21463;&#27979;&#35797;&#19981;&#20805;&#20998;&#30340;&#25240;&#30952;&#20102;&#65307;&#32780;&#20320;&#20204;&#35201;&#30693;&#36947;&#65292;Lab1 Online Judge &#30340;&#27979;&#35797;&#36828;&#35848;&#19981;&#19978;&#20805;&#20998;&#12290;</li>
+<li class=" ml-8">error &#8594; failure, &#35753;&#36816;&#34892;&#26102;&#38169;&#35823;&#30340;&#29366;&#24577;&#33021;&#23613;&#24555;&#22320;&#34987;&#25429;&#33719;&#12290;&#25105;&#20204;&#30340; klib &#37324;&#24050;&#32463;&#25552;&#20379;&#20102;&#20197;&#19979;&#26377;&#29992;&#30340;&#26426;&#21046;&#24110;&#21161;&#20320;&#26816;&#26597;&#65306;<ol class=" list-decimal font-serif">
+<li class=" ml-8"><code>assert</code>, &#20320;&#21487;&#20197;&#36890;&#36807; assert &#23558;&#31243;&#24207;&#24212;&#35813;&#28385;&#36275;&#30340; specification (&#20294;&#20195;&#30721;&#26410;&#24517;&#20307;&#29616;) &#20889;&#20986;&#26469;</li>
+<li class=" ml-8"><code>panic</code>, &#31435;&#21363;&#36864;&#20986;&#65292;&#36890;&#24120;&#26159;&#22240;&#20026;&#36827;&#20837;&#20102;&#26576;&#31181;&#19981;&#27491;&#24120;&#30340;&#29366;&#24577;</li>
+<li class=" ml-8"><code>panic_on</code>, &#26465;&#20214;&#25104;&#31435;&#26102;&#36864;&#20986;&#65292;&#26816;&#26597;&#19981;&#27491;&#24120;&#29366;&#24577;&#24182;&#36864;&#20986;</li>
+</ol>
+</li>
+</ol>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<h4 id="_8" class=" pt-2 pb-2 font-sans float-left text-sm box border mr-1 mt-1 box-blue" style=" padding-bottom: 0;">&#24819;&#25918;&#24323;&#65311;</h4>
+<p class=" font-serif my-1">&#30456;&#20449;&#22823;&#23478;&#26377;&#26080;&#25968;&#27425;&#24819;&#25918;&#24323;&#12290;&#31639;&#20102;&#65292;&#25104;&#32489;&#19981;&#35201;&#20102;&#12290;&#31639;&#20102;&#65292;&#25220;&#20316;&#19994;&#21543;&#12290;&#22914;&#26524;&#20320;&#22362;&#25345;&#25226; &#8220;&#29420;&#31435;&#23436;&#25104;&#8221; &#24819;&#35937;&#25104;&#26159;&#23545;&#33258;&#24049;&#30340;&#35757;&#32451;&#65292;&#36825;&#26159;&#38750;&#24120;&#26377;&#30410;&#30340;&#12290;</p>
+</blockquote>
+<p class=" font-serif my-1">&#22312;&#36866;&#24403;&#30340;&#22320;&#26041;&#21152;&#19978; printf &#21644; assert &#33021;&#24110;&#21161;&#20320;&#24555;&#36895;&#23450;&#20301;&#21040;&#31243;&#24207;&#20013;&#20986;&#38169;&#30340;&#29366;&#24577; (&#27604;&#22914;&#22312;&#20013;&#26029;&#21040;&#26469;&#26102;&#25171;&#21360;&#23492;&#23384;&#22120;&#30340;&#29616;&#22330;&#65292;&#33021;&#24555;&#36895;&#24110;&#20320;&#23450;&#20301;&#20986;&#29616;&#24322;&#24120;&#30340;&#20301;&#32622;)&#65292;&#32553;&#23567;bug &#30340;&#26816;&#26597;&#33539;&#22260;&#12290;</p>
+<h4 id="432-log" class=" pt-2 pb-2 font-sans">4.3.2 &#26356;&#22909;&#30340; log &#26041;&#24335;</h4>
+<p class=" font-serif my-1">&#30456;&#20449;&#22823;&#23478;&#37117;&#26377;&#36807;&#19981;&#20572;&#22320;&#21152; <code>printf</code>, &#21024;&#25481; <code>printf</code> &#30340;&#35843;&#35797;&#20307;&#39564;&#21543;&#12290;&#36825;&#24863;&#35273;&#21487;&#19981;&#22826;&#22909;&#65292;&#25214;&#20102;&#19968;&#22823;&#22280;&#65292;&#26368;&#21518;&#21457;&#29616;&#19968;&#24320;&#22987;&#21024;&#25481;&#30340; <code>printf</code> &#25171;&#21360;&#30340;&#20449;&#24687;&#25165;&#26159;&#26368;&#26377;&#29992;&#30340;&#65292;&#19981;&#36807;&#19968;&#25972;&#22825;&#23601;&#24050;&#32463;&#36807;&#21435;&#20102;&#12290;</p>
+<p class=" font-serif my-1">&#20320;&#21487;&#20197;&#32771;&#34385;&#20351;&#29992;&#19968;&#20123;&#39044;&#32534;&#35793;&#36873;&#39033;&#25511;&#21046; log &#30340;&#24320;&#20851;&#65306;</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#ifdef TRACE_F</span>
+<span class="w">  </span><span class="cp">#define TRACE_ENTRY printf("[trace] %s:entry\n", __func__)</span>
+<span class="w">  </span><span class="cp">#define TRACE_EXIT printf("[trace] %s:exit\n", __func__)</span>
+<span class="cp">#else</span>
+<span class="w">  </span><span class="cp">#define TRACE_ENTRY ((void)0)</span>
+<span class="w">  </span><span class="cp">#define TRACE_EXIT ((void)0)</span>
+<span class="cp">#endif</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">f</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">TRACE_ENTRY</span><span class="p">;</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">"This is f.</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">  </span><span class="n">TRACE_EXIT</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p class=" font-serif my-1">&#24403;&#28982;&#20320;&#20063;&#21487;&#20197;&#20351;&#29992;&#19968;&#20123;&#21464;&#37327;&#25511;&#21046; log &#30340;&#24320;&#20851;&#65292;&#20363;&#22914;&#35774;&#32622; <code>print_registers_on_irq</code>&#12290;</p>
+<h4 id="433" class=" pt-2 pb-2 font-sans">4.3.3 &#20351;&#29992;&#35843;&#35797;&#22120;</h4>
+<p class=" font-serif my-1">&#35753;&#28982;&#65292;&#22914;&#26524;&#21508;&#31181; <code>printf</code> &#21644; log &#37117;&#27809;&#21150;&#27861;&#24110;&#20320;&#25214;&#21040;&#38382;&#39064;&#65292;&#20063;&#35768;&#19978; gdb &#26159;&#20010;&#19981;&#38169;&#30340;&#20027;&#24847;&#12290;&#26694;&#26550;&#20195;&#30721;&#37324;<strong>&#25925;&#24847;</strong>&#27809;&#26377;&#25552;&#20379; <code>make debug</code> &#30340;&#36873;&#39033;&#65292;&#20294;&#25105;&#20204;&#24050;&#32463;&#39057;&#32321;&#22320;&#22312;&#35838;&#19978;&#23637;&#31034;&#20102;&#22914;&#20309;&#35843;&#35797;&#65292;qemu &#20026;&#25105;&#20204;&#25552;&#20379;&#20102;&#20016;&#23500;&#30340;&#21629;&#20196;&#34892;&#36873;&#39033;&#65306;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>-gdb</code> &#33021;&#21551;&#21160;&#35843;&#35797;&#27169;&#24335;&#65307;</li>
+<li class=" ml-8"><code>-S</code> &#33021;&#35753;&#34394;&#25311;&#26426;&#22312;&#25910;&#21040;&#35843;&#35797;&#21629;&#20196;&#21069;&#19981;&#25191;&#34892;&#25191;&#34892;&#65307;</li>
+<li class=" ml-8">&#22312; gdb &#20013;&#21487;&#20197;&#29992; <code>target</code> &#21629;&#20196;&#36830;&#25509;&#36828;&#31243;&#35843;&#35797;&#65307;</li>
+<li class=" ml-8">&#29992; <code>.gdbinit</code> (&#25110; <code>-x</code>, <code>-ex</code> &#36873;&#39033;) &#33021;&#23454;&#29616;&#33050;&#26412;&#30340;&#39044;&#20808;&#25191;&#34892;&#12290;</li>
+</ul>
+<p class=" font-serif my-1">&#27492;&#22806;&#65292;printf &#24182;&#19981;&#26159;&#21807;&#19968;&#35843;&#35797;&#20449;&#24687;&#30340;&#26469;&#28304;&#12290;&#19978;&#35838;&#30340;&#21516;&#23398;&#24212;&#35813;&#36824;&#26377;&#21360;&#35937;&#65292;&#25105;&#20204;&#35762;&#35299;&#36807;&#22914;&#20309;&#20351;&#29992; qemu monitor &#20013;&#30340; log &#26469;&#35843;&#35797;&#31070;&#31192;&#30340; CPU &#37325;&#21551;&#12290;&#24403;&#20320;&#30495;&#27491;&#36208;&#25237;&#26080;&#36335;&#30340;&#26102;&#20505;&#65292;&#20320;&#20250;&#21457;&#29616;&#36825;&#20123;&#24037;&#20855;&#25165;&#26159;&#35843;&#35797;&#31995;&#32479;&#36719;&#20214;&#37324;&#26368;&#37325;&#35201;&#30340;&#35774;&#26045;&#12290;</p>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<h4 id="_9" class=" pt-2 pb-2 font-sans float-left text-sm box border mr-1 mt-1 box-blue" style=" padding-bottom: 0;">&#19981;&#20449;&#37034;&#65311;</h4>
+<p class=" font-serif my-1">&#22914;&#26524;&#21482;&#26159;&#20889;&#20960;&#21313;&#19978;&#30334;&#34892;&#30340; OJ &#31243;&#24207;&#65292;&#26080;&#35770;&#20320;&#20064;&#24815;&#22810;&#20040;&#30340;&#22351;&#65292;&#22810;&#22810;&#23569;&#23569;&#24635;&#26159;&#33021;&#35843;&#35797;&#20986;&#26469;&#30340;&#12290;&#20294;&#22914;&#26524;&#35201;&#32500;&#25252;&#26356;&#22823;&#30340;&#31243;&#24207;&#65292;&#29992;&#19978;<strong>&#27491;&#30830;&#30340;&#24037;&#20855;</strong>&#23601;&#33021;&#24110;&#19978;&#22823;&#24537;&#20102;&#12290;</p>
+<p class=" font-serif my-1">&#22240;&#27492;&#65292;&#20320;&#22312;&#35835;&#23436;&#19978;&#38754;&#37027;&#20123;&#25991;&#23383;&#30340;&#26102;&#20505;&#65292;&#20320;&#24515;&#37324;&#32943;&#23450;&#24819;&#65306;&#36825;&#20040;&#40635;&#28902;&#65292;&#20851;&#25105; $\times$ &#20107;&#12290;&#23545;&#20013;&#26538;&#30340;&#21516;&#23398;&#65306;&#24403;&#20320;&#23454;&#22312;&#25214;&#19981;&#21040; bug &#30340;&#26102;&#20505;&#65292;&#22238;&#26469;&#27714; gdb &#20063;&#35768;&#33021;&#24110;&#20320;&#25405;&#22238;&#20960;&#22825;&#30340;&#35843;&#35797;&#26102;&#38388;&#12290;&#36825;&#26102;&#20505;&#20320;&#23601;&#30495;&#27491;&#20307;&#20250;&#21040;<strong>&#22522;&#30784;&#35774;&#26045;&#30340;&#37325;&#35201;&#24615;</strong>&#20102;&#12290;</p>
+</blockquote>
+<h3 id="434" class=" text-lg mt-2 pb-2 font-sans">4.3.4 &#20445;&#25252;&#33258;&#24049;&#19981;&#21463;&#20260;&#23475;</h3>
+<p class=" font-serif my-1">&#26377;&#20123; bug &#21487;&#33021;&#20250;&#38750;&#24120;&#38590;&#35843;&#35797;&#65292;&#36825;&#37324;&#20030;&#19968;&#20010;&#20363;&#23376;&#65306;&#26632;&#28322;&#20986;&#12290;&#20063;&#35768;&#24050;&#32463;&#26377;&#21516;&#23398;&#21507;&#36807;&#33510;&#22836;&#20102;&#65306;&#26632;&#31354;&#38388;&#19981;&#26159;&#26080;&#38480;&#22823;&#30340;&#65292;&#32780;&#22914;&#26524;&#25105;&#20204;&#24102;&#30528;&#24456;&#22823;&#30340;&#23616;&#37096;&#21464;&#37327;&#25110;&#32773;&#36882;&#24402;&#24456;&#22810;&#23618;&#65292;&#26632;&#23601;&#24708;&#24708;&#28322;&#20986;&#20102;&#8230;&#8230;&#22312;&#25805;&#20316;&#31995;&#32479;&#20869;&#26680;&#20013;&#65292;&#20869;&#26680;&#32447;&#31243;&#26632;&#30340;&#28322;&#20986;&#23601;&#26174;&#24471;&#26356;&#21361;&#38505;&#20102;&#65292;&#22240;&#20026;&#20320;&#21487;&#33021;&#20250;&#23450;&#20041;&#65306;</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">task_t</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">int32_t</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
+<span class="w">  </span><span class="p">...</span>
+<span class="w">  </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">stack</span><span class="p">[</span><span class="n">STK_SZ</span><span class="p">];</span>
+<span class="p">};</span>
+</code></pre></div>
+
+<p class=" font-serif my-1">&#32780;&#26632;&#28322;&#20986; (x86 &#30340;&#26632;&#20174;&#39640;&#22320;&#22336;&#21521;&#20302;&#22320;&#22336;&#29983;&#38271;) &#30340;&#21518;&#26524;&#23601;&#26159;&#32447;&#31243;&#30340;&#20449;&#24687;&#21487;&#33021;&#34987;&#35206;&#30422;&#65292;&#20986;&#29616;&#21508;&#31181;&#35809;&#24322; (&#38590;&#20197;&#29702;&#35299;) &#30340;&#24773;&#20917;&#65292;&#32780;&#19988;&#26377;&#21487;&#33021; bug &#33509;&#38544;&#33509;&#29616;&#65292;&#21152;&#19968;&#26465; <code>printf</code> &#20063;&#35768;&#23601;&#19981;&#35302;&#21457;&#20102;&#12290;&#22914;&#26524;&#24819;&#36991;&#20813;&#36825;&#31181;&#24773;&#20917;&#30340;&#21457;&#29983;&#65292;&#21487;&#20197;&#32473;&#26632;&#30340;&#21069;&#21518;&#21152;&#19968;&#20123;&#26629;&#26639;&#32531;&#20914; (fences)&#65292;&#25110;&#32773;&#37329;&#19997;&#38592; (canaries)&#65292;&#25105;&#20204;&#19978;&#35838;&#26102;&#20063;&#35762;&#35299;&#36807;&#12290;</p>
+<p class=" font-serif my-1">&#21516;&#29702;&#65292;&#25105;&#20204;&#21487;&#20197;&#22312; kalloc/free &#30340;&#26102;&#20505;&#20570;&#19968;&#20123; hacking&#65292;&#36825;&#26679;&#21487;&#20197;&#24110;&#21161;&#20320;&#26816;&#26597;&#20986;&#24456;&#22810;&#31867;&#22411;&#30340; bugs&#65292;&#20363;&#22914;&#20320;&#21487;&#20197;&#22312; free &#20197;&#21518;&#23558;&#20869;&#23384;&#20840;&#37096;&#22635;&#20026;&#26576;&#19968;&#20010; magic number&#65292;&#28982;&#21518;&#22312;&#20851;&#38190;&#30340; pointer deference &#30340;&#22320;&#26041;&#25554;&#20837;</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#define uaf_check(ptr) \</span>
+<span class="cp">  panic_on(MAGIC == *(uint32_t *)(ptr), "use-after-free");</span>
+
+<span class="o">*</span><span class="n">ptr</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="c1">// important pointer, e.g., current</span>
+<span class="n">uaf_check</span><span class="p">(</span><span class="n">ptr</span><span class="p">)</span>
+</code></pre></div>
+
+<p class=" font-serif my-1">&#36825;&#20123; defensive &#30340;&#32534;&#31243;&#26041;&#24335;&#65292;&#24110;&#21161;&#20320;&#25226;&#20195;&#30721;&#20013;&#24212;&#35813;&#28385;&#36275;&#30340; specification &#26126;&#30830;&#22320;&#22312;&#20195;&#30721;&#20013;&#20889;&#20986;&#26469;&#8212;&#8212;&#25105;&#20204;&#20248;&#20808;&#20551;&#35774;&#25105;&#20204;&#30340;&#20195;&#30721;&#26159;&#26377; bug &#30340;&#65292;&#32780;&#19981;&#26159;&#27809;&#26377; bug &#30340;&#12290;&#22312;&#27492;&#20551;&#35774;&#19979;&#65292;&#20570;&#30340;&#26816;&#26597;&#36234;&#22810;&#65292;&#36234;&#33021;&#20943;&#23569; bug &#23545;&#25105;&#20204;&#35843;&#35797;&#24102;&#26469;&#30340;&#30171;&#33510;&#12290;</p>
+<p class=" font-serif my-1">&#26368;&#21518;&#65292;&#36825;&#20960;&#33410;&#20013;&#20171;&#32461;&#30340;&#30693;&#35782;&#37117;&#26159;<strong>&#23436;&#20840;&#27809;&#26377;&#29992;</strong>&#30340;&#8212;&#8212;&#22914;&#26524;&#20320;&#19981;&#20889;&#22815;&#22823;&#30340;&#20195;&#30721;&#65292;&#20570;&#22815;&#31995;&#32479;&#30340;&#39033;&#30446;&#65292;&#20320;&#27704;&#36828;&#37117;&#19981;&#20250;&#29992;&#21040;&#36825;&#37324;&#30340;&#30693;&#35782;&#65292;&#27704;&#36828;&#37117;&#19981;&#20250;&#24819;&#25226; C &#35821;&#35328;&#30340;&#33021;&#21147;&#21457;&#25381;&#21040;&#26497;&#33268;&#12290;&#36825;&#37324;&#30340;&#30693;&#35782;&#23545;&#29702;&#35770;&#32771;&#35797;&#20960;&#20046;&#23436;&#20840;&#27809;&#26377;&#20219;&#20309;&#24110;&#21161;&#12290;&#20294;&#27491;&#26159;&#22312;&#31181;&#31181;&#32454;&#33410;&#19978;&#36861;&#27714;&#23436;&#32654;&#25165;&#25104;&#23601;&#20102;&#22823;&#22411;&#36719;&#20214;&#31995;&#32479;&#30340;&#25104;&#21151;&#12290;&#20248;&#38597;&#30340;&#20195;&#30721;&#36175;&#24515;&#24742;&#30446;&#12290;&#20851;&#20110;&#25805;&#20316;&#31995;&#32479;&#20869;&#26680;&#65292;xv6 &#32477;&#23545;&#26159;&#19968;&#20221;&#20102;&#19981;&#36215;&#30340;&#20339;&#20316;&#65292;&#30475;&#20284;&#24179;&#28129;&#26080;&#22855;&#30340;&#20195;&#30721;&#37324;&#21442;&#36879;&#30528;&#31995;&#32479;&#35774;&#35745;&#30340;&#26234;&#24935;&#65292;&#20540;&#24471;&#22823;&#23478;&#21697;&#21619;&#12290;</p>
+<h2 id="44" class=" text-xl mt-2 pb-2 font-sans">4.4 &#23454;&#29616;&#33021;&#30561;&#30496;&#30340;&#20114;&#26021;&#38145;&#21644;&#20449;&#21495;&#37327;</h2>
+<p class=" font-serif my-1">&#33258;&#26059;&#38145;&#22823;&#23478;&#21442;&#32771;&#35838;&#22530;&#35762;&#35299;&#30340;&#20195;&#30721;&#21644; xv6 &#23454;&#29616;&#21363;&#21487;&#12290;&#20294;&#33258;&#26059;&#38145;&#34429;&#28982;&#20445;&#35777;&#20102;&#22810;&#22788;&#29702;&#22120;&#36164;&#28304;&#19981;&#20250;&#34987;&#23436;&#20840;&#28010;&#36153; (&#22312;&#27809;&#26377;&#27515;&#38145;&#30340;&#21069;&#25552;&#19979;&#65292;&#33267;&#23569;&#26377;&#19968;&#20010;&#22788;&#29702;&#22120;&#33021;&#19968;&#30452;&#25191;&#34892;)&#65292;&#20294;&#20851;&#20013;&#26029;&#23545;&#20110;&#38271;&#20020;&#30028;&#21306;&#26469;&#35828;&#26159;&#38750;&#24120;&#31967;&#31957;&#30340;&#19968;&#20214;&#20107;&#65306;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#38271;&#26102;&#38388;&#20851;&#20013;&#26029;&#20250;&#23548;&#33268;&#20013;&#26029;&#20002;&#22833;&#65307;</li>
+<li class=" ml-8">&#20854;&#20182;&#22788;&#29702;&#22120;&#19978;&#35797;&#22270;&#33719;&#24471;&#38145;&#30340;&#32447;&#31243;&#20250;&#22823;&#37327;&#28010;&#36153;&#22788;&#29702;&#22120;&#36164;&#28304;&#33258;&#26059;&#65307;</li>
+<li class=" ml-8">&#20114;&#26021;&#20013;&#30340;&#20195;&#30721;&#21487;&#33021;&#38656;&#35201;&#31561;&#24453;&#20013;&#26029; (&#20363;&#22914;&#24076;&#26395;&#20114;&#26021;&#35775;&#38382; I/O &#35774;&#22791;&#30340;&#20195;&#30721;)&#12290;</li>
+</ul>
+<p class=" font-serif my-1">&#22240;&#27492;&#65292;&#36825;&#20010;&#23454;&#39564;&#24456;&#37325;&#35201;&#30340;&#35201;&#27714;&#23601;&#26159;&#22312;&#36827;&#20837;&#20020;&#30028;&#21306;&#21518;&#20801;&#35768;&#20013;&#26029;&#21644;&#32447;&#31243;&#20999;&#25442;&#65292;&#20174;&#32780;&#36991;&#20813;&#22788;&#29702;&#22120;&#22312;&#27809;&#26377;&#33719;&#24471;&#38145;&#30340;&#21069;&#25552;&#19979;&#28040;&#38500; &#8220;&#31354;&#36716;&#8221;&#12290;&#36827;&#19968;&#27493;&#24819;&#65292;&#20551;&#22914;&#26576;&#20010;&#32447;&#31243;&#25191;&#34892; <code>lock(&amp;lk)</code> &#24050;&#32463;&#33719;&#24471;&#20102;&#38145;&#27491;&#22312;&#25191;&#34892;&#65292;&#27492;&#26102;&#21478;&#19968;&#20010;&#32447;&#31243;&#25191;&#34892;&#20102; <code>lock(&amp;lk)</code> &#20294;&#38656;&#35201;&#31561;&#24453;&#8212;&#8212;&#36825;&#20010;&#31561;&#24453;&#39044;&#26399;&#30340;&#26102;&#38388;&#20250;&#27604;&#36739;&#38271;&#65292;&#22240;&#27492;&#19982;&#20854;&#19981;&#20572;&#22320;&#33258;&#26059;&#65292;&#25105;&#20204;&#19981;&#22914;&#22312;&#33258;&#26059;&#22833;&#36133;&#30340;&#26102;&#20505;&#65292;&#20027;&#21160;&#20999;&#25442;&#21040;&#20854;&#20182;&#32447;&#31243;&#25191;&#34892;&#65306;</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">lock</span><span class="p">(</span><span class="n">lock_t</span><span class="w"> </span><span class="o">*</span><span class="n">lk</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">atomic_xchg</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lk</span><span class="o">-&gt;</span><span class="n">locked</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">yield</span><span class="p">();</span><span class="w"> </span><span class="c1">// &#20999;&#25442;    </span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">unlock</span><span class="p">(</span><span class="n">lock_t</span><span class="w"> </span><span class="o">*</span><span class="n">lk</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">atomic_xchg</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lk</span><span class="o">-&gt;</span><span class="n">locked</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p class=" font-serif my-1">&#22823;&#23478;&#21487;&#20197;&#32771;&#34385;&#19968;&#19979;&#65292;&#22914;&#26524;&#22312;&#20851;&#38381;&#20013;&#26029;&#30340;&#26102;&#20505; <code>yield()</code> &#20250;&#21457;&#29983;&#20160;&#20040;&#12290;&#32771;&#34385;&#28165;&#26970;&#36825;&#20010;&#38382;&#39064;&#65292;&#35831;&#25226;&#35745;&#31639;&#26426;&#31995;&#32479;&#30340;&#25191;&#34892;&#24819;&#35937;&#25104;&#29366;&#24577;&#26426;&#65307;&#35745;&#31639;&#26426;&#30340;&#29366;&#24577;&#23436;&#20840;&#26159;&#30001;&#23492;&#23384;&#22120;&#21644;&#20869;&#23384;&#30340;&#25968;&#20540;&#20915;&#23450;&#30340;&#65292;&#32780;&#25511;&#21046;&#20013;&#26029;&#24320;&#20851;&#30340;&#26159; <code>EFLAGS</code> &#23492;&#23384;&#22120;&#20013;&#30340; <code>IF</code>&#12290;</p>
+<p class=" font-serif my-1">&#34429;&#28982; <code>yield()</code> &#33021;&#22312;&#19968;&#23450;&#31243;&#24230;&#19978;&#35299;&#20915;&#38382;&#39064;&#65292;&#20294;&#20381;&#28982;&#19981;&#22815;&#23436;&#32654;&#8212;&#8212;&#22914;&#26524;&#31561;&#24453;&#38145;&#30340;&#32447;&#31243;&#24456;&#22810;&#65292;&#36718;&#30528;&#35843;&#24230;&#19968;&#36941;&#20063;&#35201;&#33457;&#36153;&#24456;&#22810;&#30340;&#24320;&#38144;&#65292;&#25105;&#20204;&#19981;&#22914;&#20570;&#24471;&#24443;&#24213;&#19968;&#28857;&#65292;&#32473;&#27599;&#20010;&#32447;&#31243;&#35774;&#32622;&#29366;&#24577;&#65306;<code>BLOCKED</code> (&#22312;&#31561;&#24453;&#26576;&#20010;&#38145;&#65292;&#27492;&#26102;&#19981;&#33021;&#34987;&#35843;&#24230;&#25191;&#34892;)&#65307;<code>RUNNABLE</code> (&#21487;&#34987;&#35843;&#24230;&#25191;&#34892;)&#12290;&#30001;&#20110;&#20915;&#23450;&#19979;&#19968;&#20010;&#36816;&#34892;&#30340;&#32447;&#31243;&#23436;&#20840;&#26159;&#22312;&#20013;&#26029;&#22788;&#29702;&#20989;&#25968;&#20013;&#23436;&#25104;&#30340;&#65292;&#22240;&#27492;&#25105;&#20204;&#19981;&#22952;&#20026;&#27599;&#19968;&#20010;&#32447;&#31243;&#22686;&#21152;&#19968;&#20010; <code>status</code> &#21464;&#37327; (&#22312; <code>Task</code> &#20013;)&#65292;&#28982;&#21518;&#20462;&#25913;&#25105;&#20204;&#30340;&#35843;&#24230;&#31243;&#24207;&#65292;&#23601;&#21487;&#20197;&#35753; <code>BLOCKED</code> &#30340;&#32447;&#31243;&#19981;&#20877;&#21344;&#29992;&#22788;&#29702;&#22120;&#25191;&#34892;&#65306;</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="k">union</span><span class="w"> </span><span class="nc">task</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">status</span><span class="p">;</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">name</span><span class="p">;</span>
+<span class="w">    </span><span class="k">union</span><span class="w"> </span><span class="nc">task</span><span class="w"> </span><span class="o">*</span><span class="n">next</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Context</span><span class="w">   </span><span class="o">*</span><span class="n">context</span><span class="p">;</span>
+<span class="w">  </span><span class="p">};</span>
+<span class="w">  </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">stack</span><span class="p">[</span><span class="mi">4096</span><span class="p">];</span>
+<span class="p">}</span><span class="w"> </span><span class="n">Task</span><span class="p">;</span>
+
+<span class="p">...</span>
+
+<span class="n">Context</span><span class="w"> </span><span class="o">*</span><span class="n">on_interrupt</span><span class="p">(</span><span class="n">Event</span><span class="w"> </span><span class="n">ev</span><span class="p">,</span><span class="w"> </span><span class="n">Context</span><span class="w"> </span><span class="o">*</span><span class="n">ctx</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">current</span><span class="p">)</span><span class="w"> </span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">tasks</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="w">  </span><span class="k">else</span><span class="w">          </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">context</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ctx</span><span class="p">;</span>
+<span class="w">  </span><span class="k">do</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="p">(</span><span class="n">current</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">tasks</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">cpu_count</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">cpu_current</span><span class="p">()</span><span class="w"> </span><span class="o">||</span>
+<span class="w">    </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">status</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">RUNNING</span><span class="w"> </span><span class="c1">// &#21482;&#35843;&#24230; RUNNING &#29366;&#24577;&#30340;&#32447;&#31243;</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">context</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p class=" font-serif my-1">&#27809;&#38169;&#65292;&#21482;&#35201;&#36890;&#36807;&#23545; &#8220;&#36827;&#31243;&#29366;&#24577;&#8221; &#30340;&#19968;&#20010;&#23567;&#23567;&#30340; hacking&#65292;&#25105;&#20204;&#23601;&#21487;&#20197;&#36827;&#19968;&#27493;&#23454;&#29616;&#21487;&#20197;&#30561;&#30496;&#30340;&#20114;&#26021;&#38145;&#65306;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20114;&#26021;&#38145;&#30001;&#19968;&#25226;&#33258;&#26059;&#38145;&#20445;&#25252;&#65292;&#36825;&#22823;&#24133;&#31616;&#21270;&#20102;&#25105;&#20204;&#29702;&#35299;&#30340;&#38590;&#24230;&#8212;&#8212;&#21516;&#19968;&#25226;&#33258;&#26059;&#38145;&#20445;&#25252;&#30340;&#21306;&#22495;&#28385;&#36275;&#21407;&#23376;&#24615;&#12289;&#39034;&#24207;&#21644;&#21487;&#35265;&#24615;&#65307;</li>
+<li class=" ml-8">&#22914;&#26524;&#22312;&#20114;&#26021;&#38145;&#19978;&#38145;&#26102;&#65292;&#38145;&#26410;&#34987;&#21344;&#29992;&#65292;&#21017;&#26356;&#26032;&#38145;&#30340;&#29366;&#24577;&#24182;&#30452;&#25509;&#36820;&#22238;&#65307;</li>
+<li class=" ml-8">&#22914;&#26524;&#22312;&#20114;&#26021;&#38145;&#19978;&#38145;&#26102;&#65292;&#38145;&#24050;&#32463;&#34987;&#21035;&#30340;&#32447;&#31243;&#25345;&#26377;&#65292;&#21017;&#25226;&#24403;&#21069;&#32447;&#31243;&#25918;&#21040;&#38145;&#30340;&#38431;&#21015;&#20013;&#65292;&#28982;&#21518;&#25226;&#24403;&#21069;&#32447;&#31243;&#26631;&#35760;&#20026;&#19981; <code>RUNNABLE</code>&#12290;&#27880;&#24847;&#27492;&#26102;&#19981;&#33021;&#36827;&#20837;&#20020;&#30028;&#21306;&#25191;&#34892;&#65292;&#22240;&#27492;&#20114;&#26021;&#38145;&#20989;&#25968;&#19981;&#33021;&#31435;&#21363;&#36820;&#22238;&#12290;&#27492;&#26102;&#25191;&#34892; <code>yield()</code> &#8220;&#33258;&#38519;&#8221; (trap) &#36827;&#20837;&#20013;&#26029;&#22788;&#29702;&#31243;&#24207;&#65292;&#35302;&#21457;&#35843;&#24230;&#22120;&#25191;&#34892;&#65307;</li>
+<li class=" ml-8">&#22312;&#20114;&#26021;&#38145;&#37322;&#25918;&#26102;&#65292;&#22914;&#26524;&#26377;&#32447;&#31243;&#22312;&#38431;&#21015;&#20013;&#31561;&#24453;&#65292;&#30452;&#25509;&#21796;&#37266;&#23427;&#21363;&#21487;&#12290;&#22914;&#26524;&#27809;&#26377;&#32447;&#31243;&#22312;&#31561;&#24453;&#65292;&#25226;&#38145;&#24674;&#22797;&#21040;&#21487;&#29992;&#30340;&#29366;&#24577;&#12290;</li>
+</ul>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">mutex_lock</span><span class="p">(</span><span class="n">mutexlock_t</span><span class="w"> </span><span class="o">*</span><span class="n">lk</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">acquired</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">  </span><span class="n">spin_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lk</span><span class="o">-&gt;</span><span class="n">spinlock</span><span class="p">);</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">lk</span><span class="o">-&gt;</span><span class="n">locked</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">enqueue</span><span class="p">(</span><span class="n">lk</span><span class="o">-&gt;</span><span class="n">wait_list</span><span class="p">,</span><span class="w"> </span><span class="n">current</span><span class="p">);</span>
+<span class="w">    </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">BLOCKED</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">lk</span><span class="o">-&gt;</span><span class="n">locked</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="n">acquired</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="n">spin_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lk</span><span class="o">-&gt;</span><span class="n">spinlock</span><span class="p">);</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">acquired</span><span class="p">)</span><span class="w"> </span><span class="n">yield</span><span class="p">();</span><span class="w"> </span><span class="c1">// &#20027;&#21160;&#20999;&#25442;&#21040;&#20854;&#20182;&#32447;&#31243;&#25191;&#34892;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">mutex_unlock</span><span class="p">(</span><span class="n">mutexlock_t</span><span class="w"> </span><span class="o">*</span><span class="n">lk</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">spin_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lk</span><span class="o">-&gt;</span><span class="n">spinlock</span><span class="p">);</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">empty</span><span class="p">(</span><span class="n">lk</span><span class="o">-&gt;</span><span class="n">wait_list</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">task_t</span><span class="w"> </span><span class="o">*</span><span class="n">task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dequeue</span><span class="p">(</span><span class="n">lk</span><span class="o">-&gt;</span><span class="n">wait_list</span><span class="p">);</span>
+<span class="w">    </span><span class="n">task</span><span class="o">-&gt;</span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RUNNABLE</span><span class="p">;</span><span class="w"> </span><span class="c1">// &#21796;&#37266;&#20043;&#21069;&#30561;&#30496;&#30340;&#32447;&#31243;</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">lk</span><span class="o">-&gt;</span><span class="n">locked</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="n">spin_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lk</span><span class="o">-&gt;</span><span class="n">spinlock</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p class=" font-serif my-1">&#29702;&#35299;&#36825;&#20123;&#31639;&#27861;&#26102;&#65292;&#25105;&#20204;&#19981;&#22952;&#20877;&#27425;&#20351;&#29992;&#25105;&#20204;&#21453;&#22797;&#25552;&#21040;&#30340;&#24037;&#20855;&#65306;</p>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">&#25226;&#32447;&#31243;&#24819;&#35937;&#25104;&#20154;&#12289;&#25226;&#20849;&#20139;&#20869;&#23384;&#24819;&#35937;&#25104;&#29289;&#29702;&#19990;&#30028;&#12290;</p>
+</blockquote>
+<p class=" font-serif my-1">&#22312;&#19978;&#36848;&#20114;&#26021;&#38145;&#30340;&#23454;&#29616;&#20013;&#20010;&#65292;&#22914;&#26524; lock &#35843;&#29992;&#22833;&#36133;&#65292;&#25105;&#20204;&#24178;&#33030;&#19981;&#35201;&#33258;&#26059;&#20102;&#65292;&#32780;&#26159;&#25226;&#33258;&#24049;&#21152;&#21040;&#19968;&#20010;&#31561;&#24453;&#30340;&#38431;&#21015;&#37324;&#65292;&#31561;&#21040;&#26377;&#20154;&#37322;&#25918;&#38145;&#30340;&#26102;&#20505;&#20877;&#21796;&#37266;&#65292;&#36825;&#23601;&#22909;&#20687;&#26159;&#25105;&#20204;&#30340;lock/unlock &#19981;&#20877;&#30452;&#25509;&#31895;&#26292;&#22320;&#21435; &#8220;&#30828;&#25250;&#8221; (spin) &#36825;&#25226;&#38145;&#30340;&#20351;&#29992;&#26435;&#65292;&#32780;&#26159;&#31867;&#20284;&#20110;&#28216;&#27891;&#39302;&#37027;&#26679;&#30340;&#31649;&#29702;&#26041;&#27861;&#65292;&#29616;&#22312;&#20808;&#20551;&#35774;&#28216;&#27891;&#27744;&#21516;&#19968;&#26102;&#38388;&#21482;&#33021;&#23481;&#32435;&#19968;&#20010;&#20154;&#12290;&#27599;&#24403;&#21516;&#23398; (&#32447;&#31243;) &#35797;&#22270;&#33719;&#24471;&#38145; (&#35797;&#22270;&#36827;&#20837;&#28216;&#27891;&#27744;) &#26102;&#65292;&#37117;&#38382;&#31649;&#29702;&#21592; (&#25805;&#20316;&#31995;&#32479;) &#35201;&#25163;&#29615;&#12290;&#27492;&#26102;&#21644;&#31649;&#29702;&#21592;&#20132;&#35848;&#30340;&#36807;&#31243;&#30001;&#19968;&#25226;&#33258;&#26059;&#38145;&#20445;&#25252;&#65292;&#38450;&#27490;&#20854;&#20182;&#21516;&#23398;&#24378;&#21183;&#25554;&#20837;&#25171;&#26029;&#12290;&#22914;&#26524;&#31649;&#29702;&#21592; (&#25805;&#20316;&#31995;&#32479;) &#27492;&#26102;&#26377;&#19968;&#20010;&#25163;&#29615;&#65292;&#23601;&#30452;&#25509;&#25226;&#25163;&#29615;&#32473;&#21516;&#23398; (&#35774;&#32622; <code>locked = 1</code>)&#65292;&#24182;&#19988;&#20801;&#35768;&#20182;&#36827;&#20837;&#28216;&#27891;&#27744; (<code>mutex_lock</code> &#36820;&#22238;)&#12290;&#21542;&#21017;&#65292;&#32447;&#31243;&#23601;&#38656;&#35201;&#22312;&#31649;&#29702;&#21592;&#22788;&#25490;&#38431; (&#28982;&#21518;&#32447;&#31243;&#30561;&#30496;&#65292;&#20320;&#21487;&#20197;&#29702;&#35299;&#25104;&#22312;&#38431;&#20237;&#37324;&#19987;&#24515;&#33268;&#24535;&#22320;&#29609;&#25163;&#26426;)&#65292;&#30452;&#21040;&#19978;&#19968;&#20010;&#21516;&#23398;&#20986;&#28216;&#27891;&#39302; (<code>mutex_unlock</code>) &#30340;&#26102;&#20505;&#25226;&#25163;&#29615;&#20132;&#25442;&#32473;&#31649;&#29702;&#21592;&#65292;&#25139;&#19968;&#25139;&#22312;&#38431;&#39318;&#30340;&#32447;&#31243; (&#21796;&#37266;&#23427;)&#65292;&#38431;&#39318;&#30340;&#21516;&#23398; (&#32447;&#31243;) &#33719;&#24471;&#38145;&#12290;&#27492;&#26102;&#22914;&#26524;&#27809;&#26377;&#25490;&#38431;&#30340;&#21516;&#23398;&#65292;&#31649;&#29702;&#21592;&#20250;&#25226;&#25163;&#29615;&#25918;&#21040;&#26588;&#23376;&#37324;&#12290;</p>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/locker.jpg" width="300px"></p>
+<p class=" font-serif my-1"></p><center>&#33719;&#24471;&#25163;&#29615;&#65292;&#22312;&#28216;&#27891;&#39302;&#26356;&#34915;&#23460;&#30340;&#21516;&#23398;&#12290;&#20114;&#26021;&#38145;&#20445;&#35777;&#20102;&#20854;&#20182;&#21516;&#23398;&#19981;&#33021;&#36827;&#20837;&#26356;&#34915;&#23460; (&#35823;</center>
+<p class=" font-serif my-1">&#20449;&#21495;&#37327;&#21644;&#21487;&#20197;&#30561;&#30496;&#30340;&#20114;&#26021;&#38145;&#23454;&#29616;&#21487;&#20197;&#35828;&#26159;&#23436;&#20840;&#30456;&#21516;&#8212;&#8212;&#21482;&#19981;&#36807;&#26159;&#25105;&#20204;&#30340; <code>locked</code> &#19981;&#20877;&#26159;&#19968;&#20010; 0 &#25110; 1 &#30340;&#25968;&#20540;&#65292;&#32780;&#26159;&#20801;&#35768;&#26159;&#26356;&#22810;&#30340;&#25968;&#20540;&#65292;&#23427;&#20195;&#34920;&#20102;&#25163;&#29615;&#30340;&#25968;&#37327;&#12290;</p></div>
+</div>
+
+<div class="container text-xs py-3">
+  <span class="text-muted">
+    <center><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="../../../static/img/cc-4.0.png"></a>
+    &#160;&#160;&#160;<a style="color:inherit" href="https://beian.miit.gov.cn/">&#33487; ICP &#22791; 2020049101 &#21495;</a>
+    </center>
+  </span>
+</div>
+
+</div>
+
+<script src="../../../static/js/jquery.min.js"></script>
+
+<script>
+function get_token() {
+  var match = document.cookie.match(new RegExp('(^| )token=([^;]+)'));
+  if (match) return match[2];
+  else return "";
+}
+var token = get_token();
+var hint = "token", box = $("#token-input");
+
+if (token == "") { }
+else { box.val(token); }
+
+function login() {
+  var token = box.val()
+  if (!token) {
+    document.cookie = ''
+  } else {
+    document.cookie = 'token=' + token + '; expires=Fri, 31 Dec 9999 23:59:59 GMT;'
+  }
+}
+</script>
+
+
+</body>
+
+</html>

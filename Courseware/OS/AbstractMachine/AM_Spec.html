@@ -1,0 +1,491 @@
+<!DOCTYPE html><html class="h-100">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="../../static/css/base.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="../../static/img/favicon.png" type="image/x-icon">
+
+  <style>
+    .font-sans {
+      font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+    }
+    .font-serif {
+      font-family: 'Source Serif Pro', 'Songti SC', 'SimSun', 'Serif', serif;
+    }
+  </style>
+  <link rel="stylesheet" href="../../static/katex/katex.min.css">
+  <script defer src="../../static/katex/katex.min.js"></script>
+  <script defer src="../../static/katex/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+            // customised options
+            // &#8226; auto-render specific keys, e.g.:
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ],
+            // &#8226; rendering keys, e.g.:
+            throwOnError : false
+          });
+      });
+  </script>
+
+
+  
+
+<style>
+.article {
+  -webkit-hyphens: auto;
+}
+form {
+  margin-block-end: 0;
+}
+img {
+  display: inline-block;
+}
+code { font-size: 85%; }
+pre {
+  font-size: 95%;
+  line-height: 120%;
+}
+blockquote {
+  font-size: 95%;
+}
+p {
+  font-size: 105%;
+  text-indent: 2em;
+}
+li {
+  font-size: 105%;
+}
+blockquote p {
+  text-indent: 0em;
+}
+.float-right {
+  padding-left: 10px;
+}
+.float-left {
+  padding-right: 10px;
+}
+a {
+  color: rgb(29 78 216);
+}
+strong {
+  font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+}
+.box        {
+  border-radius: 2px; padding: 1px 4px 2px 4px;
+  font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+  font-size: 95%;
+}
+.box-blue,  .badge-primary  { background-color: rgba(66, 139, 202, 0.5); color: #1d4ed8; }
+.box-green, .badge-success  { background-color: rgba(92, 184, 92, 0.5);  color: #15803d; }
+.box-red,   .badge-danger   { background-color: rgba(217, 83, 79, 0.5);  color: #b91c1c; }
+.box-yellow,.badge-warning  { background-color: rgba(240, 173, 78, 0.5); color: #a16207; }
+.box-gray   { background-color: #a0a0a0; }
+
+.badge {
+  padding: 1 4 1 4;
+  display: inline-block;
+  border-radius: 0.25rem;
+  border: 1px solid;
+}
+.message p {
+  text-indent: 0em;
+  margin-top: 1px;
+}
+.message h1, h2, h3, h4, h5 {
+  font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+}
+.message h2 {
+  font-size: 120%;
+  margin-top: 5px;
+  margin-bottom: 2px;
+}
+.message li {
+  list-style: disc;
+  margin-left: 2em;
+}
+li > p {
+  text-indent: 0em;
+}
+block-quote h4 {
+  float: left;
+  display: inline-block;
+}
+.center {
+  display: block;
+  margin: auto;
+}
+hr {
+  margin-top: 20px;
+  padding-bottom: 20px;
+}
+
+.fa-gradient {
+	background: -webkit-gradient(linear, left top, left bottom, from(rgb(99, 27, 103)), to(#333));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+</style>
+
+
+  <title>AbstractMachine &#35268;&#32422; (Specifications)</title>
+</head>
+
+<body class="d-flex flex-column h-100">
+  
+  
+
+<div>
+
+<div class="px-2 py-1 w-full fixed z-50 bg-gradient-to-r from-black via-purple-700 via-purple-500 shadow-lg" style="-webkit-backdrop-filter: saturate(150%) blur(4px); backdrop-filter: saturate(150%) blur(4px)">
+  <form>
+    <a href="../../index.html"><span class="text-lg px-2 text-white">Yanyan's Wiki</span></a>
+    <a href="../2023/index.html"><span class="text-sm px-2 text-white">&#25805;&#20316;&#31995;&#32479; (2023)</span></a>
+    <input maxlength="9" id="token-input" class="float-right appearance-none border border-transparent px-2 py-1 w-20 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-xs focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent font-mono" type="text" placeholder="TOKEN" oninput="login();">
+  </form>
+</div>
+
+<div class="article container mx-auto md:px-8 lg:px-8 xl:px-8 2xl:px-8 shadow-lg border pb-8 pt-10 max-w-screen-md text-justify divide-y-2 divide-white">
+  <div><h1 id="abstractmachine-specifications" class=" text-2xl mt-2 font-sans">AbstractMachine &#35268;&#32422; (Specifications)</h1>
+<h2 id="1" class=" text-xl mt-2 pb-2 font-sans">1. &#22522;&#26412;&#27010;&#24565;</h2>
+<p class=" font-serif my-1">AbstractMachine &#19978;&#36816;&#34892;&#30340;&#31243;&#24207;&#31216;&#20026; &#8220;kernel&#8221; (&#20869;&#26680;)&#12290;&#36825;&#20010;&#21517;&#23383;&#36890;&#24120;&#34920;&#31034;&#30452;&#25509;&#36816;&#34892;&#22312;&#30828;&#20214;&#19978;&#12289;&#23545;&#30828;&#20214;&#26377;&#30452;&#25509;&#25511;&#21046;&#30340;&#20195;&#30721;&#12290;&#19981;&#20165;&#26159;&#25805;&#20316;&#31995;&#32479;&#20869;&#26680;&#65292;&#20687;&#22312; GPU &#19978;&#36816;&#34892;&#30340;&#20108;&#36827;&#21046;&#25991;&#20214;&#20063;&#31216;&#20026; &#8220;kernel&#8221;&#12290;</p>
+<p class=" font-serif my-1">AbstractMachine &#19978;&#30340; kernel &#34987;&#32534;&#35793;&#25104;&#19968;&#20010;&#30446;&#26631;&#20307;&#31995;&#32467;&#26500;/&#24179;&#21488;&#19978;&#21487;&#25191;&#34892;&#30340;&#25991;&#20214;&#65292;&#24182;&#21487;&#20197;&#30452;&#25509;&#22312;&#29615;&#22659; (&#22914;&#35745;&#31639;&#26426;&#30828;&#20214;&#12289;&#34394;&#25311;&#26426;&#31561;) &#19978;&#25191;&#34892;&#65292;&#20363;&#22914;&#65306;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">x86 (x86 32-bit), qemu (&#27169;&#25311;&#22120;)</li>
+<li class=" ml-8">x86_64 (x86 64-bit), qemu (&#27169;&#25311;&#22120;)</li>
+<li class=" ml-8">riscv64 (RISC-V 64-bit), nemu (&#27169;&#25311;&#22120;)</li>
+<li class=" ml-8">native (&#20316;&#20026;&#26412;&#22320;&#36827;&#31243;&#36816;&#34892;)</li>
+</ul>
+<p class=" font-serif my-1">&#22312;&#12298;&#25805;&#20316;&#31995;&#32479;&#12299;&#23454;&#39564;&#20013;&#65292;&#35831;&#22823;&#23478;&#20197; x86_64-qemu &#20026;&#22522;&#20934;&#24179;&#21488;&#65292;&#20854;&#20182;&#23454;&#29616;&#20316;&#20026;&#21442;&#32771;&#12290;</p>
+<h2 id="2-trm-turing-machine-c" class=" text-xl mt-2 pb-2 font-sans">2. TRM (Turing Machine): C &#35821;&#35328;&#36816;&#34892;&#29615;&#22659;</h2>
+<p class=" font-serif my-1">Kernel &#26159;&#19968;&#20010; C &#35821;&#35328;&#20070;&#20889;&#30340;&#31243;&#24207;&#12290;C &#31243;&#24207;&#25191;&#34892;&#30340;&#29366;&#24577;&#21253;&#25324;&#65306;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#26632;&#65292;&#27010;&#24565;&#19978;&#65292;&#21253;&#21547;&#20989;&#25968;&#35843;&#29992;&#26632;&#24103;&#30340;&#38142;&#34920;&#65292;&#27599;&#19968;&#24103;&#37117;&#26377;&#29420;&#31435;&#30340; PC (&#31243;&#24207;&#35745;&#25968;&#22120;)&#12289;&#21442;&#25968;&#21644;&#23616;&#37096;&#21464;&#37327;&#12290;</li>
+<li class=" ml-8">&#21482;&#35835;&#20195;&#30721;&#12290;</li>
+<li class=" ml-8">&#21482;&#35835;&#25968;&#25454;&#65292;&#20889;&#20837;&#21482;&#35835;&#25968;&#25454; (&#22914;&#24120;&#37327;&#23383;&#31526;&#20018;) &#23558;&#23548;&#33268; undefined behavior&#12290;</li>
+<li class=" ml-8">&#35835;&#20889;&#25968;&#25454;&#65292;&#21253;&#25324;&#25152;&#26377;&#38745;&#24577;&#21464;&#37327;&#21644;&#19968;&#20010;&#21487;&#29992;&#30340;&#22534;&#21306;&#12290;</li>
+</ul>
+<p class=" font-serif my-1">&#20197;&#19978;&#25152;&#26377;&#30340;&#29366;&#24577;&#37117;&#23384;&#20648;&#22312;&#21516;&#19968;&#20010;&#24179;&#22374;&#30340;&#22320;&#22336;&#31354;&#38388;&#20013;&#65292;&#24182;&#21487;&#20197;&#20351;&#29992;&#25351;&#38024;&#35775;&#38382; (&#26632;&#12289;&#20195;&#30721;&#12289;&#25968;&#25454;&#12289;&#22534;&#21306;&#20114;&#19981;&#30456;&#20132;&#19988;&#36830;&#32493;&#23384;&#20648;)&#65307;&#20869;&#23384;&#30340;&#38750;&#27861;&#35775;&#38382;&#26159; undefined behavior&#12290;&#25105;&#20204;&#19981;&#22952;&#20551;&#23450;&#25191;&#34892;&#19968;&#26465;&#35821;&#21477;&#20250;&#20174;&#29366;&#24577; $s$ &#36801;&#31227;&#21040; $s'$&#65292;&#35760;&#20316; $s\to s'$&#12290;</p>
+<p class=" font-serif my-1">Kernel &#25191;&#34892;&#30340;&#20855;&#20307;&#32422;&#23450;&#65306;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Kernel &#34987; TRM &#21152;&#36733;&#65292;&#20174; <code>main</code> &#24320;&#22987;&#36816;&#34892;&#65307;</li>
+<li class=" ml-8"><code>main</code> &#36816;&#34892;&#26102;&#24102;&#26377;&#19968;&#20010;&#21442;&#25968; <code>const char *args</code>&#65292;&#20801;&#35768;&#31243;&#24207;&#21551;&#21160;&#26102;&#20256;&#36882;&#19968;&#20010;&#23383;&#31526;&#20018;&#21442;&#25968;&#65306;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22312;&#36816;&#34892; (<code>make run</code>) &#26102;&#35774;&#32622; <code>mainargs</code> &#29615;&#22659;&#21464;&#37327;&#65292;&#21363;&#21487;&#21521; kernel &#20256;&#36882;&#21442;&#25968;</li>
+<li class=" ml-8">&#21442;&#25968;&#23383;&#31526;&#20018;&#30340;&#38271;&#24230; (&#21253;&#21547;&#26411;&#23614;&#30340; <code>\0</code>) &#19981;&#36229;&#36807; 1024 &#23383;&#33410; </li>
+</ul>
+</li>
+<li class=" ml-8">Kernel &#22312;&#36816;&#34892;&#26102;&#36981;&#24490;&#29366;&#24577;&#26426;&#30340;&#25191;&#34892;&#65292;&#20854;&#20013;&#65306;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21487;&#20351;&#29992;&#30340;&#22534;&#26632;&#22823;&#23567;&#19981;&#23569;&#20110; 4 KiB</li>
+<li class=" ml-8">&#22534;&#21306;&#30340;&#22823;&#23567;&#21644;&#20301;&#32622;&#22312;&#36816;&#34892;&#26102;&#30830;&#23450;&#65292;&#36890;&#36807; <code>heap</code> &#21464;&#37327;&#33719;&#21462;</li>
+</ul>
+</li>
+</ul>
+<p class=" font-serif my-1">Kernel &#22312;&#36816;&#34892;&#26102;&#20801;&#35768;&#35843;&#29992; AbstractMachine API&#65292;&#27492;&#26102;&#30340;&#29366;&#24577;&#36801;&#31227; $s\to s'$ &#30001; AbstractMachine &#23450;&#20041;&#12290;</p>
+<h3 id="21-area" class=" text-lg mt-2 pb-2 font-sans">2.1. <code>Area</code> &#32467;&#26500;&#20307;</h3>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">Area</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">start</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">end</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="n">Area</span><span class="p">;</span>
+</code></pre></div>
+
+<p class=" font-serif my-1">&#34920;&#31034;&#24038;&#38381;&#21491;&#24320;&#21306;&#38388; <code>[start, end)</code> &#30340;&#19968;&#27573;&#20869;&#23384;&#12290;&#25105;&#20204;&#20551;&#35774;&#22320;&#22336;&#31354;&#38388;&#30340;&#26368;&#21518;&#19968;&#20010;&#23383;&#33410; (&#20363;&#22914; 32-bit &#24179;&#21488;&#19979;&#22320;&#22336; <code>0xffffffff</code>) &#27704;&#36828;&#19981;&#20250;&#34987;&#21253;&#21547;&#22312;&#26576;&#20010; <code>Area</code> &#20013;&#65292;&#22240;&#27492; <code>end</code> &#19981;&#20250;&#28322;&#20986;&#12290;&#20869;&#23384;&#21306;&#38388;</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="p">(</span><span class="n">Area</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">.</span><span class="n">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="mi">0</span><span class="p">;</span>
+<span class="w">  </span><span class="p">.</span><span class="n">end</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="mh">0xffffffff</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p class=" font-serif my-1">&#30340;&#26368;&#21518;&#19968;&#20010;&#23383;&#33410;&#30340;&#22320;&#22336;&#26159; <code>0xfffffffe</code>&#12290;<code>klib-macros.h</code> &#25552;&#20379;&#20102;&#19968;&#20123;&#21306;&#38388;&#30340;&#26500;&#36896;/&#21028;&#26029;&#30340;&#23439;&#65306;</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#define RANGE(st, ed)       (Area) { .start = (void *)(st), .end = (void *)(ed) }</span>
+<span class="cp">#define IN_RANGE(ptr, area) ((area).start &lt;= (ptr) &amp;&amp; (ptr) &lt; (area).end)</span>
+</code></pre></div>
+
+<h3 id="22-heap" class=" text-lg mt-2 pb-2 font-sans">2.2. <code>heap</code>: &#29289;&#29702;&#20869;&#23384;&#22534;&#21306;</h3>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">extern</span><span class="w"> </span><span class="n">Area</span><span class="w"> </span><span class="n">heap</span><span class="p">;</span>
+</code></pre></div>
+
+<p class=" font-serif my-1">&#26631;&#35760;&#19968;&#27573;&#36830;&#32493;&#30340;&#12289;&#20195;&#30721;&#21487;&#20197;&#20351;&#29992;&#30340;&#29289;&#29702;&#20869;&#23384; <code>[heap.start, heap.end)</code>&#65292;&#36825;&#27573;&#20869;&#23384; (&#22534;&#21306;) kernel &#21487;&#20197;&#20219;&#24847;&#35835;&#20889;&#12290;</p>
+<p class=" font-serif my-1"><green><strong>&#22810;&#22788;&#29702;&#22120;&#65306;&#23433;&#20840;</strong></green>&#12290;<code>heap</code> &#22312; <code>main</code> &#34987;&#35843;&#29992;&#21069;&#21021;&#22987;&#21270;&#65292;&#20043;&#21518;&#21017;&#19981;&#20250;&#25913;&#21464; (&#20219;&#24847;&#22788;&#29702;&#22120;&#37117;&#21487;&#20197;&#33258;&#30001;&#35835;&#21462;&#23427;)&#12290;&#20462;&#25913; <code>heap</code> &#23548;&#33268; undefined behavior&#65307;Kernel &#27809;&#26377;&#20219;&#20309;&#29702;&#30001;&#38656;&#35201;&#20462;&#25913;&#23427;&#12290;</p>
+<h3 id="23-putch" class=" text-lg mt-2 pb-2 font-sans">2.3. <code>putch</code>: &#25171;&#21360;&#23383;&#31526;</h3>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">putch</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="n">ch</span><span class="p">);</span>
+</code></pre></div>
+
+<p class=" font-serif my-1">&#21521;&#40664;&#35748;&#30340;&#35843;&#35797;&#32456;&#31471;&#25171;&#21360; ASCII &#30721;&#20026; <code>ch</code> &#30340;&#23383;&#31526;&#65306;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#23545; x86 (x86-64) QEMU &#24179;&#21488;&#65292;&#21521; COM1 &#36755;&#20986;&#65292;&#36890;&#36807; QEMU &#30340; <code>-serial</code> &#21487;&#20197;&#36873;&#25321;&#36755;&#20986;&#20301;&#32622;&#12290;</li>
+<li class=" ml-8">&#23545; native &#24179;&#21488;&#65292;&#36755;&#20986;&#21040; stdout&#12290;</li>
+<li class=" ml-8">&#23545;&#30495;&#23454;&#30340;&#30828;&#20214;&#24179;&#21488;&#65292;&#21521;&#35843;&#35797;&#20018;&#21475;&#36755;&#20986;&#12290;</li>
+</ul>
+<p class=" font-serif my-1"><green><strong>&#22810;&#22788;&#29702;&#22120;&#65306;&#23433;&#20840;</strong></green>&#12290;putch &#26159;&#26368;&#22522;&#26412;&#30340;&#35843;&#35797;&#21151;&#33021;&#65292;&#22240;&#27492; AbstractMachine &#30340;&#23454;&#29616;&#36127;&#36131;&#20445;&#35777;&#23427;&#22312;&#22810;&#22788;&#29702;&#22120;&#19978;&#30340;&#23433;&#20840;&#24615;&#12290;</p>
+<h3 id="24-halt-abstractmachine" class=" text-lg mt-2 pb-2 font-sans">2.4. <code>halt</code>: &#32456;&#27490; AbstractMachine</h3>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">halt</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">code</span><span class="p">)</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">__noreturn__</span><span class="p">));</span>
+</code></pre></div>
+
+<p class=" font-serif my-1">&#31435;&#21363;&#32456;&#27490;&#25972;&#20010; AbstractMachine &#30340;&#36816;&#34892;&#65292;&#24182;&#36820;&#22238;&#25968;&#23383;&#32534;&#21495; <code>code</code> (0-255)&#65306;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#23545; QEMU &#24179;&#21488;&#65292;&#34394;&#25311;&#26426;&#23558;&#30452;&#25509;&#32456;&#27490;&#65292;&#32456;&#27490;&#21069;&#20250;&#21521;&#35843;&#35797;&#32456;&#31471;&#25171;&#21360;&#20449;&#24687; (&#20363;&#22914;&#36820;&#22238;&#20195;&#30721;)&#12290;</li>
+<li class=" ml-8">&#23545; native &#24179;&#21488;&#65292;&#20195;&#30721;&#23558;&#36864;&#20986;&#65292;&#36827;&#31243;&#30340;&#36820;&#22238;&#20195;&#30721;&#20026; <code>code</code>&#12290;</li>
+<li class=" ml-8">&#23545;&#30495;&#23454;&#30340;&#30828;&#20214;&#24179;&#21488;&#65292;&#26681;&#25454;&#30828;&#20214;&#30340;&#25903;&#25345;&#20851;&#38381;&#25110;&#36827;&#20837;&#27515;&#24490;&#29615;&#29366;&#24577;&#12290;</li>
+</ul>
+<p class=" font-serif my-1"><green><strong>&#22810;&#22788;&#29702;&#22120;&#65306;&#23433;&#20840;</strong></green>&#12290;&#22312;&#20219;&#24847;&#22788;&#29702;&#22120;&#19978;&#25191;&#34892; <code>halt</code> &#37117;&#20250;&#32456;&#27490;&#25972;&#20010; Kernel &#30340;&#25191;&#34892;&#12290;</p>
+<h2 id="3-mpe-multi-processing-extension" class=" text-xl mt-2 pb-2 font-sans">3. MPE (Multi-Processing Extension) &#20849;&#20139;&#20869;&#23384;&#22810;&#22788;&#29702;&#22120;</h2>
+<p class=" font-serif my-1">&#36827;&#20837;&#20849;&#20139;&#20869;&#23384;&#22810;&#22788;&#29702;&#22120;&#27169;&#24335;&#12290;&#20551;&#35774;&#31995;&#32479;&#20013;&#26377; $n$ &#20010;&#22788;&#29702;&#22120;&#65292;&#22312;&#23436;&#25104; MPE &#21021;&#22987;&#21270;&#21518;&#65292;&#31995;&#32479;&#20013;&#23601;&#26377;&#22810;&#20010;&#24182;&#34892;&#25191;&#34892;&#12289;&#20849;&#20139;&#20869;&#23384;&#19988;&#25317;&#26377;&#29420;&#31435;&#22534;&#26632;&#30340;&#29366;&#24577;&#26426;&#12290;</p>
+<p class=" font-serif my-1"><red><strong>&#25968;&#25454;&#31454;&#20105;</strong></red>&#65306;&#20004;&#20010;&#22788;&#29702;&#22120;&#21516;&#26102; (&#22312;&#29366;&#24577;&#26426;&#27169;&#22411;&#20013;&#24847;&#21619;&#30528;&#20808;&#21518;) &#35775;&#38382;&#19968;&#20010;&#20849;&#20139;&#20869;&#23384;&#20301;&#32622;&#65292;&#24182;&#19988;&#33267;&#23569;&#26377;&#19968;&#20010;&#26159;&#20889;&#26159;&#25968;&#25454;&#31454;&#20105;&#12290;&#25968;&#25454;&#31454;&#20105; (data race) &#22312; AbstractMachine &#26159; undefined behavior&#65292;&#24212;&#24403;&#20005;&#26684;&#36991;&#20813;&#12290;</p>
+<h3 id="31-mpe_init" class=" text-lg mt-2 pb-2 font-sans">3.1. <code>mpe_init</code>: &#21551;&#21160;&#22810;&#22788;&#29702;&#22120;</h3>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">mpe_init</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">entry</span><span class="p">)());</span>
+</code></pre></div>
+
+<p class=" font-serif my-1">&#21551;&#21160;&#31995;&#32479;&#20013;&#22810;&#22788;&#29702;&#22120;&#30340;&#25191;&#34892;&#65292;&#27599;&#20010;&#22788;&#29702;&#22120;&#37117;&#36339;&#36716;&#21040; <code>entry</code> &#24320;&#22987;&#25191;&#34892;&#65292;&#25191;&#34892;&#27969;&#20849;&#20139;&#20195;&#30721;&#12289;&#25968;&#25454;&#65307;&#27599;&#20010;&#25191;&#34892;&#27969;&#26377;&#29420;&#31435;&#30340;&#22534;&#26632;&#21644;&#23492;&#23384;&#22120;&#12290;</p>
+<p class=" font-serif my-1"><red><strong>&#38480;&#21046;</strong></red>&#65306;&#22312;&#19968;&#27425; kernel &#36816;&#34892;&#20013;&#65292;&#21482;&#33021;&#35843;&#29992;&#19968;&#27425; (&#22810;&#27425;&#35843;&#29992;&#21518;)&#65292;&#19988;&#35843;&#29992;&#21518; <code>entry</code> &#19981;&#33021;&#36820;&#22238;&#12290;</p>
+<h3 id="32-cpu_count" class=" text-lg mt-2 pb-2 font-sans">3.2. <code>cpu_count</code>: &#22788;&#29702;&#22120;&#20010;&#25968;</h3>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">cpu_count</span><span class="p">();</span>
+</code></pre></div>
+
+<p class=" font-serif my-1">&#36820;&#22238;&#31995;&#32479;&#20013;&#22788;&#29702;&#22120;&#30340;&#20010;&#25968;&#65292;&#22312;&#25972;&#20010; AbstractMachine &#25191;&#34892;&#26399;&#38388;&#25968;&#20540;&#19981;&#20250;&#21464;&#21270;&#12290;</p>
+<p class=" font-serif my-1"><green><strong>&#22810;&#22788;&#29702;&#22120;&#65306;&#23433;&#20840;</strong></green>&#12290;&#30001;&#20110;&#22788;&#29702;&#22120;&#25968;&#37327;&#19981;&#21464;&#65292;&#22240;&#27492; <code>cpu_count</code> &#30340;&#23454;&#29616;&#36890;&#24120;&#23454;&#29616;&#26159;&#19968;&#20010;&#20849;&#20139;&#20869;&#23384; (&#25110;&#35774;&#22791;&#23492;&#23384;&#22120;) &#30340;&#35835;&#25805;&#20316;&#12290;&#32534;&#31243;&#26102; (&#20363;&#22914;&#23454;&#29616;&#25805;&#20316;&#31995;&#32479;&#26102;) &#20320;&#21487;&#20197;&#20551;&#35774;&#31995;&#32479;&#20013;&#22788;&#29702;&#22120;&#30340;&#20010;&#25968;&#19981;&#36229;&#36807; 8 &#20010;&#12290;</p>
+<h3 id="33-cpu_current" class=" text-lg mt-2 pb-2 font-sans">3.3. <code>cpu_current</code>: &#24403;&#21069;&#22788;&#29702;&#22120;&#32534;&#21495;</h3>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">cpu_current</span><span class="p">();</span>
+</code></pre></div>
+
+<p class=" font-serif my-1">&#36820;&#22238;&#24403;&#21069;&#25191;&#34892;&#27969;&#30340; CPU &#32534;&#21495;&#65292;&#20174; <code>0</code> &#24320;&#22987;&#65292;&#20363;&#22914; <code>cpu_count() == 4</code>&#65292;&#21017;&#22312;&#22235;&#20010; CPU &#19978;&#20998;&#21035;&#35843;&#29992; <code>cpu_current()</code> &#23558;&#20998;&#21035;&#24471;&#21040; <code>0</code>, <code>1</code>, <code>2</code>, <code>3</code>&#12290;</p>
+<p class=" font-serif my-1"><green><strong>&#22810;&#22788;&#29702;&#22120;&#65306;&#23433;&#20840;</strong></green>&#12290;&#20219;&#20309;&#22788;&#29702;&#22120;&#22312;&#20219;&#20309;&#26102;&#20505;&#30342;&#21487;&#35843;&#29992;&#12290;</p>
+<h3 id="34-atomic_xchg" class=" text-lg mt-2 pb-2 font-sans">3.4. <code>atomic_xchg</code>: &#20869;&#23384;&#20132;&#25442;</h3>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">atomic_xchg</span><span class="p">(</span><span class="k">volatile</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">addr</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">newval</span><span class="p">);</span>
+</code></pre></div>
+
+<p class=" font-serif my-1">&#21407;&#23376; (&#19981;&#20250;&#34987;&#20854;&#20182;&#22788;&#29702;&#22120;&#30340;&#21407;&#23376;&#25805;&#20316;&#25171;&#26029;) &#22320;&#20132;&#25442;&#20869;&#23384;&#22320;&#22336;&#20013;&#30340;&#25968;&#20540;&#65292;&#31561;&#20215;&#20110;&#20197;&#19979; C &#20195;&#30721;&#65306;</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">atomic_xchg</span><span class="p">(</span><span class="k">volatile</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">addr</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">newval</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">addr</span><span class="p">;</span>
+<span class="w">  </span><span class="o">*</span><span class="n">addr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">newval</span><span class="p">;</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">ret</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p class=" font-serif my-1"><green><strong>&#22810;&#22788;&#29702;&#22120;&#65306;&#23433;&#20840;</strong></green>&#12290;&#20320;&#21487;&#20197;&#20551;&#35774;&#36825;&#26159; Kernel &#20013;&#21807;&#19968;&#25903;&#25345;&#30340;&#21407;&#23376;&#25805;&#20316;&#65292;&#21487;&#20197;&#29992;&#20110;&#28040;&#38500;&#25968;&#25454;&#31454;&#20105;&#12290;&#22914;&#26524;&#20320;&#24076;&#26395;&#20351;&#29992;&#26356;&#22797;&#26434;&#30340;&#21407;&#23376;&#25805;&#20316;&#65292;&#22312;&#25903;&#25345;&#30340;&#20307;&#31995;&#32467;&#26500;&#19978;&#21487;&#20197;&#32771;&#34385; <code>stdatomic.h</code> &#21644; GCC builtin &#30340;&#20989;&#25968;&#12290;</p>
+<h2 id="4-ioe-io-extension" class=" text-xl mt-2 pb-2 font-sans">4. IOE (I/O Extension) &#35774;&#22791;&#31649;&#29702;</h2>
+<p class=" font-serif my-1">&#20026;&#20102;&#23454;&#29616;&#25805;&#20316;&#31995;&#32479;&#25552;&#20379;&#30340;&#19968;&#20123;&#22522;&#30784;&#30340; I/O &#35774;&#22791;&#35775;&#38382;&#12290;&#22312; AbstractMachine &#20013;&#65292;&#25105;&#20204;&#23545;&#24120;&#35265;&#30340;&#35774;&#22791;&#36827;&#34892;&#20102;&#25277;&#35937;&#65292;&#25226;&#23427;&#20204;&#31616;&#21270;&#20026;&#20102;&#19968;&#32452;&#21487;&#20197;&#35835;&#25110;&#20889;&#30340;&#25511;&#21046;&#23492;&#23384;&#22120;&#65292;&#36890;&#36807;&#35835;/&#20889;&#36825;&#20123;&#23492;&#23384;&#22120;&#23454;&#29616;&#35774;&#22791;&#29366;&#24577;&#30340;&#35835;&#21462;&#21644;&#25511;&#21046;&#12290;</p>
+<h3 id="41-ioe_init-io" class=" text-lg mt-2 pb-2 font-sans">4.1. <code>ioe_init</code>: &#21021;&#22987;&#21270; I/O &#25193;&#23637;</h3>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="nf">ioe_init</span><span class="p">();</span>
+</code></pre></div>
+
+<p class=" font-serif my-1">&#23436;&#25104;&#31995;&#32479;&#20013; I/O &#35774;&#22791;&#30340;&#21021;&#22987;&#21270;&#12290;</p>
+<p class=" font-serif my-1"><red><strong>&#38480;&#21046;</strong></red>&#65306;&#22312;&#19968;&#27425; kernel &#36816;&#34892;&#20013;&#21482;&#33021;&#35843;&#29992;&#19968;&#27425;&#65292;&#19988;&#24517;&#39035;&#22312; <code>mpe_init</code> &#20043;&#21069;&#12290;</p>
+<h3 id="42-ioe_readioe_write-io" class=" text-lg mt-2 pb-2 font-sans">4.2. <code>ioe_read/ioe_write</code>: I/O &#35774;&#22791;&#35835;&#20889;</h3>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">ioe_read</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">reg</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">buf</span><span class="p">);</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">ioe_write</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">reg</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">buf</span><span class="p">);</span>
+</code></pre></div>
+
+<p class=" font-serif my-1">&#20174;&#32534;&#21495;&#20026; <code>reg</code> &#30340;&#23492;&#23384;&#22120;&#35835;&#21462;/&#20889;&#20837;&#65292;&#35835;&#21462;/&#20889;&#20837;&#30340;&#25968;&#25454;&#21462;&#20915;&#20110;&#23492;&#23384;&#22120;&#30340;&#32534;&#21495;&#12290;&#35774;&#22791;&#21487;&#33021;&#20250;&#23545;&#23492;&#23384;&#22120;&#30340;&#20351;&#29992;&#20316;&#20986;&#39069;&#22806;&#30340;&#35268;&#23450;&#65292;&#35831;&#21442;&#32771; <a href="AM_Devices.html" class=" text-amber-900">Abstract Machine &#35774;&#22791;&#25991;&#26723;</a>&#12290;&#20026;&#20102;&#20943;&#23569;&#22823;&#23478;&#23450;&#20041;&#39069;&#22806;&#30340;&#21464;&#37327;&#65292;&#25105;&#20204;&#25512;&#33616;&#20351;&#29992; klib-macros.h &#20013;&#23553;&#35013;&#21518;&#30340;&#23439;&#35775;&#38382;&#35774;&#22791;&#65292;&#20363;&#22914;&#65306;</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="o">*</span><span class="n">rtc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">io_read</span><span class="p">(</span><span class="n">AM_TIMER_RTC</span><span class="p">);</span>
+<span class="n">io_read</span><span class="p">(</span><span class="n">AM_GPU_STATUS</span><span class="p">).</span><span class="n">ready</span><span class="p">;</span>
+<span class="n">io_write</span><span class="p">(</span><span class="n">UART_TX</span><span class="p">,</span><span class="w"> </span><span class="sc">'X'</span><span class="p">);</span>
+</code></pre></div>
+
+<p class=" font-serif my-1"><red><strong>&#22810;&#22788;&#29702;&#22120;&#65306;&#19981;&#23433;&#20840;</strong></red>&#65306;&#23545;&#21516;&#19968;&#20010; I/O &#35774;&#22791;&#30340;&#35775;&#38382;&#24517;&#39035;&#20114;&#26021;&#12290;&#20540;&#24471;&#39069;&#22806;&#27880;&#24847;&#30340;&#26159;&#65292;<code>ioe_read</code> &#21644; <code>ioe_write</code> &#30340;&#20195;&#30721;&#21487;&#20197;&#34987; CTE &#20013;&#26029; (&#36825;&#26159;&#20801;&#35768;&#30340;)&#12290;&#20294; Kernel &#38656;&#35201;&#20445;&#35777;&#22312;<red>&#20219;&#24847;&#26102;&#21051;&#23545;&#21516;&#19968;&#20010;&#35774;&#22791;&#21482;&#20801;&#35768;&#26377;&#19968;&#20010;&#23578;&#26410;&#36820;&#22238;&#30340; <code>ioe_read</code> &#25110; <code>ioe_write</code> &#25805;&#20316;</red>&#65292;&#21542;&#21017;&#23558;&#23548;&#33268; undefined behavior&#12290;</p>
+<h2 id="5-cte-context-extension" class=" text-xl mt-2 pb-2 font-sans">5. CTE (Context Extension) &#19978;&#19979;&#25991;&#21644;&#20013;&#26029;&#31649;&#29702;</h2>
+<p class=" font-serif my-1">TRM&#12289;MPE &#21644; IOE &#33021;&#22815;&#36816;&#34892;&#22810;&#20010;&#22788;&#29702;&#22120;&#19978;&#30340;&#39034;&#24207;&#31243;&#24207;&#65292;&#22810;&#20010;&#20849;&#20139;&#20869;&#23384;&#30340;&#25191;&#34892;&#27969; (&#22788;&#29702;&#22120;) &#24635;&#26159;&#25191;&#34892;&#24403;&#21069;&#25351;&#20196;&#12290;CTE <strong>&#20801;&#35768; kernel &#31649;&#29702;&#24322;&#27493;&#30340;&#25191;&#34892;&#27969;&#65292;&#20801;&#35768;&#27599;&#20010;&#22788;&#29702;&#22120;&#20998;&#21035;&#22312;&#20013;&#26029;/&#24322;&#24120;&#21457;&#29983;&#26102;&#25191;&#34892;&#20195;&#30721;&#65292;&#24182;&#20445;&#23384;/&#20999;&#25442;&#21040;&#20854;&#20182;&#25191;&#34892;&#27969;</strong>&#12290;</p>
+<p class=" font-serif my-1">CTE &#20801;&#35768;&#22312;&#31243;&#24207;&#25191;&#34892;&#20013;&#24341;&#20837;&#20197;&#19979;&#24322;&#24120; (trap) &#25511;&#21046;&#27969;&#65292;&#21253;&#25324;&#20197;&#19979;&#26469;&#28304;&#65306;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22788;&#29702;&#22120;&#22806;&#37096;&#20013;&#26029; (&#26102;&#38047;&#12289;I/O &#35774;&#22791;)</li>
+<li class=" ml-8">&#25351;&#20196;&#25191;&#34892;&#20135;&#29983;&#30340;&#24322;&#24120; (&#20027;&#21160;&#25191;&#34892;&#30340; trap &#25351;&#20196;&#21644; undefined behavior &#23548;&#33268;&#30340;&#38169;&#35823;)</li>
+<li class=" ml-8">&#23545;&#20110; VME ucontext &#21019;&#24314;&#30340;&#29992;&#25143;&#19978;&#19979;&#25991;&#65292;&#35775;&#38382;&#26144;&#23556;&#26435;&#38480;&#36829;&#21453;&#30340;&#22320;&#22336;&#20135;&#29983;&#30340;&#32570;&#39029;</li>
+</ul>
+<p class=" font-serif my-1">&#22312;&#24322;&#24120; (trap) &#21457;&#29983;&#21518;&#65292;&#20250;<red><strong>&#20511;&#29992;&#24403;&#21069;&#25191;&#34892;&#27969;&#30340;&#26632;</strong></red>&#65292;&#22312;&#26632;&#19978;&#20445;&#23384;&#39069;&#22806;&#30340;&#25968;&#25454;&#21518;<red><strong>&#20851;&#38381;&#20013;&#26029;</strong></red>&#65292;&#28982;&#21518;<strong><red>&#30452;&#25509;&#22312;&#24403;&#21069;&#26632;&#19978;</red></strong>&#35843;&#29992; cte_init &#26102;&#27880;&#20876;&#22909;&#30340; handler &#20989;&#25968;&#12290;handler &#36820;&#22238;&#19968;&#20010;&#25351;&#21521;&#25191;&#34892;&#27969;&#30340;&#25351;&#38024;&#65292;&#24182;&#20999;&#25442;&#21040;&#35813;&#25191;&#34892;&#27969;&#25191;&#34892;&#12290;</p>
+<p class=" font-serif my-1"><red><strong>&#22810;&#22788;&#29702;&#22120;&#65306;&#20998;&#21035;&#21709;&#24212;&#20013;&#26029;&#21644;&#24322;&#24120;</strong></red>&#12290;&#24403;&#31995;&#32479;&#20013;&#26377;&#22810;&#20010;&#22788;&#29702;&#22120;&#26102;&#65292;&#27599;&#20010;&#22788;&#29702;&#22120;&#37117;&#21487;&#33021;&#21516;&#26102;&#21457;&#29983;&#20013;&#26029;/&#24322;&#24120;&#65307;&#20294; AbstractMachine &#20195;&#30721;&#23454;&#29616;&#20445;&#35777;&#20013;&#26029;&#22788;&#29702;&#20165;&#28041;&#21450;&#22788;&#29702;&#22120;&#33258;&#36523;&#30340;&#29366;&#24577; (&#20294;&#20250;&#20462;&#25913;&#22788;&#29702;&#22120;&#30340;&#20869;&#26680;&#26632;)&#12290;&#22240;&#27492; <code>cte_init</code> &#20013;&#27880;&#20876;&#30340;&#22788;&#29702;&#31243;&#24207;&#24212;&#24403;&#23567;&#24515;&#25968;&#25454;&#31454;&#20105;&#30340;&#21457;&#29983;&#12290;</p>
+<h3 id="51-cte_init" class=" text-lg mt-2 pb-2 font-sans">5.1. <code>cte_init</code>: &#21021;&#22987;&#21270;&#19978;&#19979;&#25991;&#25193;&#23637;</h3>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="nf">cte_init</span><span class="p">(</span><span class="n">Context</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="n">handler</span><span class="p">)(</span><span class="n">Event</span><span class="w"> </span><span class="n">ev</span><span class="p">,</span><span class="w"> </span><span class="n">Context</span><span class="w"> </span><span class="o">*</span><span class="n">ctx</span><span class="p">));</span>
+</code></pre></div>
+
+<p class=" font-serif my-1">&#27880;&#20876;&#20013;&#26029;/&#31995;&#32479;&#35843;&#29992;&#22788;&#29702;&#31243;&#24207;&#65306;&#22312;&#20013;&#26029;/&#24322;&#24120;/&#31995;&#32479;&#35843;&#29992;&#26102;&#65292;AbstractMachine &#20250;&#31435;&#21363;&#20445;&#23384;&#24403;&#21069;&#25191;&#34892;&#27969;&#30340;&#19978;&#19979;&#25991; (Context, &#21253;&#25324;&#23492;&#23384;&#22120;&#29616;&#22330;&#31561;) &#21040;&#24403;&#21069;&#25191;&#34892;&#27969;&#30340;&#20869;&#26680;&#26632; (&#26632;&#31354;&#38388;&#30001; kcontext/ucontext &#25351;&#23450;)&#65292;&#28982;&#21518;&#35843;&#29992; <code>handler</code>&#65292;&#20854;&#20013;&#21442;&#25968; <code>ev</code> &#26159;&#20107;&#20214;&#30340;&#31867;&#22411;&#65306;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>EVENT_ERROR</code>     - &#38750;&#27861;&#35775;&#38382;&#30340;&#24322;&#24120;&#65292;&#20363;&#22914; #GP</li>
+<li class=" ml-8"><code>EVENT_IRQ_TIMER</code> - &#26102;&#38047;&#20013;&#26029;</li>
+<li class=" ml-8"><code>EVENT_IRQ_IODEV</code> - I/O &#35774;&#22791;&#20013;&#26029; (&#38190;&#30424;&#12289;&#20018;&#21475;&#8230;&#8230;)</li>
+<li class=" ml-8"><code>EVENT_PAGEFAULT</code> - &#32570;&#39029;&#24322;&#24120;</li>
+<li class=" ml-8"><code>EVENT_SYSCALL</code>   - &#31995;&#32479;&#35843;&#29992;</li>
+<li class=" ml-8"><code>EVENT_YIELD</code>     - <code>yield()</code> &#33258;&#38519;</li>
+</ul>
+<p class=" font-serif my-1">&#32780; <code>ctx</code> &#26159;&#25351;&#21521;&#20445;&#23384;&#22312;&#24403;&#21069;&#25191;&#34892;&#27969;&#20449;&#24687;&#30340;&#25351;&#38024;&#12290;<code>handler</code> &#21487;&#20197;&#36820;&#22238;&#20219;&#20309;&#21512;&#27861;&#30340; <code>Context</code> (&#21487;&#20197;&#30001; <code>kcontext</code> &#21019;&#24314;&#65292;&#25110;&#32773;&#26159;&#26576;&#20010; <code>handler</code> &#20445;&#23384;&#30340;&#21442;&#25968;)&#12290;</p>
+<p class=" font-serif my-1"><red><strong>&#38480;&#21046;</strong></red>&#65306;&#22312;&#19968;&#27425; kernel &#36816;&#34892;&#20013;&#21482;&#33021;&#35843;&#29992;&#19968;&#27425;&#65292;&#19988;&#24517;&#39035;&#22312; <code>mpe_init</code> &#20043;&#21069;&#12290;&#21487;&#20197;&#22312; IOE &#20043;&#21069;&#25110;&#20043;&#21518;&#21021;&#22987;&#21270;&#12290;</p>
+<p class=" font-serif my-1"><red><strong>ctx &#30340;&#29983;&#23384;&#21608;&#26399;</strong></red>&#65306;&#27599;&#20010;&#22788;&#29702;&#22120;&#37117;&#26377;&#19968;&#20010;&#27491;&#22312;&#36816;&#34892;&#30340;&#25191;&#34892;&#27969;&#65292;&#23427;&#21487;&#33021;&#26159;&#65306;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">MPE &#26410;&#21551;&#21160;&#26102;&#30340; <code>main</code> &#20989;&#25968;&#30340;&#25191;&#34892;&#65292;&#23427;&#20351;&#29992; AbstractMachine (TRM) &#21021;&#22987;&#21270;&#26102;&#30340;&#20869;&#26680;&#26632;&#65307;</li>
+<li class=" ml-8">MPE &#21551;&#21160;&#21518; <code>mp_entry</code> &#20989;&#25968;&#30340;&#25191;&#34892;&#65292;&#27599;&#20010;&#22788;&#29702;&#22120;&#30340; <code>mp_entry</code> &#25191;&#34892;&#37117;&#25317;&#26377;&#29420;&#31435;&#30340;&#20869;&#26680;&#26632;&#65307;</li>
+<li class=" ml-8">&#20854;&#20182;&#30001; <code>kcontext</code> &#21019;&#24314;&#30340;&#19978;&#19979;&#25991;&#22312; CPU &#19978;&#30340;&#25191;&#34892;&#65292;&#21019;&#24314;&#26102;&#20250;&#25351;&#23450;&#19968;&#20010;&#20869;&#26680;&#26632;&#12290;</li>
+</ul>
+<p class=" font-serif my-1">&#22312;&#20013;&#26029;/&#24322;&#24120;&#21457;&#29983;&#21518;&#65292;<red>&#20013;&#26029;/&#24322;&#24120;&#36820;&#22238;&#26102;&#30340; context &#23558;&#20250;&#34987;&#20445;&#23384;&#22312;&#24403;&#21069;&#25191;&#34892;&#27969;&#30340;&#22534;&#26632;&#19978;&#12290;&#21482;&#26377;&#24403;&#36825;&#20010;&#25191;&#34892;&#27969;&#34987;&#35843;&#24230;&#25191;&#34892; (&#21807;&#19968;&#34987;&#35843;&#24230;&#25191;&#34892;&#30340;&#21487;&#33021;&#26159; <code>handler()</code> &#30340;&#36820;&#22238;) &#21518;&#34987;&#24377;&#20986;&#22534;&#26632;</red>&#12290;&#20063;&#23601;&#26159;&#35828;&#65292;&#22914;&#26524; <code>handler</code> &#36820;&#22238;&#21040;&#21478;&#19968;&#20010;&#19978;&#19979;&#25991;&#65292;&#37027;&#20040; <code>ctx</code> &#25351;&#38024;&#25351;&#21521;&#30340;&#19978;&#19979;&#25991;&#23558;&#19968;&#30452;&#20445;&#25345;&#26377;&#25928;&#65292;&#30452;&#21040;&#36825;&#19968;&#19978;&#19979;&#25991;&#34987;&#20877;&#27425;&#35843;&#24230;&#25110;&#20869;&#26680;&#26632;&#34987;&#37322;&#25918;&#12290;</p>
+<p class=" font-serif my-1"><red><strong>&#26632;&#30340;&#20351;&#29992;</strong></red>&#65306;&#22240;&#20026; trap &#20250;&#20511;&#29992;&#24403;&#21069;&#25191;&#34892;&#27969;&#30340;&#22534;&#26632;&#65292;&#22240;&#27492;&#24517;&#39035;&#20445;&#35777;<red><strong>&#24403;&#21069;&#25191;&#34892;&#27969;&#23436;&#20840;&#28165;&#38500;&#26632;&#19978;&#30340;&#20869;&#23481;&#21518;&#25165;&#21487;&#20197;&#23558;&#25191;&#34892;&#27969;&#22312;&#21478;&#19968;&#20010;&#22788;&#29702;&#22120;&#19978;&#24320;&#22987;&#25191;&#34892;</strong></red>&#12290;</p>
+<h3 id="52-isetienabled" class=" text-lg mt-2 pb-2 font-sans">5.2. <code>iset/ienabled</code>: &#22806;&#37096;&#20013;&#26029;&#31649;&#29702;</h3>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="nf">ienabled</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">iset</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">enable</span><span class="p">);</span>
+</code></pre></div>
+
+<p class=" font-serif my-1">&#35835;&#21462;/&#20889;&#20837;&#24403;&#21069;&#22788;&#29702;&#22120;&#30340;&#20013;&#26029;&#25171;&#24320;/&#23631;&#34109;&#29366;&#24577;&#12290;&#20854;&#20013; <code>ienabled/iset</code> &#30340; <code>true</code>/<code>false</code> &#20998;&#21035;&#34920;&#31034;&#20013;&#26029;&#25171;&#24320;/&#20851;&#38381;&#12290;&#27880;&#24847;&#20013;&#26029;&#20851;&#38381;&#21482;&#33021;&#23631;&#34109;&#22788;&#29702;&#22120;&#22806;&#30340;&#20013;&#26029; (&#21363; <code>EVENT_IRQ_TIMER</code> &#21644; <code>EVENT_IRQ_IODEV</code>)&#65292;&#22788;&#29702;&#22120;&#21516;&#27493;&#20135;&#29983;&#30340; error, page fault, syscall &#21644; yield &#19981;&#33021;&#23631;&#34109;&#12290;</p>
+<p class=" font-serif my-1"><green><strong>&#22810;&#22788;&#29702;&#22120;&#65306;&#23433;&#20840;</strong></green>&#65306;&#27599;&#20010;&#22788;&#29702;&#22120;&#37117;&#26377;&#33258;&#24049;&#29420;&#31435;&#30340;&#20013;&#26029;&#26631;&#24535;&#20301;&#65307;<code>ienabled/iset</code> &#20165;&#33021;&#24433;&#21709;&#24403;&#21069;&#25191;&#34892;&#25351;&#20196; CPU &#30340;&#20013;&#26029;&#26631;&#24535;&#20301;&#65292;&#19981;&#33021;&#20851;&#38381;/&#26597;&#35810;&#20854;&#20182;&#22788;&#29702;&#22120;&#30340;&#20013;&#26029;&#29366;&#24577;&#12290;</p>
+<h3 id="53-yield-self-trapping" class=" text-lg mt-2 pb-2 font-sans">5.3. <code>yield</code>: Self-Trapping</h3>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">yield</span><span class="p">();</span>
+</code></pre></div>
+
+<p class=" font-serif my-1">&#38519;&#20837;&#20869;&#26680;&#25191;&#34892;&#65292;&#23558;&#20250;&#22312;&#24403;&#21069;&#22788;&#29702;&#22120;&#19978;&#35843;&#29992; <code>handler(EVENT_YIELD, saved_context)</code>&#65292;&#20854;&#20013; <code>saved_context</code> &#26159;&#20445;&#23384;&#30340;&#24403;&#21069;&#20869;&#26680;&#19978;&#19979;&#25991;&#12290;</p>
+<p class=" font-serif my-1"><green><strong>&#22810;&#22788;&#29702;&#22120;&#65306;&#23433;&#20840;</strong></green>&#65306;&#25191;&#34892; <code>yield</code> &#30340;&#24403;&#21069;&#22788;&#29702;&#22120;&#20250;&#23436;&#25104; self-trapping&#12290;</p>
+<h3 id="54-kcontext" class=" text-lg mt-2 pb-2 font-sans">5.4. <code>kcontext</code>: &#21019;&#24314;&#20869;&#26680;&#24577;&#36816;&#34892;&#30340;&#19978;&#19979;&#25991;</h3>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">Context</span><span class="w"> </span><span class="o">*</span><span class="nf">kcontext</span><span class="p">(</span><span class="n">Area</span><span class="w"> </span><span class="n">kstack</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">entry</span><span class="p">)(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">),</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">arg</span><span class="p">);</span>
+</code></pre></div>
+
+<p class=" font-serif my-1">&#23558; <code>kstack</code> &#34920;&#31034;&#30340;&#19968;&#27573;&#20869;&#23384;&#20316;&#20026;&#20869;&#26680;&#26632;&#20013;&#21019;&#24314;&#19968;&#20010;&#21487;&#25191;&#34892;&#30340;&#20869;&#26680;&#24577;&#19978;&#19979;&#25991;&#65292;&#36820;&#22238;&#30340; <code>Context</code> &#25351;&#38024;&#21487;&#20197;&#22312;&#20013;&#26029;&#36820;&#22238;&#26102;&#34987;&#35843;&#24230;&#21040;&#22788;&#29702;&#22120;&#19978;&#25191;&#34892;&#12290;&#39318;&#27425;&#25191;&#34892;&#36820;&#22238;&#30340;&#19978;&#19979;&#25991;&#20013; PC &#20026; <code>entry</code>&#65292;&#24182;&#27491;&#30830;&#20026; <code>entry</code> &#20989;&#25968;&#20256;&#36882;&#20102; <code>arg</code> &#21442;&#25968;&#12290;</p>
+<p class=" font-serif my-1"><green><strong>&#22810;&#22788;&#29702;&#22120;&#65306;&#23433;&#20840;</strong></green>&#65292;&#20294;&#35201;&#27880;&#24847; kstack &#21306;&#22495;&#30340;&#21512;&#27861;&#24615;&#65292;&#20363;&#22914; data race &#25110; double allocation &#37117;&#23548;&#33268; undefined behavior&#12290;</p>
+<h2 id="6-vme-virtual-memory-extension" class=" text-xl mt-2 pb-2 font-sans">6. VME (Virtual Memory Extension) &#34394;&#25311;&#22320;&#22336;&#31354;&#38388;</h2>
+<p class=" font-serif my-1">VME &#20801;&#35768;&#20026;&#25191;&#34892;&#27969; (&#19978;&#19979;&#25991; Context) &#36171;&#20104;&#19968;&#20010; &#8220;&#34394;&#25311;&#8221; &#30340;&#20869;&#23384;&#35270;&#22270;&#65292;&#27599;&#24403;&#35775;&#38382;&#20219;&#20309;&#20869;&#23384; $x$ &#30340;&#26102;&#20505;&#65292;&#37117;&#21462;&#35775;&#38382; $f(x)$&#12290;VME &#25552;&#20379;&#20102;&#25551;&#36848;&#12289;&#20462;&#25913;&#25968;&#25454;&#32467;&#26500; $f$ &#30340;&#26426;&#21046;&#12290;</p>
+<p class=" font-serif my-1"><red><strong>&#38480;&#21046;</strong></red>&#65306;&#22312;&#19968;&#27425; kernel &#36816;&#34892;&#20013;&#21482;&#33021;&#35843;&#29992;&#19968;&#27425;&#65292;&#19988;&#24517;&#39035;&#22312; <code>mpe_init</code> &#20043;&#21069;&#12290;</p>
+<h3 id="61-vme_init" class=" text-lg mt-2 pb-2 font-sans">6.1. <code>vme_init</code>: &#21021;&#22987;&#21270;&#34394;&#23384;&#31649;&#29702;</h3>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="nf">vme_init</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="n">pgalloc</span><span class="p">)(</span><span class="kt">int</span><span class="p">),</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">pgfree</span><span class="p">)(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">));</span>
+</code></pre></div>
+
+<p class=" font-serif my-1">&#21021;&#22987;&#21270;&#34394;&#25311;&#23384;&#20648;&#12290;<code>pgalloc</code>&#12289;<code>pgfree</code> &#20989;&#25968;&#20998;&#21035;&#29992;&#20110;&#19968;&#20010;&#29289;&#29702;&#39029;&#38754;&#30340;&#20998;&#37197;&#21644;&#22238;&#25910;&#12290;&#27880;&#24847; <code>vme_init</code> &#25191;&#34892;&#26102;&#23601;&#21487;&#33021;&#35843;&#29992; <code>pgalloc</code>/<code>pgfree</code>&#65292;&#20320;&#38656;&#35201;&#30830;&#20445;&#23427;&#20204;&#22312; vme_init &#35843;&#29992;&#26102;&#22788;&#20110;&#21487;&#29992;&#29366;&#24577;&#12290;</p>
+<p class=" font-serif my-1"><red><strong>&#22810;&#22788;&#29702;&#22120;&#65306;&#27880;&#24847;</strong></red>&#65306;pgalloc/pgfree &#20250;&#22312; protect, unprotect &#21644; map &#20013;&#34987;&#35843;&#29992;&#65292;&#22240;&#27492;&#35831;&#30830;&#20445;&#20320;&#30340; pgalloc/pgfree &#26159;&#22810;&#22788;&#29702;&#22120;&#23433;&#20840;&#30340;&#12290;</p>
+<h3 id="62-protectunprotect" class=" text-lg mt-2 pb-2 font-sans">6.2. <code>protect</code>/<code>unprotect</code>: &#22320;&#22336;&#31354;&#38388;&#31649;&#29702;</h3>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">protect</span><span class="p">(</span><span class="n">AddrSpace</span><span class="w"> </span><span class="o">*</span><span class="n">as</span><span class="p">);</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">unprotect</span><span class="p">(</span><span class="n">AddrSpace</span><span class="w"> </span><span class="o">*</span><span class="n">as</span><span class="p">);</span>
+</code></pre></div>
+
+<p class=" font-serif my-1">&#21019;&#24314;/&#38144;&#27585;&#19968;&#20010;&#22320;&#22336;&#31354;&#38388;&#65292;&#20854;&#20013; <code>protect(as)</code> &#21518;&#65292;<code>as</code> &#20250;&#34987;&#21021;&#22987;&#21270;&#65306;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>as-&gt;pgsize</code> &#26159;&#39029;&#38754;&#30340;&#22823;&#23567; (AbstractMachine &#21487;&#33021;&#36820;&#22238;&#19982;&#23454;&#38469;&#26426;&#22120;&#19981;&#21516;&#30340;&#39029;&#38754;&#22823;&#23567;)&#12290;</li>
+<li class=" ml-8"><code>as-&gt;area</code> &#26159;&#34987;&#20445;&#25252;&#30340; (&#29992;&#25143;&#24577;&#21487;&#35775;&#38382;) &#22320;&#22336;&#31354;&#38388;&#33539;&#22260;&#12290;</li>
+<li class=" ml-8"><code>as-&gt;ptr</code> &#26159; AbstractMachine &#31169;&#26377;&#30340;&#25351;&#38024;&#65292;&#20363;&#22914; x86-qemu &#30340;&#23454;&#29616;&#26159; CR3 &#23492;&#23384;&#22120;&#30340;&#25968;&#20540;&#12290;</li>
+</ul>
+<p class=" font-serif my-1"><red><strong>&#22810;&#22788;&#29702;&#22120;&#65306;&#27880;&#24847;</strong></red>&#12290;protect/unprotect &#20250;&#35843;&#29992; pgalloc/pgfree &#20998;&#37197;&#25110;&#37322;&#25918;&#39029;&#38754;&#65292;&#24182;&#20250;&#20889;&#20837; <code>as</code>&#12290;</p>
+<h3 id="63-map" class=" text-lg mt-2 pb-2 font-sans">6.3. <code>map</code>: &#20462;&#25913;&#22320;&#22336;&#31354;&#38388;&#26144;&#23556;</h3>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">map</span><span class="p">(</span><span class="n">AddrSpace</span><span class="w"> </span><span class="o">*</span><span class="n">as</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">vaddr</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">paddr</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">prot</span><span class="p">);</span>
+</code></pre></div>
+
+<p class=" font-serif my-1">&#23545;&#22320;&#22336;&#31354;&#38388; <code>as</code> &#24314;&#31435; <code>vaddr</code> $\to$ <code>paddr</code> &#30340;&#26144;&#23556;&#65292;&#24403; <code>paddr</code> &#20026; <code>NULL</code> &#26102;&#65292;&#21462;&#28040;&#35813;&#39029;&#38754;&#30340;&#26144;&#23556;&#12290;prot &#30001;&#20197;&#19979; flag &#32452;&#25104;&#12290;&#27880;&#24847; <code>vaddr</code> &#21644; <code>paddr</code> &#24517;&#39035;&#23545;&#40784;&#21040;&#39029;&#38754;&#36793;&#30028; (<code>as-&gt;pgsize</code>)&#65292;&#19988; <code>vaddr</code> &#24517;&#39035;&#20301;&#20110; <code>as-&gt;area</code>&#12289;<code>paddr</code> &#25351;&#21521;&#30340;&#39029;&#38754;&#20301;&#20110; <code>heap</code>&#12290;</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#define MMAP_NONE  0x00000000 </span><span class="c1">// no access</span>
+<span class="cp">#define MMAP_READ  0x00000001 </span><span class="c1">// can read</span>
+<span class="cp">#define MMAP_WRITE 0x00000002 </span><span class="c1">// can write</span>
+</code></pre></div>
+
+<p class=" font-serif my-1"><red><strong>&#22810;&#22788;&#29702;&#22120;&#65306;&#27880;&#24847;</strong></red>&#12290;map &#20250;&#35843;&#29992; pgalloc/pgfree &#20998;&#37197;&#25110;&#37322;&#25918;&#39029;&#38754;&#12290;</p>
+<h3 id="64-ucontext" class=" text-lg mt-2 pb-2 font-sans">6.4. <code>ucontext</code>: &#21019;&#24314;&#34987;&#20445;&#25252;&#30340;&#29992;&#25143;&#24577;&#36827;&#31243;&#19978;&#19979;&#25991;</h3>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">Context</span><span class="w"> </span><span class="o">*</span><span class="nf">ucontext</span><span class="p">(</span><span class="n">AddrSpace</span><span class="w"> </span><span class="o">*</span><span class="n">as</span><span class="p">,</span><span class="w"> </span><span class="n">Area</span><span class="w"> </span><span class="n">kstack</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">entry</span><span class="p">);</span>
+</code></pre></div>
+
+<p class=" font-serif my-1">&#19982; <code>kcontext</code> &#31867;&#20284;&#65292;&#21019;&#24314;&#19968;&#20010;&#21487;&#34987;&#35843;&#24230;&#25191;&#34892;&#30340;&#19978;&#19979;&#25991;&#65292;&#23427;&#30340;&#25191;&#34892;&#20301;&#20110;&#20302;&#26435;&#38480;&#30340;&#29992;&#25143;&#24577;&#65292;&#22320;&#22336;&#31354;&#38388;&#30001; <code>as</code> &#25351;&#23450;&#65292;&#21021;&#22987; PC &#20026; <code>entry</code>&#12290;&#22312;&#29992;&#25143;&#24577;&#21457;&#29983;&#20013;&#26029;/&#24322;&#24120;&#20250;&#20999;&#25442;&#21040;&#20869;&#26680;&#24577; (kernel) &#36816;&#34892;&#65292;&#24182;&#20999;&#25442;&#21040;&#20869;&#26680;&#26632;&#12290;&#20013;&#26029;/&#24322;&#24120;&#22788;&#29702;&#31243;&#24207; (&#21253;&#25324;&#20445;&#23384;&#30340;&#19978;&#19979;&#25991;) &#37117;&#23384;&#20648;&#22312; <code>kstack</code> &#25351;&#23450;&#30340;&#20869;&#26680;&#26632;&#12290;</p>
+<p class=" font-serif my-1"><green><strong>&#22810;&#22788;&#29702;&#22120;&#65306;&#23433;&#20840;</strong></green>&#12290;<code>ucontext</code> &#20165;&#20462;&#25913; <code>kstack</code> &#20013;&#30340;&#25968;&#20540;&#65292;&#24182;&#22312;&#20854;&#20013;&#21019;&#24314;&#19978;&#19979;&#25991;&#12290;</p>
+<div style="display: none">
+
+
+
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>(C, PC, I) determines
+  =&gt; load (D/S) I' PC'
+  =&gt; store (D/S) I' PC'
+  =&gt; callam D/S I' PC'
+  =&gt; I' PC'
+
+C UB =&gt; UB
+load/store out-bound (C, other) =&gt; UB
+
+Trace:
+S = (C, D, S, PC, I) =&gt; S1 =&gt; S2 =&gt; ...
+                     |
+                    load(area)/store(area)/none
+
+I &#26159;&#19981;&#21487;&#35265;&#30340;
+
+MPE:
+
+C, D shared
+per-CPU: S, PC, I
+
+(C, D, S1, PC1, I1, S2, PC2, I2) -(1,load)-&gt; (...)
+                                 -(2,none)-&gt; (...)
+
+race: &#22312;&#19968;&#27425;&#25191;&#34892;&#20013;&#65292;&#21516;&#19968;&#20010;&#21464;&#37327;&#30340;atomic_xchg&#26159;HB
+
+HB race -&gt; UB
+
+IOE:
+callam &#31561;&#25928;&#20110; store(dev)
+
+CTE:
+
+allow non-deterministic
+</code></pre></div>
+
+
+
+
+### &#25277;&#35937;&#35745;&#31639;&#26426;&#27169;&#22411;
+
+&#25277;&#35937;&#35745;&#31639;&#26426;&#36816;&#34892;&#19968;&#20010;&#32534;&#35793;&#21518;&#30340;C&#31243;&#24207;&#12290;&#25277;&#35937;&#35745;&#31639;&#26426;&#31995;&#32479;&#30001;&#22788;&#29702;&#22120;&#12289;&#20869;&#23384;&#21644;&#23492;&#23384;&#22120;&#32452;&#25104;&#12290;&#25105;&#20204;&#31245;&#24494;&#29992;&#19968;&#20123;&#25968;&#23398;&#31526;&#21495;&#26469;(&#19981;&#22826;&#20005;&#35880;&#22320;)&#34920;&#31034;&#35745;&#31639;&#26426;&#31995;&#32479;&#20013;&#30340;&#37096;&#20998;&#12290;
+
+&#20869;&#23384; $M$&#65306;AM&#20551;&#35774;&#31995;&#32479;&#20013;&#21482;&#26377;&#19968;&#20221;&#29289;&#29702;&#20869;&#23384;$M$&#65292;&#31243;&#24207;&#30340;&#20195;&#30721;&#12289;&#25968;&#25454;&#12289;&#22534;&#26632;&#31561;&#37117;&#20301;&#20110;&#36825;&#20221;&#29289;&#29702;&#20869;&#23384;&#20013;&#12290;&#20219;&#20309;&#31867;&#22411;&#30340;&#25351;&#38024;&#37117;&#25351;&#21521;$M$&#20013;&#30340;&#22320;&#22336;&#12290;&#20869;&#23384;&#20013;&#21253;&#21547;&#65306;
+
+* &#20195;&#30721;&#65306;&#20195;&#30721;&#32534;&#35793;&#21518;&#30340;&#25351;&#20196;&#24207;&#21015;(.text&#33410;)&#12290;
+* &#38745;&#24577;&#25968;&#25454;&#65306;&#32534;&#35793;&#26102;&#30830;&#23450;&#30340;&#20869;&#23384;(.rodata, .data, .bss&#33410;)&#12290;
+* &#22534;&#21306;&#65306;&#19968;&#27573;&#36830;&#32493;&#30340;&#12289;&#36890;&#24120;&#25968;&#37327;&#24456;&#22823;&#30340;&#21487;&#29992;&#20869;&#23384;(&#36890;&#24120;&#26159;&#31995;&#32479;&#29289;&#29702;&#20869;&#23384;&#30340;&#21487;&#29992;&#30340;&#21097;&#20313;&#37096;&#20998;)&#12290;
+* &#26632;&#21306;&#65306;&#19968;&#27573;&#36830;&#32493;&#30340;&#20869;&#23384;&#65292;&#21487;&#33021;&#20301;&#20110;&#22320;&#22336;&#31354;&#38388;&#30340;&#20219;&#24847;&#20301;&#32622;(&#21487;&#33021;&#22312;&#22534;&#21306;&#25110;&#38745;&#24577;&#25968;&#25454;&#20013;)&#12290;
+
+**&#23492;&#23384;&#22120;$R$**&#65306;&#22788;&#29702;&#22120;&#30340;&#20869;&#37096;&#29366;&#24577;&#65292;&#36890;&#24120;&#31216;&#20026;&#23492;&#23384;&#22120;&#12290;&#25105;&#20204;&#29992;$R[name]$&#34920;&#31034;&#26576;&#20010;&#29305;&#23450;&#30340;&#23492;&#23384;&#22120;&#65292;&#20363;&#22914;$R[SP]$&#20026;&#26632;&#39030;&#65307;$R[PC]$&#20026;&#24403;&#21069;&#31243;&#24207;&#35745;&#25968;&#22120;&#12290;
+
+**&#22788;&#29702;&#22120;$C$**&#65306;&#31995;&#32479;&#20013;&#21487;&#33021;&#26377;&#22810;&#20010;&#22788;&#29702;&#22120;&#12290;&#22788;&#29702;&#22120;&#25353;&#29031;&#25163;&#20876;&#35268;&#23450;&#30340;&#25351;&#20196;&#35821;&#20041;&#25191;&#34892;&#31243;&#24207;$C(R, M) = (R', M')$&#65292;&#21363;&#22312;&#23492;&#23384;&#22120;&#21644;&#20869;&#23384;&#32473;&#23450;&#30340;&#21069;&#25552;&#19979;&#65292;&#26426;&#22120;&#33021;&#25191;&#34892;&#19968;&#26465;&#25351;&#20196;&#65292;&#24471;&#21040;&#26356;&#26032;&#20197;&#21518;&#30340;&#23492;&#23384;&#22120;&#21644;&#20869;&#23384;&#30340;&#29366;&#24577;&#12290;
+
+&#20363;&#22914;&#23545;&#20110;x86&#26469;&#35828;&#65292;&#22914;&#26524;$M[R[PC]]$ = 0x54&#65292;&#21363;&#24403;&#21069;&#25351;&#20196;&#26159;`pushl %esp`&#65292;&#21017;&#25191;&#34892;&#21518;&#28385;&#36275;$M'[R[ESP]] = R[ESP]$; $R'[ESP] = R[ESP] - 4$'; $R'[PC] = R[PC] + 1$&#12290;&#21442;&#29031;&#25163;&#20876;&#65292;&#25105;&#20204;&#19981;&#38590;&#20026;&#27599;&#19968;&#26465;&#26426;&#22120;&#25351;&#20196;&#37117;&#23450;&#20041;&#20986;&#23427;&#20204;&#30340;&#34892;&#20026;&#65292;&#23427;&#20204;&#20849;&#21516;&#26500;&#25104;&#20102;&#22788;&#29702;&#22120;&#30340;&#35268;&#32422;&#12290;
+
+**Undefined Behavior (UB)**&#65306;C&#35821;&#35328;&#20013;&#35268;&#23450;&#20102;&#24456;&#22810;UB&#65292;&#20363;&#22914;&#26377;&#31526;&#21495;&#25972;&#25968;&#28322;&#20986;&#12289;&#38750;&#27861;&#20869;&#23384;&#35775;&#38382;&#31561;&#12290;UB&#22312;&#19981;&#21516;&#30340;&#35745;&#31639;&#26426;&#31995;&#32479;&#19978;&#21487;&#33021;&#26377;&#19981;&#21516;&#34892;&#20026;&#12290;C&#20013;&#30340;UB&#22312;AM&#19978;&#20063;&#26159;UB&#65292;&#27492;&#22806;&#38543;&#30528;AM&#25193;&#23637;&#30340;&#24341;&#20837;&#65292;&#36824;&#26377;&#20854;&#20182;&#34892;&#20026;&#24341;&#36215;UB&#12290;
+
+**&#21021;&#22987;&#29366;&#24577;$(M_0,R_0)$**&#65306;`main`&#20989;&#25968;&#24320;&#22987;&#36816;&#34892;&#26102;&#65292;&#25277;&#35937;&#35745;&#31639;&#26426;&#20445;&#35777;&#65306;&#20195;&#30721;&#12289;&#38745;&#24577;&#25968;&#25454;&#30340;&#20540;&#19982;&#20108;&#36827;&#21046;&#25991;&#20214;&#19968;&#33268;&#65307;&#26632;&#21306;&#26377;&gt;1KB&#30340;&#20313;&#37327;&#65307;&#22534;&#21306;&#30340;&#21021;&#22987;&#20540;&#20026;0&#12290;&#35775;&#38382;&#20854;&#20182;&#20869;&#23384;&#30340;&#34892;&#20026;&#26159;UB&#12290;
+
+&gt; &#36825;&#20010;&#26368;&#31616;&#30340;&#27169;&#22411;&#20307;&#29616;&#20102;&#35745;&#31639;&#26426;&#30340;&#26412;&#36136;&#65292;&#21363;&#35745;&#31639;&#26426;&#26159;&#25191;&#34892;&#25351;&#20196;&#30340;&#12289;&#24490;&#29615;&#30340;&#29366;&#24577;&#26426;&#12290;
+&gt;
+&gt; &#65288;&#20154;&#31867;&#30340;&#26412;&#36136;&#26159;&#22797;&#35835;&#26426;&#12290;&#65289;
+
+&#24403;&#28982;&#65292;&#22914;&#26524;&#20026;&#20102;&#32534;&#20889;&#23454;&#38469;&#30340;&#31243;&#24207;&#65292;&#36825;&#20010;&#27169;&#22411;&#23601;&#36807;&#24230;&#31616;&#21270;&#20102;&#12290;&#23427;&#36830;&#36755;&#20986;&#20219;&#20309;&#19996;&#35199;&#37117;&#19981;&#21487;&#33021;&#65292;&#20063;&#19981;&#33021;&#32467;&#26463;(&#22534;&#26632;&#28322;&#20986;&#23548;&#33268;undefined behavior)&#12290;&#25277;&#35937;&#35745;&#31639;&#26426;&#23601;&#26159;&#23545;&#36825;&#20010;&#22522;&#30784;&#27169;&#22411;&#30340;**&#25193;&#23637;**&#65292;&#20801;&#35768;&#31243;&#24207;&#22312;&#36816;&#34892;&#26102;&#35843;&#29992;&#29305;&#27530;&#30340;API(&#21487;&#20197;&#30475;&#20316;&#25351;&#20196;)&#65292;&#23545;&#31995;&#32479;&#22806;&#30340;I/O&#35774;&#22791;&#25110;&#31995;&#32479;&#30340;&#36816;&#34892;&#27169;&#24335;&#20135;&#29983;&#24433;&#21709;&#12290;AM API&#38656;&#35201;&#31995;&#32479;&#25351;&#20196;&#25165;&#33021;&#23454;&#29616;&#8212;&#8212;&#20294;&#26159;C&#31243;&#24207;&#19981;&#38656;&#35201;&#30475;&#21040;&#31995;&#32479;&#25351;&#20196;&#12290;</div></div>
+</div>
+
+<div class="container text-xs py-3">
+  <span class="text-muted">
+    <center><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="../../static/img/cc-4.0.png"></a>
+    &#160;&#160;&#160;<a style="color:inherit" href="https://beian.miit.gov.cn/">&#33487; ICP &#22791; 2020049101 &#21495;</a>
+    </center>
+  </span>
+</div>
+
+</div>
+
+<script src="../../static/js/jquery.min.js"></script>
+
+<script>
+function get_token() {
+  var match = document.cookie.match(new RegExp('(^| )token=([^;]+)'));
+  if (match) return match[2];
+  else return "";
+}
+var token = get_token();
+var hint = "token", box = $("#token-input");
+
+if (token == "") { }
+else { box.val(token); }
+
+function login() {
+  var token = box.val()
+  if (!token) {
+    document.cookie = ''
+  } else {
+    document.cookie = 'token=' + token + '; expires=Fri, 31 Dec 9999 23:59:59 GMT;'
+  }
+}
+</script>
+
+
+</body>
+
+</html>

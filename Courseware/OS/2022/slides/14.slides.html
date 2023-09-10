@@ -1,0 +1,1026 @@
+<!DOCTYPE html><html class="h-100">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="../../../static/css/base.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
+
+  <style>
+    .font-sans {
+      font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+    }
+    .font-serif {
+      font-family: 'Source Serif Pro', 'Songti SC', 'SimSun', 'Serif', serif;
+    }
+  </style>
+  <link rel="stylesheet" href="../../../static/katex/katex.min.css">
+  <script defer src="../../../static/katex/katex.min.js"></script>
+  <script defer src="../../../static/katex/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+            // customised options
+            // &#8226; auto-render specific keys, e.g.:
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ],
+            // &#8226; rendering keys, e.g.:
+            throwOnError : false
+          });
+      });
+  </script>
+
+
+  
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="../../../static/reveal/reveal.css">
+<link rel="stylesheet" href="../../../static/reveal/theme/simple.css" id="theme">
+
+<style>
+.reveal .slide-number {
+  font-size: 26px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, .3);
+}
+
+.reveal .full-screen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.reveal .slides {
+  border: 1.5px #ddd solid;
+  border-radius: 7px;
+  text-align: left;
+  font-weight: 300;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  font-family: 'Lato', 'SimHei', 'STXihei', 'Droid Sans';
+  font-weight: 400;
+}
+
+.reveal p, .reveal li, .reveal center {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Droid Sans';
+}
+
+.reveal li + li {
+  margin-top: 10px;
+}
+
+.reveal ul {
+  display: block;
+  margin-right: 15px;
+}
+
+.reveal p, .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5 {
+  padding:  0 25px 0 25px;
+}
+
+.reveal table {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Sans Serif';
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.reveal th {
+  background-color: #eee;
+}
+
+.reveal tr:nth-child(even) {
+  background-color: #efffff;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  text-align: left;
+  margin: 0 0 20px 0;
+ color: #222; 
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
+
+
+.reveal h1 {
+  margin: 0 10 0 10;
+  font-size: 60px;
+}
+.reveal .middle h1 {
+  text-align: center;
+}
+
+.reveal h2 {
+  font-size: 48px;
+  border-bottom: 2px solid rgb(106, 0, 95);
+  padding-bottom: 5px;
+}
+.reveal h3 { font-size: 1.15em; }
+.reveal h4 { font-size: 1.05em; }
+
+.reveal .center {
+  text-align: center;
+}
+
+.reveal .middle {
+  height: 728px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.reveal pre {
+  font-size: 28px;
+ 
+  background-color: #eee;
+
+  border-radius: 3mm;
+  padding: 10px 10px 10px 10px;
+}
+
+.reveal pre code {
+  max-height: none;
+}
+
+.reveal code {
+  font-family: 'Inconsolata', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif', Monospace;
+}
+
+.reveal .middle blockquote {
+  text-align: center;
+  color: rgb(106, 0, 95);
+  background: none;
+  box-shadow: none;
+}
+
+.reveal .middle blockquote a {
+  color: inherit;
+}
+
+.reveal blockquote p, .reveal blockquote li {
+  font-family: 'Lato', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif';
+}
+
+section .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reveal .author-block {
+  margin: 75px 0 35px 0;
+}
+.reveal .author-affiliation img {
+  margin: 15px 0 0 0;
+}
+.reveal .author-block p, .reveal .author-affiliation p  {
+  font-family: 'Kaiti', 'STKaiti', 'Serif', 'Times', 'Times New Roman';
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+.reveal .author-affiliation {
+  display: inline-block;
+  font-size: 90%;
+}
+.reveal hr {
+  border: 10px solid rgba(0, 0, 0, 0);
+}
+.reveal li {
+  margin-top: 10px;
+}
+</style>
+
+  <title>C &#26631;&#20934;&#24211;&#30340;&#23454;&#29616;</title>
+</head>
+
+<body class="d-flex flex-column h-100">
+  
+  
+
+<div class="reveal">
+<div class="slides">
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="c" class=" text-2xl mt-2 font-sans">C &#26631;&#20934;&#24211;&#30340;&#23454;&#29616;</h1>
+<p class=" font-serif my-1"><include src="Slides_Author"><div><div class="py-16">
+<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">&#33931;&#28814;&#23721;</a></p>
+</div>
+<div class="row">
+<div class="author-affiliation">
+    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#12288;&#12288;&#21335;&#20140;&#22823;&#23398;&#12288;&#12288;</p>
+    <img class="inline-img h-24" src="../../../static/img/nju-logo.jpg" style="display: inline-block;"></a>
+  </div>
+<div class="author-affiliation">
+   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#31185;&#23398;&#19982;&#25216;&#26415;&#31995;</p>
+    <img class="inline-img h-24" src="../../../static/img/njucs-logo.jpg" style="display: inline-block;"></a>
+  </div>
+<div class="author-affiliation">
+    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#36719;&#20214;&#30740;&#31350;&#25152;</p>
+    <img class="inline-img h-24" src="../../../static/img/ics-logo.png" style="display: inline-block;"></a>
+  </div>
+</div></div></include></p></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="overview" class=" text-xl mt-2 pb-2 font-sans">Overview</h2>
+<p class=" font-serif my-1">&#22797;&#20064;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="../../../pages/OS/2022/demos/sh-xv6.c" class=" text-amber-900">sh-xv6.c</a>: &#20165;&#20381;&#36182;&#31995;&#32479;&#35843;&#29992;&#30340; &#8220;&#26368;&#23567;&#8221; &#21629;&#20196;&#34892; Shell</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#22238;&#31572;&#30340;&#38382;&#39064;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><strong>Q</strong>: &#22914;&#20309;&#22312;&#31995;&#32479;&#35843;&#29992;&#20043;&#19978;&#26500;&#24314;&#31243;&#24207;&#33021;&#22815;&#26222;&#36941;&#21463;&#24800;&#30340;&#26631;&#20934;&#24211;&#65311;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#20027;&#35201;&#20869;&#23481;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">C &#26631;&#20934;&#24211;&#35774;&#35745;&#19982;&#23454;&#29616;</li>
+<li class=" ml-8">&#22522;&#20110; libc &#30340;&#24212;&#29992;&#31243;&#24207;</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="libc" class=" text-2xl mt-2 font-sans">&#29087;&#24713;&#21448;&#38476;&#29983;&#30340; libc</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="libc" class=" text-xl mt-2 pb-2 font-sans">&#20026;&#20160;&#20040;&#38656;&#35201; libc?</h2>
+<p class=" font-serif my-1">&#8220;&#35064;&#22868;&#8221; &#32534;&#31243;&#65306;&#33021;&#29992; (&#32780;&#19988;&#32477;&#23545;&#22815;&#29992;)&#65292;&#20294;&#19981;&#22909;&#29992;</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">long</span><span class="w"> </span><span class="nf">syscall</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="p">,</span><span class="w"> </span><span class="p">...)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">va_list</span><span class="w"> </span><span class="n">ap</span><span class="p">;</span>
+<span class="w">  </span><span class="n">va_start</span><span class="p">(</span><span class="n">ap</span><span class="p">,</span><span class="w"> </span><span class="n">num</span><span class="p">);</span>
+<span class="w">  </span><span class="k">register</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">a0</span><span class="w"> </span><span class="k">asm</span><span class="w"> </span><span class="p">(</span><span class="s">"rax"</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">num</span><span class="p">;</span>
+<span class="w">  </span><span class="k">register</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">a1</span><span class="w"> </span><span class="k">asm</span><span class="w"> </span><span class="p">(</span><span class="s">"rdi"</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">va_arg</span><span class="p">(</span><span class="n">ap</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="p">);</span>
+<span class="w">  </span><span class="k">register</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">a2</span><span class="w"> </span><span class="k">asm</span><span class="w"> </span><span class="p">(</span><span class="s">"rsi"</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">va_arg</span><span class="p">(</span><span class="n">ap</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="p">);</span>
+<span class="w">  </span><span class="k">register</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">a3</span><span class="w"> </span><span class="k">asm</span><span class="w"> </span><span class="p">(</span><span class="s">"rdx"</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">va_arg</span><span class="p">(</span><span class="n">ap</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="p">);</span>
+<span class="w">  </span><span class="k">register</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">a4</span><span class="w"> </span><span class="k">asm</span><span class="w"> </span><span class="p">(</span><span class="s">"r10"</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">va_arg</span><span class="p">(</span><span class="n">ap</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="p">);</span>
+<span class="w">  </span><span class="n">va_end</span><span class="p">(</span><span class="n">ap</span><span class="p">);</span>
+<span class="w">  </span><span class="k">asm</span><span class="w"> </span><span class="k">volatile</span><span class="p">(</span><span class="s">"syscall"</span>
+<span class="w">    </span><span class="o">:</span><span class="w"> </span><span class="s">"+r"</span><span class="p">(</span><span class="n">a0</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">"r"</span><span class="p">(</span><span class="n">a1</span><span class="p">),</span><span class="w"> </span><span class="s">"r"</span><span class="p">(</span><span class="n">a2</span><span class="p">),</span><span class="w"> </span><span class="s">"r"</span><span class="p">(</span><span class="n">a3</span><span class="p">),</span><span class="w"> </span><span class="s">"r"</span><span class="p">(</span><span class="n">a4</span><span class="p">)</span>
+<span class="w">    </span><span class="o">:</span><span class="w"> </span><span class="s">"memory"</span><span class="p">,</span><span class="w"> </span><span class="s">"rcx"</span><span class="p">,</span><span class="w"> </span><span class="s">"r8"</span><span class="p">,</span><span class="w"> </span><span class="s">"r9"</span><span class="p">,</span><span class="w"> </span><span class="s">"r11"</span><span class="p">);</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">a0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20219;&#20309;&#31243;&#24207;&#37117;&#29992;&#24471;&#19978;&#30340;&#23450;&#20041;</h2>
+<p class=" font-serif my-1"><a href="https://en.cppreference.com/w/cpp/freestanding" class=" text-amber-900">Freestanding &#29615;&#22659;</a>&#19979;&#20063;&#21487;&#20197;&#20351;&#29992;&#30340;&#23450;&#20041;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="https://www.cplusplus.com/reference/cstddef/" class=" text-amber-900">stddef.h</a> - <code>size_t</code></li>
+<li class=" ml-8"><a href="https://www.cplusplus.com/reference/cstdint/" class=" text-amber-900">stdint.h</a> - <code>int32_t</code>, <code>uint64_t</code></li>
+<li class=" ml-8"><a href="https://www.cplusplus.com/reference/cstdbool/" class=" text-amber-900">stdbool.h</a> - <code>bool</code>, <code>true</code>, <code>false</code></li>
+<li class=" ml-8"><a href="https://www.cplusplus.com/reference/cfloat/" class=" text-amber-900">float.h</a></li>
+<li class=" ml-8"><a href="https://www.cplusplus.com/reference/climits/" class=" text-amber-900">limits.h</a></li>
+<li class=" ml-8"><a href="https://www.cplusplus.com/reference/cstdarg/" class=" text-amber-900">stdarg.h</a><ul class=" list-disc font-serif">
+<li class=" ml-8">syscall &#23601;&#29992;&#21040;&#20102; (&#20294; syscall0, syscall1, ... &#26356;&#39640;&#25928;)</li>
+</ul>
+</li>
+<li class=" ml-8"><a href="https://www.cplusplus.com/reference/cinttypes/" class=" text-amber-900">inttypes.h</a><ul class=" list-disc font-serif">
+<li class=" ml-8">&#22238;&#31572;&#20102;&#20320;&#22810;&#24180;&#26469;&#30340;&#30097;&#38382;&#65281;</li>
+<li class=" ml-8">&#22312;&#20320;&#35835;&#36807;&#20102;&#23567;&#30333;&#38454;&#27573;&#20197;&#21518;&#65292;&#23601;&#30495;&#30340;&#26159; friendly manual &#20102;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#28982;&#21518;&#65292;&#31995;&#32479;&#35843;&#29992;&#20063;&#35201;&#29992;&#24471;&#26041;&#20415;&#65281;</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">&#31995;&#32479;&#35843;&#29992;&#26159;&#25805;&#20316;&#31995;&#32479; &#8220;&#32039;&#20945;&#8221; &#30340;&#26368;&#23567;&#25509;&#21475;&#12290;&#24182;&#19981;&#26159;&#25152;&#26377;&#31995;&#32479;&#35843;&#29992;&#37117;&#20687; fork &#19968;&#26679;&#21487;&#20197;&#30452;&#25509;&#20351;&#29992;&#12290;</p>
+</blockquote>
+<p class=" font-serif my-1">&#20302;&#24773;&#21830; API&#65306;</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">extern</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">environ</span><span class="p">;</span>
+<span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">"echo"</span><span class="p">,</span><span class="w"> </span><span class="s">"hello"</span><span class="p">,</span><span class="w"> </span><span class="s">"world"</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="p">};</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">execve</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="n">argv</span><span class="p">,</span><span class="w"> </span><span class="n">environ</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">perror</span><span class="p">(</span><span class="s">"exec"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<hr>
+<p class=" font-serif my-1">&#39640;&#24773;&#21830; API&#65306;</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">execlp</span><span class="p">(</span><span class="s">"echo"</span><span class="p">,</span><span class="w"> </span><span class="s">"echo"</span><span class="p">,</span><span class="w"> </span><span class="s">"hello"</span><span class="p">,</span><span class="w"> </span><span class="s">"world"</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
+<span class="n">system</span><span class="p">(</span><span class="s">"echo hello world"</span><span class="p">);</span>
+</code></pre></div></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="1" class=" text-2xl mt-2 font-sans">&#23553;&#35013; (1): &#32431;&#31929;&#30340;&#35745;&#31639;</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="stringh" class=" text-xl mt-2 pb-2 font-sans"><a href="https://www.cplusplus.com/reference/cstring/" class=" text-amber-900">string.h</a>: &#23383;&#31526;&#20018;/&#25968;&#32452;&#25805;&#20316;</h2>
+<p class=" font-serif my-1">&#31616;&#21333;&#65292;&#19981;&#31616;&#21333;</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="nf">memset</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">((</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">s</span><span class="p">)[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">c</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">s</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<hr>
+<p class=" font-serif my-1">&#35753;&#25105;&#20204;&#30475;&#30475; clang &#25226;&#23427;&#32534;&#35793;&#25104;&#20102;&#20160;&#20040;&#8230;&#8230; </p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20197;&#21450;&#65292;&#32447;&#31243;&#23433;&#20840;&#24615;&#65311;<a href="../../../pages/OS/2022/demos/memset-race.c" class=" text-amber-900">memset-race.c</a></li>
+<li class=" ml-8"><red>&#26631;&#20934;&#24211;&#21482;&#23545; &#8220;&#26631;&#20934;&#24211;&#20869;&#37096;&#25968;&#25454;&#8221; &#30340;&#32447;&#31243;&#23433;&#20840;&#24615;&#36127;&#36131;</red><ul class=" list-disc font-serif">
+<li class=" ml-8">&#20363;&#23376;&#65306;printf &#30340; buffer</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25490;&#24207;&#21644;&#26597;&#25214;</h2>
+<p class=" font-serif my-1">&#20302;&#24773;&#21830; (&#20302;&#37197;&#32622;) API</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">qsort</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">base</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">nmemb</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">size</span><span class="p">,</span>
+<span class="w">           </span><span class="kt">int</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">compar</span><span class="p">)(</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">));</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="nf">bsearch</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">base</span><span class="p">,</span>
+<span class="w">              </span><span class="kt">size_t</span><span class="w"> </span><span class="n">nmemb</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">size</span><span class="p">,</span>
+<span class="w">              </span><span class="kt">int</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">compar</span><span class="p">)(</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">));</span>
+</code></pre></div>
+
+<hr>
+<p class=" font-serif my-1">&#39640;&#24773;&#21830; API</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">sort</span><span class="p">(</span><span class="n">xs</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">xs</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="p">[]</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{...});</span>
+</code></pre></div>
+
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">xs</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="k">lambda</span> <span class="n">key</span><span class="o">=...</span><span class="p">)</span>
+</code></pre></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26356;&#22810;&#30340;&#20363;&#23376;</h2>
+<p class=" font-serif my-1">RTFM!</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#26356;&#22810;&#30340; <a href="https://www.cplusplus.com/reference/cstdlib/" class=" text-amber-900">stdlib.h</a> &#20013;&#30340;&#20363;&#23376;<ul class=" list-disc font-serif">
+<li class=" ml-8">atoi, atol, atoll, strtoull, ...</li>
+<li class=" ml-8">rand (&#27880;&#24847;&#32447;&#31243;&#23433;&#20840;), ...</li>
+</ul>
+</li>
+<li class=" ml-8"><a href="https://www.cplusplus.com/reference/csetjmp/" class=" text-amber-900">setjmp.h</a><ul class=" list-disc font-serif">
+<li class=" ml-8">&#20307;&#20250;&#21040;&#25105;&#20204;&#31934;&#24515;&#35774;&#35745;&#30340;&#33391;&#33510;&#29992;&#24515;&#65311;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#19968;&#27425;&#25481;&#38431;&#65292;&#32456;&#36523;&#25481;&#38431; &#128514;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class=" ml-8"><a href="https://www.cplusplus.com/reference/cmath/" class=" text-amber-900">math.h</a><ul class=" list-disc font-serif">
+<li class=" ml-8">&#36825;&#29609;&#24847;&#22797;&#26434;&#20102;; &#12298;&#25805;&#20316;&#31995;&#32479;&#12299;&#35838;&#30452;&#25509;&#25670;&#28866;<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="https://dl.acm.org/doi/10.1145/2737924.2737959" class=" text-amber-900">Automatically improving accuracy for floating point expressions</a> (PLDI'15, Distinguished Paper &#127941;)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="2" class=" text-2xl mt-2 font-sans">&#23553;&#35013; (2): &#25991;&#20214;&#25551;&#36848;&#31526;</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="stdioh" class=" text-xl mt-2 pb-2 font-sans"><a href="https://www.cplusplus.com/reference/cstdio/" class=" text-amber-900">stdio.h</a>: &#20320;&#29087;&#24713;&#30340;&#21619;&#36947;</h2>
+<p class=" font-serif my-1"><code>FILE *</code> &#32972;&#21518;&#20854;&#23454;&#26159;&#19968;&#20010;&#25991;&#20214;&#25551;&#36848;&#31526;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25105;&#20204;&#21487;&#20197;&#29992; gdb &#26597;&#30475;&#20855;&#20307;&#30340; <code>FILE *</code> (&#20363;&#22914; stdout)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21487;&#20197; &#8220;&#31397;&#25506;&#8221; &#21040; glibc &#30340;&#19968;&#20123;&#20869;&#37096;&#23454;&#29616;</li>
+<li class=" ml-8">&#21487;&#20197;&#21152;&#36733; glibc &#30340; debug symbols<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22312;&#36825;&#38376;&#35838;&#19978;&#19981;&#25512;&#33616;&#65306;&#20320;&#35843;&#35797;&#36215;&#26469;&#20250;&#24456;&#28010;&#36153;&#26102;&#38388;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class=" ml-8">&#23553;&#35013;&#20102;&#25991;&#20214;&#25551;&#36848;&#31526;&#19978;&#30340;&#31995;&#32479;&#35843;&#29992; (fseek, fgetpos, ftell, feof, ...)</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">vprintf &#31995;&#21015;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20351;&#29992;&#20102; <code>stdarg.h</code> &#30340;&#21442;&#25968;&#21015;&#34920;</li>
+</ul>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">vfprintf</span><span class="p">(</span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">stream</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">format</span><span class="p">,</span><span class="w"> </span><span class="kt">va_list</span><span class="w"> </span><span class="n">ap</span><span class="p">);</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">vasprintf</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">ret</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">format</span><span class="p">,</span><span class="w"> </span><span class="kt">va_list</span><span class="w"> </span><span class="n">ap</span><span class="p">);</span>
+</code></pre></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="popen-pclose" class=" text-xl mt-2 pb-2 font-sans">popen &#21644; pclose</h2>
+<p class=" font-serif my-1">&#25105;&#20204;&#22312; <a href="../../../pages/OS/2022/demos/dosbox-hack.c" class=" text-amber-900">dosbox-hack.c</a> &#20013;&#20351;&#29992;&#20102;&#23427;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#19968;&#20010;&#35774;&#35745;&#26377;&#32570;&#38519;&#30340; API<ul class=" list-disc font-serif">
+<li class=" ml-8">Since a pipe is by definition unidirectional, the type argument may specify only reading or writing, <em>not both</em>; the resulting stream is correspondingly read-only or write-only.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#39640;&#24773;&#21830; API (&#29616;&#20195;&#32534;&#31243;&#35821;&#35328;)</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">subprocess</span><span class="o">.</span><span class="n">check_output</span><span class="p">([</span><span class="s1">'cat'</span><span class="p">],</span>
+  <span class="nb">input</span><span class="o">=</span><span class="sa">b</span><span class="s1">'Hello World'</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">STDOUT</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kd">let</span><span class="w"> </span><span class="n">dir_checksum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Exec</span>::<span class="n">shell</span><span class="p">(</span><span class="s">"find . -type f"</span><span class="p">)</span>
+<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">Exec</span>::<span class="n">cmd</span><span class="p">(</span><span class="s">"sort"</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Exec</span>::<span class="n">cmd</span><span class="p">(</span><span class="s">"sha1sum"</span><span class="p">)</span>
+<span class="p">}.</span><span class="n">capture</span><span class="p">()</span><span class="o">?</span><span class="p">.</span><span class="n">stdout_str</span><span class="p">();</span>
+</code></pre></div></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="3" class=" text-2xl mt-2 font-sans">&#23553;&#35013; (3): &#26356;&#22810;&#30340;&#36827;&#31243;/&#25805;&#20316;&#31995;&#32479;&#21151;&#33021;</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="err-error-perror" class=" text-xl mt-2 pb-2 font-sans">err, error, perror</h2>
+<p class=" font-serif my-1">&#25152;&#26377; API &#37117;&#21487;&#33021;&#22833;&#36133;</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>$ gcc nonexist.c
+gcc: error: nonexist.c: No such file or directory
+</code></pre></div>
+
+<hr>
+<p class=" font-serif my-1">&#36825;&#20010; &#8220;No such file or directory&#8221; &#20284;&#20046;&#35265;&#24471;&#26377;&#28857;&#22810;&#65311;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>cat nonexist.c, wc nonexist.c</code> &#37117;&#26159;&#21516;&#26679;&#30340; error message</li>
+<li class=" ml-8">&#36825;&#19981;&#26159;&#24039;&#21512;&#65281;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25105;&#20204;&#20063;&#21487;&#20197; &#8220;&#23665;&#23528;&#8221; &#20986;&#21516;&#26679;&#30340;&#25928;&#26524;</li>
+<li class=" ml-8"><code>warn("%s", fname);</code> (&#35266;&#23519; strace)<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>err</code> &#21487;&#20197;&#39069;&#22806;&#36864;&#20986;&#31243;&#24207;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class=" ml-8">errno &#26159;&#36827;&#31243;&#20849;&#20139;&#36824;&#26159;&#32447;&#31243;&#29420;&#20139;&#65311;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#36825;&#19979;&#30693;&#36947;&#21327;&#31243;&#30340;&#36731;&#37327;&#20102;&#21543;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="environ-7" class=" text-xl mt-2 pb-2 font-sans">environ (7)</h2>
+<p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/GET.jpg" width="400px"></p>
+<p class=" font-serif my-1">&#25105;&#20204;&#20063;&#21487;&#20197;&#23454;&#29616;&#33258;&#24049;&#30340; <a href="../../../pages/OS/2022/demos/env.c" class=" text-amber-900">env.c</a></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#38382;&#39064;&#26469;&#20102;&#65306;environ &#26159;&#35841;&#36171;&#20540;&#30340;&#65311;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#36825;&#20010;&#20989;&#25968;&#21448;&#26159;&#22312;&#21738;&#37324;&#23450;&#20041;&#30340;&#65311;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">RTFM &#21518;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#23545;&#29615;&#22659;&#21464;&#37327;&#30340;&#29702;&#35299;&#21448;&#19978;&#21319;&#20102;</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="4" class=" text-2xl mt-2 font-sans">&#23553;&#35013; (4): &#22320;&#22336;&#31354;&#38388;</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="malloc-free" class=" text-xl mt-2 pb-2 font-sans">malloc &#21644; free</h2>
+<p class=" font-serif my-1">Specification &#24456;&#31616;&#21333; (&#21516; <a href="../Labs/L1.html" class=" text-amber-900">Lab1</a>)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22312;&#22823;&#21306;&#38388; $[L, R)$ &#20013;&#32500;&#25252;&#20114;&#19981;&#30456;&#20132;&#30340;&#21306;&#38388;&#30340;&#38598;&#21512;</li>
+</ul>
+<p class=" font-serif my-1">$$ M = \big\{ [\ell_0, r_0), [\ell_1, r_1), \ldots, [\ell_n, r_n) \big\}$$</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">malloc($s$) - &#36820;&#22238;&#19968;&#27573;&#22823;&#23567;&#20026; $s$ &#30340;&#21306;&#38388;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#24517;&#35201;&#26102;&#21487;&#20197;&#21521;&#25805;&#20316;&#31995;&#32479;&#30003;&#35831;&#39069;&#22806;&#30340; $[L, R)$ (&#35266;&#23519; strace)</li>
+<li class=" ml-8">&#20801;&#35768;&#22312;&#20869;&#23384;&#19981;&#36275;&#26102; &#8220;&#25298;&#32477;&#8221; &#35831;&#27714;</li>
+</ul>
+</li>
+<li class=" ml-8">free($\ell, r$) - &#32473;&#23450; $\ell$&#65292;&#21024;&#38500; $[\ell, r) \in M$<ul class=" list-disc font-serif">
+<li class=" ml-8">&#26159;&#21542;&#24819;&#36215;&#20102;&#12298;&#31639;&#27861;&#23548;&#35770;&#12299;&#65311;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#22810;&#32447;&#31243;&#23433;&#20840;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Scalability &#23601;&#26159;&#20010;&#24456;&#22823;&#30340;&#38382;&#39064;&#20102;</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="mallocfree" class=" text-xl mt-2 pb-2 font-sans">&#23454;&#29616;&#39640;&#25928;&#30340; malloc/free</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">Premature optimization is the root of all evil.</p>
+<p class=" font-serif my-1">&#8212;&#8212;D. E. Knuth</p>
+</blockquote>
+<p class=" font-serif my-1">&#37325;&#35201;&#30340;&#20107;&#24773;&#35828;&#19977;&#36941;&#65306;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><red>&#33073;&#31163; workload &#20570;&#20248;&#21270;&#23601;&#26159;&#32781;&#27969;&#27667;</red></li>
+<li class=" ml-8"><red>&#33073;&#31163; workload &#20570;&#20248;&#21270;&#23601;&#26159;&#32781;&#27969;&#27667;</red></li>
+<li class=" ml-8"><red>&#33073;&#31163; workload &#20570;&#20248;&#21270;&#23601;&#26159;&#32781;&#27969;&#27667;</red><ul class=" list-disc font-serif">
+<li class=" ml-8">&#22312;&#24320;&#22987;&#32771;&#34385;&#24615;&#33021;&#20043;&#21069;&#65292;&#29702;&#35299;&#20320;&#38656;&#35201;&#32771;&#34385;&#20160;&#20040;&#26679;&#30340;&#24615;&#33021;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#28982;&#21518;&#65292;&#21435;&#21738;&#37324;&#25214; workload?</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#24403;&#28982;&#26159; paper &#20102; (&#39034;&#20415;&#30333;&#24471;&#19968;&#20010;&#26041;&#26696;)<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="https://www.microsoft.com/en-us/research/uploads/prod/2019/06/mimalloc-tr-v1.pdf" class=" text-amber-900">Mimalloc: free list sharding in action</a> (APLAS'19)</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="workload" class=" text-xl mt-2 pb-2 font-sans">Workload &#20998;&#26512;</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">&#25351;&#23548;&#24605;&#24819;&#65306;$O(n)$ &#22823;&#23567;&#30340;&#23545;&#35937;&#20998;&#37197;&#21518;&#33267;&#23569;&#26377; $\Omega(n)$ &#30340;&#35835;&#20889;&#25805;&#20316;&#65292;&#21542;&#21017;&#23601;&#26159; performance bug (&#19981;&#24212;&#35813;&#20998;&#37197;&#37027;&#20040;&#22810;)&#12290;</p>
+</blockquote>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#36234;&#23567;&#30340;&#23545;&#35937;&#21019;&#24314;/&#20998;&#37197;&#36234;&#39057;&#32321;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#23383;&#31526;&#20018;&#12289;&#20020;&#26102;&#23545;&#35937;&#31561; (&#20960;&#21313;&#21040;&#20960;&#30334;&#23383;&#33410;)&#65307;&#29983;&#23384;&#21608;&#26399;&#21487;&#38271;&#21487;&#30701; </li>
+</ul>
+</li>
+<li class=" ml-8">&#36739;&#20026;&#39057;&#32321;&#22320;&#20998;&#37197;&#20013;&#31561;&#22823;&#23567;&#30340;&#23545;&#35937;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#36739;&#22823;&#30340;&#25968;&#32452;&#12289;&#22797;&#26434;&#30340;&#23545;&#35937;&#65307;&#26356;&#38271;&#30340;&#29983;&#23384;&#21608;&#26399;</li>
+</ul>
+</li>
+<li class=" ml-8">&#20302;&#39057;&#29575;&#30340;&#22823;&#23545;&#35937;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#24040;&#22823;&#30340;&#23481;&#22120;&#12289;&#20998;&#37197;&#22120;&#65307;&#24456;&#38271;&#30340;&#29983;&#23384;&#21608;&#26399;</li>
+</ul>
+</li>
+<li class=" ml-8"><red>&#24182;&#34892;&#12289;&#24182;&#34892;&#12289;&#20877;&#24182;&#34892;</red><ul class=" list-disc font-serif">
+<li class=" ml-8">&#25152;&#26377;&#20998;&#37197;&#37117;&#20250;&#22312;&#25152;&#26377;&#22788;&#29702;&#22120;&#19978;&#21457;&#29983;</li>
+<li class=" ml-8">&#20351;&#29992;&#38142;&#34920;/&#21306;&#38388;&#26641; (first fit) &#21487;&#19981;&#26159;&#20010;&#22909;&#24819;&#27861;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="malloc-fast-and-slow" class=" text-xl mt-2 pb-2 font-sans"><code>malloc</code>, Fast and Slow</h2>
+<p class=" font-serif my-1">&#35774;&#32622;&#20004;&#22871;&#31995;&#32479;&#65306;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">fast path<ul class=" list-disc font-serif">
+<li class=" ml-8">&#24615;&#33021;&#26497;&#22909;&#12289;&#24182;&#34892;&#24230;&#26497;&#39640;&#12289;&#35206;&#30422;&#22823;&#37096;&#20998;&#24773;&#20917;</li>
+<li class=" ml-8">&#20294;&#26377;&#23567;&#27010;&#29575;&#20250;&#22833;&#36133; (fall back to slow path)</li>
+</ul>
+</li>
+<li class=" ml-8">slow path<ul class=" list-disc font-serif">
+<li class=" ml-8">&#19981;&#22312;&#20046;&#37027;&#20040;&#24555;</li>
+<li class=" ml-8">&#20294;&#25226;&#22256;&#38590;&#30340;&#20107;&#24773;&#20570;&#22909;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#35745;&#31639;&#26426;&#31995;&#32479;&#37324;&#26377;&#24456;&#22810;&#36825;&#26679;&#30340;&#20363;&#23376; (&#27604;&#22914; cache)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#20154;&#31867;&#20063;&#26159;&#36825;&#26679;&#30340;&#31995;&#32479;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Daniel Kahneman. <em>Thinking, Fast and Slow</em>. Farrar, Straus and Giroux, 2011.</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="malloc-fast-path" class=" text-xl mt-2 pb-2 font-sans"><code>malloc</code>: Fast Path &#35774;&#35745;</h2>
+<p class=" font-serif my-1"><red>&#20351;&#25152;&#26377; CPU &#37117;&#33021;&#24182;&#34892;&#22320;&#30003;&#35831;&#20869;&#23384;</red></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#32447;&#31243;&#37117;&#20107;&#20808;&#29916;&#20998;&#19968;&#20123; &#8220;&#39046;&#22320;&#8221; (thread-local allocation buffer)</li>
+<li class=" ml-8">&#40664;&#35748;&#20174;&#33258;&#24049;&#30340;&#39046;&#22320;&#37324;&#20998;&#37197;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#38500;&#20102;&#22312;&#21478;&#19968;&#20010; CPU &#37322;&#25918;&#65292;acquire lock &#20960;&#20046;&#24635;&#26159;&#25104;&#21151;</li>
+</ul>
+</li>
+<li class=" ml-8">&#22914;&#26524;&#33258;&#24049;&#30340;&#39046;&#22320;&#19981;&#36275;&#65292;&#23601;&#20174;&#20840;&#23616;&#30340;&#27744;&#23376;&#37324;&#20511;&#19968;&#28857;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#19981;&#35201;&#22312;&#20046;&#19968;&#28857;&#23567;&#30340;&#28010;&#36153;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#36825;&#23601;&#26159;&#20026;&#20160;&#20040;&#35201;&#23545;&#40784;&#21040; $2^k$ &#23383;&#33410;</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="segregated-list" class=" text-xl mt-2 pb-2 font-sans">&#23567;&#20869;&#23384;&#65306;Segregated List</h2>
+<p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/slabs.jpg" width="400px"></p>
+<p class=" font-serif my-1">&#20998;&#37197;: Segregated List (Slab)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#27599;&#20010; slab &#37324;&#30340;&#27599;&#20010;&#23545;&#35937;&#37117;&#19968;&#26679;&#22823;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#27599;&#20010;&#32447;&#31243;&#25317;&#26377;&#27599;&#20010;&#23545;&#35937;&#22823;&#23567;&#30340; slab</li>
+<li class=" ml-8">fast path &#8594; &#31435;&#21363;&#22312;&#32447;&#31243;&#26412;&#22320;&#20998;&#37197;&#23436;&#25104;</li>
+<li class=" ml-8">slow path &#8594; pgalloc()</li>
+</ul>
+</li>
+<li class=" ml-8">&#20004;&#31181;&#23454;&#29616;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20840;&#23616;&#22823;&#38142;&#34920; v.s. List sharding (per-page &#23567;&#38142;&#34920;)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/race.jpg" width="240px"></p>
+<p class=" font-serif my-1">&#22238;&#25910;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#30452;&#25509;&#24402;&#36824;&#21040; slab &#20013;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#27880;&#24847;&#36825;&#21487;&#33021;&#26159;&#21478;&#19968;&#20010;&#32447;&#31243;&#25345;&#26377;&#30340; slab&#65292;&#38656;&#35201; per-slab &#38145; (&#23567;&#24515;&#25968;&#25454;&#31454;&#20105;)</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#22823;&#20869;&#23384;&#65306;&#19968;&#25226;&#22823;&#38145;&#20445;&#24179;&#23433;</h2>
+<p class=" font-serif my-1">Buddy system (1963)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22914;&#26524;&#20320;&#24819;&#20998;&#37197; 1, 2, 3, 4, ... $n$ &#20010;&#36830;&#32493;&#30340;&#39029;&#38754;&#65311;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20363;&#22914;&#65306;64 KB/&#39029;&#38754;</li>
+</ul>
+</li>
+<li class=" ml-8">&#37027;&#23601; first fit &#25110;&#32773; best fit &#21543;&#8230;&#8230;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#20320;&#21482;&#38656;&#35201;&#19968;&#20010;&#25968;&#25454;&#32467;&#26500;&#35299;&#20915;&#38382;&#39064;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21306;&#38388;&#26641;&#65307;&#32447;&#27573;&#26641;&#8230;&#8230;</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="mallocfree" class=" text-xl mt-2 pb-2 font-sans">&#29616;&#23454;&#19990;&#30028;&#20013;&#30340; malloc/free</h2>
+<p class=" font-serif my-1">&#20197;&#19978;&#23601;&#26159;&#25152;&#26377;&#29616;&#20195; malloc/free &#23454;&#29616;&#30340;&#22522;&#30784;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#24403;&#28982;&#65292;&#23454;&#38469;&#24773;&#20917;&#20250;&#22797;&#26434;&#19968;&#20123;&#65292;&#24615;&#33021;&#20063;&#26159;&#38193;&#38114;&#24517;&#36739;<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="https://sourceware.org/glibc/wiki/MallocInternals" class=" text-amber-900">glibc</a>: arena &#8594; heap &#8594; tcache (thread-local)</li>
+<li class=" ml-8"><a href="https://google.github.io/tcmalloc/design.html" class=" text-amber-900">tcmalloc</a>: thread-caching malloc, <a href="https://github.com/microsoft/mimalloc" class=" text-amber-900">mimalloc</a>
+    <img alt="" class="center" src="../../../pages/OS/img/tcmalloc.png" width="640px"></li>
+<li class=" ml-8"><a href="https://wiki.openjdk.java.net/display/zgc/Main" class=" text-amber-900">OpenJDK: ZGC</a>: region based + tlab (thread-local)<ul class=" list-disc font-serif">
+<li class=" ml-8">managed memory &#20801;&#35768; object move&#65292;&#22240;&#27492;&#22797;&#26434;&#24471;&#22810;&#8230;&#8230;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#26080;&#27490;&#22659;&#22320;&#23553;&#35013;</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#24819;&#30693;&#36947;&#26377;&#27809;&#26377;&#26356;&#22810;&#30340;&#21151;&#33021;&#65311;</h2>
+<p class=" font-serif my-1">RTFM: <a href="https://www.gnu.org/software/libc/manual/" class=" text-amber-900">The GNU C Library</a>, RTFSC: <a href="https://sourceware.org/newlib/" class=" text-amber-900">Newlib</a></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#37117;&#19981;&#22826;&#38271; (glibc &#30340;&#25163;&#20876;&#21644; newlib &#30340;&#28304;&#30721;) &#20063;&#22909;&#35835;</li>
+<li class=" ml-8">Computer System &#31995;&#21015;&#35838;&#31243;&#30340;&#37325;&#35201;&#30446;&#26631;&#65306;&#25670;&#27491;&#30475;&#25163;&#20876;&#30340;&#24515;&#24577;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#20320;&#20250;&#21457;&#29616;&#24456;&#22810;&#23453;&#34255;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Globbing</li>
+<li class=" ml-8">Regex</li>
+<li class=" ml-8">Shell-style word expansion</li>
+<li class=" ml-8">&#8230;&#8230;</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25105;&#20204;&#36824;&#21487;&#20197;&#8230;&#8230;</h2>
+<p class=" font-serif my-1">&#36208;&#20986; C &#30340;&#39046;&#22495;&#65292;&#22522;&#20110; libc &#23454;&#29616;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">C++ &#32534;&#35793;&#22120;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#32487;&#32493;&#23454;&#29616; C++ Standard Library</li>
+<li class=" ml-8">&#32487;&#32493;&#23454;&#29616; <a href="https://openjdk.java.net/groups/hotspot/" class=" text-amber-900">OpenJDK (HotSpot)</a></li>
+<li class=" ml-8">&#32487;&#32493;&#23454;&#29616; <a href="https://v8.dev" class=" text-amber-900">V8</a> (JavaScript)</li>
+</ul>
+</li>
+<li class=" ml-8">CPython</li>
+<li class=" ml-8">Go<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20877;&#20043;&#21518; Go &#23601;&#21487;&#20197;&#33258;&#24049;&#32534;&#35793;&#33258;&#24049;&#20102; (Goodbye, C!)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Eventually, (&#21315;&#30126;&#30334;&#23380;) &#30340;&#25972;&#20010;&#35745;&#31639;&#26426;&#19990;&#30028;&#65281;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="https://dl.acm.org/doi/pdf/10.1145/3209212" class=" text-amber-900">C is not a low-level language</a> (CACM'18)</li>
+<li class=" ml-8"><a href="https://gankra.github.io/blah/c-isnt-a-language/" class=" text-amber-900">C isn't a programming language any more</a> (Gankra's Blog)</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#24635;&#32467;</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#24635;&#32467;</h2>
+<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#22238;&#31572;&#30340;&#38382;&#39064;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><strong>Q</strong>: &#22914;&#20309;&#22312;&#31995;&#32479;&#35843;&#29992;&#20043;&#19978;&#26500;&#24314;&#31243;&#24207;&#33021;&#22815;&#26222;&#36941;&#21463;&#24800;&#30340;&#26631;&#20934;&#24211;&#65311;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Take-away messages</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">libc<ul class=" list-disc font-serif">
+<li class=" ml-8">RTFM; RTFSC: &#20805;&#28385;&#20102;&#23453;&#34255;</li>
+<li class=" ml-8">&#24615;&#33021;&#20248;&#21270;&#20013;&#30340; fast/slow path</li>
+</ul>
+</li>
+<li class=" ml-8">&#28982;&#21518;&#65292;&#20320;&#25317;&#26377;&#20102;&#25972;&#20010;&#19990;&#30028;&#65281;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1"><red>4 &#26376; 2 &#26085; (&#21608;&#20845;) &#32447;&#19978;&#27979;&#39564;</red></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="end" class=" text-2xl mt-2 font-sans">End.</h1></div></div></div>
+        
+      
+      </section>
+    
+    </section>
+  
+</div>
+</div>
+
+<script src="../../../static/reveal/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    
+    width: 1024, height: 768,
+    
+    slideNumber: 'c/t',
+    controlsTutorial: false,
+    progress: false,
+    hash: true,
+    center: false,
+    autoAnimateUnmatched: true,
+    autoAnimateEasing: 'ease-out',
+    autoAnimateDuration: 0.3,
+    transitionSpeed: 'fast'
+  });
+</script>
+
+
+</body>
+
+</html>

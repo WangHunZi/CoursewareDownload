@@ -1,0 +1,831 @@
+<!DOCTYPE html><html class="h-100">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="../../../static/css/base.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
+
+  <style>
+    .font-sans {
+      font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+    }
+    .font-serif {
+      font-family: 'Source Serif Pro', 'Songti SC', 'SimSun', 'Serif', serif;
+    }
+  </style>
+  <link rel="stylesheet" href="../../../static/katex/katex.min.css">
+  <script defer src="../../../static/katex/katex.min.js"></script>
+  <script defer src="../../../static/katex/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+            // customised options
+            // &#8226; auto-render specific keys, e.g.:
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ],
+            // &#8226; rendering keys, e.g.:
+            throwOnError : false
+          });
+      });
+  </script>
+
+
+  
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="../../../static/reveal/reveal.css">
+<link rel="stylesheet" href="../../../static/reveal/theme/simple.css" id="theme">
+
+<style>
+.reveal .slide-number {
+  font-size: 26px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, .3);
+}
+
+.reveal .full-screen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.reveal .slides {
+  border: 1.5px #ddd solid;
+  border-radius: 7px;
+  text-align: left;
+  font-weight: 300;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  font-family: 'Lato', 'SimHei', 'STXihei', 'Droid Sans';
+  font-weight: 400;
+}
+
+.reveal p, .reveal li, .reveal center {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Droid Sans';
+}
+
+.reveal li + li {
+  margin-top: 10px;
+}
+
+.reveal ul {
+  display: block;
+  margin-right: 15px;
+}
+
+.reveal p, .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5 {
+  padding:  0 25px 0 25px;
+}
+
+.reveal table {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Sans Serif';
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.reveal th {
+  background-color: #eee;
+}
+
+.reveal tr:nth-child(even) {
+  background-color: #efffff;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  text-align: left;
+  margin: 0 0 20px 0;
+ color: #222; 
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
+
+
+.reveal h1 {
+  margin: 0 10 0 10;
+  font-size: 60px;
+}
+.reveal .middle h1 {
+  text-align: center;
+}
+
+.reveal h2 {
+  font-size: 48px;
+  border-bottom: 2px solid rgb(106, 0, 95);
+  padding-bottom: 5px;
+}
+.reveal h3 { font-size: 1.15em; }
+.reveal h4 { font-size: 1.05em; }
+
+.reveal .center {
+  text-align: center;
+}
+
+.reveal .middle {
+  height: 728px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.reveal pre {
+  font-size: 28px;
+ 
+  background-color: #eee;
+
+  border-radius: 3mm;
+  padding: 10px 10px 10px 10px;
+}
+
+.reveal pre code {
+  max-height: none;
+}
+
+.reveal code {
+  font-family: 'Inconsolata', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif', Monospace;
+}
+
+.reveal .middle blockquote {
+  text-align: center;
+  color: rgb(106, 0, 95);
+  background: none;
+  box-shadow: none;
+}
+
+.reveal .middle blockquote a {
+  color: inherit;
+}
+
+.reveal blockquote p, .reveal blockquote li {
+  font-family: 'Lato', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif';
+}
+
+section .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reveal .author-block {
+  margin: 75px 0 35px 0;
+}
+.reveal .author-affiliation img {
+  margin: 15px 0 0 0;
+}
+.reveal .author-block p, .reveal .author-affiliation p  {
+  font-family: 'Kaiti', 'STKaiti', 'Serif', 'Times', 'Times New Roman';
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+.reveal .author-affiliation {
+  display: inline-block;
+  font-size: 90%;
+}
+.reveal hr {
+  border: 10px solid rgba(0, 0, 0, 0);
+}
+.reveal li {
+  margin-top: 10px;
+}
+</style>
+
+  <title>&#24182;&#21457;&#25511;&#21046;&#65306;&#20114;&#26021; (2)</title>
+</head>
+
+<body class="d-flex flex-column h-100">
+  
+  
+
+<div class="reveal">
+<div class="slides">
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="2" class=" text-2xl mt-2 font-sans">&#24182;&#21457;&#25511;&#21046;&#65306;&#20114;&#26021; (2)</h1>
+<p class=" font-serif my-1"><include src="Slides_Author"><div><div class="py-16">
+<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">&#33931;&#28814;&#23721;</a></p>
+</div>
+<div class="row">
+<div class="author-affiliation">
+    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#12288;&#12288;&#21335;&#20140;&#22823;&#23398;&#12288;&#12288;</p>
+    <img class="inline-img h-24" src="../../../static/img/nju-logo.jpg" style="display: inline-block;"></a>
+  </div>
+<div class="author-affiliation">
+   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#31185;&#23398;&#19982;&#25216;&#26415;&#31995;</p>
+    <img class="inline-img h-24" src="../../../static/img/njucs-logo.jpg" style="display: inline-block;"></a>
+  </div>
+<div class="author-affiliation">
+    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#36719;&#20214;&#30740;&#31350;&#25152;</p>
+    <img class="inline-img h-24" src="../../../static/img/ics-logo.png" style="display: inline-block;"></a>
+  </div>
+</div></div></include></p></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#32972;&#26223;</h2>
+<p class=" font-serif my-1">&#20114;&#26021;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Peterson &#31639;&#27861;</li>
+<li class=" ml-8">&#21407;&#23376;&#25351;&#20196;&#21644;&#33258;&#26059;&#38145;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#24182;&#21457;&#32534;&#31243;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25968;&#25454;&#31454;&#20105;</li>
+<li class=" ml-8">&#24182;&#21457;&#25968;&#25454;&#32467;&#26500;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#22823;&#23478;&#24050;&#32463;&#25484;&#25569;&#20102;&#36234;&#26469;&#36234;&#22810;&#32534;&#20889;&#24182;&#21457;&#31243;&#24207;&#30340;&#24037;&#20855;&#20102;&#65281;</p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26412;&#27425;&#35838;&#20869;&#23481;&#19982;&#30446;&#26631;</h2>
+<p class=" font-serif my-1">&#20351;&#29992;&#25805;&#20316;&#31995;&#32479; (&#21644;&#30828;&#20214;&#26426;&#21046;) &#23454;&#29616;&#38750;&#33258;&#26059;&#30340;&#38145;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">yield &#38145;</li>
+<li class=" ml-8">&#20114;&#26021;&#38145;</li>
+<li class=" ml-8">futex: &#33258;&#26059; + &#31561;&#24453;</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#22797;&#20064;&#65306;&#33258;&#26059;&#38145;</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20351;&#29992;&#21407;&#23376;&#25351;&#20196;&#23454;&#29616;</h2>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">table</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">KEY</span><span class="p">;</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">lock</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="nl">retry</span><span class="p">:</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">got</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xchg</span><span class="p">(</span><span class="o">&amp;</span><span class="n">table</span><span class="p">,</span><span class="w"> </span><span class="n">NOTE</span><span class="p">);</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">got</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">KEY</span><span class="p">)</span>
+<span class="w">    </span><span class="k">goto</span><span class="w"> </span><span class="n">retry</span><span class="p">;</span>
+<span class="w">  </span><span class="n">assert</span><span class="p">(</span><span class="n">got</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">KEY</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">unlock</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">xchg</span><span class="p">(</span><span class="o">&amp;</span><span class="n">table</span><span class="p">,</span><span class="w"> </span><span class="n">KEY</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">locked</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="n">spinlock_t</span><span class="p">;</span>
+<span class="cp">#define LOCK_INIT() ((spinlock_t) { .locked = 0 })</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">spin_lock</span><span class="p">(</span><span class="n">spinlock_t</span><span class="w"> </span><span class="o">*</span><span class="n">lk</span><span class="p">)</span><span class="w">   </span><span class="p">{</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">xchg</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lk</span><span class="o">-&gt;</span><span class="n">locked</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">));</span><span class="w"> </span><span class="p">}</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">spin_unlock</span><span class="p">(</span><span class="n">spinlock_t</span><span class="w"> </span><span class="o">*</span><span class="n">lk</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">xchg</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lk</span><span class="o">-&gt;</span><span class="n">locked</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#33258;&#26059;&#38145;&#65306;&#24212;&#29992;</h2>
+<p class=" font-serif my-1">&#20445;&#25252;&#24182;&#21457;&#20195;&#30721;&#23433;&#20840;&#12289;&#28040;&#38500;&#25968;&#25454;&#31454;&#20105;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">deposit/withdraw</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#24182;&#21457;&#25968;&#25454;&#32467;&#26500;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">malloc/free (<a href="../labs/L1.html" class=" text-amber-900">Lab1</a>)</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#33258;&#26059;&#38145;&#65306;&#28010;&#36153;&#38382;&#39064;</h2>
+<p class=" font-serif my-1">&#22810;&#20010;&#22788;&#29702;&#22120;&#19978;&#30340;&#32447;&#31243;&#20105;&#30456;&#25171;&#21360;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21482;&#26377;&#19968;&#20010;&#33021;&#33719;&#24471;&#38145;</li>
+<li class=" ml-8">&#37027;&#20854;&#20182; CPU &#19978;&#30340;&#32447;&#31243;&#23601;&#21482;&#33021;&#22260;&#35266;&#20102;&#65311;</li>
+</ul>
+<hr>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">thread</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lk</span><span class="p">);</span>
+<span class="w">  </span><span class="c1">// &#21333;&#20010; printf &#20445;&#35777;&#32447;&#31243;&#23433;&#20840;</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">"LOG: "</span><span class="p">);</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="n">very_long_string</span><span class="p">);</span>
+<span class="w">  </span><span class="n">unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lk</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>$ ./a.out &gt; /mnt/sdcard/a.txt  # printf &#23558;&#38750;&#24120;&#32791;&#26102;
+</code></pre></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#33258;&#26059;&#38145;&#65306;&#26080;&#27861;&#23481;&#24525;&#30340;&#28010;&#36153;&#38382;&#39064;</h2>
+<p class=" font-serif my-1">&#21035;&#24536;&#20102;&#25805;&#20316;&#31995;&#32479;&#36824;&#31649;&#29702;&#20854;&#20182;&#36827;&#31243;/&#32447;&#31243;&#8230;&#8230;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25345;&#26377;&#38145;&#30340;&#32447;&#31243;&#20999;&#20986;&#65292;&#8220;&#20840;&#26680;&#22260;&#35266;&#8221;&#65292;CPU &#21033;&#29992;&#29575;&#20026;&#38646;</li>
+</ul>
+<hr>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">thread</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lk</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// ------------ (&#20013;&#26029;&#65307;&#32447;&#31243;&#20999;&#25442;)</span>
+<span class="w">    </span><span class="n">do_something</span><span class="p">();</span>
+<span class="w">    </span><span class="n">unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lk</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">1000</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="n">create</span><span class="p">(</span><span class="kr">thread</span><span class="p">);</span><span class="w"> </span><span class="c1">// &#32447;&#31243; &gt;&gt; CPU</span>
+<span class="p">}</span>
+</code></pre></div></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#25913;&#36827;&#33258;&#26059;&#38145;&#30340;&#24615;&#33021;</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#38271;&#20020;&#30028;&#21306;&#65306;&#20998;&#26512;</h2>
+<p class=" font-serif my-1">&#25345;&#26377;&#38145;&#30340;&#32447;&#31243;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21487;&#33021;&#21457;&#29983;&#31995;&#32479;&#35843;&#29992;&#25110;&#20013;&#26029;</li>
+<li class=" ml-8">&#26399;&#38388; CPU &#21487;&#33021;&#20250;&#20999;&#25442;&#21040;&#20854;&#20182;&#32447;&#31243;&#25191;&#34892; <ul class=" list-disc font-serif">
+<li class=" ml-8"><red>&#38145;&#24212;&#35813;&#20445;&#25345;&#25345;&#26377;&#29366;&#24577;</red> (&#20363;&#22914;&#38459;&#27490;&#24182;&#21457;&#30340; printf)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#31561;&#24453;&#38145;&#30340;&#32447;&#31243;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><red>&#33021;&#21542;&#19981;&#24517;&#21344;&#29992;&#22788;&#29702;&#22120;&#33258;&#26059;</red>&#65311;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22914;&#26524;&#31995;&#32479;&#20013;&#36824;&#26377;&#19981;&#38656;&#35201;&#36825;&#25226;&#38145;&#30340;&#32447;&#31243;&#65292;&#21487;&#33021;&#35753;&#20182;&#20204;&#20808;&#25191;&#34892;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#19968;&#20010;&#24819;&#27861;</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">Simply yield!</p>
+</blockquote>
+<hr>
+<p class=" font-serif my-1">&#29992;&#25143;&#36827;&#31243;&#30340;&#20107;&#65292;&#25805;&#20316;&#31995;&#32479;&#23436;&#20840;&#35828;&#20102;&#31639;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#8220;syscall&#8221; &#25351;&#20196;&#33021;&#20570;&#20219;&#20309;&#20107;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#19982;&#33258;&#26059;&#38145;&#23436;&#20840;&#19968;&#26679;&#65292;&#38500;&#20102;&#22312;&#33258;&#26059;&#22833;&#36133;&#21518;&#22686;&#21152;&#19968;&#27425;&#31995;&#32479;&#35843;&#29992;&#65306;</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">yield_lock</span><span class="p">(</span><span class="n">spinlock_t</span><span class="w"> </span><span class="o">*</span><span class="n">lk</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">xchg</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lk</span><span class="o">-&gt;</span><span class="n">locked</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">syscall</span><span class="p">(</span><span class="n">SYS_yield</span><span class="p">);</span><span class="w"> </span><span class="c1">// yield() on AbstractMachine</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">yield_unlock</span><span class="p">(</span><span class="n">spinlock_t</span><span class="w"> </span><span class="o">*</span><span class="n">lk</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">xchg</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lk</span><span class="o">-&gt;</span><span class="n">locked</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#19968;&#20010;&#23567;&#20248;&#21270;</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">&#22914;&#26524;&#31561;&#24453;&#38145;&#30340;&#32447;&#31243;&#38750;&#24120;&#38750;&#24120;&#22810;&#65292;&#25105;&#20204;&#38656;&#35201; &#8220;&#31354;&#36716;&#19968;&#36718;&#8221; &#25165;&#33021;&#35753;&#30495;&#27491;&#38656;&#35201;&#36816;&#34892;&#30340;&#32447;&#31243;&#25191;&#34892;&#12290;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#33021;&#21542;&#24178;&#33030;&#26242;&#20572;&#36825;&#20010;&#32447;&#31243;&#65292;&#31561;&#26377;&#20154;&#35299;&#38145;&#20197;&#21518;&#20877;&#34987;&#35843;&#24230;&#25191;&#34892;&#65311;</li>
+</ul>
+</blockquote>
+<hr>
+<p class=" font-serif my-1"><red>&#20013;&#26029;/&#31995;&#32479;&#35843;&#29992;&#21518;&#36816;&#34892;&#21738;&#20010;&#32447;&#31243;&#23436;&#20840;&#30001;&#25805;&#20316;&#31995;&#32479;&#20915;&#23450;</red></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#8220;Virtualization&#8221;: &#25805;&#20316;&#31995;&#32479;&#20854;&#23454;&#26159; &#8220;&#29366;&#24577;&#26426;&#30340;&#31649;&#29702;&#32773;&#8221;</li>
+<li class=" ml-8">&#22312;&#25805;&#20316;&#31995;&#32479;&#19978;&#21152;&#19968;&#20123; hacking<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25805;&#20316;&#31995;&#32479;&#21487;&#20197;&#30693;&#36947;&#38145;&#30340;&#29366;&#24577;<ul class=" list-disc font-serif">
+<li class=" ml-8">spin-wait &#30340;&#32447;&#31243;&#65292;&#21363;&#20415;&#35843;&#24230;&#25191;&#34892;&#65292;&#20063;&#21482;&#26159; spin + yield</li>
+</ul>
+</li>
+<li class=" ml-8">&#22312;&#32447;&#31243;&#35843;&#24230;&#26102;&#65292;&#22914;&#26524;&#28385;&#36275; <center><code>t-&gt;registers.PC</code> $\in$ <code>yield_lock(lk)</code> $\land$ <code>lk-&gt;locked == 0</code></center> &#23601;&#19981;&#35843;&#24230;&#36825;&#20010;&#32447;&#31243;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="hacking" class=" text-xl mt-2 pb-2 font-sans">&#36825;&#20010; Hacking &#21487;&#20197;&#29992;&#31995;&#32479;&#35843;&#29992;&#23454;&#29616;</h2>
+<p class=" font-serif my-1">&#25552;&#20379;&#20004;&#20010;&#31995;&#32479;&#35843;&#29992;&#65306;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>mutex_lock(&amp;locked)</code><ul class=" list-disc font-serif">
+<li class=" ml-8">&#22914;&#26524; <code>xchg(&amp;locked, 1) == 1</code>&#65292;&#23601;&#19981;&#20877;&#35843;&#24230;&#24403;&#21069;&#32447;&#31243;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20026;&#24403;&#21069;&#32447;&#31243;&#26631;&#35760;&#19978; &#8220;block on <code>locked</code>&#8221;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class=" ml-8"><code>mutex_unlock(&amp;locked)</code><ul class=" list-disc font-serif">
+<li class=" ml-8"><code>xchg(&amp;locked, 0);</code></li>
+<li class=" ml-8">&#22914;&#26524;&#26377; &#8220;block on <code>locked</code>&#8221; &#30340;&#32447;&#31243;&#65292;&#20462;&#25913;&#20854;&#29366;&#24577;&#20026;&#21487;&#35843;&#24230;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25805;&#20316;&#31995;&#32479;&#20869;&#26680;&#20013;&#30340;&#20114;&#26021;&#38145;</h2>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">mutex_lock</span><span class="p">(</span><span class="n">mutexlock_t</span><span class="w"> </span><span class="o">*</span><span class="n">lk</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">lk</span><span class="o">-&gt;</span><span class="n">locked</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">append</span><span class="p">(</span><span class="n">lk</span><span class="o">-&gt;</span><span class="n">wait_list</span><span class="p">,</span><span class="w"> </span><span class="n">current</span><span class="p">);</span><span class="w"> </span><span class="c1">// &#30561;&#30496;</span>
+<span class="w">    </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">BLOCKED</span><span class="p">;</span>
+<span class="w">    </span><span class="n">yield</span><span class="p">();</span><span class="w"> </span><span class="c1">// &#25805;&#20316;&#31995;&#32479;&#25511;&#21046;&#20102;&#20013;&#26029;&#65292;&#26377;&#35843;&#24230;&#26435;</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">lk</span><span class="o">-&gt;</span><span class="n">locked</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">mutex_unlock</span><span class="p">(</span><span class="n">mutexlock_t</span><span class="w"> </span><span class="o">*</span><span class="n">lk</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">is_empty</span><span class="p">(</span><span class="n">lk</span><span class="o">-&gt;</span><span class="n">wait_list</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">pop_front</span><span class="p">(</span><span class="n">lk</span><span class="o">-&gt;</span><span class="n">wait_list</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RUNNABLE</span><span class="p">;</span><span class="w"> </span><span class="c1">// &#21796;&#37266;</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">lk</span><span class="o">-&gt;</span><span class="n">locked</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="l2" class=" text-xl mt-2 pb-2 font-sans">&#20114;&#26021;&#38145;&#65306;&#28216;&#27891;&#39302;&#30340;&#26356;&#34915;&#23460;&#21327;&#35758; (&#22312; L2 &#20013;&#23454;&#29616;)</h2>
+<p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/locker.jpg" width="300px"></p>
+<p class=" font-serif my-1">&#31649;&#29702;&#21592; (&#25805;&#20316;&#31995;&#32479;&#20195;&#30721;) &#26377;&#19968;&#20010;&#25163;&#29615;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><red>&#31649;&#29702;&#21592;&#29992;&#33258;&#26059;&#38145;&#20445;&#25252;&#21407;&#23376;&#24615;&#12289;&#28040;&#38500;&#25968;&#25454;&#31454;&#20105;</red></li>
+<li class=" ml-8">&#20043;&#21518;&#25105;&#20204;&#23558;&#30475;&#21040;&#19981;&#27490;&#19968;&#20010;&#25163;&#29615;&#30340;&#35774;&#35745;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#20219;&#20309;&#20154;&#24819;&#36827;&#20837;&#26356;&#34915;&#23460;&#37117;&#38656;&#35201;&#36890;&#36807;&#31649;&#29702;&#21592;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20808;&#21040;&#30340;&#20154; (&#32447;&#31243;)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25104;&#21151;&#33719;&#24471;&#25163;&#29615; &#8594; &#36827;&#20837;&#28216;&#27891;&#39302; (&#32447;&#31243;&#21487;&#34987;&#35843;&#24230;&#25191;&#34892;)</li>
+</ul>
+</li>
+<li class=" ml-8">&#21518;&#21040;&#30340;&#20154; (&#32447;&#31243;)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#19981;&#33021;&#36827;&#20837;&#28216;&#27891;&#39302;&#65292;&#25490;&#38431;&#31561;&#24453; (&#32447;&#31243;&#36827;&#20837;&#38431;&#21015;&#65292;&#19981;&#34987;&#35843;&#24230;&#25191;&#34892;)</li>
+</ul>
+</li>
+<li class=" ml-8">&#27927;&#23436;&#28577;&#20986;&#26469;&#30340;&#20154; (&#32447;&#31243;)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20132;&#36824;&#25163;&#29615;&#32473;&#31649;&#29702;&#21592; &#8594; &#31649;&#29702;&#21592;&#20132;&#32473;&#25490;&#38431;&#30340;&#20154;&#36827;&#20837;&#28216;&#27891;&#39302; (&#31561;&#24453;&#30340;&#32447;&#31243;&#34987;&#21796;&#37266;)</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="futex" class=" text-2xl mt-2 font-sans">Futex</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20851;&#20110;&#20114;&#26021;&#30340;&#19968;&#20123;&#20998;&#26512;</h2>
+<p class=" font-serif my-1">&#33258;&#26059;&#38145; (&#32447;&#31243;&#30452;&#25509;&#20849;&#20139; locked)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22909;&#22788;&#65306;&#26356;&#24555;&#30340; fast path<ul class=" list-disc font-serif">
+<li class=" ml-8">xchg &#25104;&#21151; &#8594; &#31435;&#21363;&#36827;&#20837;&#20020;&#30028;&#21306;&#65292;&#24320;&#38144;&#24456;&#23567;</li>
+</ul>
+</li>
+<li class=" ml-8">&#22351;&#22788;&#65306;&#26356;&#24930;&#30340; slow path<ul class=" list-disc font-serif">
+<li class=" ml-8">xchg &#22833;&#36133; &#8594; &#28010;&#36153; CPU &#33258;&#26059;&#31561;&#24453;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#30561;&#30496;&#38145; (locked &#20445;&#23384;&#22312;&#25805;&#20316;&#31995;&#32479;&#20869;&#26680;&#65292;&#36890;&#36807;&#31995;&#32479;&#35843;&#29992;&#35775;&#38382;)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22909;&#22788;&#65306;&#26356;&#24555;&#30340; slow path<ul class=" list-disc font-serif">
+<li class=" ml-8">&#19978;&#38145;&#22833;&#36133;&#32447;&#31243;&#19981;&#20877;&#21344;&#29992; CPU</li>
+</ul>
+</li>
+<li class=" ml-8">&#22351;&#22788;&#65306;&#26356;&#24930;&#30340; fast path<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21363;&#20415;&#19978;&#38145;&#25104;&#21151;&#20063;&#38656;&#35201;&#36827;&#20986;&#20869;&#26680; (syscall)</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="futex-fast-userspace-mutexes" class=" text-xl mt-2 pb-2 font-sans">Futex: Fast Userspace muTexes</h2>
+<p class=" font-serif my-1">&#23567;&#23401;&#23376;&#25165;&#20570;&#36873;&#25321;&#65292;&#25105;&#20840;&#37117;&#35201;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">fast path: &#19968;&#26465;&#21407;&#23376;&#25351;&#20196;&#65292;&#19978;&#38145;&#25104;&#21151;&#31435;&#21363;&#36820;&#22238;</li>
+<li class=" ml-8">slow path: &#19978;&#38145;&#22833;&#36133;&#65292;&#25191;&#34892;&#31995;&#32479;&#35843;&#29992;&#30561;&#30496;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">pthreads &#24211;&#20013;&#30340;&#20114;&#26021;&#38145; (<code>pthread_mutex</code>)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="../../../pages/OS/2021/demos/sum-mutex.c" class=" text-amber-900">sum-mutex.c</a><ul class=" list-disc font-serif">
+<li class=" ml-8">&#35266;&#23519;&#31995;&#32479;&#35843;&#29992;</li>
+<li class=" ml-8">gdb &#35843;&#35797;<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>set scheduler-locking on</code></li>
+<li class=" ml-8"><code>info threads</code>; <code>thread X</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="futex-fast-userspace-mutexes-contd" class=" text-xl mt-2 pb-2 font-sans">Futex: Fast Userspace muTexes (cont'd)</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">Futexes are very basic and lend themselves well for building higher-level locking abstractions  such  as mutexes, condition variables, read-write locks, barriers, and semaphores. &#8212;&#8212; futex (7)</p>
+</blockquote>
+<hr>
+<p class=" font-serif my-1">&#25805;&#20316;&#31995;&#32479;&#20250;&#35774;&#35745;&#24590;&#26679;&#30340;&#25509;&#21475;&#65311;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#31449;&#22312; &#8220;&#29366;&#24577;&#26426;&#35270;&#35282;&#8221; &#32771;&#34385;&#36825;&#20010;&#38382;&#39064;</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="futex" class=" text-xl mt-2 pb-2 font-sans">futex &#31995;&#32479;&#35843;&#29992;</h2>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">futex</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">uaddr</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">futex_op</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">val</span><span class="p">,</span><span class="w"> </span><span class="p">...);</span>
+</code></pre></div>
+
+<hr>
+<p class=" font-serif my-1">RTFM</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">futex (7), futex (2)</li>
+<li class=" ml-8"><a href="https://lwn.net/Articles/360699/" class=" text-amber-900">LWN: A futex overview and update</a></li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#20219;&#20309;&#20307;&#31995;&#32467;&#26500;&#19978; <code>uaddr</code> &#37117;&#26159; 4B</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">futex_wait (<code>futex_op == FUTEX_WAIT</code>)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22914;&#26524; <code>*uaddr == val</code> &#23601;&#30561;&#30496;&#31561;&#24453; <code>futex_wake</code> (&#21407;&#23376;&#23436;&#25104;)</li>
+<li class=" ml-8">&#21542;&#21017;&#36820;&#22238; <code>-EAGAIN</code></li>
+</ul>
+</li>
+<li class=" ml-8">futex_wake (<code>futex_op == FUTEX_WAKE</code>)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21796;&#37266;&#33267;&#22810; <code>val</code> &#20010;&#27491;&#22312;&#30561;&#30496;&#30340;&#32447;&#31243;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="futex" class=" text-xl mt-2 pb-2 font-sans">Futex + &#33258;&#26059;</h2>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">futex_lock</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xchg</span><span class="p">(</span><span class="o">&amp;</span><span class="n">locked</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">r</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="n">syscall</span><span class="p">(</span><span class="n">SYS_futex</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">locked</span><span class="p">,</span><span class="w"> </span><span class="n">FUTEX_WAIT</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">futex_unlock</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">xchg</span><span class="p">(</span><span class="o">&amp;</span><span class="n">locked</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="w">  </span><span class="n">syscall</span><span class="p">(</span><span class="n">SYS_futex</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">locked</span><span class="p">,</span><span class="w"> </span><span class="n">FUTEX_WAKE</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<hr>
+<p class=" font-serif my-1">&#20173;&#28982;&#19981;&#26159;&#25105;&#20204;&#24819;&#35201;&#30340; (&#27491;&#30830;&#24615;&#65306;<a href="../../../pages/OS/2021/demos/futex.yaml" class=" text-amber-900">futex.yaml</a>)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">unlock &#30340;&#26102;&#20505;&#36824;&#26159;&#26377;&#19968;&#27425; syscall</li>
+<li class=" ml-8"><a href="../../../pages/OS/manuals/futexes-are-tricky.pdf" class=" text-amber-900">Futexes are tricky</a> by Ulrich Drepper</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#24635;&#32467;</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#24635;&#32467;</h2>
+<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#20869;&#23481;&#19982;&#30446;&#26631;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#23454;&#29616;&#38750;&#33258;&#26059;&#30340;&#38145; (&#30561;&#30496; &amp; futex)</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Take-away messages</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25805;&#20316;&#31995;&#32479;&#26377;&#38750;&#24120;&#22823;&#30340;&#26435;&#21147;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25805;&#20316;&#31995;&#32479;&#26159;&#29366;&#24577;&#26426;&#30340;&#31649;&#29702;&#32773;</li>
+<li class=" ml-8">syscall &#25351;&#20196;&#21487;&#20197;&#20570; &#8220;&#20219;&#20309;&#20107;&#8221;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+  
+</div>
+</div>
+
+<script src="../../../static/reveal/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    
+    width: 1024, height: 768,
+    
+    slideNumber: 'c/t',
+    controlsTutorial: false,
+    progress: false,
+    hash: true,
+    center: false,
+    autoAnimateUnmatched: true,
+    autoAnimateEasing: 'ease-out',
+    autoAnimateDuration: 0.3,
+    transitionSpeed: 'fast'
+  });
+</script>
+
+
+</body>
+
+</html>

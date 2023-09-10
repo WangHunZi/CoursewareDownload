@@ -1,0 +1,1141 @@
+<!DOCTYPE html><html class="h-100">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="../../../static/css/base.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
+
+  <style>
+    .font-sans {
+      font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+    }
+    .font-serif {
+      font-family: 'Source Serif Pro', 'Songti SC', 'SimSun', 'Serif', serif;
+    }
+  </style>
+  <link rel="stylesheet" href="../../../static/katex/katex.min.css">
+  <script defer src="../../../static/katex/katex.min.js"></script>
+  <script defer src="../../../static/katex/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+            // customised options
+            // &#8226; auto-render specific keys, e.g.:
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ],
+            // &#8226; rendering keys, e.g.:
+            throwOnError : false
+          });
+      });
+  </script>
+
+
+  
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="../../../static/reveal/reveal.css">
+<link rel="stylesheet" href="../../../static/reveal/theme/simple.css" id="theme">
+
+<style>
+.reveal .slide-number {
+  font-size: 26px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, .3);
+}
+
+.reveal .full-screen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.reveal .slides {
+  border: 1.5px #ddd solid;
+  border-radius: 7px;
+  text-align: left;
+  font-weight: 300;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  font-family: 'Lato', 'SimHei', 'STXihei', 'Droid Sans';
+  font-weight: 400;
+}
+
+.reveal p, .reveal li, .reveal center {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Droid Sans';
+}
+
+.reveal li + li {
+  margin-top: 10px;
+}
+
+.reveal ul {
+  display: block;
+  margin-right: 15px;
+}
+
+.reveal p, .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5 {
+  padding:  0 25px 0 25px;
+}
+
+.reveal table {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Sans Serif';
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.reveal th {
+  background-color: #eee;
+}
+
+.reveal tr:nth-child(even) {
+  background-color: #efffff;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  text-align: left;
+  margin: 0 0 20px 0;
+ color: #222; 
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
+
+
+.reveal h1 {
+  margin: 0 10 0 10;
+  font-size: 60px;
+}
+.reveal .middle h1 {
+  text-align: center;
+}
+
+.reveal h2 {
+  font-size: 48px;
+  border-bottom: 2px solid rgb(106, 0, 95);
+  padding-bottom: 5px;
+}
+.reveal h3 { font-size: 1.15em; }
+.reveal h4 { font-size: 1.05em; }
+
+.reveal .center {
+  text-align: center;
+}
+
+.reveal .middle {
+  height: 728px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.reveal pre {
+  font-size: 28px;
+ 
+  background-color: #eee;
+
+  border-radius: 3mm;
+  padding: 10px 10px 10px 10px;
+}
+
+.reveal pre code {
+  max-height: none;
+}
+
+.reveal code {
+  font-family: 'Inconsolata', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif', Monospace;
+}
+
+.reveal .middle blockquote {
+  text-align: center;
+  color: rgb(106, 0, 95);
+  background: none;
+  box-shadow: none;
+}
+
+.reveal .middle blockquote a {
+  color: inherit;
+}
+
+.reveal blockquote p, .reveal blockquote li {
+  font-family: 'Lato', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif';
+}
+
+section .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reveal .author-block {
+  margin: 75px 0 35px 0;
+}
+.reveal .author-affiliation img {
+  margin: 15px 0 0 0;
+}
+.reveal .author-block p, .reveal .author-affiliation p  {
+  font-family: 'Kaiti', 'STKaiti', 'Serif', 'Times', 'Times New Roman';
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+.reveal .author-affiliation {
+  display: inline-block;
+  font-size: 90%;
+}
+.reveal hr {
+  border: 10px solid rgba(0, 0, 0, 0);
+}
+.reveal li {
+  margin-top: 10px;
+}
+</style>
+
+  <title>[C10] &#32456;&#31471;&#12289;Shell &#21644; Hello World</title>
+</head>
+
+<body class="d-flex flex-column h-100">
+  
+  
+
+<div class="reveal">
+<div class="slides">
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="c10-shell-hello-world" class=" text-2xl mt-2 font-sans">[C10] &#32456;&#31471;&#12289;Shell &#21644; Hello World</h1>
+<p class=" font-serif my-1"><include src="Slides_Author"><div><div class="py-16">
+<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">&#33931;&#28814;&#23721;</a></p>
+</div>
+<div class="row">
+<div class="author-affiliation">
+    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#12288;&#12288;&#21335;&#20140;&#22823;&#23398;&#12288;&#12288;</p>
+    <img class="inline-img h-24" src="../../../static/img/nju-logo.jpg" style="display: inline-block;"></a>
+  </div>
+<div class="author-affiliation">
+   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#31185;&#23398;&#19982;&#25216;&#26415;&#31995;</p>
+    <img class="inline-img h-24" src="../../../static/img/njucs-logo.jpg" style="display: inline-block;"></a>
+  </div>
+<div class="author-affiliation">
+    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#36719;&#20214;&#30740;&#31350;&#25152;</p>
+    <img class="inline-img h-24" src="../../../static/img/ics-logo.png" style="display: inline-block;"></a>
+  </div>
+</div></div></include></p></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#32972;&#26223;</h2>
+<p class=" font-serif my-1">&#25552;&#36215; Hello World &#31243;&#24207;, &#20320;&#24819;&#21040;&#20102;&#20160;&#20040;&#65311;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25805;&#20316;&#31995;&#32479;&#20013;&#30340;&#19968;&#20010;<a href="9.slides.html" class=" text-amber-900">&#23545;&#35937;</a><ul class=" list-disc font-serif">
+<li class=" ml-8">&#36827;&#31243;&#21487;&#20197;&#29992; open, read, mmap, ... &#31995;&#32479;&#35843;&#29992;&#35775;&#38382;</li>
+</ul>
+</li>
+<li class=" ml-8">&#19968;&#20010;<a href="C8.slides.html" class=" text-amber-900">&#21487;&#25191;&#34892;&#25991;&#20214;</a></li>
+<li class=" ml-8"><a href="C9.slides.html" class=" text-amber-900">&#21160;&#24577;&#21152;&#36733;&#20381;&#36182;&#30340;&#24211;</a><ul class=" list-disc font-serif">
+<li class=" ml-8">&#21152;&#36733; (execve) &#21518;&#31532;&#19968;&#26465;&#25351;&#20196;&#22312; ld.so</li>
+</ul>
+</li>
+<li class=" ml-8">&#25551;&#36848;&#20102;&#19968;&#20010;&#29366;&#24577;&#26426;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25191;&#34892; <code>write(1, "Hello\n", 6)</code></li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#36824;&#26377;&#19968;&#20123;&#26410;&#35299;&#20915;&#30340;&#38382;&#39064;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20026;&#20160;&#20040;&#36755;&#20837; <code>./a.out</code> &#25353;&#19979;&#22238;&#36710;&#38190;&#65292;&#31243;&#24207;&#23601;&#25191;&#34892;&#20102;&#65311;</li>
+<li class=" ml-8">&#20026;&#20160;&#20040; Ctrl-C &#33021;&#36864;&#20986;&#31243;&#24207;&#65311;</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26412;&#27425;&#35838;&#20869;&#23481;&#19982;&#30446;&#26631;</h2>
+<p class=" font-serif my-1">&#29702;&#35299;&#25805;&#20316;&#31995;&#32479;&#20013;&#30340;&#32456;&#31471;&#35774;&#22791;&#21644;&#32534;&#31243;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#32456;&#31471;&#26159;&#25805;&#20316;&#31995;&#32479;&#37324;&#30340;&#19968;&#20010;&#23545;&#35937;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#23398;&#20064; Shell &#30340;&#23454;&#29616;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">pipe-fork-execve: UNIX &#21746;&#23398;&#30340;&#22522;&#30784;</li>
+<li class=" ml-8">&#20449;&#21495;&#21644; job control</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#32456;&#31471;</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#32456;&#31471;&#65306;&#25805;&#20316;&#31995;&#32479;&#37324;&#30340;&#19968;&#20010;&#23545;&#35937;</h2>
+<p class=" font-serif my-1">&#20160;&#20040;&#23545;&#35937;&#20063;&#27809;&#26377;&#65292;&#20063;&#24471;&#26377;&#20010; I/O &#35774;&#22791;&#65292;&#19981;&#28982;&#20154;&#23601;&#27809;&#27861;&#29992;&#35745;&#31639;&#26426;&#20102;&#65281;</p>
+<p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/vt100.jpg" width="300px"></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="https://en.wikipedia.org/wiki/Teleprinter" class=" text-amber-900">tty</a> (teleprinter; &#30005;&#20256;&#25171;&#23383;&#26426;)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#26368;&#26089;&#23601;&#26159;<a href="https://www.bilibili.com/video/BV1FA411u7P9/" class=" text-amber-900">&#26426;&#26800;&#25171;&#23383;&#26426;</a>, 11:13 &#24320;&#22987;&#30331;&#38470;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#29289;&#29702;&#36755;&#20986;&#21040;&#25171;&#21360;&#32440;&#19978;</li>
+<li class=" ml-8">&#29289;&#29702;&#25171;&#21360;&#19981;&#33021;&#8220;&#21024;&#38500;&#19968;&#20010;&#23383;&#31526;&#8221;<ul class=" list-disc font-serif">
+<li class=" ml-8">(&#21482;&#33021;&#25171;&#21360;&#8220;&#21069;&#38754;&#37027;&#20010;&#23383;&#31526;&#34987;&#21024;&#25481;&#20102;&#8221;)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class=" ml-8">CRT &#25216;&#26415;&#20986;&#29616;&#21518;<ul class=" list-disc font-serif">
+<li class=" ml-8"><del>Virtual</del> Video Terminal (&#32456;&#31471;)</li>
+<li class=" ml-8">VT-52 (1975): 80 x 24; &#21452;&#21521;&#28378;&#21160;; &#20809;&#26631;&#25511;&#21046;&#21629;&#20196;</li>
+<li class=" ml-8">VT-100 (1978): &#31532;&#19968;&#20010;&#25903;&#25345; ANSI escape codes &#30340;&#32456;&#31471;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#32456;&#31471;&#65306;&#20026;&#20309;&#32463;&#20037;&#19981;&#34928;&#65311;</h2>
+<p class=" font-serif my-1">&#20170;&#22825;&#30340;&#35745;&#31639;&#26426;&#36719;&#20214;&#38656;&#35201;<red>&#39640;&#36895;</red>&#12289;<red>&#31934;&#30830;</red>&#30340;&#20154;&#26426;&#25509;&#21475;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#32456;&#31471;&#24688;&#24688;&#28385;&#36275;&#20102;&#36825;&#20004;&#28857;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#36755;&#20837;/&#36755;&#20986;&#35774;&#22791;&#30340;&#21464;&#36801;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#40736;&#26631; (&#35302;&#25720;&#23631;)</li>
+<li class=" ml-8">&#39640;&#20998;&#36776;&#29575;&#26174;&#31034;&#22120;</li>
+<li class=" ml-8">&#35821;&#38899;/&#32930;&#20307;&#36755;&#20837;</li>
+<li class=" ml-8">&#33041;&#26426;&#25509;&#21475;&#65311;</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#32456;&#31471;&#30340;&#25277;&#35937;&#65306;&#25805;&#20316;&#31995;&#32479;&#37324;&#30340;&#19968;&#20010;&#23545;&#35937;</h2>
+<p class=" font-serif my-1">&#32456;&#31471;&#26159;&#19968;&#20010;&#21487;&#20197;&#35835;&#20889;&#30340;&#23545;&#35937;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#8220;everything is a file&#8221;&#8212;&#8212;&#32456;&#31471;&#20063;&#26159;&#20010;&#25991;&#20214;</li>
+<li class=" ml-8">&#20132;&#20114;&#24335; shell &#30340; stdin/stdout/stderr &#37117;&#26159;&#32456;&#31471;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">tty &#21629;&#20196;&#26597;&#30475;&#24403;&#21069;&#32456;&#31471;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>tty</code></li>
+<li class=" ml-8"><code>tty &lt; /dev/null</code></li>
+<li class=" ml-8"><code>strace tty</code><ul class=" list-disc font-serif">
+<li class=" ml-8">&#25805;&#20316;&#31995;&#32479;&#35838;&#30340;&#20048;&#36259;&#22312;&#20110; &#8220;&#23581;&#35797;&#8221;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20174;&#32456;&#31471;&#36755;&#20837;</h2>
+<p class=" font-serif my-1">&#32456;&#31471;&#40664;&#35748;&#26159; &#8220;cooked (canonical) mode&#8221;&#65292;&#21363;&#33258;&#24102;&#19968;&#20010; &#8220;&#34892;&#32534;&#36753;&#22120;&#8221;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">vim &#29992;&#25143;: <code>set -o vi</code> (bash); <code>bindkey -v</code> (zsh)</li>
+<li class=" ml-8">&#21482;&#26377;&#25353;&#19979;&#22238;&#36710;&#38190;&#65292;read &#31995;&#32479;&#35843;&#29992;&#25165;&#36820;&#22238;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#21478;&#19968;&#20010; &#8220;raw mode&#8221; &#25353;&#38190;&#21363;&#36820;&#22238; (<a href="../../../pages/OS/2021/demos/tty-raw.c" class=" text-amber-900">tty-raw.c</a>)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#26377;&#20102;&#23427;&#65292;&#23601;&#33021;&#23454;&#29616; vim &#21862;&#65281;</li>
+<li class=" ml-8">&#26377;&#20102;&#23427;&#65292;&#32473; read &#35774;&#32622;&#19968;&#20010; timeout&#65292;&#23601;&#33021;&#22312;&#27809;&#26377;&#25353;&#38190;&#30340;&#21069;&#25552;&#19979;&#26356;&#26032;&#23631;&#24149;&#21862;&#65281;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#23454;&#29616;&#28216;&#25103;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="ansi-escape-codes" class=" text-xl mt-2 pb-2 font-sans">&#21521;&#32456;&#31471;&#36755;&#20986;: <a href="https://en.wikipedia.org/wiki/ANSI_escape_code" class=" text-amber-900">ANSI Escape Codes</a></h2>
+<p class=" font-serif my-1">&#19968;&#31995;&#21015;&#32456;&#31471; &#8220;&#23494;&#30721;&#8221; (in-band &#25511;&#21046;&#20449;&#21495;)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20363;&#23376;&#65306;<code>ls --color | less</code>&#65292;&#30475;&#21040;&#22909;&#22810; ESC</li>
+<li class=" ml-8">&#20363;&#23376;&#65306;&#26080;&#38480;&#25509;&#36817; &#8220;&#22270;&#24418;&#30028;&#38754;&#8221; &#30340; <a href="../../../pages/OS/2021/demos/dialog.sh" class=" text-amber-900">dialog.sh</a></li>
+<li class=" ml-8">&#20363;&#23376;&#65306;sperf &#21442;&#32771;&#23454;&#29616;&#23545; escape code &#30340;&#23553;&#35013;<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#define ESC "\033["</span>
+<span class="cp">#define move(x, y) put(ESC "%d;%dH", y + 1, x + 1)</span>
+<span class="cp">#define setbg(c)   put(ESC "48;5;%dm", c)</span>
+<span class="cp">#define setfg(c)   put(ESC "38;5;%dm", c)</span>
+<span class="cp">#define clear()    put(ESC "2J")</span>
+<span class="cp">#define reset()    put(ESC "39m" ESC "49m")</span>
+</code></pre></div>
+
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#25171;&#21360;&#20108;&#36827;&#21046;&#25991;&#20214;&#65292;&#8220;&#20598;&#28982;&#8221; &#30340; escape code &#21487;&#33021;&#25913;&#21464;&#32456;&#31471;&#30340;&#34892;&#20026;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">reset (1)</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#21521;&#32456;&#31471;&#36755;&#20986;</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">&#20197;&#20026;&#25925;&#20107;&#32467;&#26463;&#20102;&#65311;&#35809;&#24322;&#30340;&#20107;&#24773;&#21457;&#29983;&#20102;&#8230;&#8230;</p>
+</blockquote>
+<p class=" font-serif my-1"><code>ls --color=auto</code></p>
+<p class=" font-serif my-1"><code>ls --color=auto | less</code></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20320;&#21457;&#29616;&#20160;&#20040;&#19981;&#21516;&#20102;&#21527;&#65311;</li>
+<li class=" ml-8">&#35797;&#35797; <code>ls --color | cat</code></li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#36824;&#35760;&#24471; fork &#26102;&#20505;&#30340;&#20363;&#23376;&#21527;&#65311;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>./a.out</code> &#21644; <code>./a.out | wc -l</code> &#24471;&#21040;&#30340;&#34892;&#25968;&#19981;&#21516;</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#19968;&#20123;&#20998;&#26512;</h2>
+<p class=" font-serif my-1">&#20004;&#20010;&#21629;&#20196;&#25191;&#34892;&#30340;&#21807;&#19968;&#24046;&#21035;&#26159; stdout &#36755;&#20986;&#23545;&#35937;&#19981;&#21516;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#24212;&#29992;&#31243;&#24207;&#26681;&#25454;&#26159;&#19981;&#26159;&#32456;&#31471;&#65292;&#20889;&#20837;&#20102;&#19981;&#21516;&#30340;&#25968;&#25454;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#27604;&#36739; strace/ltrace &#30340; diff!</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>strace<span class="w"> </span>ls<span class="w"> </span>--color<span class="o">=</span>auto<span class="w">             </span><span class="m">2</span>&gt;<span class="w"> </span>strace-a.log
+strace<span class="w"> </span>ls<span class="w"> </span>--color<span class="o">=</span>auto<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="w"> </span>strace-b.log
+</code></pre></div>
+
+<hr>
+<p class=" font-serif my-1">&#30772;&#26696;&#32467;&#26524;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">libc: <code>isatty(1)</code> - stdout &#26159;&#21542;&#26159; tty (&#31455;&#28982;&#30475;&#25026;&#20102;)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21442;&#32771;: setbuf (3); fork &#30340;&#38382;&#39064;&#21040;&#27492;&#20840;&#37096;&#35299;&#20915;</li>
+</ul>
+</li>
+<li class=" ml-8">syscall: <code>ioctl(1, TCGETS, ...)</code><ul class=" list-disc font-serif">
+<li class=" ml-8">&#29992;&#20110;&#31649;&#29702;&#25991;&#20214; (&#23545;&#35937;) &#30340;&#31995;&#32479;&#35843;&#29992;&#65307;&#19979;&#21322;&#23398;&#26399;&#35762;&#35299;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26356;&#22810;&#30340;&#32456;&#31471;&#25511;&#21046;</h2>
+<p class=" font-serif my-1">termios (3)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#8220;a general terminal interface that is provided to control asynchronous communications ports&#8221;</li>
+</ul>
+<p class=" font-serif my-1">&#26377;&#20852;&#36259;&#30340;&#21516;&#23398;&#65306;</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>$ stty -a
+speed 38400 baud; rows 24; columns 80; line = 0;
+intr = ^C; quit = ^\; erase = ^?; kill = ^U; eof = ^D; eol = &lt;undef&gt;;
+eol2 = &lt;undef&gt;; swtch = &lt;undef&gt;; start = ^Q; stop = ^S; susp = ^Z; rprnt = ^R;
+werase = ^W; lnext = ^V; discard = ^O; min = 1; time = 0;
+-parenb -parodd -cmspar cs8 -hupcl -cstopb cread -clocal -crtscts
+...
+</code></pre></div></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="shell-hello-world" class=" text-2xl mt-2 font-sans">Shell &#21644; Hello World</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="unix-shell" class=" text-xl mt-2 pb-2 font-sans">UNIX Shell</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">&#25105;&#20204;&#26159;&#25805;&#20316;&#31995;&#32479;&#30340;&#29992;&#25143;&#12290;&#25805;&#20316;&#31995;&#32479;&#26159;&#31995;&#32479;&#35843;&#29992;&#30340; API&#12290;&#37027;&#25105;&#20204;&#24590;&#20040;&#29992;&#25805;&#20316;&#31995;&#32479;&#65311;&#65311;</p>
+</blockquote>
+<p class=" font-serif my-1"><red>Shell &#26159;&#19968;&#20010;&#32534;&#31243;&#35821;&#35328;</red></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#26159;&#19968;&#20010;&#26368;&#22522;&#30784;&#30340; &#8220;&#25226;&#21629;&#20196;&#32763;&#35793;&#25104;&#31995;&#32479;&#35843;&#29992;&#8221; &#30340;&#31243;&#24207;<ul class=" list-disc font-serif">
+<li class=" ml-8">Bash  is  an  <code>sh</code>-compatible  command language interpreter that executes commands read from the standard input or from a file.&#8221;</li>
+</ul>
+</li>
+<li class=" ml-8">&#21407;&#26469;&#25105;&#20204;&#19968;&#30452;&#22312;&#32534;&#31243;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#30452;&#21040;&#26377;&#20102; graphical shell (Windows, Gnome, ...)</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="unix" class=" text-xl mt-2 pb-2 font-sans">&#33086;&#27668;&#26377;&#28857;&#23567;&#21476;&#24618;&#30340; UNIX &#19990;&#30028;</h2>
+<p class=" font-serif my-1">&#8220;Unix is user-friendly; it's just choosy about who its friends are.&#8221;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20294;&#22914;&#26524;&#25226; shell &#29702;&#35299;&#25104;&#32534;&#31243;&#35821;&#35328;&#65292;&#8220;&#19981;&#22909;&#29992;&#8221; &#22909;&#20687;&#20063;&#27809;&#20160;&#20040;&#27611;&#30149;&#20102;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21629;&#20196;&#30340;&#35821;&#27861;&#20063;&#26159;&#36825;&#20010;&#35821;&#35328;&#30340;&#19968;&#37096;&#20998;</li>
+<li class=" ml-8"><del>&#20320;&#35265;&#36807;&#21738;&#20010;&#32534;&#31243;&#35821;&#35328; &#8220;&#22909;&#29992;&#8221; &#30340;&#65311;</del></li>
+</ul>
+</li>
+</ul>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/xkcd-tar.png" width="800px"></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="unix-shell" class=" text-xl mt-2 pb-2 font-sans">UNIX Shell: &#35821;&#35328;&#35774;&#35745;</h2>
+<p class=" font-serif my-1">&#22312; &#8220;&#33258;&#28982;&#35821;&#35328;&#8221;&#12289;&#8220;&#26426;&#22120;&#35821;&#35328;&#8221; &#21644; &#8220;1980s &#30340;&#31639;&#21147;&#8221; &#20043;&#38388;&#30340;&#20248;&#38597;&#24179;&#34913;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">text stream + &#21629;&#20196;&#34892;&#24037;&#20855;&#30340;&#32452;&#21512; (workflow)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#37325;&#23450;&#21521;: <code>cmd &gt; file &lt; file 2&gt; /dev/null</code></li>
+<li class=" ml-8">&#39034;&#24207;&#32467;&#26500;: <code>cmd1; cmd2</code>, <code>cmd1 &amp;&amp; cmd2</code>, <code>cmd1 || cmd2</code></li>
+<li class=" ml-8">&#31649;&#36947;: <code>cmd1 | cmd2</code></li>
+<li class=" ml-8">&#39044;&#22788;&#29702;: <code>$()</code>, <code>&lt;()</code></li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">1980s &#35774;&#35745;&#30340;&#38382;&#39064;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25805;&#20316;&#30340; &#8220;&#20248;&#20808;&#32423;&#8221;&#65311;<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>echo hello &gt; a.txt | cat</code> (&#35797;&#35797; bash &#21644; zsh)</li>
+</ul>
+</li>
+<li class=" ml-8">&#25991;&#26412;&#25968;&#25454; &#8220;&#36131;&#20219;&#33258;&#36127;&#8221;<ul class=" list-disc font-serif">
+<li class=" ml-8"><del>PowerShell &#21487;&#20197;&#35828;&#22312;&#22810;&#26041;&#38754;&#30340;&#35774;&#35745;&#37117;&#26159;&#23436;&#32654;&#30340;&#65292;&#21487;&#24796;&#27809;&#20154;&#29992;</del></li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="shell" class=" text-xl mt-2 pb-2 font-sans">Shell: &#19981;&#26029;&#35299;&#37322;&#25191;&#34892;&#30340;&#24490;&#29615;</h2>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">cmd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">readline</span><span class="p">(</span><span class="n">get_env</span><span class="p">(</span><span class="s">"PS1"</span><span class="p">));</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">cmd</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">parse_and_execute</span><span class="p">(</span><span class="n">cmd</span><span class="p">);</span>
+<span class="w">    </span><span class="n">free</span><span class="p">(</span><span class="n">cmd</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<hr>
+<p class=" font-serif my-1">Shell &#30340; &#8220;&#21629;&#20196;&#25552;&#31034;&#31526;&#8221;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">PS1: default</li>
+<li class=" ml-8">PS2: &#8220;command continuation&#8221;</li>
+<li class=" ml-8">PS3: select operator</li>
+<li class=" ml-8">PS4: debug mode (<code>-x</code>)</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="hello" class=" text-xl mt-2 pb-2 font-sans"><code>./hello</code> &#30340;&#23454;&#29616;</h2>
+<p class=" font-serif my-1">fork-execve</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">run_cmd</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">cmd</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">fork1</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">execve</span><span class="p">(</span>
+<span class="w">      </span><span class="n">parse_file</span><span class="p">(</span><span class="n">cmd</span><span class="p">),</span>
+<span class="w">      </span><span class="n">parse_arg</span><span class="p">(</span><span class="n">cmd</span><span class="p">),</span>
+<span class="w">      </span><span class="n">shell_env</span>
+<span class="w">    </span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">wait</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">fork1</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">pid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fork</span><span class="p">();</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pid</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="n">panic</span><span class="p">(</span><span class="s">"cannot fork"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="hello-devnull" class=" text-xl mt-2 pb-2 font-sans"><code>./hello &gt; /dev/null</code> &#30340;&#23454;&#29616;</h2>
+<p class=" font-serif my-1">fork-dup-execve</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">fork1</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">redirect</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">fd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">open</span><span class="p">(</span><span class="n">redirect_path</span><span class="p">,</span><span class="w"> </span><span class="p">...);</span>
+<span class="w">    </span><span class="n">dup2</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="n">STDOUT_FILENO</span><span class="p">);</span>
+<span class="w">    </span><span class="n">close</span><span class="p">(</span><span class="n">fd</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="n">execve</span><span class="p">(</span><span class="n">parse_file</span><span class="p">(</span><span class="n">cmd</span><span class="p">),</span><span class="w"> </span><span class="n">parse_arg</span><span class="p">(</span><span class="n">cmd</span><span class="p">),</span><span class="w"> </span><span class="n">shell_env</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">wait</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">&#23454;&#29616;&#37325;&#23450;&#21521; (cont'd)</h2>
+<p class=" font-serif my-1">System &#30340;&#34892;&#20026;&#19968;&#26086;&#20016;&#23500;&#36215;&#26469;&#65292;&#22353;&#23601;&#22810;&#20102;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22238;&#39038;&#19968;&#19979;&#21018;&#25165;&#30340;&#20195;&#30721;&#65281;</li>
+</ul>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>$ echo hello &gt; /etc/a.txt
+bash: /etc/a.txt: Permission denied
+$ sudo echo hello &gt; /etc/a.txt
+bash: /etc/a.txt: Permission denied
+</code></pre></div>
+
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/sudo-sandwich.png" width="350px"></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="hello-wc-l" class=" text-xl mt-2 pb-2 font-sans"><code>./hello | wc -l</code> &#30340;&#23454;&#29616;</h2>
+<p class=" font-serif my-1">pipe(2): &#22312;&#25805;&#20316;&#31995;&#32479;&#20013;&#21019;&#24314;&#19968;&#20010;&#31649;&#36947;&#23545;&#35937;&#21644;&#23427;&#30340;&#35835;/&#20889;&#21475;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>pipefd[0]</code> - read end&#65307;<code>pipefd[1]</code> - write end</li>
+<li class=" ml-8">pipe + fork &#23454;&#29616;&#31649;&#36947;&#36890;&#20449;</li>
+</ul>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/pipe.gif" width="500px"></p>
+<p class=" font-serif my-1">RTFSC: <a href="../../../pages/OS/2021/demos/xv6-sh.c" class=" text-amber-900">xv6-sh.c</a></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#30475;&#30475;&#21035;&#20154;&#24590;&#20040;&#20889; C &#20195;&#30721;&#30340;&#65281;</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="ctrl-c" class=" text-2xl mt-2 font-sans">&#31119;&#21033;&#65306;&#20026;&#20160;&#20040; Ctrl-C &#33021;&#36864;&#20986;&#31243;&#24207;&#65311;</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="ctrl-c" class=" text-xl mt-2 pb-2 font-sans">Ctrl-C: &#19968;&#28857;&#20063;&#19981;&#31616;&#21333;</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">&#22914;&#26524;&#20320;&#20180;&#32454;&#24819;&#19968;&#24819;&#65292;Ctrl-C &#20284;&#20046;&#24456;&#22797;&#26434;&#65281;</p>
+</blockquote>
+<hr>
+<p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/meme-vim.jpg" width="200px"></p>
+<p class=" font-serif my-1">Ctrl-C &#24182;&#19981;&#33021;&#26432;&#25481;&#25152;&#26377;&#31243;&#24207;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Stack Overflow: <a href="https://stackoverflow.blog/2017/05/23/stack-overflow-helping-one-million-developers-exit-vim/" class=" text-amber-900">helping one <em>million</em> developers exit vim</a> (2017)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#36825;&#20123;&#26159;&#24590;&#20040;&#21457;&#29983;&#30340;&#65311;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Ctrl-C &#26159;&#22312;&#31243;&#24207;&#36816;&#34892;&#30340;&#26102;&#20505;&#25353;&#19979;&#30340;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#35841;&#25910;&#21040;&#20102; Ctrl-C &#36825;&#20010;&#36755;&#20837;&#65311;<ul class=" list-disc font-serif">
+<li class=" ml-8">shell: &#19981;&#26159;&#25105;! <code>read(STDIN_FILENO, buf, size);</code></li>
+<li class=" ml-8">a.out: &#19981;&#26159;&#25105;! <code>read(STDIN_FILENO, buf, size);</code></li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="ctrl-c" class=" text-xl mt-2 pb-2 font-sans">Ctrl-C &#30340;&#32972;&#21518;</h2>
+<p class=" font-serif my-1">&#28041;&#21450;&#33509;&#24178;&#25805;&#20316;&#31995;&#32479;&#20013;&#30340;&#23545;&#35937;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25353;&#19979; Ctrl-C &#30340;&#32456;&#31471;<ul class=" list-disc font-serif">
+<li class=" ml-8">tty (1)</li>
+<li class=" ml-8"><code>echo hello &gt; $(tty)</code> (&#25105;&#20204;&#29978;&#33267;&#21487;&#20197;&#21521;&#20854;&#20182; tty &#25171;&#21360;)</li>
+</ul>
+</li>
+<li class=" ml-8">&#34987; Ctrl-C &#30340;&#36827;&#31243;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#36825;&#20010;&#38382;&#39064;&#31245;&#24494;&#26377;&#20123;&#22797;&#26434;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">tty &#21521;&#21069;&#21488;&#30340;&#36827;&#31243;&#32452; (process group) &#21457;&#36865; <code>SIGINT</code> &#20449;&#21495;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#36827;&#31243;&#32452;&#25105;&#20204;&#31245;&#21518;&#20877;&#35762;</li>
+<li class=" ml-8">&#20808;&#20551;&#35774;&#32473;&#19968;&#20010;&#36827;&#31243;&#21457;&#20449;&#21495;&#22909;&#20102;</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="signal" class=" text-xl mt-2 pb-2 font-sans">&#20449;&#21495; (Signal) &#26426;&#21046;</h2>
+<p class=" font-serif my-1">&#25805;&#20316;&#31995;&#32479;&#20869;&#24322;&#27493;&#22320;&#36890;&#30693;&#36827;&#31243;&#30340;&#26426;&#21046;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#31649;&#36947; (pipe)/&#20849;&#20139;&#20869;&#23384; (mmap) &#37117;&#26159;&#21516;&#27493;&#30340;&#36827;&#31243;&#38388;&#36890;&#20449;&#26426;&#21046;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#38500;&#38750;&#36827;&#31243;&#20027;&#21160;&#35835;/&#20889;&#65292;&#21542;&#21017;&#36890;&#20449;&#23601;&#26159;&#19968;&#21410;&#24773;&#24895;&#30340;</li>
+</ul>
+</li>
+<li class=" ml-8">&#27169;&#25311;&#20102;&#30828;&#20214;&#30340;&#20013;&#26029;&#26426;&#21046;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#34394;&#25311;&#21270;&#65306;&#36827;&#31243;&#26159; &#8220;&#34394;&#25311;&#35745;&#31639;&#26426;&#8221;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#35745;&#31639;&#26426;&#19978;&#26377;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22312;&#20107;&#20214;&#21040;&#26469;&#30340;&#26102;&#20505;&#20013;&#26029;&#22788;&#29702;&#22120;</li>
+<li class=" ml-8">&#36339;&#36716;&#21040;&#22788;&#29702;&#22120;&#39044;&#35774;&#30340;&#20013;&#26029;&#22788;&#29702;&#31243;&#24207;</li>
+</ul>
+</li>
+<li class=" ml-8">&#36827;&#31243;&#19978;&#20063;&#21487;&#20197;&#26377;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22312;&#20107;&#20214;&#21040;&#26469;&#30340;&#26102;&#20505; signal &#36827;&#31243;</li>
+<li class=" ml-8">&#36339;&#36716;&#21040;&#22788;&#29702;&#22120;&#39044;&#35774;&#30340; signal &#22788;&#29702;&#31243;&#24207;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="signal-kill" class=" text-xl mt-2 pb-2 font-sans">signal &#21644; kill</h2>
+<p class=" font-serif my-1">ANSI C signal handling</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;signal.h&gt;</span>
+<span class="k">typedef</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="kt">sighandler_t</span><span class="p">)(</span><span class="kt">int</span><span class="p">);</span>
+<span class="kt">sighandler_t</span><span class="w"> </span><span class="nf">signal</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">signum</span><span class="p">,</span><span class="w"> </span><span class="kt">sighandler_t</span><span class="w"> </span><span class="n">handler</span><span class="p">);</span>
+</code></pre></div>
+
+<p class=" font-serif my-1">&#20026;&#32534;&#21495;&#20026; <code>signum</code> &#30340;&#20449;&#21495;&#35774;&#32622;&#22788;&#29702;&#31243;&#24207; <code>handler</code></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>SIG_IGN</code> (ignore), <code>SIG_DFL</code> (default), &#25110;&#26159;&#19968;&#20010;&#20989;&#25968;&#30340;&#22320;&#22336;<ul class=" list-disc font-serif">
+<li class=" ml-8">demo: <a href="../../../pages/OS/2021/demos/signal-handler.c" class=" text-amber-900">signal-handler.c</a><ul class=" list-disc font-serif">
+<li class=" ml-8">stty &#21487;&#20197;&#26597;&#30475;&#26356;&#22810;&#30340;&#32456;&#31471;&#25511;&#21046;&#21629;&#20196; (Ctrl-D, Ctrl-\, ...)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#20351;&#29992; kill &#31995;&#32479;&#35843;&#29992;&#21457;&#36865;&#20449;&#21495;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21629;&#20196;&#34892;&#65306;<code>kill -SIGNAME pid</code><ul class=" list-disc font-serif">
+<li class=" ml-8">&#21487;&#20197;&#23545;&#21018;&#25165;&#30340; signal-handler.c &#21457;&#36865; <code>SIGINT</code>, <code>SIGQUIT</code>, ...<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>SIGKILL</code> (9) &#26159;&#19981;&#21487;&#24573;&#30053;&#30340;&#20449;&#21495; (&#24378;&#34892;&#32456;&#27490;&#65292;&#22240;&#27492;&#19981;&#25512;&#33616;)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="sigsegv-sigfpe" class=" text-xl mt-2 pb-2 font-sans">SIGSEGV &#21644; SIGFPE</h2>
+<p class=" font-serif my-1">&#22823;&#23478;&#29087;&#24713;&#30340; Segmentation Fault/Floating point exception (core dumped)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">#GP, #PF &#25110; #DIV<ul class=" list-disc font-serif">
+<li class=" ml-8">UNIX &#31995;&#32479;&#20250;&#32473;&#36827;&#31243;&#21457;&#36865;&#19968;&#20010;&#20449;&#21495;</li>
+<li class=" ml-8">&#27492;&#26102;&#21487;&#20197;&#29983;&#25104;&#19968;&#20010; &#8220;core&#8221; &#25991;&#20214; (ELF &#26684;&#24335;)&#65292;&#33021;&#29992; gdb &#35843;&#35797;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">UNIX (System V) &#20449;&#21495;&#20854;&#23454;&#26159;&#26377;&#19968;&#20123; dark corners &#30340;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22914;&#26524; <code>SIGSEGV</code> &#37324;&#20877;&#27425; <code>SIGSEGV</code>?<ul class=" list-disc font-serif">
+<li class=" ml-8">POSIX.1 solved the portability mess by specifying <code>sigaction(2)</code>, which provides explicit control of the semantics when a signal handler is invoked; use that interface instead of <code>signal()</code>. <ul class=" list-disc font-serif">
+<li class=" ml-8">&#25903;&#25345;&#22810;&#32447;&#31243; (&#26089;&#26399;&#30340; UNIX &#36824;&#27809;&#26377;&#22810;&#32447;&#31243;)&#12289;&#20449;&#21495;&#23631;&#34109;&#12289;&#8230;&#8230;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#21478;&#19968;&#20010;&#25335;&#38382;&#28789;&#39746;&#30340;&#38382;&#39064;</h2>
+<p class=" font-serif my-1">&#22914;&#26524;&#19968;&#20010;&#36827;&#31243; <code>fork()</code> &#20102;&#24456;&#22810;&#20221;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25105;&#20204;&#25353; Ctrl-C &#21040;&#24213;&#26159;&#26432;&#25481;&#19968;&#20010;&#65292;&#36824;&#26159;&#26432;&#25481;&#20840;&#37096;&#65311;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22914;&#26524;&#25105; fork &#20102;&#19968;&#20221;&#35745;&#31639;&#20219;&#21153;&#21602;&#65311;</li>
+<li class=" ml-8">&#22914;&#26524;&#25105; fork &#20102;&#19968;&#20010; shell &#21602;&#65311;</li>
+<li class=" ml-8">&#21571;&#8230;&#8230;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Shell &#30340;&#19968;&#20010;&#37325;&#35201;&#21151;&#33021;: Job Control</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#31561;&#25928;&#20110; graphical shell (Windows/MacOS) &#31383;&#21475;&#19978;&#30340; &#8220;&#21449;&#21449;&#8221; &#21644; &#8220;&#26368;&#23567;&#21270;&#8221;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21629;&#20196;&#34892;&#20063;&#21487;&#20197;&#31649;&#29702;&#22810;&#20010;&#31243;&#24207;&#30340;&#36816;&#34892;&#65281;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="unix-shell-job-control" class=" text-xl mt-2 pb-2 font-sans">UNIX Shell &#20013;&#30340; Job Control</h2>
+<p class=" font-serif my-1">&#20219;&#21153;&#31649;&#29702;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>jobs</code>: &#26597;&#30475; (<code>+</code>: most current job; <code>-</code>: previous job)</li>
+<li class=" ml-8"><code>kill %1</code> &#26432;&#25481; job (<code>/bin/kill %1</code> &#23601;&#19981;&#34892;&#65292;&#20026;&#20160;&#20040;&#65311;)</li>
+<li class=" ml-8">Ctrl-C &#32473;&#21069;&#21488; <red>job</red> &#21457;&#36865; <code>SIGINT</code></li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#21069;&#21488;/&#21518;&#21488;&#36816;&#34892;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>./a.out &amp;</code> &#21019;&#24314; job &#21518;&#21488;&#36816;&#34892;</li>
+<li class=" ml-8">Ctrl-Z &#21487;&#20197;&#25226;&#21069;&#21488; job &#25918;&#21040;&#21518;&#21488; (&#24182;&#26242;&#20572;)<ul class=" list-disc font-serif">
+<li class=" ml-8">vim &#25918;&#21040;&#21518;&#21488;&#23601; &#8220;suspended&#8221;</li>
+</ul>
+</li>
+<li class=" ml-8"><code>bg</code>/<code>fg</code> &#21487;&#20197;&#20999;&#25442;&#21069;&#21488;&#21518;&#21488;&#25191;&#34892;</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="job-control" class=" text-xl mt-2 pb-2 font-sans">Job Control &#32972;&#21518;&#30340;&#26426;&#21046;</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">RTFM: setpgid/getpgid(2)&#65292;&#23427;&#35299;&#37322;&#20102; process group, session, controlling terminal &#20043;&#38388;&#30340;&#20851;&#31995;&#12290;</p>
+</blockquote>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">The PGID (process-group ID) is preserved across an execve(2) and inherited in fork(2)...</li>
+<li class=" ml-8">Each process group is a member of a <em>session</em></li>
+</ul>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/tty-session.png" width="600px"></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="job-control-rtfm-contd" class=" text-xl mt-2 pb-2 font-sans">Job Control: RTFM (cont'd)</h2>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">A session can have a <em>controlling terminal</em>.<ul class=" list-disc font-serif">
+<li class=" ml-8">At any time, one (and only one) of the process groups in the session can be the <em>foreground process group</em> for the terminal; the remaining process groups are in the <em>background</em>.<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>./a.out &amp;</code> &#21019;&#24314;&#26032;&#30340;&#36827;&#31243;&#32452; (&#20351;&#29992; setpgid)</li>
+</ul>
+</li>
+<li class=" ml-8">If a signal is generated  from  the  terminal  (e.g., typing the interrupt key to generate <code>SIGINT</code>), that signal is sent to the foreground process group.<ul class=" list-disc font-serif">
+<li class=" ml-8">Ctrl-C &#26159;&#32456;&#31471; (&#35774;&#22791;) &#21457;&#30340;&#20449;&#21495;&#65292;&#21457;&#32473; foreground &#36827;&#31243;&#32452;</li>
+<li class=" ml-8">&#25152;&#26377; fork &#20986;&#30340;&#36827;&#31243; (&#40664;&#35748;&#21516;&#19968;&#20010; PGID) &#37117;&#20250;&#25910;&#21040;&#20449;&#21495;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="job-control-rtfm-contd" class=" text-xl mt-2 pb-2 font-sans">Job Control: RTFM (cont'd)</h2>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Only  the foreground process group may read(2) from the terminal; if a background process group tries to read(2) from the terminal, then the group is sent a <code>SIGTTIN</code> signal, which suspends it.<ul class=" list-disc font-serif">
+<li class=" ml-8">&#36825;&#35299;&#37322;&#20102; <code>cat &amp;</code> &#26102;&#20320;&#30475;&#21040;&#30340; &#8220;suspended (tty input)&#8221;</li>
+<li class=" ml-8">&#21516;&#19968;&#20010;&#36827;&#31243;&#32452;&#30340;&#36827;&#31243; read tty &#20250;&#31454;&#20105;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#36890;&#24120;&#20320;&#19981;&#20250;&#20889;&#36825;&#26679;&#30340;&#31243;&#24207;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class=" ml-8">The <code>setpgid()</code> and <code>getpgrp()</code> calls are used by programs such as bash(1) to create process groups in order to implement shell job control.<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22914;&#26524;&#24076;&#26395;&#20174;&#36827;&#31243;&#32452;&#37324; detach, &#20351;&#29992; setpgid</li>
+<li class=" ml-8"><code>ps -eo pid,pgid,cmd</code> &#21487;&#20197;&#26597;&#30475;&#36827;&#31243;&#30340; pgid</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="job-control" class=" text-xl mt-2 pb-2 font-sans">Job Control: &#23567;&#32467;</h2>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/tty-overview.png" width="800px"></p></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#24635;&#32467;</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#24635;&#32467;</h2>
+<p class=" font-serif my-1">&#29702;&#35299;&#32456;&#31471;&#21644; Shell</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Shell: UNIX &#20013;&#26368;&#22522;&#30784;&#30340;&#24212;&#29992;&#31243;&#24207;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#23558;&#29992;&#25143;&#21629;&#20196;&#32763;&#35793;&#31243;&#24207;&#31995;&#32479;&#35843;&#29992;</li>
+<li class=" ml-8">&#22522;&#20110;&#32456;&#31471;&#21644;&#25805;&#20316;&#31995;&#32479; API (fork-pipe-execve, job control) &#23454;&#29616;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Take-away messages</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25805;&#20316;&#31995;&#32479;&#33267;&#27492;&#24050;&#27809;&#26377;&#20219;&#20309; &#8220;&#31070;&#31192;&#24863;&#8221;<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>./a.out</code> &#30340;&#25191;&#34892;<ul class=" list-disc font-serif">
+<li class=" ml-8">shell &#20351;&#29992; read &#20174; tty &#35774;&#22791;&#35835;&#21040;&#21629;&#20196;&#21518;&#32463;&#36807; fork-execve &#21152;&#36733;&#20102;&#21160;&#24577;&#38142;&#25509;&#30340; ELF &#23545;&#35937; <code>a.out</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+  
+</div>
+</div>
+
+<script src="../../../static/reveal/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    
+    width: 1024, height: 768,
+    
+    slideNumber: 'c/t',
+    controlsTutorial: false,
+    progress: false,
+    hash: true,
+    center: false,
+    autoAnimateUnmatched: true,
+    autoAnimateEasing: 'ease-out',
+    autoAnimateDuration: 0.3,
+    transitionSpeed: 'fast'
+  });
+</script>
+
+
+</body>
+
+</html>

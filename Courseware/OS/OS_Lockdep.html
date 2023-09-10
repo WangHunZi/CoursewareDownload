@@ -1,0 +1,236 @@
+<!DOCTYPE html><html class="h-100">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="../static/css/base.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="../static/img/favicon.png" type="image/x-icon">
+
+  <style>
+    .font-sans {
+      font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+    }
+    .font-serif {
+      font-family: 'Source Serif Pro', 'Songti SC', 'SimSun', 'Serif', serif;
+    }
+  </style>
+  <link rel="stylesheet" href="../static/katex/katex.min.css">
+  <script defer src="../static/katex/katex.min.js"></script>
+  <script defer src="../static/katex/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+            // customised options
+            // &#8226; auto-render specific keys, e.g.:
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ],
+            // &#8226; rendering keys, e.g.:
+            throwOnError : false
+          });
+      });
+  </script>
+
+
+  
+
+<style>
+.article {
+  -webkit-hyphens: auto;
+}
+form {
+  margin-block-end: 0;
+}
+img {
+  display: inline-block;
+}
+code { font-size: 85%; }
+pre {
+  font-size: 95%;
+  line-height: 120%;
+}
+blockquote {
+  font-size: 95%;
+}
+p {
+  font-size: 105%;
+  text-indent: 2em;
+}
+li {
+  font-size: 105%;
+}
+blockquote p {
+  text-indent: 0em;
+}
+.float-right {
+  padding-left: 10px;
+}
+.float-left {
+  padding-right: 10px;
+}
+a {
+  color: rgb(29 78 216);
+}
+strong {
+  font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+}
+.box        {
+  border-radius: 2px; padding: 1px 4px 2px 4px;
+  font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+  font-size: 95%;
+}
+.box-blue,  .badge-primary  { background-color: rgba(66, 139, 202, 0.5); color: #1d4ed8; }
+.box-green, .badge-success  { background-color: rgba(92, 184, 92, 0.5);  color: #15803d; }
+.box-red,   .badge-danger   { background-color: rgba(217, 83, 79, 0.5);  color: #b91c1c; }
+.box-yellow,.badge-warning  { background-color: rgba(240, 173, 78, 0.5); color: #a16207; }
+.box-gray   { background-color: #a0a0a0; }
+
+.badge {
+  padding: 1 4 1 4;
+  display: inline-block;
+  border-radius: 0.25rem;
+  border: 1px solid;
+}
+.message p {
+  text-indent: 0em;
+  margin-top: 1px;
+}
+.message h1, h2, h3, h4, h5 {
+  font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+}
+.message h2 {
+  font-size: 120%;
+  margin-top: 5px;
+  margin-bottom: 2px;
+}
+.message li {
+  list-style: disc;
+  margin-left: 2em;
+}
+li > p {
+  text-indent: 0em;
+}
+block-quote h4 {
+  float: left;
+  display: inline-block;
+}
+.center {
+  display: block;
+  margin: auto;
+}
+hr {
+  margin-top: 20px;
+  padding-bottom: 20px;
+}
+
+.fa-gradient {
+	background: -webkit-gradient(linear, left top, left bottom, from(rgb(99, 27, 103)), to(#333));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+</style>
+
+
+  <title>The kernel lock validator</title>
+</head>
+
+<body class="d-flex flex-column h-100">
+  
+  
+
+<div>
+
+<div class="px-2 py-1 w-full fixed z-50 bg-gradient-to-r from-black via-purple-700 via-purple-500 shadow-lg" style="-webkit-backdrop-filter: saturate(150%) blur(4px); backdrop-filter: saturate(150%) blur(4px)">
+  <form>
+    <a href="../index.html"><span class="text-lg px-2 text-white">Yanyan's Wiki</span></a>
+    <a href="2023/index.html"><span class="text-sm px-2 text-white">&#25805;&#20316;&#31995;&#32479; (2023)</span></a>
+    <input maxlength="9" id="token-input" class="float-right appearance-none border border-transparent px-2 py-1 w-20 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-xs focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent font-mono" type="text" placeholder="TOKEN" oninput="login();">
+  </form>
+</div>
+
+<div class="article container mx-auto md:px-8 lg:px-8 xl:px-8 2xl:px-8 shadow-lg border pb-8 pt-10 max-w-screen-md text-justify divide-y-2 divide-white">
+  <div><h1 id="the-kernel-lock-validator" class=" text-2xl mt-2 font-sans">The kernel lock validator</h1>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">&#36825;&#26159; LWN.net &#22312; 2006 &#24180; 5 &#26376;&#21457;&#24067;&#30340; lockdep &#25991;&#26723;&#12290;&#26356;&#35814;&#32454;&#30340;&#25991;&#26723;&#21442;&#32771; <a href="https://www.kernel.org/doc/Documentation/locking/lockdep-design.txt" class=" text-amber-900">kernel.org</a>&#12290;</p>
+</blockquote>
+<p class=" font-serif my-1">Locking is a necessary evil in operating systems; without a solid locking regime, different parts of the system will collide when trying to access the same resources, leading to data corruption and general chaos. But locking has hazards of its own; carelessly implemented locking can cause system deadlocks. As a simple example, consider two locks $L_1$ and $L_2$. Any code which requires both locks must take care to acquire the locks in the right order. If one function acquires $L_1$ before $L_2$, but another function acquires them in the opposite order, eventually the system will find itself in a situation where each function has acquired one lock and is blocked waiting for the other - a deadlock.</p>
+<p class=" font-serif my-1">A race condition like the one described above may be a one-in-a-million possibility, but, with computers, it does not take too long to exercise a code path a million times. Sooner or later, a system containing this sort of bug will lock up, leaving its users wondering what is going on. To avoid this sort of situation, kernel developers try to define rules for the order in which locks should be acquired. But, in a system with many thousands of locks, defining a comprehensive set of rules is challenging at best, and enforcing them is even harder. So locking bugs creep into the kernel, lurk until some truly inconvenient time, and eventually surprise some unsuspecting user.</p>
+<p class=" font-serif my-1">Over time, the kernel developers have made increasing use of automated code analysis tools as those tools become available. The latest such is <a href="http://lwn.net/Articles/185605/" class=" text-amber-900">the first version of the lock validator patch</a>, posted by Ingo Molnar (&#36825;&#20301;&#20063;&#26159; Complete-Fair-Scheduler &#30340;&#20316;&#32773;). This patch (a 61-part set, actually) adds a complex infrastructure to the kernel which can then be used to prove that none of the locking patterns observed in a running system could ever deadlock the kernel.</p>
+<p class=" font-serif my-1">To that end, the lock validator must track real locking patterns in the kernel. There is no point, however, in tracking every individual lock - there are thousands of them, but many of them are treated in exactly the same way by the kernel. For example, every inode structure contains a spinlock, as does every file structure. Once the kernel has seen how locking is handled for one inode structure, it knows how it will be handled for every inode structure. So, somehow, the lock validator needs to be able to recognize that all spinlocks contained within (for example) the inode structure are essentially the same.</p>
+<p class=" font-serif my-1">To this end, every lock in the system (including rwlocks and mutexes, now) is assigned a specific key. For locks which are declared statically (for example, files_lock, which protects the list of open files), the address of the lock is used as the key. Locks which are allocated dynamically (as most locks embedded within structures are) cannot be tracked that way, however; there may be vast numbers of addresses involved, and, in any case, all locks associated with a specific structure field should be mapped to a single key. This is done by recognizing that these locks are initialized at run time, so, for example, spin_lock_init() is redefined as:</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp"># define spin_lock_init(lock) \</span>
+<span class="cp">do { \</span>
+<span class="cp">  static struct lockdep_type_key __key; \</span>
+<span class="cp">  __spin_lock_init((lock), #lock, &amp;__key); \</span>
+<span class="cp">} while (0)</span>
+</code></pre></div>
+
+<p class=" font-serif my-1">Thus, for each lock initialization, this code creates a static variable (<code>__key</code>) and uses its address as the key identifying the type of the lock. Since any particular type of lock tends to be initialized in a single place, this trick associates the same key with every lock of the same type.</p>
+<p class=" font-serif my-1">Next, the validator code intercepts every locking operation and performs a number of tests:</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">
+<p class=" font-serif my-1">The code looks at all other locks which are already held when a new lock is taken. For all of those locks, the validator looks for a past occurrence where any of them were taken <em>after</em> the new lock. If any such are found, it indicates a violation of locking order rules, and an eventual deadlock.</p>
+</li>
+<li class=" ml-8">
+<p class=" font-serif my-1">A stack of currently-held locks is maintained, so any lock being released should be at the top of the stack; anything else means that something strange is going on.</p>
+</li>
+<li class=" ml-8">
+<p class=" font-serif my-1">Any spinlock which is acquired by a hardware interrupt handler can never be held when interrupts are enabled. Consider what happens when this rule is broken. A kernel function, running in process context, acquires a specific lock. An interrupt arrives, and the associated interrupt handler runs on the same CPU; that handler then attempts to acquire the same lock. Since the lock is unavailable, the handler will spin, waiting for the lock to become free. But the handler has preempted the only code which will ever free that lock, so it will spin forever, deadlocking that processor.</p>
+</li>
+</ul>
+<p class=" font-serif my-1">To catch problems of this type, the validator records two bits of information for every lock it knows about: (1) whether the lock has ever been acquired in hardware interrupt context, and (2) whether the lock is ever held by code which runs with hardware interrupts enabled. If both bits are set, the lock is being used erroneously and an error is signaled.</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Similar tests are made for software interrupts, which present the same problems.</li>
+</ul>
+<p class=" font-serif my-1">The interrupt tests are relatively straightforward, requiring just four bits of information for each lock (though the situation is a little more complicated for rwlocks). But the ordering tests require a bit more work. For every known lock key, the validator maintains two lists. One of them contains all locks which have ever been held when the lock of interest (call it <em>L</em>) is acquired; it thus contains the keys of all locks which might be acquired before <em>L</em>. The other list (the "after" list) holds all locks acquired while the <em>L</em> is held. These two lists thus encapsulate the proper ordering of how those other locks should be acquired relative to <em>L</em>.</p>
+<p class=" font-serif my-1">Whenever <em>L</em> is acquired, the validator checks whether any lock on the "after" list associated with <em>L</em> is already held. It should not find any, since all locks on the "after" list should only be acquired after acquiring <em>L</em>. Should it find a lock which should not be held, an error is signaled. The validator code also takes the "after" list of <em>L</em>, connects it with the "before" lists of the currently-held locks, and convinces itself that there are no ordering or interrupt violations anywhere within that chain. If all the tests pass, the validator updates the various "before" and "after" lists and the kernel continues on its way.</p>
+<p class=" font-serif my-1">Needless to say, all this checking imposes a certain amount of overhead; it is not something which one will want to enable on production kernels. It is not quite as bad as one might expect, however. As the kernel does its thing, the lock validator maintains its stack of currently-held locks. It also generates a 64-bit hash value from that series of locks. Whenever a particular combination of locks is validated, the associated hash value is stored in a table. The next time that lock sequence is encountered, the code can find the associated hash value in the table and know that the checks have already been performed. This hashing speeds the process considerably. </p>
+<p class=" font-serif my-1">Of course, there are plenty of exceptions to the locking rules as understood by the validator. As a result, a significant portion of the validator patch set is aimed at getting rid of false error reports. For example, the validator normally complains if more than one lock with the same key is held at the same time - doing so is asking for deadlocks. There are situations, however, where this pattern is legitimate. For example, the block subsystem will often lock a block device, then lock a partition within that device. Since the partition also looks like a block device, the validator signals an error. To keep that from happening, the validator implements the notion of lock "subtypes." In this case, locks on partition devices can be marked with a different subtype, allowing their usage to be validated properly. This marking is done by using new versions of the locking functions (spin_lock_nested(), for example) which take a subtype parameter.</p>
+<p class=" font-serif my-1">The lock validator was added to <a href="http://lwn.net/Articles/185572/" class=" text-amber-900">2.6.17-rc5-mm1</a>, so interested people can play with it. Waiting for another -mm release might not be a bad idea, however; there has since been a fairly long series of validator fixes posted.</p>
+<p class=" font-serif my-1">The key point behind all of this is that deadlock situations can be found without having to actually make the kernel lock up. By watching the sequences in which locks are acquired, the validator can extrapolate a much larger set of possible sequences. So, even though a particular deadlock might only happen as the result of unfortunate timing caused by a specific combination of strange hardware, a rare set of configuration options, 220V power, a slightly flaky video controller, Mars transiting through Leo, an old version of gcc, an application which severely stresses the system (yum, say), and an especially bad Darl McBride hair day, the validator has a good chance of catching it. So this code should result in a whole class of bugs being eliminated from the kernel code base; that can only be a good thing.</p></div>
+</div>
+
+<div class="container text-xs py-3">
+  <span class="text-muted">
+    <center><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="../static/img/cc-4.0.png"></a>
+    &#160;&#160;&#160;<a style="color:inherit" href="https://beian.miit.gov.cn/">&#33487; ICP &#22791; 2020049101 &#21495;</a>
+    </center>
+  </span>
+</div>
+
+</div>
+
+<script src="../static/js/jquery.min.js"></script>
+
+<script>
+function get_token() {
+  var match = document.cookie.match(new RegExp('(^| )token=([^;]+)'));
+  if (match) return match[2];
+  else return "";
+}
+var token = get_token();
+var hint = "token", box = $("#token-input");
+
+if (token == "") { }
+else { box.val(token); }
+
+function login() {
+  var token = box.val()
+  if (!token) {
+    document.cookie = ''
+  } else {
+    document.cookie = 'token=' + token + '; expires=Fri, 31 Dec 9999 23:59:59 GMT;'
+  }
+}
+</script>
+
+
+</body>
+
+</html>

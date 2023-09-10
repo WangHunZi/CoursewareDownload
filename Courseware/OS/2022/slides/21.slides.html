@@ -1,0 +1,825 @@
+<!DOCTYPE html><html class="h-100">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="../../../static/css/base.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
+
+  <style>
+    .font-sans {
+      font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+    }
+    .font-serif {
+      font-family: 'Source Serif Pro', 'Songti SC', 'SimSun', 'Serif', serif;
+    }
+  </style>
+  <link rel="stylesheet" href="../../../static/katex/katex.min.css">
+  <script defer src="../../../static/katex/katex.min.js"></script>
+  <script defer src="../../../static/katex/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+            // customised options
+            // &#8226; auto-render specific keys, e.g.:
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ],
+            // &#8226; rendering keys, e.g.:
+            throwOnError : false
+          });
+      });
+  </script>
+
+
+  
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="../../../static/reveal/reveal.css">
+<link rel="stylesheet" href="../../../static/reveal/theme/simple.css" id="theme">
+
+<style>
+.reveal .slide-number {
+  font-size: 26px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, .3);
+}
+
+.reveal .full-screen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.reveal .slides {
+  border: 1.5px #ddd solid;
+  border-radius: 7px;
+  text-align: left;
+  font-weight: 300;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  font-family: 'Lato', 'SimHei', 'STXihei', 'Droid Sans';
+  font-weight: 400;
+}
+
+.reveal p, .reveal li, .reveal center {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Droid Sans';
+}
+
+.reveal li + li {
+  margin-top: 10px;
+}
+
+.reveal ul {
+  display: block;
+  margin-right: 15px;
+}
+
+.reveal p, .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5 {
+  padding:  0 25px 0 25px;
+}
+
+.reveal table {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Sans Serif';
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.reveal th {
+  background-color: #eee;
+}
+
+.reveal tr:nth-child(even) {
+  background-color: #efffff;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  text-align: left;
+  margin: 0 0 20px 0;
+ color: #222; 
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
+
+
+.reveal h1 {
+  margin: 0 10 0 10;
+  font-size: 60px;
+}
+.reveal .middle h1 {
+  text-align: center;
+}
+
+.reveal h2 {
+  font-size: 48px;
+  border-bottom: 2px solid rgb(106, 0, 95);
+  padding-bottom: 5px;
+}
+.reveal h3 { font-size: 1.15em; }
+.reveal h4 { font-size: 1.05em; }
+
+.reveal .center {
+  text-align: center;
+}
+
+.reveal .middle {
+  height: 728px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.reveal pre {
+  font-size: 28px;
+ 
+  background-color: #eee;
+
+  border-radius: 3mm;
+  padding: 10px 10px 10px 10px;
+}
+
+.reveal pre code {
+  max-height: none;
+}
+
+.reveal code {
+  font-family: 'Inconsolata', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif', Monospace;
+}
+
+.reveal .middle blockquote {
+  text-align: center;
+  color: rgb(106, 0, 95);
+  background: none;
+  box-shadow: none;
+}
+
+.reveal .middle blockquote a {
+  color: inherit;
+}
+
+.reveal blockquote p, .reveal blockquote li {
+  font-family: 'Lato', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif';
+}
+
+section .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reveal .author-block {
+  margin: 75px 0 35px 0;
+}
+.reveal .author-affiliation img {
+  margin: 15px 0 0 0;
+}
+.reveal .author-block p, .reveal .author-affiliation p  {
+  font-family: 'Kaiti', 'STKaiti', 'Serif', 'Times', 'Times New Roman';
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+.reveal .author-affiliation {
+  display: inline-block;
+  font-size: 90%;
+}
+.reveal hr {
+  border: 10px solid rgba(0, 0, 0, 0);
+}
+.reveal li {
+  margin-top: 10px;
+}
+</style>
+
+  <title>&#25805;&#20316;&#31995;&#32479;&#35774;&#35745;</title>
+</head>
+
+<body class="d-flex flex-column h-100">
+  
+  
+
+<div class="reveal">
+<div class="slides">
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#25805;&#20316;&#31995;&#32479;&#35774;&#35745;</h1>
+<p class=" font-serif my-1"><include src="Slides_Author"><div><div class="py-16">
+<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">&#33931;&#28814;&#23721;</a></p>
+</div>
+<div class="row">
+<div class="author-affiliation">
+    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#12288;&#12288;&#21335;&#20140;&#22823;&#23398;&#12288;&#12288;</p>
+    <img class="inline-img h-24" src="../../../static/img/nju-logo.jpg" style="display: inline-block;"></a>
+  </div>
+<div class="author-affiliation">
+   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#31185;&#23398;&#19982;&#25216;&#26415;&#31995;</p>
+    <img class="inline-img h-24" src="../../../static/img/njucs-logo.jpg" style="display: inline-block;"></a>
+  </div>
+<div class="author-affiliation">
+    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#36719;&#20214;&#30740;&#31350;&#25152;</p>
+    <img class="inline-img h-24" src="../../../static/img/ics-logo.png" style="display: inline-block;"></a>
+  </div>
+</div></div></include></p></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="overview" class=" text-xl mt-2 pb-2 font-sans">Overview</h2>
+<p class=" font-serif my-1">&#22797;&#20064;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25805;&#20316;&#31995;&#32479;&#35774;&#35745;&#65306;&#19968;&#32452;&#23545;&#35937; + &#35775;&#38382;&#23545;&#35937;&#30340; API</li>
+<li class=" ml-8">&#25805;&#20316;&#31995;&#32479;&#23454;&#29616;&#65306;&#19968;&#20010; C &#31243;&#24207;&#23454;&#29616;&#19978;&#38754;&#30340;&#35774;&#35745;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#22238;&#31572;&#30340;&#38382;&#39064;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><strong>Q</strong>: &#25805;&#20316;&#31995;&#32479;&#21040;&#24213;&#24212;&#35813;&#25552;&#20379;&#20160;&#20040;&#23545;&#35937;&#21644; API&#65311;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#20027;&#35201;&#20869;&#23481;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Micro/Exo/Unikernel</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#25805;&#20316;&#31995;&#32479;&#37324;&#21040;&#24213;&#35813;&#26377;&#20160;&#20040;&#65311;</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="2022425" class=" text-xl mt-2 pb-2 font-sans">2022.4.25 &#23567;&#23398;&#29983;&#21448;&#20986;&#26032;&#20135;&#21697;&#20102;</h2>
+<p class=" font-serif my-1">&#36825;&#27425;&#25903;&#25345;&#20102;&#20998;&#39029;&#21644;&#22270;&#24418;&#30028;&#38754; (&#20284;&#20046;&#26159;&#25644;&#36816;&#20102;&#19968;&#20123;&#32032;&#26448;&#65311;)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">L2: tty &#21644; fb &#39537;&#21160; (tty &#26159;&#36880;&#20687;&#32032;&#32472;&#21046;&#30340;)</li>
+<li class=" ml-8">L3: 9 &#20010;&#31995;&#32479;&#35843;&#29992; (kputc, fork, wait, exit, kill, mmap, ...)</li>
+</ul>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/min0911-os.jpg" width="700px"></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#33707;&#35201;&#24908;&#65306;&#20320;&#20204;&#26159;&#22823;&#23398;&#29983;&#21834; &#128514;</h2>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/eager-for-power.jpg" width="800px"></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#19978;&#35838;&#35848;&#30340;&#19981;&#33021;&#31216;&#20026;&#30495;&#27491;&#30340; &#8220;&#25805;&#20316;&#31995;&#32479;&#8221;</h2>
+<p class=" font-serif my-1">&#21457;&#25196;&#22823;&#23398;&#29983; RTFM &amp; RTFSC &#30340;&#20809;&#33635;&#20256;&#32479;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#33021;&#22815;&#24847;&#35782;&#21040;&#36825;&#19968;&#28857;&#30340;&#20013;/&#23567;&#23398;&#29983;&#23601;&#33021;&#25104;&#20026;&#39030;&#32423;&#30340;&#31243;&#24207;&#21592;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1"><a href="https://pubs.opengroup.org/onlinepubs/9699919799/mindex.html" class=" text-amber-900">The Open Group Base Specifications Issue 7 (2018 Ed.)</a></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">XBD: Base Definitions</li>
+<li class=" ml-8">XSH: System Interfaces</li>
+<li class=" ml-8">XCU: Shell &amp; Utilities</li>
+<li class=" ml-8">XRAT: Rationale<ul class=" list-disc font-serif">
+<li class=" ml-8">&#36825;&#26159;&#38750;&#24120;&#20851;&#38190;&#30340;&#65306;&#19981;&#20165;&#21578;&#35785; &#8220;&#26159;&#20160;&#20040;&#8221;&#65292;&#36824;&#26377; &#8220;&#20026;&#20160;&#20040;&#8221;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1"><a href="https://docs.microsoft.com/en-us/windows/win32/apiindex/windows-api-list" class=" text-amber-900">Windows API Index</a></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21644; POSIX &#30456;&#24403;&#19981;&#21516;&#30340;&#19968;&#32452;&#35774;&#35745;</li>
+<li class=" ml-8">&#8220;&#24037;&#19994;&#8221; v.s. &#8220;&#40657;&#23458;&#8221; (PowerShell v.s. bash)</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20912;&#23665;&#30340;&#19968;&#35282;</h2>
+<p class=" font-serif my-1">API &#24847;&#21619;&#30528;&#21487;&#20197;&#20114;&#30456;&#27169;&#25311;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Windows Subsystem for Linux (WSL)&#65292;&#22823;&#23478;&#37117;&#22312;&#29992;<ul class=" list-disc font-serif">
+<li class=" ml-8">WSL1: &#30452;&#25509;&#29992; Windows &#21152;&#36733; ELF &#25991;&#20214;</li>
+<li class=" ml-8">WSL2: &#34394;&#25311;&#26426;</li>
+</ul>
+</li>
+<li class=" ml-8">Linux Subsystem for Windows (Wine)</li>
+</ul>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/wined3.jpg" width="600px"></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">&#20912;&#23665;&#30340;&#19968;&#35282; (cont'd)</h2>
+<p class=" font-serif my-1">&#25805;&#20316;&#31995;&#32479;&#40664;&#40664;&#24110;&#20320;&#25215;&#36733;&#20102;&#26356;&#22810;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="https://dl.acm.org/doi/abs/10.1145/1629575.1629591" class=" text-amber-900">Operating system transactions</a> (SOSP'09)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22312; Linux 2.6.22 &#19978;&#23454;&#29616;</li>
+<li class=" ml-8">&#23545; Kernel &#30772;&#22351;&#24615;&#22826;&#22823;&#65292;&#19981;&#22826;&#21487;&#33021;&#32500;&#25252;&#24471;&#19979;&#21435;</li>
+</ul>
+</li>
+<li class=" ml-8"><a href="https://docs.microsoft.com/en-us/windows-hardware/drivers/kernel/when-to-use-kernel-mode-ktm" class=" text-amber-900">Windows KTM</a>, since Windows Vista (2007)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#23545;&#65292;&#20320;&#27809;&#30475;&#38169;&#65292;&#26159; Windows Vista</li>
+<li class=" ml-8">&#19990;&#30028;&#26368;&#24378;&#12289;&#39554;&#22768;&#26368;&#22823;&#65292;&#24708;&#28982;&#33853;&#24149;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#23567;&#32467;&#65306;&#25805;&#20316;&#31995;&#32479;&#35774;&#35745;</h2>
+<p class=" font-serif my-1">&#25805;&#20316;&#31995;&#32479; = &#23545;&#35937; + API</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25215;&#36733;&#20102;&#36719;&#20214;&#30340; &#8220;&#19968;&#20999;&#38656;&#35201;&#8221;</li>
+<li class=" ml-8"><a href="https://www.bilibili.com/video/BV1aY411P7e1" class=" text-amber-900">&#20013;&#22269;&#28023;&#20891;&#33322;&#27597;&#23459;&#20256;&#29255;</a></li>
+</ul>
+<p class=" font-serif my-1"></p><center>
+<img alt="" class="inline" src="../../../pages/ICS/2021/img/CV41.jpg" width="500"> <img alt="" class="inline" src="../../../pages/ICS/2021/img/CV41-internal.jpg" width="492px">
+</center></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#22914;&#20309;&#36808;&#20986;&#36208;&#21521;&#25805;&#20316;&#31995;&#32479;&#30340;&#31532;&#19968;&#27493;&#65311;</h2>
+<p class=" font-serif my-1">&#29702;&#35299;&#32769;&#31995;&#32479;&#26159;&#22914;&#20309;&#23454;&#29616;&#12289;&#36935;&#21040;&#24590;&#26679;&#30340;&#38382;&#39064;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">xv6; &#20598;&#23572;&#35762;&#19968;&#20123;&#26032;&#29305;&#24615;</li>
+<li class=" ml-8">&#28982;&#21518;&#65306;RTFM, RTFSC</li>
+</ul>
+<p class=" font-serif my-1"></p><center>
+<img alt="" class="inline" src="../../../pages/ICS/2021/img/CV-1.jpg" width="500"> <img alt="" class="inline" src="../../../pages/ICS/2021/img/Santa-Maria.jpg" width="323px">
+</center></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="microkernel" class=" text-2xl mt-2 font-sans">Microkernel</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="less-is-more" class=" text-xl mt-2 pb-2 font-sans">Less is More</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">&#20844;&#29702;&#65306;&#27809;&#26377;&#23436;&#32654;&#30340;&#31243;&#24207;&#21592;&#12290;</p>
+<p class=" font-serif my-1">&#25512;&#35770;&#65306;<red>&#36234;&#23567;&#30340;&#31995;&#32479;&#65292;&#38169;&#35823;&#23601;&#36234;&#23569;&#12290;</red></p>
+</blockquote>
+<p class=" font-serif my-1">C &#20316;&#20026;&#19968;&#20010;&#26377; Undefined Behavior &#30340;&#35821;&#35328;&#65292;&#26159;&#22797;&#26434;&#31995;&#32479;&#30340;&#28798;&#38590;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Signed integer overflow (Linux Kernel &#20351;&#29992;&#20102; -fwrapv)</li>
+<li class=" ml-8">Data race</li>
+<li class=" ml-8">Memory error<ul class=" list-disc font-serif">
+<li class=" ml-8">libpng &#39640;&#21361;&#28431;&#27934; (&#19968;&#24352;&#22270;&#20599;&#36208;&#20320;&#30340;&#23494;&#30721;)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25972;&#25968;&#28322;&#20986;&#21518;&#31354;&#26684; keyword &#35835;&#21462;&#36827;&#31243;&#25968;&#25454;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Microkernel (&#24494;&#20869;&#26680;) &#24212;&#36816;&#32780;&#29983;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><red>&#25226;&#23613;&#21487;&#33021;&#22810;&#30340;&#21151;&#33021;&#37117;&#29992;&#26222;&#36890;&#36827;&#31243;&#23454;&#29616;</red> (&#22833;&#25928;&#38548;&#31163;&#22312; &#8220;&#36827;&#31243;&#8221; &#32423;)</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#35797;&#30528;&#29992;&#26222;&#36890;&#36827;&#31243;&#20570;&#26356;&#22810;&#30340;&#20107;</h2>
+<p class=" font-serif my-1"><a href="../../../pages/OS/2022/demos/sh-xv6.c" class=" text-amber-900">sh-xv6.c</a> &#21040;&#24213;&#25191;&#34892;&#20102;&#21738;&#20123; &#8220;&#23601;&#31639;&#20002;&#32473;&#21478;&#19968;&#20010;&#36827;&#31243;&#65292;&#36824;&#24471;&#35831;&#27714;&#25805;&#20316;&#31995;&#32479;&#8221; &#30340;&#25805;&#20316;&#65311;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#36827;&#31243; (&#29366;&#24577;&#26426;) &#31649;&#29702;&#20284;&#20046;&#32469;&#19981;&#24320;<ul class=" list-disc font-serif">
+<li class=" ml-8">fork/spawn; exit</li>
+</ul>
+</li>
+<li class=" ml-8">&#21152;&#36733;&#22120; <a href="../../../pages/OS/2022/demos/loader-static.c" class=" text-amber-900">loader-static.c</a> (execve) &#20284;&#20046;&#19981;&#24517;&#35201;<ul class=" list-disc font-serif">
+<li class=" ml-8">mmap &#20284;&#20046;&#32469;&#19981;&#24320;</li>
+</ul>
+</li>
+<li class=" ml-8">&#32456;&#31471; (tty) &#21487;&#20197;&#25918;&#22312;&#36827;&#31243;&#37324;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#35753; &#8220;&#39537;&#21160;&#36827;&#31243;&#8221; &#33021;&#35775;&#38382; memory-mapped register &#23601;&#34892;</li>
+<li class=" ml-8">&#25110;&#32773;&#25552;&#20379;&#19968;&#20010; mmio &#31995;&#32479;&#35843;&#29992;</li>
+</ul>
+</li>
+<li class=" ml-8">&#25991;&#20214;&#31995;&#32479; (open, close, read, write, ...)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#36827;&#31243;&#21482;&#35201;&#26377;&#35775;&#38382;&#30913;&#30424;&#30340;&#26435;&#38480;&#65292;&#22312;&#30913;&#30424;&#19978;&#20570;&#20010;&#25968;&#25454;&#32467;&#26500;&#19981;&#25104;&#38382;&#39064;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="microkernel" class=" text-xl mt-2 pb-2 font-sans">Microkernel (&#24494;&#20869;&#26680;)</h2>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/microkernel.jpg" width="1000px"></p>
+<hr>
+<p class=" font-serif my-1">&#24494;&#20869;&#26680; (microkernel)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21482;&#25226; &#8220;&#19981;&#33021;&#25918;&#22312;&#29992;&#25143;&#24577;&#8221; &#30340;&#19996;&#35199;&#30041;&#22312;&#20869;&#26680;&#37324;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#29366;&#24577;&#26426; (&#25317;&#26377;&#23492;&#23384;&#22120;&#21644;&#22320;&#22336;&#31354;&#38388;&#30340;&#25191;&#34892;&#27969;)</li>
+<li class=" ml-8">&#29366;&#24577;&#26426;&#20043;&#38388;&#30340;&#21327;&#20316;&#26426;&#21046; (&#36827;&#31243;&#38388;&#36890;&#20449;)</li>
+<li class=" ml-8">&#26435;&#38480;&#31649;&#29702; (&#20363;&#22914;&#35774;&#22791;&#35775;&#38382;)</li>
+</ul>
+</li>
+<li class=" ml-8">&#36171;&#20104;&#36827;&#31243;&#26368;&#23569;&#30340;&#26435;&#38480;&#65292;&#23601;&#33021;&#38477;&#20302;&#38169;&#35823;&#24102;&#26469;&#30340;&#24433;&#21709;</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="minix" class=" text-xl mt-2 pb-2 font-sans">Minix: &#21478;&#19968;&#20010;&#25913;&#21464;&#19990;&#30028;&#30340;&#25805;&#20316;&#31995;&#32479;</h2>
+<p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/minix2-book.jpg" width="220px"></p>
+<p class=" font-serif my-1">Minix: &#23436;&#20840;&#29992;&#20110;&#25945;&#23398;&#30340;&#30495;&#23454;&#25805;&#20316;&#31995;&#32479;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">by Andrew S. Tanenbaum</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#24180;&#36731;&#20154;&#30340;&#31532;&#19968;&#20010; &#8220;&#20840;&#21151;&#33021;&#8221; &#25805;&#20316;&#31995;&#32479;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Minix1 (1987): UNIXv7 &#20860;&#23481;<ul class=" list-disc font-serif">
+<li class=" ml-8">Linus &#23454;&#29616; Linux &#30340;&#36215;&#28857;</li>
+</ul>
+</li>
+<li class=" ml-8"><a href="http://download.minix3.org/previous-versions/Intel-2.0.4/" class=" text-amber-900">Minix2</a> (1997): POSIX &#20860;&#23481;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#26356;&#21152;&#23436;&#22791;&#30340;&#31995;&#32479;&#65292;&#20070;&#21518;&#38468;&#20840;&#37096;&#20869;&#26680;&#20195;&#30721;</li>
+</ul>
+</li>
+</ul>
+<p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/minix3-desktop.png" width="240px"></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="http://minix3.org" class=" text-amber-900">Minix3</a> (2006): POSIX/NetBSD &#20860;&#23481;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#19968;&#24230;&#26159;&#19990;&#30028;&#19978;&#24212;&#29992;&#26368;&#24191;&#30340;&#25805;&#20316;&#31995;&#32479;<ul class=" list-disc font-serif">
+<li class=" ml-8">Intel ME &#20154;&#25163;&#19968;&#20010;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="minix3-architecture" class=" text-xl mt-2 pb-2 font-sans">Minix3 Architecture</h2>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/minixarch.png" width="900px"></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Minix2 &#26356;&#26497;&#31471;&#19968;&#20123;&#65292;&#21482;&#26377; send &#21644; receive &#20004;&#20010;&#31995;&#32479;&#35843;&#29992;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20027;&#35201;&#29992;&#26469;&#23454;&#29616; RPC (remote procedure call)</li>
+<li class=" ml-8">&#25805;&#20316;&#31995;&#32479;&#36824;&#26159;&#25805;&#20316;&#31995;&#32479;&#65292;&#20294;&#36328;&#27169;&#22359;&#35843;&#29992;&#20250;&#36328;&#36234;&#36827;&#31243;&#36793;&#30028;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20877;&#21521;&#21069;&#36208;&#19968;&#23567;&#27493;</h2>
+<p class=" font-serif my-1">&#21548;&#35828; &#8220;&#24494;&#20869;&#26680;&#8221; &#26377;&#26356;&#22909;&#30340;&#21487;&#38752;&#24615;&#65311;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#37027;&#25105;&#20204;&#33021;&#19981;&#33021;&#35777;&#26126;&#23427;&#30495;&#30340; &#8220;&#21313;&#20998;&#21487;&#38752;&#8221;&#65311;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#23545;&#20110;&#20219;&#20309;&#36755;&#20837;&#12289;&#20219;&#20309;&#25191;&#34892;&#36335;&#24452;</li>
+<li class=" ml-8">&#27809;&#26377; memory error</li>
+<li class=" ml-8">&#19981;&#20250; crash&#8230;&#8230;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1"><object alt="" class="float-right" src="/pages/OS/2022/slides/../../img/sel4-logo.svg" width="300px" data="../../../pages/OS/img/sel4-logo.svg"></object></p>
+<p class=" font-serif my-1">seL4</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#19990;&#30028;&#19978;&#31532;&#19968;&#20010; verified micorkernel<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="https://sel4.systems/About/seL4-whitepaper.pdf" class=" text-amber-900">Whitepaper</a> (&#21021;&#23398;&#32773;&#21451;&#22909;&#65292;&#21313;&#20998;&#25512;&#33616;)</li>
+<li class=" ml-8"><a href="https://dl.acm.org/doi/10.1145/2560537" class=" text-amber-900">Comprehensive formal verification of an OS microkernel</a> (TOCS'14)</li>
+</ul>
+</li>
+<li class=" ml-8">&#26377;&#19968;&#20010;&#38750;&#24120;&#20248;&#38597;&#30340; capability &#26426;&#21046;</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="sel4" class=" text-xl mt-2 pb-2 font-sans">seL4 &#35777;&#26126;&#24605;&#36335;</h2>
+<p class=" font-serif my-1">&#39318;&#20808;&#65292;&#29992;&#36866;&#21512;&#25551;&#36848;&#34892;&#20026;&#30340;&#35821;&#35328;&#24314;&#19968;&#20010;&#27169;&#22411; (seL4 &#26377;&#20004;&#23618;&#27169;&#22411;)</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">def</span> <span class="nf">rr_sched</span><span class="p">(</span><span class="n">cpu</span><span class="p">):</span>
+    <span class="n">cpu</span><span class="o">.</span><span class="n">threads</span> <span class="o">=</span> <span class="n">cpu</span><span class="o">.</span><span class="n">threads</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">+</span> <span class="n">cpu</span><span class="o">.</span><span class="n">threads</span><span class="p">[:</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">assert</span> <span class="n">anything_you_need</span>
+    <span class="k">return</span> <span class="n">cpu</span><span class="o">.</span><span class="n">threads</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</code></pre></div>
+
+<p class=" font-serif my-1">&#20877;&#20889;&#19968;&#20221; C &#20195;&#30721;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="../../../pages/OS/2022/demos/thread-os.c" class=" text-amber-900">thread-os.c</a><ul class=" list-disc font-serif">
+<li class=" ml-8">&#25105;&#20204;&#23601;&#26377;&#20102;&#20004;&#20010;&#29366;&#24577;&#26426; (Python &#21644; C &#20195;&#30721;&#30340;&#24418;&#24335;&#35821;&#20041;)</li>
+</ul>
+</li>
+</ul>
+<p class=" font-serif my-1">&#23601;&#21487;&#20197;&#21435;&#35777;&#26126;&#25805;&#20316;&#31995;&#32479;&#30340; functional correctness &#21862;&#65281;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><red>&#35777;&#26126;&#20004;&#20010;&#25968;&#23398;&#23545;&#35937; (&#29366;&#24577;&#26426;) &#21487;&#35266;&#27979;&#34892;&#20026;&#30340;&#31561;&#20215;&#24615;</red></li>
+<li class=" ml-8">&#21097;&#19979;&#23601;&#26159;&#21435;&#35299;&#20915;&#36935;&#21040;&#30340;&#21508;&#31181;&#25216;&#26415;&#38382;&#39064; (&#26356;&#37325;&#35201;&#30340;&#26159;<red>&#25954;&#19981;&#25954;&#21435;&#20570;</red>)<ul class=" list-disc font-serif">
+<li class=" ml-8">Non-trivial; &#20294;&#20063;&#19981;&#26159; &#8220;&#31070;&#26469;&#20043;&#31508;&#8221; (incremental work)</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#25105;&#20204;&#32622;&#36523;&#30340;&#26102;&#20195;</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="linus-andy-1992" class=" text-xl mt-2 pb-2 font-sans">Linus &#21644; Andy &#30340;&#28608;&#28872;&#35770;&#25112; (1992)</h2>
+<p class=" font-serif my-1">&#8220;<a href="https://www.oreilly.com/openbook/opensources/book/appa.html" class=" text-amber-900">Linux is obsolete</a>&#8221;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20027;&#35201;&#25209;&#35780;&#20869;&#26680;&#26550;&#26500;&#35774;&#35745;&#19981;&#21512;&#29702;&#12289;&#31227;&#26893;&#24615;&#38382;&#39064;</li>
+<li class=" ml-8">30 &#24180;&#36807;&#21435;&#20102;&#65292;&#35768;&#22810;&#38382;&#39064;&#24471;&#21040;&#20102;&#35299;&#20915;&#65307;&#35768;&#22810;&#36824;&#27809;&#26377;</li>
+</ul>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/ken-quote.png" width="800px"></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="exokernel" class=" text-xl mt-2 pb-2 font-sans">Exokernel</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">&#8220;The essential observation about abstractions in traditional operating systems is that they are overly general.&#8221;</p>
+</blockquote>
+<p class=" font-serif my-1">&#25805;&#20316;&#31995;&#32479;&#23601;&#19981;&#24212;&#35813;&#26377;&#20219;&#20309;&#31574;&#30053;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21482;&#24212;&#35813;&#31649;&#30828;&#20214;&#36164;&#28304;&#30340;&#26368;&#23567;&#34394;&#25311;&#21270;</li>
+<li class=" ml-8">Expose allocation, expose names, expose revocation<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20869;&#26680;&#37324;&#29978;&#33267;&#36830; &#8220;&#36827;&#31243;&#8221; &#30340;&#27010;&#24565;&#37117;&#27809;&#26377;&#65292;&#21482;&#26377;&#26102;&#38388;&#29255;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#35843;&#24230;&#31574;&#30053;&#23436;&#20840;&#22312; libOS &#20013;&#23454;&#29616;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class=" ml-8"><a href="https://dl.acm.org/doi/abs/10.1145/224057.224076" class=" text-amber-900">Exokernel: An operating system architecture for application-level resource management</a> (SOSP'95)</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="unikernel-libos" class=" text-xl mt-2 pb-2 font-sans">Unikernel: libOS &#30340;&#22797;&#27963;</h2>
+<p class=" font-serif my-1">&#20170;&#22825;&#25105;&#20204;&#26377;&#34394;&#25311;&#26426; (&#21644;&#30828;&#20214;&#34394;&#25311;&#21270;) &#20102;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20026;&#20160;&#20040;&#19981;&#30452;&#25509;&#35753; Lab2 &#36305;&#24212;&#29992;&#31243;&#24207;&#21602;&#65311;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#24212;&#29992;&#20195;&#30721;&#30452;&#25509;&#21644; klib, AbstractMachine, Lab &#20195;&#30721;&#38745;&#24577;&#38142;&#25509;</li>
+<li class=" ml-8">&#20219;&#20309;&#25805;&#20316; (&#21253;&#25324; I/O) &#37117;&#21487;&#20197;&#30452;&#25509;&#20570;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Unikernel: &#20869;&#26680;&#21487;&#20197;&#38750;&#24120;&#23567; (&#24212;&#29992;&#19981;&#38656;&#35201;&#30340;&#29305;&#24615;&#37117;&#30452;&#25509;&#21024;&#38500;)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="https://www.includeos.org" class=" text-amber-900">includeOS</a> (C++); <a href="http://runtimejs.org" class=" text-amber-900">runtime.js</a> (JavaScript); <a href="https://mirage.io" class=" text-amber-900">Mirage</a> (OCaml)</li>
+<li class=" ml-8"><a href="https://dl.acm.org/doi/10.1145/2541883.2541895" class=" text-amber-900">Unikernels: The rise of the virtual library operating system</a> (CACM'14)</li>
+<li class=" ml-8"><a href="https://dl.acm.org/doi/10.1145/3447786.3456248" class=" text-amber-900">Unikraft: Fast, specialized unikernels the easy way</a> (EuroSys'21, Best Paper Award &#127941;)</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#24635;&#32467;</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#24635;&#32467;</h2>
+<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#22238;&#31572;&#30340;&#38382;&#39064;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><strong>Q</strong>: &#25805;&#20316;&#31995;&#32479;&#21040;&#24213;&#24212;&#35813;&#25552;&#20379;&#20160;&#20040;&#23545;&#35937;&#21644; API&#65311;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Take-away messages</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#8220;&#25805;&#20316;&#31995;&#32479;&#8221; &#30340;&#21547;&#20041;&#38543;&#24212;&#29992;&#32780;&#21464;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21487;&#20197;&#22823;&#32780;&#20840; (Linux/Windows API)</li>
+<li class=" ml-8">&#21487;&#20197;&#21482;&#26377;&#26368;&#23569;&#30340;&#30828;&#20214;&#25277;&#35937; (Microkernel)</li>
+<li class=" ml-8">&#21487;&#20197;&#27809;&#26377;&#29992;&#25143;&#24577; (Unikernel)</li>
+</ul>
+</li>
+<li class=" ml-8">&#20114;&#32852;&#32593;&#26102;&#20195;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20174;&#20117;&#37324;&#36208;&#20986;&#21435;&#65306;RTFM, RTFSC</li>
+<li class=" ml-8">&#28982;&#21518;&#21435;&#25913;&#21464;&#36825;&#20010;&#19990;&#30028;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="end" class=" text-2xl mt-2 font-sans">End.</h1></div></div></div>
+        
+      
+      </section>
+    
+    </section>
+  
+</div>
+</div>
+
+<script src="../../../static/reveal/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    
+    width: 1024, height: 768,
+    
+    slideNumber: 'c/t',
+    controlsTutorial: false,
+    progress: false,
+    hash: true,
+    center: false,
+    autoAnimateUnmatched: true,
+    autoAnimateEasing: 'ease-out',
+    autoAnimateDuration: 0.3,
+    transitionSpeed: 'fast'
+  });
+</script>
+
+
+</body>
+
+</html>

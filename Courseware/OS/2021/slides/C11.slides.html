@@ -1,0 +1,687 @@
+<!DOCTYPE html><html class="h-100">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="../../../static/css/base.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
+
+  <style>
+    .font-sans {
+      font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+    }
+    .font-serif {
+      font-family: 'Source Serif Pro', 'Songti SC', 'SimSun', 'Serif', serif;
+    }
+  </style>
+  <link rel="stylesheet" href="../../../static/katex/katex.min.css">
+  <script defer src="../../../static/katex/katex.min.js"></script>
+  <script defer src="../../../static/katex/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+            // customised options
+            // &#8226; auto-render specific keys, e.g.:
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ],
+            // &#8226; rendering keys, e.g.:
+            throwOnError : false
+          });
+      });
+  </script>
+
+
+  
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="../../../static/reveal/reveal.css">
+<link rel="stylesheet" href="../../../static/reveal/theme/simple.css" id="theme">
+
+<style>
+.reveal .slide-number {
+  font-size: 26px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, .3);
+}
+
+.reveal .full-screen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.reveal .slides {
+  border: 1.5px #ddd solid;
+  border-radius: 7px;
+  text-align: left;
+  font-weight: 300;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  font-family: 'Lato', 'SimHei', 'STXihei', 'Droid Sans';
+  font-weight: 400;
+}
+
+.reveal p, .reveal li, .reveal center {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Droid Sans';
+}
+
+.reveal li + li {
+  margin-top: 10px;
+}
+
+.reveal ul {
+  display: block;
+  margin-right: 15px;
+}
+
+.reveal p, .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5 {
+  padding:  0 25px 0 25px;
+}
+
+.reveal table {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Sans Serif';
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.reveal th {
+  background-color: #eee;
+}
+
+.reveal tr:nth-child(even) {
+  background-color: #efffff;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  text-align: left;
+  margin: 0 0 20px 0;
+ color: #222; 
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
+
+
+.reveal h1 {
+  margin: 0 10 0 10;
+  font-size: 60px;
+}
+.reveal .middle h1 {
+  text-align: center;
+}
+
+.reveal h2 {
+  font-size: 48px;
+  border-bottom: 2px solid rgb(106, 0, 95);
+  padding-bottom: 5px;
+}
+.reveal h3 { font-size: 1.15em; }
+.reveal h4 { font-size: 1.05em; }
+
+.reveal .center {
+  text-align: center;
+}
+
+.reveal .middle {
+  height: 728px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.reveal pre {
+  font-size: 28px;
+ 
+  background-color: #eee;
+
+  border-radius: 3mm;
+  padding: 10px 10px 10px 10px;
+}
+
+.reveal pre code {
+  max-height: none;
+}
+
+.reveal code {
+  font-family: 'Inconsolata', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif', Monospace;
+}
+
+.reveal .middle blockquote {
+  text-align: center;
+  color: rgb(106, 0, 95);
+  background: none;
+  box-shadow: none;
+}
+
+.reveal .middle blockquote a {
+  color: inherit;
+}
+
+.reveal blockquote p, .reveal blockquote li {
+  font-family: 'Lato', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif';
+}
+
+section .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reveal .author-block {
+  margin: 75px 0 35px 0;
+}
+.reveal .author-affiliation img {
+  margin: 15px 0 0 0;
+}
+.reveal .author-block p, .reveal .author-affiliation p  {
+  font-family: 'Kaiti', 'STKaiti', 'Serif', 'Times', 'Times New Roman';
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+.reveal .author-affiliation {
+  display: inline-block;
+  font-size: 90%;
+}
+.reveal hr {
+  border: 10px solid rgba(0, 0, 0, 0);
+}
+.reveal li {
+  margin-top: 10px;
+}
+</style>
+
+  <title>[C11] xv6 &#25991;&#20214;&#31995;&#32479;&#23454;&#29616;</title>
+</head>
+
+<body class="d-flex flex-column h-100">
+  
+  
+
+<div class="reveal">
+<div class="slides">
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="c11-xv6" class=" text-2xl mt-2 font-sans">[C11] xv6 &#25991;&#20214;&#31995;&#32479;&#23454;&#29616;</h1>
+<p class=" font-serif my-1"><include src="Slides_Author"><div><div class="py-16">
+<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">&#33931;&#28814;&#23721;</a></p>
+</div>
+<div class="row">
+<div class="author-affiliation">
+    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#12288;&#12288;&#21335;&#20140;&#22823;&#23398;&#12288;&#12288;</p>
+    <img class="inline-img h-24" src="../../../static/img/nju-logo.jpg" style="display: inline-block;"></a>
+  </div>
+<div class="author-affiliation">
+   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#31185;&#23398;&#19982;&#25216;&#26415;&#31995;</p>
+    <img class="inline-img h-24" src="../../../static/img/njucs-logo.jpg" style="display: inline-block;"></a>
+  </div>
+<div class="author-affiliation">
+    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#36719;&#20214;&#30740;&#31350;&#25152;</p>
+    <img class="inline-img h-24" src="../../../static/img/ics-logo.png" style="display: inline-block;"></a>
+  </div>
+</div></div></include></p></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#32972;&#26223;</h2>
+<p class=" font-serif my-1">&#25991;&#20214;&#31995;&#32479;&#30340; &#8220;&#29702;&#35770;&#8221; &#37096;&#20998;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#24213;&#23618;&#65306;<a href="12.slides.html" class=" text-amber-900">1-bit &#30340;&#23384;&#20648;</a>&#65307;<a href="13.slides.html" class=" text-amber-900">I/O &#35774;&#22791;</a></li>
+<li class=" ml-8">API &#23618;&#65306;<a href="14.slides.html" class=" text-amber-900">Linux &#25991;&#20214;&#31995;&#32479;&#35843;&#29992;</a></li>
+<li class=" ml-8">&#23454;&#29616;&#26041;&#27861;&#65306;<a href="15.slides.html" class=" text-amber-900">&#25968;&#25454;&#32467;&#26500;</a>&#21644;<a href="16.slides.html" class=" text-amber-900">&#25345;&#20037;&#25968;&#25454;&#21487;&#38752;&#24615;</a></li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#37027;&#20040;&#19968;&#20010;&#30495;&#27491;&#30340;&#25991;&#20214;&#31995;&#32479;&#21040;&#24213;&#26159;&#22914;&#20309;&#23454;&#29616;&#30340;&#65311;</p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26412;&#27425;&#35838;&#20869;&#23481;&#19982;&#30446;&#26631;</h2>
+<p class=" font-serif my-1">&#35762;&#35299; xv6 &#25991;&#20214;&#31995;&#32479;&#23454;&#29616;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#30913;&#30424;&#38236;&#20687; (&#25968;&#25454;&#32467;&#26500;)</li>
+<li class=" ml-8">&#25991;&#20214;&#31995;&#32479;&#23454;&#29616;<ul class=" list-disc font-serif">
+<li class=" ml-8">buffer cache</li>
+<li class=" ml-8">journaling</li>
+<li class=" ml-8">&#31995;&#32479;&#35843;&#29992;&#23454;&#29616;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="xv6" class=" text-2xl mt-2 font-sans">xv6 &#25991;&#20214;&#31995;&#32479;&#65306;&#25968;&#25454;&#32467;&#26500;</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#24320;&#22987;&#38405;&#35835;&#20195;&#30721;&#20043;&#21069;</h2>
+<p class=" font-serif my-1">&#8220;&#27491;&#24120;&#8221; &#30340;&#39033;&#30446;&#37117;&#26377;&#36981;&#24490;&#27491;&#24120;&#20154;&#33021;&#29702;&#35299;&#30340;&#20195;&#30721;&#32452;&#32455;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20320;&#20204;&#35273;&#24471;&#21602;&#65311;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#26597;&#30475;&#19968;&#19979; xv6 &#30340;&#30446;&#24405;&#32467;&#26500;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21487;&#20197;&#20174; kernel &#30446;&#24405;&#30340;&#30456;&#20851;&#25991;&#20214;&#30475;&#36215;</li>
+<li class=" ml-8">&#21487;&#20197;&#20174; mkfs &#30475;&#36215;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#20320;&#21487;&#20197;&#38382;&#20986;&#24456;&#22810;&#38382;&#39064;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25991;&#20214;&#31995;&#32479;&#38236;&#20687;&#26159;&#22914;&#20309;&#29983;&#25104;&#30340;&#65311;<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>make -nB qemu | grep mkfs</code></li>
+</ul>
+</li>
+<li class=" ml-8">&#25991;&#20214;&#31995;&#32479;&#38236;&#20687;&#26159;&#22914;&#20309;&#34987;&#20256;&#20837; qemu &#30340;&#65311;<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>make -nB qemu | grep fs\.img</code></li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#24320;&#22987;&#38405;&#35835;&#20195;&#30721;</h2>
+<p class=" font-serif my-1">mkfs &#21644; kernel &#20849;&#20139;&#20102;&#19968;&#37096;&#20998;&#20195;&#30721;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#36825;&#20010;&#35774;&#35745;&#38750;&#24120;&#37325;&#35201; (&#20320;&#20204;&#23454;&#29616; lab &#26102;&#20505;&#20063;&#38656;&#35201;)</li>
+<li class=" ml-8">&#21738;&#20010;&#22836;&#25991;&#20214;&#27604;&#36739;&#37325;&#35201;&#65311;<ul class=" list-disc font-serif">
+<li class=" ml-8">types.h</li>
+<li class=" ml-8">fs.h</li>
+<li class=" ml-8">stat.h</li>
+<li class=" ml-8">param.h</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#30913;&#30424;&#19978;&#30340;&#25968;&#25454;&#32467;&#26500;</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>[ boot | superblock | log | inodes | free bitmap | data blocks ]
+</code></pre></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="xv6" class=" text-xl mt-2 pb-2 font-sans">xv6 &#25991;&#20214;&#31995;&#32479;&#65306;&#22522;&#30784;&#25968;&#25454;&#32467;&#26500;</h2>
+<p class=" font-serif my-1">&#21442;&#25968;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>BSIZE</code>, <code>ROOTINO</code> (<code>/</code> &#30340; inode &#32534;&#21495;), <code>LOGSIZE</code>, <code>NINODE</code>, ...</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#37325;&#35201;&#30340;&#25968;&#25454;&#32467;&#26500;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>struct superblock</code> (<code>magic</code>, <code>size</code>, ...), mkfs &#22635;&#20837;</li>
+<li class=" ml-8"><code>struct dinode</code> (<code>type</code>, <code>nlink</code>, <code>size</code>, <code>addrs</code>)<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>NDIRECT</code> (12) &#20010;&#30452;&#25509;&#32034;&#24341;&#65292;&#19968;&#20010;&#38388;&#25509;&#32034;&#24341;</li>
+<li class=" ml-8">&#26368;&#22823;&#25991;&#20214;&#22823;&#23567;&#65306; $12 + \frac{1024}{4}=268$KB<ul class=" list-disc font-serif">
+<li class=" ml-8">&#39564;&#35777;&#20320;&#30340;&#24819;&#27861;&#65306;&#21160;&#25163;&#20570;&#20010;&#23454;&#39564;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class=" ml-8"><code>struct dirent</code> (<code>inum</code>, <code>name</code>)<ul class=" list-disc font-serif">
+<li class=" ml-8">14 &#23383;&#33410;&#25991;&#20214;&#21517;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#35797;&#35797;&#21019;&#24314;&#38271;&#25991;&#20214;&#21517;&#65307;&#20063;&#35768;&#20320;&#30340; lab &#23601;&#30452;&#25509; crash/panic &#20102;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="mkfs" class=" text-xl mt-2 pb-2 font-sans">mkfs &#24037;&#20855;&#65306;&#21019;&#24314;&#25968;&#25454;&#32467;&#26500;</h2>
+<p class=" font-serif my-1">&#24425;&#34507;&#65306;<code>static_assert</code> (C++11/C11)</p>
+<p class=" font-serif my-1">&#22855;&#24618;&#30340; <code>xint</code> (does nothing)</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">uint</span><span class="w"> </span><span class="nf">xint</span><span class="p">(</span><span class="n">uint</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">uint</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+<span class="w">  </span><span class="n">uchar</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">uchar</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">y</span><span class="p">;</span>
+<span class="w">  </span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">16</span><span class="p">;</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">24</span><span class="p">;</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p class=" font-serif my-1">&#28165;&#38646;&#25991;&#20214;&#31995;&#32479;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>for(i = 0; i &lt; FSSIZE; i++) wsect(i, zeroes);</code></li>
+</ul>
+<p class=" font-serif my-1">&#21021;&#22987;&#21270; superblock</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">nmeta 46 (boot, super, log blocks 30 inode blocks 13, bitmap blocks 1) blocks 954 total 1000</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25968;&#25454;&#32467;&#26500;&#25805;&#20316;</h2>
+<p class=" font-serif my-1">(&#30495;&#30340;&#37117;&#26159;&#25968;&#25454;&#32467;&#26500;&#25805;&#20316;)</p>
+<hr>
+<p class=" font-serif my-1"><code>ialloc</code>: &#20998;&#37197; inode (&#20174; 1 &#24320;&#22987;&#32534;&#21495;)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#31532;&#19968;&#27425; <code>ialloc()</code> &#36820;&#22238;&#30340;&#26159; <code>/</code> &#30340; inode</li>
+</ul>
+<hr>
+<p class=" font-serif my-1"><code>iappend</code>: &#21521; inode &#23545;&#24212;&#30340;&#25991;&#20214; (&#21253;&#25324;&#30446;&#24405;&#25991;&#20214;) &#20889;&#20837;&#25968;&#25454;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#32431;&#31929;&#30340;&#25968;&#25454;&#32467;&#26500;&#25805;&#20316;</li>
+<li class=" ml-8">&#20889;&#20837;&#20102; &#8220;<code>.</code>&#8221; &#21644; &#8220;<code>..</code>&#8221; &#23545;&#24212;&#30340; <code>dirent</code>&#65292;&#37117;&#25351;&#21521; <code>rootino</code> (1)</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#36275;&#22815;&#20102;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">mkfs &#21482;&#38656;&#35201;&#21019;&#24314;&#26681;&#30446;&#24405;&#65292;&#24182;&#21521;&#26681;&#30446;&#24405;&#37324;&#28155;&#21152;&#25991;&#20214;</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="xv6" class=" text-2xl mt-2 font-sans">xv6 &#20869;&#26680;&#31995;&#32479;&#23454;&#29616;</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="block" class=" text-xl mt-2 pb-2 font-sans">Block &#31649;&#29702;</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">&#27599;&#27425;&#35775;&#38382; block &#30340;&#19968;&#37096;&#20998;&#37117;&#35835;&#19968;&#27425;&#12289;&#20889;&#19968;&#27425;&#30913;&#30424; = &#24615;&#33021;&#23849;&#30424;&#12290;</p>
+</blockquote>
+<p class=" font-serif my-1">Buffer Cache</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><red>&#20195;&#29702;&#25805;&#20316;&#31995;&#32479;&#20013;&#25152;&#26377;&#23545;&#30913;&#30424;&#30340;&#35775;&#38382;</red></li>
+<li class=" ml-8">&#25152;&#26377;&#35775;&#38382;&#30340; block &#37117;&#22312;&#20869;&#23384;&#20013;&#26377; write-back &#30340;&#21103;&#26412;</li>
+<li class=" ml-8">reference-counted<ul class=" list-disc font-serif">
+<li class=" ml-8">cache hit &#26102;&#21487;&#20197;&#36991;&#20813;&#35835;&#30913;&#30424;&#12289;&#24310;&#36831;&#20889;&#30913;&#30424;</li>
+<li class=" ml-8">&#8220;batch&#8221; &#23545;&#21516;&#19968;&#22359; (&#20363;&#22914; inode &#22359;) &#30340;&#22810;&#27425;&#20889;&#20837;</li>
+</ul>
+</li>
+<li class=" ml-8">&#19981;&#35770;&#26377;&#22810;&#23569;&#35774;&#22791;&#65292;&#31995;&#32479;&#37117;&#32479;&#19968;&#31649;&#29702; LRU &#30340; buffer cache</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#26680;&#24515;&#25968;&#25454;&#32467;&#26500;&#65306;<code>struct buf</code> (buf.h, bio.c)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20869;&#26680;&#20013;&#30340;&#25968;&#25454;&#32467;&#26500;&#27604; mkfs &#35201;&#22797;&#26434;&#19968;&#20123;</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#31616;&#21333;&#30340;&#25991;&#20214;&#25805;&#20316;</h2>
+<p class=" font-serif my-1"><code>sys_write</code></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20165;&#20462;&#25913;&#19968;&#20010;&#23384;&#22312;&#30340; inode &#21644;&#25991;&#20214;&#25968;&#25454;<ul class=" list-disc font-serif">
+<li class=" ml-8">inode &#24517;&#39035;&#20808;&#36733;&#20837;&#20869;&#23384;&#25165;&#33021;&#20351;&#29992;</li>
+</ul>
+</li>
+<li class=" ml-8">&#19981;&#28041;&#21450;&#25991;&#20214;&#31995;&#32479;&#20803;&#25968;&#25454;&#25805;&#20316; (&#20363;&#22914;&#30446;&#24405;&#36941;&#21382;)</li>
+</ul>
+<hr>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">begin_op</span><span class="p">();</span>
+<span class="n">ilock</span><span class="p">(</span><span class="n">f</span><span class="o">-&gt;</span><span class="n">ip</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">writei</span><span class="p">(</span><span class="n">f</span><span class="o">-&gt;</span><span class="n">ip</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">addr</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">f</span><span class="o">-&gt;</span><span class="n">off</span><span class="p">,</span><span class="w"> </span><span class="n">n1</span><span class="p">))</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">  </span><span class="n">f</span><span class="o">-&gt;</span><span class="n">off</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">r</span><span class="p">;</span>
+<span class="n">iunlock</span><span class="p">(</span><span class="n">f</span><span class="o">-&gt;</span><span class="n">ip</span><span class="p">);</span>
+<span class="n">end_op</span><span class="p">();</span>
+</code></pre></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="journaling" class=" text-xl mt-2 pb-2 font-sans">&#26080;&#22788;&#19981;&#22312;&#30340; Journaling</h2>
+<p class=" font-serif my-1"><code>begin_op</code> &#21644; <code>end_op</code> &#21253;&#35065;&#30340;&#20195;&#30721;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">called at the start/end of <em>each</em> FS system call</li>
+<li class=" ml-8">&#19968;&#20010;&#38750;&#24120;&#26377;&#36259;&#30340;&#24182;&#21457;&#25511;&#21046; (&#26465;&#20214;&#21464;&#37327;)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22914;&#26524; <code>begin_op</code> &#19981;&#20250;&#23548;&#33268; log &#31354;&#38388;&#29992;&#23436;&#65292;&#23601;&#21487;&#20197;&#32487;&#32493;</li>
+<li class=" ml-8">&#21542;&#21017;&#30561;&#30496;&#65292;&#31561;&#24453; <code>end_op</code> &#25552;&#20132;&#21518;&#21796;&#37266;</li>
+</ul>
+</li>
+<li class=" ml-8">&#23436;&#20840;&#22312; buffer cache &#26426;&#21046;&#19978;&#23454;&#29616; (<code>bwrite</code> &#20165; <code>log.c</code> &#35843;&#29992;)</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#20363;&#23376;&#65306;&#20889;&#20837;&#25968;&#25454;</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">bp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bread</span><span class="p">(</span><span class="n">ip</span><span class="o">-&gt;</span><span class="n">dev</span><span class="p">,</span><span class="w"> </span><span class="n">bmap</span><span class="p">(</span><span class="n">ip</span><span class="p">,</span><span class="w"> </span><span class="n">off</span><span class="o">/</span><span class="n">BSIZE</span><span class="p">));</span>
+<span class="n">log_write</span><span class="p">(</span><span class="n">bp</span><span class="p">);</span>
+</code></pre></div>
+
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>begin_op</code> &#21644; <code>end_op</code> &#20043;&#38388;&#25152;&#26377;&#30340;&#20889;&#20837;&#37117;&#20165;&#21457;&#29983;&#22312;&#20869;&#23384;</li>
+<li class=" ml-8"><code>end_op</code> &#26102;&#25165;&#21457;&#29983; commit</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="commit" class=" text-xl mt-2 pb-2 font-sans">&#25945;&#31185;&#20070;&#24335;&#30340; Commit</h2>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">commit</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">log</span><span class="p">.</span><span class="n">lh</span><span class="p">.</span><span class="n">n</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">write_log</span><span class="p">();</span><span class="w">     </span><span class="c1">// Write modified blocks from cache to log</span>
+<span class="w">    </span><span class="n">write_head</span><span class="p">();</span><span class="w">    </span><span class="c1">// Write header to disk -- the real commit</span>
+<span class="w">    </span><span class="n">install_trans</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="c1">// Now install writes to home locations</span>
+<span class="w">    </span><span class="n">log</span><span class="p">.</span><span class="n">lh</span><span class="p">.</span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">    </span>
+<span class="w">    </span><span class="n">write_head</span><span class="p">();</span><span class="w">    </span><span class="c1">// Erase the transaction from the log</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span>
+<span class="p">}</span>
+</code></pre></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#30475;&#20284;&#31616;&#21333;&#65292;&#23454;&#21017;&#22797;&#26434;&#30340;&#29983;&#23384;&#26399;&#31649;&#29702;</h2>
+<p class=" font-serif my-1">&#20004;&#20010;&#30475;&#20284;&#31616;&#21333;&#30340;&#35268;&#21017;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21482;&#35201;&#26410;&#26469;&#21487;&#33021;&#20351;&#29992;&#65292;&#24517;&#39035; <code>refcnt &gt; 0</code></li>
+<li class=" ml-8">&#21482;&#35201;&#26410;&#26469;&#19981;&#20250;&#34987;&#20351;&#29992;&#65292;&#24517;&#39035; <code>refcnt == 0</code> </li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#32500;&#25252;&#36825;&#19968;&#19981;&#21464;&#24335;&#30340;&#20363;&#23376;&#65306;<code>log_write</code></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20165;&#22312; <code>i == log.lh.n</code> &#26102;&#25165;&#25191;&#34892; <code>bpin(b)</code> &#22686;&#21152;&#24341;&#29992;&#35745;&#25968;</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20803;&#25968;&#25454;&#31649;&#29702;</h2>
+<p class=" font-serif my-1">&#20856;&#22411;&#30340;&#38405;&#35835;&#36335;&#24452;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#36335;&#24452;&#35299;&#26512; (<code>sys_open</code>)</li>
+<li class=" ml-8">&#21019;&#24314;&#25991;&#20214;/&#30446;&#24405; (<code>create</code>, &#34987; <code>sys_open</code>, <code>sys_mkdir</code> &#35843;&#29992;)</li>
+<li class=" ml-8">&#21019;&#24314;&#38142;&#25509; (<code>sys_link</code>)</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#24635;&#32467;</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#24635;&#32467;</h2>
+<p class=" font-serif my-1">xv6 &#25991;&#20214;&#31995;&#32479;&#23454;&#29616;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#30913;&#30424;&#38236;&#20687; (&#25968;&#25454;&#32467;&#26500;)</li>
+<li class=" ml-8">&#25991;&#20214;&#31995;&#32479;&#23454;&#29616;<ul class=" list-disc font-serif">
+<li class=" ml-8">buffer cache, journaling &#21644;&#31995;&#32479;&#35843;&#29992;&#23454;&#29616;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Take-away messages</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Happy hacking! &#27427;&#36175;&#22909;&#30340;&#20195;&#30721;</li>
+<li class=" ml-8">&#35760;&#24471;&#22238;&#21435;&#35843;&#35797;</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+  
+</div>
+</div>
+
+<script src="../../../static/reveal/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    
+    width: 1024, height: 768,
+    
+    slideNumber: 'c/t',
+    controlsTutorial: false,
+    progress: false,
+    hash: true,
+    center: false,
+    autoAnimateUnmatched: true,
+    autoAnimateEasing: 'ease-out',
+    autoAnimateDuration: 0.3,
+    transitionSpeed: 'fast'
+  });
+</script>
+
+
+</body>
+
+</html>

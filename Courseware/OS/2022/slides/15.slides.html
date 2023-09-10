@@ -1,0 +1,926 @@
+<!DOCTYPE html><html class="h-100">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="../../../static/css/base.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
+
+  <style>
+    .font-sans {
+      font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+    }
+    .font-serif {
+      font-family: 'Source Serif Pro', 'Songti SC', 'SimSun', 'Serif', serif;
+    }
+  </style>
+  <link rel="stylesheet" href="../../../static/katex/katex.min.css">
+  <script defer src="../../../static/katex/katex.min.js"></script>
+  <script defer src="../../../static/katex/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+            // customised options
+            // &#8226; auto-render specific keys, e.g.:
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ],
+            // &#8226; rendering keys, e.g.:
+            throwOnError : false
+          });
+      });
+  </script>
+
+
+  
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="../../../static/reveal/reveal.css">
+<link rel="stylesheet" href="../../../static/reveal/theme/simple.css" id="theme">
+
+<style>
+.reveal .slide-number {
+  font-size: 26px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, .3);
+}
+
+.reveal .full-screen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.reveal .slides {
+  border: 1.5px #ddd solid;
+  border-radius: 7px;
+  text-align: left;
+  font-weight: 300;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  font-family: 'Lato', 'SimHei', 'STXihei', 'Droid Sans';
+  font-weight: 400;
+}
+
+.reveal p, .reveal li, .reveal center {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Droid Sans';
+}
+
+.reveal li + li {
+  margin-top: 10px;
+}
+
+.reveal ul {
+  display: block;
+  margin-right: 15px;
+}
+
+.reveal p, .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5 {
+  padding:  0 25px 0 25px;
+}
+
+.reveal table {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Sans Serif';
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.reveal th {
+  background-color: #eee;
+}
+
+.reveal tr:nth-child(even) {
+  background-color: #efffff;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  text-align: left;
+  margin: 0 0 20px 0;
+ color: #222; 
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
+
+
+.reveal h1 {
+  margin: 0 10 0 10;
+  font-size: 60px;
+}
+.reveal .middle h1 {
+  text-align: center;
+}
+
+.reveal h2 {
+  font-size: 48px;
+  border-bottom: 2px solid rgb(106, 0, 95);
+  padding-bottom: 5px;
+}
+.reveal h3 { font-size: 1.15em; }
+.reveal h4 { font-size: 1.05em; }
+
+.reveal .center {
+  text-align: center;
+}
+
+.reveal .middle {
+  height: 728px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.reveal pre {
+  font-size: 28px;
+ 
+  background-color: #eee;
+
+  border-radius: 3mm;
+  padding: 10px 10px 10px 10px;
+}
+
+.reveal pre code {
+  max-height: none;
+}
+
+.reveal code {
+  font-family: 'Inconsolata', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif', Monospace;
+}
+
+.reveal .middle blockquote {
+  text-align: center;
+  color: rgb(106, 0, 95);
+  background: none;
+  box-shadow: none;
+}
+
+.reveal .middle blockquote a {
+  color: inherit;
+}
+
+.reveal blockquote p, .reveal blockquote li {
+  font-family: 'Lato', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif';
+}
+
+section .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reveal .author-block {
+  margin: 75px 0 35px 0;
+}
+.reveal .author-affiliation img {
+  margin: 15px 0 0 0;
+}
+.reveal .author-block p, .reveal .author-affiliation p  {
+  font-family: 'Kaiti', 'STKaiti', 'Serif', 'Times', 'Times New Roman';
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+.reveal .author-affiliation {
+  display: inline-block;
+  font-size: 90%;
+}
+.reveal hr {
+  border: 10px solid rgba(0, 0, 0, 0);
+}
+.reveal li {
+  margin-top: 10px;
+}
+</style>
+
+  <title>A fork() in the Road</title>
+</head>
+
+<body class="d-flex flex-column h-100">
+  
+  
+
+<div class="reveal">
+<div class="slides">
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="a-fork-in-the-road" class=" text-2xl mt-2 font-sans">A fork() in the Road</h1>
+<p class=" font-serif my-1"><include src="Slides_Author"><div><div class="py-16">
+<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">&#33931;&#28814;&#23721;</a></p>
+</div>
+<div class="row">
+<div class="author-affiliation">
+    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#12288;&#12288;&#21335;&#20140;&#22823;&#23398;&#12288;&#12288;</p>
+    <img class="inline-img h-24" src="../../../static/img/nju-logo.jpg" style="display: inline-block;"></a>
+  </div>
+<div class="author-affiliation">
+   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#31185;&#23398;&#19982;&#25216;&#26415;&#31995;</p>
+    <img class="inline-img h-24" src="../../../static/img/njucs-logo.jpg" style="display: inline-block;"></a>
+  </div>
+<div class="author-affiliation">
+    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#36719;&#20214;&#30740;&#31350;&#25152;</p>
+    <img class="inline-img h-24" src="../../../static/img/ics-logo.png" style="display: inline-block;"></a>
+  </div>
+</div></div></include></p></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="overview" class=" text-xl mt-2 pb-2 font-sans">Overview</h2>
+<p class=" font-serif my-1">&#22797;&#20064;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25105;&#20204;&#29702;&#35299;&#20102;&#20174;&#31995;&#32479;&#35843;&#29992; &#8594; libc &#8594; shell &#8594; &#24212;&#29992;&#30340; &#8220;&#36719;&#20214;&#26632;&#8221;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#22238;&#31572;&#30340;&#38382;&#39064;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#33021;&#19981;&#33021;&#29992;&#31995;&#32479;&#35843;&#29992;&#23454;&#29616;&#27604;&#26222;&#36890;&#19994;&#21153;&#36923;&#36753;&#20195;&#30721;&#26356;&#26377;&#36259;&#30340;&#19996;&#35199;&#65311;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#20027;&#35201;&#20869;&#23481;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#26399;&#20013;&#27979;&#39564;&#35762;&#35780;</li>
+<li class=" ml-8">&#29366;&#24577;&#26426;&#22797;&#21046; (fork) &#30340;&#24212;&#29992;</li>
+<li class=" ml-8">&#26377;&#20851; fork &#30340;&#19968;&#20123;&#35752;&#35770;</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#26399;&#20013;&#27979;&#39564;&#35762;&#35780;</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#31616;&#31572;&#39064;&#65306;&#24182;&#21457;&#27714;&#21644;</h2>
+<p class=" font-serif my-1">&#22914;&#26524;&#20551;&#35774; <a href="../../../pages/OS/2022/demos/sum.c" class=" text-amber-900">sum.c</a> &#20013;&#30340; <code>sum++</code> &#26159;&#22914;&#19979;&#26500;&#25104;&#65306;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>t = atomic_fetch(sum)</code></li>
+<li class=" ml-8"><code>t++</code></li>
+<li class=" ml-8"><code>atomic_store(sum, t)</code></li>
+</ul>
+<p class=" font-serif my-1">&#37027;&#20040; $k$ &#20010;&#32447;&#31243;&#65292;&#36755;&#20986;&#30340;&#26368;&#23567; <code>sum</code> &#26159;&#22810;&#23569;&#65311;</p>
+<hr>
+<p class=" font-serif my-1">&#32467;&#35770;&#26377;&#20123;&#21453;&#30452;&#35273;&#65306;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><red>&#23545;&#20110;&#25152;&#26377; $n, k\ge 2$&#65292;<code>sum</code> &#30340;&#26368;&#23567;&#20540;&#37117;&#26159; 2</red></li>
+<li class=" ml-8">&#21482;&#35201;&#26377;&#19968;&#20010;&#32447;&#31243;&#22312;&#26368;&#21518;&#19968;&#36718;&#24490;&#29615; &#8220;&#25345;&#26377;&#8221; 2&#65292;&#20877;&#20445;&#25345;&#21040;&#26368;&#21518;&#20889;&#20837;<ul class=" list-disc font-serif">
+<li class=" ml-8">Online Judge &#23601;&#36865;&#20998;&#20102;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#27700;&#38754;&#19979;&#30340;&#20912;&#23665;&#65306;&#8220;&#21453;&#30452;&#35273;&#8221; &#30340;&#26469;&#28304;</h2>
+<p class=" font-serif my-1">Verifying Sequential Consistency (VSC) is NP-Complete</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#32473;&#20986;&#33509;&#24178;&#32447;&#31243;&#30340;&#20849;&#20139;&#20869;&#23384; load/store &#24207;&#21015;&#65292;&#21028;&#23450;&#26159;&#21542;&#23384;&#22312;&#19968;&#20010; &#8220;&#20840;&#23616;&#8221; &#30340;&#35835;&#20889;&#39034;&#24207;&#65292;&#20351;&#24471;&#32447;&#31243;&#24635;&#26159;&#35835;&#21040;&#26368;&#36817;&#20889;&#20837;&#30340;&#25968;&#20540;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#35838;&#21518;&#20064;&#39064;&#38590;&#24230; (3-SAT)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#38454;&#27573; 1: &#36171;&#20540;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#23545;&#27599;&#20010;&#21464;&#37327; $x$ &#26500;&#36896; write($x$, 0) &#21644; write($x$, 1) &#30340;&#32447;&#31243;</li>
+</ul>
+</li>
+<li class=" ml-8">&#38454;&#27573; 2: &#21028;&#23450; $C_i = x \lor \neg y$<ul class=" list-disc font-serif">
+<li class=" ml-8">(T1) read(x) = 1, write($S_i$, 1) (T2) read($y$) = 0, write($S_i$, 1)</li>
+</ul>
+</li>
+<li class=" ml-8">&#38454;&#27573; 3: &#25910;&#32467;&#26524;<ul class=" list-disc font-serif">
+<li class=" ml-8">read($S_1$) = 1, read($S_2$) = 1, ...</li>
+</ul>
+</li>
+<li class=" ml-8">&#38454;&#27573; 4: &#25910;&#23614; (&#20351;&#25152;&#26377;&#32447;&#31243;&#37117;&#33021;&#39034;&#21033;&#32467;&#26463;)<ul class=" list-disc font-serif">
+<li class=" ml-8">write($x$, 0), write($x$, 1)</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26356;&#22810;&#30340;&#25216;&#26415;&#22788;&#29702;</h2>
+<p class=" font-serif my-1">&#8220;&#21152;&#24378;&#35946;&#21326;&#29256;&#35838;&#21518;&#20064;&#39064;&#8221; &#128514;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="https://epubs.siam.org/doi/epdf/10.1137/S0097539794279614" class=" text-amber-900">Testing shared memories</a> (SIAM Journal on Computing'97)</li>
+<li class=" ml-8">&#20351;&#29992;&#30340;&#21516;&#27493;&#26426;&#21046;&#27604;&#21018;&#25165;&#30340; &#8220;&#35838;&#21518;&#20064;&#39064;&#29256;&#26412;&#8221; &#31245;&#24039;&#22937;&#19968;&#20123;</li>
+</ul>
+<hr>
+<table>
+<thead>
+<tr>
+<th>VSC &#30340;&#21464;&#31181;</th>
+<th>&#22797;&#26434;&#24230;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&#21018;&#25165;&#30340;&#35777;&#26126; (&#19968;&#33324;&#24773;&#20917;)</td>
+<td>NP-Complete</td>
+</tr>
+<tr>
+<td>&#27599;&#20010;&#32447;&#31243;&#21482;&#25191;&#34892; 2 &#20010;&#25805;&#20316;</td>
+<td>NP-Complete</td>
+</tr>
+<tr>
+<td>&#21482;&#26377; 2 &#20010;&#21464;&#37327;</td>
+<td>NP-Complete</td>
+</tr>
+<tr>
+<td>&#21482;&#26377; 3 &#20010;&#32447;&#31243;</td>
+<td>NP-Complete</td>
+</tr>
+<tr>
+<td>&#27599;&#20010;&#35835;&#30693;&#36947;&#20889;&#32773;</td>
+<td>NP-Complete</td>
+</tr>
+<tr>
+<td>&#27599;&#20010;&#21464;&#37327;&#21482;&#34987;&#19968;&#20010;&#32447;&#31243;&#20889;&#20837;</td>
+<td>NP-Complete</td>
+</tr>
+</tbody>
+</table></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="-" class=" text-xl mt-2 pb-2 font-sans">&#32534;&#31243;&#39064;&#65306;&#29983;&#20135;&#32773;-&#28040;&#36153;&#32773;</h2>
+<p class=" font-serif my-1">&#25237;&#26426;&#21462;&#24039;&#30340;&#26041;&#27861;&#65306;<red>C &#26631;&#20934;&#24211;&#26159;&#32447;&#31243;&#23433;&#20840;&#30340;</red>&#65281;</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">Tworker</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">feof</span><span class="p">(</span><span class="n">stdin</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">long</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+<span class="w">    </span><span class="n">lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lk</span><span class="p">);</span>
+<span class="w">    </span><span class="n">sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">res</span><span class="p">;</span>
+<span class="w">    </span><span class="n">unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lk</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<hr>
+<p class=" font-serif my-1">&#22914;&#26524;&#38480;&#21046;&#21482;&#26377;&#19968;&#20010;&#32447;&#31243;&#21487;&#20197;&#35835;&#65292;&#37027;&#23601;&#38656;&#35201;&#29983;&#20135;&#32773;-&#28040;&#36153;&#32773;&#20102;</p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#32479;&#35745;&#32467;&#26524;</h2>
+<p class=" font-serif my-1">&#27491;&#30830;&#29575; (OJ &#23454;&#26102;&#32479;&#35745;&#36890;&#36807;&#20284;&#20046;&#21482;&#32479;&#35745;&#20102;&#32534;&#31243;&#39064;&#8230;&#8230;)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#31616;&#31572;&#39064; 56/74 (75.7%)</li>
+<li class=" ml-8">&#32534;&#31243;&#39064; 28/74 (37.8%)</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">87.5% (56/64) &#30340;&#38382;&#21367;&#34920;&#31034; &#8220;&#27809;&#26377;&#20986;&#21334;&#28789;&#39746;&#8221;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#24076;&#26395;&#22823;&#23478;&#20445;&#25345;&#65281;</li>
+</ul>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/2022/slides/img/cheating.png" width="900px"></p></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="fork" class=" text-2xl mt-2 font-sans">fork() &#34892;&#20026;&#30340;&#34917;&#20805;&#35299;&#37322;</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="fork" class=" text-xl mt-2 pb-2 font-sans">&#22797;&#20064;&#65306;fork()</h2>
+<p class=" font-serif my-1">&#29366;&#24577;&#26426;&#30340;&#22797;&#21046;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="../../../pages/OS/2022/demos/fork-demo.c" class=" text-amber-900">fork-demo.c</a><ul class=" list-disc font-serif">
+<li class=" ml-8">&#25805;&#20316;&#31995;&#32479;&#65306;&#29366;&#24577;&#26426;&#30340;&#31649;&#29702;&#32773;</li>
+</ul>
+</li>
+<li class=" ml-8"><a href="../../../pages/OS/2022/demos/fork-printf.c" class=" text-amber-900">fork-printf.c</a><ul class=" list-disc font-serif">
+<li class=" ml-8">&#19968;&#20999;&#29366;&#24577;&#37117;&#20250;&#34987;&#22797;&#21046;</li>
+</ul>
+</li>
+<li class=" ml-8"><a href="../../../pages/OS/2022/demos/sh-xv6.c" class=" text-amber-900">sh-xv6.c</a><ul class=" list-disc font-serif">
+<li class=" ml-8">fork + execve + pipe: UNIX Shell &#30340;&#32463;&#20856;&#35774;&#35745;</li>
+<li class=" ml-8"><red>fork &#29366;&#24577;&#26426;&#22797;&#21046;&#21253;&#25324;&#25345;&#26377;&#30340;&#25152;&#26377;&#25805;&#20316;&#31995;&#32479;&#23545;&#35937;</red></li>
+<li class=" ml-8"><red>execve &#8220;&#37325;&#32622;&#8221; &#29366;&#24577;&#26426;&#65292;&#20294;&#32487;&#25215;&#25345;&#26377;&#30340;&#25152;&#26377;&#25805;&#20316;&#31995;&#32479;&#23545;&#35937;</red></li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25991;&#20214;&#25551;&#36848;&#31526;</h2>
+<p class=" font-serif my-1">&#29087;&#24713;&#21448;&#38476;&#29983;</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">open</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">pathname</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">flags</span><span class="p">);</span>
+</code></pre></div>
+
+<ul class=" list-disc font-serif">
+<li class=" ml-8">RTFM: <code>O_CLOEXEC</code>, <code>O_APPEND</code></li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#25991;&#20214;&#25551;&#36848;&#31526;&#65306;&#19968;&#20010;&#25351;&#21521;&#25805;&#20316;&#31995;&#32479;&#20869;&#23545;&#35937;&#30340; &#8220;&#25351;&#38024;&#8221;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><red>&#23545;&#35937;&#21482;&#33021;&#36890;&#36807;&#25805;&#20316;&#31995;&#32479;&#20801;&#35768;&#30340;&#26041;&#24335;&#35775;&#38382;</red></li>
+<li class=" ml-8">&#20174; 0 &#24320;&#22987;&#32534;&#21495; (0, 1, 2 &#20998;&#21035;&#26159; stdin, stdout, stderr)</li>
+<li class=" ml-8">&#21487;&#20197;&#36890;&#36807; open &#21462;&#24471;&#65307;close &#37322;&#25918;&#65307;dup &#8220;&#22797;&#21046;&#8221;</li>
+<li class=" ml-8">&#23545;&#20110;&#25968;&#25454;&#25991;&#20214;&#65292;&#25991;&#20214;&#25551;&#36848;&#31526;&#20250; &#8220;&#35760;&#20303;&#8221; &#19978;&#27425;&#35775;&#38382;&#25991;&#20214;&#30340;&#20301;&#32622;<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>write(3, "a", 1); write(3, "b", 1);</code></li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25991;&#20214;&#25551;&#36848;&#31526;&#30340; &#8220;&#22797;&#21046;&#8221;</h2>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">fd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">open</span><span class="p">(</span><span class="s">"a.txt"</span><span class="p">,</span><span class="w"> </span><span class="n">O_WRONLY</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">O_CREAT</span><span class="p">);</span><span class="w"> </span><span class="n">assert</span><span class="p">(</span><span class="n">fd</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="kt">pid_t</span><span class="w"> </span><span class="n">pid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fork</span><span class="p">();</span><span class="w"> </span><span class="n">assert</span><span class="p">(</span><span class="n">pid</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pid</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">write</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="s">"Hello"</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">write</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="s">"World"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<hr>
+<p class=" font-serif my-1">&#25991;&#20214;&#25277;&#35937;&#30340;&#20195;&#20215;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25805;&#20316;&#31995;&#32479;&#24517;&#39035;&#27491;&#30830;&#31649;&#29702;&#22909;&#20559;&#31227;&#37327; (&#22914;&#26524;&#26159;&#26085;&#24535;&#25991;&#20214;)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21407;&#23376;&#24615; (RTFM: write(2), BUGS section)</li>
+</ul>
+</li>
+<li class=" ml-8">dup() &#30340;&#20004;&#20010;&#25991;&#20214;&#25551;&#36848;&#31526;&#26159;&#20849;&#20139; offset&#65292;&#36824;&#26159;&#29420;&#31435; offset&#65311;<ul class=" list-disc font-serif">
+<li class=" ml-8">RTFM again!</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#22797;&#21046;&#65292;&#20294;&#21448;&#27809;&#26377;&#23436;&#20840;&#22797;&#21046;</h2>
+<p class=" font-serif my-1">&#27010;&#24565;&#19978;&#29366;&#24577;&#26426;&#34987;&#22797;&#21046;&#65292;&#20294;&#23454;&#38469;&#19978;&#22797;&#21046;&#21518;<red>&#20869;&#23384;&#37117;&#34987;&#20849;&#20139;</red></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#8220;Copy-on-write&#8221; &#21482;&#26377;&#34987;&#20889;&#20837;&#30340;&#39029;&#38754;&#25165;&#20250;&#22797;&#21046;&#19968;&#20221;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#34987;&#22797;&#21046;&#21518;&#65292;&#25972;&#20010;&#22320;&#22336;&#31354;&#38388;&#37117;&#34987;&#26631;&#35760;&#20026; &#8220;&#21482;&#35835;&#8221;</li>
+<li class=" ml-8">&#25805;&#20316;&#31995;&#32479;&#25429;&#33719; Page Fault &#21518;&#37196;&#24773;&#22797;&#21046;&#39029;&#38754;</li>
+<li class=" ml-8">fork-execve &#25928;&#29575;&#24471;&#21040;&#25552;&#21319;</li>
+</ul>
+</li>
+<li class=" ml-8">&#25805;&#20316;&#31995;&#32479;&#20250;&#32500;&#25252;&#27599;&#20010;&#39029;&#38754;&#30340;&#24341;&#29992;&#35745;&#25968;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#24819;&#35777;&#26126;&#36825;&#19968;&#28857;&#65311;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="../../../pages/OS/2022/demos/cow-test.c" class=" text-amber-900">cow-test.c</a>: 128MB &#20195;&#30721; + 128MB &#25968;&#25454;</li>
+<li class=" ml-8">&#21019;&#24314; 1000 &#20010;&#36827;&#31243; (2GB &#20869;&#23384;&#30340;&#34394;&#25311;&#33021;&#25239;&#20303;&#21527;)&#65311;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25152;&#20197;&#65292;&#25972;&#20010;&#25805;&#20316;&#31995;&#32479;&#37324; libc &#20195;&#30721;&#21644;&#21482;&#35835;&#25968;&#25454;&#21482;&#26377;&#19968;&#20010;&#21103;&#26412;&#65281;</li>
+<li class=" ml-8">&#25512;&#35770;&#65306;<red>&#32479;&#35745;&#36827;&#31243;&#21344;&#29992;&#30340;&#20869;&#23384;&#26159;&#20010;&#20266;&#21629;&#39064;</red></li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="fork" class=" text-2xl mt-2 font-sans">&#29366;&#24577;&#26426;&#12289;fork() &#21644;&#39764;&#27861;</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#29366;&#24577;&#26426;&#30340;&#35270;&#35282;</h2>
+<p class=" font-serif my-1">&#24110;&#21161;&#25105;&#20204;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#29702;&#35299;&#29289;&#29702;&#19990;&#30028; (Cellular Automata)</li>
+<li class=" ml-8">&#29702;&#35299;&#22788;&#29702;&#22120;&#12289;&#25805;&#20316;&#31995;&#32479;</li>
+<li class=" ml-8">&#35843;&#35797; (record-replay)&#12289;profiler</li>
+<li class=" ml-8">Model checker &#21644; program verifier</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">fork() &#21487;&#20197;&#22797;&#21046;&#29366;&#24577;&#26426;&#65311;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#24863;&#35273;&#26159;&#19968;&#20010;&#38750;&#24120; &#8220;&#24378;&#22823;&#8221; &#30340;&#25805;&#20316;</li>
+<li class=" ml-8">&#27604;&#22914;<red>&#21019;&#36896;&#24179;&#34892;&#23431;&#23449;</red>&#65281;</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#21019;&#36896;&#24179;&#34892;&#23431;&#23449;&#65306;&#25628;&#32034;&#24182;&#34892;&#21270;</h2>
+<p class=" font-serif my-1">&#37027;&#25105;&#20204;&#19981;&#23601;&#21487;&#20197;&#21152;&#36895;&#29366;&#24577;&#31354;&#38388;&#25628;&#32034;&#20102;&#21527;&#65311;</p>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/alphago.png" width="350px"></p>
+<p class=" font-serif my-1">&#27599;&#27425;&#25506;&#32034;&#37117; fork &#19968;&#20010;&#26032;&#36827;&#31243;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="../../../pages/OS/2022/demos/dfs-fork.c" class=" text-amber-900">dfs-fork.c</a>: &#36830;&#22238;&#28335;&#37117;&#21487;&#20197;&#19981;&#35201;&#20102;</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#21019;&#36896;&#24179;&#34892;&#23431;&#23449;&#65306;&#36339;&#36807;&#21021;&#22987;&#21270;</h2>
+<p class=" font-serif my-1">&#20551;&#35774;&#20320;&#23454;&#29616;&#30340; NEMU &#38656;&#35201;&#21551;&#21160;&#24456;&#22810;&#20221;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>./nemu dummy.elf</code></li>
+<li class=" ml-8"><code>./nemu add.elf</code></li>
+<li class=" ml-8"><code>./nemu add-longlong.elf</code>...</li>
+<li class=" ml-8">&#32780;&#20320;&#30340; NEMU &#23454;&#29616;&#21021;&#22987;&#21270;&#21448;&#38656;&#35201;&#24456;&#38271;&#30340;&#26102;&#38388;&#65311;</li>
+</ul>
+<hr>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">nemu_init</span><span class="p">();</span><span class="w"> </span><span class="c1">// only once</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_start_request</span><span class="p">();</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">pid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fork</span><span class="p">())</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="c1">// bad practice: no error checking</span>
+<span class="w">      </span><span class="n">load_file</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="p">...</span>
+</code></pre></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#21019;&#36896;&#24179;&#34892;&#23431;&#23449;&#65306;&#36339;&#36807;&#21021;&#22987;&#21270;</h2>
+<p class=" font-serif my-1">&#22312;&#23454;&#38469;&#20013;&#30340;&#24212;&#29992;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Zygote Process (Android)<ul class=" list-disc font-serif">
+<li class=" ml-8">Java Virtual Machine &#21021;&#22987;&#21270;&#28041;&#21450;&#22823;&#37327;&#30340;&#31867;&#21152;&#36733;</li>
+<li class=" ml-8">&#19968;&#27425;&#21152;&#36733;&#65292;&#20840;&#21592;&#20351;&#29992;<ul class=" list-disc font-serif">
+<li class=" ml-8">App &#20351;&#29992;&#30340;&#31995;&#32479;&#36164;&#28304;</li>
+<li class=" ml-8">&#22522;&#30784;&#31867;&#24211;</li>
+<li class=" ml-8">libc</li>
+<li class=" ml-8">...</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class=" ml-8">Chrome site isolation (Chrome)</li>
+<li class=" ml-8">Fork server (AFL)</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#21019;&#36896;&#24179;&#34892;&#23431;&#23449;&#65306;&#22791;&#20221;&#21644;&#23481;&#38169;</h2>
+<p class=" font-serif my-1">&#35201;&#26159;&#25105;&#20204;&#24635;&#26159;&#33021; &#8220;&#35797;&#19968;&#35797;&#8221;&#65292;&#35797;&#38169;&#20102;&#36824;&#33021;&#22238;&#21040;&#36807;&#21435;&#23601;&#22909;&#20102;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><red>&#26377; bug &#30340;&#31243;&#24207;&#65306;&#25105;&#20063;&#24819;&#36825;&#26679;</red></li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#37027;&#23601;&#29992; fork() &#20570;&#20010;&#24555;&#29031;&#21543;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20027;&#36827;&#31243; crash &#20102;&#65292;&#21551;&#21160;&#24555;&#29031;&#37325;&#26032;&#25191;&#34892;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#26377;&#20123; bug &#21487;&#33021;&#35843;&#25972;&#19968;&#19979;&#29615;&#22659;&#23601;&#28040;&#22833;&#20102; (&#27604;&#22914;&#24182;&#21457;)</li>
+<li class=" ml-8"><a href="https://dl.acm.org/citation.cfm?id=1095833" class=" text-amber-900">Rx: Treating bugs as allergies--A safe method to survive software failures</a>. (SOSP'05, Best Paper Award &#127941;)</li>
+</ul>
+</li>
+</ul>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/qin-rx.png" width="800px"></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#31361;&#22914;&#20854;&#26469;&#30340;&#24191;&#21578;</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">&#35745;&#31639;&#26426;&#31995;&#32479;&#37324;&#27809;&#26377;&#39764;&#27861;&#12290;&#22788;&#29702;&#22120;/&#25805;&#20316;&#31995;&#32479;/&#31243;&#24207;&#23601;&#26159;&#29366;&#24577;&#26426;&#12290;</p>
+</blockquote>
+<p class=" font-serif my-1">&#20294;&#36825;&#23601;&#26159;&#39764;&#27861;&#21834;&#65281;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><del><a href="https://cs.nju.edu.cn/ics/recruit/index.html" class=" text-amber-900">&#31614;&#35746;&#22865;&#32422;&#65292;&#25104;&#20026;&#39764;&#27861;&#23569;&#22899;</a></del> (<a href="https://zh.moegirl.org/QB%E5%A8%98" class=" text-amber-900">&#36825;&#26159;&#20160;&#20040;&#26775;</a>)</li>
+</ul>
+<hr>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/qb.webp" width="200px"></p>
+<p class=" font-serif my-1"></p><center>&#12461;&#12517;&#12454;&#12409;&#12360;&#21644;&#22823;&#23398;&#25945;&#25480;&#26377;&#26576;&#31181;&#31243;&#24230;&#30340;&#30456;&#20284;</center>
+<p class=" font-serif my-1"></p><center><del>&#24635;&#26159;&#22312;&#39575;&#20320;&#65292;&#20294;&#20174;&#19981;&#35828;&#20551;&#35805;</del></center></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#29366;&#24577;&#26426;&#22797;&#21046;&#65306;&#25105;&#20204;&#20570;&#23545;&#20102;&#21527;&#65311;</h1>
+<p class=" font-serif my-1"><br></p>
+<p class=" font-serif my-1"><a href="https://www.microsoft.com/en-us/research/uploads/prod/2019/04/fork-hotos19.pdf" class=" text-amber-900">A <code>fork()</code> in the road</a> (HotOS'19)</p></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="fork-unix" class=" text-xl mt-2 pb-2 font-sans"><code>fork()</code>: UNIX &#26102;&#20195;&#30340;&#36951;&#20135;</h2>
+<p class=" font-serif my-1">fork + execve</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22914;&#26524;&#21482;&#26377;&#20869;&#23384;&#21644;&#25991;&#20214;&#25551;&#36848;&#31526;&#65292;&#36825;&#26159;&#21313;&#20998;&#20248;&#38597;&#30340;&#26041;&#26696;</li>
+<li class=" ml-8">&#20294;&#36138;&#23146;&#30340;&#20154;&#31867;&#24590;&#20040;&#21487;&#33021;&#28385;&#36275;&#65311;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#22312;&#25805;&#20316;&#31995;&#32479;&#30340;&#28436;&#21270;&#36807;&#31243;&#20013;&#65292;&#20026;&#36827;&#31243;&#22686;&#21152;&#20102;&#26356;&#22810;&#30340;&#19996;&#35199;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20449;&#21495; (&#20449;&#21495;&#22788;&#29702;&#31243;&#24207;&#65292;&#25805;&#20316;&#31995;&#32479;&#36127;&#36131;&#32500;&#25252;)</li>
+<li class=" ml-8">&#32447;&#31243; (Linux &#20026;&#32447;&#31243;&#25552;&#20379;&#20102; clone &#31995;&#32479;&#35843;&#29992;)</li>
+<li class=" ml-8">&#36827;&#31243;&#38388;&#36890;&#20449;&#23545;&#35937;</li>
+<li class=" ml-8">ptrace (&#36861;&#36394;/&#35843;&#35797;)</li>
+<li class=" ml-8">&#8230;&#8230;</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="posix-spawn" class=" text-xl mt-2 pb-2 font-sans">&#21019;&#24314;&#36827;&#31243;&#65306;POSIX Spawn</h2>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">posix_spawn</span><span class="p">(</span><span class="kt">pid_t</span><span class="w"> </span><span class="o">*</span><span class="n">pid</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">path</span><span class="p">,</span>
+<span class="w">  </span><span class="n">posix_spawn_file_actions_t</span><span class="w"> </span><span class="o">*</span><span class="n">file_actions</span><span class="p">,</span>
+<span class="w">  </span><span class="n">posix_spawnattr_t</span><span class="w"> </span><span class="o">*</span><span class="n">attrp</span><span class="p">,</span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">argv</span><span class="p">[],</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">envp</span><span class="p">[]);</span>
+</code></pre></div>
+
+<hr>
+<p class=" font-serif my-1">&#21442;&#25968;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>pid</code>: &#36820;&#22238;&#30340;&#36827;&#31243;&#21495;</li>
+<li class=" ml-8"><code>path</code>: &#31243;&#24207; (&#37325;&#32622;&#30340;&#29366;&#24577;&#26426;)</li>
+<li class=" ml-8"><code>file_actions</code>: open, close, dup</li>
+<li class=" ml-8"><code>attrp</code>: &#20449;&#21495;&#12289;&#36827;&#31243;&#32452;&#31561;&#20449;&#24687;</li>
+<li class=" ml-8"><code>argv</code>, <code>envp</code>: &#21516; <code>execve</code><ul class=" list-disc font-serif">
+<li class=" ml-8">&#24456;&#26126;&#26174;&#65306;&#36825;&#26159;&#19968;&#20010; &#8220;&#21518;&#35774;&#35745;&#8221; &#30340; API</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="a-fork-in-the-road" class=" text-xl mt-2 pb-2 font-sans">A <code>fork()</code> in the Road</h2>
+<p class=" font-serif my-1">fork() &#30340;&#19971;&#23447;&#32618;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Fork is no longer simple</li>
+<li class=" ml-8">Fork doesn&#8217;t compose - <a href="../../../pages/OS/2022/demos/fork-printf.c" class=" text-amber-900">fork-printf.c</a></li>
+<li class=" ml-8">Fork isn&#8217;t thread-safe</li>
+<li class=" ml-8">Fork is insecure - &#25171;&#30772;&#20102; Address Space Layout Randomization</li>
+<li class=" ml-8">Fork is slow - &#30340;&#30830;&#8230;&#8230;</li>
+<li class=" ml-8">Fork doesn&#8217;t scale - &#20063;&#26159;&#8230;&#8230;</li>
+<li class=" ml-8">Fork encourages memory overcommit - &#21571;&#8230;&#8230;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#20294; fork() &#26159;&#39764;&#27861;&#21834;&#65306;&#36825;&#24341;&#36215;&#20102;&#26356;&#22810;&#30340;&#24605;&#32771;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#24212;&#29992;&#31243;&#24207;&#21040;&#24213;&#38656;&#35201;&#20160;&#20040;&#65311;</li>
+<li class=" ml-8">&#25805;&#20316;&#31995;&#32479;&#21040;&#24213;&#24212;&#35813;&#25552;&#20379;&#20160;&#20040;&#65311;</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#24635;&#32467;</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#24635;&#32467;</h2>
+<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#22238;&#31572;&#30340;&#38382;&#39064;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><strong>Q</strong>: &#22914;&#20309;&#24039;&#22937;&#22320;&#20351;&#29992; fork() &#8220;&#21019;&#24314;&#24179;&#34892;&#19990;&#30028;&#8221; &#30340;&#21151;&#33021;&#65311;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Take-away messages</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21019;&#24314;&#24179;&#34892;&#19990;&#30028;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25628;&#32034;&#30340;&#21152;&#36895;</li>
+<li class=" ml-8">&#29366;&#24577;&#30340;&#22797;&#29992; (Zygote)</li>
+<li class=" ml-8">&#8220;&#26102;&#38388;&#26053;&#34892;&#8221;&#8212;&#8212;&#31359;&#36234;&#21040;&#36807;&#21435;&#65292;&#35753;&#33258;&#24049;&#21464;&#24471;&#26356;&#24378;</li>
+</ul>
+</li>
+<li class=" ml-8">&#20174;&#25805;&#20316;&#31995;&#32479;&#30340;&#35282;&#24230;&#65292;fork &#21487;&#33021;&#19981;&#26159; API &#30340;&#26368;&#20339;&#36873;&#25321;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21487;&#33021;&#21487;&#20197;&#22312;&#36825;&#20010;&#22522;&#30784;&#19978;&#20570;&#20986;&#38750;&#24120;&#22522;&#30784;&#24615;&#30340;&#24037;&#20316;&#65281;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="end" class=" text-2xl mt-2 font-sans">End.</h1></div></div></div>
+        
+      
+      </section>
+    
+    </section>
+  
+</div>
+</div>
+
+<script src="../../../static/reveal/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    
+    width: 1024, height: 768,
+    
+    slideNumber: 'c/t',
+    controlsTutorial: false,
+    progress: false,
+    hash: true,
+    center: false,
+    autoAnimateUnmatched: true,
+    autoAnimateEasing: 'ease-out',
+    autoAnimateDuration: 0.3,
+    transitionSpeed: 'fast'
+  });
+</script>
+
+
+</body>
+
+</html>

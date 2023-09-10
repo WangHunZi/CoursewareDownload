@@ -1,0 +1,861 @@
+<!DOCTYPE html><html class="h-100">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="../../../static/css/base.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
+
+  <style>
+    .font-sans {
+      font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+    }
+    .font-serif {
+      font-family: 'Source Serif Pro', 'Songti SC', 'SimSun', 'Serif', serif;
+    }
+  </style>
+  <link rel="stylesheet" href="../../../static/katex/katex.min.css">
+  <script defer src="../../../static/katex/katex.min.js"></script>
+  <script defer src="../../../static/katex/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+            // customised options
+            // &#8226; auto-render specific keys, e.g.:
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ],
+            // &#8226; rendering keys, e.g.:
+            throwOnError : false
+          });
+      });
+  </script>
+
+
+  
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="../../../static/reveal/reveal.css">
+<link rel="stylesheet" href="../../../static/reveal/theme/simple.css" id="theme">
+
+<style>
+.reveal .slide-number {
+  font-size: 26px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, .3);
+}
+
+.reveal .full-screen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.reveal .slides {
+  border: 1.5px #ddd solid;
+  border-radius: 7px;
+  text-align: left;
+  font-weight: 300;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  font-family: 'Lato', 'SimHei', 'STXihei', 'Droid Sans';
+  font-weight: 400;
+}
+
+.reveal p, .reveal li, .reveal center {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Droid Sans';
+}
+
+.reveal li + li {
+  margin-top: 10px;
+}
+
+.reveal ul {
+  display: block;
+  margin-right: 15px;
+}
+
+.reveal p, .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5 {
+  padding:  0 25px 0 25px;
+}
+
+.reveal table {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Sans Serif';
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.reveal th {
+  background-color: #eee;
+}
+
+.reveal tr:nth-child(even) {
+  background-color: #efffff;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  text-align: left;
+  margin: 0 0 20px 0;
+ color: #222; 
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
+
+
+.reveal h1 {
+  margin: 0 10 0 10;
+  font-size: 60px;
+}
+.reveal .middle h1 {
+  text-align: center;
+}
+
+.reveal h2 {
+  font-size: 48px;
+  border-bottom: 2px solid rgb(106, 0, 95);
+  padding-bottom: 5px;
+}
+.reveal h3 { font-size: 1.15em; }
+.reveal h4 { font-size: 1.05em; }
+
+.reveal .center {
+  text-align: center;
+}
+
+.reveal .middle {
+  height: 728px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.reveal pre {
+  font-size: 28px;
+ 
+  background-color: #eee;
+
+  border-radius: 3mm;
+  padding: 10px 10px 10px 10px;
+}
+
+.reveal pre code {
+  max-height: none;
+}
+
+.reveal code {
+  font-family: 'Inconsolata', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif', Monospace;
+}
+
+.reveal .middle blockquote {
+  text-align: center;
+  color: rgb(106, 0, 95);
+  background: none;
+  box-shadow: none;
+}
+
+.reveal .middle blockquote a {
+  color: inherit;
+}
+
+.reveal blockquote p, .reveal blockquote li {
+  font-family: 'Lato', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif';
+}
+
+section .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reveal .author-block {
+  margin: 75px 0 35px 0;
+}
+.reveal .author-affiliation img {
+  margin: 15px 0 0 0;
+}
+.reveal .author-block p, .reveal .author-affiliation p  {
+  font-family: 'Kaiti', 'STKaiti', 'Serif', 'Times', 'Times New Roman';
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+.reveal .author-affiliation {
+  display: inline-block;
+  font-size: 90%;
+}
+.reveal hr {
+  border: 10px solid rgba(0, 0, 0, 0);
+}
+.reveal li {
+  margin-top: 10px;
+}
+</style>
+
+  <title>&#31995;&#32479;&#35843;&#29992;&#21644; UNIX Shell</title>
+</head>
+
+<body class="d-flex flex-column h-100">
+  
+  
+
+<div class="reveal">
+<div class="slides">
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="unix-shell" class=" text-2xl mt-2 font-sans">&#31995;&#32479;&#35843;&#29992;&#21644; UNIX Shell</h1>
+<p class=" font-serif my-1"><include src="Slides_Author"><div><div class="py-16">
+<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">&#33931;&#28814;&#23721;</a></p>
+</div>
+<div class="row">
+<div class="author-affiliation">
+    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#12288;&#12288;&#21335;&#20140;&#22823;&#23398;&#12288;&#12288;</p>
+    <img class="inline-img h-24" src="../../../static/img/nju-logo.jpg" style="display: inline-block;"></a>
+  </div>
+<div class="author-affiliation">
+   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#31185;&#23398;&#19982;&#25216;&#26415;&#31995;</p>
+    <img class="inline-img h-24" src="../../../static/img/njucs-logo.jpg" style="display: inline-block;"></a>
+  </div>
+<div class="author-affiliation">
+    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#36719;&#20214;&#30740;&#31350;&#25152;</p>
+    <img class="inline-img h-24" src="../../../static/img/ics-logo.png" style="display: inline-block;"></a>
+  </div>
+</div></div></include></p></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="overview" class=" text-xl mt-2 pb-2 font-sans">Overview</h2>
+<p class=" font-serif my-1">&#22797;&#20064;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#29366;&#24577;&#26426;&#27169;&#22411; (&#31243;&#24207;&#12289;&#22810;&#32447;&#31243;&#31243;&#24207;&#12289;&#25805;&#20316;&#31995;&#32479;)</li>
+<li class=" ml-8">&#25805;&#20316;&#31995;&#32479;&#26159;&#29366;&#24577;&#26426;&#30340;&#31649;&#29702;&#32773;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#22238;&#31572;&#30340;&#38382;&#39064;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><strong>Q</strong>: &#25105;&#20204;&#26159;&#25805;&#20316;&#31995;&#32479;&#30340;&#29992;&#25143;&#65307;&#20294;&#25805;&#20316;&#31995;&#32479;&#25552;&#20379;&#30340; API &#24182;&#19981;&#26159; &#8220;&#25105;&#20204;&#8221; &#20316;&#20026;&#20154;&#31867;&#29992;&#25143;&#33021;&#30452;&#25509;&#20351;&#29992;&#30340;&#12290;&#37027; &#8220;&#25105;&#20204;&#8221; &#21040;&#24213;&#24590;&#20040;&#29992;&#25805;&#20316;&#31995;&#32479;&#65311;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#20027;&#35201;&#20869;&#23481;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">UNIX Shell &#30340;&#35774;&#35745;&#21644;&#23454;&#29616;</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="shell" class=" text-2xl mt-2 font-sans">Shell</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#21322;&#23398;&#26399;&#23567;&#32467;&#65306;&#25105;&#20204;&#37117;&#23398;&#20102;&#20160;&#20040;&#65311;</h2>
+<p class=" font-serif my-1">&#25972;&#20010;&#35745;&#31639;&#26426;&#31995;&#32479;&#19990;&#30028;&#30340; &#8220;&#26500;&#24314;&#8221;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#30828;&#20214; (NEMU)&#65306;&#20174; CPU Reset &#24320;&#22987;&#25191;&#34892;&#25351;&#20196; (&#35745;&#31639;&#21644; I/O)</li>
+<li class=" ml-8">Firmware: &#21152;&#36733;&#25805;&#20316;&#31995;&#32479;</li>
+<li class=" ml-8">&#25805;&#20316;&#31995;&#32479;&#65306;&#29366;&#24577;&#26426;&#30340;&#31649;&#29702;&#32773;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21021;&#22987;&#21270;&#31532;&#19968;&#20010;&#36827;&#31243; (&#29366;&#24577;&#26426;)</li>
+<li class=" ml-8">&#25191;&#34892;&#31995;&#32479;&#35843;&#29992;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#20363;&#23376;&#65306;<a href="https://box.nju.edu.cn/f/3f67e092e1ba441187d9/?dl=1" class=" text-amber-900">linux-minimal.zip</a></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25972;&#20010;&#31995;&#32479;&#37324;&#21482;&#38656;&#35201; &#8220;&#19968;&#20010;&#31243;&#24207;&#8221;<ul class=" list-disc font-serif">
+<li class=" ml-8">busybox/toybox/...</li>
+</ul>
+</li>
+<li class=" ml-8">&#36825;&#20010;&#31243;&#24207;&#21487;&#20197;&#20877;&#25191;&#34892;&#21508;&#31181;&#24212;&#29992;&#31243;&#24207;<ul class=" list-disc font-serif">
+<li class=" ml-8">vim; dosbox; xeyes; ...</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="api" class=" text-xl mt-2 pb-2 font-sans">&#20026;&#29992;&#25143;&#23553;&#35013;&#25805;&#20316;&#31995;&#32479; API</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">&#25105;&#20204;&#38656;&#35201;&#19968;&#20010; &#8220;&#29992;&#25143;&#33021;&#30452;&#25509;&#25805;&#20316;&#8221; &#30340;&#31243;&#24207;&#31649;&#29702;&#25805;&#20316;&#31995;&#32479;&#23545;&#35937;&#12290;</p>
+</blockquote>
+<p class=" font-serif my-1">&#36825;&#23601;&#26159; Shell (&#20869;&#26680; Kernel &#25552;&#20379;&#31995;&#32479;&#35843;&#29992;&#65307;Shell &#25552;&#20379;&#29992;&#25143;&#25509;&#21475;)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#8220;&#19982;<red>&#20154;&#31867;&#30452;&#25509;&#20132;&#20114;</red>&#30340;&#31532;&#19968;&#20010;&#31243;&#24207;&#8221;</li>
+<li class=" ml-8">&#24110;&#21161;&#20154;&#31867;&#21019;&#24314;/&#31649;&#29702;&#36827;&#31243; (&#24212;&#29992;&#31243;&#24207;)&#12289;&#25968;&#25454;&#25991;&#20214;&#8230;&#8230;</li>
+</ul>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/win11.jpg" width="600px"></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="the-unix-shell" class=" text-xl mt-2 pb-2 font-sans">The UNIX Shell</h2>
+<p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/doge-ui.jpeg" width="500px"></p>
+<p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/light-saber.jpg" width="500px"></p>
+<p class=" font-serif my-1">&#8220;&#32456;&#31471;&#8221; &#26102;&#20195;&#30340;&#20255;&#22823;&#35774;&#35745;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#8220;Command-line interface&#8221; (CLI) &#30340;&#24005;&#23792;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1"><red>Shell &#26159;&#19968;&#38376; &#8220;&#25226;&#29992;&#25143;&#25351;&#20196;&#32763;&#35793;&#25104;&#31995;&#32479;&#35843;&#29992;&#8221; &#30340;&#32534;&#31243;&#35821;&#35328;</red></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">man sh (&#25512;&#33616;&#38405;&#35835;&#65281;), bash, ...</li>
+<li class=" ml-8">&#21407;&#26469;&#25105;&#20204;&#19968;&#30452;&#22312;&#32534;&#31243;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#30452;&#21040;&#26377;&#20102; Graphical Shell (GUI)</li>
+<li class=" ml-8">Windows, Gnome, Symbian, Android</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#22797;&#21051;&#32463;&#20856;</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="unix" class=" text-xl mt-2 pb-2 font-sans">&#33086;&#27668;&#26377;&#28857;&#23567;&#21476;&#24618;&#30340; UNIX &#19990;&#30028;</h2>
+<p class=" font-serif my-1">&#8220;Unix is user-friendly; it's just choosy about who its friends are.&#8221;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20294;&#22914;&#26524;&#25226; shell &#29702;&#35299;&#25104;&#32534;&#31243;&#35821;&#35328;&#65292;&#8220;&#19981;&#22909;&#29992;&#8221; &#22909;&#20687;&#20063;&#27809;&#20160;&#20040;&#27611;&#30149;&#20102;<ul class=" list-disc font-serif">
+<li class=" ml-8"><del>&#20320;&#35265;&#36807;&#21738;&#20010;&#32534;&#31243;&#35821;&#35328; &#8220;&#22909;&#29992;&#8221; &#30340;&#65311;</del></li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/xkcd-tar.png" width="900px"></p>
+<p class=" font-serif my-1"></p><center>(UNIX &#19990;&#30028;&#26377;&#24456;&#22810;&#21382;&#21490;&#36951;&#30041;&#32422;&#23450;)</center></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="a-zero-dependency-unix-shell-from-xv6" class=" text-xl mt-2 pb-2 font-sans">A Zero-dependency UNIX Shell (from xv6)</h2>
+<p class=" font-serif my-1"><a href="../../../pages/OS/2022/demos/sh-xv6.c" class=" text-amber-900">sh-xv6.c</a></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#38646;&#24211;&#20989;&#25968;&#20381;&#36182; (-ffreestanding &#32534;&#35793;&#12289;ld &#38142;&#25509;)</li>
+<li class=" ml-8">&#21487;&#20197;&#20316;&#20026;&#26368;&#23567; Linux &#30340; init &#31243;&#24207;</li>
+<li class=" ml-8">&#29992;&#21040;<red>&#25991;&#20214;&#25551;&#36848;&#31526;</red>&#65306;&#19968;&#20010;&#25171;&#24320;&#25991;&#20214;&#30340; &#8220;&#25351;&#38024;&#8221;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#25903;&#25345;&#30340;&#21151;&#33021;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21629;&#20196;&#25191;&#34892; <code>ls</code></li>
+<li class=" ml-8">&#37325;&#23450;&#21521; <code>ls &gt; a.txt</code></li>
+<li class=" ml-8">&#31649;&#36947; <code>ls | wc -l</code></li>
+<li class=" ml-8">&#21518;&#21488; <code>ls &amp;</code></li>
+<li class=" ml-8">&#21629;&#20196;&#32452;&#21512; <code>(echo a ; echo b) | wc -l</code></li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="a-zero-dependency-unix-shell-from-xv6" class=" text-xl mt-2 pb-2 font-sans">A Zero-dependency UNIX Shell (from xv6)</h2>
+<p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/pipe.gif" width="400px"></p>
+<p class=" font-serif my-1">&#25105;&#20204;&#24212;&#35813;&#22914;&#20309;&#38405;&#35835; <a href="../../../pages/OS/2022/demos/sh-xv6.c" class=" text-amber-900">sh-xv6.c</a> &#30340;&#20195;&#30721;&#65311;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">strace + gdb!<ul class=" list-disc font-serif">
+<li class=" ml-8">set follow-fork-mode, set follow-exec-mode</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#20851;&#38190;&#28857;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21629;&#20196;&#30340;&#25191;&#34892;&#12289;&#37325;&#23450;&#21521;&#12289;&#31649;&#36947;&#21644;&#23545;&#24212;&#30340;&#31995;&#32479;&#35843;&#29992;</li>
+<li class=" ml-8">&#36825;&#37324;&#29992;&#21040; <a href="../../../pages/OS/2022/demos/minimal.S" class=" text-amber-900">minimal.S</a> &#20250;&#31616;&#21270;&#36755;&#20986;</li>
+</ul>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>echo './a.out &gt; /tmp/a.txt' | strace -f ./sh
+</code></pre></div>
+
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#36824;&#21487;&#20197;&#29992;&#31649;&#36947;&#36807;&#28388;&#19981;&#24819;&#35201;&#30340;&#31995;&#32479;&#35843;&#29992;</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="the-shell-programming-language" class=" text-xl mt-2 pb-2 font-sans">The Shell Programming Language</h2>
+<p class=" font-serif my-1"><red>&#22522;&#20110;&#25991;&#26412;&#26367;&#25442;&#30340;&#24555;&#36895;&#24037;&#20316;&#27969;&#25645;&#24314;</red></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#37325;&#23450;&#21521;: <code>cmd &gt; file &lt; file 2&gt; /dev/null</code></li>
+<li class=" ml-8">&#39034;&#24207;&#32467;&#26500;: <code>cmd1; cmd2</code>, <code>cmd1 &amp;&amp; cmd2</code>, <code>cmd1 || cmd2</code></li>
+<li class=" ml-8">&#31649;&#36947;: <code>cmd1 | cmd2</code></li>
+<li class=" ml-8">&#39044;&#22788;&#29702;: <code>$()</code>, <code>&lt;()</code></li>
+<li class=" ml-8">&#21464;&#37327;/&#29615;&#22659;&#21464;&#37327;&#12289;&#25511;&#21046;&#27969;&#8230;&#8230;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Job control</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#31867;&#27604;&#31383;&#21475;&#31649;&#29702;&#22120;&#37324;&#30340; &#8220;&#21449;&#8221;&#12289;&#8220;&#26368;&#23567;&#21270;&#8221;<ul class=" list-disc font-serif">
+<li class=" ml-8">jobs, fg, bg, wait</li>
+<li class=" ml-8">(&#20170;&#22825;&#30340; GUI &#24182;&#27809;&#26377;&#27604; CLI &#22810;&#20570;&#22826;&#22810;&#20107;)</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="unix-shell-traps-and-pitfalls" class=" text-xl mt-2 pb-2 font-sans">UNIX Shell: Traps and Pitfalls</h2>
+<p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/sudo-sandwich.png" width="350px"></p>
+<p class=" font-serif my-1">&#22312; &#8220;&#33258;&#28982;&#35821;&#35328;&#8221;&#12289;&#8220;&#26426;&#22120;&#35821;&#35328;&#8221; &#21644; &#8220;1970s &#30340;&#31639;&#21147;&#8221; &#20043;&#38388;&#36798;&#21040;&#20248;&#38597;&#30340;&#24179;&#34913;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#24179;&#34913;&#24847;&#21619;&#30528;&#24182;&#19981;&#24635;&#26159;&#23436;&#32654;</li>
+</ul>
+<hr>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25805;&#20316;&#30340; &#8220;&#20248;&#20808;&#32423;&#8221;&#65311;<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>ls &gt; a.txt | cat</code> (bash/zsh)</li>
+</ul>
+</li>
+<li class=" ml-8">&#25991;&#26412;&#25968;&#25454; &#8220;&#36131;&#20219;&#33258;&#36127;&#8221;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#26377;&#31354;&#26684;&#65311;&#21518;&#26524;&#33258;&#36127;&#65281;(PowerShell: &#25105;&#26377; object stream pipe &#21834;&#21890;)</li>
+</ul>
+</li>
+<li class=" ml-8">&#34892;&#20026;&#24182;&#19981;&#24635;&#26159; intuitive</li>
+</ul>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>$ echo hello &gt; /etc/a.txt
+bash: /etc/a.txt: Permission denied
+$ sudo echo hello &gt; /etc/a.txt
+bash: /etc/a.txt: Permission denied
+</code></pre></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#23637;&#26395;&#26410;&#26469;</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">Open question: &#25105;&#20204;&#33021;&#21542;&#20174;&#26681;&#26412;&#19978;&#25913;&#21464;&#21629;&#20196;&#34892;&#30340;&#20132;&#20114;&#27169;&#24335;&#65311;</p>
+</blockquote>
+<p class=" font-serif my-1">Shell &#36830;&#25509;&#20102;&#29992;&#25143;&#21644;&#25805;&#20316;&#31995;&#32479;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#26159; &#8220;&#33258;&#28982;&#35821;&#35328;&#8221;&#12289;&#8220;&#26426;&#22120;&#35821;&#35328;&#8221; &#20043;&#38388;&#30340;&#36793;&#32536;&#22320;&#24102;&#65281;</li>
+<li class=" ml-8">&#38750;&#24120;&#36866;&#21512; BERT &#36825;&#26679;&#30340;&#35821;&#35328;&#27169;&#22411;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#24050;&#32463;&#30475;&#21040;&#30340;&#19968;&#20123;&#26041;&#21521;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">fish, zsh, ...</li>
+<li class=" ml-8">Stackoverflow, tldr, <a href="https://github.com/nvbn/thefuck" class=" text-amber-900">thef**k</a> (&#33258;&#21160;&#20462;&#22797;)</li>
+<li class=" ml-8">Command palette of vscode (Ctrl-Shift-P)</li>
+<li class=" ml-8"><a href="https://dl.acm.org/doi/10.1145/3371111" class=" text-amber-900">Executable formal semantics for the POSIX shell</a> (POPL'20)</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="job-control" class=" text-2xl mt-2 font-sans">&#32456;&#31471;&#21644; Job Control</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="shell" class=" text-xl mt-2 pb-2 font-sans">Shell &#36824;&#26377;&#19968;&#20123;&#26410;&#35299;&#20043;&#35868;</h2>
+<p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/meme-vim.jpg" width="200px"></p>
+<p class=" font-serif my-1">&#20026;&#20160;&#20040; Ctrl-C &#21487;&#20197;&#36864;&#20986;&#31243;&#24207;&#65311;</p>
+<p class=" font-serif my-1">&#20026;&#20160;&#20040;&#26377;&#20123;&#31243;&#24207;&#21448;&#19981;&#33021;&#36864;&#20986;&#65311;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#27809;&#26377;&#20154; read &#36825;&#20010;&#25353;&#38190;&#65292;&#20026;&#20160;&#20040;&#36827;&#31243;&#33021;&#36864;&#20986;&#65311;</li>
+<li class=" ml-8">Ctrl-C &#21040;&#24213;&#26159;&#26432;&#25481;&#19968;&#20010;&#65292;&#36824;&#26159;&#26432;&#25481;&#20840;&#37096;&#65311;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22914;&#26524;&#25105; fork &#20102;&#19968;&#20221;&#35745;&#31639;&#20219;&#21153;&#21602;&#65311;</li>
+<li class=" ml-8">&#22914;&#26524;&#25105; fork-execve &#20102;&#19968;&#20010; shell &#21602;&#65311;<ul class=" list-disc font-serif">
+<li class=" ml-8">Hmmm&#8230;&#8230;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#20026;&#20160;&#20040; <a href="../../../pages/OS/2022/demos/fork-printf.c" class=" text-amber-900">fork-printf.c</a> &#20250;&#22312;&#31649;&#36947;&#26102;&#26377;&#19981;&#21516;&#34920;&#29616;&#65311;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">libc &#21040;&#24213;&#26159;&#26681;&#25454;&#20160;&#20040;&#35843;&#25972;&#20102;&#32531;&#20914;&#21306;&#30340;&#34892;&#20026;&#65311;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#20026;&#20160;&#20040; Tmux &#21487;&#20197;&#31649;&#29702;&#22810;&#20010;&#31383;&#21475;&#65311;</p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#31572;&#26696;&#65306;&#32456;&#31471;</h2>
+<p class=" font-serif my-1">&#32456;&#31471;&#26159; UNIX &#25805;&#20316;&#31995;&#32479;&#20013;&#19968;&#31867;&#38750;&#24120;&#29305;&#21035;&#30340;&#35774;&#22791;&#65281;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">RTFM: tty, stty, ...</li>
+</ul>
+<hr>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/vt100.jpg" width="500px"></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="tmux" class=" text-xl mt-2 pb-2 font-sans">&#35266;&#23519; Tmux &#30340;&#23454;&#29616;</h2>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/tmux-cheatsheet.png" width="600px"></p>
+<p class=" font-serif my-1">&#39318;&#20808;&#65292;&#25105;&#20204;&#21487;&#20197; &#8220;&#20351;&#29992;&#8221; tmux</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22312;&#22810;&#20010;&#31383;&#21475;&#20013;&#25191;&#34892; tty&#65292;&#20250;&#30475;&#21040;&#23427;&#20204;&#26159;&#19981;&#21516;&#30340;&#32456;&#31471;&#35774;&#22791;&#65281;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#28982;&#21518;&#65292;&#25105;&#20204;&#20063;&#21487;&#20197;&#25226; tmux &#8220;&#25171;&#24320;&#8221;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">strace (<code>-o</code>) &#21487;&#20197;&#30475;&#21040;&#19968;&#20123;&#20851;&#38190;&#30340;&#31995;&#32479;&#35843;&#29992; (&#20197;&#21450; man 7 pty)</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="api" class=" text-xl mt-2 pb-2 font-sans">&#32456;&#31471;&#30456;&#20851;&#30340; API</h2>
+<p class=" font-serif my-1">&#20026;&#20160;&#20040; <code>fork-printf</code> &#33021;&#35782;&#21035; tty &#21644;&#31649;&#36947;&#65311;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#24403;&#28982;&#26159;&#35266;&#23519; strace &#20102;&#65281;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25214;&#21040;&#26159;&#21738;&#20010;&#31995;&#32479;&#35843;&#29992; &#8220;&#35782;&#21035;&#8221; &#20986;&#20102;&#32456;&#31471;&#65311;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">"Hello, World</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="session-process-group" class=" text-xl mt-2 pb-2 font-sans">Session, Process Group &#21644;&#20449;&#21495;</h2>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/process-groups-sessions.png" width="800px"></p>
+<p class=" font-serif my-1">&#21442;&#32771; <a href="../../../pages/OS/2022/demos/signal-handler.c" class=" text-amber-900">signal-handler.c</a></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="sigsegv-sigfpe" class=" text-xl mt-2 pb-2 font-sans">SIGSEGV &#21644; SIGFPE</h2>
+<p class=" font-serif my-1">&#22823;&#23478;&#29087;&#24713;&#30340; Segmentation Fault/Floating point exception (core dumped)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">#GP, #PF &#25110; #DIV<ul class=" list-disc font-serif">
+<li class=" ml-8">UNIX &#31995;&#32479;&#20250;&#32473;&#36827;&#31243;&#21457;&#36865;&#19968;&#20010;&#20449;&#21495;</li>
+<li class=" ml-8">&#27492;&#26102;&#21487;&#20197;&#29983;&#25104;&#19968;&#20010; &#8220;core&#8221; &#25991;&#20214; (ELF &#26684;&#24335;)&#65292;&#33021;&#29992; gdb &#35843;&#35797;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">UNIX (System V) &#20449;&#21495;&#20854;&#23454;&#26159;&#26377;&#19968;&#20123; dark corners &#30340;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22914;&#26524; <code>SIGSEGV</code> &#37324;&#20877;&#27425; <code>SIGSEGV</code>?<ul class=" list-disc font-serif">
+<li class=" ml-8">POSIX.1 solved the portability mess by specifying <code>sigaction(2)</code>, which provides explicit control of the semantics when a signal handler is invoked; use that interface instead of <code>signal()</code>. <ul class=" list-disc font-serif">
+<li class=" ml-8">&#25903;&#25345;&#22810;&#32447;&#31243; (&#26089;&#26399;&#30340; UNIX &#36824;&#27809;&#26377;&#22810;&#32447;&#31243;)&#12289;&#20449;&#21495;&#23631;&#34109;&#12289;&#8230;&#8230;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="job-control" class=" text-xl mt-2 pb-2 font-sans">Job Control &#32972;&#21518;&#30340;&#26426;&#21046;</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">RTFM: setpgid/getpgid(2)&#65292;&#23427;&#35299;&#37322;&#20102; process group, session, controlling terminal &#20043;&#38388;&#30340;&#20851;&#31995;</p>
+<p class=" font-serif my-1">&#8212;&#8212;&#20320;&#31070;&#22855;&#22320;&#21457;&#29616;&#65292;&#35835;&#25163;&#20876;&#19981;&#20877;&#26159;&#38556;&#30861;&#20102;&#65281;</p>
+</blockquote>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">The PGID (process-group ID) is preserved across an execve(2) and inherited in fork(2)...</li>
+<li class=" ml-8">Each process group is a member of a <em>session</em></li>
+</ul>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/tty-session.png" width="500px"></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="job-control-rtfm-contd" class=" text-xl mt-2 pb-2 font-sans">Job Control: RTFM (cont'd)</h2>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">A session can have a <em>controlling terminal</em>.<ul class=" list-disc font-serif">
+<li class=" ml-8">At any time, one (and only one) of the process groups in the session can be the <em>foreground process group</em> for the terminal; the remaining process groups are in the <em>background</em>.<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>./a.out &amp;</code> &#21019;&#24314;&#26032;&#30340;&#36827;&#31243;&#32452; (&#20351;&#29992; setpgid)</li>
+</ul>
+</li>
+<li class=" ml-8">If a signal is generated  from  the  terminal  (e.g., typing the interrupt key to generate <code>SIGINT</code>), that signal is sent to the foreground process group.<ul class=" list-disc font-serif">
+<li class=" ml-8">Ctrl-C &#26159;&#32456;&#31471; (&#35774;&#22791;) &#21457;&#30340;&#20449;&#21495;&#65292;&#21457;&#32473; foreground &#36827;&#31243;&#32452;</li>
+<li class=" ml-8">&#25152;&#26377; fork &#20986;&#30340;&#36827;&#31243; (&#40664;&#35748;&#21516;&#19968;&#20010; PGID) &#37117;&#20250;&#25910;&#21040;&#20449;&#21495;</li>
+<li class=" ml-8">&#21487;&#20197;&#20462;&#25913; <a href="../../../pages/OS/2022/demos/signal-handler.c" class=" text-amber-900">signal-handler.c</a> &#35266;&#23519;&#21040;&#36825;&#20010;&#34892;&#20026;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="job-control-rtfm-contd" class=" text-xl mt-2 pb-2 font-sans">Job Control: RTFM (cont'd)</h2>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Only  the foreground process group may read(2) from the terminal; if a background process group tries to read(2) from the terminal, then the group is sent a <code>SIGTTIN</code> signal, which suspends it.<ul class=" list-disc font-serif">
+<li class=" ml-8">&#36825;&#35299;&#37322;&#20102; <code>cat &amp;</code> &#26102;&#20320;&#30475;&#21040;&#30340; &#8220;suspended (tty input)&#8221;</li>
+<li class=" ml-8">&#21516;&#19968;&#20010;&#36827;&#31243;&#32452;&#30340;&#36827;&#31243; read tty &#20250;&#31454;&#20105;</li>
+<li class=" ml-8"><a href="../../../pages/OS/2022/demos/signal-handler.c" class=" text-amber-900">signal-handler.c</a> &#21516;&#26679;&#21487;&#20197;&#35266;&#23519;&#21040;&#36825;&#20010;&#34892;&#20026;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">The <code>setpgid()</code> and <code>getpgrp()</code> calls are used by programs such as bash(1) to create process groups in order to implement shell job control.<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22914;&#26524;&#24076;&#26395;&#20174;&#36827;&#31243;&#32452;&#37324; detach, &#20351;&#29992; setpgid</li>
+<li class=" ml-8"><code>ps -eo pid,pgid,cmd</code> &#21487;&#20197;&#26597;&#30475;&#36827;&#31243;&#30340; pgid</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#24635;&#32467;</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#24635;&#32467;</h2>
+<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#22238;&#31572;&#30340;&#38382;&#39064;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><strong>Q</strong>: &#25105;&#20204;&#20316;&#20026;&#29992;&#25143;&#65292;&#21040;&#24213;&#24590;&#20040; &#8220;&#20351;&#29992;&#8221; &#25805;&#20316;&#31995;&#32479;&#65311;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Take-away messages</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#19968;&#20010;&#21151;&#33021;&#23436;&#25972;&#30340; Shell &#20351;&#29992;&#30340;&#25805;&#20316;&#31995;&#32479;&#23545;&#35937;&#21644; API<ul class=" list-disc font-serif">
+<li class=" ml-8">session, process group, controlling terminal</li>
+<li class=" ml-8">&#25991;&#20214;&#25551;&#36848;&#31526;&#65306;open, close, pipe, dup, read, write</li>
+<li class=" ml-8">&#29366;&#24577;&#26426;&#31649;&#29702;&#65306;fork, execve, exit, wait, signal, kill, setpgid, getpgid, ...</li>
+</ul>
+</li>
+<li class=" ml-8">&#38543;&#30528; &#8220;&#38646;&#20381;&#36182;&#8221; &#30340; <a href="../../../pages/OS/2022/demos/sh-xv6.c" class=" text-amber-900">sh-xv6.c</a>&#65292;&#25805;&#20316;&#31995;&#32479;&#30340;&#31070;&#31192;&#24863;&#36880;&#28176;&#28040;&#22833;<ul class=" list-disc font-serif">
+<li class=" ml-8">(&#19979;&#27425;&#35838;&#25286;&#24320;&#24211;&#20989;&#25968;)</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="end" class=" text-2xl mt-2 font-sans">End.</h1></div></div></div>
+        
+      
+      </section>
+    
+    </section>
+  
+</div>
+</div>
+
+<script src="../../../static/reveal/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    
+    width: 1024, height: 768,
+    
+    slideNumber: 'c/t',
+    controlsTutorial: false,
+    progress: false,
+    hash: true,
+    center: false,
+    autoAnimateUnmatched: true,
+    autoAnimateEasing: 'ease-out',
+    autoAnimateDuration: 0.3,
+    transitionSpeed: 'fast'
+  });
+</script>
+
+
+</body>
+
+</html>

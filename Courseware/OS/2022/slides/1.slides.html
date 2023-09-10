@@ -1,0 +1,1250 @@
+<!DOCTYPE html><html class="h-100">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="../../../static/css/base.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
+
+  <style>
+    .font-sans {
+      font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+    }
+    .font-serif {
+      font-family: 'Source Serif Pro', 'Songti SC', 'SimSun', 'Serif', serif;
+    }
+  </style>
+  <link rel="stylesheet" href="../../../static/katex/katex.min.css">
+  <script defer src="../../../static/katex/katex.min.js"></script>
+  <script defer src="../../../static/katex/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+            // customised options
+            // &#8226; auto-render specific keys, e.g.:
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ],
+            // &#8226; rendering keys, e.g.:
+            throwOnError : false
+          });
+      });
+  </script>
+
+
+  
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="../../../static/reveal/reveal.css">
+<link rel="stylesheet" href="../../../static/reveal/theme/simple.css" id="theme">
+
+<style>
+.reveal .slide-number {
+  font-size: 26px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, .3);
+}
+
+.reveal .full-screen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.reveal .slides {
+  border: 1.5px #ddd solid;
+  border-radius: 7px;
+  text-align: left;
+  font-weight: 300;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  font-family: 'Lato', 'SimHei', 'STXihei', 'Droid Sans';
+  font-weight: 400;
+}
+
+.reveal p, .reveal li, .reveal center {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Droid Sans';
+}
+
+.reveal li + li {
+  margin-top: 10px;
+}
+
+.reveal ul {
+  display: block;
+  margin-right: 15px;
+}
+
+.reveal p, .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5 {
+  padding:  0 25px 0 25px;
+}
+
+.reveal table {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Sans Serif';
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.reveal th {
+  background-color: #eee;
+}
+
+.reveal tr:nth-child(even) {
+  background-color: #efffff;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  text-align: left;
+  margin: 0 0 20px 0;
+ color: #222; 
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
+
+
+.reveal h1 {
+  margin: 0 10 0 10;
+  font-size: 60px;
+}
+.reveal .middle h1 {
+  text-align: center;
+}
+
+.reveal h2 {
+  font-size: 48px;
+  border-bottom: 2px solid rgb(106, 0, 95);
+  padding-bottom: 5px;
+}
+.reveal h3 { font-size: 1.15em; }
+.reveal h4 { font-size: 1.05em; }
+
+.reveal .center {
+  text-align: center;
+}
+
+.reveal .middle {
+  height: 728px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.reveal pre {
+  font-size: 28px;
+ 
+  background-color: #eee;
+
+  border-radius: 3mm;
+  padding: 10px 10px 10px 10px;
+}
+
+.reveal pre code {
+  max-height: none;
+}
+
+.reveal code {
+  font-family: 'Inconsolata', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif', Monospace;
+}
+
+.reveal .middle blockquote {
+  text-align: center;
+  color: rgb(106, 0, 95);
+  background: none;
+  box-shadow: none;
+}
+
+.reveal .middle blockquote a {
+  color: inherit;
+}
+
+.reveal blockquote p, .reveal blockquote li {
+  font-family: 'Lato', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif';
+}
+
+section .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reveal .author-block {
+  margin: 75px 0 35px 0;
+}
+.reveal .author-affiliation img {
+  margin: 15px 0 0 0;
+}
+.reveal .author-block p, .reveal .author-affiliation p  {
+  font-family: 'Kaiti', 'STKaiti', 'Serif', 'Times', 'Times New Roman';
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+.reveal .author-affiliation {
+  display: inline-block;
+  font-size: 90%;
+}
+.reveal hr {
+  border: 10px solid rgba(0, 0, 0, 0);
+}
+.reveal li {
+  margin-top: 10px;
+}
+</style>
+
+  <title>&#25805;&#20316;&#31995;&#32479;&#27010;&#36848;</title>
+</head>
+
+<body class="d-flex flex-column h-100">
+  
+  
+
+<div class="reveal">
+<div class="slides">
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#25805;&#20316;&#31995;&#32479;&#27010;&#36848;</h1>
+<p class=" font-serif my-1"><include src="Slides_Author"><div><div class="py-16">
+<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">&#33931;&#28814;&#23721;</a></p>
+</div>
+<div class="row">
+<div class="author-affiliation">
+    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#12288;&#12288;&#21335;&#20140;&#22823;&#23398;&#12288;&#12288;</p>
+    <img class="inline-img h-24" src="../../../static/img/nju-logo.jpg" style="display: inline-block;"></a>
+  </div>
+<div class="author-affiliation">
+   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#31185;&#23398;&#19982;&#25216;&#26415;&#31995;</p>
+    <img class="inline-img h-24" src="../../../static/img/njucs-logo.jpg" style="display: inline-block;"></a>
+  </div>
+<div class="author-affiliation">
+    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#36719;&#20214;&#30740;&#31350;&#25152;</p>
+    <img class="inline-img h-24" src="../../../static/img/ics-logo.png" style="display: inline-block;"></a>
+  </div>
+</div></div></include></p></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="overview" class=" text-xl mt-2 pb-2 font-sans">Overview</h2>
+<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#22238;&#31572;&#30340;&#38382;&#39064;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><strong>Q1</strong> (Why): &#20026;&#20160;&#20040;&#35201;&#23398;&#25805;&#20316;&#31995;&#32479;&#65311;</li>
+<li class=" ml-8"><strong>Q2</strong> (What): &#21040;&#24213;&#20160;&#20040;&#26159;&#25805;&#20316;&#31995;&#32479;&#65311;</li>
+<li class=" ml-8"><strong>Q3</strong> (How): &#24590;&#20040;&#23398;&#25805;&#20316;&#31995;&#32479;&#65311;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#20027;&#35201;&#20869;&#23481;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21069;&#23548;&#30693;&#35782;&#27010;&#36848;</li>
+<li class=" ml-8">&#25805;&#20316;&#31995;&#32479;&#30340;&#21382;&#21490;/&#23439;&#35266;&#27010;&#36848;</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#20010;&#20154;/&#35838;&#31243;&#31616;&#20171;</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25105;&#26159;&#35841;&#65311;</h2>
+<p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/talks/img/frog-head.jpg" width="250px"></p>
+<p class=" font-serif my-1"><del>&#21162;&#21147;&#25104;&#20026;&#21367;&#29579;&#30340;&#20020;&#26102;&#24037;&#10006;&#65039;</del> (<a href="http://cs.nju.edu.cn/ics/" class=" text-amber-900">&#35745;&#31639;&#26426;&#36719;&#20214;&#30740;&#31350;&#25152;&#10004;</a>)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#8220;&#36719;&#20214;&#33258;&#21160;&#21270;&#8221;&#65306;&#27979;&#35797;/&#20998;&#26512;&#65307;&#20195;&#30721;&#21512;&#25104;</li>
+<li class=" ml-8">Two ACM SIGSOFT Distinguished Paper Awards; Best Paper Award @ ICSE'21</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Co-Founder of Project-N</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22312; bare-metal &#19978;&#23454;&#29616;&#23436;&#25972;&#35745;&#31639;&#26426;&#31995;&#32479;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">JSOI/<strike>&#21335;&#20140;&#22823;&#23398; ICPC &#38598;&#35757;&#38431;</strike>&#25945;&#32451;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">CCF NOI/NOIP &#31995;&#21015;&#36187;&#27743;&#33487;&#36187;&#21306;&#25216;&#26415;&#36127;&#36131;&#20154;</li>
+<li class=" ml-8">ICPC World Finals 49th Place (2009, team leader)</li>
+<li class=" ml-8">ICPC World Finals 13th Place (2019, co-coach)</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#35838;&#31243;&#20449;&#24687;&#19982;&#25104;&#32489;&#26500;&#25104;</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">&#25152;&#26377;&#35838;&#31243;&#20449;&#24687;&#37117;&#22312;<a href="http://jyywiki.cn/OS/2022/" class=" text-amber-900">&#35838;&#31243;&#20027;&#39029;</a>&#21457;&#24067; (&#35831; RTFM)&#65281;</p>
+</blockquote>
+<p class=" font-serif my-1">&#25104;&#32489;&#26500;&#25104;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#26399;&#26411;&#32771;&#35797; 40% + &#38543;&#22530;&#26399;&#20013;&#27979;&#39564; 10% </li>
+<li class=" ml-8">&#22823;&#23454;&#39564; 25% + &#23567;&#23454;&#39564; 25%<ul class=" list-disc font-serif">
+<li class=" ml-8">soft + hard deadlines<ul class=" list-disc font-serif">
+<li class=" ml-8"><red>&#19981;&#35201;&#23545;&#32534;&#31243;&#25265;&#26377;&#20219;&#20309;&#20389;&#24184;&#24515;&#29702;</red></li>
+<li class=" ml-8">&#26080;&#35770;&#20320;&#22522;&#30784;&#22914;&#20309;&#65292;&#37117;&#30456;&#20449;&#33258;&#24049;&#33021;&#20570;&#21040;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#19981;&#24378;&#21046;&#35201;&#27714;&#21040;&#35838; </p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21162;&#21147;&#19978;&#20256;&#35270;&#39057;&#65292;&#20294;&#19981;&#20445;&#35777;&#35774;&#22791;&#19981;&#20250;&#32763;&#36710;</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="academic-integrity" class=" text-xl mt-2 pb-2 font-sans">&#23398;&#26415;&#35802;&#20449; (Academic Integrity)</h2>
+<p class=" font-serif my-1"><a href="https://integrity.mit.edu/" class=" text-amber-900">Academic integrity</a> &#19981;&#26159;&#24213;&#32447;&#65292;&#32780;&#26159; &#8220;&#33258;&#21457;&#30340;&#35201;&#27714;&#8221;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#23545; &#8220;&#19981;&#24212;&#35813;&#20570;&#30340;&#20107;&#24773;&#8221; &#26377;&#28165;&#26970;&#30340;&#35748;&#35782;<ul class=" list-disc font-serif">
+<li class=" ml-8"><red><strong>&#19981;&#23558;&#20195;&#30721;&#19978;&#20256;&#21040;&#20114;&#32852;&#32593;</strong></red></li>
+<li class=" ml-8"><red><strong>&#20027;&#21160;&#19981;&#21442;&#32771;&#21035;&#20154;&#23436;&#25104;&#30340;&#23454;&#39564;&#20195;&#30721;</strong></red></li>
+<li class=" ml-8"><red><strong>&#19981;&#20351;&#29992;&#20182;&#20154;&#27979;&#35797;&#29992;&#20363;</strong></red> (depends)</li>
+</ul>
+</li>
+<li class=" ml-8">&#26377;&#20123;&#34892;&#20026;&#21487;&#33021;&#20351;&#20320;<strong>&#24471;&#21040;&#20998;&#25968;</strong>&#65292;&#20294;<strong>&#22833;&#21435;&#24212;&#26377;&#30340;&#35757;&#32451;</strong></li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#21482;&#22312; &#8220;&#32477;&#23545;&#21487;&#20197;&#27714;&#21161;&#8221; &#30340;&#26102;&#20505;&#25165;&#23547;&#27714;&#24110;&#21161;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22312;&#20840;&#27665;&#20869;&#21367;&#12289;&#19981;&#21171;&#32780;&#33719;&#24456;&#23481;&#26131;&#30340;&#26102;&#20195;&#24456;&#38590;</li>
+<li class=" ml-8">&#20294;&#22362;&#25345;&#19979;&#26469;&#30340;&#20154;&#20250;&#21464;&#24471;&#24456;&#19981;&#19968;&#26679;</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#22235;&#21608;&#30446;&#21453;&#24605;</h2>
+<p class=" font-serif my-1">&#22235;&#21608;&#30446;&#34920;&#29616;&#24179;&#31283;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22686;&#21152;&#20102;&#26356;&#22810;&#30340;&#20195;&#30721;&#35838;&#21644;&#20195;&#30721;&#31034;&#20363;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#38750;&#36882;&#24402;&#27721;&#35834;&#22612;</li>
+<li class=" ml-8"><code>.dl</code> &#20108;&#36827;&#21046;&#25991;&#20214;&#26684;&#24335;&#19982;&#21160;&#24577;&#21152;&#36733;&#22120;</li>
+<li class=" ml-8">model checker (&#26412;&#21608;&#30446;&#23558;&#24471;&#21040;&#22823;&#24133;&#25913;&#36827;)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#31532;&#20116;&#21608;&#30446;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#24037;&#20855;&#29616;&#20195;&#21270; + &#26032;&#25163;&#21451;&#22909;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#32477;&#22823;&#37096;&#20998;&#20195;&#30721;&#31034;&#20363;&#37117;&#22312; Windows &#24212;&#29992;&#21830;&#24215;&#23433;&#35013;&#30340; Ubuntu</li>
+</ul>
+</li>
+<li class=" ml-8">&#26356;&#22810;&#30340; xv6 (&#22823;&#23478;&#26377; RISC-V &#30340;&#22522;&#30784;&#20102;)</li>
+<li class=" ml-8">&#36880;&#28176;&#37325;&#26500; Online Judge</li>
+<li class=" ml-8">&#26356;&#26032;&#19968;&#37096;&#20998;&#23454;&#39564; (&#22914;&#26524;&#21487;&#20197;&#30340;&#35805;&#65292;&#26377;&#19968;&#20010; POSIX subsystem)</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="q1" class=" text-2xl mt-2 font-sans">Q1: &#20026;&#20160;&#20040;&#35201;&#23398;&#25805;&#20316;&#31995;&#32479;&#65311;</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20026;&#20160;&#20040;&#35201;&#23398;&#25805;&#20316;&#31995;&#32479;&#65311;</h2>
+<p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/mariner.jpg" width="300px"></p>
+<p class=" font-serif my-1">&#20026;&#20160;&#20040;&#35201;&#23398;&#25805;&#20316;&#31995;&#32479;&#21602;&#65311;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20026;&#20160;&#20040;&#35201;&#23398;&#24494;&#31215;&#20998;/&#31163;&#25955;&#25968;&#23398;/XXXX/&#8230;&#8230;&#65311;</li>
+<li class=" ml-8">&#38271;&#36744;/&#23398;&#38271;&#65306;<del>&#25830;&#24178;&#27882;&#19981;&#35201;&#38382;&#20026;&#20160;&#20040;</del></li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#24494;&#31215;&#20998; &#8220;&#34987;&#28151;&#36215;&#26469;&#8221; &#30340;&#20960;&#20214;&#20107;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Newton &#26102;&#20195;&#30340;&#24494;&#31215;&#20998; (&#21551;&#33945;&#19982;&#24212;&#29992;)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#29616;&#20195;&#26041;&#27861;&#65306;Mathematica, <a href="https://docs.sympy.org/latest/tutorial/index.html" class=" text-amber-900">sympy</a>, <a href="http://sagemath.org" class=" text-amber-900">sage</a><ul class=" list-disc font-serif">
+<li class=" ml-8">&#36825;&#20063;&#26159;&#20026;&#20160;&#20040;&#25105;&#20027;&#24352;&#31532;&#19968;&#38376;&#35821;&#35328;&#23398; Python</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class=" ml-8">Cauchy &#26102;&#20195;&#30340;&#24494;&#31215;&#20998; (&#20005;&#26684;&#21270;&#19982;&#20844;&#29702;&#21270;)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20197;&#21450;&#20043;&#21518;&#21508;&#31181;&#21345;&#20986;&#30340; bug (Weierstrass &#20989;&#25968;&#12289;Peano &#26354;&#32447;&#8230;&#8230;)</li>
+</ul>
+</li>
+<li class=" ml-8">&#24494;&#31215;&#20998;&#30340;&#29616;&#20195;&#24212;&#29992;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20248;&#21270;&#12289;&#26377;&#38480;&#20803;&#12289;PID&#8230;&#8230;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#23398;&#20064;&#25805;&#20316;&#31995;&#32479;&#30340;&#30446;&#30340;</h2>
+<p class=" font-serif my-1"><red>&#20320;&#20307;&#20869;&#30340; &#8220;&#32534;&#31243;&#21147;&#37327;&#8221; &#23578;&#26410;&#23436;&#20840;&#35273;&#37266;</red></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#27599;&#22825;&#37117;&#22312;&#29992;&#30340;&#19996;&#35199;&#65292;&#20320;&#36824;&#27809;&#25630;&#26126;&#30333;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#31383;&#21475;&#26159;&#24590;&#20040;&#21019;&#24314;&#30340;&#65311;<a href="https://stackoverflow.blog/2017/05/23/stack-overflow-helping-one-million-developers-exit-vim/" class=" text-amber-900">&#20026;&#20160;&#20040; Ctrl-C &#26377;&#26102;&#19981;&#33021;&#36864;&#20986;&#31243;&#24207;</a>&#65311;</li>
+</ul>
+</li>
+<li class=" ml-8">&#32452;&#37324;&#30340;&#26381;&#21153;&#22120;&#26377; 128 &#20010;&#22788;&#29702;&#22120;&#65292;&#20294;&#20320;&#30340;&#31243;&#24207;&#21364;&#21482;&#33021;&#29992;&#19968;&#20010; &#128514;</li>
+<li class=" ml-8">&#20320;&#27599;&#22825;&#37117;&#22312;&#29992;&#30340;&#19996;&#35199;&#65292;&#20320;&#21364;&#23454;&#29616;&#19981;&#20986;&#26469;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#27983;&#35272;&#22120;&#12289;&#32534;&#35793;&#22120;&#12289;IDE&#12289;&#28216;&#25103;/&#22806;&#25346;&#12289;&#20219;&#21153;&#31649;&#29702;&#22120;&#12289;&#26432;&#27602;&#36719;&#20214;&#12289;&#30149;&#27602;&#8230;&#8230;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1"><red>&#12298;&#25805;&#20316;&#31995;&#32479;&#12299;&#32473;&#20320;&#26377;&#20851; &#8220;&#32534;&#31243;&#8221; &#30340;&#20840;&#37096;</red></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#24735;&#24615;&#22909;&#65306;&#23398;&#23436;&#35838;&#31243;&#23601;&#22312;&#31995;&#32479;&#26041;&#21521; &#8220;&#27605;&#19994;&#8221;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20855;&#26377;&#32534;&#20889;&#19968;&#20999; &#8220;&#33021;&#20889;&#20986;&#26469;&#8221; &#31243;&#24207;&#30340;&#33021;&#21147; (&#20855;&#22791;&#38405;&#35835;&#35770;&#25991;&#30340;&#33021;&#21147;)</li>
+</ul>
+</li>
+<li class=" ml-8">&#24735;&#24615;&#24046;&#65306;&#20869;&#21147;&#22823;&#22686;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21487;&#33021;&#24037;&#20316;&#20013;&#30340;&#26576;&#19968;&#22825;&#24819;&#36215;&#19978;&#35838;&#25552;&#21450;&#30340;&#20869;&#23481;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#23398;&#20064;&#25805;&#20316;&#31995;&#32479;&#30340;&#30446;&#30340;</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">&#20805;&#28385;&#28909;&#24773;&#32780;&#19988;&#30456;&#24403;&#32874;&#26126;&#30340;&#23398;&#29983;...&#26089;&#23601;&#21548;&#35828;&#36807;&#29289;&#29702;&#23398;&#22914;&#20309;&#26377;&#36259;...&#30456;&#23545;&#35770;&#12289;&#37327;&#23376;&#21147;&#23398;&#8230;&#8230;&#20294;&#26159;&#65292;&#24403;&#20182;&#20204;&#23398;&#23436;&#20004;&#24180;&#20197;&#21069;&#37027;&#31181;&#35838;&#31243;&#21518;&#65292;&#35768;&#22810;&#20154;&#23601;&#27844;&#27668;&#20102;&#8230;&#8230;&#23398;&#30340;&#36824;&#26159;&#26012;&#38754;&#12289;&#38745;&#30005;&#36825;&#26679;&#30340;&#20869;&#23481;</p>
+<p class=" font-serif my-1">&#8212;&#8212;&#12298;The Feynman Lectures on Physics, 1963&#12299;</p>
+</blockquote>
+<p class=" font-serif my-1">&#25105;&#23398;&#12298;&#25805;&#20316;&#31995;&#32479;&#12299;&#30340;&#26102;&#20505; (2009)&#65292;&#22823;&#23478;&#37117;&#35828;&#25805;&#20316;&#31995;&#32479;&#24456;&#38590;&#25945;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20351;&#29992;<del>&#35910;&#29923;&#35780;&#20998;&#39640;&#36798; 5.7/10</del> &#30340; &#8220;&#20840;&#22269;&#20248;&#31168;&#25945;&#26448;&#8221;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#27809;&#26377;&#27491;&#32463;&#30340;&#23454;&#39564; (&#20889;&#19968;&#20123; 16-bit code)</li>
+<li class=" ml-8">&#23436;&#20840;&#38169;&#35823;&#30340; toolchain&#65292;&#35843;&#35797;&#20840;&#38752;&#34542;&#21147;&#21644;&#29468;</li>
+<li class=" ml-8">&#20026;&#20102;&#19968;&#28857;&#24494;&#19981;&#36275;&#36947;&#30340;&#20998;&#25968;&#20869;&#21367;&#12289;&#27838;&#27838;&#33258;&#21916;&#12289;&#22833;&#21435; integrity</li>
+</ul>
+</li>
+<li class=" ml-8">&#36825;&#20040;&#29609;&#65292;<red>&#33046;&#23376;&#37117;&#35201;&#34987;&#32654;&#22269;&#20154;&#25488;&#26029;&#20102;</red><ul class=" list-disc font-serif">
+<li class=" ml-8">&#36825;&#38376;&#35838;&#30340;&#21478;&#19968;&#20010;&#24847;&#20041;&#65306;<red>&#21578;&#35785;&#20320;&#21487;&#20197;&#21435;&#21464;&#24471;&#26356;&#24378;&#12289;&#30495;&#27491;&#30340;&#24378;</red></li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="q2" class=" text-2xl mt-2 font-sans">Q2: &#21040;&#24213;&#20160;&#20040;&#26159;&#25805;&#20316;&#31995;&#32479;&#65311;</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20160;&#20040;&#26159;&#25805;&#20316;&#31995;&#32479;&#65311;</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">Operating System: A body of software, in fact, that is responsible for <em>making it easy to run programs</em> (even allowing you to seemingly run many at the same time), allowing programs to share memory, enabling programs to interact with devices, and other fun stuff like that. (OSTEP)</p>
+</blockquote></div>
+        
+      
+         <div class="fragment"> 
+        <div><hr>
+<p class=" font-serif my-1">&#24456;&#22810;&#30097;&#28857;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#8220;programs&#8221; &#23601;&#23436;&#20102;&#65311;&#37027;&#20040;&#22810;&#22797;&#26434;&#30340;&#31243;&#24207;&#21602;&#65281;</li>
+<li class=" ml-8">&#8220;shared memory, interact with devices, ...&#8221;&#65311;</li>
+</ul></div>
+         </div> 
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">&#20160;&#20040;&#26159;&#25805;&#20316;&#31995;&#32479;&#65311; (cont'd)</h2>
+<p class=" font-serif my-1">&#8220;&#31649;&#29702;&#36719;/&#30828;&#20214;&#36164;&#28304;&#12289;&#20026;&#31243;&#24207;&#25552;&#20379;&#26381;&#21153;&#8221; &#30340;&#31243;&#24207;&#65311;</p>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/os-classify.jpg" width="768px"></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#29702;&#35299;&#25805;&#20316;&#31995;&#32479;</h2>
+<p class=" font-serif my-1">&#8220;&#31934;&#20934;&#8221; &#30340;&#23450;&#20041;&#27627;&#26080;&#24847;&#20041;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#38382;&#20986;&#27491;&#30830;&#30340;&#38382;&#39064;&#65306;&#25805;&#20316;&#31995;&#32479;&#22914;&#20309;&#20174;&#19968;&#24320;&#22987;&#21464;&#25104;&#29616;&#22312;&#36825;&#26679;&#30340;&#65311;</li>
+<li class=" ml-8">&#19977;&#20010;&#37325;&#35201;&#30340;&#32447;&#32034;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#35745;&#31639;&#26426; (&#30828;&#20214;)</li>
+<li class=" ml-8">&#31243;&#24207; (&#36719;&#20214;)</li>
+<li class=" ml-8">&#25805;&#20316;&#31995;&#32479; (&#31649;&#29702;&#36719;&#20214;&#30340;&#36719;&#20214;)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#26412;&#35838;&#31243;&#35752;&#35770;<red>&#29421;&#20041;&#30340;&#25805;&#20316;&#31995;&#32479;</red></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#23545;&#21333;&#19968;&#35745;&#31639;&#26426;&#30828;&#20214;&#31995;&#32479;&#20316;&#20986;&#25277;&#35937;&#12289;&#25903;&#25745;&#31243;&#24207;&#25191;&#34892;&#30340;&#36719;&#20214;&#31995;&#32479;</li>
+<li class=" ml-8">&#23398;&#26415;&#30028;&#35848;&#35770; &#8220;&#25805;&#20316;&#31995;&#32479;&#8221; &#26159;&#26356;&#24191;&#20041;&#30340; &#8220;System&#8221; (&#20363;&#23376;&#65306;OSDI/SOSP)</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="1940s" class=" text-xl mt-2 pb-2 font-sans">1940s &#30340;&#35745;&#31639;&#26426;</h2>
+<p class=" font-serif my-1">&#36328;&#26102;&#20195;&#12289;&#38750;&#20961;&#30340;&#22825;&#25165;&#35774;&#35745;&#65292;&#20294;&#24456;&#31616;&#21333; (&#36824;&#19981;&#22914;&#25105;&#20204;&#25968;&#30005;&#23454;&#39564;&#35838;&#20570;&#30340; CPU &#22797;&#26434;&#21602;)&#65306;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#35745;&#31639;&#26426;&#31995;&#32479; = &#29366;&#24577;&#26426; (ICS &#35838;&#31243;&#30340; takeaway message)</li>
+<li class=" ml-8">&#26631;&#20934;&#30340; Mealy &#22411;&#25968;&#23383;&#30005;&#36335;<ul class=" list-disc font-serif">
+<li class=" ml-8">ENIAC (1946.2.14&#65307;&#35831;&#22312;&#36825;&#20010;&#29305;&#27530;&#30340;&#33410;&#26085;&#22810;&#38506;&#38506;&#20320;&#30340;&#30005;&#33041;)</li>
+</ul>
+</li>
+</ul>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/eniacrun.jpg" width="650px"></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="1940s-contd" class=" text-xl mt-2 pb-2 font-sans">1940s &#30340;&#35745;&#31639;&#26426; (cont'd)</h2>
+<p class=" font-serif my-1">&#30005;&#23376;&#35745;&#31639;&#26426;&#30340;&#23454;&#29616;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#36923;&#36753;&#38376;&#65306;<a href="https://www.bilibili.com/video/av59005720" class=" text-amber-900">&#30495;&#31354;&#30005;&#23376;&#31649;</a></li>
+<li class=" ml-8">&#23384;&#20648;&#22120;&#65306;&#24310;&#36831;&#32447; (delay lines)</li>
+<li class=" ml-8">&#36755;&#20837;/&#36755;&#20986;&#65306;&#25171;&#23380;&#32440;&#24102;/&#25351;&#31034;&#28783;</li>
+</ul>
+<p class=" font-serif my-1"></p><center>
+<img alt="" class="inline" src="../../../pages/OS/img/vaccum-tube.gif" width="250px">
+<img alt="" class="inline" src="../../../pages/OS/img/throw-ball.gif" width="300px">
+<img alt="" class="inline" src="../../../pages/OS/img/delay-memory-fig2-s.gif" width="400px">
+</center></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="1940s" class=" text-xl mt-2 pb-2 font-sans">1940s &#30340;&#31243;&#24207;</h2>
+<p class=" font-serif my-1">ENIAC &#31243;&#24207;&#26159;&#29992;&#29289;&#29702;&#32447;&#36335; &#8220;hard-wire&#8221; &#30340;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#37325;&#32534;&#31243;&#38656;&#35201;&#37325;&#26032;&#25509;&#32447;<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="https://www.cs.drexel.edu/~bls96/eniac/" class=" text-amber-900">ENIAC Simulator</a>; <a href="../../../pages/OS/2022/demos/sieve.e" class=" text-amber-900">sieve.e</a> </li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#26368;&#26089;&#25104;&#21151;&#36816;&#34892;&#30340;&#19968;&#31995;&#21015;&#31243;&#24207;&#65306;&#25171;&#21360;&#24179;&#26041;&#25968;&#12289;&#32032;&#25968;&#34920;&#12289;&#35745;&#31639;&#24377;&#36947;&#8230;&#8230;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22823;&#23478;&#36824;&#22312;&#21644;&#30495;&#27491;&#30340; &#8220;bugs&#8221; &#25112;&#26007;</li>
+</ul>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/first-bug.webp" width="400px"></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="1940s" class=" text-xl mt-2 pb-2 font-sans">1940s &#30340;&#25805;&#20316;&#31995;&#32479;</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">&#27809;&#26377;&#25805;&#20316;&#31995;&#32479;&#12290;</p>
+</blockquote>
+<p class=" font-serif my-1">&#33021;&#25226;&#31243;&#24207;&#25918;&#19978;&#21435;&#23601;&#24456;&#20102;&#19981;&#36215;&#20102;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#31243;&#24207;&#30452;&#25509;&#29992;&#25351;&#20196;&#25805;&#20316;&#30828;&#20214;</li>
+<li class=" ml-8">&#19981;&#38656;&#35201;&#30011;&#34503;&#28155;&#36275;&#30340;&#31243;&#24207;&#26469;&#31649;&#29702;&#23427;</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="1950s" class=" text-xl mt-2 pb-2 font-sans">1950s &#30340;&#35745;&#31639;&#26426;</h2>
+<p class=" font-serif my-1">&#26356;&#24555;&#26356;&#23567;&#30340;&#36923;&#36753;&#38376; (&#26230;&#20307;&#31649;)&#12289;&#26356;&#22823;&#30340;&#20869;&#23384; (&#30913;&#33455;)&#12289;&#20016;&#23500;&#30340; I/O &#35774;&#22791;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">I/O &#35774;&#22791;&#30340;&#36895;&#24230;&#24050;&#32463;&#20005;&#37325;&#20302;&#20110;&#22788;&#29702;&#22120;&#30340;&#36895;&#24230;&#65292;&#20013;&#26029;&#26426;&#21046;&#20986;&#29616; (1953)</li>
+</ul>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/ERA-1101.jpg" width="360px"></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="1950s" class=" text-xl mt-2 pb-2 font-sans">1950s &#30340;&#31243;&#24207;</h2>
+<p class=" font-serif my-1">&#21487;&#20197;&#25191;&#34892;&#26356;&#22797;&#26434;&#30340;&#20219;&#21153;&#65292;&#21253;&#25324;&#36890;&#29992;&#30340;&#35745;&#31639;&#20219;&#21153;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#24076;&#26395;&#20351;&#29992;&#35745;&#31639;&#26426;&#30340;&#20154;&#36234;&#26469;&#36234;&#22810;&#65307;&#24076;&#26395;&#35843;&#29992; API &#32780;&#19981;&#26159;&#30452;&#25509;&#35775;&#38382;&#35774;&#22791;</li>
+<li class=" ml-8">Fortran &#35806;&#29983; (1957)</li>
+</ul>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>C---- THIS PROGRAM READS INPUT FROM THE CARD READER,
+C---- 3 INTEGERS IN EACH CARD, CALCULATE AND OUTPUT
+C---- THE SUM OF THEM.
+  100 READ(5,10) I1, I2, I3
+   10 FORMAT(3I5)
+      IF (I1.EQ.0 .AND. I2.EQ.0 .AND. I3.EQ.0) GOTO 200
+      ISUM = I1 + I2 + I3
+      WRITE(6,20) I1, I2, I3, ISUM
+   20 FORMAT(7HSUM OF , I5, 2H, , I5, 5H AND , I5,
+     *   4H IS , I6)
+      GOTO 100
+  200 STOP
+      END
+</code></pre></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="1950s-contd" class=" text-xl mt-2 pb-2 font-sans">1950s &#30340;&#31243;&#24207; (cont'd)</h2>
+<p class=" font-serif my-1">&#19968;&#34892;&#20195;&#30721;&#65292;&#19968;&#24352;&#21345;&#29255;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#30475;&#21040;&#19978;&#38754; 1, 2, ... 80 &#30340;&#26631;&#21495;&#20102;&#21543;&#65281;</li>
+<li class=" ml-8">7-72 &#21015;&#25165;&#26159;&#30495;&#27491;&#30340;&#35821;&#21477; (&#36825;&#23601;&#26159;&#20026;&#20160;&#20040;&#35885;&#28009;&#24378;&#35201;&#25945;&#20320;&#35201;&#30011;&#27969;&#31243;&#22270;) </li>
+</ul>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/fortran-card.jpg" width="900px"></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="1950s" class=" text-xl mt-2 pb-2 font-sans">1950s &#30340;&#25805;&#20316;&#31995;&#32479;</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">&#31649;&#29702;&#22810;&#20010;&#31243;&#24207;&#20381;&#27425;&#25490;&#38431;&#36816;&#34892;&#30340;&#24211;&#20989;&#25968;&#21644;&#35843;&#24230;&#22120;&#12290;</p>
+</blockquote>
+<p class=" font-serif my-1">&#20889;&#31243;&#24207;&#12289;&#36305;&#31243;&#24207;&#37117;&#26159;&#38750;&#24120;&#36153;&#20107;&#30340; (&#27604;&#22914;&#20320;&#20889;&#20102;&#20010;&#27515;&#24490;&#29615;&#8230;&#8230;)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#35745;&#31639;&#26426;&#38750;&#24120;&#36149; (\$50,000-\$1,000,000)&#65292;&#19968;&#20010;&#23398;&#26657;&#21482;&#26377;&#19968;&#21488;</li>
+<li class=" ml-8">&#20135;&#29983;&#20102;&#38598;&#20013;&#31649;&#29702;&#35745;&#31639;&#26426;&#30340;&#38656;&#27714;&#65306;<red>&#22810;&#29992;&#25143;&#25490;&#38431;&#20849;&#20139;&#35745;&#31639;&#26426;</red></li>
+</ul>
+<hr>
+<p class=" font-serif my-1"><red>&#25805;&#20316;&#31995;&#32479;</red>&#30340;&#27010;&#24565;&#24320;&#22987;&#24418;&#25104;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25805;&#20316; (operate) &#20219;&#21153; (jobs) &#30340;&#31995;&#32479; (system)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#8220;&#25209;&#22788;&#29702;&#31995;&#32479;&#8221; = &#31243;&#24207;&#30340;&#33258;&#21160;&#20999;&#25442; (&#25442;&#21345;) + &#24211;&#20989;&#25968; API</li>
+<li class=" ml-8">Disk Operating Systems (DOS)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25805;&#20316;&#31995;&#32479;&#20013;&#24320;&#22987;&#20986;&#29616; &#8220;&#35774;&#22791;&#8221;&#12289;&#8220;&#25991;&#20214;&#8221;&#12289;&#8220;&#20219;&#21153;&#8221; &#31561;&#23545;&#35937;&#21644; API</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="1960s" class=" text-xl mt-2 pb-2 font-sans">1960s &#30340;&#35745;&#31639;&#26426;</h2>
+<p class=" font-serif my-1">&#38598;&#25104;&#30005;&#36335;&#12289;&#24635;&#32447;&#20986;&#29616;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#26356;&#24555;&#30340;&#22788;&#29702;&#22120;</li>
+<li class=" ml-8">&#26356;&#24555;&#12289;&#26356;&#22823;&#30340;&#20869;&#23384;&#65307;&#34394;&#25311;&#23384;&#20648;&#20986;&#29616;<ul class=" list-disc font-serif">
+<li class=" ml-8"><red>&#21487;&#20197;&#21516;&#26102;&#36733;&#20837;&#22810;&#20010;&#31243;&#24207;&#32780;&#19981;&#29992; &#8220;&#25442;&#21345;&#8221; &#20102;</red></li>
+</ul>
+</li>
+<li class=" ml-8">&#26356;&#20016;&#23500;&#30340; I/O &#35774;&#22791;&#65307;&#23436;&#21892;&#30340;&#20013;&#26029;/&#24322;&#24120;&#26426;&#21046;</li>
+</ul>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/sketchpad.jpg" width="600px"></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="1960s" class=" text-xl mt-2 pb-2 font-sans">1960s &#30340;&#31243;&#24207;</h2>
+<p class=" font-serif my-1">&#26356;&#22810;&#30340;&#39640;&#32423;&#35821;&#35328;&#21644;&#32534;&#35793;&#22120;&#20986;&#29616;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">COBOL (1960), APL (1962), BASIC (1965)<ul class=" list-disc font-serif">
+<li class=" ml-8">Bill Gates &#21644; Paul Allen &#22312; 1975 &#24180;&#23454;&#29616;&#20102; Altair 8800 &#19978;&#30340; BASIC &#35299;&#37322;&#22120;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#35745;&#31639;&#26426;&#31185;&#23398;&#23478;&#20204;&#24050;&#32463;&#22312;&#20170;&#22825;&#38590;&#20197;&#24819;&#35937;&#30340;&#35745;&#31639;&#21147;&#19979;&#24320;&#21457;&#24778;&#22855;&#30340;&#31243;&#24207;</p>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/spacewar.jpg" width="800px"></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="1960s" class=" text-xl mt-2 pb-2 font-sans">1960s &#30340;&#25805;&#20316;&#31995;&#32479;</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">&#33021;&#36733;&#20837;&#22810;&#20010;&#31243;&#24207;&#21040;&#20869;&#23384;&#19988;&#28789;&#27963;&#35843;&#24230;&#23427;&#20204;&#30340;&#31649;&#29702;&#31243;&#24207;&#65292;&#21253;&#25324;&#31243;&#24207;&#21487;&#20197;&#35843;&#29992;&#30340; API&#12290;</p>
+</blockquote>
+<p class=" font-serif my-1"><red>&#21516;&#26102;&#23558;&#22810;&#20010;&#31243;&#24207;&#36733;&#20837;&#20869;&#23384;</red>&#26159;&#19968;&#39033;&#24040;&#22823;&#30340;&#33021;&#21147;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#26377;&#20102;&#36827;&#31243; (process) &#30340;&#27010;&#24565;</li>
+<li class=" ml-8">&#36827;&#31243;&#22312;&#25191;&#34892; I/O &#26102;&#65292;&#21487;&#20197;&#23558; CPU &#35753;&#32473;&#21478;&#19968;&#20010;&#36827;&#31243;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22312;&#22810;&#20010;&#22320;&#22336;&#31354;&#38388;&#38548;&#31163;&#30340;&#31243;&#24207;&#20043;&#38388;<red>&#20999;&#25442;</red></li>
+<li class=" ml-8">&#34394;&#25311;&#23384;&#20648;&#20351;&#19968;&#20010;&#31243;&#24207;&#20986; bug &#19981;&#20250; crash &#25972;&#20010;&#31995;&#32479;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#25805;&#20316;&#31995;&#32479;&#20013;&#33258;&#28982;&#22320;&#22686;&#21152;&#36827;&#31243;&#31649;&#29702; API</p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="1960s-contd" class=" text-xl mt-2 pb-2 font-sans">1960s &#30340;&#25805;&#20316;&#31995;&#32479; (cont'd)</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">&#26082;&#28982;&#25805;&#20316;&#31995;&#32479;&#24050;&#32463;&#21487;&#20197;&#22312;&#31243;&#24207;&#20043;&#38388;<red>&#20999;&#25442;</red>&#65292;&#20026;&#20160;&#20040;&#19981;&#35753;&#23427;&#20204;<red>&#23450;&#26102;&#20999;&#25442;</red>&#21602;&#65311;</p>
+</blockquote>
+<p class=" font-serif my-1">&#22522;&#20110;&#20013;&#26029; (&#20363;&#22914;&#26102;&#38047;) &#26426;&#21046;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#26102;&#38047;&#20013;&#26029;&#65306;&#20351;&#31243;&#24207;&#22312;&#25191;&#34892;&#26102;&#65292;&#24322;&#27493;&#22320;&#25554;&#20837;&#20989;&#25968;&#35843;&#29992;</li>
+<li class=" ml-8">&#30001;&#25805;&#20316;&#31995;&#32479; (&#35843;&#24230;&#31574;&#30053;) &#20915;&#23450;&#26159;&#21542;&#35201;&#20999;&#25442;&#21040;&#21478;&#19968;&#20010;&#31243;&#24207;&#25191;&#34892;</li>
+<li class=" ml-8">Multics (MIT, 1965)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#29616;&#20195;&#25805;&#20316;&#31995;&#32479;&#35806;&#29983;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="1970s" class=" text-xl mt-2 pb-2 font-sans">1970s+ &#30340;&#35745;&#31639;&#26426;</h2>
+<p class=" font-serif my-1">&#38598;&#25104;&#30005;&#36335;&#31354;&#21069;&#21457;&#23637;&#65292;&#20010;&#20154;&#30005;&#33041;&#20852;&#36215;&#65292;&#8220;&#35745;&#31639;&#26426;&#8221; &#24050;&#19982;&#20170;&#26085;&#26080;&#22823;&#24322;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">CISC &#25351;&#20196;&#38598;&#65307;&#20013;&#26029;&#12289;I/O&#12289;&#24322;&#24120;&#12289;MMU&#12289;&#32593;&#32476;</li>
+<li class=" ml-8">&#20010;&#20154;&#35745;&#31639;&#26426; (PC &#26426;)&#12289;&#36229;&#32423;&#35745;&#31639;&#26426;&#8230;&#8230;</li>
+</ul>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/apple2.jpg" width="500px"></p>
+<p class=" font-serif my-1"></p><center>Apple II</center></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="1970s" class=" text-xl mt-2 pb-2 font-sans">1970s+ &#30340;&#31243;&#24207;</h2>
+<p class=" font-serif my-1">PASCAL (1970), C (1972), &#8230;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20170;&#22825;&#33021;&#21150;&#21040;&#30340;&#65292;&#37027;&#20010;&#26102;&#20195;&#24050;&#32463;&#37117;&#33021;&#21150;&#21040;&#20102;&#8212;&#8212;&#19978;&#22825;&#20837;&#22320;&#12289;&#22270;&#20687;&#22768;&#38899;&#35270;&#39057;&#12289;&#20154;&#24037;&#26234;&#33021;&#8230;&#8230;</li>
+<li class=" ml-8">&#20010;&#20154;&#24320;&#21457;&#32773; (Geek Network) &#36208;&#19978;&#33310;&#21488;</li>
+</ul>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/wordstar.jpg" width="500px"></p>
+<p class=" font-serif my-1"></p><center>Wordstar (1979)</center></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="1970s" class=" text-xl mt-2 pb-2 font-sans">1970s+ &#30340;&#25805;&#20316;&#31995;&#32479;</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">&#20998;&#26102;&#31995;&#32479;&#36208;&#21521;&#25104;&#29087;&#65292;UNIX &#35806;&#29983;&#24182;&#36208;&#21521;&#23436;&#21892;&#65292;&#22880;&#23450;&#20102;&#29616;&#20195;&#25805;&#20316;&#31995;&#32479;&#30340;&#24418;&#24577;&#12290;</p>
+</blockquote>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">1973: &#20449;&#21495; API&#12289;&#31649;&#36947; (&#23545;&#35937;)&#12289;grep (&#24212;&#29992;&#31243;&#24207;)</li>
+<li class=" ml-8">1983: BSD socket (&#23545;&#35937;)</li>
+<li class=" ml-8">1984: procfs (&#23545;&#35937;)&#8230;&#8230; </li>
+<li class=" ml-8">UNIX &#34893;&#29983;&#20986;&#30340;&#22823;&#23478;&#26063;<ul class=" list-disc font-serif">
+<li class=" ml-8">1BSD (1977), GNU (1983), MacOS (1984), AIX (1986), Minix (1987), Windows (1985), Linux 0.01 (1991), Windows NT (1993), Debian (1996), Windows XP (2002), Ubuntu (2004), iOS (2007), Android (2008), Windows 10 (2015), &#8230;&#8230;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20170;&#22825;&#30340;&#25805;&#20316;&#31995;&#32479;</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">&#36890;&#36807; &#8220;&#34394;&#25311;&#21270;&#8221; &#30828;&#20214;&#36164;&#28304;&#20026;&#31243;&#24207;&#36816;&#34892;&#25552;&#20379;&#26381;&#21153;&#30340;&#36719;&#20214;&#12290;</p>
+</blockquote>
+<p class=" font-serif my-1">&#31354;&#21069;&#22797;&#26434;&#30340;&#31995;&#32479;&#20043;&#19968;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#26356;&#22797;&#26434;&#30340;&#22788;&#29702;&#22120;&#21644;&#20869;&#23384;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#38750;&#23545;&#31216;&#22810;&#22788;&#29702;&#22120; (ARM big.LITTLE; Intel P/E-cores)</li>
+<li class=" ml-8">Non-uniform Memory Access (NUMA)</li>
+<li class=" ml-8">&#26356;&#22810;&#30340;&#30828;&#20214;&#26426;&#21046; Intel-VT/AMD-V, TrustZone/<del>SGX</del>, TSX, ...</li>
+</ul>
+</li>
+<li class=" ml-8">&#26356;&#22810;&#30340;&#35774;&#22791;&#21644;&#36164;&#28304;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#32593;&#21345;&#12289;SSD&#12289;GPU&#12289;FPGA...</li>
+</ul>
+</li>
+<li class=" ml-8">&#22797;&#26434;&#30340;&#24212;&#29992;&#38656;&#27714;&#21644;&#24212;&#29992;&#29615;&#22659;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#26381;&#21153;&#22120;&#12289;&#20010;&#20154;&#30005;&#33041;&#12289;&#26234;&#33021;&#25163;&#26426;&#12289;&#25163;&#34920;&#12289;&#25163;&#29615;&#12289;IoT/&#24494;&#25511;&#21046;&#22120;&#8230;&#8230;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#29702;&#35299;&#25805;&#20316;&#31995;&#32479;&#65306;&#19977;&#20010;&#26681;&#26412;&#38382;&#39064;</h2>
+<p class=" font-serif my-1">&#25805;&#20316;&#31995;&#32479;&#26381;&#21153;&#35841;&#65311;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><red>&#31243;&#24207; = &#29366;&#24577;&#26426;</red></li>
+<li class=" ml-8">&#35838;&#31243;&#28041;&#21450;&#65306;&#22810;&#32447;&#31243; Linux &#24212;&#29992;&#31243;&#24207;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">(&#35774;&#35745;/&#24212;&#29992;&#35270;&#35282;) &#25805;&#20316;&#31995;&#32479;&#20026;&#31243;&#24207;&#25552;&#20379;&#20160;&#20040;&#26381;&#21153;&#65311;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><red>&#25805;&#20316;&#31995;&#32479; = &#23545;&#35937; + API</red></li>
+<li class=" ml-8">&#35838;&#31243;&#28041;&#21450;&#65306;POSIX + &#37096;&#20998; Linux &#29305;&#24615;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">(&#23454;&#29616;/&#30828;&#20214;&#35270;&#35282;) &#22914;&#20309;&#23454;&#29616;&#25805;&#20316;&#31995;&#32479;&#25552;&#20379;&#30340;&#26381;&#21153;&#65311;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><red>&#25805;&#20316;&#31995;&#32479; = C &#31243;&#24207;</red><ul class=" list-disc font-serif">
+<li class=" ml-8">&#23436;&#25104;&#21021;&#22987;&#21270;&#21518;&#23601;&#25104;&#20026; interrupt/trap/fault handler</li>
+</ul>
+</li>
+<li class=" ml-8">&#35838;&#31243;&#28041;&#21450;&#65306;xv6, &#33258;&#21046;&#36855;&#20320;&#25805;&#20316;&#31995;&#32479;</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="q3" class=" text-2xl mt-2 font-sans">Q3: &#24590;&#20040;&#23398;&#25805;&#20316;&#31995;&#32479;&#65311;</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="prerequisites" class=" text-xl mt-2 pb-2 font-sans">Prerequisites</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1"><red>&#35745;&#31639;&#26426;&#19987;&#19994;&#23398;&#29983;&#24517;&#39035;&#20855;&#22791;&#30340;&#26680;&#24515;&#32032;&#36136;</red>&#12290;</p>
+</blockquote>
+<ol class=" list-decimal font-serif">
+<li class=" ml-8">&#26159;&#19968;&#20010;&#21512;&#26684;&#30340;&#25805;&#20316;&#31995;&#32479;&#29992;&#25143;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20250; STFW/RTFM &#33258;&#24049;&#21160;&#25163;&#35299;&#20915;&#38382;&#39064;</li>
+<li class=" ml-8">&#19981;&#24597;&#20351;&#29992;&#20219;&#20309;&#21629;&#20196;&#34892;&#24037;&#20855;<ul class=" list-disc font-serif">
+<li class=" ml-8">vim, tmux, grep, gcc, binutils, ...</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class=" ml-8">&#19981;&#24807;&#24597;&#20889;&#20195;&#30721;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#33021;&#31649;&#29702;&#19968;&#23450;&#35268;&#27169; (&#25968;&#21315;&#34892;) &#30340;&#20195;&#30721;</li>
+<li class=" ml-8">&#33021;&#22312;&#20986; bug &#26102;&#40664;&#24565; &#8220;&#26426;&#22120;&#27704;&#36828;&#26159;&#23545;&#30340;&#12289;&#25105;&#32943;&#23450;&#33021;&#35843;&#20986;&#26469;&#30340;&#8221;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#28982;&#21518;&#24320;&#22987;&#29992;&#27491;&#30830;&#30340;&#24037;&#20855;/&#26041;&#27861;&#35843;&#35797;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<p class=" font-serif my-1">&#32473; &#8220;&#23398;&#28195;&#8221; &#20204;&#30340;&#36148;&#24515;&#25552;&#31034;&#65306;&#34917;&#22522;&#30784;&#12289;&#34917;&#22522;&#30784;&#12289;&#34917;&#22522;&#30784;</p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="1-power-user" class=" text-xl mt-2 pb-2 font-sans">1. &#25104;&#20026; Power User</h2>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/xkcd-tar.png"></p>
+<p class=" font-serif my-1">&#24863;&#21040; Linux/PowerShell/... &#24456;&#38590;&#29992;&#65311;</p>
+<ol class=" list-decimal font-serif">
+<li class=" ml-8">&#27809;&#26377;&#24314;&#31435;&#20449;&#24515;&#12289;&#27809;&#26377;&#29702;&#35299;&#22522;&#26412;&#36923;&#36753;</li>
+<li class=" ml-8">&#27809;&#26377;&#25214;&#23545;&#26448;&#26009; (Baidu v.s. Google/Bing/Github/StackOverflow)</li>
+<li class=" ml-8">&#27809;&#26377;&#29992;&#23545;&#24037;&#20855; (man v.s. tldr; &#35813;&#29992; IDE &#23601;&#21035; Vim)</li>
+</ol></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="2" class=" text-xl mt-2 pb-2 font-sans">2. &#23398;&#20250;&#20889;&#20195;&#30721;</h2>
+<p class=" font-serif my-1">&#20889;&#20195;&#30721; = &#21019;&#36896;&#26377;&#36259;&#30340;&#19996;&#35199;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21629;&#20196;&#34892; + &#27983;&#35272;&#22120;&#23601;&#26159;&#19990;&#30028;
+    <img alt="" class="center" src="../../../pages/OS/img/ascii-patrol.gif" width="700px"><ul class=" list-disc font-serif">
+<li class=" ml-8">&#25105;&#20204;&#36824;&#26377; sympy, sage, z3, rich, ... &#21602;</li>
+</ul>
+</li>
+<li class=" ml-8">&#19981;&#38656;&#35201;&#35762;&#35821;&#35328;&#29305;&#24615;&#12289;&#35774;&#35745;&#27169;&#24335;&#12289;&#8230;&#8230;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#32534;&#23601;&#23545;&#20102;&#65307;&#20320;&#33258;&#28982;&#32780;&#28982;&#20250;&#38656;&#35201;&#23427;&#20204;&#30340;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#35838;&#31243;&#65306;&#25945;&#31185;&#20070;</h2>
+<p class=" font-serif my-1">Remzi's <a href="https://pages.cs.wisc.edu/~remzi/OSTEP/" class=" text-amber-900">Operating Systems: Three Easy Pieces</a></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25353;&#29031;&#24182;&#21457; &#8594; &#34394;&#25311;&#21270; &#8594; &#25345;&#20037;&#21270;&#30340;&#39034;&#24207;&#19978;&#35838; (&#25105;&#33258;&#24049;&#30340;&#29702;&#35299;)</li>
+</ul>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/ostep-fun.jpg" width="550px"></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#35838;&#31243;&#21442;&#32771;&#20070;&#21644;<a href="../../OS_References.html" class=" text-amber-900">&#38405;&#35835;&#26448;&#26009;</a></h2>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/csapp-fun.jpg" width="500px"></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="talk-is-cheap-show-me-the-code" class=" text-xl mt-2 pb-2 font-sans">Talk is Cheap. Show Me the Code!</h2>
+<p class=" font-serif my-1">&#24212;&#29992;&#35270;&#35282;/&#25805;&#20316;&#31995;&#32479;&#35774;&#35745;&#65306;&#25805;&#20316;&#31995;&#32479; = &#23545;&#35937; + API</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">demo &#23567;&#31243;&#24207; (x86-64 &#20026;&#20027;)</li>
+<li class=" ml-8">&#21508;&#31867;&#31995;&#32479;&#24037;&#20855;&#30340;&#23454;&#29616; (strace, gdb, ...)</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#30828;&#20214;&#35270;&#35282;/&#25805;&#20316;&#31995;&#32479;&#23454;&#29616;&#65306;&#25805;&#20316;&#31995;&#32479; = C &#31243;&#24207;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="https://github.com/mit-pdos/xv6-riscv" class=" text-amber-900">xv6</a><ul class=" list-disc font-serif">
+<li class=" ml-8">2006 &#24180; Russ Cox, Frans Kaashoek, Robert Morris &#22312; MIT &#37325;&#20889;&#30340; UNIX &#31995;&#32479;</li>
+<li class=" ml-8">&#22823;&#23478;&#29087;&#24713;&#30340; RISC-V &#29256;&#26412;</li>
+</ul>
+</li>
+<li class=" ml-8">AbstractMachine<ul class=" list-disc font-serif">
+<li class=" ml-8">2017 &#24180;&#20026; Project-N &#35774;&#35745;&#30340;&#25277;&#35937;&#23618;</li>
+<li class=" ml-8">&#22312;&#12298;&#35745;&#31639;&#26426;&#31995;&#32479;&#22522;&#30784;&#12299;&#20013;&#24050;&#32463;&#20351;&#29992;&#36807;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="get-your-hands-dirty" class=" text-xl mt-2 pb-2 font-sans">&#26368;&#37325;&#35201;&#30340;&#65306;Get Your Hands Dirty</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">&#21548;&#35838;&#30475;&#20070;&#37117;&#19981;&#37325;&#35201;&#12290;&#29420;&#31435;&#23436;&#25104;&#32534;&#31243;&#20316;&#19994;&#21363;&#21487;&#29702;&#35299;&#25805;&#20316;&#31995;&#32479;&#12290;</p>
+</blockquote>
+<p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/compile-error.jpg" width="250px"></p>
+<p class=" font-serif my-1">&#24212;&#29992;&#35270;&#35282; (&#35774;&#35745;)&#65306;Mini Labs x 6</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20351;&#29992; OS API &#23454;&#29616; &#8220;&#40657;&#31185;&#25216;&#8221; &#20195;&#30721;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#30828;&#20214;&#35270;&#35282; (&#23454;&#29616;)&#65306;OS Labs x 5</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#33258;&#24049;&#21160;&#25163;&#23454;&#29616;&#19968;&#20010;&#30495;&#27491;&#30340;&#25805;&#20316;&#31995;&#32479;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#20840;&#37096; Online Judge</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20195;&#30721;&#19981;&#35268;&#33539; &#8594; <code>-Wall -Werror</code> &#32534;&#35793;&#20986;&#38169;</li>
+<li class=" ml-8">&#20195;&#30721;&#19981;&#21487;&#31227;&#26893; &#8594; &#32534;&#35793;/&#36816;&#34892;&#26102;&#20986;&#38169;&#65306;<code>int x = (int)&amp;y;</code></li>
+<li class=" ml-8">&#30828;&#32534;&#30721;&#36335;&#24452;/&#25991;&#20214;&#21517; &#8594; &#36816;&#34892;&#26102;&#20986;&#38169;&#65306;<code>open("/home/a/b", ...)</code></li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#24635;&#32467;</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#24635;&#32467;</h2>
+<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#22238;&#31572;&#30340;&#38382;&#39064;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><strong>Q1</strong> (Why): &#20026;&#20160;&#20040;&#35201;&#23398;&#25805;&#20316;&#31995;&#32479;&#65311;</li>
+<li class=" ml-8"><strong>Q2</strong> (What): &#21040;&#24213;&#20160;&#20040;&#26159;&#25805;&#20316;&#31995;&#32479;&#65311;</li>
+<li class=" ml-8"><strong>Q3</strong> (How): &#24590;&#20040;&#23398;&#25805;&#20316;&#31995;&#32479;&#65311;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Take-away message</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25805;&#20316;&#31995;&#32479;&#27809;&#26377;&#20256;&#35828;&#20013;&#37027;&#20040;&#22797;&#26434;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#31243;&#24207;&#35270;&#35282;&#65306;&#23545;&#35937; + API</li>
+<li class=" ml-8">&#30828;&#20214;&#35270;&#35282;&#65306;&#19968;&#20010; C &#31243;&#24207;</li>
+</ul>
+</li>
+<li class=" ml-8"><strike>&#36825;&#38376;&#35838;&#27809;&#26377;&#20256;&#35828;&#20013;&#37027;&#20040;&#21487;&#24597;</strike></li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="happy-hacking" class=" text-2xl mt-2 font-sans">Happy Hacking!</h1>
+<p class=" font-serif my-1"><br></p>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/tux-source.jpg" width="500px"></p></div></div></div>
+        
+      
+      </section>
+    
+    </section>
+  
+</div>
+</div>
+
+<script src="../../../static/reveal/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    
+    width: 1024, height: 768,
+    
+    slideNumber: 'c/t',
+    controlsTutorial: false,
+    progress: false,
+    hash: true,
+    center: false,
+    autoAnimateUnmatched: true,
+    autoAnimateEasing: 'ease-out',
+    autoAnimateDuration: 0.3,
+    transitionSpeed: 'fast'
+  });
+</script>
+
+
+</body>
+
+</html>

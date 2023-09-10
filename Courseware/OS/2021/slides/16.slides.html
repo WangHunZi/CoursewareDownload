@@ -1,0 +1,1062 @@
+<!DOCTYPE html><html class="h-100">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="../../../static/css/base.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
+
+  <style>
+    .font-sans {
+      font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+    }
+    .font-serif {
+      font-family: 'Source Serif Pro', 'Songti SC', 'SimSun', 'Serif', serif;
+    }
+  </style>
+  <link rel="stylesheet" href="../../../static/katex/katex.min.css">
+  <script defer src="../../../static/katex/katex.min.js"></script>
+  <script defer src="../../../static/katex/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+            // customised options
+            // &#8226; auto-render specific keys, e.g.:
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ],
+            // &#8226; rendering keys, e.g.:
+            throwOnError : false
+          });
+      });
+  </script>
+
+
+  
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="../../../static/reveal/reveal.css">
+<link rel="stylesheet" href="../../../static/reveal/theme/simple.css" id="theme">
+
+<style>
+.reveal .slide-number {
+  font-size: 26px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, .3);
+}
+
+.reveal .full-screen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.reveal .slides {
+  border: 1.5px #ddd solid;
+  border-radius: 7px;
+  text-align: left;
+  font-weight: 300;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  font-family: 'Lato', 'SimHei', 'STXihei', 'Droid Sans';
+  font-weight: 400;
+}
+
+.reveal p, .reveal li, .reveal center {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Droid Sans';
+}
+
+.reveal li + li {
+  margin-top: 10px;
+}
+
+.reveal ul {
+  display: block;
+  margin-right: 15px;
+}
+
+.reveal p, .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5 {
+  padding:  0 25px 0 25px;
+}
+
+.reveal table {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Sans Serif';
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.reveal th {
+  background-color: #eee;
+}
+
+.reveal tr:nth-child(even) {
+  background-color: #efffff;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  text-align: left;
+  margin: 0 0 20px 0;
+ color: #222; 
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
+
+
+.reveal h1 {
+  margin: 0 10 0 10;
+  font-size: 60px;
+}
+.reveal .middle h1 {
+  text-align: center;
+}
+
+.reveal h2 {
+  font-size: 48px;
+  border-bottom: 2px solid rgb(106, 0, 95);
+  padding-bottom: 5px;
+}
+.reveal h3 { font-size: 1.15em; }
+.reveal h4 { font-size: 1.05em; }
+
+.reveal .center {
+  text-align: center;
+}
+
+.reveal .middle {
+  height: 728px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.reveal pre {
+  font-size: 28px;
+ 
+  background-color: #eee;
+
+  border-radius: 3mm;
+  padding: 10px 10px 10px 10px;
+}
+
+.reveal pre code {
+  max-height: none;
+}
+
+.reveal code {
+  font-family: 'Inconsolata', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif', Monospace;
+}
+
+.reveal .middle blockquote {
+  text-align: center;
+  color: rgb(106, 0, 95);
+  background: none;
+  box-shadow: none;
+}
+
+.reveal .middle blockquote a {
+  color: inherit;
+}
+
+.reveal blockquote p, .reveal blockquote li {
+  font-family: 'Lato', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif';
+}
+
+section .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reveal .author-block {
+  margin: 75px 0 35px 0;
+}
+.reveal .author-affiliation img {
+  margin: 15px 0 0 0;
+}
+.reveal .author-block p, .reveal .author-affiliation p  {
+  font-family: 'Kaiti', 'STKaiti', 'Serif', 'Times', 'Times New Roman';
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+.reveal .author-affiliation {
+  display: inline-block;
+  font-size: 90%;
+}
+.reveal hr {
+  border: 10px solid rgba(0, 0, 0, 0);
+}
+.reveal li {
+  margin-top: 10px;
+}
+</style>
+
+  <title>&#25345;&#20037;&#25968;&#25454;&#30340;&#21487;&#38752;&#24615;</title>
+</head>
+
+<body class="d-flex flex-column h-100">
+  
+  
+
+<div class="reveal">
+<div class="slides">
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#25345;&#20037;&#25968;&#25454;&#30340;&#21487;&#38752;&#24615;</h1>
+<p class=" font-serif my-1"><include src="Slides_Author"><div><div class="py-16">
+<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">&#33931;&#28814;&#23721;</a></p>
+</div>
+<div class="row">
+<div class="author-affiliation">
+    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#12288;&#12288;&#21335;&#20140;&#22823;&#23398;&#12288;&#12288;</p>
+    <img class="inline-img h-24" src="../../../static/img/nju-logo.jpg" style="display: inline-block;"></a>
+  </div>
+<div class="author-affiliation">
+   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#31185;&#23398;&#19982;&#25216;&#26415;&#31995;</p>
+    <img class="inline-img h-24" src="../../../static/img/njucs-logo.jpg" style="display: inline-block;"></a>
+  </div>
+<div class="author-affiliation">
+    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#36719;&#20214;&#30740;&#31350;&#25152;</p>
+    <img class="inline-img h-24" src="../../../static/img/ics-logo.png" style="display: inline-block;"></a>
+  </div>
+</div></div></include></p></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#32972;&#26223;</h2>
+<p class=" font-serif my-1">&#25991;&#20214;&#31995;&#32479; = &#25226;&#35774;&#22791;&#25277;&#35937;&#25104;&#30446;&#24405;&#26641;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">mount - &#25991;&#20214;&#31995;&#32479;&#31649;&#29702;</li>
+<li class=" ml-8">mkdir, rmkdir, link, symlink, unlink... - &#30446;&#24405;&#31649;&#29702;</li>
+<li class=" ml-8">open, mmap, read, write, lseek... - &#25991;&#20214;&#31649;&#29702;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20351;&#29992;&#38142;&#34920;&#12289;&#32034;&#24341;&#12289;&#8230;&#8230;&#23454;&#29616;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#22914;&#20309;&#23454;&#29616;<red>&#39640;&#21487;&#38752;&#12289;&#39640;&#24615;&#33021;</red>&#65311;</p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26412;&#27425;&#35838;&#20869;&#23481;&#19982;&#30446;&#26631;</h2>
+<p class=" font-serif my-1">RAID: Redundant Array of Inexpensive Disks</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25226;&#22810;&#22359;&#30913;&#30424;&#34394;&#25311;&#21270;&#25104;&#19968;&#22359;&#24615;&#33021;&#26356;&#22909;&#12289;&#26356;&#21487;&#38752;&#30340;&#30913;&#30424;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#23849;&#28291;&#19968;&#33268;&#24615;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22914;&#20309;&#22312;&#30828;&#20214;&#21487;&#33021;&#23849;&#28291;&#30340;&#24773;&#20917;&#19979;&#20445;&#35777;&#25991;&#20214;&#31995;&#32479; (&#25968;&#25454;&#32467;&#26500;) &#30340;&#19968;&#33268;&#24615;</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="redundant-array-of-inexpensive-disks-raid" class=" text-2xl mt-2 font-sans">Redundant Array of Inexpensive Disks (RAID)</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25345;&#20037;&#25968;&#25454;&#30340;&#21487;&#38752;&#24615;</h2>
+<p class=" font-serif my-1">&#20219;&#20309;&#29289;&#29702;&#23384;&#20648;&#20171;&#36136;&#37117;&#26377;&#22833;&#25928;&#30340;&#21487;&#33021;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20320;&#20381;&#28982;&#24076;&#26395;&#22312;&#23384;&#20648;&#35774;&#22791;&#22833;&#25928;&#30340;&#26102;&#20505;&#33021;&#20445;&#25345;&#25968;&#25454;&#30340;&#23436;&#25972;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#26497;&#23567;&#27010;&#29575;&#20107;&#20214;&#65306;&#25112;&#20105;&#29190;&#21457;/&#19977;&#20307;&#20154;&#36827;&#25915;&#22320;&#29699;/&#19990;&#30028;&#27585;&#28781; &#128514;</li>
+<li class=" ml-8">&#23567;&#27010;&#29575;&#20107;&#20214;&#65306;&#30828;&#30424;&#25439;&#22351;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22823;&#37327;&#37325;&#22797; = &#24517;&#28982;&#21457;&#29983;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20294;&#25105;&#20204;&#36824;&#26159;&#24076;&#26395;&#31995;&#32479;&#33021;&#29031;&#24120;&#36816;&#36716;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#22686;&#21152;&#25345;&#20037;&#25968;&#25454;&#21487;&#38752;&#24615;&#30340;&#26041;&#27861;</h2>
+<p class=" font-serif my-1"><red>&#22791;&#32974;</red>&#65306;&#40481;&#34507;&#19981;&#33021;&#25918;&#22312;&#19968;&#20010;&#31726;&#23376;&#37324;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25945;&#21153;&#22788;&#65306;&#29289;&#29702;&#22791;&#20221;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#26399;&#26411;&#32771;&#35797;&#21518;&#20250;&#25552;&#20132;&#25152;&#26377;&#25209;&#38405;&#30340;&#35797;&#21367;&#12289;&#25104;&#32489;&#34920;&#12289;&#25104;&#32489;&#20998;&#24067;</li>
+<li class=" ml-8">&#20551;&#35774;&#25945;&#21153;&#31995;&#32479;&#23849;&#28291; v.s. &#25945;&#21153;&#22788;&#23849;&#28291;&#26159;&#29420;&#31435;&#20107;&#20214;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20004;&#20010;&#26497;&#23567;&#27010;&#29575;&#20107;&#20214;&#21516;&#26102;&#21457;&#29983;&#65292;&#37027;&#23601;&#35748;&#20498;&#38665;&#21543;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class=" ml-8">&#26381;&#21153;&#22120;&#65306;&#25968;&#25454;&#22791;&#20221;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25152;&#26377;&#25968;&#25454;&#21516;&#26102;&#20889;&#20837;&#20004;&#22359;&#30913;&#30424;</li>
+<li class=" ml-8">&#27599;&#26085;&#25110;&#27599;&#21608;&#22791;&#20221;<ul class=" list-disc font-serif">
+<li class=" ml-8">crontab (time-based job scheduler)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="raid" class=" text-xl mt-2 pb-2 font-sans">RAID: &#23384;&#20648;&#35774;&#22791;&#30340;&#34394;&#25311;&#21270;</h2>
+<p class=" font-serif my-1">Redundant Array of Inexpensive (<em>Independent</em>) Disks (RAID)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25226;&#22810;&#20010; (&#19981;&#21487;&#38752;&#30340;) &#30913;&#30424;&#34394;&#25311;&#25104;&#19968;&#22359;&#38750;&#24120;&#21487;&#38752;&#30340;&#34394;&#25311;&#30913;&#30424;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#31867;&#27604;&#25105;&#20204;&#35265;&#36807;&#30340;&#34394;&#25311;&#21270;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#36827;&#31243;&#65306;&#25226;&#19968;&#20010; CPU &#20998;&#26102;&#34394;&#25311;&#25104;&#22810;&#20010;&#34394;&#25311; CPU</li>
+<li class=" ml-8">&#34394;&#23384;&#65306;&#25226;&#19968;&#20221;&#20869;&#23384;&#36890;&#36807; MMU &#34394;&#25311;&#25104;&#22810;&#20010;&#22320;&#22336;&#31354;&#38388;</li>
+<li class=" ml-8">&#25991;&#20214;&#65306;&#25226;&#19968;&#20010;&#23384;&#20648;&#35774;&#22791;&#34394;&#25311;&#25104;&#22810;&#20010;&#34394;&#25311;&#30913;&#30424;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">RAID &#30340;&#34394;&#25311;&#21270;&#26159; &#8220;&#21453;&#21521;&#8221; &#30340;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">(&#19968;&#20010; &#8594; &#22810;&#20010;) vs. (&#22810;&#20010; &#8594; &#19968;&#20010;)</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="raid-fault-model-fail-stop" class=" text-xl mt-2 pb-2 font-sans">RAID &#30340; Fault Model: Fail-Stop</h2>
+<p class=" font-serif my-1">&#30913;&#30424;&#21487;&#33021;&#22312;&#26576;&#20010;&#26102;&#21051;&#24573;&#28982;&#24443;&#24213;&#26080;&#27861;&#35775;&#38382; (&#25968;&#25454;&#22909;&#20687;&#23436;&#20840;&#28040;&#22833;)&#12290;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#26426;&#26800;&#25925;&#38556;&#12289;&#33455;&#29255;&#25925;&#38556;&#8230;&#8230;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#30913;&#30424;&#22909;&#20687;&#23601; &#8220;&#24573;&#28982;&#28040;&#22833;&#8221; &#20102;</li>
+<li class=" ml-8">&#20551;&#35774;&#30913;&#30424;&#33021;&#25253;&#21578;&#36825;&#20010;&#38382;&#39064; (&#22914;&#20309;&#25253;&#21578;&#65311;)</li>
+</ul>
+</li>
+<li class=" ml-8">L. Bairavasundaram, et al. An analysis of data corruption in the storage stack. In <em>Proc. of FAST</em>, 2008.</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#20320;&#36824;&#25954;&#29992;&#36825;&#20010;&#30828;&#30424;&#20570; {&#25945;&#21153;&#31995;&#32479;, &#25903;&#20184;&#23453;, &#38134;&#34892;, &#8230;} &#21527;&#65311;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#24635;&#26377;&#19968;&#22825;&#65292;&#19968;&#23450;&#26377;&#30913;&#30424;&#20250;&#22351;&#25481;&#30340;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22351;&#20107;&#20214;&#19968;&#26086;&#21457;&#29983;&#65292;&#23601;&#26377;&#25968;&#25454;&#20250;&#20002;&#22833;</li>
+<li class=" ml-8">&#27704;&#36828;&#19981;&#20002;&#22833;&#25968;&#25454;&#20284;&#20046;&#26159;&#19981;&#21487;&#33021;&#30340;</li>
+</ul>
+</li>
+<li class=" ml-8">&#25105;&#20204;&#36824;&#33021;&#26500;&#36896;&#21487;&#38752;&#30340; (&#21333;&#26426;) &#23384;&#20648;&#31995;&#32479;&#21527;&#65311;</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#24403;&#28982;&#21487;&#20197;&#65281;</h2>
+<p class=" font-serif my-1">&#20551;&#35774;&#25105;&#24895;&#24847;&#22312;&#31995;&#32479;&#37324;&#22810;&#25509;&#20837;&#19968;&#22359;&#30828;&#30424;&#29992;&#20110;&#23481;&#28798;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#36890;&#36807;&#35774;&#22791;&#39537;&#21160;&#31243;&#24207;&#25277;&#35937;&#25104; &#8220;&#19968;&#20010;&#30913;&#30424;&#8221; $V$ (&#20363;&#22914; 1TB)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#23454;&#38469;&#30001; $A$, $B$ &#20004;&#22359; 1TB &#30340;&#29289;&#29702;&#30913;&#30424;&#32452;&#25104;<red>&#38236;&#20687;</red></li>
+</ul>
+</li>
+<li class=" ml-8">readb($V$, blk)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21487;&#20197;&#20174; $A$ &#25110; $B$ &#20013;&#30340;&#20219;&#24847;&#19968;&#20010;&#35835;&#21462;</li>
+</ul>
+</li>
+<li class=" ml-8">writeb($V$, blk)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#23558;&#21516;&#26679;&#30340;&#25968;&#25454;&#20889;&#20837; $A$, $B$ &#30340;&#21516;&#19968;&#20301;&#32622;  </li>
+</ul>
+</li>
+</ul></div>
+        
+      
+         <div class="fragment"> 
+        <div><hr>
+<p class=" font-serif my-1">&#20551;&#35774;&#20869;&#23384;&#24102;&#23485;&#36828;&#39640;&#20110;&#30913;&#30424;&#24102;&#23485;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">1X write (&#28010;&#36153;&#20102; 1/2 &#30340;&#24635;&#24102;&#23485;)</li>
+<li class=" ml-8">2X sequential read (tricky)</li>
+<li class=" ml-8">2X random read (&#20351;&#29992;&#20102; 100% &#30340;&#24635;&#24102;&#23485;)</li>
+<li class=" ml-8">&#25269;&#25239;&#20219;&#24847;&#19968;&#22359;&#30424;&#30340;&#25439;&#22351;</li>
+</ul></div>
+         </div> 
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="raid-design-space" class=" text-xl mt-2 pb-2 font-sans">RAID: Design Space</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">RAID (&#34394;&#25311;&#21270;) = &#34394;&#25311;&#30913;&#30424;&#22359;&#21040;&#29289;&#29702;&#30913;&#30424;&#22359;&#30340; &#8220;&#26144;&#23556;&#8221;&#12290;</p>
+</blockquote>
+<p class=" font-serif my-1">RAID-0: &#25226;&#22810;&#22359;&#30424; &#8220;&#20132;&#26367;&#25340;&#25509;&#8221;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">$V_0 \to A_0$, $V_1 \to B_0$, $V_{2i} \to A_i$, $V_{2i+1} \to B_i$</li>
+<li class=" ml-8">&#23436;&#32654;&#25193;&#23637;&#30340;&#39640;&#24615;&#33021;&#34394;&#25311;&#30913;&#30424;<ul class=" list-disc font-serif">
+<li class=" ml-8">100% &#39034;&#24207;/&#38543;&#26426;&#35835;&#20889;&#24635;&#24102;&#23485;</li>
+</ul>
+</li>
+<li class=" ml-8">&#20294;&#23436;&#20840;&#19981;&#33021;&#23481;&#38169;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">RAID-1 (&#38236;&#20687;)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">$V_0 \to (A_0, B_0)$</li>
+<li class=" ml-8">&#23481;&#24525;&#19968;&#22359;&#30424; fail</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="raid-design-space-contd" class=" text-xl mt-2 pb-2 font-sans">RAID: Design Space (cont'd)</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">RAID: &#20801;&#35768; &#8220;&#22810;&#23545;&#22810;&#8221; &#30340;&#26144;&#23556; (&#19968;&#32452;&#26144;&#23556;&#31216;&#20026; &#8220;&#26465;&#24102;&#8221;, stripe)</p>
+</blockquote>
+<p class=" font-serif my-1">RAID-10</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">$(V_0, V_1) \to (A_0, B_0, C_0, D_0)$<ul class=" list-disc font-serif">
+<li class=" ml-8">$A_0 = B_0 = V_0$, $C_0 = D_0 = V_1$</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#21478;&#19968;&#31181;&#21487;&#33021;&#30340;&#26041;&#24335;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">$(V_0, V_1, V_2) \to (A_0, B_0, C_0, D_0)$<ul class=" list-disc font-serif">
+<li class=" ml-8">&#8220;&#19977;&#22359;&#26144;&#23556;&#21040;&#22235;&#22359;&#8221;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="raid-design-space-contd" class=" text-xl mt-2 pb-2 font-sans">RAID: Design Space (cont'd)</h2>
+<p class=" font-serif my-1">$(V_0, V_1, V_2) \to (A_0, B_0, C_0, D_0)$</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#19981;&#22952;&#20551;&#35774;&#25152;&#26377;&#30340;&#26465;&#24102; $V_i, A_i, B_i, C_i, D_i$ &#37117;&#21482;&#26377; 1-bit</li>
+<li class=" ml-8">&#38382;&#39064;&#65306;<red>&#22914;&#20309;&#29992; 4 &#20010; bit &#23384;&#20648; 3-bit &#20449;&#24687;&#65292;&#20351;&#24471; 4 &#20010; bit &#20013;&#30340;&#20219;&#20309;&#19968;&#20010;&#20002;&#22833;&#65292;&#37117;&#33021;&#24674;&#22797;&#20986;&#23384;&#20648;&#30340; 3-bit &#30340;&#20449;&#24687;&#65311;</red><ul class=" list-disc font-serif">
+<li class=" ml-8">&#22855;&#20598;&#26657;&#39564;&#65281;</li>
+<li class=" ml-8">&#23545;&#20110; bits $a_1, a_2, \ldots, a_n$<ul class=" list-disc font-serif">
+<li class=" ml-8">&#23384;&#20648; $a_{n+1} = a_1 \oplus a_2 \oplus \ldots \oplus a_n$<ul class=" list-disc font-serif">
+<li class=" ml-8">&#31227;&#39033;&#24471; $a_1 \oplus a_2 \oplus \ldots \oplus a_n \oplus a_{n+1} = 0$</li>
+</ul>
+</li>
+<li class=" ml-8">&#20219;&#20309;&#19968;&#20010; bit &#20002;&#22833; (&#23545;&#24212; $A,B,C,D$ &#20013;&#26576;&#22359;&#30828;&#30424;&#19981;&#33021;&#21551;&#21160;)<ul class=" list-disc font-serif">
+<li class=" ml-8">$a_i = a_1 \oplus \ldots \oplus a_{i-1} \oplus a_{i+1} \oplus \ldots \oplus a_n \oplus a_{n+1}$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="raid-4-parity-disk" class=" text-xl mt-2 pb-2 font-sans">RAID-4: Parity Disk</h2>
+<p class=" font-serif my-1">&#19987;&#38376;&#30041;&#19968;&#22359;&#30913;&#30424;&#20316;&#20026;&#22855;&#20598;&#26657;&#39564;&#30424;&#12290;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">$(V_0, V_1, V_2) \to (A_0, B_0, C_0, D_0)$<ul class=" list-disc font-serif">
+<li class=" ml-8">$A_0 = V_0$, $B_0 = V_1$, $C_0 = V_2$</li>
+<li class=" ml-8">$D_0 = V_0 \oplus V_1 \oplus V_2$ (&#22855;&#20598;&#26657;&#39564;)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#24615;&#33021;&#20998;&#26512;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">sequential/random read: 3x (75% &#24635;&#24102;&#23485;)</li>
+<li class=" ml-8">sequential write: 3x (75% &#24635;&#24102;&#23485;)</li>
+<li class=" ml-8">random write (tricky)<ul class=" list-disc font-serif">
+<li class=" ml-8">$D_0 = V_0 \oplus V_1 \oplus V_2$</li>
+<li class=" ml-8">&#20889;&#20837;&#20219;&#24847; $V_0, V_1, V_2$ &#37117;&#38656;&#35201;&#26356;&#26032; $D_0$<ul class=" list-disc font-serif">
+<li class=" ml-8">&#26356;&#26032; $V_0$ &#38656;&#35201; readb($\{A_0,D_0\})$, writeb($\{A_0,D_0\}$)</li>
+</ul>
+</li>
+<li class=" ml-8">&#22855;&#20598;&#26657;&#39564;&#30424;&#25104;&#20026;&#20102;&#29942;&#39048;: 0.5x</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="raid-5-rotating-parity" class=" text-xl mt-2 pb-2 font-sans">RAID-5: Rotating Parity</h2>
+<p class=" font-serif my-1">&#8220;&#20132;&#38169;&#25490;&#21015;&#8221; parity block!</p>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/raid5.png" width="800px"></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="raid-5" class=" text-xl mt-2 pb-2 font-sans">RAID-5: &#24615;&#33021;&#20998;&#26512;</h2>
+<p class=" font-serif my-1">&#35753;&#27599;&#19968;&#22359;&#30424;&#37117;&#26377;&#22343;&#31561;&#30340;&#26426;&#20250;&#23384;&#20648; parity</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">sequential read/write: 3x (75% &#24635;&#24102;&#23485;)</li>
+<li class=" ml-8">random read (tricky)<ul class=" list-disc font-serif">
+<li class=" ml-8">(read &#36275;&#22815;&#22823;&#65292;&#25152;&#26377;&#30913;&#30424;&#37117;&#21487;&#20197;&#25552;&#20379;&#25968;&#25454;) 4x (100% &#24635;&#24102;&#23485;)</li>
+</ul>
+</li>
+<li class=" ml-8">random write (tricky)<ul class=" list-disc font-serif">
+<li class=" ml-8">$D_0 = V_0 \oplus V_1 \oplus V_2$; &#20889;&#20837;&#20219;&#24847; $V_0, V_1, V_2$ &#37117;&#38656;&#35201;&#26356;&#26032; $D_0$</li>
+<li class=" ml-8">&#22855;&#20598;&#26657;&#39564;&#20381;&#28982;&#20005;&#37325;&#25302;&#24930;&#20102;&#38543;&#26426;&#20889;&#20837;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20294;&#33267;&#23569; $n$ &#22359;&#30424;&#21487;&#20197;&#33719;&#24471; $n/4$ &#30340;&#38543;&#26426;&#20889;&#24615;&#33021; (&#33021;&#22815; scale)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="raid" class=" text-xl mt-2 pb-2 font-sans">RAID: &#35752;&#35770;</h2>
+<p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/emc-vnx5300.jpg" width="400px"></p>
+<p class=" font-serif my-1">&#26356;&#24555;&#12289;&#26356;&#21487;&#38752;&#12289;&#36817;&#20046;&#20813;&#36153;&#30340;&#22823;&#23481;&#37327;&#30913;&#30424;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20170;&#22825;&#26381;&#21153;&#22120;&#30340;&#26631;&#20934;&#37197;&#32622;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">RAID &#30340;&#21487;&#38752;&#24615;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">RAID &#31995;&#32479;&#21457;&#29983;&#26029;&#30005;&#65311;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20363;&#23376;&#65306;RAID-1 &#38236;&#20687;&#30424;&#20986;&#29616;&#19981;&#19968;&#33268;&#30340;&#25968;&#25454;</li>
+</ul>
+</li>
+<li class=" ml-8">&#26816;&#27979;&#21040;&#30913;&#30424;&#22351;&#65311;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#33258;&#21160;&#37325;&#32452;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#23849;&#28291;&#19968;&#33268;&#24615;&#19982;&#23849;&#28291;&#24674;&#22797;</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="fault-model" class=" text-xl mt-2 pb-2 font-sans">&#21478;&#19968;&#31181; Fault Model</h2>
+<p class=" font-serif my-1">&#30913;&#30424;&#24182;&#27809;&#26377;&#25925;&#38556;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20294;&#25805;&#20316;&#31995;&#32479;&#20869;&#26680;&#21487;&#33021; crash&#65292;&#31995;&#32479;&#21487;&#33021;&#26029;&#30005;</li>
+</ul>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/cat-crash-consistency.jpg" width="400px"></p>
+<p class=" font-serif my-1">&#25991;&#20214;&#31995;&#32479;&#65306;&#35774;&#22791;&#19978;&#30340;&#26641;&#32467;&#26500;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21363;&#20415;&#21482;&#26159; append &#19968;&#20010;&#23383;&#33410;&#65292;&#20063;&#28041;&#21450;&#22810;&#22788;&#30913;&#30424;&#30340;&#20462;&#25913;<ul class=" list-disc font-serif">
+<li class=" ml-8">inode, inode-bitmap, block-bitmap</li>
+<li class=" ml-8">&#19981;&#21516;&#30340; block&#65292;&#22240;&#27492;&#26080;&#27861;&#21516;&#26102;&#23436;&#25104;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="crash-consistency" class=" text-xl mt-2 pb-2 font-sans">&#23849;&#28291;&#19968;&#33268;&#24615; (Crash Consistency)</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1"><strong>Crash Consistency</strong>: Move the file system from one consistent state (e.g., before the file got appended to) to another atomically (e.g., after the inode, bitmap, and new data block have been written to disk).</p>
+</blockquote>
+<p class=" font-serif my-1"></p><center>(&#20320;&#20204;&#24179;&#26102;&#32534;&#31243;&#26102;&#20551;&#35774;&#19981;&#20250;&#21457;&#29983;&#30340;&#20107;&#65292;&#25805;&#20316;&#31995;&#32479;&#37117;&#35201;&#32473;&#20320;&#20828;&#24213;)</center>
+<hr>
+<p class=" font-serif my-1">&#23548;&#33268;&#23849;&#28291;&#19968;&#33268;&#24615;&#30340;&#21407;&#22240;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">RAID: write($V_0$) $\to$ write($A_0$) write($B_0$)</li>
+<li class=" ml-8">ext2 (&#25991;&#20214;&#36861;&#21152;&#20889;&#20837;&#19968;&#22359;): write(inode); write(bitmap); write(data);<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20294;&#26159;&#23384;&#20648;&#35774;&#22791;&#30340;&#22810;&#27425;&#20889;&#20837;&#27809;&#26377;&#21407;&#23376;&#24615;&#20445;&#35777; &#128514;</li>
+<li class=" ml-8">&#29978;&#33267;&#20026;&#20102;&#24615;&#33021;&#65292;&#27809;&#26377;&#39034;&#24207;&#20445;&#35777; (&#24182;&#21457;&#32534;&#31243;&#65306;&#20174;&#20837;&#38376;&#21040;&#25918;&#24323;)</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#21407;&#23376;&#24615;&#30340;&#20007;&#22833;&#65306;&#21518;&#26524;</h2>
+<p class=" font-serif my-1">&#32771;&#34385;&#36861;&#21152;&#20889;&#20837;&#19968;&#20010;&#25968;&#25454;&#22359;&#65292;&#30913;&#30424;&#19978;&#25968;&#25454;&#32467;&#26500;&#30340;&#26356;&#26032;</p>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/fs-layout.png" width="900px"></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">b: bitmap; i: inode; d: data<ul class=" list-disc font-serif">
+<li class=" ml-8">$\{b\}$ - dead block</li>
+<li class=" ml-8">$\{i\}$ - dangling pointer</li>
+<li class=" ml-8">$\{d\}$ - random writes (&#27809;&#26377;&#19968;&#33268;&#24615;&#38382;&#39064;)</li>
+<li class=" ml-8">$\{b,i\}$ - incorrect data</li>
+<li class=" ml-8">$\{i,d\}$ - dangling pointer</li>
+<li class=" ml-8">$\{b,d\}$ - dead block</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="fsck" class=" text-2xl mt-2 font-sans">&#23849;&#28291;&#24674;&#22797;: FSCK</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="file-system-checking-fsck" class=" text-xl mt-2 pb-2 font-sans">File System Checking (FSCK)</h2>
+<p class=" font-serif my-1">&#26681;&#25454;&#30913;&#30424;&#19978;&#24050;&#26377;&#30340;&#20449;&#24687;&#65292;&#24674;&#22797;&#20986; &#8220;&#26368;&#21487;&#33021;&#8221; &#30340;&#25968;&#25454;&#32467;&#26500;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#26816;&#26597; inode &#26631;&#35760;&#30340;&#25968;&#25454;&#22359;&#26159;&#21542; bitmap &#37117;&#26631;&#35760;&#20026; &#8220;1&#8221;</li>
+<li class=" ml-8">&#26816;&#26597; inode &#25968;&#25454;&#26159;&#21542; &#8220;&#30475;&#36215;&#26469;&#21512;&#27861;&#8221;&#65292;&#21542;&#21017;&#21024;&#38500;</li>
+<li class=" ml-8">&#26816;&#26597;&#26159;&#21542;&#23384;&#22312; dangling link<ul class=" list-disc font-serif">
+<li class=" ml-8">&#27809;&#26377;&#38142;&#25509;&#30340; inode &#34987;&#31227;&#21040; lost+found &#30446;&#24405;&#20013;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#21018;&#25165;&#30340;&#21738;&#20123;&#24773;&#20917;&#21487;&#20197;&#30001; fsck &#20462;&#22797;&#65311;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">$\{b,i\}$ - incorrect data</li>
+<li class=" ml-8">$\{i,d\}$ - dangling pointer</li>
+<li class=" ml-8">$\{b,d\}$ - dead block</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="fsck" class=" text-xl mt-2 pb-2 font-sans">FSCK &#30340;&#38590;&#39064;</h2>
+<p class=" font-serif my-1">&#22312;&#21457;&#29983;&#19981;&#19968;&#33268;&#26102;&#65292;&#8220;&#21040;&#24213;&#20160;&#20040;&#26159;&#23545;&#30340;&#8221;&#65311;</p>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/fsck-recovery.png" width="750px"></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">H. S. Gunawi, et al. SQCK: A declarative file system checker. In <em>Proc. of OSDI</em>, 2008.</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="fsck" class=" text-xl mt-2 pb-2 font-sans">&#22914;&#26524; fsck &#30340;&#26102;&#20505;&#21457;&#29983;&#23849;&#28291; &#128514;</h2>
+<p class=" font-serif my-1">fsck &#20063;&#26159;&#31243;&#24207;&#65292;fsck &#20063;&#35201;&#35775;&#38382;&#25991;&#20214;&#31995;&#32479;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22914;&#26524; fsck &#26102;&#21457;&#29983;&#23849;&#28291;&#65292;&#25991;&#20214;&#31995;&#32479;&#21487;&#33021;&#36827;&#20837;&#24443;&#24213;&#26080;&#27861;&#24674;&#22797;&#30340;&#29366;&#24577;&#65281;<ul class=" list-disc font-serif">
+<li class=" ml-8">O. R. Gatla, et al. Towards robust file system checkers. In <em>Proc. of FAST</em>, 2018.</li>
+</ul>
+</li>
+<li class=" ml-8">fsck &#26356;&#22810;&#29992;&#20110;&#30913;&#30424;&#21457;&#29983;&#37096;&#20998;&#25439;&#22351;&#26102;&#30340;&#25968;&#25454;&#25250;&#25937;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#38024;&#23545; crash&#65292;&#25105;&#20204;&#38656;&#35201;&#26356;&#21487;&#38752;&#30340;&#26041;&#27861;&#25105;&#20204;&#38656;&#35201;&#19968;&#20010;&#26356;&#21487;&#38752;&#30340;&#26041;&#27861;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25991;&#20214;&#31995;&#32479;&#19981;&#19968;&#33268;&#30340;&#26681;&#26412;&#21407;&#22240;&#26159;<red>&#23384;&#20648;&#35774;&#22791;&#26080;&#27861;&#25552;&#20379;&#22810;&#27425;&#20889;&#20837;&#30340;&#21407;&#23376;&#24615;</red></li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="journaling" class=" text-2xl mt-2 font-sans">&#23849;&#28291;&#24674;&#22797;: Journaling</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="journaling" class=" text-xl mt-2 pb-2 font-sans">&#26085;&#24535; (Journaling)</h2>
+<p class=" font-serif my-1">&#33021;&#21542;&#22312;&#30913;&#30424; API &#19978;&#23454;&#29616;&#21487;&#38752;&#30340; multi-write &#21407;&#23376;&#24615;&#65311;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">readb (&#35835;&#19968;&#22359;), writeb (&#20889;&#19968;&#22359;), sync (&#31561;&#24453;&#25152;&#26377;&#36807;&#21435;&#30340;&#20889;&#20837;&#33853;&#30424;)</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#25968;&#25454;&#32467;&#26500;&#26377;&#20004;&#31181;&#23454;&#29616;&#26041;&#27861;</p>
+<ol class=" list-decimal font-serif">
+<li class=" ml-8">&#23384;&#20648;&#23454;&#38469;<red>&#25968;&#25454;&#32467;&#26500;</red><ul class=" list-disc font-serif">
+<li class=" ml-8">&#25991;&#20214;&#31995;&#32479;&#30340; &#8220;&#30452;&#35266;&#8221; &#34920;&#31034;</li>
+<li class=" ml-8">crash unsafe</li>
+</ul>
+</li>
+<li class=" ml-8">append-only &#35760;&#24405;&#25152;&#26377;<red>&#21382;&#21490;&#25805;&#20316;</red><ul class=" list-disc font-serif">
+<li class=" ml-8">&#8220;&#37325;&#20570;&#8221; &#25152;&#26377;&#25805;&#20316;&#24471;&#21040;&#25968;&#25454;&#32467;&#26500;&#30340;&#24403;&#21069;&#29366;&#24577;</li>
+<li class=" ml-8">&#23481;&#26131;&#23454;&#29616;&#23849;&#28291;&#19968;&#33268;&#24615;</li>
+</ul>
+</li>
+</ol></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="atomic-append" class=" text-xl mt-2 pb-2 font-sans">&#23454;&#29616; Atomic Append</h2>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/fs-journaling.png" width="800px"></p>
+<ol class=" list-decimal font-serif">
+<li class=" ml-8">&#23450;&#20301;&#21040; journal &#30340;&#26411;&#23614; (&#20351;&#29992; readb)</li>
+<li class=" ml-8">&#22312; journal &#26411;&#23614; append TXBegin&#65292;&#24182;&#35760;&#24405;&#25152;&#26377;&#25805;&#20316;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#35760;&#24405;&#25991;&#20214;&#31995;&#32479;&#25805;&#20316; v.s. &#35760;&#24405;&#30913;&#30424;&#22359;&#25805;&#20316;</li>
+</ul>
+</li>
+<li class=" ml-8">sync&#65292;&#31561;&#24453;&#25968;&#25454;&#33853;&#30424;</li>
+<li class=" ml-8">append TXEnd</li>
+<li class=" ml-8">sync&#65292;&#31561;&#24453; TXEnd &#33853;&#30424;<ul class=" list-disc font-serif">
+<li class=" ml-8">sync &#36820;&#22238;&#21518;&#25345;&#20037;&#21270;&#23436;&#25104; (&#8220;committed&#8221;)</li>
+</ul>
+</li>
+</ol></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="crash-consistency" class=" text-xl mt-2 pb-2 font-sans">&#23454;&#29616; Crash Consistency</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">&#23567;&#23401;&#23376;&#25165;&#20570;&#36873;&#25321;&#65292;&#25105;&#25991;&#20214;&#31995;&#32479;&#20840;&#37117;&#35201;&#65281;</p>
+</blockquote>
+<p class=" font-serif my-1">&#20027;&#35201;&#32500;&#25252;&#25991;&#20214;&#31995;&#32479;&#30340;&#32467;&#26500;&#65292;&#20294;&#39044;&#30041;&#19968;&#23450;&#30340; journal &#21306;&#22495;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">journal commit &#21518;&#65292;&#21487;&#20197;&#23558; journal &#20013;&#30340;&#25805;&#20316;&#30452;&#25509;&#24212;&#29992;&#21040;&#25991;&#20214;&#31995;&#32479;&#19978; (checkpoint)<ul class=" list-disc font-serif">
+<li class=" ml-8">redo logging (write-ahead logging): journal &#35760;&#24405; &#8220;&#20570;&#20160;&#20040;&#8221;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20808;&#20889; journal&#65292;&#20877;&#20889;&#25991;&#20214;&#31995;&#32479;</li>
+<li class=" ml-8">&#23849;&#28291;&#24674;&#22797;&#26102;&#65292;&#37325;&#20570; journal &#20013;&#30340;&#25805;&#20316;</li>
+</ul>
+</li>
+<li class=" ml-8">undo logging: &#35760;&#24405;&#22914;&#20309; &#8220;&#25764;&#38144;&#8221; &#25805;&#20316; (&#21363;&#22359;&#20013;&#30340;&#25968;&#20540;)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20808;&#20889;&#25991;&#20214;&#31995;&#32479;&#65292;&#20877;&#20889; journal</li>
+<li class=" ml-8">&#23849;&#28291;&#24674;&#22797;&#26102;&#65292;&#25764;&#38144;&#25991;&#20214;&#31995;&#32479;&#20013;&#30340;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="journaling" class=" text-xl mt-2 pb-2 font-sans">Journaling: &#20248;&#21270;</h2>
+<p class=" font-serif my-1">&#29616;&#22312;&#30913;&#30424;&#38656;&#35201;&#20889;&#20837;&#21452;&#20221;&#30340;&#25968;&#25454;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25209;&#22788;&#29702; (xv6; jbd)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22810;&#27425;&#31995;&#32479;&#35843;&#29992;&#30340; Tx &#21512;&#24182;&#25104;&#19968;&#20010;&#65292;&#20943;&#23569; log &#30340;&#22823;&#23567;</li>
+<li class=" ml-8">jbd: &#23450;&#26399; write back</li>
+</ul>
+</li>
+<li class=" ml-8">Checksum (ext4)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#19981;&#20877;&#26631;&#35760; TxBegin/TxEnd</li>
+<li class=" ml-8">&#30452;&#25509;&#26631;&#35760; Tx &#30340;&#38271;&#24230;&#21644; checksum</li>
+</ul>
+</li>
+<li class=" ml-8">Metadata journaling (ext4 default)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25968;&#25454;&#21344;&#30913;&#30424;&#20889;&#20837;&#30340;&#32477;&#22823;&#37096;&#20998;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21482;&#23545; inode &#21644; bitmap &#20570; journaling &#21487;&#20197;&#25552;&#39640;&#24615;&#33021;</li>
+</ul>
+</li>
+<li class=" ml-8">&#20445;&#35777;&#25991;&#20214;&#31995;&#32479;&#30340;&#30446;&#24405;&#32467;&#26500;&#26159;&#19968;&#33268;&#30340;&#65307;&#20294;&#25968;&#25454;&#21487;&#33021;&#20002;&#22833;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="metadata-journaling" class=" text-xl mt-2 pb-2 font-sans">Metadata Journaling</h2>
+<p class=" font-serif my-1">&#20174;&#24212;&#29992;&#35270;&#35282;&#26469;&#30475;&#65292;&#25991;&#20214;&#31995;&#32479;&#30340;&#34892;&#20026;&#21487;&#33021;&#24456;&#24618;&#24322;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21508;&#31867;&#31995;&#32479;&#36719;&#20214; (git, sqlite, gdbm, ...) &#19981;&#24184;&#20013;&#25307;<ul class=" list-disc font-serif">
+<li class=" ml-8">T. S. Pillai. All file systems are not created equal: On the complexity of crafting crash-consistent applications. In <em>Proc. of OSDI</em>, 2014.</li>
+<li class=" ml-8">(os-workbench &#37324;&#30340;&#23567;&#31192;&#23494;)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1"><a href="https://zhuanlan.zhihu.com/p/25188921" class=" text-amber-900">&#26356;&#22810;&#30340;&#24212;&#29992;&#31243;&#24207;&#21487;&#33021;&#21457;&#29983; data loss</a></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25105;&#20204;&#30340;&#24037;&#20316;: GNU coreutils, gmake, gzip, ... &#20063;&#26377;&#38382;&#39064;<ul class=" list-disc font-serif">
+<li class=" ml-8">Y. Jiang, et al. Crash consistency validation made easy. In <em>Proc. of FSE</em>, 2016.</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="multi-write" class=" text-xl mt-2 pb-2 font-sans">&#20026;&#24212;&#29992;&#31243;&#24207;&#25552;&#20379; Multi-Write &#30340;&#19968;&#33268;&#24615;&#65311;</h2>
+<p class=" font-serif my-1">TxOS: &#25552;&#20379;&#19977;&#20010;&#26032;&#30340;&#31995;&#32479;&#35843;&#29992;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">xbegin, xend, xabort</li>
+<li class=" ml-8">&#23454;&#29616;&#22810;&#20010;&#31995;&#32479;&#35843;&#29992;&#30340;&#21407;&#23376;&#24615;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#24212;&#29992;&#22330;&#26223;&#65306;&#25968;&#25454;&#26356;&#26032;&#12289;&#36719;&#20214;&#26356;&#26032;&#12289;check-use&#8230;&#8230;</li>
+</ul>
+</li>
+<li class=" ml-8">D. E. Porter, et al. Operating systems transactions. In <em>Proc. of SOSP</em>, 2009.</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#24635;&#32467;</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#24635;&#32467;</h2>
+<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#20869;&#23481;&#19982;&#30446;&#26631;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25345;&#20037;&#25968;&#25454;&#30340;&#21487;&#38752;&#24615;<ul class=" list-disc font-serif">
+<li class=" ml-8">fail-stop: RAID</li>
+<li class=" ml-8">&#38543;&#26426;&#25439;&#22351;&#65306;fsck</li>
+<li class=" ml-8">&#23849;&#28291;&#65306;journaling</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Takeaway messages</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25226;&#30913;&#30424;&#29702;&#35299;&#25104; &#8220;&#25968;&#25454;&#32467;&#26500;&#8221;</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+  
+</div>
+</div>
+
+<script src="../../../static/reveal/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    
+    width: 1024, height: 768,
+    
+    slideNumber: 'c/t',
+    controlsTutorial: false,
+    progress: false,
+    hash: true,
+    center: false,
+    autoAnimateUnmatched: true,
+    autoAnimateEasing: 'ease-out',
+    autoAnimateDuration: 0.3,
+    transitionSpeed: 'fast'
+  });
+</script>
+
+
+</body>
+
+</html>

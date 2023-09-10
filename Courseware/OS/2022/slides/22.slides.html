@@ -1,0 +1,758 @@
+<!DOCTYPE html><html class="h-100">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="../../../static/css/base.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
+
+  <style>
+    .font-sans {
+      font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+    }
+    .font-serif {
+      font-family: 'Source Serif Pro', 'Songti SC', 'SimSun', 'Serif', serif;
+    }
+  </style>
+  <link rel="stylesheet" href="../../../static/katex/katex.min.css">
+  <script defer src="../../../static/katex/katex.min.js"></script>
+  <script defer src="../../../static/katex/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+            // customised options
+            // &#8226; auto-render specific keys, e.g.:
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ],
+            // &#8226; rendering keys, e.g.:
+            throwOnError : false
+          });
+      });
+  </script>
+
+
+  
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="../../../static/reveal/reveal.css">
+<link rel="stylesheet" href="../../../static/reveal/theme/simple.css" id="theme">
+
+<style>
+.reveal .slide-number {
+  font-size: 26px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, .3);
+}
+
+.reveal .full-screen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.reveal .slides {
+  border: 1.5px #ddd solid;
+  border-radius: 7px;
+  text-align: left;
+  font-weight: 300;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  font-family: 'Lato', 'SimHei', 'STXihei', 'Droid Sans';
+  font-weight: 400;
+}
+
+.reveal p, .reveal li, .reveal center {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Droid Sans';
+}
+
+.reveal li + li {
+  margin-top: 10px;
+}
+
+.reveal ul {
+  display: block;
+  margin-right: 15px;
+}
+
+.reveal p, .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5 {
+  padding:  0 25px 0 25px;
+}
+
+.reveal table {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Sans Serif';
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.reveal th {
+  background-color: #eee;
+}
+
+.reveal tr:nth-child(even) {
+  background-color: #efffff;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  text-align: left;
+  margin: 0 0 20px 0;
+ color: #222; 
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
+
+
+.reveal h1 {
+  margin: 0 10 0 10;
+  font-size: 60px;
+}
+.reveal .middle h1 {
+  text-align: center;
+}
+
+.reveal h2 {
+  font-size: 48px;
+  border-bottom: 2px solid rgb(106, 0, 95);
+  padding-bottom: 5px;
+}
+.reveal h3 { font-size: 1.15em; }
+.reveal h4 { font-size: 1.05em; }
+
+.reveal .center {
+  text-align: center;
+}
+
+.reveal .middle {
+  height: 728px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.reveal pre {
+  font-size: 28px;
+ 
+  background-color: #eee;
+
+  border-radius: 3mm;
+  padding: 10px 10px 10px 10px;
+}
+
+.reveal pre code {
+  max-height: none;
+}
+
+.reveal code {
+  font-family: 'Inconsolata', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif', Monospace;
+}
+
+.reveal .middle blockquote {
+  text-align: center;
+  color: rgb(106, 0, 95);
+  background: none;
+  box-shadow: none;
+}
+
+.reveal .middle blockquote a {
+  color: inherit;
+}
+
+.reveal blockquote p, .reveal blockquote li {
+  font-family: 'Lato', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif';
+}
+
+section .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reveal .author-block {
+  margin: 75px 0 35px 0;
+}
+.reveal .author-affiliation img {
+  margin: 15px 0 0 0;
+}
+.reveal .author-block p, .reveal .author-affiliation p  {
+  font-family: 'Kaiti', 'STKaiti', 'Serif', 'Times', 'Times New Roman';
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+.reveal .author-affiliation {
+  display: inline-block;
+  font-size: 90%;
+}
+.reveal hr {
+  border: 10px solid rgba(0, 0, 0, 0);
+}
+.reveal li {
+  margin-top: 10px;
+}
+</style>
+
+  <title>&#26497;&#38480;&#36895;&#36890;&#25805;&#20316;&#31995;&#32479;&#23454;&#39564;</title>
+</head>
+
+<body class="d-flex flex-column h-100">
+  
+  
+
+<div class="reveal">
+<div class="slides">
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#26497;&#38480;&#36895;&#36890;&#25805;&#20316;&#31995;&#32479;&#23454;&#39564;</h1>
+<p class=" font-serif my-1"><include src="Slides_Author"><div><div class="py-16">
+<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">&#33931;&#28814;&#23721;</a></p>
+</div>
+<div class="row">
+<div class="author-affiliation">
+    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#12288;&#12288;&#21335;&#20140;&#22823;&#23398;&#12288;&#12288;</p>
+    <img class="inline-img h-24" src="../../../static/img/nju-logo.jpg" style="display: inline-block;"></a>
+  </div>
+<div class="author-affiliation">
+   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#31185;&#23398;&#19982;&#25216;&#26415;&#31995;</p>
+    <img class="inline-img h-24" src="../../../static/img/njucs-logo.jpg" style="display: inline-block;"></a>
+  </div>
+<div class="author-affiliation">
+    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#36719;&#20214;&#30740;&#31350;&#25152;</p>
+    <img class="inline-img h-24" src="../../../static/img/ics-logo.png" style="display: inline-block;"></a>
+  </div>
+</div></div></include></p></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="overview" class=" text-xl mt-2 pb-2 font-sans">Overview</h2>
+<p class=" font-serif my-1">&#22797;&#20064;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20320;&#20204;&#26159;&#21542;&#24863;&#21463;&#21040;&#23454;&#39564;&#26080;&#20174;&#19979;&#25163;&#65311;</li>
+<li class=" ml-8">&#20889;&#20010;&#25805;&#20316;&#31995;&#32479;&#20063;&#22826;&#38590;&#20102;&#21543;&#65311;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#22238;&#31572;&#30340;&#38382;&#39064;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><strong>Q</strong>: &#21040;&#24213;&#24212;&#35813;&#22914;&#20309;&#23454;&#29616;&#25805;&#20316;&#31995;&#32479;&#65311;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#20027;&#35201;&#20869;&#23481;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">AbstractMachine &#23454;&#39564;&#26694;&#26550;</li>
+<li class=" ml-8">&#26497;&#31616;&#25805;&#20316;&#31995;&#32479;&#23454;&#39564;&#21151;&#33021;&#23637;&#31034;</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#36895;&#36890;&#20219;&#21153;&#31616;&#20171;</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#36895;&#36890;&#20219;&#21153;&#31616;&#20171;</h2>
+<p class=" font-serif my-1"><red>&#23454;&#29616;&#19968;&#20010;&#30495;&#27491;&#30340;&#25805;&#20316;&#31995;&#32479;</red></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20869;&#26680;&#32447;&#31243;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#29289;&#29702;&#20869;&#23384;&#20998;&#37197;</li>
+<li class=" ml-8">&#22810;&#22788;&#29702;&#22120; (&#36827;&#31243;/&#32447;&#31243;&#32465;&#23450;&#21040;&#22788;&#29702;&#22120;)</li>
+<li class=" ml-8">&#25903;&#25345;&#20869;&#26680;&#20449;&#21495;&#37327; P/V &#25805;&#20316;</li>
+</ul>
+</li>
+<li class=" ml-8">&#29992;&#25143;&#24577;&#36827;&#31243;&#21644;&#31995;&#32479;&#35843;&#29992;<ul class=" list-disc font-serif">
+<li class=" ml-8">kputc - &#25171;&#21360;&#23383;&#31526;</li>
+<li class=" ml-8">fork - &#36827;&#31243;&#22797;&#21046;</li>
+<li class=" ml-8">sleep - &#36827;&#31243;&#30561;&#30496;</li>
+<li class=" ml-8">&#25903;&#25345;&#24182;&#19981;&#31639;&#22826;&#31616;&#21333;&#30340; <a href="../../../pages/OS/2022/demos/uproc.c" class=" text-amber-900">uproc.c</a><ul class=" list-disc font-serif">
+<li class=" ml-8">fork &#31616;&#21333;&#27979;&#35797; + <a href="../../../pages/OS/2022/demos/dfs-fork.c" class=" text-amber-900">dfs-fork.c</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class=" ml-8">&#24403;&#28982;&#20026;&#20102;&#38450;&#27490;&#32763;&#36710;&#65292;&#25105;&#20316;&#24330;&#20102; (&#20107;&#20808;&#23454;&#29616;&#36807;&#19968;&#36941;&#20102;)</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="l0-abstractmachine-game" class=" text-2xl mt-2 font-sans">L0: AbstractMachine Game</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#22797;&#20064;&#65306;&#31243;&#24207; = &#29366;&#24577;&#26426;</h2>
+<p class=" font-serif my-1">&#25968;&#23383;&#30005;&#36335;&#26159;&#29366;&#24577;&#26426;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="../../../pages/OS/2022/demos/logisim.c" class=" text-amber-900">logisim.c</a>; <a href="../../../pages/OS/2022/demos/seven-seg.py" class=" text-amber-900">seven-seg.py</a><ul class=" list-disc font-serif">
+<li class=" ml-8">&#21516;&#26679;&#30340;&#26041;&#24335;&#21487;&#20197;&#27169;&#25311;&#20219;&#20309;&#25968;&#23383;&#31995;&#32479; (&#21644;&#35745;&#31639;&#26426;&#31995;&#32479;)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">C &#31243;&#24207; (on AbstractMachine) &#20063;&#26159;&#29366;&#24577;&#26426;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#29366;&#24577; = stack frame &#30340;&#21015;&#34920; (&#27599;&#20010; frame &#26377; PC) + &#20840;&#23616;&#21464;&#37327;</li>
+<li class=" ml-8">&#21021;&#22987;&#29366;&#24577; = main(argc, argv), &#20840;&#23616;&#21464;&#37327;&#21021;&#22987;&#21270;</li>
+<li class=" ml-8">&#36801;&#31227; = &#25191;&#34892; top stack frame PC &#30340;&#35821;&#21477;; PC++<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20989;&#25968;&#35843;&#29992; = push frame (frame.PC = &#20837;&#21475;)</li>
+<li class=" ml-8">&#20989;&#25968;&#36820;&#22238; = pop frame</li>
+</ul>
+</li>
+<li class=" ml-8">&#20363;&#23376;&#65306;&#38750;&#36882;&#24402;&#27721;&#35834;&#22612; <a href="../../../pages/OS/2022/demos/hanoi-nr.c" class=" text-amber-900">hanoi-nr.c</a></li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="abstractmachine-trm-ioe" class=" text-xl mt-2 pb-2 font-sans">AbstractMachine: TRM &amp; IOE</h2>
+<p class=" font-serif my-1">&#22522;&#30784;&#29366;&#24577;&#26426;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20801;&#35768; &#8220;&#35843;&#35797;&#36755;&#20986;&#8221; &#21644; &#8220;&#32456;&#27490;&#8221;</li>
+</ul>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">extern</span><span class="w"> </span><span class="n">Area</span><span class="w">  </span><span class="n">heap</span><span class="p">;</span>
+<span class="kt">void</span><span class="w">   </span><span class="nf">putch</span><span class="w"> </span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="n">ch</span><span class="p">);</span>
+<span class="kt">void</span><span class="w">   </span><span class="nf">halt</span><span class="w">  </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">code</span><span class="p">);</span>
+</code></pre></div>
+
+<p class=" font-serif my-1">&#36755;&#20837;/&#36755;&#20986;&#35774;&#22791;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20801;&#35768;&#21521;&#35774;&#22791;&#23492;&#23384;&#22120;&#30340;&#20889;&#20837;</li>
+</ul>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="nf">ioe_init</span><span class="w">  </span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">ioe_read</span><span class="w">  </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">reg</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">buf</span><span class="p">);</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">ioe_write</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">reg</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">buf</span><span class="p">);</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"amdev.h"</span>
+</code></pre></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="l0" class=" text-xl mt-2 pb-2 font-sans">L0: &#23454;&#39564;&#35201;&#27714;&#19982;&#23454;&#29616;&#35201;&#28857;</h2>
+<p class=" font-serif my-1">&#22312;&#26694;&#26550;&#20195;&#30721;&#30340;&#22522;&#30784;&#19978;&#23454;&#29616;&#19968;&#20010;&#33021;&#21160;&#30340;&#28216;&#25103;</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">next_frame</span><span class="p">())</span><span class="w"> </span><span class="p">;</span>
+<span class="w">  </span><span class="n">update_input</span><span class="p">();</span>
+<span class="w">  </span><span class="n">update_state</span><span class="p">();</span>
+<span class="w">  </span><span class="n">update_gfx</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p class=" font-serif my-1">&#19982; Hello World &#26412;&#36136;&#30456;&#21516;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#36895;&#36890;&#65306;&#30452;&#25509;&#20599;&#23478;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#29978;&#33267;&#37117;&#19981;&#38656;&#35201;&#23454;&#29616; printf</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#28201;&#39336;&#25552;&#31034;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#26159; RTFM/RTFSC &#30340;&#22909;&#26426;&#20250;</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="l1-physical-memory-management" class=" text-2xl mt-2 font-sans">L1: Physical Memory Management</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="abstractmachine-mpe" class=" text-xl mt-2 pb-2 font-sans">AbstractMachine: MPE</h2>
+<p class=" font-serif my-1">&#20849;&#20139;&#20869;&#23384;&#22810;&#22788;&#29702;&#22120;&#29366;&#24577;&#26426;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22810;&#20010; C &#35821;&#35328;&#29366;&#24577;&#26426;&#65292;&#25317;&#26377;&#29420;&#31435;&#22534;&#26632;&#19988;&#20849;&#20139;&#20869;&#23384;</li>
+<li class=" ml-8"><red>Data race = undefined behavior</red><ul class=" list-disc font-serif">
+<li class=" ml-8"><code>atomic_xchg</code> &#26159;&#21807;&#19968;&#30340;&#22788;&#29702;&#22120;&#38388;&#21516;&#27493;&#26041;&#27861;</li>
+</ul>
+</li>
+</ul>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="nf">mpe_init</span><span class="w">   </span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">entry</span><span class="p">)());</span>
+<span class="kt">int</span><span class="w">  </span><span class="nf">cpu_count</span><span class="w">  </span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+<span class="kt">int</span><span class="w">  </span><span class="nf">cpu_current</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+<span class="kt">int</span><span class="w">  </span><span class="nf">atomic_xchg</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">addr</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">newval</span><span class="p">);</span>
+</code></pre></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="l1" class=" text-xl mt-2 pb-2 font-sans">L1: &#23454;&#39564;&#35201;&#27714;&#19982;&#23454;&#29616;&#35201;&#28857;</h2>
+<p class=" font-serif my-1">&#23454;&#29616; malloc/free &#30340;&#20869;&#26680;&#29256;&#26412;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#36895;&#36890;&#65306;&#30452;&#25509;&#20599;&#23478;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#19968;&#25226;&#22823;&#38145;&#20445;&#24179;&#23433;</li>
+<li class=" ml-8">&#21482;&#20998;&#37197;&#19981;&#22238;&#25910;</li>
+</ul>
+</li>
+<li class=" ml-8">&#27880;&#24847;&#35201;&#27714;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25353;&#29031; $2^k$ &#36793;&#30028;&#23545;&#40784;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#28201;&#39336;&#25552;&#31034;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#23545;&#33258;&#24049;&#30340;&#20195;&#30721;&#25345;&#26368;&#22823;&#31243;&#24230;&#30340; &#8220;&#19981;&#20449;&#20219;&#8221;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20363;&#22914;&#65292;<red>&#22312;&#25286;&#38145;&#30340;&#26102;&#20505;&#20445;&#25345;&#25152;&#26377;&#30340; assertions</red></li>
+</ul>
+</li>
+<li class=" ml-8">&#27880;&#24847;&#20195;&#30721;&#30340;&#21487;&#32500;&#25252;&#24615;</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="l2-kernel-multithreading" class=" text-2xl mt-2 font-sans">L2: Kernel Multithreading</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="abstractmachine-cte" class=" text-xl mt-2 pb-2 font-sans">AbstractMachine: CTE</h2>
+<p class=" font-serif my-1">&#31649;&#29702; C &#35821;&#35328;&#29366;&#24577;&#26426;&#25191;&#34892;&#30340; &#8220;&#24555;&#29031;&#8221; (context)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20801;&#35768;&#21019;&#24314;&#30340;&#29366;&#24577;&#26426;&#38656;&#35201;&#21344;&#29992;&#31354;&#38388; (&#26632;)</li>
+<li class=" ml-8">&#20801;&#35768;&#20027;&#21160;&#35753;&#20986;&#22788;&#29702;&#22120; (yield) &#25110;&#22806;&#37096;&#20013;&#26029;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#20013;&#26029;&#34892;&#20026;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#23558;&#24403;&#21069;&#29366;&#24577;&#26426;&#30340; context &#23601;&#22320;&#20445;&#23384;&#22312;&#26632;&#19978;</li>
+<li class=" ml-8">&#35843;&#29992; <code>cte_init</code> &#27880;&#20876;&#30340; handler</li>
+<li class=" ml-8">&#36820;&#22238;&#26102;&#21487;&#20197;&#24674;&#22797;&#21040;&#20219;&#24847;&#19968;&#20010; context</li>
+</ul>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">bool</span><span class="w">     </span><span class="nf">cte_init</span><span class="p">(</span><span class="n">Context</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="n">handler</span><span class="p">)(</span><span class="n">Event</span><span class="w"> </span><span class="n">ev</span><span class="p">,</span><span class="w"> </span><span class="n">Context</span><span class="w"> </span><span class="o">*</span><span class="n">ctx</span><span class="p">));</span>
+<span class="kt">void</span><span class="w">     </span><span class="nf">yield</span><span class="w">   </span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+<span class="kt">bool</span><span class="w">     </span><span class="nf">ienabled</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+<span class="kt">void</span><span class="w">     </span><span class="nf">iset</span><span class="w">    </span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">enable</span><span class="p">);</span>
+<span class="n">Context</span><span class="w"> </span><span class="o">*</span><span class="nf">kcontext</span><span class="p">(</span><span class="n">Area</span><span class="w"> </span><span class="n">kstk</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">entry</span><span class="p">)(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">),</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">arg</span><span class="p">);</span>
+</code></pre></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="cte" class=" text-xl mt-2 pb-2 font-sans">CTE &#21644;&#22810;&#22788;&#29702;&#22120;</h2>
+<p class=" font-serif my-1">&#22788;&#29702;&#22120;&#20998;&#21035;&#21709;&#24212;&#20013;&#26029;/&#24322;&#24120;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20851;&#20013;&#26029;&#21482;&#33021;&#20851;&#38381;&#24403;&#21069;&#22788;&#29702;&#22120;&#30340;&#20013;&#26029;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">handler &#25191;&#34892;&#26102;&#20250;&#20351;&#29992;&#24403;&#21069;&#25191;&#34892;&#27969;&#30340;&#22534;&#26632;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><red>&#22240;&#27492;&#34987;&#20013;&#26029;&#30340;&#32447;&#31243;&#22312;&#36820;&#22238;&#20043;&#21069;&#19981;&#33021;&#34987;&#35843;&#24230;&#21040;&#20854;&#20182;&#22788;&#29702;&#22120;</red></li>
+<li class=" ml-8">&#21487;&#33021;&#23548;&#33268;&#38750;&#24120; subtle &#30340; data race<ul class=" list-disc font-serif">
+<li class=" ml-8">Data race = undefined behavior</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="l2" class=" text-xl mt-2 pb-2 font-sans">L2: &#23454;&#39564;&#35201;&#27714;&#19982;&#23454;&#29616;&#35201;&#28857;</h2>
+<p class=" font-serif my-1">&#23454;&#29616;&#20869;&#26680;&#32447;&#31243;&#30340;&#21019;&#24314;&#21644;&#21516;&#27493;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#36895;&#36890;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25220; thread-os</li>
+<li class=" ml-8">&#19968;&#25226;&#22823;&#38145;&#20445;&#24179;&#23433;</li>
+<li class=" ml-8">Just yield<ul class=" list-disc font-serif">
+<li class=" ml-8">P() &#30340;&#35821;&#20041;&#65306;&#22914;&#26524;&#27809;&#26377;&#36164;&#28304;&#65292;&#21017;&#35753;&#20986; CPU &#31561;&#24453;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#28201;&#39336;&#25552;&#31034;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#24182;&#21457;&#26377;&#24456;&#22810;&#29712;&#30862;&#30340;&#32454;&#33410;<ul class=" list-disc font-serif">
+<li class=" ml-8">lock(a); lock(b) &#30340;&#24320;&#20851;&#20013;&#26029;</li>
+<li class=" ml-8">lock(a); lock(a)</li>
+<li class=" ml-8">&#8230;&#8230;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="l3-user-processes" class=" text-2xl mt-2 font-sans">L3: User Processes</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="abstractmachine-vme" class=" text-xl mt-2 pb-2 font-sans">AbstractMachine: VME</h2>
+<p class=" font-serif my-1">&#20801;&#35768;&#20026; context &#22686;&#21152; &#8220;VR &#30524;&#38236;&#8221;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">protect/unprotect &#31649;&#29702;&#22320;&#22336;&#31354;&#38388;</li>
+<li class=" ml-8">map &#21487;&#20197;&#20462;&#25913; VR &#30524;&#38236;&#20013;&#30340;&#19990;&#30028; (va &#26144;&#23556;&#21040; pa)</li>
+</ul>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">bool</span><span class="w">     </span><span class="nf">vme_init</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="n">alloc</span><span class="p">)(</span><span class="kt">int</span><span class="p">),</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">free</span><span class="p">)(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">));</span>
+<span class="kt">void</span><span class="w">     </span><span class="nf">protect</span><span class="w">  </span><span class="p">(</span><span class="n">AddrSpace</span><span class="w"> </span><span class="o">*</span><span class="n">as</span><span class="p">);</span>
+<span class="kt">void</span><span class="w">     </span><span class="nf">unprotect</span><span class="p">(</span><span class="n">AddrSpace</span><span class="w"> </span><span class="o">*</span><span class="n">as</span><span class="p">);</span>
+<span class="kt">void</span><span class="w">     </span><span class="nf">map</span><span class="w">      </span><span class="p">(</span><span class="n">AddrSpace</span><span class="w"> </span><span class="o">*</span><span class="n">as</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">va</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">pa</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">prot</span><span class="p">);</span>
+<span class="n">Context</span><span class="w"> </span><span class="o">*</span><span class="nf">ucontext</span><span class="w"> </span><span class="p">(</span><span class="n">AddrSpace</span><span class="w"> </span><span class="o">*</span><span class="n">as</span><span class="p">,</span><span class="w"> </span><span class="n">Area</span><span class="w"> </span><span class="n">kstk</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">entry</span><span class="p">);</span>
+</code></pre></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="l3" class=" text-xl mt-2 pb-2 font-sans">L3: &#23454;&#39564;&#35201;&#27714;&#19982;&#23454;&#29616;&#35201;&#28857;</h2>
+<p class=" font-serif my-1">&#23454;&#29616;&#33509;&#24178;&#31995;&#32479;&#35843;&#29992;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">kputc, sleep, fork, ...<ul class=" list-disc font-serif">
+<li class=" ml-8"><red>&#20320;&#24471;&#21040;&#20102;&#19968;&#20010;&#30495;&#27491;&#30340; &#8220;&#25805;&#20316;&#31995;&#32479;&#8221;&#65281;</red></li>
+</ul>
+</li>
+<li class=" ml-8">&#20808;&#21019;&#24314;&#19968;&#20010;&#27809;&#26377;&#20219;&#20309;&#22320;&#22336;&#31354;&#38388;&#26144;&#23556;&#30340;&#31354;&#36827;&#31243;<ul class=" list-disc font-serif">
+<li class=" ml-8">Demand Paging: &#22312;&#32570;&#39029;&#26102;&#29616;&#22330;&#20998;&#37197;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#28201;&#39336;&#25552;&#31034;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#36164;&#28304;&#31649;&#29702;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#24341;&#29992;&#35745;&#25968;/gc &#26159;&#20010;&#22909;&#26041;&#27861;</li>
+</ul>
+</li>
+<li class=" ml-8">&#20013;&#26029;/&#24322;&#24120;&#30340;&#23884;&#22871;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20174;&#20851;&#20013;&#26029;&#25191;&#34892;&#31995;&#32479;&#35843;&#29992;&#24320;&#22987;</li>
+<li class=" ml-8">&#22914;&#26524;&#35201;&#22788;&#29702;&#65292;&#20808;&#20174; &#8220;&#26126;&#26174;&#27491;&#30830;&#8221; &#30340;&#26041;&#24335;&#24320;&#22987;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#24635;&#32467;</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#24635;&#32467;</h2>
+<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#22238;&#31572;&#30340;&#38382;&#39064;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><strong>Q</strong>: &#21040;&#24213;&#24212;&#35813;&#22914;&#20309;&#23454;&#29616;&#25805;&#20316;&#31995;&#32479;&#65311;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Take-away messages</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20889;&#25805;&#20316;&#31995;&#32479;&#27809;&#37027;&#20040;&#38590;&#22043;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#24314;&#31435;&#25277;&#35937; (&#20363;&#22914; AbstractMachine)</li>
+</ul>
+</li>
+<li class=" ml-8">&#26497;&#38480;&#36895;&#36890; $\ne$ &#27491;&#30830;&#30340;&#23454;&#29616;&#26041;&#27861;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20294;&#21487;&#20197;&#24110;&#21161;&#20320;&#29702;&#35299;&#27010;&#24565; (&#20363;&#22914;&#20160;&#20040;&#26159; P/V)</li>
+</ul>
+</li>
+<li class=" ml-8">&#38450;&#24481;&#24615;&#32534;&#31243;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#24635;&#26159;&#23454;&#29616;&#26368;&#31616;&#21333;&#30340;&#29256;&#26412;&#65292;&#24182;&#19988;&#25226; assertions &#24102;&#21040;&#21518;&#38754;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="end" class=" text-2xl mt-2 font-sans">End.</h1></div></div></div>
+        
+      
+      </section>
+    
+    </section>
+  
+</div>
+</div>
+
+<script src="../../../static/reveal/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    
+    width: 1024, height: 768,
+    
+    slideNumber: 'c/t',
+    controlsTutorial: false,
+    progress: false,
+    hash: true,
+    center: false,
+    autoAnimateUnmatched: true,
+    autoAnimateEasing: 'ease-out',
+    autoAnimateDuration: 0.3,
+    transitionSpeed: 'fast'
+  });
+</script>
+
+
+</body>
+
+</html>
