@@ -26,7 +26,9 @@ def download(url_, path_):
 
 class OSCourseware:
     BASE_URL = "https://jyywiki.cn"
-    SOURCE_FILE_TYPE = (".png", ".jpg", ".gif", ".webp", ".js", ".css", "html", ".c", "cpp", ".py", ".sh", ".S")
+    SOURCE_FILE_TYPE = (
+        ".png", ".jpg", ".gif", ".webp", "jpeg", ".js", ".css", ".html", ".c", ".cpp", ".py", ".sh", ".S"
+    )
     COURSEWARE_DIR = "Courseware"
     WITHOUT_DOWNLOAD = [
         "https://jyywiki.cn/pages/OS/2022/Labs/lab-makefile.png",  # 404
@@ -42,7 +44,6 @@ class OSCourseware:
 
     def __init__(self):
         self.current_dir = os.path.join(os.getcwd(), self.COURSEWARE_DIR)
-        os.makedirs(self.current_dir, exist_ok=True)
         self.file_download_option()  # 等待添加新的功能：自定义文件位置、更新
         self.file_download()
         print("下载成功")
@@ -68,7 +69,7 @@ class OSCourseware:
             if self.year_input != "2023":
                 self.WITHOUT_DOWNLOAD.append(f'{self.BASE_URL}/OS/2023/index.html')
         else:
-            print("输入非ABCD和回车，程序退出")
+            print("输入非法，程序退出")
             sys.exit()
 
     def file_download(self):
@@ -81,20 +82,20 @@ class OSCourseware:
             for _url, _path in _url_path_pairs.items():
                 self.file_analyse(_path)
 
-        # 下载index.html文件，分析后下载课件
+        def _analyse_download(_url_path_pairs):
+            _analyse(_url_path_pairs)
+            _download(self.sources_url_path_pairs)
+
+        # 下载index.html文件，分析index.html后下载课件
         _download(self.index_url_path_pairs)
-        _analyse(self.index_url_path_pairs)
-        _download(self.sources_url_path_pairs)
+        _analyse_download(self.index_url_path_pairs)
 
         # 分析课件后下载课件中的其他文件
         self.slides_url_path_pairs.update(self.sources_url_path_pairs)
-        _analyse(self.slides_url_path_pairs)
-        _download(self.sources_url_path_pairs)
+        _analyse_download(self.slides_url_path_pairs)
 
-        # 待优化
         self.slides_url_path_pairs.update(self.sources_url_path_pairs)
-        _analyse(self.slides_url_path_pairs)
-        _download(self.sources_url_path_pairs)
+        _analyse_download(self.slides_url_path_pairs)
 
     # 提取每个文件中的链接
     def file_analyse(self, filepath):
