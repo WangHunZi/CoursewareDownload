@@ -27,7 +27,9 @@ def download(url_, path_):
 class OSCourseware:
     BASE_URL = "https://jyywiki.cn"
     SOURCE_FILE_TYPE = (
-        ".png", ".jpg", ".gif", ".webp", "jpeg", ".js", ".css", ".html", ".c", ".cpp", ".py", ".sh", ".S"
+        ".png", ".jpg", ".gif", ".webp", "jpeg",
+        ".js", ".css", ".html",
+        ".c", ".h", ".cpp", ".py", ".sh", ".S", ".lua", ".txt"
     )
     COURSEWARE_DIR = "Courseware"
     WITHOUT_DOWNLOAD = [
@@ -38,7 +40,6 @@ class OSCourseware:
     year = []
     year_input = ''
     current_dir = ''
-    index_url_path_pairs = {}
     slides_url_path_pairs = {}
     sources_url_path_pairs = {}  # 字典不用去重
 
@@ -63,9 +64,9 @@ class OSCourseware:
 
         if self.year_input == "ALL":
             for year in ['2021', '2022', '2023']:
-                self.index_url_path_pairs.update(build_courseware_url_path(year))
+                self.sources_url_path_pairs.update(build_courseware_url_path(year))
         elif self.year_input != "Invalid":
-            self.index_url_path_pairs.update(build_courseware_url_path(self.year_input))
+            self.sources_url_path_pairs.update(build_courseware_url_path(self.year_input))
             if self.year_input != "2023":
                 self.WITHOUT_DOWNLOAD.append(f'{self.BASE_URL}/OS/2023/index.html')
         else:
@@ -73,29 +74,12 @@ class OSCourseware:
             sys.exit()
 
     def file_download(self):
-        # 按年下载、分析index.html
-        def _download(_url_path_pairs):
-            for _url, _path in _url_path_pairs.items():
+        while self.sources_url_path_pairs:
+            self.slides_url_path_pairs.update(self.sources_url_path_pairs)
+            self.sources_url_path_pairs.clear()
+            for _url, _path in self.slides_url_path_pairs.items():
                 download(_url, _path)
-
-        def _analyse(_url_path_pairs):
-            for _url, _path in _url_path_pairs.items():
                 self.file_analyse(_path)
-
-        def _analyse_download(_url_path_pairs):
-            _analyse(_url_path_pairs)
-            _download(self.sources_url_path_pairs)
-
-        # 下载index.html文件，分析index.html后下载课件
-        _download(self.index_url_path_pairs)
-        _analyse_download(self.index_url_path_pairs)
-
-        # 分析课件后下载课件中的其他文件
-        self.slides_url_path_pairs.update(self.sources_url_path_pairs)
-        _analyse_download(self.slides_url_path_pairs)
-
-        self.slides_url_path_pairs.update(self.sources_url_path_pairs)
-        _analyse_download(self.slides_url_path_pairs)
 
     # 提取每个文件中的链接
     def file_analyse(self, filepath):
@@ -123,9 +107,9 @@ class OSCourseware:
                 path = os.path.normpath(os.path.join(os.path.dirname(filepath), link.replace("/", "\\")))
                 relative_path = path.split(os.getcwd() + os.sep + self.COURSEWARE_DIR)[1]
                 url = urljoin(self.BASE_URL, relative_path.replace("\\", "/"))
-                if url in self.WITHOUT_DOWNLOAD:
-                    continue
-                self.sources_url_path_pairs.update({url: path})
+                if url not in self.WITHOUT_DOWNLOAD:
+                    self.sources_url_path_pairs.update({url: path})
+                    self.WITHOUT_DOWNLOAD.append(url)
 
 
 courseware = OSCourseware()
