@@ -1,0 +1,41 @@
+_init:
+  locked: 0
+  r0: -1
+  r1: -1
+  r2: -1
+  wait_list: 0
+_bug_on: |
+  list(PC.values()).count(6) > 1
+_mark_on: |
+  list(PC.values()).count(6) == 1
+
+T1: |
+  r0, locked = locked, 1
+  if r0 == 0: GOTO(6)
+  wait_list |= 1
+  if locked == 0: GOTO(5)
+  if wait_list & 1: GOTO(4)
+  GOTO(0)
+  locked = 0
+  wait_list ^= (wait_list & -wait_list)
+  GOTO(0)
+T2: |
+  r1, locked = locked, 1
+  if r1 == 0: GOTO(6)
+  wait_list |= 2
+  if locked == 0: GOTO(5)
+  if wait_list & 2: GOTO(4)
+  GOTO(0)
+  locked = 0
+  wait_list ^= (wait_list & -wait_list)
+  GOTO(0)
+T3: |
+  r2, locked = locked, 1
+  if r2 == 0: GOTO(6)
+  wait_list |= 3
+  if locked == 0: GOTO(5)
+  if wait_list & 4: GOTO(4)
+  GOTO(0)
+  locked = 0
+  wait_list ^= (wait_list & -wait_list)
+  GOTO(0)

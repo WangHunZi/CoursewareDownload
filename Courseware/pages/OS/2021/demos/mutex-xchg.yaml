@@ -1,0 +1,18 @@
+_init:
+  locked: 0
+  t0: 0
+  t1: 0
+_bug_on: |
+  list(PC.values()).count(2) > 1
+_mark_on: |
+  PC['A'] == 2 or PC['B'] == 2
+A: |
+  t0, locked = locked, 1
+  if t0 == 1: GOTO(0)
+  locked = 0
+  GOTO(0)
+B: |
+  t1, locked = locked, 1
+  if t1 == 1: GOTO(0)
+  locked = 0
+  GOTO(0)

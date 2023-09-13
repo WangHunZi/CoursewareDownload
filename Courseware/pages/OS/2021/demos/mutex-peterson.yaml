@@ -1,0 +1,22 @@
+_init:
+  x: 0
+  y: 0
+  turn: X
+_bug_on: |
+  PC['T1'] == 4 and PC['T2'] == 4
+_mark_on: |
+  PC['T1'] == 4 or PC['T2'] == 4
+T1: |
+  x = 1
+  turn = 'T2'
+  if y != 1: GOTO(4)
+  if turn == 'T2': GOTO(2)
+  x = 0
+  GOTO(0)
+T2: |
+  y = 1
+  turn = 'T1'
+  if x != 1: GOTO(4)
+  if turn == 'T1': GOTO(2)
+  y = 0
+  GOTO(0)
