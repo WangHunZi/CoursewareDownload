@@ -37,23 +37,20 @@ class OSCourseware:
         "https://jyywiki.cn/index.html"  # unnecessary
     ]
     KEY_YEAR = {'A': "2021", 'B': "2022", 'C': "2023", 'D': "ALL", '': "2023"}
-    year = []
     year_input = ''
     current_dir = ''
-    slides_url_path_pairs = {}
-    sources_url_path_pairs = {}  # 字典不用去重
+    sources_url_path_pairs = {}  # 不用去重
 
     def __init__(self):
         self.current_dir = os.path.join(os.getcwd(), self.COURSEWARE_DIR)
-        self.file_download_option()  # 等待添加新的功能：自定义文件位置、更新
+        self.file_download_option()
         self.file_download()
-        print("下载成功")
+        print("下载完成")
 
     def file_download_option(self):
         def build_courseware_url_path(year_):
             url_ = f'{self.BASE_URL}/OS/{year_}'
             path_ = f'{self.current_dir}\\OS\\{year_}\\index.html'
-            self.year.append(year_)  # 更新year的内容，指定下载对应年的课件
             return {url_: path_}
 
         self.year_input = input("无法下载的文件会提示。下载成功后提示“下载成功”\n" +
@@ -74,10 +71,11 @@ class OSCourseware:
             sys.exit()
 
     def file_download(self):
+        _url_path_pairs = {}
         while self.sources_url_path_pairs:
-            self.slides_url_path_pairs.update(self.sources_url_path_pairs)
+            _url_path_pairs.update(self.sources_url_path_pairs)
             self.sources_url_path_pairs.clear()
-            for _url, _path in self.slides_url_path_pairs.items():
+            for _url, _path in _url_path_pairs.items():
                 download(_url, _path)
                 self.file_analyse(_path)
 
