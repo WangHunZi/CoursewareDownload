@@ -6,53 +6,48 @@ from urllib.parse import urljoin
 
 
 def download(url_, path_):
-    folder_path = os.path.dirname(path_)  # 检查路径，对不存在的路径进行创建
-    if not os.path.exists(folder_path):
-        os.makedirs(folder_path)
-    if not os.path.exists(path_):  # 检查文件是否存在，对本地不存在的文件进行下载
-        response = requests.get(url_)
-        if response.status_code == 200:
-            if path_.endswith((".css", ".js", ".html", ".c", "cpp", ".py", ".sh", ".S")):
-                with open(path_, 'w', encoding="utf-8") as file:
-                    file.write(response.text)
-            else:
-                # 非文本文件的下载
-                with open(path_, 'wb') as file:
-                    file.write(response.content)
-            print(f"\033[32m已下载 \033[0m{path_}")
+    if not os.path.exists(os.path.dirname(path_)):
+        os.makedirs(os.path.dirname(path_))
+    if os.path.exists(path_):
+        return
+    response = requests.get(url_)
+    if response.status_code == 200:
+        if response.headers['Content-Type'].startswith('text'):
+            with open(path_, 'w', encoding="utf-8") as file:
+                file.write(response.text)
         else:
-            print(f"\033[91m无法下载文件链接：\033[0m{url_}, \033[91m状态码：\033[0m{response.status_code}")
+            with open(path_, 'wb') as file:
+                file.write(response.content)
+        print(f"\033[32m已下载 \033[0m{path_}")
+    else:
+        print(f"\033[91m无法下载文件链接：\033[0m{url_}, \033[91m状态码：\033[0m{response.status_code}")
 
 
 class OSCourseware:
     BASE_URL = "https://jyywiki.cn"
-    SOURCE_FILE_TYPE = (
-        ".png", ".jpg", ".gif", ".webp", "jpeg",
-        ".js", ".css", ".html",
-        ".c", ".h", ".cpp", ".py", ".sh", ".S", ".lua", ".txt"
-    )
+    BASE_DIR = ""
     COURSEWARE_DIR = "Courseware"
     WITHOUT_DOWNLOAD = [
         "https://jyywiki.cn/pages/OS/2022/Labs/lab-makefile.png",  # 404
-        "https://jyywiki.cn/index.html"  # unnecessary
+        "https://jyywiki.cn/OS/2021/slides/Slides_Author",         # 404
+        "https://jyywiki.cn/index.html"                            # unnecessary
     ]
     KEY_YEAR = {'A': "2021", 'B': "2022", 'C': "2023", 'D': "ALL", '': "2023"}
     year_input = ''
-    current_dir = ''
-    sources_url_path_pairs = {}  # 不用去重
+    sources_url_path_pairs = {}
 
     def __init__(self):
-        self.current_dir = os.path.join(os.getcwd(), self.COURSEWARE_DIR)
         self.file_download_option()
         self.file_download()
-        print("下载完成")
+        print("\033[32m下载完成")
 
     def file_download_option(self):
         def build_courseware_url_path(year_):
             url_ = f'{self.BASE_URL}/OS/{year_}'
-            path_ = f'{self.current_dir}\\OS\\{year_}\\index.html'
+            path_ = f'{os.path.join(self.BASE_DIR, self.COURSEWARE_DIR)}\\OS\\{year_}\\index.html'
             return {url_: path_}
 
+        self.BASE_DIR = os.getcwd()
         self.year_input = input("无法下载的文件会提示。下载成功后提示“下载成功”\n" +
                                 "通过选项下载对应年份课件，回车默认下载2023年课件，输入其他符号则退出\n" +
                                 "\033[32mA\033[0m:2021 \033[32mB\033[0m:2022 "
@@ -67,7 +62,7 @@ class OSCourseware:
             if self.year_input != "2023":
                 self.WITHOUT_DOWNLOAD.append(f'{self.BASE_URL}/OS/2023/index.html')
         else:
-            print("输入非法，程序退出")
+            print("\033[91m输入非法，程序退出")
             sys.exit()
 
     def file_download(self):
@@ -93,21 +88,22 @@ class OSCourseware:
         _links_tags = soup.find_all(href=True) + soup.find_all(src=True)
         _links_attr = []
         for link in _links_tags:
-            _links_attr.extend([link.get("href"), link.get("src")])
+            _links_attr.extend([link.get("href"), link.get("src"), link.get("data")])
         _links_attr = list(set(_links_attr))  # 去除重复的元素
 
         # 补全完整的文件地址和链接
         for link in _links_attr:
-            if link is None or link.startswith(("http", "data")):  # data是ipynb.html文件资源
-                continue
-            if link.endswith(self.SOURCE_FILE_TYPE):
+            if link is not None and not link.startswith(("http", "data")):  # data是ipynb.html文件资源
                 # 以filepath指定的文件为参照补全文件中的网址以及在本地存储的地址
                 path = os.path.normpath(os.path.join(os.path.dirname(filepath), link.replace("/", "\\")))
-                relative_path = path.split(os.getcwd() + os.sep + self.COURSEWARE_DIR)[1]
-                url = urljoin(self.BASE_URL, relative_path.replace("\\", "/"))
-                if url not in self.WITHOUT_DOWNLOAD:
-                    self.sources_url_path_pairs.update({url: path})
-                    self.WITHOUT_DOWNLOAD.append(url)
+                try:
+                    relative_path = path.split(self.BASE_DIR + os.sep + self.COURSEWARE_DIR)[1]
+                    url = urljoin(self.BASE_URL, relative_path.replace("\\", "/"))
+                    if url not in self.WITHOUT_DOWNLOAD:
+                        self.sources_url_path_pairs.update({url: path})
+                        self.WITHOUT_DOWNLOAD.append(url)
+                except IndexError:
+                    continue
 
 
 courseware = OSCourseware()
