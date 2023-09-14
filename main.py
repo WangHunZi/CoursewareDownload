@@ -3,6 +3,7 @@ import sys
 import requests
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin
+from urllib.parse import urlparse
 
 
 def download(url_, path_):
@@ -18,7 +19,7 @@ def download(url_, path_):
         else:
             with open(path_, 'wb') as file:
                 file.write(response.content)
-        print(f"\033[32m已下载 \033[0m{path_}")
+        print(f"\033[32m已下载 \033[0m文件链接 {url_}, 文件路径{path_}")
     else:
         print(f"\033[91m无法下载文件链接：\033[0m{url_}, \033[91m状态码：\033[0m{response.status_code}")
 
@@ -30,6 +31,7 @@ class OSCourseware:
     WITHOUT_DOWNLOAD = [
         "https://jyywiki.cn/pages/OS/2022/Labs/lab-makefile.png",  # 404
         "https://jyywiki.cn/OS/2021/slides/Slides_Author",         # 404
+        "https://jyywiki.cn/OS/2022/slides/Slides_Author",         # 404
         "https://jyywiki.cn/index.html"                            # unnecessary
     ]
     KEY_YEAR = {'A': "2021", 'B': "2022", 'C': "2023", 'D': "ALL", '': "2023"}
@@ -60,7 +62,7 @@ class OSCourseware:
         elif self.year_input != "Invalid":
             self.sources_url_path_pairs.update(build_courseware_url_path(self.year_input))
             if self.year_input != "2023":
-                self.WITHOUT_DOWNLOAD.append(f'{self.BASE_URL}/OS/2023/index.html')
+                self.WITHOUT_DOWNLOAD.append(f'{self.BASE_URL}/OS/2023/index.html')  # 避免在其他文件中误下载2023/index.html
         else:
             print("\033[91m输入非法，程序退出")
             sys.exit()
@@ -85,22 +87,22 @@ class OSCourseware:
             return
 
         # 提取文件中的相对链接
-        _links_tags = soup.find_all(href=True) + soup.find_all(src=True)
+        _links_tags = soup.find_all(href=True) + soup.find_all(src=True) + soup.find_all(data=True)
         _links_attr = []
         for link in _links_tags:
             _links_attr.extend([link.get("href"), link.get("src"), link.get("data")])
         _links_attr = list(set(_links_attr))  # 去除重复的元素
 
-        # 补全完整的文件地址和链接
+        # 以filepath指定的文件为参照补全文件中的网址以及在本地存储的地址
         for link in _links_attr:
             if link is not None and not link.startswith(("http", "data")):  # data是ipynb.html文件资源
-                # 以filepath指定的文件为参照补全文件中的网址以及在本地存储的地址
-                path = os.path.normpath(os.path.join(os.path.dirname(filepath), link.replace("/", "\\")))
+                link = urlparse(link).path  # 清除锚点
+                absolute_path = os.path.normpath(os.path.join(os.path.dirname(filepath), link.replace("/", "\\")))
                 try:
-                    relative_path = path.split(self.BASE_DIR + os.sep + self.COURSEWARE_DIR)[1]
+                    relative_path = absolute_path.split(self.BASE_DIR + os.sep + self.COURSEWARE_DIR)[1]
                     url = urljoin(self.BASE_URL, relative_path.replace("\\", "/"))
                     if url not in self.WITHOUT_DOWNLOAD:
-                        self.sources_url_path_pairs.update({url: path})
+                        self.sources_url_path_pairs.update({url: absolute_path})
                         self.WITHOUT_DOWNLOAD.append(url)
                 except IndexError:
                     continue

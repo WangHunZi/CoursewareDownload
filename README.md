@@ -10,6 +10,13 @@ python脚本下载[jyy老师](https://jyywiki.cn/)的OS课件。尽量使用最�
 所有的课件内容都在`Courseware`这个文件夹里。
 
 # 更新
+## V2.4 2023-09-14
+忘了验证其他年份课件的下载了，然后发现jupyter课件中的`href`属性中提供的链接是这样的
+```html
+<h3 id="Demo%EF%BC%9A%E4%BD%BF%E7%94%A8-tar-%E5%91%BD%E4%BB%A4">Demo&#65306;&#20351;&#29992; tar &#21629;&#20196;<a class="anchor-link" href="lect1.ipynb.html#Demo%EF%BC%9A%E4%BD%BF%E7%94%A8-tar-%E5%91%BD%E4%BB%A4">&#182;</a>
+```
+导致解析后下载出现了奇怪的文件夹，添加一行`link = urlparse(link).path`即可解决问题，这行代码直接提取出`lect1.ipn.html`
+
 ## V2.3 2023-09-14
 算是比较重要的一次更新了，本次更新的代码解决了课件中文件下载不全的问题，之前下载不全是因为要猜测会有什么样类型的文件，现在不用猜测了，只需要跟着链接下载即可。
 
