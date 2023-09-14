@@ -1,0 +1,24 @@
+%!
+% http://www.cs.cmu.edu/afs/andrew/scs/cs/15-463/98/pub/www/assts/ps.html
+
+72 72 scale	% scale coordinate system so units are inches, not points
+2 2 translate	% put origin 2 inches from lower left of page
+
+/Courier findfont .6 scalefont setfont
+% current font is now Courier about .6 inches high
+gsave	% save graphics state (coordinate system & stuff)
+.5 setgray
+60 rotate
+0 0 moveto (Read the friendly manual) show
+grestore	% restore previous graphics state
+
+/Helvetica-Bold findfont .2 scalefont setfont
+% current font is now slanted Helvetica about .2 inches high
+0 4 moveto (Read the friendly source code) show
+
+/Times-Italic findfont .5 scalefont setfont
+% current font is now italic Times about .5 inches high
+1 0 0 setrgbcolor
+0 6 moveto (Search the friendly Web) show
+
+showpage
