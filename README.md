@@ -32,6 +32,7 @@ python脚本下载[jyy老师](https://jyywiki.cn/index.html)的主页课程课�
 - 添加了`visualize.py`这个文件到`Courseware/pages/OS/2022/demos/visualize.py`路径下，该文件属于文件中没有引用链接仅有关键字的文件，而且在`https://jyywiki.cn/`网站中也没有这个文件。
 - 发现本地的文件没办法加载出PPT，原因出在了`src="/OS/2023/build/slides/xx.xx.slides.html"`，对比以前的文件发现是这么写的`../slides/xx.xx.slides.html`，能够正常加载PPT，添加了一个`file_fix()`，将`/OS/build/2023/slides`替换为`../sildes`。【防止出现误替换，所以加长了匹配的字符】
 - 修复了`file_fix()`没有判定文件夹存在可能导致错误的问题。
+- 将html文件中被编码的数字转化为易读的中文，也使得关键字查找更加方便。
 
 ## V2.4 2023-09-14
 忘了验证其他年份课件的下载了，然后发现jupyter课件中的`href`属性中提供的链接是这样的

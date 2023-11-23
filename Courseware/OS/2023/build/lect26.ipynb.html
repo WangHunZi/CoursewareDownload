@@ -2,7 +2,7 @@
 <head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>26. &#36755;&#20837;&#36755;&#20986;&#35774;&#22791;</title>
+<title>26. 输入输出设备</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
@@ -6454,7 +6454,7 @@ cell outputs.
 
 .jp-Notebook .jp-Cell.jp-mod-dirty .jp-InputPrompt::before {
   color: var(--jp-warn-color1);
-  content: '&#8226;';
+  content: '•';
 }
 
 .jp-Notebook .jp-Cell.jp-mod-active.jp-mod-dirty .jp-Collapser {
@@ -7491,7 +7491,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[1]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">mosaic</span> <span class="kn">import</span> <span class="o">*</span>
@@ -7663,19 +7663,19 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-InputPrompt jp-InputArea-prompt">
 </div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="26.-%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E8%AE%BE%E5%A4%87">26. &#36755;&#20837;&#36755;&#20986;&#35774;&#22791;<a class="anchor-link" href="#26.-%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E8%AE%BE%E5%A4%87">&#182;</a>
+<h1 id="26.-%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E8%AE%BE%E5%A4%87">26. 输入输出设备<a class="anchor-link" href="#26.-%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E8%AE%BE%E5%A4%87">¶</a>
 </h1>
-<p><strong>Changelog &amp; &#21453;&#39304;</strong></p>
+<p><strong>Changelog & 反馈</strong></p>
 <ul>
-<li>&#23545; SSD &#30340;&#20215;&#26684;&#39044;&#26399;&#20316;&#20986;&#20102;&#38169;&#35823;&#30340;&#20272;&#35745;&#65306;&#38271;&#27743;&#23384;&#20648;&#29275;&#36924;&#65281;</li>
-<li>(&#21152;&#28857;&#38065;&#21487;&#20197;&#20080;&#21040; 16TB &#30340; HDD &#20102;&#65292;HDD &#36824;&#26159;&#20415;&#23452;)</li>
+<li>对 SSD 的价格预期作出了错误的估计：长江存储牛逼！</li>
+<li>(加点钱可以买到 16TB 的 HDD 了，HDD 还是便宜)</li>
 </ul>
-<p><strong>&#32972;&#26223;&#22238;&#39038;</strong>&#65306;&#25105;&#20204;&#24050;&#32463;&#20102;&#35299;&#20102;&#24213;&#23618;&#23384;&#20648; 1-Bit &#25968;&#25454;&#30340;&#21407;&#29702;&#65306;&#30913;&#12289;&#22353;&#12289;&#30005;&#12290;&#26159;&#26102;&#20505;&#25226;&#23427;&#20204; &#8220;&#25509;&#21040;&#8221; &#30005;&#33041;&#19978;&#20102;&#12290;&#37027;&#20040;&#65292;&#36755;&#20837;&#36755;&#20986;&#35774;&#22791;&#21448;&#26159;&#22914;&#20309;&#21644;&#22788;&#29702;&#22120;&#21327;&#20316;&#23436;&#25104;&#20219;&#21153;&#30340;&#65311;</p>
-<p><strong>&#26412;&#35762;&#20869;&#23481;</strong>&#65306;&#36755;&#20837;&#36755;&#20986;&#35774;&#22791;&#21407;&#29702;</p>
+<p><strong>背景回顾</strong>：我们已经了解了底层存储 1-Bit 数据的原理：磁、坑、电。是时候把它们 “接到” 电脑上了。那么，输入输出设备又是如何和处理器协作完成任务的？</p>
+<p><strong>本讲内容</strong>：输入输出设备原理</p>
 <ul>
-<li>&#35745;&#31639;&#26426;&#19982;&#22806;&#35774;&#30340;&#25509;&#21475;</li>
-<li>&#24635;&#32447;&#12289;&#20013;&#26029;&#25511;&#21046;&#22120;&#21644; DMA</li>
-<li>GPU &#21644;&#21152;&#36895;&#22120;</li>
+<li>计算机与外设的接口</li>
+<li>总线、中断控制器和 DMA</li>
+<li>GPU 和加速器</li>
 </ul>
 </div>
 </div>
@@ -7686,7 +7686,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[2]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'26.1'</span><span class="p">)</span>
@@ -7715,7 +7715,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'26.2'</span><span class="p">)</span>
@@ -7744,7 +7744,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'26.3'</span><span class="p">)</span>
@@ -7776,16 +7776,16 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-InputPrompt jp-InputArea-prompt">
 </div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Take-away-Messages">Take-away Messages<a class="anchor-link" href="#Take-away-Messages">&#182;</a>
+<h2 id="Take-away-Messages">Take-away Messages<a class="anchor-link" href="#Take-away-Messages">¶</a>
 </h2>
-<p>&#36755;&#20837;/&#36755;&#20986;&#35774;&#22791;&#26159; &#8220;&#19982;&#22788;&#29702;&#22120;&#20132;&#25442;&#25968;&#25454;&#8221; &#25509;&#21475;&#8212;&#8212;&#22240;&#27492;&#65292;&#25105;&#20204;&#30340;&#35774;&#22791;&#21487;&#20197;&#23454;&#29616;&#24471;&#20219;&#24847;&#22797;&#26434;&#65292;&#29978;&#33267;&#26159;&#19968;&#20010;&#23436;&#25972;&#30340;&#35745;&#31639;&#26426;&#31995;&#32479;&#12290;&#20174;&#25105;&#20204;&#20170;&#22825;&#30340;&#25171;&#21360;&#26426;&#12289;SSD&#12289;GPU&#65292;&#37117;&#36981;&#24490;&#20102;&#36825;&#20010;&#27169;&#24335;&#65292;&#22312; CPU &#30340;&#32479;&#19968;&#31649;&#29702;&#21644;&#35843;&#24230;&#19979;&#21508;&#33258;&#23436;&#25104;&#21508;&#33258;&#30340;&#21151;&#33021;&#12290;</p>
-<h3 id="%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">&#35838;&#21518;&#20064;&#39064;/&#32534;&#31243;&#20316;&#19994;<a class="anchor-link" href="#%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">&#182;</a>
+<p>输入/输出设备是 “与处理器交换数据” 接口——因此，我们的设备可以实现得任意复杂，甚至是一个完整的计算机系统。从我们今天的打印机、SSD、GPU，都遵循了这个模式，在 CPU 的统一管理和调度下各自完成各自的功能。</p>
+<h3 id="%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">课后习题/编程作业<a class="anchor-link" href="#%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">¶</a>
 </h3>
-<h4 id="1.-%E9%98%85%E8%AF%BB%E6%9D%90%E6%96%99">1. &#38405;&#35835;&#26448;&#26009;<a class="anchor-link" href="#1.-%E9%98%85%E8%AF%BB%E6%9D%90%E6%96%99">&#182;</a>
+<h4 id="1.-%E9%98%85%E8%AF%BB%E6%9D%90%E6%96%99">1. 阅读材料<a class="anchor-link" href="#1.-%E9%98%85%E8%AF%BB%E6%9D%90%E6%96%99">¶</a>
 </h4>
-<p>&#25945;&#31185;&#20070; <a href="https://pages.cs.wisc.edu/~remzi/OSTEP/">Operating Systems: Three Easy Pieces</a>:</p>
+<p>教科书 <a href="https://pages.cs.wisc.edu/~remzi/OSTEP/">Operating Systems: Three Easy Pieces</a>:</p>
 <ul>
-<li>&#31532; 36 &#31456; - I/O Devices</li>
+<li>第 36 章 - I/O Devices</li>
 </ul>
 </div>
 </div>
@@ -7798,7 +7798,7 @@ body { margin-left: auto; margin-right: auto; }
   <span class="text-muted">
     <center>
 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="/static/img/cc-4.0.png"></a>
-    &#160;&#160;&#160;<a style="color:inherit" href="https://beian.miit.gov.cn/">&#33487; ICP &#22791; 2020049101 &#21495;</a>
+       <a style="color:inherit" href="https://beian.miit.gov.cn/">苏 ICP 备 2020049101 号</a>
     </center>
   </span>
 </div>

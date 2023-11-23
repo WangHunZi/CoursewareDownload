@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -137,7 +137,7 @@ hr {
 </style>
 
 
-  <title>PA2: &#25351;&#20196;&#27169;&#25311;</title>
+  <title>PA2: 指令模拟</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -149,46 +149,46 @@ hr {
 <div class="px-2 py-1 w-full fixed z-50 bg-gradient-to-r from-black via-purple-700 via-purple-500 shadow-lg" style="-webkit-backdrop-filter: saturate(150%) blur(4px); backdrop-filter: saturate(150%) blur(4px)">
   <form>
     <a href="../../../index.html"><span class="text-lg px-2 text-white">Yanyan's Wiki</span></a>
-    <a href="../../../OS/2023/index.html"><span class="text-sm px-2 text-white">&#25805;&#20316;&#31995;&#32479; (2023)</span></a>
+    <a href="../../../OS/2023/index.html"><span class="text-sm px-2 text-white">操作系统 (2023)</span></a>
     <input maxlength="9" id="token-input" class="float-right appearance-none border border-transparent px-2 py-1 w-20 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-xs focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent font-mono" type="text" placeholder="TOKEN" oninput="login();">
   </form>
 </div>
 
 <div class="article container mx-auto md:px-8 lg:px-8 xl:px-8 2xl:px-8 shadow-lg border pb-8 pt-10 max-w-screen-md text-justify divide-y-2 divide-white">
-  <div><h1 id="pa2" class=" text-2xl mt-2 font-sans">PA2: &#25351;&#20196;&#27169;&#25311;</h1>
+  <div><h1 id="pa2" class=" text-2xl mt-2 font-sans">PA2: 指令模拟</h1>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#35831;&#38405;&#35835;<a href="Labs.html" class=" text-amber-900">&#23454;&#39564;&#39035;&#30693;/&#25552;&#20132;&#26041;&#27861;</a>&#21644;<a href="https://nju-projectn.github.io/ics-pa-gitbook/ics2020/PA2.html" class=" text-amber-900">&#23454;&#39564;&#25351;&#21335;</a>&#12290;</p>
+<p class=" font-serif my-1">请阅读<a href="Labs.html" class=" text-amber-900">实验须知/提交方法</a>和<a href="https://nju-projectn.github.io/ics-pa-gitbook/ics2020/PA2.html" class=" text-amber-900">实验指南</a>。</p>
 <p class=" font-serif my-1">Soft deadline:</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">PA 2.1: 2020.10.11 (&#27492;&#20026;&#24314;&#35758;&#30340;&#19981;&#35745;&#20998; deadline)</li>
-<li class=" ml-8">PA 2.2: 2020.10.25 (&#27492;&#20026;&#24314;&#35758;&#30340;&#19981;&#35745;&#20998; deadline)</li>
-<li class=" ml-8">PA 2.3: 2020.11.8 23:59:59 (&#20197;&#27492; deadline &#35745;&#25353;&#26102;&#25552;&#20132;&#22870;&#21169;&#20998;)</li>
+<li class=" ml-8">PA 2.1: 2020.10.11 (此为建议的不计分 deadline)</li>
+<li class=" ml-8">PA 2.2: 2020.10.25 (此为建议的不计分 deadline)</li>
+<li class=" ml-8">PA 2.3: 2020.11.8 23:59:59 (以此 deadline 计按时提交奖励分)</li>
 </ul>
-<p class=" font-serif my-1">Deadline &#30475;&#36215;&#26469;&#24456;&#38271;&#65292;&#26159;&#22240;&#20026;&#30495;&#30340;&#38656;&#35201;&#37027;&#20040;&#22810;&#26102;&#38388;&#20570;&#8230;&#8230;<strong>&#22825;&#19978;&#19968;&#26085;&#65292;&#22320;&#19978;&#19968;&#24180;</strong>&#12290;yzh &#30340; 40 &#23567;&#26102;&#19981;&#26159;&#20320;&#20204;&#30340; 40 &#23567;&#26102;&#12290;</p>
+<p class=" font-serif my-1">Deadline 看起来很长，是因为真的需要那么多时间做……<strong>天上一日，地上一年</strong>。yzh 的 40 小时不是你们的 40 小时。</p>
 </blockquote>
 <p class=" font-serif my-1"><oj-status course="ICS2020" module="PA2"><div class="divide-y divide-dashed">
     <div class="flex font-semibold">
-      ICS2020-PA2 &#25552;&#20132;&#32467;&#26524;
+      ICS2020-PA2 提交结果
     </div>
     
   </div>
 </oj-status></p>
-<h2 id="online-judge" class=" text-xl mt-2 pb-2 font-sans">Online Judge &#35780;&#27979;&#35828;&#26126;</h2>
-<p class=" font-serif my-1">&#35780;&#27979;&#36807;&#31243;&#19982; PA1 &#31867;&#20284;&#12290;&#22312;&#36825;&#20010;&#23454;&#39564;&#20013;&#65292;&#25105;&#20204;&#20250;&#29992; NEMU &#27169;&#25311;&#25191;&#34892;&#19968;&#27573;&#25110;&#31616;&#21333;&#25110;&#22797;&#26434;&#30340;&#20195;&#30721;&#65292;&#20351;&#29992; monitor &#25171;&#21360;&#23492;&#23384;&#22120;&#30340;&#25968;&#20540;&#65292;&#24182;&#25454;&#27492;&#21028;&#23450;&#23454;&#29616;&#30340;&#27491;&#30830;&#24615;&#12290;&#19981;&#29992;&#24778;&#24908;&#65306;&#22914;&#26524;&#20320;&#33021;&#22312;&#26412;&#22320;&#36890;&#36807; Dummy&#65292;&#20320;&#23601;&#33021;&#36890;&#36807;&#33267;&#23569;&#19968;&#20010; Easy &#27979;&#35797;&#29992;&#20363;&#12290;</p>
-<h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#24120;&#35265;&#38382;&#39064;</h2>
+<h2 id="online-judge" class=" text-xl mt-2 pb-2 font-sans">Online Judge 评测说明</h2>
+<p class=" font-serif my-1">评测过程与 PA1 类似。在这个实验中，我们会用 NEMU 模拟执行一段或简单或复杂的代码，使用 monitor 打印寄存器的数值，并据此判定实现的正确性。不用惊慌：如果你能在本地通过 Dummy，你就能通过至少一个 Easy 测试用例。</p>
+<h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">常见问题</h2>
 <ol class=" list-decimal font-serif">
-<li class=" ml-8">&#20320;&#30340; klib &#38656;&#35201;&#22312;&#27809;&#26377; libc &#30340;&#29615;&#22659;&#19978;&#36816;&#34892;&#65307;&#22240;&#27492;&#20219;&#20309; libc &#30340;&#24211;&#20989;&#25968;&#37117;&#19981;&#33021;&#34987;&#35843;&#29992; (&#29978;&#33267;&#24341;&#29992;&#22914; <code>stdio.h</code> &#20063;&#21487;&#33021;&#21457;&#29983;&#38382;&#39064;)&#12290;&#22914;&#26524;&#20320;&#22312;&#20854;&#20013;&#21152;&#20837;&#20102;&#20020;&#26102;&#35843;&#35797;&#29992;&#30340; printf &#31561;&#65292;&#35831;&#20320;&#20351;&#29992;&#36866;&#24403;&#30340;&#39044;&#32534;&#35793;&#36873;&#39033; (<code>#ifdef</code> &#31561;)&#65292;&#20351; Online Judge &#33021;&#24573;&#30053;&#23427;&#20204;&#12290;</li>
-<li class=" ml-8">&#30001;&#20110;&#25105;&#20204;&#20250;&#26816;&#26597; stdout&#65292;&#20320;&#21521; stdout &#30340;&#39069;&#22806;&#36755;&#20986;&#21487;&#33021;&#23548;&#33268; Wrong Answer&#12290;&#35831;&#38405;&#35835;&#20195;&#30721;&#65292;&#23558;&#26085;&#24535;&#36755;&#20986;&#21040;&#26085;&#24535;&#25991;&#20214;&#20013;&#12290;</li>
-<li class=" ml-8">&#25105;&#20204;&#32534;&#35793;&#26102;&#27809;&#26377; differential test&#12290;</li>
-<li class=" ml-8">&#32534;&#35793;&#29615;&#22659;&#20026; Ubuntu 20.04 (Docker; gcc 9.3.0)&#65307;&#22914;&#36935; Invalid Opcode &#20250;&#36820;&#22238; 4 &#23383;&#33410;&#30340;&#25351;&#20196;&#12290;</li>
-<li class=" ml-8">LiteNES &#20250;&#20351;&#29992;&#20320;&#23454;&#29616;&#30340; klib &#20013;&#30340;&#20989;&#25968; (memcpy, printf &#31561;)&#12290;&#25105;&#20204;&#20250;&#22312;&#27599;&#19968;&#24103;&#20043;&#21518;&#36755;&#20986;&#35813;&#24103;&#30340; checksum&#65292;&#24182;&#26816;&#26597;&#26576;&#20123;&#20851;&#38190;&#24103;&#30340;&#22270;&#24418;&#26159;&#21542;&#27491;&#30830;&#12290;&#22240;&#27492;&#30830;&#20445;&#20320;&#33021;&#27491;&#30830;&#30475;&#21040; Super Mario Bros &#30340;&#28436;&#31034;&#35270;&#39057;&#12290;</li>
+<li class=" ml-8">你的 klib 需要在没有 libc 的环境上运行；因此任何 libc 的库函数都不能被调用 (甚至引用如 <code>stdio.h</code> 也可能发生问题)。如果你在其中加入了临时调试用的 printf 等，请你使用适当的预编译选项 (<code>#ifdef</code> 等)，使 Online Judge 能忽略它们。</li>
+<li class=" ml-8">由于我们会检查 stdout，你向 stdout 的额外输出可能导致 Wrong Answer。请阅读代码，将日志输出到日志文件中。</li>
+<li class=" ml-8">我们编译时没有 differential test。</li>
+<li class=" ml-8">编译环境为 Ubuntu 20.04 (Docker; gcc 9.3.0)；如遇 Invalid Opcode 会返回 4 字节的指令。</li>
+<li class=" ml-8">LiteNES 会使用你实现的 klib 中的函数 (memcpy, printf 等)。我们会在每一帧之后输出该帧的 checksum，并检查某些关键帧的图形是否正确。因此确保你能正确看到 Super Mario Bros 的演示视频。</li>
 </ol></div>
 </div>
 
 <div class="container text-xs py-3">
   <span class="text-muted">
     <center><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="../../../static/img/cc-4.0.png"></a>
-    &#160;&#160;&#160;<a style="color:inherit" href="https://beian.miit.gov.cn/">&#33487; ICP &#22791; 2020049101 &#21495;</a>
+       <a style="color:inherit" href="https://beian.miit.gov.cn/">苏 ICP 备 2020049101 号</a>
     </center>
   </span>
 </div>

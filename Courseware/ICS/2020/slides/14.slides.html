@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +209,7 @@ section .center {
 }
 </style>
 
-  <title>&#34394;&#25311;&#23384;&#20648;&#36873;&#35762;</title>
+  <title>虚拟存储选讲</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,21 +227,21 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#34394;&#25311;&#23384;&#20648;&#36873;&#35762;</h1>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">虚拟存储选讲</h1>
 <p class=" font-serif my-1"><include src="Slides_Author"><div><div class="py-16">
-<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">&#33931;&#28814;&#23721;</a></p>
+<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">蒋炎岩</a></p>
 </div>
 <div class="row">
 <div class="author-affiliation">
-    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#12288;&#12288;&#21335;&#20140;&#22823;&#23398;&#12288;&#12288;</p>
+    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">　　南京大学　　</p>
     <img class="inline-img h-24" src="../../../static/img/nju-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#31185;&#23398;&#19982;&#25216;&#26415;&#31995;</p>
+   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">计算机科学与技术系</p>
     <img class="inline-img h-24" src="../../../static/img/njucs-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#36719;&#20214;&#30740;&#31350;&#25152;</p>
+    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">计算机软件研究所</p>
     <img class="inline-img h-24" src="../../../static/img/ics-logo.png" style="display: inline-block;"></a>
   </div>
 </div></div></include></p></div></div></div>
@@ -255,15 +255,15 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26412;&#35762;&#27010;&#36848;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">本讲概述</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#20026;&#20160;&#20040;&#21516;&#19968;&#20010;&#31243;&#24207;&#12289;&#21516;&#19968;&#20010;&#22320;&#22336;&#21487;&#20197;&#21551;&#21160;&#24456;&#22810;&#20221;&#65311;</p>
+<p class=" font-serif my-1">为什么同一个程序、同一个地址可以启动很多份？</p>
 </blockquote>
 <hr>
-<p class=" font-serif my-1">&#26412;&#35762;&#20869;&#23481;</p>
+<p class=" font-serif my-1">本讲内容</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#34394;&#25311;&#23384;&#20648;&#65306;&#26426;&#21046;</li>
-<li class=" ml-8">&#23384;&#20648;&#22120;&#20307;&#31995;&#32467;&#26500;</li>
+<li class=" ml-8">虚拟存储：机制</li>
+<li class=" ml-8">存储器体系结构</li>
 <li class=" ml-8">Meltdown</li>
 </ul></div>
         
@@ -280,7 +280,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#34394;&#25311;&#23384;&#20648;&#65306;&#26426;&#21046;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">虚拟存储：机制</h1></div></div></div>
         
       
       </section>
@@ -291,23 +291,23 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#34394;&#25311;&#22320;&#22336;&#31354;&#38388;</h2>
-<p class=" font-serif my-1">&#25805;&#20316;&#31995;&#32479;&#20013;&#30340;&#27599;&#20010;&#36827;&#31243;&#37117;&#26377;&#29420;&#31435;&#30340;&#22320;&#22336;&#31354;&#38388;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">虚拟地址空间</h2>
+<p class=" font-serif my-1">操作系统中的每个进程都有独立的地址空间</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><a href="../../../pages/ICS/2020/demos/vm-demo.c" class=" text-amber-900">vm-demo.c</a> (&#21516;&#19968;&#20010;&#25351;&#38024;&#12289;&#19981;&#21516;&#30340;&#29289;&#29702;&#20869;&#23384;)</li>
-<li class=" ml-8">MMU: &#30828;&#20214;&#32500;&#25252;&#25968;&#25454;&#32467;&#26500; $M$<ul class=" list-disc font-serif">
-<li class=" ml-8">&#22312;&#36816;&#34892;&#26102;&#25226;&#22320;&#22336; $x$ &#26144;&#23556;&#21040; $M(x)$</li>
-<li class=" ml-8"><red>&#25152;&#26377;</red>&#20869;&#23384;&#35775;&#38382;&#37117;&#23558;&#25191;&#34892;&#36825;&#20010;&#36716;&#25442; (&#21462;&#25351;&#20196;&#12289;&#35775;&#23384;&#8230;&#8230;)</li>
+<li class=" ml-8"><a href="../../../pages/ICS/2020/demos/vm-demo.c" class=" text-amber-900">vm-demo.c</a> (同一个指针、不同的物理内存)</li>
+<li class=" ml-8">MMU: 硬件维护数据结构 $M$<ul class=" list-disc font-serif">
+<li class=" ml-8">在运行时把地址 $x$ 映射到 $M(x)$</li>
+<li class=" ml-8"><red>所有</red>内存访问都将执行这个转换 (取指令、访存……)</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#34394;&#25311;&#22320;&#22336;&#31354;&#38388;&#35774;&#35745;</p>
+<p class=" font-serif my-1">虚拟地址空间设计</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20302;&#29305;&#26435;&#31243;&#24207;&#26080;&#26435;&#20462;&#25913; $M(x)$</li>
-<li class=" ml-8">&#35775;&#38382;&#26410;&#26144;&#23556;&#30340;&#20869;&#23384;&#20135;&#29983;&#24322;&#24120; (Segmentation Fault)</li>
-<li class=" ml-8">&#33021;&#22815;&#25511;&#21046; read/write/execute &#26435;&#38480;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#24605;&#32771;&#39064;&#65306;&#20195;&#30721;&#12289;&#25968;&#25454;&#12289;&#22534;&#26632;&#20998;&#21035;&#35774;&#32622;&#20026;&#20160;&#20040;&#26435;&#38480;&#65311;</li>
+<li class=" ml-8">低特权程序无权修改 $M(x)$</li>
+<li class=" ml-8">访问未映射的内存产生异常 (Segmentation Fault)</li>
+<li class=" ml-8">能够控制 read/write/execute 权限<ul class=" list-disc font-serif">
+<li class=" ml-8">思考题：代码、数据、堆栈分别设置为什么权限？</li>
 </ul>
 </li>
 </ul></div>
@@ -321,12 +321,12 @@ section .center {
 
       
         
-        <div><h2 id="vme-api" class=" text-xl mt-2 pb-2 font-sans">&#29702;&#35299;&#34394;&#25311;&#22320;&#22336;&#31354;&#38388;&#65306;VME API</h2>
-<p class=" font-serif my-1">&#20869;&#23384;&#26159;&#20998;&#20026; &#8220;&#39029;&#38754;&#8221; &#30340;</p>
+        <div><h2 id="vme-api" class=" text-xl mt-2 pb-2 font-sans">理解虚拟地址空间：VME API</h2>
+<p class=" font-serif my-1">内存是分为 “页面” 的</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25903;&#25345;&#22312;&#20869;&#23384;&#20013;&#21019;&#24314; &#8220;&#22320;&#22336;&#31354;&#38388;&#8221; &#23545;&#35937; ($M$)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#25903;&#25345;&#24314;&#31435;/&#21462;&#28040;&#39029;&#38754;&#21040;&#39029;&#38754;&#30340;&#26144;&#23556;</li>
-<li class=" ml-8">&#21487;&#20197;&#23558; $M$ &#8220;&#21152;&#36733;&#8221; &#21040;&#31995;&#32479;&#19978;</li>
+<li class=" ml-8">支持在内存中创建 “地址空间” 对象 ($M$)<ul class=" list-disc font-serif">
+<li class=" ml-8">支持建立/取消页面到页面的映射</li>
+<li class=" ml-8">可以将 $M$ “加载” 到系统上</li>
 </ul>
 </li>
 </ul>
@@ -351,7 +351,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#34394;&#25311;&#23384;&#20648;&#65306;&#30828;&#20214;&#23454;&#29616;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">虚拟存储：硬件实现</h1></div></div></div>
         
       
       </section>
@@ -362,18 +362,18 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#22320;&#22336;&#32763;&#35793;&#30340;&#23454;&#29616;</h2>
-<p class=" font-serif my-1">&#23454;&#29616;&#25968;&#25454;&#32467;&#26500;&#22909;&#21150;&#65292;&#23601;&#26159;&#20010; <code>map&lt;uintptr_t,uintptr_t&gt;</code></p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">地址翻译的实现</h2>
+<p class=" font-serif my-1">实现数据结构好办，就是个 <code>map<uintptr_t,uintptr_t></code></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#26597;&#35810;/&#20462;&#25913;&#36895;&#24230;&#35201;&#24555;&#65292;&#26368;&#22909; $O(1)$</li>
-<li class=" ml-8">&#31354;&#38388;&#28040;&#32791;&#35201;&#23569; (<code>map</code> &#28040;&#32791; $c\cdot n$ &#30340;&#20869;&#23384;, $c&gt;1$)</li>
+<li class=" ml-8">查询/修改速度要快，最好 $O(1)$</li>
+<li class=" ml-8">空间消耗要少 (<code>map</code> 消耗 $c\cdot n$ 的内存, $c>1$)</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#25105;&#20204;&#30340;&#32769;&#26379;&#21451;&#65306;&#23616;&#37096;&#24615;</p>
+<p class=" font-serif my-1">我们的老朋友：局部性</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20869;&#23384;&#26159;&#36830;&#32493;&#25490;&#24067;&#30340;&#65306;&#20195;&#30721;&#12289;&#25968;&#25454;&#12289;&#22534;&#26632;&#8230;&#8230;</li>
-<li class=" ml-8">&#32780;&#19988;&#35775;&#38382;&#20063;&#26159;&#23616;&#37096;&#30340;</li>
-<li class=" ml-8">&#22240;&#27492;&#21487;&#20197;&#25353;&#39029;&#38754; (4KB, 4MB, &#8230;) &#26469;&#20998;&#37197;&#21644;&#31649;&#29702;&#20869;&#23384;</li>
+<li class=" ml-8">内存是连续排布的：代码、数据、堆栈……</li>
+<li class=" ml-8">而且访问也是局部的</li>
+<li class=" ml-8">因此可以按页面 (4KB, 4MB, …) 来分配和管理内存</li>
 </ul></div>
         
       
@@ -385,15 +385,15 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#22320;&#22336;&#32763;&#35793;&#65306;&#26222;&#36890;&#23454;&#29616;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">地址翻译：普通实现</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">4GB/4KB = $1024^2$&#65292;&#37027;&#23601;&#23454;&#29616;&#25104;&#19968;&#20010; 2 &#23618;&#30340; 1024 &#21449;&#26641;&#12290;</p>
+<p class=" font-serif my-1">4GB/4KB = $1024^2$，那就实现成一个 2 层的 1024 叉树。</p>
 </blockquote>
 <hr>
-<p class=" font-serif my-1">&#25968;&#25454;&#32467;&#26500;&#23454;&#29616;&#30340;&#25216;&#24039;</p>
+<p class=" font-serif my-1">数据结构实现的技巧</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#26410;&#26144;&#23556;&#30340;&#22320;&#22336;&#31354;&#38388;&#19981;&#38656;&#35201;&#20998;&#37197;</li>
-<li class=" ml-8">&#26681;&#33410;&#28857;&#21487;&#20197;&#25511;&#21046;&#23376;&#33410;&#28857;&#30340;&#23646;&#24615;</li>
+<li class=" ml-8">未映射的地址空间不需要分配</li>
+<li class=" ml-8">根节点可以控制子节点的属性</li>
 </ul></div>
         
       
@@ -405,23 +405,23 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#22320;&#22336;&#32763;&#35793;&#65306;&#25991;&#33402;&#23454;&#29616;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">地址翻译：文艺实现</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#32500;&#25252;&#19968;&#24352;&#26597;&#25214;&#34920;&#12290;</p>
+<p class=" font-serif my-1">维护一张查找表。</p>
 </blockquote>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">$(x_i, y_i, b_i) \Rightarrow \forall m\in [x_i, y_i), M(x_i + m) = b_i + m$</li>
-<li class=" ml-8">&#22312;&#27599;&#27425;&#20869;&#23384;&#35775;&#38382;&#26102;&#30001;&#30828;&#20214;&#36127;&#36131;&#26597;&#34920;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#26597;&#25214;&#22833;&#36133; &#8594; &#24322;&#24120; (&#25805;&#20316;&#31995;&#32479;&#37325;&#22635;)</li>
+<li class=" ml-8">在每次内存访问时由硬件负责查表<ul class=" list-disc font-serif">
+<li class=" ml-8">查找失败 → 异常 (操作系统重填)</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#36825;&#26159;&#21487;&#32534;&#31243; MMU (MIPS)</p>
+<p class=" font-serif my-1">这是可编程 MMU (MIPS)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#38750;&#24120;&#28789;&#27963;&#65292;&#21487;&#20197;&#23454;&#29616;&#20219;&#24847;&#39029;&#34920;</li>
-<li class=" ml-8">&#20294; TLB miss &#37325;&#22635;&#30456;&#23545;&#36739;&#24930;</li>
-<li class=" ml-8">MIPS &#26159;&#23398;&#29983;&#26368;&#23481;&#26131;&#23454;&#29616;&#23436;&#25972;&#35745;&#31639;&#26426;&#31995;&#32479;&#30340;&#25351;&#20196;&#38598;</li>
+<li class=" ml-8">非常灵活，可以实现任意页表</li>
+<li class=" ml-8">但 TLB miss 重填相对较慢</li>
+<li class=" ml-8">MIPS 是学生最容易实现完整计算机系统的指令集</li>
 </ul></div>
         
       
@@ -433,14 +433,14 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#22320;&#22336;&#32763;&#35793;&#65306;&#20108;&#36924;&#23454;&#29616;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">地址翻译：二逼实现</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#29992;&#19968;&#20010; hash table &#32500;&#25252; $(x, asid) \to M(x)$ &#30340;&#26144;&#23556;&#12290;</p>
+<p class=" font-serif my-1">用一个 hash table 维护 $(x, asid) \to M(x)$ 的映射。</p>
 </blockquote>
 <hr>
-<p class=" font-serif my-1">&#20026;&#20160;&#20040;&#36825;&#26159;&#21487;&#20197;&#30340;&#65311;</p>
+<p class=" font-serif my-1">为什么这是可以的？</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#21482;&#35201;&#31995;&#32479;&#37324;&#25152;&#26377;&#36827;&#31243;&#37117; ASLR&#65292;hash &#20914;&#31361;&#23601;&#20250;&#24456;&#23569;</li>
+<li class=" ml-8">只要系统里所有进程都 ASLR，hash 冲突就会很少</li>
 <li class=" ml-8">J Huck, J Hays. Architectural support for translation table management in large address space machines. In <em>Proc. of ISCA</em>, 1993.</li>
 </ul></div>
         
@@ -457,7 +457,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#23384;&#20648;&#22120;&#20307;&#31995;&#32467;&#26500;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">存储器体系结构</h1></div></div></div>
         
       
       </section>
@@ -468,21 +468,21 @@ section .center {
 
       
         
-        <div><h2 id="1" class=" text-xl mt-2 pb-2 font-sans">&#31532; 1 &#23618;&#65306;&#23492;&#23384;&#22120;</h2>
-<p class=" font-serif my-1">&#23492;&#23384;&#22120;&#20854;&#23454;&#26159;&#22320;&#22336;&#31354;&#38388;&#38750;&#24120;&#23567;&#30340;&#20869;&#23384; (<a href="../../../pages/ICS/2020/demos/mov-regs.S" class=" text-amber-900">mov-regs.S</a>)</p>
+        <div><h2 id="1" class=" text-xl mt-2 pb-2 font-sans">第 1 层：寄存器</h2>
+<p class=" font-serif my-1">寄存器其实是地址空间非常小的内存 (<a href="../../../pages/ICS/2020/demos/mov-regs.S" class=" text-amber-900">mov-regs.S</a>)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">5bit &#8594; 32 &#20010;&#23492;&#23384;&#22120;</li>
-<li class=" ml-8">6bit &#8594; 64 &#20010;&#23492;&#23384;&#22120;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#22240;&#27492;&#23547;&#22336;&#36890;&#24120;&#26159;&#38750;&#24120;&#24555;&#30340;</li>
+<li class=" ml-8">5bit → 32 个寄存器</li>
+<li class=" ml-8">6bit → 64 个寄存器<ul class=" list-disc font-serif">
+<li class=" ml-8">因此寻址通常是非常快的</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#23454;&#38469;&#19978;&#65292;&#20250;&#26377;&#26356;&#22823;&#30340; Physical Register File (PRF)</p>
+<p class=" font-serif my-1">实际上，会有更大的 Physical Register File (PRF)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25105;&#20204;&#25191;&#34892;&#30340;&#25351;&#20196; (&#22914; <code>mov $1, %rax</code>) &#20250;&#34987; &#8220;&#37325;&#21629;&#21517;&#8221;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#21363;&#20998;&#37197; PRF &#30340;&#22320;&#22336;</li>
-<li class=" ml-8">&#20081;&#24207;&#25191;&#34892;&#12289;&#25237;&#26426;&#25191;&#34892;&#12289;&#24322;&#24120;&#22788;&#29702;&#8230;&#8230;</li>
+<li class=" ml-8">我们执行的指令 (如 <code>mov $1, %rax</code>) 会被 “重命名”<ul class=" list-disc font-serif">
+<li class=" ml-8">即分配 PRF 的地址</li>
+<li class=" ml-8">乱序执行、投机执行、异常处理……</li>
 </ul>
 </li>
 </ul></div>
@@ -496,16 +496,16 @@ section .center {
 
       
         
-        <div><h2 id="15-mmu" class=" text-xl mt-2 pb-2 font-sans">&#31532; 1.5 &#23618;&#65306;MMU</h2>
-<p class=" font-serif my-1"><a href="https://developer.arm.com/architectures/learn-the-architecture/memory-management/single-page" class=" text-amber-900">Armv8-A &#25163;&#20876;</a></p>
+        <div><h2 id="15-mmu" class=" text-xl mt-2 pb-2 font-sans">第 1.5 层：MMU</h2>
+<p class=" font-serif my-1"><a href="https://developer.arm.com/architectures/learn-the-architecture/memory-management/single-page" class=" text-amber-900">Armv8-A 手册</a></p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">Radix tree<ul class=" list-disc font-serif">
-<li class=" ml-8">&#27599;&#20010;&#33410;&#28857;&#21487;&#20197;&#26159; 4KB, 16KB, 64KB</li>
+<li class=" ml-8">每个节点可以是 4KB, 16KB, 64KB</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1"><img alt="" class="center" src="https://developer.arm.com/-/media/Arm%20Developer%20Community/Images/Tutorial%20Guide%20Diagrams%20and%20Screenshots/Learn%20the%20Architecture/Memory%20Management/New%20Memory%20Management%20graphics/2%20-%20The%20MMU.png?revision=cd45e66e-e79b-4e72-a949-346783b324b4&amp;hash=3B5EE4DC7DA23D6BCF4B5B1245401EBE3450E036&amp;w=1724&amp;la=en" width="800px"></p></div>
+<p class=" font-serif my-1"><img alt="" class="center" src="https://developer.arm.com/-/media/Arm%20Developer%20Community/Images/Tutorial%20Guide%20Diagrams%20and%20Screenshots/Learn%20the%20Architecture/Memory%20Management/New%20Memory%20Management%20graphics/2%20-%20The%20MMU.png?revision=cd45e66e-e79b-4e72-a949-346783b324b4&hash=3B5EE4DC7DA23D6BCF4B5B1245401EBE3450E036&w=1724&la=en" width="800px"></p></div>
         
       
       </section>
@@ -516,15 +516,15 @@ section .center {
 
       
         
-        <div><h2 id="2" class=" text-xl mt-2 pb-2 font-sans">&#31532; 2 &#23618;&#65306;&#32531;&#23384;</h2>
-<p class=" font-serif my-1">&#20869;&#23384;&#35775;&#38382;&#31526;&#21512; Locality of References&#65292;&#8220;&#23616;&#37096;&#24615;&#21407;&#29702;&#8221;</p>
+        <div><h2 id="2" class=" text-xl mt-2 pb-2 font-sans">第 2 层：缓存</h2>
+<p class=" font-serif my-1">内存访问符合 Locality of References，“局部性原理”</p>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
 <p class=" font-serif my-1">A phenomenon in which the same values, or related <a href="https://en.wikipedia.org/wiki/Computer_storage" class=" text-amber-900">storage</a> locations, are frequently accessed, depending on the <a href="https://en.wikipedia.org/wiki/Memory_access_pattern" class=" text-amber-900">memory access pattern</a>.</p>
 </blockquote>
 <hr>
-<p class=" font-serif my-1">&#20174;&#21478;&#19968;&#20010;&#35282;&#24230;&#65292;&#26681;&#25454;&#20869;&#23384;&#35775;&#38382;&#30340;&#21382;&#21490;&#65292;&#36890;&#24120;&#33021;&#36739;&#20026;&#20934;&#30830;&#22320;&#39044;&#27979;&#26410;&#26469;&#21487;&#33021;&#35775;&#38382;&#30340;&#20869;&#23384;&#65292;&#24182;&#19988;&#35775;&#38382;&#20020;&#36817;&#20869;&#23384;&#23621;&#22810;</p>
+<p class=" font-serif my-1">从另一个角度，根据内存访问的历史，通常能较为准确地预测未来可能访问的内存，并且访问临近内存居多</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#32531;&#23384;&#23545;&#23492;&#23384;&#22120;/CPU &#26159;&#23436;&#20840;&#36879;&#26126;&#30340; (&#21527;&#65311;)</li>
+<li class=" ml-8">缓存对寄存器/CPU 是完全透明的 (吗？)</li>
 </ul></div>
         
       
@@ -536,8 +536,8 @@ section .center {
 
       
         
-        <div><h2 id="3-dram" class=" text-xl mt-2 pb-2 font-sans">&#31532; 3 &#23618;&#65306;&#20869;&#23384; (DRAM)</h2>
-<p class=" font-serif my-1"><a href="http://www.qdpma.com/ServerSystems/DRAM.html" class=" text-amber-900">&#20869;&#23384; DRAM</a> &#21363;&#19968;&#20010;&#22823;&#25968;&#32452; (&#19977;&#32500;&#25968;&#25454;&#32467;&#26500;)</p>
+        <div><h2 id="3-dram" class=" text-xl mt-2 pb-2 font-sans">第 3 层：内存 (DRAM)</h2>
+<p class=" font-serif my-1"><a href="http://www.qdpma.com/ServerSystems/DRAM.html" class=" text-amber-900">内存 DRAM</a> 即一个大数组 (三维数据结构)</p>
 <p class=" font-serif my-1"><img alt="" class="center" src="http://www.qdpma.com/ServerSystems/Server_files/Micron_8Gb_x4.png" width="600px"></p>
 <p class=" font-serif my-1"></p><center>Image source: qdpma.com</center></div>
         
@@ -550,17 +550,17 @@ section .center {
 
       
         
-        <div><h2 id="35-nvram" class=" text-xl mt-2 pb-2 font-sans">&#31532; 3.5 &#23618;&#65306;NVRAM</h2>
-<p class=" font-serif my-1">&#24403;&#20869;&#23384;/cache &#36234;&#26469;&#36234;&#22823;&#12289;prefetch &#36234;&#26469;&#36234;&#22909;&#8230;&#8230;</p>
+        <div><h2 id="35-nvram" class=" text-xl mt-2 pb-2 font-sans">第 3.5 层：NVRAM</h2>
+<p class=" font-serif my-1">当内存/cache 越来越大、prefetch 越来越好……</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">DRAM &#30340;&#24555;&#24930;&#24050;&#32463;&#19981;&#26159;&#37027;&#20040;&#25935;&#24863;&#20102;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#24040;&#22823;&#30340;&#21151;&#32791; (&#23450;&#26102;&#21047;&#26032;)</li>
-<li class=" ml-8">&#20869;&#23384;&#38169;&#35823;&#29575;&#26080;&#27861;&#24573;&#35270;</li>
+<li class=" ml-8">DRAM 的快慢已经不是那么敏感了<ul class=" list-disc font-serif">
+<li class=" ml-8">巨大的功耗 (定时刷新)</li>
+<li class=" ml-8">内存错误率无法忽视</li>
 </ul>
 </li>
-<li class=" ml-8">&#26032;&#30340;&#23384;&#20648;&#25216;&#26415;<ul class=" list-disc font-serif">
+<li class=" ml-8">新的存储技术<ul class=" list-disc font-serif">
 <li class=" ml-8">PCM (phase change memory)</li>
-<li class=" ml-8">&#20135;&#21697;: Intel Optane DC</li>
+<li class=" ml-8">产品: Intel Optane DC</li>
 </ul>
 </li>
 </ul></div>
@@ -574,12 +574,12 @@ section .center {
 
       
         
-        <div><h2 id="4" class=" text-xl mt-2 pb-2 font-sans">&#31532; 4 &#23618;&#65306;&#22806;&#37096;&#23384;&#20648;&#22120;</h2>
-<p class=" font-serif my-1">SSD Flash; &#30913;&#30424;</p>
+        <div><h2 id="4" class=" text-xl mt-2 pb-2 font-sans">第 4 层：外部存储器</h2>
+<p class=" font-serif my-1">SSD Flash; 磁盘</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#26356;&#22823;&#30340;&#24310;&#36831;</li>
-<li class=" ml-8">&#26356;&#22823;&#30340;&#23481;&#37327;</li>
-<li class=" ml-8">&#26356;&#20302;&#30340;&#25104;&#26412;</li>
+<li class=" ml-8">更大的延迟</li>
+<li class=" ml-8">更大的容量</li>
+<li class=" ml-8">更低的成本</li>
 </ul></div>
         
       
@@ -595,7 +595,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#20013;&#26029; + &#34394;&#23384; + &#32531;&#23384; + &#25237;&#26426;&#25191;&#34892; = ?</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">中断 + 虚存 + 缓存 + 投机执行 = ?</h1></div></div></div>
         
       
       </section>
@@ -606,20 +606,20 @@ section .center {
 
       
         
-        <div><h2 id="1" class=" text-xl mt-2 pb-2 font-sans">&#38382;&#39064; (1): &#23454;&#29616;&#19978;&#30340;&#19968;&#20010;&#22823;&#40635;&#28902;</h2>
+        <div><h2 id="1" class=" text-xl mt-2 pb-2 font-sans">问题 (1): 实现上的一个大麻烦</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#32531;&#23384;&#34394;&#25311;&#22320;&#22336;&#36824;&#26159;&#29289;&#29702;&#22320;&#22336;&#65311;</p>
+<p class=" font-serif my-1">缓存虚拟地址还是物理地址？</p>
 </blockquote>
-<p class=" font-serif my-1">&#32531;&#23384;&#34394;&#25311;&#22320;&#22336;</p>
+<p class=" font-serif my-1">缓存虚拟地址</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#27599;&#27425;&#20999;&#25442; $M$ (&#36827;&#31243;) &#37117;&#35201;&#28165;&#31354;&#32531;&#23384;</li>
-<li class=" ml-8">$M$ &#30340;&#21035;&#21517; (aliasing) &#38382;&#39064;</li>
+<li class=" ml-8">每次切换 $M$ (进程) 都要清空缓存</li>
+<li class=" ml-8">$M$ 的别名 (aliasing) 问题</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#32531;&#23384;&#29289;&#29702;&#22320;&#22336;</p>
+<p class=" font-serif my-1">缓存物理地址</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#23454;&#29616;&#31616;&#21333;</li>
-<li class=" ml-8">&#27599;&#27425; cache &#35775;&#38382;&#37117;&#35201;&#31561;&#22320;&#22336;&#32763;&#35793;</li>
+<li class=" ml-8">实现简单</li>
+<li class=" ml-8">每次 cache 访问都要等地址翻译</li>
 </ul></div>
         
       
@@ -631,7 +631,7 @@ section .center {
 
       
         
-        <div><h2 id="2" class=" text-xl mt-2 pb-2 font-sans">&#38382;&#39064; (2): &#25226;&#25805;&#20316;&#31995;&#32479;&#20195;&#30721;/&#25968;&#25454;&#30340;&#26144;&#23556;</h2>
+        <div><h2 id="2" class=" text-xl mt-2 pb-2 font-sans">问题 (2): 把操作系统代码/数据的映射</h2>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">char</span><span class="w"> </span><span class="n">buf</span><span class="p">[</span><span class="n">SIZE</span><span class="p">];</span>
 <span class="p">...</span>
 <span class="kt">ssize_t</span><span class="w"> </span><span class="n">nwrite</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">write</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="n">SIZE</span><span class="p">);</span><span class="w"> </span><span class="c1">// in printf</span>
@@ -639,11 +639,11 @@ section .center {
 </code></pre></div>
 
 <hr>
-<p class=" font-serif my-1">&#25805;&#20316;&#31995;&#32479;</p>
+<p class=" font-serif my-1">操作系统</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#24076;&#26395;&#30452;&#25509;&#21521; <code>buf</code> &#37324;&#20889;&#20837;</li>
-<li class=" ml-8">&#20869;&#26680;/&#29992;&#25143;&#36827;&#31243;&#26144;&#23556;&#21516;&#19968;&#22320;&#22336;&#31354;&#38388; (&#20294;&#35775;&#38382;&#26435;&#38480;&#19981;&#21516;)<ul class=" list-disc font-serif">
-<li class=" ml-8"><code>*(KERNEL_ADDRESS)</code> &#23558;&#24341;&#21457; page fault (SIGSEGV)</li>
+<li class=" ml-8">希望直接向 <code>buf</code> 里写入</li>
+<li class=" ml-8">内核/用户进程映射同一地址空间 (但访问权限不同)<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>*(KERNEL_ADDRESS)</code> 将引发 page fault (SIGSEGV)</li>
 </ul>
 </li>
 </ul></div>
@@ -657,21 +657,21 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25805;&#20316;&#31995;&#32479;&#65306;&#23454;&#29616;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">操作系统：实现</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#22312;&#22320;&#22336;&#31354;&#38388;&#20013;&#21516;&#26102;&#32500;&#25252;&#25805;&#20316;&#31995;&#32479;&#20869;&#26680;&#19982;&#29992;&#25143;&#36827;&#31243;&#30340;&#20869;&#23384;&#26144;&#23556;&#12290;</p>
+<p class=" font-serif my-1">在地址空间中同时维护操作系统内核与用户进程的内存映射。</p>
 </blockquote>
 <hr>
-<p class=" font-serif my-1">&#20363;&#23376;</p>
+<p class=" font-serif my-1">例子</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><code>0xc0000000-0xffffffff</code> &#20869;&#23384;&#29992;&#25143;&#36827;&#31243;&#19981;&#21487;&#35775;&#38382; (U-bit = 1)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#25805;&#20316;&#31995;&#32479;&#20195;&#30721;/&#25968;&#25454;&#26144;&#23556;&#21040;&#27492;</li>
+<li class=" ml-8"><code>0xc0000000-0xffffffff</code> 内存用户进程不可访问 (U-bit = 1)<ul class=" list-disc font-serif">
+<li class=" ml-8">操作系统代码/数据映射到此</li>
 </ul>
 </li>
-<li class=" ml-8">&#20013;&#26029;&#22788;&#29702;&#31243;&#24207;&#20837;&#21475;&#26159; <code>0xc0001234</code><ul class=" list-disc font-serif">
-<li class=" ml-8">&#20013;&#26029;&#21457;&#29983;&#21518;&#65292;&#22788;&#29702;&#22120;&#33258;&#21160;&#20999;&#25442;&#36816;&#34892;&#32423;&#21035;</li>
-<li class=" ml-8">&#21512;&#27861;&#36339;&#36716;&#21040;&#25805;&#20316;&#31995;&#32479;&#20195;&#30721;&#25191;&#34892; (<code>%eip = 0xc0001234</code>)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20294; Ring 3 &#35775;&#38382;&#23558;&#23548;&#33268; segmentation fault</li>
+<li class=" ml-8">中断处理程序入口是 <code>0xc0001234</code><ul class=" list-disc font-serif">
+<li class=" ml-8">中断发生后，处理器自动切换运行级别</li>
+<li class=" ml-8">合法跳转到操作系统代码执行 (<code>%eip = 0xc0001234</code>)<ul class=" list-disc font-serif">
+<li class=" ml-8">但 Ring 3 访问将导致 segmentation fault</li>
 </ul>
 </li>
 </ul>
@@ -688,14 +688,14 @@ section .center {
       
         
         <div><h2 id="meltdown-2017" class=" text-xl mt-2 pb-2 font-sans">Meltdown (2017)</h2>
-<p class=" font-serif my-1">&#22797;&#26434;&#31995;&#32479;&#37324;&#26377;&#24778;&#21916;&#65281;</p>
+<p class=" font-serif my-1">复杂系统里有惊喜！</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20013;&#26029; + &#34394;&#23384; + &#32531;&#23384; + &#25237;&#26426;&#25191;&#34892; = Meltdown</li>
+<li class=" ml-8">中断 + 虚存 + 缓存 + 投机执行 = Meltdown</li>
 <li class=" ml-8"><a href="https://meltdownattack.com/meltdown.pdf" class=" text-amber-900">Meltdown: Reading kernel memory from user space</a></li>
 </ul>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>// %rcx: &#26080;&#26435;&#38480;&#35775;&#38382;&#30340;&#22320;&#22336;&#65307;%rbx: &#26410;&#36733;&#20837;&#32531;&#23384;&#30340;&#25968;&#32452;
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>// %rcx: 无权限访问的地址；%rbx: 未载入缓存的数组
         xorq   %rax, %rax
-retry:  movzbq (%rcx), %rax   // &#38750;&#27861;&#35775;&#38382;&#65307;Page Fault
+retry:  movzbq (%rcx), %rax   // 非法访问；Page Fault
         shlq   $0xc, %rax
         jz     retry
         movq   (%rbx, %rax), %rbx // (%rbx + (%rcx) * 4096)
@@ -703,7 +703,7 @@ retry:  movzbq (%rcx), %rax   // &#38750;&#27861;&#35775;&#38382;&#65307;Page Fa
 
 <hr>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#24605;&#32771;&#39064;&#65306;&#22914;&#20309;&#20462;&#22797;&#36825;&#19968;&#30828;&#20214;&#28431;&#27934;&#65311;</li>
+<li class=" ml-8">思考题：如何修复这一硬件漏洞？</li>
 </ul></div>
         
       

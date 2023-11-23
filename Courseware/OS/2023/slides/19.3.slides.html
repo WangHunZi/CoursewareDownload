@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +209,7 @@ section .center {
 }
 </style>
 
-  <title>&#23637;&#26395;&#26410;&#26469;</title>
+  <title>展望未来</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,7 +227,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="19.3.slides.html" class=" text-amber-900">&#23637;&#26395;&#26410;&#26469;</a></h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="19.3.slides.html" class=" text-amber-900">展望未来</a></h1></div></div></div>
         
       
       </section>
@@ -239,26 +239,26 @@ section .center {
       
         
         <div><h2 id="unix-shell-traps-and-pitfalls" class=" text-xl mt-2 pb-2 font-sans">UNIX Shell: Traps and Pitfalls</h2>
-<p class=" font-serif my-1">&#22312; &#8220;&#33258;&#28982;&#35821;&#35328;&#8221;&#12289;&#8220;&#26426;&#22120;&#35821;&#35328;&#8221; &#21644; &#8220;1970s &#30340;&#31639;&#21147;&#8221; &#20043;&#38388;&#36798;&#21040;&#20248;&#38597;&#30340;&#24179;&#34913;</p>
+<p class=" font-serif my-1">在 “自然语言”、“机器语言” 和 “1970s 的算力” 之间达到优雅的平衡</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#24179;&#34913;&#24847;&#21619;&#30528;&#24182;&#19981;&#24635;&#26159;&#23436;&#32654;</li>
+<li class=" ml-8">平衡意味着并不总是完美</li>
 </ul>
 <hr>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25805;&#20316;&#30340; &#8220;&#20248;&#20808;&#32423;&#8221;&#65311;<ul class=" list-disc font-serif">
-<li class=" ml-8"><code>ls &gt; a.txt | cat</code><ul class=" list-disc font-serif">
-<li class=" ml-8">&#25105;&#24050;&#32463;&#37325;&#23450;&#21521;&#32473; a.txt &#20102;&#65292;cat &#26159;&#19981;&#26159;&#23601;&#25910;&#19981;&#21040;&#36755;&#20837;&#20102;&#65311;</li>
+<li class=" ml-8">操作的 “优先级”？<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>ls > a.txt | cat</code><ul class=" list-disc font-serif">
+<li class=" ml-8">我已经重定向给 a.txt 了，cat 是不是就收不到输入了？</li>
 </ul>
 </li>
-<li class=" ml-8">bash/zsh &#30340;&#34892;&#20026;&#26159;&#19981;&#21516;&#30340;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#25152;&#20197;&#33050;&#26412;&#19968;&#33324;&#37117;&#26159; <code>#!/bin/bash</code> &#29978;&#33267; <code>#!/bin/sh</code> &#20445;&#25345;&#20860;&#23481;</li>
+<li class=" ml-8">bash/zsh 的行为是不同的<ul class=" list-disc font-serif">
+<li class=" ml-8">所以脚本一般都是 <code>#!/bin/bash</code> 甚至 <code>#!/bin/sh</code> 保持兼容</li>
 </ul>
 </li>
 </ul>
 </li>
-<li class=" ml-8">&#25991;&#26412;&#25968;&#25454; &#8220;&#36131;&#20219;&#33258;&#36127;&#8221;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#26377;&#31354;&#26684;&#65311;&#21518;&#26524;&#33258;&#36127;&#65281;</li>
-<li class=" ml-8">(PowerShell: &#25105;&#26377; object stream pipe &#21834;&#21890;)</li>
+<li class=" ml-8">文本数据 “责任自负”<ul class=" list-disc font-serif">
+<li class=" ml-8">有空格？后果自负！</li>
+<li class=" ml-8">(PowerShell: 我有 object stream pipe 啊喂)</li>
 </ul>
 </li>
 </ul></div>
@@ -272,12 +272,12 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#21478;&#19968;&#20010;&#26377;&#36259;&#30340;&#20363;&#23376;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">另一个有趣的例子</h2>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/sudo-sandwich.png" width="400px"></p>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>$ echo hello &gt; /etc/a.txt
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>$ echo hello > /etc/a.txt
 bash: /etc/a.txt: Permission denied
 
-$ sudo echo hello &gt; /etc/a.txt
+$ sudo echo hello > /etc/a.txt
 bash: /etc/a.txt: Permission denied
 </code></pre></div></div>
         
@@ -290,21 +290,21 @@ bash: /etc/a.txt: Permission denied
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#23637;&#26395;&#26410;&#26469;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">展望未来</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">Open question: &#25105;&#20204;&#33021;&#21542;&#20174;&#26681;&#26412;&#19978;&#25913;&#21464;&#31649;&#29702;&#25805;&#20316;&#31995;&#32479;&#30340;&#26041;&#24335;&#65311;</p>
+<p class=" font-serif my-1">Open question: 我们能否从根本上改变管理操作系统的方式？</p>
 </blockquote>
 <hr>
-<p class=" font-serif my-1">&#38656;&#27714;&#20998;&#26512;</p>
+<p class=" font-serif my-1">需求分析</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">Fast Path: &#31616;&#21333;&#20219;&#21153;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#23613;&#21487;&#33021;&#24555;</li>
-<li class=" ml-8">100% &#20934;&#30830;</li>
+<li class=" ml-8">Fast Path: 简单任务<ul class=" list-disc font-serif">
+<li class=" ml-8">尽可能快</li>
+<li class=" ml-8">100% 准确</li>
 </ul>
 </li>
-<li class=" ml-8">Slow Path: &#22797;&#26434;&#20219;&#21153;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20219;&#21153;&#25551;&#36848;&#26412;&#36523;&#23601;&#21487;&#33021;&#24456;&#38271;</li>
-<li class=" ml-8">&#38656;&#35201; &#8220;&#32534;&#31243;&#8221;</li>
+<li class=" ml-8">Slow Path: 复杂任务<ul class=" list-disc font-serif">
+<li class=" ml-8">任务描述本身就可能很长</li>
+<li class=" ml-8">需要 “编程”</li>
 </ul>
 </li>
 </ul></div>
@@ -318,26 +318,26 @@ bash: /etc/a.txt: Permission denied
 
       
         
-        <div><h2 id="shell" class=" text-xl mt-2 pb-2 font-sans">&#26410;&#26469;&#30340; Shell</h2>
-<p class=" font-serif my-1">&#33258;&#28982;&#20132;&#20114;/&#33041;&#26426;&#25509;&#21475;&#65306;&#24515;&#24819;&#20107;&#25104;</p>
+        <div><h2 id="shell" class=" text-xl mt-2 pb-2 font-sans">未来的 Shell</h2>
+<p class=" font-serif my-1">自然交互/脑机接口：心想事成</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">Shell &#23601;&#25104;&#20026;&#20102;&#19968;&#20010;&#24212;&#29992;&#31243;&#24207;&#30340;&#20132;&#20114;&#24211;<ul class=" list-disc font-serif">
-<li class=" ml-8">UNIX Shell &#26159; &#8220;&#33258;&#28982;&#35821;&#35328;&#8221;&#12289;&#8220;&#26426;&#22120;&#35821;&#35328;&#8221; &#20043;&#38388;&#30340;&#36793;&#32536;&#22320;&#24102;</li>
+<li class=" ml-8">Shell 就成为了一个应用程序的交互库<ul class=" list-disc font-serif">
+<li class=" ml-8">UNIX Shell 是 “自然语言”、“机器语言” 之间的边缘地带</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#31995;&#32479;&#31649;&#29702;&#19982;&#35821;&#35328;&#27169;&#22411;</p>
+<p class=" font-serif my-1">系统管理与语言模型</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">fish, zsh, <a href="https://www.warp.dev" class=" text-amber-900">Warp</a>, ...</li>
-<li class=" ml-8">Stackoverflow, tldr, <a href="https://github.com/nvbn/thefuck" class=" text-amber-900">thef**k</a> (&#33258;&#21160;&#20462;&#22797;)</li>
+<li class=" ml-8">Stackoverflow, tldr, <a href="https://github.com/nvbn/thefuck" class=" text-amber-900">thef**k</a> (自动修复)</li>
 <li class=" ml-8">Command palette of vscode (Ctrl-Shift-P)</li>
 <li class=" ml-8">Predictable<ul class=" list-disc font-serif">
-<li class=" ml-8">&#27969;&#31243;&#24456;&#24555; (&#26080;&#38656;&#26816;&#26597;)&#65292;&#20294;&#21487;&#33021;&#29359;&#20667;</li>
+<li class=" ml-8">流程很快 (无需检查)，但可能犯傻</li>
 </ul>
 </li>
 <li class=" ml-8">Creative<ul class=" list-disc font-serif">
-<li class=" ml-8">&#32473;&#20320;&#24778;&#21916;&#65292;&#20294;&#20598;&#23572;&#29359;&#38169;</li>
+<li class=" ml-8">给你惊喜，但偶尔犯错</li>
 </ul>
 </li>
 </ul></div>

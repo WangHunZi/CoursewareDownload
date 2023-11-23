@@ -2,7 +2,7 @@
 <head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>8. &#35843;&#35797;&#29702;&#35770;&#19982;&#23454;&#36341;</title>
+<title>8. 调试理论与实践</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script><script>
 (function() {
   function addWidgetsRenderer() {
@@ -6481,7 +6481,7 @@ cell outputs.
 
 .jp-Notebook .jp-Cell.jp-mod-dirty .jp-InputPrompt::before {
   color: var(--jp-warn-color1);
-  content: '&#8226;';
+  content: '•';
 }
 
 .jp-Notebook .jp-Cell.jp-mod-active.jp-mod-dirty .jp-Collapser {
@@ -7518,7 +7518,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[1]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">mosaic</span> <span class="kn">import</span> <span class="o">*</span>
@@ -7690,15 +7690,15 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-InputPrompt jp-InputArea-prompt">
 </div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="8.-%E8%B0%83%E8%AF%95%E7%90%86%E8%AE%BA%E4%B8%8E%E5%AE%9E%E8%B7%B5">8. &#35843;&#35797;&#29702;&#35770;&#19982;&#23454;&#36341;<a class="anchor-link" href="#8.-%E8%B0%83%E8%AF%95%E7%90%86%E8%AE%BA%E4%B8%8E%E5%AE%9E%E8%B7%B5">&#182;</a>
+<h1 id="8.-%E8%B0%83%E8%AF%95%E7%90%86%E8%AE%BA%E4%B8%8E%E5%AE%9E%E8%B7%B5">8. 调试理论与实践<a class="anchor-link" href="#8.-%E8%B0%83%E8%AF%95%E7%90%86%E8%AE%BA%E4%B8%8E%E5%AE%9E%E8%B7%B5">¶</a>
 </h1>
-<p><strong>Changelog &amp; &#21453;&#39304;</strong></p>
+<p><strong>Changelog & 反馈</strong></p>
 <ul>
-<li>pstree &#30340; Hard Test Case: &#38656;&#35201;&#21253;&#21547; &#8220;pstree&#8221; &#23383;&#26679;&#65292;&#20197;&#21450;&#36755;&#20986;&#21040;&#27491;&#30830;&#30340;&#27969;</li>
-<li>Online Judge &#34429;&#28982;&#22686;&#24378;&#20102;&#65292;&#20294;&#26816;&#26597;&#36824;&#26159;&#24456;&#26494;&#30340; (&#20165;&#26816;&#26597;&#36827;&#31243;)</li>
+<li>pstree 的 Hard Test Case: 需要包含 “pstree” 字样，以及输出到正确的流</li>
+<li>Online Judge 虽然增强了，但检查还是很松的 (仅检查进程)</li>
 </ul>
-<p><strong>&#32972;&#26223;&#22238;&#39038;</strong>&#65306;&#22312;&#24555;&#33410;&#22863;&#30340;&#12298;&#25805;&#20316;&#31995;&#32479;&#12299;&#35838;&#20013;&#65292;&#25554;&#20837;&#19968;&#20123; (&#37325;&#35201;&#24471;&#35201;&#21629;&#20294;&#19982;&#25805;&#20316;&#31995;&#32479;&#19981;&#23436;&#20840;&#30456;&#20851;&#30340;) &#20241;&#38386;&#20869;&#23481;&#12290;</p>
-<p><strong>&#26412;&#35762;&#20869;&#23481;</strong>&#65306;&#35843;&#35797;&#29702;&#35770;&#65306;Fault, Error &#21644; Failure&#65307;GDB &#20351;&#29992;&#25216;&#24039;&#12290;</p>
+<p><strong>背景回顾</strong>：在快节奏的《操作系统》课中，插入一些 (重要得要命但与操作系统不完全相关的) 休闲内容。</p>
+<p><strong>本讲内容</strong>：调试理论：Fault, Error 和 Failure；GDB 使用技巧。</p>
 </div>
 </div>
 </div>
@@ -7708,7 +7708,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[2]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'8.1'</span><span class="p">)</span>
@@ -7740,14 +7740,14 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-InputPrompt jp-InputArea-prompt">
 </div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>&#35843;&#35797;&#29702;&#35770;&#32473;&#20102;&#22823;&#23478;&#22312;&#36935;&#21040; &#8220;&#20219;&#20309;&#38382;&#39064;&#8221; &#26102;&#20505; self-check &#30340;&#21015;&#34920;&#65306;</p>
+<p>调试理论给了大家在遇到 “任何问题” 时候 self-check 的列表：</p>
 <ol>
-<li>&#26159;&#24590;&#26679;&#30340;&#31243;&#24207; (&#29366;&#24577;&#26426;) &#22312;&#36816;&#34892;&#65311;</li>
-<li>&#25105;&#20204;&#36935;&#21040;&#20102;&#24590;&#26679;&#30340; failure&#65311;</li>
-<li>&#25105;&#20204;&#33021;&#20174;&#29366;&#24577;&#26426;&#30340;&#36816;&#34892;&#20013;&#20174;&#26131;&#21040;&#38590;&#24471;&#21040;&#20160;&#20040;&#20449;&#24687;&#65311;</li>
-<li>&#22914;&#20309;&#20108;&#20998;&#26816;&#26597;&#36825;&#20123;&#20449;&#24687;&#21644; error &#20043;&#38388;&#30340;&#20851;&#32852;&#65311;</li>
+<li>是怎样的程序 (状态机) 在运行？</li>
+<li>我们遇到了怎样的 failure？</li>
+<li>我们能从状态机的运行中从易到难得到什么信息？</li>
+<li>如何二分检查这些信息和 error 之间的关联？</li>
 </ol>
-<p>&#30475;&#23436;&#20043;&#21518;&#30340;&#20363;&#23376;&#65292;&#20320;&#30456;&#20449;&#23545;&#36825;&#20010;&#36807;&#31243;&#20250;&#26377;&#26356;&#22909;&#30340;&#29702;&#35299;&#12290;</p>
+<p>看完之后的例子，你相信对这个过程会有更好的理解。</p>
 </div>
 </div>
 </div>
@@ -7757,7 +7757,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'8.2'</span><span class="p">)</span>
@@ -7789,7 +7789,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-InputPrompt jp-InputArea-prompt">
 </div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>&#27809;&#38169;&#65292;&#25105;&#20204;&#21482;&#35201;&#33021; &#8220;&#26816;&#26597;&#29366;&#24577;&#26426;&#30340;&#29366;&#24577;&#8221;&#65292;&#23601;&#21487;&#20197;&#35843;&#35797;/&#35786;&#26029;&#35745;&#31639;&#26426;&#31995;&#32479;&#20013;&#36935;&#21040;&#30340; &#8220;&#20219;&#20309;&#38382;&#39064;&#8221;&#65292;&#26377;&#20123;&#30475;&#20284;&#33707;&#21517;&#20854;&#22937;&#30340;&#38382;&#39064;&#65292;&#22312; trace/log &#30340;&#24110;&#21161;&#19979;&#65292;&#20063;&#23601;&#33258;&#28982;&#26377;&#20102;&#22836;&#32490;&#12290;</p>
+<p>没错，我们只要能 “检查状态机的状态”，就可以调试/诊断计算机系统中遇到的 “任何问题”，有些看似莫名其妙的问题，在 trace/log 的帮助下，也就自然有了头绪。</p>
 </div>
 </div>
 </div>
@@ -7799,7 +7799,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'8.3'</span><span class="p">)</span>
@@ -7828,7 +7828,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[5]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">demo</span><span class="p">(</span><span class="s1">'printf'</span><span class="p">,</span> <span class="s1">'d/printf.c'</span><span class="p">)</span>
@@ -7860,7 +7860,7 @@ var element = document.getElementById('759017c8-903d-43ef-8ad3-ef38b426ebff');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[6]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">demo</span><span class="p">(</span><span class="s1">'nondet'</span><span class="p">,</span> <span class="s1">'d/nondet.c'</span><span class="p">)</span>
@@ -7892,7 +7892,7 @@ var element = document.getElementById('6d4bb22a-0ef7-4a55-8fc8-331d95f8def7');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[7]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">demo</span><span class="p">(</span><span class="s1">'mutex'</span><span class="p">,</span> <span class="s1">'d/mutex'</span><span class="p">,</span> <span class="n">libs</span><span class="o">=</span><span class="p">[</span><span class="s1">'thread.h'</span><span class="p">,</span> <span class="s1">'thread-sync.h'</span><span class="p">])</span>
@@ -7924,7 +7924,7 @@ var element = document.getElementById('a7e67430-0dac-4394-9d30-7cd03e3ad48a');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[8]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'8.4'</span><span class="p">)</span>
@@ -7953,7 +7953,7 @@ var element = document.getElementById('a7e67430-0dac-4394-9d30-7cd03e3ad48a');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[9]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">demo</span><span class="p">(</span><span class="s1">'mem-error'</span><span class="p">,</span> <span class="s1">'d/mem-error.c'</span><span class="p">)</span>
@@ -7988,7 +7988,7 @@ var element = document.getElementById('1fa3d4f5-d16f-4ca3-bd64-e6a9a1dcf34b');
 <div class="jp-InputPrompt jp-InputArea-prompt">
 </div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Sanitizer &#26159;&#19968;&#31867;&#37325;&#35201;&#30340; &#8220;&#21160;&#24577;&#31243;&#24207;&#20998;&#26512;&#8221;&#12290;&#25152;&#35859;&#21160;&#24577;&#65292;&#23601;&#26159;&#25351;&#35266;&#23519;&#31243;&#24207;&#30340;&#36816;&#34892; (&#21363;&#29366;&#24577;&#26426;&#30340;&#25191;&#34892;)&#12290;&#21160;&#24577;&#20998;&#26512;&#33021;&#32473;&#20986;&#35768;&#22810;&#31243;&#24207;&#26377;&#36259;&#30340;&#24615;&#36136;&#65292;&#21253;&#25324;&#24615;&#33021;&#21644;&#21151;&#33021;&#24615;&#30340; bugs&#12290;&#30456;&#24212;&#22320;&#65292;&#20063;&#26377;&#38745;&#24577;&#31243;&#24207;&#20998;&#26512;&#65292;&#21363;&#19981;&#22312;&#23454;&#38469;&#30340;&#29615;&#22659;&#20013;&#36816;&#34892;&#31243;&#24207;&#65292;&#23601;&#33021;&#23545;&#31243;&#24207;&#30340;&#34892;&#20026;&#20316;&#20986;&#39044;&#27979;&#8212;&#8212;&#32534;&#35793;&#22120;&#21644;&#32534;&#35793;&#20248;&#21270;&#23601;&#26159;&#19968;&#31867;&#37325;&#35201;&#30340;&#38745;&#24577;&#20998;&#26512;&#12290;</p>
+<p>Sanitizer 是一类重要的 “动态程序分析”。所谓动态，就是指观察程序的运行 (即状态机的执行)。动态分析能给出许多程序有趣的性质，包括性能和功能性的 bugs。相应地，也有静态程序分析，即不在实际的环境中运行程序，就能对程序的行为作出预测——编译器和编译优化就是一类重要的静态分析。</p>
 </div>
 </div>
 </div>
@@ -8001,33 +8001,33 @@ var element = document.getElementById('1fa3d4f5-d16f-4ca3-bd64-e6a9a1dcf34b');
 <div class="jp-InputPrompt jp-InputArea-prompt">
 </div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Take-away-Messages">Take-away Messages<a class="anchor-link" href="#Take-away-Messages">&#182;</a>
+<h2 id="Take-away-Messages">Take-away Messages<a class="anchor-link" href="#Take-away-Messages">¶</a>
 </h2>
-<p>&#35843;&#35797;&#29702;&#35770;&#65306;bug &#26159;&#22914;&#20309;&#21457;&#29983;&#30340;&#65311;</p>
+<p>调试理论：bug 是如何发生的？</p>
 <ul>
-<li>Fault &#8594; (&#27979;&#35797;) &#8594; Error &#8594; (&#26029;&#35328;) &#8594; Failure</li>
-<li>&#35843;&#35797;&#19968;&#20999;&#38382;&#39064;&#30340; checklist<ol>
-<li>&#26159;&#24590;&#26679;&#30340;&#31243;&#24207; (&#29366;&#24577;&#26426;) &#22312;&#36816;&#34892;&#65311;</li>
-<li>&#25105;&#20204;&#36935;&#21040;&#20102;&#24590;&#26679;&#30340; failure&#65311;</li>
-<li>&#25105;&#20204;&#33021;&#20174;&#29366;&#24577;&#26426;&#30340;&#36816;&#34892;&#20013;&#20174;&#26131;&#21040;&#38590;&#24471;&#21040;&#20160;&#20040;&#20449;&#24687;&#65311;</li>
-<li>&#22914;&#20309;&#20108;&#20998;&#26816;&#26597;&#36825;&#20123;&#20449;&#24687;&#21644; error &#20043;&#38388;&#30340;&#20851;&#32852;&#65311;</li>
+<li>Fault → (测试) → Error → (断言) → Failure</li>
+<li>调试一切问题的 checklist<ol>
+<li>是怎样的程序 (状态机) 在运行？</li>
+<li>我们遇到了怎样的 failure？</li>
+<li>我们能从状态机的运行中从易到难得到什么信息？</li>
+<li>如何二分检查这些信息和 error 之间的关联？</li>
 </ol>
 </li>
 </ul>
-<p>&#27531;&#37239;&#30340;&#29616;&#23454;&#21644;&#38590;&#21548;&#30340;&#26412;&#36136;</p>
+<p>残酷的现实和难听的本质</p>
 <ul>
-<li>&#36947;&#29702;&#37117;&#25026;&#65292;&#20294;&#20986; bug &#20102;&#65292;&#36824;&#26159;&#19981;&#30693;&#36947;&#24590;&#20040;&#21150;&#65311;&#19968;&#21477;&#38590;&#21548;&#30340;&#35805;&#65306;&#20320;&#23545;&#20195;&#30721;&#30340;&#20851;&#38190;&#37096;&#20998;&#36824;&#19981;&#29087;&#24713;&#12290;&#26681;&#25454;&#35843;&#35797;&#29702;&#35770;&#65292;&#20320;&#36824;&#19981;&#30693;&#36947;&#22914;&#20309;&#21028;&#23450;&#31243;&#24207;&#29366;&#24577;&#26159;&#21542;&#27491;&#30830;&#65292;&#25110;&#26159;&#23545;&#22914;&#20309;&#31616;&#21270;&#31243;&#24207;&#29366;&#24577;&#36824;&#27809;&#26377;&#32463;&#39564;&#65306;<ul>
-<li>&#32534;&#31243;&#22522;&#30784;&#19981;&#29282;&#22266;</li>
-<li>&#23545;&#39033;&#30446;&#20195;&#30721;&#19981;&#29702;&#35299;</li>
-<li>&#26368;&#26681;&#26412;&#30340;&#21407;&#22240;&#65306;&#25265;&#26377; &#8220;&#25105;&#19981;&#29702;&#35299;&#36825;&#20010;&#20063;&#34892;&#8221; &#30340;&#20389;&#24184;&#24515;&#29702;</li>
+<li>道理都懂，但出 bug 了，还是不知道怎么办？一句难听的话：你对代码的关键部分还不熟悉。根据调试理论，你还不知道如何判定程序状态是否正确，或是对如何简化程序状态还没有经验：<ul>
+<li>编程基础不牢固</li>
+<li>对项目代码不理解</li>
+<li>最根本的原因：抱有 “我不理解这个也行” 的侥幸心理</li>
 </ul>
 </li>
 </ul>
-<h3 id="%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">&#35838;&#21518;&#20064;&#39064;/&#32534;&#31243;&#20316;&#19994;<a class="anchor-link" href="#%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">&#182;</a>
+<h3 id="%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">课后习题/编程作业<a class="anchor-link" href="#%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">¶</a>
 </h3>
-<h4 id="1.-%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5">1. &#32534;&#31243;&#23454;&#36341;<a class="anchor-link" href="#1.-%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5">&#182;</a>
+<h4 id="1.-%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5">1. 编程实践<a class="anchor-link" href="#1.-%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5">¶</a>
 </h4>
-<p>&#38024;&#23545;&#20320;&#36817;&#26399;&#35843;&#35797;&#36807;&#30340;&#31243;&#24207;&#65292;&#36890;&#36807;&#37197;&#32622; GDB&#12289;vscode &#31561;&#65292;&#20248;&#21270;&#20320;&#30340;&#35843;&#35797;&#20307;&#39564;&#12290;&#25105;&#20204;&#24314;&#35758;&#25226;&#36825;&#20123;&#37197;&#32622;&#36319;&#38543;&#23454;&#39564;&#26694;&#26550;&#65292;&#36825;&#20250;&#22823;&#24133;&#25552;&#21319;&#20320;&#30340;&#23454;&#39564;&#20307;&#39564;&#65292;&#20174;&#32780;&#28040;&#38500;&#20320; &#8220;&#25105;&#19981;&#29702;&#35299;&#36825;&#20010;&#20063;&#34892;&#8221; &#30340;&#24515;&#24577;&#12290;</p>
+<p>针对你近期调试过的程序，通过配置 GDB、vscode 等，优化你的调试体验。我们建议把这些配置跟随实验框架，这会大幅提升你的实验体验，从而消除你 “我不理解这个也行” 的心态。</p>
 </div>
 </div>
 </div>
@@ -8039,7 +8039,7 @@ var element = document.getElementById('1fa3d4f5-d16f-4ca3-bd64-e6a9a1dcf34b');
   <span class="text-muted">
     <center>
 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="/static/img/cc-4.0.png"></a>
-    &#160;&#160;&#160;<a style="color:inherit" href="https://beian.miit.gov.cn/">&#33487; ICP &#22791; 2020049101 &#21495;</a>
+       <a style="color:inherit" href="https://beian.miit.gov.cn/">苏 ICP 备 2020049101 号</a>
     </center>
   </span>
 </div>

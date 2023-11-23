@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -137,7 +137,7 @@ hr {
 </style>
 
 
-  <title>Klib: &#25805;&#20316;&#31995;&#32479;&#20869;&#26680;&#26368;&#23567;&#30340;&#36816;&#34892;&#24211;</title>
+  <title>Klib: 操作系统内核最小的运行库</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -149,15 +149,15 @@ hr {
 <div class="px-2 py-1 w-full fixed z-50 bg-gradient-to-r from-black via-purple-700 via-purple-500 shadow-lg" style="-webkit-backdrop-filter: saturate(150%) blur(4px); backdrop-filter: saturate(150%) blur(4px)">
   <form>
     <a href="../index.html"><span class="text-lg px-2 text-white">Yanyan's Wiki</span></a>
-    <a href="../OS/2023/index.html"><span class="text-sm px-2 text-white">&#25805;&#20316;&#31995;&#32479; (2023)</span></a>
+    <a href="../OS/2023/index.html"><span class="text-sm px-2 text-white">操作系统 (2023)</span></a>
     <input maxlength="9" id="token-input" class="float-right appearance-none border border-transparent px-2 py-1 w-20 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-xs focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent font-mono" type="text" placeholder="TOKEN" oninput="login();">
   </form>
 </div>
 
 <div class="article container mx-auto md:px-8 lg:px-8 xl:px-8 2xl:px-8 shadow-lg border pb-8 pt-10 max-w-screen-md text-justify divide-y-2 divide-white">
-  <div><h1 id="klib" class=" text-2xl mt-2 font-sans">Klib: &#25805;&#20316;&#31995;&#32479;&#20869;&#26680;&#26368;&#23567;&#30340;&#36816;&#34892;&#24211;</h1>
-<p class=" font-serif my-1">AbstractMachine &#25552;&#20379;&#30340; API &#21482;&#26159; &#8220;&#26368;&#23569;&#8221; &#30340;&#12289;&#29992;&#20110;&#35775;&#38382;&#30828;&#20214;&#30340; API&#12290;&#22914;&#26524;&#20320;&#24076;&#26395;&#20889;&#19968;&#28857;&#30495;&#27491;&#30340;&#20195;&#30721;&#65292;&#24517;&#23450;&#20250;&#28041;&#21450;&#35768;&#22810;&#24212;&#29992;&#36923;&#36753;&#65292;&#24120;&#29992;&#30340;&#20869;&#23384;/&#23383;&#31526;&#20018;&#22788;&#29702;&#12289;&#25277;&#35937;&#25968;&#25454;&#31867;&#22411;&#8230;&#8230;&#25105;&#20204;&#32473;&#22823;&#23478;&#21015;&#20986;&#20102;&#19968;&#20123;&#20320;&#20204;&#22312;&#23454;&#29616;&#25805;&#20316;&#31995;&#32479;&#20013;&#21487;&#33021;&#20250;&#29992;&#21040;&#30340;&#20989;&#25968;&#65292;&#23427;&#20204;&#30475;&#36215;&#26469;&#23601;&#20687;&#26159; C &#26631;&#20934;&#24211;&#30340;&#23376;&#38598;&#12290;</p>
-<h3 id="1-c-klibh" class=" text-lg mt-2 pb-2 font-sans">1. &#24120;&#29992; C &#35821;&#35328;&#20989;&#25968; (klib.h)</h3>
+  <div><h1 id="klib" class=" text-2xl mt-2 font-sans">Klib: 操作系统内核最小的运行库</h1>
+<p class=" font-serif my-1">AbstractMachine 提供的 API 只是 “最少” 的、用于访问硬件的 API。如果你希望写一点真正的代码，必定会涉及许多应用逻辑，常用的内存/字符串处理、抽象数据类型……我们给大家列出了一些你们在实现操作系统中可能会用到的函数，它们看起来就像是 C 标准库的子集。</p>
+<h3 id="1-c-klibh" class=" text-lg mt-2 pb-2 font-sans">1. 常用 C 语言函数 (klib.h)</h3>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="c1">// string.h</span>
 <span class="kt">void</span><span class="w">  </span><span class="o">*</span><span class="nf">memset</span><span class="w">    </span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">n</span><span class="p">);</span>
 <span class="kt">void</span><span class="w">  </span><span class="o">*</span><span class="nf">memcpy</span><span class="w">    </span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">dst</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">src</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">n</span><span class="p">);</span>
@@ -186,14 +186,14 @@ hr {
 <span class="kt">int</span><span class="w">    </span><span class="nf">vsnprintf</span><span class="w"> </span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">str</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">size</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">format</span><span class="p">,</span><span class="w"> </span><span class="kt">va_list</span><span class="w"> </span><span class="n">ap</span><span class="p">);</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">&#25105;&#20204;&#34429;&#28982;&#22768;&#26126;&#20102;&#36825;&#20123;&#20989;&#25968;&#65292;&#20294;&#22914;&#26524;&#20320;&#35843;&#29992;&#23427;&#20204;&#30340;&#35805;&#65292;&#20250;&#24471;&#21040;&#19968;&#20010;&#26080;&#24773;&#30340; panic&#12290;&#26597;&#30475;&#20195;&#30721;&#20250;&#21457;&#29616;&#25152;&#26377;&#36825;&#20123;&#20989;&#25968;&#34429;&#28982;&#23450;&#20102;&#23454;&#29616;&#65292;&#20294;&#21364;&#26080;&#19968;&#20363;&#22806;&#26159; &#8220;&#31354;&#30340;&#8221;&#12290;&#27809;&#38169;&#65292;&#36825;&#20123;&#24211;&#20989;&#25968;&#26159;&#29992; C &#35821;&#35328;&#21644; AbstractMachine &#20849;&#21516;&#23454;&#29616;&#30340;&#8212;&#8212;&#25105;&#20204;&#24050;&#32463;&#20934;&#22791;&#22909;&#20102;&#25277;&#35937;&#23618;&#65292;&#37027;&#20040;&#21097;&#19979;&#30340;&#20219;&#21153;&#23601;&#26159;&#32534;&#31243;&#20064;&#39064;&#20102;&#12290;&#20851;&#20110;&#36825;&#20123;&#20989;&#25968;&#65292;Linux manpages &#26159;&#24456;&#19981;&#38169;&#30340;&#36215;&#28857; (&#32780;&#19981;&#26159;&#23545;&#23427;&#20204;&#30340;&#34892;&#20026;&#24819;&#24403;&#28982;)&#8212;&#8212;&#20320;&#19981;&#24517;&#23454;&#29616;&#24471;&#21644;&#31995;&#32479;&#23436;&#20840;&#19968;&#33268;&#65292;&#27605;&#31455;&#36825;&#20123;&#20989;&#25968;&#30340;&#20351;&#29992;&#32773;&#26159;&#20320;&#20204;&#33258;&#24049;&#12290;</p>
+<p class=" font-serif my-1">我们虽然声明了这些函数，但如果你调用它们的话，会得到一个无情的 panic。查看代码会发现所有这些函数虽然定了实现，但却无一例外是 “空的”。没错，这些库函数是用 C 语言和 AbstractMachine 共同实现的——我们已经准备好了抽象层，那么剩下的任务就是编程习题了。关于这些函数，Linux manpages 是很不错的起点 (而不是对它们的行为想当然)——你不必实现得和系统完全一致，毕竟这些函数的使用者是你们自己。</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">printf</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">fmt</span><span class="p">,</span><span class="w"> </span><span class="p">...)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">panic</span><span class="p">(</span><span class="s">"Not implemented"</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<h3 id="2-klib-macrosh" class=" text-lg mt-2 pb-2 font-sans">2. &#19968;&#20123;&#26377;&#29992;&#30340;&#23439; (klib-macros.h)</h3>
-<p class=" font-serif my-1">&#27604;&#36215;&#19978;&#38754;&#30340;&#24211;&#65292;&#25105;&#20204;&#36824;&#32473;&#22823;&#23478;&#25552;&#20379;&#20102;&#24456;&#22810;&#26377;&#24847;&#20041;&#30340;&#23439;&#12290;&#23439;&#30340;&#23454;&#29616;&#27604;&#24211;&#35201;&#38590;&#19968;&#20123; (&#36890;&#24120;&#22823;&#23478;&#29087;&#32451;&#31243;&#24230;&#20250;&#20302;&#19968;&#20123;)&#65292;&#25152;&#20197;&#25105;&#20204;&#23601;&#20195;&#21171;&#20102;&#12290;&#39318;&#20808;&#26159;&#26368;&#37325;&#35201;&#30340;&#19968;&#31995;&#21015;&#36741;&#21161;&#35843;&#35797;&#30340;&#23439;&#65306;</p>
+<h3 id="2-klib-macrosh" class=" text-lg mt-2 pb-2 font-sans">2. 一些有用的宏 (klib-macros.h)</h3>
+<p class=" font-serif my-1">比起上面的库，我们还给大家提供了很多有意义的宏。宏的实现比库要难一些 (通常大家熟练程度会低一些)，所以我们就代劳了。首先是最重要的一系列辅助调试的宏：</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#define assert(cond) \</span>
 <span class="cp">  do { \</span>
 <span class="cp">    if (!(cond)) { \</span>
@@ -215,37 +215,37 @@ hr {
 <span class="cp">#define panic(s) panic_on(1, s)</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">&#21487;&#19981;&#35201;&#20302;&#20272;&#36825;&#20123;&#30475;&#20284; &#8220;&#27809;&#29992;&#8221; &#30340;&#23439;&#8212;&#8212;&#20320;&#30340;&#31243;&#24207;&#37324;&#20805;&#28385;&#20102;&#21487;&#33021;&#20986;&#29616; bug &#30340;&#22320;&#26041;&#65292;&#32780;&#36827;&#34892;&#38450;&#24481;&#24615;&#22320;&#26816;&#26597;&#26159;&#24110;&#21161;&#20320;&#24555;&#36895;&#23450;&#20301; bug &#30340;&#26368;&#20339;&#26041;&#26696;&#65292;&#21542;&#21017;&#31561;&#21040;&#34394;&#25311;&#26426;&#37325;&#21551;/crash &#30340;&#26102;&#20505;&#20877;&#36827;&#34892;&#35843;&#35797;&#65292;&#20184;&#20986;&#30340;&#20195;&#20215;&#21487;&#20197;&#23601;&#22810;&#22810;&#20102;&#12290;</p>
-<p class=" font-serif my-1">&#27492;&#22806;&#65292;&#25105;&#20204;&#36824;&#23553;&#35013;&#20102;&#19968;&#20123;&#22823;&#23478;&#21487;&#33021;&#20250;&#29992;&#21040;&#30340;&#20989;&#25968;&#65292;&#20363;&#22914;&#20108;&#36827;&#21046;&#25972;&#25968;&#30340;&#21462;&#35777; (&#22312;&#20869;&#23384;&#31649;&#29702;&#26102;&#38750;&#24120;&#26377;&#29992;)&#12289;&#25968;&#32452;&#30340;&#38271;&#24230;&#12289;&#21306;&#38388;&#30340;&#21253;&#21547;&#20851;&#31995;&#31561;&#65306;</p>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#define ROUNDUP(a, sz)      ((((uintptr_t)a) + (sz) - 1) &amp; ~((sz) - 1))</span>
-<span class="cp">#define ROUNDDOWN(a, sz)    ((((uintptr_t)a)) &amp; ~((sz) - 1))</span>
+<p class=" font-serif my-1">可不要低估这些看似 “没用” 的宏——你的程序里充满了可能出现 bug 的地方，而进行防御性地检查是帮助你快速定位 bug 的最佳方案，否则等到虚拟机重启/crash 的时候再进行调试，付出的代价可以就多多了。</p>
+<p class=" font-serif my-1">此外，我们还封装了一些大家可能会用到的函数，例如二进制整数的取证 (在内存管理时非常有用)、数组的长度、区间的包含关系等：</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#define ROUNDUP(a, sz)      ((((uintptr_t)a) + (sz) - 1) & ~((sz) - 1))</span>
+<span class="cp">#define ROUNDDOWN(a, sz)    ((((uintptr_t)a)) & ~((sz) - 1))</span>
 <span class="cp">#define LENGTH(arr)         (sizeof(arr) / sizeof((arr)[0]))</span>
 <span class="cp">#define RANGE(st, ed)       (Area) { .start = (void *)(st), .end = (void *)(ed) }</span>
-<span class="cp">#define IN_RANGE(ptr, area) ((area).start &lt;= (ptr) &amp;&amp; (ptr) &lt; (area).end)</span>
+<span class="cp">#define IN_RANGE(ptr, area) ((area).start <= (ptr) && (ptr) < (area).end)</span>
 <span class="cp">#define putstr(s) \</span>
 <span class="cp">  ({ for (const char *p = s; *p; p++) putch(*p); })</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">&#22914;&#26524;&#24819;&#20351;&#29992; I/O &#35774;&#22791;&#65292;&#19979;&#38754;&#30340;&#23439;&#20063;&#23545; low-level &#30340; AbstractMachine API &#20316;&#20102;&#19968;&#28857;&#23567;&#23567;&#30340;&#21253;&#35013;&#65306;</p>
+<p class=" font-serif my-1">如果想使用 I/O 设备，下面的宏也对 low-level 的 AbstractMachine API 作了一点小小的包装：</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#define io_read(reg) \</span>
 <span class="cp">  ({ reg##_T __io_param; \</span>
-<span class="cp">    ioe_read(reg, &amp;__io_param); \</span>
+<span class="cp">    ioe_read(reg, &__io_param); \</span>
 <span class="cp">    __io_param; })</span>
 
 <span class="cp">#define io_write(reg, ...) \</span>
 <span class="cp">  ({ reg##_T __io_param = (reg##_T) { __VA_ARGS__ }; \</span>
-<span class="cp">    ioe_write(reg, &amp;__io_param); })</span>
+<span class="cp">    ioe_write(reg, &__io_param); })</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">&#36825;&#21487;&#20197;&#20351;&#24471;&#20320;&#21487;&#20197;&#30452;&#25509;&#35835;&#20986;/&#20889;&#20837;&#35774;&#22791;&#23492;&#23384;&#22120;&#32780;&#26080;&#38656;&#23450;&#20041;&#21464;&#37327;&#65292;&#20540;&#24471;&#22823;&#23478;&#33457;&#19968;&#28857;&#26102;&#38388;&#30740;&#31350;&#12290;</p>
-<h3 id="3" class=" text-lg mt-2 pb-2 font-sans">3. &#26356;&#22810;&#30340;&#24211;&#20989;&#25968;</h3>
-<p class=" font-serif my-1">&#20197;&#19978;&#24182;&#19981;&#26159;&#23454;&#29616;&#25805;&#20316;&#31995;&#32479;&#20320;&#25152;&#38656;&#30340;&#20840;&#37096;&#12290;&#23454;&#29616;&#25277;&#35937;&#25968;&#25454;&#31867;&#22411;&#65292;&#20363;&#22914;&#21015;&#34920;&#12289;&#38431;&#21015;&#31561;&#65292;&#20250;&#20351;&#20320;&#20107;&#21322;&#21151;&#20493;&#65292;&#19981;&#24517;&#22312;&#22797;&#26434;&#12289;&#38590;&#24230;&#30340;&#20195;&#30721;&#27877;&#28525;&#20013;&#25379;&#25166;&#12290;&#20854;&#20013;&#19968;&#20010;&#38750;&#24120;&#22909;&#30340;&#20363;&#23376;&#23601;&#26159; Linux &#30340; <code>list_head</code>&#12290;&#20132;&#32473;&#22823;&#23478; RTFM &#21862;&#65281;&#24403;&#28982;&#65292;&#22823;&#23478;&#22312;&#23454;&#29616; &#8220;&#26368;&#23567;&#8221; &#25805;&#20316;&#31995;&#32479;&#30340;&#26102;&#20505;&#65292;&#21487;&#20197;&#37319;&#29992;&#26356;&#31616;&#21333;&#30340;&#21150;&#27861;&#65292;&#20363;&#22914;&#38271;&#24230;&#22266;&#23450;&#30340;&#25968;&#32452;&#65292;&#36825;&#26679;&#21487;&#20197;&#26356;&#23481;&#26131;&#22320;&#20889;&#20986;&#27491;&#30830;&#30340;&#20195;&#30721;&#12290;</p></div>
+<p class=" font-serif my-1">这可以使得你可以直接读出/写入设备寄存器而无需定义变量，值得大家花一点时间研究。</p>
+<h3 id="3" class=" text-lg mt-2 pb-2 font-sans">3. 更多的库函数</h3>
+<p class=" font-serif my-1">以上并不是实现操作系统你所需的全部。实现抽象数据类型，例如列表、队列等，会使你事半功倍，不必在复杂、难度的代码泥潭中挣扎。其中一个非常好的例子就是 Linux 的 <code>list_head</code>。交给大家 RTFM 啦！当然，大家在实现 “最小” 操作系统的时候，可以采用更简单的办法，例如长度固定的数组，这样可以更容易地写出正确的代码。</p></div>
 </div>
 
 <div class="container text-xs py-3">
   <span class="text-muted">
     <center><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="../static/img/cc-4.0.png"></a>
-    &#160;&#160;&#160;<a style="color:inherit" href="https://beian.miit.gov.cn/">&#33487; ICP &#22791; 2020049101 &#21495;</a>
+       <a style="color:inherit" href="https://beian.miit.gov.cn/">苏 ICP 备 2020049101 号</a>
     </center>
   </span>
 </div>

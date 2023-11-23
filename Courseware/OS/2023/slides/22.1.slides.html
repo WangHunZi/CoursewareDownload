@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +209,7 @@ section .center {
 }
 </style>
 
-  <title>&#21160;&#24577;&#38142;&#25509;&#19982;&#21152;&#36733;&#21407;&#29702;</title>
+  <title>动态链接与加载原理</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,7 +227,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="22.1.slides.html" class=" text-amber-900">&#21160;&#24577;&#38142;&#25509;&#19982;&#21152;&#36733;&#21407;&#29702;</a></h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="22.1.slides.html" class=" text-amber-900">动态链接与加载原理</a></h1></div></div></div>
         
       
       </section>
@@ -238,28 +238,28 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#23454;&#29616;&#24211;&#30340;&#36816;&#34892;&#26102;&#21152;&#36733;</h2>
-<p class=" font-serif my-1">&#33509;&#24178;&#35201;&#32032;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">实现库的运行时加载</h2>
+<p class=" font-serif my-1">若干要素</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#32534;&#35793;&#25104;&#20301;&#32622;&#26080;&#20851;&#20195;&#30721;<ul class=" list-disc font-serif">
+<li class=" ml-8">编译成位置无关代码<ul class=" list-disc font-serif">
 <li class=" ml-8"><code>lea (0x400000), addr_of_x</code> (no)</li>
 <li class=" ml-8"><code>lea 12(%rip), addr_of_x</code> (yes)</li>
-<li class=" ml-8">&#36825;&#26159;&#32534;&#35793;&#22120;&#21487;&#20197;&#23454;&#29616;&#30340;</li>
+<li class=" ml-8">这是编译器可以实现的</li>
 </ul>
 </li>
-<li class=" ml-8">&#23545;&#22806;&#37096;&#24211;&#20989;&#25968;&#30340;&#35843;&#29992;&#26159;&#26597;&#34920;&#30340;<ul class=" list-disc font-serif">
+<li class=" ml-8">对外部库函数的调用是查表的<ul class=" list-disc font-serif">
 <li class=" ml-8"><code>call TABLE(x)</code></li>
 </ul>
 </li>
-<li class=" ml-8">&#22312;&#36816;&#34892; (&#21152;&#36733;) &#26102;&#22635;&#34920;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#21152;&#36733;&#26102;&#25226;&#23548;&#20986;&#30340;&#31526;&#21495;&#22635;&#20837; TABLE</li>
+<li class=" ml-8">在运行 (加载) 时填表<ul class=" list-disc font-serif">
+<li class=" ml-8">加载时把导出的符号填入 TABLE</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#25105;&#20204; &#8220;&#21457;&#26126;&#8221; &#20102; GOT (Global Offset Table)</p>
+<p class=" font-serif my-1">我们 “发明” 了 GOT (Global Offset Table)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#23601;&#26159; TABLE</li>
+<li class=" ml-8">就是 TABLE</li>
 </ul></div>
         
       
@@ -271,30 +271,30 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#19968;&#20010;&#26377;&#36259;&#30340;&#38382;&#39064;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">一个有趣的问题</h2>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">extern</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">foo</span><span class="p">();</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">&#32534;&#35793;&#22120;&#36935;&#21040;&#20989;&#25968;&#35843;&#29992;&#65292;&#24212;&#35813;&#32763;&#35793;&#25104;&#21738;&#31181;&#25351;&#20196;&#65311;</p>
+<p class=" font-serif my-1">编译器遇到函数调用，应该翻译成哪种指令？</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#22914;&#26524; foo &#26469;&#33258;&#21516;&#19968;&#20010;&#21160;&#24577;&#38142;&#25509;&#24211;<ul class=" list-disc font-serif">
+<li class=" ml-8">如果 foo 来自同一个动态链接库<ul class=" list-disc font-serif">
 <li class=" ml-8"><code>call foo</code></li>
 </ul>
 </li>
-<li class=" ml-8">&#22914;&#26524; foo &#26469;&#33258;&#21478;&#19968;&#20010;&#21160;&#24577;&#38142;&#25509;&#24211;<ul class=" list-disc font-serif">
+<li class=" ml-8">如果 foo 来自另一个动态链接库<ul class=" list-disc font-serif">
 <li class=" ml-8"><code>call TABLE(foo)</code></li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#25105;&#20204;&#21457;&#26126;&#20102; PLT (Procedure Linkage Table)</p>
+<p class=" font-serif my-1">我们发明了 PLT (Procedure Linkage Table)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20989;&#25968;&#23454;&#22312;&#22826;&#22810;&#20102;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#27599;&#20010;&#37117;&#26631;&#35760;&#21306;&#20998;&#65292;&#22826;&#38590;&#30475;&#20102;</li>
+<li class=" ml-8">函数实在太多了<ul class=" list-disc font-serif">
+<li class=" ml-8">每个都标记区分，太难看了</li>
 </ul>
 </li>
-<li class=" ml-8">&#32534;&#35793;&#22120;&#24635;&#26159;&#29983;&#25104;&#19968;&#20010;&#30452;&#25509;&#30340; call<ul class=" list-disc font-serif">
-<li class=" ml-8">&#26469;&#33258;&#21478;&#19968;&#20010;&#21160;&#24577;&#38142;&#25509;&#24211;&#65306;call putcahr@PLT</li>
+<li class=" ml-8">编译器总是生成一个直接的 call<ul class=" list-disc font-serif">
+<li class=" ml-8">来自另一个动态链接库：call putcahr@PLT</li>
 </ul>
 </li>
 </ul></div>

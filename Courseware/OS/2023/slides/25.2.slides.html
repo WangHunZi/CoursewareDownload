@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +209,7 @@ section .center {
 }
 </style>
 
-  <title>&#25345;&#20037;&#21270;&#23384;&#20648;&#65306;&#30913;</title>
+  <title>持久化存储：磁</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,7 +227,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="25.2.slides.html" class=" text-amber-900">&#25345;&#20037;&#21270;&#23384;&#20648;&#65306;&#30913;</a></h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="25.2.slides.html" class=" text-amber-900">持久化存储：磁</a></h1></div></div></div>
         
       
       </section>
@@ -238,10 +238,10 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#8220;&#25345;&#20037;&#21270;&#8221; &#21487;&#33021;&#27809;&#26377;&#24819;&#35937;&#30340;&#37027;&#20040;&#22256;&#38590;</h2>
-<p class=" font-serif my-1">&#25105;&#20204;&#21482;&#38656;&#35201;&#19968;&#20010; &#8220;&#33021;&#21453;&#22797;&#25913;&#20889;&#30340;&#29366;&#24577;&#8221;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">“持久化” 可能没有想象的那么困难</h2>
+<p class=" font-serif my-1">我们只需要一个 “能反复改写的状态”</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#24403;&#28982;&#65292;&#35201;&#33021;&#23547;&#22336; + &#29992;&#30005;&#36335;&#25913;&#20889;</li>
+<li class=" ml-8">当然，要能寻址 + 用电路改写</li>
 </ul>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/mag-draw-board.jpg" width="600px"></p></div>
         
@@ -254,17 +254,17 @@ section .center {
 
       
         
-        <div><h2 id="magnetic-tape-1928" class=" text-xl mt-2 pb-2 font-sans">&#30913;&#24102; (Magnetic Tape, 1928)</h2>
+        <div><h2 id="magnetic-tape-1928" class=" text-xl mt-2 pb-2 font-sans">磁带 (Magnetic Tape, 1928)</h2>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/fritz.jpg" width="350px"></p>
-<p class=" font-serif my-1">1D &#23384;&#20648;&#35774;&#22791;</p>
+<p class=" font-serif my-1">1D 存储设备</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25226; Bits &#8220;&#21367;&#36215;&#26469;&#8221;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#32440;&#24102;&#19978;&#22343;&#21248;&#31896;&#19978;&#38081;&#30913;&#24615;&#39063;&#31890;</li>
+<li class=" ml-8">把 Bits “卷起来”<ul class=" list-disc font-serif">
+<li class=" ml-8">纸带上均匀粘上铁磁性颗粒</li>
 </ul>
 </li>
-<li class=" ml-8">&#21482;&#38656;&#35201;&#19968;&#20010;&#26426;&#26800;&#37096;&#20214; (&#36716;&#21160;) &#23450;&#20301;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#35835;&#21462;&#65306;&#25918;&#22823;&#24863;&#24212;&#30005;&#27969;</li>
-<li class=" ml-8">&#20889;&#20837;&#65306;&#30005;&#30913;&#38081;&#30913;&#21270;&#30913;&#38024;</li>
+<li class=" ml-8">只需要一个机械部件 (转动) 定位<ul class=" list-disc font-serif">
+<li class=" ml-8">读取：放大感应电流</li>
+<li class=" ml-8">写入：电磁铁磁化磁针</li>
 </ul>
 </li>
 </ul>
@@ -283,31 +283,31 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#30913;&#24102;&#65306;&#20316;&#20026;&#23384;&#20648;&#35774;&#22791;&#30340;&#20998;&#26512;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">磁带：作为存储设备的分析</h2>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/mag-tape-today.jpg" width="300px"></p>
-<p class=" font-serif my-1">&#20998;&#26512;</p>
+<p class=" font-serif my-1">分析</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20215;&#26684;<ul class=" list-disc font-serif">
-<li class=" ml-8"><green>&#38750;&#24120;&#20302;</green> - &#37117;&#26159;&#24265;&#20215;&#30340;&#26448;&#26009;</li>
+<li class=" ml-8">价格<ul class=" list-disc font-serif">
+<li class=" ml-8"><green>非常低</green> - 都是廉价的材料</li>
 </ul>
 </li>
-<li class=" ml-8">&#23481;&#37327;<ul class=" list-disc font-serif">
-<li class=" ml-8"><green>&#38750;&#24120;&#39640;</green></li>
+<li class=" ml-8">容量<ul class=" list-disc font-serif">
+<li class=" ml-8"><green>非常高</green></li>
 </ul>
 </li>
-<li class=" ml-8">&#35835;&#20889;&#36895;&#24230;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#39034;&#24207;&#35835;&#21462;&#65306;<green>&#21193;&#24378;</green> - &#38656;&#35201;&#31561;&#24453;&#23450;&#20301;</li>
-<li class=" ml-8">&#38543;&#26426;&#35835;&#21462;&#65306;<red>&#20960;&#20046;&#23436;&#20840;&#19981;&#34892;</red></li>
+<li class=" ml-8">读写速度<ul class=" list-disc font-serif">
+<li class=" ml-8">顺序读取：<green>勉强</green> - 需要等待定位</li>
+<li class=" ml-8">随机读取：<red>几乎完全不行</red></li>
 </ul>
 </li>
-<li class=" ml-8">&#21487;&#38752;&#24615;<ul class=" list-disc font-serif">
-<li class=" ml-8"><red>&#23384;&#22312;&#26426;&#26800;&#37096;&#20214;</red>&#12289;<red>&#38656;&#35201;&#20445;&#23384;&#30340;&#29615;&#22659;&#33499;&#21051;</red></li>
+<li class=" ml-8">可靠性<ul class=" list-disc font-serif">
+<li class=" ml-8"><red>存在机械部件</red>、<red>需要保存的环境苛刻</red></li>
 </ul>
 </li>
 </ul>
-<p class=" font-serif my-1">&#20170;&#22825;&#30340;&#24212;&#29992;&#22330;&#26223;</p>
+<p class=" font-serif my-1">今天的应用场景</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20919;&#25968;&#25454;&#30340;&#23384;&#26723;&#21644;&#22791;&#20221;</li>
+<li class=" ml-8">冷数据的存档和备份</li>
 </ul></div>
         
       
@@ -319,15 +319,15 @@ section .center {
 
       
         
-        <div><h2 id="magnetic-drum-1932" class=" text-xl mt-2 pb-2 font-sans">&#30913;&#40723; (Magnetic Drum, 1932)</h2>
-<p class=" font-serif my-1">1D &#8594; 1.5D (1D x n)</p>
+        <div><h2 id="magnetic-drum-1932" class=" text-xl mt-2 pb-2 font-sans">磁鼓 (Magnetic Drum, 1932)</h2>
+<p class=" font-serif my-1">1D → 1.5D (1D x n)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#29992;&#26059;&#36716;&#30340;&#20108;&#32500;&#24179;&#38754;&#23384;&#20648;&#25968;&#25454;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#26080;&#27861;&#20869;&#21367;&#65292;&#23481;&#37327;&#21464;&#23567;</li>
+<li class=" ml-8">用旋转的二维平面存储数据<ul class=" list-disc font-serif">
+<li class=" ml-8">无法内卷，容量变小</li>
 </ul>
 </li>
-<li class=" ml-8">&#35835;&#20889;&#24310;&#36831;&#19981;&#20250;&#36229;&#36807;&#26059;&#36716;&#21608;&#26399;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#38543;&#26426;&#35835;&#20889;&#36895;&#24230;&#22823;&#24133;&#25552;&#21319;</li>
+<li class=" ml-8">读写延迟不会超过旋转周期<ul class=" list-disc font-serif">
+<li class=" ml-8">随机读写速度大幅提升</li>
 </ul>
 </li>
 </ul>
@@ -342,10 +342,10 @@ section .center {
 
       
         
-        <div><h2 id="hard-disk-1956" class=" text-xl mt-2 pb-2 font-sans">&#30913;&#30424; (Hard Disk, 1956)</h2>
-<p class=" font-serif my-1">1D &#8594; 2.5D (2D x n)</p>
+        <div><h2 id="hard-disk-1956" class=" text-xl mt-2 pb-2 font-sans">磁盘 (Hard Disk, 1956)</h2>
+<p class=" font-serif my-1">1D → 2.5D (2D x n)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#22312;&#20108;&#32500;&#24179;&#38754;&#19978;&#25918;&#32622;&#35768;&#22810;&#30913;&#24102; (&#20869;&#21367;)</li>
+<li class=" ml-8">在二维平面上放置许多磁带 (内卷)</li>
 </ul>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/disk-mechanism.jpg" width="700px"></p></div>
         
@@ -358,8 +358,8 @@ section .center {
 
       
         
-        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">&#30913;&#30424; (cont'd)</h2>
-<p class=" font-serif my-1">&#20811;&#26381;&#35768;&#22810;&#24037;&#31243;&#25361;&#25112;</p>
+        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">磁盘 (cont'd)</h2>
+<p class=" font-serif my-1">克服许多工程挑战</p>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/hard-disk-mag.jpg" width="800px"></p></div>
         
       
@@ -371,30 +371,30 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#30913;&#30424;&#65306;&#20316;&#20026;&#23384;&#20648;&#35774;&#22791;&#30340;&#20998;&#26512;</h2>
-<p class=" font-serif my-1">&#20998;&#26512;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">磁盘：作为存储设备的分析</h2>
+<p class=" font-serif my-1">分析</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20215;&#26684;<ul class=" list-disc font-serif">
-<li class=" ml-8"><green>&#20302;</green> - &#23494;&#24230;&#36234;&#39640;&#65292;&#25104;&#26412;&#36234;&#20302;</li>
+<li class=" ml-8">价格<ul class=" list-disc font-serif">
+<li class=" ml-8"><green>低</green> - 密度越高，成本越低</li>
 </ul>
 </li>
-<li class=" ml-8">&#23481;&#37327;<ul class=" list-disc font-serif">
-<li class=" ml-8"><green>&#39640;</green> (2.5D) - &#24179;&#38754;&#19978;&#21487;&#20197;&#26377;&#25968;&#19975;&#20010;&#30913;&#36947;</li>
+<li class=" ml-8">容量<ul class=" list-disc font-serif">
+<li class=" ml-8"><green>高</green> (2.5D) - 平面上可以有数万个磁道</li>
 </ul>
 </li>
-<li class=" ml-8">&#35835;&#20889;&#36895;&#24230;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#39034;&#24207;&#35835;&#21462;&#65306;<green>&#36739;&#39640;</green></li>
-<li class=" ml-8">&#38543;&#26426;&#35835;&#21462;&#65306;<green>&#21193;&#24378;</green></li>
+<li class=" ml-8">读写速度<ul class=" list-disc font-serif">
+<li class=" ml-8">顺序读取：<green>较高</green></li>
+<li class=" ml-8">随机读取：<green>勉强</green></li>
 </ul>
 </li>
-<li class=" ml-8">&#21487;&#38752;&#24615;<ul class=" list-disc font-serif">
-<li class=" ml-8"><red>&#23384;&#22312;&#26426;&#26800;&#37096;&#20214;&#65292;&#30913;&#22836;&#21010;&#20260;&#30424;&#29255;&#23548;&#33268;&#25968;&#25454;&#25439;&#22351;</red></li>
+<li class=" ml-8">可靠性<ul class=" list-disc font-serif">
+<li class=" ml-8"><red>存在机械部件，磁头划伤盘片导致数据损坏</red></li>
 </ul>
 </li>
 </ul>
-<p class=" font-serif my-1">&#20170;&#22825;&#30340;&#24212;&#29992;&#22330;&#26223;</p>
+<p class=" font-serif my-1">今天的应用场景</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#35745;&#31639;&#26426;&#31995;&#32479;&#30340;&#20027;&#21147;&#25968;&#25454;&#23384;&#20648; (<del>&#28023;&#37327;&#25968;&#25454;&#65306;&#20415;&#23452;&#25165;&#26159;&#29579;&#36947;</del>)</li>
+<li class=" ml-8">计算机系统的主力数据存储 (<del>海量数据：便宜才是王道</del>)</li>
 </ul></div>
         
       
@@ -406,25 +406,25 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#30913;&#30424;&#65306;&#24615;&#33021;&#35843;&#20248;</h2>
-<p class=" font-serif my-1">&#20026;&#20102;&#35835;/&#20889;&#19968;&#20010;&#25159;&#21306;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">磁盘：性能调优</h2>
+<p class=" font-serif my-1">为了读/写一个扇区</p>
 <ol class=" list-decimal font-serif">
-<li class=" ml-8">&#35835;&#20889;&#22836;&#38656;&#35201;&#21040;&#23545;&#24212;&#30340;&#30913;&#36947;<ul class=" list-disc font-serif">
-<li class=" ml-8">7200rpm &#8594; 120rps &#8594; &#8220;&#23547;&#36947;&#8221; &#26102;&#38388; 8.3ms</li>
+<li class=" ml-8">读写头需要到对应的磁道<ul class=" list-disc font-serif">
+<li class=" ml-8">7200rpm → 120rps → “寻道” 时间 8.3ms</li>
 </ul>
 </li>
-<li class=" ml-8">&#36716;&#36724;&#23558;&#30424;&#29255;&#26059;&#36716;&#21040;&#35835;&#20889;&#22836;&#30340;&#20301;&#32622;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#35835;&#20889;&#22836;&#31227;&#21160;&#26102;&#38388;&#36890;&#24120;&#20063;&#38656;&#35201;&#20960;&#20010; ms</li>
+<li class=" ml-8">转轴将盘片旋转到读写头的位置<ul class=" list-disc font-serif">
+<li class=" ml-8">读写头移动时间通常也需要几个 ms</li>
 </ul>
 </li>
 </ol>
 <hr>
-<p class=" font-serif my-1">&#36890;&#36807;&#32531;&#23384;/&#35843;&#24230;&#31561;&#32531;&#35299;</p>
+<p class=" font-serif my-1">通过缓存/调度等缓解</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20363;&#22914;&#33879;&#21517;&#30340; &#8220;&#30005;&#26799;&#8221; &#35843;&#24230;&#31639;&#27861;</li>
-<li class=" ml-8">&#29616;&#20195; HDD &#37117;&#26377;&#24456;&#22909;&#30340; firmware &#31649;&#29702;&#30913;&#30424; I/O &#35843;&#24230;<ul class=" list-disc font-serif">
+<li class=" ml-8">例如著名的 “电梯” 调度算法</li>
+<li class=" ml-8">现代 HDD 都有很好的 firmware 管理磁盘 I/O 调度<ul class=" list-disc font-serif">
 <li class=" ml-8"><code>/sys/block/[dev]/queue</code></li>
-<li class=" ml-8"><code>[mq-deadline] none</code> (&#35835;&#20248;&#20808;&#65307;&#20294;&#20889;&#20063;&#19981;&#33267;&#20110;&#39295;&#27515;)</li>
+<li class=" ml-8"><code>[mq-deadline] none</code> (读优先；但写也不至于饿死)</li>
 </ul>
 </li>
 </ul></div>
@@ -438,14 +438,14 @@ section .center {
 
       
         
-        <div><h2 id="floppy-disk-1971" class=" text-xl mt-2 pb-2 font-sans">&#36719;&#30424; (Floppy Disk, 1971)</h2>
+        <div><h2 id="floppy-disk-1971" class=" text-xl mt-2 pb-2 font-sans">软盘 (Floppy Disk, 1971)</h2>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/pal-floppy.jpg" width="280px"></p>
-<p class=" font-serif my-1">&#25226;&#35835;&#20889;&#22836;&#21644;&#30424;&#29255;&#20998;&#24320;&#8212;&#8212;&#23454;&#29616;&#25968;&#25454;&#31227;&#21160;</p>
+<p class=" font-serif my-1">把读写头和盘片分开——实现数据移动</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#35745;&#31639;&#26426;&#19978;&#30340;&#36719;&#30424;&#39537;&#21160;&#22120; (<a href="https://www.bilibili.com/video/BV1BS4y1X76n" class=" text-amber-900">drive</a>) + &#21487;&#31227;&#21160;&#30340;&#30424;&#29255;<ul class=" list-disc font-serif">
+<li class=" ml-8">计算机上的软盘驱动器 (<a href="https://www.bilibili.com/video/BV1BS4y1X76n" class=" text-amber-900">drive</a>) + 可移动的盘片<ul class=" list-disc font-serif">
 <li class=" ml-8">8" (1971), 5.25" (1975), 3.5" (1981)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#26368;&#21021;&#30340;&#36719;&#30424;&#25104;&#26412;&#24456;&#20302;&#65292;&#23601;&#26159;&#20010;&#32440;&#22771;&#23376;</li>
-<li class=" ml-8">3.5 &#33521;&#23544;&#36719;&#30424;&#20026;&#20102;&#25552;&#39640;&#21487;&#38752;&#24615;&#65292;&#24050;&#32463;&#26159; &#8220;&#30828;&#8221; &#30340;&#20102;</li>
+<li class=" ml-8">最初的软盘成本很低，就是个纸壳子</li>
+<li class=" ml-8">3.5 英寸软盘为了提高可靠性，已经是 “硬” 的了</li>
 </ul>
 </li>
 </ul>
@@ -462,30 +462,30 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#36719;&#30424;&#65306;&#20316;&#20026;&#23384;&#20648;&#35774;&#22791;&#30340;&#20998;&#26512;</h2>
-<p class=" font-serif my-1">&#20998;&#26512;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">软盘：作为存储设备的分析</h2>
+<p class=" font-serif my-1">分析</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20215;&#26684;<ul class=" list-disc font-serif">
-<li class=" ml-8"><green>&#20302;</green> - &#22609;&#26009;&#12289;&#30424;&#29255;&#21644;&#19968;&#20123;&#23567;&#26448;&#26009;</li>
+<li class=" ml-8">价格<ul class=" list-disc font-serif">
+<li class=" ml-8"><green>低</green> - 塑料、盘片和一些小材料</li>
 </ul>
 </li>
-<li class=" ml-8">&#23481;&#37327;<ul class=" list-disc font-serif">
-<li class=" ml-8"><red>&#20302;</red> (&#26292;&#38706;&#30340;&#23384;&#20648;&#20171;&#36136;&#65292;&#23494;&#24230;&#21463;&#38480;)</li>
+<li class=" ml-8">容量<ul class=" list-disc font-serif">
+<li class=" ml-8"><red>低</red> (暴露的存储介质，密度受限)</li>
 </ul>
 </li>
-<li class=" ml-8">&#35835;&#20889;&#36895;&#24230;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#39034;&#24207;/&#38543;&#26426;&#35835;&#21462;&#65306;<red>&#20302;</red></li>
+<li class=" ml-8">读写速度<ul class=" list-disc font-serif">
+<li class=" ml-8">顺序/随机读取：<red>低</red></li>
 </ul>
 </li>
-<li class=" ml-8">&#21487;&#38752;&#24615;<ul class=" list-disc font-serif">
-<li class=" ml-8"><red>&#20302;</red> (&#26292;&#38706;&#30340;&#23384;&#20648;&#20171;&#36136;)</li>
+<li class=" ml-8">可靠性<ul class=" list-disc font-serif">
+<li class=" ml-8"><red>低</red> (暴露的存储介质)</li>
 </ul>
 </li>
 </ul>
-<p class=" font-serif my-1">&#20170;&#22825;&#30340;&#24212;&#29992;&#22330;&#26223;</p>
+<p class=" font-serif my-1">今天的应用场景</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#36538;&#22312;&#21338;&#29289;&#39302;&#20379;&#20154;&#21442;&#35266;</li>
-<li class=" ml-8">&#24443;&#24213;&#34987; USB Flash Disk &#26432;&#27515;</li>
+<li class=" ml-8">躺在博物馆供人参观</li>
+<li class=" ml-8">彻底被 USB Flash Disk 杀死</li>
 </ul></div>
         
       

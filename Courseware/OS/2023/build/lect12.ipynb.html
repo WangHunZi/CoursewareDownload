@@ -2,7 +2,7 @@
 <head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>12. &#30495;&#23454;&#19990;&#30028;&#30340;&#24182;&#21457; Bug</title>
+<title>12. 真实世界的并发 Bug</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script><script>
 (function() {
   function addWidgetsRenderer() {
@@ -6481,7 +6481,7 @@ cell outputs.
 
 .jp-Notebook .jp-Cell.jp-mod-dirty .jp-InputPrompt::before {
   color: var(--jp-warn-color1);
-  content: '&#8226;';
+  content: '•';
 }
 
 .jp-Notebook .jp-Cell.jp-mod-active.jp-mod-dirty .jp-Collapser {
@@ -7518,7 +7518,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[1]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">mosaic</span> <span class="kn">import</span> <span class="o">*</span>
@@ -7679,20 +7679,20 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-InputPrompt jp-InputArea-prompt">
 </div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="12.-%E7%9C%9F%E5%AE%9E%E4%B8%96%E7%95%8C%E7%9A%84%E5%B9%B6%E5%8F%91-Bug">12. &#30495;&#23454;&#19990;&#30028;&#30340;&#24182;&#21457; Bug<a class="anchor-link" href="#12.-%E7%9C%9F%E5%AE%9E%E4%B8%96%E7%95%8C%E7%9A%84%E5%B9%B6%E5%8F%91-Bug">&#182;</a>
+<h1 id="12.-%E7%9C%9F%E5%AE%9E%E4%B8%96%E7%95%8C%E7%9A%84%E5%B9%B6%E5%8F%91-Bug">12. 真实世界的并发 Bug<a class="anchor-link" href="#12.-%E7%9C%9F%E5%AE%9E%E4%B8%96%E7%95%8C%E7%9A%84%E5%B9%B6%E5%8F%91-Bug">¶</a>
 </h1>
-<p><strong>Changelog &amp; &#21453;&#39304;</strong></p>
+<p><strong>Changelog & 反馈</strong></p>
 <ul>
-<li>QEMU &#30340; monitor &#21738;&#21435;&#20102;&#65311;</li>
-<li>Mandelbrot set or Julia set? (&#25105;&#25214;&#21161;&#25945;&#26816;&#26597;&#20102;&#65292;&#20294;&#21161;&#25945;&#31455;&#28982;&#36824;&#27809;&#26377;&#22238;&#25105;)</li>
-<li>&#20462;&#22797;&#20102;&#21516;&#23398;&#25552;&#20986;&#30340; typo (&#27426;&#36814;&#22823;&#23478;&#25552;&#20986;&#20219;&#20309;&#38382;&#39064;&#65292;&#21253;&#25324;&#24847;&#35265;&#21644;&#24314;&#35758;)</li>
+<li>QEMU 的 monitor 哪去了？</li>
+<li>Mandelbrot set or Julia set? (我找助教检查了，但助教竟然还没有回我)</li>
+<li>修复了同学提出的 typo (欢迎大家提出任何问题，包括意见和建议)</li>
 </ul>
-<p><strong>&#32972;&#26223;&#22238;&#39038;</strong>&#65306;&#24403;&#25105;&#20204;&#22312;&#20889;&#31243;&#24207;&#30340;&#26102;&#20505;&#65292;&#25105;&#20204;&#20854;&#23454;&#26159;&#22312;&#20889; bug&#12290;&#26102;&#33267;&#20170;&#26085;&#65292;&#25105;&#20204;&#36824;&#27809;&#26377;&#26377;&#25928;&#12289;&#26041;&#20415;&#30340;&#25216;&#26415;&#33021;&#24110;&#21161;&#25105;&#20204;&#24555;&#36895;&#26500;&#24314;&#21487;&#38752;&#30340;&#36719;&#20214;&#31995;&#32479;&#12290;&#28982;&#32780;&#24182;&#21457; bugs &#8220;&#33509;&#38544;&#33509;&#29616;&#8221; &#30340;&#29305;&#24615;&#21448;&#23548;&#33268;&#23427;&#20204;&#32463;&#24120;&#36867;&#33073;&#24320;&#21457;&#20154;&#21592;&#30340;&#25484;&#25511;&#12290;</p>
-<p><strong>&#26412;&#35762;&#20869;&#23481;</strong>&#65306;&#24120;&#35265;&#30340;&#24182;&#21457; bugs</p>
+<p><strong>背景回顾</strong>：当我们在写程序的时候，我们其实是在写 bug。时至今日，我们还没有有效、方便的技术能帮助我们快速构建可靠的软件系统。然而并发 bugs “若隐若现” 的特性又导致它们经常逃脱开发人员的掌控。</p>
+<p><strong>本讲内容</strong>：常见的并发 bugs</p>
 <ul>
-<li>&#27515;&#38145;</li>
-<li>&#25968;&#25454;&#31454;&#20105;</li>
-<li>&#21407;&#23376;&#24615;&#21644;&#39034;&#24207;&#36829;&#21453;</li>
+<li>死锁</li>
+<li>数据竞争</li>
+<li>原子性和顺序违反</li>
 </ul>
 </div>
 </div>
@@ -7703,7 +7703,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[2]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'12.1'</span><span class="p">)</span>
@@ -7735,7 +7735,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-InputPrompt jp-InputArea-prompt">
 </div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>&#36825;&#20010;&#20107;&#25925;&#21578;&#35785;&#25105;&#20204;&#65306;&#22312;&#23433;&#20840;&#25912;&#20851;&#30340;&#31995;&#32479;&#20013;&#65292;&#29420;&#31435;&#30340;&#38450;&#25252;&#27169;&#22359;&#26159;&#24517;&#19981;&#21487;&#23569;&#30340;&#12290;&#20381;&#25454;&#35843;&#35797;&#29702;&#35770;&#65292;&#21363;&#20415;&#19981;&#26159;&#23433;&#20840;&#25912;&#20851;&#30340;&#31995;&#32479;&#65292;&#29420;&#31435;&#20110;&#31243;&#24207;&#23454;&#29616;&#30340;&#36923;&#36753;&#26816;&#26597; (assertions) &#21487;&#20197;&#22312;&#36719;&#20214;&#36896;&#25104;&#38382;&#39064;&#20043;&#21069; fail fast&#12290;</p>
+<p>这个事故告诉我们：在安全攸关的系统中，独立的防护模块是必不可少的。依据调试理论，即便不是安全攸关的系统，独立于程序实现的逻辑检查 (assertions) 可以在软件造成问题之前 fail fast。</p>
 </div>
 </div>
 </div>
@@ -7745,7 +7745,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'12.2'</span><span class="p">)</span>
@@ -7774,7 +7774,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="p">(</span><span class="s1">'m/deadlock-aa.py'</span><span class="p">,</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -10721,22 +10721,22 @@ function visualize(divname, MODEL) {
 <div id="container1" style="width:70%; height:400px; float:left; background-color: #eee"></div>
 <div id="code" style="width:30%; height:400px; overflow: scroll; float:left">
 <div class="highlight"><pre><span></span><span id="True-1"><span class="linenos"> 1</span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-</span><span id="True-2"><span class="linenos"> 2</span>  <span class="n">heap</span><span class="o">.</span><span class="n">table</span> <span class="o">=</span> <span class="s1">'&#9989;'</span>
+</span><span id="True-2"><span class="linenos"> 2</span>  <span class="n">heap</span><span class="o">.</span><span class="n">table</span> <span class="o">=</span> <span class="s1">'✅'</span>
 </span><span id="True-3"><span class="linenos"> 3</span>
 </span><span id="True-4"><span class="linenos"> 4</span>  <span class="c1"># 1st lock()</span>
 </span><span id="True-5"><span class="linenos"> 5</span>  <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
 </span><span id="True-6"><span class="linenos"> 6</span>    <span class="n">seen</span> <span class="o">=</span> <span class="n">heap</span><span class="o">.</span><span class="n">table</span>
-</span><span id="True-7"><span class="linenos"> 7</span>    <span class="n">heap</span><span class="o">.</span><span class="n">table</span> <span class="o">=</span> <span class="s1">'&#10060;'</span>
+</span><span id="True-7"><span class="linenos"> 7</span>    <span class="n">heap</span><span class="o">.</span><span class="n">table</span> <span class="o">=</span> <span class="s1">'❌'</span>
 </span><span id="True-8"><span class="linenos"> 8</span>    <span class="n">sys_sched</span><span class="p">()</span>
-</span><span id="True-9"><span class="linenos"> 9</span>    <span class="k">if</span> <span class="n">seen</span> <span class="o">==</span> <span class="s1">'&#9989;'</span><span class="p">:</span>
+</span><span id="True-9"><span class="linenos"> 9</span>    <span class="k">if</span> <span class="n">seen</span> <span class="o">==</span> <span class="s1">'✅'</span><span class="p">:</span>
 </span><span id="True-10"><span class="linenos">10</span>      <span class="k">break</span>
 </span><span id="True-11"><span class="linenos">11</span>
 </span><span id="True-12"><span class="linenos">12</span>  <span class="c1"># 2nd lock()</span>
 </span><span id="True-13"><span class="linenos">13</span>  <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
 </span><span id="True-14"><span class="linenos">14</span>    <span class="n">seen</span> <span class="o">=</span> <span class="n">heap</span><span class="o">.</span><span class="n">table</span>
-</span><span id="True-15"><span class="linenos">15</span>    <span class="n">heap</span><span class="o">.</span><span class="n">table</span> <span class="o">=</span> <span class="s1">'&#10060;'</span>
+</span><span id="True-15"><span class="linenos">15</span>    <span class="n">heap</span><span class="o">.</span><span class="n">table</span> <span class="o">=</span> <span class="s1">'❌'</span>
 </span><span id="True-16"><span class="linenos">16</span>    <span class="n">sys_sched</span><span class="p">()</span>
-</span><span id="True-17"><span class="linenos">17</span>    <span class="k">if</span> <span class="n">seen</span> <span class="o">==</span> <span class="s1">'&#9989;'</span><span class="p">:</span>
+</span><span id="True-17"><span class="linenos">17</span>    <span class="k">if</span> <span class="n">seen</span> <span class="o">==</span> <span class="s1">'✅'</span><span class="p">:</span>
 </span><span id="True-18"><span class="linenos">18</span>      <span class="k">break</span>
 </span></pre></div>
 </div>
@@ -10754,7 +10754,7 @@ function visualize(divname, MODEL) {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[5]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'12.3'</span><span class="p">)</span>
@@ -10783,7 +10783,7 @@ function visualize(divname, MODEL) {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[6]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">demo</span><span class="p">(</span><span class="s1">'peterson'</span><span class="p">,</span> <span class="s1">'c/peterson.c'</span><span class="p">,</span> <span class="n">libs</span><span class="o">=</span><span class="p">[</span><span class="s1">'thread.h'</span><span class="p">])</span>
@@ -10815,7 +10815,7 @@ var element = document.getElementById('c8799877-d37e-4606-8991-d32061d1b223');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[7]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'12.4'</span><span class="p">)</span>
@@ -10844,7 +10844,7 @@ var element = document.getElementById('c8799877-d37e-4606-8991-d32061d1b223');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[8]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># This is a "process-level" race</span>
@@ -10872,7 +10872,7 @@ var element = document.getElementById('c8799877-d37e-4606-8991-d32061d1b223');
 </span><span id="True-6"><span class="linenos"> 6</span>  <span class="n">sys_sched</span><span class="p">()</span>
 </span><span id="True-7"><span class="linenos"> 7</span>  
 </span><span id="True-8"><span class="linenos"> 8</span>  <span class="k">if</span> <span class="n">pid</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-</span><span id="True-9"><span class="linenos"> 9</span>    <span class="c1"># attacker: symlink file -&gt; /etc/passwd</span>
+</span><span id="True-9"><span class="linenos"> 9</span>    <span class="c1"># attacker: symlink file -> /etc/passwd</span>
 </span><span id="True-10"><span class="linenos">10</span>    <span class="n">sys_bwrite</span><span class="p">(</span><span class="s1">'file'</span><span class="p">,</span> <span class="p">(</span><span class="s1">'symlink'</span><span class="p">,</span> <span class="s1">'/etc/passwd'</span><span class="p">))</span>
 </span><span id="True-11"><span class="linenos">11</span>  <span class="k">else</span><span class="p">:</span>
 </span><span id="True-12"><span class="linenos">12</span>    <span class="c1"># sendmail (root): write to plain file</span>
@@ -10912,8 +10912,8 @@ var element = document.getElementById('c8799877-d37e-4606-8991-d32061d1b223');
 <div class="jp-InputPrompt jp-InputArea-prompt">
 </div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>&#8220;&#21407;&#23376;&#24615;&#8221; &#19968;&#30452;&#26159;&#24320;&#21457;&#32773;&#24076;&#26395;&#25317;&#26377;&#30340;&#8212;&#8212;&#23545;&#32534;&#31243;&#32773;&#32780;&#35328;&#65292;&#29702;&#24819;&#24773;&#20917;&#26159;&#19968;&#27573;&#20195;&#30721;&#30340;&#25191;&#34892;&#35201;&#20040;&#30475;&#36215;&#26469;&#22312;&#30636;&#38388;&#20840;&#37096;&#23436;&#25104;&#65292;&#35201;&#20040;&#22909;&#20687;&#23436;&#20840;&#27809;&#26377;&#25191;&#34892;&#36807;&#12290;&#20195;&#30721;&#20013;&#30340;&#21103;&#20316;&#29992;&#65306;&#20849;&#20139;&#20869;&#23384;&#20889;&#20837;&#12289;&#25991;&#20214;&#31995;&#32479;&#20889;&#20837;&#31561;&#65292;&#21017;&#37117;&#26159;&#23454;&#29616;&#21407;&#23376;&#24615;&#30340;&#38556;&#30861;&#12290;&#22240;&#20026; &#8220;&#21407;&#23376;&#24615;&#8221; &#22914;&#27492;&#35825;&#20154;&#65292;&#22312;&#35745;&#31639;&#26426;&#30828;&#20214;/&#31995;&#32479;&#23618;&#38754;&#25552;&#20379;&#21407;&#23376;&#24615;&#30340;&#23581;&#35797;&#19968;&#30452;&#37117;&#27809;&#26377;&#20572;&#27490;&#36807;&#65306;&#20174;&#25968;&#25454;&#24211;&#20107;&#21153; (transactions, tx) &#21040;&#36719;&#20214;&#21644;&#30828;&#20214;&#25903;&#25345;&#30340; <a href="https://dl.acm.org/doi/10.1145/165123.165164">Transactional Memory</a> &#8220;<a href="https://news.brown.edu/articles/2012/04/transaction">an idea ahead its time</a>&#8221; &#21040; <a href="https://dl.acm.org/doi/abs/10.1145/1629575.1629591">Operating System Transactions</a>&#65292;&#30452;&#21040;&#20170;&#22825;&#25105;&#20204;&#20381;&#28982;&#27809;&#26377;&#27599;&#20010;&#31243;&#24207;&#21592;&#37117;&#22402;&#25163;&#21487;&#24471;&#30340;&#21487;&#38752;&#21407;&#23376;&#24615;&#20445;&#38556;&#12290;</p>
-<p>&#32780;&#20445;&#35777;&#31243;&#24207;&#30340;&#25191;&#34892;&#39034;&#24207;&#23601;&#26356;&#22256;&#38590;&#20102;&#12290;Managed runtime &#23454;&#29616;&#33258;&#21160;&#20869;&#23384;&#31649;&#29702;&#12289;channel &#23454;&#29616;&#32447;&#31243;&#38388;&#36890;&#20449;&#31561;&#65292;&#37117;&#26159;&#20943;&#23569;&#31243;&#24207;&#21592;&#29359;&#38169;&#30340;&#25163;&#27573;&#12290;</p>
+<p>“原子性” 一直是开发者希望拥有的——对编程者而言，理想情况是一段代码的执行要么看起来在瞬间全部完成，要么好像完全没有执行过。代码中的副作用：共享内存写入、文件系统写入等，则都是实现原子性的障碍。因为 “原子性” 如此诱人，在计算机硬件/系统层面提供原子性的尝试一直都没有停止过：从数据库事务 (transactions, tx) 到软件和硬件支持的 <a href="https://dl.acm.org/doi/10.1145/165123.165164">Transactional Memory</a> “<a href="https://news.brown.edu/articles/2012/04/transaction">an idea ahead its time</a>” 到 <a href="https://dl.acm.org/doi/abs/10.1145/1629575.1629591">Operating System Transactions</a>，直到今天我们依然没有每个程序员都垂手可得的可靠原子性保障。</p>
+<p>而保证程序的执行顺序就更困难了。Managed runtime 实现自动内存管理、channel 实现线程间通信等，都是减少程序员犯错的手段。</p>
 </div>
 </div>
 </div>
@@ -10926,21 +10926,21 @@ var element = document.getElementById('c8799877-d37e-4606-8991-d32061d1b223');
 <div class="jp-InputPrompt jp-InputArea-prompt">
 </div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Take-away-Messages">Take-away Messages<a class="anchor-link" href="#Take-away-Messages">&#182;</a>
+<h2 id="Take-away-Messages">Take-away Messages<a class="anchor-link" href="#Take-away-Messages">¶</a>
 </h2>
-<p>&#20154;&#31867;&#26412;&#36136;&#19978;&#26159; sequential creature&#65292;&#22240;&#27492;&#24635;&#26159;&#36890;&#36807; &#8220;&#22359;&#30340;&#39034;&#24207;&#25191;&#34892;&#8221; &#36825;&#19968;&#31616;&#21270;&#27169;&#22411;&#21435;&#29702;&#35299;&#24182;&#21457;&#31243;&#24207;&#65292;&#20063;&#30456;&#24212;&#26377;&#20102;&#20004;&#31181;&#31867;&#22411;&#30340;&#24182;&#21457; bugs&#65306;</p>
+<p>人类本质上是 sequential creature，因此总是通过 “块的顺序执行” 这一简化模型去理解并发程序，也相应有了两种类型的并发 bugs：</p>
 <ul>
-<li>Atomicity violation&#65292;&#26412;&#24212;&#21407;&#23376;&#23436;&#25104;&#19981;&#34987;&#25171;&#26029;&#30340;&#20195;&#30721;&#34987;&#25171;&#26029;</li>
-<li>Order violation&#65292;&#26412;&#24212;&#25353;&#26576;&#20010;&#39034;&#24207;&#23436;&#25104;&#30340;&#26410;&#33021;&#34987;&#27491;&#30830;&#21516;&#27493;</li>
+<li>Atomicity violation，本应原子完成不被打断的代码被打断</li>
+<li>Order violation，本应按某个顺序完成的未能被正确同步</li>
 </ul>
-<p>&#19982;&#36825;&#20004;&#31867; bugs &#20851;&#32852;&#30340;&#19968;&#20010;&#37325;&#35201;&#38382;&#39064;&#26159;&#25968;&#25454;&#31454;&#20105;&#65292;&#21363;&#20004;&#20010;&#32447;&#31243;&#21516;&#26102;&#35775;&#38382;&#21516;&#19968;&#20869;&#23384;&#65292;&#19988;&#33267;&#23569;&#26377;&#19968;&#20010;&#26159;&#20889;&#12290;&#25968;&#25454;&#31454;&#20105;&#38750;&#24120;&#21361;&#38505;&#65292;&#22240;&#27492;&#25105;&#20204;&#22312;&#32534;&#31243;&#26102;&#35201;&#23613;&#21147;&#36991;&#20813;&#12290;</p>
-<h3 id="%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">&#35838;&#21518;&#20064;&#39064;/&#32534;&#31243;&#20316;&#19994;<a class="anchor-link" href="#%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">&#182;</a>
+<p>与这两类 bugs 关联的一个重要问题是数据竞争，即两个线程同时访问同一内存，且至少有一个是写。数据竞争非常危险，因此我们在编程时要尽力避免。</p>
+<h3 id="%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">课后习题/编程作业<a class="anchor-link" href="#%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">¶</a>
 </h3>
-<h4 id="1.-%E9%98%85%E8%AF%BB%E6%9D%90%E6%96%99">1. &#38405;&#35835;&#26448;&#26009;<a class="anchor-link" href="#1.-%E9%98%85%E8%AF%BB%E6%9D%90%E6%96%99">&#182;</a>
+<h4 id="1.-%E9%98%85%E8%AF%BB%E6%9D%90%E6%96%99">1. 阅读材料<a class="anchor-link" href="#1.-%E9%98%85%E8%AF%BB%E6%9D%90%E6%96%99">¶</a>
 </h4>
-<p>&#25945;&#31185;&#20070; <a href="https://pages.cs.wisc.edu/~remzi/OSTEP/">Operating Systems: Three Easy Pieces</a>:</p>
+<p>教科书 <a href="https://pages.cs.wisc.edu/~remzi/OSTEP/">Operating Systems: Three Easy Pieces</a>:</p>
 <ul>
-<li>&#31532; 32 &#31456; - Concurrency Bugs</li>
+<li>第 32 章 - Concurrency Bugs</li>
 </ul>
 </div>
 </div>
@@ -10953,7 +10953,7 @@ var element = document.getElementById('c8799877-d37e-4606-8991-d32061d1b223');
   <span class="text-muted">
     <center>
 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="/static/img/cc-4.0.png"></a>
-    &#160;&#160;&#160;<a style="color:inherit" href="https://beian.miit.gov.cn/">&#33487; ICP &#22791; 2020049101 &#21495;</a>
+       <a style="color:inherit" href="https://beian.miit.gov.cn/">苏 ICP 备 2020049101 号</a>
     </center>
   </span>
 </div>

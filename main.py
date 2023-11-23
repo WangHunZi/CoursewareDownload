@@ -2,6 +2,7 @@ import os
 import sys
 import requests
 import re
+import html
 from bs4 import BeautifulSoup
 from urllib.parse import urlparse
 
@@ -157,7 +158,20 @@ def file_fix():
                 file.write(change)
 
 
+def file_decode():
+    for root, dirs, files in os.walk(BASE_DIR):
+        for item in files:
+            if item.endswith(".html"):
+                with open(os.path.join(root, item), 'r', encoding='utf-8') as file:
+                    content = file.read()
+                change = html.unescape(content)
+
+                with open(os.path.join(root, item), 'w', encoding='utf-8') as file:
+                    file.write(change)
+
+
 if __name__ == "__main__":
     file_download_option()
     file_download()
     file_fix()
+    file_decode()

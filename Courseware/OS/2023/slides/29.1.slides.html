@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +209,7 @@ section .center {
 }
 </style>
 
-  <title>&#25345;&#20037;&#25968;&#25454;&#30340;&#21487;&#38752;&#24615;</title>
+  <title>持久数据的可靠性</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,7 +227,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="29.1.slides.html" class=" text-amber-900">&#25345;&#20037;&#25968;&#25454;&#30340;&#21487;&#38752;&#24615;</a></h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="29.1.slides.html" class=" text-amber-900">持久数据的可靠性</a></h1></div></div></div>
         
       
       </section>
@@ -238,10 +238,10 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25345;&#20037;&#23384;&#20648;&#65306;&#24615;&#33021;</h2>
-<p class=" font-serif my-1">&#23384;&#20648;&#65306;&#21482;&#35201; CPU (DMA) &#33021;&#22788;&#29702;&#24471;&#36807;&#26469;&#65292;&#25105;&#23601;&#33021;&#25552;&#20379;&#36275;&#22815;&#30340;&#24102;&#23485;&#65281;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">持久存储：性能</h2>
+<p class=" font-serif my-1">存储：只要 CPU (DMA) 能处理得过来，我就能提供足够的带宽！</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">Computer System &#30340; &#8220;industry&#8221; &#20256;&#32479;&#8212;&#8212;&#20570;&#30495;&#23454;&#26377;&#29992;&#30340;&#31995;&#32479;</li>
+<li class=" ml-8">Computer System 的 “industry” 传统——做真实有用的系统</li>
 </ul>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/emc-vnx5300.jpg" width="480px"></p></div>
         
@@ -254,13 +254,13 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25345;&#20037;&#23384;&#20648;&#65306;&#21487;&#38752;&#24615;</h2>
-<p class=" font-serif my-1">&#20219;&#20309;&#29289;&#29702;&#23384;&#20648;&#20171;&#36136;&#37117;&#26377;&#22833;&#25928;&#30340;&#21487;&#33021;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">持久存储：可靠性</h2>
+<p class=" font-serif my-1">任何物理存储介质都有失效的可能</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20020;&#26102;&#22833;&#25928;&#65306;Kernel panic&#65307;&#26029;&#30005;</li>
-<li class=" ml-8">&#27704;&#20037;&#22833;&#25928;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#26497;&#23567;&#27010;&#29575;&#20107;&#20214;&#65306;&#25112;&#20105;&#29190;&#21457;/&#19977;&#20307;&#20154;&#36827;&#25915;&#22320;&#29699;/&#19990;&#30028;&#27585;&#28781; &#128514;</li>
-<li class=" ml-8">&#23567;&#27010;&#29575;&#20107;&#20214;&#65306;&#30828;&#30424;&#25439;&#22351; (&#22823;&#37327;&#37325;&#22797; = &#24517;&#28982;&#21457;&#29983;)</li>
+<li class=" ml-8">临时失效：Kernel panic；断电</li>
+<li class=" ml-8">永久失效<ul class=" list-disc font-serif">
+<li class=" ml-8">极小概率事件：战争爆发/三体人进攻地球/世界毁灭 😂</li>
+<li class=" ml-8">小概率事件：硬盘损坏 (大量重复 = 必然发生)</li>
 </ul>
 </li>
 </ul>
@@ -276,16 +276,16 @@ section .center {
       
         
         <div><h2 id="failure-model-1-fail-stop" class=" text-xl mt-2 pb-2 font-sans">Failure Model (1): Fail-stop</h2>
-<p class=" font-serif my-1">&#30913;&#30424;&#21487;&#33021;&#22312;&#26576;&#20010;&#26102;&#21051;&#24573;&#28982;&#24443;&#24213;&#26080;&#27861;&#35775;&#38382;</p>
+<p class=" font-serif my-1">磁盘可能在某个时刻忽然彻底无法访问</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#26426;&#26800;&#25925;&#38556;&#12289;&#33455;&#29255;&#25925;&#38556;&#8230;&#8230;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#30913;&#30424;&#22909;&#20687;&#23601; &#8220;&#24573;&#28982;&#28040;&#22833;&#8221; &#20102; (&#25968;&#25454;&#23436;&#20840;&#20002;&#22833;)</li>
-<li class=" ml-8">&#20551;&#35774;&#30913;&#30424;&#33021;&#25253;&#21578;&#36825;&#20010;&#38382;&#39064; (&#22914;&#20309;&#25253;&#21578;&#65311;)</li>
+<li class=" ml-8">机械故障、芯片故障……<ul class=" list-disc font-serif">
+<li class=" ml-8">磁盘好像就 “忽然消失” 了 (数据完全丢失)</li>
+<li class=" ml-8">假设磁盘能报告这个问题 (如何报告？)</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#20320;&#30340;&#30913;&#30424;&#21457;&#29983; fail-stop &#20250;&#23545;&#20320;&#24102;&#26469;&#20160;&#20040;&#24433;&#21709;&#65311;</p></div>
+<p class=" font-serif my-1">你的磁盘发生 fail-stop 会对你带来什么影响？</p></div>
         
       
       </section>
@@ -297,19 +297,19 @@ section .center {
       
         
         <div><h2 id="failure-model-2-system-crash" class=" text-xl mt-2 pb-2 font-sans">Failure Model (2): System Crash</h2>
-<p class=" font-serif my-1">&#30495;&#23454;&#30340;&#30913;&#30424;</p>
+<p class=" font-serif my-1">真实的磁盘</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">bwrite &#20250;&#34987;&#30913;&#30424;&#32531;&#23384;&#65292;&#24182;&#19988;&#20197;&#19981;&#21487;&#25511;&#30340;&#39034;&#24207;&#34987; persist<ul class=" list-disc font-serif">
-<li class=" ml-8">&#22312;&#20219;&#20309;&#26102;&#20505;&#65292;&#31995;&#32479;&#37117;&#21487;&#33021; crash</li>
+<li class=" ml-8">bwrite 会被磁盘缓存，并且以不可控的顺序被 persist<ul class=" list-disc font-serif">
+<li class=" ml-8">在任何时候，系统都可能 crash</li>
 </ul>
 </li>
-<li class=" ml-8">bsync &#20250;&#31561;&#24453;&#25152;&#26377; bwrite &#33853;&#30424;</li>
+<li class=" ml-8">bsync 会等待所有 bwrite 落盘</li>
 </ul>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/ssd.png" width="700px"></p>
 <hr>
-<p class=" font-serif my-1">System crash &#20250;&#23545;&#20320;&#24102;&#26469;&#20160;&#20040;&#24433;&#21709;&#65311;</p>
+<p class=" font-serif my-1">System crash 会对你带来什么影响？</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#30495;&#30340;&#27809;&#26377;&#24433;&#21709;&#65311;(Model checker &#21578;&#35785;&#20320;&#24433;&#21709;)</li>
+<li class=" ml-8">真的没有影响？(Model checker 告诉你影响)</li>
 </ul></div>
         
       
@@ -321,10 +321,10 @@ section .center {
 
       
         
-        <div><h2 id="failure-mode" class=" text-xl mt-2 pb-2 font-sans">&#26356;&#22810;&#30340; Failure Mode</h2>
+        <div><h2 id="failure-mode" class=" text-xl mt-2 pb-2 font-sans">更多的 Failure Mode</h2>
 <p class=" font-serif my-1">Data corruption</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#30913;&#30424;&#30475;&#36215;&#26469;&#27491;&#24120;&#65292;&#20294;&#19968;&#37096;&#20998;&#25968;&#25454;&#22351;&#20102;</li>
+<li class=" ml-8">磁盘看起来正常，但一部分数据坏了</li>
 <li class=" ml-8"><a href="https://www.usenix.org/conference/fast-08/analysis-data-corruption-storage-stack" class=" text-amber-900">An analysis of data corruption in the storage stack</a> (FAST'08)</li>
 </ul>
 <hr>
@@ -333,7 +333,7 @@ section .center {
 <ul class=" list-disc font-serif">
 <li class=" ml-8">Firmware bug; device error; wear-out; configuration; environment; ...</li>
 <li class=" ml-8"><a href="https://www.usenix.org/system/files/login/articles/login_summer18_06_gunawi.pdf" class=" text-amber-900">Fail-slow at scale: Evidence of hardware performance faults in large production systems</a> (FAST'18)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#25105;&#20146;&#21382;&#36807; fail-slow &#30340; HDD!</li>
+<li class=" ml-8">我亲历过 fail-slow 的 HDD!</li>
 </ul>
 </li>
 </ul></div>

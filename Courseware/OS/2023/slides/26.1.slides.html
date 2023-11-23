@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +209,7 @@ section .center {
 }
 </style>
 
-  <title>&#36755;&#20837;&#36755;&#20986;&#35774;&#22791;&#21407;&#29702;</title>
+  <title>输入输出设备原理</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,7 +227,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="26.1.slides.html" class=" text-amber-900">&#36755;&#20837;&#36755;&#20986;&#35774;&#22791;&#21407;&#29702;</a></h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="26.1.slides.html" class=" text-amber-900">输入输出设备原理</a></h1></div></div></div>
         
       
       </section>
@@ -238,15 +238,15 @@ section .center {
 
       
         
-        <div><h2 id="cpu" class=" text-xl mt-2 pb-2 font-sans">&#23396;&#29420;&#30340; CPU</h2>
-<p class=" font-serif my-1">CPU &#21482;&#26159; &#8220;&#26080;&#24773;&#30340;&#25351;&#20196;&#25191;&#34892;&#26426;&#22120;&#8221;</p>
+        <div><h2 id="cpu" class=" text-xl mt-2 pb-2 font-sans">孤独的 CPU</h2>
+<p class=" font-serif my-1">CPU 只是 “无情的指令执行机器”</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#21462;&#25351;&#20196;&#12289;&#35793;&#30721;&#12289;&#25191;&#34892;</li>
+<li class=" ml-8">取指令、译码、执行</li>
 </ul>
 <hr>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/altair-8800.jpg" width="500px"></p>
-<p class=" font-serif my-1"></p><center>Altair-8800 (1975), with <a href="../../../pages/OS/manuals/i8080.pdf" class=" text-amber-900">Intel 8080A</a>; 256B &#26495;&#21345; RAM</center>
-<p class=" font-serif my-1"></p><center>(&#20320;&#38656;&#35201;&#22312;&#38754;&#26495;&#19978;&#25320;&#21160;&#24320;&#20851;&#36755;&#20837;&#25191;&#34892;&#25351;&#20196;&#30340;&#36215;&#22987;&#22320;&#22336;)</center></div>
+<p class=" font-serif my-1"></p><center>Altair-8800 (1975), with <a href="../../../pages/OS/manuals/i8080.pdf" class=" text-amber-900">Intel 8080A</a>; 256B 板卡 RAM</center>
+<p class=" font-serif my-1"></p><center>(你需要在面板上拨动开关输入执行指令的起始地址)</center></div>
         
       
       </section>
@@ -257,11 +257,11 @@ section .center {
 
       
         
-        <div><h2 id="cpu" class=" text-xl mt-2 pb-2 font-sans">CPU &#22914;&#20309;&#25351;&#25381; &#8220;&#22806;&#37096;&#8221; &#30340;&#35774;&#22791;&#65311;</h2>
-<p class=" font-serif my-1">&#38656;&#27714;&#65306;&#33021;&#21542;&#23454;&#29616;&#26680;&#24377;&#21457;&#23556;&#31665;&#65311;</p>
+        <div><h2 id="cpu" class=" text-xl mt-2 pb-2 font-sans">CPU 如何指挥 “外部” 的设备？</h2>
+<p class=" font-serif my-1">需求：能否实现核弹发射箱？</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#22914;&#20309;&#20351;&#35745;&#31639;&#26426;&#33021;<red>&#24863;&#30693;&#22806;&#37096;&#29366;&#24577;</red> (&#30524;&#30555;&#12289;&#32819;&#26421;)&#12289;<red>&#23545;&#22806;&#23454;&#26045;&#21160;&#20316;</red> (&#25163;)&#65311;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#35745;&#31639;&#26426;&#31995;&#32479;&#65306;&#35745;&#31639;&#39537;&#21160;&#30340;&#36755;&#20837;/&#36755;&#20986;</li>
+<li class=" ml-8">如何使计算机能<red>感知外部状态</red> (眼睛、耳朵)、<red>对外实施动作</red> (手)？<ul class=" list-disc font-serif">
+<li class=" ml-8">计算机系统：计算驱动的输入/输出</li>
 </ul>
 </li>
 </ul>
@@ -276,20 +276,20 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#31572;&#26696;&#65306;&#19968;&#26681;&#32447;</h2>
-<p class=" font-serif my-1">&#26680;&#24377;&#21457;&#23556;&#31665;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">答案：一根线</h2>
+<p class=" font-serif my-1">核弹发射箱</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25226;&#38053;&#21273;&#30340;&#29366;&#24577;&#20889;&#20837; flip/flop (0/1)&#65292;&#24182;&#37197;&#25351;&#31034;&#28783;</li>
-<li class=" ml-8">&#25226;&#25353;&#38062;&#30340;&#29366;&#24577;&#20889;&#20837; flip/flop (0/1)</li>
-<li class=" ml-8">CPU &#25552;&#20379;&#19968;&#26465;&#25351;&#20196;<ul class=" list-disc font-serif">
+<li class=" ml-8">把钥匙的状态写入 flip/flop (0/1)，并配指示灯</li>
+<li class=" ml-8">把按钮的状态写入 flip/flop (0/1)</li>
+<li class=" ml-8">CPU 提供一条指令<ul class=" list-disc font-serif">
 <li class=" ml-8">reg_read(x)</li>
-<li class=" ml-8">&#26816;&#27979;&#21040;&#25353;&#38062;&#21644;&#38053;&#21273;&#30340;&#35013;&#22635;&#65292;reg_write(launch, 1)</li>
+<li class=" ml-8">检测到按钮和钥匙的装填，reg_write(launch, 1)</li>
 </ul>
 </li>
-<li class=" ml-8">&#26816;&#27979;&#21040; launch &#23492;&#23384;&#22120;&#65292;&#21363;&#21457;&#23556;&#26680;&#24377;</li>
+<li class=" ml-8">检测到 launch 寄存器，即发射核弹</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">(&#36825;&#20010;&#21487;&#20197;&#20570;&#25968;&#23383;&#30005;&#36335;&#35838;&#30340;&#36873;&#20570;&#23454;&#39564;)</p></div>
+<p class=" font-serif my-1">(这个可以做数字电路课的选做实验)</p></div>
         
       
       </section>
@@ -300,18 +300,18 @@ section .center {
 
       
         
-        <div><h2 id="io" class=" text-xl mt-2 pb-2 font-sans">I/O &#35774;&#22791;&#65306;&#8220;&#35745;&#31639;&#8221; &#21644; &#8220;&#29289;&#29702;&#19990;&#30028;&#8221; &#20043;&#38388;&#30340;&#26725;&#26753;</h2>
-<p class=" font-serif my-1">I/O &#35774;&#22791; (CPU &#35270;&#35282;)&#65306;&#8220;<red>&#19968;&#20010;&#33021;&#19982; CPU &#20132;&#25442;&#25968;&#25454;&#30340;&#25509;&#21475;/&#25511;&#21046;&#22120;</red>&#8221;</p>
+        <div><h2 id="io" class=" text-xl mt-2 pb-2 font-sans">I/O 设备：“计算” 和 “物理世界” 之间的桥梁</h2>
+<p class=" font-serif my-1">I/O 设备 (CPU 视角)：“<red>一个能与 CPU 交换数据的接口/控制器</red>”</p>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/canonical-device.png" width="700px"></p>
-<p class=" font-serif my-1">&#35828;&#20154;&#35805;</p>
+<p class=" font-serif my-1">说人话</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#23601;&#26159; &#8220;&#20960;&#32452;&#32422;&#23450;&#22909;&#21151;&#33021;&#30340;&#32447;&#8221; (RTFM)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#36890;&#36807;&#25569;&#25163;&#20449;&#21495;&#20174;&#32447;&#19978;&#35835;&#20986;/&#20889;&#20837;&#25968;&#25454;</li>
+<li class=" ml-8">就是 “几组约定好功能的线” (RTFM)<ul class=" list-disc font-serif">
+<li class=" ml-8">通过握手信号从线上读出/写入数据</li>
 </ul>
 </li>
-<li class=" ml-8">&#27599;&#19968;&#32452;&#32447;&#26377;&#33258;&#24049;&#30340;&#22320;&#22336;<ul class=" list-disc font-serif">
-<li class=" ml-8">CPU &#21487;&#20197;&#30452;&#25509;&#20351;&#29992;&#25351;&#20196; (in/out/MMIO) &#21644;&#35774;&#22791;&#20132;&#25442;&#25968;&#25454;</li>
-<li class=" ml-8">(CPU &#23436;&#20840;&#19981;&#31649;&#35774;&#22791;&#20855;&#20307;&#26159;&#22914;&#20309;&#23454;&#29616;&#30340;)</li>
+<li class=" ml-8">每一组线有自己的地址<ul class=" list-disc font-serif">
+<li class=" ml-8">CPU 可以直接使用指令 (in/out/MMIO) 和设备交换数据</li>
+<li class=" ml-8">(CPU 完全不管设备具体是如何实现的)</li>
 </ul>
 </li>
 </ul></div>
@@ -325,23 +325,23 @@ section .center {
 
       
         
-        <div><h2 id="1-uart" class=" text-xl mt-2 pb-2 font-sans">&#20363;&#23376; (1): &#20018;&#21475; (UART)</h2>
-<p class=" font-serif my-1">&#8220;COM1&#8221;; <code>putch()</code> &#30340;&#23454;&#29616;</p>
+        <div><h2 id="1-uart" class=" text-xl mt-2 pb-2 font-sans">例子 (1): 串口 (UART)</h2>
+<p class=" font-serif my-1">“COM1”; <code>putch()</code> 的实现</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#define COM1 0x3f8</span>
 
 <span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">uart_init</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">outb</span><span class="p">(</span><span class="n">COM1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w">   </span><span class="c1">// &#25511;&#21046;&#22120;&#30456;&#20851;&#32454;&#33410;</span>
+<span class="w">  </span><span class="n">outb</span><span class="p">(</span><span class="n">COM1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w">   </span><span class="c1">// 控制器相关细节</span>
 <span class="w">  </span><span class="n">outb</span><span class="p">(</span><span class="n">COM1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mh">0x80</span><span class="p">);</span>
 <span class="w">  </span><span class="n">outb</span><span class="p">(</span><span class="n">COM1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">115200</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">9600</span><span class="p">);</span>
 <span class="w">  </span><span class="p">...</span>
 <span class="p">}</span>
 
 <span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">uart_tx</span><span class="p">(</span><span class="n">AM_UART_TX_T</span><span class="w"> </span><span class="o">*</span><span class="n">send</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">outb</span><span class="p">(</span><span class="n">COM1</span><span class="p">,</span><span class="w"> </span><span class="n">send</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">);</span>
+<span class="w">  </span><span class="n">outb</span><span class="p">(</span><span class="n">COM1</span><span class="p">,</span><span class="w"> </span><span class="n">send</span><span class="o">-></span><span class="n">data</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">uart_rx</span><span class="p">(</span><span class="n">AM_UART_RX_T</span><span class="w"> </span><span class="o">*</span><span class="n">recv</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">recv</span><span class="o">-&gt;</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">inb</span><span class="p">(</span><span class="n">COM1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0x1</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">inb</span><span class="p">(</span><span class="n">COM1</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
+<span class="w">  </span><span class="n">recv</span><span class="o">-></span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">inb</span><span class="p">(</span><span class="n">COM1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="o">&</span><span class="w"> </span><span class="mh">0x1</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">inb</span><span class="p">(</span><span class="n">COM1</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div></div>
         
@@ -354,38 +354,38 @@ section .center {
 
       
         
-        <div><h2 id="2" class=" text-xl mt-2 pb-2 font-sans">&#20363;&#23376; (2): &#38190;&#30424;&#25511;&#21046;&#22120;</h2>
+        <div><h2 id="2" class=" text-xl mt-2 pb-2 font-sans">例子 (2): 键盘控制器</h2>
 <p class=" font-serif my-1">IBM PC/AT 8042 PS/2 (Keyboard) Controller</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#8220;&#30828;&#32534;&#30721;&#8221; &#21040;&#20004;&#20010; I/O port: <code>0x60</code> (data), <code>0x64</code> (status/command)</li>
+<li class=" ml-8">“硬编码” 到两个 I/O port: <code>0x60</code> (data), <code>0x64</code> (status/command)</li>
 </ul>
 <table>
 <thead>
 <tr>
 <th>Command Byte</th>
 <th>Use</th>
-<th>&#35828;&#26126;</th>
+<th>说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>0xED</td>
-<td>LED &#28783;&#25511;</td>
+<td>LED 灯控</td>
 <td>ScrollLock/NumLock/CapsLock</td>
 </tr>
 <tr>
 <td>0xF3</td>
-<td>&#35774;&#32622;&#37325;&#22797;&#36895;&#24230;</td>
+<td>设置重复速度</td>
 <td>30Hz - 2Hz; Delay: 250 - 1000ms</td>
 </tr>
 <tr>
 <td>0xF4/0xF5</td>
-<td>&#25171;&#24320;/&#20851;&#38381;</td>
+<td>打开/关闭</td>
 <td>N/A</td>
 </tr>
 <tr>
 <td>0xFE</td>
-<td>&#37325;&#26032;&#21457;&#36865;</td>
+<td>重新发送</td>
 <td>N/A</td>
 </tr>
 <tr>
@@ -395,7 +395,7 @@ section .center {
 </tr>
 </tbody>
 </table>
-<p class=" font-serif my-1">&#21442;&#32771; AbstractMachine &#30340;&#38190;&#30424;&#37096;&#20998;&#23454;&#29616;</p></div>
+<p class=" font-serif my-1">参考 AbstractMachine 的键盘部分实现</p></div>
         
       
       </section>
@@ -406,10 +406,10 @@ section .center {
 
       
         
-        <div><h2 id="3" class=" text-xl mt-2 pb-2 font-sans">&#20363;&#23376; (3): &#30913;&#30424;&#25511;&#21046;&#22120;</h2>
+        <div><h2 id="3" class=" text-xl mt-2 pb-2 font-sans">例子 (3): 磁盘控制器</h2>
 <p class=" font-serif my-1">ATA (Advanced Technology Attachment)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">IDE (Integrated Drive Electronics) &#25509;&#21475;&#30913;&#30424;<ul class=" list-disc font-serif">
+<li class=" ml-8">IDE (Integrated Drive Electronics) 接口磁盘<ul class=" list-disc font-serif">
 <li class=" ml-8">primary: <code>0x1f0 - 0x1f7</code>; secondary: <code>0x170 - 0x177</code></li>
 </ul>
 </li>
@@ -418,12 +418,12 @@ section .center {
 <span class="w">  </span><span class="n">waitdisk</span><span class="p">();</span>
 <span class="w">  </span><span class="n">out_byte</span><span class="p">(</span><span class="mh">0x1f2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w">          </span><span class="c1">// sector count (1)</span>
 <span class="w">  </span><span class="n">out_byte</span><span class="p">(</span><span class="mh">0x1f3</span><span class="p">,</span><span class="w"> </span><span class="n">sect</span><span class="p">);</span><span class="w">       </span><span class="c1">// sector</span>
-<span class="w">  </span><span class="n">out_byte</span><span class="p">(</span><span class="mh">0x1f4</span><span class="p">,</span><span class="w"> </span><span class="n">sect</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">8</span><span class="p">);</span><span class="w">  </span><span class="c1">// cylinder (low)</span>
-<span class="w">  </span><span class="n">out_byte</span><span class="p">(</span><span class="mh">0x1f5</span><span class="p">,</span><span class="w"> </span><span class="n">sect</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">16</span><span class="p">);</span><span class="w"> </span><span class="c1">// cylinder (high)</span>
-<span class="w">  </span><span class="n">out_byte</span><span class="p">(</span><span class="mh">0x1f6</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">sect</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">24</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mh">0xe0</span><span class="p">);</span><span class="w"> </span><span class="c1">// drive</span>
+<span class="w">  </span><span class="n">out_byte</span><span class="p">(</span><span class="mh">0x1f4</span><span class="p">,</span><span class="w"> </span><span class="n">sect</span><span class="w"> </span><span class="o">>></span><span class="w"> </span><span class="mi">8</span><span class="p">);</span><span class="w">  </span><span class="c1">// cylinder (low)</span>
+<span class="w">  </span><span class="n">out_byte</span><span class="p">(</span><span class="mh">0x1f5</span><span class="p">,</span><span class="w"> </span><span class="n">sect</span><span class="w"> </span><span class="o">>></span><span class="w"> </span><span class="mi">16</span><span class="p">);</span><span class="w"> </span><span class="c1">// cylinder (high)</span>
+<span class="w">  </span><span class="n">out_byte</span><span class="p">(</span><span class="mh">0x1f6</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">sect</span><span class="w"> </span><span class="o">>></span><span class="w"> </span><span class="mi">24</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mh">0xe0</span><span class="p">);</span><span class="w"> </span><span class="c1">// drive</span>
 <span class="w">  </span><span class="n">out_byte</span><span class="p">(</span><span class="mh">0x1f7</span><span class="p">,</span><span class="w"> </span><span class="mh">0x20</span><span class="p">);</span><span class="w">       </span><span class="c1">// command (write)</span>
 <span class="w">  </span><span class="n">waitdisk</span><span class="p">();</span>
-<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">SECTSIZE</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">++</span><span class="p">)</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o"><</span><span class="w"> </span><span class="n">SECTSIZE</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">++</span><span class="p">)</span>
 <span class="w">    </span><span class="p">((</span><span class="kt">uint32_t</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">dst</span><span class="p">)[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">in_long</span><span class="p">(</span><span class="mh">0x1f0</span><span class="p">);</span><span class="w"> </span><span class="c1">// data</span>
 <span class="p">}</span>
 </code></pre></div></div>
@@ -437,26 +437,26 @@ section .center {
 
       
         
-        <div><h2 id="4" class=" text-xl mt-2 pb-2 font-sans">&#20363;&#23376; (4): &#25171;&#21360;&#26426;</h2>
+        <div><h2 id="4" class=" text-xl mt-2 pb-2 font-sans">例子 (4): 打印机</h2>
 <p class=" font-serif my-1"><a href="../../../pages/OS/manuals/CalComp-Software-Reference.pdf" class=" text-amber-900"><img alt="" class="float-right" src="../../../pages/OS/img/calcomp-565.jpg" width="400px"></a></p>
-<p class=" font-serif my-1">&#25171;&#21360;&#26426;&#65306;&#23558;&#23383;&#33410;&#27969;&#25551;&#36848;&#30340;&#25991;&#23383;/&#22270;&#24418;&#25171;&#21360;&#21040;&#32440;&#24352;&#19978;</p>
+<p class=" font-serif my-1">打印机：将字节流描述的文字/图形打印到纸张上</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#21487;&#31616;&#21333; (&#25171;&#23383;&#26426;)</li>
-<li class=" ml-8">&#21487;&#22797;&#26434; (&#32534;&#31243;&#35821;&#35328;&#25551;&#36848;&#30340;&#22270;&#24418;)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#39640;&#28165;&#20840;&#39029;&#22270;&#29255;&#30340;&#20256;&#36755;&#26159;&#24456;&#22823;&#30340;&#25361;&#25112;</li>
+<li class=" ml-8">可简单 (打字机)</li>
+<li class=" ml-8">可复杂 (编程语言描述的图形)<ul class=" list-disc font-serif">
+<li class=" ml-8">高清全页图片的传输是很大的挑战</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#20363;&#23376;&#65306;PostScript (1984)</p>
+<p class=" font-serif my-1">例子：PostScript (1984)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#19968;&#31181;&#25551;&#36848;&#39029;&#38754;&#24067;&#23616;&#30340; domain-specific language<ul class=" list-disc font-serif">
-<li class=" ml-8">&#31867;&#20284;&#20110;&#27719;&#32534;&#35821;&#35328;</li>
-<li class=" ml-8">&#21487;&#20197;&#29992; &#8220;&#32534;&#35793;&#22120;&#8221; (&#20363;&#22914; latex) &#21019;&#24314;&#39640;&#36136;&#37327;&#30340;&#25991;&#31295;</li>
+<li class=" ml-8">一种描述页面布局的 domain-specific language<ul class=" list-disc font-serif">
+<li class=" ml-8">类似于汇编语言</li>
+<li class=" ml-8">可以用 “编译器” (例如 latex) 创建高质量的文稿</li>
 </ul>
 </li>
-<li class=" ml-8">PDF &#26159;&#23427;&#30340; superset (<a href="../../../pages/OS/2023/p/page.ps" class=" text-amber-900">page.ps</a>)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#25171;&#21360;&#26426;&#26159;&#21478;&#19968;&#20010;&#24102; CPU &#30340;&#35774;&#22791;</li>
+<li class=" ml-8">PDF 是它的 superset (<a href="../../../pages/OS/2023/p/page.ps" class=" text-amber-900">page.ps</a>)<ul class=" list-disc font-serif">
+<li class=" ml-8">打印机是另一个带 CPU 的设备</li>
 </ul>
 </li>
 </ul></div>
@@ -470,17 +470,17 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25105;&#20204;&#30340;&#35745;&#31639;&#26426;&#31995;&#32479;&#37324;&#26377;&#20160;&#20040;&#35774;&#22791;&#65311;</h2>
-<p class=" font-serif my-1">&#21378;&#21830;&#24517;&#39035;&#21578;&#35785;&#25805;&#20316;&#31995;&#32479;&#65306;&#21738;&#20010;&#35774;&#22791;&#22312;&#20160;&#20040;&#22320;&#22336;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">我们的计算机系统里有什么设备？</h2>
+<p class=" font-serif my-1">厂商必须告诉操作系统：哪个设备在什么地址</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">0x1f2 - ATA &#25511;&#21046;&#22120;</li>
+<li class=" ml-8">0x1f2 - ATA 控制器</li>
 <li class=" ml-8">0x3f8 - COM1</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">Linux &#26377;&#19968;&#20010; Device Tree &#26426;&#21046;</p>
+<p class=" font-serif my-1">Linux 有一个 Device Tree 机制</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">qemu-system-aarch64 -machine virt -cpu cortex-a57 -machine dumpdtb=dtb.dtb</li>
-<li class=" ml-8">&#21487;&#20197;&#36890;&#36807; dtc &#26597;&#30475;&#21378;&#21830;&#32473;&#20986;&#30340;&#37197;&#32622;</li>
+<li class=" ml-8">可以通过 dtc 查看厂商给出的配置</li>
 </ul></div>
         
       

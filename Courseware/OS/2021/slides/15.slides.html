@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +209,7 @@ section .center {
 }
 </style>
 
-  <title>&#25991;&#20214;&#31995;&#32479;&#23454;&#29616;</title>
+  <title>文件系统实现</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,21 +227,21 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#25991;&#20214;&#31995;&#32479;&#23454;&#29616;</h1>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">文件系统实现</h1>
 <p class=" font-serif my-1"><include src="Slides_Author"><div><div class="py-16">
-<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">&#33931;&#28814;&#23721;</a></p>
+<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">蒋炎岩</a></p>
 </div>
 <div class="row">
 <div class="author-affiliation">
-    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#12288;&#12288;&#21335;&#20140;&#22823;&#23398;&#12288;&#12288;</p>
+    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">　　南京大学　　</p>
     <img class="inline-img h-24" src="../../../static/img/nju-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#31185;&#23398;&#19982;&#25216;&#26415;&#31995;</p>
+   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">计算机科学与技术系</p>
     <img class="inline-img h-24" src="../../../static/img/njucs-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#36719;&#20214;&#30740;&#31350;&#25152;</p>
+    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">计算机软件研究所</p>
     <img class="inline-img h-24" src="../../../static/img/ics-logo.png" style="display: inline-block;"></a>
   </div>
 </div></div></include></p></div></div></div>
@@ -255,13 +255,13 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#32972;&#26223;</h2>
-<p class=" font-serif my-1">&#24212;&#29992;&#30524;&#20013;&#30340;&#25991;&#20214;&#31995;&#32479;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">背景</h2>
+<p class=" font-serif my-1">应用眼中的文件系统</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#19968;&#32452; API<ul class=" list-disc font-serif">
-<li class=" ml-8">mount - &#25991;&#20214;&#31995;&#32479;&#31649;&#29702;gg</li>
-<li class=" ml-8">mkdir, rmkdir, link, symlink, unlink... - &#30446;&#24405;&#31649;&#29702;</li>
-<li class=" ml-8">open, mmap, read, write, lseek... - &#25991;&#20214;&#31649;&#29702;</li>
+<li class=" ml-8">一组 API<ul class=" list-disc font-serif">
+<li class=" ml-8">mount - 文件系统管理gg</li>
+<li class=" ml-8">mkdir, rmkdir, link, symlink, unlink... - 目录管理</li>
+<li class=" ml-8">open, mmap, read, write, lseek... - 文件管理</li>
 </ul>
 </li>
 </ul></div>
@@ -275,11 +275,11 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26412;&#27425;&#35838;&#20869;&#23481;&#19982;&#30446;&#26631;</h2>
-<p class=" font-serif my-1">&#29702;&#35299;&#20004;&#20010;&#25991;&#20214;&#31995;&#32479;&#30340;&#35774;&#35745;&#19982;&#23454;&#29616;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">本次课内容与目标</h2>
+<p class=" font-serif my-1">理解两个文件系统的设计与实现</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">FAT</li>
-<li class=" ml-8">UNIX &#25991;&#20214;&#31995;&#32479;/ext2</li>
+<li class=" ml-8">UNIX 文件系统/ext2</li>
 </ul></div>
         
       
@@ -295,7 +295,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#25991;&#20214;&#31995;&#32479;&#23454;&#29616;&#65306;&#38656;&#27714;&#20998;&#26512;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">文件系统实现：需求分析</h1></div></div></div>
         
       
       </section>
@@ -306,27 +306,27 @@ section .center {
 
       
         
-        <div><h2 id="linux" class=" text-xl mt-2 pb-2 font-sans">&#20363;&#23376;&#65306;Linux &#25991;&#20214;&#31995;&#32479;&#21021;&#22987;&#21270;</h2>
-<p class=" font-serif my-1">&#26368;&#23567;&#30340; <a href="https://box.nju.edu.cn/f/3f67e092e1ba441187d9/?dl=1" class=" text-amber-900">Linux &#31995;&#32479;&#38236;&#20687;</a></p>
+        <div><h2 id="linux" class=" text-xl mt-2 pb-2 font-sans">例子：Linux 文件系统初始化</h2>
+<p class=" font-serif my-1">最小的 <a href="https://box.nju.edu.cn/f/3f67e092e1ba441187d9/?dl=1" class=" text-amber-900">Linux 系统镜像</a></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#26500;&#36896; Linux &#21551;&#21160;&#26102;&#30340; &#8220;&#26681;&#25991;&#20214;&#31995;&#32479;&#8221;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#38543;&#25805;&#20316;&#31995;&#32479;&#21551;&#21160;&#21152;&#36733;</li>
-<li class=" ml-8"><red>&#20320;&#21487;&#20197;&#20687;&#35843;&#35797;&#20320;&#30340; oslab &#19968;&#26679;&#35843;&#35797; Linux!</red></li>
+<li class=" ml-8">构造 Linux 启动时的 “根文件系统”<ul class=" list-disc font-serif">
+<li class=" ml-8">随操作系统启动加载</li>
+<li class=" ml-8"><red>你可以像调试你的 oslab 一样调试 Linux!</red></li>
 </ul>
 </li>
 </ul>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>initramfs
-&#9500;&#9472;&#9472; busybox
-&#9492;&#9472;&#9472; init
+├── busybox
+└── init
 </code></pre></div>
 
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><code>/busybox</code> &#26159;&#20010;&#20108;&#36827;&#21046;&#25991;&#20214;<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>/busybox</code> 是个二进制文件<ul class=" list-disc font-serif">
 <li class=" ml-8">ELF 64-bit LSB executable, statically linked</li>
 </ul>
 </li>
-<li class=" ml-8"><code>/init</code> &#21482;&#26377; 3 &#34892;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#23454;&#38469;&#21482;&#20570;&#19968;&#20214;&#20107;: &#25191;&#34892; busybox<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>/init</code> 只有 3 行<ul class=" list-disc font-serif">
+<li class=" ml-8">实际只做一件事: 执行 busybox<ul class=" list-disc font-serif">
 <li class=" ml-8"><code>exec /busybox sh</code></li>
 </ul>
 </li>
@@ -343,25 +343,25 @@ section .center {
 
       
         
-        <div><h2 id="linux" class=" text-xl mt-2 pb-2 font-sans">Linux &#21551;&#21160;&#31532;&#19968;&#20010;&#24212;&#29992;&#31243;&#24207;&#26102;&#30340;&#29366;&#24577;</h2>
-<p class=" font-serif my-1">&#8220;&#20960;&#20046;&#20160;&#20040;&#20063;&#27809;&#26377;&#8221;</p>
+        <div><h2 id="linux" class=" text-xl mt-2 pb-2 font-sans">Linux 启动第一个应用程序时的状态</h2>
+<p class=" font-serif my-1">“几乎什么也没有”</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20294;&#25152;&#26377;&#30340;&#19968;&#20999;&#37117;&#21487;&#20197;&#34987;<red>&#31995;&#32479;&#35843;&#29992;</red> &#8220;&#21019;&#24314;&#8221; &#20986;&#26469;<ul class=" list-disc font-serif">
-<li class=" ml-8">mount - &#25991;&#20214;&#31995;&#32479;&#31649;&#29702;</li>
-<li class=" ml-8">mkdir, rmkdir, link, symlink, unlink... - &#30446;&#24405;&#31649;&#29702;</li>
-<li class=" ml-8">open, mmap, read, write, lseek... - &#25991;&#20214;&#31649;&#29702;</li>
+<li class=" ml-8">但所有的一切都可以被<red>系统调用</red> “创建” 出来<ul class=" list-disc font-serif">
+<li class=" ml-8">mount - 文件系统管理</li>
+<li class=" ml-8">mkdir, rmkdir, link, symlink, unlink... - 目录管理</li>
+<li class=" ml-8">open, mmap, read, write, lseek... - 文件管理</li>
 </ul>
 </li>
 </ul>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>/busybox mkdir -p /bin &amp;&amp; /busybox mv /busybox /bin/
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>/busybox mkdir -p /bin && /busybox mv /busybox /bin/
 c1="arch ash base64 cat chattr chgrp chmod chown conspy cp cpio cttyhack date dd df dmesg dnsdomainname dumpkmap echo ed egrep false fatattr fdflush fgrep fsync getopt grep gunzip gzip hostname hush ionice iostat ipcalc kbd_mode kill link linux32 linux64 ln login ls lsattr lzop makemime mkdir mknod mktemp more mount mountpoint mpstat mt mv netstat nice nuke pidof ping ping6 pipe_progress printenv ps pwd reformime resume rev rm rmdir rpm run-parts scriptreplay sed setarch setpriv setserial sh sleep stat stty su sync tar touch true umount uname usleep vi watch zcat"
 c2="[ [[ awk basename bc beep blkdiscard bunzip2 bzcat bzip2 cal chpst chrt chvt cksum clear cmp comm crontab cryptpw cut dc deallocvt diff dirname dos2unix dpkg dpkg-deb du dumpleases eject env envdir envuidgid expand expr factor fallocate fgconsole find flock fold free ftpget ftpput fuser groups hd head hexdump hexedit hostid id install ipcrm ipcs killall last less logger logname lpq lpr lsof lspci lsscsi lsusb lzcat lzma man md5sum mesg microcom mkfifo mkpasswd nc nl nmeter nohup nproc nsenter nslookup od openvt passwd paste patch pgrep pkill pmap printf pscan"
 c3="pstree pwdx readlink realpath renice reset resize rpm2cpio runsv runsvdir rx script seq setfattr setkeycodes setsid setuidgid sha1sum sha256sum sha3sum sha512sum showkey shred shuf smemcap softlimit sort split ssl_client strings sum sv svc svok tac tail taskset tcpsvd tee telnet test tftp time timeout top tr traceroute traceroute6 truncate ts tty ttysize udhcpc6 udpsvd unexpand uniq unix2dos unlink unlzma unshare unxz unzip uptime users uudecode uuencode vlock volname w wall wc wget which who whoami whois xargs xxd xz xzcat yes"
 for cmd in $c1 $c2 $c3; do
   /bin/busybox ln -s /bin/busybox /bin/$cmd
 done
-mkdir -p /proc &amp;&amp; mount -t proc  none /proc
-mkdir -p /sys  &amp;&amp; mount -t sysfs none /sys
+mkdir -p /proc && mount -t proc  none /proc
+mkdir -p /sys  && mount -t sysfs none /sys
 </code></pre></div></div>
         
       
@@ -373,22 +373,22 @@ mkdir -p /sys  &amp;&amp; mount -t sysfs none /sys
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25991;&#20214;&#31995;&#32479;&#23454;&#29616;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">文件系统实现</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#22312;&#19968;&#20010; I/O &#35774;&#22791; (&#39537;&#21160;) &#19978;&#23454;&#29616; &#8220;&#30446;&#24405;&#26641;&#8221; &#30340;&#25968;&#25454;&#32467;&#26500;&#12290;</p>
+<p class=" font-serif my-1">在一个 I/O 设备 (驱动) 上实现 “目录树” 的数据结构。</p>
 </blockquote>
-<p class=" font-serif my-1"><a href="https://www.kernel.org/doc/html/latest/filesystems/vfs.html" class=" text-amber-900">VFS</a>: &#31649;&#29702;&#25152;&#26377;&#25991;&#20214;&#31995;&#32479;&#20849;&#20139;&#30340;&#37096;&#20998;</p>
+<p class=" font-serif my-1"><a href="https://www.kernel.org/doc/html/latest/filesystems/vfs.html" class=" text-amber-900">VFS</a>: 管理所有文件系统共享的部分</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#23545;&#35937; (inode) &#20998;&#37197;/&#22238;&#25910;&#12289;&#36335;&#24452;/&#31526;&#21495;&#38142;&#25509;&#35299;&#26512;&#12289;&#25346;&#36733;</li>
-<li class=" ml-8">&#23450;&#20041;&#20102;&#27599;&#20010;&#20855;&#20307;&#25991;&#20214;&#31995;&#32479;&#38656;&#35201;&#23454;&#29616;&#30340;&#25509;&#21475;</li>
+<li class=" ml-8">对象 (inode) 分配/回收、路径/符号链接解析、挂载</li>
+<li class=" ml-8">定义了每个具体文件系统需要实现的接口</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#22359;&#35774;&#22791;&#39537;&#21160;</p>
+<p class=" font-serif my-1">块设备驱动</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><code>read_block</code>, <code>write_block</code></li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#30446;&#24405;/&#25991;&#20214; API</p>
+<p class=" font-serif my-1">目录/文件 API</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><code>mkdir</code>, <code>rmdir</code>, <code>link</code>, <code>unlink</code></li>
 <li class=" ml-8"><code>open</code>, <code>read</code>, <code>write</code>, <code>stat</code></li>
@@ -403,10 +403,10 @@ mkdir -p /sys  &amp;&amp; mount -t sysfs none /sys
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#22238;&#21040;&#25968;&#25454;&#32467;&#26500;&#35838;&#8230;&#8230;</h2>
-<p class=" font-serif my-1">&#25991;&#20214;&#31995;&#32479;&#23454;&#29616;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">回到数据结构课……</h2>
+<p class=" font-serif my-1">文件系统实现</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#22312; <code>read_block</code>, <code>write_block</code> &#19978;&#23454;&#29616;&#19968;&#20010; &#8220;&#30446;&#24405;&#26641;&#8221; &#30340;&#25277;&#35937;&#25968;&#25454;&#31867;&#22411;</li>
+<li class=" ml-8">在 <code>read_block</code>, <code>write_block</code> 上实现一个 “目录树” 的抽象数据类型</li>
 </ul>
 <hr>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/dir-tree.png" width="500px"></p></div>
@@ -435,11 +435,11 @@ mkdir -p /sys  &amp;&amp; mount -t sysfs none /sys
 
       
         
-        <div><h2 id="1980" class=" text-xl mt-2 pb-2 font-sans">&#35753;&#26102;&#38388;&#22238;&#21040; 1980 &#24180;</h2>
-<p class=" font-serif my-1">5.25" &#36719;&#30424;&#65306;&#21333;&#38754; 180 KiB</p>
+        <div><h2 id="1980" class=" text-xl mt-2 pb-2 font-sans">让时间回到 1980 年</h2>
+<p class=" font-serif my-1">5.25" 软盘：单面 180 KiB</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">360 &#20010; 512B &#25159;&#21306; (sectors)</li>
-<li class=" ml-8">&#22312;&#36825;&#26679;&#30340;&#35774;&#22791;&#19978;&#25345;&#20037;&#21270;&#25968;&#25454;&#65292;&#24212;&#35813;&#36873;&#29992;&#24590;&#26679;&#30340;&#25968;&#25454;&#32467;&#26500;&#65311;</li>
+<li class=" ml-8">360 个 512B 扇区 (sectors)</li>
+<li class=" ml-8">在这样的设备上持久化数据，应该选用怎样的数据结构？</li>
 </ul>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/floppy-drives.jpg" width="600px"></p></div>
         
@@ -452,22 +452,22 @@ mkdir -p /sys  &amp;&amp; mount -t sysfs none /sys
 
       
         
-        <div><h2 id="fat" class=" text-xl mt-2 pb-2 font-sans">FAT &#25991;&#20214;&#31995;&#32479;&#65306;&#20998;&#26512;</h2>
+        <div><h2 id="fat" class=" text-xl mt-2 pb-2 font-sans">FAT 文件系统：分析</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#25243;&#24320; workload &#35848;&#20248;&#21270;&#65292;&#23601;&#26159;&#32781;&#27969;&#27667;&#12290;</p>
+<p class=" font-serif my-1">抛开 workload 谈优化，就是耍流氓。</p>
 </blockquote>
 <hr>
-<p class=" font-serif my-1">&#38656;&#27714;</p>
+<p class=" font-serif my-1">需求</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#26641;&#29366;&#30340;&#30446;&#24405;&#32467;&#26500;</li>
-<li class=" ml-8">&#31995;&#32479;&#20013;&#20197;&#23567;&#25991;&#20214;&#20026;&#20027; (&#20960;&#20010; block &#20197;&#20869;)</li>
-<li class=" ml-8">&#26080;&#38656;&#25903;&#25345;&#38142;&#25509;</li>
+<li class=" ml-8">树状的目录结构</li>
+<li class=" ml-8">系统中以小文件为主 (几个 block 以内)</li>
+<li class=" ml-8">无需支持链接</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#23454;&#29616;&#26041;&#24335;</p>
+<p class=" font-serif my-1">实现方式</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#38142;&#34920;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20219;&#20309;&#22797;&#26434;&#30340;&#39640;&#32423;&#25968;&#25454;&#32467;&#26500;&#37117;&#26174;&#24471;&#28010;&#36153;</li>
+<li class=" ml-8">链表<ul class=" list-disc font-serif">
+<li class=" ml-8">任何复杂的高级数据结构都显得浪费</li>
 </ul>
 </li>
 </ul></div>
@@ -481,21 +481,21 @@ mkdir -p /sys  &amp;&amp; mount -t sysfs none /sys
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#29992;&#38142;&#34920;&#23384;&#20648;&#25968;&#25454;&#65306;&#20004;&#31181;&#35774;&#35745;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">用链表存储数据：两种设计</h2>
 <ol class=" list-decimal font-serif">
-<li class=" ml-8">&#22312;&#27599;&#20010;&#25968;&#25454;&#22359;&#21518;&#25918;&#32622;&#25351;&#38024;<ul class=" list-disc font-serif">
-<li class=" ml-8"><green>&#20248;&#28857;</green>&#65306;&#23454;&#29616;&#31616;&#21333;&#12289;&#26080;&#39035;&#21333;&#29420;&#24320;&#36767;&#23384;&#20648;&#31354;&#38388;</li>
-<li class=" ml-8"><red>&#32570;&#28857;</red>&#65306;&#25968;&#25454;&#30340;&#22823;&#23567;&#19981;&#26159; $2^k$; &#21333;&#32431;&#30340; lseek &#38656;&#35201;&#35835;&#25972;&#22359;&#25968;&#25454;</li>
+<li class=" ml-8">在每个数据块后放置指针<ul class=" list-disc font-serif">
+<li class=" ml-8"><green>优点</green>：实现简单、无须单独开辟存储空间</li>
+<li class=" ml-8"><red>缺点</red>：数据的大小不是 $2^k$; 单纯的 lseek 需要读整块数据</li>
 </ul>
 </li>
-<li class=" ml-8">&#23558;&#25351;&#38024;&#38598;&#20013;&#23384;&#25918;&#22312;&#25991;&#20214;&#31995;&#32479;&#30340;&#26576;&#20010;&#21306;&#22495;<ul class=" list-disc font-serif">
-<li class=" ml-8"><green>&#20248;&#28857;</green>&#65306;&#23616;&#37096;&#24615;&#22909;&#65307;lseek &#26356;&#24555;</li>
-<li class=" ml-8"><red>&#32570;&#28857;</red>&#65306;&#38598;&#20013;&#23384;&#25918;&#30340;&#25968;&#25454;&#25439;&#22351;&#23558;&#23548;&#33268;&#25968;&#25454;&#20002;&#22833; (&#24590;&#20040;&#21150;&#65311;)</li>
+<li class=" ml-8">将指针集中存放在文件系统的某个区域<ul class=" list-disc font-serif">
+<li class=" ml-8"><green>优点</green>：局部性好；lseek 更快</li>
+<li class=" ml-8"><red>缺点</red>：集中存放的数据损坏将导致数据丢失 (怎么办？)</li>
 </ul>
 </li>
 </ol>
 <hr>
-<p class=" font-serif my-1">&#21738;&#31181;&#26041;&#24335;&#30340;&#32570;&#38519;&#26159;&#33268;&#21629;&#12289;&#38590;&#20197;&#35299;&#20915;&#30340;&#65311;</p></div>
+<p class=" font-serif my-1">哪种方式的缺陷是致命、难以解决的？</p></div>
         
       
       </section>
@@ -506,10 +506,10 @@ mkdir -p /sys  &amp;&amp; mount -t sysfs none /sys
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#38598;&#20013;&#20445;&#23384;&#25152;&#26377;&#25351;&#38024;</h2>
-<p class=" font-serif my-1">&#38598;&#20013;&#23384;&#20648;&#30340;&#25351;&#38024;&#23481;&#26131;&#25439;&#22351;&#65311;&#23384; $n$ &#20221;&#23601;&#34892;&#65281;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">集中保存所有指针</h2>
+<p class=" font-serif my-1">集中存储的指针容易损坏？存 $n$ 份就行！</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">FAT-12/16/32 (FAT entry&#65292;&#21363; &#8220;next &#25351;&#38024;&#8221; &#30340;&#22823;&#23567;)</li>
+<li class=" ml-8">FAT-12/16/32 (FAT entry，即 “next 指针” 的大小)</li>
 </ul>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/fat32_layout.gif" width="700px"></p></div>
         
@@ -522,20 +522,20 @@ mkdir -p /sys  &amp;&amp; mount -t sysfs none /sys
 
       
         
-        <div><h2 id="file-allocation-table" class=" text-xl mt-2 pb-2 font-sans">&#8220;File Allocation Table&#8221; &#25991;&#20214;&#31995;&#32479;</h2>
-<p class=" font-serif my-1"><a href="http://localhost:5001/static/wiki/OS/MSFAT-spec.pdf" class=" text-amber-900">RTFM</a> &#24471;&#21040;&#24517;&#35201;&#30340;&#32454;&#33410;</p>
+        <div><h2 id="file-allocation-table" class=" text-xl mt-2 pb-2 font-sans">“File Allocation Table” 文件系统</h2>
+<p class=" font-serif my-1"><a href="http://localhost:5001/static/wiki/OS/MSFAT-spec.pdf" class=" text-amber-900">RTFM</a> 得到必要的细节</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#36923;&#36753;&#19978;&#65292;&#25991;&#20214;/&#30446;&#24405;&#37117;&#26159;&#23383;&#33410;&#24207;&#21015; (&#34394;&#25311;&#21270;&#30340;&#30913;&#30424;)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20197; cluster (&#31751;) &#20026;&#21333;&#20301;&#38142;&#25509; (FAT &#38598;&#20013;&#23384;&#20648;&#38142;&#34920;&#30340; next)</li>
+<li class=" ml-8">逻辑上，文件/目录都是字节序列 (虚拟化的磁盘)<ul class=" list-disc font-serif">
+<li class=" ml-8">以 cluster (簇) 为单位链接 (FAT 集中存储链表的 next)</li>
 </ul>
 </li>
-<li class=" ml-8">&#30446;&#24405;&#20063;&#26159;&#25991;&#20214;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#19968;&#20010; (filename, size, firstblock) &#30340;&#21015;&#34920;&#65292;&#39034;&#24207;&#23384;&#20648;</li>
+<li class=" ml-8">目录也是文件<ul class=" list-disc font-serif">
+<li class=" ml-8">一个 (filename, size, firstblock) 的列表，顺序存储</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1"><code>mmap</code> &#21040;&#20869;&#23384;&#65292;&#23601;&#21487;&#20197;&#30452;&#25509;&#35775;&#38382;</p>
+<p class=" font-serif my-1"><code>mmap</code> 到内存，就可以直接访问</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">fat_volume</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">fat_header</span><span class="w"> </span><span class="n">header</span><span class="p">;</span>
 <span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">fat</span><span class="p">[</span><span class="n">FAT_NUM</span><span class="p">];</span>
@@ -552,8 +552,8 @@ mkdir -p /sys  &amp;&amp; mount -t sysfs none /sys
 
       
         
-        <div><h2 id="fat" class=" text-xl mt-2 pb-2 font-sans">FAT: &#38142;&#25509;&#23384;&#20648;&#30340;&#25991;&#20214;</h2>
-<p class=" font-serif my-1">&#8220;FAT&#8221; &#30340; &#8220;next&#8221; &#25968;&#32452;</p>
+        <div><h2 id="fat" class=" text-xl mt-2 pb-2 font-sans">FAT: 链接存储的文件</h2>
+<p class=" font-serif my-1">“FAT” 的 “next” 数组</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><code>0</code>: free; <code>2...MAX</code>: allocated; </li>
 <li class=" ml-8"><code>ffffff7</code>: bad cluster; <code>ffffff8-ffffffe</code>, <code>-1</code>: end-of-file</li>
@@ -569,12 +569,12 @@ mkdir -p /sys  &amp;&amp; mount -t sysfs none /sys
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#30446;&#24405;&#26641;&#23454;&#29616;&#65306;&#30446;&#24405;&#25991;&#20214;</h2>
-<p class=" font-serif my-1">&#20197;&#26222;&#36890;&#25991;&#20214;&#30340;&#26041;&#24335;&#23384;&#20648; &#8220;&#30446;&#24405;&#8221; &#36825;&#20010;&#25968;&#25454;&#32467;&#26500;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">目录树实现：目录文件</h2>
+<p class=" font-serif my-1">以普通文件的方式存储 “目录” 这个数据结构</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">FAT: &#30446;&#24405; = 32-byte &#23450;&#38271;&#30446;&#24405;&#39033;&#30340;&#38598;&#21512;</li>
-<li class=" ml-8">&#25805;&#20316;&#31995;&#32479;&#22312;&#35299;&#26512;&#26102;&#25226;&#26631;&#35760;&#20026;&#30446;&#24405;&#30340;&#30446;&#24405;&#39033; &#8220;&#24403;&#20570;&#8221; &#30446;&#24405;&#21363;&#21487;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#21487;&#20197;&#29992;&#36830;&#32493;&#30340;&#33509;&#24178;&#20010;&#30446;&#24405;&#39033;&#23384;&#20648; &#8220;&#38271;&#25991;&#20214;&#21517;&#8221;</li>
+<li class=" ml-8">FAT: 目录 = 32-byte 定长目录项的集合</li>
+<li class=" ml-8">操作系统在解析时把标记为目录的目录项 “当做” 目录即可<ul class=" list-disc font-serif">
+<li class=" ml-8">可以用连续的若干个目录项存储 “长文件名”</li>
 </ul>
 </li>
 </ul>
@@ -590,31 +590,31 @@ mkdir -p /sys  &amp;&amp; mount -t sysfs none /sys
 
       
         
-        <div><h2 id="fat" class=" text-xl mt-2 pb-2 font-sans">FAT: &#24615;&#33021;&#19982;&#21487;&#38752;&#24615;</h2>
-<p class=" font-serif my-1">&#24615;&#33021;</p>
+        <div><h2 id="fat" class=" text-xl mt-2 pb-2 font-sans">FAT: 性能与可靠性</h2>
+<p class=" font-serif my-1">性能</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><green>&#65291;</green> &#23567;&#25991;&#20214;&#31616;&#30452;&#22826;&#21512;&#36866;&#20102;</li>
-<li class=" ml-8"><red>&#65293;</red> &#20294;&#22823;&#25991;&#20214;&#30340;&#38543;&#26426;&#35775;&#38382;&#23601;&#19981;&#34892;&#20102;<ul class=" list-disc font-serif">
-<li class=" ml-8">4 GB &#30340;&#25991;&#20214;&#36339;&#21040;&#26411;&#23614; (4 KB cluster) &#26377; $2^{20}$ &#27425;&#38142;&#34920; next &#25805;&#20316;</li>
-<li class=" ml-8">&#32531;&#23384;&#33021;&#37096;&#20998;&#35299;&#20915;&#36825;&#20010;&#38382;&#39064;</li>
+<li class=" ml-8"><green>＋</green> 小文件简直太合适了</li>
+<li class=" ml-8"><red>－</red> 但大文件的随机访问就不行了<ul class=" list-disc font-serif">
+<li class=" ml-8">4 GB 的文件跳到末尾 (4 KB cluster) 有 $2^{20}$ 次链表 next 操作</li>
+<li class=" ml-8">缓存能部分解决这个问题</li>
 </ul>
 </li>
-<li class=" ml-8">&#22312; FAT &#26102;&#20195;&#65292;&#30913;&#30424;&#36830;&#32493;&#35775;&#38382;&#24615;&#33021;&#26356;&#20339;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20351;&#29992;&#26102;&#38388;&#20037;&#30340;&#30913;&#30424;&#20250;&#20135;&#29983;&#30862;&#29255; (fragmentation)<ul class=" list-disc font-serif">
-<li class=" ml-8">malloc &#20063;&#20250;&#20135;&#29983;&#30862;&#29255;&#65292;&#19981;&#36807;&#23545;&#24615;&#33021;&#24433;&#21709;&#19981;&#22826;&#22823;</li>
+<li class=" ml-8">在 FAT 时代，磁盘连续访问性能更佳<ul class=" list-disc font-serif">
+<li class=" ml-8">使用时间久的磁盘会产生碎片 (fragmentation)<ul class=" list-disc font-serif">
+<li class=" ml-8">malloc 也会产生碎片，不过对性能影响不太大</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#21487;&#38752;&#24615;</p>
+<p class=" font-serif my-1">可靠性</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#32500;&#25252;&#33509;&#24178;&#20010; FAT &#30340;&#21103;&#26412;&#38450;&#27490;&#20803;&#25968;&#25454;&#25439;&#22351;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#39069;&#22806;&#30340;&#21516;&#27493;&#24320;&#38144;</li>
+<li class=" ml-8">维护若干个 FAT 的副本防止元数据损坏<ul class=" list-disc font-serif">
+<li class=" ml-8">额外的同步开销</li>
 </ul>
 </li>
-<li class=" ml-8">&#25439;&#22351;&#30340; cluster &#22312; FAT &#20013;&#26631;&#35760;</li>
+<li class=" ml-8">损坏的 cluster 在 FAT 中标记</li>
 </ul></div>
         
       
@@ -630,7 +630,7 @@ mkdir -p /sys  &amp;&amp; mount -t sysfs none /sys
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="ext2unix" class=" text-2xl mt-2 font-sans">ext2/UNIX &#25991;&#20214;&#31995;&#32479;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="ext2unix" class=" text-2xl mt-2 font-sans">ext2/UNIX 文件系统</h1></div></div></div>
         
       
       </section>
@@ -641,8 +641,8 @@ mkdir -p /sys  &amp;&amp; mount -t sysfs none /sys
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26356;&#22909;&#30340;&#25991;&#20214;&#31995;&#32479;&#65306;&#38656;&#35201;&#20570;&#21040;&#20160;&#20040;&#65311;</h2>
-<p class=" font-serif my-1">&#19981;&#33021; &#8220;&#23613;&#21892;&#23613;&#32654;&#8221;&#65292;&#20294;&#21487;&#20197;&#22312; &#8220;&#23454;&#38469; workload&#8221; &#19979;&#23613;&#21487;&#33021;&#22909;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">更好的文件系统：需要做到什么？</h2>
+<p class=" font-serif my-1">不能 “尽善尽美”，但可以在 “实际 workload” 下尽可能好</p>
 <table>
 <thead>
 <tr>
@@ -687,21 +687,21 @@ mkdir -p /sys  &amp;&amp; mount -t sysfs none /sys
 
       
         
-        <div><h2 id="ext2unix" class=" text-xl mt-2 pb-2 font-sans">ext2/UNIX &#25991;&#20214;&#31995;&#32479;</h2>
-<p class=" font-serif my-1">&#25353;&#23545;&#35937;&#26041;&#24335;&#38598;&#20013;&#23384;&#20648;&#25991;&#20214;/&#30446;&#24405;&#20803;&#25968;&#25454;</p>
+        <div><h2 id="ext2unix" class=" text-xl mt-2 pb-2 font-sans">ext2/UNIX 文件系统</h2>
+<p class=" font-serif my-1">按对象方式集中存储文件/目录元数据</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#22686;&#24378;&#23616;&#37096;&#24615; (&#26356;&#26131;&#20110;&#32531;&#23384;)</li>
-<li class=" ml-8">&#25903;&#25345;&#38142;&#25509;</li>
+<li class=" ml-8">增强局部性 (更易于缓存)</li>
+<li class=" ml-8">支持链接</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#20026;&#22823;&#23567;&#25991;&#20214;&#21306;&#20998; fast/slow path</p>
+<p class=" font-serif my-1">为大小文件区分 fast/slow path</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#23567;&#30340;&#26102;&#20505;&#24212;&#35813;&#29992;&#25968;&#32452;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#36830;&#38142;&#34920;&#36941;&#21382;&#37117;&#30465;&#20102;</li>
+<li class=" ml-8">小的时候应该用数组<ul class=" list-disc font-serif">
+<li class=" ml-8">连链表遍历都省了</li>
 </ul>
 </li>
-<li class=" ml-8">&#22823;&#30340;&#26102;&#20505;&#24212;&#35813;&#29992;&#26641; (B-Tree; Radix-Tree; ...)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#24555;&#36895;&#30340;&#38543;&#26426;&#35775;&#38382;</li>
+<li class=" ml-8">大的时候应该用树 (B-Tree; Radix-Tree; ...)<ul class=" list-disc font-serif">
+<li class=" ml-8">快速的随机访问</li>
 </ul>
 </li>
 </ul></div>
@@ -715,14 +715,14 @@ mkdir -p /sys  &amp;&amp; mount -t sysfs none /sys
 
       
         
-        <div><h2 id="ext2" class=" text-xl mt-2 pb-2 font-sans">ext2: &#30913;&#30424;&#38236;&#20687;&#26684;&#24335;</h2>
-<p class=" font-serif my-1">&#23545;&#30913;&#30424;&#36827;&#34892;&#20998;&#32452;</p>
+        <div><h2 id="ext2" class=" text-xl mt-2 pb-2 font-sans">ext2: 磁盘镜像格式</h2>
+<p class=" font-serif my-1">对磁盘进行分组</p>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/fs-ext2.png" width="600px"></p>
-<p class=" font-serif my-1">&#8220;superblock&#8221;&#65306;&#25991;&#20214;&#31995;&#32479;&#20803;&#25968;&#25454;</p>
+<p class=" font-serif my-1">“superblock”：文件系统元数据</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25991;&#20214; (inode) &#25968;&#37327;</li>
-<li class=" ml-8">block group &#20449;&#24687;<ul class=" list-disc font-serif">
-<li class=" ml-8"><a href="../../../pages/OS/2021/demos/ext2.h" class=" text-amber-900">ext2.h</a> &#37324;&#26377;&#20320;&#38656;&#35201;&#30693;&#36947;&#30340;&#19968;&#20999;</li>
+<li class=" ml-8">文件 (inode) 数量</li>
+<li class=" ml-8">block group 信息<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="../../../pages/OS/2021/demos/ext2.h" class=" text-amber-900">ext2.h</a> 里有你需要知道的一切</li>
 </ul>
 </li>
 </ul></div>
@@ -748,11 +748,11 @@ mkdir -p /sys  &amp;&amp; mount -t sysfs none /sys
 
       
         
-        <div><h2 id="ext2" class=" text-xl mt-2 pb-2 font-sans">ext2 &#30446;&#24405;&#25991;&#20214;</h2>
-<p class=" font-serif my-1">&#19982; FAT &#26412;&#36136;&#30456;&#21516;&#65306;&#22312;&#25991;&#20214;&#19978;&#24314;&#31435;&#30446;&#24405;&#30340;&#25968;&#25454;&#32467;&#26500;</p>
+        <div><h2 id="ext2" class=" text-xl mt-2 pb-2 font-sans">ext2 目录文件</h2>
+<p class=" font-serif my-1">与 FAT 本质相同：在文件上建立目录的数据结构</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#27880;&#24847;&#21040; inode &#32479;&#19968;&#23384;&#20648;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#30446;&#24405;&#25991;&#20214;&#20013;&#23384;&#20648;&#25991;&#20214;&#21517;&#21040; inode &#32534;&#21495;&#30340; key-value mapping</li>
+<li class=" ml-8">注意到 inode 统一存储<ul class=" list-disc font-serif">
+<li class=" ml-8">目录文件中存储文件名到 inode 编号的 key-value mapping</li>
 </ul>
 </li>
 </ul>
@@ -767,17 +767,17 @@ mkdir -p /sys  &amp;&amp; mount -t sysfs none /sys
 
       
         
-        <div><h2 id="ext2" class=" text-xl mt-2 pb-2 font-sans">ext2: &#24615;&#33021;&#19982;&#21487;&#38752;&#24615;</h2>
-<p class=" font-serif my-1">&#22823;&#25991;&#20214;&#30340;&#38543;&#26426;&#35835;&#20889;&#24615;&#33021;&#25552;&#21319;&#26126;&#26174; ($O(1)$)</p>
+        <div><h2 id="ext2" class=" text-xl mt-2 pb-2 font-sans">ext2: 性能与可靠性</h2>
+<p class=" font-serif my-1">大文件的随机读写性能提升明显 ($O(1)$)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25903;&#25345;&#38142;&#25509; (&#19968;&#23450;&#31243;&#24230;&#20943;&#23569;&#31354;&#38388;&#28010;&#36153;)</li>
-<li class=" ml-8">inode &#22312;&#30913;&#30424;&#19978;&#36830;&#32493;&#23384;&#20648;&#65292;&#20415;&#20110;&#32531;&#23384;/&#39044;&#21462;</li>
-<li class=" ml-8">&#20381;&#28982;&#26377;&#30862;&#29255;&#30340;&#38382;&#39064;</li>
+<li class=" ml-8">支持链接 (一定程度减少空间浪费)</li>
+<li class=" ml-8">inode 在磁盘上连续存储，便于缓存/预取</li>
+<li class=" ml-8">依然有碎片的问题</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#20294;&#21487;&#38752;&#24615;&#20381;&#28982;&#26159;&#20010;&#24456;&#22823;&#30340;&#38382;&#39064;</p>
+<p class=" font-serif my-1">但可靠性依然是个很大的问题</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#23384;&#20648; inode &#30340;&#25968;&#25454;&#22359;&#25439;&#22351;&#26159;&#24456;&#20005;&#37325;&#30340;</li>
+<li class=" ml-8">存储 inode 的数据块损坏是很严重的</li>
 </ul></div>
         
       
@@ -789,12 +789,12 @@ mkdir -p /sys  &amp;&amp; mount -t sysfs none /sys
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#23547;&#25214;&#26356;&#39640;&#25928;&#30340;&#25968;&#25454;&#32467;&#26500;&#65311;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">寻找更高效的数据结构？</h2>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/btrfs-cow.png" width="500px"></p>
 <p class=" font-serif my-1">btrfs: <em>Everything is a B-tree</em></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">The BTRFS B-tree... knows only about &#8220;keys, items, and block headers.&#8221;</li>
-<li class=" ml-8">&#25968;&#25454;&#32467;&#26500;&#30001;&#22810;&#20010; copy-on-write &#30340; tree &#32452;&#25104;<ul class=" list-disc font-serif">
+<li class=" ml-8">The BTRFS B-tree... knows only about “keys, items, and block headers.”</li>
+<li class=" ml-8">数据结构由多个 copy-on-write 的 tree 组成<ul class=" list-disc font-serif">
 <li class=" ml-8">subvolume, extent allocation tree, checksum tree, chunk and device tree, reloc tree, ...</li>
 <li class=" ml-8">O. Rodeth, et al. BTRFS: The Linux B-tree filesystem. <em>ACM Transactions on Storage</em> (ToS), 9(3), 2013.</li>
 </ul>
@@ -814,7 +814,7 @@ mkdir -p /sys  &amp;&amp; mount -t sysfs none /sys
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#24635;&#32467;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">总结</h1></div></div></div>
         
       
       </section>
@@ -825,19 +825,19 @@ mkdir -p /sys  &amp;&amp; mount -t sysfs none /sys
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#24635;&#32467;</h2>
-<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#20869;&#23481;&#19982;&#30446;&#26631;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">总结</h2>
+<p class=" font-serif my-1">本次课内容与目标</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#29702;&#35299;&#20004;&#20010;&#25991;&#20214;&#31995;&#32479;&#30340;&#35774;&#35745;&#19982;&#23454;&#29616;<ul class=" list-disc font-serif">
-<li class=" ml-8">FAT: &#38142;&#34920; + &#20803;&#25968;&#25454;&#23384;&#20648;&#22312;&#30446;&#24405;&#39033;</li>
-<li class=" ml-8">UNIX &#25991;&#20214;&#31995;&#32479;/ext2: bitmap + inode + &#32034;&#24341;</li>
+<li class=" ml-8">理解两个文件系统的设计与实现<ul class=" list-disc font-serif">
+<li class=" ml-8">FAT: 链表 + 元数据存储在目录项</li>
+<li class=" ml-8">UNIX 文件系统/ext2: bitmap + inode + 索引</li>
 </ul>
 </li>
 </ul>
 <hr>
 <p class=" font-serif my-1">Takeaway messages</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25991;&#20214;&#31995;&#32479;&#26159;&#30913;&#30424; (&#39537;&#21160;) &#19978;&#30340;&#25968;&#25454;&#32467;&#26500;</li>
+<li class=" ml-8">文件系统是磁盘 (驱动) 上的数据结构</li>
 </ul></div>
         
       

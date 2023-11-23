@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +209,7 @@ section .center {
 }
 </style>
 
-  <title>&#29983;&#25104;&#20989;&#25968;&#36873;&#35762;</title>
+  <title>生成函数选讲</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,21 +227,21 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#29983;&#25104;&#20989;&#25968;&#36873;&#35762;</h1>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">生成函数选讲</h1>
 <p class=" font-serif my-1"><include src="Slides_Author"><div><div class="py-16">
-<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">&#33931;&#28814;&#23721;</a></p>
+<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">蒋炎岩</a></p>
 </div>
 <div class="row">
 <div class="author-affiliation">
-    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#12288;&#12288;&#21335;&#20140;&#22823;&#23398;&#12288;&#12288;</p>
+    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">　　南京大学　　</p>
     <img class="inline-img h-24" src="../static/img/nju-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#31185;&#23398;&#19982;&#25216;&#26415;&#31995;</p>
+   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">计算机科学与技术系</p>
     <img class="inline-img h-24" src="../static/img/njucs-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#36719;&#20214;&#30740;&#31350;&#25152;</p>
+    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">计算机软件研究所</p>
     <img class="inline-img h-24" src="../static/img/ics-logo.png" style="display: inline-block;"></a>
   </div>
 </div></div></include></p></div></div></div>
@@ -259,7 +259,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#32972;&#26223;&#65306;&#19977;&#20010;&#29087;&#24713;&#30340;&#25968;&#23398;&#38382;&#39064;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">背景：三个熟悉的数学问题</h1></div></div></div>
         
       
       </section>
@@ -270,11 +270,11 @@ section .center {
 
       
         
-        <div><h2 id="1" class=" text-xl mt-2 pb-2 font-sans">(1) &#22810;&#39033;&#24335;</h2>
-<p class=" font-serif my-1">&#22823;&#23478;&#29087;&#24713;&#30340; $f(x) = ax^2 + bx + c$</p>
+        <div><h2 id="1" class=" text-xl mt-2 pb-2 font-sans">(1) 多项式</h2>
+<p class=" font-serif my-1">大家熟悉的 $f(x) = ax^2 + bx + c$</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#38382;&#39064;&#65306;&#27714;&#26041;&#31243;&#30340;&#35299; ($f(x) = 0$)</li>
-<li class=" ml-8">&#20363;&#23376;&#65306;&#27714; $x^4 + x^2 - 1 = 0$ &#30340;&#35299;</li>
+<li class=" ml-8">问题：求方程的解 ($f(x) = 0$)</li>
+<li class=" ml-8">例子：求 $x^4 + x^2 - 1 = 0$ 的解</li>
 </ul>
 <p class=" font-serif my-1">$$ x = \pm \sqrt\frac{-1 + \sqrt 5}{2}$$</p></div>
         
@@ -287,8 +287,8 @@ section .center {
 
       
         
-        <div><h2 id="2" class=" text-xl mt-2 pb-2 font-sans">(2) &#25968;&#21015;&#21644;&#36882;&#25512;</h2>
-<p class=" font-serif my-1">&#22823;&#23478;&#29087;&#24713;&#30340; Fibonacci &#25968;&#21015;</p>
+        <div><h2 id="2" class=" text-xl mt-2 pb-2 font-sans">(2) 数列和递推</h2>
+<p class=" font-serif my-1">大家熟悉的 Fibonacci 数列</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">$f(0) = 0$, $f(1) = 1$</li>
 <li class=" ml-8">$f(n) = f(n-1) + f(n-2)$ ($n \ge 2$)<ul class=" list-disc font-serif">
@@ -306,25 +306,25 @@ section .center {
 
       
         
-        <div><h2 id="3-0dot9-1" class=" text-xl mt-2 pb-2 font-sans">(3) $0.\dot{9}$ &#21644; $1$ &#35841;&#22823;&#35841;&#23567;&#65311;</h2>
-<p class=" font-serif my-1">&#22823;&#23478;&#29087;&#24713; (&#20294;&#20063;&#22256;&#25200;&#24050;&#20037;) &#30340;&#32463;&#20856;&#38382;&#39064;</p>
+        <div><h2 id="3-0dot9-1" class=" text-xl mt-2 pb-2 font-sans">(3) $0.\dot{9}$ 和 $1$ 谁大谁小？</h2>
+<p class=" font-serif my-1">大家熟悉 (但也困扰已久) 的经典问题</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">$0.\dot{9} = 1$ &#21527;&#65311;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#30475;&#36215;&#26469;&#65292;&#24038;&#36793;&#24635;&#26159; &#8220;&#23567;&#19968;&#28857;&#8221; ($0.\dot{9} &lt; 1$)</li>
-<li class=" ml-8">$0.\dot{1} = \frac{1}{9}$, &#25152;&#20197; $0.\dot{9} = 9 \cdot \frac{1}{9} = 1$</li>
+<li class=" ml-8">$0.\dot{9} = 1$ 吗？<ul class=" list-disc font-serif">
+<li class=" ml-8">看起来，左边总是 “小一点” ($0.\dot{9} < 1$)</li>
+<li class=" ml-8">$0.\dot{1} = \frac{1}{9}$, 所以 $0.\dot{9} = 9 \cdot \frac{1}{9} = 1$</li>
 </ul>
 </li>
-<li class=" ml-8">&#21738;&#37324;&#20986;&#20102;&#38382;&#39064;&#65311;</li>
+<li class=" ml-8">哪里出了问题？</li>
 </ul></div>
         
       
          <div class="fragment"> 
         <div><hr>
-<p class=" font-serif my-1">&#22914;&#20309;&#23450;&#20041; &#8220;$\ldots$&#8221;&#65311;</p>
+<p class=" font-serif my-1">如何定义 “$\ldots$”？</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">$0.\dot{9} = \frac{9}{10} + \frac{9}{100} + \frac{9}{1000} + \frac{9}{10000} +  \ldots $<ul class=" list-disc font-serif">
-<li class=" ml-8">&#21491;&#36793;&#26159;&#26080;&#31351;&#22810;&#20010;&#25968;&#23383;&#30340;&#21644;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#22914;&#26524;&#23427;&#19968;&#23450;&#35201; &#8220;&#31561;&#20110;&#8221; &#19968;&#20010;&#25968; $a$&#65292;&#24212;&#35813;&#26159;&#22810;&#23569;&#21602;&#65311;</li>
+<li class=" ml-8">右边是无穷多个数字的和<ul class=" list-disc font-serif">
+<li class=" ml-8">如果它一定要 “等于” 一个数 $a$，应该是多少呢？</li>
 </ul>
 </li>
 </ul>
@@ -340,16 +340,16 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#19977;&#20010;&#38382;&#39064;&#20043;&#38388;&#30340;&#20851;&#32852;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">三个问题之间的关联</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#8220;&#26080;&#31351;&#22810;&#39033;&#8221; &#30340;&#22810;&#39033;&#24335; = &#22810;&#39033;&#24335; + &#25968;&#21015; + &#26080;&#31351;&#27714;&#21644;</p>
+<p class=" font-serif my-1">“无穷多项” 的多项式 = 多项式 + 数列 + 无穷求和</p>
 </blockquote>
 <hr>
-<p class=" font-serif my-1">$$ \begin{align} f(x) &amp; = a_0 + a_1 x + a_2 x^2 + a_3 x^3 + \ldots \\ &amp; = \sum_{ i \ge 0} a_i x^i \end{align} $$</p>
+<p class=" font-serif my-1">$$ \begin{align} f(x) & = a_0 + a_1 x + a_2 x^2 + a_3 x^3 + \ldots \\ & = \sum_{ i \ge 0} a_i x^i \end{align} $$</p>
 <hr>
-<p class=" font-serif my-1">&#31561;&#20110;&#21495;&#30340;&#21547;&#20041;</p>
+<p class=" font-serif my-1">等于号的含义</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#22312;&#26576;&#20010;&#33539;&#22260;&#20869; (&#20363;&#22914; $0 &lt; x &lt; 1$)&#65292;&#31561;&#24335;&#24038;&#21491; &#8220;&#35201;&#22810;&#25509;&#36817;&#26377;&#22810;&#25509;&#36817;&#8221;</li>
+<li class=" ml-8">在某个范围内 (例如 $0 < x < 1$)，等式左右 “要多接近有多接近”</li>
 </ul></div>
         
       
@@ -365,7 +365,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#31070;&#22855;&#30340;&#22810;&#39033;&#24335;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">神奇的多项式</h1></div></div></div>
         
       
       </section>
@@ -376,11 +376,11 @@ section .center {
 
       
         
-        <div><h2 id="a-1-1-1-ldots" class=" text-xl mt-2 pb-2 font-sans">$a = [1, 1, 1, \ldots]$ &#30340;&#22810;&#39033;&#24335;</h2>
+        <div><h2 id="a-1-1-1-ldots" class=" text-xl mt-2 pb-2 font-sans">$a = [1, 1, 1, \ldots]$ 的多项式</h2>
 <p class=" font-serif my-1">$$ F(x) = 1 + x + x^2 + x^3 + \ldots = {?}$$</p>
-<p class=" font-serif my-1">&#20363;&#23376;</p>
+<p class=" font-serif my-1">例子</p>
 <p class=" font-serif my-1">$$F(1/2) = 1 + \frac{1}{2} + \frac{1}{4} + \frac{1}{8} \ldots $$</p>
-<p class=" font-serif my-1">&#20363;&#23376;&#65306;&#31561;&#27604;&#25968;&#21015;&#27714;&#21644;&#20844;&#24335;</p>
+<p class=" font-serif my-1">例子：等比数列求和公式</p>
 <p class=" font-serif my-1">$$\frac{a_0}{1-q}(1-q^n)$$</p></div>
         
       
@@ -392,14 +392,14 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#31070;&#22855;&#30340;&#22810;&#39033;&#24335;</h2>
-<p class=" font-serif my-1">$$\frac{1}{1-x} = 1 + x + x^2 + x^3 + \ldots\qquad(|x| &lt; 1)$$</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">神奇的多项式</h2>
+<p class=" font-serif my-1">$$\frac{1}{1-x} = 1 + x + x^2 + x^3 + \ldots\qquad(|x| < 1)$$</p>
 <p class=" font-serif my-1">$$a = [1, 1, 1, 1, \ldots]$$</p>
 <hr>
 <p class=" font-serif my-1">$$\sin(x) = x - \frac{1}{3!}x^3 + \frac{1}{5!}x^5 - \frac{1}{7!}x^7 + \ldots\quad(x\in\mathbb R)$$</p>
 <p class=" font-serif my-1">$$a = [0, 1, 0, -\frac{1}{6}, 0, \frac{1}{120}, 0, -\frac{1}{40320}, \ldots]$$</p>
 <hr>
-<p class=" font-serif my-1"></p><center>(&#20110;&#26159;&#25105;&#20204;&#26377;&#20102;<red>&#29983;&#25104;&#20989;&#25968;</red>&#65306;&#25968;&#21015;&#30340;&#20989;&#25968;&#34920;&#31034;)</center></div>
+<p class=" font-serif my-1"></p><center>(于是我们有了<red>生成函数</red>：数列的函数表示)</center></div>
         
       
       </section>
@@ -410,9 +410,9 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25361;&#25112;&#19968;&#19979;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">挑战一下</h2>
 <p class=" font-serif my-1">$$F(x) = x + x^2 + 2x^3 + 3x^4 + 5x^5 + 8x^6 + \ldots = {?}$$</p>
-<p class=" font-serif my-1">&#20160;&#20040;&#26679;&#30340; $F(x)$ &#29983;&#25104;&#20102; Fibonacci &#25968;&#21015;&#65311;</p>
+<p class=" font-serif my-1">什么样的 $F(x)$ 生成了 Fibonacci 数列？</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">$f(0) = 0$, $f(1) = 1$</li>
 <li class=" ml-8">$f(n) = f(n-1) + f(n-2)$</li>
@@ -431,7 +431,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#25968;&#21015;&#30340;&#29983;&#25104;&#20989;&#25968;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">数列的生成函数</h1></div></div></div>
         
       
       </section>
@@ -442,13 +442,13 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#29983;&#25104;&#20989;&#25968;&#65306;&#20989;&#25968;&#19982;&#25968;&#21015;&#20043;&#38388;&#30340;&#26725;&#26753;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">生成函数：函数与数列之间的桥梁</h2>
 <p class=" font-serif my-1"><img alt="" class="center" src="../pages/OI/img/gf-idea.png" width="800px"></p>
 <hr>
-<p class=" font-serif my-1">&#35797;&#35797; <a href="https://www.wolframalpha.com/input/" class=" text-amber-900">Wolfram Alpha</a></p>
+<p class=" font-serif my-1">试试 <a href="https://www.wolframalpha.com/input/" class=" text-amber-900">Wolfram Alpha</a></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#8220;series x/(1-x-x^2) to order 20&#8221;</li>
-<li class=" ml-8">&#8220;simplify[x/(1-x-x^2)]&#8221;</li>
+<li class=" ml-8">“series x/(1-x-x^2) to order 20”</li>
+<li class=" ml-8">“simplify[x/(1-x-x^2)]”</li>
 </ul></div>
         
       
@@ -460,14 +460,14 @@ section .center {
 
       
         
-        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">&#29983;&#25104;&#20989;&#25968;&#65306;&#20989;&#25968;&#19982;&#25968;&#21015;&#20043;&#38388;&#30340;&#26725;&#26753; (cont'd)</h2>
+        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">生成函数：函数与数列之间的桥梁 (cont'd)</h2>
 <p class=" font-serif my-1"><img alt="" class="center" src="../pages/OI/img/gf-idea.png" width="800px"></p>
-<p class=" font-serif my-1">&#29992;&#20989;&#25968; (&#22810;&#39033;&#24335;&#20195;&#25968;) &#34920;&#31034;&#21508;&#31181;&#25968;&#21015;</p>
+<p class=" font-serif my-1">用函数 (多项式代数) 表示各种数列</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">$c\cdot F(x)$ &#8594; &#25968;&#21015;&#20493;&#22686;</li>
-<li class=" ml-8">$x\cdot F(x)$ &#8594; &#25968;&#21015;&#21491;&#31227; (&#34917; 0)</li>
-<li class=" ml-8">$[F(x) - f(0)] / x$ &#8594; &#25968;&#21015;&#24038;&#31227;</li>
-<li class=" ml-8">$F_1(x) \pm F_2(x)$ &#8594; &#25968;&#21015;&#27714;&#21644;/&#24046;</li>
+<li class=" ml-8">$c\cdot F(x)$ → 数列倍增</li>
+<li class=" ml-8">$x\cdot F(x)$ → 数列右移 (补 0)</li>
+<li class=" ml-8">$[F(x) - f(0)] / x$ → 数列左移</li>
+<li class=" ml-8">$F_1(x) \pm F_2(x)$ → 数列求和/差</li>
 </ul></div>
         
       
@@ -479,15 +479,15 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26725;&#26753;&#65306;&#20363;&#23376;</h2>
-<p class=" font-serif my-1">&#27714; Fibonacci &#25968;&#21015;&#30340;&#36890;&#39033;&#20844;&#24335;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">桥梁：例子</h2>
+<p class=" font-serif my-1">求 Fibonacci 数列的通项公式</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">$f(0) = 0$, $f(1) = 1$</li>
 <li class=" ml-8">$f(n) = f(n-1) + f(n-2)$</li>
 <li class=" ml-8">$F(x) = x/(1-x-x^2)$</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#27714; $f(n, k) = f(n - 1, k) + f(n - 1, k - 1)$ &#30340;&#36890;&#39033;&#20844;&#24335;</p>
+<p class=" font-serif my-1">求 $f(n, k) = f(n - 1, k) + f(n - 1, k - 1)$ 的通项公式</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">$f(n, 0) = 1$</li>
 <li class=" ml-8">$B_n(x) = \sum_{k\ge 0} f(n,k) x^k$</li>
@@ -502,15 +502,15 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#29983;&#25104;&#20989;&#25968;&#65306;&#20989;&#25968;&#19982;&#25968;&#21015;&#20043;&#38388;&#30340;&#26725;&#26753;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">生成函数：函数与数列之间的桥梁</h2>
 <p class=" font-serif my-1"><img alt="" class="center" src="../pages/OI/img/gf-idea.png" width="800px"></p>
-<p class=" font-serif my-1">&#29992;&#20989;&#25968; (&#22810;&#39033;&#24335;&#20195;&#25968;) &#34920;&#31034;&#21508;&#31181;&#25968;&#21015;</p>
+<p class=" font-serif my-1">用函数 (多项式代数) 表示各种数列</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">$F'(x)$ &#8594; &#25968;&#21015;&#20056;&#24130;&#27425; + &#24038;&#31227;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#23548;&#25968;: $(c)' = 0$, $(x^n)' = nx^{n-1}$</li>
+<li class=" ml-8">$F'(x)$ → 数列乘幂次 + 左移<ul class=" list-disc font-serif">
+<li class=" ml-8">导数: $(c)' = 0$, $(x^n)' = nx^{n-1}$</li>
 </ul>
 </li>
-<li class=" ml-8">$F_1(x) \cdot F_2(x)$ &#8594; &#25968;&#21015;&#21367;&#31215;</li>
+<li class=" ml-8">$F_1(x) \cdot F_2(x)$ → 数列卷积</li>
 </ul></div>
         
       
@@ -522,13 +522,13 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#31070;&#22855;&#30340;&#21367;&#31215;</h2>
-<p class=" font-serif my-1">&#35797;&#35797; </p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">神奇的卷积</h2>
+<p class=" font-serif my-1">试试 </p>
 <p class=" font-serif my-1">$$F(x) \cdot \frac{1}{1-x}$$</p>
 <hr>
-<p class=" font-serif my-1">&#20363;&#23376;</p>
+<p class=" font-serif my-1">例子</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#27714; $1 + 2^2 + 3^2 + 4^2 + \ldots$</li>
+<li class=" ml-8">求 $1 + 2^2 + 3^2 + 4^2 + \ldots$</li>
 </ul></div>
         
       
@@ -544,7 +544,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#20989;&#25968;&#19982;&#25968;&#21015;&#30340;&#26725;&#26753;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">函数与数列的桥梁</h1></div></div></div>
         
       
       </section>
@@ -555,14 +555,14 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26356;&#22810;&#30340;&#29983;&#25104;&#20989;&#25968;</h2>
-<p class=" font-serif my-1">&#25351;&#25968;&#29983;&#25104;&#20989;&#25968;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">更多的生成函数</h2>
+<p class=" font-serif my-1">指数生成函数</p>
 <p class=" font-serif my-1">$$F(x) = a_0 + a_1 x + a_2 \frac{x^2}{2!} + a_3 \frac{x^3}{3!} + \ldots$$</p>
 <hr>
-<p class=" font-serif my-1">Dirichlet &#32423;&#25968;&#29983;&#25104;&#20989;&#25968;</p>
+<p class=" font-serif my-1">Dirichlet 级数生成函数</p>
 <p class=" font-serif my-1">$$F(s) = a_1 + \frac{a_2}{2^s} + \frac{a_3}{3^s} + \frac{a_3}{3^s} + \ldots$$</p>
 <hr>
-<p class=" font-serif my-1">&#32451;&#20064;&#65306;$F \cdot G$ &#30340;&#25512;&#23548;</p></div>
+<p class=" font-serif my-1">练习：$F \cdot G$ 的推导</p></div>
         
       
       </section>
@@ -576,14 +576,14 @@ section .center {
         <div><h2 id="riemanns-zeta-function" class=" text-xl mt-2 pb-2 font-sans">Riemann's Zeta Function</h2>
 <p class=" font-serif my-1">$$\zeta(s) = 1 + \frac{1}{2^s} + \frac{1}{3^s} + \ldots\quad(a_i = 1)$$</p>
 <hr>
-<p class=" font-serif my-1">&#20195;&#25968; (&#25968;&#35770;)</p>
+<p class=" font-serif my-1">代数 (数论)</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">$\displaystyle F(s) \cdot G(s) = \sum_{n \ge 1} \sum_{d|n} a_d b_{n/d}$</li>
 </ul>
-<p class=" font-serif my-1">&#25968;&#23398;&#20998;&#26512;</p>
+<p class=" font-serif my-1">数学分析</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">$\displaystyle \zeta(2) = 1 + \frac{1}{2^2} + \frac{1}{3^2} + \ldots = \frac{\pi^2}{6}$</li>
-<li class=" ml-8"><a href="https://www.bilibili.com/video/BV1tx411y7VG" class=" text-amber-900">3Blue1Brown &#30340;&#35270;&#39057;</a></li>
+<li class=" ml-8"><a href="https://www.bilibili.com/video/BV1tx411y7VG" class=" text-amber-900">3Blue1Brown 的视频</a></li>
 </ul></div>
         
       
@@ -595,21 +595,21 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">(&#20170;&#22825;&#21807;&#19968;&#30340;) &#20363;&#39064;</h2>
-<p class=" font-serif my-1">&#27714;&#38271;&#24230;&#20026; $n$ &#30340; 01 &#23383;&#31526;&#20018;&#20013;&#19981;&#21487;&#20998;&#35299;&#23383;&#31526;&#20018;&#30340;&#20010;&#25968;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">(今天唯一的) 例题</h2>
+<p class=" font-serif my-1">求长度为 $n$ 的 01 字符串中不可分解字符串的个数</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#8220;&#19981;&#21487;&#20998;&#35299;&#8221; &#25351;&#19981;&#33021;&#20889;&#25104;&#20004;&#20010;&#25110;&#22810;&#20010;&#30456;&#21516;&#23383;&#31526;&#20018;&#30340;&#25340;&#25509;<ul class=" list-disc font-serif">
-<li class=" ml-8"><code>"100100100" == "100" * 3</code> &#21487;&#20998;&#35299;</li>
-<li class=" ml-8"><code>"1101"</code> &#19981;&#21487;&#20998;&#35299;</li>
+<li class=" ml-8">“不可分解” 指不能写成两个或多个相同字符串的拼接<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>"100100100" == "100" * 3</code> 可分解</li>
+<li class=" ml-8"><code>"1101"</code> 不可分解</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#19968;&#20010;&#26080;&#20851;&#30340;&#25216;&#24039;</p>
+<p class=" font-serif my-1">一个无关的技巧</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#22810;&#23398;&#20250;&#19968;&#31181;&#32534;&#31243;&#35821;&#35328;&#65292;&#21487;&#33021;&#26377;&#22855;&#25928; (<a href="../pages/OI/demos/brute-force.py" class=" text-amber-900">brute-force.py</a>)<ul class=" list-disc font-serif">
-<li class=" ml-8">Python: &#24555;&#36895;&#23581;&#35797;&#12289;&#23545;&#25293;&#8230;&#8230;&#30340;&#26368;&#20339;&#36873;&#25321;<ul class=" list-disc font-serif">
-<li class=" ml-8">Linux &#33258;&#24102;</li>
+<li class=" ml-8">多学会一种编程语言，可能有奇效 (<a href="../pages/OI/demos/brute-force.py" class=" text-amber-900">brute-force.py</a>)<ul class=" list-disc font-serif">
+<li class=" ml-8">Python: 快速尝试、对拍……的最佳选择<ul class=" list-disc font-serif">
+<li class=" ml-8">Linux 自带</li>
 </ul>
 </li>
 </ul>
@@ -629,7 +629,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#24635;&#32467;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">总结</h1></div></div></div>
         
       
       </section>
@@ -640,20 +640,20 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#36808;&#21521; &#8220;&#39640;&#31561;&#8221; &#25968;&#23398;&#30340;&#31532;&#19968;&#27493;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">迈向 “高等” 数学的第一步</h2>
 <p class=" font-serif my-1">$$ f(x) = a_0 + a_1 x + a_2 x^2 + a_3 x^3 + \ldots $$</p>
 <hr>
-<p class=" font-serif my-1">&#22810;&#39033;&#24335;</p>
+<p class=" font-serif my-1">多项式</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">$f(x) = ax^2 + bx + c$</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#25968;&#21015;&#21644;&#36882;&#25512;</p>
+<p class=" font-serif my-1">数列和递推</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">$f(0) = 0$, $f(1) = 1$, $f(n) = f(n-1) + f(n-2)$ ($n \ge 2$)</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#26080;&#38480;&#24490;&#29615;&#23567;&#25968;</p>
+<p class=" font-serif my-1">无限循环小数</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">$0.\dot{9} = \frac{9}{10} + \frac{9}{100} + \frac{9}{1000} + \frac{9}{10000} + \ldots = {?}$</li>
 </ul></div>
@@ -667,10 +667,10 @@ section .center {
 
       
         
-        <div><h2 id="ne" class=" text-xl mt-2 pb-2 font-sans">&#25968;&#23398; $\ne$ &#20570;&#25968;&#23398;&#39064;</h2>
+        <div><h2 id="ne" class=" text-xl mt-2 pb-2 font-sans">数学 $\ne$ 做数学题</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#25968;&#23398;&#30340;&#26412;&#36136;&#8212;&#8212;&#25506;&#32034;&#21644;&#21457;&#29616;</p>
-<p class=" font-serif my-1">&#8220;&#34920;&#36798;&#8221;&#12289;&#8220;&#25277;&#35937;&#8221;&#12289;&#8220;&#24314;&#31435;&#32852;&#31995;&#8221;</p>
+<p class=" font-serif my-1">数学的本质——探索和发现</p>
+<p class=" font-serif my-1">“表达”、“抽象”、“建立联系”</p>
 </blockquote>
 <hr>
 <p class=" font-serif my-1"><img alt="" class="center" src="../pages/OI/img/gf-idea.png" width="800px"></p></div>
@@ -684,18 +684,18 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#24310;&#20280;&#38405;&#35835;</h2>
-<p class=" font-serif my-1">Concrete Mathematics&#12298;&#20855;&#20307;&#25968;&#23398;&#12299;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">延伸阅读</h2>
+<p class=" font-serif my-1">Concrete Mathematics《具体数学》</p>
 <hr>
 <p class=" font-serif my-1">Generatingfunctionology (by Herbert S. Wilf)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#36275;&#22815;&#28385;&#36275; OI/MO &#30340;&#25152;&#26377;&#29983;&#25104;&#20989;&#25968;&#25216;&#24039;</li>
+<li class=" ml-8">足够满足 OI/MO 的所有生成函数技巧</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">Burn Math Class (by Jason Wilkes) &#12298;&#28903;&#25481;&#25968;&#23398;&#20070;&#12299; </p>
+<p class=" font-serif my-1">Burn Math Class (by Jason Wilkes) 《烧掉数学书》 </p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#36866;&#21512;&#20013;&#23398;&#29983;&#30340;&#31532;&#19968;&#26412;&#25968;&#23398;&#20998;&#26512; (&#20294;&#26377;&#28857;&#38590;&#65292;&#38656;&#35201;&#32769;&#24072;&#25945;)</li>
-<li class=" ml-8">&#20070;&#35780;&#65306;&#8220;&#39318;&#20808;&#38656;&#35201;&#35686;&#24789;&#30340;&#26159;&#25226;&#23398;&#29983;&#35757;&#32451;&#25104;&#20570;&#39064;&#26426;&#22120;&#30340;&#25968;&#23398;&#36741;&#23548;&#20070;&#8221;&#12289;&#8220;&#36824;&#26377;&#19968;&#31867;&#38656;&#35201;&#35686;&#24789;&#30340;&#20070;&#26159;&#29992;&#20005;&#26684;&#24615;&#25240;&#30952;&#23398;&#29983;&#30340;&#22823;&#23398;&#25968;&#23398;&#35838;&#26412;&#8221;</li>
+<li class=" ml-8">适合中学生的第一本数学分析 (但有点难，需要老师教)</li>
+<li class=" ml-8">书评：“首先需要警惕的是把学生训练成做题机器的数学辅导书”、“还有一类需要警惕的书是用严格性折磨学生的大学数学课本”</li>
 </ul></div>
         
       

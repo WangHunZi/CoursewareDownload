@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +209,7 @@ section .center {
 }
 </style>
 
-  <title>&#22312;&#25805;&#20316;&#31995;&#32479;&#19978;&#23454;&#29616;&#20114;&#26021;</title>
+  <title>在操作系统上实现互斥</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,7 +227,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="7.4.slides.html" class=" text-amber-900">&#22312;&#25805;&#20316;&#31995;&#32479;&#19978;&#23454;&#29616;&#20114;&#26021;</a></h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="7.4.slides.html" class=" text-amber-900">在操作系统上实现互斥</a></h1></div></div></div>
         
       
       </section>
@@ -238,28 +238,28 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#33258;&#26059;&#38145;&#30340;&#32570;&#38519;</h2>
-<p class=" font-serif my-1">&#24615;&#33021;&#38382;&#39064; (1)</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">自旋锁的缺陷</h2>
+<p class=" font-serif my-1">性能问题 (1)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#38500;&#20102;&#36827;&#20837;&#20020;&#30028;&#21306;&#30340;&#32447;&#31243;&#65292;&#20854;&#20182;&#22788;&#29702;&#22120;&#19978;&#30340;&#32447;&#31243;&#37117;&#22312;<red>&#31354;&#36716;</red></li>
-<li class=" ml-8">&#20105;&#25250;&#38145;&#30340;&#22788;&#29702;&#22120;&#36234;&#22810;&#65292;&#21033;&#29992;&#29575;&#36234;&#20302;<ul class=" list-disc font-serif">
-<li class=" ml-8">4 &#20010; CPU &#36816;&#34892; 4 &#20010; sum-spinlock &#21644; 1 &#20010; OBS<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20219;&#24847;&#26102;&#21051;&#37117;&#21482;&#26377;&#19968;&#20010; sum-atomic &#22312;&#26377;&#25928;&#35745;&#31639;</li>
+<li class=" ml-8">除了进入临界区的线程，其他处理器上的线程都在<red>空转</red></li>
+<li class=" ml-8">争抢锁的处理器越多，利用率越低<ul class=" list-disc font-serif">
+<li class=" ml-8">4 个 CPU 运行 4 个 sum-spinlock 和 1 个 OBS<ul class=" list-disc font-serif">
+<li class=" ml-8">任意时刻都只有一个 sum-atomic 在有效计算</li>
 </ul>
 </li>
-<li class=" ml-8">&#22343;&#20998; CPU, OBS &#23601;&#20998;&#19981;&#21040; 100% &#30340; CPU &#20102;</li>
+<li class=" ml-8">均分 CPU, OBS 就分不到 100% 的 CPU 了</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#24615;&#33021;&#38382;&#39064; (2)</p>
+<p class=" font-serif my-1">性能问题 (2)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25345;&#26377;&#33258;&#26059;&#38145;&#30340;&#32447;&#31243;<red>&#21487;&#33021;&#34987;&#25805;&#20316;&#31995;&#32479;&#20999;&#25442;&#20986;&#21435;</red><ul class=" list-disc font-serif">
-<li class=" ml-8">&#25805;&#20316;&#31995;&#32479;&#19981; &#8220;&#24863;&#30693;&#8221; &#32447;&#31243;&#22312;&#20570;&#20160;&#20040;</li>
-<li class=" ml-8">(&#20294;&#20026;&#20160;&#20040;&#19981;&#33021;&#21602;&#65311;)</li>
+<li class=" ml-8">持有自旋锁的线程<red>可能被操作系统切换出去</red><ul class=" list-disc font-serif">
+<li class=" ml-8">操作系统不 “感知” 线程在做什么</li>
+<li class=" ml-8">(但为什么不能呢？)</li>
 </ul>
 </li>
-<li class=" ml-8">&#23454;&#29616; 100% &#30340;&#36164;&#28304;&#28010;&#36153;</li>
+<li class=" ml-8">实现 100% 的资源浪费</li>
 </ul></div>
         
       
@@ -271,19 +271,19 @@ section .center {
 
       
         
-        <div><h2 id="scalability" class=" text-xl mt-2 pb-2 font-sans">Scalability: &#24615;&#33021;&#30340;&#26032;&#32500;&#24230;</h2>
+        <div><h2 id="scalability" class=" text-xl mt-2 pb-2 font-sans">Scalability: 性能的新维度</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#21516;&#19968;&#20221;&#35745;&#31639;&#20219;&#21153;&#65292;&#26102;&#38388; (CPU cycles) &#21644;&#31354;&#38388; (mapped memory) &#20250;&#38543;&#22788;&#29702;&#22120;&#25968;&#37327;&#30340;&#22686;&#38271;&#32780;&#21464;&#21270;&#12290;</p>
+<p class=" font-serif my-1">同一份计算任务，时间 (CPU cycles) 和空间 (mapped memory) 会随处理器数量的增长而变化。</p>
 </blockquote>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/spinlock-scalability.jpg" width="500px"></p>
-<p class=" font-serif my-1">&#29992;&#33258;&#26059;&#38145;&#23454;&#29616; sum++ &#30340;&#24615;&#33021;&#38382;&#39064;</p>
+<p class=" font-serif my-1">用自旋锁实现 sum++ 的性能问题</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20005;&#35880;&#30340;&#32479;&#35745;&#24456;&#38590;<ul class=" list-disc font-serif">
-<li class=" ml-8">CPU &#21160;&#24577;&#21151;&#32791;</li>
-<li class=" ml-8">&#31995;&#32479;&#20013;&#30340;&#20854;&#20182;&#36827;&#31243;</li>
-<li class=" ml-8">&#36229;&#32447;&#31243;</li>
+<li class=" ml-8">严谨的统计很难<ul class=" list-disc font-serif">
+<li class=" ml-8">CPU 动态功耗</li>
+<li class=" ml-8">系统中的其他进程</li>
+<li class=" ml-8">超线程</li>
 <li class=" ml-8">NUMA</li>
-<li class=" ml-8">&#8230;&#8230;</li>
+<li class=" ml-8">……</li>
 <li class=" ml-8"><a href="https://www.cse.unsw.edu.au/~gernot/benchmarking-crimes.html" class=" text-amber-900">Benchmarking crimes</a></li>
 </ul>
 </li>
@@ -298,23 +298,23 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#33258;&#26059;&#38145;&#30340;&#20351;&#29992;&#22330;&#26223;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">自旋锁的使用场景</h2>
 <ol class=" list-decimal font-serif">
-<li class=" ml-8">&#20020;&#30028;&#21306;&#20960;&#20046;&#19981; &#8220;&#25317;&#22581;&#8221;</li>
-<li class=" ml-8">&#25345;&#26377;&#33258;&#26059;&#38145;&#26102;&#31105;&#27490;&#25191;&#34892;&#27969;&#20999;&#25442;</li>
+<li class=" ml-8">临界区几乎不 “拥堵”</li>
+<li class=" ml-8">持有自旋锁时禁止执行流切换</li>
 </ol>
 <hr>
-<p class=" font-serif my-1">&#20351;&#29992;&#22330;&#26223;&#65306;<red>&#25805;&#20316;&#31995;&#32479;&#20869;&#26680;&#30340;&#24182;&#21457;&#25968;&#25454;&#32467;&#26500; (&#30701;&#20020;&#30028;&#21306;)</red></p>
+<p class=" font-serif my-1">使用场景：<red>操作系统内核的并发数据结构 (短临界区)</red></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25805;&#20316;&#31995;&#32479;&#21487;&#20197;&#20851;&#38381;&#20013;&#26029;&#21644;&#25250;&#21344;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20445;&#35777;&#38145;&#30340;&#25345;&#26377;&#32773;&#22312;&#24456;&#30701;&#30340;&#26102;&#38388;&#20869;&#21487;&#20197;&#37322;&#25918;&#38145;</li>
+<li class=" ml-8">操作系统可以关闭中断和抢占<ul class=" list-disc font-serif">
+<li class=" ml-8">保证锁的持有者在很短的时间内可以释放锁</li>
 </ul>
 </li>
-<li class=" ml-8">(&#22914;&#26524;&#26159;&#34394;&#25311;&#26426;&#21602;...&#128514;)<ul class=" list-disc font-serif">
-<li class=" ml-8">PAUSE &#25351;&#20196;&#20250;&#35302;&#21457; VM Exit</li>
+<li class=" ml-8">(如果是虚拟机呢...😂)<ul class=" list-disc font-serif">
+<li class=" ml-8">PAUSE 指令会触发 VM Exit</li>
 </ul>
 </li>
-<li class=" ml-8">&#20294;&#20381;&#26087;&#24456;&#38590;&#20570;&#22909;<ul class=" list-disc font-serif">
+<li class=" ml-8">但依旧很难做好<ul class=" list-disc font-serif">
 <li class=" ml-8"><a href="https://www.usenix.org/conference/osdi10/analysis-linux-scalability-many-cores" class=" text-amber-900">An analysis of Linux scalability to many cores</a> (OSDI'10)</li>
 </ul>
 </li>
@@ -329,20 +329,20 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#23454;&#29616;&#32447;&#31243; + &#38271;&#20020;&#30028;&#21306;&#30340;&#20114;&#26021;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">实现线程 + 长临界区的互斥</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#20316;&#19994;&#37027;&#20040;&#22810;&#65292;&#19982;&#20854;&#24178;&#31561; Online Judge &#21457;&#24067;&#65292;&#19981;&#22914;&#25226;&#33258;&#24049; (CPU) &#35753;&#32473;&#20854;&#20182;&#20316;&#19994; (&#32447;&#31243;) &#25191;&#34892;&#65311;</p>
+<p class=" font-serif my-1">作业那么多，与其干等 Online Judge 发布，不如把自己 (CPU) 让给其他作业 (线程) 执行？</p>
 </blockquote>
-<p class=" font-serif my-1">&#8220;&#35753;&#8221; &#19981;&#26159; C &#35821;&#35328;&#20195;&#30721;&#21487;&#20197;&#20570;&#21040;&#30340; (C &#20195;&#30721;&#21482;&#33021;&#25191;&#34892;&#25351;&#20196;)</p>
+<p class=" font-serif my-1">“让” 不是 C 语言代码可以做到的 (C 代码只能执行指令)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20294;&#26377;&#19968;&#31181;&#29305;&#27530;&#30340;&#25351;&#20196;&#65306;syscall</li>
-<li class=" ml-8">&#25226;&#38145;&#30340;&#23454;&#29616;&#25918;&#21040;&#25805;&#20316;&#31995;&#32479;&#37324;&#23601;&#22909;&#21862;<ul class=" list-disc font-serif">
-<li class=" ml-8"><code>syscall(SYSCALL_lock, &amp;lk);</code><ul class=" list-disc font-serif">
-<li class=" ml-8">&#35797;&#22270;&#33719;&#24471; <code>lk</code>&#65292;&#20294;&#22914;&#26524;&#22833;&#36133;&#65292;&#23601;&#20999;&#25442;&#21040;&#20854;&#20182;&#32447;&#31243;</li>
+<li class=" ml-8">但有一种特殊的指令：syscall</li>
+<li class=" ml-8">把锁的实现放到操作系统里就好啦<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>syscall(SYSCALL_lock, &lk);</code><ul class=" list-disc font-serif">
+<li class=" ml-8">试图获得 <code>lk</code>，但如果失败，就切换到其他线程</li>
 </ul>
 </li>
-<li class=" ml-8"><code>syscall(SYSCALL_unlock, &amp;lk);</code><ul class=" list-disc font-serif">
-<li class=" ml-8">&#37322;&#25918; <code>lk</code>&#65292;&#22914;&#26524;&#26377;&#31561;&#24453;&#38145;&#30340;&#32447;&#31243;&#23601;&#21796;&#37266;</li>
+<li class=" ml-8"><code>syscall(SYSCALL_unlock, &lk);</code><ul class=" list-disc font-serif">
+<li class=" ml-8">释放 <code>lk</code>，如果有等待锁的线程就唤醒</li>
 </ul>
 </li>
 </ul>
@@ -358,27 +358,27 @@ section .center {
 
       
         
-        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">&#23454;&#29616;&#32447;&#31243; + &#38271;&#20020;&#30028;&#21306;&#30340;&#20114;&#26021; (cont'd)</h2>
+        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">实现线程 + 长临界区的互斥 (cont'd)</h2>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/locker.jpg" width="300px"></p>
-<p class=" font-serif my-1">&#25805;&#20316;&#31995;&#32479; = &#26356;&#34915;&#23460;&#31649;&#29702;&#21592;</p>
+<p class=" font-serif my-1">操作系统 = 更衣室管理员</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20808;&#21040;&#30340;&#20154; (&#32447;&#31243;)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#25104;&#21151;&#33719;&#24471;&#25163;&#29615;&#65292;&#36827;&#20837;&#28216;&#27891;&#39302; </li>
-<li class=" ml-8"><code>*lk = &#128274;</code>&#65292;&#31995;&#32479;&#35843;&#29992;&#30452;&#25509;&#36820;&#22238;</li>
+<li class=" ml-8">先到的人 (线程)<ul class=" list-disc font-serif">
+<li class=" ml-8">成功获得手环，进入游泳馆 </li>
+<li class=" ml-8"><code>*lk = 🔒</code>，系统调用直接返回</li>
 </ul>
 </li>
-<li class=" ml-8">&#21518;&#21040;&#30340;&#20154; (&#32447;&#31243;)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#19981;&#33021;&#36827;&#20837;&#28216;&#27891;&#39302;&#65292;&#25490;&#38431;&#31561;&#24453;</li>
-<li class=" ml-8">&#32447;&#31243;&#25918;&#20837;&#31561;&#24453;&#38431;&#21015;&#65292;&#25191;&#34892;&#32447;&#31243;&#20999;&#25442; (yield)</li>
+<li class=" ml-8">后到的人 (线程)<ul class=" list-disc font-serif">
+<li class=" ml-8">不能进入游泳馆，排队等待</li>
+<li class=" ml-8">线程放入等待队列，执行线程切换 (yield)</li>
 </ul>
 </li>
-<li class=" ml-8">&#27927;&#23436;&#28577;&#20986;&#26469;&#30340;&#20154; (&#32447;&#31243;)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20132;&#36824;&#25163;&#29615;&#32473;&#31649;&#29702;&#21592;&#65307;&#31649;&#29702;&#21592;&#25226;&#25163;&#29615;&#20877;&#20132;&#32473;&#25490;&#38431;&#30340;&#20154;</li>
-<li class=" ml-8">&#22914;&#26524;&#31561;&#24453;&#38431;&#21015;&#19981;&#31354;&#65292;&#20174;&#31561;&#24453;&#38431;&#21015;&#20013;&#21462;&#20986;&#19968;&#20010;&#32447;&#31243;&#20801;&#35768;&#25191;&#34892;</li>
-<li class=" ml-8">&#22914;&#26524;&#31561;&#24453;&#38431;&#21015;&#20026;&#31354;&#65292;<code>*lk = &#9989;</code></li>
+<li class=" ml-8">洗完澡出来的人 (线程)<ul class=" list-disc font-serif">
+<li class=" ml-8">交还手环给管理员；管理员把手环再交给排队的人</li>
+<li class=" ml-8">如果等待队列不空，从等待队列中取出一个线程允许执行</li>
+<li class=" ml-8">如果等待队列为空，<code>*lk = ✅</code></li>
 </ul>
 </li>
-<li class=" ml-8"><red>&#31649;&#29702;&#21592; (OS) &#20351;&#29992;&#33258;&#26059;&#38145;&#30830;&#20445;&#33258;&#24049;&#22788;&#29702;&#25163;&#29615;&#30340;&#36807;&#31243;&#26159;&#21407;&#23376;&#30340;</red></li>
+<li class=" ml-8"><red>管理员 (OS) 使用自旋锁确保自己处理手环的过程是原子的</red></li>
 </ul></div>
         
       
@@ -390,27 +390,27 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20851;&#20110;&#20114;&#26021;&#30340;&#19968;&#20123;&#20998;&#26512;</h2>
-<p class=" font-serif my-1">&#33258;&#26059;&#38145; (&#32447;&#31243;&#30452;&#25509;&#20849;&#20139; locked)</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">关于互斥的一些分析</h2>
+<p class=" font-serif my-1">自旋锁 (线程直接共享 locked)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#26356;&#24555;&#30340; fast path<ul class=" list-disc font-serif">
-<li class=" ml-8">xchg &#25104;&#21151; &#8594; &#31435;&#21363;&#36827;&#20837;&#20020;&#30028;&#21306;&#65292;&#24320;&#38144;&#24456;&#23567;</li>
+<li class=" ml-8">更快的 fast path<ul class=" list-disc font-serif">
+<li class=" ml-8">xchg 成功 → 立即进入临界区，开销很小</li>
 </ul>
 </li>
-<li class=" ml-8">&#26356;&#24930;&#30340; slow path<ul class=" list-disc font-serif">
-<li class=" ml-8">xchg &#22833;&#36133; &#8594; &#28010;&#36153; CPU &#33258;&#26059;&#31561;&#24453;</li>
+<li class=" ml-8">更慢的 slow path<ul class=" list-disc font-serif">
+<li class=" ml-8">xchg 失败 → 浪费 CPU 自旋等待</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#20114;&#26021;&#38145; (&#36890;&#36807;&#31995;&#32479;&#35843;&#29992;&#35775;&#38382; locked)</p>
+<p class=" font-serif my-1">互斥锁 (通过系统调用访问 locked)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#26356;&#32463;&#27982;&#30340; slow path<ul class=" list-disc font-serif">
-<li class=" ml-8">&#19978;&#38145;&#22833;&#36133;&#32447;&#31243;&#19981;&#20877;&#21344;&#29992; CPU</li>
+<li class=" ml-8">更经济的 slow path<ul class=" list-disc font-serif">
+<li class=" ml-8">上锁失败线程不再占用 CPU</li>
 </ul>
 </li>
-<li class=" ml-8">&#26356;&#24930;&#30340; fast path<ul class=" list-disc font-serif">
-<li class=" ml-8">&#21363;&#20415;&#19978;&#38145;&#25104;&#21151;&#20063;&#38656;&#35201;&#36827;&#20986;&#20869;&#26680; (syscall)</li>
+<li class=" ml-8">更慢的 fast path<ul class=" list-disc font-serif">
+<li class=" ml-8">即便上锁成功也需要进出内核 (syscall)</li>
 </ul>
 </li>
 </ul></div>

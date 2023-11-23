@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -137,7 +137,7 @@ hr {
 </style>
 
 
-  <title>&#26412;&#21608;&#38405;&#35835;&#26448;&#26009;</title>
+  <title>本周阅读材料</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -149,32 +149,32 @@ hr {
 <div class="px-2 py-1 w-full fixed z-50 bg-gradient-to-r from-black via-purple-700 via-purple-500 shadow-lg" style="-webkit-backdrop-filter: saturate(150%) blur(4px); backdrop-filter: saturate(150%) blur(4px)">
   <form>
     <a href="../../../index.html"><span class="text-lg px-2 text-white">Yanyan's Wiki</span></a>
-    <a href="../../2023/index.html"><span class="text-sm px-2 text-white">&#25805;&#20316;&#31995;&#32479; (2023)</span></a>
+    <a href="../../2023/index.html"><span class="text-sm px-2 text-white">操作系统 (2023)</span></a>
     <input maxlength="9" id="token-input" class="float-right appearance-none border border-transparent px-2 py-1 w-20 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-xs focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent font-mono" type="text" placeholder="TOKEN" oninput="login();">
   </form>
 </div>
 
 <div class="article container mx-auto md:px-8 lg:px-8 xl:px-8 2xl:px-8 shadow-lg border pb-8 pt-10 max-w-screen-md text-justify divide-y-2 divide-white">
-  <div><h1 id="_1" class=" text-2xl mt-2 font-sans">&#26412;&#21608;&#38405;&#35835;&#26448;&#26009;</h1>
-<h2 id="_2" class=" text-xl mt-2 pb-2 font-sans">&#25945;&#31185;&#20070;</h2>
-<p class=" font-serif my-1">&#25945;&#31185;&#20070; <a href="http://pages.cs.wisc.edu/~remzi/OSTEP/" class=" text-amber-900">Operating Systems: Three Easy Pieces</a>:</p>
+  <div><h1 id="_1" class=" text-2xl mt-2 font-sans">本周阅读材料</h1>
+<h2 id="_2" class=" text-xl mt-2 pb-2 font-sans">教科书</h2>
+<p class=" font-serif my-1">教科书 <a href="http://pages.cs.wisc.edu/~remzi/OSTEP/" class=" text-amber-900">Operating Systems: Three Easy Pieces</a>:</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#31532; 28 &#31456; - Locks</li>
-<li class=" ml-8">&#31532; 30 &#31456; - Condition Variables</li>
-<li class=" ml-8">&#31532; 31 &#31456; - Semaphores</li>
+<li class=" ml-8">第 28 章 - Locks</li>
+<li class=" ml-8">第 30 章 - Condition Variables</li>
+<li class=" ml-8">第 31 章 - Semaphores</li>
 </ul>
-<h2 id="_3" class=" text-xl mt-2 pb-2 font-sans">&#38405;&#35835;&#29702;&#35299;&#31034;&#20363;&#20195;&#30721;</h2>
+<h2 id="_3" class=" text-xl mt-2 pb-2 font-sans">阅读理解示例代码</h2>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><a href="../../../pages/OS/2022/demos/thread-sync.h" class=" text-amber-900">thread-sync.h</a> &#32473;&#20986;&#20102;&#19968;&#20123;&#20114;&#26021;&#21644;&#21516;&#27493;&#25805;&#20316;&#30340;&#23553;&#35013;&#65292;&#23427;&#20204;&#21487;&#20197;&#21644; thread.h &#32852;&#21512;&#20351;&#29992;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20320;&#21487;&#20197;&#33258;&#34892;&#27979;&#35797;&#20114;&#26021;&#38145;&#30340; scalability&#65292;&#20363;&#22914;&#20320;&#21487;&#20197;&#20462;&#25913; <a href="../../../pages/OS/2022/demos/sum-scalability.c" class=" text-amber-900">sum-scalability.c</a>&#65292;&#26597;&#30475;&#20020;&#30028;&#21306;&#22823;&#23567;&#19981;&#21516;&#26102;&#12289;&#32447;&#31243;&#19981;&#21516;&#26102;&#12289;&#38145;&#30340;&#20105;&#25250;&#31243;&#24230;&#19981;&#21516;&#26102;&#65292;&#22312;&#20320;&#33258;&#24049;&#35745;&#31639;&#26426;&#19978;&#31243;&#24207;&#30340; scalability&#12290;&#24403;&#28982;&#8212;&#8212;&#20320;&#38656;&#35201;&#19968;&#20010;&#22909;&#30340;&#32479;&#35745;&#31243;&#24207;&#33258;&#21160;&#24110;&#20320;&#25910;&#38598;&#36825;&#20123;&#25968;&#25454;&#24182;&#32472;&#21046;&#25104;&#22270;&#24418;&#12290;&#36825;&#33021;&#22815;&#24110;&#21161;&#20320;&#39564;&#35777;&#20320;&#30340;&#19968;&#20123;&#30452;&#35273;&#12290;</li>
+<li class=" ml-8"><a href="../../../pages/OS/2022/demos/thread-sync.h" class=" text-amber-900">thread-sync.h</a> 给出了一些互斥和同步操作的封装，它们可以和 thread.h 联合使用<ul class=" list-disc font-serif">
+<li class=" ml-8">你可以自行测试互斥锁的 scalability，例如你可以修改 <a href="../../../pages/OS/2022/demos/sum-scalability.c" class=" text-amber-900">sum-scalability.c</a>，查看临界区大小不同时、线程不同时、锁的争抢程度不同时，在你自己计算机上程序的 scalability。当然——你需要一个好的统计程序自动帮你收集这些数据并绘制成图形。这能够帮助你验证你的一些直觉。</li>
 </ul>
 </li>
 <li class=" ml-8">
-<p class=" font-serif my-1">&#25105;&#20204;&#23637;&#31034;&#20102; model checker &#30340;&#24314;&#27169;&#33021;&#21147;&#65306;&#25105;&#20204;&#21807;&#19968;&#30340;&#20551;&#35774;&#23601;&#26159; &#8220;&#27599;&#19968;&#34892;&#21407;&#23376;&#25191;&#34892;&#19988;&#31435;&#21363;&#20889;&#20837;&#20849;&#20139;&#20869;&#23384;&#8221;&#12290;&#36825;&#27604;&#23454;&#38469;&#30340;&#26426;&#22120;&#30340;&#20869;&#23384;&#27169;&#22411;&#31245;&#24378;&#19968;&#20123;&#65292;&#20294;&#20381;&#28982;&#33021;&#24110;&#21161;&#25105;&#20204;&#29702;&#35299;&#24182;&#21457;&#31243;&#24207;&#30340;&#34892;&#20026;&#12290;&#20363;&#22914;&#65292;&#22312; <a href="../../../pages/OS/2022/demos/futex.py" class=" text-amber-900">futex.py</a> &#20013;&#65292;&#25105;&#20204;&#23601;&#24314;&#27169;&#20102;&#19968;&#37096;&#20998;&#25805;&#20316;&#31995;&#32479;&#30340;&#34892;&#20026; (&#25805;&#20316;&#31995;&#32479;&#32500;&#25252;&#30340;&#38431;&#21015;)&#65306;</p>
+<p class=" font-serif my-1">我们展示了 model checker 的建模能力：我们唯一的假设就是 “每一行原子执行且立即写入共享内存”。这比实际的机器的内存模型稍强一些，但依然能帮助我们理解并发程序的行为。例如，在 <a href="../../../pages/OS/2022/demos/futex.py" class=" text-amber-900">futex.py</a> 中，我们就建模了一部分操作系统的行为 (操作系统维护的队列)：</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="nd">@thread</span>
 <span class="k">def</span> <span class="nf">t1</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">tryacquire</span><span class="p">()</span> <span class="o">==</span> <span class="s1">'&#128274;'</span><span class="p">:</span>     <span class="c1"># User</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">tryacquire</span><span class="p">()</span> <span class="o">==</span> <span class="s1">'🔒'</span><span class="p">:</span>     <span class="c1"># User</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">waits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">waits</span> <span class="o">+</span> <span class="s1">'1'</span> <span class="c1"># Kernel</span>
             <span class="k">while</span> <span class="s1">'1'</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">waits</span><span class="p">:</span>      <span class="c1"># Kernel</span>
                 <span class="k">pass</span>
@@ -183,11 +183,11 @@ hr {
         <span class="bp">self</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>                    <span class="c1"># Kernel</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">&#34429;&#28982;&#25805;&#20316;&#31995;&#32479;&#19981;&#20250;&#23454;&#38469;&#22320;&#22312; <code>waits</code> &#38431;&#21015;&#19978;&#33258;&#26059;&#65292;&#20294; &#8220;&#20999;&#25442;&#21040;&#21478;&#19968;&#20010;&#32447;&#31243;&#25191;&#34892;&#8221; &#30340;&#35821;&#20041;&#21644;&#33258;&#26059;&#30340;&#35821;&#20041;&#26159;&#23436;&#20840;&#31561;&#20215;&#30340;&#12290;&#22914;&#26524;&#20320;&#26377;&#20852;&#36259;&#65292;&#29978;&#33267;&#21487;&#20197;&#35797;&#30528;&#23454;&#29616;&#20320;&#33258;&#24049;&#30340; futex&#65292;&#20351;&#24471; fast path &#19979; release &#19981;&#38656;&#35201;&#38519;&#20837;&#20869;&#26680;&#8212;&#8212;&#20320;&#20250;&#21457;&#29616;&#27491;&#30830;&#30340;&#23454;&#29616;&#35201;&#22256;&#38590;&#24471;&#22810;&#12290;</p>
-<p class=" font-serif my-1">&#22312;&#12298;&#25805;&#20316;&#31995;&#32479;&#12299;&#35838;&#19978;&#30340;&#28201;&#39336;&#25552;&#31034;&#65306;<red><strong>&#24635;&#26159;&#20351;&#29992;&#31616;&#21333;&#12289;robust &#30340;&#26041;&#24335;&#23454;&#29616;&#27491;&#30830;&#30340;&#20195;&#30721;</strong></red>&#12290;Premature optimization is the root of all evil.</p>
+<p class=" font-serif my-1">虽然操作系统不会实际地在 <code>waits</code> 队列上自旋，但 “切换到另一个线程执行” 的语义和自旋的语义是完全等价的。如果你有兴趣，甚至可以试着实现你自己的 futex，使得 fast path 下 release 不需要陷入内核——你会发现正确的实现要困难得多。</p>
+<p class=" font-serif my-1">在《操作系统》课上的温馨提示：<red><strong>总是使用简单、robust 的方式实现正确的代码</strong></red>。Premature optimization is the root of all evil.</p>
 </li>
 <li class=" ml-8">
-<p class=" font-serif my-1">&#22312;&#21516;&#27493;&#25805;&#20316;&#19978;&#65292;model checker &#20063;&#24456;&#22909;&#22320;&#24110;&#21161;&#25105;&#20204;&#29702;&#35299;&#32447;&#31243;&#21516;&#27493; API &#30340; &#8220;&#20005;&#26684;&#23450;&#20041;&#8221;&#65292;&#20363;&#22914;&#26465;&#20214;&#21464;&#37327;&#65306;</p>
+<p class=" font-serif my-1">在同步操作上，model checker 也很好地帮助我们理解线程同步 API 的 “严格定义”，例如条件变量：</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">while</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">tryacquire</span><span class="p">():</span> <span class="k">pass</span> <span class="c1"># mutex_lock()</span>
 <span class="k">if</span> <span class="ow">not</span> <span class="n">cond</span><span class="p">:</span> <span class="c1"># cond_wait</span>
     <span class="n">_</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">waits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">release</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">waits</span> <span class="o">+</span> <span class="s1">'1'</span>
@@ -198,9 +198,9 @@ hr {
 <span class="bp">self</span><span class="o">.</span><span class="n">release</span><span class="p">()</span> <span class="c1"># mutex_unlock()</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">&#20197;&#21450;&#20449;&#21495;&#37327;&#65306;</p>
+<p class=" font-serif my-1">以及信号量：</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">def</span> <span class="nf">P</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tid</span><span class="p">):</span>
-    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">token</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">token</span> <span class="o">></span> <span class="mi">0</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">token</span> <span class="o">-=</span> <span class="mi">1</span>
         <span class="k">return</span> <span class="kc">True</span>
     <span class="k">else</span><span class="p">:</span>
@@ -214,18 +214,18 @@ hr {
         <span class="bp">self</span><span class="o">.</span><span class="n">token</span> <span class="o">+=</span> <span class="mi">1</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">&#30830;&#20445;&#20320;&#38405;&#35835;&#20102;&#36825;&#20123;&#20195;&#30721;&#65292;&#27491;&#30830;&#29702;&#35299;&#20102;&#21516;&#27493;&#25805;&#20316;&#30340;&#34892;&#20026;&#12290;
-- &#25105;&#20204;&#25552;&#20379;&#20102;&#29983;&#20135;&#32773;/&#28040;&#36153;&#32773;&#38382;&#39064;&#30340;&#19968;&#20123;&#20363;&#23376;&#65292;&#20363;&#22914; <a href="../../../pages/OS/2022/demos/pc-sem.c" class=" text-amber-900">pc-sem.c</a>&#12290;&#26356;&#37325;&#35201;&#30340;&#26159;&#65292;&#25105;&#20204;&#32473;&#20986;&#20102;&#24456;&#22810;&#38169;&#35823;&#30340;&#23454;&#29616;&#65292;&#20363;&#22914; <a href="../../../pages/OS/2022/demos/pc-cv.c" class=" text-amber-900">pc-cv.c</a> &#21644; <a href="../../../pages/OS/2022/demos/philosopher.c" class=" text-amber-900">philosopher.c</a>&#12290;&#36825;&#20123;&#20363;&#23376;&#25552;&#37266;&#22823;&#23478;&#65292;&#24182;&#21457;&#32534;&#31243;&#36828;&#38750;&#26131;&#20107;&#65292;&#21153;&#24517;&#22810;&#21152;&#23567;&#24515;&#12290;</p>
+<p class=" font-serif my-1">确保你阅读了这些代码，正确理解了同步操作的行为。
+- 我们提供了生产者/消费者问题的一些例子，例如 <a href="../../../pages/OS/2022/demos/pc-sem.c" class=" text-amber-900">pc-sem.c</a>。更重要的是，我们给出了很多错误的实现，例如 <a href="../../../pages/OS/2022/demos/pc-cv.c" class=" text-amber-900">pc-cv.c</a> 和 <a href="../../../pages/OS/2022/demos/philosopher.c" class=" text-amber-900">philosopher.c</a>。这些例子提醒大家，并发编程远非易事，务必多加小心。</p>
 </li>
 </ul>
-<h2 id="_4" class=" text-xl mt-2 pb-2 font-sans">&#21160;&#25163;&#23454;&#36341;</h2>
-<p class=" font-serif my-1">OSTEP &#30340;&#25945;&#31185;&#20070;&#32473;&#20102;&#25105;&#20204;&#35768;&#22810;&#20114;&#26021;&#12289;&#21516;&#27493;&#30340;&#20195;&#30721;&#20363;&#23376;&#65292;&#24182;&#38468;&#26377;&#20064;&#39064;&#12290;&#22312;&#29702;&#35299;&#20102;&#21407;&#29702;&#20197;&#21518;&#65292;&#20320;&#23601;&#20250;&#21457;&#29616;&#25945;&#31185;&#20070;&#19978;&#30340;&#35838;&#21518;&#20195;&#30721;&#20064;&#39064;&#20570;&#36215;&#26469;&#23481;&#26131;&#20102;&#12290;</p></div>
+<h2 id="_4" class=" text-xl mt-2 pb-2 font-sans">动手实践</h2>
+<p class=" font-serif my-1">OSTEP 的教科书给了我们许多互斥、同步的代码例子，并附有习题。在理解了原理以后，你就会发现教科书上的课后代码习题做起来容易了。</p></div>
 </div>
 
 <div class="container text-xs py-3">
   <span class="text-muted">
     <center><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="../../../static/img/cc-4.0.png"></a>
-    &#160;&#160;&#160;<a style="color:inherit" href="https://beian.miit.gov.cn/">&#33487; ICP &#22791; 2020049101 &#21495;</a>
+       <a style="color:inherit" href="https://beian.miit.gov.cn/">苏 ICP 备 2020049101 号</a>
     </center>
   </span>
 </div>

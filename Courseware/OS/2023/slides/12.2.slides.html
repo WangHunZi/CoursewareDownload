@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +209,7 @@ section .center {
 }
 </style>
 
-  <title>&#27515;&#38145;</title>
+  <title>死锁</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,7 +227,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="12.2.slides.html" class=" text-amber-900">&#27515;&#38145;</a></h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="12.2.slides.html" class=" text-amber-900">死锁</a></h1></div></div></div>
         
       
       </section>
@@ -238,11 +238,11 @@ section .center {
 
       
         
-        <div><h2 id="deadlock" class=" text-xl mt-2 pb-2 font-sans">&#27515;&#38145; (Deadlock)</h2>
+        <div><h2 id="deadlock" class=" text-xl mt-2 pb-2 font-sans">死锁 (Deadlock)</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
 <p class=" font-serif my-1">A deadlock is a state in which each member of a group is waiting for another member, including itself, to take action.</p>
 </blockquote>
-<p class=" font-serif my-1">&#20986;&#29616;&#32447;&#31243; &#8220;&#20114;&#30456;&#31561;&#24453;&#8221; &#30340;&#24773;&#20917;</p>
+<p class=" font-serif my-1">出现线程 “互相等待” 的情况</p>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/deadlock-car.jpg" width="600px"></p></div>
         
       
@@ -255,20 +255,20 @@ section .center {
       
         
         <div><h2 id="aa-deadlock" class=" text-xl mt-2 pb-2 font-sans">AA-Deadlock</h2>
-<p class=" font-serif my-1">Model checker &#21487;&#20197;&#21578;&#35785;&#20320;&#20026;&#20160;&#20040;</p>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lk</span><span class="p">);</span>
+<p class=" font-serif my-1">Model checker 可以告诉你为什么</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">lock</span><span class="p">(</span><span class="o">&</span><span class="n">lk</span><span class="p">);</span>
 <span class="c1">// lk = LOCKED;</span>
-<span class="n">lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lk</span><span class="p">);</span>
-<span class="c1">// while (xchg(&amp;lk, LOCKED) == LOCKED) ;</span>
+<span class="n">lock</span><span class="p">(</span><span class="o">&</span><span class="n">lk</span><span class="p">);</span>
+<span class="c1">// while (xchg(&lk, LOCKED) == LOCKED) ;</span>
 </code></pre></div>
 
 <hr>
-<p class=" font-serif my-1">&#30475;&#36215;&#26469;&#24456;&#20667;&#65292;&#20320;&#35273;&#24471;&#33258;&#24049;&#19981;&#20250;&#29359;&#36825;&#38169;&#35823;&#65311;</p>
+<p class=" font-serif my-1">看起来很傻，你觉得自己不会犯这错误？</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#19981;&#65292;&#20320;&#20250;&#29359;&#30340;&#65281;</li>
-<li class=" ml-8">&#30495;&#23454;&#31995;&#32479;&#30340;&#22797;&#26434;&#24615;&#31561;&#30528;&#20320;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#22810;&#23618;&#20989;&#25968;&#35843;&#29992;</li>
-<li class=" ml-8">&#38544;&#34255;&#30340;&#25511;&#21046;&#27969;</li>
+<li class=" ml-8">不，你会犯的！</li>
+<li class=" ml-8">真实系统的复杂性等着你<ul class=" list-disc font-serif">
+<li class=" ml-8">多层函数调用</li>
+<li class=" ml-8">隐藏的控制流</li>
 </ul>
 </li>
 </ul></div>
@@ -283,22 +283,22 @@ section .center {
       
         
         <div><h2 id="abba-deadlock" class=" text-xl mt-2 pb-2 font-sans">ABBA-Deadlock</h2>
-<p class=" font-serif my-1">&#21746; &#9794; &#23398;&#23478;&#21507;&#39277;&#38382;&#39064;</p>
+<p class=" font-serif my-1">哲 ♂ 学家吃饭问题</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">Tphilosopher</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">P</span><span class="p">(</span><span class="o">&amp;</span><span class="n">avail</span><span class="p">[</span><span class="n">lhs</span><span class="p">]);</span>
-<span class="w">  </span><span class="n">P</span><span class="p">(</span><span class="o">&amp;</span><span class="n">avail</span><span class="p">[</span><span class="n">rhs</span><span class="p">]);</span>
+<span class="w">  </span><span class="n">P</span><span class="p">(</span><span class="o">&</span><span class="n">avail</span><span class="p">[</span><span class="n">lhs</span><span class="p">]);</span>
+<span class="w">  </span><span class="n">P</span><span class="p">(</span><span class="o">&</span><span class="n">avail</span><span class="p">[</span><span class="n">rhs</span><span class="p">]);</span>
 <span class="w">  </span><span class="c1">// ...</span>
-<span class="w">  </span><span class="n">V</span><span class="p">(</span><span class="o">&amp;</span><span class="n">avail</span><span class="p">[</span><span class="n">lhs</span><span class="p">]);</span>
-<span class="w">  </span><span class="n">V</span><span class="p">(</span><span class="o">&amp;</span><span class="n">avail</span><span class="p">[</span><span class="n">rhs</span><span class="p">]);</span>
+<span class="w">  </span><span class="n">V</span><span class="p">(</span><span class="o">&</span><span class="n">avail</span><span class="p">[</span><span class="n">lhs</span><span class="p">]);</span>
+<span class="w">  </span><span class="n">V</span><span class="p">(</span><span class="o">&</span><span class="n">avail</span><span class="p">[</span><span class="n">rhs</span><span class="p">]);</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <ul class=" list-disc font-serif">
-<li class=" ml-8">$T_1$: P(1) - &#25104;&#21151;, P(2) - &#31561;&#24453;</li>
-<li class=" ml-8">$T_2$: P(2) - &#25104;&#21151;, P(3) - &#31561;&#24453;</li>
-<li class=" ml-8">$T_3$: P(3) - &#25104;&#21151;, P(4) - &#31561;&#24453;</li>
-<li class=" ml-8">$T_4$: P(4) - &#25104;&#21151;, P(5) - &#31561;&#24453;</li>
-<li class=" ml-8">$T_5$: P(5) - &#25104;&#21151;, P(1) - &#31561;&#24453;</li>
+<li class=" ml-8">$T_1$: P(1) - 成功, P(2) - 等待</li>
+<li class=" ml-8">$T_2$: P(2) - 成功, P(3) - 等待</li>
+<li class=" ml-8">$T_3$: P(3) - 成功, P(4) - 等待</li>
+<li class=" ml-8">$T_4$: P(4) - 成功, P(5) - 等待</li>
+<li class=" ml-8">$T_5$: P(5) - 成功, P(1) - 等待</li>
 </ul></div>
         
       
@@ -310,26 +310,26 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#27515;&#38145;&#20135;&#29983;&#30340;&#24517;&#35201;&#26465;&#20214;</h2>
-<p class=" font-serif my-1"><a href="https://dl.acm.org/doi/10.1145/356586.356588" class=" text-amber-900">System deadlocks (1971)</a>&#65306;&#27515;&#38145;&#20135;&#29983;&#30340;&#22235;&#20010;&#24517;&#35201;&#26465;&#20214;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">死锁产生的必要条件</h2>
+<p class=" font-serif my-1"><a href="https://dl.acm.org/doi/10.1145/356586.356588" class=" text-amber-900">System deadlocks (1971)</a>：死锁产生的四个必要条件</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#29992; &#8220;&#36164;&#28304;&#8221; &#26469;&#25551;&#36848;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#29366;&#24577;&#26426;&#35270;&#35282;&#65306;&#23601;&#26159; &#8220;&#24403;&#21069;&#29366;&#24577;&#19979;&#25345;&#26377;&#30340;&#38145; (&#26657;&#22253;&#21345;/&#29699;)&#8221;</li>
+<li class=" ml-8">用 “资源” 来描述<ul class=" list-disc font-serif">
+<li class=" ml-8">状态机视角：就是 “当前状态下持有的锁 (校园卡/球)”</li>
 </ul>
 </li>
 </ul>
 <hr>
 <ol class=" list-decimal font-serif">
-<li class=" ml-8">Mutual-exclusion - &#19968;&#24352;&#26657;&#22253;&#21345;&#21482;&#33021;&#34987;&#19968;&#20010;&#20154;&#25317;&#26377;</li>
-<li class=" ml-8">Wait-for - &#19968;&#20010;&#20154;&#31561;&#20854;&#20182;&#26657;&#22253;&#21345;&#26102;&#65292;&#19981;&#20250;&#37322;&#25918;&#24050;&#26377;&#30340;&#26657;&#22253;&#21345;</li>
-<li class=" ml-8">No-preemption - &#19981;&#33021;&#25250;&#22842;&#20182;&#20154;&#30340;&#26657;&#22253;&#21345;</li>
-<li class=" ml-8">Circular-chain - &#24418;&#25104;&#26657;&#22253;&#21345;&#30340;&#24490;&#29615;&#31561;&#24453;&#20851;&#31995;</li>
+<li class=" ml-8">Mutual-exclusion - 一张校园卡只能被一个人拥有</li>
+<li class=" ml-8">Wait-for - 一个人等其他校园卡时，不会释放已有的校园卡</li>
+<li class=" ml-8">No-preemption - 不能抢夺他人的校园卡</li>
+<li class=" ml-8">Circular-chain - 形成校园卡的循环等待关系</li>
 </ol>
 <hr>
-<p class=" font-serif my-1">&#22235;&#20010;&#26465;&#20214; &#8220;&#32570;&#19968;&#19981;&#21487;&#8221;</p>
+<p class=" font-serif my-1">四个条件 “缺一不可”</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25171;&#30772;&#20219;&#20309;&#19968;&#20010;&#21363;&#21487;&#36991;&#20813;&#27515;&#38145;</li>
-<li class=" ml-8">&#22312;&#31243;&#24207;&#36923;&#36753;&#27491;&#30830;&#30340;&#21069;&#25552;&#19979; &#8220;&#25171;&#30772;&#8221; &#26681;&#26412;&#27809;&#37027;&#20040;&#23481;&#26131;&#8230;&#8230;</li>
+<li class=" ml-8">打破任何一个即可避免死锁</li>
+<li class=" ml-8">在程序逻辑正确的前提下 “打破” 根本没那么容易……</li>
 </ul></div>
         
       

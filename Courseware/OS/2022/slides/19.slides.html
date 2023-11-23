@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +209,7 @@ section .center {
 }
 </style>
 
-  <title>Xv6 &#19978;&#19979;&#25991;&#20999;&#25442;</title>
+  <title>Xv6 上下文切换</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,21 +227,21 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="xv6" class=" text-2xl mt-2 font-sans">Xv6 &#19978;&#19979;&#25991;&#20999;&#25442;</h1>
+        <div><div class="center middle"><div style="width:100%"><h1 id="xv6" class=" text-2xl mt-2 font-sans">Xv6 上下文切换</h1>
 <p class=" font-serif my-1"><include src="Slides_Author"><div><div class="py-16">
-<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">&#33931;&#28814;&#23721;</a></p>
+<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">蒋炎岩</a></p>
 </div>
 <div class="row">
 <div class="author-affiliation">
-    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#12288;&#12288;&#21335;&#20140;&#22823;&#23398;&#12288;&#12288;</p>
+    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">　　南京大学　　</p>
     <img class="inline-img h-24" src="../../../static/img/nju-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#31185;&#23398;&#19982;&#25216;&#26415;&#31995;</p>
+   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">计算机科学与技术系</p>
     <img class="inline-img h-24" src="../../../static/img/njucs-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#36719;&#20214;&#30740;&#31350;&#25152;</p>
+    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">计算机软件研究所</p>
     <img class="inline-img h-24" src="../../../static/img/ics-logo.png" style="display: inline-block;"></a>
   </div>
 </div></div></include></p></div></div></div>
@@ -256,24 +256,24 @@ section .center {
       
         
         <div><h2 id="overview" class=" text-xl mt-2 pb-2 font-sans">Overview</h2>
-<p class=" font-serif my-1">&#22797;&#20064;</p>
+<p class=" font-serif my-1">复习</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">xv6 &#30340;&#31995;&#32479;&#35843;&#29992;&#23454;&#29616;&#65306;&#22823;&#23478;&#21548;&#24471;&#19968;&#22836;&#38654;&#27700;&#65292;&#20294;&#30041;&#20102;&#20010;&#21360;&#35937;<ul class=" list-disc font-serif">
-<li class=" ml-8">ecall &#25351;&#20196;&#65306;&#36339;&#36716;&#21040; trampoline &#20195;&#30721;</li>
-<li class=" ml-8">&#20445;&#23384;&#25152;&#26377;&#23492;&#23384;&#22120;&#21040; trapframe</li>
-<li class=" ml-8">&#20351;&#20869;&#26680;&#20195;&#30721;&#33021;&#22815;&#32487;&#32493;&#25191;&#34892;</li>
+<li class=" ml-8">xv6 的系统调用实现：大家听得一头雾水，但留了个印象<ul class=" list-disc font-serif">
+<li class=" ml-8">ecall 指令：跳转到 trampoline 代码</li>
+<li class=" ml-8">保存所有寄存器到 trapframe</li>
+<li class=" ml-8">使内核代码能够继续执行</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#22238;&#31572;&#30340;&#38382;&#39064;</p>
+<p class=" font-serif my-1">本次课回答的问题</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><strong>Q</strong>: &#20026;&#20160;&#20040;&#35201;&#36825;&#20040;&#20570;&#65311;</li>
+<li class=" ml-8"><strong>Q</strong>: 为什么要这么做？</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#20027;&#35201;&#20869;&#23481;</p>
+<p class=" font-serif my-1">本次课主要内容</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#19978;&#19979;&#25991;&#20999;&#25442;&#30340;&#21407;&#29702;&#19982;&#23454;&#29616;</li>
+<li class=" ml-8">上下文切换的原理与实现</li>
 </ul></div>
         
       
@@ -289,7 +289,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#22788;&#29702;&#22120;&#30340;&#34394;&#25311;&#21270;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">处理器的虚拟化</h1></div></div></div>
         
       
       </section>
@@ -300,22 +300,22 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20170;&#22825;&#20511;&#21161;&#20195;&#30721;&#22238;&#31572;&#19968;&#20010;&#26681;&#26412;&#24615;&#30340;&#38382;&#39064;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">今天借助代码回答一个根本性的问题</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#20026;&#20160;&#20040;&#27515;&#24490;&#29615;&#19981;&#33021;&#20351;&#35745;&#31639;&#26426;&#34987;&#24443;&#24213;&#21345;&#27515;&#65311;</p>
+<p class=" font-serif my-1">为什么死循环不能使计算机被彻底卡死？</p>
 </blockquote>
-<p class=" font-serif my-1">&#21407;&#29702;&#19978;</p>
+<p class=" font-serif my-1">原理上</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#30828;&#20214;&#20250;&#21457;&#29983;&#20013;&#26029; (&#31867;&#20284;&#20110; &#8220;&#24378;&#34892;&#25554;&#20837;&#8221; &#30340; ecall)</li>
-<li class=" ml-8">&#20999;&#25442;&#21040;&#25805;&#20316;&#31995;&#32479;&#20195;&#30721;&#25191;&#34892;</li>
-<li class=" ml-8">&#25805;&#20316;&#31995;&#32479;&#20195;&#30721;&#21487;&#20197;&#20999;&#25442;&#21040;&#21478;&#19968;&#20010;&#36827;&#31243;&#25191;&#34892;</li>
+<li class=" ml-8">硬件会发生中断 (类似于 “强行插入” 的 ecall)</li>
+<li class=" ml-8">切换到操作系统代码执行</li>
+<li class=" ml-8">操作系统代码可以切换到另一个进程执行</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#23454;&#38469;&#19978;</p>
+<p class=" font-serif my-1">实际上</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#21040;&#24213;&#26159;&#22914;&#20309;&#21457;&#29983;&#30340;&#65311;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#19978;&#19968;&#27425;&#35838;&#35843;&#35797;&#20102;&#20195;&#30721;&#65292;&#26377;&#20102;&#31532;&#19968;&#21360;&#35937;</li>
-<li class=" ml-8">&#20170;&#22825;&#20877;&#34917;&#20805;&#19968;&#20123;&#32454;&#33410;</li>
+<li class=" ml-8">到底是如何发生的？<ul class=" list-disc font-serif">
+<li class=" ml-8">上一次课调试了代码，有了第一印象</li>
+<li class=" ml-8">今天再补充一些细节</li>
 </ul>
 </li>
 </ul></div>
@@ -329,25 +329,25 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#28909;&#36523;&#65306;&#21327;&#31243;&#24211;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">热身：协程库</h2>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">def</span> <span class="nf">positive_integers</span><span class="p">():</span>
     <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">while</span> <span class="n">i</span> <span class="o">:=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:</span>
         <span class="k">yield</span> <span class="n">i</span>
 </code></pre></div>
 
-<p class=" font-serif my-1"><code>positive_integers()</code> &#24182;&#19981;&#26159; &#8220;&#35843;&#29992;&#8221; &#23427;&#25191;&#34892;</p>
+<p class=" font-serif my-1"><code>positive_integers()</code> 并不是 “调用” 它执行</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#32780;&#26159;&#36820;&#22238;&#19968;&#20010; generator</li>
-<li class=" ml-8">generator &#21487;&#20197;&#35843;&#29992;&#65292;&#21040; yield &#21518; &#8220;&#23553;&#23384;&#8221; &#29366;&#24577;</li>
-<li class=" ml-8">&#25105;&#20204;&#29992;&#36825;&#20010;&#29305;&#24615;&#23454;&#29616;&#20102; <a href="../../../pages/OS/2022/demos/model-checker.py" class=" text-amber-900">model-checker.py</a></li>
+<li class=" ml-8">而是返回一个 generator</li>
+<li class=" ml-8">generator 可以调用，到 yield 后 “封存” 状态</li>
+<li class=" ml-8">我们用这个特性实现了 <a href="../../../pages/OS/2022/demos/model-checker.py" class=" text-amber-900">model-checker.py</a></li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#25105;&#20204;&#21516;&#26679;&#20063;&#21487;&#20197;&#22312; C &#37324;&#36825;&#20040;&#20570;</p>
+<p class=" font-serif my-1">我们同样也可以在 C 里这么做</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><code>call yield</code> &#20999;&#25442;&#21040;&#21478;&#19968;&#20010;&#25191;&#34892;&#27969;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#25152;&#26377;&#25191;&#34892;&#27969;&#20849;&#20139;&#20869;&#23384;</li>
-<li class=" ml-8">&#25317;&#26377;&#29420;&#31435;&#30340;&#23492;&#23384;&#22120;&#21644;&#22534;&#26632;</li>
+<li class=" ml-8"><code>call yield</code> 切换到另一个执行流<ul class=" list-disc font-serif">
+<li class=" ml-8">所有执行流共享内存</li>
+<li class=" ml-8">拥有独立的寄存器和堆栈</li>
 </ul>
 </li>
 </ul></div>
@@ -361,29 +361,29 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#22797;&#20064;&#65306;&#31243;&#24207;&#30340;&#29366;&#24577;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">复习：程序的状态</h2>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/xv6-process-memory.png" width="400px"></p>
-<p class=" font-serif my-1">&#23492;&#23384;&#22120;</p>
+<p class=" font-serif my-1">寄存器</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">32 &#20010;&#36890;&#29992;&#23492;&#23384;&#22120; + \$pc<ul class=" list-disc font-serif">
+<li class=" ml-8">32 个通用寄存器 + \$pc<ul class=" list-disc font-serif">
 <li class=" ml-8">\$x0 (\$zero), \$x1 (\$ra), ..., \$x31</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#20869;&#23384;</p>
+<p class=" font-serif my-1">内存</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">\$satp &#8220;&#37197;&#32622;&#8221; &#20986;&#30340;&#22320;&#22336;&#31354;&#38388;<ul class=" list-disc font-serif">
-<li class=" ml-8">QEMU: info mem &#26597;&#30475;</li>
+<li class=" ml-8">\$satp “配置” 出的地址空间<ul class=" list-disc font-serif">
+<li class=" ml-8">QEMU: info mem 查看</li>
 </ul>
 </li>
-<li class=" ml-8">&#20877;&#27425;&#35843;&#35797; initcode</li>
+<li class=" ml-8">再次调试 initcode</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#25345;&#26377;&#30340;&#25805;&#20316;&#31995;&#32479;&#23545;&#35937; (&#19981;&#21487;&#35265;)</p>
+<p class=" font-serif my-1">持有的操作系统对象 (不可见)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#31243;&#24207;&#21482;&#33021;&#30475;&#35265; &#8220;&#25991;&#20214;&#25551;&#36848;&#31526;&#8221; (&#31995;&#32479;&#35843;&#29992;&#36820;&#22238;&#20540;, a0, syscall.c)</li>
-<li class=" ml-8">&#22238;&#39038; <a href="../../../pages/OS/2022/demos/minimal.S" class=" text-amber-900">minimal.S</a></li>
+<li class=" ml-8">程序只能看见 “文件描述符” (系统调用返回值, a0, syscall.c)</li>
+<li class=" ml-8">回顾 <a href="../../../pages/OS/2022/demos/minimal.S" class=" text-amber-900">minimal.S</a></li>
 </ul></div>
         
       
@@ -395,19 +395,19 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#34394;&#25311;&#21270;&#65306;&#29366;&#24577;&#26426;&#30340;&#31649;&#29702;</h2>
-<p class=" font-serif my-1">&#23492;&#23384;&#22120;&#32452; (\$x0...\$x31, \$pc) &#21482;&#26377;&#19968;&#20221;&#65292;&#29289;&#29702;&#20869;&#23384;&#20063;&#21482;&#26377;&#19968;&#20221;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">虚拟化：状态机的管理</h2>
+<p class=" font-serif my-1">寄存器组 (\$x0...\$x31, \$pc) 只有一份，物理内存也只有一份</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#23492;&#23384;&#22120;&#30340;&#34394;&#25311;&#21270;&#65306;&#25105;&#20204;&#21487;&#20197;&#25226;&#23492;&#23384;&#22120;&#20445;&#23384;&#21040;&#20869;&#23384;</li>
-<li class=" ml-8">&#20869;&#23384;&#30340;&#34394;&#25311;&#21270;&#65306;\$satp &#30340;&#25968;&#25454;&#32467;&#26500;</li>
+<li class=" ml-8">寄存器的虚拟化：我们可以把寄存器保存到内存</li>
+<li class=" ml-8">内存的虚拟化：\$satp 的数据结构</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#25805;&#20316;&#31995;&#32479;&#20195;&#30721;&#26368;&#37325;&#35201;&#30340; invariant (&#20551;&#35774;&#21333;&#22788;&#29702;&#22120;)</p>
+<p class=" font-serif my-1">操作系统代码最重要的 invariant (假设单处理器)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><red>&#25805;&#20316;&#31995;&#32479;&#20195;&#30721;&#24320;&#22987;&#30495;&#27491; &#8220;&#22788;&#29702;&#8221; &#31995;&#32479;&#35843;&#29992;/&#20013;&#26029;&#26102;&#65292;&#25152;&#26377;&#36827;&#31243;&#30340;&#29366;&#24577;&#37117;&#34987; &#8220;&#23553;&#23384;&#8221; &#22312;&#25805;&#20316;&#31995;&#32479;&#20013;</red><ul class=" list-disc font-serif">
-<li class=" ml-8">&#21487;&#20197;&#36890;&#36807; <code>struct proc</code> &#37324;&#30340;&#25351;&#38024;&#35775;&#38382; (<code>struct trapframe</code>)</li>
-<li class=" ml-8">&#20013;&#26029;/&#24322;&#24120;&#22788;&#29702;&#30340;&#19968;&#23567;&#27573;&#20195;&#30721;&#38656;&#35201;&#20445;&#35777;&#36825;&#19968;&#28857;</li>
-<li class=" ml-8">&#20013;&#26029;&#36820;&#22238;&#26102;&#65292;&#25226;&#36827;&#31243;&#30340;&#29366;&#24577;&#26426; &#8220;&#24674;&#22797;&#8221; &#21040; CPU</li>
+<li class=" ml-8"><red>操作系统代码开始真正 “处理” 系统调用/中断时，所有进程的状态都被 “封存” 在操作系统中</red><ul class=" list-disc font-serif">
+<li class=" ml-8">可以通过 <code>struct proc</code> 里的指针访问 (<code>struct trapframe</code>)</li>
+<li class=" ml-8">中断/异常处理的一小段代码需要保证这一点</li>
+<li class=" ml-8">中断返回时，把进程的状态机 “恢复” 到 CPU</li>
 </ul>
 </li>
 </ul></div>
@@ -421,11 +421,11 @@ section .center {
 
       
         
-        <div><h2 id="trivial" class=" text-xl mt-2 pb-2 font-sans">&#29366;&#24577;&#30340;&#23553;&#23384;&#65306;Trivial &#30340;&#25805;&#20316;&#31995;&#32479;&#23454;&#29616;</h2>
-<p class=" font-serif my-1">&#29992;&#26368;&#30452;&#35266;&#30340; &#8220;&#23553;&#23384;&#8221; &#26041;&#24335;</p>
+        <div><h2 id="trivial" class=" text-xl mt-2 pb-2 font-sans">状态的封存：Trivial 的操作系统实现</h2>
+<p class=" font-serif my-1">用最直观的 “封存” 方式</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><red>&#30452;&#25509;&#37117;&#20445;&#23384;&#21040;&#20869;&#23384;</red><ul class=" list-disc font-serif">
-<li class=" ml-8">&#20551;&#35774;&#25805;&#20316;&#31995;&#32479;&#20195;&#30721;&#30452;&#25509; &#8220;&#30475;&#21040;&#8221; &#25152;&#26377;&#29289;&#29702;&#20869;&#23384; (L1)</li>
+<li class=" ml-8"><red>直接都保存到内存</red><ul class=" list-disc font-serif">
+<li class=" ml-8">假设操作系统代码直接 “看到” 所有物理内存 (L1)</li>
 </ul>
 </li>
 </ul>
@@ -437,12 +437,12 @@ section .center {
 </code></pre></div>
 
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20445;&#23384;&#65306;&#25226; x1, ..., x31 &#20445;&#23384;&#21040;&#24403;&#21069;&#30340; proc &#21363;&#21487;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#23601;&#28385;&#36275;&#20102; &#8220;&#29366;&#24577;&#26426;&#23553;&#23384;&#8221; &#30340; invariant</li>
+<li class=" ml-8">保存：把 x1, ..., x31 保存到当前的 proc 即可<ul class=" list-disc font-serif">
+<li class=" ml-8">就满足了 “状态机封存” 的 invariant</li>
 </ul>
 </li>
-<li class=" ml-8">&#24674;&#22797;&#65306;&#25226; pages &#36865;&#21040; \$satp &#23545;&#24212;&#30340;&#25968;&#25454;&#32467;&#26500;&#37324;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#36890;&#24120;&#25105;&#20204;&#26159;&#25226;&#36825;&#20010;&#25968;&#25454;&#32467;&#26500;&#20934;&#22791;&#22909;&#65292;&#21482;&#35201;&#19968;&#20010;&#36171;&#20540;&#23601;&#34892;</li>
+<li class=" ml-8">恢复：把 pages 送到 \$satp 对应的数据结构里<ul class=" list-disc font-serif">
+<li class=" ml-8">通常我们是把这个数据结构准备好，只要一个赋值就行</li>
 </ul>
 </li>
 </ul></div>
@@ -456,30 +456,30 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#29366;&#24577;&#30340;&#23553;&#23384;&#65306;&#20307;&#31995;&#32467;&#26500;&#30456;&#20851;&#30340;&#22788;&#29702;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">状态的封存：体系结构相关的处理</h2>
 <p class=" font-serif my-1">x86-64</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20013;&#26029;/&#24322;&#24120;&#20250;&#20276;&#38543;&#22534;&#26632;&#20999;&#25442;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#36890;&#36807; TSS &#25351;&#23450;&#19968;&#20010; &#8220;&#20869;&#26680;&#26632;&#8221;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20013;&#26029;&#21069;&#30340;&#23492;&#23384;&#22120;&#20445;&#23384;&#22312;&#22534;&#26632;&#19978; (&#20856;&#22411;&#30340; CISC &#34892;&#20026;)</li>
-<li class=" ml-8"><a href="https://www.felixcloutier.com/x86/intn:into:int3:int1" class=" text-amber-900">&#24863;&#21463;&#19968;&#19979;&#26377;&#22810;&#22797;&#26434;</a></li>
+<li class=" ml-8">中断/异常会伴随堆栈切换<ul class=" list-disc font-serif">
+<li class=" ml-8">通过 TSS 指定一个 “内核栈”<ul class=" list-disc font-serif">
+<li class=" ml-8">中断前的寄存器保存在堆栈上 (典型的 CISC 行为)</li>
+<li class=" ml-8"><a href="https://www.felixcloutier.com/x86/intn:into:int3:int1" class=" text-amber-900">感受一下有多复杂</a></li>
 </ul>
 </li>
-<li class=" ml-8">&#36825;&#22359;&#31354;&#38388;&#21487;&#20197;&#39034;&#20415;&#29992;&#26469;&#20445;&#23384;&#23492;&#23384;&#22120;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#21442;&#32771; AbstractMachine (trap64.S; x86-qemu.h)</li>
+<li class=" ml-8">这块空间可以顺便用来保存寄存器<ul class=" list-disc font-serif">
+<li class=" ml-8">参考 AbstractMachine (trap64.S; x86-qemu.h)</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">xv6 (&#19981;&#38480;&#20110; RISC-V)</p>
+<p class=" font-serif my-1">xv6 (不限于 RISC-V)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25226;&#36827;&#31243;&#30340; trap frame &#20998;&#37197;&#21040;&#22266;&#23450;&#22320;&#22336; (&#36890;&#36807; \$stap)<ul class=" list-disc font-serif">
-<li class=" ml-8">trap frame &#20445;&#23384;&#22312; \$sscratch</li>
+<li class=" ml-8">把进程的 trap frame 分配到固定地址 (通过 \$stap)<ul class=" list-disc font-serif">
+<li class=" ml-8">trap frame 保存在 \$sscratch</li>
 </ul>
 </li>
-<li class=" ml-8">&#20445;&#23384;&#23436;&#27605;&#21518;&#20999;&#25442;&#21040;&#20869;&#26680;&#32447;&#31243;&#25191;&#34892; (&#21253;&#25324;&#22534;&#26632;&#20999;&#25442;)</li>
+<li class=" ml-8">保存完毕后切换到内核线程执行 (包括堆栈切换)</li>
 </ul></div>
         
       
@@ -491,24 +491,24 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20877;&#27425;&#35843;&#35797;&#31995;&#32479;&#35843;&#29992;</h2>
-<p class=" font-serif my-1">ecall &#25351;&#20196;&#30340;&#34892;&#20026;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">再次调试系统调用</h2>
+<p class=" font-serif my-1">ecall 指令的行为</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20851;&#38381;&#20013;&#26029;</li>
-<li class=" ml-8">&#22797;&#21046; \$pc &#21040; \$sepc</li>
-<li class=" ml-8">&#35774;&#32622; \$sstatus &#20026; S-mode&#65292;\$scause &#20026; trap &#30340;&#21407;&#22240; (ecall, 8)</li>
-<li class=" ml-8">&#36339;&#36716;&#21040; \$stvec (S-mode trap vector)</li>
+<li class=" ml-8">关闭中断</li>
+<li class=" ml-8">复制 \$pc 到 \$sepc</li>
+<li class=" ml-8">设置 \$sstatus 为 S-mode，\$scause 为 trap 的原因 (ecall, 8)</li>
+<li class=" ml-8">跳转到 \$stvec (S-mode trap vector)</li>
 </ul>
 <hr>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/vr.jpg" width="300px"></p>
-<p class=" font-serif my-1">ecall &#26102;&#39069;&#22806;&#30340;&#31995;&#32479;&#29366;&#24577;</p>
+<p class=" font-serif my-1">ecall 时额外的系统状态</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">\$satp &#25511;&#21046;&#20102; &#8220;&#34394;&#20551;&#8221; &#30340;&#22320;&#22336;&#31354;&#38388;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#36827;&#31243;&#35775;&#38382;&#20869;&#23384;&#26102;&#20223;&#20315;&#25140;&#20102; VR</li>
+<li class=" ml-8">\$satp 控制了 “虚假” 的地址空间<ul class=" list-disc font-serif">
+<li class=" ml-8">进程访问内存时仿佛戴了 VR</li>
 </ul>
 </li>
-<li class=" ml-8">\$sscratch &#20445;&#23384;&#20102;&#36827;&#31243;&#30340; trap frame &#22320;&#22336;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#22343;&#30001;&#25805;&#20316;&#31995;&#32479;&#35774;&#32622;</li>
+<li class=" ml-8">\$sscratch 保存了进程的 trap frame 地址<ul class=" list-disc font-serif">
+<li class=" ml-8">均由操作系统设置</li>
 </ul>
 </li>
 </ul></div>
@@ -522,26 +522,26 @@ section .center {
 
       
         
-        <div><h2 id="trampoline" class=" text-xl mt-2 pb-2 font-sans">Trampoline &#20195;&#30721;&#23436;&#25104;&#30340;&#24037;&#20316;</h2>
-<p class=" font-serif my-1">&#25226;&#23492;&#23384;&#22120;&#20445;&#23384;&#21040; trap frame</p>
+        <div><h2 id="trampoline" class=" text-xl mt-2 pb-2 font-sans">Trampoline 代码完成的工作</h2>
+<p class=" font-serif my-1">把寄存器保存到 trap frame</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20840;&#38752; (struct trapframe *)\$sscratch &#23492;&#23384;&#22120;</li>
+<li class=" ml-8">全靠 (struct trapframe *)\$sscratch 寄存器</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#20999;&#25442;&#21040;&#20869;&#26680;&#32447;&#31243;</p>
+<p class=" font-serif my-1">切换到内核线程</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#22534;&#26632;&#20999;&#25442;: \$sp &#8592; <code>tf-&gt;kernel_sp</code></li>
-<li class=" ml-8">&#35774;&#32622;&#24403;&#21069;&#22788;&#29702;: \$tp &#8592; <code>tf-&gt;kernel_hartid</code></li>
-<li class=" ml-8">&#35774;&#32622;&#39029;&#34920;: \$satp &#8592; <code>tf-&gt;kernel_trap</code><ul class=" list-disc font-serif">
-<li class=" ml-8">xv6: &#19982;&#29289;&#29702;&#20869;&#23384;&#19968;&#19968;&#26144;&#23556;</li>
-<li class=" ml-8">&#36890;&#36807; info mem &#26597;&#30475;&#20869;&#26680;&#32447;&#31243;&#30340;&#22320;&#22336;&#31354;&#38388;&#26144;&#23556;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20302;&#20301;&#30340;&#20869;&#23384;&#26159; PLIC (0xc000000) &#21644; UART (0x10000000)</li>
-<li class=" ml-8">&#29289;&#29702;&#20869;&#23384;&#19968;&#19968;&#26144;&#23556; (A = Access, D = Dirty, xv6 &#20013;&#19981;&#20351;&#29992;)</li>
+<li class=" ml-8">堆栈切换: \$sp ← <code>tf->kernel_sp</code></li>
+<li class=" ml-8">设置当前处理: \$tp ← <code>tf->kernel_hartid</code></li>
+<li class=" ml-8">设置页表: \$satp ← <code>tf->kernel_trap</code><ul class=" list-disc font-serif">
+<li class=" ml-8">xv6: 与物理内存一一映射</li>
+<li class=" ml-8">通过 info mem 查看内核线程的地址空间映射<ul class=" list-disc font-serif">
+<li class=" ml-8">低位的内存是 PLIC (0xc000000) 和 UART (0x10000000)</li>
+<li class=" ml-8">物理内存一一映射 (A = Access, D = Dirty, xv6 中不使用)</li>
 </ul>
 </li>
 </ul>
 </li>
-<li class=" ml-8">&#36339;&#36716;&#21040;&#22788;&#29702;&#31243;&#24207; <code>tf-&gt;kernel_trap</code> &#25191;&#34892;</li>
+<li class=" ml-8">跳转到处理程序 <code>tf->kernel_trap</code> 执行</li>
 </ul></div>
         
       
@@ -553,25 +553,25 @@ section .center {
 
       
         
-        <div><h2 id="usertrap" class=" text-xl mt-2 pb-2 font-sans">&#35843;&#29992; usertrap() &#21518;&#30340;&#31995;&#32479;&#29366;&#24577;</h2>
-<p class=" font-serif my-1">&#25152;&#26377;&#36827;&#31243;&#37117;&#34987; &#8220;&#23553;&#23384;&#8221;</p>
+        <div><h2 id="usertrap" class=" text-xl mt-2 pb-2 font-sans">调用 usertrap() 后的系统状态</h2>
+<p class=" font-serif my-1">所有进程都被 “封存”</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#36890;&#36807; <code>struct proc</code> &#23601;&#21487;&#20197;&#25214;&#21040;&#23492;&#23384;&#22120;&#12289;&#20869;&#23384;&#12289;&#25805;&#20316;&#31995;&#32479;&#23545;&#35937;&#12289;&#8230;&#8230;</li>
-<li class=" ml-8">&#36827;&#31243;&#23545;&#24212;&#30340; &#8220;&#20869;&#26680;&#32447;&#31243;&#8221; &#24320;&#22987;&#25191;&#34892;<ul class=" list-disc font-serif">
+<li class=" ml-8">通过 <code>struct proc</code> 就可以找到寄存器、内存、操作系统对象、……</li>
+<li class=" ml-8">进程对应的 “内核线程” 开始执行<ul class=" list-disc font-serif">
 <li class=" ml-8">L2 - Kernel Multithreading</li>
-<li class=" ml-8">&#20174;&#21478;&#19968;&#20010;&#35282;&#24230;&#65292;&#8220;&#36827;&#31243;&#8221; &#23601;&#26159;&#25317;&#26377;&#20102;&#22320;&#22336;&#31354;&#38388;&#30340;&#32447;&#31243;</li>
+<li class=" ml-8">从另一个角度，“进程” 就是拥有了地址空间的线程</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#25805;&#20316;&#31995;&#32479;&#20195;&#30721;&#21487;&#20197;&#20026;&#25152;&#27442;&#20026;</p>
+<p class=" font-serif my-1">操作系统代码可以为所欲为</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20462;&#25913;&#20219;&#20309;&#19968;&#20010;&#29366;&#24577;&#26426;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20363;&#22914;&#65292;&#25191;&#34892;&#31995;&#32479;&#35843;&#29992;</li>
-<li class=" ml-8">&#25191;&#34892;&#31995;&#32479;&#35843;&#29992;&#26102;&#21487;&#33021;&#21457;&#29983; I/O &#20013;&#26029;</li>
+<li class=" ml-8">修改任何一个状态机<ul class=" list-disc font-serif">
+<li class=" ml-8">例如，执行系统调用</li>
+<li class=" ml-8">执行系统调用时可能发生 I/O 中断</li>
 </ul>
 </li>
-<li class=" ml-8">&#23558;&#20219;&#20309;&#21478;&#19968;&#20010;&#29366;&#24577;&#26426;&#35843;&#24230;&#21040;&#22788;&#29702;&#22120;&#19978; (userret)</li>
+<li class=" ml-8">将任何另一个状态机调度到处理器上 (userret)</li>
 </ul></div>
         
       
@@ -583,27 +583,27 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#23567;&#32467;&#65306;&#29366;&#24577;&#26426;&#30340;&#23553;&#23384;</h2>
-<p class=" font-serif my-1">&#22312;&#25191;&#34892;&#23436; &#8220;&#23492;&#23384;&#22120;&#29616;&#22330;&#20445;&#23384;&#8221; &#20043;&#21518;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">小结：状态机的封存</h2>
+<p class=" font-serif my-1">在执行完 “寄存器现场保存” 之后</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25805;&#20316;&#31995;&#32479;&#22788;&#20110; &#8220;invariant &#25104;&#31435;&#8221; &#30340;&#29366;&#24577;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#27599;&#20010;&#36827;&#31243;&#30340;&#29366;&#24577;&#26426;&#37117;&#34987; &#8220;&#23553;&#23384;&#8221;</li>
-<li class=" ml-8">&#33021;&#34987;&#25805;&#20316;&#31995;&#32479;&#20869;&#26680;&#20195;&#30721;&#35775;&#38382;<ul class=" list-disc font-serif">
+<li class=" ml-8">操作系统处于 “invariant 成立” 的状态<ul class=" list-disc font-serif">
+<li class=" ml-8">每个进程的状态机都被 “封存”</li>
+<li class=" ml-8">能被操作系统内核代码访问<ul class=" list-disc font-serif">
 <li class=" ml-8">xv6: <code>struct proc</code></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class=" ml-8">&#25805;&#20316;&#31995;&#32479;&#21487;&#20197;&#25226;&#20219;&#20309;&#19968;&#20010;&#29366;&#24577;&#26426; &#8220;&#21152;&#36733;&#8221; &#22238; CPU<ul class=" list-disc font-serif">
-<li class=" ml-8">&#24674;&#22797;&#23492;&#23384;&#22120;&#21644; \$satp&#65292;&#28982;&#21518; sret (&#20445;&#25345; invariant, &#21253;&#25324; \$scratch)</li>
+<li class=" ml-8">操作系统可以把任何一个状态机 “加载” 回 CPU<ul class=" list-disc font-serif">
+<li class=" ml-8">恢复寄存器和 \$satp，然后 sret (保持 invariant, 包括 \$scratch)</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#22240;&#20026;&#34987;&#23553;&#23384;&#65292;&#25105;&#20204;&#30340;&#22788;&#29702;&#22120;<red>&#21487;&#20197;&#36873;&#25321;&#25226;&#20219;&#20309;&#19968;&#20010;&#29366;&#24577;&#26426;&#24674;&#22797;</red></p>
+<p class=" font-serif my-1">因为被封存，我们的处理器<red>可以选择把任何一个状态机恢复</red></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#26426;&#21046;&#65306;&#20801;&#35768;&#22312;&#20013;&#26029;/&#24322;&#24120;&#36820;&#22238;&#26102;&#25226;&#20219;&#20309;&#36827;&#31243;&#21152;&#36733;&#22238; CPU</li>
-<li class=" ml-8">&#31574;&#30053;&#65306;&#22788;&#29702;&#22120;&#35843;&#24230; (&#19979;&#27425;&#35838;)</li>
+<li class=" ml-8">机制：允许在中断/异常返回时把任何进程加载回 CPU</li>
+<li class=" ml-8">策略：处理器调度 (下次课)</li>
 </ul></div>
         
       
@@ -619,7 +619,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#24635;&#32467;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">总结</h1></div></div></div>
         
       
       </section>
@@ -630,26 +630,26 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#24635;&#32467;</h2>
-<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#22238;&#31572;&#30340;&#38382;&#39064;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">总结</h2>
+<p class=" font-serif my-1">本次课回答的问题</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><strong>Q</strong>: &#25805;&#20316;&#31995;&#32479;&#26159;&#22914;&#20309;&#23436;&#25104;&#36827;&#31243;&#20043;&#38388;&#30340;&#20999;&#25442;&#30340;&#65311;</li>
+<li class=" ml-8"><strong>Q</strong>: 操作系统是如何完成进程之间的切换的？</li>
 </ul>
 <hr>
 <p class=" font-serif my-1">Take-away messages</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#8220;&#25805;&#20316;&#31995;&#32479;&#26159;&#20013;&#26029;&#22788;&#29702;&#31243;&#24207;&#8221;<ul class=" list-disc font-serif">
-<li class=" ml-8">ecall &#21518;&#25191;&#34892; trampoline &#20195;&#30721; (&#25805;&#20316;&#31995;&#32479;&#25511;&#21046;)</li>
-<li class=" ml-8">&#36827;&#20837;&#31995;&#32479;&#35843;&#29992;&#21518;&#65292;&#23601;&#23436;&#20840;&#26159;&#29366;&#24577;&#26426; (&#21462; mem[\$pc] &#25351;&#20196;&#25191;&#34892;)</li>
+<li class=" ml-8">“操作系统是中断处理程序”<ul class=" list-disc font-serif">
+<li class=" ml-8">ecall 后执行 trampoline 代码 (操作系统控制)</li>
+<li class=" ml-8">进入系统调用后，就完全是状态机 (取 mem[\$pc] 指令执行)</li>
 </ul>
 </li>
-<li class=" ml-8">&#8220;&#25805;&#20316;&#31995;&#32479;&#26159;&#29366;&#24577;&#26426;&#30340;&#31649;&#29702;&#32773;&#8221;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#25805;&#20316;&#31995;&#32479;&#25345;&#26377;&#25152;&#26377;&#29289;&#29702;&#39029;&#38754; (&#36890;&#36807; \$stap &#20219;&#24847;&#26144;&#23556;)</li>
-<li class=" ml-8">&#29992;&#25968;&#25454;&#32467;&#26500; (<code>struct proc</code>) &#34920;&#31034;&#36827;&#31243;&#23545;&#35937;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#36827;&#31243;&#30340;&#39029;&#38754; (&#21253;&#25324; trapframe) &#23454;&#29616;<red>&#29366;&#24577;&#30340;&#23553;&#23384;</red></li>
+<li class=" ml-8">“操作系统是状态机的管理者”<ul class=" list-disc font-serif">
+<li class=" ml-8">操作系统持有所有物理页面 (通过 \$stap 任意映射)</li>
+<li class=" ml-8">用数据结构 (<code>struct proc</code>) 表示进程对象<ul class=" list-disc font-serif">
+<li class=" ml-8">进程的页面 (包括 trapframe) 实现<red>状态的封存</red></li>
 </ul>
 </li>
-<li class=" ml-8">ecall &#8594; invariant (&#29366;&#24577;&#26426;&#34987;&#23553;&#23384;) &#8594; schedule &#8594; sret</li>
+<li class=" ml-8">ecall → invariant (状态机被封存) → schedule → sret</li>
 </ul>
 </li>
 </ul></div>

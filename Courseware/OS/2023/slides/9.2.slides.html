@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +209,7 @@ section .center {
 }
 </style>
 
-  <title>&#26465;&#20214;&#21464;&#37327;</title>
+  <title>条件变量</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,7 +227,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="9.2.slides.html" class=" text-amber-900">&#26465;&#20214;&#21464;&#37327;</a></h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="9.2.slides.html" class=" text-amber-900">条件变量</a></h1></div></div></div>
         
       
       </section>
@@ -238,22 +238,22 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#21516;&#27493;&#38382;&#39064;&#65306;&#20998;&#26512;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">同步问题：分析</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#32447;&#31243;&#21516;&#27493;&#30001;<red>&#26465;&#20214;&#19981;&#25104;&#31435;&#31561;&#24453;</red>&#21644;<red>&#21516;&#27493;&#26465;&#20214;&#36798;&#25104;&#32487;&#32493;</red>&#26500;&#25104;</p>
+<p class=" font-serif my-1">线程同步由<red>条件不成立等待</red>和<red>同步条件达成继续</red>构成</p>
 </blockquote>
-<p class=" font-serif my-1">&#32447;&#31243; join</p>
+<p class=" font-serif my-1">线程 join</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">Tmain &#21516;&#27493;&#26465;&#20214;&#65306;<code>nexit == T</code></li>
-<li class=" ml-8">Tmain &#36798;&#25104;&#21516;&#27493;&#65306;&#26368;&#21518;&#19968;&#20010;&#32447;&#31243;&#36864;&#20986; <code>nexit++</code></li>
+<li class=" ml-8">Tmain 同步条件：<code>nexit == T</code></li>
+<li class=" ml-8">Tmain 达成同步：最后一个线程退出 <code>nexit++</code></li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#29983;&#20135;&#32773;/&#28040;&#36153;&#32773;&#38382;&#39064;</p>
+<p class=" font-serif my-1">生产者/消费者问题</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">Tproduce &#21516;&#27493;&#26465;&#20214;&#65306;<code>CAN_PRODUCE (count &lt; n)</code></li>
-<li class=" ml-8">Tproduce &#36798;&#25104;&#21516;&#27493;&#65306;Tconsume <code>count--</code></li>
-<li class=" ml-8">Tconsume &#21516;&#27493;&#26465;&#20214;&#65306;<code>CAN_CONSUME (count &gt; 0)</code></li>
-<li class=" ml-8">Tconsume &#36798;&#25104;&#21516;&#27493;&#65306;Tproduce <code>count++</code></li>
+<li class=" ml-8">Tproduce 同步条件：<code>CAN_PRODUCE (count < n)</code></li>
+<li class=" ml-8">Tproduce 达成同步：Tconsume <code>count--</code></li>
+<li class=" ml-8">Tconsume 同步条件：<code>CAN_CONSUME (count > 0)</code></li>
+<li class=" ml-8">Tconsume 达成同步：Tproduce <code>count++</code></li>
 </ul></div>
         
       
@@ -265,7 +265,7 @@ section .center {
 
       
         
-        <div><h2 id="api" class=" text-xl mt-2 pb-2 font-sans">&#29702;&#24819;&#20013;&#30340;&#21516;&#27493; API</h2>
+        <div><h2 id="api" class=" text-xl mt-2 pb-2 font-sans">理想中的同步 API</h2>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">wait_until</span><span class="p">(</span><span class="n">CAN_PRODUCE</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">count</span><span class="o">++</span><span class="p">;</span>
 <span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">"("</span><span class="p">);</span>
@@ -277,15 +277,15 @@ section .center {
 <span class="p">}</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">&#33509;&#24178;&#23454;&#29616;&#19978;&#30340;&#38590;&#39064;</p>
+<p class=" font-serif my-1">若干实现上的难题</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#27491;&#30830;&#24615;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#22823;&#25324;&#21495;&#20869;&#20195;&#30721;&#25191;&#34892;&#26102;&#65292;&#20854;&#20182;&#32447;&#31243;&#19981;&#24471;&#30772;&#22351;&#31561;&#24453;&#30340;&#26465;&#20214;</li>
+<li class=" ml-8">正确性<ul class=" list-disc font-serif">
+<li class=" ml-8">大括号内代码执行时，其他线程不得破坏等待的条件</li>
 </ul>
 </li>
-<li class=" ml-8">&#24615;&#33021;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#19981;&#33021; spin check &#26465;&#20214;&#36798;&#25104;</li>
-<li class=" ml-8">&#24050;&#32463;&#22312;&#31561;&#24453;&#30340;&#32447;&#31243;&#24590;&#20040;&#30693;&#36947;&#26465;&#20214;&#34987;&#28385;&#36275;&#65311;</li>
+<li class=" ml-8">性能<ul class=" list-disc font-serif">
+<li class=" ml-8">不能 spin check 条件达成</li>
+<li class=" ml-8">已经在等待的线程怎么知道条件被满足？</li>
 </ul>
 </li>
 </ul></div>
@@ -299,23 +299,23 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26465;&#20214;&#21464;&#37327;&#65306;&#29702;&#24819;&#19982;&#23454;&#29616;&#20043;&#38388;&#30340;&#25240;&#34935;</h2>
-<p class=" font-serif my-1">&#19968;&#25226;&#20114;&#26021;&#38145; + &#19968;&#20010; &#8220;&#26465;&#20214;&#21464;&#37327;&#8221; + &#25163;&#24037;&#21796;&#37266;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">条件变量：理想与实现之间的折衷</h2>
+<p class=" font-serif my-1">一把互斥锁 + 一个 “条件变量” + 手工唤醒</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">wait(cv, mutex) &#128164;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#35843;&#29992;&#26102;&#24517;&#39035;&#20445;&#35777;&#24050;&#32463;&#33719;&#24471; mutex</li>
-<li class=" ml-8">wait &#37322;&#25918; mutex&#12289;&#36827;&#20837;&#30561;&#30496;&#29366;&#24577;</li>
-<li class=" ml-8">&#34987;&#21796;&#37266;&#21518;&#38656;&#35201;&#37325;&#26032;&#25191;&#34892; lock(mutex)</li>
+<li class=" ml-8">wait(cv, mutex) 💤<ul class=" list-disc font-serif">
+<li class=" ml-8">调用时必须保证已经获得 mutex</li>
+<li class=" ml-8">wait 释放 mutex、进入睡眠状态</li>
+<li class=" ml-8">被唤醒后需要重新执行 lock(mutex)</li>
 </ul>
 </li>
-<li class=" ml-8">signal/notify(cv) &#128172;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#38543;&#26426;&#31169;&#20449;&#19968;&#20010;&#31561;&#24453;&#32773;&#65306;&#37266;&#37266;</li>
-<li class=" ml-8">&#22914;&#26524;&#26377;&#32447;&#31243;&#27491;&#22312;&#31561;&#24453; cv&#65292;&#21017;&#21796;&#37266;&#20854;&#20013;&#19968;&#20010;&#32447;&#31243;</li>
+<li class=" ml-8">signal/notify(cv) 💬<ul class=" list-disc font-serif">
+<li class=" ml-8">随机私信一个等待者：醒醒</li>
+<li class=" ml-8">如果有线程正在等待 cv，则唤醒其中一个线程</li>
 </ul>
 </li>
-<li class=" ml-8">broadcast/notifyAll(cv) &#128227;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#21483;&#37266;&#25152;&#26377;&#20154;</li>
-<li class=" ml-8">&#21796;&#37266;&#20840;&#37096;&#27491;&#22312;&#31561;&#24453; cv &#30340;&#32447;&#31243;</li>
+<li class=" ml-8">broadcast/notifyAll(cv) 📣<ul class=" list-disc font-serif">
+<li class=" ml-8">叫醒所有人</li>
+<li class=" ml-8">唤醒全部正在等待 cv 的线程</li>
 </ul>
 </li>
 </ul></div>
@@ -329,23 +329,23 @@ section .center {
 
       
         
-        <div><h2 id="-" class=" text-xl mt-2 pb-2 font-sans">&#26465;&#20214;&#21464;&#37327;&#65306;&#23454;&#29616;&#29983;&#20135;&#32773;-&#28040;&#36153;&#32773;</h2>
+        <div><h2 id="-" class=" text-xl mt-2 pb-2 font-sans">条件变量：实现生产者-消费者</h2>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">Tproduce</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">mutex_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lk</span><span class="p">);</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">CAN_PRODUCE</span><span class="p">)</span><span class="w"> </span><span class="n">cond_wait</span><span class="p">(</span><span class="o">&amp;</span><span class="n">cv</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">lk</span><span class="p">);</span>
-<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">"("</span><span class="p">);</span><span class="w"> </span><span class="n">count</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="n">cond_signal</span><span class="p">(</span><span class="o">&amp;</span><span class="n">cv</span><span class="p">);</span>
-<span class="w">  </span><span class="n">mutex_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lk</span><span class="p">);</span>
+<span class="w">  </span><span class="n">mutex_lock</span><span class="p">(</span><span class="o">&</span><span class="n">lk</span><span class="p">);</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">CAN_PRODUCE</span><span class="p">)</span><span class="w"> </span><span class="n">cond_wait</span><span class="p">(</span><span class="o">&</span><span class="n">cv</span><span class="p">,</span><span class="w"> </span><span class="o">&</span><span class="n">lk</span><span class="p">);</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">"("</span><span class="p">);</span><span class="w"> </span><span class="n">count</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="n">cond_signal</span><span class="p">(</span><span class="o">&</span><span class="n">cv</span><span class="p">);</span>
+<span class="w">  </span><span class="n">mutex_unlock</span><span class="p">(</span><span class="o">&</span><span class="n">lk</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">Tconsume</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">mutex_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lk</span><span class="p">);</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">CAN_CONSUME</span><span class="p">)</span><span class="w"> </span><span class="n">cond_wait</span><span class="p">(</span><span class="o">&amp;</span><span class="n">cv</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">lk</span><span class="p">);</span>
-<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">")"</span><span class="p">);</span><span class="w"> </span><span class="n">count</span><span class="o">--</span><span class="p">;</span><span class="w"> </span><span class="n">cond_signal</span><span class="p">(</span><span class="o">&amp;</span><span class="n">cv</span><span class="p">);</span>
-<span class="w">  </span><span class="n">mutex_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lk</span><span class="p">);</span>
+<span class="w">  </span><span class="n">mutex_lock</span><span class="p">(</span><span class="o">&</span><span class="n">lk</span><span class="p">);</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">CAN_CONSUME</span><span class="p">)</span><span class="w"> </span><span class="n">cond_wait</span><span class="p">(</span><span class="o">&</span><span class="n">cv</span><span class="p">,</span><span class="w"> </span><span class="o">&</span><span class="n">lk</span><span class="p">);</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">")"</span><span class="p">);</span><span class="w"> </span><span class="n">count</span><span class="o">--</span><span class="p">;</span><span class="w"> </span><span class="n">cond_signal</span><span class="p">(</span><span class="o">&</span><span class="n">cv</span><span class="p">);</span>
+<span class="w">  </span><span class="n">mutex_unlock</span><span class="p">(</span><span class="o">&</span><span class="n">lk</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">&#20195;&#30721;&#28436;&#31034; &amp; &#21387;&#21147;&#27979;&#35797; &amp; &#27169;&#22411;&#26816;&#39564;</p>
+<p class=" font-serif my-1">代码演示 & 压力测试 & 模型检验</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">(Small scope hypothesis)</li>
 </ul></div>
@@ -359,26 +359,26 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26465;&#20214;&#21464;&#37327;&#65306;&#27491;&#30830;&#30340;&#25171;&#24320;&#26041;&#24335;</h2>
-<p class=" font-serif my-1">&#21516;&#27493;&#30340;&#26412;&#36136;&#65306;<code>wait_until(COND) { ... }</code>&#65292;&#22240;&#27492;&#65306;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">条件变量：正确的打开方式</h2>
+<p class=" font-serif my-1">同步的本质：<code>wait_until(COND) { ... }</code>，因此：</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><red>&#38656;&#35201;&#31561;&#24453;&#26465;&#20214;&#28385;&#36275;&#26102;</red></li>
+<li class=" ml-8"><red>需要等待条件满足时</red></li>
 </ul>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">mutex_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mutex</span><span class="p">);</span>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">mutex_lock</span><span class="p">(</span><span class="o">&</span><span class="n">mutex</span><span class="p">);</span>
 <span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">COND</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">wait</span><span class="p">(</span><span class="o">&amp;</span><span class="n">cv</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">mutex</span><span class="p">);</span>
+<span class="w">  </span><span class="n">wait</span><span class="p">(</span><span class="o">&</span><span class="n">cv</span><span class="p">,</span><span class="w"> </span><span class="o">&</span><span class="n">mutex</span><span class="p">);</span>
 <span class="p">}</span>
-<span class="n">assert</span><span class="p">(</span><span class="n">cond</span><span class="p">);</span><span class="w">  </span><span class="c1">// &#20114;&#26021;&#38145;&#20445;&#35777;&#26465;&#20214;&#25104;&#31435;</span>
-<span class="n">mutex_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mutex</span><span class="p">);</span>
+<span class="n">assert</span><span class="p">(</span><span class="n">cond</span><span class="p">);</span><span class="w">  </span><span class="c1">// 互斥锁保证条件成立</span>
+<span class="n">mutex_unlock</span><span class="p">(</span><span class="o">&</span><span class="n">mutex</span><span class="p">);</span>
 </code></pre></div>
 
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><red>&#20219;&#20309;&#25913;&#21160;&#20351;&#20854;&#20182;&#32447;&#21487;&#33021;&#34987;&#28385;&#36275;&#26102;</red></li>
+<li class=" ml-8"><red>任何改动使其他线可能被满足时</red></li>
 </ul>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">mutex_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mutex</span><span class="p">);</span>
-<span class="c1">// &#20219;&#20309;&#21487;&#33021;&#20351;&#26465;&#20214;&#28385;&#36275;&#30340;&#20195;&#30721;</span>
-<span class="n">broadcast</span><span class="p">(</span><span class="o">&amp;</span><span class="n">cv</span><span class="p">);</span>
-<span class="n">mutex_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mutex</span><span class="p">);</span>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">mutex_lock</span><span class="p">(</span><span class="o">&</span><span class="n">mutex</span><span class="p">);</span>
+<span class="c1">// 任何可能使条件满足的代码</span>
+<span class="n">broadcast</span><span class="p">(</span><span class="o">&</span><span class="n">cv</span><span class="p">);</span>
+<span class="n">mutex_unlock</span><span class="p">(</span><span class="o">&</span><span class="n">mutex</span><span class="p">);</span>
 </code></pre></div></div>
         
       

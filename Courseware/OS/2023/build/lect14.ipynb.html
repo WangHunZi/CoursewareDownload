@@ -2,7 +2,7 @@
 <head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>14. &#22810;&#22788;&#29702;&#22120;&#31995;&#32479;&#19982;&#20013;&#26029;&#26426;&#21046;</title>
+<title>14. 多处理器系统与中断机制</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script><script>
 (function() {
   function addWidgetsRenderer() {
@@ -6481,7 +6481,7 @@ cell outputs.
 
 .jp-Notebook .jp-Cell.jp-mod-dirty .jp-InputPrompt::before {
   color: var(--jp-warn-color1);
-  content: '&#8226;';
+  content: '•';
 }
 
 .jp-Notebook .jp-Cell.jp-mod-active.jp-mod-dirty .jp-Collapser {
@@ -7518,7 +7518,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[1]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">mosaic</span> <span class="kn">import</span> <span class="o">*</span>
@@ -7690,19 +7690,19 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-InputPrompt jp-InputArea-prompt">
 </div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="14.-%E5%A4%9A%E5%A4%84%E7%90%86%E5%99%A8%E7%B3%BB%E7%BB%9F%E4%B8%8E%E4%B8%AD%E6%96%AD%E6%9C%BA%E5%88%B6">14. &#22810;&#22788;&#29702;&#22120;&#31995;&#32479;&#19982;&#20013;&#26029;&#26426;&#21046;<a class="anchor-link" href="#14.-%E5%A4%9A%E5%A4%84%E7%90%86%E5%99%A8%E7%B3%BB%E7%BB%9F%E4%B8%8E%E4%B8%AD%E6%96%AD%E6%9C%BA%E5%88%B6">&#182;</a>
+<h1 id="14.-%E5%A4%9A%E5%A4%84%E7%90%86%E5%99%A8%E7%B3%BB%E7%BB%9F%E4%B8%8E%E4%B8%AD%E6%96%AD%E6%9C%BA%E5%88%B6">14. 多处理器系统与中断机制<a class="anchor-link" href="#14.-%E5%A4%9A%E5%A4%84%E7%90%86%E5%99%A8%E7%B3%BB%E7%BB%9F%E4%B8%8E%E4%B8%AD%E6%96%AD%E6%9C%BA%E5%88%B6">¶</a>
 </h1>
-<p><strong>Changelog &amp; &#21453;&#39304;</strong></p>
+<p><strong>Changelog & 反馈</strong></p>
 <ul>
-<li>L1 Online Judge &#19978;&#32447; (&#19968;&#29255;&#24808;&#29366;)</li>
-<li>&#38590;&#24230;&#35686;&#21578;&#65306;&#25805;&#20316;&#31995;&#32479;&#20869;&#26680;&#26469;&#20102;</li>
+<li>L1 Online Judge 上线 (一片惨状)</li>
+<li>难度警告：操作系统内核来了</li>
 </ul>
-<p><strong>&#32972;&#26223;&#22238;&#39038;</strong>&#65306;&#25105;&#20204;&#24050;&#32463;&#20102;&#35299;&#24182;&#21457;&#32534;&#31243;&#23454;&#36341;&#38656;&#35201;&#30340;&#20960;&#20046;&#20840;&#37096;&#20869;&#23481;&#8212;&#8212;&#32447;&#31243;&#12289;&#20869;&#23384;&#27169;&#22411;&#12289;&#20114;&#26021;&#12289;&#21516;&#27493;&#21644;&#24182;&#21457; bugs &#30340;&#24212;&#23545;&#12290;&#20294;&#25105;&#20204;&#19968;&#30452;&#26159;&#22312;&#31616;&#21270;&#30340;&#32447;&#31243;&#27169;&#22411; (thread.h) &#19978;&#35762;&#35299;&#30340;&#12290;&#20294;&#25105;&#20204;&#36824;&#27809;&#26377;&#22238;&#31572;&#19968;&#20010;&#20851;&#38190;&#38382;&#39064;&#65306;&#32447;&#31243;&#21040;&#24213;&#22312;&#35745;&#31639;&#26426;&#30828;&#20214;&#19978;&#26159;&#22914;&#20309;&#23454;&#29616;&#30340;&#65311;&#21363;&#20415;&#31995;&#32479;&#20013;&#21482;&#26377;&#19968;&#20010;&#22788;&#29702;&#22120;&#65292;&#25105;&#20204;&#20381;&#28982;&#21487;&#20197;&#21019;&#24314;&#24456;&#22810;&#24182;&#21457;&#25191;&#34892;&#30340;&#32447;&#31243;&#12290;</p>
-<p><strong>&#26412;&#35762;&#20869;&#23481;</strong>&#65306;&#25805;&#20316;&#31995;&#32479;&#20869;&#26680;&#23454;&#29616;</p>
+<p><strong>背景回顾</strong>：我们已经了解并发编程实践需要的几乎全部内容——线程、内存模型、互斥、同步和并发 bugs 的应对。但我们一直是在简化的线程模型 (thread.h) 上讲解的。但我们还没有回答一个关键问题：线程到底在计算机硬件上是如何实现的？即便系统中只有一个处理器，我们依然可以创建很多并发执行的线程。</p>
+<p><strong>本讲内容</strong>：操作系统内核实现</p>
 <ul>
-<li>&#22810;&#22788;&#29702;&#22120;&#21644;&#20013;&#26029;</li>
+<li>多处理器和中断</li>
 <li>AbstractMachine API</li>
-<li>50 &#34892;&#23454;&#29616;&#23884;&#20837;&#24335;&#25805;&#20316;&#31995;&#32479;</li>
+<li>50 行实现嵌入式操作系统</li>
 </ul>
 </div>
 </div>
@@ -7713,7 +7713,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[2]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'14.1'</span><span class="p">)</span>
@@ -7742,7 +7742,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">demo</span><span class="p">(</span><span class="s1">'rvemu'</span><span class="p">,</span> <span class="s1">'i/rvemu'</span><span class="p">)</span>
@@ -7777,7 +7777,7 @@ var element = document.getElementById('52a1c6a4-6a1c-4d15-a1f2-cb6b37d248b3');
 <div class="jp-InputPrompt jp-InputArea-prompt">
 </div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>&#36825;&#20010;&#31616;&#26131;&#30340;&#22810;&#22788;&#29702;&#22120;&#31995;&#32479;&#27169;&#22411;&#23481;&#26131;&#29702;&#35299;&#65292;&#20294;&#21516;&#26102;&#20063;&#26377;&#32570;&#38519;&#65306;&#23427;&#19978;&#20284;&#20046;&#27809;&#21150;&#27861;&#36816;&#34892;&#20219;&#20309; &#8220;&#27491;&#32463;&#8221; &#30340;&#25805;&#20316;&#31995;&#32479;&#65306;&#22914;&#26524;&#20219;&#20309;&#22788;&#29702;&#22120;&#19978;&#30340;&#24212;&#29992;&#31243;&#24207;&#27515;&#24490;&#29615;&#65292;&#37027;&#20040;&#36825;&#20010;&#22788;&#29702;&#22120;&#23601;&#24443;&#24213; &#8220;&#21345;&#27515;&#8221; &#20102;&#12290;&#32780;&#20351;&#30495;&#27491;&#24471;&#25105;&#20204;&#30340;&#32447;&#31243;&#21487;&#20197; &#8220;&#36867;&#20986;&#8221; &#27515;&#24490;&#29615;&#30340;&#26680;&#24515;&#26426;&#21046;&#65292;&#23601;&#26159;&#25805;&#20316;&#31995;&#32479;&#31649;&#29702;&#30340;&#30828;&#20214;&#20013;&#26029;&#12290;</p>
+<p>这个简易的多处理器系统模型容易理解，但同时也有缺陷：它上似乎没办法运行任何 “正经” 的操作系统：如果任何处理器上的应用程序死循环，那么这个处理器就彻底 “卡死” 了。而使真正得我们的线程可以 “逃出” 死循环的核心机制，就是操作系统管理的硬件中断。</p>
 </div>
 </div>
 </div>
@@ -7787,7 +7787,7 @@ var element = document.getElementById('52a1c6a4-6a1c-4d15-a1f2-cb6b37d248b3');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'14.2'</span><span class="p">)</span>
@@ -7816,7 +7816,7 @@ var element = document.getElementById('52a1c6a4-6a1c-4d15-a1f2-cb6b37d248b3');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[5]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">demo</span><span class="p">(</span><span class="s1">'rv32ima'</span><span class="p">,</span> <span class="s1">'c/rv32ima'</span><span class="p">)</span>
@@ -7848,7 +7848,7 @@ var element = document.getElementById('a7b9ed7f-a061-40ad-a9b0-9c154bb7ca47');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[6]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">demo</span><span class="p">(</span><span class="s1">'spinlock'</span><span class="p">,</span> <span class="s1">'c/spinlock-am'</span><span class="p">)</span>
@@ -7880,7 +7880,7 @@ var element = document.getElementById('4faec5a8-b7fa-4ed0-9c5e-0d3762e1a8aa');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[7]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'14.3'</span><span class="p">)</span>
@@ -7909,7 +7909,7 @@ var element = document.getElementById('4faec5a8-b7fa-4ed0-9c5e-0d3762e1a8aa');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[8]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">demo</span><span class="p">(</span><span class="s1">'thread-os'</span><span class="p">,</span> <span class="s1">'c/thread-os'</span><span class="p">)</span>
@@ -7944,22 +7944,22 @@ var element = document.getElementById('d2a97adf-6afb-40cc-a12d-35a12c213347');
 <div class="jp-InputPrompt jp-InputArea-prompt">
 </div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Take-away-Messages">Take-away Messages<a class="anchor-link" href="#Take-away-Messages">&#182;</a>
+<h2 id="Take-away-Messages">Take-away Messages<a class="anchor-link" href="#Take-away-Messages">¶</a>
 </h2>
-<p>&#26412;&#33410;&#35838;&#36973;&#36935;&#20102;&#30011;&#39118;&#31361;&#21464;&#65306;&#22312;&#20570;&#20102; &#8220;&#29366;&#24577;&#26426;&#8221; &#21644; &#8220;&#24182;&#21457;&#8221; &#36275;&#22815;&#30340;&#38138;&#22443;&#21518;&#65292;&#25105;&#20204;&#32456;&#20110;&#22238;&#21040;&#20102;&#26426;&#22120;&#25351;&#20196; (&#29366;&#24577;&#26426;) &#21644;&#25805;&#20316;&#31995;&#32479;&#20869;&#26680;&#20102;&#12290;&#26412;&#27425;&#35838;&#22238;&#31572;&#20102;&#20026;&#20160;&#20040; <code>while (1)</code> &#19981;&#20250;&#25226;&#25805;&#20316;&#31995;&#32479; &#8220;&#21345;&#27515;&#8221;&#65306;</p>
+<p>本节课遭遇了画风突变：在做了 “状态机” 和 “并发” 足够的铺垫后，我们终于回到了机器指令 (状态机) 和操作系统内核了。本次课回答了为什么 <code>while (1)</code> 不会把操作系统 “卡死”：</p>
 <ul>
-<li>&#22312;&#25805;&#20316;&#31995;&#32479;&#20195;&#30721;&#20999;&#25442;&#21040;&#24212;&#29992;&#31243;&#24207;&#25191;&#34892;&#26102;&#65292;&#25805;&#20316;&#31995;&#32479;&#20869;&#26680;&#20250;&#25171;&#24320;&#20013;&#26029;</li>
-<li>&#8220;&#19981;&#21487;&#20449;&#20219;&#8221; &#30340;&#24212;&#29992;&#31243;&#24207;&#23450;&#26399;&#20250;&#25910;&#21040;&#26102;&#38047;&#20013;&#26029;&#34987;&#25171;&#26029;&#65292;&#19988;&#24212;&#29992;&#31243;&#24207;&#26080;&#26435;&#37197;&#32622;&#20013;&#26029;</li>
-<li>&#25805;&#20316;&#31995;&#32479;&#25509;&#31649;&#20013;&#26029;&#21518;&#65292;&#21487;&#20197;&#20999;&#25442;&#21040;&#21478;&#19968;&#20010;&#31243;&#24207;&#25191;&#34892;</li>
+<li>在操作系统代码切换到应用程序执行时，操作系统内核会打开中断</li>
+<li>“不可信任” 的应用程序定期会收到时钟中断被打断，且应用程序无权配置中断</li>
+<li>操作系统接管中断后，可以切换到另一个程序执行</li>
 </ul>
-<h3 id="%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">&#35838;&#21518;&#20064;&#39064;/&#32534;&#31243;&#20316;&#19994;<a class="anchor-link" href="#%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">&#182;</a>
+<h3 id="%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">课后习题/编程作业<a class="anchor-link" href="#%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">¶</a>
 </h3>
-<h4 id="1.-%E8%B0%83%E8%AF%95-Thread-OS">1. &#35843;&#35797; Thread-OS<a class="anchor-link" href="#1.-%E8%B0%83%E8%AF%95-Thread-OS">&#182;</a>
+<h4 id="1.-%E8%B0%83%E8%AF%95-Thread-OS">1. 调试 Thread-OS<a class="anchor-link" href="#1.-%E8%B0%83%E8%AF%95-Thread-OS">¶</a>
 </h4>
-<p>thread-os &#30340;&#20195;&#30721;&#24456;&#31616;&#30701;&#65292;&#30475;&#36215;&#26469;&#30340;&#30830;&#22312;&#35762;&#19968;&#20010;&#20687;&#25945;&#31185;&#20070;&#19968;&#26679;&#30340; &#8220;&#25805;&#20316;&#31995;&#32479;&#8221; &#25925;&#20107;&#12290;&#28982;&#32780;&#65292;&#20854;&#20013;&#30340;&#35768;&#22810;&#32454;&#33410;&#26159;&#19981;&#26174;&#28982;&#30340;&#65292;&#20363;&#22914;&#20013;&#26029;&#21457;&#29983;&#21518;&#65292;&#31350;&#31455;&#26159;&#22914;&#20309;&#20445;&#23384;&#25152;&#26377;&#23492;&#23384;&#22120;&#30340;&#65292;&#20197;&#21450;&#23492;&#23384;&#22120;&#31350;&#31455;&#26159;&#22914;&#20309;&#34987;&#24674;&#22797;&#30340;&#12290;&#20294;&#23545;&#21021;&#23398;&#32773;&#26469;&#35828;&#21487;&#33021;&#20250;&#26377;&#29702;&#35299;&#30340;&#38590;&#24230;&#12290;&#20320;&#38656;&#35201;&#35843;&#35797;&#21040; AbstractMachine &#20013;&#21435;&#65292;&#29702;&#35299; &#8220;&#27599;&#19968;&#34892;&#20195;&#30721;&#20570;&#20102;&#20160;&#20040;&#8221; &#26159;&#24517;&#35201;&#30340;&#23454;&#36341;&#12290;</p>
-<h4 id="2.-%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5">2. &#32534;&#31243;&#23454;&#36341;<a class="anchor-link" href="#2.-%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5">&#182;</a>
+<p>thread-os 的代码很简短，看起来的确在讲一个像教科书一样的 “操作系统” 故事。然而，其中的许多细节是不显然的，例如中断发生后，究竟是如何保存所有寄存器的，以及寄存器究竟是如何被恢复的。但对初学者来说可能会有理解的难度。你需要调试到 AbstractMachine 中去，理解 “每一行代码做了什么” 是必要的实践。</p>
+<h4 id="2.-%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5">2. 编程实践<a class="anchor-link" href="#2.-%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5">¶</a>
 </h4>
-<p>&#24320;&#22987;&#21160;&#25163;&#23436;&#25104; L1 &#21644; L2&#12290;&#23454;&#39564;&#23545;&#21021;&#23398;&#32773;&#20855;&#26377;&#29190;&#28856;&#24615;&#30340;&#38590;&#24230;&#65292;&#26159;&#20174;&#38376;&#22806;&#27721;&#21040; &#8220;&#19987;&#23478;&#8221; &#30340;&#37325;&#35201;&#24517;&#32463;&#20043;&#36335;&#12290;</p>
+<p>开始动手完成 L1 和 L2。实验对初学者具有爆炸性的难度，是从门外汉到 “专家” 的重要必经之路。</p>
 </div>
 </div>
 </div>
@@ -7971,7 +7971,7 @@ var element = document.getElementById('d2a97adf-6afb-40cc-a12d-35a12c213347');
   <span class="text-muted">
     <center>
 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="/static/img/cc-4.0.png"></a>
-    &#160;&#160;&#160;<a style="color:inherit" href="https://beian.miit.gov.cn/">&#33487; ICP &#22791; 2020049101 &#21495;</a>
+       <a style="color:inherit" href="https://beian.miit.gov.cn/">苏 ICP 备 2020049101 号</a>
     </center>
   </span>
 </div>

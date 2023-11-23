@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -137,7 +137,7 @@ hr {
 </style>
 
 
-  <title>AbstractMachine: &#25277;&#35937;&#35745;&#31639;&#26426;</title>
+  <title>AbstractMachine: 抽象计算机</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -149,33 +149,33 @@ hr {
 <div class="px-2 py-1 w-full fixed z-50 bg-gradient-to-r from-black via-purple-700 via-purple-500 shadow-lg" style="-webkit-backdrop-filter: saturate(150%) blur(4px); backdrop-filter: saturate(150%) blur(4px)">
   <form>
     <a href="../../index.html"><span class="text-lg px-2 text-white">Yanyan's Wiki</span></a>
-    <a href="../2023/index.html"><span class="text-sm px-2 text-white">&#25805;&#20316;&#31995;&#32479; (2023)</span></a>
+    <a href="../2023/index.html"><span class="text-sm px-2 text-white">操作系统 (2023)</span></a>
     <input maxlength="9" id="token-input" class="float-right appearance-none border border-transparent px-2 py-1 w-20 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-xs focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent font-mono" type="text" placeholder="TOKEN" oninput="login();">
   </form>
 </div>
 
 <div class="article container mx-auto md:px-8 lg:px-8 xl:px-8 2xl:px-8 shadow-lg border pb-8 pt-10 max-w-screen-md text-justify divide-y-2 divide-white">
-  <div><h1 id="abstractmachine" class=" text-2xl mt-2 font-sans">AbstractMachine: &#25277;&#35937;&#35745;&#31639;&#26426;</h1>
+  <div><h1 id="abstractmachine" class=" text-2xl mt-2 font-sans">AbstractMachine: 抽象计算机</h1>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../pages/talks/img/full-system.jpg" width="240px"></p>
-<p class=" font-serif my-1">AbstractMachine &#26159;&#35064;&#26426;&#19978;&#30340; C &#35821;&#35328;&#36816;&#34892;&#29615;&#22659;&#65292;&#25552;&#20379; 5 &#32452; (15 &#20010;) &#20027;&#35201; API&#65292;&#21487;&#20197;&#23454;&#29616;&#21508;&#31867;&#31995;&#32479;&#36719;&#20214; (&#22914;&#25805;&#20316;&#31995;&#32479;)&#65306;</p>
+<p class=" font-serif my-1">AbstractMachine 是裸机上的 C 语言运行环境，提供 5 组 (15 个) 主要 API，可以实现各类系统软件 (如操作系统)：</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">(TRM) <code>putch</code>/<code>halt</code> - &#26368;&#22522;&#30784;&#30340;&#35745;&#31639;&#12289;&#26174;&#31034;&#21644;&#20572;&#26426;</li>
-<li class=" ml-8">(IOE) <code>ioe_read/ioe_write</code> - I/O &#35774;&#22791;&#31649;&#29702;</li>
-<li class=" ml-8">(CTE) <code>ienabled</code>/<code>iset</code>/<code>yield</code>/<code>kcontext</code> - &#20013;&#26029;&#21644;&#24322;&#24120;</li>
-<li class=" ml-8">(VME) <code>protect</code>/<code>unprotect</code>/<code>map</code>/<code>ucontext</code> - &#34394;&#23384;&#31649;&#29702;</li>
-<li class=" ml-8">(MPE) <code>cpu_count</code>/<code>cpu_current</code>/<code>atomic_xchg</code> - &#22810;&#22788;&#29702;&#22120;</li>
+<li class=" ml-8">(TRM) <code>putch</code>/<code>halt</code> - 最基础的计算、显示和停机</li>
+<li class=" ml-8">(IOE) <code>ioe_read/ioe_write</code> - I/O 设备管理</li>
+<li class=" ml-8">(CTE) <code>ienabled</code>/<code>iset</code>/<code>yield</code>/<code>kcontext</code> - 中断和异常</li>
+<li class=" ml-8">(VME) <code>protect</code>/<code>unprotect</code>/<code>map</code>/<code>ucontext</code> - 虚存管理</li>
+<li class=" ml-8">(MPE) <code>cpu_count</code>/<code>cpu_current</code>/<code>atomic_xchg</code> - 多处理器</li>
 </ul>
 <hr>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">AbstractMachine &#31616;&#20171;<ul class=" list-disc font-serif">
-<li class=" ml-8"><a href="AM_Programs.html" class=" text-amber-900">&#22914;&#20309;&#20026; &#8220;&#35064;&#26426;&#8221; (bare-metal) &#32534;&#31243;</a></li>
-<li class=" ml-8"><a href="AM_klib.html" class=" text-amber-900">&#22312; AbstractMachine &#19978;&#23553;&#35013;&#24211;&#20989;&#25968;</a></li>
+<li class=" ml-8">AbstractMachine 简介<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="AM_Programs.html" class=" text-amber-900">如何为 “裸机” (bare-metal) 编程</a></li>
+<li class=" ml-8"><a href="AM_klib.html" class=" text-amber-900">在 AbstractMachine 上封装库函数</a></li>
 </ul>
 </li>
-<li class=" ml-8">&#35268;&#32422;&#19982;&#25991;&#26723;<ul class=" list-disc font-serif">
-<li class=" ml-8"><a href="AM_Design.html" class=" text-amber-900">AbstractMachine &#35774;&#35745;&#27010;&#36848;</a></li>
-<li class=" ml-8"><a href="AM_Spec.html" class=" text-amber-900">AbstractMachine &#35268;&#32422; (Specifications)</a></li>
-<li class=" ml-8"><a href="AM_Devices.html" class=" text-amber-900">AbstractMachine &#35774;&#22791;&#35268;&#32422;</a></li>
+<li class=" ml-8">规约与文档<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="AM_Design.html" class=" text-amber-900">AbstractMachine 设计概述</a></li>
+<li class=" ml-8"><a href="AM_Spec.html" class=" text-amber-900">AbstractMachine 规约 (Specifications)</a></li>
+<li class=" ml-8"><a href="AM_Devices.html" class=" text-amber-900">AbstractMachine 设备规约</a></li>
 </ul>
 </li>
 </ul>
@@ -183,21 +183,21 @@ hr {
 
 
 
-## 1. &#31616;&#20171;
+## 1. 简介
 
-&#25105;&#20204;&#22312; C &#31243;&#24207;&#20013;&#35843;&#29992; AbstractMachine API &#23601;&#33021;&#23454;&#29616;&#25805;&#20316;&#31995;&#32479;&#65292;&#20174;&#32780;&#19981;&#38656;&#35201;&#30693;&#36947;&#24213;&#23618;&#30828;&#20214;&#30340;&#20013;&#26029;&#12289;&#34394;&#25311;&#23384;&#20648;&#31561;&#26159;&#22914;&#20309;&#22312;&#25351;&#20196;&#32423;&#23454;&#29616;&#30340;&#8212;&#8212;&#36825;&#26159;&#35745;&#31639;&#26426;&#31995;&#32479;&#35774;&#35745;&#19982;&#23454;&#29616;&#20013;&#30340;&#19968;&#31181;&#25277;&#35937;&#65307;&#19968;&#20010;&#31867;&#20284;&#30340;&#20363;&#23376;&#26159;&#25105;&#20204;&#22312;&#24212;&#29992;&#31243;&#24207;&#37324;&#35843;&#29992; libc &#24211;&#23601;&#33021;&#23436;&#25104;&#32477;&#22823;&#37096;&#20998;&#20219;&#21153;&#65292;&#32780;&#19981;&#38656;&#35201;&#30693;&#36947;&#24213;&#23618;&#30340;&#25805;&#20316;&#31995;&#32479; API&#12290;&#36825;&#26679;&#30340;&#35774;&#35745;&#26041;&#27861;&#22312;&#22797;&#26434;&#35745;&#31639;&#26426;&#31995;&#32479;&#30340;&#26500;&#36896;&#20013;&#21313;&#20998;&#24120;&#35265;&#65306;&#24213;&#23618;&#31995;&#32479;&#25552;&#20379;**&#26426;&#21046;** (mechanism)&#65292;&#19978;&#23618;&#31995;&#32479;&#21033;&#29992;&#36825;&#20123;&#26426;&#21046;&#23454;&#29616;**&#31574;&#30053;** (policy)&#12290;&#20856;&#22411;&#30340;&#26426;&#21046;/&#31574;&#30053;&#20998;&#31163;&#30340;&#25277;&#35937;&#23618;&#26377;&#25351;&#20196;&#38598;&#20307;&#31995;&#32467;&#26500;&#12289;&#31995;&#32479;&#35843;&#29992;&#12289;&#24211;&#20989;&#25968;&#31561;&#65307;AbstractMachine &#23646;&#20110;&#19968;&#31181;&#30828;&#20214;&#25277;&#35937;&#23618; (hardware abstraction layer, HAL)&#12290;
+我们在 C 程序中调用 AbstractMachine API 就能实现操作系统，从而不需要知道底层硬件的中断、虚拟存储等是如何在指令级实现的——这是计算机系统设计与实现中的一种抽象；一个类似的例子是我们在应用程序里调用 libc 库就能完成绝大部分任务，而不需要知道底层的操作系统 API。这样的设计方法在复杂计算机系统的构造中十分常见：底层系统提供**机制** (mechanism)，上层系统利用这些机制实现**策略** (policy)。典型的机制/策略分离的抽象层有指令集体系结构、系统调用、库函数等；AbstractMachine 属于一种硬件抽象层 (hardware abstraction layer, HAL)。
 
-## 2. &#23433;&#35013;&#19982;&#37197;&#32622;
+## 2. 安装与配置
 
-### 2.1. &#37197;&#32622; AbstractMachine
+### 2.1. 配置 AbstractMachine
 
-&#23545;&#20110;&#25805;&#20316;&#31995;&#32479;&#23454;&#39564;&#30340;&#21516;&#23398;&#65292;`os-workbench` &#20013;&#24050;&#32463;&#21253;&#21547;&#20102; AbstractMachine &#20195;&#30721;&#65292;&#24182;&#19988;&#25805;&#20316;&#31995;&#32479;&#23454;&#39564;&#30340;&#26694;&#26550;&#20195;&#30721;&#24050;&#32463;&#23436;&#25104;&#20102;&#37197;&#32622;&#12290;&#22914;&#26524;&#20320;&#20351;&#29992; Debian/Ubuntu &#31995;&#32479;&#65292;&#20320;&#22312;&#32534;&#35793;&#20195;&#30721;&#26102;&#21487;&#33021;&#20250;&#36935;&#21040;&#19968;&#20123;&#21629;&#20196;&#25191;&#34892;&#22833;&#36133;&#30340;&#24773;&#20917;&#65292;&#36890;&#24120;&#38656;&#35201;&#20197;&#19979;&#36719;&#20214;&#21253; (&#20063;&#21487;&#33021;&#38656;&#35201;&#20854;&#20182;&#36719;&#20214;&#21253;&#65292;&#35831; STFW)&#65306;
+对于操作系统实验的同学，`os-workbench` 中已经包含了 AbstractMachine 代码，并且操作系统实验的框架代码已经完成了配置。如果你使用 Debian/Ubuntu 系统，你在编译代码时可能会遇到一些命令执行失败的情况，通常需要以下软件包 (也可能需要其他软件包，请 STFW)：
 
-* `gcc-multilib` (&#20132;&#21449;&#32534;&#35793;&#29992;)
-* `libsdl2-dev` (&#22270;&#24418;&#24211;)
-* `qemu-system` (&#20840;&#31995;&#32479;&#27169;&#25311;&#22120;)
+* `gcc-multilib` (交叉编译用)
+* `libsdl2-dev` (图形库)
+* `qemu-system` (全系统模拟器)
 
-&#22914;&#26524;&#20320;&#24076;&#26395;&#24314;&#31435;&#33258;&#24049;&#30340; AbstractMachine &#39033;&#30446; (&#20363;&#22914;&#20043;&#21518;&#30340; Hello World &#20363;&#23376;) &#25110;&#32534;&#35793;&#36816;&#34892;&#20854;&#20182;&#31034;&#20363;&#20195;&#30721; (microbench, fceux, litenes, ...) &#31561;&#65292;&#21017;&#38656;&#35201;&#20808;&#37197;&#32622;&#22909; `AM_HOME` &#29615;&#22659;&#21464;&#37327; (&#35831; STFW &#20160;&#20040;&#26159;&#29615;&#22659;&#21464;&#37327;&#12290;&#21487;&#20197;&#29992; `env` &#21629;&#20196;&#26597;&#30475;&#24403;&#21069;&#30340;&#29615;&#22659;&#21464;&#37327;)&#65292;&#25226;&#23427;&#35774;&#32622;&#20026; AbstractMachine &#30446;&#24405;&#30340;**&#32477;&#23545;&#36335;&#24452;**&#65306;
+如果你希望建立自己的 AbstractMachine 项目 (例如之后的 Hello World 例子) 或编译运行其他示例代码 (microbench, fceux, litenes, ...) 等，则需要先配置好 `AM_HOME` 环境变量 (请 STFW 什么是环境变量。可以用 `env` 命令查看当前的环境变量)，把它设置为 AbstractMachine 目录的**绝对路径**：
 
 
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">AM_HOME</span><span class="o">=</span>/abs/path/.../os-workbench/abstract-machine
@@ -205,16 +205,16 @@ hr {
 
 
 
-&#20320;&#21487;&#20197;&#25226;&#36825;&#19968;&#34892;&#20889;&#22312; `.bashrc`/`.zshrc` &#20013;&#65292;&#20351;&#24471;&#19981;&#24517;&#27599;&#27425;&#25171;&#24320;&#32456;&#31471;&#37117;&#37325;&#26032;&#37197;&#32622;&#12290;&#22914;&#26524;&#20320;&#31532;&#19968;&#27425;&#20351;&#29992; Linux&#65292;&#36825;&#20250;&#26159;&#19968;&#20010;&#27604;&#36739;&#30171;&#33510;&#30340;&#36807;&#31243;&#8212;&#8212;&#20320;&#36824;&#38656;&#35201;&#23398;&#20064; Shell &#26377;&#20851;&#30340;&#22522;&#30784;&#30693;&#35782;&#12290;&#19968;&#20221;&#19981;&#38169;&#30340;&#20837;&#38376;&#26448;&#26009;&#26159; MIT &#30340; &#8220;[The Missing Semester of Your CS Education](https://missing.csail.mit.edu/)&#8221;&#12290;
+你可以把这一行写在 `.bashrc`/`.zshrc` 中，使得不必每次打开终端都重新配置。如果你第一次使用 Linux，这会是一个比较痛苦的过程——你还需要学习 Shell 有关的基础知识。一份不错的入门材料是 MIT 的 “[The Missing Semester of Your CS Education](https://missing.csail.mit.edu/)”。
 
 ## 2.2. Hello, AbstractMachine
 
-&#23436;&#25104;&#24517;&#35201;&#36719;&#20214;&#30340;&#23433;&#35013;&#21644;&#27491;&#30830;&#30340; `AM_HOME` &#37197;&#32622;&#21518;&#65292;&#25105;&#20204;&#23601;&#21487;&#20197;&#22312; AbstractMachine &#19978;&#32534;&#31243;&#20102;&#12290;&#22312;&#25991;&#20214;&#31995;&#32479;&#30340;&#20219;&#24847;&#30446;&#24405;&#20013;&#21019;&#24314;&#19968;&#20010; `.c` &#25991;&#20214;&#21644; `Makefile` (&#21442;&#32771; `man 3 stdarg`)&#65306;
+完成必要软件的安装和正确的 `AM_HOME` 配置后，我们就可以在 AbstractMachine 上编程了。在文件系统的任意目录中创建一个 `.c` 文件和 `Makefile` (参考 `man 3 stdarg`)：
 
 
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="c1">// hello.c</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;am.h&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdarg.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf"><am.h></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf"><stdarg.h></span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">print</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="p">...)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kt">va_list</span><span class="w"> </span><span class="n">ap</span><span class="p">;</span>
@@ -243,34 +243,34 @@ hr {
 
 
 
-&#25105;&#20204;&#23601;&#23436;&#25104;&#20102;&#19968;&#20010;**&#21487;&#31227;&#26893;**&#21040;&#22810;&#20010; &#8220;bare-metal&#8221; &#24179;&#21488;&#30340; Hello World &#31243;&#24207;&#65292;&#23427;&#20204;&#21487;&#20197;&#30452;&#25509;&#22312;&#27169;&#25311;&#22120;&#37324;&#36816;&#34892;&#65292;&#29978;&#33267;&#30452;&#25509;&#22312;&#24320;&#21457;&#26495;&#19978;&#36816;&#34892;&#65281;&#24403;&#28982;&#20102;&#65292;&#29616;&#22312;&#32534;&#35793;&#12289;&#38142;&#25509;&#12289;&#36816;&#34892;&#37117;&#20250;&#20132;&#32473; AbstractMachine &#20013;&#30340;&#20195;&#30721;&#24110;&#24537;&#25630;&#23450;&#12290;
+我们就完成了一个**可移植**到多个 “bare-metal” 平台的 Hello World 程序，它们可以直接在模拟器里运行，甚至直接在开发板上运行！当然了，现在编译、链接、运行都会交给 AbstractMachine 中的代码帮忙搞定。
 
-&#20026;&#20102;&#32534;&#35793;&#36816;&#34892;&#65292;AbstractMachine &#38656;&#35201;&#30693;&#36947;&#30446;&#26631;&#30340;&#24179;&#21488;/&#20307;&#31995;&#32467;&#26500;&#65292;&#36890;&#36807; `ARCH` &#29615;&#22659;&#21464;&#37327;&#25351;&#23450;&#12290;&#20363;&#22914;&#65292;&#25105;&#20204;&#24076;&#26395;&#32534;&#35793;&#20986;&#33021;&#22312; x86-64 (QEMU) &#19979;&#36816;&#34892;&#30340;&#38236;&#20687;&#65306;
+为了编译运行，AbstractMachine 需要知道目标的平台/体系结构，通过 `ARCH` 环境变量指定。例如，我们希望编译出能在 x86-64 (QEMU) 下运行的镜像：
 
 
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>$ make ARCH=x86_64-qemu
 # Building hello-image [x86_64-qemu]
 + CC hello.c
 ...
-+ CREATE -&gt; build/hello-x86_64-qemu
++ CREATE -> build/hello-x86_64-qemu
 </code></pre></div>
 
 
 
-&#20250;&#33258;&#21160;&#23436;&#25104;&#32534;&#35793;&#65292;&#24471;&#21040; `build/` &#30446;&#24405;&#19979;&#30340;&#33509;&#24178;&#25991;&#20214;&#65306;
+会自动完成编译，得到 `build/` 目录下的若干文件：
 
 
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>build
-&#9500;&#9472;&#9472; hello-x86_64-qemu    // &#21487;&#36816;&#34892;&#12289;&#21253;&#21547; bootloader &#31561;&#30340;&#30913;&#30424;&#38236;&#20687;
-&#9500;&#9472;&#9472; hello-x86_64-qemu.o  // hello &#39033;&#30446;&#30340;&#20108;&#36827;&#21046;&#25991;&#20214;
-&#9492;&#9472;&#9472; x86_64-qemu
-    &#9500;&#9472;&#9472; hello.d          // hello.c &#20381;&#36182;&#30340;&#22836;&#25991;&#20214; (gcc -MMD &#29983;&#25104;)
-    &#9492;&#9472;&#9472; hello.o          // &#32534;&#35793; hello.c &#24471;&#21040;&#30340;&#30446;&#26631;&#25991;&#20214;
+├── hello-x86_64-qemu    // 可运行、包含 bootloader 等的磁盘镜像
+├── hello-x86_64-qemu.o  // hello 项目的二进制文件
+└── x86_64-qemu
+    ├── hello.d          // hello.c 依赖的头文件 (gcc -MMD 生成)
+    └── hello.o          // 编译 hello.c 得到的目标文件
 </code></pre></div>
 
 
 
-&#19981;&#22952;&#29992; `objdump -d` &#21629;&#20196;&#26597;&#30475; `hello-x86_64-qemu.o` &#21453;&#27719;&#32534;&#21518;&#30340;&#20195;&#30721;&#65292;&#26159;&#30452;&#25509;&#36816;&#34892;&#22312;&#35064;&#26426;&#19978;&#30340; C &#31243;&#24207;&#20195;&#30721;&#65292;&#31243;&#24207;&#30340;&#20837;&#21475;&#26159; `_start`&#12290;Makefile &#20063;&#33258;&#24102;&#20102;&#36816;&#34892;&#21151;&#33021;&#65292;&#20256;&#20837; `mainargs` &#29615;&#22659;&#21464;&#37327;&#65292;&#21363;&#21487;&#23558;&#21442;&#25968;&#20256;&#36882;&#32473; `main` &#20989;&#25968;&#65306;
+不妨用 `objdump -d` 命令查看 `hello-x86_64-qemu.o` 反汇编后的代码，是直接运行在裸机上的 C 程序代码，程序的入口是 `_start`。Makefile 也自带了运行功能，传入 `mainargs` 环境变量，即可将参数传递给 `main` 函数：
 
 
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>$ make run ARCH=x86_64-qemu mainargs="Hello World"
@@ -281,16 +281,16 @@ CPU #0 Halt (00).
 
 
 
-&#20320;&#21487;&#20197;&#23581;&#35797;&#20854;&#20182;&#30340; `ARCH` &#29615;&#22659;&#21464;&#37327;&#65306;`x86-qemu`, `native`&#65292;&#22312;&#19981;&#21516;&#24179;&#21488;&#19979;&#36816;&#34892;&#12290;&#20320;&#20063;&#21487;&#20197; export &#40664;&#35748;&#30340; `ARCH=x86_64-qemu`&#65292;&#36991;&#20813;&#27599;&#27425;&#38190;&#20837;&#12290;
+你可以尝试其他的 `ARCH` 环境变量：`x86-qemu`, `native`，在不同平台下运行。你也可以 export 默认的 `ARCH=x86_64-qemu`，避免每次键入。
 
-&gt; #### &#24605;&#32771;&#39064;&#65306;`__ISA__`
-&gt; 
-&gt; &#25105;&#20204;&#30340; Hello World &#31243;&#24207;&#24341;&#29992;&#20102;&#36825;&#20010;&#22855;&#24618;&#30340;&#23439;&#12290;&#36825;&#20010;&#23439;&#19981;&#26159; C &#26631;&#20934;&#37324;&#23450;&#20041;&#30340;&#65292;&#37027;&#20040;&#26159;&#35841;&#23450;&#20041;&#30340;&#65311;&#24403;&#25105;&#20204;&#35774;&#32622;&#19981;&#21516;&#30340; `ARCH`&#65292;&#25171;&#21360;&#30340; `__ISA__` &#20063;&#21508;&#19981;&#30456;&#21516;&#12290;&#36825;&#19968;&#23450;&#26159; Makefile &#20570;&#30340;&#12290;&#24590;&#20040;&#30693;&#36947;&#21602;&#65311;UNIX &#19990;&#30028;&#26089;&#23601;&#32473;&#25105;&#20204;&#25552;&#20379;&#20102;&#36275;&#22815;&#30340;&#24037;&#20855;&#26469;&#25630;&#23450;&#36825;&#20123;&#26085;&#24120;&#29712;&#20107;&#65306;
-&gt; 
-&gt;     :::text
-&gt;     find . -type f | xargs grep -ne __ISA__
-&gt; 
-&gt; (&#35831; RTFM &#29702;&#35299;&#36825;&#20010;&#21629;&#20196;&#30340;&#21547;&#20041;)&#12290;&#25105;&#20204;&#33021;&#23450;&#20301;&#21040; `Makefile` &#20013;&#30340;&#19968;&#34892;&#20195;&#30721;&#65292;&#23558; `__ISA__` &#30340;&#23450;&#20041;&#20351;&#29992; gcc &#30340; `-D` &#36873;&#39033;&#21152;&#20837;&#20102; `CFLAGS`&#12290;
+> #### 思考题：`__ISA__`
+> 
+> 我们的 Hello World 程序引用了这个奇怪的宏。这个宏不是 C 标准里定义的，那么是谁定义的？当我们设置不同的 `ARCH`，打印的 `__ISA__` 也各不相同。这一定是 Makefile 做的。怎么知道呢？UNIX 世界早就给我们提供了足够的工具来搞定这些日常琐事：
+> 
+>     :::text
+>     find . -type f | xargs grep -ne __ISA__
+> 
+> (请 RTFM 理解这个命令的含义)。我们能定位到 `Makefile` 中的一行代码，将 `__ISA__` 的定义使用 gcc 的 `-D` 选项加入了 `CFLAGS`。
 
 </div></div>
 </div>
@@ -298,7 +298,7 @@ CPU #0 Halt (00).
 <div class="container text-xs py-3">
   <span class="text-muted">
     <center><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="../../static/img/cc-4.0.png"></a>
-    &#160;&#160;&#160;<a style="color:inherit" href="https://beian.miit.gov.cn/">&#33487; ICP &#22791; 2020049101 &#21495;</a>
+       <a style="color:inherit" href="https://beian.miit.gov.cn/">苏 ICP 备 2020049101 号</a>
     </center>
   </span>
 </div>

@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +209,7 @@ section .center {
 }
 </style>
 
-  <title>&#21746; &#9794; &#23398;&#23478;&#21507;&#39277;&#38382;&#39064;</title>
+  <title>哲 ♂ 学家吃饭问题</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,7 +227,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="10.3.slides.html" class=" text-amber-900">&#21746; &#9794; &#23398;&#23478;&#21507;&#39277;&#38382;&#39064;</a></h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="10.3.slides.html" class=" text-amber-900">哲 ♂ 学家吃饭问题</a></h1></div></div></div>
         
       
       </section>
@@ -238,11 +238,11 @@ section .center {
 
       
         
-        <div><h2 id="e-w-dijkstra-1960" class=" text-xl mt-2 pb-2 font-sans">&#21746;&#23398;&#23478;&#21507;&#39277;&#38382;&#39064; (E. W. Dijkstra, 1960)</h2>
-<p class=" font-serif my-1">&#32463;&#20856;&#21516;&#27493;&#38382;&#39064;&#65306;&#21746;&#23398;&#23478; (&#32447;&#31243;) &#26377;&#26102;&#24605;&#32771;&#65292;&#26377;&#26102;&#21507;&#39277;</p>
+        <div><h2 id="e-w-dijkstra-1960" class=" text-xl mt-2 pb-2 font-sans">哲学家吃饭问题 (E. W. Dijkstra, 1960)</h2>
+<p class=" font-serif my-1">经典同步问题：哲学家 (线程) 有时思考，有时吃饭</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#21507;&#39277;&#38656;&#35201;&#21516;&#26102;&#24471;&#21040;&#24038;&#25163;&#21644;&#21491;&#25163;&#30340;&#21449;&#23376;</li>
-<li class=" ml-8">&#24403;&#21449;&#23376;&#34987;&#20854;&#20182;&#20154;&#21344;&#26377;&#26102;&#65292;&#24517;&#39035;&#31561;&#24453;&#65292;&#22914;&#20309;&#23436;&#25104;&#21516;&#27493;&#65311;</li>
+<li class=" ml-8">吃饭需要同时得到左手和右手的叉子</li>
+<li class=" ml-8">当叉子被其他人占有时，必须等待，如何完成同步？</li>
 </ul>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/dining-philosophers.jpg" width="500px"></p></div>
         
@@ -255,24 +255,24 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#22833;&#36133;&#19982;&#25104;&#21151;&#30340;&#23581;&#35797;</h2>
-<p class=" font-serif my-1">&#22833;&#36133;&#30340;&#23581;&#35797;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">失败与成功的尝试</h2>
+<p class=" font-serif my-1">失败的尝试</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25226;&#20449;&#21495;&#37327;&#24403;&#20114;&#26021;&#38145;&#65306;&#20808;&#25343;&#19968;&#25226;&#21449;&#23376;&#65292;&#20877;&#25343;&#21478;&#19968;&#25226;&#21449;&#23376;</li>
+<li class=" ml-8">把信号量当互斥锁：先拿一把叉子，再拿另一把叉子</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#25104;&#21151;&#30340;&#23581;&#35797; (&#19975;&#33021;&#30340;&#26041;&#27861;)</p>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#define CAN_EAT (avail[lhs] &amp;&amp; avail[rhs])</span>
-<span class="n">mutex_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mutex</span><span class="p">);</span>
+<p class=" font-serif my-1">成功的尝试 (万能的方法)</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#define CAN_EAT (avail[lhs] && avail[rhs])</span>
+<span class="n">mutex_lock</span><span class="p">(</span><span class="o">&</span><span class="n">mutex</span><span class="p">);</span>
 <span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">CAN_EAT</span><span class="p">)</span>
-<span class="w">  </span><span class="n">cond_wait</span><span class="p">(</span><span class="o">&amp;</span><span class="n">cv</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">mutex</span><span class="p">);</span>
+<span class="w">  </span><span class="n">cond_wait</span><span class="p">(</span><span class="o">&</span><span class="n">cv</span><span class="p">,</span><span class="w"> </span><span class="o">&</span><span class="n">mutex</span><span class="p">);</span>
 <span class="n">avail</span><span class="p">[</span><span class="n">lhs</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">avail</span><span class="p">[</span><span class="n">rhs</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
-<span class="n">mutex_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mutex</span><span class="p">);</span>
+<span class="n">mutex_unlock</span><span class="p">(</span><span class="o">&</span><span class="n">mutex</span><span class="p">);</span>
 
-<span class="n">mutex_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mutex</span><span class="p">);</span>
+<span class="n">mutex_lock</span><span class="p">(</span><span class="o">&</span><span class="n">mutex</span><span class="p">);</span>
 <span class="n">avail</span><span class="p">[</span><span class="n">lhs</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">avail</span><span class="p">[</span><span class="n">rhs</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
-<span class="n">cond_broadcast</span><span class="p">(</span><span class="o">&amp;</span><span class="n">cv</span><span class="p">);</span>
-<span class="n">mutex_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mutex</span><span class="p">);</span>
+<span class="n">cond_broadcast</span><span class="p">(</span><span class="o">&</span><span class="n">cv</span><span class="p">);</span>
+<span class="n">mutex_unlock</span><span class="p">(</span><span class="o">&</span><span class="n">mutex</span><span class="p">);</span>
 </code></pre></div></div>
         
       
@@ -284,29 +284,29 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25104;&#21151;&#30340;&#23581;&#35797;&#65306;&#20449;&#21495;&#37327;</h2>
-<p class=" font-serif my-1">Trick: &#27515;&#38145;&#20250;&#22312; 5 &#20010;&#21746;&#23398;&#23478; &#8220;&#21516;&#26102;&#21507;&#39277;&#8221; &#26102;&#21457;&#29983;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">成功的尝试：信号量</h2>
+<p class=" font-serif my-1">Trick: 死锁会在 5 个哲学家 “同时吃饭” 时发生</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#30772;&#22351;&#36825;&#20010;&#26465;&#20214;&#21363;&#21487;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20445;&#35777;&#20219;&#20309;&#26102;&#20505;&#33267;&#22810;&#21482;&#26377; 4 &#20010;&#20154;&#21487;&#20197;&#21507;&#39277;</li>
-<li class=" ml-8">&#30452;&#35266;&#29702;&#35299;&#65306;&#22823;&#23478;&#20808;&#20174;&#26700;&#19978;&#36864;&#20986;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#34955;&#23376;&#37324;&#26377; 4 &#24352;&#21345;</li>
-<li class=" ml-8">&#25343;&#21040;&#21345;&#30340;&#21487;&#20197;&#19978;&#26700;&#21507;&#39277; (&#25343;&#21449;&#23376;)</li>
-<li class=" ml-8">&#21507;&#23436;&#20197;&#21518;&#25226;&#21345;&#24402;&#36824;&#21040;&#34955;&#23376;</li>
+<li class=" ml-8">破坏这个条件即可<ul class=" list-disc font-serif">
+<li class=" ml-8">保证任何时候至多只有 4 个人可以吃饭</li>
+<li class=" ml-8">直观理解：大家先从桌上退出<ul class=" list-disc font-serif">
+<li class=" ml-8">袋子里有 4 张卡</li>
+<li class=" ml-8">拿到卡的可以上桌吃饭 (拿叉子)</li>
+<li class=" ml-8">吃完以后把卡归还到袋子</li>
 </ul>
 </li>
 </ul>
 </li>
-<li class=" ml-8">&#20219;&#24847; 4 &#20010;&#20154;&#24819;&#21507;&#39277;&#65292;&#24635;&#26377;&#19968;&#20010;&#21487;&#20197;&#25343;&#36215;&#24038;&#21491;&#25163;&#30340;&#21449;&#23376;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#25945;&#31185;&#20070;&#19978;&#26377;&#21478;&#19968;&#31181;&#35299;&#20915;&#26041;&#27861; (lock ordering&#65307;&#20043;&#21518;&#20250;&#35762;)</li>
+<li class=" ml-8">任意 4 个人想吃饭，总有一个可以拿起左右手的叉子<ul class=" list-disc font-serif">
+<li class=" ml-8">教科书上有另一种解决方法 (lock ordering；之后会讲)</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#20294;&#36825;&#30495;&#30340;&#23545;&#21527;&#65311;</p>
+<p class=" font-serif my-1">但这真的对吗？</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><a href="../../../pages/OS/2023/c/philosopher-check.py" class=" text-amber-900">philosopher-check.py</a></li>
-<li class=" ml-8">&#22312;&#24517;&#35201;&#30340;&#26102;&#20505;&#20351;&#29992; model checker</li>
+<li class=" ml-8">在必要的时候使用 model checker</li>
 </ul></div>
         
       
@@ -318,19 +318,19 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#21453;&#24605;&#65306;&#20998;&#24067;&#19982;&#38598;&#20013;</h2>
-<p class=" font-serif my-1">&#8220;Leader/follower&#8221; - &#26377;&#19968;&#20010;&#38598;&#20013;&#30340; &#8220;&#24635;&#25511;&#8221;&#65292;&#32780;&#38750; &#8220;&#21508;&#33258;&#21327;&#35843;&#8221;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">反思：分布与集中</h2>
+<p class=" font-serif my-1">“Leader/follower” - 有一个集中的 “总控”，而非 “各自协调”</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#22312;&#21487;&#38752;&#30340;&#28040;&#24687;&#26426;&#21046;&#19978;&#23454;&#29616;&#20219;&#21153;&#20998;&#27966;<ul class=" list-disc font-serif">
-<li class=" ml-8">Leader &#20018;&#34892;&#22788;&#29702;&#25152;&#26377;&#35831;&#27714; (&#20363;&#22914;&#65306;&#26465;&#20214;&#21464;&#37327;&#26381;&#21153;)</li>
+<li class=" ml-8">在可靠的消息机制上实现任务分派<ul class=" list-disc font-serif">
+<li class=" ml-8">Leader 串行处理所有请求 (例如：条件变量服务)</li>
 </ul>
 </li>
 </ul>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">Tphilosopher</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">send</span><span class="p">(</span><span class="n">Twaiter</span><span class="p">,</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">EAT</span><span class="p">);</span>
-<span class="w">  </span><span class="n">receive</span><span class="p">(</span><span class="n">Twatier</span><span class="p">);</span><span class="w"> </span><span class="c1">// &#31561;&#24453; waiter &#25226;&#20004;&#25226;&#21449;&#23376;&#36882;&#32473;&#21746;&#23398;&#23478;</span>
+<span class="w">  </span><span class="n">receive</span><span class="p">(</span><span class="n">Twatier</span><span class="p">);</span><span class="w"> </span><span class="c1">// 等待 waiter 把两把叉子递给哲学家</span>
 <span class="w">  </span><span class="n">eat</span><span class="p">();</span>
-<span class="w">  </span><span class="n">send</span><span class="p">(</span><span class="n">Twaiter</span><span class="p">,</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">DONE</span><span class="p">);</span><span class="w"> </span><span class="c1">// &#24402;&#36824;&#21449;&#23376;</span>
+<span class="w">  </span><span class="n">send</span><span class="p">(</span><span class="n">Twaiter</span><span class="p">,</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">DONE</span><span class="p">);</span><span class="w"> </span><span class="c1">// 归还叉子</span>
 <span class="p">}</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">Twaiter</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -350,19 +350,19 @@ section .center {
 
       
         
-        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">&#21453;&#24605;&#65306;&#20998;&#24067;&#19982;&#38598;&#20013; (cont'd)</h2>
-<p class=" font-serif my-1">&#20320;&#21487;&#33021;&#20250;&#35273;&#24471;&#65292;&#31649;&#21449;&#23376;&#30340;&#20154;&#26159;&#24615;&#33021;&#29942;&#39048;</p>
+        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">反思：分布与集中 (cont'd)</h2>
+<p class=" font-serif my-1">你可能会觉得，管叉子的人是性能瓶颈</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#19968;&#22823;&#26700;&#20154;&#21507;&#39277;&#65292;&#27599;&#20010;&#20154;&#37117;&#21483;&#26381;&#21153;&#21592;&#30340;&#24863;&#35273;</li>
+<li class=" ml-8">一大桌人吃饭，每个人都叫服务员的感觉</li>
 <li class=" ml-8">Premature optimization is the root of all evil (D. E. Knuth)</li>
 </ul>
 <hr>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/google-fs.png" width="700px"></p>
-<p class=" font-serif my-1"><red>&#25243;&#24320; workload &#35848;&#20248;&#21270;&#23601;&#26159;&#32781;&#27969;&#27667;</red></p>
+<p class=" font-serif my-1"><red>抛开 workload 谈优化就是耍流氓</red></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#21507;&#39277;&#30340;&#26102;&#38388;&#36890;&#24120;&#36828;&#36828;&#22823;&#20110;&#35831;&#27714;&#26381;&#21153;&#21592;&#30340;&#26102;&#38388;</li>
-<li class=" ml-8">&#22914;&#26524;&#19968;&#20010; manager &#25630;&#19981;&#23450;&#65292;&#21487;&#20197;&#20998;&#22810;&#20010; (fast/slow path)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#25226;&#31995;&#32479;&#35774;&#35745;&#22909;&#65292;&#38598;&#20013;&#31649;&#29702;&#21487;&#20197;&#19981;&#26159;&#29942;&#39048;&#65306;<a href="https://pdos.csail.mit.edu/6.824/papers/gfs.pdf" class=" text-amber-900">The Google File System</a> (SOSP'03) &#24320;&#21551;&#22823;&#25968;&#25454;&#26102;&#20195;</li>
+<li class=" ml-8">吃饭的时间通常远远大于请求服务员的时间</li>
+<li class=" ml-8">如果一个 manager 搞不定，可以分多个 (fast/slow path)<ul class=" list-disc font-serif">
+<li class=" ml-8">把系统设计好，集中管理可以不是瓶颈：<a href="https://pdos.csail.mit.edu/6.824/papers/gfs.pdf" class=" text-amber-900">The Google File System</a> (SOSP'03) 开启大数据时代</li>
 </ul>
 </li>
 </ul></div>

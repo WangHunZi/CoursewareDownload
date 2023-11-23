@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +209,7 @@ section .center {
 }
 </style>
 
-  <title>&#25968;&#25454;&#31454;&#20105;</title>
+  <title>数据竞争</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,9 +227,9 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="12.3.slides.html" class=" text-amber-900">&#25968;&#25454;&#31454;&#20105;</a></h1>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="12.3.slides.html" class=" text-amber-900">数据竞争</a></h1>
 <p class=" font-serif my-1"><br></p>
-<p class=" font-serif my-1">(&#25152;&#20197;&#19981;&#19978;&#38145;&#19981;&#23601;&#27809;&#26377;&#27515;&#38145;&#20102;&#21527;&#65311;)</p></div></div></div>
+<p class=" font-serif my-1">(所以不上锁不就没有死锁了吗？)</p></div></div></div>
         
       
       </section>
@@ -240,13 +240,13 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25968;&#25454;&#31454;&#20105;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">数据竞争</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1"><red>&#19981;&#21516;&#30340;&#32447;&#31243;</red>&#21516;&#26102;&#35775;&#38382;<red>&#21516;&#19968;&#20869;&#23384;</red>&#65292;&#19988;<red>&#33267;&#23569;&#26377;&#19968;&#20010;&#26159;&#20889;</red>&#12290;</p>
+<p class=" font-serif my-1"><red>不同的线程</red>同时访问<red>同一内存</red>，且<red>至少有一个是写</red>。</p>
 </blockquote>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20004;&#20010;&#20869;&#23384;&#35775;&#38382;&#22312; &#8220;&#36187;&#36305;&#8221;&#65292;&#8220;&#36305;&#36194;&#8221; &#30340;&#25805;&#20316;&#20808;&#25191;&#34892;</li>
-<li class=" ml-8">&#20363;&#23376;&#65306;&#20849;&#20139;&#20869;&#23384;&#19978;&#23454;&#29616;&#30340; Peterson &#31639;&#27861;</li>
+<li class=" ml-8">两个内存访问在 “赛跑”，“跑赢” 的操作先执行</li>
+<li class=" ml-8">例子：共享内存上实现的 Peterson 算法</li>
 </ul>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/race.jpg" width="500px"></p></div>
         
@@ -259,10 +259,10 @@ section .center {
 
       
         
-        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">&#25968;&#25454;&#31454;&#20105; (cont'd)</h2>
-<p class=" font-serif my-1"><red>&#8220;&#36305;&#36194;&#8221; &#24182;&#27809;&#26377;&#24819;&#35937;&#20013;&#37027;&#20040;&#31616;&#21333;</red></p>
+        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">数据竞争 (cont'd)</h2>
+<p class=" font-serif my-1"><red>“跑赢” 并没有想象中那么简单</red></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">Weak memory model &#20801;&#35768;&#19981;&#21516;&#35266;&#27979;&#32773;&#30475;&#21040;&#19981;&#21516;&#32467;&#26524;</li>
+<li class=" ml-8">Weak memory model 允许不同观测者看到不同结果</li>
 <li class=" ml-8">Since C11: <a href="https://en.cppreference.com/w/c/language/memory_model" class=" text-amber-900">data race is undefined behavior</a></li>
 </ul>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/mem-weak.png" width="450px"></p></div>
@@ -276,11 +276,11 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25968;&#25454;&#31454;&#20105;&#65306;&#20320;&#21482;&#35201;&#35760;&#24471;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">数据竞争：你只要记得</h2>
 <p class=" font-serif my-1"><br> <br> <br> <br></p>
-<h1 class="center text-2xl mt-2 font-sans">&#29992;&#38145;&#20445;&#25252;&#22909;&#20849;&#20139;&#25968;&#25454;</h1>
+<h1 class="center text-2xl mt-2 font-sans">用锁保护好共享数据</h1>
 <p class=" font-serif my-1"><br></p>
-<h1 class="center text-2xl mt-2 font-sans">&#28040;&#28781;&#19968;&#20999;&#25968;&#25454;&#31454;&#20105;</h1></div>
+<h1 class="center text-2xl mt-2 font-sans">消灭一切数据竞争</h1></div>
         
       
       </section>
@@ -291,20 +291,20 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25968;&#25454;&#31454;&#20105;&#65306;&#20363;&#23376;</h2>
-<p class=" font-serif my-1">&#20197;&#19979;&#20195;&#30721;&#27010;&#25324;&#20102;&#20320;&#20204;&#36935;&#21040;&#25968;&#25454;&#31454;&#20105;&#30340;&#22823;&#37096;&#20998;&#24773;&#20917;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">数据竞争：例子</h2>
+<p class=" font-serif my-1">以下代码概括了你们遇到数据竞争的大部分情况</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#19981;&#35201;&#31505;&#65292;&#20320;&#20204;&#30340; bug &#20960;&#20046;&#37117;&#26159;&#36825;&#20004;&#31181;&#24773;&#20917;&#30340;&#21464;&#31181;</li>
+<li class=" ml-8">不要笑，你们的 bug 几乎都是这两种情况的变种</li>
 </ul>
 <hr>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="c1">// Case #1: &#19978;&#38169;&#20102;&#38145;</span>
-<span class="kt">void</span><span class="w"> </span><span class="nf">thread1</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">spin_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lk1</span><span class="p">);</span><span class="w"> </span><span class="n">sum</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="n">spin_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lk1</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
-<span class="kt">void</span><span class="w"> </span><span class="nf">thread2</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">spin_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lk2</span><span class="p">);</span><span class="w"> </span><span class="n">sum</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="n">spin_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lk2</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="c1">// Case #1: 上错了锁</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">thread1</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">spin_lock</span><span class="p">(</span><span class="o">&</span><span class="n">lk1</span><span class="p">);</span><span class="w"> </span><span class="n">sum</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="n">spin_unlock</span><span class="p">(</span><span class="o">&</span><span class="n">lk1</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">thread2</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">spin_lock</span><span class="p">(</span><span class="o">&</span><span class="n">lk2</span><span class="p">);</span><span class="w"> </span><span class="n">sum</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="n">spin_unlock</span><span class="p">(</span><span class="o">&</span><span class="n">lk2</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
 
 <hr>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="c1">// Case #2: &#24536;&#35760;&#19978;&#38145;</span>
-<span class="kt">void</span><span class="w"> </span><span class="nf">thread1</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">spin_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lk1</span><span class="p">);</span><span class="w"> </span><span class="n">sum</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="n">spin_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lk1</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="c1">// Case #2: 忘记上锁</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">thread1</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">spin_lock</span><span class="p">(</span><span class="o">&</span><span class="n">lk1</span><span class="p">);</span><span class="w"> </span><span class="n">sum</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="n">spin_unlock</span><span class="p">(</span><span class="o">&</span><span class="n">lk1</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
 <span class="kt">void</span><span class="w"> </span><span class="nf">thread2</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">sum</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div></div>
         
@@ -317,20 +317,20 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20026;&#20160;&#20040;&#19981;&#35201;&#31505;&#65311;</h2>
-<p class=" font-serif my-1"><red>&#19981;&#21516;&#30340;&#32447;&#31243;</red>&#21516;&#26102;&#35775;&#38382;<red>&#21516;&#19968;&#20869;&#23384;</red>&#65292;&#19988;<red>&#33267;&#23569;&#26377;&#19968;&#20010;&#26159;&#20889;</red></p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">为什么不要笑？</h2>
+<p class=" font-serif my-1"><red>不同的线程</red>同时访问<red>同一内存</red>，且<red>至少有一个是写</red></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#8220;&#20869;&#23384;&#8221; &#21487;&#20197;&#26159;&#22320;&#22336;&#31354;&#38388;&#20013;&#30340;&#20219;&#20309;&#20869;&#23384;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#21487;&#20197;&#26159;&#20840;&#37096;&#21464;&#37327;</li>
-<li class=" ml-8">&#21487;&#20197;&#26159;&#22534;&#21306;&#20998;&#37197;&#30340;&#21464;&#37327;</li>
-<li class=" ml-8">&#21487;&#20197;&#26159;&#26632;</li>
+<li class=" ml-8">“内存” 可以是地址空间中的任何内存<ul class=" list-disc font-serif">
+<li class=" ml-8">可以是全部变量</li>
+<li class=" ml-8">可以是堆区分配的变量</li>
+<li class=" ml-8">可以是栈</li>
 </ul>
 </li>
-<li class=" ml-8">&#8220;&#35775;&#38382;&#8221; &#21487;&#20197;&#26159;&#20219;&#20309;&#20195;&#30721;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#21487;&#33021;&#21457;&#29983;&#22312;&#20320;&#30340;&#20195;&#30721;&#37324;</li>
-<li class=" ml-8">&#21487;&#20197;&#21457;&#29983;&#22312;&#26694;&#26550;&#20195;&#30721;&#37324;</li>
-<li class=" ml-8">&#21487;&#33021;&#26159;&#19968;&#34892;&#20320;&#27809;&#26377;&#35835;&#21040;&#36807;&#30340;&#27719;&#32534;&#20195;&#30721;</li>
-<li class=" ml-8">&#21487;&#33021;&#26102;&#19968;&#26465; ret &#25351;&#20196;</li>
+<li class=" ml-8">“访问” 可以是任何代码<ul class=" list-disc font-serif">
+<li class=" ml-8">可能发生在你的代码里</li>
+<li class=" ml-8">可以发生在框架代码里</li>
+<li class=" ml-8">可能是一行你没有读到过的汇编代码</li>
+<li class=" ml-8">可能时一条 ret 指令</li>
 </ul>
 </li>
 </ul></div>

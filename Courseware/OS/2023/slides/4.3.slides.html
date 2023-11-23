@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +209,7 @@ section .center {
 }
 </style>
 
-  <title>&#24314;&#27169;&#25805;&#20316;&#31995;&#32479;</title>
+  <title>建模操作系统</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,7 +227,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="4.3.slides.html" class=" text-amber-900">&#24314;&#27169;&#25805;&#20316;&#31995;&#32479;</a></h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="4.3.slides.html" class=" text-amber-900">建模操作系统</a></h1></div></div></div>
         
       
       </section>
@@ -238,51 +238,51 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#19968;&#20010;&#26356; &#8220;&#20840;&#38754;&#8221; &#30340;&#25805;&#20316;&#31995;&#32479;&#27169;&#22411;</h2>
-<p class=" font-serif my-1">&#36827;&#31243; + &#32447;&#31243; + &#32456;&#31471; + &#23384;&#20648; (&#23849;&#28291;&#19968;&#33268;&#24615;)</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">一个更 “全面” 的操作系统模型</h2>
+<p class=" font-serif my-1">进程 + 线程 + 终端 + 存储 (崩溃一致性)</p>
 <table>
 <thead>
 <tr>
-<th>&#31995;&#32479;&#35843;&#29992;/Linux &#23545;&#24212;</th>
-<th>&#34892;&#20026;</th>
+<th>系统调用/Linux 对应</th>
+<th>行为</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>sys_spawn(fn)/pthread_create</td>
-<td>&#21019;&#24314;&#20174; fn &#24320;&#22987;&#25191;&#34892;&#30340;&#32447;&#31243;</td>
+<td>创建从 fn 开始执行的线程</td>
 </tr>
 <tr>
 <td>sys_fork()/fork</td>
-<td>&#21019;&#24314;&#24403;&#21069;&#29366;&#24577;&#26426;&#30340;&#23436;&#25972;&#22797;&#21046;</td>
+<td>创建当前状态机的完整复制</td>
 </tr>
 <tr>
-<td>sys_sched()/&#23450;&#26102;&#34987;&#21160;&#35843;&#29992;</td>
-<td>&#20999;&#25442;&#21040;&#38543;&#26426;&#30340;&#32447;&#31243;/&#36827;&#31243;&#25191;&#34892;</td>
+<td>sys_sched()/定时被动调用</td>
+<td>切换到随机的线程/进程执行</td>
 </tr>
 <tr>
 <td>sys_choose(xs)/rand</td>
-<td>&#36820;&#22238;&#19968;&#20010; xs &#20013;&#30340;&#38543;&#26426;&#30340;&#36873;&#25321;</td>
+<td>返回一个 xs 中的随机的选择</td>
 </tr>
 <tr>
 <td>sys_write(s)/printf</td>
-<td>&#21521;&#35843;&#35797;&#32456;&#31471;&#36755;&#20986;&#23383;&#31526;&#20018; s</td>
+<td>向调试终端输出字符串 s</td>
 </tr>
 <tr>
 <td>sys_bread(k)/read</td>
-<td>&#35835;&#21462;&#34394;&#25311;&#35774;&#30913;&#30424;&#22359; $k$ &#30340;&#25968;&#25454;</td>
+<td>读取虚拟设磁盘块 $k$ 的数据</td>
 </tr>
 <tr>
 <td>sys_bwrite(k, v)/write</td>
-<td>&#21521;&#34394;&#25311;&#30913;&#30424;&#22359; $k$ &#20889;&#20837;&#25968;&#25454; $v$</td>
+<td>向虚拟磁盘块 $k$ 写入数据 $v$</td>
 </tr>
 <tr>
 <td>sys_sync()/sync</td>
-<td>&#23558;&#25152;&#26377;&#21521;&#34394;&#25311;&#30913;&#30424;&#30340;&#25968;&#25454;&#20889;&#20837;&#33853;&#30424;</td>
+<td>将所有向虚拟磁盘的数据写入落盘</td>
 </tr>
 <tr>
-<td>sys_crash()/&#38271;&#25353;&#30005;&#28304;&#25353;&#38190;</td>
-<td>&#27169;&#25311;&#31995;&#32479;&#23849;&#28291;</td>
+<td>sys_crash()/长按电源按键</td>
+<td>模拟系统崩溃</td>
 </tr>
 </tbody>
 </table></div>
@@ -296,24 +296,24 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#27169;&#22411;&#20570;&#20986;&#30340;&#31616;&#21270;</h2>
-<p class=" font-serif my-1">&#34987;&#21160;&#36827;&#31243;/&#32447;&#31243;&#20999;&#25442;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">模型做出的简化</h2>
+<p class=" font-serif my-1">被动进程/线程切换</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#23454;&#38469;&#31243;&#24207;&#38543;&#26102;&#37117;&#21487;&#33021;&#34987;&#21160;&#35843;&#29992; <code>sys_sched()</code> &#20999;&#25442;</li>
+<li class=" ml-8">实际程序随时都可能被动调用 <code>sys_sched()</code> 切换</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#21482;&#26377;&#19968;&#20010;&#32456;&#31471;</p>
+<p class=" font-serif my-1">只有一个终端</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#27809;&#26377; <code>read()</code> (&#29992; choose &#26367;&#20195; &#8220;&#20801;&#35768;&#35835;&#21040;&#20219;&#24847;&#20540;&#8221;)</li>
+<li class=" ml-8">没有 <code>read()</code> (用 choose 替代 “允许读到任意值”)</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#30913;&#30424;&#26159;&#19968;&#20010; <code>dict</code></p>
+<p class=" font-serif my-1">磁盘是一个 <code>dict</code></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25226;&#20219;&#24847; key &#26144;&#23556;&#21040;&#20219;&#24847; value</li>
-<li class=" ml-8">&#23454;&#38469;&#30340;&#30913;&#30424;<ul class=" list-disc font-serif">
-<li class=" ml-8">key &#20026;&#25972;&#25968;</li>
-<li class=" ml-8">value &#26159;&#22266;&#23450;&#22823;&#23567; (&#20363;&#22914; 4KB) &#30340;&#25968;&#25454;</li>
-<li class=" ml-8">&#20108;&#32773;&#22312;&#26576;&#31181;&#31243;&#24230;&#19978;&#26159;&#21487;&#20197; &#8220;&#20114;&#30456;&#36716;&#25442;&#8221; &#30340;</li>
+<li class=" ml-8">把任意 key 映射到任意 value</li>
+<li class=" ml-8">实际的磁盘<ul class=" list-disc font-serif">
+<li class=" ml-8">key 为整数</li>
+<li class=" ml-8">value 是固定大小 (例如 4KB) 的数据</li>
+<li class=" ml-8">二者在某种程度上是可以 “互相转换” 的</li>
 </ul>
 </li>
 </ul></div>
@@ -327,24 +327,24 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#27169;&#22411;&#23454;&#29616;</h2>
-<p class=" font-serif my-1">&#21407;&#29702;&#19982;&#21018;&#25165;&#30340; &#8220;&#26368;&#23567;&#25805;&#20316;&#31995;&#32479;&#29609;&#20855;&#8221; &#31867;&#20284;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">模型实现</h2>
+<p class=" font-serif my-1">原理与刚才的 “最小操作系统玩具” 类似</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><a href="../../../pages/OS/2023/mosaic/mosaic.py" class=" text-amber-900">mosaic.py</a> - 500 &#34892;&#24314;&#27169;&#25805;&#20316;&#31995;&#32479;</li>
-<li class=" ml-8">&#36827;&#31243;/&#32447;&#31243;&#37117;&#26159; Generator Object</li>
-<li class=" ml-8">&#20849;&#20139;&#20869;&#23384;&#29992; heap &#21464;&#37327;&#35775;&#38382;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#32447;&#31243;&#20250;&#24471;&#21040;&#20849;&#20139; heap &#30340;&#25351;&#38024;</li>
-<li class=" ml-8">&#36827;&#31243;&#20250;&#24471;&#21040;&#19968;&#20010;&#29420;&#31435;&#30340; heap clone</li>
+<li class=" ml-8"><a href="../../../pages/OS/2023/mosaic/mosaic.py" class=" text-amber-900">mosaic.py</a> - 500 行建模操作系统</li>
+<li class=" ml-8">进程/线程都是 Generator Object</li>
+<li class=" ml-8">共享内存用 heap 变量访问<ul class=" list-disc font-serif">
+<li class=" ml-8">线程会得到共享 heap 的指针</li>
+<li class=" ml-8">进程会得到一个独立的 heap clone</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#36755;&#20986;&#31243;&#24207;&#36816;&#34892;&#30340; &#8220;&#29366;&#24577;&#22270;&#8221;</p>
+<p class=" font-serif my-1">输出程序运行的 “状态图”</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">JSON Object</li>
-<li class=" ml-8">Vertices: &#32447;&#31243;/&#36827;&#31243;&#12289;&#20869;&#23384;&#24555;&#29031;&#12289;&#35774;&#22791;&#21382;&#21490;&#36755;&#20986;</li>
-<li class=" ml-8">Edges: &#31995;&#32479;&#35843;&#29992;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#25805;&#20316;&#31995;&#32479;&#23601;&#26159; &#8220;&#29366;&#24577;&#26426;&#30340;&#31649;&#29702;&#32773;&#8221;</li>
+<li class=" ml-8">Vertices: 线程/进程、内存快照、设备历史输出</li>
+<li class=" ml-8">Edges: 系统调用<ul class=" list-disc font-serif">
+<li class=" ml-8">操作系统就是 “状态机的管理者”</li>
 </ul>
 </li>
 </ul></div>
@@ -358,19 +358,19 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#24314;&#27169;&#30340;&#24847;&#20041;</h2>
-<p class=" font-serif my-1">&#25105;&#20204;&#21487;&#20197;&#25226;&#29366;&#24577;&#26426;&#30340;&#25191;&#34892;<red>&#30011;&#20986;&#26469;</red>&#20102;&#65281;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">建模的意义</h2>
+<p class=" font-serif my-1">我们可以把状态机的执行<red>画出来</red>了！</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#21487;&#20197;&#30452;&#35266;&#22320;&#29702;&#35299;&#31243;&#24207;&#25191;&#34892;&#30340;&#20840;&#27969;&#31243;</li>
-<li class=" ml-8">&#21487;&#20197;&#23545;&#29031;&#31243;&#24207;&#22312;&#30495;&#23454;&#25805;&#20316;&#31995;&#32479;&#19978;&#30340;&#36816;&#34892;&#32467;&#26524;</li>
+<li class=" ml-8">可以直观地理解程序执行的全流程</li>
+<li class=" ml-8">可以对照程序在真实操作系统上的运行结果</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#36825;&#23545;&#20110;&#26356;&#22797;&#26434;&#30340;&#31243;&#24207;&#26469;&#35828;&#26159;&#21313;&#20998;&#20851;&#38190;&#30340;</p>
+<p class=" font-serif my-1">这对于更复杂的程序来说是十分关键的</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">Tsum</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o"><</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sum</span><span class="p">;</span>
 <span class="w">    </span><span class="n">tmp</span><span class="o">++</span><span class="p">;</span>
-<span class="w">    </span><span class="c1">// &#20551;&#35774;&#27492;&#26102;&#21487;&#33021;&#21457;&#29983;&#36827;&#31243;/&#32447;&#31243;&#20999;&#25442;</span>
+<span class="w">    </span><span class="c1">// 假设此时可能发生进程/线程切换</span>
 <span class="w">    </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tmp</span><span class="p">;</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>

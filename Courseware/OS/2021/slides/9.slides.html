@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +209,7 @@ section .center {
 }
 </style>
 
-  <title>Fork &#26434;&#35848;</title>
+  <title>Fork 杂谈</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,21 +227,21 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="fork" class=" text-2xl mt-2 font-sans">Fork &#26434;&#35848;</h1>
+        <div><div class="center middle"><div style="width:100%"><h1 id="fork" class=" text-2xl mt-2 font-sans">Fork 杂谈</h1>
 <p class=" font-serif my-1"><include src="Slides_Author"><div><div class="py-16">
-<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">&#33931;&#28814;&#23721;</a></p>
+<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">蒋炎岩</a></p>
 </div>
 <div class="row">
 <div class="author-affiliation">
-    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#12288;&#12288;&#21335;&#20140;&#22823;&#23398;&#12288;&#12288;</p>
+    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">　　南京大学　　</p>
     <img class="inline-img h-24" src="../../../static/img/nju-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#31185;&#23398;&#19982;&#25216;&#26415;&#31995;</p>
+   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">计算机科学与技术系</p>
     <img class="inline-img h-24" src="../../../static/img/njucs-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#36719;&#20214;&#30740;&#31350;&#25152;</p>
+    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">计算机软件研究所</p>
     <img class="inline-img h-24" src="../../../static/img/ics-logo.png" style="display: inline-block;"></a>
   </div>
 </div></div></include></p></div></div></div>
@@ -255,17 +255,17 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#32972;&#26223;</h2>
-<p class=" font-serif my-1">&#31243;&#24207; = &#29366;&#24577;&#26426;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">背景</h2>
+<p class=" font-serif my-1">程序 = 状态机</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#31243;&#24207;&#25191;&#34892; (&#36827;&#31243;) = &#29366;&#24577;&#26426;&#19978;&#30340;&#36335;&#24452;</li>
+<li class=" ml-8">程序执行 (进程) = 状态机上的路径</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#36827;&#31243; (&#29366;&#24577;&#26426;) &#31649;&#29702;&#30340; API</p>
+<p class=" font-serif my-1">进程 (状态机) 管理的 API</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">fork - &#22797;&#21046;</li>
-<li class=" ml-8">execve - &#37325;&#32622;</li>
-<li class=" ml-8">exit - &#32456;&#27490;</li>
+<li class=" ml-8">fork - 复制</li>
+<li class=" ml-8">execve - 重置</li>
+<li class=" ml-8">exit - 终止</li>
 </ul></div>
         
       
@@ -277,15 +277,15 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26412;&#27425;&#35838;&#20869;&#23481;&#19982;&#30446;&#26631;</h2>
-<p class=" font-serif my-1">&#29702;&#35299; &#8220;&#25991;&#20214;&#25551;&#36848;&#31526;&#8221;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">本次课内容与目标</h2>
+<p class=" font-serif my-1">理解 “文件描述符”</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#36827;&#31243;&#20316;&#20026; &#8220;&#29366;&#24577;&#26426;&#8221; &#25345;&#26377;&#30340;&#25805;&#20316;&#31995;&#32479;&#23545;&#35937;</li>
+<li class=" ml-8">进程作为 “状态机” 持有的操作系统对象</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#20102;&#35299;&#29366;&#24577;&#26426; API &#30340;&#24212;&#29992;</p>
+<p class=" font-serif my-1">了解状态机 API 的应用</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">fork() &#30340;&#20351;&#29992;</li>
+<li class=" ml-8">fork() 的使用</li>
 <li class=" ml-8">A <code>fork()</code> in the road</li>
 </ul></div>
         
@@ -302,7 +302,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#36827;&#31243;&#12289;&#29366;&#24577;&#26426;&#21644;&#25991;&#20214;&#25551;&#36848;&#31526;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">进程、状态机和文件描述符</h1></div></div></div>
         
       
       </section>
@@ -313,17 +313,17 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#36827;&#31243;&#65306;&#34394;&#25311;&#21270;&#30340;&#29366;&#24577;&#26426;</h2>
-<p class=" font-serif my-1">&#35745;&#31639;&#26426;&#31995;&#32479;&#30340;&#29366;&#24577; $(M_s, R_s)$ &#21253;&#21547;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">进程：虚拟化的状态机</h2>
+<p class=" font-serif my-1">计算机系统的状态 $(M_s, R_s)$ 包含</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#36827;&#31243;&#30340;&#29366;&#24577; $(M_1, R_1)$, $(M_2, R_2)$, ...<ul class=" list-disc font-serif">
-<li class=" ml-8">&#34394;&#25311;&#23384;&#20648;&#21487;&#20197; &#8220;&#20266;&#35013;&#8221; $(M_i, R_i)$ &#22312;&#26426;&#22120;&#19978;&#25191;&#34892;</li>
+<li class=" ml-8">进程的状态 $(M_1, R_1)$, $(M_2, R_2)$, ...<ul class=" list-disc font-serif">
+<li class=" ml-8">虚拟存储可以 “伪装” $(M_i, R_i)$ 在机器上执行</li>
 </ul>
 </li>
-<li class=" ml-8">&#25805;&#20316;&#31995;&#32479;&#30340;&#29366;&#24577; (&#21097;&#19979;&#30340;&#20840;&#37096;)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20013;&#26029;&#21518;&#36827;&#20837;&#25805;&#20316;&#31995;&#32479;&#20195;&#30721;&#25191;&#34892;</li>
-<li class=" ml-8">&#21487;&#20197;&#22312;&#25805;&#20316;&#31995;&#32479;&#37324;&#21487;&#20197;&#24314;&#31435;&#21508;&#31181;&#23545;&#35937;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#36827;&#31243;&#19981;&#21487;&#35265;&#65292;&#20294;&#21487;&#20197;&#36890;&#36807; syscall &#35775;&#38382;</li>
+<li class=" ml-8">操作系统的状态 (剩下的全部)<ul class=" list-disc font-serif">
+<li class=" ml-8">中断后进入操作系统代码执行</li>
+<li class=" ml-8">可以在操作系统里可以建立各种对象<ul class=" list-disc font-serif">
+<li class=" ml-8">进程不可见，但可以通过 syscall 访问</li>
 </ul>
 </li>
 </ul>
@@ -339,22 +339,22 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#36827;&#31243;&#29366;&#24577;&#65306;&#19981;&#21482;&#26159;&#20869;&#23384;&#21644;&#23492;&#23384;&#22120;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">进程状态：不只是内存和寄存器</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#36827;&#31243;&#36824;&#38656;&#35201;&#35775;&#38382;&#25805;&#20316;&#31995;&#32479;&#20013;&#30340;&#23545;&#35937;&#12290;</p>
+<p class=" font-serif my-1">进程还需要访问操作系统中的对象。</p>
 </blockquote>
 <hr>
 <p class=" font-serif my-1">UNIX: <em>Everything is a file</em>!</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25805;&#20316;&#31995;&#32479;&#37324;&#30340;&#23545;&#35937;&#37117;&#26159;&#25991;&#20214;<ul class=" list-disc font-serif">
+<li class=" ml-8">操作系统里的对象都是文件<ul class=" list-disc font-serif">
 <li class=" ml-8"><code>/dev/random</code></li>
 <li class=" ml-8"><code>/dev/sda</code></li>
 <li class=" ml-8"><code>/proc/[pid]/maps</code> </li>
 </ul>
 </li>
-<li class=" ml-8">&#36827;&#31243;&#25345;&#26377; &#8220;<red>&#25991;&#20214;&#25551;&#36848;&#31526;</red>&#8221; &#20316;&#20026;&#25351;&#21521;&#25805;&#20316;&#31995;&#32479;&#23545;&#35937;&#30340;&#25351;&#38024;<ul class=" list-disc font-serif">
-<li class=" ml-8">open &#36820;&#22238;&#25991;&#20214;&#25551;&#36848;&#31526;</li>
-<li class=" ml-8">read, write &#25913;&#21464;&#25991;&#20214;&#25551;&#36848;&#31526;</li>
+<li class=" ml-8">进程持有 “<red>文件描述符</red>” 作为指向操作系统对象的指针<ul class=" list-disc font-serif">
+<li class=" ml-8">open 返回文件描述符</li>
+<li class=" ml-8">read, write 改变文件描述符</li>
 </ul>
 </li>
 </ul></div>
@@ -368,23 +368,23 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25991;&#20214;&#25551;&#36848;&#31526;</h2>
-<p class=" font-serif my-1">Everything is a file &#8594; &#8220;Everything &#25551;&#36848;&#31526;&#8221;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">文件描述符</h2>
+<p class=" font-serif my-1">Everything is a file → “Everything 描述符”</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#19968;&#20010; small integer<ul class=" list-disc font-serif">
+<li class=" ml-8">一个 small integer<ul class=" list-disc font-serif">
 <li class=" ml-8">0 - stdin</li>
 <li class=" ml-8">1 - stdout</li>
 <li class=" ml-8">2 - stderr</li>
-<li class=" ml-8">&#20854;&#20182;&#30001; open &#21019;&#24314; (&#24635;&#26159;&#36820;&#22238;&#26368;&#23567;&#30340;&#21487;&#29992;&#32534;&#21495;)</li>
+<li class=" ml-8">其他由 open 创建 (总是返回最小的可用编号)</li>
 </ul>
 </li>
-<li class=" ml-8">&#8220;&#34917;&#23436;&#8221; &#20102;&#25805;&#20316;&#31995;&#32479;&#35270;&#35282;&#30340;&#36827;&#31243;&#29366;&#24577;</li>
+<li class=" ml-8">“补完” 了操作系统视角的进程状态</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#20363;&#23376;&#65306;&#22791;&#20221; stdout</p>
+<p class=" font-serif my-1">例子：备份 stdout</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">OI &#36873;&#25163;&#26368;&#29233;&#30340; <code>freopen("a.txt", "w", stdout);</code><ul class=" list-disc font-serif">
-<li class=" ml-8">&#22914;&#20309;&#25214;&#22238;&#20002;&#22833;&#30340; stdout?</li>
+<li class=" ml-8">OI 选手最爱的 <code>freopen("a.txt", "w", stdout);</code><ul class=" list-disc font-serif">
+<li class=" ml-8">如何找回丢失的 stdout?</li>
 <li class=" ml-8"><a href="../../../pages/OS/2021/demos/stdout-bak.c" class=" text-amber-900">stdout-bak.c</a></li>
 </ul>
 </li>
@@ -399,17 +399,17 @@ section .center {
 
       
         
-        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">&#25991;&#20214;&#25551;&#36848;&#31526; (cont'd)</h2>
-<p class=" font-serif my-1">&#24819;&#30475;&#30475;&#36827;&#31243;&#25171;&#24320;&#20102;&#20160;&#20040;&#25991;&#20214;&#65311;</p>
+        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">文件描述符 (cont'd)</h2>
+<p class=" font-serif my-1">想看看进程打开了什么文件？</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#24403;&#28982;&#21487;&#20197;&#20102;&#65281;<ul class=" list-disc font-serif">
+<li class=" ml-8">当然可以了！<ul class=" list-disc font-serif">
 <li class=" ml-8"><code>ls -l /proc/[pid]/fd</code></li>
 </ul>
 </li>
-<li class=" ml-8">&#37027;&#26082;&#28982;&#21487;&#20197; pstree&#65292;&#26377;&#27809;&#26377; fdgraph?<ul class=" list-disc font-serif">
-<li class=" ml-8">&#26377;&#65281;<code>lsof -p pid</code> &#26377;&#24778;&#21916;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#19981;&#20165;&#21015;&#20986;&#20102; 0, 1, ...&#65292;&#36824;&#21015;&#20986;&#20102;&#38544;&#24615;&#25345;&#26377;&#30340;&#25991;&#20214;&#25551;&#36848;&#31526;</li>
-<li class=" ml-8">(&#36827;&#31243;&#25345;&#26377;&#30340;&#25152;&#26377;&#25805;&#20316;&#31995;&#32479;&#23545;&#35937;&#65281;)</li>
+<li class=" ml-8">那既然可以 pstree，有没有 fdgraph?<ul class=" list-disc font-serif">
+<li class=" ml-8">有！<code>lsof -p pid</code> 有惊喜<ul class=" list-disc font-serif">
+<li class=" ml-8">不仅列出了 0, 1, ...，还列出了隐性持有的文件描述符</li>
+<li class=" ml-8">(进程持有的所有操作系统对象！)</li>
 </ul>
 </li>
 </ul>
@@ -425,23 +425,23 @@ section .center {
 
       
         
-        <div><h2 id="fork" class=" text-xl mt-2 pb-2 font-sans">&#25991;&#20214;&#25551;&#36848;&#31526;&#21644; fork</h2>
+        <div><h2 id="fork" class=" text-xl mt-2 pb-2 font-sans">文件描述符和 fork</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1"><code>fork()</code> &#26102;&#36827;&#31243;&#30340;&#25152;&#26377;&#25991;&#20214;&#25551;&#36848;&#31526;&#20250;&#34987;&#23376;&#36827;&#31243;&#32487;&#25215;&#12290;</p>
+<p class=" font-serif my-1"><code>fork()</code> 时进程的所有文件描述符会被子进程继承。</p>
 </blockquote>
 <hr>
-<p class=" font-serif my-1">&#19968;&#20010;&#38750;&#24120;&#31934;&#24039;&#30340;&#35774;&#35745;&#65281;</p>
+<p class=" font-serif my-1">一个非常精巧的设计！</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><code>./a.out</code><ul class=" list-disc font-serif">
-<li class=" ml-8">&#26080;&#35770;&#21019;&#24314;&#22810;&#23569;&#23376;&#36827;&#31243;&#65292;&#37117;&#20250;&#36755;&#20986;&#21040;&#21516;&#19968;&#20010;&#32456;&#31471;</li>
-<li class=" ml-8"><red>&#36825;&#20214;&#38750;&#24120;&#33258;&#28982;&#30340;&#20107;&#24773;&#20854;&#23454;&#24182;&#19981; trivial</red></li>
+<li class=" ml-8">无论创建多少子进程，都会输出到同一个终端</li>
+<li class=" ml-8"><red>这件非常自然的事情其实并不 trivial</red></li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#31561;&#31561;&#8230;&#8230;</p>
+<p class=" font-serif my-1">等等……</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#29238;&#23376;&#36827;&#31243;&#21516;&#26102;&#20889;&#25991;&#20214;&#65292;&#20250;&#19981;&#20250;&#34987;&#35206;&#30422;&#65311;<ul class=" list-disc font-serif">
+<li class=" ml-8">父子进程同时写文件，会不会被覆盖？<ul class=" list-disc font-serif">
 <li class=" ml-8"><a href="../../../pages/OS/2021/demos/fork-printf.c" class=" text-amber-900">fork-printf.c</a></li>
 </ul>
 </li>
@@ -460,7 +460,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#29366;&#24577;&#26426;&#19978;&#30340;&#39764;&#27861;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">状态机上的魔法</h1></div></div></div>
         
       
       </section>
@@ -471,7 +471,7 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#36824;&#35760;&#24471;&#29366;&#24577;&#26426;&#30340;&#37027;&#20123;&#39764;&#27861;&#21527;&#65311;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">还记得状态机的那些魔法吗？</h2>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">z</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">18</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -484,9 +484,9 @@ section .center {
 <span class="p">}</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">&#25191;&#34892;&#19968;&#27425;&#31243;&#24207;&#65292;&#21487;&#20197;&#24471;&#21040;&#19968;&#26465;&#36335;&#24452;</p>
+<p class=" font-serif my-1">执行一次程序，可以得到一条路径</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#22914;&#26524;&#25105;&#24819;&#25442;&#19968;&#26465;&#36335;&#24452;&#21602;&#65311;<ul class=" list-disc font-serif">
+<li class=" ml-8">如果我想换一条路径呢？<ul class=" list-disc font-serif">
 <li class=" ml-8">C. Cadar, D. Dunbar, D. Engler. KLEE: Unassisted and automatic generation of high-coverage tests for complex systems programs. In <em>Proc. of OSDI</em>, 2008.</li>
 </ul>
 </li>
@@ -501,7 +501,7 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#28145;&#24230;&#20248;&#20808;&#30340;&#30340;&#36335;&#24452;&#25628;&#32034;&#65306;&#22238;&#28335;&#22826;&#40635;&#28902;&#65311;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">深度优先的的路径搜索：回溯太麻烦？</h2>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/symexec-tree.png" width="700px"></p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">dfs</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">pc</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">try_true_branch</span><span class="p">(</span><span class="n">pc</span><span class="p">);</span><span class="w">  </span><span class="n">restore</span><span class="p">();</span>
@@ -522,13 +522,13 @@ section .center {
 
       
         
-        <div><h2 id="fork" class=" text-xl mt-2 pb-2 font-sans">Fork: &#36339;&#36807;&#21021;&#22987;&#21270;</h2>
-<p class=" font-serif my-1">&#20551;&#35774;&#20320;&#23454;&#29616;&#30340; NEMU &#38656;&#35201;&#21551;&#21160;&#24456;&#22810;&#20221;</p>
+        <div><h2 id="fork" class=" text-xl mt-2 pb-2 font-sans">Fork: 跳过初始化</h2>
+<p class=" font-serif my-1">假设你实现的 NEMU 需要启动很多份</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><code>./nemu dummy.elf</code></li>
 <li class=" ml-8"><code>./nemu add.elf</code></li>
 <li class=" ml-8"><code>./nemu add-longlong.elf</code>...</li>
-<li class=" ml-8">&#32780;&#20320;&#30340; NEMU &#23454;&#29616;&#21021;&#22987;&#21270;&#21448;&#38656;&#35201;&#24456;&#38271;&#30340;&#26102;&#38388;&#65311;</li>
+<li class=" ml-8">而你的 NEMU 实现初始化又需要很长的时间？</li>
 </ul>
 <hr>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -551,14 +551,14 @@ section .center {
 
       
         
-        <div><h2 id="fork" class=" text-xl mt-2 pb-2 font-sans">Fork: &#36339;&#36807;&#21021;&#22987;&#21270;</h2>
-<p class=" font-serif my-1">&#20856;&#22411;&#30340;&#20363;&#23376;</p>
+        <div><h2 id="fork" class=" text-xl mt-2 pb-2 font-sans">Fork: 跳过初始化</h2>
+<p class=" font-serif my-1">典型的例子</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">Zygote Process (Android)<ul class=" list-disc font-serif">
-<li class=" ml-8">Java Virtual Machine &#21021;&#22987;&#21270;&#28041;&#21450;&#22823;&#37327;&#30340;&#31867;&#21152;&#36733;</li>
-<li class=" ml-8">&#19968;&#27425;&#21152;&#36733;&#65292;&#20840;&#21592;&#20351;&#29992;<ul class=" list-disc font-serif">
-<li class=" ml-8">App &#20351;&#29992;&#30340;&#31995;&#32479;&#36164;&#28304;</li>
-<li class=" ml-8">&#22522;&#30784;&#31867;&#24211;</li>
+<li class=" ml-8">Java Virtual Machine 初始化涉及大量的类加载</li>
+<li class=" ml-8">一次加载，全员使用<ul class=" list-disc font-serif">
+<li class=" ml-8">App 使用的系统资源</li>
+<li class=" ml-8">基础类库</li>
 <li class=" ml-8">libc</li>
 <li class=" ml-8">...</li>
 </ul>
@@ -578,18 +578,18 @@ section .center {
 
       
         
-        <div><h2 id="fork" class=" text-xl mt-2 pb-2 font-sans">Fork: &#23454;&#29616; &#8220;&#22791;&#20221;&#8221; &#30340;&#23481;&#38169;</h2>
-<p class=" font-serif my-1">&#23450;&#26399;&#32473;&#31243;&#24207;&#20570;&#22791;&#20221;&#24615;&#36136;&#30340;&#24555;&#29031;</p>
+        <div><h2 id="fork" class=" text-xl mt-2 pb-2 font-sans">Fork: 实现 “备份” 的容错</h2>
+<p class=" font-serif my-1">定期给程序做备份性质的快照</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20294; fork &#20043;&#21518;&#23601;&#22312;&#37027;&#37324;&#31561;&#30528;</li>
-<li class=" ml-8">&#22914;&#26524;&#20027;&#36827;&#31243; crash &#20102;&#65292;&#21551;&#21160;&#24555;&#29031;&#37325;&#26032;&#25191;&#34892;<ul class=" list-disc font-serif">
+<li class=" ml-8">但 fork 之后就在那里等着</li>
+<li class=" ml-8">如果主进程 crash 了，启动快照重新执行<ul class=" list-disc font-serif">
 <li class=" ml-8">F. Qin, et al. <a href="https://dl.acm.org/citation.cfm?id=1095833" class=" text-amber-900">Rx: Treating bugs as allergies--A safe method to survive software failures</a>. In <em>Proc. of SOSP</em>, 2005.</li>
 </ul>
 </li>
 </ul>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/qin-rx.png" width="800px"></p>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#35745;&#31639;&#26426;&#31995;&#32479;&#37324;&#27809;&#26377;&#39764;&#27861;&#12290;&#26426;&#22120;&#27704;&#36828;&#26159;&#23545;&#30340;&#12290;</p>
+<p class=" font-serif my-1">计算机系统里没有魔法。机器永远是对的。</p>
 </blockquote></div>
         
       
@@ -601,17 +601,17 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans"><del>&#31614;&#35746;&#22865;&#32422;&#65292;&#25104;&#20026;&#39764;&#27861;&#23569;&#22899;</del></h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans"><del>签订契约，成为魔法少女</del></h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#20294;&#36825;&#23601;&#26159;&#39764;&#27861;&#21834;&#65281;</p>
+<p class=" font-serif my-1">但这就是魔法啊！</p>
 </blockquote>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#30127;&#29378;&#26263;&#31034;&#65307;&#20197;&#21450;&#65306;<a href="https://zh.moegirl.org/QB%E5%A8%98" class=" text-amber-900">&#36825;&#26159;&#20160;&#20040;&#26775;</a></li>
+<li class=" ml-8">疯狂暗示；以及：<a href="https://zh.moegirl.org/QB%E5%A8%98" class=" text-amber-900">这是什么梗</a></li>
 </ul>
 <hr>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/qb.webp" width="200px"></p>
-<p class=" font-serif my-1"></p><center>&#12461;&#12517;&#12454;&#12409;&#12360;&#21644;&#22823;&#23398;&#25945;&#25480;&#26377;&#26576;&#31181;&#31243;&#24230;&#30340;&#30456;&#20284;</center>
-<p class=" font-serif my-1"></p><center><del>&#24635;&#26159;&#22312;&#39575;&#20320;&#65292;&#20294;&#20174;&#19981;&#35828;&#20551;&#35805;</del></center></div>
+<p class=" font-serif my-1"></p><center>キュウべえ和大学教授有某种程度的相似</center>
+<p class=" font-serif my-1"></p><center><del>总是在骗你，但从不说假话</del></center></div>
         
       
       </section>
@@ -637,17 +637,17 @@ section .center {
 
       
         
-        <div><h2 id="fork-execve" class=" text-xl mt-2 pb-2 font-sans">&#21019;&#24314;&#36827;&#31243;&#65306;Fork-Execve</h2>
+        <div><h2 id="fork-execve" class=" text-xl mt-2 pb-2 font-sans">创建进程：Fork-Execve</h2>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">fork</span><span class="p">();</span>
 <span class="kt">int</span><span class="w"> </span><span class="nf">execve</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">filename</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">argv</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">envp</span><span class="p">);</span>
 </code></pre></div>
 
 <hr>
-<p class=" font-serif my-1">Fork: &#26356;&#22909;&#19978;&#25163;&#65292;&#20294;&#26263;&#34255;&#26432;&#26426; (printf; &#32447;&#31243;; ...)</p>
+<p class=" font-serif my-1">Fork: 更好上手，但暗藏杀机 (printf; 线程; ...)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#31995;&#32479;&#38543;&#30528;&#26102;&#38388;&#28436;&#21270;&#65292;&#26080;&#27861;&#20445;&#25345;&#31616;&#27905;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#25991;&#20214;&#25551;&#36848;&#31526;&#38656;&#35201;&#22797;&#21046; (offset?)</li>
-<li class=" ml-8">&#20320;&#27809;&#32771;&#34385;&#36807;&#30340;&#65306;&#20449;&#21495;&#65311;&#20869;&#23384;&#26144;&#23556;&#65311;IPC&#65311;<a href="../labs/M3.html" class=" text-amber-900">ptrace</a>&#65311;&#8230;&#8230;</li>
+<li class=" ml-8">系统随着时间演化，无法保持简洁<ul class=" list-disc font-serif">
+<li class=" ml-8">文件描述符需要复制 (offset?)</li>
+<li class=" ml-8">你没考虑过的：信号？内存映射？IPC？<a href="../labs/M3.html" class=" text-amber-900">ptrace</a>？……</li>
 </ul>
 </li>
 </ul></div>
@@ -661,7 +661,7 @@ section .center {
 
       
         
-        <div><h2 id="posix-spawn" class=" text-xl mt-2 pb-2 font-sans">&#21019;&#24314;&#36827;&#31243;&#65306;POSIX Spawn</h2>
+        <div><h2 id="posix-spawn" class=" text-xl mt-2 pb-2 font-sans">创建进程：POSIX Spawn</h2>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">posix_spawn</span><span class="p">(</span><span class="kt">pid_t</span><span class="w"> </span><span class="o">*</span><span class="n">pid</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">path</span><span class="p">,</span>
 <span class="w">  </span><span class="n">posix_spawn_file_actions_t</span><span class="w"> </span><span class="o">*</span><span class="n">file_actions</span><span class="p">,</span>
 <span class="w">  </span><span class="n">posix_spawnattr_t</span><span class="w"> </span><span class="o">*</span><span class="n">attrp</span><span class="p">,</span>
@@ -669,14 +669,14 @@ section .center {
 </code></pre></div>
 
 <hr>
-<p class=" font-serif my-1">&#21442;&#25968;</p>
+<p class=" font-serif my-1">参数</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><code>pid</code>: &#36820;&#22238;&#30340;&#36827;&#31243;&#21495;</li>
-<li class=" ml-8"><code>path</code>: &#31243;&#24207; (&#37325;&#32622;&#30340;&#29366;&#24577;&#26426;)</li>
+<li class=" ml-8"><code>pid</code>: 返回的进程号</li>
+<li class=" ml-8"><code>path</code>: 程序 (重置的状态机)</li>
 <li class=" ml-8"><code>file_actions</code>: open, close, dup</li>
-<li class=" ml-8"><code>attrp</code>: &#20449;&#21495;&#12289;&#36827;&#31243;&#32452;&#31561;&#20449;&#24687;</li>
-<li class=" ml-8"><code>argv</code>, <code>envp</code>: &#21516; <code>execve</code><ul class=" list-disc font-serif">
-<li class=" ml-8">&#24456;&#26126;&#26174;&#65306;&#36825;&#26159;&#19968;&#20010; &#8220;&#21518;&#35774;&#35745;&#8221; &#30340; API</li>
+<li class=" ml-8"><code>attrp</code>: 信号、进程组等信息</li>
+<li class=" ml-8"><code>argv</code>, <code>envp</code>: 同 <code>execve</code><ul class=" list-disc font-serif">
+<li class=" ml-8">很明显：这是一个 “后设计” 的 API</li>
 </ul>
 </li>
 </ul></div>
@@ -691,18 +691,18 @@ section .center {
       
         
         <div><h2 id="a-fork-in-the-road" class=" text-xl mt-2 pb-2 font-sans">A <code>fork()</code> in the Road</h2>
-<p class=" font-serif my-1"><code>fork()</code> &#30340;&#19971;&#23447;&#32618;</p>
+<p class=" font-serif my-1"><code>fork()</code> 的七宗罪</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">Fork is no longer simple.</li>
-<li class=" ml-8">Fork doesn&#8217;t compose - 6 vs 8 &#30340;&#20363;&#23376;</li>
-<li class=" ml-8">Fork isn&#8217;t thread-safe - <code>create()</code> &#21518; <code>fork()</code> &#30340;&#38590;&#39064;</li>
-<li class=" ml-8">Fork is insecure - &#25171;&#30772;&#20102; Address Space Layout Randomization</li>
-<li class=" ml-8">Fork is slow - &#30340;&#30830;&#8230;&#8230;</li>
-<li class=" ml-8">Fork doesn&#8217;t scale - &#20063;&#26159;&#8230;&#8230;</li>
-<li class=" ml-8">Fork encourages memory overcommit - &#21571;&#8230;&#8230;</li>
+<li class=" ml-8">Fork doesn’t compose - 6 vs 8 的例子</li>
+<li class=" ml-8">Fork isn’t thread-safe - <code>create()</code> 后 <code>fork()</code> 的难题</li>
+<li class=" ml-8">Fork is insecure - 打破了 Address Space Layout Randomization</li>
+<li class=" ml-8">Fork is slow - 的确……</li>
+<li class=" ml-8">Fork doesn’t scale - 也是……</li>
+<li class=" ml-8">Fork encourages memory overcommit - 呃……</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#25552;&#20986;&#30340;&#24314;&#35758;</p>
+<p class=" font-serif my-1">提出的建议</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">deprecate fork</li>
 <li class=" ml-8">improve the alternatives</li>
@@ -722,7 +722,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#24635;&#32467;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">总结</h1></div></div></div>
         
       
       </section>
@@ -733,17 +733,17 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#24635;&#32467;</h2>
-<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#20869;&#23481;&#19982;&#30446;&#26631;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">总结</h2>
+<p class=" font-serif my-1">本次课内容与目标</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#29702;&#35299; &#8220;&#25991;&#20214;&#25551;&#36848;&#31526;&#8221;</li>
-<li class=" ml-8">&#35752;&#35770; fork &#30340;&#20351;&#29992;</li>
+<li class=" ml-8">理解 “文件描述符”</li>
+<li class=" ml-8">讨论 fork 的使用</li>
 </ul>
 <hr>
 <p class=" font-serif my-1">Takeaway messages</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20174;&#25805;&#20316;&#31995;&#32479;&#30340;&#35282;&#24230;&#65292;fork &#19981;&#26159; API &#30340;&#26368;&#20339;&#36873;&#25321;</li>
-<li class=" ml-8">&#20174; &#8220;&#29366;&#24577;&#26426;&#8221; &#30340;&#35282;&#24230;&#65292;&#8220;&#24555;&#29031;&#8221; &#20381;&#28982;&#26159;&#20010;&#24456;&#26377;&#36259;&#30340;&#25805;&#20316;<ul class=" list-disc font-serif">
+<li class=" ml-8">从操作系统的角度，fork 不是 API 的最佳选择</li>
+<li class=" ml-8">从 “状态机” 的角度，“快照” 依然是个很有趣的操作<ul class=" list-disc font-serif">
 <li class=" ml-8">spawn + snapshot</li>
 </ul>
 </li>

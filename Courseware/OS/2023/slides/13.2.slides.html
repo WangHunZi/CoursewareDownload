@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +209,7 @@ section .center {
 }
 </style>
 
-  <title>Bug &#30340;&#26412;&#36136;&#21644;&#38450;&#24481;&#24615;&#32534;&#31243;</title>
+  <title>Bug 的本质和防御性编程</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,7 +227,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="bug" class=" text-2xl mt-2 font-sans"><a href="13.2.slides.html" class=" text-amber-900">Bug &#30340;&#26412;&#36136;&#21644;&#38450;&#24481;&#24615;&#32534;&#31243;</a></h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="bug" class=" text-2xl mt-2 font-sans"><a href="13.2.slides.html" class=" text-amber-900">Bug 的本质和防御性编程</a></h1></div></div></div>
         
       
       </section>
@@ -238,19 +238,19 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#22238;&#39038;&#65306;&#35843;&#35797;&#29702;&#35770;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">回顾：调试理论</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#31243;&#24207; = &#29289;&#29702;&#19990;&#30028;&#36807;&#31243;&#22312;&#20449;&#24687;&#19990;&#30028;&#20013;&#30340;&#25237;&#24433;</p>
+<p class=" font-serif my-1">程序 = 物理世界过程在信息世界中的投影</p>
 </blockquote>
 <hr>
-<p class=" font-serif my-1">Bug = &#36829;&#21453;&#31243;&#24207;&#21592;&#23545; &#8220;&#29289;&#29702;&#19990;&#30028;&#8221; &#30340;&#20551;&#35774;&#21644;&#32422;&#26463;</p>
+<p class=" font-serif my-1">Bug = 违反程序员对 “物理世界” 的假设和约束</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">Bug &#36829;&#21453;&#20102;&#31243;&#24207;&#30340; specification<ul class=" list-disc font-serif">
-<li class=" ml-8">&#35813;&#21457;&#29983;&#30340;&#24517;&#39035;&#21457;&#29983;</li>
-<li class=" ml-8">&#19981;&#35813;&#21457;&#29983;&#30340;&#19981;&#33021;&#21457;&#29983;</li>
+<li class=" ml-8">Bug 违反了程序的 specification<ul class=" list-disc font-serif">
+<li class=" ml-8">该发生的必须发生</li>
+<li class=" ml-8">不该发生的不能发生</li>
 </ul>
 </li>
-<li class=" ml-8">Fault &#8594; Error &#8594; Failure</li>
+<li class=" ml-8">Fault → Error → Failure</li>
 </ul></div>
         
       
@@ -262,25 +262,25 @@ section .center {
 
       
         
-        <div><h2 id="bugs" class=" text-xl mt-2 pb-2 font-sans">&#32534;&#31243;&#35821;&#35328;&#19982; Bugs</h2>
-<p class=" font-serif my-1">&#32534;&#35793;&#22120;/&#32534;&#31243;&#35821;&#35328;</p>
+        <div><h2 id="bugs" class=" text-xl mt-2 pb-2 font-sans">编程语言与 Bugs</h2>
+<p class=" font-serif my-1">编译器/编程语言</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#21482;&#31649; &#8220;&#32763;&#35793;&#8221; &#20195;&#30721;&#65292;&#19981;&#31649;&#21644;&#23454;&#38469;&#38656;&#27714; (&#35268;&#32422;) &#26159;&#21542;&#21305;&#37197;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#8220;&#23665;&#23528;&#25903;&#20184;&#23453;&#8221; &#20013;&#30340;&#20313;&#39069; <code>balance</code><ul class=" list-disc font-serif">
-<li class=" ml-8">&#27491;&#24120;&#20154;&#30475;&#21040; 0 &#8594; 18446744073709551516 &#37117;&#35748;&#20026; &#8220;&#36825;&#20214;&#20107;&#19981;&#23545;&#8221; (&#8220;balance&#8221; &#33258;&#24102; no-underflow &#30340;&#21547;&#20041;)</li>
+<li class=" ml-8">只管 “翻译” 代码，不管和实际需求 (规约) 是否匹配<ul class=" list-disc font-serif">
+<li class=" ml-8">“山寨支付宝” 中的余额 <code>balance</code><ul class=" list-disc font-serif">
+<li class=" ml-8">正常人看到 0 → 18446744073709551516 都认为 “这件事不对” (“balance” 自带 no-underflow 的含义)</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#24590;&#20040;&#25165;&#33021;&#32534;&#20889;&#20986; &#8220;&#27491;&#30830;&#8221; (&#31526;&#21512; specification) &#30340;&#31243;&#24207;&#65311;</p>
+<p class=" font-serif my-1">怎么才能编写出 “正确” (符合 specification) 的程序？</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#35777;&#26126;&#65306;Annotation verifier (<a href="https://dafny-lang.github.io/dafny/" class=" text-amber-900">Dafny</a>), <a href="https://dl.acm.org/doi/10.1145/113446.113468" class=" text-amber-900">Refinement types</a></li>
-<li class=" ml-8">&#25512;&#27979;&#65306;Specification mining (<a href="http://plse.cs.washington.edu/daikon/" class=" text-amber-900">Daikon</a>)</li>
-<li class=" ml-8">&#26500;&#36896;&#65306;<a href="https://link.springer.com/article/10.1007/s10009-012-0249-7" class=" text-amber-900">Program sketching</a></li>
-<li class=" ml-8">&#32534;&#31243;&#35821;&#35328;&#30340;&#21382;&#21490;&#21644;&#26410;&#26469;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#26426;&#22120;&#35821;&#35328; &#8594; &#27719;&#32534;&#35821;&#35328; &#8594; &#39640;&#32423;&#35821;&#35328; &#8594; <red>&#33258;&#28982;&#32534;&#31243;&#35821;&#35328;</red></li>
+<li class=" ml-8">证明：Annotation verifier (<a href="https://dafny-lang.github.io/dafny/" class=" text-amber-900">Dafny</a>), <a href="https://dl.acm.org/doi/10.1145/113446.113468" class=" text-amber-900">Refinement types</a></li>
+<li class=" ml-8">推测：Specification mining (<a href="http://plse.cs.washington.edu/daikon/" class=" text-amber-900">Daikon</a>)</li>
+<li class=" ml-8">构造：<a href="https://link.springer.com/article/10.1007/s10009-012-0249-7" class=" text-amber-900">Program sketching</a></li>
+<li class=" ml-8">编程语言的历史和未来<ul class=" list-disc font-serif">
+<li class=" ml-8">机器语言 → 汇编语言 → 高级语言 → <red>自然编程语言</red></li>
 </ul>
 </li>
 </ul></div>
@@ -294,21 +294,21 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#22238;&#21040;&#29616;&#23454;</h2>
-<p class=" font-serif my-1">&#20170;&#22825; (&#34987;&#36843;) &#30340;&#35299;&#20915;&#26041;&#27861;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">回到现实</h2>
+<p class=" font-serif my-1">今天 (被迫) 的解决方法</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#34429;&#28982;&#19981;&#22826;&#24895;&#24847;&#25215;&#35748;&#65292;&#20294;<red>&#22987;&#32456;&#20551;&#35774;&#33258;&#24049;&#30340;&#20195;&#30721;&#26159;&#38169;&#30340;</red></li>
-<li class=" ml-8">(&#22240;&#20026;&#26426;&#22120;&#27704;&#36828;&#26159;&#23545;&#30340;)</li>
+<li class=" ml-8">虽然不太愿意承认，但<red>始终假设自己的代码是错的</red></li>
+<li class=" ml-8">(因为机器永远是对的)</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#28982;&#21518;&#21602;&#65311;</p>
+<p class=" font-serif my-1">然后呢？</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#39318;&#20808;&#65292;&#20570;&#22909;&#27979;&#35797;</li>
-<li class=" ml-8">&#26816;&#26597;&#21738;&#37324;&#38169;&#20102;</li>
-<li class=" ml-8">&#20877;&#26816;&#26597;&#21738;&#37324;&#38169;&#20102;</li>
-<li class=" ml-8">&#20877;&#20877;&#26816;&#26597;&#21738;&#37324;&#38169;&#20102;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#8220;&#38450;&#24481;&#24615;&#32534;&#31243;&#8221;</li>
-<li class=" ml-8">&#25226;&#20219;&#20309;&#20320;&#35748;&#20026;&#21487;&#33021; &#8220;&#19981;&#23545;&#8221; &#30340;&#24773;&#20917;&#37117;&#26816;&#26597;&#19968;&#36941;</li>
+<li class=" ml-8">首先，做好测试</li>
+<li class=" ml-8">检查哪里错了</li>
+<li class=" ml-8">再检查哪里错了</li>
+<li class=" ml-8">再再检查哪里错了<ul class=" list-disc font-serif">
+<li class=" ml-8">“防御性编程”</li>
+<li class=" ml-8">把任何你认为可能 “不对” 的情况都检查一遍</li>
 </ul>
 </li>
 </ul></div>
@@ -322,24 +322,24 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#38450;&#24481;&#24615;&#32534;&#31243;&#65306;&#23454;&#36341;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">防御性编程：实践</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#25226;&#31243;&#24207;&#38656;&#35201;&#28385;&#36275;&#30340;&#26465;&#20214;&#29992; assert &#34920;&#36798;&#20986;&#26469;&#12290;</p>
+<p class=" font-serif my-1">把程序需要满足的条件用 assert 表达出来。</p>
 </blockquote>
 <hr>
-<p class=" font-serif my-1">&#21450;&#26089;&#26816;&#26597;&#12289;&#21450;&#26089;&#25253;&#21578;&#12289;&#21450;&#26089;&#20462;&#22797;</p>
+<p class=" font-serif my-1">及早检查、及早报告、及早修复</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">Peterson &#31639;&#27861;&#20013;&#30340;&#20020;&#30028;&#21306;&#35745;&#25968;&#22120;<ul class=" list-disc font-serif">
+<li class=" ml-8">Peterson 算法中的临界区计数器<ul class=" list-disc font-serif">
 <li class=" ml-8"><code>assert(nest == 1);</code></li>
 </ul>
 </li>
-<li class=" ml-8">&#20108;&#21449;&#26641;&#30340;&#26059;&#36716;<ul class=" list-disc font-serif">
-<li class=" ml-8"><code>assert(p-&gt;parent-&gt;left == p || p-&gt;parent-&gt;right == p);</code></li>
+<li class=" ml-8">二叉树的旋转<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>assert(p->parent->left == p || p->parent->right == p);</code></li>
 </ul>
 </li>
-<li class=" ml-8">AA-Deadlock &#30340;&#26816;&#26597;<ul class=" list-disc font-serif">
-<li class=" ml-8"><code>if (holding(&amp;lk)) panic();</code></li>
-<li class=" ml-8">xv6 spinlock &#23454;&#29616;&#31034;&#20363;</li>
+<li class=" ml-8">AA-Deadlock 的检查<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>if (holding(&lk)) panic();</code></li>
+<li class=" ml-8">xv6 spinlock 实现示例</li>
 </ul>
 </li>
 </ul></div>
@@ -353,22 +353,22 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#38450;&#24481;&#24615;&#32534;&#31243;&#21644;&#35268;&#32422;&#32473;&#25105;&#20204;&#30340;&#21551;&#21457;</h2>
-<p class=" font-serif my-1">&#20320;&#30693;&#36947;&#24456;&#22810;&#21464;&#37327;&#30340;<red>&#21547;&#20041;</red></p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">防御性编程和规约给我们的启发</h2>
+<p class=" font-serif my-1">你知道很多变量的<red>含义</red></p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#define CHECK_INT(x, cond) \</span>
 <span class="cp">  ({ panic_on(!((x) cond), "int check fail: " #x " " #cond); })</span>
 <span class="cp">#define CHECK_HEAP(ptr) \</span>
 <span class="cp">  ({ panic_on(!IN_RANGE((ptr), heap)); })</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">&#21464;&#37327;&#26377; &#8220;typed annotation&#8221;</p>
+<p class=" font-serif my-1">变量有 “typed annotation”</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><code>CHECK_INT(waitlist-&gt;count, &gt;= 0);</code></li>
-<li class=" ml-8"><code>CHECK_INT(pid, &lt; MAX_PROCS);</code></li>
-<li class=" ml-8"><code>CHECK_HEAP(ctx-&gt;rip); CHECK_HEAP(ctx-&gt;cr3);</code></li>
-<li class=" ml-8">&#21464;&#37327;&#21547;&#20041;&#25913;&#21464; &#8594; &#21457;&#29983;&#22855;&#24618;&#38382;&#39064; (overflow, memory error, ...)<ul class=" list-disc font-serif">
-<li class=" ml-8"><red>&#19981;&#35201;&#23567;&#30475;&#36825;&#20123;&#26816;&#26597;</red>&#65292;&#23427;&#20204;&#22312;&#24213;&#23618;&#32534;&#31243; (M2, L1, ...) &#26102;&#38750;&#24120;&#24120;&#35265;</li>
-<li class=" ml-8">&#22312;&#34394;&#25311;&#26426;&#31070;&#31192;&#37325;&#21551;/&#21345;&#20303;/...&#21069;&#21457;&#20986;&#35686;&#25253;</li>
+<li class=" ml-8"><code>CHECK_INT(waitlist->count, >= 0);</code></li>
+<li class=" ml-8"><code>CHECK_INT(pid, < MAX_PROCS);</code></li>
+<li class=" ml-8"><code>CHECK_HEAP(ctx->rip); CHECK_HEAP(ctx->cr3);</code></li>
+<li class=" ml-8">变量含义改变 → 发生奇怪问题 (overflow, memory error, ...)<ul class=" list-disc font-serif">
+<li class=" ml-8"><red>不要小看这些检查</red>，它们在底层编程 (M2, L1, ...) 时非常常见</li>
+<li class=" ml-8">在虚拟机神秘重启/卡住/...前发出警报</li>
 </ul>
 </li>
 </ul></div>

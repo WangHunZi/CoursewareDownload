@@ -2,7 +2,7 @@
 <head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>16. Linux &#25805;&#20316;&#31995;&#32479;</title>
+<title>16. Linux 操作系统</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script><script>
 (function() {
   function addWidgetsRenderer() {
@@ -6481,7 +6481,7 @@ cell outputs.
 
 .jp-Notebook .jp-Cell.jp-mod-dirty .jp-InputPrompt::before {
   color: var(--jp-warn-color1);
-  content: '&#8226;';
+  content: '•';
 }
 
 .jp-Notebook .jp-Cell.jp-mod-active.jp-mod-dirty .jp-Collapser {
@@ -7518,7 +7518,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[1]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">mosaic</span> <span class="kn">import</span> <span class="o">*</span>
@@ -7690,19 +7690,19 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-InputPrompt jp-InputArea-prompt">
 </div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="16.-Linux-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F">16. Linux &#25805;&#20316;&#31995;&#32479;<a class="anchor-link" href="#16.-Linux-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F">&#182;</a>
+<h1 id="16.-Linux-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F">16. Linux 操作系统<a class="anchor-link" href="#16.-Linux-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F">¶</a>
 </h1>
-<p><strong>Changelog &amp; &#21453;&#39304;</strong></p>
+<p><strong>Changelog & 反馈</strong></p>
 <ul>
-<li>&#20877;&#27425;&#25552;&#37266;&#19979;&#21608;&#20108;&#38543;&#22530;&#26399;&#20013;&#27979;&#39564; (&#33539;&#22260;&#65306;&#24182;&#21457;)</li>
-<li>L2 &#20195;&#30721;&#21457;&#24067;</li>
+<li>再次提醒下周二随堂期中测验 (范围：并发)</li>
+<li>L2 代码发布</li>
 </ul>
-<p><strong>&#32972;&#26223;&#22238;&#39038;</strong>&#65306;&#25105;&#20204;&#24050;&#32463;&#20102;&#35299;&#25805;&#20316;&#31995;&#32479;&#20316;&#20026; &#8220;&#29366;&#24577;&#26426;&#30340;&#31649;&#29702;&#32773;&#8221;&#65292;&#36890;&#36807;&#20026;&#24212;&#29992;&#31243;&#24207;&#25552;&#20379; fork, execve, exit &#31561;&#31995;&#32479;&#35843;&#29992;&#20351;&#24471;&#31532;&#19968;&#20010;&#36827;&#31243;&#21487;&#20197;&#36880;&#27493;&#26500;&#24314;&#20986;&#19968;&#20010;&#23436;&#25972;&#30340;&#24212;&#29992;&#19990;&#30028;&#12290;</p>
-<p><strong>&#26412;&#35762;&#20869;&#23481;</strong>&#65306;&#23436;&#25972;&#30340;&#24212;&#29992;&#19990;&#30028;&#21040;&#24213;&#26159;&#22914;&#20309;&#26500;&#24314;&#30340;&#65311;&#22312;&#36825;&#33410;&#35838;&#20013;&#65292;&#25105;&#20204;&#29992;&#19968;&#20010; &#8220;&#26368;&#23567;&#8221; &#30340; Linux &#31995;&#32479;&#35299;&#31572;&#36825;&#20010;&#38382;&#39064;&#65306;</p>
+<p><strong>背景回顾</strong>：我们已经了解操作系统作为 “状态机的管理者”，通过为应用程序提供 fork, execve, exit 等系统调用使得第一个进程可以逐步构建出一个完整的应用世界。</p>
+<p><strong>本讲内容</strong>：完整的应用世界到底是如何构建的？在这节课中，我们用一个 “最小” 的 Linux 系统解答这个问题：</p>
 <ul>
-<li>Linux &#25805;&#20316;&#31995;&#32479;</li>
-<li>Linux &#31995;&#32479;&#21551;&#21160;&#21644; initramfs</li>
-<li>Linux &#24212;&#29992;&#19990;&#30028;&#30340;&#26500;&#24314;</li>
+<li>Linux 操作系统</li>
+<li>Linux 系统启动和 initramfs</li>
+<li>Linux 应用世界的构建</li>
 </ul>
 </div>
 </div>
@@ -7713,7 +7713,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[2]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'16.1'</span><span class="p">)</span>
@@ -7742,7 +7742,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">demo</span><span class="p">(</span><span class="s1">'minix'</span><span class="p">,</span> <span class="s1">'v/minix'</span><span class="p">)</span>
@@ -7774,7 +7774,7 @@ var element = document.getElementById('56bf1a4f-f46d-43ef-8166-7e90038c3947');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'16.2'</span><span class="p">)</span>
@@ -7803,7 +7803,7 @@ var element = document.getElementById('56bf1a4f-f46d-43ef-8166-7e90038c3947');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[5]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">demo</span><span class="p">(</span><span class="s1">'linux'</span><span class="p">,</span> <span class="s1">'v/linux-minimal'</span><span class="p">)</span>
@@ -7835,7 +7835,7 @@ var element = document.getElementById('61306259-c5ed-4ad5-9556-412589009e33');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[6]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'16.3'</span><span class="p">)</span>
@@ -7867,14 +7867,14 @@ var element = document.getElementById('61306259-c5ed-4ad5-9556-412589009e33');
 <div class="jp-InputPrompt jp-InputArea-prompt">
 </div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Take-away-Messages">Take-away Messages<a class="anchor-link" href="#Take-away-Messages">&#182;</a>
+<h2 id="Take-away-Messages">Take-away Messages<a class="anchor-link" href="#Take-away-Messages">¶</a>
 </h2>
-<p>&#25105;&#20204;&#20174; CPU Reset &#21518;&#30340; &#8220;&#30828;&#20214;&#21021;&#22987;&#29366;&#24577;&#8221; &#21040;&#25805;&#20316;&#31995;&#32479;&#21152;&#36733;&#23436; init &#36827;&#31243;&#21518;&#30340; &#8220;&#36719;&#20214;&#21021;&#22987;&#29366;&#24577;&#8221;&#65292;&#20174;&#27492;&#20197;&#21518;&#65292;&#35745;&#31639;&#26426;&#31995;&#32479;&#20013;&#30340;&#19968;&#20999;&#37117;&#26159;&#30001;&#24212;&#29992;&#31243;&#24207;&#20027;&#23548;&#30340;&#65292;&#25805;&#20316;&#31995;&#32479;&#21482;&#26159;&#25552;&#20379;&#31995;&#32479;&#35843;&#29992;&#36825;&#19968;&#26381;&#21153;&#25509;&#21475;&#12290;&#27491;&#26159;&#31995;&#32479;&#35843;&#29992; (&#21253;&#25324;&#25805;&#20316;&#31995;&#32479;&#20013;&#30340;&#23545;&#35937;) &#36825;&#20010;&#31283;&#23450;&#30340;&#12289;&#21521;&#21518;&#20860;&#23481;&#30340;&#25509;&#21475;&#38543;&#30528;&#21382;&#21490;&#28436;&#21270;&#21644;&#31215;&#32047;&#65292;&#24418;&#25104;&#20102;&#38590;&#20197;&#36926;&#36234;&#30340;&#25216;&#26415;&#23631;&#38556;&#65292;&#22312;&#39072;&#35206;&#24615;&#30340;&#25216;&#26415;&#38761;&#26032;&#21040;&#26469;&#20043;&#21069;&#65292;&#21478;&#36215;&#28809;&#28790;&#37117;&#26159;&#38750;&#24120;&#22256;&#38590;&#30340;&#12290;</p>
-<h3 id="%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">&#35838;&#21518;&#20064;&#39064;/&#32534;&#31243;&#20316;&#19994;<a class="anchor-link" href="#%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">&#182;</a>
+<p>我们从 CPU Reset 后的 “硬件初始状态” 到操作系统加载完 init 进程后的 “软件初始状态”，从此以后，计算机系统中的一切都是由应用程序主导的，操作系统只是提供系统调用这一服务接口。正是系统调用 (包括操作系统中的对象) 这个稳定的、向后兼容的接口随着历史演化和积累，形成了难以逾越的技术屏障，在颠覆性的技术革新到来之前，另起炉灶都是非常困难的。</p>
+<h3 id="%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">课后习题/编程作业<a class="anchor-link" href="#%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">¶</a>
 </h3>
-<h4 id="1.-%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5">1. &#32534;&#31243;&#23454;&#36341;<a class="anchor-link" href="#1.-%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5">&#182;</a>
+<h4 id="1.-%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5">1. 编程实践<a class="anchor-link" href="#1.-%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5">¶</a>
 </h4>
-<p>&#35797;&#30528;&#22312;&#26368;&#23567;&#30340; Linux &#20013;&#23436;&#25104;&#19968;&#20123;&#20320;&#24863;&#20852;&#36259;&#30340;&#20219;&#21153;&#65292;&#20363;&#22914;&#31227;&#26893;&#19968;&#20123;&#26377;&#36259;&#30340;&#31243;&#24207;&#12290;&#20320;&#21487;&#33021;&#20250;&#36935;&#21040;&#19968;&#20123;&#22256;&#38590;&#65306;&#31243;&#24207;&#21487;&#33021;&#38656;&#35201;&#20381;&#36182;&#31995;&#32479;&#20013;&#30340;&#20854;&#20182;&#25991;&#20214;&#25110;&#26381;&#21153;&#65292;&#36880;&#28176;&#20320;&#23601;&#21487;&#20197;&#29702;&#35299; systemd &#36825;&#31867;&#31995;&#32479;&#30340;&#35774;&#35745;&#21160;&#26426;&#12290;</p>
+<p>试着在最小的 Linux 中完成一些你感兴趣的任务，例如移植一些有趣的程序。你可能会遇到一些困难：程序可能需要依赖系统中的其他文件或服务，逐渐你就可以理解 systemd 这类系统的设计动机。</p>
 </div>
 </div>
 </div>
@@ -7886,7 +7886,7 @@ var element = document.getElementById('61306259-c5ed-4ad5-9556-412589009e33');
   <span class="text-muted">
     <center>
 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="/static/img/cc-4.0.png"></a>
-    &#160;&#160;&#160;<a style="color:inherit" href="https://beian.miit.gov.cn/">&#33487; ICP &#22791; 2020049101 &#21495;</a>
+       <a style="color:inherit" href="https://beian.miit.gov.cn/">苏 ICP 备 2020049101 号</a>
     </center>
   </span>
 </div>

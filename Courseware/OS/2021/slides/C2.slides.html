@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +209,7 @@ section .center {
 }
 </style>
 
-  <title>[C2] &#25805;&#20316;&#31995;&#32479;&#20063;&#26159;&#31243;&#24207;</title>
+  <title>[C2] 操作系统也是程序</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,21 +227,21 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="c2" class=" text-2xl mt-2 font-sans">[C2] &#25805;&#20316;&#31995;&#32479;&#20063;&#26159;&#31243;&#24207;</h1>
+        <div><div class="center middle"><div style="width:100%"><h1 id="c2" class=" text-2xl mt-2 font-sans">[C2] 操作系统也是程序</h1>
 <p class=" font-serif my-1"><include src="Slides_Author"><div><div class="py-16">
-<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">&#33931;&#28814;&#23721;</a></p>
+<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">蒋炎岩</a></p>
 </div>
 <div class="row">
 <div class="author-affiliation">
-    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#12288;&#12288;&#21335;&#20140;&#22823;&#23398;&#12288;&#12288;</p>
+    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">　　南京大学　　</p>
     <img class="inline-img h-24" src="../../../static/img/nju-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#31185;&#23398;&#19982;&#25216;&#26415;&#31995;</p>
+   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">计算机科学与技术系</p>
     <img class="inline-img h-24" src="../../../static/img/njucs-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#36719;&#20214;&#30740;&#31350;&#25152;</p>
+    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">计算机软件研究所</p>
     <img class="inline-img h-24" src="../../../static/img/ics-logo.png" style="display: inline-block;"></a>
   </div>
 </div></div></include></p></div></div></div>
@@ -255,18 +255,18 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#32972;&#26223;</h2>
-<p class=" font-serif my-1">&#31243;&#24207; = &#29366;&#24577;&#26426;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">背景</h2>
+<p class=" font-serif my-1">程序 = 状态机</p>
 <hr>
-<p class=" font-serif my-1">&#20170;&#22825;&#25105;&#20204;&#31245;&#24494;&#22238;&#21040;&#19968;&#28857; &#8220;&#25805;&#20316;&#31995;&#32479;&#8221;</p>
+<p class=" font-serif my-1">今天我们稍微回到一点 “操作系统”</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#36825;&#26679;&#22823;&#23478;&#21487;&#20197;&#24841;&#24555;&#22320;&#20570;&#23454;&#39564;</li>
-<li class=" ml-8">&#19979;&#21608;&#32487;&#32493;&#24182;&#21457;</li>
+<li class=" ml-8">这样大家可以愉快地做实验</li>
+<li class=" ml-8">下周继续并发</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#32473;&#22823;&#23478;&#19968;&#28857;&#26102;&#38388;&#20307;&#39564; (&#24182;&#38405;&#35835;&#29702;&#35299;) threads.h</p>
+<p class=" font-serif my-1">给大家一点时间体验 (并阅读理解) threads.h</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">(&#24182;&#21457;&#32534;&#31243;&#20837;&#38376;&#30495;&#30340;&#24456;&#31616;&#21333;)</li>
+<li class=" ml-8">(并发编程入门真的很简单)</li>
 </ul></div>
         
       
@@ -278,17 +278,17 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26412;&#27425;&#35838;&#20869;&#23481;&#19982;&#30446;&#26631;</h2>
-<p class=" font-serif my-1">&#35843;&#35797;&#22266;&#20214; (Firmware)</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">本次课内容与目标</h2>
+<p class=" font-serif my-1">调试固件 (Firmware)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#29702;&#35299;&#25805;&#20316;&#31995;&#32479;&#26159;&#22914;&#20309;&#34987;&#21551;&#21160;&#30340;</li>
-<li class=" ml-8">&#23398;&#20250;&#20351;&#29992; gdb (&#24517;&#22791;&#29983;&#23384;&#25216;&#33021;)</li>
+<li class=" ml-8">理解操作系统是如何被启动的</li>
+<li class=" ml-8">学会使用 gdb (必备生存技能)</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#35843;&#35797; &#8220;&#25805;&#20316;&#31995;&#32479;&#36825;&#20010; C &#31243;&#24207;&#8221;</p>
+<p class=" font-serif my-1">调试 “操作系统这个 C 程序”</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#28040;&#38500; &#8220;&#25805;&#20316;&#31995;&#32479;&#8221; &#30340;&#31070;&#31192;&#24863;</li>
-<li class=" ml-8">&#23398;&#20250;&#38405;&#35835; Makefile (&#24517;&#22791;&#29983;&#23384;&#25216;&#33021;)</li>
+<li class=" ml-8">消除 “操作系统” 的神秘感</li>
+<li class=" ml-8">学会阅读 Makefile (必备生存技能)</li>
 </ul></div>
         
       
@@ -304,7 +304,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#26377;&#20851; &#8220;&#19987;&#19994;&#35757;&#32451;&#8221;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">有关 “专业训练”</h1></div></div></div>
         
       
       </section>
@@ -315,12 +315,12 @@ section .center {
 
       
         
-        <div><h2 id="x" class=" text-xl mt-2 pb-2 font-sans">&#8220;&#20889;&#20010;&#25805;&#20316;&#31995;&#32479;&#8221; &#22909;&#20687;&#24456;&#29275; X &#30340;&#26679;&#23376;&#65311;</h2></div>
+        <div><h2 id="x" class=" text-xl mt-2 pb-2 font-sans">“写个操作系统” 好像很牛 X 的样子？</h2></div>
         
       
          <div class="fragment"> 
         <div><p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/2021/slides/img/write-os.jpg" width="640px"></p>
-<p class=" font-serif my-1"></p><center>(&#20294;&#36825;&#23601;&#26159;&#20154;&#35838;&#31243;&#23454;&#39564;&#8230;&#8230;)</center></div>
+<p class=" font-serif my-1"></p><center>(但这就是人课程实验……)</center></div>
          </div> 
       
       </section>
@@ -331,18 +331,18 @@ section .center {
 
       
         
-        <div><h2 id="x-contd" class=" text-xl mt-2 pb-2 font-sans">&#8220;&#20889;&#20010;&#25805;&#20316;&#31995;&#32479;&#8221; &#22909;&#20687;&#24456;&#29275; X &#30340;&#26679;&#23376;&#65311; (cont'd)</h2>
-<p class=" font-serif my-1">&#21313;&#20960;&#24180;&#20197;&#21069;&#33258;&#24049; xjbg &#30340;&#20869;&#26680;&#36305;&#36215;&#26469;&#30340;&#26102;&#20505;&#30340;&#30830;&#24863;&#35273;&#24456;&#24778;&#22855;</p>
+        <div><h2 id="x-contd" class=" text-xl mt-2 pb-2 font-sans">“写个操作系统” 好像很牛 X 的样子？ (cont'd)</h2>
+<p class=" font-serif my-1">十几年以前自己 xjbg 的内核跑起来的时候的确感觉很惊奇</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#27975;&#30406;&#20919;&#27700;&#65306;&#20294;&#20316;&#20026;&#19987;&#19994;&#20154;&#22763;&#65292;&#26681;&#26412;&#19981;&#31639;&#20160;&#20040; (trivial)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#8220;&#19994;&#20313;&#39640;&#25163;&#8221; vs. &#8220;&#32844;&#19994;&#36873;&#25163;&#8221;</li>
+<li class=" ml-8">浇盆冷水：但作为专业人士，根本不算什么 (trivial)<ul class=" list-disc font-serif">
+<li class=" ml-8">“业余高手” vs. “职业选手”</li>
 </ul>
 </li>
 </ul>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#12300;&#25252;&#29699;&#20687;&#26757;&#35199;&#65292;&#23556;&#38376;&#20687;&#36125;&#21033;&#12301;&#30340;&#37329;&#23665;&#21306;&#40784;&#36798;&#20869;&#65292;&#28385;&#24576;&#26399;&#24453;&#22320;&#21435;&#21644;&#20799;&#31461;&#39044;&#22791;&#38431;&#27604;&#36187;&#65292;&#32467;&#26524;&#34987;&#28748;&#20102; 20 &#22810;&#29699;&#12290;&#38889;&#23506;&#65306;&#8220;&#34987;&#23567;&#23398;&#29983;&#25903;&#37197;&#30340;&#24656;&#24807;&#65292;&#32780;&#25105;&#20063;&#26366;&#23545;&#37027;&#31181;&#21147;&#37327;&#65292;&#19968;&#26080;&#25152;&#30693;&#12290;&#8221;</p>
+<p class=" font-serif my-1">「护球像梅西，射门像贝利」的金山区齐达内，满怀期待地去和儿童预备队比赛，结果被灌了 20 多球。韩寒：“被小学生支配的恐惧，而我也曾对那种力量，一无所知。”</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><a href="https://www.bilibili.com/video/BV1uW411B7z1" class=" text-amber-900">100 &#23567;&#23398;&#29983; vs. 3 &#32844;&#19994;&#36873;&#25163;</a></li>
+<li class=" ml-8"><a href="https://www.bilibili.com/video/BV1uW411B7z1" class=" text-amber-900">100 小学生 vs. 3 职业选手</a></li>
 </ul>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/football.jpg" width="500px"></p>
 </blockquote></div>
@@ -356,28 +356,28 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20160;&#20040;&#26159;&#19987;&#19994;&#20154;&#22763;&#65311;</h2>
-<p class=" font-serif my-1">&#19987;&#19994;&#20154;&#22763;&#26377;&#27491;&#30830;&#30340; &#8220;&#19987;&#19994;&#19990;&#30028;&#35266;&#8221; (&#21644;&#19987;&#19994;&#30693;&#35782;&#30340;&#31215;&#32047;&#21644;&#30952;&#32451;&#26377;&#20851;)</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">什么是专业人士？</h2>
+<p class=" font-serif my-1">专业人士有正确的 “专业世界观” (和专业知识的积累和磨练有关)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#39550;&#39533;&#22797;&#26434;&#31995;&#32479;&#30340;&#33021;&#21147;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20570;&#20160;&#20040;&#26159;&#27491;&#30830;&#30340;</li>
-<li class=" ml-8">&#22914;&#20309;&#25214;&#21040;&#30456;&#20851;&#30340;&#37096;&#20998;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#22312; Linux Kernel &#20013;&#25214;&#20986;&#21644;&#33258;&#24049;&#30456;&#20851;&#30340;&#20195;&#30721;&#65307;&#22312; Intel &#25163;&#20876;&#20013;&#25214;&#21040;&#38656;&#35201;&#30340;&#37096;&#20998;&#24182;&#27491;&#30830;&#29702;&#35299;&#65307;&#25214;&#21040;&#27491;&#30830;&#30340;&#24037;&#20855;</li>
+<li class=" ml-8">驾驭复杂系统的能力<ul class=" list-disc font-serif">
+<li class=" ml-8">做什么是正确的</li>
+<li class=" ml-8">如何找到相关的部分<ul class=" list-disc font-serif">
+<li class=" ml-8">在 Linux Kernel 中找出和自己相关的代码；在 Intel 手册中找到需要的部分并正确理解；找到正确的工具</li>
 </ul>
 </li>
-<li class=" ml-8">&#22312;&#27809;&#26377;&#24037;&#20855;&#30340;&#26102;&#20505;&#65292;&#24590;&#20040;&#33258;&#24049;&#36896;&#19990;&#30028;&#19978;&#26368;&#22909;&#30340;&#24037;&#20855; (research)</li>
+<li class=" ml-8">在没有工具的时候，怎么自己造世界上最好的工具 (research)</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#19987;&#19994;&#35757;&#32451;&#65306;&#20363;&#23376;</p>
+<p class=" font-serif my-1">专业训练：例子</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20889; x86 &#27169;&#25311;&#22120;&#30340;&#26102;&#20505;&#65292;&#19981;&#30693;&#36947;&#21738;&#26465;&#25351;&#20196;&#38169;&#20102;&#65292;&#24590;&#20040;&#21150;&#65311; (difftest)<ul class=" list-disc font-serif">
-<li class=" ml-8">mips32-nemu &#25104;&#21151;&#21551;&#21160; Linux Kernel</li>
+<li class=" ml-8">写 x86 模拟器的时候，不知道哪条指令错了，怎么办？ (difftest)<ul class=" list-disc font-serif">
+<li class=" ml-8">mips32-nemu 成功启动 Linux Kernel</li>
 </ul>
 </li>
-<li class=" ml-8">&#20570;&#25805;&#20316;&#31995;&#32479;&#23454;&#39564;&#30340;&#26102;&#20505;&#65292;&#22914;&#26524;&#36935;&#21040;&#31070;&#31192; CPU Reset&#65292;&#24590;&#20040;&#21150;&#65311;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#12298;&#25805;&#20316;&#31995;&#32479;&#12299;&#35838;&#19978;&#23436;&#25104;&#30340;&#19987;&#19994;&#35757;&#32451;</li>
+<li class=" ml-8">做操作系统实验的时候，如果遇到神秘 CPU Reset，怎么办？<ul class=" list-disc font-serif">
+<li class=" ml-8">《操作系统》课上完成的专业训练</li>
 </ul>
 </li>
 </ul></div>
@@ -391,23 +391,23 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#22914;&#20309;&#36890;&#24448;&#19987;&#19994;&#20043;&#36335;&#65311;</h2>
-<p class=" font-serif my-1">&#10060; &#36393;&#22353; (&#33258;&#23398;&#25104;&#25165;)</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">如何通往专业之路？</h2>
+<p class=" font-serif my-1">❌ 踩坑 (自学成才)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25105; 2009 &#24180;&#23398;&#12298;&#25805;&#20316;&#31995;&#32479;&#12299;&#30340;&#26102;&#20505;&#65292;&#26681;&#26412;&#27809;&#26377; toolchain &#21487;&#35328;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#36855;&#20043; 8086 &#27719;&#32534;&#65292;&#36855;&#20043; VirtualBox</li>
+<li class=" ml-8">我 2009 年学《操作系统》的时候，根本没有 toolchain 可言<ul class=" list-disc font-serif">
+<li class=" ml-8">迷之 8086 汇编，迷之 VirtualBox</li>
 </ul>
 </li>
-<li class=" ml-8">&#20840;&#38752; trial-and-error</li>
-<li class=" ml-8">&#21482;&#20250; <code>printf</code> &#35843;&#35797;</li>
+<li class=" ml-8">全靠 trial-and-error</li>
+<li class=" ml-8">只会 <code>printf</code> 调试</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#9989; &#24314;&#31435;&#22312;&#21069;&#20154;&#32463;&#39564;&#30340;&#22522;&#30784;&#19978;</p>
+<p class=" font-serif my-1">✅ 建立在前人经验的基础上</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#39030;&#32423;&#30740;&#31350;&#35770;&#25991; (OSDI, SOSP, ATC, EuroSys, ...)</li>
-<li class=" ml-8">&#20037;&#32463;&#32771;&#39564;&#30340;&#32463;&#20856;&#25945;&#23398;&#26448;&#26009; (xv6, OSTEP, CSAPP, ...)</li>
-<li class=" ml-8">&#28023;&#37327;&#30340;&#24320;&#28304;&#24037;&#20855; (GNU &#31995;&#21015;, qemu, gdb, ...) </li>
-<li class=" ml-8">&#31532;&#19977;&#26041;&#36164;&#26009;&#65292;&#24910;&#29992; (tutorials, osdev wiki, ...)</li>
+<li class=" ml-8">顶级研究论文 (OSDI, SOSP, ATC, EuroSys, ...)</li>
+<li class=" ml-8">久经考验的经典教学材料 (xv6, OSTEP, CSAPP, ...)</li>
+<li class=" ml-8">海量的开源工具 (GNU 系列, qemu, gdb, ...) </li>
+<li class=" ml-8">第三方资料，慎用 (tutorials, osdev wiki, ...)</li>
 </ul></div>
         
       
@@ -419,16 +419,16 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#22823;&#23398;&#30340;&#30495;&#27491;&#24847;&#20041;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">大学的真正意义</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#23558;&#24050;&#26377;&#30340;&#30693;&#35782;&#21644;&#26041;&#27861;&#37325;&#26032;&#28040;&#21270;&#65292;&#20026;&#22823;&#23478;&#24314;&#31435;&#22909; &#8220;&#21488;&#38454;&#8221;&#65292;&#22312;&#26377;&#38480;&#30340;&#26102;&#38388;&#37324;&#36805;&#36895;<red>&#36214;&#19978;</red>&#20960;&#21313;&#24180;&#26469;&#24314;&#31435;&#30340;&#31185;&#23398;&#20307;&#31995;&#12290;</p>
+<p class=" font-serif my-1">将已有的知识和方法重新消化，为大家建立好 “台阶”，在有限的时间里迅速<red>赶上</red>几十年来建立的科学体系。</p>
 </blockquote>
-<p class=" font-serif my-1">&#20889;&#25805;&#20316;&#31995;&#32479;&#30340;&#26368;&#22823;&#22256;&#38590;&#65306;&#19979;&#19981;&#20102;&#25163;</p>
+<p class=" font-serif my-1">写操作系统的最大困难：下不了手</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#22823;&#23478;&#37117;&#35828; &#8220;&#25805;&#20316;&#31995;&#32479;&#26159; C &#31243;&#24207;&#8221;</li>
-<li class=" ml-8">&#20294;&#25105;&#21482;&#20250;&#25353;&#19968;&#20010;&#38190;&#32534;&#35793;&#36816;&#34892;<ul class=" list-disc font-serif">
-<li class=" ml-8">C &#35821;&#35328;&#31243;&#24207;&#24590;&#20040;&#36816;&#34892;&#22312;&#26426;&#22120;&#19978;&#65311;</li>
-<li class=" ml-8">C &#35821;&#35328;&#31243;&#24207;&#36816;&#34892;&#36215;&#26469;&#20197;&#21518;&#65292;&#20160;&#20040;&#33021;&#20570;&#12289;&#20160;&#20040;&#19981;&#33021;&#20570;&#65311;</li>
+<li class=" ml-8">大家都说 “操作系统是 C 程序”</li>
+<li class=" ml-8">但我只会按一个键编译运行<ul class=" list-disc font-serif">
+<li class=" ml-8">C 语言程序怎么运行在机器上？</li>
+<li class=" ml-8">C 语言程序运行起来以后，什么能做、什么不能做？</li>
 </ul>
 </li>
 </ul></div>
@@ -446,7 +446,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="c" class=" text-2xl mt-2 font-sans">&#8220;&#25805;&#20316;&#31995;&#32479;&#23601;&#26159;&#20010; C &#31243;&#24207;&#8221;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="c" class=" text-2xl mt-2 font-sans">“操作系统就是个 C 程序”</h1></div></div></div>
         
       
       </section>
@@ -457,25 +457,25 @@ section .center {
 
       
         
-        <div><h2 id="c" class=" text-xl mt-2 pb-2 font-sans">C &#31243;&#24207;</h2>
-<p class=" font-serif my-1">&#25105;&#20204;&#24050;&#32463;&#30693;&#36947;&#22914;&#20309;&#20889;&#19968;&#20010; &#8220;&#26368;&#23567;&#8221; &#30340; C &#31243;&#24207;&#20102;&#65306;</p>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;unistd.h&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sys/syscall.h&gt;</span>
+        <div><h2 id="c" class=" text-xl mt-2 pb-2 font-sans">C 程序</h2>
+<p class=" font-serif my-1">我们已经知道如何写一个 “最小” 的 C 程序了：</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf"><unistd.h></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf"><sys/syscall.h></span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">syscall</span><span class="p">(</span><span class="n">SYS_exit</span><span class="p">,</span><span class="w"> </span><span class="mi">42</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">&#27604;&#36739;&#29305;&#27530;&#30340;&#32534;&#35793;&#26041;&#24335;</p>
+<p class=" font-serif my-1">比较特殊的编译方式</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>$ gcc a.c -static -Wl,--entry=main
 </code></pre></div>
 
 <hr>
-<p class=" font-serif my-1">&#8220;&#31243;&#24207; = &#29366;&#24577;&#26426;&#8221; &#27809;&#38382;&#39064;</p>
+<p class=" font-serif my-1">“程序 = 状态机” 没问题</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><red>&#20294;&#35841;&#21019;&#24314;&#30340;&#36825;&#20010;&#29366;&#24577;&#26426;</red>&#65311;&#65311;&#65311;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#24403;&#28982;&#26159;&#25805;&#20316;&#31995;&#32479;&#20102;&#8230;&#8230;&#21571;&#8230;&#8230;</li>
+<li class=" ml-8"><red>但谁创建的这个状态机</red>？？？<ul class=" list-disc font-serif">
+<li class=" ml-8">当然是操作系统了……呃……</li>
 </ul>
 </li>
 </ul></div>
@@ -489,11 +489,11 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20808;&#26377;&#40481;&#36824;&#26159;&#20808;&#26377;&#34507;&#65311;</h2>
-<p class=" font-serif my-1">&#8220;&#21551;&#21160;&#8221; &#29366;&#24577;&#26426;&#26159;&#30001; &#8220;&#21152;&#36733;&#22120;&#8221; &#23436;&#25104;&#30340;</p>
-<p class=" font-serif my-1">&#21152;&#36733;&#22120;&#20063;&#26159;&#19968;&#27573;&#31243;&#24207; (&#29366;&#24577;&#26426;)</p>
-<p class=" font-serif my-1">&#36825;&#20010;&#31243;&#24207;&#30001;&#26159;&#30001;&#35841;&#21152;&#36733;&#30340;&#65311;</p>
-<p class=" font-serif my-1">&#8230;&#8230;</p></div>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">先有鸡还是先有蛋？</h2>
+<p class=" font-serif my-1">“启动” 状态机是由 “加载器” 完成的</p>
+<p class=" font-serif my-1">加载器也是一段程序 (状态机)</p>
+<p class=" font-serif my-1">这个程序由是由谁加载的？</p>
+<p class=" font-serif my-1">……</p></div>
         
       
       </section>
@@ -508,7 +508,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#30828;&#20214;&#21644;&#36719;&#20214;&#30340;&#26725;&#26753;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">硬件和软件的桥梁</h1></div></div></div>
         
       
       </section>
@@ -519,24 +519,24 @@ section .center {
 
       
         
-        <div><h2 id="bare-metal" class=" text-xl mt-2 pb-2 font-sans">Bare-Metal &#19982;&#31243;&#24207;&#21592;&#30340;&#32422;&#23450;</h2>
-<p class=" font-serif my-1">&#20026;&#20102;&#35753;&#35745;&#31639;&#26426;&#33021;<red>&#36816;&#34892;&#20219;&#20309;&#25105;&#20204;&#30340;&#31243;&#24207;</red>&#65292;&#19968;&#23450;&#23384;&#22312;&#19968;&#20123;&#36719;&#20214;/&#30828;&#20214;&#30340;&#32422;&#23450;</p>
+        <div><h2 id="bare-metal" class=" text-xl mt-2 pb-2 font-sans">Bare-Metal 与程序员的约定</h2>
+<p class=" font-serif my-1">为了让计算机能<red>运行任何我们的程序</red>，一定存在一些软件/硬件的约定</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">CPU reset &#21518;&#65292;&#22788;&#29702;&#22120;&#22788;&#20110;&#26576;&#20010;&#30830;&#23450;&#30340;&#29366;&#24577;<ul class=" list-disc font-serif">
-<li class=" ml-8">PC &#25351;&#38024;&#19968;&#33324;&#25351;&#21521;&#19968;&#27573; memory-mapped ROM<ul class=" list-disc font-serif">
-<li class=" ml-8">ROM &#23384;&#20648;&#20102;&#21378;&#21830;&#25552;&#20379;&#30340; firmware (&#22266;&#20214;)</li>
+<li class=" ml-8">CPU reset 后，处理器处于某个确定的状态<ul class=" list-disc font-serif">
+<li class=" ml-8">PC 指针一般指向一段 memory-mapped ROM<ul class=" list-disc font-serif">
+<li class=" ml-8">ROM 存储了厂商提供的 firmware (固件)</li>
 </ul>
 </li>
-<li class=" ml-8">&#22788;&#29702;&#22120;&#30340;&#22823;&#37096;&#20998;&#29305;&#24615;&#22788;&#20110;&#20851;&#38381;&#29366;&#24577;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#32531;&#23384;&#12289;&#34394;&#25311;&#23384;&#20648;&#12289;&#8230;&#8230;</li>
+<li class=" ml-8">处理器的大部分特性处于关闭状态<ul class=" list-disc font-serif">
+<li class=" ml-8">缓存、虚拟存储、……</li>
 </ul>
 </li>
 </ul>
 </li>
 <li class=" ml-8">Firmware<ul class=" list-disc font-serif">
-<li class=" ml-8">&#23558;&#29992;&#25143;&#25968;&#25454;&#21152;&#36733;&#21040;&#20869;&#23384;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20363;&#22914;&#23384;&#20648;&#20171;&#36136;&#19978;&#30340;&#31532;&#20108;&#32423; loader</li>
-<li class=" ml-8">&#25110;&#32773;&#30452;&#25509;&#21152;&#36733;&#25805;&#20316;&#31995;&#32479; (&#23884;&#20837;&#24335;&#31995;&#32479;)</li>
+<li class=" ml-8">将用户数据加载到内存<ul class=" list-disc font-serif">
+<li class=" ml-8">例如存储介质上的第二级 loader</li>
+<li class=" ml-8">或者直接加载操作系统 (嵌入式系统)</li>
 </ul>
 </li>
 <li class=" ml-8"><a href="https://www.denx.de/wiki/U-Boot" class=" text-amber-900">U-Boot</a>: the universal boot loader</li>
@@ -553,14 +553,14 @@ section .center {
 
       
         
-        <div><h2 id="x86-family-cpu-reset" class=" text-xl mt-2 pb-2 font-sans">x86 Family: CPU Reset &#34892;&#20026;</h2>
+        <div><h2 id="x86-family-cpu-reset" class=" text-xl mt-2 pb-2 font-sans">x86 Family: CPU Reset 行为</h2>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/intel-cpu-reset.png" width="420px"></p>
-<p class=" font-serif my-1">CPU Reset (<a href="https://software.intel.com/en-us/articles/intel-sdm" class=" text-amber-900">Intel&#174; 64 and IA-32 Architectures Software Developer&#8217;s Manual</a>, Volume 3A/3B)</p>
+<p class=" font-serif my-1">CPU Reset (<a href="https://software.intel.com/en-us/articles/intel-sdm" class=" text-amber-900">Intel® 64 and IA-32 Architectures Software Developer’s Manual</a>, Volume 3A/3B)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#23492;&#23384;&#22120;&#20250;&#26377;&#21021;&#22987;&#29366;&#24577;<ul class=" list-disc font-serif">
+<li class=" ml-8">寄存器会有初始状态<ul class=" list-disc font-serif">
 <li class=" ml-8"><code>EIP = 0x0000fff0</code></li>
 <li class=" ml-8"><code>CR0 = 0x60000010</code><ul class=" list-disc font-serif">
-<li class=" ml-8">16-bit &#27169;&#24335;</li>
+<li class=" ml-8">16-bit 模式</li>
 </ul>
 </li>
 <li class=" ml-8"><code>EFLAGS = 0x00000002</code><ul class=" list-disc font-serif">
@@ -569,8 +569,8 @@ section .center {
 </li>
 </ul>
 </li>
-<li class=" ml-8">TFM (5,000 &#39029; by 2019)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#26368;&#38656;&#35201;&#30340; Volume 3A &#21482;&#26377; 468 &#39029;</li>
+<li class=" ml-8">TFM (5,000 页 by 2019)<ul class=" list-disc font-serif">
+<li class=" ml-8">最需要的 Volume 3A 只有 468 页</li>
 </ul>
 </li>
 </ul></div>
@@ -584,12 +584,12 @@ section .center {
 
       
         
-        <div><h2 id="cpu-reset" class=" text-xl mt-2 pb-2 font-sans">CPU Reset &#20043;&#21518;&#65306;&#21457;&#29983;&#20102;&#20160;&#20040;&#65311;</h2>
-<p class=" font-serif my-1">&#12298;&#35745;&#31639;&#26426;&#31995;&#32479;&#22522;&#30784;&#12299;&#65306;<red>&#19981;&#20165;&#26159;&#31243;&#24207;&#65292;&#25972;&#20010;&#35745;&#31639;&#26426;&#31995;&#32479;&#20063;&#26159;&#19968;&#20010;&#29366;&#24577;&#26426;</red></p>
+        <div><h2 id="cpu-reset" class=" text-xl mt-2 pb-2 font-sans">CPU Reset 之后：发生了什么？</h2>
+<p class=" font-serif my-1">《计算机系统基础》：<red>不仅是程序，整个计算机系统也是一个状态机</red></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20174; PC (<code>CS:IP</code>) &#25351;&#38024;&#22788;&#21462;&#25351;&#20196;&#12289;&#35793;&#30721;&#12289;&#25191;&#34892;&#8230;&#8230;</li>
-<li class=" ml-8">&#20174; firmware &#24320;&#22987;&#25191;&#34892;<ul class=" list-disc font-serif">
-<li class=" ml-8"><code>ffff0</code> &#36890;&#24120;&#26159;&#19968;&#26465;&#21521; firmware &#36339;&#36716;&#30340; jmp &#25351;&#20196;</li>
+<li class=" ml-8">从 PC (<code>CS:IP</code>) 指针处取指令、译码、执行……</li>
+<li class=" ml-8">从 firmware 开始执行<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>ffff0</code> 通常是一条向 firmware 跳转的 jmp 指令</li>
 </ul>
 </li>
 </ul>
@@ -597,8 +597,8 @@ section .center {
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/bios-firmware.png" width="400px"></p>
 <p class=" font-serif my-1">Firmware: <a href="https://www.zhihu.com/question/21672895" class=" text-amber-900">BIOS vs. UEFI</a></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#37117;&#26159;&#20027;&#26495;/&#20027;&#26495;&#19978;&#22806;&#25554;&#35774;&#22791;&#30340;&#36719;&#20214;&#25277;&#35937;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#25903;&#25345;&#31995;&#32479;&#31649;&#29702;&#31243;&#24207;&#36816;&#34892;</li>
+<li class=" ml-8">都是主板/主板上外插设备的软件抽象<ul class=" list-disc font-serif">
+<li class=" ml-8">支持系统管理程序运行</li>
 </ul>
 </li>
 <li class=" ml-8">Legacy BIOS (Basic I/O System)</li>
@@ -614,17 +614,17 @@ section .center {
 
       
         
-        <div><h2 id="legacy-bios" class=" text-xl mt-2 pb-2 font-sans">Legacy BIOS: &#32422;&#23450;</h2>
-<p class=" font-serif my-1">Firmware &#24517;&#39035;&#25552;&#20379;&#26426;&#21046;&#65292;&#23558;&#29992;&#25143;&#25968;&#25454;&#36733;&#20837;&#20869;&#23384;</p>
+        <div><h2 id="legacy-bios" class=" text-xl mt-2 pb-2 font-sans">Legacy BIOS: 约定</h2>
+<p class=" font-serif my-1">Firmware 必须提供机制，将用户数据载入内存</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">Legacy BIOS &#25226;&#31532;&#19968;&#20010;&#21487;&#24341;&#23548;&#35774;&#22791;&#30340;&#31532;&#19968;&#20010;&#25159;&#21306;&#21152;&#36733;&#21040;&#29289;&#29702;&#20869;&#23384;&#30340; <code>7c00</code> &#20301;&#32622;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#27492;&#26102;&#22788;&#29702;&#22120;&#22788;&#20110; 16-bit &#27169;&#24335;</li>
-<li class=" ml-8">&#35268;&#23450; <code>CS:IP = 0x7c00</code>, <code>(R[CS] &lt;&lt; 4) | R[IP] == 0x7c00</code><ul class=" list-disc font-serif">
-<li class=" ml-8">&#21487;&#33021;&#24615;1&#65306;<code>CS = 0x07c0, IP = 0</code></li>
-<li class=" ml-8">&#21487;&#33021;&#24615;2&#65306;<code>CS = 0, IP = 0x7c00</code></li>
+<li class=" ml-8">Legacy BIOS 把第一个可引导设备的第一个扇区加载到物理内存的 <code>7c00</code> 位置<ul class=" list-disc font-serif">
+<li class=" ml-8">此时处理器处于 16-bit 模式</li>
+<li class=" ml-8">规定 <code>CS:IP = 0x7c00</code>, <code>(R[CS] << 4) | R[IP] == 0x7c00</code><ul class=" list-disc font-serif">
+<li class=" ml-8">可能性1：<code>CS = 0x07c0, IP = 0</code></li>
+<li class=" ml-8">可能性2：<code>CS = 0, IP = 0x7c00</code></li>
 </ul>
 </li>
-<li class=" ml-8">&#20854;&#20182;&#27809;&#26377;&#20219;&#20309;&#32422;&#26463;</li>
+<li class=" ml-8">其他没有任何约束</li>
 </ul>
 </li>
 </ul></div>
@@ -638,28 +638,28 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#33021;&#19981;&#33021;&#30475;&#19968;&#19979;&#20195;&#30721;&#65311;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">能不能看一下代码？</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
 <p class=" font-serif my-1">Talk is cheap. Show me the code. 
-&#8212;&#8212;Linus Torvalds</p>
+——Linus Torvalds</p>
 </blockquote>
-<p class=" font-serif my-1">&#26377;&#27809;&#26377;&#21487;&#33021;&#25105;&#20204;&#30495;&#30340;&#21435;&#30475;&#20174; CPU Reset &#20197;&#21518;&#27599;&#19968;&#26465;&#25351;&#20196;&#30340;&#25191;&#34892;&#65311;</p></div>
+<p class=" font-serif my-1">有没有可能我们真的去看从 CPU Reset 以后每一条指令的执行？</p></div>
         
       
          <div class="fragment"> 
         <div><hr>
-<p class=" font-serif my-1"><red>&#35745;&#31639;&#26426;&#31995;&#32479;&#20844;&#29702;&#65306;&#20320;&#24819;&#21040;&#30340;&#23601;&#19968;&#23450;&#26377;&#20154;&#20570;&#21040;&#12290;</red></p>
+<p class=" font-serif my-1"><red>计算机系统公理：你想到的就一定有人做到。</red></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#27169;&#25311;&#26041;&#26696;&#65306;QEMU<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20256;&#22855;&#40657;&#23458;&#12289;&#22825;&#25165;&#31243;&#24207;&#21592; <a href="https://www.zhihu.com/question/28388113" class=" text-amber-900">Fabrice Bellard</a> &#30340;&#26480;&#20316;<ul class=" list-disc font-serif">
+<li class=" ml-8">模拟方案：QEMU<ul class=" list-disc font-serif">
+<li class=" ml-8">传奇黑客、天才程序员 <a href="https://www.zhihu.com/question/28388113" class=" text-amber-900">Fabrice Bellard</a> 的杰作<ul class=" list-disc font-serif">
 <li class=" ml-8"><a href="https://www.usenix.org/legacy/publications/library/proceedings/usenix05/tech/freenix/full_papers/bellard/bellard.pdf" class=" text-amber-900">QEMU, A fast and portable dynamic translator</a> (USENIX ATC'05)</li>
-<li class=" ml-8">Android Virtual Device, VirtualBox, ... &#32972;&#21518;&#37117;&#26159; QEMU</li>
+<li class=" ml-8">Android Virtual Device, VirtualBox, ... 背后都是 QEMU</li>
 </ul>
 </li>
 </ul>
 </li>
-<li class=" ml-8">&#30495;&#26426;&#26041;&#26696;&#65306;JTAG (Joint Test Action Group) debugger<ul class=" list-disc font-serif">
-<li class=" ml-8">&#19968;&#31995;&#21015; (&#29289;&#29702;) &#35843;&#35797;&#23492;&#23384;&#22120;&#65292;&#21487;&#20197;&#23454;&#29616; gdb &#25509;&#21475; (!!!)</li>
+<li class=" ml-8">真机方案：JTAG (Joint Test Action Group) debugger<ul class=" list-disc font-serif">
+<li class=" ml-8">一系列 (物理) 调试寄存器，可以实现 gdb 接口 (!!!)</li>
 </ul>
 </li>
 </ul></div>
@@ -673,25 +673,25 @@ section .center {
 
       
         
-        <div><h2 id="qemu-firmware" class=" text-xl mt-2 pb-2 font-sans">&#35843;&#35797; QEMU: &#30830;&#35748; Firmware &#30340;&#34892;&#20026;</h2>
+        <div><h2 id="qemu-firmware" class=" text-xl mt-2 pb-2 font-sans">调试 QEMU: 确认 Firmware 的行为</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#20146;&#30524;&#30830;&#35748; Firmware &#21040;&#24213;&#26159;&#19981;&#26159;&#20250;&#21152;&#36733;&#21551;&#21160;&#30424;&#31532;&#19968;&#20010;&#25159;&#21306;&#21040; <code>0x7c00</code> &#20869;&#23384;&#20301;&#32622;&#65281;</p>
+<p class=" font-serif my-1">亲眼确认 Firmware 到底是不是会加载启动盘第一个扇区到 <code>0x7c00</code> 内存位置！</p>
 </blockquote>
 <hr>
-<p class=" font-serif my-1">&#35843;&#35797; QEMU &#27169;&#25311;&#22120;: <a href="../../../pages/OS/2021/demos/run-qemu.sh" class=" text-amber-900">run-qemu.sh</a> &#21644; <a href="../../../pages/OS/2021/demos/hello.img" class=" text-amber-900">hello.img</a></p>
+<p class=" font-serif my-1">调试 QEMU 模拟器: <a href="../../../pages/OS/2021/demos/run-qemu.sh" class=" text-amber-900">run-qemu.sh</a> 和 <a href="../../../pages/OS/2021/demos/hello.img" class=" text-amber-900">hello.img</a></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#26597;&#30475; CPU Reset &#21518;&#30340;&#23492;&#23384;&#22120;<ul class=" list-disc font-serif">
+<li class=" ml-8">查看 CPU Reset 后的寄存器<ul class=" list-disc font-serif">
 <li class=" ml-8"><code>info registers</code></li>
 </ul>
 </li>
-<li class=" ml-8">&#26597;&#30475; <code>0x7c00</code> &#20869;&#23384;&#30340;&#21152;&#36733;<ul class=" list-disc font-serif">
+<li class=" ml-8">查看 <code>0x7c00</code> 内存的加载<ul class=" list-disc font-serif">
 <li class=" ml-8"><code>watch *0x7c00</code></li>
-<li class=" ml-8">&#26597;&#30475;&#24403;&#21069;&#25351;&#20196; <code>x/i ($cs * 16 + $rip)</code></li>
-<li class=" ml-8">&#25171;&#21360;&#20869;&#23384; <code>x/16xb 0x7c00</code></li>
+<li class=" ml-8">查看当前指令 <code>x/i ($cs * 16 + $rip)</code></li>
+<li class=" ml-8">打印内存 <code>x/16xb 0x7c00</code></li>
 </ul>
 </li>
-<li class=" ml-8">&#36827;&#20837; <code>0x7c00</code> &#20195;&#30721;&#30340;&#25191;&#34892;<ul class=" list-disc font-serif">
-<li class=" ml-8"><code>b *0x7c00</code>, <code>c</code> (&#25746;&#33457;)</li>
+<li class=" ml-8">进入 <code>0x7c00</code> 代码的执行<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>b *0x7c00</code>, <code>c</code> (撒花)</li>
 </ul>
 </li>
 </ul></div>
@@ -705,24 +705,24 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#40481;&#21644;&#34507;&#30340;&#38382;&#39064;&#35299;&#20915;</h2>
-<p class=" font-serif my-1">&#26377;&#20010;&#21407;&#22987;&#30340;&#40481;&#65306;Firmware</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">鸡和蛋的问题解决</h2>
+<p class=" font-serif my-1">有个原始的鸡：Firmware</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20195;&#30721;&#30452;&#25509;&#23384;&#22312;&#20110;&#30828;&#20214;&#37324;</li>
-<li class=" ml-8">CPU Reset &#21518; Firmware &#20250;&#25191;&#34892;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#21152;&#36733; 512 &#23383;&#33410;&#21040;&#20869;&#23384; (Legacy Boot)</li>
-<li class=" ml-8">&#28982;&#21518;&#21151;&#25104;&#36523;&#36864;</li>
+<li class=" ml-8">代码直接存在于硬件里</li>
+<li class=" ml-8">CPU Reset 后 Firmware 会执行<ul class=" list-disc font-serif">
+<li class=" ml-8">加载 512 字节到内存 (Legacy Boot)</li>
+<li class=" ml-8">然后功成身退</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">Firmware &#30340;&#21478;&#19968;&#29992;&#22788;</p>
+<p class=" font-serif my-1">Firmware 的另一用处</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25918;&#32622;&#19968;&#20123; &#8220;&#32477;&#23545;&#23433;&#20840;&#30340;&#20195;&#30721;&#8221;<ul class=" list-disc font-serif">
-<li class=" ml-8"><a href="../../../pages/OS/manuals/BIOS-interrupts.pdf" class=" text-amber-900">BIOS &#20013;&#26029;</a> (Hello World &#26159;&#22914;&#20309;&#34987;&#25171;&#21360;&#30340;)</li>
+<li class=" ml-8">放置一些 “绝对安全的代码”<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="../../../pages/OS/manuals/BIOS-interrupts.pdf" class=" text-amber-900">BIOS 中断</a> (Hello World 是如何被打印的)</li>
 <li class=" ml-8">ARM TrustZone</li>
-<li class=" ml-8">Intel ME (&#19981;&#22826;&#27491;&#30830;&#30340; &#8220;Ring -3&#8221;)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#25454;&#35828; &#8220;&#27599;&#20010; Intel &#33455;&#29255;&#32452;&#37324;&#37117;&#34255;&#30528;&#19968;&#20010; Minix3 &#25805;&#20316;&#31995;&#32479;&#8221;</li>
+<li class=" ml-8">Intel ME (不太正确的 “Ring -3”)<ul class=" list-disc font-serif">
+<li class=" ml-8">据说 “每个 Intel 芯片组里都藏着一个 Minix3 操作系统”</li>
 </ul>
 </li>
 </ul>
@@ -738,24 +738,24 @@ section .center {
 
       
         
-        <div><h2 id="firmware-1998" class=" text-xl mt-2 pb-2 font-sans">&#23567;&#25554;&#26354;&#65306;Firmware &#30340;&#30149;&#27602; (1998)</h2>
-<p class=" font-serif my-1">Firmware &#36890;&#24120;&#26159;&#21482;&#35835;&#30340; (&#24403;&#28982;&#8230;&#8230;)</p>
+        <div><h2 id="firmware-1998" class=" text-xl mt-2 pb-2 font-sans">小插曲：Firmware 的病毒 (1998)</h2>
+<p class=" font-serif my-1">Firmware 通常是只读的 (当然……)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">Intel 430TX (Pentium) &#33455;&#29255;&#32452;&#20801;&#35768;<red>&#20889;&#20837; Flash ROM</red><ul class=" list-disc font-serif">
-<li class=" ml-8">&#21482;&#35201;&#21521; Flash BIOS &#20889;&#20837;&#29305;&#23450;&#24207;&#21015;&#65292;Flash ROM &#23601;&#21464;&#20026;&#21487;&#20889;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#30041;&#32473; firmware &#26356;&#26032;&#30340;&#36890;&#36947;</li>
+<li class=" ml-8">Intel 430TX (Pentium) 芯片组允许<red>写入 Flash ROM</red><ul class=" list-disc font-serif">
+<li class=" ml-8">只要向 Flash BIOS 写入特定序列，Flash ROM 就变为可写<ul class=" list-disc font-serif">
+<li class=" ml-8">留给 firmware 更新的通道</li>
 </ul>
 </li>
-<li class=" ml-8">&#35201;&#24471;&#21040;&#36825;&#20010;&#24207;&#21015;&#20854;&#23454;&#24182;&#19981;&#22256;&#38590;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20284;&#20046;&#25991;&#26723;&#37324;&#23601;&#26377;&#65292;&#36824;&#21487;&#20197;&#35299;&#26512; BIOS &#30340;&#26356;&#26032;&#31243;&#24207;</li>
-<li class=" ml-8">Boom&#8230;&#8230; (CPU RESET &#20043;&#21518;&#23601;&#8230;&#8230;&#20102;)</li>
+<li class=" ml-8">要得到这个序列其实并不困难<ul class=" list-disc font-serif">
+<li class=" ml-8">似乎文档里就有，还可以解析 BIOS 的更新程序</li>
+<li class=" ml-8">Boom…… (CPU RESET 之后就……了)</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">CIH &#30340;&#20316;&#32773;&#38472;&#30408;&#35946;&#34987;&#36910;&#25429;&#65292;&#20294;&#24182;&#26410;&#34987;&#23450;&#32618;</p>
+<p class=" font-serif my-1">CIH 的作者陈盈豪被逮捕，但并未被定罪</p>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/cih-virus.gif" width="400px"></p></div>
         
       
@@ -771,7 +771,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#35745;&#31639;&#26426;&#31995;&#32479; = &#29366;&#24577;&#26426;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">计算机系统 = 状态机</h1></div></div></div>
         
       
       </section>
@@ -782,19 +782,19 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#8220;&#35745;&#31639;&#26426;&#31995;&#32479;&#8221; &#30340;&#29366;&#24577;&#26426;&#24050;&#32463;&#21551;&#21160;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">“计算机系统” 的状态机已经启动</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#35745;&#31639;&#26426;&#31995;&#32479;&#21551;&#21160;&#21518;&#30340;&#21021;&#22987;&#29366;&#24577;&#65311;</p>
+<p class=" font-serif my-1">计算机系统启动后的初始状态？</p>
 </blockquote>
-<p class=" font-serif my-1">&#25105;&#20204;&#24050;&#32463;&#30693;&#36947;&#65306;</p>
+<p class=" font-serif my-1">我们已经知道：</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#31995;&#32479;&#24320;&#26426;&#21518;&#22788;&#29702;&#22120;&#20301;&#20110; CPU Reset &#30340;&#29366;&#24577;</li>
-<li class=" ml-8">&#20869;&#23384;&#26377;&#19968;&#37096;&#20998;&#26159; Firmware (PC &#25351;&#21521; Firmware)</li>
+<li class=" ml-8">系统开机后处理器位于 CPU Reset 的状态</li>
+<li class=" ml-8">内存有一部分是 Firmware (PC 指向 Firmware)</li>
 </ul>
-<p class=" font-serif my-1">&#36824;&#26377;&#19968;&#37096;&#20998;&#29366;&#24577;</p>
+<p class=" font-serif my-1">还有一部分状态</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><red>&#35745;&#31639;&#26426;&#31995;&#32479;&#36824;&#26377;&#24456;&#22810;&#29366;&#24577;&#22312; I/O &#35774;&#22791; (&#30913;&#30424;) &#37324;&#65281;</red></li>
-<li class=" ml-8"><code>make ARCH=x86_64-qemu</code> &#20250;&#21019;&#24314;&#22914;&#19979;&#26684;&#24335;&#30340;&#30913;&#30424;&#38236;&#20687;</li>
+<li class=" ml-8"><red>计算机系统还有很多状态在 I/O 设备 (磁盘) 里！</red></li>
+<li class=" ml-8"><code>make ARCH=x86_64-qemu</code> 会创建如下格式的磁盘镜像</li>
 </ul>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/am-disk-img.png" width="800px"></p></div>
         
@@ -807,11 +807,11 @@ section .center {
 
       
         
-        <div><h2 id="c" class=" text-xl mt-2 pb-2 font-sans">&#25805;&#20316;&#31995;&#32479;&#65306;&#26159;&#20010; C &#31243;&#24207;</h2>
-<p class=" font-serif my-1">&#19968;&#20010;&#36855;&#20320; &#8220;&#25805;&#20316;&#31995;&#32479;&#8221; <a href="../../../pages/OS/2021/demos/thread-os.c" class=" text-amber-900">thread-os.c</a></p>
+        <div><h2 id="c" class=" text-xl mt-2 pb-2 font-sans">操作系统：是个 C 程序</h2>
+<p class=" font-serif my-1">一个迷你 “操作系统” <a href="../../../pages/OS/2021/demos/thread-os.c" class=" text-amber-900">thread-os.c</a></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">make &#20250;&#24471;&#21040;&#19968;&#20010; &#8220;&#30913;&#30424;&#38236;&#20687;&#8221;&#65292;&#22909;&#20687;&#39764;&#27861;&#19968;&#26679;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#23601;&#36319;&#20320;&#20204;&#31532;&#19968;&#27425;&#29992; IDE &#30340;&#26102;&#20505;&#25353;&#19968;&#20010;&#38190;&#23601;&#21487;&#20197;&#32534;&#35793;&#36816;&#34892;&#19968;&#26679;</li>
+<li class=" ml-8">make 会得到一个 “磁盘镜像”，好像魔法一样<ul class=" list-disc font-serif">
+<li class=" ml-8">就跟你们第一次用 IDE 的时候按一个键就可以编译运行一样</li>
 </ul>
 </li>
 </ul>
@@ -819,11 +819,11 @@ section .center {
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">cte_init</span><span class="p">(</span><span class="n">on_interrupt</span><span class="p">);</span>
 
-<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">LENGTH</span><span class="p">(</span><span class="n">tasks</span><span class="p">);</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">Task</span><span class="w"> </span><span class="o">*</span><span class="n">task</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">tasks</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
-<span class="w">    </span><span class="n">Area</span><span class="w"> </span><span class="n">stack</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Area</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">&amp;</span><span class="n">task</span><span class="o">-&gt;</span><span class="n">context</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">task</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">};</span>
-<span class="w">    </span><span class="n">task</span><span class="o">-&gt;</span><span class="n">context</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kcontext</span><span class="p">(</span><span class="n">stack</span><span class="p">,</span><span class="w"> </span><span class="n">task</span><span class="o">-&gt;</span><span class="n">entry</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">task</span><span class="o">-&gt;</span><span class="n">name</span><span class="p">);</span>
-<span class="w">    </span><span class="n">task</span><span class="o">-&gt;</span><span class="n">next</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">tasks</span><span class="p">[(</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">LENGTH</span><span class="p">(</span><span class="n">tasks</span><span class="p">)];</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o"><</span><span class="w"> </span><span class="n">LENGTH</span><span class="p">(</span><span class="n">tasks</span><span class="p">);</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Task</span><span class="w"> </span><span class="o">*</span><span class="n">task</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="o">&</span><span class="n">tasks</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+<span class="w">    </span><span class="n">Area</span><span class="w"> </span><span class="n">stack</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Area</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">&</span><span class="n">task</span><span class="o">-></span><span class="n">context</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">task</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">};</span>
+<span class="w">    </span><span class="n">task</span><span class="o">-></span><span class="n">context</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kcontext</span><span class="p">(</span><span class="n">stack</span><span class="p">,</span><span class="w"> </span><span class="n">task</span><span class="o">-></span><span class="n">entry</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">task</span><span class="o">-></span><span class="n">name</span><span class="p">);</span>
+<span class="w">    </span><span class="n">task</span><span class="o">-></span><span class="n">next</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="o">&</span><span class="n">tasks</span><span class="p">[(</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">LENGTH</span><span class="p">(</span><span class="n">tasks</span><span class="p">)];</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="w">  </span><span class="n">mpe_init</span><span class="p">(</span><span class="n">mp_entry</span><span class="p">);</span>
 <span class="p">}</span>
@@ -838,8 +838,8 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#38236;&#20687;&#29983;&#25104;&#30340;&#20840;&#36807;&#31243;</h2>
-<p class=" font-serif my-1">&#35753;&#25105;&#20204;&#35266;&#23519; AbstractMachine &#31243;&#24207;&#30340;&#32534;&#35793;&#36807;&#31243;&#65306;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">镜像生成的全过程</h2>
+<p class=" font-serif my-1">让我们观察 AbstractMachine 程序的编译过程：</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>make<span class="w"> </span>-nB<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-ve<span class="w"> </span><span class="s1">'^\(\#\|echo\|mkdir\|make\)'</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s2">"s#</span><span class="nv">$AM_HOME</span><span class="s2">#\$AM_HOME#g"</span><span class="w"> </span><span class="se">\</span>
@@ -850,15 +850,15 @@ section .center {
 <ul class=" list-disc font-serif">
 <li class=" ml-8">Command line tricks<ul class=" list-disc font-serif">
 <li class=" ml-8"><code>make -nB</code> (RTFM)</li>
-<li class=" ml-8">grep: &#25991;&#26412;&#36807;&#28388;&#65292;&#30465;&#30053;&#20102;&#19968;&#20123;&#24178;&#25200;&#39033;<ul class=" list-disc font-serif">
-<li class=" ml-8">echo (&#25552;&#31034;&#20449;&#24687;), mkdir (&#30446;&#24405;&#24314;&#31435;), make (sub-goals)</li>
+<li class=" ml-8">grep: 文本过滤，省略了一些干扰项<ul class=" list-disc font-serif">
+<li class=" ml-8">echo (提示信息), mkdir (目录建立), make (sub-goals)</li>
 </ul>
 </li>
-<li class=" ml-8">sed: &#35753;&#36755;&#20986;&#26356;&#26131;&#35835;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#23558;&#32477;&#23545;&#36335;&#24452;&#26367;&#25442;&#25104;&#30456;&#23545;&#36335;&#24452;</li>
+<li class=" ml-8">sed: 让输出更易读<ul class=" list-disc font-serif">
+<li class=" ml-8">将绝对路径替换成相对路径</li>
 </ul>
 </li>
-<li class=" ml-8">vim: &#26356;&#33298;&#36866;&#30340;&#32534;&#36753;/&#26597;&#30475;&#20307;&#39564;</li>
+<li class=" ml-8">vim: 更舒适的编辑/查看体验</li>
 </ul>
 </li>
 </ul></div>
@@ -872,18 +872,18 @@ section .center {
 
       
         
-        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">&#38236;&#20687;&#29983;&#25104;&#30340;&#20840;&#36807;&#31243; (cont'd)</h2>
+        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">镜像生成的全过程 (cont'd)</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#22914;&#26524;&#20351;&#29992; &#8220;&#22303;&#21150;&#27861;&#8221;&#65292;&#20320;&#24456;&#21487;&#33021;&#34987;&#28153;&#27809;&#22312; Makefile &#20013;</p>
+<p class=" font-serif my-1">如果使用 “土办法”，你很可能被淹没在 Makefile 中</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#35835;&#25026; Makefile &#38656;&#35201; STFW, RTFM&#65292;&#22823;&#37327;&#30340;&#31934;&#21147;</li>
-<li class=" ml-8">&#34429;&#28982;&#33457;&#28857;&#26102;&#38388;&#35835;&#26159;&#20540;&#24471;&#30340;&#65292;&#20294;&#24456;&#21487;&#33021;&#35835;&#20102;&#24456;&#20037;&#37117;&#27809;&#35835;&#21040;&#37325;&#35201;&#30340;&#22320;&#26041;</li>
+<li class=" ml-8">读懂 Makefile 需要 STFW, RTFM，大量的精力</li>
+<li class=" ml-8">虽然花点时间读是值得的，但很可能读了很久都没读到重要的地方</li>
 </ul>
 </blockquote>
 <hr>
-<p class=" font-serif my-1">&#33457;&#19968;&#28857;&#26102;&#38388;&#24819; &#8220;&#24212;&#35813;&#24590;&#20040;&#20570;&#8221;</p>
+<p class=" font-serif my-1">花一点时间想 “应该怎么做”</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#33457;&#20960;&#20998;&#38047;&#21019;&#24314;&#19968;&#20010;&#23567;&#24037;&#20855;&#65306;&#8220;AbstractMachine &#26500;&#24314;&#29702;&#35299;&#24037;&#20855;&#8221;<ul class=" list-disc font-serif">
+<li class=" ml-8">花几分钟创建一个小工具：“AbstractMachine 构建理解工具”<ul class=" list-disc font-serif">
 <li class=" ml-8">UNIX Philosophy: keep it simple, stupid</li>
 <li class=" ml-8">everything is a file; write things to work together using text interface</li>
 </ul>
@@ -900,25 +900,25 @@ section .center {
 
       
         
-        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">&#38236;&#20687;&#29983;&#25104;&#30340;&#20840;&#36807;&#31243; (cont'd)</h2>
-<p class=" font-serif my-1">&#24819;&#35201;&#30475;&#24471;&#26356;&#28165;&#26970;&#19968;&#20123;&#65311;</p>
+        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">镜像生成的全过程 (cont'd)</h2>
+<p class=" font-serif my-1">想要看得更清楚一些？</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><code>:%s/ /\r  /g</code><ul class=" list-disc font-serif">
-<li class=" ml-8">&#27599;&#19968;&#20010;&#21629;&#20196;&#23601;&#20687; &#8220;&#19968;&#21477;&#35805;&#8221;</li>
+<li class=" ml-8">每一个命令就像 “一句话”</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#32534;&#35793;</p>
+<p class=" font-serif my-1">编译</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><code>-std=gnu11</code>, <code>m64</code>, <code>-mno-sse</code>, <code>-I</code>, <code>-D</code>, ... (&#36825;&#23545;&#20320;&#37197;&#32622; vscode &#24456;&#37325;&#35201;)</li>
+<li class=" ml-8"><code>-std=gnu11</code>, <code>m64</code>, <code>-mno-sse</code>, <code>-I</code>, <code>-D</code>, ... (这对你配置 vscode 很重要)</li>
 </ul>
-<p class=" font-serif my-1">&#38142;&#25509;</p>
+<p class=" font-serif my-1">链接</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><code>-melf_x86_64</code>, <code>-N</code>, <code>-Ttext-segment=0x00100000</code></li>
-<li class=" ml-8">&#38142;&#25509;&#20102; C &#20195;&#30721;&#23545;&#24212;&#30340; <code>.o</code> &#21644;&#24211; (<code>am-x86_64-qemu.a</code>, <code>klib-x86_64-qemu.a</code>)</li>
+<li class=" ml-8">链接了 C 代码对应的 <code>.o</code> 和库 (<code>am-x86_64-qemu.a</code>, <code>klib-x86_64-qemu.a</code>)</li>
 </ul>
-<p class=" font-serif my-1">&#24425;&#34507;</p>
+<p class=" font-serif my-1">彩蛋</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><code>make html</code></li>
 </ul></div>
@@ -936,7 +936,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#31995;&#22909;&#23433;&#20840;&#24102;&#65292;&#20986;&#21457;&#65281;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">系好安全带，出发！</h1></div></div></div>
         
       
       </section>
@@ -947,27 +947,27 @@ section .center {
 
       
         
-        <div><h2 id="1-boot-loader" class=" text-xl mt-2 pb-2 font-sans">(1) &#21551;&#21160;&#21152;&#36733;&#22120; (Boot Loader)</h2>
-<p class=" font-serif my-1">512 &#23383;&#33410;&#20013;&#30340;&#20195;&#30721;&#65292;&#20551;&#35774;&#20102;&#38236;&#20687;&#26684;&#24335; (&#30495;&#27491;&#30340;&#30340;&#21152;&#36733;&#22120;&#26377;&#24456;&#22810; stages)</p>
+        <div><h2 id="1-boot-loader" class=" text-xl mt-2 pb-2 font-sans">(1) 启动加载器 (Boot Loader)</h2>
+<p class=" font-serif my-1">512 字节中的代码，假设了镜像格式 (真正的的加载器有很多 stages)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">16-bit &#8594; 32-bit</li>
-<li class=" ml-8">ELF32/64 &#30340;&#21152;&#36733;&#22120;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#25353;&#29031;&#32422;&#23450;&#30340;&#30913;&#30424;&#38236;&#20687;&#26684;&#24335;&#21152;&#36733;</li>
+<li class=" ml-8">16-bit → 32-bit</li>
+<li class=" ml-8">ELF32/64 的加载器<ul class=" list-disc font-serif">
+<li class=" ml-8">按照约定的磁盘镜像格式加载</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#20195;&#30721;&#35762;&#35299;&#65306;</p>
+<p class=" font-serif my-1">代码讲解：</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><code>am/src/x86/qemu/boot/start.S</code> &#21644; <code>main.c</code><ul class=" list-disc font-serif">
-<li class=" ml-8">&#23427;&#20204;&#37117;&#21487;&#20197;&#35843;&#35797;&#65281;</li>
+<li class=" ml-8"><code>am/src/x86/qemu/boot/start.S</code> 和 <code>main.c</code><ul class=" list-disc font-serif">
+<li class=" ml-8">它们都可以调试！</li>
 </ul>
 </li>
 </ul>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">elf32</span><span class="o">-&gt;</span><span class="n">e_machine</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">EM_X86_64</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="p">((</span><span class="kt">void</span><span class="p">(</span><span class="o">*</span><span class="p">)())(</span><span class="kt">uint32_t</span><span class="p">)</span><span class="n">elf64</span><span class="o">-&gt;</span><span class="n">e_entry</span><span class="p">)();</span>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">elf32</span><span class="o">-></span><span class="n">e_machine</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">EM_X86_64</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">((</span><span class="kt">void</span><span class="p">(</span><span class="o">*</span><span class="p">)())(</span><span class="kt">uint32_t</span><span class="p">)</span><span class="n">elf64</span><span class="o">-></span><span class="n">e_entry</span><span class="p">)();</span>
 <span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="p">((</span><span class="kt">void</span><span class="p">(</span><span class="o">*</span><span class="p">)())(</span><span class="kt">uint32_t</span><span class="p">)</span><span class="n">elf32</span><span class="o">-&gt;</span><span class="n">e_entry</span><span class="p">)();</span>
+<span class="w">  </span><span class="p">((</span><span class="kt">void</span><span class="p">(</span><span class="o">*</span><span class="p">)())(</span><span class="kt">uint32_t</span><span class="p">)</span><span class="n">elf32</span><span class="o">-></span><span class="n">e_entry</span><span class="p">)();</span>
 <span class="p">}</span>
 </code></pre></div></div>
         
@@ -980,18 +980,18 @@ section .center {
 
       
         
-        <div><h2 id="2-elf-start64s" class=" text-xl mt-2 pb-2 font-sans">(2) ELF &#25991;&#20214;&#24320;&#22987;&#25191;&#34892;: <code>start64.S</code></h2>
-<p class=" font-serif my-1">Boot loader &#25191;&#34892;&#30340;&#26368;&#21518;&#19968;&#21477;&#20195;&#30721;&#65306;</p>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="w">  </span><span class="p">((</span><span class="kt">void</span><span class="p">(</span><span class="o">*</span><span class="p">)())(</span><span class="kt">uint32_t</span><span class="p">)</span><span class="n">elf64</span><span class="o">-&gt;</span><span class="n">e_entry</span><span class="p">)();</span>
+        <div><h2 id="2-elf-start64s" class=" text-xl mt-2 pb-2 font-sans">(2) ELF 文件开始执行: <code>start64.S</code></h2>
+<p class=" font-serif my-1">Boot loader 执行的最后一句代码：</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="w">  </span><span class="p">((</span><span class="kt">void</span><span class="p">(</span><span class="o">*</span><span class="p">)())(</span><span class="kt">uint32_t</span><span class="p">)</span><span class="n">elf64</span><span class="o">-></span><span class="n">e_entry</span><span class="p">)();</span>
 </code></pre></div>
 
 <hr>
-<p class=" font-serif my-1">&#22240;&#20026; ELF &#25991;&#20214;&#24050;&#32463;&#21152;&#36733;&#21040;&#20869;&#23384;&#65292;&#36825;&#23558;&#36339;&#36716;&#21040; <code>_start</code></p>
+<p class=" font-serif my-1">因为 ELF 文件已经加载到内存，这将跳转到 <code>_start</code></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20195;&#30721;&#20301;&#20110; <code>start64.S</code> (&#20999;&#25442;&#21040; 64-bit &#27169;&#24335;)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#35774;&#32622; GDT, PML4, EFER.LME</li>
-<li class=" ml-8"><code>ljmp</code> &#36339;&#36716;&#21040; 64-bit &#20195;&#30721;&#25191;&#34892; (<code>_start64</code>)</li>
-<li class=" ml-8">&#35774;&#32622;&#22909;&#27573;&#23492;&#23384;&#22120;&#21518;&#65292;&#36339;&#36716;&#21040; C &#20195;&#30721; <code>_start_c</code> &#25191;&#34892;</li>
+<li class=" ml-8">代码位于 <code>start64.S</code> (切换到 64-bit 模式)<ul class=" list-disc font-serif">
+<li class=" ml-8">设置 GDT, PML4, EFER.LME</li>
+<li class=" ml-8"><code>ljmp</code> 跳转到 64-bit 代码执行 (<code>_start64</code>)</li>
+<li class=" ml-8">设置好段寄存器后，跳转到 C 代码 <code>_start_c</code> 执行</li>
 </ul>
 </li>
 </ul></div>
@@ -1005,16 +1005,16 @@ section .center {
 
       
         
-        <div><h2 id="3-c-trmc" class=" text-xl mt-2 pb-2 font-sans">(3) C &#20195;&#30721;&#24320;&#22987;&#25191;&#34892;: <code>trm.c</code></h2>
-<p class=" font-serif my-1">&#24040;&#22810;&#26080;&#27604;&#38590;&#20197;&#29702;&#35299;&#30340;&#20195;&#30721;</p>
+        <div><h2 id="3-c-trmc" class=" text-xl mt-2 pb-2 font-sans">(3) C 代码开始执行: <code>trm.c</code></h2>
+<p class=" font-serif my-1">巨多无比难以理解的代码</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#23436;&#25104;&#30828;&#20214;&#30340;&#21021;&#22987;&#21270;</li>
-<li class=" ml-8">&#27809;&#20851;&#31995;&#8230;&#8230;&#19981;&#29992;&#30693;&#36947;&#23427;&#20204;&#26159;&#20160;&#20040;&#65292;&#21482;&#35201;&#30693;&#36947;&#23427;&#20204;&#26159; RTFM/STFW &#26469;&#24471;&#23601;&#34892;</li>
+<li class=" ml-8">完成硬件的初始化</li>
+<li class=" ml-8">没关系……不用知道它们是什么，只要知道它们是 RTFM/STFW 来得就行</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#23436;&#25104;&#21021;&#22987;&#21270;&#21518;&#65292;&#25191;&#34892;&#19968;&#27425;&#22534;&#26632;&#20999;&#25442;&#35843;&#29992;&#65292;&#36339;&#36716;&#21040; <code>call_main</code> (wrapper) &#25191;&#34892;</p>
+<p class=" font-serif my-1">完成初始化后，执行一次堆栈切换调用，跳转到 <code>call_main</code> (wrapper) 执行</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><red>&#36825;&#20010;&#25216;&#24039;&#22823;&#23478;&#22312; M2 &#20013;&#20250;&#29992;&#21040;&#65281;</red></li>
+<li class=" ml-8"><red>这个技巧大家在 M2 中会用到！</red></li>
 </ul>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">call_main</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">_halt</span><span class="p">(</span><span class="n">main</span><span class="p">(</span><span class="n">args</span><span class="p">));</span>
@@ -1030,18 +1030,18 @@ section .center {
 
       
         
-        <div><h2 id="4" class=" text-xl mt-2 pb-2 font-sans">(4) &#25805;&#20316;&#31995;&#32479;&#65306;&#24320;&#22987;&#25191;&#34892;</h2>
-<p class=" font-serif my-1"><code>main</code> &#22312;&#34987;&#35843;&#29992;&#26102;&#65306;</p>
+        <div><h2 id="4" class=" text-xl mt-2 pb-2 font-sans">(4) 操作系统：开始执行</h2>
+<p class=" font-serif my-1"><code>main</code> 在被调用时：</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#38745;&#24577;&#20195;&#30721;&#12289;&#25968;&#25454;&#22343;&#21487;&#29992;&#65307;&#21097;&#20313;&#21487;&#29992;&#29289;&#29702;&#20869;&#23384;&#21306;&#38388;&#20026; <code>_heap</code></li>
-<li class=" ml-8">&#20013;&#26029;&#22788;&#20110;&#20851;&#38381;&#29366;&#24577; (<code>FL_IF</code> cleared)</li>
-<li class=" ml-8">&#26377; 8 KiB &#30340;&#21021;&#22987;&#22534;&#26632; (&#20301;&#20110; <code>struct cpu_local</code> &#20013;)</li>
-<li class=" ml-8">&#8220;&#25805;&#20316;&#31995;&#32479;&#8221; &#23601;&#24320;&#22987;&#25191;&#34892;&#20102;</li>
+<li class=" ml-8">静态代码、数据均可用；剩余可用物理内存区间为 <code>_heap</code></li>
+<li class=" ml-8">中断处于关闭状态 (<code>FL_IF</code> cleared)</li>
+<li class=" ml-8">有 8 KiB 的初始堆栈 (位于 <code>struct cpu_local</code> 中)</li>
+<li class=" ml-8">“操作系统” 就开始执行了</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#20320;&#20063;&#21487;&#20197;&#23454;&#29616;&#30452;&#25509;&#22312;&#30828;&#20214;&#19978;&#36816;&#34892;&#30340;&#28216;&#25103;&#31561;&#20219;&#20309;&#31243;&#24207;</p>
+<p class=" font-serif my-1">你也可以实现直接在硬件上运行的游戏等任何程序</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#35843;&#29992; AbstractMachine API &#35775;&#38382; I/O &#35774;&#22791;&#12289;&#20013;&#26029;&#12289;&#34394;&#25311;&#20869;&#23384;&#12289;&#22810;&#22788;&#29702;&#22120;&#8230;&#8230;</li>
+<li class=" ml-8">调用 AbstractMachine API 访问 I/O 设备、中断、虚拟内存、多处理器……</li>
 </ul></div>
         
       
@@ -1057,7 +1057,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#24635;&#32467;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">总结</h1></div></div></div>
         
       
       </section>
@@ -1068,26 +1068,26 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#24635;&#32467;</h2>
-<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#20869;&#23481;&#19982;&#30446;&#26631;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">总结</h2>
+<p class=" font-serif my-1">本次课内容与目标</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#35843;&#35797;&#22266;&#20214; (Firmware)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#29702;&#35299;&#25805;&#20316;&#31995;&#32479;&#26159;&#22914;&#20309;&#34987;&#21551;&#21160;&#30340;</li>
-<li class=" ml-8">&#23398;&#20250;&#20351;&#29992; gdb (&#24517;&#22791;&#29983;&#23384;&#25216;&#33021;)</li>
+<li class=" ml-8">调试固件 (Firmware)<ul class=" list-disc font-serif">
+<li class=" ml-8">理解操作系统是如何被启动的</li>
+<li class=" ml-8">学会使用 gdb (必备生存技能)</li>
 </ul>
 </li>
-<li class=" ml-8">&#35843;&#35797; &#8220;&#25805;&#20316;&#31995;&#32479;&#36825;&#20010; C &#31243;&#24207;&#8221;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#28040;&#38500; &#8220;&#25805;&#20316;&#31995;&#32479;&#8221; &#30340;&#31070;&#31192;&#24863;</li>
-<li class=" ml-8">&#23398;&#20250;&#38405;&#35835; Makefile (&#24517;&#22791;&#29983;&#23384;&#25216;&#33021;)</li>
+<li class=" ml-8">调试 “操作系统这个 C 程序”<ul class=" list-disc font-serif">
+<li class=" ml-8">消除 “操作系统” 的神秘感</li>
+<li class=" ml-8">学会阅读 Makefile (必备生存技能)</li>
 </ul>
 </li>
 </ul>
 <hr>
 <p class=" font-serif my-1">Take-away messages</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#35745;&#31639;&#26426;&#31995;&#32479; = &#29366;&#24577;&#26426; (&#22238;&#24518; Reset &#26102;&#30340;&#29366;&#24577;)</li>
-<li class=" ml-8">&#31243;&#24207; = &#29366;&#24577;&#26426; (&#22238;&#24518;&#21152;&#36733;&#30636;&#38388;&#30340;&#29366;&#24577;)</li>
-<li class=" ml-8">&#35745;&#31639;&#26426;&#31995;&#32479; = &#31243;&#24207; (&#23545;&#21734;&#65292;&#27604;&#22914;&#27169;&#25311;&#22120;&#8230;&#8230;)</li>
+<li class=" ml-8">计算机系统 = 状态机 (回忆 Reset 时的状态)</li>
+<li class=" ml-8">程序 = 状态机 (回忆加载瞬间的状态)</li>
+<li class=" ml-8">计算机系统 = 程序 (对哦，比如模拟器……)</li>
 </ul></div>
         
       

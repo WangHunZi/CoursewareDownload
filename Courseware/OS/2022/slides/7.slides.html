@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +209,7 @@ section .center {
 }
 </style>
 
-  <title>&#30495;&#23454;&#19990;&#30028;&#30340;&#24182;&#21457;&#32534;&#31243;</title>
+  <title>真实世界的并发编程</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,21 +227,21 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#30495;&#23454;&#19990;&#30028;&#30340;&#24182;&#21457;&#32534;&#31243;</h1>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">真实世界的并发编程</h1>
 <p class=" font-serif my-1"><include src="Slides_Author"><div><div class="py-16">
-<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">&#33931;&#28814;&#23721;</a></p>
+<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">蒋炎岩</a></p>
 </div>
 <div class="row">
 <div class="author-affiliation">
-    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#12288;&#12288;&#21335;&#20140;&#22823;&#23398;&#12288;&#12288;</p>
+    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">　　南京大学　　</p>
     <img class="inline-img h-24" src="../../../static/img/nju-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#31185;&#23398;&#19982;&#25216;&#26415;&#31995;</p>
+   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">计算机科学与技术系</p>
     <img class="inline-img h-24" src="../../../static/img/njucs-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#36719;&#20214;&#30740;&#31350;&#25152;</p>
+    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">计算机软件研究所</p>
     <img class="inline-img h-24" src="../../../static/img/ics-logo.png" style="display: inline-block;"></a>
   </div>
 </div></div></include></p></div></div></div>
@@ -256,21 +256,21 @@ section .center {
       
         
         <div><h2 id="overview" class=" text-xl mt-2 pb-2 font-sans">Overview</h2>
-<p class=" font-serif my-1">&#22797;&#20064;</p>
+<p class=" font-serif my-1">复习</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#24182;&#21457;&#32534;&#31243;&#30340;&#22522;&#26412;&#24037;&#20855;&#65306;&#32447;&#31243;&#24211;&#12289;&#20114;&#26021;&#21644;&#21516;&#27493;</li>
+<li class=" ml-8">并发编程的基本工具：线程库、互斥和同步</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#22238;&#31572;&#30340;&#38382;&#39064;</p>
+<p class=" font-serif my-1">本次课回答的问题</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><strong>Q</strong>: &#20160;&#20040;&#26679;&#30340;&#20219;&#21153;&#26159;&#38656;&#35201;&#24182;&#34892;/&#24182;&#21457;&#30340;&#65311;&#23427;&#20204;&#24212;&#35813;&#22914;&#20309;&#23454;&#29616;&#65311;</li>
+<li class=" ml-8"><strong>Q</strong>: 什么样的任务是需要并行/并发的？它们应该如何实现？</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#20027;&#35201;&#20869;&#23481;</p>
+<p class=" font-serif my-1">本次课主要内容</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#39640;&#24615;&#33021;&#35745;&#31639;&#20013;&#30340;&#24182;&#21457;&#32534;&#31243;</li>
-<li class=" ml-8">&#25968;&#25454;&#20013;&#24515;&#37324;&#30340;&#24182;&#21457;&#32534;&#31243;</li>
-<li class=" ml-8">&#25105;&#20204;&#36523;&#36793;&#30340;&#24182;&#21457;&#32534;&#31243;</li>
+<li class=" ml-8">高性能计算中的并发编程</li>
+<li class=" ml-8">数据中心里的并发编程</li>
+<li class=" ml-8">我们身边的并发编程</li>
 </ul></div>
         
       
@@ -286,7 +286,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#39640;&#24615;&#33021;&#35745;&#31639;&#20013;&#30340;&#24182;&#21457;&#32534;&#31243;</h1>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">高性能计算中的并发编程</h1>
 <p class=" font-serif my-1"><br></p>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/Cray-1.jpg" width="300px"></p>
 <p class=" font-serif my-1"></p><center><a href="https://dl.acm.org/doi/10.1145/359327.359336" class=" text-amber-900">CRAY-1 Supercomputer</a>, 1976 @ 138 MFLOPS, SIMD Processor</center></div></div></div>
@@ -300,15 +300,15 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#39640;&#24615;&#33021;&#35745;&#31639;&#31243;&#24207;&#65306;&#29305;&#28857;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">高性能计算程序：特点</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#8220;A technology that harnesses the power of supercomputers or computer clusters to solve complex problems requiring massive computation.&#8221; (IBM)</p>
+<p class=" font-serif my-1">“A technology that harnesses the power of supercomputers or computer clusters to solve complex problems requiring massive computation.” (IBM)</p>
 </blockquote>
-<p class=" font-serif my-1">&#20197;&#35745;&#31639;&#20026;&#20013;&#24515;</p>
+<p class=" font-serif my-1">以计算为中心</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#31995;&#32479;&#27169;&#25311;&#65306;&#22825;&#27668;&#39044;&#25253;&#12289;&#33021;&#28304;&#12289;&#20998;&#23376;&#29983;&#29289;&#23398;</li>
-<li class=" ml-8">&#20154;&#24037;&#26234;&#33021;&#65306;&#31070;&#32463;&#32593;&#32476;&#35757;&#32451;</li>
-<li class=" ml-8">&#30719;&#21378;&#65306;&#32431;&#31929;&#30340; hash &#35745;&#31639;</li>
+<li class=" ml-8">系统模拟：天气预报、能源、分子生物学</li>
+<li class=" ml-8">人工智能：神经网络训练</li>
+<li class=" ml-8">矿厂：纯粹的 hash 计算</li>
 <li class=" ml-8"><a href="http://www.hpc100.cn/top100/20/" class=" text-amber-900">HPC-China 100</a></li>
 </ul></div>
         
@@ -321,24 +321,24 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#39640;&#24615;&#33021;&#35745;&#31639;&#65306;&#20027;&#35201;&#25361;&#25112;</h2>
-<p class=" font-serif my-1">&#35745;&#31639;&#20219;&#21153;&#22914;&#20309;&#20998;&#35299;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">高性能计算：主要挑战</h2>
+<p class=" font-serif my-1">计算任务如何分解</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#35745;&#31639;&#22270;&#38656;&#35201;&#23481;&#26131;&#24182;&#34892;&#21270;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#26426;&#22120;-&#32447;&#31243;&#20004;&#32423;&#20219;&#21153;&#20998;&#35299;</li>
+<li class=" ml-8">计算图需要容易并行化<ul class=" list-disc font-serif">
+<li class=" ml-8">机器-线程两级任务分解</li>
 </ul>
 </li>
-<li class=" ml-8">&#29983;&#20135;&#32773;-&#28040;&#36153;&#32773;&#35299;&#20915;&#19968;&#20999;<ul class=" list-disc font-serif">
-<li class=" ml-8"><a href="https://hpc-tutorials.llnl.gov/mpi/" class=" text-amber-900">MPI</a> - &#8220;a specification for the developers and users of message passing libraries&#8221;, <a href="https://www.openmp.org/" class=" text-amber-900">OpenMP</a> - &#8220;multi-platform shared-memory parallel programming in C/C++ and Fortran&#8221;</li>
+<li class=" ml-8">生产者-消费者解决一切<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="https://hpc-tutorials.llnl.gov/mpi/" class=" text-amber-900">MPI</a> - “a specification for the developers and users of message passing libraries”, <a href="https://www.openmp.org/" class=" text-amber-900">OpenMP</a> - “multi-platform shared-memory parallel programming in C/C++ and Fortran”</li>
 </ul>
 </li>
 <li class=" ml-8"><a href="https://web.mit.edu/dimitrib/www/pdc.html" class=" text-amber-900">Parallel and Distributed Computation: Numerical Methods</a></li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#32447;&#31243;&#38388;&#22914;&#20309;&#36890;&#20449;</p>
+<p class=" font-serif my-1">线程间如何通信</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#36890;&#20449;&#19981;&#20165;&#21457;&#29983;&#22312;&#33410;&#28857;/&#32447;&#31243;&#20043;&#38388;&#65292;&#36824;&#21457;&#29983;&#22312;&#20219;&#20309;&#20849;&#20139;&#20869;&#23384;&#35775;&#38382;</li>
-<li class=" ml-8">&#36824;&#35760;&#24471;&#34987; <a href="../../../pages/OS/2022/demos/mem-ordering.c" class=" text-amber-900">mem-ordering.c</a> &#25903;&#37197;&#30340;&#24656;&#24807;&#21527;&#65311;</li>
+<li class=" ml-8">通信不仅发生在节点/线程之间，还发生在任何共享内存访问</li>
+<li class=" ml-8">还记得被 <a href="../../../pages/OS/2022/demos/mem-ordering.c" class=" text-amber-900">mem-ordering.c</a> 支配的恐惧吗？</li>
 </ul></div>
         
       
@@ -350,7 +350,7 @@ section .center {
 
       
         
-        <div><h2 id="mandelbrot-set" class=" text-xl mt-2 pb-2 font-sans">&#20363;&#23376;&#65306;Mandelbrot Set</h2>
+        <div><h2 id="mandelbrot-set" class=" text-xl mt-2 pb-2 font-sans">例子：Mandelbrot Set</h2>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/Mandelbrot.jpg" width="700px"></p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><a href="../../../pages/OS/2022/demos/mandelbrot.c" class=" text-amber-900">mandelbrot.c</a> (embarrassingly parallel)</li>
@@ -369,10 +369,10 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#25968;&#25454;&#20013;&#24515;&#37324;&#30340;&#24182;&#21457;&#32534;&#31243;</h1>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">数据中心里的并发编程</h1>
 <p class=" font-serif my-1"><br></p>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/datacenter.jpg" width="700px"></p>
-<p class=" font-serif my-1"></p><center>Google &#30340;&#25968;&#25454;&#20013;&#24515;</center></div></div></div>
+<p class=" font-serif my-1"></p><center>Google 的数据中心</center></div></div></div>
         
       
       </section>
@@ -383,21 +383,21 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25968;&#25454;&#20013;&#24515;&#31243;&#24207;&#65306;&#29305;&#28857;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">数据中心程序：特点</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#8220;A network of computing and storage resources that enable the delivery of shared applications and data.&#8221; (CISCO)</p>
+<p class=" font-serif my-1">“A network of computing and storage resources that enable the delivery of shared applications and data.” (CISCO)</p>
 </blockquote>
-<p class=" font-serif my-1">&#20197;&#25968;&#25454; (&#23384;&#20648;) &#20026;&#20013;&#24515;</p>
+<p class=" font-serif my-1">以数据 (存储) 为中心</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20174;&#20114;&#32852;&#32593;&#25628;&#32034; (Google)&#12289;&#31038;&#20132;&#32593;&#32476; (Facebook/Twitter) &#36215;&#23478;</li>
-<li class=" ml-8">&#25903;&#25745;&#21508;&#31867;&#20114;&#32852;&#32593;&#24212;&#29992;&#65306;&#24494;&#20449;/QQ/&#25903;&#20184;&#23453;/&#28216;&#25103;/&#32593;&#30424;/&#8230;&#8230;</li>
+<li class=" ml-8">从互联网搜索 (Google)、社交网络 (Facebook/Twitter) 起家</li>
+<li class=" ml-8">支撑各类互联网应用：微信/QQ/支付宝/游戏/网盘/……</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#31639;&#27861;/&#31995;&#32479;&#23545; HPC &#21644;&#25968;&#25454;&#20013;&#24515;&#30340;&#24847;&#20041;</p>
+<p class=" font-serif my-1">算法/系统对 HPC 和数据中心的意义</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20320;&#26377; 1,000,000 &#21488;&#26381;&#21153;&#22120;</li>
-<li class=" ml-8">&#22914;&#26524;&#19968;&#20010;&#31639;&#27861;/&#23454;&#29616;&#33021;&#24555; 1%&#65292;&#23601;&#33021;&#30465; 10,000 &#21488;&#26381;&#21153;&#22120;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#21442;&#32771;&#65306;&#23545;&#38754;&#19968;&#22871;&#25151; &#8776; 50 &#21488;&#26381;&#21153;&#22120; (&#19981;&#35745;&#36816;&#32500;&#25104;&#26412;)</li>
+<li class=" ml-8">你有 1,000,000 台服务器</li>
+<li class=" ml-8">如果一个算法/实现能快 1%，就能省 10,000 台服务器<ul class=" list-disc font-serif">
+<li class=" ml-8">参考：对面一套房 ≈ 50 台服务器 (不计运维成本)</li>
 </ul>
 </li>
 </ul></div>
@@ -411,13 +411,13 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25968;&#25454;&#20013;&#24515;&#65306;&#20027;&#35201;&#25361;&#25112;</h2>
-<p class=" font-serif my-1">&#22810;&#21103;&#26412;&#24773;&#20917;&#19979;&#30340;&#39640;&#21487;&#38752;&#12289;&#20302;&#24310;&#36831;&#25968;&#25454;&#35775;&#38382;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">数据中心：主要挑战</h2>
+<p class=" font-serif my-1">多副本情况下的高可靠、低延迟数据访问</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#22312;&#26381;&#21153;&#28023;&#37327;&#22320;&#29702;&#20998;&#24067;&#35831;&#27714;&#30340;&#21069;&#25552;&#19979;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#25968;&#25454;&#35201;&#20445;&#25345;&#19968;&#33268; (Consistency)</li>
-<li class=" ml-8">&#26381;&#21153;&#26102;&#21051;&#20445;&#25345;&#21487;&#29992; (Availability)</li>
-<li class=" ml-8">&#23481;&#24525;&#26426;&#22120;&#31163;&#32447; (Partition tolerance)</li>
+<li class=" ml-8">在服务海量地理分布请求的前提下<ul class=" list-disc font-serif">
+<li class=" ml-8">数据要保持一致 (Consistency)</li>
+<li class=" ml-8">服务时刻保持可用 (Availability)</li>
+<li class=" ml-8">容忍机器离线 (Partition tolerance)</li>
 </ul>
 </li>
 </ul>
@@ -432,15 +432,15 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#36825;&#38376;&#35838;&#30340;&#38382;&#39064;&#65306;&#22914;&#20309;&#29992;&#22909;&#19968;&#21488;&#35745;&#31639;&#26426;&#65311;</h2>
-<p class=" font-serif my-1">&#22914;&#20309;&#29992;&#19968;&#21488; (&#21487;&#38752;&#30340;) &#35745;&#31639;&#26426;&#23613;&#21487;&#33021;&#22810;&#22320;&#26381;&#21153;&#24182;&#34892;&#30340;&#35831;&#27714;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">这门课的问题：如何用好一台计算机？</h2>
+<p class=" font-serif my-1">如何用一台 (可靠的) 计算机尽可能多地服务并行的请求</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20851;&#38190;&#25351;&#26631;&#65306;QPS, tail latency, ...</li>
+<li class=" ml-8">关键指标：QPS, tail latency, ...</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#25105;&#20204;&#26377;&#30340;&#24037;&#20855;</p>
+<p class=" font-serif my-1">我们有的工具</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#32447;&#31243; (threads)</li>
+<li class=" ml-8">线程 (threads)</li>
 </ul>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">thread</span><span class="p">(</span><span class="n">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">println</span><span class="p">(</span><span class="s">"</span><span class="si">${</span><span class="n">Thread</span><span class="p">.</span><span class="na">currentThread</span><span class="p">()</span><span class="si">}</span><span class="s"> has run."</span><span class="p">)</span>
@@ -448,9 +448,9 @@ section .center {
 </code></pre></div>
 
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#21327;&#31243; (coroutines)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#22810;&#20010;&#21487;&#20197;&#20445;&#23384;/&#24674;&#22797;&#30340;&#25191;&#34892;&#27969; (<a href="../labs/M2.html" class=" text-amber-900">M2 - libco</a>)</li>
-<li class=" ml-8">&#27604;&#32447;&#31243;&#26356;&#36731;&#37327; (&#23436;&#20840;&#27809;&#26377;&#31995;&#32479;&#35843;&#29992;&#65292;&#20063;&#23601;&#27809;&#26377;&#25805;&#20316;&#31995;&#32479;&#29366;&#24577;)</li>
+<li class=" ml-8">协程 (coroutines)<ul class=" list-disc font-serif">
+<li class=" ml-8">多个可以保存/恢复的执行流 (<a href="../labs/M2.html" class=" text-amber-900">M2 - libco</a>)</li>
+<li class=" ml-8">比线程更轻量 (完全没有系统调用，也就没有操作系统状态)</li>
 </ul>
 </li>
 </ul></div>
@@ -464,27 +464,27 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25968;&#25454;&#20013;&#24515;&#65306;&#21327;&#31243;&#21644;&#32447;&#31243;</h2>
-<p class=" font-serif my-1">&#25968;&#25454;&#20013;&#24515;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">数据中心：协程和线程</h2>
+<p class=" font-serif my-1">数据中心</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#21516;&#19968;&#26102;&#38388;&#26377;&#25968;&#21315;/&#25968;&#19975;&#20010;&#35831;&#27714;&#21040;&#36798;&#26381;&#21153;&#22120;</li>
-<li class=" ml-8">&#35745;&#31639;&#37096;&#20998;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#38656;&#35201;&#21033;&#29992;&#22909;&#22810;&#22788;&#29702;&#22120;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#32447;&#31243; &#8594; &#36825;&#23601;&#26159;&#25105;&#25797;&#38271;&#30340; (Mandelbrot Set)</li>
-<li class=" ml-8">&#21327;&#31243; &#8594; &#19968;&#20154;&#20986;&#21147;&#65292;&#20182;&#20154;&#25720;&#40060;</li>
+<li class=" ml-8">同一时间有数千/数万个请求到达服务器</li>
+<li class=" ml-8">计算部分<ul class=" list-disc font-serif">
+<li class=" ml-8">需要利用好多处理器<ul class=" list-disc font-serif">
+<li class=" ml-8">线程 → 这就是我擅长的 (Mandelbrot Set)</li>
+<li class=" ml-8">协程 → 一人出力，他人摸鱼</li>
 </ul>
 </li>
 </ul>
 </li>
-<li class=" ml-8">I/O &#37096;&#20998;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20250;&#22312;&#31995;&#32479;&#35843;&#29992;&#19978; block (&#20363;&#22914;&#35831;&#27714;&#21478;&#19968;&#20010;&#26381;&#21153;&#25110;&#35835;&#30913;&#30424;)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#21327;&#31243; &#8594; &#19968;&#20154;&#24178;&#31561;&#65292;&#20182;&#20154;&#22260;&#35266;</li>
-<li class=" ml-8">&#32447;&#31243; &#8594; &#27599;&#20010;&#32447;&#31243;&#37117;&#21344;&#29992;&#21487;&#35266;&#30340;&#25805;&#20316;&#31995;&#32479;&#36164;&#28304;</li>
+<li class=" ml-8">I/O 部分<ul class=" list-disc font-serif">
+<li class=" ml-8">会在系统调用上 block (例如请求另一个服务或读磁盘)<ul class=" list-disc font-serif">
+<li class=" ml-8">协程 → 一人干等，他人围观</li>
+<li class=" ml-8">线程 → 每个线程都占用可观的操作系统资源</li>
 </ul>
 </li>
 </ul>
 </li>
-<li class=" ml-8">(&#36825;&#20010;&#38382;&#39064;&#27604;&#20320;&#24819;&#35937;&#30340;&#22797;&#26434;&#65292;&#20363;&#22914;&#34394;&#25311;&#26426;)</li>
+<li class=" ml-8">(这个问题比你想象的复杂，例如虚拟机)</li>
 </ul></div>
         
       
@@ -496,18 +496,18 @@ section .center {
 
       
         
-        <div><h2 id="go-goroutine" class=" text-xl mt-2 pb-2 font-sans">Go &#21644; Goroutine</h2>
+        <div><h2 id="go-goroutine" class=" text-xl mt-2 pb-2 font-sans">Go 和 Goroutine</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">Go: &#23567;&#23401;&#23376;&#25165;&#20570;&#36873;&#25321;&#65292;&#22810;&#22788;&#29702;&#22120;&#24182;&#34892;&#21644;&#36731;&#37327;&#32423;&#24182;&#21457;&#25105;&#20840;&#37117;&#35201;&#65281;</p>
+<p class=" font-serif my-1">Go: 小孩子才做选择，多处理器并行和轻量级并发我全都要！</p>
 </blockquote>
-<p class=" font-serif my-1">Goroutine: &#27010;&#24565;&#19978;&#26159;&#32447;&#31243;&#65292;&#23454;&#38469;&#26159;&#32447;&#31243;&#21644;&#21327;&#31243;&#30340;&#28151;&#21512;&#20307;</p>
+<p class=" font-serif my-1">Goroutine: 概念上是线程，实际是线程和协程的混合体</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#27599;&#20010; CPU &#19978;&#26377;&#19968;&#20010; Go Worker&#65292;&#33258;&#30001;&#35843;&#24230; goroutines</li>
-<li class=" ml-8">&#25191;&#34892;&#21040; blocking API &#26102; (&#20363;&#22914; sleep, read)<ul class=" list-disc font-serif">
-<li class=" ml-8">Go Worker &#20599;&#20599;&#25913;&#25104; non-blocking &#30340;&#29256;&#26412;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#25104;&#21151; &#8594; &#31435;&#21363;&#32487;&#32493;&#25191;&#34892;</li>
-<li class=" ml-8">&#22833;&#36133; &#8594; &#31435;&#21363; yield &#21040;&#21478;&#19968;&#20010;&#38656;&#35201; CPU &#30340; goroutine<ul class=" list-disc font-serif">
-<li class=" ml-8">&#22826;&#24039;&#22937;&#20102;&#65281;CPU &#21644;&#25805;&#20316;&#31995;&#32479;&#20840;&#37096;&#29992;&#21040; 100%</li>
+<li class=" ml-8">每个 CPU 上有一个 Go Worker，自由调度 goroutines</li>
+<li class=" ml-8">执行到 blocking API 时 (例如 sleep, read)<ul class=" list-disc font-serif">
+<li class=" ml-8">Go Worker 偷偷改成 non-blocking 的版本<ul class=" list-disc font-serif">
+<li class=" ml-8">成功 → 立即继续执行</li>
+<li class=" ml-8">失败 → 立即 yield 到另一个需要 CPU 的 goroutine<ul class=" list-disc font-serif">
+<li class=" ml-8">太巧妙了！CPU 和操作系统全部用到 100%</li>
 </ul>
 </li>
 </ul>
@@ -516,7 +516,7 @@ section .center {
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#20363;&#23376;</p>
+<p class=" font-serif my-1">例子</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><a href="../../../pages/OS/2022/demos/fib.go" class=" text-amber-900">fib.go</a>; <a href="https://books.studygolang.com/gopl-zh/ch9/ch9-08.html" class=" text-amber-900"><em>The Go Programming Language</em> (ch 9.8)</a></li>
 </ul></div>
@@ -530,23 +530,23 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#29616;&#20195;&#32534;&#31243;&#35821;&#35328;&#19978;&#30340;&#31995;&#32479;&#32534;&#31243;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">现代编程语言上的系统编程</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">Do not communicate by sharing memory; instead, share memory by communicating. &#8212;&#8212;<em>Effective Go</em></p>
+<p class=" font-serif my-1">Do not communicate by sharing memory; instead, share memory by communicating. ——<em>Effective Go</em></p>
 </blockquote>
-<p class=" font-serif my-1">&#20849;&#20139;&#20869;&#23384; = &#19975;&#24694;&#20043;&#28304;</p>
+<p class=" font-serif my-1">共享内存 = 万恶之源</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#22312;&#22855;&#24618;&#35843;&#24230;&#19979;&#21457;&#29983;&#30340;&#21508;&#31181;&#24182;&#21457; bugs<ul class=" list-disc font-serif">
-<li class=" ml-8">&#26465;&#20214;&#21464;&#37327;&#65306;broadcast &#24615;&#33021;&#20302;&#65292;&#19981; broadcast &#23481;&#26131;&#38169;</li>
-<li class=" ml-8">&#20449;&#21495;&#37327;&#65306;&#22312;&#31649;&#29702;&#22810;&#31181;&#36164;&#28304;&#26102;&#23601;&#27809;&#37027;&#20040;&#22909;&#29992;&#20102;</li>
+<li class=" ml-8">在奇怪调度下发生的各种并发 bugs<ul class=" list-disc font-serif">
+<li class=" ml-8">条件变量：broadcast 性能低，不 broadcast 容易错</li>
+<li class=" ml-8">信号量：在管理多种资源时就没那么好用了</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#26082;&#28982;&#29983;&#20135;&#32773;-&#28040;&#36153;&#32773;&#33021;&#35299;&#20915;&#32477;&#22823;&#37096;&#20998;&#38382;&#39064;&#65292;&#25552;&#20379;&#19968;&#20010; API &#19981;&#23601;&#22909;&#20102;&#65311;</p>
+<p class=" font-serif my-1">既然生产者-消费者能解决绝大部分问题，提供一个 API 不就好了？</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><a href="../../../pages/OS/2022/demos/producer-consumer.go" class=" text-amber-900">producer-consumer.go</a><ul class=" list-disc font-serif">
-<li class=" ml-8">&#32531;&#23384;&#20026; 0 &#30340; channel &#21487;&#20197;&#29992;&#26469;&#21516;&#27493; (&#20808;&#21040;&#32773;&#31561;&#24453;)</li>
+<li class=" ml-8">缓存为 0 的 channel 可以用来同步 (先到者等待)</li>
 </ul>
 </li>
 </ul></div>
@@ -564,7 +564,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#25105;&#20204;&#36523;&#36793;&#30340;&#24182;&#21457;&#32534;&#31243;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">我们身边的并发编程</h1></div></div></div>
         
       
       </section>
@@ -575,20 +575,20 @@ section .center {
 
       
         
-        <div><h2 id="web-20-1999" class=" text-xl mt-2 pb-2 font-sans">Web 2.0 &#26102;&#20195; (1999)</h2>
-<p class=" font-serif my-1">&#20154;&#19982;&#20154;&#20043;&#38388;&#32852;&#31995;&#26356;&#21152;&#32039;&#23494;&#30340;&#20114;&#32852;&#32593;</p>
+        <div><h2 id="web-20-1999" class=" text-xl mt-2 pb-2 font-sans">Web 2.0 时代 (1999)</h2>
+<p class=" font-serif my-1">人与人之间联系更加紧密的互联网</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#8220;Users were encouraged to provide content, rather than just viewing it.&#8221;</li>
-<li class=" ml-8">&#20320;&#29978;&#33267;&#21487;&#20197;&#25214;&#21040;&#19968;&#20123; &#8220;Web 3.0&#8221;/Metaverse &#30340;&#32447;&#32034;</li>
+<li class=" ml-8">“Users were encouraged to provide content, rather than just viewing it.”</li>
+<li class=" ml-8">你甚至可以找到一些 “Web 3.0”/Metaverse 的线索</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#26159;&#20160;&#20040;&#25104;&#23601;&#20102;&#20170;&#22825;&#30340; Web 2.0?</p>
+<p class=" font-serif my-1">是什么成就了今天的 Web 2.0?</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#27983;&#35272;&#22120;&#20013;&#30340;&#24182;&#21457;&#32534;&#31243;&#65306;Ajax (Asynchronous JavaScript + XML)</li>
-<li class=" ml-8">HTML (DOM Tree) + CSS &#20195;&#34920;&#20102;&#20320;&#33021;&#30475;&#35265;&#30340;&#19968;&#20999;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#36890;&#36807; JavaScript &#21487;&#20197;&#25913;&#21464;&#23427;</li>
-<li class=" ml-8">&#36890;&#36807; JavaScript &#21487;&#20197;&#24314;&#31435;&#36830;&#25509;&#26412;&#22320;&#21644;&#26381;&#21153;&#22120;</li>
-<li class=" ml-8">&#20320;&#23601;&#25317;&#26377;&#20102;&#20840;&#19990;&#30028;&#65281;</li>
+<li class=" ml-8">浏览器中的并发编程：Ajax (Asynchronous JavaScript + XML)</li>
+<li class=" ml-8">HTML (DOM Tree) + CSS 代表了你能看见的一切<ul class=" list-disc font-serif">
+<li class=" ml-8">通过 JavaScript 可以改变它</li>
+<li class=" ml-8">通过 JavaScript 可以建立连接本地和服务器</li>
+<li class=" ml-8">你就拥有了全世界！</li>
 </ul>
 </li>
 </ul></div>
@@ -602,24 +602,24 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20154;&#26426;&#20132;&#20114;&#31243;&#24207;&#65306;&#29305;&#28857;&#21644;&#20027;&#35201;&#25361;&#25112;</h2>
-<p class=" font-serif my-1">&#29305;&#28857;&#65306;&#19981;&#22826;&#22797;&#26434;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">人机交互程序：特点和主要挑战</h2>
+<p class=" font-serif my-1">特点：不太复杂</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#26082;&#27809;&#26377;&#22826;&#22810;&#35745;&#31639;<ul class=" list-disc font-serif">
-<li class=" ml-8">DOM Tree &#20063;&#19981;&#33267;&#20110;&#22826;&#22823; (&#22823;&#20102;&#20154;&#20063;&#30475;&#19981;&#36807;&#26469;)</li>
-<li class=" ml-8">DOM Tree &#24590;&#20040;&#30011;&#27983;&#35272;&#22120;&#20840;&#24110;&#25105;&#20204;&#25630;&#23450;&#20102;</li>
+<li class=" ml-8">既没有太多计算<ul class=" list-disc font-serif">
+<li class=" ml-8">DOM Tree 也不至于太大 (大了人也看不过来)</li>
+<li class=" ml-8">DOM Tree 怎么画浏览器全帮我们搞定了</li>
 </ul>
 </li>
-<li class=" ml-8">&#20063;&#27809;&#26377;&#22826;&#22810; I/O<ul class=" list-disc font-serif">
-<li class=" ml-8">&#23601;&#26159;&#19968;&#20123;&#32593;&#32476;&#35831;&#27714;</li>
+<li class=" ml-8">也没有太多 I/O<ul class=" list-disc font-serif">
+<li class=" ml-8">就是一些网络请求</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#25361;&#25112;&#65306;&#31243;&#24207;&#21592;&#22810;</p>
+<p class=" font-serif my-1">挑战：程序员多</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#38646;&#22522;&#30784;&#30340;&#20154;&#20320;&#35753;&#20182;&#25972;&#20849;&#20139;&#20869;&#23384;&#19978;&#30340;&#22810;&#32447;&#31243;</li>
-<li class=" ml-8">&#24656;&#24597;&#25105;&#20204;&#29616;&#22312;&#29992;&#30340;&#21040;&#22788;&#37117;&#26159; bug &#21543;&#65311;&#65311;&#65311;</li>
+<li class=" ml-8">零基础的人你让他整共享内存上的多线程</li>
+<li class=" ml-8">恐怕我们现在用的到处都是 bug 吧？？？</li>
 </ul></div>
         
       
@@ -631,12 +631,12 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#21333;&#32447;&#31243; + &#20107;&#20214;&#27169;&#22411;</h2>
-<p class=" font-serif my-1">&#23613;&#21487;&#33021;&#23569;&#20294;&#21448;&#36275;&#22815;&#30340;&#24182;&#21457;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">单线程 + 事件模型</h2>
+<p class=" font-serif my-1">尽可能少但又足够的并发</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#19968;&#20010;&#32447;&#31243;&#12289;&#20840;&#23616;&#30340;&#20107;&#20214;&#38431;&#21015;&#12289;&#25353;&#24207;&#25191;&#34892; (run-to-complete)</li>
-<li class=" ml-8">&#32791;&#26102;&#30340; API (Timer, Ajax, ...) &#35843;&#29992;&#20250;&#31435;&#21363;&#36820;&#22238;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#26465;&#20214;&#28385;&#36275;&#26102;&#21521;&#38431;&#21015;&#37324;&#22686;&#21152;&#19968;&#20010;&#20107;&#20214;</li>
+<li class=" ml-8">一个线程、全局的事件队列、按序执行 (run-to-complete)</li>
+<li class=" ml-8">耗时的 API (Timer, Ajax, ...) 调用会立即返回<ul class=" list-disc font-serif">
+<li class=" ml-8">条件满足时向队列里增加一个事件</li>
 </ul>
 </li>
 </ul>
@@ -662,26 +662,26 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#24322;&#27493;&#20107;&#20214;&#27169;&#22411;</h2>
-<p class=" font-serif my-1">&#22909;&#22788;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">异步事件模型</h2>
+<p class=" font-serif my-1">好处</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#24182;&#21457;&#27169;&#22411;&#31616;&#21333;&#20102;&#24456;&#22810;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20989;&#25968;&#30340;&#25191;&#34892;&#26159;&#21407;&#23376;&#30340; (&#19981;&#33021;&#24182;&#34892;&#65292;&#20943;&#23569;&#20102;&#24182;&#21457; bug &#30340;&#21487;&#33021;&#24615;)</li>
+<li class=" ml-8">并发模型简单了很多<ul class=" list-disc font-serif">
+<li class=" ml-8">函数的执行是原子的 (不能并行，减少了并发 bug 的可能性)</li>
 </ul>
 </li>
-<li class=" ml-8">API &#20381;&#28982;&#21487;&#20197;&#24182;&#34892;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#36866;&#21512;&#32593;&#39029;&#36825;&#31181; &#8220;&#22823;&#37096;&#20998;&#26102;&#38388;&#33457;&#22312;&#28210;&#26579;&#21644;&#32593;&#32476;&#35831;&#27714;&#8221; &#30340;&#22330;&#26223;<ul class=" list-disc font-serif">
-<li class=" ml-8">JavaScript &#20195;&#30721;&#21482;&#36127;&#36131; &#8220;&#25551;&#36848;&#8221; DOM Tree</li>
+<li class=" ml-8">API 依然可以并行<ul class=" list-disc font-serif">
+<li class=" ml-8">适合网页这种 “大部分时间花在渲染和网络请求” 的场景<ul class=" list-disc font-serif">
+<li class=" ml-8">JavaScript 代码只负责 “描述” DOM Tree</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#22351;&#22788;</p>
+<p class=" font-serif my-1">坏处</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">Callback hell (&#31062;&#20256;&#23630;&#23665;)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#21018;&#25165;&#30340;&#20195;&#30721;&#23884;&#22871; 5 &#23618;&#65292;&#21487;&#32500;&#25252;&#24615;&#24050;&#32463;&#25509;&#36817;&#20110;&#38646;&#20102;</li>
+<li class=" ml-8">Callback hell (祖传屎山)<ul class=" list-disc font-serif">
+<li class=" ml-8">刚才的代码嵌套 5 层，可维护性已经接近于零了</li>
 </ul>
 </li>
 </ul></div>
@@ -695,13 +695,13 @@ section .center {
 
       
         
-        <div><h2 id="promise" class=" text-xl mt-2 pb-2 font-sans">&#24322;&#27493;&#32534;&#31243;&#65306;Promise</h2>
+        <div><h2 id="promise" class=" text-xl mt-2 pb-2 font-sans">异步编程：Promise</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#23548;&#33268; callback hell &#30340;&#26412;&#36136;&#65306;&#20154;&#31867;&#33041;&#34955;&#37324;&#24819;&#30340;&#26159; &#8220;&#27969;&#31243;&#22270;&#8221;&#65292;&#30475;&#21040;&#30340;&#26159; &#8220;&#22238;&#35843;&#8221;&#12290;</p>
+<p class=" font-serif my-1">导致 callback hell 的本质：人类脑袋里想的是 “流程图”，看到的是 “回调”。</p>
 </blockquote>
 <p class=" font-serif my-1">The Promise object represents the <em>eventual completion</em> (or failure) of an asynchronous operation and its resulting value.</p>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/promises.png" width="800px"></p>
-<p class=" font-serif my-1"></p><center>Promise: &#27969;&#31243;&#22270;&#30340;&#26500;&#36896;&#26041;&#27861; (Mozilla-MDN Docs)</center></div>
+<p class=" font-serif my-1"></p><center>Promise: 流程图的构造方法 (Mozilla-MDN Docs)</center></div>
         
       
       </section>
@@ -712,23 +712,23 @@ section .center {
 
       
         
-        <div><h2 id="promise-workflow" class=" text-xl mt-2 pb-2 font-sans">Promise: &#25551;&#36848; Workflow &#30340; &#8220;&#23884;&#20837;&#24335;&#35821;&#35328;&#8221;</h2>
+        <div><h2 id="promise-workflow" class=" text-xl mt-2 pb-2 font-sans">Promise: 描述 Workflow 的 “嵌入式语言”</h2>
 <p class=" font-serif my-1">Chaining</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="nx">loadScript</span><span class="p">(</span><span class="s2">"/article/promise-chaining/one.js"</span><span class="p">)</span>
-<span class="w">  </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="w"> </span><span class="nx">script</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">loadScript</span><span class="p">(</span><span class="s2">"/article/promise-chaining/two.js"</span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
-<span class="w">  </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="w"> </span><span class="nx">script</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">loadScript</span><span class="p">(</span><span class="s2">"/article/promise-chaining/three.js"</span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
-<span class="w">  </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="w"> </span><span class="nx">script</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="w"> </span><span class="nx">script</span><span class="w"> </span><span class="p">=></span><span class="w"> </span><span class="nx">loadScript</span><span class="p">(</span><span class="s2">"/article/promise-chaining/two.js"</span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="w"> </span><span class="nx">script</span><span class="w"> </span><span class="p">=></span><span class="w"> </span><span class="nx">loadScript</span><span class="p">(</span><span class="s2">"/article/promise-chaining/three.js"</span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="w"> </span><span class="nx">script</span><span class="w"> </span><span class="p">=></span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// scripts are loaded, we can use functions declared there</span>
 <span class="w">  </span><span class="p">})</span>
-<span class="w">  </span><span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">);</span>
+<span class="w">  </span><span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span><span class="w"> </span><span class="p">=></span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">);</span>
 </code></pre></div>
 
 <hr>
 <p class=" font-serif my-1">Fork-join</p>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="nx">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="nx">resolve</span><span class="p">,</span><span class="w"> </span><span class="nx">reject</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">resolve</span><span class="p">(</span><span class="s1">'A'</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">)</span>
-<span class="nx">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="nx">resolve</span><span class="p">,</span><span class="w"> </span><span class="nx">reject</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">resolve</span><span class="p">(</span><span class="s1">'B'</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">)</span>
-<span class="nx">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="nx">resolve</span><span class="p">,</span><span class="w"> </span><span class="nx">reject</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">resolve</span><span class="p">(</span><span class="s1">'C'</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">)</span>
-<span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">([</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">,</span><span class="w"> </span><span class="nx">c</span><span class="p">]).</span><span class="nx">then</span><span class="p">(</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">)</span>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="nx">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="nx">resolve</span><span class="p">,</span><span class="w"> </span><span class="nx">reject</span><span class="p">)</span><span class="w"> </span><span class="p">=></span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">resolve</span><span class="p">(</span><span class="s1">'A'</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">)</span>
+<span class="nx">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="nx">resolve</span><span class="p">,</span><span class="w"> </span><span class="nx">reject</span><span class="p">)</span><span class="w"> </span><span class="p">=></span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">resolve</span><span class="p">(</span><span class="s1">'B'</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">)</span>
+<span class="nx">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="nx">resolve</span><span class="p">,</span><span class="w"> </span><span class="nx">reject</span><span class="p">)</span><span class="w"> </span><span class="p">=></span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">resolve</span><span class="p">(</span><span class="s1">'C'</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">)</span>
+<span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">([</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">,</span><span class="w"> </span><span class="nx">c</span><span class="p">]).</span><span class="nx">then</span><span class="p">(</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="p">=></span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">)</span>
 </code></pre></div></div>
         
       
@@ -743,7 +743,7 @@ section .center {
         <div><h2 id="async-await-even-better" class=" text-xl mt-2 pb-2 font-sans">Async-Await: Even Better</h2>
 <p class=" font-serif my-1">async function</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#24635;&#26159;&#36820;&#22238;&#19968;&#20010; <code>Promise</code> object</li>
+<li class=" ml-8">总是返回一个 <code>Promise</code> object</li>
 <li class=" ml-8"><code>async_func()</code> - fork</li>
 </ul>
 <hr>
@@ -752,13 +752,13 @@ section .center {
 <li class=" ml-8"><code>await promise</code> - join</li>
 </ul>
 <hr>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="nx">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="s1">'/hello/a'</span><span class="p">)</span>
-<span class="nx">B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="s1">'/hello/b'</span><span class="p">)</span>
-<span class="nx">C</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="s1">'/hello/c'</span><span class="p">)</span>
-<span class="nx">hello</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">([</span><span class="nx">A</span><span class="p">(),</span><span class="w"> </span><span class="nx">B</span><span class="p">(),</span><span class="w"> </span><span class="nx">C</span><span class="p">()])</span>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="nx">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=></span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="s1">'/hello/a'</span><span class="p">)</span>
+<span class="nx">B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=></span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="s1">'/hello/b'</span><span class="p">)</span>
+<span class="nx">C</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=></span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="s1">'/hello/c'</span><span class="p">)</span>
+<span class="nx">hello</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=></span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">([</span><span class="nx">A</span><span class="p">(),</span><span class="w"> </span><span class="nx">B</span><span class="p">(),</span><span class="w"> </span><span class="nx">C</span><span class="p">()])</span>
 <span class="nx">hello</span><span class="p">()</span>
 <span class="w">  </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">alert</span><span class="p">)</span>
-<span class="w">  </span><span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">res</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'fetch failed!'</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">)</span>
+<span class="w">  </span><span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">res</span><span class="w"> </span><span class="p">=></span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'fetch failed!'</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">)</span>
 </code></pre></div></div>
         
       
@@ -774,7 +774,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#24635;&#32467;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">总结</h1></div></div></div>
         
       
       </section>
@@ -785,23 +785,23 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#24635;&#32467;</h2>
-<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#22238;&#31572;&#30340;&#38382;&#39064;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">总结</h2>
+<p class=" font-serif my-1">本次课回答的问题</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><strong>Q</strong>: &#20160;&#20040;&#26679;&#30340;&#20219;&#21153;&#26159;&#38656;&#35201;&#24182;&#34892;/&#24182;&#21457;&#30340;&#65311;&#23427;&#20204;&#24212;&#35813;&#22914;&#20309;&#23454;&#29616;&#65311;</li>
+<li class=" ml-8"><strong>Q</strong>: 什么样的任务是需要并行/并发的？它们应该如何实现？</li>
 </ul>
 <hr>
 <p class=" font-serif my-1">Take-away message</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#24182;&#21457;&#32534;&#31243;&#30340;&#30495;&#23454;&#24212;&#29992;&#22330;&#26223;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#39640;&#24615;&#33021;&#35745;&#31639; (&#27880;&#37325;&#20219;&#21153;&#20998;&#35299;): &#29983;&#20135;&#32773;-&#28040;&#36153;&#32773; (MPI/OpenMP)</li>
-<li class=" ml-8">&#25968;&#25454;&#20013;&#24515; (&#27880;&#37325;&#31995;&#32479;&#35843;&#29992;): &#32447;&#31243;-&#21327;&#31243; (Goroutine)</li>
-<li class=" ml-8">&#20154;&#26426;&#20132;&#20114; (&#27880;&#37325;&#26131;&#29992;&#24615;): &#20107;&#20214;-&#27969;&#22270; (Promise)</li>
+<li class=" ml-8">并发编程的真实应用场景<ul class=" list-disc font-serif">
+<li class=" ml-8">高性能计算 (注重任务分解): 生产者-消费者 (MPI/OpenMP)</li>
+<li class=" ml-8">数据中心 (注重系统调用): 线程-协程 (Goroutine)</li>
+<li class=" ml-8">人机交互 (注重易用性): 事件-流图 (Promise)</li>
 </ul>
 </li>
-<li class=" ml-8">&#32534;&#31243;&#24037;&#20855;&#30340;&#21457;&#23637;&#31361;&#39134;&#29467;&#36827;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#33258; Web 2.0 &#20197;&#26469;&#65292;&#24320;&#28304;&#31038;&#21306;&#25913;&#21464;&#20102;&#35745;&#31639;&#26426;&#31185;&#23398;&#30340;&#23398;&#20064;&#26041;&#24335;</li>
-<li class=" ml-8">&#24076;&#26395;&#27599;&#20010;&#21516;&#23398;&#37117;&#26377;&#19968;&#20010; &#8220;&#20027;&#21147;&#29616;&#20195;&#32534;&#31243;&#35821;&#35328;&#8221;<ul class=" list-disc font-serif">
+<li class=" ml-8">编程工具的发展突飞猛进<ul class=" list-disc font-serif">
+<li class=" ml-8">自 Web 2.0 以来，开源社区改变了计算机科学的学习方式</li>
+<li class=" ml-8">希望每个同学都有一个 “主力现代编程语言”<ul class=" list-disc font-serif">
 <li class=" ml-8">Modern C++, Rust, Javascript, ...</li>
 </ul>
 </li>

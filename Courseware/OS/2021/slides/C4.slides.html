@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +209,7 @@ section .center {
 }
 </style>
 
-  <title>[C4] &#24182;&#21457;&#25968;&#25454;&#32467;&#26500;</title>
+  <title>[C4] 并发数据结构</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,21 +227,21 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="c4" class=" text-2xl mt-2 font-sans">[C4] &#24182;&#21457;&#25968;&#25454;&#32467;&#26500;</h1>
+        <div><div class="center middle"><div style="width:100%"><h1 id="c4" class=" text-2xl mt-2 font-sans">[C4] 并发数据结构</h1>
 <p class=" font-serif my-1"><include src="Slides_Author"><div><div class="py-16">
-<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">&#33931;&#28814;&#23721;</a></p>
+<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">蒋炎岩</a></p>
 </div>
 <div class="row">
 <div class="author-affiliation">
-    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#12288;&#12288;&#21335;&#20140;&#22823;&#23398;&#12288;&#12288;</p>
+    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">　　南京大学　　</p>
     <img class="inline-img h-24" src="../../../static/img/nju-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#31185;&#23398;&#19982;&#25216;&#26415;&#31995;</p>
+   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">计算机科学与技术系</p>
     <img class="inline-img h-24" src="../../../static/img/njucs-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#36719;&#20214;&#30740;&#31350;&#25152;</p>
+    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">计算机软件研究所</p>
     <img class="inline-img h-24" src="../../../static/img/ics-logo.png" style="display: inline-block;"></a>
   </div>
 </div></div></include></p></div></div></div>
@@ -255,17 +255,17 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#32972;&#26223;</h2>
-<p class=" font-serif my-1">&#24182;&#21457;&#32534;&#31243;&#65306;&#20174;&#20837;&#38376;&#21040;&#25918;&#24323;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">背景</h2>
+<p class=" font-serif my-1">并发编程：从入门到放弃</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20837;&#38376;&#65306;<code>threads.h</code></li>
-<li class=" ml-8">&#25918;&#24323;&#65306;&#21407;&#23376;&#24615;&#12289;&#39034;&#24207;&#12289;&#21487;&#35265;&#24615;&#30340;&#20007;&#22833;</li>
+<li class=" ml-8">入门：<code>threads.h</code></li>
+<li class=" ml-8">放弃：原子性、顺序、可见性的丧失</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#20114;&#26021;&#65306;&#24674;&#22797; &#8220;&#22359;&#8221; &#20043;&#38388;&#30340;&#21407;&#23376;&#24615;&#12289;&#39034;&#24207;&#12289;&#21487;&#35265;&#24615;</p>
+<p class=" font-serif my-1">互斥：恢复 “块” 之间的原子性、顺序、可见性</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><code>lock(&amp;lk)</code></li>
-<li class=" ml-8"><code>unlock(&amp;lk)</code></li>
+<li class=" ml-8"><code>lock(&lk)</code></li>
+<li class=" ml-8"><code>unlock(&lk)</code></li>
 </ul></div>
         
       
@@ -277,15 +277,15 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26412;&#27425;&#35838;&#20869;&#23481;&#19982;&#30446;&#26631;</h2>
-<p class=" font-serif my-1">&#29702;&#35299;&#25968;&#25454;&#31454;&#20105;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">本次课内容与目标</h2>
+<p class=" font-serif my-1">理解数据竞争</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25968;&#25454;&#31454;&#20105;&#26159;&#20160;&#20040;&#65311;&#26377;&#20160;&#20040;&#21361;&#23475;&#65311;</li>
+<li class=" ml-8">数据竞争是什么？有什么危害？</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#29992;&#20114;&#26021;&#38145;&#23454;&#29616;&#24182;&#21457;&#25968;&#25454;&#32467;&#26500;</p>
+<p class=" font-serif my-1">用互斥锁实现并发数据结构</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#32447;&#31243;&#23433;&#20840;&#30340;&#38142;&#34920;</li>
+<li class=" ml-8">线程安全的链表</li>
 <li class=" ml-8">malloc/free</li>
 </ul></div>
         
@@ -302,7 +302,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="data-race" class=" text-2xl mt-2 font-sans">&#25968;&#25454;&#31454;&#20105; (Data Race)</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="data-race" class=" text-2xl mt-2 font-sans">数据竞争 (Data Race)</h1></div></div></div>
         
       
       </section>
@@ -313,14 +313,14 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25968;&#25454;&#31454;&#20105;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">数据竞争</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1"><red>&#19981;&#21516;&#30340;&#32447;&#31243;</red>&#21516;&#26102;&#35775;&#38382;<red>&#21516;&#19968;&#27573;&#20869;&#23384;</red>&#65292;&#19988;<red>&#33267;&#23569;&#26377;&#19968;&#20010;&#26159;&#20889;</red>&#12290;</p>
+<p class=" font-serif my-1"><red>不同的线程</red>同时访问<red>同一段内存</red>，且<red>至少有一个是写</red>。</p>
 </blockquote>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20004;&#20010;&#20869;&#23384;&#35775;&#38382;&#22312; &#8220;&#36187;&#36305;&#8221;&#65292;&#8220;&#36305;&#36194;&#8221; &#30340;&#25805;&#20316;&#20808;&#25191;&#34892;<ul class=" list-disc font-serif">
-<li class=" ml-8"><a href="../../../pages/OS/2021/demos/peterson.c" class=" text-amber-900">peterson.c</a>: &#20869;&#23384;&#35775;&#38382;&#37117;&#22312;&#36187;&#36305;<ul class=" list-disc font-serif">
-<li class=" ml-8"><a href="https://www.felixcloutier.com/x86/mfence" class=" text-amber-900">MFENCE</a>&#65306;<strike>&#22914;&#20309;&#30041;&#19979;&#26368;&#23569;&#30340; fence&#65292;&#20381;&#28982;&#20445;&#35777;&#31639;&#27861;&#27491;&#30830;&#65311;</strike></li>
+<li class=" ml-8">两个内存访问在 “赛跑”，“跑赢” 的操作先执行<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="../../../pages/OS/2021/demos/peterson.c" class=" text-amber-900">peterson.c</a>: 内存访问都在赛跑<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="https://www.felixcloutier.com/x86/mfence" class=" text-amber-900">MFENCE</a>：<strike>如何留下最少的 fence，依然保证算法正确？</strike></li>
 </ul>
 </li>
 </ul>
@@ -337,17 +337,17 @@ section .center {
 
       
         
-        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">&#25968;&#25454;&#31454;&#20105; (cont'd)</h2>
-<p class=" font-serif my-1">Peterson &#31639;&#27861;&#21578;&#35785;&#22823;&#23478;&#65306;</p>
+        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">数据竞争 (cont'd)</h2>
+<p class=" font-serif my-1">Peterson 算法告诉大家：</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><red>&#20320;&#20204;&#20889;&#19981;&#23545;&#26080;&#38145;&#30340;&#24182;&#21457;&#31243;&#24207;</red></li>
-<li class=" ml-8">&#25152;&#20197;&#20107;&#24773;&#21453;&#32780;&#31616;&#21333;&#20102;</li>
+<li class=" ml-8"><red>你们写不对无锁的并发程序</red></li>
+<li class=" ml-8">所以事情反而简单了</li>
 </ul>
 <p class=" font-serif my-1"><br></p>
-<h1 class="center text-2xl mt-2 font-sans">&#29992;&#20114;&#26021;&#38145;&#20445;&#25252;&#22909;&#20849;&#20139;&#25968;&#25454;</h1>
+<h1 class="center text-2xl mt-2 font-sans">用互斥锁保护好共享数据</h1>
 
 <p class=" font-serif my-1"><br></p>
-<h1 class="center text-2xl mt-2 font-sans">&#28040;&#28781;&#19968;&#20999;&#25968;&#25454;&#31454;&#20105;</h1></div>
+<h1 class="center text-2xl mt-2 font-sans">消灭一切数据竞争</h1></div>
         
       
       </section>
@@ -358,20 +358,20 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25968;&#25454;&#31454;&#20105;&#65306;&#20363;&#23376;</h2>
-<p class=" font-serif my-1">&#20197;&#19979;&#20195;&#30721;&#27010;&#25324;&#20102;&#20320;&#20204;&#36935;&#21040;&#25968;&#25454;&#31454;&#20105;&#30340;&#22823;&#37096;&#20998;&#24773;&#20917;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">数据竞争：例子</h2>
+<p class=" font-serif my-1">以下代码概括了你们遇到数据竞争的大部分情况</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#19981;&#35201;&#31505;&#65292;&#20320;&#20204;&#30340; bug &#20960;&#20046;&#37117;&#26159;&#36825;&#20004;&#31181;&#24773;&#20917;&#30340;&#21464;&#31181;</li>
+<li class=" ml-8">不要笑，你们的 bug 几乎都是这两种情况的变种</li>
 </ul>
 <hr>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="c1">// Case #1: &#19978;&#38169;&#20102;&#38145;</span>
-<span class="kt">void</span><span class="w"> </span><span class="nf">thread1</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">spin_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lk1</span><span class="p">);</span><span class="w"> </span><span class="n">sum</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="n">spin_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lk1</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
-<span class="kt">void</span><span class="w"> </span><span class="nf">thread2</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">spin_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lk2</span><span class="p">);</span><span class="w"> </span><span class="n">sum</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="n">spin_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lk2</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="c1">// Case #1: 上错了锁</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">thread1</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">spin_lock</span><span class="p">(</span><span class="o">&</span><span class="n">lk1</span><span class="p">);</span><span class="w"> </span><span class="n">sum</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="n">spin_unlock</span><span class="p">(</span><span class="o">&</span><span class="n">lk1</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">thread2</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">spin_lock</span><span class="p">(</span><span class="o">&</span><span class="n">lk2</span><span class="p">);</span><span class="w"> </span><span class="n">sum</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="n">spin_unlock</span><span class="p">(</span><span class="o">&</span><span class="n">lk2</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
 
 <hr>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="c1">// Case #2: &#24536;&#35760;&#19978;&#38145;</span>
-<span class="kt">void</span><span class="w"> </span><span class="nf">thread1</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">spin_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lk1</span><span class="p">);</span><span class="w"> </span><span class="n">sum</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="n">spin_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lk1</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="c1">// Case #2: 忘记上锁</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">thread1</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">spin_lock</span><span class="p">(</span><span class="o">&</span><span class="n">lk1</span><span class="p">);</span><span class="w"> </span><span class="n">sum</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="n">spin_unlock</span><span class="p">(</span><span class="o">&</span><span class="n">lk1</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
 <span class="kt">void</span><span class="w"> </span><span class="nf">thread2</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">sum</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div></div>
         
@@ -388,7 +388,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#25968;&#25454;&#32467;&#26500;&#21644;&#24182;&#21457;&#25968;&#25454;&#32467;&#26500;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">数据结构和并发数据结构</h1></div></div></div>
         
       
       </section>
@@ -399,16 +399,16 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25968;&#25454;&#32467;&#26500; (&#25277;&#35937;&#25968;&#25454;&#31867;&#22411;)</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">数据结构 (抽象数据类型)</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
 <p class=" font-serif my-1">Abstract Data Type (ADT): A mathematical model for data types, where a data type is defined by its behavior semantics from the point of view of a <em>user</em> of the data, specifically in terms of possible values, possible operations on data of this type, and the behavior of these operations.</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">ADT &#26159;&#25509;&#21475; (&#25551;&#36848;&#25968;&#25454;&#32467;&#26500;&#19978;&#25805;&#20316;&#30340;&#34892;&#20026;)</li>
-<li class=" ml-8">ADT &#29992;&#26576;&#20010;&#20855;&#20307;&#30340;&#25968;&#25454;&#32467;&#26500;&#23454;&#29616;</li>
+<li class=" ml-8">ADT 是接口 (描述数据结构上操作的行为)</li>
+<li class=" ml-8">ADT 用某个具体的数据结构实现</li>
 </ul>
 </blockquote>
 <hr>
-<p class=" font-serif my-1">&#23398;&#36807;&#30340;&#25968;&#25454;&#32467;&#26500;</p>
+<p class=" font-serif my-1">学过的数据结构</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">Array, vector, linked list, (balanced) binary search tree, interval tree, hash table, skip list, ...</li>
 </ul></div>
@@ -422,20 +422,20 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20363;&#23376;&#65306;&#38142;&#34920;</h2>
-<p class=" font-serif my-1">(&#38754;&#35797;&#39064;) &#23454;&#29616;&#21452;&#21521;&#38142;&#34920;&#25805;&#20316;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">例子：链表</h2>
+<p class=" font-serif my-1">(面试题) 实现双向链表操作</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25805;&#20316;&#31995;&#32479;&#20013;&#38750;&#24120;&#24120;&#29992; (&#35831;&#21442;&#32771; Linux <code>list_head</code>)</li>
+<li class=" ml-8">操作系统中非常常用 (请参考 Linux <code>list_head</code>)</li>
 </ul>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">node</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">ptr</span><span class="p">;</span>
 <span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">node</span><span class="w"> </span><span class="o">*</span><span class="n">prev</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">next</span><span class="p">;</span>
 <span class="p">}</span><span class="w"> </span><span class="n">node_t</span><span class="p">;</span>
 
-<span class="n">node_t</span><span class="w"> </span><span class="n">head</span><span class="p">;</span><span class="w"> </span><span class="c1">// &#27880;&#24847;&#19981;&#26159;&#25351;&#38024;</span>
+<span class="n">node_t</span><span class="w"> </span><span class="n">head</span><span class="p">;</span><span class="w"> </span><span class="c1">// 注意不是指针</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">list_init</span><span class="p">(</span><span class="n">node_t</span><span class="w"> </span><span class="o">*</span><span class="n">head</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">head</span><span class="o">-&gt;</span><span class="n">prev</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">head</span><span class="p">;</span>
+<span class="w">  </span><span class="n">head</span><span class="o">-></span><span class="n">prev</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">head</span><span class="o">-></span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">head</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">list_insert_before</span><span class="p">(</span><span class="n">node_t</span><span class="w"> </span><span class="o">*</span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">node_t</span><span class="w"> </span><span class="o">*</span><span class="n">new</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">TODO</span><span class="p">();</span><span class="w"> </span><span class="p">}</span>
@@ -452,25 +452,25 @@ section .center {
 
       
         
-        <div><h2 id="1" class=" text-xl mt-2 pb-2 font-sans">&#32534;&#31243;&#24314;&#35758; (1): &#19981;&#35201;&#30452;&#25509;&#19978;&#25163;&#23601;&#32534;</h2>
-<p class=" font-serif my-1">&#30333;&#26495;&#38754;&#35797;&#65306;&#25968;&#25454;&#32467;&#26500;&#12289;&#31639;&#27861;&#8230;&#8230;</p>
+        <div><h2 id="1" class=" text-xl mt-2 pb-2 font-sans">编程建议 (1): 不要直接上手就编</h2>
+<p class=" font-serif my-1">白板面试：数据结构、算法……</p>
 <hr>
-<p class=" font-serif my-1">Google &#32463;&#20856;&#38754;&#35797;</p>
+<p class=" font-serif my-1">Google 经典面试</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">Phone interview<ul class=" list-disc font-serif">
-<li class=" ml-8">&#22312; Google Docs &#20013;&#20889;&#20986; bug-free &#30340;&#20195;&#30721; (x1)</li>
+<li class=" ml-8">在 Google Docs 中写出 bug-free 的代码 (x1)</li>
 </ul>
 </li>
 <li class=" ml-8">Onsite interview<ul class=" list-disc font-serif">
-<li class=" ml-8">&#22312;&#30333;&#26495;&#19978;&#20889;&#20986; bug-free &#30340;&#20195;&#30721; (x3)</li>
+<li class=" ml-8">在白板上写出 bug-free 的代码 (x3)</li>
 </ul>
 </li>
-<li class=" ml-8">&#22269;&#20869;&#22823;&#21378;&#38590;&#24230;&#26222;&#36941;&#27604;&#36825;&#20010;&#26356;&#39640; &#128514;</li>
+<li class=" ml-8">国内大厂难度普遍比这个更高 😂</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#22312;&#30333;&#26495;&#19978;&#32534;&#31243;&#24517;&#39035;<red>&#26102;&#21051;&#20445;&#25345;&#22836;&#33041;&#28165;&#37266;</red></p>
+<p class=" font-serif my-1">在白板上编程必须<red>时刻保持头脑清醒</red></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#26102;&#21051;&#29702;&#35299;&#20195;&#30721;&#20840;&#23616;&#21644;&#23616;&#37096;&#30340; specification &#21644;&#23454;&#29616;&#30340;&#36884;&#24452;</li>
+<li class=" ml-8">时刻理解代码全局和局部的 specification 和实现的途径</li>
 </ul></div>
         
       
@@ -482,24 +482,24 @@ section .center {
 
       
         
-        <div><h2 id="2" class=" text-xl mt-2 pb-2 font-sans">&#32534;&#31243;&#24314;&#35758; (2): &#19981;&#35328;&#33258;&#26126;&#12289;&#19981;&#35328;&#33258;&#35777;</h2>
+        <div><h2 id="2" class=" text-xl mt-2 pb-2 font-sans">编程建议 (2): 不言自明、不言自证</h2>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">list_remove</span><span class="p">(</span><span class="n">node_t</span><span class="w"> </span><span class="o">*</span><span class="n">node</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// 2021 &#24180;&#30334;&#24230;&#25628;&#32034; &#8220;&#21452;&#21521;&#38142;&#34920; &#21024;&#38500;&#8221; &#20173;&#28982;&#24471;&#21040;&#36825;&#20010;&#22238;&#31572; (WTF)</span>
-<span class="w">  </span><span class="n">node</span><span class="o">-&gt;</span><span class="n">prev</span><span class="o">-&gt;</span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">node</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
-<span class="w">  </span><span class="n">node</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">-&gt;</span><span class="n">prev</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">node</span><span class="o">-&gt;</span><span class="n">prev</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">// 2021 年百度搜索 “双向链表 删除” 仍然得到这个回答 (WTF)</span>
+<span class="w">  </span><span class="n">node</span><span class="o">-></span><span class="n">prev</span><span class="o">-></span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">node</span><span class="o">-></span><span class="n">next</span><span class="p">;</span>
+<span class="w">  </span><span class="n">node</span><span class="o">-></span><span class="n">next</span><span class="o">-></span><span class="n">prev</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">node</span><span class="o">-></span><span class="n">prev</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">list_check</span><span class="p">(</span><span class="n">node_t</span><span class="w"> </span><span class="o">*</span><span class="n">node</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">assert</span><span class="p">(</span><span class="n">node</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">node</span><span class="o">-&gt;</span><span class="n">prev</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">);</span><span class="w"> </span><span class="c1">// circular list's invariant</span>
-<span class="w">  </span><span class="n">assert</span><span class="p">(</span><span class="n">node</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">node</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">-&gt;</span><span class="n">prev</span><span class="p">);</span>
+<span class="w">  </span><span class="n">assert</span><span class="p">(</span><span class="n">node</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">node</span><span class="o">-></span><span class="n">prev</span><span class="o">-></span><span class="n">next</span><span class="p">);</span><span class="w"> </span><span class="c1">// circular list's invariant</span>
+<span class="w">  </span><span class="n">assert</span><span class="p">(</span><span class="n">node</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">node</span><span class="o">-></span><span class="n">next</span><span class="o">-></span><span class="n">prev</span><span class="p">);</span>
 <span class="p">}</span>
 <span class="kt">void</span><span class="w"> </span><span class="nf">list_remove</span><span class="p">(</span><span class="n">node_t</span><span class="w"> </span><span class="o">*</span><span class="n">node</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">node_t</span><span class="w"> </span><span class="o">*</span><span class="n">prev</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">node</span><span class="o">-&gt;</span><span class="n">prev</span><span class="p">;</span>
-<span class="w">  </span><span class="n">node_t</span><span class="w"> </span><span class="o">*</span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">node</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
-<span class="w">  </span><span class="n">assert</span><span class="p">(</span><span class="n">node</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">prev</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">node</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">next</span><span class="p">);</span><span class="w"> </span><span class="c1">// possibly prev == next</span>
-<span class="w">  </span><span class="n">prev</span><span class="o">-&gt;</span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">next</span><span class="p">;</span>
-<span class="w">  </span><span class="n">next</span><span class="o">-&gt;</span><span class="n">prev</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">prev</span><span class="p">;</span>
+<span class="w">  </span><span class="n">node_t</span><span class="w"> </span><span class="o">*</span><span class="n">prev</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">node</span><span class="o">-></span><span class="n">prev</span><span class="p">;</span>
+<span class="w">  </span><span class="n">node_t</span><span class="w"> </span><span class="o">*</span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">node</span><span class="o">-></span><span class="n">next</span><span class="p">;</span>
+<span class="w">  </span><span class="n">assert</span><span class="p">(</span><span class="n">node</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">prev</span><span class="w"> </span><span class="o">&&</span><span class="w"> </span><span class="n">node</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">next</span><span class="p">);</span><span class="w"> </span><span class="c1">// possibly prev == next</span>
+<span class="w">  </span><span class="n">prev</span><span class="o">-></span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">next</span><span class="p">;</span>
+<span class="w">  </span><span class="n">next</span><span class="o">-></span><span class="n">prev</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">prev</span><span class="p">;</span>
 <span class="w">  </span><span class="n">list_check</span><span class="p">(</span><span class="n">prev</span><span class="p">);</span><span class="w"> </span><span class="n">list_check</span><span class="p">(</span><span class="n">next</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div></div>
@@ -513,7 +513,7 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25226;&#38142;&#34920;&#25913;&#25104;&#32447;&#31243;&#23433;&#20840;&#30340;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">把链表改成线程安全的</h2>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">node</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">lock_t</span><span class="w"> </span><span class="n">lock</span><span class="p">;</span>
 <span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">ptr</span><span class="p">;</span>
@@ -524,11 +524,11 @@ section .center {
       
          <div class="fragment"> 
         <div><hr>
-<p class=" font-serif my-1">&#21571;&#8230;&#8230;&#22909;&#20687;&#19981;&#22826;&#23545;&#8230;&#8230;</p>
+<p class=" font-serif my-1">呃……好像不太对……</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">list_remove_r</span><span class="p">(</span><span class="n">node_t</span><span class="w"> </span><span class="o">*</span><span class="n">node</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">lock</span><span class="p">);</span>
+<span class="w">  </span><span class="n">lock</span><span class="p">(</span><span class="o">&</span><span class="n">node</span><span class="o">-></span><span class="n">lock</span><span class="p">);</span>
 <span class="w">  </span><span class="n">list_remove</span><span class="p">(</span><span class="n">node</span><span class="p">);</span>
-<span class="w">  </span><span class="n">unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">lock</span><span class="p">);</span>
+<span class="w">  </span><span class="n">unlock</span><span class="p">(</span><span class="o">&</span><span class="n">node</span><span class="o">-></span><span class="n">lock</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div></div>
          </div> 
@@ -541,7 +541,7 @@ section .center {
 
       
         
-        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">&#25226;&#38142;&#34920;&#25913;&#25104;&#32447;&#31243;&#23433;&#20840;&#30340; (cont'd)</h2>
+        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">把链表改成线程安全的 (cont'd)</h2>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">node</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">lock_t</span><span class="w"> </span><span class="n">lock</span><span class="p">;</span>
 <span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">ptr</span><span class="p">;</span>
@@ -550,15 +550,15 @@ section .center {
 </code></pre></div>
 
 <hr>
-<p class=" font-serif my-1">&#21571;&#8230;&#8230;&#22909;&#20687;&#36824;&#26159;&#19981;&#22826;&#23545;&#8230;&#8230;</p>
+<p class=" font-serif my-1">呃……好像还是不太对……</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">list_remove_r</span><span class="p">(</span><span class="n">node_t</span><span class="w"> </span><span class="o">*</span><span class="n">node</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">lock</span><span class="p">);</span>
-<span class="w">  </span><span class="n">lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">prev</span><span class="o">-&gt;</span><span class="n">lock</span><span class="p">);</span>
-<span class="w">  </span><span class="n">lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">-&gt;</span><span class="n">lock</span><span class="p">);</span>
+<span class="w">  </span><span class="n">lock</span><span class="p">(</span><span class="o">&</span><span class="n">node</span><span class="o">-></span><span class="n">lock</span><span class="p">);</span>
+<span class="w">  </span><span class="n">lock</span><span class="p">(</span><span class="o">&</span><span class="n">node</span><span class="o">-></span><span class="n">prev</span><span class="o">-></span><span class="n">lock</span><span class="p">);</span>
+<span class="w">  </span><span class="n">lock</span><span class="p">(</span><span class="o">&</span><span class="n">node</span><span class="o">-></span><span class="n">next</span><span class="o">-></span><span class="n">lock</span><span class="p">);</span>
 <span class="w">  </span><span class="n">list_remove</span><span class="p">(</span><span class="n">node</span><span class="p">);</span>
-<span class="w">  </span><span class="n">unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">lock</span><span class="p">);</span>
-<span class="w">  </span><span class="n">unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">prev</span><span class="o">-&gt;</span><span class="n">lock</span><span class="p">);</span>
-<span class="w">  </span><span class="n">unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">-&gt;</span><span class="n">lock</span><span class="p">);</span>
+<span class="w">  </span><span class="n">unlock</span><span class="p">(</span><span class="o">&</span><span class="n">node</span><span class="o">-></span><span class="n">lock</span><span class="p">);</span>
+<span class="w">  </span><span class="n">unlock</span><span class="p">(</span><span class="o">&</span><span class="n">node</span><span class="o">-></span><span class="n">prev</span><span class="o">-></span><span class="n">lock</span><span class="p">);</span>
+<span class="w">  </span><span class="n">unlock</span><span class="p">(</span><span class="o">&</span><span class="n">node</span><span class="o">-></span><span class="n">next</span><span class="o">-></span><span class="n">lock</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div></div>
         
@@ -571,25 +571,25 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25152;&#20197;&#8230;&#8230;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">所以……</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
 <p class=" font-serif my-1">Many operating systems utilized a single lock when first transitioning 
 to multiprocessors, including Sun OS and Linux. In the latter, this lock 
 even had a name, the big kernel lock (BKL).</p>
 </blockquote>
-<p class=" font-serif my-1">&#24448;&#31616;&#21333;&#37324;&#20889;</p>
+<p class=" font-serif my-1">往简单里写</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#24635;&#26159;&#20551;&#35774;&#33258;&#24049;&#20889;&#19981;&#23545;&#24182;&#21457;&#31243;&#24207;&#65306;<red>&#20351;&#29992;&#38142;&#34920;&#32423;&#30340;&#38145;</red></li>
+<li class=" ml-8">总是假设自己写不对并发程序：<red>使用链表级的锁</red></li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#26102;&#21051;&#35686;&#24789; &#8220;<a href="https://www.fourmilab.ch/documents/univac/heisenbug/" class=" text-amber-900">Heisenbug</a>&#8221;</p>
+<p class=" font-serif my-1">时刻警惕 “<a href="https://www.fourmilab.ch/documents/univac/heisenbug/" class=" text-amber-900">Heisenbug</a>”</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#31245;&#26377;&#19981;&#24910;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#33707;&#21517;&#20854;&#22937;&#30340;&#20540;&#20986;&#38169;&#12289;&#34394;&#25311;&#26426;&#21345;&#27515;&#12289;&#34394;&#25311;&#26426;&#31070;&#31192;&#37325;&#21551;&#8230;&#8230;</li>
+<li class=" ml-8">稍有不慎<ul class=" list-disc font-serif">
+<li class=" ml-8">莫名其妙的值出错、虚拟机卡死、虚拟机神秘重启……</li>
 </ul>
 </li>
-<li class=" ml-8"><red>&#38450;&#24481;&#24615;&#22320;&#32534;&#31243;</red><ul class=" list-disc font-serif">
-<li class=" ml-8">&#20351;&#20320;&#26356;&#26089;&#12289;&#26356;&#23481;&#26131;&#22320;&#35786;&#26029;&#20986; bug</li>
+<li class=" ml-8"><red>防御性地编程</red><ul class=" list-disc font-serif">
+<li class=" ml-8">使你更早、更容易地诊断出 bug</li>
 </ul>
 </li>
 </ul></div>
@@ -607,7 +607,7 @@ even had a name, the big kernel lock (BKL).</p>
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="mallocfree" class=" text-2xl mt-2 font-sans">&#32447;&#31243;&#23433;&#20840;&#30340; malloc/free</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="mallocfree" class=" text-2xl mt-2 font-sans">线程安全的 malloc/free</h1></div></div></div>
         
       
       </section>
@@ -618,24 +618,24 @@ even had a name, the big kernel lock (BKL).</p>
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20869;&#23384;&#20998;&#37197;&#21644;&#31649;&#29702;</h2>
-<p class=" font-serif my-1">&#20551;&#35774;&#26377;&#19968;&#27573;&#31354;&#38386;&#30340;&#20869;&#23384; (&#8220;&#22534;&#8221;&#65307;&#24050;&#30693;&#22823;&#23567;)</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">内存分配和管理</h2>
+<p class=" font-serif my-1">假设有一段空闲的内存 (“堆”；已知大小)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><code>malloc(size)</code> - &#36820;&#22238;&#19968;&#20010;&#26032;&#40092;&#30340;&#23545;&#35937;&#65292;&#20869;&#23384;&#22320;&#22336; <code>[x, x+size)</code><ul class=" list-disc font-serif">
-<li class=" ml-8">&#26080;&#27861;&#20998;&#37197;&#26102;&#36820;&#22238; <code>NULL</code></li>
+<li class=" ml-8"><code>malloc(size)</code> - 返回一个新鲜的对象，内存地址 <code>[x, x+size)</code><ul class=" list-disc font-serif">
+<li class=" ml-8">无法分配时返回 <code>NULL</code></li>
 </ul>
 </li>
-<li class=" ml-8"><code>free(x)</code> - &#26080;&#24773;&#22320;&#21644;&#23545;&#35937; <code>[x, x+size)</code> &#20998;&#25163;<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>free(x)</code> - 无情地和对象 <code>[x, x+size)</code> 分手<ul class=" list-disc font-serif">
 <li class=" ml-8">double-free = undefined behavior</li>
 </ul>
 </li>
-<li class=" ml-8">&#24605;&#32771;&#39064;&#65306;&#31354;&#38386;&#30340;&#19968;&#27573;&#20869;&#23384;&#24590;&#20040;&#26469;&#65311;(&#31243;&#24207;&#26159;&#29366;&#24577;&#26426;)<ul class=" list-disc font-serif">
+<li class=" ml-8">思考题：空闲的一段内存怎么来？(程序是状态机)<ul class=" list-disc font-serif">
 <li class=" ml-8">demo: <a href="../../../pages/OS/2021/demos/malloc-workload.c" class=" text-amber-900">malloc-workload.c</a> + strace</li>
 </ul>
 </li>
 </ul>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/no-object.gif" width="480px"></p>
-<p class=" font-serif my-1"></p><center>(&#37027;&#23601; new &#19968;&#20010;&#21543;)</center></div>
+<p class=" font-serif my-1"></p><center>(那就 new 一个吧)</center></div>
         
       
       </section>
@@ -646,24 +646,24 @@ even had a name, the big kernel lock (BKL).</p>
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25968;&#25454;&#32467;&#26500;&#65306;&#20998;&#26512;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">数据结构：分析</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#19981;&#35201;&#29616;&#22312;&#23601;&#24320;&#22987;&#35774;&#35745;&#65292;&#20808;&#29702;&#35299;&#38382;&#39064;&#65281;</p>
+<p class=" font-serif my-1">不要现在就开始设计，先理解问题！</p>
 </blockquote>
-<p class=" font-serif my-1">&#25105;&#20204;&#38656;&#35201;&#32500;&#25252;&#19968;&#20010;&#24050;&#34987;&#20998;&#37197;&#21306;&#38388;&#30340;&#38598;&#21512;</p>
+<p class=" font-serif my-1">我们需要维护一个已被分配区间的集合</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">$[\ell_0, r_0) \cup [\ell_1, r_1) \cup \ldots \cup [\ell_i, r_i) \subseteq [L, R)$<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20114;&#19981;&#30456;&#20132;&#65306;$\ell_0 &lt; r_0 \le \ell_1 &lt; r_1 \le \ldots &lt; r_i \le \ell_{i+1}$</li>
+<li class=" ml-8">互不相交：$\ell_0 < r_0 \le \ell_1 < r_1 \le \ldots < r_i \le \ell_{i+1}$</li>
 </ul>
 </li>
 </ul>
-<p class=" font-serif my-1">&#25903;&#25345;&#30340;&#25805;&#20316;</p>
+<p class=" font-serif my-1">支持的操作</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">malloc($x$): &#20174; $[L, R)$ &#20013;&#36820;&#22238;&#19968;&#27573;&#19982; $[\ell_i, r_i)$ &#19981;&#30456;&#20132;&#30340; $[\ell, \ell + x)$</li>
-<li class=" ml-8">free($\ell_i$): &#32473;&#23450; $\ell_i$, &#21024;&#38500; $[\ell_i,r_i)$<ul class=" list-disc font-serif">
-<li class=" ml-8">&#25361;&#25112; 1: &#24590;&#20040;&#36890;&#36807;&#21306;&#38388;&#24038;&#31471;&#28857;&#25214;&#21040;&#21491;&#31471;&#28857;&#65311;&#65311;&#65311;</li>
-<li class=" ml-8">&#25361;&#25112; 2: &#35774;&#35745;&#24590;&#26679;&#30340;&#25968;&#25454;&#32467;&#26500;&#31649;&#29702;&#21306;&#38388;&#30340;&#38598;&#21512;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#31354;&#38386;&#38142;&#34920;, binary search tree, interval tree, ...</li>
+<li class=" ml-8">malloc($x$): 从 $[L, R)$ 中返回一段与 $[\ell_i, r_i)$ 不相交的 $[\ell, \ell + x)$</li>
+<li class=" ml-8">free($\ell_i$): 给定 $\ell_i$, 删除 $[\ell_i,r_i)$<ul class=" list-disc font-serif">
+<li class=" ml-8">挑战 1: 怎么通过区间左端点找到右端点？？？</li>
+<li class=" ml-8">挑战 2: 设计怎样的数据结构管理区间的集合<ul class=" list-disc font-serif">
+<li class=" ml-8">空闲链表, binary search tree, interval tree, ...</li>
 </ul>
 </li>
 </ul>
@@ -679,17 +679,17 @@ even had a name, the big kernel lock (BKL).</p>
 
       
         
-        <div><h2 id="mallocfree" class=" text-xl mt-2 pb-2 font-sans">&#23454;&#29616;&#39640;&#25928;&#30340; malloc/free</h2>
+        <div><h2 id="mallocfree" class=" text-xl mt-2 pb-2 font-sans">实现高效的 malloc/free</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
 <p class=" font-serif my-1">Premature optimization is the root of all evil.</p>
-<p class=" font-serif my-1">&#8212;&#8212;D. E. Knuth</p>
+<p class=" font-serif my-1">——D. E. Knuth</p>
 </blockquote>
-<p class=" font-serif my-1">&#37325;&#35201;&#30340;&#20107;&#24773;&#35828;&#19977;&#36941;&#65306;</p>
+<p class=" font-serif my-1">重要的事情说三遍：</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><red>&#33073;&#31163; workload &#20570;&#20248;&#21270;&#23601;&#26159;&#32781;&#27969;&#27667;</red></li>
-<li class=" ml-8"><red>&#33073;&#31163; workload &#20570;&#20248;&#21270;&#23601;&#26159;&#32781;&#27969;&#27667;</red></li>
-<li class=" ml-8"><red>&#33073;&#31163; workload &#20570;&#20248;&#21270;&#23601;&#26159;&#32781;&#27969;&#27667;</red><ul class=" list-disc font-serif">
-<li class=" ml-8">&#22312;&#24320;&#22987;&#32771;&#34385;&#24615;&#33021;&#20043;&#21069;&#65292;&#29702;&#35299;&#20320;&#38656;&#35201;&#32771;&#34385;&#20160;&#20040;&#26679;&#30340;&#24615;&#33021;</li>
+<li class=" ml-8"><red>脱离 workload 做优化就是耍流氓</red></li>
+<li class=" ml-8"><red>脱离 workload 做优化就是耍流氓</red></li>
+<li class=" ml-8"><red>脱离 workload 做优化就是耍流氓</red><ul class=" list-disc font-serif">
+<li class=" ml-8">在开始考虑性能之前，理解你需要考虑什么样的性能</li>
 </ul>
 </li>
 </ul></div>
@@ -697,10 +697,10 @@ even had a name, the big kernel lock (BKL).</p>
       
          <div class="fragment"> 
         <div><hr>
-<p class=" font-serif my-1">&#24819;&#26597;&#30475;&#31243;&#24207;&#30340; malloc/free &#24207;&#21015;&#65311;</p>
+<p class=" font-serif my-1">想查看程序的 malloc/free 序列？</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><red>&#35745;&#31639;&#26426;&#31995;&#32479;&#20844;&#29702;&#65306;&#20320;&#24819;&#21040;&#30340;&#23601;&#19968;&#23450;&#26377;&#20154;&#20570;&#21040;&#12290;</red><ul class=" list-disc font-serif">
-<li class=" ml-8"><a href="../../../pages/OS/2021/demos/mtrace.c" class=" text-amber-900">mtrace.c</a> &#8220;<code>LD_PRELOAD</code> hooking&#8221;</li>
+<li class=" ml-8"><red>计算机系统公理：你想到的就一定有人做到。</red><ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="../../../pages/OS/2021/demos/mtrace.c" class=" text-amber-900">mtrace.c</a> “<code>LD_PRELOAD</code> hooking”</li>
 </ul>
 </li>
 </ul></div>
@@ -714,26 +714,26 @@ even had a name, the big kernel lock (BKL).</p>
 
       
         
-        <div><h2 id="workload" class=" text-xl mt-2 pb-2 font-sans">Workload &#20998;&#26512;</h2>
+        <div><h2 id="workload" class=" text-xl mt-2 pb-2 font-sans">Workload 分析</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#25351;&#23548;&#24605;&#24819;&#65306;$O(n)$ &#22823;&#23567;&#30340;&#23545;&#35937;&#20998;&#37197;&#21518;&#33267;&#23569;&#26377; $\Omega(n)$ &#30340;&#35835;&#20889;&#25805;&#20316;&#65292;&#21542;&#21017;&#23601;&#26159; performance bug (&#19981;&#24212;&#35813;&#20998;&#37197;&#37027;&#20040;&#22810;)&#12290;</p>
+<p class=" font-serif my-1">指导思想：$O(n)$ 大小的对象分配后至少有 $\Omega(n)$ 的读写操作，否则就是 performance bug (不应该分配那么多)。</p>
 </blockquote>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#36234;&#23567;&#30340;&#23545;&#35937;&#21019;&#24314;/&#20998;&#37197;&#36234;&#39057;&#32321;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#23383;&#31526;&#20018;&#12289;&#20020;&#26102;&#23545;&#35937;&#31561; (&#20960;&#21313;&#21040;&#20960;&#30334;&#23383;&#33410;)&#65307;&#29983;&#23384;&#21608;&#26399;&#21487;&#38271;&#21487;&#30701; </li>
+<li class=" ml-8">越小的对象创建/分配越频繁<ul class=" list-disc font-serif">
+<li class=" ml-8">字符串、临时对象等 (几十到几百字节)；生存周期可长可短 </li>
 </ul>
 </li>
-<li class=" ml-8">&#36739;&#20026;&#39057;&#32321;&#22320;&#20998;&#37197;&#20013;&#31561;&#22823;&#23567;&#30340;&#23545;&#35937;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#36739;&#22823;&#30340;&#25968;&#32452;&#12289;&#22797;&#26434;&#30340;&#23545;&#35937;&#65307;&#26356;&#38271;&#30340;&#29983;&#23384;&#21608;&#26399;</li>
+<li class=" ml-8">较为频繁地分配中等大小的对象<ul class=" list-disc font-serif">
+<li class=" ml-8">较大的数组、复杂的对象；更长的生存周期</li>
 </ul>
 </li>
-<li class=" ml-8">&#20302;&#39057;&#29575;&#30340;&#22823;&#23545;&#35937;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#24040;&#22823;&#30340;&#23481;&#22120;&#12289;&#20998;&#37197;&#22120;&#65307;&#24456;&#38271;&#30340;&#29983;&#23384;&#21608;&#26399;</li>
+<li class=" ml-8">低频率的大对象<ul class=" list-disc font-serif">
+<li class=" ml-8">巨大的容器、分配器；很长的生存周期</li>
 </ul>
 </li>
-<li class=" ml-8"><red>&#24182;&#34892;&#12289;&#24182;&#34892;&#12289;&#20877;&#24182;&#34892;</red><ul class=" list-disc font-serif">
-<li class=" ml-8">&#25152;&#26377;&#20998;&#37197;&#37117;&#20250;&#22312;&#25152;&#26377;&#22788;&#29702;&#22120;&#19978;&#21457;&#29983;</li>
-<li class=" ml-8">&#20351;&#29992;&#38142;&#34920;/&#21306;&#38388;&#26641;&#21487;&#19981;&#26159;&#20010;&#22909;&#24819;&#27861;</li>
+<li class=" ml-8"><red>并行、并行、再并行</red><ul class=" list-disc font-serif">
+<li class=" ml-8">所有分配都会在所有处理器上发生</li>
+<li class=" ml-8">使用链表/区间树可不是个好想法</li>
 </ul>
 </li>
 </ul></div>
@@ -748,24 +748,24 @@ even had a name, the big kernel lock (BKL).</p>
       
         
         <div><h2 id="malloc-fast-and-slow" class=" text-xl mt-2 pb-2 font-sans"><code>malloc</code>, Fast and Slow</h2>
-<p class=" font-serif my-1">&#35774;&#32622;&#20004;&#22871;&#31995;&#32479;&#65306;</p>
+<p class=" font-serif my-1">设置两套系统：</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">fast path<ul class=" list-disc font-serif">
-<li class=" ml-8">&#24615;&#33021;&#26497;&#22909;&#12289;&#24182;&#34892;&#24230;&#26497;&#39640;&#12289;&#35206;&#30422;&#22823;&#37096;&#20998;&#24773;&#20917;</li>
-<li class=" ml-8">&#20294;&#26377;&#23567;&#27010;&#29575;&#20250;&#22833;&#36133;</li>
+<li class=" ml-8">性能极好、并行度极高、覆盖大部分情况</li>
+<li class=" ml-8">但有小概率会失败</li>
 </ul>
 </li>
 <li class=" ml-8">slow path<ul class=" list-disc font-serif">
-<li class=" ml-8">&#19981;&#22312;&#20046;&#37027;&#20040;&#24555;</li>
-<li class=" ml-8">&#20294;&#25226;&#22256;&#38590;&#30340;&#20107;&#24773;&#20570;&#22909;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#35745;&#31639;&#26426;&#31995;&#32479;&#37324;&#26377;&#24456;&#22810;&#36825;&#26679;&#30340;&#20363;&#23376; (&#27604;&#22914; cache)</li>
+<li class=" ml-8">不在乎那么快</li>
+<li class=" ml-8">但把困难的事情做好<ul class=" list-disc font-serif">
+<li class=" ml-8">计算机系统里有很多这样的例子 (比如 cache)</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#20154;&#31867;&#20063;&#26159;&#36825;&#26679;&#30340;&#31995;&#32479;</p>
+<p class=" font-serif my-1">人类也是这样的系统</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">Daniel Kahneman. <em>Thinking, Fast and Slow</em>. Farrar, Straus and Giroux, 2011.</li>
 </ul></div>
@@ -779,17 +779,17 @@ even had a name, the big kernel lock (BKL).</p>
 
       
         
-        <div><h2 id="slab-fast-path" class=" text-xl mt-2 pb-2 font-sans">Slab &#20998;&#37197;: Fast Path</h2>
-<p class=" font-serif my-1">&#23545;&#35937;&#36234;&#23567;&#12289;&#20998;&#37197;&#36234;&#39057;&#32321;&#65292;&#36234;&#21487;&#33021;&#26159;&#24615;&#33021;&#29942;&#39048;</p>
+        <div><h2 id="slab-fast-path" class=" text-xl mt-2 pb-2 font-sans">Slab 分配: Fast Path</h2>
+<p class=" font-serif my-1">对象越小、分配越频繁，越可能是性能瓶颈</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><red>&#20351;&#23567;&#23545;&#35937;&#30340;&#20998;&#37197;&#23613;&#21487;&#33021;&#22312;&#32447;&#31243;&#26412;&#22320;&#23436;&#25104;&#32780;&#26080;&#38656;&#20114;&#26021;</red></li>
+<li class=" ml-8"><red>使小对象的分配尽可能在线程本地完成而无需互斥</red></li>
 </ul>
 <hr>
-<p class=" font-serif my-1">Slab &#20998;&#37197;&#22120; (segregated list)</p>
+<p class=" font-serif my-1">Slab 分配器 (segregated list)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#27599;&#20010; slab &#37324;&#30340;&#27599;&#20010;&#23545;&#35937;&#37117;&#19968;&#26679;&#22823;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#27599;&#20010;&#32447;&#31243;&#25317;&#26377;&#27599;&#20010;&#23545;&#35937;&#22823;&#23567;&#30340; slab</li>
-<li class=" ml-8">fast path &#8594; &#31435;&#21363;&#22312;&#32447;&#31243;&#26412;&#22320;&#20998;&#37197;&#23436;&#25104;</li>
+<li class=" ml-8">每个 slab 里的每个对象都一样大<ul class=" list-disc font-serif">
+<li class=" ml-8">每个线程拥有每个对象大小的 slab</li>
+<li class=" ml-8">fast path → 立即在线程本地分配完成</li>
 </ul>
 </li>
 </ul>
@@ -804,17 +804,17 @@ even had a name, the big kernel lock (BKL).</p>
 
       
         
-        <div><h2 id="slab-slow-path" class=" text-xl mt-2 pb-2 font-sans">Slab &#20998;&#37197;: Slow Path</h2>
-<p class=" font-serif my-1">Slab &#20998;&#37197;&#22833;&#36133;</p>
+        <div><h2 id="slab-slow-path" class=" text-xl mt-2 pb-2 font-sans">Slab 分配: Slow Path</h2>
+<p class=" font-serif my-1">Slab 分配失败</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#32447;&#31243;&#30003;&#35831;&#24456;&#22823;&#30340;&#20869;&#23384;</li>
-<li class=" ml-8">&#25110; per-thread &#30340;&#32531;&#23384;&#28385;&#20102;</li>
+<li class=" ml-8">线程申请很大的内存</li>
+<li class=" ml-8">或 per-thread 的缓存满了</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#27492;&#26102;&#30340;&#24773;&#20917;&#65306;&#22823;&#20869;&#23384;&#20998;&#37197;</p>
+<p class=" font-serif my-1">此时的情况：大内存分配</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#22240;&#20026;&#19981;&#39057;&#32321;&#65292;&#31616;&#21333;&#36215;&#35265;&#65292;&#19978;&#38145;&#23601;&#22909;&#20102;<ul class=" list-disc font-serif">
-<li class=" ml-8">buddy system (1963): &#32447;&#27573;&#26641; (&#21333;&#20301;: page)</li>
+<li class=" ml-8">因为不频繁，简单起见，上锁就好了<ul class=" list-disc font-serif">
+<li class=" ml-8">buddy system (1963): 线段树 (单位: page)</li>
 </ul>
 </li>
 </ul></div>
@@ -828,15 +828,15 @@ even had a name, the big kernel lock (BKL).</p>
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#37322;&#25918;</h2>
-<p class=" font-serif my-1">&#22238;&#25910;&#23567;&#23545;&#35937; (slab &#20013;&#30340;&#23545;&#35937;)</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">释放</h2>
+<p class=" font-serif my-1">回收小对象 (slab 中的对象)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><red>&#23567;&#24515;&#65306;&#22312;&#19968;&#20010;&#32447;&#31243;&#20998;&#37197;&#30340;&#20869;&#23384;&#21487;&#20197;&#22312;&#21478;&#19968;&#20010;&#32447;&#31243;&#22238;&#25910;</red></li>
-<li class=" ml-8">&#23567;&#24515;&#65306;slab &#31354;&#21518;&#24212;&#22238;&#25910; slab</li>
+<li class=" ml-8"><red>小心：在一个线程分配的内存可以在另一个线程回收</red></li>
+<li class=" ml-8">小心：slab 空后应回收 slab</li>
 </ul>
-<p class=" font-serif my-1">&#22238;&#25910;&#22823;&#23545;&#35937; (&#22238;&#25910; slab &#25110;&#22823;&#22359;&#20869;&#23384;)</p>
+<p class=" font-serif my-1">回收大对象 (回收 slab 或大块内存)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#19978;&#38145;&#23601;&#22909;&#20102; (<strike>&#25110;&#32773;&#29992;&#32874;&#26126;&#30340;&#26080;&#38145;&#31639;&#27861;&#23454;&#29616;</strike>)</li>
+<li class=" ml-8">上锁就好了 (<strike>或者用聪明的无锁算法实现</strike>)</li>
 </ul>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/race.jpg" width="500px"></p></div>
         
@@ -849,15 +849,15 @@ even had a name, the big kernel lock (BKL).</p>
 
       
         
-        <div><h2 id="mallocfree" class=" text-xl mt-2 pb-2 font-sans">&#29616;&#23454;&#19990;&#30028;&#20013;&#30340; malloc/free</h2>
-<p class=" font-serif my-1">&#20197;&#19978;&#23601;&#26159;&#25152;&#26377;&#29616;&#20195; malloc/free &#23454;&#29616;&#30340;&#22522;&#30784;</p>
+        <div><h2 id="mallocfree" class=" text-xl mt-2 pb-2 font-sans">现实世界中的 malloc/free</h2>
+<p class=" font-serif my-1">以上就是所有现代 malloc/free 实现的基础</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#24403;&#28982;&#65292;&#23454;&#38469;&#24773;&#20917;&#20250;&#22797;&#26434;&#24471;&#22810;&#65292;&#24615;&#33021;&#20063;&#26159;&#38193;&#38114;&#24517;&#36739;<ul class=" list-disc font-serif">
-<li class=" ml-8"><a href="https://sourceware.org/glibc/wiki/MallocInternals" class=" text-amber-900">glibc</a>: arena &#8594; heap &#8594; tcache (thread-local)</li>
+<li class=" ml-8">当然，实际情况会复杂得多，性能也是锱铢必较<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="https://sourceware.org/glibc/wiki/MallocInternals" class=" text-amber-900">glibc</a>: arena → heap → tcache (thread-local)</li>
 <li class=" ml-8"><a href="https://google.github.io/tcmalloc/design.html" class=" text-amber-900">TCMalloc</a>: thread-caching malloc
     <img alt="" class="center" src="../../../pages/OS/img/tcmalloc.png" width="640px"></li>
 <li class=" ml-8"><a href="https://wiki.openjdk.java.net/display/zgc/Main" class=" text-amber-900">OpenJDK: ZGC</a>: region based + tlab (thread-local)<ul class=" list-disc font-serif">
-<li class=" ml-8">managed memory &#20801;&#35768; object move&#65292;&#22240;&#27492;&#22797;&#26434;&#24471;&#22810;&#8230;&#8230;</li>
+<li class=" ml-8">managed memory 允许 object move，因此复杂得多……</li>
 </ul>
 </li>
 </ul>
@@ -877,7 +877,7 @@ even had a name, the big kernel lock (BKL).</p>
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#24635;&#32467;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">总结</h1></div></div></div>
         
       
       </section>
@@ -888,25 +888,25 @@ even had a name, the big kernel lock (BKL).</p>
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#24635;&#32467;</h2>
-<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#20869;&#23481;&#19982;&#30446;&#26631;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">总结</h2>
+<p class=" font-serif my-1">本次课内容与目标</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#29702;&#35299;&#25968;&#25454;&#31454;&#20105;</li>
-<li class=" ml-8">&#29992;&#20114;&#26021;&#38145;&#23454;&#29616;&#24182;&#21457;&#25968;&#25454;&#32467;&#26500; (&#21644; malloc/free)</li>
+<li class=" ml-8">理解数据竞争</li>
+<li class=" ml-8">用互斥锁实现并发数据结构 (和 malloc/free)</li>
 </ul>
 <hr>
 <p class=" font-serif my-1">Take-away messages</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#21315;&#19975;&#19981;&#35201;&#39640;&#20272;&#33258;&#24049;&#20889;&#24182;&#21457;&#31243;&#24207;&#30340;&#33021;&#21147;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#29992;&#31616;&#21333;&#12289;&#28165;&#26970;&#30340;&#26041;&#24335;&#20889;&#20986;&#21487;&#20197;&#35777;&#26126;&#30340;&#31639;&#27861;</li>
+<li class=" ml-8">千万不要高估自己写并发程序的能力<ul class=" list-disc font-serif">
+<li class=" ml-8">用简单、清楚的方式写出可以证明的算法</li>
 </ul>
 </li>
-<li class=" ml-8">&#25243;&#24320; workload &#35848;&#20248;&#21270;&#23601;&#26159;&#32781;&#27969;&#27667;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#29702;&#35299; workload &#20877;&#35774;&#35745;&#24182;&#21457;&#25968;&#25454;&#32467;&#26500;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#29992;&#22909; trace/profiler</li>
+<li class=" ml-8">抛开 workload 谈优化就是耍流氓<ul class=" list-disc font-serif">
+<li class=" ml-8">理解 workload 再设计并发数据结构<ul class=" list-disc font-serif">
+<li class=" ml-8">用好 trace/profiler</li>
 </ul>
 </li>
-<li class=" ml-8">&#22810;&#22788;&#29702;&#22120;&#19978;&#30340;&#20114;&#26021; (&#20018;&#34892;&#21270;) &#26159;&#29942;&#39048;</li>
+<li class=" ml-8">多处理器上的互斥 (串行化) 是瓶颈</li>
 </ul>
 </li>
 </ul></div>

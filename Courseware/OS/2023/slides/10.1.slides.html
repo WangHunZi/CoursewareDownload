@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +209,7 @@ section .center {
 }
 </style>
 
-  <title>&#20449;&#21495;&#37327;</title>
+  <title>信号量</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,7 +227,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="10.1.slides.html" class=" text-amber-900">&#20449;&#21495;&#37327;</a></h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="10.1.slides.html" class=" text-amber-900">信号量</a></h1></div></div></div>
         
       
       </section>
@@ -238,14 +238,14 @@ section .center {
 
       
         
-        <div><h2 id="-" class=" text-xl mt-2 pb-2 font-sans">&#22797;&#20064;&#65306;&#29983;&#20135;&#32773;-&#28040;&#36153;&#32773;&#12289;&#20114;&#26021;&#12289;&#26465;&#20214;&#21464;&#37327;</h2>
-<p class=" font-serif my-1">&#25171;&#21360; &#8220;&#21512;&#27861;&#8221; &#30340;&#25324;&#21495;&#24207;&#21015; <code>(())()</code></p>
+        <div><h2 id="-" class=" text-xl mt-2 pb-2 font-sans">复习：生产者-消费者、互斥、条件变量</h2>
+<p class=" font-serif my-1">打印 “合法” 的括号序列 <code>(())()</code></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#24038;&#25324;&#21495;&#23545;&#24212; push</li>
-<li class=" ml-8">&#21491;&#25324;&#21495;&#23545;&#24212; pop</li>
+<li class=" ml-8">左括号对应 push</li>
+<li class=" ml-8">右括号对应 pop</li>
 </ul>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#define CAN_PRODUCE (count &lt; n)</span>
-<span class="cp">#define CAN_CONSUME (count &gt; 0)</span>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#define CAN_PRODUCE (count < n)</span>
+<span class="cp">#define CAN_CONSUME (count > 0)</span>
 
 <span class="n">wait_until</span><span class="p">(</span><span class="n">CAN_PRODUCE</span><span class="p">)</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="p">(</span><span class="n">mutex</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">count</span><span class="o">++</span><span class="p">;</span>
@@ -267,25 +267,25 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20449;&#21495;&#37327;&#65306;&#19968;&#31181;&#26465;&#20214;&#21464;&#37327;&#30340;&#29305;&#20363;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">信号量：一种条件变量的特例</h2>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">P</span><span class="p">(</span><span class="n">sem_t</span><span class="w"> </span><span class="o">*</span><span class="n">sem</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// wait</span>
-<span class="w">  </span><span class="n">wait_until</span><span class="p">(</span><span class="n">sem</span><span class="o">-&gt;</span><span class="n">count</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">sem</span><span class="o">-&gt;</span><span class="n">count</span><span class="o">--</span><span class="p">;</span>
+<span class="w">  </span><span class="n">wait_until</span><span class="p">(</span><span class="n">sem</span><span class="o">-></span><span class="n">count</span><span class="w"> </span><span class="o">></span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">sem</span><span class="o">-></span><span class="n">count</span><span class="o">--</span><span class="p">;</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">V</span><span class="p">(</span><span class="n">sem_t</span><span class="w"> </span><span class="o">*</span><span class="n">sem</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// post (signal)</span>
 <span class="w">  </span><span class="n">atomic</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">sem</span><span class="o">-&gt;</span><span class="n">count</span><span class="o">++</span><span class="p">;</span>
+<span class="w">    </span><span class="n">sem</span><span class="o">-></span><span class="n">count</span><span class="o">++</span><span class="p">;</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <hr>
-<p class=" font-serif my-1">&#27491;&#26159;&#22240;&#20026;&#26465;&#20214;&#30340;&#29305;&#27530;&#24615;&#65292;&#20449;&#21495;&#37327;&#19981;&#38656;&#35201; broadcast</p>
+<p class=" font-serif my-1">正是因为条件的特殊性，信号量不需要 broadcast</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">P &#22833;&#36133;&#26102;&#31435;&#21363;&#30561;&#30496;&#31561;&#24453;</li>
-<li class=" ml-8">&#25191;&#34892; V &#26102;&#65292;&#21796;&#37266;&#20219;&#24847;&#31561;&#24453;&#30340;&#32447;&#31243;</li>
+<li class=" ml-8">P 失败时立即睡眠等待</li>
+<li class=" ml-8">执行 V 时，唤醒任意等待的线程</li>
 </ul></div>
         
       
@@ -297,10 +297,10 @@ section .center {
 
       
         
-        <div><h2 id="1" class=" text-xl mt-2 pb-2 font-sans">&#29702;&#35299;&#20449;&#21495;&#37327; (1)</h2>
-<p class=" font-serif my-1">&#21021;&#22987;&#26102; count = 1 &#30340;&#29305;&#27530;&#24773;&#20917;</p>
+        <div><h2 id="1" class=" text-xl mt-2 pb-2 font-sans">理解信号量 (1)</h2>
+<p class=" font-serif my-1">初始时 count = 1 的特殊情况</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20114;&#26021;&#38145;&#26159;&#20449;&#21495;&#37327;&#30340;&#29305;&#20363;</li>
+<li class=" ml-8">互斥锁是信号量的特例</li>
 </ul>
 <hr>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#define YES 1</span>
@@ -326,22 +326,22 @@ section .center {
 
       
         
-        <div><h2 id="2" class=" text-xl mt-2 pb-2 font-sans">&#29702;&#35299;&#20449;&#21495;&#37327; (2)</h2>
+        <div><h2 id="2" class=" text-xl mt-2 pb-2 font-sans">理解信号量 (2)</h2>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/ball-bag.jpg" width="300px"></p>
 <p class=" font-serif my-1">P - prolaag (try + decrease/down/wait/acquire)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#35797;&#30528;&#20174;&#34955;&#23376;&#37324;&#21462;&#19968;&#20010;&#29699;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#22914;&#26524;&#25343;&#21040;&#20102;&#65292;&#31163;&#24320;</li>
-<li class=" ml-8">&#22914;&#26524;&#34955;&#23376;&#31354;&#20102;&#65292;&#25490;&#38431;&#31561;&#24453;</li>
+<li class=" ml-8">试着从袋子里取一个球<ul class=" list-disc font-serif">
+<li class=" ml-8">如果拿到了，离开</li>
+<li class=" ml-8">如果袋子空了，排队等待</li>
 </ul>
 </li>
 </ul>
 <hr>
 <p class=" font-serif my-1">V - verhoog (increase/up/post/signal/release)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#24448;&#34955;&#23376;&#37324;&#25918;&#19968;&#20010;&#29699;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#22914;&#26524;&#26377;&#20154;&#22312;&#31561;&#29699;&#65292;&#20182;&#23601;&#21487;&#20197;&#25343;&#36208;&#21018;&#25918;&#36827;&#21435;&#30340;&#29699;&#20102;</li>
-<li class=" ml-8">&#25918;&#29699;-&#25343;&#29699;&#30340;&#36807;&#31243;&#23454;&#29616;&#20102;&#21516;&#27493;</li>
+<li class=" ml-8">往袋子里放一个球<ul class=" list-disc font-serif">
+<li class=" ml-8">如果有人在等球，他就可以拿走刚放进去的球了</li>
+<li class=" ml-8">放球-拿球的过程实现了同步</li>
 </ul>
 </li>
 </ul></div>
@@ -355,16 +355,16 @@ section .center {
 
       
         
-        <div><h2 id="3" class=" text-xl mt-2 pb-2 font-sans">&#29702;&#35299;&#20449;&#21495;&#37327; (3)</h2>
-<p class=" font-serif my-1">&#25193;&#23637;&#30340;&#20114;&#26021;&#38145;&#65306;&#19968;&#20010;&#25163;&#29615; &#8594; $n$ &#20010;&#25163;&#29615;</p>
+        <div><h2 id="3" class=" text-xl mt-2 pb-2 font-sans">理解信号量 (3)</h2>
+<p class=" font-serif my-1">扩展的互斥锁：一个手环 → $n$ 个手环</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#35753;&#26356;&#22810;&#21516;&#23398;&#21487;&#20197;&#36827;&#20837;&#26356;&#34915;&#23460;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#31649;&#29702;&#21592;&#21487;&#20197;&#25345;&#26377;&#20219;&#24847;&#25968;&#37327;&#30340;&#25163;&#29615; (count, &#26356;&#34915;&#23460;&#23481;&#37327;&#19978;&#38480;)</li>
-<li class=" ml-8">&#20808;&#36827;&#20837;&#26356;&#34915;&#23460;&#30340;&#21516;&#23398;&#20808;&#36827;&#20837;&#28216;&#27891;&#27744;</li>
-<li class=" ml-8">&#25163;&#29615;&#29992;&#23436;&#21518;&#38656;&#35201;&#31561;&#21516;&#23398;&#20986;&#26469;</li>
+<li class=" ml-8">让更多同学可以进入更衣室<ul class=" list-disc font-serif">
+<li class=" ml-8">管理员可以持有任意数量的手环 (count, 更衣室容量上限)</li>
+<li class=" ml-8">先进入更衣室的同学先进入游泳池</li>
+<li class=" ml-8">手环用完后需要等同学出来</li>
 </ul>
 </li>
-<li class=" ml-8">&#20449;&#21495;&#37327;&#23545;&#24212;&#20102; &#8220;&#36164;&#28304;&#25968;&#37327;&#8221;</li>
+<li class=" ml-8">信号量对应了 “资源数量”</li>
 </ul>
 <p class=" font-serif my-1"></p><center><img alt="" class="inline" src="../../../pages/OS/img/locker.jpg" width="333px"> v.s. <img alt="" class="inline" src="../../../pages/OS/img/pool-2.jpg" width="330px"></center></div>
         
@@ -377,21 +377,21 @@ section .center {
 
       
         
-        <div><h2 id="-" class=" text-xl mt-2 pb-2 font-sans">&#20449;&#21495;&#37327;&#65306;&#23454;&#29616;&#20248;&#38597;&#30340;&#29983;&#20135;&#32773;-&#28040;&#36153;&#32773;</h2>
-<p class=" font-serif my-1">&#20449;&#21495;&#37327;&#35774;&#35745;&#30340;&#37325;&#28857;</p>
+        <div><h2 id="-" class=" text-xl mt-2 pb-2 font-sans">信号量：实现优雅的生产者-消费者</h2>
+<p class=" font-serif my-1">信号量设计的重点</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#32771;&#34385; &#8220;&#29699;&#8221;/&#8220;&#25163;&#29615;&#8221; (&#27599;&#19968;&#21333;&#20301;&#30340; &#8220;<red>&#36164;&#28304;</red>&#8221;) &#26159;&#20160;&#20040;</li>
-<li class=" ml-8">&#29983;&#20135;&#32773;/&#28040;&#36153;&#32773; = &#25226;&#29699;&#20174;&#19968;&#20010;&#34955;&#23376;&#37324;&#25918;&#21040;&#21478;&#19968;&#20010;&#34955;&#23376;&#37324;</li>
+<li class=" ml-8">考虑 “球”/“手环” (每一单位的 “<red>资源</red>”) 是什么</li>
+<li class=" ml-8">生产者/消费者 = 把球从一个袋子里放到另一个袋子里</li>
 </ul>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">Tproduce</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">P</span><span class="p">(</span><span class="o">&amp;</span><span class="n">empty</span><span class="p">);</span>
-<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">"("</span><span class="p">);</span><span class="w"> </span><span class="c1">// &#27880;&#24847;&#20849;&#20139;&#25968;&#25454;&#32467;&#26500;&#35775;&#38382;&#38656;&#20114;&#26021;</span>
-<span class="w">  </span><span class="n">V</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fill</span><span class="p">);</span>
+<span class="w">  </span><span class="n">P</span><span class="p">(</span><span class="o">&</span><span class="n">empty</span><span class="p">);</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">"("</span><span class="p">);</span><span class="w"> </span><span class="c1">// 注意共享数据结构访问需互斥</span>
+<span class="w">  </span><span class="n">V</span><span class="p">(</span><span class="o">&</span><span class="n">fill</span><span class="p">);</span>
 <span class="p">}</span>
 <span class="kt">void</span><span class="w"> </span><span class="nf">Tconsume</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">P</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fill</span><span class="p">);</span>
+<span class="w">  </span><span class="n">P</span><span class="p">(</span><span class="o">&</span><span class="n">fill</span><span class="p">);</span>
 <span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">")"</span><span class="p">);</span>
-<span class="w">  </span><span class="n">V</span><span class="p">(</span><span class="o">&amp;</span><span class="n">empty</span><span class="p">);</span>
+<span class="w">  </span><span class="n">V</span><span class="p">(</span><span class="o">&</span><span class="n">empty</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div></div>
         

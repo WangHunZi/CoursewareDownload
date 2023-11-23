@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +209,7 @@ section .center {
 }
 </style>
 
-  <title>&#36827;&#31243;&#30340;&#23454;&#29616;</title>
+  <title>进程的实现</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,7 +227,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="24.1.slides.html" class=" text-amber-900">&#36827;&#31243;&#30340;&#23454;&#29616;</a></h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="24.1.slides.html" class=" text-amber-900">进程的实现</a></h1></div></div></div>
         
       
       </section>
@@ -239,20 +239,20 @@ section .center {
       
         
         <div><h2 id="thread-oslab2" class=" text-xl mt-2 pb-2 font-sans">Thread-OS/Lab2</h2>
-<p class=" font-serif my-1">&#23454;&#29616;&#20102;&#22312;&#22810;&#20010;&#32447;&#31243;&#20043;&#38388;&#20999;&#25442;</p>
+<p class=" font-serif my-1">实现了在多个线程之间切换</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">Context</span><span class="w"> </span><span class="o">*</span><span class="nf">on_interrupt</span><span class="p">(</span><span class="n">Event</span><span class="w"> </span><span class="n">ev</span><span class="p">,</span><span class="w"> </span><span class="n">Context</span><span class="w"> </span><span class="o">*</span><span class="n">ctx</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">current</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">tasks</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span><span class="w">  </span><span class="c1">// First trap</span>
+<span class="w">    </span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&</span><span class="n">tasks</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span><span class="w">  </span><span class="c1">// First trap</span>
 <span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">context</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ctx</span><span class="p">;</span>
-<span class="w">    </span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+<span class="w">    </span><span class="n">current</span><span class="o">-></span><span class="n">context</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ctx</span><span class="p">;</span>
+<span class="w">    </span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current</span><span class="o">-></span><span class="n">next</span><span class="p">;</span>
 <span class="w">  </span><span class="p">}</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">context</span><span class="p">;</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">current</span><span class="o">-></span><span class="n">context</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <hr>
-<p class=" font-serif my-1">&#20869;&#26680;&#32447;&#31243; v.s. &#36827;&#31243;&#65292;&#36824;&#24046;&#20102;&#20160;&#20040;&#65311;</p></div>
+<p class=" font-serif my-1">内核线程 v.s. 进程，还差了什么？</p></div>
         
       
       </section>
@@ -263,12 +263,12 @@ section .center {
 
       
         
-        <div><h2 id="vr" class=" text-xl mt-2 pb-2 font-sans">&#19968;&#20010; VR &#30524;&#38236;&#65281;</h2>
+        <div><h2 id="vr" class=" text-xl mt-2 pb-2 font-sans">一个 VR 眼镜！</h2>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/vr.jpg" width="400px"></p>
 <hr>
-<p class=" font-serif my-1">&#25105;&#20204;&#30475;&#21040;&#30340;&#19990;&#30028;&#26410;&#24517;&#30495;&#23454;</p>
+<p class=" font-serif my-1">我们看到的世界未必真实</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">(&#36827;&#31243;&#20063;&#26159;)</li>
+<li class=" ml-8">(进程也是)</li>
 </ul></div>
         
       
@@ -280,24 +280,24 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#36827;&#31243;&#30340;&#22320;&#22336;&#31354;&#38388;</h2>
-<p class=" font-serif my-1">pmap: &#36827;&#31243;&#25317;&#26377; $[0,2^{64})$ &#30340;&#22320;&#22336;&#31354;&#38388;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">进程的地址空间</h2>
+<p class=" font-serif my-1">pmap: 进程拥有 $[0,2^{64})$ 的地址空间</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20294;&#36825;&#20010;&#22320;&#22336;&#31354;&#38388;&#26159; &#8220;&#34394;&#25311;&#8221; &#30340;</li>
-<li class=" ml-8">&#25105;&#20204;&#30340;&#29289;&#29702;&#20869;&#23384;&#20063;&#23601;&#26159;&#20174; 0 &#24320;&#22987;&#30340;&#20960;&#20010; GB</li>
+<li class=" ml-8">但这个地址空间是 “虚拟” 的</li>
+<li class=" ml-8">我们的物理内存也就是从 0 开始的几个 GB</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#22320;&#22336;&#32763;&#35793;</p>
+<p class=" font-serif my-1">地址翻译</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#35745;&#31639;&#26426;&#31995;&#32479;&#20013;&#30340;&#19968;&#20010;<red>&#25968;&#25454;&#32467;&#26500;</red> $f(x)$<ul class=" list-disc font-serif">
-<li class=" ml-8">&#25226;&#34394;&#25311;&#20869;&#23384;&#22320;&#22336;&#32763;&#35793;&#25104;&#29289;&#29702;&#20869;&#23384;&#22320;&#22336;</li>
-<li class=" ml-8">&#30001;&#23492;&#23384;&#22120; (&#20363;&#22914; x86 &#30340; CR3) &#21644;&#20869;&#23384;&#20849;&#21516;&#25551;&#36848;</li>
+<li class=" ml-8">计算机系统中的一个<red>数据结构</red> $f(x)$<ul class=" list-disc font-serif">
+<li class=" ml-8">把虚拟内存地址翻译成物理内存地址</li>
+<li class=" ml-8">由寄存器 (例如 x86 的 CR3) 和内存共同描述</li>
 </ul>
 </li>
-<li class=" ml-8">&#22320;&#22336;&#32763;&#35793; (VR &#30524;&#38236;) &#26159;&#24378;&#21046;&#30340;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#29992;&#25143;&#31243;&#24207; <a href="https://www.felixcloutier.com/x86/mov-1" class=" text-amber-900">mov CR3</a> &#23558;&#23548;&#33268; #GP &#24322;&#24120;</li>
-<li class=" ml-8">&#36234;&#26435;&#35775;&#38382;/&#38750;&#27861;&#35775;&#38382;&#23558;&#23548;&#33268; #PF &#24322;&#24120; (Page Fault)</li>
-<li class=" ml-8">&#20320;&#30475;&#21040;&#30340;&#19990;&#30028;&#23436;&#20840;&#26159;&#25805;&#20316;&#31995;&#32479;&#30340;&#23433;&#25490; (&#20320;&#23475;&#24597;&#20102;&#21527;)</li>
+<li class=" ml-8">地址翻译 (VR 眼镜) 是强制的<ul class=" list-disc font-serif">
+<li class=" ml-8">用户程序 <a href="https://www.felixcloutier.com/x86/mov-1" class=" text-amber-900">mov CR3</a> 将导致 #GP 异常</li>
+<li class=" ml-8">越权访问/非法访问将导致 #PF 异常 (Page Fault)</li>
+<li class=" ml-8">你看到的世界完全是操作系统的安排 (你害怕了吗)</li>
 </ul>
 </li>
 </ul></div>
@@ -311,12 +311,12 @@ section .center {
 
       
         
-        <div><h2 id="abstractmachine" class=" text-xl mt-2 pb-2 font-sans">AbstractMachine &#23545;&#22320;&#22336;&#31354;&#38388;&#30340;&#25277;&#35937;</h2>
-<p class=" font-serif my-1">&#26159;&#30340;&#65292;&#20320;&#27809;&#30475;&#38169;&#65292;AddrSpace &#23601;&#26159;&#19968;&#20010;&#25968;&#25454;&#32467;&#26500; $f$</p>
+        <div><h2 id="abstractmachine" class=" text-xl mt-2 pb-2 font-sans">AbstractMachine 对地址空间的抽象</h2>
+<p class=" font-serif my-1">是的，你没看错，AddrSpace 就是一个数据结构 $f$</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25903;&#25345;&#23545;&#25968;&#25454;&#32467;&#26500;&#30340;&#21160;&#24577;&#35843;&#25972; (map)</li>
-<li class=" ml-8">&#21487;&#20197;&#21019;&#24314;&#19968;&#20010; &#8220;&#25140; VR &#30524;&#38236;&#8221; &#30340; kcontext (&#32447;&#31243;)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#23601;&#26159;&#36827;&#31243;&#21862;&#65281;</li>
+<li class=" ml-8">支持对数据结构的动态调整 (map)</li>
+<li class=" ml-8">可以创建一个 “戴 VR 眼镜” 的 kcontext (线程)<ul class=" list-disc font-serif">
+<li class=" ml-8">就是进程啦！</li>
 </ul>
 </li>
 </ul>
@@ -337,27 +337,27 @@ section .center {
 
       
         
-        <div><h2 id="1" class=" text-xl mt-2 pb-2 font-sans">&#34394;&#20551;&#30340;&#22320;&#22336;&#31354;&#38388; (1)</h2>
-<p class=" font-serif my-1">&#8220;&#26144;&#23556;&#20102;&#65292;&#20294;&#27809;&#26377;&#30495;&#30340;&#26144;&#23556;&#8221;</p>
+        <div><h2 id="1" class=" text-xl mt-2 pb-2 font-sans">虚假的地址空间 (1)</h2>
+<p class=" font-serif my-1">“映射了，但没有真的映射”</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">VR &#30524;&#38236;&#65306;&#30524;&#30555;&#36824;&#27809;&#30475;&#21040;&#30340;&#22320;&#26041;&#21487;&#20197;&#20808;&#19981;&#26174;&#31034;</li>
+<li class=" ml-8">VR 眼镜：眼睛还没看到的地方可以先不显示</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#36824;&#35760;&#24471; mmap &#20998;&#37197;&#31354;&#38388;/&#26144;&#23556;&#30913;&#30424;&#30340;&#20363;&#23376;&#21527;&#65311;</p>
+<p class=" font-serif my-1">还记得 mmap 分配空间/映射磁盘的例子吗？</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25805;&#20316;&#31995;&#32479;&#21482;&#35201;&#29992;&#19968;&#20010;&#25968;&#25454;&#32467;&#26500;&#35760;&#24405;&#21738;&#27573;&#20869;&#23384;&#26159;&#20160;&#20040;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#22240;&#27492;&#36827;&#31243;&#21487;&#20197;&#20351;&#29992;&#36229;&#36807;&#29289;&#29702;&#20869;&#23384;&#30340;&#34394;&#25311;&#20869;&#23384; (swap)</li>
+<li class=" ml-8">操作系统只要用一个数据结构记录哪段内存是什么<ul class=" list-disc font-serif">
+<li class=" ml-8">因此进程可以使用超过物理内存的虚拟内存 (swap)</li>
 </ul>
 </li>
-<li class=" ml-8">Page Fault &#30340;&#26102;&#20505;&#20877;&#20998;&#37197;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#25991;&#20214; &#8594; &#26144;&#23556;&#25991;&#20214;&#20869;&#23481;&#21518;&#36820;&#22238;</li>
-<li class=" ml-8">&#21311;&#21517;&#25968;&#25454; &#8594; &#20998;&#37197;&#29289;&#29702;&#39029;&#38754;&#21518;&#36820;&#22238;</li>
-<li class=" ml-8">&#38750;&#27861;&#35775;&#38382; &#8594; SIGSEGV</li>
+<li class=" ml-8">Page Fault 的时候再分配<ul class=" list-disc font-serif">
+<li class=" ml-8">文件 → 映射文件内容后返回</li>
+<li class=" ml-8">匿名数据 → 分配物理页面后返回</li>
+<li class=" ml-8">非法访问 → SIGSEGV</li>
 </ul>
 </li>
-<li class=" ml-8">&#29992;&#20160;&#20040;&#26679;&#30340;&#25968;&#25454;&#32467;&#26500;&#23454;&#29616;&#65311;</li>
+<li class=" ml-8">用什么样的数据结构实现？</li>
 </ul>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">mmap</span><span class="o">.</span><span class="n">mmap</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">prot</span><span class="o">=</span><span class="n">mmap</span><span class="o">.</span><span class="n">PROT_READ</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">128</span> <span class="o">&lt;&lt;</span> <span class="mi">30</span><span class="p">)</span>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">mmap</span><span class="o">.</span><span class="n">mmap</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">prot</span><span class="o">=</span><span class="n">mmap</span><span class="o">.</span><span class="n">PROT_READ</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">128</span> <span class="o"><<</span> <span class="mi">30</span><span class="p">)</span>
 </code></pre></div></div>
         
       
@@ -369,16 +369,16 @@ section .center {
 
       
         
-        <div><h2 id="2" class=" text-xl mt-2 pb-2 font-sans">&#34394;&#20551;&#30340;&#22320;&#22336;&#31354;&#38388; (2)</h2>
-<p class=" font-serif my-1">&#8220;&#26144;&#23556;&#20102;&#24456;&#22810;&#27425;&#65292;&#20294;&#21448;&#21482;&#26377;&#19968;&#20010;&#8221;</p>
+        <div><h2 id="2" class=" text-xl mt-2 pb-2 font-sans">虚假的地址空间 (2)</h2>
+<p class=" font-serif my-1">“映射了很多次，但又只有一个”</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#27604; VR &#30524;&#38236;&#39640;&#32423;&#30340;&#21151;&#33021;&#65306;&#22810;&#20010;&#20301;&#32622;&#20849;&#20139;&#21516;&#19968;&#22359;&#23631;&#24149;</li>
+<li class=" ml-8">比 VR 眼镜高级的功能：多个位置共享同一块屏幕</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#25105;&#20204;&#30456;&#20449;&#65306;&#21385;&#23475;&#30340;&#25805;&#20316;&#31995;&#32479;&#65292;&#21516;&#19968;&#20221;&#20195;&#30721;&#20165;&#26377;&#19968;&#20010;&#21103;&#26412;</p>
+<p class=" font-serif my-1">我们相信：厉害的操作系统，同一份代码仅有一个副本</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#22914;&#20309;&#38388;&#25509;&#35777;&#23454;&#36825;&#19968;&#28857;&#65311;</li>
-<li class=" ml-8">&#22914;&#20309;&#30452;&#25509;&#30830;&#35748;&#36825;&#19968;&#28857;&#65311;<ul class=" list-disc font-serif">
+<li class=" ml-8">如何间接证实这一点？</li>
+<li class=" ml-8">如何直接确认这一点？<ul class=" list-disc font-serif">
 <li class=" ml-8">AskGPT: How to print the corresponding physical address of a given virtual address in Linux user space in C?</li>
 </ul>
 </li>
@@ -393,23 +393,23 @@ section .center {
 
       
         
-        <div><h2 id="3" class=" text-xl mt-2 pb-2 font-sans">&#34394;&#20551;&#30340;&#22320;&#22336;&#31354;&#38388; (3)</h2>
-<p class=" font-serif my-1">&#8220;&#22797;&#21046;&#20102;&#65292;&#20294;&#27809;&#26377;&#23436;&#20840;&#22797;&#21046;&#8221;</p>
+        <div><h2 id="3" class=" text-xl mt-2 pb-2 font-sans">虚假的地址空间 (3)</h2>
+<p class=" font-serif my-1">“复制了，但没有完全复制”</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#21363;&#20415;&#20351;&#29992;&#20102;&#24456;&#22810;&#20869;&#23384;&#65292;fork() &#20381;&#28982;&#21487;&#20197;&#22312;&#30636;&#38388;&#23436;&#25104;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#22797;&#21046; GB &#32423;&#20869;&#23384;&#20063;&#38656;&#35201;&#25968;&#30334; ms</li>
-<li class=" ml-8">&#24590;&#20040;&#20570;&#21040;&#30340;&#65311;</li>
+<li class=" ml-8">即便使用了很多内存，fork() 依然可以在瞬间完成<ul class=" list-disc font-serif">
+<li class=" ml-8">复制 GB 级内存也需要数百 ms</li>
+<li class=" ml-8">怎么做到的？</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#22797;&#21046;&#65292;&#24456;&#26377;&#21487;&#33021;&#30333;&#22797;&#21046;</p>
+<p class=" font-serif my-1">复制，很有可能白复制</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">fork-execve &#38750;&#24120;&#24120;&#35265;</li>
-<li class=" ml-8">&#21018;&#22797;&#21046;&#23436; 1GB &#20869;&#23384;&#65292;&#23601;&#38144;&#27585;&#20102;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#25805;&#20316;&#31995;&#32479;&#65306;&#25105;&#19981;&#24178;&#36825;&#31181;&#20107;</li>
-<li class=" ml-8"><red>&#38500;&#20102;&#19975;&#19981;&#24471;&#24050;&#65292;&#33021;&#19981;&#22797;&#21046;&#23601;&#19981;&#22797;&#21046;</red></li>
-<li class=" ml-8">&#8220;&#20889;&#26102;&#22797;&#21046;&#8221; (copy-on-write)</li>
+<li class=" ml-8">fork-execve 非常常见</li>
+<li class=" ml-8">刚复制完 1GB 内存，就销毁了<ul class=" list-disc font-serif">
+<li class=" ml-8">操作系统：我不干这种事</li>
+<li class=" ml-8"><red>除了万不得已，能不复制就不复制</red></li>
+<li class=" ml-8">“写时复制” (copy-on-write)</li>
 </ul>
 </li>
 </ul></div>

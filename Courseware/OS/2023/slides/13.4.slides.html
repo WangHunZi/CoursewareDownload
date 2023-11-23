@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +209,7 @@ section .center {
 }
 </style>
 
-  <title>&#25805;&#20316;&#31995;&#32479;&#23454;&#39564;&#20013;&#30340;&#38450;&#24481;&#24615;&#32534;&#31243;</title>
+  <title>操作系统实验中的防御性编程</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,7 +227,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="13.4.slides.html" class=" text-amber-900">&#25805;&#20316;&#31995;&#32479;&#23454;&#39564;&#20013;&#30340;&#38450;&#24481;&#24615;&#32534;&#31243;</a></h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="13.4.slides.html" class=" text-amber-900">操作系统实验中的防御性编程</a></h1></div></div></div>
         
       
       </section>
@@ -238,25 +238,25 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#21516;&#23398;&#20204;&#38754;&#23545;&#30340;&#22256;&#22659;</h2>
-<p class=" font-serif my-1">&#29702;&#35770;&#24456;&#32654;&#22909;&#65292;&#29616;&#23454;&#24456;&#27531;&#37239;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">同学们面对的困境</h2>
+<p class=" font-serif my-1">理论很美好，现实很残酷</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25105;&#20204;&#30340;&#26694;&#26550;&#30452;&#25509;&#36816;&#34892;&#22312;&#34394;&#25311;&#26426;&#19978;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#26681;&#26412;&#27809;&#27861;&#24102;&#36825;&#20123; sanitizers</li>
+<li class=" ml-8">我们的框架直接运行在虚拟机上<ul class=" list-disc font-serif">
+<li class=" ml-8">根本没法带这些 sanitizers</li>
 </ul>
 </li>
-<li class=" ml-8">&#25105;&#20204;&#26681;&#26412;&#19981;&#21487;&#33021; &#8220;&#35266;&#27979;&#27599;&#19968;&#27425;&#20849;&#20139;&#20869;&#23384;&#35775;&#38382;&#8221;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#30452;&#25509;&#25670;&#28866;</li>
-<li class=" ml-8">(&#22256;&#38590;&#26159;&#25670;&#28866;&#30340;&#31532;&#19968;&#21407;&#22240;)</li>
+<li class=" ml-8">我们根本不可能 “观测每一次共享内存访问”<ul class=" list-disc font-serif">
+<li class=" ml-8">直接摆烂</li>
+<li class=" ml-8">(困难是摆烂的第一原因)</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#21478;&#19968;&#31181;&#24605;&#36335; (rule of thumb)</p>
+<p class=" font-serif my-1">另一种思路 (rule of thumb)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#19981;&#23454;&#29616; &#8220;&#23436;&#25972;&#8221; &#30340;&#26816;&#26597;</li>
-<li class=" ml-8">&#20801;&#35768;&#23384;&#22312;&#35823;&#25253;/&#28431;&#25253;</li>
-<li class=" ml-8">&#20294;<red>&#23454;&#29616;&#31616;&#21333;&#12289;&#38750;&#24120;&#26377;&#29992;</red></li>
+<li class=" ml-8">不实现 “完整” 的检查</li>
+<li class=" ml-8">允许存在误报/漏报</li>
+<li class=" ml-8">但<red>实现简单、非常有用</red></li>
 </ul></div>
         
       
@@ -268,16 +268,16 @@ section .center {
 
       
         
-        <div><h2 id="buffer-overrun" class=" text-xl mt-2 pb-2 font-sans">&#20363;&#23376;&#65306;Buffer Overrun &#26816;&#26597;</h2>
-<p class=" font-serif my-1">Canary (&#37329;&#19997;&#38592;) &#23545;&#19968;&#27687;&#21270;&#30899;&#38750;&#24120;&#25935;&#24863;</p>
+        <div><h2 id="buffer-overrun" class=" text-xl mt-2 pb-2 font-sans">例子：Buffer Overrun 检查</h2>
+<p class=" font-serif my-1">Canary (金丝雀) 对一氧化碳非常敏感</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#29992;&#29983;&#21629;&#39044;&#35686;&#30719;&#20117;&#19979;&#30340;&#29926;&#26031;&#27844;&#38706; (since 1911)</li>
+<li class=" ml-8">用生命预警矿井下的瓦斯泄露 (since 1911)</li>
 </ul>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/canary_with_miner.jpg" width="400px"></p>
-<p class=" font-serif my-1">&#35745;&#31639;&#26426;&#31995;&#32479;&#20013;&#30340; canary</p>
+<p class=" font-serif my-1">计算机系统中的 canary</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#8220;&#29306;&#29298;&#8221; &#19968;&#20123;&#20869;&#23384;&#21333;&#20803;&#65292;&#26469;&#39044;&#35686; memory error &#30340;&#21457;&#29983;<ul class=" list-disc font-serif">
-<li class=" ml-8">(&#31243;&#24207;&#36816;&#34892;&#26102;&#27809;&#26377;&#21160;&#29289;&#21463;&#21040;&#23454;&#36136;&#30340;&#20260;&#23475;)</li>
+<li class=" ml-8">“牺牲” 一些内存单元，来预警 memory error 的发生<ul class=" list-disc font-serif">
+<li class=" ml-8">(程序运行时没有动物受到实质的伤害)</li>
 </ul>
 </li>
 </ul></div>
@@ -291,20 +291,20 @@ section .center {
 
       
         
-        <div><h2 id="canary-stack-guard" class=" text-xl mt-2 pb-2 font-sans">Canary &#30340;&#20363;&#23376;&#65306;&#20445;&#25252;&#26632;&#31354;&#38388; (Stack Guard)</h2>
+        <div><h2 id="canary-stack-guard" class=" text-xl mt-2 pb-2 font-sans">Canary 的例子：保护栈空间 (Stack Guard)</h2>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#define MAGIC 0x55555555</span>
 <span class="cp">#define BOTTOM (STK_SZ / sizeof(u32) - 1)</span>
 <span class="k">struct</span><span class="w"> </span><span class="nc">stack</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="n">STK_SZ</span><span class="p">];</span><span class="w"> </span><span class="p">};</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">canary_init</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">stack</span><span class="w"> </span><span class="o">*</span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">u32</span><span class="w"> </span><span class="o">*</span><span class="n">ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">u32</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">s</span><span class="p">;</span>
-<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">CANARY_SZ</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o"><</span><span class="w"> </span><span class="n">CANARY_SZ</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
 <span class="w">    </span><span class="n">ptr</span><span class="p">[</span><span class="n">BOTTOM</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ptr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MAGIC</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">canary_check</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">stack</span><span class="w"> </span><span class="o">*</span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">u32</span><span class="w"> </span><span class="o">*</span><span class="n">ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">u32</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">s</span><span class="p">;</span>
-<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">CANARY_SZ</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o"><</span><span class="w"> </span><span class="n">CANARY_SZ</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">panic_on</span><span class="p">(</span><span class="n">ptr</span><span class="p">[</span><span class="n">BOTTOM</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">MAGIC</span><span class="p">,</span><span class="w"> </span><span class="s">"underflow"</span><span class="p">);</span>
 <span class="w">    </span><span class="n">panic_on</span><span class="p">(</span><span class="n">ptr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">MAGIC</span><span class="p">,</span><span class="w"> </span><span class="s">"overflow"</span><span class="p">);</span>
 <span class="w">  </span><span class="p">}</span>
@@ -320,17 +320,17 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#28907;&#28907;&#28907;&#12289;&#23663;&#23663;&#23663;&#21644;&#33914;&#33914;&#33914;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">烫烫烫、屯屯屯和葺葺葺</h2>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/GET.jpg" width="300px"></p>
-<p class=" font-serif my-1">msvc &#20013; debug mode &#30340; guard/fence/canary</p>
+<p class=" font-serif my-1">msvc 中 debug mode 的 guard/fence/canary</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#26410;&#21021;&#22987;&#21270;&#26632;: <code>0xcccccccc</code></li>
-<li class=" ml-8">&#26410;&#21021;&#22987;&#21270;&#22534;: <code>0xcdcdcdcd</code></li>
-<li class=" ml-8">&#23545;&#35937;&#22836;&#23614;: <code>0xfdfdfdfd</code></li>
-<li class=" ml-8">&#24050;&#22238;&#25910;&#20869;&#23384;: <code>0xdddddddd</code><ul class=" list-disc font-serif">
-<li class=" ml-8">&#25163;&#25345;&#20004;&#25226;&#38175;&#26020;&#25335;&#65292;&#21475;&#20013;&#30142;&#21628;&#28907;&#28907;&#28907;</li>
-<li class=" ml-8">&#33050;&#36367;&#21315;&#26421;&#23663;&#23663;&#23663;&#65292;&#31505;&#30475;&#19975;&#29289;&#38168;&#38168;&#38168;</li>
-<li class=" ml-8">(&#23427;&#20204;&#19968;&#30452;&#22312;&#26080;&#24418;&#20013;&#20445;&#25252;&#20320;)</li>
+<li class=" ml-8">未初始化栈: <code>0xcccccccc</code></li>
+<li class=" ml-8">未初始化堆: <code>0xcdcdcdcd</code></li>
+<li class=" ml-8">对象头尾: <code>0xfdfdfdfd</code></li>
+<li class=" ml-8">已回收内存: <code>0xdddddddd</code><ul class=" list-disc font-serif">
+<li class=" ml-8">手持两把锟斤拷，口中疾呼烫烫烫</li>
+<li class=" ml-8">脚踏千朵屯屯屯，笑看万物锘锘锘</li>
+<li class=" ml-8">(它们一直在无形中保护你)</li>
 </ul>
 </li>
 </ul>
@@ -347,24 +347,24 @@ section .center {
 
       
         
-        <div><h2 id="lockdep" class=" text-xl mt-2 pb-2 font-sans">&#38450;&#24481;&#24615;&#32534;&#31243;&#65306;&#20302;&#37197;&#29256; Lockdep</h2>
-<p class=" font-serif my-1">&#19981;&#24517;&#22823;&#36153;&#21608;&#31456;&#35760;&#24405;&#20160;&#20040;&#19978;&#38145;&#39034;&#24207;</p>
+        <div><h2 id="lockdep" class=" text-xl mt-2 pb-2 font-sans">防御性编程：低配版 Lockdep</h2>
+<p class=" font-serif my-1">不必大费周章记录什么上锁顺序</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#32479;&#35745;&#24403;&#21069;&#30340; spin count<ul class=" list-disc font-serif">
-<li class=" ml-8">&#22914;&#26524;&#36229;&#36807;&#26576;&#20010;&#26126;&#26174;&#19981;&#27491;&#24120;&#30340;&#25968;&#20540; (1,000,000,000) &#23601;&#25253;&#21578;</li>
+<li class=" ml-8">统计当前的 spin count<ul class=" list-disc font-serif">
+<li class=" ml-8">如果超过某个明显不正常的数值 (1,000,000,000) 就报告</li>
 </ul>
 </li>
 </ul>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">xchg</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lk</span><span class="p">,</span><span class="w"> </span><span class="n">LOCKED</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">LOCKED</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">count</span><span class="o">++</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">SPIN_LIMIT</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">xchg</span><span class="p">(</span><span class="o">&</span><span class="n">lk</span><span class="p">,</span><span class="w"> </span><span class="n">LOCKED</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">LOCKED</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">count</span><span class="o">++</span><span class="w"> </span><span class="o">></span><span class="w"> </span><span class="n">SPIN_LIMIT</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">panic</span><span class="p">(</span><span class="s">"Spin limit exceeded @ %s:%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">__FILE__</span><span class="p">,</span><span class="w"> </span><span class="n">__LINE__</span><span class="p">);</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#37197;&#21512;&#35843;&#35797;&#22120;&#21644;&#32447;&#31243; backtrace &#19968;&#31186;&#35786;&#26029;&#27515;&#38145;</li>
+<li class=" ml-8">配合调试器和线程 backtrace 一秒诊断死锁</li>
 </ul></div>
         
       
@@ -376,22 +376,22 @@ section .center {
 
       
         
-        <div><h2 id="addresssanitizer-l1" class=" text-xl mt-2 pb-2 font-sans">&#38450;&#24481;&#24615;&#32534;&#31243;&#65306;&#20302;&#37197;&#29256; AddressSanitizer (L1)</h2>
-<p class=" font-serif my-1">&#20869;&#23384;&#20998;&#37197;&#35201;&#27714;&#65306;&#24050;&#20998;&#37197;&#20869;&#23384; $S = [\ell_0, r_0) \cup [\ell_1, r_1) \cup \ldots$</p>
+        <div><h2 id="addresssanitizer-l1" class=" text-xl mt-2 pb-2 font-sans">防御性编程：低配版 AddressSanitizer (L1)</h2>
+<p class=" font-serif my-1">内存分配要求：已分配内存 $S = [\ell_0, r_0) \cup [\ell_1, r_1) \cup \ldots$</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">kalloc($s$) &#36820;&#22238;&#30340; $[\ell, r)$ &#24517;&#39035;&#28385;&#36275; $[\ell, r) \cap S = \varnothing$<ul class=" list-disc font-serif">
-<li class=" ml-8">thread-local allocation + &#24182;&#21457;&#30340; free &#36824;&#34542;&#23481;&#26131;&#24324;&#38169;&#30340;</li>
+<li class=" ml-8">kalloc($s$) 返回的 $[\ell, r)$ 必须满足 $[\ell, r) \cap S = \varnothing$<ul class=" list-disc font-serif">
+<li class=" ml-8">thread-local allocation + 并发的 free 还蛮容易弄错的</li>
 </ul>
 </li>
 </ul>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="c1">// allocation</span>
-<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">u32</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">size</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">u32</span><span class="p">)</span><span class="w"> </span><span class="o"><=</span><span class="w"> </span><span class="n">size</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">panic_on</span><span class="p">(((</span><span class="n">u32</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">ptr</span><span class="p">)[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">MAGIC</span><span class="p">,</span><span class="w"> </span><span class="s">"double-allocation"</span><span class="p">);</span>
 <span class="w">  </span><span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MAGIC</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="c1">// free</span>
-<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">u32</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">alloc_size</span><span class="p">(</span><span class="n">ptr</span><span class="p">);</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">u32</span><span class="p">)</span><span class="w"> </span><span class="o"><=</span><span class="w"> </span><span class="n">alloc_size</span><span class="p">(</span><span class="n">ptr</span><span class="p">);</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">panic_on</span><span class="p">(((</span><span class="n">u32</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">ptr</span><span class="p">)[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s">"double-free"</span><span class="p">);</span>
 <span class="w">  </span><span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>

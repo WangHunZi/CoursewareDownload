@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +209,7 @@ section .center {
 }
 </style>
 
-  <title>&#38142;&#25509;&#19982;&#21152;&#36733;&#36873;&#35762;</title>
+  <title>链接与加载选讲</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,21 +227,21 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#38142;&#25509;&#19982;&#21152;&#36733;&#36873;&#35762;</h1>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">链接与加载选讲</h1>
 <p class=" font-serif my-1"><include src="Slides_Author"><div><div class="py-16">
-<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">&#33931;&#28814;&#23721;</a></p>
+<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">蒋炎岩</a></p>
 </div>
 <div class="row">
 <div class="author-affiliation">
-    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#12288;&#12288;&#21335;&#20140;&#22823;&#23398;&#12288;&#12288;</p>
+    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">　　南京大学　　</p>
     <img class="inline-img h-24" src="../../../static/img/nju-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#31185;&#23398;&#19982;&#25216;&#26415;&#31995;</p>
+   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">计算机科学与技术系</p>
     <img class="inline-img h-24" src="../../../static/img/njucs-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#36719;&#20214;&#30740;&#31350;&#25152;</p>
+    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">计算机软件研究所</p>
     <img class="inline-img h-24" src="../../../static/img/ics-logo.png" style="display: inline-block;"></a>
   </div>
 </div></div></include></p></div></div></div>
@@ -255,20 +255,20 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26412;&#35762;&#27010;&#36848;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">本讲概述</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#21160;&#24577;&#38142;&#25509;&#65292;&#22823;&#23478;&#26126;&#30333;&#20102;&#21527;&#65311;</p>
-<p class=" font-serif my-1">(&#26681;&#25454;&#25105;&#20204;&#30340;&#32463;&#39564;&#65292;&#22823;&#23478;&#19978;&#35838;&#27809;&#21548;&#25026;)</p>
+<p class=" font-serif my-1">动态链接，大家明白了吗？</p>
+<p class=" font-serif my-1">(根据我们的经验，大家上课没听懂)</p>
 </blockquote>
 <hr>
-<p class=" font-serif my-1">&#26412;&#35762;&#20869;&#23481;</p>
+<p class=" font-serif my-1">本讲内容</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#38745;&#24577;&#38142;&#25509;&#19982;&#21152;&#36733;<ul class=" list-disc font-serif">
-<li class=" ml-8">Hello &#31243;&#24207;&#30340;&#38142;&#25509;&#19982;&#21152;&#36733;</li>
+<li class=" ml-8">静态链接与加载<ul class=" list-disc font-serif">
+<li class=" ml-8">Hello 程序的链接与加载</li>
 </ul>
 </li>
-<li class=" ml-8">&#21160;&#24577;&#38142;&#25509;&#19982;&#21152;&#36733;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#33258;&#24049;&#21160;&#25163;&#23454;&#29616;&#21160;&#24577;&#21152;&#36733;</li>
+<li class=" ml-8">动态链接与加载<ul class=" list-disc font-serif">
+<li class=" ml-8">自己动手实现动态加载</li>
 </ul>
 </li>
 </ul></div>
@@ -286,7 +286,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#38745;&#24577;&#38142;&#25509;&#19982;&#21152;&#36733;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">静态链接与加载</h1></div></div></div>
         
       
       </section>
@@ -297,8 +297,8 @@ section .center {
 
       
         
-        <div><h2 id="-fno-pic-static" class=" text-xl mt-2 pb-2 font-sans">&#19968;&#20010;&#23454;&#39564;&#65306;<code>-fno-pic</code> &#32534;&#35793;&#65307;<code>-static</code> &#38142;&#25509;</h2>
-<p class=" font-serif my-1"><a href="../../../pages/ICS/2020/demos/link-test.tar.gz" class=" text-amber-900">&#20195;&#30721;</a></p>
+        <div><h2 id="-fno-pic-static" class=" text-xl mt-2 pb-2 font-sans">一个实验：<code>-fno-pic</code> 编译；<code>-static</code> 链接</h2>
+<p class=" font-serif my-1"><a href="../../../pages/ICS/2020/demos/link-test.tar.gz" class=" text-amber-900">代码</a></p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="c1">// a.c</span>
 <span class="kt">int</span><span class="w"> </span><span class="nf">foo</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
@@ -311,7 +311,7 @@ section .center {
 
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="c1">// main.c</span>
 <span class="k">extern</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
-<span class="kt">int</span><span class="w"> </span><span class="nf">foo</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">);</span><span class="w"> </span><span class="c1">// &#21487;&#20197;&#35797;&#35797; extern int foo;</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">foo</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">);</span><span class="w"> </span><span class="c1">// 可以试试 extern int foo;</span>
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d + %d = %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">foo</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">));</span>
 <span class="p">}</span>
@@ -327,20 +327,20 @@ section .center {
       
         
         <div><h2 id="gnu-binutils" class=" text-xl mt-2 pb-2 font-sans">GNU Binutils</h2>
-<p class=" font-serif my-1"><a href="https://www.gnu.org/software/binutils/" class=" text-amber-900">Binary utilities</a>: &#20998;&#26512;&#20108;&#36827;&#21046;&#25991;&#20214;&#30340;&#24037;&#20855;</p>
+<p class=" font-serif my-1"><a href="https://www.gnu.org/software/binutils/" class=" text-amber-900">Binary utilities</a>: 分析二进制文件的工具</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">RTFM: &#21407;&#26469;&#26377;&#37027;&#20040;&#22810;&#24037;&#20855;&#65281;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#26377; addr2line&#65292;&#33258;&#24049;&#20063;&#21487;&#20197;&#23454;&#29616;&#31867; gdb &#35843;&#35797;&#22120;&#20102;</li>
+<li class=" ml-8">RTFM: 原来有那么多工具！<ul class=" list-disc font-serif">
+<li class=" ml-8">有 addr2line，自己也可以实现类 gdb 调试器了</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#20351;&#29992; binutils</p>
+<p class=" font-serif my-1">使用 binutils</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">objdump &#26597;&#30475; .data &#33410;&#30340; <code>x</code>, <code>y</code> (<code>-D</code>)</li>
-<li class=" ml-8">objdump &#26597;&#30475; main &#23545;&#24212;&#30340;&#27719;&#32534;&#20195;&#30721;</li>
-<li class=" ml-8">readelf &#26597;&#30475; relocation &#20449;&#24687;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#24605;&#32771;&#39064;&#65306;&#20026;&#20160;&#20040;&#35201; <code>-4</code>?</li>
+<li class=" ml-8">objdump 查看 .data 节的 <code>x</code>, <code>y</code> (<code>-D</code>)</li>
+<li class=" ml-8">objdump 查看 main 对应的汇编代码</li>
+<li class=" ml-8">readelf 查看 relocation 信息<ul class=" list-disc font-serif">
+<li class=" ml-8">思考题：为什么要 <code>-4</code>?</li>
 </ul>
 </li>
 </ul></div>
@@ -354,15 +354,15 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#38745;&#24577;&#31243;&#24207;&#30340;&#21152;&#36733;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">静态程序的加载</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#30001;&#25805;&#20316;&#31995;&#32479;&#21152;&#36733; (&#19979;&#23398;&#26399;&#20869;&#23481;)</p>
+<p class=" font-serif my-1">由操作系统加载 (下学期内容)</p>
 </blockquote>
 <hr>
-<p class=" font-serif my-1">&#20320;&#21487;&#20197;&#35748;&#20026;&#26159; &#8220;&#19968;&#27493;&#21040;&#20301;&#8221; &#30340;</p>
+<p class=" font-serif my-1">你可以认为是 “一步到位” 的</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20351;&#29992; gdb (starti) &#35843;&#35797;</li>
-<li class=" ml-8">&#20351;&#29992; strace &#26597;&#30475;&#31995;&#32479;&#35843;&#29992;&#24207;&#21015;</li>
+<li class=" ml-8">使用 gdb (starti) 调试</li>
+<li class=" ml-8">使用 strace 查看系统调用序列</li>
 </ul></div>
         
       
@@ -374,20 +374,20 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#19968;&#20010;&#26377;&#36259;&#30340;&#38382;&#39064;&#65306;&#8220;&#26368;&#23567;&#8221; &#30340;&#21487;&#25191;&#34892;&#20195;&#30721;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">一个有趣的问题：“最小” 的可执行代码</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#19981;&#33021;&#29992; ld &#38142;&#25509;&#21527;&#65311;</p>
+<p class=" font-serif my-1">不能用 ld 链接吗？</p>
 </blockquote>
 <hr>
-<p class=" font-serif my-1">(&#35797;&#19968;&#35797;)</p></div>
+<p class=" font-serif my-1">(试一试)</p></div>
         
       
          <div class="fragment"> 
         <div><ul class=" list-disc font-serif">
-<li class=" ml-8">&#25105;&#20204;&#33021;&#21542;&#20889;&#19968;&#20010;&#26368;&#23567;&#30340;&#27719;&#32534;&#20195;&#30721;&#65292;&#33021;&#27491;&#30830;&#36820;&#22238;&#65311;</li>
-<li class=" ml-8">&#20165;&#25191;&#34892;&#19968;&#20010;&#25805;&#20316;&#31995;&#32479;&#35843;&#29992;<ul class=" list-disc font-serif">
-<li class=" ml-8">rax = 231; rdi = &#36820;&#22238;&#20540;</li>
-<li class=" ml-8">syscall &#25351;&#20196;&#25191;&#34892;&#31995;&#32479;&#35843;&#29992;</li>
+<li class=" ml-8">我们能否写一个最小的汇编代码，能正确返回？</li>
+<li class=" ml-8">仅执行一个操作系统调用<ul class=" list-disc font-serif">
+<li class=" ml-8">rax = 231; rdi = 返回值</li>
+<li class=" ml-8">syscall 指令执行系统调用</li>
 </ul>
 </li>
 </ul></div>
@@ -401,12 +401,12 @@ section .center {
 
       
         
-        <div><h2 id="linuxc" class=" text-xl mt-2 pb-2 font-sans">Linux/C &#19990;&#30028;&#20013;&#30340;&#23453;&#34255;</h2>
+        <div><h2 id="linuxc" class=" text-xl mt-2 pb-2 font-sans">Linux/C 世界中的宝藏</h2>
 <p class=" font-serif my-1"><code>gcc -Wl,--verbose</code></p>
 <hr>
-<p class=" font-serif my-1">C &#19990;&#30028;&#37324;&#36824;&#26377;&#24456;&#22810;&#22823;&#23478;&#19981;&#30693;&#36947;&#30340;&#19996;&#35199;</p>
+<p class=" font-serif my-1">C 世界里还有很多大家不知道的东西</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#19968;&#31995;&#21015; crt &#23545;&#35937;<ul class=" list-disc font-serif">
+<li class=" ml-8">一系列 crt 对象<ul class=" list-disc font-serif">
 <li class=" ml-8"><code>__attribute__((constructor))</code></li>
 <li class=" ml-8"><code>__attribute__((destructor))</code> (atexit)</li>
 </ul>
@@ -428,7 +428,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#21160;&#24577;&#38142;&#25509;&#19982;&#21152;&#36733;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">动态链接与加载</h1></div></div></div>
         
       
       </section>
@@ -439,19 +439,19 @@ section .center {
 
       
         
-        <div><h2 id="-fno-pic-static" class=" text-xl mt-2 pb-2 font-sans">&#21435;&#25481; <code>-fno-pic</code> &#21644; <code>-static</code></h2>
+        <div><h2 id="-fno-pic-static" class=" text-xl mt-2 pb-2 font-sans">去掉 <code>-fno-pic</code> 和 <code>-static</code></h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#36825;&#26159;&#40664;&#35748;&#30340; gcc &#32534;&#35793;/&#38142;&#25509;&#36873;&#39033;&#12290;</p>
+<p class=" font-serif my-1">这是默认的 gcc 编译/链接选项。</p>
 </blockquote>
-<p class=" font-serif my-1">&#25991;&#20214;&#30456;&#27604;&#38745;&#24577;&#38142;&#25509;&#22823;&#24133;&#30246;&#36523;</p>
+<p class=" font-serif my-1">文件相比静态链接大幅瘦身</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><code>a.o</code>, <code>b.o</code> &#27809;&#26377;&#21464;&#21270;</li>
-<li class=" ml-8"><code>main.o</code> &#37324;&#20381;&#28982;&#26377; <code>00 00 00 00</code><ul class=" list-disc font-serif">
-<li class=" ml-8">&#20294;&#26159;&#30456;&#23545;&#20110; rip &#30340; offset</li>
-<li class=" ml-8">relocation &#20381;&#28982;&#26159; x - 4, y - 4, foo - 4</li>
+<li class=" ml-8"><code>a.o</code>, <code>b.o</code> 没有变化</li>
+<li class=" ml-8"><code>main.o</code> 里依然有 <code>00 00 00 00</code><ul class=" list-disc font-serif">
+<li class=" ml-8">但是相对于 rip 的 offset</li>
+<li class=" ml-8">relocation 依然是 x - 4, y - 4, foo - 4</li>
 </ul>
 </li>
-<li class=" ml-8"><code>a.out</code> &#37324;&#24211;&#30340;&#20195;&#30721;&#37117;&#19981;&#35265;&#20102;</li>
+<li class=" ml-8"><code>a.out</code> 里库的代码都不见了</li>
 </ul></div>
         
       
@@ -463,28 +463,28 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20301;&#32622;&#26080;&#20851;&#20195;&#30721;</h2>
-<p class=" font-serif my-1">&#20351;&#29992;&#20301;&#32622;&#26080;&#20851;&#20195;&#30721; (PIC) &#30340;&#21407;&#22240;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">位置无关代码</h2>
+<p class=" font-serif my-1">使用位置无关代码 (PIC) 的原因</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20849;&#20139;&#24211;&#19981;&#24517;&#20107;&#20808;&#20915;&#23450;&#21152;&#36733;&#30340;&#20301;&#32622;</li>
-<li class=" ml-8">&#24212;&#29992;&#31243;&#24207;&#33258;&#24049;&#20063;&#26159;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#26032;&#29256;&#26412; gcc &#26080;&#35770; 32/64-bit &#22343;&#40664;&#35748; PIC</li>
-<li class=" ml-8">&#37325;&#29616;&#35838;&#26412;&#34892;&#20026;&#21487;&#20351;&#29992; <code>-no-pie</code> &#36873;&#39033;&#32534;&#35793;</li>
+<li class=" ml-8">共享库不必事先决定加载的位置</li>
+<li class=" ml-8">应用程序自己也是<ul class=" list-disc font-serif">
+<li class=" ml-8">新版本 gcc 无论 32/64-bit 均默认 PIC</li>
+<li class=" ml-8">重现课本行为可使用 <code>-no-pie</code> 选项编译</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">PIC &#30340;&#23454;&#29616;</p>
+<p class=" font-serif my-1">PIC 的实现</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">i386 &#24182;&#19981;&#25903;&#25345;&#20197;&#19979;&#20195;&#30721;</li>
+<li class=" ml-8">i386 并不支持以下代码</li>
 </ul>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>movl $1, 1234(%eip)
 </code></pre></div>
 
 <hr>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20110;&#26159;&#26377;&#20102;&#20320;&#20204;&#32463;&#24120;&#30475;&#21040;&#30340; <code>__i686.get_pc_thunk.bx</code><ul class=" list-disc font-serif">
-<li class=" ml-8">&#8220;&#33719;&#21462; next PC &#30340;&#22320;&#22336;&#8221; (&#22914;&#20309;&#23454;&#29616;&#65311;)</li>
+<li class=" ml-8">于是有了你们经常看到的 <code>__i686.get_pc_thunk.bx</code><ul class=" list-disc font-serif">
+<li class=" ml-8">“获取 next PC 的地址” (如何实现？)</li>
 </ul>
 </li>
 </ul></div>
@@ -498,28 +498,28 @@ section .center {
 
       
         
-        <div><h2 id="aout" class=" text-xl mt-2 pb-2 font-sans">&#20849;&#20139;&#23545;&#35937; (a.out) &#30340;&#21152;&#36733;</h2>
-<p class=" font-serif my-1">&#21629;&#20196;&#65306;ldd</p>
+        <div><h2 id="aout" class=" text-xl mt-2 pb-2 font-sans">共享对象 (a.out) 的加载</h2>
+<p class=" font-serif my-1">命令：ldd</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#8220;print shared object dependencies&#8221;<ul class=" list-disc font-serif">
+<li class=" ml-8">“print shared object dependencies”<ul class=" list-disc font-serif">
 <li class=" ml-8">linux-vdso.so.1<ul class=" list-disc font-serif">
-<li class=" ml-8">&#26242;&#26102;&#24573;&#30053;&#23427;</li>
+<li class=" ml-8">暂时忽略它</li>
 </ul>
 </li>
-<li class=" ml-8">libc.so.6 =&gt; /lib/x86_64-linux-gnu/libc.so.6</li>
+<li class=" ml-8">libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6</li>
 <li class=" ml-8">/lib64/ld-linux-x86-64.so.2<ul class=" list-disc font-serif">
-<li class=" ml-8">&#22810;&#27425;&#25171;&#21360;&#65292;&#22320;&#22336;&#20250;&#21457;&#29983;&#21464;&#21270; (ldd &#20250;&#25191;&#34892;&#21152;&#36733;&#36807;&#31243;)</li>
+<li class=" ml-8">多次打印，地址会发生变化 (ldd 会执行加载过程)</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">ldd &#31455;&#28982;&#26159;&#19968;&#20010;&#33050;&#26412; (<code>vim $(which ldd)</code>)</p>
+<p class=" font-serif my-1">ldd 竟然是一个脚本 (<code>vim $(which ldd)</code>)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25384;&#20010;&#23581;&#35797;&#35843;&#29992;&#33509;&#24178; ld-linux.so &#20505;&#36873;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#21152;&#19978;&#19968;&#31995;&#21015;&#29615;&#22659;&#21464;&#37327;</li>
-<li class=" ml-8">&#25105;&#20204;&#21487;&#20197;&#29992; <code>--list</code> &#36873;&#39033;&#36798;&#21040;&#31867;&#20284;&#25928;&#26524;</li>
+<li class=" ml-8">挨个尝试调用若干 ld-linux.so 候选<ul class=" list-disc font-serif">
+<li class=" ml-8">加上一系列环境变量</li>
+<li class=" ml-8">我们可以用 <code>--list</code> 选项达到类似效果</li>
 </ul>
 </li>
 </ul></div>
@@ -533,32 +533,32 @@ section .center {
 
       
         
-        <div><h2 id="aout-contd" class=" text-xl mt-2 pb-2 font-sans">&#20849;&#20139;&#23545;&#35937; (a.out) &#30340;&#21152;&#36733; (cont'd)</h2>
-<p class=" font-serif my-1">&#32456;&#20110;&#25581;&#24320;&#35868;&#39064;</p>
+        <div><h2 id="aout-contd" class=" text-xl mt-2 pb-2 font-sans">共享对象 (a.out) 的加载 (cont'd)</h2>
+<p class=" font-serif my-1">终于揭开谜题</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><code>readelf -a a.out</code><ul class=" list-disc font-serif">
-<li class=" ml-8">program header &#20013;&#26377;&#19968;&#20010; INTERP<ul class=" list-disc font-serif">
+<li class=" ml-8">program header 中有一个 INTERP<ul class=" list-disc font-serif">
 <li class=" ml-8"><code>/lib64/ld-linux-x86-64.so.2</code></li>
-<li class=" ml-8">&#36825;&#20010;&#23383;&#31526;&#20018;&#21487;&#20197;&#30452;&#25509;&#22312;&#20108;&#36827;&#21046;&#25991;&#20214;&#20013;&#30475;&#21040;</li>
+<li class=" ml-8">这个字符串可以直接在二进制文件中看到</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#31070;&#22855;&#30340; ld.so</p>
+<p class=" font-serif my-1">神奇的 ld.so</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><code>/lib64/ld-linux-x86-64.so.2 ./a.out</code><ul class=" list-disc font-serif">
-<li class=" ml-8">&#21644;&#25191;&#34892; <code>./a.out</code> &#30340;&#34892;&#20026;&#23436;&#20840;&#19968;&#33268;<ul class=" list-disc font-serif">
-<li class=" ml-8">(&#36825;&#25165;&#26159; <code>./a.out</code> &#30495;&#27491;&#22312;&#25805;&#20316;&#31995;&#32479;&#37324;&#21457;&#29983;&#30340;&#20107;&#24773;)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#19982; sha-bang (<code>#!</code>) &#23454;&#29616;&#26426;&#21046;&#23436;&#20840;&#30456;&#21516;</li>
+<li class=" ml-8">和执行 <code>./a.out</code> 的行为完全一致<ul class=" list-disc font-serif">
+<li class=" ml-8">(这才是 <code>./a.out</code> 真正在操作系统里发生的事情)<ul class=" list-disc font-serif">
+<li class=" ml-8">与 sha-bang (<code>#!</code>) 实现机制完全相同</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 </li>
-<li class=" ml-8">ld.so &#21040;&#24213;&#20570;&#20102;&#20160;&#20040;&#65292;&#19979;&#23398;&#26399;&#20998;&#35299;</li>
+<li class=" ml-8">ld.so 到底做了什么，下学期分解</li>
 </ul></div>
         
       
@@ -574,7 +574,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#21160;&#24577;&#38142;&#25509;&#65306;&#23454;&#29616;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">动态链接：实现</h1></div></div></div>
         
       
       </section>
@@ -585,18 +585,18 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25105;&#20204;&#21018;&#25165;&#24573;&#30053;&#20102;&#19968;&#20010;&#24040;&#22823;&#30340;&#38382;&#39064;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">我们刚才忽略了一个巨大的问题</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">main.o &#22312;&#38142;&#25509;&#26102;&#65292;&#23545; printf &#30340;&#35843;&#29992;&#22320;&#22336;&#23601;&#30830;&#23450;&#20102;</p>
-<p class=" font-serif my-1"><red>&#20294; libc &#27599;&#27425;&#21152;&#36733;&#30340;&#20301;&#32622;&#37117;&#19981;&#19968;&#26679;&#21834;</red>&#65281;</p>
+<p class=" font-serif my-1">main.o 在链接时，对 printf 的调用地址就确定了</p>
+<p class=" font-serif my-1"><red>但 libc 每次加载的位置都不一样啊</red>！</p>
 </blockquote>
 <hr>
-<p class=" font-serif my-1">&#24212;&#29992;&#31243;&#24207;&#20351;&#29992;&#24590;&#26679;&#30340;&#25351;&#20196;&#24207;&#21015;&#35843;&#29992;&#24211;&#20989;&#25968;&#65311;</p>
+<p class=" font-serif my-1">应用程序使用怎样的指令序列调用库函数？</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#21487;&#20197;&#22312;&#24211;&#21152;&#36733;&#30340;&#26102;&#20505;&#37325;&#26032;&#36827;&#34892;&#19968;&#27425;&#38745;&#24577;&#38142;&#25509;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20294;&#36825;&#20010;&#26041;&#26696;&#26377;&#19968;&#20123;&#26126;&#26174;&#30340;&#32570;&#38519;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#21508;&#20010;&#36827;&#31243;&#30340;&#20195;&#30721;&#19981;&#33021;&#20849;&#20139;&#19968;&#20010;&#20869;&#23384;&#21103;&#26412;</li>
-<li class=" ml-8">&#27809;&#26377;&#20351;&#29992;&#36807;&#30340;&#31526;&#21495;&#20063;&#38656;&#35201;&#37325;&#23450;&#20301;</li>
+<li class=" ml-8">可以在库加载的时候重新进行一次静态链接<ul class=" list-disc font-serif">
+<li class=" ml-8">但这个方案有一些明显的缺陷<ul class=" list-disc font-serif">
+<li class=" ml-8">各个进程的代码不能共享一个内存副本</li>
+<li class=" ml-8">没有使用过的符号也需要重定位</li>
 </ul>
 </li>
 </ul>
@@ -612,14 +612,14 @@ section .center {
 
       
         
-        <div><h2 id="elf" class=" text-xl mt-2 pb-2 font-sans">ELF: &#26597;&#34920;</h2>
-<p class=" font-serif my-1">&#22522;&#26412;&#27454;</p>
+        <div><h2 id="elf" class=" text-xl mt-2 pb-2 font-sans">ELF: 查表</h2>
+<p class=" font-serif my-1">基本款</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>call *table[PRINTF]
 </code></pre></div>
 
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#22312;&#38142;&#25509;&#26102;&#65292;&#22635;&#20837;&#36816;&#34892;&#26102;&#30340; table<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20351;&#29992; <code>-fno-plt</code> &#36873;&#39033;&#21487;&#20197;&#24320;&#21551;&#27492;&#27454;</li>
+<li class=" ml-8">在链接时，填入运行时的 table<ul class=" list-disc font-serif">
+<li class=" ml-8">使用 <code>-fno-plt</code> 选项可以开启此款</li>
 </ul>
 </li>
 </ul></div>
@@ -627,7 +627,7 @@ section .center {
       
          <div class="fragment"> 
         <div><hr>
-<p class=" font-serif my-1">&#35946;&#21326;&#27454; (&#40664;&#35748;&#36873;&#39033;&#65292;&#20351;&#29992; PLT)</p>
+<p class=" font-serif my-1">豪华款 (默认选项，使用 PLT)</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>printf@plt:
   jmp *table[PRINTF]
   push $PRINTF
@@ -647,7 +647,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#24635;&#32467;&#19982;&#21453;&#24605;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">总结与反思</h1></div></div></div>
         
       
       </section>
@@ -658,26 +658,26 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20026;&#20160;&#20040;&#25105;&#20174;&#26469;&#27809;&#21548;&#35828;&#36807;&#36825;&#20123;&#30693;&#35782;&#65311;&#65311;&#65311;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">为什么我从来没听说过这些知识？？？</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#22240;&#20026;&#30334;&#24230;&#25628;&#19981;&#21040;&#21834;&#65281;</p>
+<p class=" font-serif my-1">因为百度搜不到啊！</p>
 </blockquote>
 <hr>
-<p class=" font-serif my-1">&#20013;&#25991;&#31038;&#21306;&#20960;&#20046;&#19981;&#23384;&#22312;&#36825;&#20123;&#30693;&#35782;&#30340;&#35814;&#32454;&#35299;&#37322;</p>
+<p class=" font-serif my-1">中文社区几乎不存在这些知识的详细解释</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">the friendly manual &#26159;&#33521;&#25991;&#20889;&#30340;</li>
-<li class=" ml-8">mailing list/stackoverflow &#37117;&#26159;&#33521;&#25991;</li>
-<li class=" ml-8">&#22269;&#20869;&#30340;&#19987;&#23478;&#26412;&#26469;&#23601;&#23569;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20165;&#26377;&#30340;&#37027;&#20123;&#20063;&#27809;&#31354;&#20889;&#25991;&#26723;</li>
+<li class=" ml-8">the friendly manual 是英文写的</li>
+<li class=" ml-8">mailing list/stackoverflow 都是英文</li>
+<li class=" ml-8">国内的专家本来就少<ul class=" list-disc font-serif">
+<li class=" ml-8">仅有的那些也没空写文档</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#20320;&#20204;&#25165;&#26159;&#26410;&#26469;&#30340;&#24076;&#26395;</p>
+<p class=" font-serif my-1">你们才是未来的希望</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#19981;&#35201;&#21160;&#19981;&#21160;&#23601;&#35828;&#20869;&#21367;</li>
-<li class=" ml-8">&#19981;&#35201;&#20026;&#20102;&#26080;&#24847;&#20041;&#30340; GPA &#27838;&#27838;&#33258;&#21916;</li>
-<li class=" ml-8">&#19981;&#35201;&#20572;&#27490;&#33258;&#25105;&#25937;&#36174;</li>
+<li class=" ml-8">不要动不动就说内卷</li>
+<li class=" ml-8">不要为了无意义的 GPA 沾沾自喜</li>
+<li class=" ml-8">不要停止自我救赎</li>
 </ul></div>
         
       

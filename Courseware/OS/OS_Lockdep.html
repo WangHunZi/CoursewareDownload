@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -149,7 +149,7 @@ hr {
 <div class="px-2 py-1 w-full fixed z-50 bg-gradient-to-r from-black via-purple-700 via-purple-500 shadow-lg" style="-webkit-backdrop-filter: saturate(150%) blur(4px); backdrop-filter: saturate(150%) blur(4px)">
   <form>
     <a href="../index.html"><span class="text-lg px-2 text-white">Yanyan's Wiki</span></a>
-    <a href="2023/index.html"><span class="text-sm px-2 text-white">&#25805;&#20316;&#31995;&#32479; (2023)</span></a>
+    <a href="2023/index.html"><span class="text-sm px-2 text-white">操作系统 (2023)</span></a>
     <input maxlength="9" id="token-input" class="float-right appearance-none border border-transparent px-2 py-1 w-20 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-xs focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent font-mono" type="text" placeholder="TOKEN" oninput="login();">
   </form>
 </div>
@@ -157,17 +157,17 @@ hr {
 <div class="article container mx-auto md:px-8 lg:px-8 xl:px-8 2xl:px-8 shadow-lg border pb-8 pt-10 max-w-screen-md text-justify divide-y-2 divide-white">
   <div><h1 id="the-kernel-lock-validator" class=" text-2xl mt-2 font-sans">The kernel lock validator</h1>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#36825;&#26159; LWN.net &#22312; 2006 &#24180; 5 &#26376;&#21457;&#24067;&#30340; lockdep &#25991;&#26723;&#12290;&#26356;&#35814;&#32454;&#30340;&#25991;&#26723;&#21442;&#32771; <a href="https://www.kernel.org/doc/Documentation/locking/lockdep-design.txt" class=" text-amber-900">kernel.org</a>&#12290;</p>
+<p class=" font-serif my-1">这是 LWN.net 在 2006 年 5 月发布的 lockdep 文档。更详细的文档参考 <a href="https://www.kernel.org/doc/Documentation/locking/lockdep-design.txt" class=" text-amber-900">kernel.org</a>。</p>
 </blockquote>
 <p class=" font-serif my-1">Locking is a necessary evil in operating systems; without a solid locking regime, different parts of the system will collide when trying to access the same resources, leading to data corruption and general chaos. But locking has hazards of its own; carelessly implemented locking can cause system deadlocks. As a simple example, consider two locks $L_1$ and $L_2$. Any code which requires both locks must take care to acquire the locks in the right order. If one function acquires $L_1$ before $L_2$, but another function acquires them in the opposite order, eventually the system will find itself in a situation where each function has acquired one lock and is blocked waiting for the other - a deadlock.</p>
 <p class=" font-serif my-1">A race condition like the one described above may be a one-in-a-million possibility, but, with computers, it does not take too long to exercise a code path a million times. Sooner or later, a system containing this sort of bug will lock up, leaving its users wondering what is going on. To avoid this sort of situation, kernel developers try to define rules for the order in which locks should be acquired. But, in a system with many thousands of locks, defining a comprehensive set of rules is challenging at best, and enforcing them is even harder. So locking bugs creep into the kernel, lurk until some truly inconvenient time, and eventually surprise some unsuspecting user.</p>
-<p class=" font-serif my-1">Over time, the kernel developers have made increasing use of automated code analysis tools as those tools become available. The latest such is <a href="http://lwn.net/Articles/185605/" class=" text-amber-900">the first version of the lock validator patch</a>, posted by Ingo Molnar (&#36825;&#20301;&#20063;&#26159; Complete-Fair-Scheduler &#30340;&#20316;&#32773;). This patch (a 61-part set, actually) adds a complex infrastructure to the kernel which can then be used to prove that none of the locking patterns observed in a running system could ever deadlock the kernel.</p>
+<p class=" font-serif my-1">Over time, the kernel developers have made increasing use of automated code analysis tools as those tools become available. The latest such is <a href="http://lwn.net/Articles/185605/" class=" text-amber-900">the first version of the lock validator patch</a>, posted by Ingo Molnar (这位也是 Complete-Fair-Scheduler 的作者). This patch (a 61-part set, actually) adds a complex infrastructure to the kernel which can then be used to prove that none of the locking patterns observed in a running system could ever deadlock the kernel.</p>
 <p class=" font-serif my-1">To that end, the lock validator must track real locking patterns in the kernel. There is no point, however, in tracking every individual lock - there are thousands of them, but many of them are treated in exactly the same way by the kernel. For example, every inode structure contains a spinlock, as does every file structure. Once the kernel has seen how locking is handled for one inode structure, it knows how it will be handled for every inode structure. So, somehow, the lock validator needs to be able to recognize that all spinlocks contained within (for example) the inode structure are essentially the same.</p>
 <p class=" font-serif my-1">To this end, every lock in the system (including rwlocks and mutexes, now) is assigned a specific key. For locks which are declared statically (for example, files_lock, which protects the list of open files), the address of the lock is used as the key. Locks which are allocated dynamically (as most locks embedded within structures are) cannot be tracked that way, however; there may be vast numbers of addresses involved, and, in any case, all locks associated with a specific structure field should be mapped to a single key. This is done by recognizing that these locks are initialized at run time, so, for example, spin_lock_init() is redefined as:</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp"># define spin_lock_init(lock) \</span>
 <span class="cp">do { \</span>
 <span class="cp">  static struct lockdep_type_key __key; \</span>
-<span class="cp">  __spin_lock_init((lock), #lock, &amp;__key); \</span>
+<span class="cp">  __spin_lock_init((lock), #lock, &__key); \</span>
 <span class="cp">} while (0)</span>
 </code></pre></div>
 
@@ -199,7 +199,7 @@ hr {
 <div class="container text-xs py-3">
   <span class="text-muted">
     <center><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="../static/img/cc-4.0.png"></a>
-    &#160;&#160;&#160;<a style="color:inherit" href="https://beian.miit.gov.cn/">&#33487; ICP &#22791; 2020049101 &#21495;</a>
+       <a style="color:inherit" href="https://beian.miit.gov.cn/">苏 ICP 备 2020049101 号</a>
     </center>
   </span>
 </div>

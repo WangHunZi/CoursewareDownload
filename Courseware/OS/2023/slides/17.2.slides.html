@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +209,7 @@ section .center {
 }
 </style>
 
-  <title>&#36827;&#31243;&#22320;&#22336;&#31354;&#38388;&#31649;&#29702;</title>
+  <title>进程地址空间管理</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,7 +227,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="17.2.slides.html" class=" text-amber-900">&#36827;&#31243;&#22320;&#22336;&#31354;&#38388;&#31649;&#29702;</a></h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="17.2.slides.html" class=" text-amber-900">进程地址空间管理</a></h1></div></div></div>
         
       
       </section>
@@ -238,21 +238,21 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#22320;&#22336;&#31354;&#38388; = &#24102;&#35775;&#38382;&#26435;&#38480;&#30340;&#20869;&#23384;&#27573;</h2>
-<p class=" font-serif my-1">&#25805;&#20316;&#31995;&#32479;&#24212;&#35813;&#25552;&#20379;&#19968;&#20010;<red>&#20462;&#25913;&#36827;&#31243;&#22320;&#22336;&#31354;&#38388;&#30340;&#31995;&#32479;&#35843;&#29992;</red></p>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="c1">// &#26144;&#23556;</span>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">地址空间 = 带访问权限的内存段</h2>
+<p class=" font-serif my-1">操作系统应该提供一个<red>修改进程地址空间的系统调用</red></p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="c1">// 映射</span>
 <span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="nf">mmap</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">addr</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">length</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">prot</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">flags</span><span class="p">,</span>
 <span class="w">           </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="kt">off_t</span><span class="w"> </span><span class="n">offset</span><span class="p">);</span>
 <span class="kt">int</span><span class="w"> </span><span class="nf">munmap</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">addr</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">length</span><span class="p">);</span>
 
-<span class="c1">// &#20462;&#25913;&#26144;&#23556;&#26435;&#38480;</span>
+<span class="c1">// 修改映射权限</span>
 <span class="kt">int</span><span class="w"> </span><span class="nf">mprotect</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">addr</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">length</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">prot</span><span class="p">);</span>
 </code></pre></div>
 
 <hr>
-<p class=" font-serif my-1">&#26412;&#36136;&#65306;&#22312;&#29366;&#24577;&#26426;&#29366;&#24577;&#19978;&#22686;&#21152;/&#21024;&#38500;/&#20462;&#25913;&#19968;&#27573;&#21487;&#35775;&#38382;&#30340;&#20869;&#23384;</p>
+<p class=" font-serif my-1">本质：在状态机状态上增加/删除/修改一段可访问的内存</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">mmap: &#21487;&#20197;&#29992;&#26469;&#30003;&#35831;&#20869;&#23384; (<code>MAP_ANONYMOUS</code>)&#65292;&#20063;&#21487;&#20197;&#25226;&#25991;&#20214; &#8220;&#25644;&#21040;&#8221; &#36827;&#31243;&#22320;&#22336;&#31354;&#38388;&#20013;</li>
+<li class=" ml-8">mmap: 可以用来申请内存 (<code>MAP_ANONYMOUS</code>)，也可以把文件 “搬到” 进程地址空间中</li>
 </ul></div>
         
       
@@ -264,16 +264,16 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25226;&#25991;&#20214;&#26144;&#23556;&#21040;&#36827;&#31243;&#22320;&#22336;&#31354;&#38388;&#65311;</h2>
-<p class=" font-serif my-1">&#23427;&#20204;&#30340;&#30830;&#22909;&#20687;&#27809;&#26377;&#20160;&#20040;&#21306;&#21035;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">把文件映射到进程地址空间？</h2>
+<p class=" font-serif my-1">它们的确好像没有什么区别</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25991;&#20214; = &#23383;&#33410;&#24207;&#21015; (&#25805;&#20316;&#31995;&#32479;&#20013;&#30340;&#23545;&#35937;)</li>
-<li class=" ml-8">&#20869;&#23384; = &#23383;&#33410;&#24207;&#21015;</li>
-<li class=" ml-8">&#25805;&#20316;&#31995;&#32479;&#20801;&#35768;&#26144;&#23556;&#22909;&#20687;&#25402;&#21512;&#29702;&#30340;&#8230;&#8230;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#24102;&#26469;&#20102;&#24456;&#22823;&#30340;&#26041;&#20415;</li>
-<li class=" ml-8">ELF loader &#29992; mmap &#38750;&#24120;&#23481;&#26131;&#23454;&#29616;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#35299;&#26512;&#20986;&#35201;&#21152;&#36733;&#21738;&#37096;&#20998;&#21040;&#20869;&#23384;&#65292;&#30452;&#25509; mmap &#23601;&#23436;&#20102;</li>
-<li class=" ml-8">&#25105;&#20204;&#30340; loader &#30340;&#30830;&#26159;&#36825;&#20040;&#20570;&#30340; (strace)</li>
+<li class=" ml-8">文件 = 字节序列 (操作系统中的对象)</li>
+<li class=" ml-8">内存 = 字节序列</li>
+<li class=" ml-8">操作系统允许映射好像挺合理的……<ul class=" list-disc font-serif">
+<li class=" ml-8">带来了很大的方便</li>
+<li class=" ml-8">ELF loader 用 mmap 非常容易实现<ul class=" list-disc font-serif">
+<li class=" ml-8">解析出要加载哪部分到内存，直接 mmap 就完了</li>
+<li class=" ml-8">我们的 loader 的确是这么做的 (strace)</li>
 </ul>
 </li>
 </ul>
@@ -289,24 +289,24 @@ section .center {
 
       
         
-        <div><h2 id="mmap" class=" text-xl mt-2 pb-2 font-sans">&#20351;&#29992; mmap</h2>
-<p class=" font-serif my-1">Example 1: &#30003;&#35831;&#22823;&#37327;&#20869;&#23384;&#31354;&#38388;</p>
+        <div><h2 id="mmap" class=" text-xl mt-2 pb-2 font-sans">使用 mmap</h2>
+<p class=" font-serif my-1">Example 1: 申请大量内存空间</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#30636;&#38388;&#23436;&#25104;&#20869;&#23384;&#20998;&#37197;<ul class=" list-disc font-serif">
-<li class=" ml-8">mmap/munmap &#20026; malloc/free &#25552;&#20379;&#20102;&#26426;&#21046;</li>
-<li class=" ml-8">libc &#30340;&#22823; malloc &#20250;&#30452;&#25509;&#35843;&#29992;&#19968;&#27425; mmap &#23454;&#29616;</li>
+<li class=" ml-8">瞬间完成内存分配<ul class=" list-disc font-serif">
+<li class=" ml-8">mmap/munmap 为 malloc/free 提供了机制</li>
+<li class=" ml-8">libc 的大 malloc 会直接调用一次 mmap 实现</li>
 </ul>
 </li>
-<li class=" ml-8">&#19981;&#22952; strace/gdb &#30475;&#19968;&#19979;</li>
+<li class=" ml-8">不妨 strace/gdb 看一下</li>
 </ul>
 <hr>
 <p class=" font-serif my-1">Example 2: Everything is a file</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#26144;&#23556;&#22823;&#25991;&#20214;&#12289;&#21482;&#35775;&#38382;&#20854;&#20013;&#30340;&#19968;&#23567;&#37096;&#20998;</li>
+<li class=" ml-8">映射大文件、只访问其中的一小部分</li>
 </ul>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'/dev/sda'</span><span class="p">,</span> <span class="s1">'rb'</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
     <span class="n">mm</span> <span class="o">=</span> <span class="n">mmap</span><span class="o">.</span><span class="n">mmap</span><span class="p">(</span><span class="n">fp</span><span class="o">.</span><span class="n">fileno</span><span class="p">(),</span>
-                   <span class="n">prot</span><span class="o">=</span><span class="n">mmap</span><span class="o">.</span><span class="n">PROT_READ</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">128</span> <span class="o">&lt;&lt;</span> <span class="mi">30</span><span class="p">)</span>
+                   <span class="n">prot</span><span class="o">=</span><span class="n">mmap</span><span class="o">.</span><span class="n">PROT_READ</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">128</span> <span class="o"><<</span> <span class="mi">30</span><span class="p">)</span>
     <span class="n">hexdump</span><span class="o">.</span><span class="n">hexdump</span><span class="p">(</span><span class="n">mm</span><span class="p">[:</span><span class="mi">512</span><span class="p">])</span>
 </code></pre></div></div>
         
@@ -319,28 +319,28 @@ section .center {
 
       
         
-        <div><h2 id="memory-mapped-file" class=" text-xl mt-2 pb-2 font-sans">Memory-Mapped File: &#19968;&#33268;&#24615;</h2>
-<p class=" font-serif my-1">&#20294;&#25105;&#20204;&#22909;&#20687;&#24102;&#26469;&#20102;&#19968;&#20123;&#38382;&#39064;&#8230;&#8230;</p>
+        <div><h2 id="memory-mapped-file" class=" text-xl mt-2 pb-2 font-sans">Memory-Mapped File: 一致性</h2>
+<p class=" font-serif my-1">但我们好像带来了一些问题……</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#22914;&#26524;&#25226;&#39029;&#38754;&#26144;&#23556;&#21040;&#25991;&#20214;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20462;&#25913;&#20160;&#20040;&#26102;&#20505;&#29983;&#25928;&#65311;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#31435;&#21363;&#29983;&#25928;&#65306;&#37027;&#20250;&#36896;&#25104;&#24040;&#22823;&#37327;&#30340;&#30913;&#30424; I/O</li>
-<li class=" ml-8">unmap (&#36827;&#31243;&#32456;&#27490;) &#26102;&#29983;&#25928;&#65306;&#22909;&#20687;&#21448;&#22826;&#36831;&#20102;&#8230;&#8230;</li>
+<li class=" ml-8">如果把页面映射到文件<ul class=" list-disc font-serif">
+<li class=" ml-8">修改什么时候生效？<ul class=" list-disc font-serif">
+<li class=" ml-8">立即生效：那会造成巨大量的磁盘 I/O</li>
+<li class=" ml-8">unmap (进程终止) 时生效：好像又太迟了……</li>
 </ul>
 </li>
-<li class=" ml-8">&#33509;&#24178;&#20010;&#26144;&#23556;&#21040;&#21516;&#19968;&#20010;&#25991;&#20214;&#30340;&#36827;&#31243;&#65311;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20849;&#20139;&#19968;&#20221;&#20869;&#23384;&#65311;</li>
-<li class=" ml-8">&#21508;&#33258;&#26377;&#26412;&#22320;&#30340;&#21103;&#26412;&#65311;</li>
+<li class=" ml-8">若干个映射到同一个文件的进程？<ul class=" list-disc font-serif">
+<li class=" ml-8">共享一份内存？</li>
+<li class=" ml-8">各自有本地的副本？</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#35831;&#26597;&#38405;&#25163;&#20876;&#65292;&#30475;&#30475;&#25805;&#20316;&#31995;&#32479;&#26159;&#22914;&#20309;&#35268;&#23450;&#36825;&#20123;&#25805;&#20316;&#30340;&#34892;&#20026;&#30340;</p>
+<p class=" font-serif my-1">请查阅手册，看看操作系统是如何规定这些操作的行为的</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20363;&#22914;&#38405;&#35835; <code>msync (2)</code></li>
-<li class=" ml-8">&#36825;&#25165;&#26159;&#25805;&#20316;&#31995;&#32479;&#30495;&#27491;&#30340;&#22797;&#26434;&#24615;</li>
+<li class=" ml-8">例如阅读 <code>msync (2)</code></li>
+<li class=" ml-8">这才是操作系统真正的复杂性</li>
 </ul></div>
         
       

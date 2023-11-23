@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +209,7 @@ section .center {
 }
 </style>
 
-  <title>&#24182;&#21457;&#25511;&#21046;&#65306;&#21516;&#27493;</title>
+  <title>并发控制：同步</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,21 +227,21 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#24182;&#21457;&#25511;&#21046;&#65306;&#21516;&#27493;</h1>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">并发控制：同步</h1>
 <p class=" font-serif my-1"><include src="Slides_Author"><div><div class="py-16">
-<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">&#33931;&#28814;&#23721;</a></p>
+<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">蒋炎岩</a></p>
 </div>
 <div class="row">
 <div class="author-affiliation">
-    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#12288;&#12288;&#21335;&#20140;&#22823;&#23398;&#12288;&#12288;</p>
+    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">　　南京大学　　</p>
     <img class="inline-img h-24" src="../../../static/img/nju-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#31185;&#23398;&#19982;&#25216;&#26415;&#31995;</p>
+   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">计算机科学与技术系</p>
     <img class="inline-img h-24" src="../../../static/img/njucs-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#36719;&#20214;&#30740;&#31350;&#25152;</p>
+    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">计算机软件研究所</p>
     <img class="inline-img h-24" src="../../../static/img/ics-logo.png" style="display: inline-block;"></a>
   </div>
 </div></div></include></p></div></div></div>
@@ -255,24 +255,24 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#32972;&#26223;</h2>
-<p class=" font-serif my-1">&#20114;&#26021;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">背景</h2>
+<p class=" font-serif my-1">互斥</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#29992;&#25143;&#31243;&#24207;&#30340;&#20114;&#26021; (futex)</li>
-<li class=" ml-8">&#25805;&#20316;&#31995;&#32479;&#20869;&#26680;&#20013;&#30340;&#20114;&#26021; (&#20851;&#20013;&#26029; + &#33258;&#26059;)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#21033;&#29992;&#33258;&#26059;&#38145;&#20063;&#21487;&#20197;&#23454;&#29616;&#20114;&#26021;&#38145;</li>
+<li class=" ml-8">用户程序的互斥 (futex)</li>
+<li class=" ml-8">操作系统内核中的互斥 (关中断 + 自旋)<ul class=" list-disc font-serif">
+<li class=" ml-8">利用自旋锁也可以实现互斥锁</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#24182;&#21457;&#25968;&#25454;&#32467;&#26500;</p>
+<p class=" font-serif my-1">并发数据结构</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#38142;&#34920;</li>
-<li class=" ml-8">&#38431;&#21015;</li>
-<li class=" ml-8">&#22797;&#21512;&#30340;&#25968;&#25454;&#32467;&#26500; (malloc/free)</li>
+<li class=" ml-8">链表</li>
+<li class=" ml-8">队列</li>
+<li class=" ml-8">复合的数据结构 (malloc/free)</li>
 </ul>
 <hr>
-<p class=" font-serif my-1"><del>&#26159;&#26102;&#20505;&#38754;&#23545;&#30495;&#27491;&#30340;&#24182;&#21457;&#32534;&#31243;&#20102;</del></p></div>
+<p class=" font-serif my-1"><del>是时候面对真正的并发编程了</del></p></div>
         
       
       </section>
@@ -283,17 +283,17 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26412;&#27425;&#35838;&#20869;&#23481;&#19982;&#30446;&#26631;</h2>
-<p class=" font-serif my-1">&#29702;&#35299;&#20856;&#22411;&#30340;&#21516;&#27493;&#38382;&#39064;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">本次课内容与目标</h2>
+<p class=" font-serif my-1">理解典型的同步问题</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#29983;&#20135;&#32773;-&#28040;&#36153;&#32773;&#38382;&#39064;</li>
-<li class=" ml-8">&#21746;&#23398;&#23478;&#21507;&#39277;&#38382;&#39064;</li>
+<li class=" ml-8">生产者-消费者问题</li>
+<li class=" ml-8">哲学家吃饭问题</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#29702;&#35299;&#23454;&#29616;&#21516;&#27493;&#30340;&#26041;&#27861;</p>
+<p class=" font-serif my-1">理解实现同步的方法</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20449;&#21495;&#37327;</li>
-<li class=" ml-8">&#26465;&#20214;&#21464;&#37327;</li>
+<li class=" ml-8">信号量</li>
+<li class=" ml-8">条件变量</li>
 </ul></div>
         
       
@@ -309,7 +309,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#31532;&#19968;&#20010;&#21516;&#27493;&#38382;&#39064;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">第一个同步问题</h1></div></div></div>
         
       
       </section>
@@ -320,21 +320,21 @@ section .center {
 
       
         
-        <div><h2 id="-" class=" text-xl mt-2 pb-2 font-sans">&#29983;&#20135;&#32773;-&#28040;&#36153;&#32773;&#38382;&#39064;</h2>
+        <div><h2 id="-" class=" text-xl mt-2 pb-2 font-sans">生产者-消费者问题</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">(&#20320;&#20204;&#36935;&#21040;&#30340;) <red>90% &#30340;&#23454;&#38469;&#24182;&#21457;&#38382;&#39064;&#37117;&#26159;&#29983;&#20135;&#32773;-&#28040;&#36153;&#32773;</red>&#38382;&#39064;&#12290;&#23398;&#20250;&#20320;&#20204;&#23601;&#36194;&#20102;&#12290;</p>
+<p class=" font-serif my-1">(你们遇到的) <red>90% 的实际并发问题都是生产者-消费者</red>问题。学会你们就赢了。</p>
 </blockquote>
-<p class=" font-serif my-1">&#29983;&#20135;&#32773; (&#32447;&#31243;) &#29983;&#20135;&#36164;&#28304; (&#19968;&#20010;&#23545;&#35937;)&#65292;&#29983;&#20135;&#26102;&#38388;&#19981;&#30830;&#23450;</p>
+<p class=" font-serif my-1">生产者 (线程) 生产资源 (一个对象)，生产时间不确定</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#32531;&#20914;&#21306;&#37324;&#27809;&#26377;&#31354;&#20313;&#30340;&#31354;&#38388;&#23384;&#25918;&#29983;&#20135;&#30340;&#23545;&#35937;&#26102;&#31561;&#24453;</li>
+<li class=" ml-8">缓冲区里没有空余的空间存放生产的对象时等待</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#28040;&#36153;&#32773; (&#32447;&#31243;) &#28040;&#36153;&#36164;&#28304; (&#21462;&#36208;&#19968;&#20010;&#23545;&#35937;)&#65292;&#28040;&#36153;&#26102;&#38388;&#20063;&#19981;&#30830;&#23450;</p>
+<p class=" font-serif my-1">消费者 (线程) 消费资源 (取走一个对象)，消费时间也不确定</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#32531;&#20914;&#21306;&#37324;&#27809;&#26377;&#23545;&#35937;&#21487;&#20197;&#28040;&#36153;&#26102;&#31561;&#24453;</li>
+<li class=" ml-8">缓冲区里没有对象可以消费时等待</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#22914;&#20309;&#21327;&#35843;&#23427;&#20204;&#30340;&#29983;&#20135;/&#28040;&#36153;&#65311;</p></div>
+<p class=" font-serif my-1">如何协调它们的生产/消费？</p></div>
         
       
       </section>
@@ -345,23 +345,23 @@ section .center {
 
       
         
-        <div><h2 id="-" class=" text-xl mt-2 pb-2 font-sans">&#20114;&#26021;/&#33258;&#26059;&#38145;&#35299;&#20915;&#29983;&#20135;&#32773;-&#28040;&#36153;&#32773;&#38382;&#39064;</h2>
+        <div><h2 id="-" class=" text-xl mt-2 pb-2 font-sans">互斥/自旋锁解决生产者-消费者问题</h2>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">consume</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">object_t</span><span class="w"> </span><span class="o">*</span><span class="n">obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span>
-<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">obj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// &#38431;&#21015;&#31354;&#26102; consumer &#22312; spin!</span>
-<span class="w">    </span><span class="n">lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lk</span><span class="p">);</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">obj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// 队列空时 consumer 在 spin!</span>
+<span class="w">    </span><span class="n">lock</span><span class="p">(</span><span class="o">&</span><span class="n">lk</span><span class="p">);</span>
 <span class="w">    </span><span class="n">obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">queue_pop</span><span class="p">();</span>
-<span class="w">    </span><span class="n">unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lk</span><span class="p">);</span>
+<span class="w">    </span><span class="n">unlock</span><span class="p">(</span><span class="o">&</span><span class="n">lk</span><span class="p">);</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="w">  </span><span class="n">consume</span><span class="p">(</span><span class="n">obj</span><span class="p">);</span>
 <span class="p">}</span>
 <span class="kt">void</span><span class="w"> </span><span class="nf">produce</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">object_t</span><span class="w"> </span><span class="o">*</span><span class="n">obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">produce</span><span class="p">();</span>
 <span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">succ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
-<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">succ</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// &#38431;&#21015;&#28385;&#26102;&#26080;&#27861;&#25918;&#20837;&#65292;producer &#22312; spin!</span>
-<span class="w">    </span><span class="n">lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lk</span><span class="p">);</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">succ</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// 队列满时无法放入，producer 在 spin!</span>
+<span class="w">    </span><span class="n">lock</span><span class="p">(</span><span class="o">&</span><span class="n">lk</span><span class="p">);</span>
 <span class="w">    </span><span class="n">succ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">queue_push</span><span class="p">(</span><span class="n">obj</span><span class="p">);</span>
-<span class="w">    </span><span class="n">unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lk</span><span class="p">);</span>
+<span class="w">    </span><span class="n">unlock</span><span class="p">(</span><span class="o">&</span><span class="n">lk</span><span class="p">);</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div></div>
@@ -375,8 +375,8 @@ section .center {
 
       
         
-        <div><h2 id="-" class=" text-xl mt-2 pb-2 font-sans">&#29983;&#20135;&#32773;-&#28040;&#36153;&#32773;&#38382;&#39064;&#65306;&#20998;&#26512;</h2>
-<p class=" font-serif my-1">(&#26356;&#31934;&#31616;&#30340;&#34920;&#36798;) &#26377;&#20004;&#31181;&#32447;&#31243;</p>
+        <div><h2 id="-" class=" text-xl mt-2 pb-2 font-sans">生产者-消费者问题：分析</h2>
+<p class=" font-serif my-1">(更精简的表达) 有两种线程</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">producer</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">"("</span><span class="p">);</span><span class="w"> </span><span class="c1">// push</span>
 <span class="p">}</span>
@@ -385,13 +385,13 @@ section .center {
 <span class="p">}</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">&#22312;&#19981;&#21463;&#24182;&#21457;&#25511;&#21046;&#30340;&#21069;&#25552;&#19979;&#65292;&#20219;&#24847;&#30340;&#25324;&#21495;&#24207;&#21015;&#37117;&#26159;&#21512;&#27861;&#30340;</p>
+<p class=" font-serif my-1">在不受并发控制的前提下，任意的括号序列都是合法的</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#29983;&#20135;&#32773;-&#28040;&#36153;&#32773;&#65306;&#25171;&#21360;&#30340;&#25324;&#21495;&#24207;&#21015;&#24517;&#39035;&#28385;&#36275;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#19968;&#23450;&#26159;&#26576;&#20010;&#21512;&#27861;&#25324;&#21495;&#24207;&#21015;&#30340;&#21069;&#32512;</li>
-<li class=" ml-8">&#25324;&#21495;&#23884;&#22871;&#30340;&#28145;&#24230;&#19981;&#36229;&#36807; $n$<ul class=" list-disc font-serif">
-<li class=" ml-8">$n=3$, <code>((())())(((</code> &#21512;&#27861;</li>
-<li class=" ml-8">$n=3$, <code>(((())))</code>, <code>(()))</code> &#19981;&#21512;&#27861;</li>
+<li class=" ml-8">生产者-消费者：打印的括号序列必须满足<ul class=" list-disc font-serif">
+<li class=" ml-8">一定是某个合法括号序列的前缀</li>
+<li class=" ml-8">括号嵌套的深度不超过 $n$<ul class=" list-disc font-serif">
+<li class=" ml-8">$n=3$, <code>((())())(((</code> 合法</li>
+<li class=" ml-8">$n=3$, <code>(((())))</code>, <code>(()))</code> 不合法</li>
 </ul>
 </li>
 </ul>
@@ -411,7 +411,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#21516;&#27493;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">同步</h1></div></div></div>
         
       
       </section>
@@ -422,18 +422,18 @@ section .center {
 
       
         
-        <div><h2 id="synchronization" class=" text-xl mt-2 pb-2 font-sans">&#21516;&#27493; (Synchronization)</h2>
-<p class=" font-serif my-1">&#20004;&#20010;&#25110;&#20004;&#20010;&#20197;&#19978;&#38543;&#26102;&#38388;&#21464;&#21270;&#30340;&#37327;&#22312;&#21464;&#21270;&#36807;&#31243;&#20013;&#20445;&#25345;&#19968;&#23450;&#30340;&#30456;&#23545;&#20851;&#31995;</p>
+        <div><h2 id="synchronization" class=" text-xl mt-2 pb-2 font-sans">同步 (Synchronization)</h2>
+<p class=" font-serif my-1">两个或两个以上随时间变化的量在变化过程中保持一定的相对关系</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">iTunes&#21516;&#27493; (&#25163;&#26426; vs &#30005;&#33041;)</li>
-<li class=" ml-8">&#21464;&#36895;&#31665;&#21516;&#27493;&#22120; (&#21512;&#24182;&#24555;&#24930;&#36895;&#40831;&#36718;)</li>
-<li class=" ml-8">&#21516;&#27493;&#30005;&#26426; (&#36716;&#23376;&#19982;&#30913;&#22330;&#36895;&#24230;&#19968;&#33268;)</li>
-<li class=" ml-8">&#21516;&#27493;&#30005;&#36335; (&#30001;&#26102;&#38047;&#39537;&#21160;&#65292;&#19968;&#20010;&#21608;&#26399;&#20869;&#20840;&#37096;&#23436;&#25104;&#26356;&#26032;)</li>
+<li class=" ml-8">iTunes同步 (手机 vs 电脑)</li>
+<li class=" ml-8">变速箱同步器 (合并快慢速齿轮)</li>
+<li class=" ml-8">同步电机 (转子与磁场速度一致)</li>
+<li class=" ml-8">同步电路 (由时钟驱动，一个周期内全部完成更新)</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#24322;&#27493; (Asynchronous) = &#19981;&#21516;&#27493;</p>
+<p class=" font-serif my-1">异步 (Asynchronous) = 不同步</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#19978;&#36848;&#24456;&#22810;&#20363;&#23376;&#37117;&#26377;&#24322;&#27493;&#29256;&#26412; (&#24322;&#27493;&#30005;&#26426;&#12289;&#24322;&#27493;&#30005;&#36335;&#12289;&#24322;&#27493;&#32447;&#31243;)</li>
+<li class=" ml-8">上述很多例子都有异步版本 (异步电机、异步电路、异步线程)</li>
 </ul></div>
         
       
@@ -445,19 +445,19 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#24182;&#21457;&#31243;&#24207;&#20013;&#30340;&#21516;&#27493;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">并发程序中的同步</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1"><red>&#22312;&#26576;&#20010;&#26102;&#38388;&#28857;&#20849;&#21516;&#36798;&#21040;&#19968;&#33268;&#30340;&#29366;&#24577;</red>&#12290;</p>
-<p class=" font-serif my-1">&#29702;&#35299;&#24182;&#21457;&#31243;&#24207;&#30340;&#26041;&#27861;&#65306;&#25226;&#32447;&#31243;&#24819;&#35937;&#25104;&#25105;&#20204;&#33258;&#24049;&#12290;</p>
+<p class=" font-serif my-1"><red>在某个时间点共同达到一致的状态</red>。</p>
+<p class=" font-serif my-1">理解并发程序的方法：把线程想象成我们自己。</p>
 </blockquote>
 <hr>
-<p class=" font-serif my-1">&#25105;&#20204;&#26412;&#36523;&#26159;&#24322;&#27493;&#30340;&#25191;&#34892;&#27969;&#65292;&#20294;&#38656;&#35201;&#22312;&#26576;&#20010;&#28857;&#27719;&#21512; <img alt="" class="float-right" src="../../../pages/OS/img/ge.jpg" width="190px"></p>
+<p class=" font-serif my-1">我们本身是异步的执行流，但需要在某个点汇合 <img alt="" class="float-right" src="../../../pages/OS/img/ge.jpg" width="190px"></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">NPY&#65306;&#31561;&#25105;&#27927;&#20010;&#22836;&#23601;&#20986;&#38376;/&#31561;&#25105;&#25171;&#23436;&#36825;&#23616;&#28216;&#25103;&#23601;&#26469;</li>
-<li class=" ml-8">&#33293;&#21451;&#65306;&#31561;&#25105;&#20889;&#23436;&#36825;&#27573;&#20195;&#30721;&#23601;&#21507;&#39277;</li>
-<li class=" ml-8">&#23548;&#24072;&#65306;&#31561;&#25105;&#20986;&#24046;&#22238;&#26469;&#23601;&#35752;&#35770;&#36825;&#20010;&#35838;&#39064;</li>
-<li class=" ml-8">&#29983;&#20135;&#32773;&#65306;&#31561;&#20320; (&#28040;&#36153;&#32773;) &#31354;&#20986;&#38431;&#21015;&#25105;&#20877;&#32487;&#32493;</li>
-<li class=" ml-8">&#28040;&#36153;&#32773;&#65306;&#31561;&#20320; (&#29983;&#20135;&#32773;) &#25918;&#20837;&#38431;&#21015;&#25105;&#20877;&#32487;&#32493;</li>
+<li class=" ml-8">NPY：等我洗个头就出门/等我打完这局游戏就来</li>
+<li class=" ml-8">舍友：等我写完这段代码就吃饭</li>
+<li class=" ml-8">导师：等我出差回来就讨论这个课题</li>
+<li class=" ml-8">生产者：等你 (消费者) 空出队列我再继续</li>
+<li class=" ml-8">消费者：等你 (生产者) 放入队列我再继续</li>
 </ul></div>
         
       
@@ -473,7 +473,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#26465;&#20214;&#21464;&#37327;&#65306;&#19968;&#31181;&#19975;&#33021;&#30340;&#21516;&#27493;&#26041;&#27861;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">条件变量：一种万能的同步方法</h1></div></div></div>
         
       
       </section>
@@ -484,24 +484,24 @@ section .center {
 
       
         
-        <div><h2 id="conditional-variables-cv" class=" text-xl mt-2 pb-2 font-sans">Conditional Variables (&#26465;&#20214;&#21464;&#37327;, CV)</h2>
+        <div><h2 id="conditional-variables-cv" class=" text-xl mt-2 pb-2 font-sans">Conditional Variables (条件变量, CV)</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1"><red>&#20219;&#20309;&#21516;&#27493;&#37117;&#26377;&#27719;&#21512;&#30340; &#8220;&#26465;&#20214;&#8221;</red>&#12290;</p>
+<p class=" font-serif my-1"><red>任何同步都有汇合的 “条件”</red>。</p>
 </blockquote>
-<p class=" font-serif my-1">&#32447;&#31243; join (<a href="../../../pages/OS/2021/demos/threads.h" class=" text-amber-900">threads.h</a>, <a href="../../../pages/OS/2021/demos/sum.c" class=" text-amber-900">sum.c</a>)</p>
+<p class=" font-serif my-1">线程 join (<a href="../../../pages/OS/2021/demos/threads.h" class=" text-amber-900">threads.h</a>, <a href="../../../pages/OS/2021/demos/sum.c" class=" text-amber-900">sum.c</a>)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#31561;&#25152;&#26377;&#32447;&#31243;&#32467;&#26463;&#21518;&#32487;&#32493;&#25191;&#34892; <code>exit</code>&#65292;&#21542;&#21017;&#31561;&#24453;</li>
+<li class=" ml-8">等所有线程结束后继续执行 <code>exit</code>，否则等待</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">NPY &#30340;&#20363;&#23376;</p>
+<p class=" font-serif my-1">NPY 的例子</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25171;&#23436;&#28216;&#25103;&#19988;&#27927;&#23436;&#22836;&#21518;&#32487;&#32493;&#25191;&#34892; <code>date()</code>&#65292;&#21542;&#21017;&#31561;&#24453;</li>
+<li class=" ml-8">打完游戏且洗完头后继续执行 <code>date()</code>，否则等待</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#29983;&#20135;&#32773;/&#28040;&#36153;&#32773;&#38382;&#39064; (&#25324;&#21495;&#29256;&#26412;)</p>
+<p class=" font-serif my-1">生产者/消费者问题 (括号版本)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#24038;&#25324;&#21495;&#65306;&#28145;&#24230; $k &lt; n$ &#26102; <code>printf</code>&#65292;&#21542;&#21017;&#31561;&#24453;</li>
-<li class=" ml-8">&#21491;&#25324;&#21495;&#65306;$k &gt; 0$ &#26102; <code>printf</code>&#65292;&#21542;&#21017;&#31561;&#24453;</li>
+<li class=" ml-8">左括号：深度 $k < n$ 时 <code>printf</code>，否则等待</li>
+<li class=" ml-8">右括号：$k > 0$ 时 <code>printf</code>，否则等待</li>
 </ul></div>
         
       
@@ -513,21 +513,21 @@ section .center {
 
       
         
-        <div><h2 id="conditional-variables" class=" text-xl mt-2 pb-2 font-sans">Conditional Variables: &#30561;&#30496;&#21644;&#21796;&#37266;</h2>
-<p class=" font-serif my-1">&#23545;&#20110;&#19968;&#20010; &#8220;&#26465;&#20214;&#21464;&#37327;&#8221; cv &#20195;&#34920;&#20102;&#19968;&#20010;&#21516;&#27493;&#26465;&#20214;</p>
+        <div><h2 id="conditional-variables" class=" text-xl mt-2 pb-2 font-sans">Conditional Variables: 睡眠和唤醒</h2>
+<p class=" font-serif my-1">对于一个 “条件变量” cv 代表了一个同步条件</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">wait(cv) &#128164;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#36827;&#20837;&#30561;&#30496;&#29366;&#24577;&#65292;&#31561;&#24453; cv &#19978;&#30340;&#20107;&#20214;&#21457;&#29983;</li>
+<li class=" ml-8">wait(cv) 💤<ul class=" list-disc font-serif">
+<li class=" ml-8">进入睡眠状态，等待 cv 上的事件发生</li>
 </ul>
 </li>
-<li class=" ml-8">signal/notify(cv) &#128172; &#31169;&#20449;&#65306;&#36208;&#36215;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#25253;&#21578; cv &#19978;&#30340;&#20107;&#20214;&#21457;&#29983;</li>
-<li class=" ml-8">&#22914;&#26524;&#26377;&#32447;&#31243;&#27491;&#22312;&#31561;&#24453; cv&#65292;&#21017;&#21796;&#37266;&#20854;&#20013;&#19968;&#20010;&#32447;&#31243;</li>
+<li class=" ml-8">signal/notify(cv) 💬 私信：走起<ul class=" list-disc font-serif">
+<li class=" ml-8">报告 cv 上的事件发生</li>
+<li class=" ml-8">如果有线程正在等待 cv，则唤醒其中一个线程</li>
 </ul>
 </li>
-<li class=" ml-8">broadcast/notifyAll(cv) &#128227; &#25152;&#26377;&#20154;&#65306;&#36208;&#36215;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#25253;&#21578; cv &#19978;&#30340;&#20107;&#20214;&#21457;&#29983;</li>
-<li class=" ml-8">&#21796;&#37266;&#20840;&#37096;&#27491;&#22312;&#31561;&#24453; cv &#30340;&#32447;&#31243;</li>
+<li class=" ml-8">broadcast/notifyAll(cv) 📣 所有人：走起<ul class=" list-disc font-serif">
+<li class=" ml-8">报告 cv 上的事件发生</li>
+<li class=" ml-8">唤醒全部正在等待 cv 的线程</li>
 </ul>
 </li>
 </ul></div>
@@ -541,21 +541,21 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26465;&#20214;&#21464;&#37327;&#65306;&#19975;&#33021;&#30340;&#21516;&#27493;&#26041;&#27861;</h2>
-<p class=" font-serif my-1">pthread &#26465;&#20214;&#21464;&#37327;&#65306;&#21644;&#20114;&#26021;&#38145;&#32852;&#21512;&#20351;&#29992;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">条件变量：万能的同步方法</h2>
+<p class=" font-serif my-1">pthread 条件变量：和互斥锁联合使用</p>
 <hr>
-<p class=" font-serif my-1">&#38656;&#35201;<red>&#31561;&#24453;&#26465;&#20214;&#28385;&#36275;&#26102;</red></p>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">mutex_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mutex</span><span class="p">);</span>
+<p class=" font-serif my-1">需要<red>等待条件满足时</red></p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">mutex_lock</span><span class="p">(</span><span class="o">&</span><span class="n">mutex</span><span class="p">);</span>
 <span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">cond</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">wait</span><span class="p">(</span><span class="o">&amp;</span><span class="n">cv</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">mutex</span><span class="p">);</span>
+<span class="w">  </span><span class="n">wait</span><span class="p">(</span><span class="o">&</span><span class="n">cv</span><span class="p">,</span><span class="w"> </span><span class="o">&</span><span class="n">mutex</span><span class="p">);</span>
 <span class="p">}</span>
-<span class="n">assert</span><span class="p">(</span><span class="n">cond</span><span class="p">);</span><span class="w"> </span><span class="c1">// &#20114;&#26021;&#38145;&#24517;&#39035;&#20445;&#35777;&#36864;&#20986;&#24490;&#29615;&#26102; cond &#20381;&#28982;&#25104;&#31435;</span>
-<span class="n">mutex_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mutex</span><span class="p">);</span>
+<span class="n">assert</span><span class="p">(</span><span class="n">cond</span><span class="p">);</span><span class="w"> </span><span class="c1">// 互斥锁必须保证退出循环时 cond 依然成立</span>
+<span class="n">mutex_unlock</span><span class="p">(</span><span class="o">&</span><span class="n">mutex</span><span class="p">);</span>
 </code></pre></div>
 
 <hr>
-<p class=" font-serif my-1"><red>&#20854;&#20182;&#32447;&#31243;&#26465;&#20214;&#21487;&#33021;&#34987;&#28385;&#36275;&#26102;</red></p>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">broadcast</span><span class="p">(</span><span class="o">&amp;</span><span class="n">cv</span><span class="p">);</span>
+<p class=" font-serif my-1"><red>其他线程条件可能被满足时</red></p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">broadcast</span><span class="p">(</span><span class="o">&</span><span class="n">cv</span><span class="p">);</span>
 </code></pre></div></div>
         
       
@@ -567,27 +567,27 @@ section .center {
 
       
         
-        <div><h2 id="-" class=" text-xl mt-2 pb-2 font-sans">&#26465;&#20214;&#21464;&#37327;&#65306;&#29983;&#20135;&#32773;-&#28040;&#36153;&#32773;&#38382;&#39064;</h2>
+        <div><h2 id="-" class=" text-xl mt-2 pb-2 font-sans">条件变量：生产者-消费者问题</h2>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">produce</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">mutex_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mutex</span><span class="p">);</span>
-<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">count</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">))</span><span class="w"> </span><span class="n">wait</span><span class="p">(</span><span class="o">&amp;</span><span class="n">cv</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">mutex</span><span class="p">);</span>
+<span class="w">  </span><span class="n">mutex_lock</span><span class="p">(</span><span class="o">&</span><span class="n">mutex</span><span class="p">);</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">count</span><span class="w"> </span><span class="o"><</span><span class="w"> </span><span class="n">n</span><span class="p">))</span><span class="w"> </span><span class="n">wait</span><span class="p">(</span><span class="o">&</span><span class="n">cv</span><span class="p">,</span><span class="w"> </span><span class="o">&</span><span class="n">mutex</span><span class="p">);</span>
 <span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">"("</span><span class="p">);</span><span class="w"> </span><span class="n">count</span><span class="o">++</span><span class="p">;</span>
-<span class="w">  </span><span class="n">mutex_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mutex</span><span class="p">);</span>
-<span class="w">  </span><span class="n">broadcast</span><span class="p">(</span><span class="o">&amp;</span><span class="n">cv</span><span class="p">);</span>
+<span class="w">  </span><span class="n">mutex_unlock</span><span class="p">(</span><span class="o">&</span><span class="n">mutex</span><span class="p">);</span>
+<span class="w">  </span><span class="n">broadcast</span><span class="p">(</span><span class="o">&</span><span class="n">cv</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">consume</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">mutex_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mutex</span><span class="p">);</span>
-<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">count</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">))</span><span class="w"> </span><span class="n">wait</span><span class="p">(</span><span class="o">&amp;</span><span class="n">cv</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">mutex</span><span class="p">);</span>
+<span class="w">  </span><span class="n">mutex_lock</span><span class="p">(</span><span class="o">&</span><span class="n">mutex</span><span class="p">);</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">count</span><span class="w"> </span><span class="o">></span><span class="w"> </span><span class="mi">0</span><span class="p">))</span><span class="w"> </span><span class="n">wait</span><span class="p">(</span><span class="o">&</span><span class="n">cv</span><span class="p">,</span><span class="w"> </span><span class="o">&</span><span class="n">mutex</span><span class="p">);</span>
 <span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">")"</span><span class="p">);</span><span class="w"> </span><span class="n">count</span><span class="o">--</span><span class="p">;</span>
-<span class="w">  </span><span class="n">mutex_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mutex</span><span class="p">);</span>
-<span class="w">  </span><span class="n">broadcast</span><span class="p">(</span><span class="o">&amp;</span><span class="n">cv</span><span class="p">);</span>
+<span class="w">  </span><span class="n">mutex_unlock</span><span class="p">(</span><span class="o">&</span><span class="n">mutex</span><span class="p">);</span>
+<span class="w">  </span><span class="n">broadcast</span><span class="p">(</span><span class="o">&</span><span class="n">cv</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">mutex &#22823;&#24133;&#31616;&#21270;&#20102;&#27491;&#30830;&#24615;&#30340;&#35777;&#26126;</p>
+<p class=" font-serif my-1">mutex 大幅简化了正确性的证明</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#19981;&#35201;&#33258;&#20316;&#20027;&#24352;&#20351;&#29992;&#20854;&#20182;&#20889;&#27861; (&#21442;&#32771; OSTEP)</li>
+<li class=" ml-8">不要自作主张使用其他写法 (参考 OSTEP)</li>
 </ul></div>
         
       
@@ -599,17 +599,17 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26465;&#20214;&#21464;&#37327;&#65306;&#23567;&#20064;&#39064;</h2>
-<p class=" font-serif my-1">&#26377;&#19977;&#31181;&#32447;&#31243;&#65292;&#20998;&#21035;&#25171;&#21360; <code>&lt;</code>, <code>&gt;</code>, &#21644; <code>_</code></p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">条件变量：小习题</h2>
+<p class=" font-serif my-1">有三种线程，分别打印 <code><</code>, <code>></code>, 和 <code>_</code></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#23545;&#36825;&#20123;&#32447;&#31243;&#36827;&#34892;&#21516;&#27493;&#65292;&#20351;&#24471;&#25171;&#21360;&#20986;&#30340;&#24207;&#21015;&#24635;&#26159; <code>&lt;&gt;&lt;_</code> &#21644; <code>&gt;&lt;&gt;_</code> &#32452;&#21512;</li>
+<li class=" ml-8">对这些线程进行同步，使得打印出的序列总是 <code><><_</code> 和 <code>><>_</code> 组合</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#20351;&#29992;&#26465;&#20214;&#21464;&#37327;&#65292;&#21482;&#35201;&#22238;&#31572;&#19977;&#20010;&#38382;&#39064;&#65306;</p>
+<p class=" font-serif my-1">使用条件变量，只要回答三个问题：</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25171;&#21360; &#8220;<code>&lt;</code>&#8221; &#30340;&#26465;&#20214;&#65311;</li>
-<li class=" ml-8">&#25171;&#21360; &#8220;<code>&gt;</code>&#8221; &#30340;&#26465;&#20214;&#65311;</li>
-<li class=" ml-8">&#25171;&#21360; &#8220;<code>_</code>&#8221; &#30340;&#26465;&#20214;&#65311;<ul class=" list-disc font-serif">
+<li class=" ml-8">打印 “<code><</code>” 的条件？</li>
+<li class=" ml-8">打印 “<code>></code>” 的条件？</li>
+<li class=" ml-8">打印 “<code>_</code>” 的条件？<ul class=" list-disc font-serif">
 <li class=" ml-8"><a href="../../../pages/OS/2021/demos/fish.c" class=" text-amber-900">fish.c</a></li>
 </ul>
 </li>
@@ -628,7 +628,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#20449;&#21495;&#37327;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">信号量</h1></div></div></div>
         
       
       </section>
@@ -639,25 +639,25 @@ section .center {
 
       
         
-        <div><h2 id="mutexlock-futex" class=" text-xl mt-2 pb-2 font-sans">&#22797;&#20064;&#65306;MutexLock (futex) &#21644;&#26356;&#34915;&#23460;&#31649;&#29702;</h2>
+        <div><h2 id="mutexlock-futex" class=" text-xl mt-2 pb-2 font-sans">复习：MutexLock (futex) 和更衣室管理</h2>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/locker.jpg" width="300px"></p>
-<p class=" font-serif my-1">&#31649;&#29702;&#21592; (&#25805;&#20316;&#31995;&#32479;&#20195;&#30721;) &#26377;&#19968;&#20010;&#25163;&#29615;</p>
+<p class=" font-serif my-1">管理员 (操作系统代码) 有一个手环</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><red>&#31649;&#29702;&#21592;&#29992;&#33258;&#26059;&#38145;&#20445;&#25252;&#21407;&#23376;&#24615;&#12289;&#28040;&#38500;&#25968;&#25454;&#31454;&#20105;</red></li>
+<li class=" ml-8"><red>管理员用自旋锁保护原子性、消除数据竞争</red></li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#20219;&#20309;&#20154;&#24819;&#36827;&#20837;&#26356;&#34915;&#23460;&#37117;&#38656;&#35201;&#36890;&#36807;&#31649;&#29702;&#21592;</p>
+<p class=" font-serif my-1">任何人想进入更衣室都需要通过管理员</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20808;&#21040;&#30340;&#20154; (&#32447;&#31243;)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#25104;&#21151;&#33719;&#24471;&#25163;&#29615; &#8594; &#36827;&#20837;&#28216;&#27891;&#39302; (&#32447;&#31243;&#21487;&#34987;&#35843;&#24230;&#25191;&#34892;)</li>
+<li class=" ml-8">先到的人 (线程)<ul class=" list-disc font-serif">
+<li class=" ml-8">成功获得手环 → 进入游泳馆 (线程可被调度执行)</li>
 </ul>
 </li>
-<li class=" ml-8">&#21518;&#21040;&#30340;&#20154; (&#32447;&#31243;)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#19981;&#33021;&#36827;&#20837;&#28216;&#27891;&#39302;&#65292;&#25490;&#38431;&#31561;&#24453; (&#32447;&#31243;&#36827;&#20837;&#38431;&#21015;&#65292;&#19981;&#34987;&#35843;&#24230;&#25191;&#34892;)</li>
+<li class=" ml-8">后到的人 (线程)<ul class=" list-disc font-serif">
+<li class=" ml-8">不能进入游泳馆，排队等待 (线程进入队列，不被调度执行)</li>
 </ul>
 </li>
-<li class=" ml-8">&#27927;&#23436;&#28577;&#20986;&#26469;&#30340;&#20154; (&#32447;&#31243;)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20132;&#36824;&#25163;&#29615;&#32473;&#31649;&#29702;&#21592; &#8594; &#31649;&#29702;&#21592;&#20132;&#32473;&#25490;&#38431;&#30340;&#20154;&#36827;&#20837;&#28216;&#27891;&#39302; (&#31561;&#24453;&#30340;&#32447;&#31243;&#34987;&#21796;&#37266;)</li>
+<li class=" ml-8">洗完澡出来的人 (线程)<ul class=" list-disc font-serif">
+<li class=" ml-8">交还手环给管理员 → 管理员交给排队的人进入游泳馆 (等待的线程被唤醒)</li>
 </ul>
 </li>
 </ul></div>
@@ -671,12 +671,12 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26356;&#34915;&#23460;&#31649;&#29702;</h2>
-<p class=" font-serif my-1">&#23436;&#20840;&#27809;&#26377;&#24517;&#35201;&#38480;&#21046;&#25163;&#29615;&#30340;&#25968;&#37327;&#8212;&#8212;&#35753;&#26356;&#22810;&#21516;&#23398;&#21487;&#20197;&#36827;&#20837;&#26356;&#34915;&#23460;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">更衣室管理</h2>
+<p class=" font-serif my-1">完全没有必要限制手环的数量——让更多同学可以进入更衣室</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#31649;&#29702;&#21592;&#21487;&#20197;&#25345;&#26377;&#20219;&#24847;&#25968;&#37327;&#30340;&#25163;&#29615; (&#26356;&#34915;&#23460;&#23481;&#37327;&#19978;&#38480;)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20808;&#36827;&#20837;&#26356;&#34915;&#23460;&#30340;&#21516;&#23398;&#20808;&#24471;&#21040;</li>
-<li class=" ml-8">&#25163;&#29615;&#29992;&#23436;&#21518;&#21017;&#38656;&#35201;&#31561;&#21516;&#23398;&#20986;&#26469;</li>
+<li class=" ml-8">管理员可以持有任意数量的手环 (更衣室容量上限)<ul class=" list-disc font-serif">
+<li class=" ml-8">先进入更衣室的同学先得到</li>
+<li class=" ml-8">手环用完后则需要等同学出来</li>
 </ul>
 </li>
 </ul>
@@ -691,24 +691,24 @@ section .center {
 
       
         
-        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">&#26356;&#34915;&#23460;&#31649;&#29702; (cont'd)</h2>
+        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">更衣室管理 (cont'd)</h2>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/doraemon.gif" width="300px"></p>
-<p class=" font-serif my-1">&#20570;&#19968;&#28857;&#25193;&#23637;&#8212;&#8212;&#32447;&#31243;&#21487;&#20197;&#20219;&#24847; &#8220;&#21464;&#20986;&#8221; &#19968;&#20010;&#25163;&#29615;</p>
+<p class=" font-serif my-1">做一点扩展——线程可以任意 “变出” 一个手环</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25226;&#25163;&#29615;&#30475;&#25104;&#26159;&#20196;&#29260;</li>
-<li class=" ml-8">&#24471;&#21040;&#20196;&#29260;&#30340;&#21487;&#20197;&#36827;&#20837;&#25191;&#34892;</li>
-<li class=" ml-8">&#21487;&#20197;&#38543;&#26102;&#21019;&#24314;&#20196;&#29260;</li>
+<li class=" ml-8">把手环看成是令牌</li>
+<li class=" ml-8">得到令牌的可以进入执行</li>
+<li class=" ml-8">可以随时创建令牌</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#8220;&#25163;&#29615;&#8221; = &#8220;&#20196;&#29260;&#8221; = &#8220;&#19968;&#20010;&#36164;&#28304;&#8221; = &#8220;&#20449;&#21495;&#37327;&#8221; (semaphore)</p>
+<p class=" font-serif my-1">“手环” = “令牌” = “一个资源” = “信号量” (semaphore)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">P(&amp;sem) - prolaag = try + decrease; wait; down; in<ul class=" list-disc font-serif">
-<li class=" ml-8">&#31561;&#24453;&#19968;&#20010;&#25163;&#29615;&#21518;&#36820;&#22238;</li>
-<li class=" ml-8">&#22914;&#26524;&#27492;&#26102;&#31649;&#29702;&#21592;&#25163;&#19978;&#26377;&#31354;&#38386;&#30340;&#25163;&#29615;&#65292;&#31435;&#21363;&#36820;&#22238;</li>
+<li class=" ml-8">P(&sem) - prolaag = try + decrease; wait; down; in<ul class=" list-disc font-serif">
+<li class=" ml-8">等待一个手环后返回</li>
+<li class=" ml-8">如果此时管理员手上有空闲的手环，立即返回</li>
 </ul>
 </li>
-<li class=" ml-8">V(&amp;sem) - verhoog = increase; post; up; out<ul class=" list-disc font-serif">
-<li class=" ml-8">&#21464;&#20986;&#19968;&#20010;&#25163;&#29615;&#65292;&#36865;&#32473;&#31649;&#29702;&#21592;</li>
+<li class=" ml-8">V(&sem) - verhoog = increase; post; up; out<ul class=" list-disc font-serif">
+<li class=" ml-8">变出一个手环，送给管理员</li>
 </ul>
 </li>
 </ul></div>
@@ -722,19 +722,19 @@ section .center {
 
       
         
-        <div><h2 id="e-w-dijkstra" class=" text-xl mt-2 pb-2 font-sans">&#20449;&#21495;&#37327; (E. W. Dijkstra)</h2>
+        <div><h2 id="e-w-dijkstra" class=" text-xl mt-2 pb-2 font-sans">信号量 (E. W. Dijkstra)</h2>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/semaphore-small.jpg" width="500px"></p>
-<p class=" font-serif my-1">&#20449;&#21495;&#37327; = &#20114;&#26021;&#38145; + &#26465;&#20214;&#21464;&#37327;</p>
+<p class=" font-serif my-1">信号量 = 互斥锁 + 条件变量</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20114;&#26021;&#38145;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20165;&#26377;&#19968;&#20010;&#25163;&#29615;&#30340;&#24773;&#20917;</li>
+<li class=" ml-8">互斥锁<ul class=" list-disc font-serif">
+<li class=" ml-8">仅有一个手环的情况</li>
 <li class=" ml-8">P = lock; V = unlock</li>
 </ul>
 </li>
-<li class=" ml-8">&#26465;&#20214;&#21464;&#37327;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#25163;&#29615; = &#31561;&#24453;&#26465;&#20214;</li>
+<li class=" ml-8">条件变量<ul class=" list-disc font-serif">
+<li class=" ml-8">手环 = 等待条件</li>
 <li class=" ml-8">P = wait; V = signal<ul class=" list-disc font-serif">
-<li class=" ml-8">&#22240;&#20026;&#35745;&#25968;&#22120;&#30340;&#23384;&#22312;&#65292;&#19981;&#20250;&#21457;&#29983; signal &#8220;&#20002;&#22833;&#8221;</li>
+<li class=" ml-8">因为计数器的存在，不会发生 signal “丢失”</li>
 </ul>
 </li>
 </ul>
@@ -750,28 +750,28 @@ section .center {
 
       
         
-        <div><h2 id="-" class=" text-xl mt-2 pb-2 font-sans">&#20449;&#21495;&#37327;&#65306;&#23454;&#29616;&#29983;&#20135;&#32773;-&#28040;&#36153;&#32773;</h2>
-<p class=" font-serif my-1">&#20449;&#21495;&#37327;&#35774;&#35745;&#30340;&#37325;&#28857;</p>
+        <div><h2 id="-" class=" text-xl mt-2 pb-2 font-sans">信号量：实现生产者-消费者</h2>
+<p class=" font-serif my-1">信号量设计的重点</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#32771;&#34385; &#8220;&#25163;&#29615;&#8221; (&#27599;&#19968;&#21333;&#20301;&#30340; &#8220;<red>&#36164;&#28304;</red>&#8221;) &#26159;&#20160;&#20040;&#65292;&#35841;&#21019;&#36896;&#65311;&#35841;&#33719;&#21462;&#65311;<ul class=" list-disc font-serif">
+<li class=" ml-8">考虑 “手环” (每一单位的 “<red>资源</red>”) 是什么，谁创造？谁获取？<ul class=" list-disc font-serif">
 <li class=" ml-8"><a href="../../../pages/OS/2021/demos/producer-consumer.c" class=" text-amber-900"><code>producer-consumer.c</code></a></li>
 </ul>
 </li>
 </ul>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">producer</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">P</span><span class="p">(</span><span class="o">&amp;</span><span class="n">empty</span><span class="p">);</span><span class="w">   </span><span class="c1">// P()&#36820;&#22238; -&gt; &#24471;&#21040;&#25163;&#29615;</span>
-<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">"("</span><span class="p">);</span><span class="w"> </span><span class="c1">// &#20551;&#35774;&#32447;&#31243;&#23433;&#20840;</span>
-<span class="w">  </span><span class="n">V</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fill</span><span class="p">);</span>
+<span class="w">  </span><span class="n">P</span><span class="p">(</span><span class="o">&</span><span class="n">empty</span><span class="p">);</span><span class="w">   </span><span class="c1">// P()返回 -> 得到手环</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">"("</span><span class="p">);</span><span class="w"> </span><span class="c1">// 假设线程安全</span>
+<span class="w">  </span><span class="n">V</span><span class="p">(</span><span class="o">&</span><span class="n">fill</span><span class="p">);</span>
 <span class="p">}</span>
 <span class="kt">void</span><span class="w"> </span><span class="nf">consumer</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">P</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fill</span><span class="p">);</span>
+<span class="w">  </span><span class="n">P</span><span class="p">(</span><span class="o">&</span><span class="n">fill</span><span class="p">);</span>
 <span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">")"</span><span class="p">);</span>
-<span class="w">  </span><span class="n">V</span><span class="p">(</span><span class="o">&amp;</span><span class="n">empty</span><span class="p">);</span>
+<span class="w">  </span><span class="n">V</span><span class="p">(</span><span class="o">&</span><span class="n">empty</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#19981;&#35201;&#34987;&#36825;&#31181;&#31616;&#21333;&#30340;&#20551;&#35937;&#39575;&#20102;&#65281;&#20449;&#21495;&#37327;&#22909;&#29992;&#65292;&#20294;&#27809;&#26377;&#37027;&#20040;&#22909;&#29992;&#65281;&#65281;</li>
+<li class=" ml-8">不要被这种简单的假象骗了！信号量好用，但没有那么好用！！</li>
 </ul></div>
         
       
@@ -787,7 +787,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#21746;&#23398;&#23478;&#21507;&#39277;&#38382;&#39064;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">哲学家吃饭问题</h1></div></div></div>
         
       
       </section>
@@ -798,12 +798,12 @@ section .center {
 
       
         
-        <div><h2 id="e-w-dijkstra-1960" class=" text-xl mt-2 pb-2 font-sans">&#21746;&#23398;&#23478;&#21507;&#39277;&#38382;&#39064; (E. W. Dijkstra, 1960)</h2>
-<p class=" font-serif my-1">&#21746;&#23398;&#23478; (&#32447;&#31243;) &#26377;&#26102;&#24605;&#32771;&#65292;&#26377;&#26102;&#21507;&#39277;</p>
+        <div><h2 id="e-w-dijkstra-1960" class=" text-xl mt-2 pb-2 font-sans">哲学家吃饭问题 (E. W. Dijkstra, 1960)</h2>
+<p class=" font-serif my-1">哲学家 (线程) 有时思考，有时吃饭</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#21507;&#39277;&#38656;&#35201;&#21516;&#26102;&#24471;&#21040;&#24038;&#25163;&#21644;&#21491;&#25163;&#30340;&#21449;&#23376;</li>
-<li class=" ml-8">&#24403;&#21449;&#23376;&#34987;&#20854;&#20182;&#20154;&#21344;&#26377;&#26102;&#65292;&#24517;&#39035;&#31561;&#24453;&#65292;&#22914;&#20309;&#23436;&#25104;&#21516;&#27493;&#65311;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#22914;&#20309;&#29992;&#20449;&#21495;&#37327;&#23454;&#29616;&#65311;</li>
+<li class=" ml-8">吃饭需要同时得到左手和右手的叉子</li>
+<li class=" ml-8">当叉子被其他人占有时，必须等待，如何完成同步？<ul class=" list-disc font-serif">
+<li class=" ml-8">如何用信号量实现？</li>
 </ul>
 </li>
 </ul>
@@ -818,22 +818,22 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#24536;&#20102;&#20449;&#21495;&#37327;&#65292;&#35753;&#25105;&#20204;&#26469;&#32781;&#36182;&#21543;&#65281;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">忘了信号量，让我们来耍赖吧！</h2>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">philosopher_thread</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">lhs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">rhs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">n</span><span class="p">;</span>
-<span class="w">  </span><span class="n">mutex_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mutex</span><span class="p">);</span>
-<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">has_fork</span><span class="p">[</span><span class="n">lhs</span><span class="p">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">has_fork</span><span class="p">[</span><span class="n">rhs</span><span class="p">]))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">wait</span><span class="p">(</span><span class="o">&amp;</span><span class="n">cv</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">mutex</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="c1">// &#20986;&#24490;&#29615;&#26102;&#65292;&#24490;&#29615;&#26465;&#20214;&#19968;&#23450;&#20026;&#20551;</span>
+<span class="w">  </span><span class="n">mutex_lock</span><span class="p">(</span><span class="o">&</span><span class="n">mutex</span><span class="p">);</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">has_fork</span><span class="p">[</span><span class="n">lhs</span><span class="p">]</span><span class="w"> </span><span class="o">&&</span><span class="w"> </span><span class="n">has_fork</span><span class="p">[</span><span class="n">rhs</span><span class="p">]))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">wait</span><span class="p">(</span><span class="o">&</span><span class="n">cv</span><span class="p">,</span><span class="w"> </span><span class="o">&</span><span class="n">mutex</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="c1">// 出循环时，循环条件一定为假</span>
 <span class="w">  </span><span class="n">has_fork</span><span class="p">[</span><span class="n">lhs</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">has_fork</span><span class="p">[</span><span class="n">rhs</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
-<span class="w">  </span><span class="n">mutex_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mutex</span><span class="p">);</span>
+<span class="w">  </span><span class="n">mutex_unlock</span><span class="p">(</span><span class="o">&</span><span class="n">mutex</span><span class="p">);</span>
 
 <span class="w">  </span><span class="n">philosopher_eat</span><span class="p">();</span>
 
-<span class="w">  </span><span class="n">mutex_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mutex</span><span class="p">);</span>
+<span class="w">  </span><span class="n">mutex_lock</span><span class="p">(</span><span class="o">&</span><span class="n">mutex</span><span class="p">);</span>
 <span class="w">  </span><span class="n">has_fork</span><span class="p">[</span><span class="n">lhs</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">has_fork</span><span class="p">[</span><span class="n">rhs</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
-<span class="w">  </span><span class="n">broadcast</span><span class="p">(</span><span class="o">&amp;</span><span class="n">cv</span><span class="p">);</span><span class="w"> </span><span class="c1">// &#23545;&#25152;&#26377;&#31561;&#24453;&#30340;&#20154;&#21898;&#65306;&#21449;&#23376;&#25918;&#22238;&#21435;&#21862;&#65292;&#24555;&#30475;&#30475;&#21543;&#65281;</span>
-<span class="w">  </span><span class="n">mutex_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mutex</span><span class="p">);</span>
+<span class="w">  </span><span class="n">broadcast</span><span class="p">(</span><span class="o">&</span><span class="n">cv</span><span class="p">);</span><span class="w"> </span><span class="c1">// 对所有等待的人喊：叉子放回去啦，快看看吧！</span>
+<span class="w">  </span><span class="n">mutex_unlock</span><span class="p">(</span><span class="o">&</span><span class="n">mutex</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div></div>
         
@@ -846,14 +846,14 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#24536;&#20102;&#20449;&#21495;&#37327;&#65292;&#35753;&#19968;&#20010;&#20154;&#38598;&#20013;&#31649;&#29702;&#21449;&#23376;&#21543;&#65281;</h2>
-<p class=" font-serif my-1">&#8220;Master/Slave&#8221;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">忘了信号量，让一个人集中管理叉子吧！</h2>
+<p class=" font-serif my-1">“Master/Slave”</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20998;&#24067;&#24335;&#31995;&#32479;&#20013;&#38750;&#24120;&#24120;&#35265;&#30340;&#35299;&#20915;&#24605;&#36335; (HDFS, ...)</li>
+<li class=" ml-8">分布式系统中非常常见的解决思路 (HDFS, ...)</li>
 </ul>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">philosopher_thread</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">send_request</span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">EAT</span><span class="p">);</span>
-<span class="w">  </span><span class="n">P</span><span class="p">(</span><span class="n">allowed</span><span class="p">[</span><span class="n">id</span><span class="p">]);</span><span class="w"> </span><span class="c1">// waiter &#20250;&#25226;&#21449;&#23376;&#36882;&#32473;&#21746;&#23398;&#23478;</span>
+<span class="w">  </span><span class="n">P</span><span class="p">(</span><span class="n">allowed</span><span class="p">[</span><span class="n">id</span><span class="p">]);</span><span class="w"> </span><span class="c1">// waiter 会把叉子递给哲学家</span>
 <span class="w">  </span><span class="n">philosopher_eat</span><span class="p">();</span>
 <span class="w">  </span><span class="n">send_request</span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">DONE</span><span class="p">);</span>
 <span class="p">}</span>
@@ -876,19 +876,19 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#24536;&#20102;&#37027;&#20123;&#22797;&#26434;&#30340;&#21516;&#27493;&#31639;&#27861;&#21543;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">忘了那些复杂的同步算法吧</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#20320;&#21487;&#33021;&#20250;&#35273;&#24471;&#65292;&#31649;&#21449;&#23376;&#30340;&#20154;&#26159;&#24615;&#33021;&#29942;&#39048;</p>
+<p class=" font-serif my-1">你可能会觉得，管叉子的人是性能瓶颈</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#19968;&#22823;&#26700;&#20154;&#21507;&#39277;&#65292;&#27599;&#20010;&#20154;&#37117;&#21483;&#26381;&#21153;&#21592;&#30340;&#24863;&#35273;</li>
+<li class=" ml-8">一大桌人吃饭，每个人都叫服务员的感觉</li>
 </ul>
 </blockquote>
 <hr>
-<p class=" font-serif my-1"><red>&#25243;&#24320; workload &#35848;&#20248;&#21270;&#23601;&#26159;&#32781;&#27969;&#27667;</red></p>
+<p class=" font-serif my-1"><red>抛开 workload 谈优化就是耍流氓</red></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">eat (&#23454;&#38469;&#30340; workload) &#26102;&#38388;&#21487;&#33021;&#36828;&#22823;&#20110;&#35831;&#27714; (&#20960;&#20010;&#20869;&#23384;&#25805;&#20316;) &#26102;&#38388;</li>
-<li class=" ml-8">&#22914;&#26524;&#19968;&#20010; manager &#25630;&#19981;&#23450;&#65292;&#21487;&#20197;&#20998;&#22810;&#20010;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#25226;&#31995;&#32479;&#35774;&#35745;&#22909;&#65292;&#20351;&#38598;&#20013;&#31649;&#29702;&#19981;&#25104;&#20026;&#29942;&#39048;<ul class=" list-disc font-serif">
+<li class=" ml-8">eat (实际的 workload) 时间可能远大于请求 (几个内存操作) 时间</li>
+<li class=" ml-8">如果一个 manager 搞不定，可以分多个<ul class=" list-disc font-serif">
+<li class=" ml-8">把系统设计好，使集中管理不成为瓶颈<ul class=" list-disc font-serif">
 <li class=" ml-8">M. Brooker, et al. <a href="https://www.usenix.org/conference/nsdi20/presentation/brooker" class=" text-amber-900">Millions of tiny databases</a>, In <em>Proc. of NSDI</em>, 2020.</li>
 </ul>
 </li>
@@ -909,7 +909,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#24635;&#32467;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">总结</h1></div></div></div>
         
       
       </section>
@@ -920,18 +920,18 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#24635;&#32467;</h2>
-<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#20869;&#23481;&#19982;&#30446;&#26631;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">总结</h2>
+<p class=" font-serif my-1">本次课内容与目标</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#29702;&#35299;&#21516;&#27493;&#65306;&#22312;&#26576;&#20010;&#26102;&#38388;&#28857;&#36798;&#21040;&#20114;&#30456;&#35748;&#21516;&#30340;&#29366;&#24577;</li>
-<li class=" ml-8">&#23454;&#29616;&#21516;&#27493;&#65306;&#26465;&#20214;&#21464;&#37327;&#12289;&#20449;&#21495;&#37327;</li>
+<li class=" ml-8">理解同步：在某个时间点达到互相认同的状态</li>
+<li class=" ml-8">实现同步：条件变量、信号量</li>
 </ul>
 <hr>
 <p class=" font-serif my-1">Take-away messages</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20004;&#31181;&#21516;&#27493;&#30340; paradigms<ul class=" list-disc font-serif">
-<li class=" ml-8">&#26465;&#20214;&#21464;&#37327;&#65306;&#31561;&#24453;&#26465;&#20214;&#36798;&#25104;&#65292;&#24182;&#29992;&#20114;&#26021;&#38145;&#20445;&#35777;&#26465;&#20214;&#19981;&#34987;&#30772;&#22351;</li>
-<li class=" ml-8">&#20449;&#21495;&#37327;&#65306;&#29992;&#20196;&#29260; (&#25163;&#29615;) &#31649;&#29702;&#20934;&#35768;&#25191;&#34892;&#30340;&#26435;&#38480; </li>
+<li class=" ml-8">两种同步的 paradigms<ul class=" list-disc font-serif">
+<li class=" ml-8">条件变量：等待条件达成，并用互斥锁保证条件不被破坏</li>
+<li class=" ml-8">信号量：用令牌 (手环) 管理准许执行的权限 </li>
 </ul>
 </li>
 </ul></div>

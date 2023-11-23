@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +209,7 @@ section .center {
 }
 </style>
 
-  <title>Linux &#35774;&#22791;&#39537;&#21160;</title>
+  <title>Linux 设备驱动</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,7 +227,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="linux" class=" text-2xl mt-2 font-sans"><a href="27.2.slides.html" class=" text-amber-900">Linux &#35774;&#22791;&#39537;&#21160;</a></h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="linux" class=" text-2xl mt-2 font-sans"><a href="27.2.slides.html" class=" text-amber-900">Linux 设备驱动</a></h1></div></div></div>
         
       
       </section>
@@ -239,14 +239,14 @@ section .center {
       
         
         <div><h2 id="nuclear-launcher" class=" text-xl mt-2 pb-2 font-sans">Nuclear Launcher</h2>
-<p class=" font-serif my-1">&#22914;&#20309;&#22312; Linux &#20013;&#20026;&#25105;&#20204;&#30340; &#8220;&#26680;&#24377;&#21457;&#23556;&#22120;&#8221; &#32534;&#20889;&#19968;&#20010;&#35774;&#22791;&#39537;&#21160;&#31243;&#24207;&#65311;</p>
+<p class=" font-serif my-1">如何在 Linux 中为我们的 “核弹发射器” 编写一个设备驱动程序？</p>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/nuke-launch.gif" width="500px"></p>
-<p class=" font-serif my-1">&#20869;&#26680;&#27169;&#22359;&#65306;&#19968;&#27573;&#21487;&#20197;&#34987;&#20869;&#26680;&#21160;&#24577;&#21152;&#36733;&#25191;&#34892;&#30340;&#20195;&#30721;</p>
+<p class=" font-serif my-1">内核模块：一段可以被内核动态加载执行的代码</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">Everything is a file<ul class=" list-disc font-serif">
-<li class=" ml-8">&#35774;&#22791;&#39537;&#21160;&#23601;&#26159;&#23454;&#29616;&#20102; <code>struct file_operations</code> &#30340;&#23545;&#35937;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#25226;&#25991;&#20214;&#25805;&#20316;&#32763;&#35793;&#25104;&#35774;&#22791;&#25511;&#21046;&#21327;&#35758;</li>
-<li class=" ml-8">&#35843;&#29992;&#21040;&#35774;&#22791;&#23454;&#29616;&#30340; <code>file_operations</code></li>
+<li class=" ml-8">设备驱动就是实现了 <code>struct file_operations</code> 的对象<ul class=" list-disc font-serif">
+<li class=" ml-8">把文件操作翻译成设备控制协议</li>
+<li class=" ml-8">调用到设备实现的 <code>file_operations</code></li>
 </ul>
 </li>
 </ul>
@@ -262,7 +262,7 @@ section .center {
 
       
         
-        <div><h2 id="file-operations" class=" text-xl mt-2 pb-2 font-sans">&#26356;&#22810;&#30340; File Operations</h2>
+        <div><h2 id="file-operations" class=" text-xl mt-2 pb-2 font-sans">更多的 File Operations</h2>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">file_operations</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">module</span><span class="w"> </span><span class="o">*</span><span class="n">owner</span><span class="p">;</span>
 <span class="w">  </span><span class="n">loff_t</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">llseek</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">file</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">loff_t</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">);</span>
@@ -291,23 +291,23 @@ section .center {
 
       
         
-        <div><h2 id="ioctl" class=" text-xl mt-2 pb-2 font-sans">&#20026;&#20160;&#20040;&#26377;&#20004;&#20010; ioctl?</h2>
+        <div><h2 id="ioctl" class=" text-xl mt-2 pb-2 font-sans">为什么有两个 ioctl?</h2>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">long</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">unlocked_ioctl</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">file</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="p">);</span>
 <span class="kt">long</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">compat_ioctl</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">file</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="p">);</span>
 </code></pre></div>
 
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><code>unlocked_ioctl</code>: BKL (Big Kernel Lock) &#26102;&#20195;&#30340;&#36951;&#20135;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#21333;&#22788;&#29702;&#22120;&#26102;&#20195;&#21482;&#26377; <code>ioctl</code></li>
-<li class=" ml-8">&#20043;&#21518;&#24341;&#20837;&#20102; BKL, <code>ioctl</code> &#25191;&#34892;&#26102;&#40664;&#35748;&#25345;&#26377; BKL</li>
-<li class=" ml-8">(2.6.11) &#39640;&#24615;&#33021;&#30340;&#39537;&#21160;&#21487;&#20197;&#36890;&#36807; <code>unlocked_ioctl</code> &#36991;&#20813;&#38145;</li>
-<li class=" ml-8">(2.6.36) <code>ioctl</code> &#20174; <code>struct file_operations</code> &#20013;&#31227;&#38500;</li>
+<li class=" ml-8"><code>unlocked_ioctl</code>: BKL (Big Kernel Lock) 时代的遗产<ul class=" list-disc font-serif">
+<li class=" ml-8">单处理器时代只有 <code>ioctl</code></li>
+<li class=" ml-8">之后引入了 BKL, <code>ioctl</code> 执行时默认持有 BKL</li>
+<li class=" ml-8">(2.6.11) 高性能的驱动可以通过 <code>unlocked_ioctl</code> 避免锁</li>
+<li class=" ml-8">(2.6.36) <code>ioctl</code> 从 <code>struct file_operations</code> 中移除</li>
 </ul>
 </li>
-<li class=" ml-8"><code>compact_ioctl</code>: &#26426;&#22120;&#23383;&#38271;&#30340;&#20860;&#23481;&#24615;<ul class=" list-disc font-serif">
-<li class=" ml-8">32-bit &#31243;&#24207;&#22312; 64-bit &#31995;&#32479;&#19978;&#21487;&#20197; ioctl</li>
-<li class=" ml-8">&#27492;&#26102;&#24212;&#29992;&#31243;&#24207;&#21644;&#25805;&#20316;&#31995;&#32479;&#23545; ioctl &#25968;&#25454;&#32467;&#26500;&#30340;&#35299;&#35835;&#21487;&#33021;&#19981;&#21516; (tty)</li>
-<li class=" ml-8">(&#35843;&#29992;&#27492;&#20860;&#23481;&#27169;&#24335;)</li>
+<li class=" ml-8"><code>compact_ioctl</code>: 机器字长的兼容性<ul class=" list-disc font-serif">
+<li class=" ml-8">32-bit 程序在 64-bit 系统上可以 ioctl</li>
+<li class=" ml-8">此时应用程序和操作系统对 ioctl 数据结构的解读可能不同 (tty)</li>
+<li class=" ml-8">(调用此兼容模式)</li>
 </ul>
 </li>
 </ul></div>
@@ -321,21 +321,21 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#23384;&#20648;&#35774;&#22791;&#30340;&#25277;&#35937;</h2>
-<p class=" font-serif my-1">&#30913;&#30424; (&#23384;&#20648;&#35774;&#22791;) &#30340;&#35775;&#38382;&#29305;&#24615;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">存储设备的抽象</h2>
+<p class=" font-serif my-1">磁盘 (存储设备) 的访问特性</p>
 <ol class=" list-decimal font-serif">
-<li class=" ml-8">&#20197;&#25968;&#25454;&#22359; (block) &#20026;&#21333;&#20301;&#35775;&#38382;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20256;&#36755;&#26377; &#8220;&#26368;&#23567;&#21333;&#20803;&#8221;&#65292;&#19981;&#25903;&#25345;&#20219;&#24847;&#38543;&#26426;&#35775;&#38382;</li>
-<li class=" ml-8">&#26368;&#20339;&#30340;&#20256;&#36755;&#27169;&#24335;&#19982;&#35774;&#22791;&#30456;&#20851; (HDD v.s. SSD)</li>
+<li class=" ml-8">以数据块 (block) 为单位访问<ul class=" list-disc font-serif">
+<li class=" ml-8">传输有 “最小单元”，不支持任意随机访问</li>
+<li class=" ml-8">最佳的传输模式与设备相关 (HDD v.s. SSD)</li>
 </ul>
 </li>
-<li class=" ml-8">&#22823;&#21534;&#21520;&#37327;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20351;&#29992; DMA &#20256;&#36865;&#25968;&#25454;</li>
+<li class=" ml-8">大吞吐量<ul class=" list-disc font-serif">
+<li class=" ml-8">使用 DMA 传送数据</li>
 </ul>
 </li>
-<li class=" ml-8"><red>&#24212;&#29992;&#31243;&#24207;&#19981;&#30452;&#25509;&#35775;&#38382;</red><ul class=" list-disc font-serif">
-<li class=" ml-8">&#35775;&#38382;&#32773;&#36890;&#24120;&#26159;&#25991;&#20214;&#31995;&#32479; (&#32500;&#25252;&#30913;&#30424;&#19978;&#30340;&#25968;&#25454;&#32467;&#26500;)</li>
-<li class=" ml-8">&#22823;&#37327;&#24182;&#21457;&#30340;&#35775;&#38382; (&#25805;&#20316;&#31995;&#32479;&#20013;&#30340;&#36827;&#31243;&#37117;&#35201;&#35775;&#38382;&#25991;&#20214;&#31995;&#32479;)</li>
+<li class=" ml-8"><red>应用程序不直接访问</red><ul class=" list-disc font-serif">
+<li class=" ml-8">访问者通常是文件系统 (维护磁盘上的数据结构)</li>
+<li class=" ml-8">大量并发的访问 (操作系统中的进程都要访问文件系统)</li>
 </ul>
 </li>
 </ol></div>
@@ -350,9 +350,9 @@ section .center {
       
         
         <div><h2 id="linux-block-io-layer" class=" text-xl mt-2 pb-2 font-sans">Linux Block I/O Layer</h2>
-<p class=" font-serif my-1">&#25991;&#20214;&#31995;&#32479;&#21644;&#30913;&#30424;&#35774;&#22791;&#20043;&#38388;&#30340;&#25509;&#21475;</p>
+<p class=" font-serif my-1">文件系统和磁盘设备之间的接口</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">bread (&#35835;&#19968;&#22359;), bwrite (&#20889;&#19968;&#22359;), bflush (&#31561;&#24453;&#36807;&#24448;&#20889;&#20837;&#33853;&#30424;)</li>
+<li class=" ml-8">bread (读一块), bwrite (写一块), bflush (等待过往写入落盘)</li>
 </ul>
 <hr>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/linux-bio.png" width="850px"></p></div>

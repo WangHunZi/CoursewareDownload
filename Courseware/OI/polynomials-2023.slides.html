@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +209,7 @@ section .center {
 }
 </style>
 
-  <title>&#22810;&#39033;&#24335;&#22522;&#30784;</title>
+  <title>多项式基础</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,21 +227,21 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#22810;&#39033;&#24335;&#22522;&#30784;</h1>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">多项式基础</h1>
 <p class=" font-serif my-1"><include src="Slides_Author"><div><div class="py-16">
-<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">&#33931;&#28814;&#23721;</a></p>
+<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">蒋炎岩</a></p>
 </div>
 <div class="row">
 <div class="author-affiliation">
-    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#12288;&#12288;&#21335;&#20140;&#22823;&#23398;&#12288;&#12288;</p>
+    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">　　南京大学　　</p>
     <img class="inline-img h-24" src="../static/img/nju-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#31185;&#23398;&#19982;&#25216;&#26415;&#31995;</p>
+   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">计算机科学与技术系</p>
     <img class="inline-img h-24" src="../static/img/njucs-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#36719;&#20214;&#30740;&#31350;&#25152;</p>
+    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">计算机软件研究所</p>
     <img class="inline-img h-24" src="../static/img/ics-logo.png" style="display: inline-block;"></a>
   </div>
 </div></div></include></p></div></div></div>
@@ -256,23 +256,23 @@ section .center {
       
         
         <div><h2 id="overview" class=" text-xl mt-2 pb-2 font-sans">Overview</h2>
-<p class=" font-serif my-1">&#22810;&#39033;&#24335;</p>
+<p class=" font-serif my-1">多项式</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#19968;&#20123;&#26377;&#36259;&#30340;&#23581;&#35797;</li>
+<li class=" ml-8">一些有趣的尝试</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#22810;&#39033;&#24335;&#21644;&#20989;&#25968;&#36817;&#20284;</p>
+<p class=" font-serif my-1">多项式和函数近似</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">B&#233;zier curve</li>
-<li class=" ml-8">&#36830;&#32493;&#30340;&#20989;&#25968;&#36817;&#20284;</li>
+<li class=" ml-8">Bézier curve</li>
+<li class=" ml-8">连续的函数近似</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#22810;&#39033;&#24335;&#30340;&#36816;&#31639;</p>
+<p class=" font-serif my-1">多项式的运算</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#24555;&#36895;&#20613;&#37324;&#21494;&#21464;&#25442;</li>
+<li class=" ml-8">快速傅里叶变换</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#29992;&#21040;&#30340;&#20195;&#30721; (Jupyter)</p>
+<p class=" font-serif my-1">本次课用到的代码 (Jupyter)</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><a href="../pages/OI/demos/polynomials.html" class=" text-amber-900">Polynomials</a></li>
 </ul></div>
@@ -290,7 +290,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#22810;&#39033;&#24335;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">多项式</h1></div></div></div>
         
       
       </section>
@@ -301,21 +301,21 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#22810;&#39033;&#24335;&#65306;&#19968;&#31181;&#38750;&#24120;&#22522;&#30784;&#30340;&#25968;&#23398;&#23545;&#35937;</h2>
-<p class=" font-serif my-1">&#26368;&#22522;&#30784;&#30340;&#25968;&#23398;&#23545;&#35937;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">多项式：一种非常基础的数学对象</h2>
+<p class=" font-serif my-1">最基础的数学对象</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25968;&#31995; (&#33258;&#28982;&#25968;/&#25972;&#25968;/&#26377;&#29702;&#25968;/&#22797;&#25968;)</li>
-<li class=" ml-8">&#20195;&#25968;&#32467;&#26500; (&#32676;/&#29615;/&#22495;/&#21521;&#37327;&#31354;&#38388;)<ul class=" list-disc font-serif">
+<li class=" ml-8">数系 (自然数/整数/有理数/复数)</li>
+<li class=" ml-8">代数结构 (群/环/域/向量空间)<ul class=" list-disc font-serif">
 <li class=" ml-8"><a href="https://www.maa.org/press/maa-reviews/the-princeton-companion-to-mathematics" class=" text-amber-900">The Princeton Companion to Mathematics</a></li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#22810;&#39033;&#24335;&#26159;&#36830;&#25509;&#23427;&#20204;&#30340; &#8220;&#31532;&#19968;&#20010;&#32445;&#24102;&#8221;</p>
+<p class=" font-serif my-1">多项式是连接它们的 “第一个纽带”</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25152;&#20197;&#21644;
+<li class=" ml-8">所以和
 $$ax^2 + bx + c$$
-&#26377;&#20851;&#30340;&#20064;&#39064;&#65292;&#20174;&#21021;&#20013;&#24320;&#22987;&#23601;&#20570;&#21040;&#21520;&#20102;&#8230;&#8230;</li>
+有关的习题，从初中开始就做到吐了……</li>
 </ul></div>
         
       
@@ -327,21 +327,21 @@ $$ax^2 + bx + c$$
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26684;&#23616;&#25171;&#24320;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">格局打开</h2>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../pages/talks/img/open-mind.jpg" width="300px"></p>
-<p class=" font-serif my-1">&#25226;&#35270;&#35282; &#8220;&#25918;&#22823;&#8221;</p>
+<p class=" font-serif my-1">把视角 “放大”</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#19968;&#20010;&#22810;&#39033;&#24335;&#37324;&#21487;&#20197;&#21253;&#21547;&#24456;&#22810;&#20449;&#24687;&#65281;<ul class=" list-disc font-serif">
-<li class=" ml-8">32-bit (float), 1,000 &#39033;&#65306;4 KB</li>
-<li class=" ml-8">(&#25152;&#20197;&#39640;&#32771;&#19981;&#20250;&#32771;)</li>
+<li class=" ml-8">一个多项式里可以包含很多信息！<ul class=" list-disc font-serif">
+<li class=" ml-8">32-bit (float), 1,000 项：4 KB</li>
+<li class=" ml-8">(所以高考不会考)</li>
 </ul>
 </li>
-<li class=" ml-8">&#20294;&#25105;&#20204;&#30495;&#27491;&#24863;&#20852;&#36259;&#30340;&#38382;&#39064;&#65306;&#33021;&#29992;&#22810;&#39033;&#24335;<red>&#25918;&#20160;&#20040;&#20449;&#24687;</red>&#65311;</li>
+<li class=" ml-8">但我们真正感兴趣的问题：能用多项式<red>放什么信息</red>？</li>
 </ul>
 <p class=" font-serif my-1"></p><center>
 <img alt="" class="inline" src="../pages/OI/img/elden-ring.jpg" width="300px"> <img alt="" class="inline" src="../pages/OI/img/elden-ring.webp" width="300px">
 <br>
-(&#20197;&#19978;&#22270;&#29255;&#22343;&#20026; 4 KB; jpeg v.s. webp)
+(以上图片均为 4 KB; jpeg v.s. webp)
 </center></div>
         
       
@@ -353,11 +353,11 @@ $$ax^2 + bx + c$$
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#19968;&#27425;&#26377;&#36259;&#30340;&#23581;&#35797;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">一次有趣的尝试</h2>
 <p class=" font-serif my-1">$f(x) = ax^3 + bx^2 + cx + d$</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#21516;&#26102;&#31359;&#36807; $(2, 1), (3, 7), (5, -2), (6, 1)$&#65311;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#36825;&#20960;&#20010;&#28857;&#26159;&#38543;&#20415;&#36873;&#30340;</li>
+<li class=" ml-8">同时穿过 $(2, 1), (3, 7), (5, -2), (6, 1)$？<ul class=" list-disc font-serif">
+<li class=" ml-8">这几个点是随便选的</li>
 <li class=" ml-8">$f(2) = 8a + 4b + 2c + d = 1$</li>
 <li class=" ml-8">$f(3) = 27a + 9b + 3c + d = 7$</li>
 <li class=" ml-8">$f(5) = 125a + 25b + 5c + d = -2$</li>
@@ -367,9 +367,9 @@ $$ax^2 + bx + c$$
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#20219;&#32473; $n$ &#20010; $x$ &#22352;&#26631;&#19981;&#21516;&#30340;&#28857;&#65292;&#24688;&#22909;&#21487;&#20197;&#29992;&#21807;&#19968;&#30340; $n-1$ &#27425;&#22810;&#39033;&#24335;&#31359;&#36807;</p>
+<p class=" font-serif my-1">任给 $n$ 个 $x$ 坐标不同的点，恰好可以用唯一的 $n-1$ 次多项式穿过</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">Vandermonde &#34892;&#21015;&#24335;&#8212;&#8212;&#25968;&#23398;&#23545;&#35937;&#20043;&#38388;&#24191;&#27867;&#30340; &#8220;&#20851;&#32852;&#8221;</li>
+<li class=" ml-8">Vandermonde 行列式——数学对象之间广泛的 “关联”</li>
 </ul></div>
         
       
@@ -385,7 +385,7 @@ $$ax^2 + bx + c$$
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#22810;&#39033;&#24335;&#30340;&#24212;&#29992;: &#36817;&#20284; &#8220;&#20219;&#20309;&#8221; &#20989;&#25968;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">多项式的应用: 近似 “任何” 函数</h1></div></div></div>
         
       
       </section>
@@ -396,8 +396,8 @@ $$ax^2 + bx + c$$
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#24179;&#38754;&#19978; &#8220;&#30011;&#20986;&#8221; &#30340;&#20219;&#20309;&#32447;&#27573;&#37117;&#21487;&#20197;&#36817;&#20284;&#65281;</h2>
-<p class=" font-serif my-1">B&#233;zier curve</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">平面上 “画出” 的任何线段都可以近似！</h2>
+<p class=" font-serif my-1">Bézier curve</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">($0 \le t \le 1$)</li>
 <li class=" ml-8">$B(t) = P_0 + (P_1 - P_0) t$</li>
@@ -406,11 +406,11 @@ $$ax^2 + bx + c$$
 </ul>
 </li>
 <li class=" ml-8">$B(t) = (1-t)^3 P_0 + 3t(1-t)^2 P_1 + 3t^2(1-t) P_2 + t^3 P_3$<ul class=" list-disc font-serif">
-<li class=" ml-8">SVG, PostScript, ... (<a href="https://www.jasondavies.com/animated-bezier/" class=" text-amber-900">&#21487;&#35270;&#21270;</a>)</li>
-<li class=" ml-8">&#19968;&#32452; &#8220;&#22235;&#20010;&#28857; (&#19977;&#27425;&#20989;&#25968;)&#8221; = &#8220;&#32905;&#30524;&#36776;&#35782;&#8221; &#26497;&#38480;</li>
+<li class=" ml-8">SVG, PostScript, ... (<a href="https://www.jasondavies.com/animated-bezier/" class=" text-amber-900">可视化</a>)</li>
+<li class=" ml-8">一组 “四个点 (三次函数)” = “肉眼辨识” 极限</li>
 </ul>
 </li>
-<li class=" ml-8">&#22810;&#39033;&#24335;&#21487;&#33021;&#27604;&#25105;&#20204;&#24819;&#35937;&#30340;&#24378;&#22823;</li>
+<li class=" ml-8">多项式可能比我们想象的强大</li>
 </ul></div>
         
       
@@ -422,24 +422,24 @@ $$ax^2 + bx + c$$
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">(&#20960;&#20046;) &#20219;&#20309;&#20989;&#25968;&#37117;&#21487;&#20197;&#36817;&#20284;&#65281;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">(几乎) 任何函数都可以近似！</h2>
 <p class=" font-serif my-1">Weierstrass Approximation Theorem</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#8220;&#19968;&#20999;&#23454;&#36830;&#32493;&#20989;&#25968;&#22312;&#20219;&#24847; $[a,b]$ &#19978;&#30342;&#21487;&#22810;&#39033;&#24335;&#36924;&#36817;&#8221;</li>
+<li class=" ml-8">“一切实连续函数在任意 $[a,b]$ 上皆可多项式逼近”</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#27809;&#21861;&#19981;&#33021;&#36817;&#20284;&#30340;</p>
+<p class=" font-serif my-1">没啥不能近似的</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">$f(x) = \sin(x)$, $f(x) = e^x$, $f(x) = \frac{x^2 \log x}{x + 1}$<ul class=" list-disc font-serif">
-<li class=" ml-8">&#27880;&#24847;&#36825;&#26159;&#19968;&#20010;&#38750;&#24120;&#24378;&#22823;&#30340;&#24037;&#20855;</li>
-<li class=" ml-8">&#25226; &#8220;&#38590;&#22788;&#29702;&#8221; &#30340;&#20989;&#25968;&#21464;&#25104;&#20102;&#19968;&#20010; $\sum{a_k x^k}$</li>
+<li class=" ml-8">注意这是一个非常强大的工具</li>
+<li class=" ml-8">把 “难处理” 的函数变成了一个 $\sum{a_k x^k}$</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#20294;&#20063;&#24635;&#36817;&#20284;&#19981;&#22909;</p>
+<p class=" font-serif my-1">但也总近似不好</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#35745;&#31639;&#36817;&#20284;&#30340; &#8220;&#23614;&#24052;&#8221; &#23601;&#25171;&#24320;&#20102; &#8220;&#39640;&#31561;&#25968;&#23398;&#8221; &#19990;&#30028;&#30340;&#22823;&#38376;</li>
+<li class=" ml-8">计算近似的 “尾巴” 就打开了 “高等数学” 世界的大门</li>
 <li class=" ml-8"><a href="https://demonstrations.wolfram.com/RungesPhenomenon/" class=" text-amber-900">Runge's Phenomenon</a></li>
 </ul></div>
         
@@ -456,7 +456,7 @@ $$ax^2 + bx + c$$
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#22810;&#39033;&#24335;&#30340;&#36816;&#31639;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">多项式的运算</h1></div></div></div>
         
       
       </section>
@@ -467,16 +467,16 @@ $$ax^2 + bx + c$$
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25105;&#20204;&#33021;&#23545;&#22810;&#39033;&#24335;&#20570;&#20160;&#20040;&#65311;</h2>
-<p class=" font-serif my-1">$$\textrm{&#21152;&#20943;} \qquad f(x) \pm g(x)$$</p>
-<p class=" font-serif my-1">$$\textrm{&#20056;} \qquad f(x) \cdot g(x)$$</p>
-<p class=" font-serif my-1">$$\textrm{&#38500;} \qquad \frac{f(x)}{g(x)}$$</p>
-<p class=" font-serif my-1">&#38500;&#27861;&#24456;&#29305;&#27530;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">我们能对多项式做什么？</h2>
+<p class=" font-serif my-1">$$\textrm{加减} \qquad f(x) \pm g(x)$$</p>
+<p class=" font-serif my-1">$$\textrm{乘} \qquad f(x) \cdot g(x)$$</p>
+<p class=" font-serif my-1">$$\textrm{除} \qquad \frac{f(x)}{g(x)}$$</p>
+<p class=" font-serif my-1">除法很特殊</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#32467;&#26524;&#19981;&#26159;&#20877;&#22810;&#39033;&#24335;</li>
-<li class=" ml-8">(&#27169;&#36816;&#31639;&#24847;&#20041;&#19979;&#23601;&#19981;&#19968;&#26679;&#20102;)<ul class=" list-disc font-serif">
+<li class=" ml-8">结果不是再多项式</li>
+<li class=" ml-8">(模运算意义下就不一样了)<ul class=" list-disc font-serif">
 <li class=" ml-8">$a / b = a \cdot b^{-1}$</li>
-<li class=" ml-8">&#28982;&#21518;&#21508;&#31181;&#22934;&#39764;&#39740;&#24618;&#30340;&#39064;&#23601;&#26469;&#20102;&#8230;&#8230; (<a href="https://oi-wiki.org/math/poly/intro/" class=" text-amber-900">oiwiki</a>)</li>
+<li class=" ml-8">然后各种妖魔鬼怪的题就来了…… (<a href="https://oi-wiki.org/math/poly/intro/" class=" text-amber-900">oiwiki</a>)</li>
 </ul>
 </li>
 </ul></div>
@@ -490,25 +490,25 @@ $$ax^2 + bx + c$$
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#22810;&#39033;&#24335;&#30340;&#34920;&#31034;&#26041;&#27861;</h2>
-<p class=" font-serif my-1">&#22238;&#39038;&#65306;$n$ &#20010;&#28857;&#21487;&#20197;&#30830;&#23450;&#19968;&#20010; $n-1$ &#27425;&#22810;&#39033;&#24335;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">多项式的表示方法</h2>
+<p class=" font-serif my-1">回顾：$n$ 个点可以确定一个 $n-1$ 次多项式</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#24179;&#38754;&#19977;&#28857;&#30830;&#23450;&#20108;&#27425;&#20989;&#25968;<ul class=" list-disc font-serif">
-<li class=" ml-8">$f(x)$ &#31359;&#36807; $(x_1, y_1), (x_2,y_2), (x_3,y_3)$</li>
+<li class=" ml-8">平面三点确定二次函数<ul class=" list-disc font-serif">
+<li class=" ml-8">$f(x)$ 穿过 $(x_1, y_1), (x_2,y_2), (x_3,y_3)$</li>
 <li class=" ml-8">$f(x) = ax^2 + bx + c$<ul class=" list-disc font-serif">
-<li class=" ml-8">&#36825;&#31181;&#39064;&#30495;&#30340;&#22312;&#20013;&#23398;&#20570;&#33147;&#20102;&#8230;&#8230;</li>
+<li class=" ml-8">这种题真的在中学做腻了……</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#35797;&#35797;&#33021;&#19981;&#33021;&#20570;&#28857;&#21035;&#30340;&#65311;</p>
+<p class=" font-serif my-1">试试能不能做点别的？</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#33021;&#27714; $f(x)$ &#21527;&#65311;</li>
-<li class=" ml-8">&#33021;&#27714; $f(x) + g(x)$ &#21527;&#65311;</li>
-<li class=" ml-8">&#33021;&#27714; $f(x) \cdot g(x)$ &#21527;&#65311;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#35830;&#65292;&#21464;&#31616;&#21333;&#20102;&#65281;</li>
+<li class=" ml-8">能求 $f(x)$ 吗？</li>
+<li class=" ml-8">能求 $f(x) + g(x)$ 吗？</li>
+<li class=" ml-8">能求 $f(x) \cdot g(x)$ 吗？<ul class=" list-disc font-serif">
+<li class=" ml-8">诶，变简单了！</li>
 </ul>
 </li>
 </ul></div>
@@ -523,19 +523,19 @@ $$ax^2 + bx + c$$
       
         
         <div><h2 id="lagrangian-interpolation" class=" text-xl mt-2 pb-2 font-sans">Lagrangian Interpolation</h2>
-<p class=" font-serif my-1">&#32473;&#23450; $x$ &#19981;&#37325;&#21512;&#30340; $(x_i, y_i)$ ($0 \le i \le n$)&#65292;&#22810;&#39033;&#24335;
+<p class=" font-serif my-1">给定 $x$ 不重合的 $(x_i, y_i)$ ($0 \le i \le n$)，多项式
 $$
 f(x) = \sum_{i=0}^{n} y_i p_i(x)
 $$
-&#28385;&#36275; $f(x_i) = y_i$&#65292;&#20854;&#20013;
+满足 $f(x_i) = y_i$，其中
 $$
 p_i(x) = \prod_{0 \le j \le n,j\ne i} \frac{x-x_j}{x_i-x_j}
 $$</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#32972;&#20102;&#20844;&#24335;&#65311;&#21892;&#29992;&#20114;&#32852;&#32593;&#65306;&#25628;&#32034; &#8220;<a href="https://math.stackexchange.com/questions/81044/is-there-some-intuition-for-lagrange-interpolation-formula" class=" text-amber-900">Lagrangian interpolation intuition</a>&#8221;<ul class=" list-disc font-serif">
-<li class=" ml-8">$p_0(x)$ &#22312; $x = x_0$ &#26102;&#20026; $1$&#65292;&#22312;&#20854;&#20182; $x_i$ &#26102;&#20026; $0$</li>
-<li class=" ml-8">$p_1(x)$ &#22312; $x = x_1$ &#26102;&#20026; $1$&#65292;&#22312;&#20854;&#20182; $x_i$ &#26102;&#20026; $0$</li>
-<li class=" ml-8">&#28982;&#21518;&#24102;&#26435;&#21152;&#36215;&#26469; $y_0 p_0(x) + y_1 p_1(x) + \ldots + y_n p_n(x)$</li>
+<li class=" ml-8">背了公式？善用互联网：搜索 “<a href="https://math.stackexchange.com/questions/81044/is-there-some-intuition-for-lagrange-interpolation-formula" class=" text-amber-900">Lagrangian interpolation intuition</a>”<ul class=" list-disc font-serif">
+<li class=" ml-8">$p_0(x)$ 在 $x = x_0$ 时为 $1$，在其他 $x_i$ 时为 $0$</li>
+<li class=" ml-8">$p_1(x)$ 在 $x = x_1$ 时为 $1$，在其他 $x_i$ 时为 $0$</li>
+<li class=" ml-8">然后带权加起来 $y_0 p_0(x) + y_1 p_1(x) + \ldots + y_n p_n(x)$</li>
 </ul>
 </li>
 </ul></div>
@@ -549,23 +549,23 @@ $$</p>
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#19979;&#19968;&#20010;&#38382;&#39064;</h2>
-<p class=" font-serif my-1">&#21462;&#20219;&#20309; $n$ &#20010;&#28857;&#37117;<red>&#33021;</red>&#34920;&#31034;&#19968;&#20010;&#22810;&#39033;&#24335;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">下一个问题</h2>
+<p class=" font-serif my-1">取任何 $n$ 个点都<red>能</red>表示一个多项式</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#37027;&#21462;&#21738; $n$ &#20010;&#28857;<red>&#26368;&#22909;</red>&#21602;&#65311;<ul class=" list-disc font-serif">
+<li class=" ml-8">那取哪 $n$ 个点<red>最好</red>呢？<ul class=" list-disc font-serif">
 <li class=" ml-8">$1, 2, \ldots, n$</li>
 <li class=" ml-8">$\frac{1}{n}, \frac{2}{n}, \ldots, \frac{n-1}{n}$<ul class=" list-disc font-serif">
-<li class=" ml-8">&#36825;&#20010;&#20284;&#20046;&#22909;&#19968;&#20123;</li>
-<li class=" ml-8">&#20294;&#36824;&#19981;&#22815;&#22909;</li>
+<li class=" ml-8">这个似乎好一些</li>
+<li class=" ml-8">但还不够好</li>
 </ul>
 </li>
 </ul>
 </li>
-<li class=" ml-8">&#33021;&#20351;&#24471;&#25554;&#20540;&#30340;&#35745;&#31639;&#33021;&#26368;&#24555;&#65311;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#22914;&#20309;&#19981;&#20986;&#29616;&#24040;&#22823;&#30340;&#22797;&#26434;&#20998;&#25968;&#65311;</li>
-<li class=" ml-8">&#22914;&#26524; $1 + 1 = 0$ &#33021; &#8220;&#22238;&#21040;&#21407;&#28857;&#8221; &#23601;&#22909;&#20102;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20351;&#29992;&#22797;&#25968; - FFT (Fast Fourier Transformation)</li>
-<li class=" ml-8">&#21462;&#27169; - NTT (Number Theoretic Transformation)</li>
+<li class=" ml-8">能使得插值的计算能最快？<ul class=" list-disc font-serif">
+<li class=" ml-8">如何不出现巨大的复杂分数？</li>
+<li class=" ml-8">如果 $1 + 1 = 0$ 能 “回到原点” 就好了<ul class=" list-disc font-serif">
+<li class=" ml-8">使用复数 - FFT (Fast Fourier Transformation)</li>
+<li class=" ml-8">取模 - NTT (Number Theoretic Transformation)</li>
 </ul>
 </li>
 </ul>
@@ -582,15 +582,15 @@ $$</p>
       
         
         <div><h2 id="fast-fourier-transformation" class=" text-xl mt-2 pb-2 font-sans">Fast Fourier Transformation</h2>
-<p class=" font-serif my-1">&#20004;&#20010;&#37325;&#35201;&#30340;&#26041;&#21521;</p>
+<p class=" font-serif my-1">两个重要的方向</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">$f(x) = A + Bx + Cx^2 + \ldots \Rightarrow f(1), f(\omega), f(\omega^2), \ldots$<ul class=" list-disc font-serif">
-<li class=" ml-8">&#27714;&#20540;</li>
-<li class=" ml-8">&#19968;&#20010;&#38750;&#24120;&#24039;&#22937;&#30340;&#20998;&#27835;&#27861;</li>
+<li class=" ml-8">求值</li>
+<li class=" ml-8">一个非常巧妙的分治法</li>
 </ul>
 </li>
 <li class=" ml-8">$f(\omega), f(\omega^2), \ldots \Rightarrow A, B, C, \ldots$<ul class=" list-disc font-serif">
-<li class=" ml-8">&#25554;&#20540;</li>
+<li class=" ml-8">插值</li>
 </ul>
 </li>
 </ul></div>
@@ -608,7 +608,7 @@ $$</p>
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#22810;&#39033;&#24335;&#20056;&#27861;&#30340;&#24212;&#29992;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">多项式乘法的应用</h1></div></div></div>
         
       
       </section>
@@ -619,19 +619,19 @@ $$</p>
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#29992;&#26469;&#34920;&#31034;&#25968;&#23383;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">用来表示数字</h2>
 <p class=" font-serif my-1">$f(x) = a x^3 + b x^2 + c x + d$</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20195;&#20837; $x = 10$, $f(x)$ &#21487;&#20197;&#34920;&#31034;&#19968;&#20010;&#22235;&#20301;&#25968;</li>
-<li class=" ml-8">&#20195;&#20837; $x = 100$, $f(x)$ &#21487;&#20197;&#34920;&#31034;&#19968;&#20010;&#20843;&#20301;&#25968;<ul class=" list-disc font-serif">
+<li class=" ml-8">代入 $x = 10$, $f(x)$ 可以表示一个四位数</li>
+<li class=" ml-8">代入 $x = 100$, $f(x)$ 可以表示一个八位数<ul class=" list-disc font-serif">
 <li class=" ml-8">$a = 98$, $b = 76$, $c = 54$, $d = 32$</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#25152;&#20197;&#22914;&#26524;&#33021;&#27714; $f(x) \cdot g(x)$&#65292;&#19981;&#23601;&#33021;&#27714;&#25972;&#25968;&#30340;&#20056;&#27861;&#20102;&#21527;&#65311;</p>
+<p class=" font-serif my-1">所以如果能求 $f(x) \cdot g(x)$，不就能求整数的乘法了吗？</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#22238;&#39038;&#22810;&#39033;&#24335;&#30340;&#33021;&#21147;&#65306;&#25226; &#8220;&#25972;&#20307;&#8221; &#21270;&#25104; &#8220;&#31616;&#21333;&#23616;&#37096;&#8221; &#30340;&#21644;</li>
+<li class=" ml-8">回顾多项式的能力：把 “整体” 化成 “简单局部” 的和</li>
 </ul></div>
         
       
@@ -643,19 +643,19 @@ $$</p>
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#29992;&#26469;&#34920;&#31034;&#25968;&#23383;&#65306;&#22826;&#22823;&#26448;&#23567;&#29992;&#20102;</h2>
-<p class=" font-serif my-1">&#22810;&#39033;&#24335;&#21487;&#20197;&#36830;&#20056;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">用来表示数字：太大材小用了</h2>
+<p class=" font-serif my-1">多项式可以连乘</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">$(1 + x + x^2 + \ldots)(1 + x + x^2 + \ldots) \ldots$</li>
-<li class=" ml-8">$x^k$ &#30340;&#31995;&#25968;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#28385;&#36275; $a + b + c + \ldots = k$ &#30340;&#25152;&#26377;&#23545;&#24212;&#31995;&#25968;<red>&#20056;&#31215;&#30340;&#21644;</red><ul class=" list-disc font-serif">
-<li class=" ml-8">$a$ &#26159;&#31532;&#19968;&#20010;&#22810;&#39033;&#24335;&#30340; $x^a$</li>
-<li class=" ml-8">$b$ &#26159;&#31532;&#20108;&#20010;&#22810;&#39033;&#24335;&#30340; $x^b$</li>
-<li class=" ml-8">&#8230;&#8230; </li>
+<li class=" ml-8">$x^k$ 的系数<ul class=" list-disc font-serif">
+<li class=" ml-8">满足 $a + b + c + \ldots = k$ 的所有对应系数<red>乘积的和</red><ul class=" list-disc font-serif">
+<li class=" ml-8">$a$ 是第一个多项式的 $x^a$</li>
+<li class=" ml-8">$b$ 是第二个多项式的 $x^b$</li>
+<li class=" ml-8">…… </li>
 </ul>
 </li>
-<li class=" ml-8">&#19968;&#22823;&#22534;&#29983;&#25104;&#20989;&#25968;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#23545;&#20110; $P(x)^k$ &#36824;&#21487;&#20197;&#24555;&#36895;&#24130;</li>
+<li class=" ml-8">一大堆生成函数<ul class=" list-disc font-serif">
+<li class=" ml-8">对于 $P(x)^k$ 还可以快速幂</li>
 </ul>
 </li>
 </ul>
@@ -671,11 +671,11 @@ $$</p>
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#29992;&#26469;&#34920;&#31034;&#29983;&#25104;&#20989;&#25968;&#65306;&#22826;&#22823;&#26448;&#23567;&#29992;&#20102;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">用来表示生成函数：太大材小用了</h2>
 <p class=" font-serif my-1"><a href="https://w3.ual.es/~vruiz/Docencia/Apuntes/Coding/Image/03-JPEG/index.html" class=" text-amber-900">The JPEG Standard (ISO/ISEC 10918-1)</a></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#8220;&#38191;&#40831;&#8221; &#21644; &#8220;&#33394;&#22359;&#8221; &#19981;&#26159;&#20598;&#28982;&#30340;&#65281;</li>
-<li class=" ml-8">&#25226; $8\times8$ &#30340;&#23567;&#22359;&#29992; 64 &#20010; &#8220;&#33394;&#22359;&#8221; &#30340;&#32447;&#24615;&#32452;&#21512;&#34920;&#31034; (sum of product)</li>
+<li class=" ml-8">“锯齿” 和 “色块” 不是偶然的！</li>
+<li class=" ml-8">把 $8\times8$ 的小块用 64 个 “色块” 的线性组合表示 (sum of product)</li>
 </ul>
 <p class=" font-serif my-1"></p><center>
 <img alt="" class="inline" src="../pages/OI/img/elden-ring.jpg" width="435px"> <img alt="" class="inline" src="../pages/OI/img/jpeg-basis.png" width="400px">
@@ -694,7 +694,7 @@ $$</p>
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#24635;&#32467;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">总结</h1></div></div></div>
         
       
       </section>
@@ -705,14 +705,14 @@ $$</p>
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#22810;&#39033;&#24335;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">多项式</h2>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../pages/OI/img/elden-ring.jpg" width="300px"></p>
-<p class=" font-serif my-1">&#19968;&#20010;&#38750;&#24120;&#26377;&#36259;&#30340;&#22522;&#30784;&#25968;&#23398;&#23545;&#35937;</p>
+<p class=" font-serif my-1">一个非常有趣的基础数学对象</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">$ax^2 + bx + c$<ul class=" list-disc font-serif">
-<li class=" ml-8">&#8220;Sum of product&#8221;</li>
-<li class=" ml-8">&#27714;&#21644;&#20351;&#25105;&#20204;&#33021;&#20998;&#24320;/&#24182;&#34892;&#27714;&#35299;</li>
-<li class=" ml-8">$x^k$ &#20316;&#20026;&#22522;&#30784;&#30340;&#25968;&#23398;&#23545;&#35937;&#26356;&#23481;&#26131;&#22788;&#29702;</li>
+<li class=" ml-8">“Sum of product”</li>
+<li class=" ml-8">求和使我们能分开/并行求解</li>
+<li class=" ml-8">$x^k$ 作为基础的数学对象更容易处理</li>
 </ul>
 </li>
 </ul></div>

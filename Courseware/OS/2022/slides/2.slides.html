@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +209,7 @@ section .center {
 }
 </style>
 
-  <title>&#25805;&#20316;&#31995;&#32479;&#19978;&#30340;&#31243;&#24207;</title>
+  <title>操作系统上的程序</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,21 +227,21 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#25805;&#20316;&#31995;&#32479;&#19978;&#30340;&#31243;&#24207;</h1>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">操作系统上的程序</h1>
 <p class=" font-serif my-1"><include src="Slides_Author"><div><div class="py-16">
-<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">&#33931;&#28814;&#23721;</a></p>
+<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">蒋炎岩</a></p>
 </div>
 <div class="row">
 <div class="author-affiliation">
-    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#12288;&#12288;&#21335;&#20140;&#22823;&#23398;&#12288;&#12288;</p>
+    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">　　南京大学　　</p>
     <img class="inline-img h-24" src="../../../static/img/nju-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#31185;&#23398;&#19982;&#25216;&#26415;&#31995;</p>
+   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">计算机科学与技术系</p>
     <img class="inline-img h-24" src="../../../static/img/njucs-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#36719;&#20214;&#30740;&#31350;&#25152;</p>
+    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">计算机软件研究所</p>
     <img class="inline-img h-24" src="../../../static/img/ics-logo.png" style="display: inline-block;"></a>
   </div>
 </div></div></include></p></div></div></div>
@@ -256,21 +256,21 @@ section .center {
       
         
         <div><h2 id="overview" class=" text-xl mt-2 pb-2 font-sans">Overview</h2>
-<p class=" font-serif my-1">&#22797;&#20064;&#65306;&#25805;&#20316;&#31995;&#32479;</p>
+<p class=" font-serif my-1">复习：操作系统</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#24212;&#29992;&#35270;&#35282; (&#35774;&#35745;): &#19968;&#32452;&#23545;&#35937; (&#36827;&#31243;/&#25991;&#20214;/...) + API</li>
-<li class=" ml-8">&#30828;&#20214;&#35270;&#35282; (&#23454;&#29616;): &#19968;&#20010; C &#31243;&#24207;</li>
+<li class=" ml-8">应用视角 (设计): 一组对象 (进程/文件/...) + API</li>
+<li class=" ml-8">硬件视角 (实现): 一个 C 程序</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#22238;&#31572;&#30340;&#38382;&#39064;</p>
+<p class=" font-serif my-1">本次课回答的问题</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><strong>Q</strong>: &#21040;&#24213;&#20160;&#20040;&#26159; &#8220;&#31243;&#24207;&#8221;&#65311;</li>
+<li class=" ml-8"><strong>Q</strong>: 到底什么是 “程序”？</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#20027;&#35201;&#20869;&#23481;</p>
+<p class=" font-serif my-1">本次课主要内容</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#31243;&#24207;&#30340;&#29366;&#24577;&#26426;&#27169;&#22411; (&#21644;&#32534;&#35793;&#22120;)</li>
-<li class=" ml-8">&#25805;&#20316;&#31995;&#32479;&#19978;&#30340; {&#26368;&#23567;/&#19968;&#33324;/&#22270;&#24418;} &#31243;&#24207;</li>
+<li class=" ml-8">程序的状态机模型 (和编译器)</li>
+<li class=" ml-8">操作系统上的 {最小/一般/图形} 程序</li>
 </ul></div>
         
       
@@ -286,7 +286,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#25968;&#23383;&#30005;&#36335;&#19982;&#29366;&#24577;&#26426;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">数字电路与状态机</h1></div></div></div>
         
       
       </section>
@@ -297,15 +297,15 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25968;&#23383;&#30005;&#36335;&#19982;&#29366;&#24577;&#26426;</h2>
-<p class=" font-serif my-1">&#25968;&#23383;&#36923;&#36753;&#30005;&#36335;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">数字电路与状态机</h2>
+<p class=" font-serif my-1">数字逻辑电路</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#29366;&#24577; = &#23492;&#23384;&#22120;&#20445;&#23384;&#30340;&#20540; (flip-flop)</li>
-<li class=" ml-8">&#21021;&#22987;&#29366;&#24577; = RESET (implementation dependent)</li>
-<li class=" ml-8">&#36801;&#31227; = &#32452;&#21512;&#36923;&#36753;&#30005;&#36335;&#35745;&#31639;&#23492;&#23384;&#22120;&#19979;&#19968;&#21608;&#26399;&#30340;&#20540;</li>
+<li class=" ml-8">状态 = 寄存器保存的值 (flip-flop)</li>
+<li class=" ml-8">初始状态 = RESET (implementation dependent)</li>
+<li class=" ml-8">迁移 = 组合逻辑电路计算寄存器下一周期的值</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#20363;&#23376;&#65306;</p>
+<p class=" font-serif my-1">例子：</p>
 <p class=" font-serif my-1">$$X' = \neg X \land Y$$
 $$Y' = \neg X \land \neg Y$$</p></div>
         
@@ -318,10 +318,10 @@ $$Y' = \neg X \land \neg Y$$</p></div>
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25968;&#23383;&#36923;&#36753;&#30005;&#36335;&#65306;&#27169;&#25311;&#22120;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">数字逻辑电路：模拟器</h2>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#define REGS_FOREACH(_)  _(X) _(Y)</span>
-<span class="cp">#define RUN_LOGIC        X1 = !X &amp;&amp; Y; \</span>
-<span class="cp">                         Y1 = !X &amp;&amp; !Y;</span>
+<span class="cp">#define RUN_LOGIC        X1 = !X && Y; \</span>
+<span class="cp">                         Y1 = !X && !Y;</span>
 <span class="cp">#define DEFINE(X)        static int X, X##1;</span>
 <span class="cp">#define UPDATE(X)        X = X##1;</span>
 <span class="cp">#define PRINT(X)         printf(#X " = %d; ", X);</span>
@@ -346,22 +346,22 @@ $$Y' = \neg X \land \neg Y$$</p></div>
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26356;&#23436;&#25972;&#30340;&#23454;&#29616;&#65306;&#25968;&#30721;&#31649;&#26174;&#31034;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">更完整的实现：数码管显示</h2>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/NEMU-boot-linux.gif"></p>
-<p class=" font-serif my-1">&#36755;&#20986;&#25968;&#30721;&#31649;&#30340;&#37197;&#32622;&#20449;&#21495;</p>
+<p class=" font-serif my-1">输出数码管的配置信号</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><a href="../../../pages/OS/2022/demos/logisim.c" class=" text-amber-900">logisim.c</a></li>
-<li class=" ml-8">&#20250;&#32534;&#31243;&#65292;&#20320;&#23601;&#25317;&#26377;&#20840;&#19990;&#30028;&#65281;<ul class=" list-disc font-serif">
+<li class=" ml-8">会编程，你就拥有全世界！<ul class=" list-disc font-serif">
 <li class=" ml-8"><a href="../../../pages/OS/2022/demos/seven-seg.py" class=" text-amber-900">seven-seg.py</a></li>
-<li class=" ml-8">&#21516;&#26679;&#30340;&#26041;&#24335;&#21487;&#20197;&#27169;&#25311;&#20219;&#20309;&#25968;&#23383;&#31995;&#32479;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#24403;&#28982;&#65292;&#20063;&#21253;&#25324;&#35745;&#31639;&#26426;&#31995;&#32479;</li>
+<li class=" ml-8">同样的方式可以模拟任何数字系统<ul class=" list-disc font-serif">
+<li class=" ml-8">当然，也包括计算机系统</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#20320;&#36824;&#20307;&#39564;&#20102; UNIX &#21746;&#23398;</p>
+<p class=" font-serif my-1">你还体验了 UNIX 哲学</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">Make each program do one thing well</li>
 <li class=" ml-8">Expect the output of every program to become the input to another</li>
@@ -380,7 +380,7 @@ $$Y' = \neg X \land \neg Y$$</p></div>
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#20160;&#20040;&#26159;&#31243;&#24207; (&#28304;&#20195;&#30721;&#35270;&#35282;)</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">什么是程序 (源代码视角)</h1></div></div></div>
         
       
       </section>
@@ -391,16 +391,16 @@ $$Y' = \neg X \land \neg Y$$</p></div>
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20160;&#20040;&#26159;&#31243;&#24207;&#65311;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">什么是程序？</h2>
 <p class=" font-serif my-1">Hmm....</p>
 <hr>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="https://cs.nju.edu.cn/hongjin/me.png" width="200px"></p>
-<p class=" font-serif my-1">&#20320;&#38656;&#35201;&#12298;<a href="https://cs.nju.edu.cn/hongjin/teaching/semantics/index.htm" class=" text-amber-900">&#31243;&#24207;&#35774;&#35745;&#35821;&#35328;&#30340;&#24418;&#24335;&#35821;&#20041;</a>&#12299;</p>
+<p class=" font-serif my-1">你需要《<a href="https://cs.nju.edu.cn/hongjin/teaching/semantics/index.htm" class=" text-amber-900">程序设计语言的形式语义</a>》</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">by &#26753;&#32418;&#29822; &#127913;</li>
+<li class=" ml-8">by 梁红瑾 🎩</li>
 <li class=" ml-8">$\lambda$-calculus, operational semantics, Hoare logic, separation logic</li>
-<li class=" ml-8">&#20837;&#22260; &#8220;&#20320;&#22312;&#21335;&#20140;&#22823;&#23398;&#19978;&#36807;&#26368;&#29275;&#30340;&#35838;&#26159;&#20160;&#20040;&#65311;&#8221; &#30693;&#20046;&#39640;&#31080;&#31572;&#26696;<ul class=" list-disc font-serif">
-<li class=" ml-8"><del>&#24403;&#28982;&#65292;&#25105;&#20063;&#21402;&#39068;&#26080;&#32827;&#22320;&#20837;&#22260;&#20102;</del></li>
+<li class=" ml-8">入围 “你在南京大学上过最牛的课是什么？” 知乎高票答案<ul class=" list-disc font-serif">
+<li class=" ml-8"><del>当然，我也厚颜无耻地入围了</del></li>
 </ul>
 </li>
 </ul></div>
@@ -414,26 +414,26 @@ $$Y' = \neg X \land \neg Y$$</p></div>
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans"><del>&#19981;&#65292;&#20320;&#19981;&#38656;&#35201;</del></h2>
-<p class=" font-serif my-1">&#31243;&#24207;&#23601;&#26159;&#29366;&#24577;&#26426; (&#20320;&#22312; gdb &#37324;&#30475;&#21040;&#30340;)</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans"><del>不，你不需要</del></h2>
+<p class=" font-serif my-1">程序就是状态机 (你在 gdb 里看到的)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#35797;&#35797;&#31243;&#24207;&#21543; <a href="../../../pages/OS/2022/demos/hanoi-r.c" class=" text-amber-900">hanoi-r.c</a></li>
+<li class=" ml-8">试试程序吧 <a href="../../../pages/OS/2022/demos/hanoi-r.c" class=" text-amber-900">hanoi-r.c</a></li>
 </ul>
 <hr>
-<p class=" font-serif my-1">C &#31243;&#24207;&#30340;&#29366;&#24577;&#26426;&#27169;&#22411; (&#35821;&#20041;&#65292;semantics)</p>
+<p class=" font-serif my-1">C 程序的状态机模型 (语义，semantics)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#29366;&#24577; = &#22534; + &#26632;</li>
-<li class=" ml-8">&#21021;&#22987;&#29366;&#24577; = <code>main</code> &#30340;&#31532;&#19968;&#26465;&#35821;&#21477;</li>
-<li class=" ml-8">&#36801;&#31227; = &#25191;&#34892;&#19968;&#26465;&#31616;&#21333;&#35821;&#21477;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20219;&#20309; C &#31243;&#24207;&#37117;&#21487;&#20197;&#25913;&#20889;&#25104; &#8220;&#38750;&#22797;&#21512;&#35821;&#21477;&#8221; &#30340; C &#20195;&#30721;</li>
-<li class=" ml-8"><a href="https://cil-project.github.io/cil/" class=" text-amber-900">&#30495;&#30340;&#26377;&#36825;&#31181;&#24037;&#20855;</a> (C Intermediate Language) &#21644;<a href="https://gitlab.com/zsaleeba/picoc" class=" text-amber-900">&#35299;&#37322;&#22120;</a></li>
+<li class=" ml-8">状态 = 堆 + 栈</li>
+<li class=" ml-8">初始状态 = <code>main</code> 的第一条语句</li>
+<li class=" ml-8">迁移 = 执行一条简单语句<ul class=" list-disc font-serif">
+<li class=" ml-8">任何 C 程序都可以改写成 “非复合语句” 的 C 代码</li>
+<li class=" ml-8"><a href="https://cil-project.github.io/cil/" class=" text-amber-900">真的有这种工具</a> (C Intermediate Language) 和<a href="https://gitlab.com/zsaleeba/picoc" class=" text-amber-900">解释器</a></li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">(&#36825;&#36824;&#21482;&#26159; &#8220;&#31895;&#27973;&#8221; &#30340;&#29702;&#35299;)</p>
+<p class=" font-serif my-1">(这还只是 “粗浅” 的理解)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><red>Talk is cheap. Show me the code.</red> (Linus Torvalds): &#20219;&#20309;&#30495;&#27491;&#30340;&#29702;&#35299;&#37117;&#24212;&#35813;&#33853;&#21040;&#21487;&#20197;&#25191;&#34892;&#30340;&#20195;&#30721;</li>
+<li class=" ml-8"><red>Talk is cheap. Show me the code.</red> (Linus Torvalds): 任何真正的理解都应该落到可以执行的代码</li>
 </ul></div>
         
       
@@ -445,23 +445,23 @@ $$Y' = \neg X \land \neg Y$$</p></div>
 
       
         
-        <div><h2 id="c" class=" text-xl mt-2 pb-2 font-sans">C &#31243;&#24207;&#30340;&#35821;&#20041;</h2>
-<p class=" font-serif my-1">C &#31243;&#24207;&#30340;&#29366;&#24577;&#26426;&#27169;&#22411; (&#35821;&#20041;&#65292;semantics)</p>
+        <div><h2 id="c" class=" text-xl mt-2 pb-2 font-sans">C 程序的语义</h2>
+<p class=" font-serif my-1">C 程序的状态机模型 (语义，semantics)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#29366;&#24577; = stack frame &#30340;&#21015;&#34920; (&#27599;&#20010; frame &#26377; PC) + &#20840;&#23616;&#21464;&#37327;</li>
-<li class=" ml-8">&#21021;&#22987;&#29366;&#24577; = main(argc, argv), &#20840;&#23616;&#21464;&#37327;&#21021;&#22987;&#21270;</li>
-<li class=" ml-8">&#36801;&#31227; = &#25191;&#34892; top stack frame PC &#30340;&#35821;&#21477;; PC++<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20989;&#25968;&#35843;&#29992; = push frame (frame.PC = &#20837;&#21475;)</li>
-<li class=" ml-8">&#20989;&#25968;&#36820;&#22238; = pop frame</li>
+<li class=" ml-8">状态 = stack frame 的列表 (每个 frame 有 PC) + 全局变量</li>
+<li class=" ml-8">初始状态 = main(argc, argv), 全局变量初始化</li>
+<li class=" ml-8">迁移 = 执行 top stack frame PC 的语句; PC++<ul class=" list-disc font-serif">
+<li class=" ml-8">函数调用 = push frame (frame.PC = 入口)</li>
+<li class=" ml-8">函数返回 = pop frame</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#24212;&#29992;&#65306;&#23558;&#20219;&#20309;&#36882;&#24402;&#31243;&#24207;&#23601;&#22320;&#36716;&#20026;&#38750;&#36882;&#24402;</p>
+<p class=" font-serif my-1">应用：将任何递归程序就地转为非递归</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#27721;&#35834;&#22612;&#38590;&#19981;&#20498;&#20320; <a href="../../../pages/OS/2022/demos/hanoi-nr.c" class=" text-amber-900">hanoi-nr.c</a></li>
-<li class=" ml-8">A &#8594; B, B &#8594; A &#30340;&#20063;&#38590;&#19981;&#20498;&#20320;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#36824;&#26159;&#19968;&#26679;&#30340; <code>call()</code>&#65292;&#20294;&#25918;&#20837;&#19981;&#21516;&#30340; <code>Frame</code></li>
+<li class=" ml-8">汉诺塔难不倒你 <a href="../../../pages/OS/2022/demos/hanoi-nr.c" class=" text-amber-900">hanoi-nr.c</a></li>
+<li class=" ml-8">A → B, B → A 的也难不倒你<ul class=" list-disc font-serif">
+<li class=" ml-8">还是一样的 <code>call()</code>，但放入不同的 <code>Frame</code></li>
 </ul>
 </li>
 </ul></div>
@@ -479,7 +479,7 @@ $$Y' = \neg X \land \neg Y$$</p></div>
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#20160;&#20040;&#26159;&#31243;&#24207; (&#20108;&#36827;&#21046;&#20195;&#30721;&#35270;&#35282;)</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">什么是程序 (二进制代码视角)</h1></div></div></div>
         
       
       </section>
@@ -490,24 +490,24 @@ $$Y' = \neg X \land \neg Y$$</p></div>
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20160;&#20040;&#26159; (&#20108;&#36827;&#21046;) &#31243;&#24207;&#65311;</h2>
-<p class=" font-serif my-1">&#36824;&#26159;&#29366;&#24577;&#26426;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">什么是 (二进制) 程序？</h2>
+<p class=" font-serif my-1">还是状态机</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#29366;&#24577; = &#20869;&#23384; $M$ + &#23492;&#23384;&#22120; $R$</li>
-<li class=" ml-8">&#21021;&#22987;&#29366;&#24577; = (&#31245;&#21518;&#22238;&#31572;)</li>
-<li class=" ml-8">&#36801;&#31227; = &#25191;&#34892;&#19968;&#26465;&#25351;&#20196;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#25105;&#20204;&#33457;&#20102;&#19968;&#25972;&#20010;&#12298;&#35745;&#31639;&#26426;&#31995;&#32479;&#22522;&#30784;&#12299;&#35299;&#37322;&#36825;&#20214;&#20107;</li>
-<li class=" ml-8">gdb &#21516;&#26679;&#21487;&#20197;&#35266;&#23519;&#29366;&#24577;&#21644;&#25191;&#34892;</li>
+<li class=" ml-8">状态 = 内存 $M$ + 寄存器 $R$</li>
+<li class=" ml-8">初始状态 = (稍后回答)</li>
+<li class=" ml-8">迁移 = 执行一条指令<ul class=" list-disc font-serif">
+<li class=" ml-8">我们花了一整个《计算机系统基础》解释这件事</li>
+<li class=" ml-8">gdb 同样可以观察状态和执行</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#25805;&#20316;&#31995;&#32479;&#19978;&#30340;&#31243;&#24207;</p>
+<p class=" font-serif my-1">操作系统上的程序</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25152;&#26377;&#30340;&#25351;&#20196;&#37117;&#21482;&#33021;<red>&#35745;&#31639;</red><ul class=" list-disc font-serif">
+<li class=" ml-8">所有的指令都只能<red>计算</red><ul class=" list-disc font-serif">
 <li class=" ml-8">deterministic: mov, add, sub, call, ...</li>
 <li class=" ml-8">non-deterministic: rdrand, ...</li>
-<li class=" ml-8">&#20294;&#36825;&#20123;&#25351;&#20196;&#29978;&#33267;&#37117;&#26080;&#27861;&#20351;&#31243;&#24207;&#20572;&#19979;&#26469; (NEMU: &#21152;&#26465; <code>trap</code> &#25351;&#20196;)</li>
+<li class=" ml-8">但这些指令甚至都无法使程序停下来 (NEMU: 加条 <code>trap</code> 指令)</li>
 </ul>
 </li>
 </ul></div>
@@ -521,23 +521,23 @@ $$Y' = \neg X \land \neg Y$$</p></div>
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#19968;&#26465;&#29305;&#27530;&#30340;&#25351;&#20196;</h2>
-<p class=" font-serif my-1">&#35843;&#29992;&#25805;&#20316;&#31995;&#32479; <red>syscall</red></p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">一条特殊的指令</h2>
+<p class=" font-serif my-1">调用操作系统 <red>syscall</red></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25226; $(M, R)$ &#23436;&#20840;&#20132;&#32473;&#25805;&#20316;&#31995;&#32479;&#65292;&#20219;&#20854;&#20462;&#25913;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#19968;&#20010;&#26377;&#36259;&#30340;&#38382;&#39064;&#65306;&#22914;&#26524;&#31243;&#24207;&#19981;&#25171;&#31639;&#23436;&#20840;&#20449;&#20219;&#25805;&#20316;&#31995;&#32479;&#65311;</li>
+<li class=" ml-8">把 $(M, R)$ 完全交给操作系统，任其修改<ul class=" list-disc font-serif">
+<li class=" ml-8">一个有趣的问题：如果程序不打算完全信任操作系统？</li>
 </ul>
 </li>
-<li class=" ml-8">&#23454;&#29616;&#19982;&#25805;&#20316;&#31995;&#32479;&#20013;&#30340;&#20854;&#20182;&#23545;&#35937;&#20132;&#20114;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#35835;&#20889;&#25991;&#20214;/&#25805;&#20316;&#31995;&#32479;&#29366;&#24577; (&#20363;&#22914;&#25226;&#25991;&#20214;&#20869;&#23481;&#20889;&#20837; $M$)</li>
-<li class=" ml-8">&#25913;&#21464;&#36827;&#31243; (&#36816;&#34892;&#20013;&#29366;&#24577;&#26426;) &#30340;&#29366;&#24577;&#65292;&#20363;&#22914;&#21019;&#24314;&#36827;&#31243;/&#38144;&#27585;&#33258;&#24049;</li>
+<li class=" ml-8">实现与操作系统中的其他对象交互<ul class=" list-disc font-serif">
+<li class=" ml-8">读写文件/操作系统状态 (例如把文件内容写入 $M$)</li>
+<li class=" ml-8">改变进程 (运行中状态机) 的状态，例如创建进程/销毁自己</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#31243;&#24207; = &#35745;&#31639; + syscall</p>
+<p class=" font-serif my-1">程序 = 计算 + syscall</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#38382;&#39064;&#65306;&#24590;&#20040;&#26500;&#36896;&#19968;&#20010;&#26368;&#23567;&#30340; Hello, World&#65311;</li>
+<li class=" ml-8">问题：怎么构造一个最小的 Hello, World？</li>
 </ul></div>
         
       
@@ -549,20 +549,20 @@ $$Y' = \neg X \land \neg Y$$</p></div>
 
       
         
-        <div><h2 id="hello-world" class=" text-xl mt-2 pb-2 font-sans">&#26500;&#36896;&#26368;&#23567;&#30340; Hello, World</h2>
+        <div><h2 id="hello-world" class=" text-xl mt-2 pb-2 font-sans">构造最小的 Hello, World</h2>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">"Hello, World</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <hr>
-<p class=" font-serif my-1">gcc &#32534;&#35793;&#20986;&#26469;&#30340;&#25991;&#20214;&#19981;&#28385;&#36275; &#8220;&#26368;&#23567;&#8221;</p>
+<p class=" font-serif my-1">gcc 编译出来的文件不满足 “最小”</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><code>--verbose</code> &#21487;&#20197;&#26597;&#30475;&#25152;&#26377;&#32534;&#35793;&#36873;&#39033; (&#30495;&#19981;&#23569;)<ul class=" list-disc font-serif">
-<li class=" ml-8">printf &#21464;&#25104;&#20102; puts@plt</li>
+<li class=" ml-8"><code>--verbose</code> 可以查看所有编译选项 (真不少)<ul class=" list-disc font-serif">
+<li class=" ml-8">printf 变成了 puts@plt</li>
 </ul>
 </li>
-<li class=" ml-8"><code>-static</code> &#20250;&#22797;&#21046; libc</li>
+<li class=" ml-8"><code>-static</code> 会复制 libc</li>
 </ul></div>
         
       
@@ -574,11 +574,11 @@ $$Y' = \neg X \land \neg Y$$</p></div>
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#30452;&#25509;&#30828;&#26469;&#65311;</h2>
-<p class=" font-serif my-1">&#24378;&#34892;&#32534;&#35793; + &#38142;&#25509;&#65306;<code>gcc -c</code> + <code>ld</code></p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">直接硬来？</h2>
+<p class=" font-serif my-1">强行编译 + 链接：<code>gcc -c</code> + <code>ld</code></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#30452;&#25509;&#29992; ld &#38142;&#25509;&#22833;&#36133;<ul class=" list-disc font-serif">
-<li class=" ml-8">ld &#19981;&#30693;&#36947;&#24590;&#20040;&#38142;&#25509;&#24211;&#20989;&#25968;&#8230;&#8230;</li>
+<li class=" ml-8">直接用 ld 链接失败<ul class=" list-disc font-serif">
+<li class=" ml-8">ld 不知道怎么链接库函数……</li>
 </ul>
 </li>
 </ul></div>
@@ -586,21 +586,21 @@ $$Y' = \neg X \land \neg Y$$</p></div>
       
          <div class="fragment"> 
         <div><ul class=" list-disc font-serif">
-<li class=" ml-8">&#31354;&#30340; main &#20989;&#25968;&#20498;&#26159;&#21487;&#20197;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#38142;&#25509;&#26102;&#24471;&#21040;&#22855;&#24618;&#30340;&#35686;&#21578; (&#21487;&#20197;&#23450;&#20041;&#25104; <code>_start</code> &#36991;&#20813;&#35686;&#21578;)</li>
-<li class=" ml-8">&#20294; Segmentation Fault &#20102;&#8230;&#8230;</li>
+<li class=" ml-8">空的 main 函数倒是可以<ul class=" list-disc font-serif">
+<li class=" ml-8">链接时得到奇怪的警告 (可以定义成 <code>_start</code> 避免警告)</li>
+<li class=" ml-8">但 Segmentation Fault 了……</li>
 </ul>
 </li>
 </ul></div>
          </div> 
       
          <div class="fragment"> 
-        <div><p class=" font-serif my-1">&#38382;&#39064;&#65306;&#20026;&#20160;&#20040;&#20250; Segmentation Fault&#65311;</p>
+        <div><p class=" font-serif my-1">问题：为什么会 Segmentation Fault？</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#24403;&#28982;&#26159;<red>&#35266;&#23519;&#31243;&#24207; (&#29366;&#24577;&#26426;) &#30340;&#25191;&#34892;</red>&#20102;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#21021;&#23398;&#32773;&#24517;&#39035;&#20811;&#26381;&#30340;&#24656;&#24807;&#65306;<red>STFW/RTFM</red> (<a href="http://sourceware.org/gdb/documentation/" class=" text-amber-900">M &#38750;&#24120;&#26377;&#29992;</a>)</li>
-<li class=" ml-8"><code>starti</code> &#21487;&#20197;&#24110;&#21161;&#25105;&#20204;&#20174;&#31532;&#19968;&#26465;&#25351;&#20196;&#24320;&#22987;&#25191;&#34892;&#31243;&#24207;<ul class=" list-disc font-serif">
-<li class=" ml-8">gdb &#21487;&#20197;&#22312;&#20004;&#31181;&#29366;&#24577;&#26426;&#35270;&#35282;&#20043;&#38388;&#20999;&#25442; (<code>layout</code>)</li>
+<li class=" ml-8">当然是<red>观察程序 (状态机) 的执行</red>了<ul class=" list-disc font-serif">
+<li class=" ml-8">初学者必须克服的恐惧：<red>STFW/RTFM</red> (<a href="http://sourceware.org/gdb/documentation/" class=" text-amber-900">M 非常有用</a>)</li>
+<li class=" ml-8"><code>starti</code> 可以帮助我们从第一条指令开始执行程序<ul class=" list-disc font-serif">
+<li class=" ml-8">gdb 可以在两种状态机视角之间切换 (<code>layout</code>)</li>
 </ul>
 </li>
 </ul>
@@ -616,18 +616,18 @@ $$Y' = \neg X \land \neg Y$$</p></div>
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#35299;&#20915;&#24322;&#24120;&#36864;&#20986;</h2>
-<p class=" font-serif my-1">&#26377;&#21150;&#27861;&#35753;&#29366;&#24577;&#26426; &#8220;&#20572;&#19979;&#26469;&#8221; &#21527;&#65311;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">解决异常退出</h2>
+<p class=" font-serif my-1">有办法让状态机 “停下来” 吗？</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#32431; &#8220;&#35745;&#31639;&#8221; &#30340;&#29366;&#24577;&#26426;&#65306;<red>&#19981;&#34892;</red></li>
-<li class=" ml-8">&#35201;&#20040;&#27515;&#24490;&#29615;&#65292;&#35201;&#20040; undefined behavior</li>
+<li class=" ml-8">纯 “计算” 的状态机：<red>不行</red></li>
+<li class=" ml-8">要么死循环，要么 undefined behavior</li>
 </ul></div>
         
       
          <div class="fragment"> 
         <div><hr>
-<p class=" font-serif my-1">&#35299;&#20915;&#21150;&#27861;&#65306;<red>syscall</red></p>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sys/syscall.h&gt;</span>
+<p class=" font-serif my-1">解决办法：<red>syscall</red></p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf"><sys/syscall.h></span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">syscall</span><span class="p">(</span><span class="n">SYS_exit</span><span class="p">,</span><span class="w"> </span><span class="mi">42</span><span class="p">);</span>
@@ -635,9 +635,9 @@ $$Y' = \neg X \land \neg Y$$</p></div>
 </code></pre></div>
 
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#35843;&#35797;&#20195;&#30721;&#65306;syscall &#30340;&#23454;&#29616;&#22312;&#21738;&#37324;&#65311;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#22351;&#28040;&#24687;&#65306;&#22312; libc &#37324;&#65292;&#19981;&#26041;&#20415;&#30452;&#25509;&#38142;&#25509;</li>
-<li class=" ml-8">&#22909;&#28040;&#24687;&#65306;&#20195;&#30721;&#24456;&#30701;&#65292;&#32780;&#19988;&#20284;&#20046;&#30475;&#25026;&#20102;</li>
+<li class=" ml-8">调试代码：syscall 的实现在哪里？<ul class=" list-disc font-serif">
+<li class=" ml-8">坏消息：在 libc 里，不方便直接链接</li>
+<li class=" ml-8">好消息：代码很短，而且似乎看懂了</li>
 </ul>
 </li>
 </ul></div>
@@ -651,26 +651,26 @@ $$Y' = \neg X \land \neg Y$$</p></div>
 
       
         
-        <div><h2 id="hello-world" class=" text-xl mt-2 pb-2 font-sans">Hello, World &#30340;&#27719;&#32534;&#23454;&#29616;</h2>
+        <div><h2 id="hello-world" class=" text-xl mt-2 pb-2 font-sans">Hello, World 的汇编实现</h2>
 <p class=" font-serif my-1"><a href="../../../pages/OS/2022/demos/minimal.S" class=" text-amber-900">minimal.S</a></p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="nf">movq</span><span class="w"> </span><span class="no">$SYS_exit</span><span class="p">,</span><span class="w">  </span><span class="nv">%rax</span><span class="w">   </span><span class="c1"># exit(</span>
 <span class="nf">movq</span><span class="w"> </span><span class="no">$1</span><span class="p">,</span><span class="w">         </span><span class="nv">%rdi</span><span class="w">   </span><span class="c1">#   status=1</span>
 <span class="nf">syscall</span><span class="w">                 </span><span class="c1"># );</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">Note: gcc &#25903;&#25345;&#23545;&#27719;&#32534;&#20195;&#30721;&#30340;&#39044;&#32534;&#35793; (&#36824;&#20250;&#23450;&#20041; <code>__ASSEMBLER__</code> &#23439;)</p>
+<p class=" font-serif my-1">Note: gcc 支持对汇编代码的预编译 (还会定义 <code>__ASSEMBLER__</code> 宏)</p>
 <hr>
-<p class=" font-serif my-1"><strike>&#25105;&#26159;&#20174;&#21738;&#37324;&#33719;&#24471;&#36825;&#20123;&#40657;&#31185;&#25216;&#20195;&#30721;&#30340;&#65311;&#65311;&#65311;</strike></p>
+<p class=" font-serif my-1"><strike>我是从哪里获得这些黑科技代码的？？？</strike></p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">syscall (2), syscalls (2)<ul class=" list-disc font-serif">
-<li class=" ml-8"><red>The Friendly Manual</red> &#25165;&#26159;&#26368;&#38752;&#35889;&#30340;&#20449;&#24687;&#26469;&#28304;</li>
+<li class=" ml-8"><red>The Friendly Manual</red> 才是最靠谱的信息来源</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#22238;&#39038;&#65306;&#29366;&#24577;&#26426;&#35270;&#35282;&#30340;&#31243;&#24207;</p>
+<p class=" font-serif my-1">回顾：状态机视角的程序</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#31243;&#24207; = &#35745;&#31639; &#8594; syscall &#8594; &#35745;&#31639; &#8594; ...</li>
+<li class=" ml-8">程序 = 计算 → syscall → 计算 → ...</li>
 </ul></div>
         
       
@@ -682,18 +682,18 @@ $$Y' = \neg X \land \neg Y$$</p></div>
 
       
         
-        <div><h2 id="ansi-escape-code" class=" text-xl mt-2 pb-2 font-sans">&#24425;&#34507;&#65306;ANSI Escape Code</h2>
+        <div><h2 id="ansi-escape-code" class=" text-xl mt-2 pb-2 font-sans">彩蛋：ANSI Escape Code</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#20026;&#20160;&#20040; Hello World &#26377;&#39068;&#33394;&#65311;&#65311;</p>
+<p class=" font-serif my-1">为什么 Hello World 有颜色？？</p>
 </blockquote>
-<p class=" font-serif my-1">&#29305;&#27530;&#32534;&#30721;&#30340;&#23383;&#31526;&#23454;&#29616;&#32456;&#31471;&#25511;&#21046;</p>
+<p class=" font-serif my-1">特殊编码的字符实现终端控制</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><a href="https://git.busybox.net/busybox/tree/editors/vi.c" class=" text-amber-900">vi.c</a> from busybox</li>
-<li class=" ml-8"><code>telnet towel.blinkenlights.nl</code> (&#30005;&#24433;&#65307;Ctrl-] and q &#36864;&#20986;)</li>
+<li class=" ml-8"><code>telnet towel.blinkenlights.nl</code> (电影；Ctrl-] and q 退出)</li>
 <li class=" ml-8"><code>dialog --msgbox 'Hello, OS World!' 8 32</code></li>
-<li class=" ml-8"><code>ssh sshtron.zachlatta.com</code> (&#32593;&#32476;&#28216;&#25103;)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#25152;&#20197;&#32534;&#31243;&#21487;&#20197;&#20174;&#19968;&#24320;&#22987;&#23601;&#19981;&#37027;&#20040;&#26543;&#29157;</li>
-<li class=" ml-8">&#30475;&#20284;&#22797;&#26434;&#65292;&#23454;&#38469;&#31616;&#21333;&#26126;&#20102;</li>
+<li class=" ml-8"><code>ssh sshtron.zachlatta.com</code> (网络游戏)<ul class=" list-disc font-serif">
+<li class=" ml-8">所以编程可以从一开始就不那么枯燥</li>
+<li class=" ml-8">看似复杂，实际简单明了</li>
 </ul>
 </li>
 </ul></div>
@@ -711,7 +711,7 @@ $$Y' = \neg X \land \neg Y$$</p></div>
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#22914;&#20309;&#22312;&#31243;&#24207;&#30340;&#20004;&#20010;&#35270;&#35282;&#20043;&#38388;&#20999;&#25442;&#65311;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">如何在程序的两个视角之间切换？</h1></div></div></div>
         
       
       </section>
@@ -722,25 +722,25 @@ $$Y' = \neg X \land \neg Y$$</p></div>
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#22914;&#20309;&#22312;&#31243;&#24207;&#30340;&#20004;&#20010;&#35270;&#35282;&#20043;&#38388;&#20999;&#25442;&#65311;</h2>
-<p class=" font-serif my-1">&#8220;&#29366;&#24577;&#26426;&#8221; &#39034;&#20415;&#35299;&#20915;&#20102;&#19968;&#20010;&#38750;&#24120;&#37325;&#35201;&#30340;&#22522;&#26412;&#38382;&#39064;&#65306;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">如何在程序的两个视角之间切换？</h2>
+<p class=" font-serif my-1">“状态机” 顺便解决了一个非常重要的基本问题：</p>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#20160;&#20040;&#26159;&#32534;&#35793;&#22120;&#65311;&#65311;&#65311;</p>
+<p class=" font-serif my-1">什么是编译器？？？</p>
 </blockquote></div>
         
       
          <div class="fragment"> 
         <div><hr>
-<p class=" font-serif my-1">&#32534;&#35793;&#22120;&#65306;&#28304;&#20195;&#30721; $S$ (&#29366;&#24577;&#26426;) &#8594; &#20108;&#36827;&#21046;&#20195;&#30721; $C$ (&#29366;&#24577;&#26426;)
+<p class=" font-serif my-1">编译器：源代码 $S$ (状态机) → 二进制代码 $C$ (状态机)
 $$C = \textrm{compile}(S)$$</p>
-<p class=" font-serif my-1">&#32534;&#35793; (&#20248;&#21270;) &#30340;&#27491;&#30830;&#24615; (Soundness): </p>
+<p class=" font-serif my-1">编译 (优化) 的正确性 (Soundness): </p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><red>$S$ &#19982; $C$ &#30340;&#21487;&#35266;&#27979;&#34892;&#20026;&#20005;&#26684;&#19968;&#33268;</red><ul class=" list-disc font-serif">
+<li class=" ml-8"><red>$S$ 与 $C$ 的可观测行为严格一致</red><ul class=" list-disc font-serif">
 <li class=" ml-8">system calls; volatile variable loads/stores; termination</li>
 </ul>
 </li>
-<li class=" ml-8">Trivially &#27491;&#30830; (&#20294;&#20302;&#25928;) &#30340;&#23454;&#29616;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#35299;&#37322;&#25191;&#34892;/&#30452;&#25509;&#32763;&#35793; $S$ &#30340;&#35821;&#20041;</li>
+<li class=" ml-8">Trivially 正确 (但低效) 的实现<ul class=" list-disc font-serif">
+<li class=" ml-8">解释执行/直接翻译 $S$ 的语义</li>
 </ul>
 </li>
 </ul></div>
@@ -754,11 +754,11 @@ $$C = \textrm{compile}(S)$$</p>
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#29616;&#20195; (&#19982;&#26410;&#26469;&#30340;) &#32534;&#35793;&#20248;&#21270;</h2>
-<p class=" font-serif my-1">&#22312;&#20445;&#35777;&#35266;&#27979;&#19968;&#33268;&#24615; (sound) &#30340;&#21069;&#25552;&#19979;&#25913;&#20889;&#20195;&#30721; (rewriting)</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">现代 (与未来的) 编译优化</h2>
+<p class=" font-serif my-1">在保证观测一致性 (sound) 的前提下改写代码 (rewriting)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">Inline assembly &#20063;&#21487;&#20197;&#21442;&#19982;&#20248;&#21270;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20854;&#20182;&#20248;&#21270;&#21487;&#33021;&#20250;&#36328;&#36807;&#19981;&#24102; barrier &#30340; <code>asm volatile</code></li>
+<li class=" ml-8">Inline assembly 也可以参与优化<ul class=" list-disc font-serif">
+<li class=" ml-8">其他优化可能会跨过不带 barrier 的 <code>asm volatile</code></li>
 </ul>
 </li>
 <li class=" ml-8">Eventual memory consistency</li>
@@ -768,11 +768,11 @@ $$C = \textrm{compile}(S)$$</p>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#36825;&#32473;&#20102;&#25105;&#20204;&#24456;&#22810;&#24819;&#35937;&#30340;&#31354;&#38388;</p>
+<p class=" font-serif my-1">这给了我们很多想象的空间</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">Semantic-based compilation (synthesis)</li>
 <li class=" ml-8">AI-based rewriting</li>
-<li class=" ml-8">Fine-grained semantics &amp; system call fusion</li>
+<li class=" ml-8">Fine-grained semantics & system call fusion</li>
 </ul></div>
         
       
@@ -784,14 +784,14 @@ $$C = \textrm{compile}(S)$$</p>
 
       
         
-        <div><h2 id="pl" class=" text-xl mt-2 pb-2 font-sans">&#36827;&#20837; PL &#30340;&#39046;&#22495;</h2>
+        <div><h2 id="pl" class=" text-xl mt-2 pb-2 font-sans">进入 PL 的领域</h2>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/compcert-semantics.png" width="250px"></p>
-<p class=" font-serif my-1">PL &#39046;&#22495; (&#30340;&#24456;&#22810;&#20154;) &#26377;&#19968;&#31181;&#20542;&#21521;&#65306;&#29992;&#25968;&#23398;&#21270;&#30340;&#35821;&#35328;&#23450;&#20041;&#21644;&#29702;&#35299;&#19968;&#20999; (all about semantics)</p>
+<p class=" font-serif my-1">PL 领域 (的很多人) 有一种倾向：用数学化的语言定义和理解一切 (all about semantics)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><del>&#25152;&#20197;&#20320;&#30475;&#19968;&#30524; paper &#23601;&#35273;&#24471;&#33258;&#24049;&#30606;&#20102;</del></li>
-<li class=" ml-8">&#20294;&#32972;&#21518;&#30340;&#30452;&#35273;&#20381;&#28982;&#26159; system/software &#30340;<ul class=" list-disc font-serif">
-<li class=" ml-8">(&#25105;&#20204;&#26159;&#20154;&#65292;&#19981;&#26159;&#26080;&#24773;&#30340;&#25968;&#23398;&#26426;&#22120; &#128514;)</li>
-<li class=" ml-8">&#28316;&#20102;&#28316;&#20102;&#65292;&#22238;&#21040; system &#30340;&#19990;&#30028;</li>
+<li class=" ml-8"><del>所以你看一眼 paper 就觉得自己瞎了</del></li>
+<li class=" ml-8">但背后的直觉依然是 system/software 的<ul class=" list-disc font-serif">
+<li class=" ml-8">(我们是人，不是无情的数学机器 😂)</li>
+<li class=" ml-8">溜了溜了，回到 system 的世界</li>
 </ul>
 </li>
 </ul>
@@ -799,8 +799,8 @@ $$C = \textrm{compile}(S)$$</p>
 <p class=" font-serif my-1">Further readings</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><a href="https://dl.acm.org/doi/10.1145/2103621.2103719" class=" text-amber-900">An executable formal semantics of C with applications</a> (POPL'12)</li>
-<li class=" ml-8"><a href="https://compcert.org/motivations.html" class=" text-amber-900">CompCert C verified compiler</a> and a <a href="https://xavierleroy.org/publi/compcert-backend.pdf" class=" text-amber-900">paper</a> (POPL'06, Most Influential Paper Award &#127941;)</li>
-<li class=" ml-8"><a href="https://dl.acm.org/doi/10.1145/3485513" class=" text-amber-900">Copy-and-patch compilation</a> (OOPSLA'21, Distinguished Paper &#127941;)</li>
+<li class=" ml-8"><a href="https://compcert.org/motivations.html" class=" text-amber-900">CompCert C verified compiler</a> and a <a href="https://xavierleroy.org/publi/compcert-backend.pdf" class=" text-amber-900">paper</a> (POPL'06, Most Influential Paper Award 🏅)</li>
+<li class=" ml-8"><a href="https://dl.acm.org/doi/10.1145/3485513" class=" text-amber-900">Copy-and-patch compilation</a> (OOPSLA'21, Distinguished Paper 🏅)</li>
 </ul></div>
         
       
@@ -816,7 +816,7 @@ $$C = \textrm{compile}(S)$$</p>
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#25805;&#20316;&#31995;&#32479;&#20013;&#30340;&#19968;&#33324;&#31243;&#24207;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">操作系统中的一般程序</h1></div></div></div>
         
       
       </section>
@@ -827,20 +827,20 @@ $$C = \textrm{compile}(S)$$</p>
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25805;&#20316;&#31995;&#32479;&#20013;&#30340;&#19968;&#33324;&#31243;&#24207;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">操作系统中的一般程序</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#21644; <a href="../../../pages/OS/2022/demos/minimal.S" class=" text-amber-900">minimal.S</a> &#27809;&#26377;&#26412;&#36136;&#21306;&#21035;&#65306;&#31243;&#24207; = &#35745;&#31639; &#8594; syscall &#8594; ...</p>
+<p class=" font-serif my-1">和 <a href="../../../pages/OS/2022/demos/minimal.S" class=" text-amber-900">minimal.S</a> 没有本质区别：程序 = 计算 → syscall → ...</p>
 </blockquote>
 <hr>
-<p class=" font-serif my-1">&#25805;&#20316;&#31995;&#32479;&#25910;&#32534;&#20102;&#25152;&#26377;&#30340;&#30828;&#20214;/&#36719;&#20214;&#36164;&#28304;</p>
+<p class=" font-serif my-1">操作系统收编了所有的硬件/软件资源</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#21482;&#33021;&#29992;&#25805;&#20316;&#31995;&#32479;&#20801;&#35768;&#30340;&#26041;&#24335;&#35775;&#38382;&#25805;&#20316;&#31995;&#32479;&#20013;&#30340;&#23545;&#35937;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20174;&#32780;&#23454;&#29616;&#25805;&#20316;&#31995;&#32479;&#30340; &#8220;&#38712;&#20027;&#8221; &#22320;&#20301;</li>
-<li class=" ml-8">&#20363;&#23376;&#65306;<a href="../../../pages/OS/2022/demos/tryopen.c" class=" text-amber-900">tryopen.c</a></li>
+<li class=" ml-8">只能用操作系统允许的方式访问操作系统中的对象<ul class=" list-disc font-serif">
+<li class=" ml-8">从而实现操作系统的 “霸主” 地位</li>
+<li class=" ml-8">例子：<a href="../../../pages/OS/2022/demos/tryopen.c" class=" text-amber-900">tryopen.c</a></li>
 </ul>
 </li>
-<li class=" ml-8">&#36825;&#26159;&#20026; &#8220;&#31649;&#29702;&#22810;&#20010;&#29366;&#24577;&#26426;&#8221; &#25152;&#24517;&#39035;&#30340;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#19981;&#33021;&#25171;&#26550;&#65292;&#35841;&#26377;&#26435;&#38480;&#23601;&#32473;&#20182;</li>
+<li class=" ml-8">这是为 “管理多个状态机” 所必须的<ul class=" list-disc font-serif">
+<li class=" ml-8">不能打架，谁有权限就给他</li>
 </ul>
 </li>
 </ul></div>
@@ -854,19 +854,19 @@ $$C = \textrm{compile}(S)$$</p>
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">(&#20108;&#36827;&#21046;) &#31243;&#24207;&#20063;&#26159;&#25805;&#20316;&#31995;&#32479;&#20013;&#30340;&#23545;&#35937;</h2>
-<p class=" font-serif my-1">&#21487;&#25191;&#34892;&#25991;&#20214;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">(二进制) 程序也是操作系统中的对象</h2>
+<p class=" font-serif my-1">可执行文件</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><red>&#19982;&#22823;&#23478;&#26085;&#24120;&#20351;&#29992;&#30340;&#25991;&#20214; (a.c, README.txt) &#27809;&#26377;&#26412;&#36136;&#21306;&#21035;</red></li>
-<li class=" ml-8">&#25805;&#20316;&#31995;&#32479;&#25552;&#20379; API &#25171;&#24320;&#12289;&#35835;&#21462;&#12289;&#25913;&#20889; (&#37117;&#38656;&#35201;&#30456;&#24212;&#30340;&#26435;&#38480;)</li>
+<li class=" ml-8"><red>与大家日常使用的文件 (a.c, README.txt) 没有本质区别</red></li>
+<li class=" ml-8">操作系统提供 API 打开、读取、改写 (都需要相应的权限)</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#26597;&#30475;&#21487;&#25191;&#34892;&#25991;&#20214;</p>
+<p class=" font-serif my-1">查看可执行文件</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><code>vim</code>, <code>cat</code>, <code>xxd</code> &#37117;&#21487;&#20197;&#30452;&#25509;&#26597;&#30475;&#21487;&#25191;&#34892;&#25991;&#20214;<ul class=" list-disc font-serif">
-<li class=" ml-8"><code>vim</code> &#20013;&#20108;&#36827;&#21046;&#30340;&#37096;&#20998;&#26080;&#27861; &#8220;&#38405;&#35835;&#8221;&#65292;&#20294;&#21487;&#20197;&#30475;&#21040;&#23383;&#31526;&#20018;&#24120;&#37327;</li>
-<li class=" ml-8">&#20351;&#29992; <code>xxd</code> &#21487;&#20197;&#30475;&#21040;&#25991;&#20214;&#20197; <code>"\x7f" "ELF"</code> &#24320;&#22836;</li>
-<li class=" ml-8">vscode &#26377; binary editor &#25554;&#20214;</li>
+<li class=" ml-8"><code>vim</code>, <code>cat</code>, <code>xxd</code> 都可以直接查看可执行文件<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>vim</code> 中二进制的部分无法 “阅读”，但可以看到字符串常量</li>
+<li class=" ml-8">使用 <code>xxd</code> 可以看到文件以 <code>"\x7f" "ELF"</code> 开头</li>
+<li class=" ml-8">vscode 有 binary editor 插件</li>
 </ul>
 </li>
 </ul></div>
@@ -880,31 +880,31 @@ $$C = \textrm{compile}(S)$$</p>
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#31995;&#32479;&#20013;&#24120;&#35265;&#30340;&#24212;&#29992;&#31243;&#24207;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">系统中常见的应用程序</h2>
 <p class=" font-serif my-1">Core Utilities (coreutils)</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><em>standard</em> programs for text and file manipulation</li>
-<li class=" ml-8">&#31995;&#32479;&#20013;&#23433;&#35013;&#30340;&#26159; <a href="https://www.gnu.org/software/coreutils/" class=" text-amber-900">GNU Coreutils</a><ul class=" list-disc font-serif">
-<li class=" ml-8">&#26377;&#36739;&#23567;&#30340;&#26367;&#20195;&#21697; <a href="https://www.busybox.net/" class=" text-amber-900">busybox</a></li>
+<li class=" ml-8">系统中安装的是 <a href="https://www.gnu.org/software/coreutils/" class=" text-amber-900">GNU Coreutils</a><ul class=" list-disc font-serif">
+<li class=" ml-8">有较小的替代品 <a href="https://www.busybox.net/" class=" text-amber-900">busybox</a></li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#31995;&#32479;/&#24037;&#20855;&#31243;&#24207;</p>
+<p class=" font-serif my-1">系统/工具程序</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">bash, <a href="https://www.gnu.org/software/binutils/" class=" text-amber-900">binutils</a>, apt, ip, ssh, vim, tmux, jdk, python, ...<ul class=" list-disc font-serif">
-<li class=" ml-8">&#36825;&#20123;&#24037;&#20855;&#30340;&#21407;&#29702;&#37117;&#19981;&#22797;&#26434; (&#20363;&#22914; apt &#20854;&#23454;&#21482;&#26159; dpkg &#30340;&#22771;)</li>
-<li class=" ml-8"><a href="https://packages.ubuntu.com/" class=" text-amber-900">Ubuntu Packages</a> (&#21644; apt-file &#24037;&#20855;) &#25903;&#25345;&#25991;&#20214;&#21517;&#26816;&#32034;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20363;&#23376;&#65306;&#25214;&#19981;&#21040; <code>SDL2/SDL.h</code> &#26102;...</li>
+<li class=" ml-8">这些工具的原理都不复杂 (例如 apt 其实只是 dpkg 的壳)</li>
+<li class=" ml-8"><a href="https://packages.ubuntu.com/" class=" text-amber-900">Ubuntu Packages</a> (和 apt-file 工具) 支持文件名检索<ul class=" list-disc font-serif">
+<li class=" ml-8">例子：找不到 <code>SDL2/SDL.h</code> 时...</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#20854;&#20182;&#21508;&#31181;&#24212;&#29992;&#31243;&#24207;</p>
+<p class=" font-serif my-1">其他各种应用程序</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#27983;&#35272;&#22120;&#12289;&#38899;&#20048;&#25773;&#25918;&#22120;&#8230;&#8230;</li>
+<li class=" ml-8">浏览器、音乐播放器……</li>
 </ul></div>
         
       
@@ -916,22 +916,22 @@ $$C = \textrm{compile}(S)$$</p>
 
       
         
-        <div><h2 id="dark-side" class=" text-xl mt-2 pb-2 font-sans">&#25805;&#20316;&#31995;&#32479;&#20013;&#30340;&#31243;&#24207;&#65306;Dark Side</h2>
+        <div><h2 id="dark-side" class=" text-xl mt-2 pb-2 font-sans">操作系统中的程序：Dark Side</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#26432;&#20154;&#30340;&#38754;&#35797;&#39064; (1)&#65306;&#19968;&#20010;&#26222;&#36890;&#30340;&#12289;&#20154;&#30044;&#26080;&#23475;&#30340; Hello World C &#31243;&#24207;&#25191;&#34892;&#30340;&#31532;&#19968;&#26465;&#25351;&#20196;&#22312;&#21738;&#37324;&#65311;</p>
+<p class=" font-serif my-1">杀人的面试题 (1)：一个普通的、人畜无害的 Hello World C 程序执行的第一条指令在哪里？</p>
 </blockquote>
-<p class=" font-serif my-1">&#31561;&#20215;&#38382;&#27861;</p>
+<p class=" font-serif my-1">等价问法</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#8220;&#20108;&#36827;&#21046;&#31243;&#24207;&#29366;&#24577;&#26426;&#30340;&#21021;&#22987;&#29366;&#24577;&#26159;&#20160;&#20040;&#65311;&#8221;<ul class=" list-disc font-serif">
-<li class=" ml-8"><code>main</code> &#30340;&#31532;&#19968;&#26465;&#25351;&#20196; &#10060;</li>
-<li class=" ml-8"><code>libc</code> &#30340; <code>_start</code> &#10060;</li>
+<li class=" ml-8">“二进制程序状态机的初始状态是什么？”<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>main</code> 的第一条指令 ❌</li>
+<li class=" ml-8"><code>libc</code> 的 <code>_start</code> ❌</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#38382; gdb &#21543;</p>
+<p class=" font-serif my-1">问 gdb 吧</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><code>info proc {mappings,...}</code> - &#25171;&#21360;&#36827;&#31243;&#20869;&#23384;</li>
+<li class=" ml-8"><code>info proc {mappings,...}</code> - 打印进程内存</li>
 </ul></div>
         
       
@@ -943,22 +943,22 @@ $$C = \textrm{compile}(S)$$</p>
 
       
         
-        <div><h2 id="main" class=" text-xl mt-2 pb-2 font-sans"><code>main()</code> &#20043;&#21069;&#21457;&#29983;&#20102;&#20160;&#20040;&#65311;</h2>
-<p class=" font-serif my-1"><code>ld-linux-x86-64.so</code> &#21152;&#36733;&#20102; libc</p>
+        <div><h2 id="main" class=" text-xl mt-2 pb-2 font-sans"><code>main()</code> 之前发生了什么？</h2>
+<p class=" font-serif my-1"><code>ld-linux-x86-64.so</code> 加载了 libc</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20043;&#21518; libc &#23436;&#25104;&#20102;&#33258;&#24049;&#30340;&#21021;&#22987;&#21270;<ul class=" list-disc font-serif">
+<li class=" ml-8">之后 libc 完成了自己的初始化<ul class=" list-disc font-serif">
 <li class=" ml-8">RTFM: <a href="https://www.gnu.org/software/hurd/glibc/startup.html" class=" text-amber-900">libc startup</a> on Hurd</li>
-<li class=" ml-8"><code>main()</code> &#30340;&#24320;&#22987;/&#32467;&#26463;&#24182;&#19981;&#26159;&#25972;&#20010;&#31243;&#24207;&#30340;&#24320;&#22987;/&#32467;&#26463;</li>
-<li class=" ml-8">&#20363;&#23376;&#65306;<a href="../../../pages/OS/2022/demos/hello-goodbye.c" class=" text-amber-900">hello-goodbye.c</a></li>
+<li class=" ml-8"><code>main()</code> 的开始/结束并不是整个程序的开始/结束</li>
+<li class=" ml-8">例子：<a href="../../../pages/OS/2022/demos/hello-goodbye.c" class=" text-amber-900">hello-goodbye.c</a></li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#35841;&#35268;&#23450;&#26159; <code>ld-linux-x86-64.so</code>&#65292;&#32780;&#19981;&#26159; <code>rtfm.so</code>&#65311;</p>
+<p class=" font-serif my-1">谁规定是 <code>ld-linux-x86-64.so</code>，而不是 <code>rtfm.so</code>？</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">readelf &#21578;&#35785;&#20320;&#31572;&#26696;</li>
-<li class=" ml-8">(&#35745;&#31639;&#26426;&#31995;&#32479;&#19981;&#23384;&#22312;&#29572;&#23398;&#65307;&#19968;&#20999;&#37117;&#24314;&#31435;&#22312;&#30830;&#23450;&#30340;&#26426;&#21046;&#19978;)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#22238;&#39038; <code>gcc --verbose</code></li>
+<li class=" ml-8">readelf 告诉你答案</li>
+<li class=" ml-8">(计算机系统不存在玄学；一切都建立在确定的机制上)<ul class=" list-disc font-serif">
+<li class=" ml-8">回顾 <code>gcc --verbose</code></li>
 </ul>
 </li>
 </ul></div>
@@ -972,15 +972,15 @@ $$C = \textrm{compile}(S)$$</p>
 
       
         
-        <div><h2 id="dark-side" class=" text-xl mt-2 pb-2 font-sans">&#25805;&#20316;&#31995;&#32479;&#20013;&#30340;&#31243;&#24207;&#65306;Dark Side</h2>
+        <div><h2 id="dark-side" class=" text-xl mt-2 pb-2 font-sans">操作系统中的程序：Dark Side</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#26432;&#20154;&#30340;&#38754;&#35797;&#39064; (2)&#65306;main &#25191;&#34892;&#20043;&#21069;&#12289;&#25191;&#34892;&#20013;&#12289;&#25191;&#34892;&#21518;&#65292;&#21457;&#29983;&#20102;&#21738;&#20123;&#25805;&#20316;&#31995;&#32479; API &#35843;&#29992;&#65311;</p>
+<p class=" font-serif my-1">杀人的面试题 (2)：main 执行之前、执行中、执行后，发生了哪些操作系统 API 调用？</p>
 </blockquote>
 <hr>
-<p class=" font-serif my-1">&#21571;&#8230;&#8230;</p>
+<p class=" font-serif my-1">呃……</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">(&#35745;&#31639;&#26426;&#31995;&#32479;&#19981;&#23384;&#22312;&#29572;&#23398;&#65307;&#19968;&#20999;&#37117;&#24314;&#31435;&#22312;&#30830;&#23450;&#30340;&#26426;&#21046;&#19978;)</li>
-<li class=" ml-8">&#25152;&#20197;&#20320;&#24212;&#35813;&#26377;&#19968;&#20010;&#24378;&#28872;&#30340;&#20449;&#24565;&#65306;&#36825;&#20010;&#38382;&#39064;&#26159;&#21487;&#20197;&#22238;&#31572;&#30340;</li>
+<li class=" ml-8">(计算机系统不存在玄学；一切都建立在确定的机制上)</li>
+<li class=" ml-8">所以你应该有一个强烈的信念：这个问题是可以回答的</li>
 </ul></div>
         
       
@@ -992,16 +992,16 @@ $$C = \textrm{compile}(S)$$</p>
 
       
         
-        <div><h2 id="trace" class=" text-xl mt-2 pb-2 font-sans">&#25171;&#24320;&#31243;&#24207;&#30340;&#25191;&#34892;&#65306;Trace (&#36394;&#36857;)</h2>
+        <div><h2 id="trace" class=" text-xl mt-2 pb-2 font-sans">打开程序的执行：Trace (踪迹)</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
 <p class=" font-serif my-1">In general, trace refers to the process of following <em>anything</em> from the beginning to the end. For example, the <code>traceroute</code> command follows each of the network hops as your computer connects to another computer.</p>
 </blockquote>
-<p class=" font-serif my-1">&#36825;&#38376;&#35838;&#20013;&#24456;&#37325;&#35201;&#30340;&#24037;&#20855;&#65306;<red>strace</red></p>
+<p class=" font-serif my-1">这门课中很重要的工具：<red>strace</red></p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">system call trace</li>
-<li class=" ml-8">&#29702;&#35299;&#31243;&#24207;&#36816;&#34892;&#26102;&#20351;&#29992;&#30340;&#31995;&#32479;&#35843;&#29992;<ul class=" list-disc font-serif">
+<li class=" ml-8">理解程序运行时使用的系统调用<ul class=" list-disc font-serif">
 <li class=" ml-8">demo: <code>strace ./hello-goodbye</code></li>
-<li class=" ml-8">&#22312;&#36825;&#38376;&#35838;&#20013;&#65292;&#20320;&#33021;&#29702;&#35299; strace &#30340;&#36755;&#20986;&#24182;&#22312;&#20320;&#33258;&#24049;&#30340;&#25805;&#20316;&#31995;&#32479;&#37324;&#23454;&#29616;&#30456;&#24403;&#19968;&#37096;&#20998;&#31995;&#32479;&#35843;&#29992; (mmap, execve, ...)</li>
+<li class=" ml-8">在这门课中，你能理解 strace 的输出并在你自己的操作系统里实现相当一部分系统调用 (mmap, execve, ...)</li>
 </ul>
 </li>
 </ul></div>
@@ -1015,25 +1015,25 @@ $$C = \textrm{compile}(S)$$</p>
 
       
         
-        <div><h2 id="hello-world" class=" text-xl mt-2 pb-2 font-sans">&#26412;&#36136;&#19978;&#65292;&#25152;&#26377;&#30340;&#31243;&#24207;&#21644; Hello World &#31867;&#20284;</h2>
-<p class=" font-serif my-1">&#31243;&#24207; = &#29366;&#24577;&#26426; = &#35745;&#31639; &#8594; syscall &#8594; &#35745;&#31639; &#8594;</p>
+        <div><h2 id="hello-world" class=" text-xl mt-2 pb-2 font-sans">本质上，所有的程序和 Hello World 类似</h2>
+<p class=" font-serif my-1">程序 = 状态机 = 计算 → syscall → 计算 →</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#34987;&#25805;&#20316;&#31995;&#32479;&#21152;&#36733;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#36890;&#36807;&#21478;&#19968;&#20010;&#36827;&#31243;&#25191;&#34892; execve &#35774;&#32622;&#20026;&#21021;&#22987;&#29366;&#24577;</li>
+<li class=" ml-8">被操作系统加载<ul class=" list-disc font-serif">
+<li class=" ml-8">通过另一个进程执行 execve 设置为初始状态</li>
 </ul>
 </li>
-<li class=" ml-8">&#29366;&#24577;&#26426;&#25191;&#34892;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#36827;&#31243;&#31649;&#29702;&#65306;fork, execve, exit, ...</li>
-<li class=" ml-8">&#25991;&#20214;/&#35774;&#22791;&#31649;&#29702;&#65306;open, close, read, write, ...</li>
-<li class=" ml-8">&#23384;&#20648;&#31649;&#29702;&#65306;mmap, brk, ...</li>
+<li class=" ml-8">状态机执行<ul class=" list-disc font-serif">
+<li class=" ml-8">进程管理：fork, execve, exit, ...</li>
+<li class=" ml-8">文件/设备管理：open, close, read, write, ...</li>
+<li class=" ml-8">存储管理：mmap, brk, ...</li>
 </ul>
 </li>
-<li class=" ml-8">&#30452;&#21040; _exit (exit_group) &#36864;&#20986;</li>
+<li class=" ml-8">直到 _exit (exit_group) 退出</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">(&#21021;&#23398;&#32773;&#23545;&#36825;&#19968;&#28857;&#20250;&#24863;&#21040;&#26377;&#19968;&#28857;&#24778;&#35766;)</p>
+<p class=" font-serif my-1">(初学者对这一点会感到有一点惊讶)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#35828;&#22909;&#30340;&#27983;&#35272;&#22120;&#12289;&#28216;&#25103;&#12289;&#26432;&#27602;&#36719;&#20214;&#12289;&#30149;&#27602;&#21602;&#65311;&#37117;&#26159;&#36825;&#20123; API &#21527;&#65311;</li>
+<li class=" ml-8">说好的浏览器、游戏、杀毒软件、病毒呢？都是这些 API 吗？</li>
 </ul></div>
         
       
@@ -1045,23 +1045,23 @@ $$C = \textrm{compile}(S)$$</p>
 
       
         
-        <div><h2 id="yes-api" class=" text-xl mt-2 pb-2 font-sans">Yes! - &#36825;&#20123; API &#23601;&#26159;&#25805;&#20316;&#31995;&#32479;&#30340;&#20840;&#37096;</h2>
-<p class=" font-serif my-1">&#32534;&#35793;&#22120; (gcc)&#65292;&#20195;&#34920;&#20854;&#20182;&#24037;&#20855;&#31243;&#24207;</p>
+        <div><h2 id="yes-api" class=" text-xl mt-2 pb-2 font-sans">Yes! - 这些 API 就是操作系统的全部</h2>
+<p class=" font-serif my-1">编译器 (gcc)，代表其他工具程序</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20027;&#35201;&#30340;&#31995;&#32479;&#35843;&#29992;&#65306;execve, read, write</li>
-<li class=" ml-8"><code>strace -f gcc a.c</code> (gcc &#20250;&#21551;&#21160;&#20854;&#20182;&#36827;&#31243;)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#21487;&#20197;&#31649;&#36947;&#32473;&#32534;&#36753;&#22120; <code>vim -</code></li>
-<li class=" ml-8">&#32534;&#36753;&#22120;&#37324;&#36824;&#21487;&#20197; <code>%!grep</code> (&#32454;&#33410;/&#25216;&#24039;)</li>
+<li class=" ml-8">主要的系统调用：execve, read, write</li>
+<li class=" ml-8"><code>strace -f gcc a.c</code> (gcc 会启动其他进程)<ul class=" list-disc font-serif">
+<li class=" ml-8">可以管道给编辑器 <code>vim -</code></li>
+<li class=" ml-8">编辑器里还可以 <code>%!grep</code> (细节/技巧)</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#22270;&#24418;&#30028;&#38754;&#31243;&#24207; (xedit)&#65292;&#20195;&#34920;&#20854;&#20182;&#22270;&#24418;&#30028;&#38754;&#31243;&#24207; (&#20363;&#22914; vscode)</p>
+<p class=" font-serif my-1">图形界面程序 (xedit)，代表其他图形界面程序 (例如 vscode)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20027;&#35201;&#30340;&#31995;&#32479;&#35843;&#29992;&#65306;poll, recvmsg, writev</li>
+<li class=" ml-8">主要的系统调用：poll, recvmsg, writev</li>
 <li class=" ml-8"><code>strace xedit</code><ul class=" list-disc font-serif">
-<li class=" ml-8">&#22270;&#24418;&#30028;&#38754;&#31243;&#24207;&#21644; X-Window &#26381;&#21153;&#22120;&#25353;&#29031; X11 &#21327;&#35758;&#36890;&#20449;</li>
-<li class=" ml-8">&#34394;&#25311;&#26426;&#20013;&#30340; xedit &#23558; X11 &#21629;&#20196;&#36890;&#36807; ssh (X11 forwarding) &#36716;&#21457;&#21040; Host</li>
+<li class=" ml-8">图形界面程序和 X-Window 服务器按照 X11 协议通信</li>
+<li class=" ml-8">虚拟机中的 xedit 将 X11 命令通过 ssh (X11 forwarding) 转发到 Host</li>
 </ul>
 </li>
 </ul></div>
@@ -1075,29 +1075,29 @@ $$C = \textrm{compile}(S)$$</p>
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#21508;&#24335;&#21508;&#26679;&#30340;&#24212;&#29992;&#31243;&#24207;</h2>
-<p class=" font-serif my-1">&#37117;&#22312;<red>&#25805;&#20316;&#31995;&#32479; API</red> (syscall) &#21644;<red>&#25805;&#20316;&#31995;&#32479;&#20013;&#30340;&#23545;&#35937;</red>&#19978;&#26500;&#24314;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">各式各样的应用程序</h2>
+<p class=" font-serif my-1">都在<red>操作系统 API</red> (syscall) 和<red>操作系统中的对象</red>上构建</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#31383;&#21475;&#31649;&#29702;&#22120;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#31649;&#29702;&#35774;&#22791;&#21644;&#23631;&#24149; (read/write/mmap)</li>
-<li class=" ml-8">&#36827;&#31243;&#38388;&#36890;&#20449; (send, recv)</li>
+<li class=" ml-8">窗口管理器<ul class=" list-disc font-serif">
+<li class=" ml-8">管理设备和屏幕 (read/write/mmap)</li>
+<li class=" ml-8">进程间通信 (send, recv)</li>
 </ul>
 </li>
 </ul>
 <hr>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20219;&#21153;&#31649;&#29702;&#22120;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#35775;&#38382;&#25805;&#20316;&#31995;&#32479;&#25552;&#20379;&#30340;&#36827;&#31243;&#23545;&#35937; (readdir/read)</li>
-<li class=" ml-8">&#21442;&#32771; gdb &#37324;&#30340; <code>info proc *</code></li>
+<li class=" ml-8">任务管理器<ul class=" list-disc font-serif">
+<li class=" ml-8">访问操作系统提供的进程对象 (readdir/read)</li>
+<li class=" ml-8">参考 gdb 里的 <code>info proc *</code></li>
 </ul>
 </li>
 </ul>
 <hr>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#26432;&#27602;&#36719;&#20214;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#25991;&#20214;&#38745;&#24577;&#25195;&#25551; (read)</li>
-<li class=" ml-8">&#20027;&#21160;&#38450;&#24481; (ptrace)</li>
-<li class=" ml-8">&#20854;&#20182;&#26356;&#22797;&#26434;&#30340;&#23433;&#20840;&#26426;&#21046;&#8230;&#8230;</li>
+<li class=" ml-8">杀毒软件<ul class=" list-disc font-serif">
+<li class=" ml-8">文件静态扫描 (read)</li>
+<li class=" ml-8">主动防御 (ptrace)</li>
+<li class=" ml-8">其他更复杂的安全机制……</li>
 </ul>
 </li>
 </ul></div>
@@ -1115,7 +1115,7 @@ $$C = \textrm{compile}(S)$$</p>
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#24635;&#32467;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">总结</h1></div></div></div>
         
       
       </section>
@@ -1126,26 +1126,26 @@ $$C = \textrm{compile}(S)$$</p>
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#24635;&#32467;</h2>
-<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#22238;&#31572;&#30340;&#38382;&#39064;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">总结</h2>
+<p class=" font-serif my-1">本次课回答的问题</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><strong>Q</strong>: &#21040;&#24213;&#20160;&#20040;&#26159; &#8220;&#31243;&#24207;&#8221;&#65311;</li>
+<li class=" ml-8"><strong>Q</strong>: 到底什么是 “程序”？</li>
 </ul>
 <hr>
 <p class=" font-serif my-1">Take-away message</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#31243;&#24207; = &#29366;&#24577;&#26426;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#28304;&#20195;&#30721; $S$: &#29366;&#24577;&#36801;&#31227; = &#25191;&#34892;&#35821;&#21477;</li>
-<li class=" ml-8">&#20108;&#36827;&#21046;&#20195;&#30721; $C$: &#29366;&#24577;&#36801;&#31227; = &#25191;&#34892;&#25351;&#20196;</li>
-<li class=" ml-8">&#32534;&#35793;&#22120; $C = \textrm{compile}(S)$</li>
+<li class=" ml-8">程序 = 状态机<ul class=" list-disc font-serif">
+<li class=" ml-8">源代码 $S$: 状态迁移 = 执行语句</li>
+<li class=" ml-8">二进制代码 $C$: 状态迁移 = 执行指令</li>
+<li class=" ml-8">编译器 $C = \textrm{compile}(S)$</li>
 </ul>
 </li>
-<li class=" ml-8">&#24212;&#29992;&#35270;&#35282;&#30340;&#25805;&#20316;&#31995;&#32479; <ul class=" list-disc font-serif">
-<li class=" ml-8"><red>&#23601;&#26159;&#19968;&#26465; syscall &#25351;&#20196;</red></li>
+<li class=" ml-8">应用视角的操作系统 <ul class=" list-disc font-serif">
+<li class=" ml-8"><red>就是一条 syscall 指令</red></li>
 </ul>
 </li>
-<li class=" ml-8">&#35745;&#31639;&#26426;&#31995;&#32479;&#19981;&#23384;&#22312;&#29572;&#23398;&#65307;&#19968;&#20999;&#37117;&#24314;&#31435;&#22312;&#30830;&#23450;&#30340;&#26426;&#21046;&#19978;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#29702;&#35299;&#25805;&#20316;&#31995;&#32479;&#30340;&#37325;&#35201;&#24037;&#20855;&#65306;gcc, binutils, gdb, strace</li>
+<li class=" ml-8">计算机系统不存在玄学；一切都建立在确定的机制上<ul class=" list-disc font-serif">
+<li class=" ml-8">理解操作系统的重要工具：gcc, binutils, gdb, strace</li>
 </ul>
 </li>
 </ul></div>

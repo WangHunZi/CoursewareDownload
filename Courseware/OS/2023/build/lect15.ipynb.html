@@ -2,7 +2,7 @@
 <head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>15. &#25805;&#20316;&#31995;&#32479;&#19978;&#30340;&#36827;&#31243;</title>
+<title>15. 操作系统上的进程</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script><script>
 (function() {
   function addWidgetsRenderer() {
@@ -6481,7 +6481,7 @@ cell outputs.
 
 .jp-Notebook .jp-Cell.jp-mod-dirty .jp-InputPrompt::before {
   color: var(--jp-warn-color1);
-  content: '&#8226;';
+  content: '•';
 }
 
 .jp-Notebook .jp-Cell.jp-mod-active.jp-mod-dirty .jp-Collapser {
@@ -7518,7 +7518,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[1]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">mosaic</span> <span class="kn">import</span> <span class="o">*</span>
@@ -7679,23 +7679,23 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-InputPrompt jp-InputArea-prompt">
 </div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="15.-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8A%E7%9A%84%E8%BF%9B%E7%A8%8B">15. &#25805;&#20316;&#31995;&#32479;&#19978;&#30340;&#36827;&#31243;<a class="anchor-link" href="#15.-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8A%E7%9A%84%E8%BF%9B%E7%A8%8B">&#182;</a>
+<h1 id="15.-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8A%E7%9A%84%E8%BF%9B%E7%A8%8B">15. 操作系统上的进程<a class="anchor-link" href="#15.-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8A%E7%9A%84%E8%BF%9B%E7%A8%8B">¶</a>
 </h1>
-<p><strong>Changelog &amp; &#21453;&#39304;</strong></p>
+<p><strong>Changelog & 反馈</strong></p>
 <ul>
-<li>&#19978;&#27425;&#35838;&#27809;&#20934;&#22791; debug &#20195;&#30721;&#65292;&#23646;&#20110;&#22833;&#36133;&#20102; (&#20170;&#22825;&#34917;&#19978;)</li>
-<li>&#26399;&#20013;&#27979;&#39564;&#65306;&#19979;&#21608;&#20108; (4.11) &#19978;&#21320; 10:10-12:00</li>
-<li>L2 &#24050;&#32463;&#21457;&#24067;&#65292;&#20294;&#20381;&#36182;&#20110; L1<ul>
-<li>&#24314;&#35758;&#22823;&#23478;&#30041;&#19968;&#20010; &#8220;&#19968;&#25226;&#22823;&#38145;&#8221; &#30340; baseline L1</li>
-<li>L1 &#30340;&#27979;&#35797;&#29992;&#20363;&#20854;&#23454;&#19981;&#24378;&#65292;&#20320;&#26377; bug &#21487;&#33021;&#26159;&#36910;&#19981;&#21040;&#30340;</li>
+<li>上次课没准备 debug 代码，属于失败了 (今天补上)</li>
+<li>期中测验：下周二 (4.11) 上午 10:10-12:00</li>
+<li>L2 已经发布，但依赖于 L1<ul>
+<li>建议大家留一个 “一把大锁” 的 baseline L1</li>
+<li>L1 的测试用例其实不强，你有 bug 可能是逮不到的</li>
 </ul>
 </li>
 </ul>
-<p><strong>&#32972;&#26223;&#22238;&#39038;</strong>&#65306;&#26377;&#20851;&#29366;&#24577;&#26426;&#12289;&#24182;&#21457;&#21644;&#20013;&#26029;&#30340;&#35752;&#35770;&#32473;&#25105;&#20204;&#30495;&#27491;&#29702;&#35299;&#25805;&#20316;&#31995;&#32479;&#22880;&#23450;&#20102;&#22522;&#30784;&#65292;&#29616;&#22312;&#25105;&#20204;&#27491;&#24335;&#36827;&#20837;&#25805;&#20316;&#31995;&#32479;&#21644;&#24212;&#29992;&#31243;&#24207;&#30340; &#8220;&#36793;&#30028;&#8221; &#20102;&#12290;&#35753;&#25105;&#20204;&#25226;&#35270;&#35282;&#22238;&#21040;&#21333;&#32447;&#31243;&#24212;&#29992;&#31243;&#24207;&#65292;&#21363; &#8220;&#25191;&#34892;&#35745;&#31639;&#25351;&#20196;&#21644;&#31995;&#32479;&#35843;&#29992;&#25351;&#20196;&#30340;&#29366;&#24577;&#26426;&#8221;&#65292;&#24320;&#22987;&#23545;&#25805;&#20316;&#31995;&#32479;&#21644;&#36827;&#31243;&#30340;&#35752;&#35770;&#12290;</p>
-<p><strong>&#26412;&#35762;&#20869;&#23481;</strong>&#65306;&#25805;&#20316;&#31995;&#32479;&#19978;&#30340;&#36827;&#31243;</p>
+<p><strong>背景回顾</strong>：有关状态机、并发和中断的讨论给我们真正理解操作系统奠定了基础，现在我们正式进入操作系统和应用程序的 “边界” 了。让我们把视角回到单线程应用程序，即 “执行计算指令和系统调用指令的状态机”，开始对操作系统和进程的讨论。</p>
+<p><strong>本讲内容</strong>：操作系统上的进程</p>
 <ul>
-<li>&#32447;&#31243;&#12289;&#36827;&#31243;&#21644;&#25805;&#20316;&#31995;&#32479;</li>
-<li>UNIX/Linux &#36827;&#31243;&#31649;&#29702; API</li>
+<li>线程、进程和操作系统</li>
+<li>UNIX/Linux 进程管理 API</li>
 </ul>
 </div>
 </div>
@@ -7706,7 +7706,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[2]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'15.1'</span><span class="p">)</span>
@@ -7735,7 +7735,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">demo</span><span class="p">(</span><span class="s1">'thread-os'</span><span class="p">,</span> <span class="s1">'c/thread-os-singlecpu'</span><span class="p">)</span>
@@ -7767,7 +7767,7 @@ var element = document.getElementById('77bbf5c0-a182-4d9d-96af-d423d1fb36e8');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">demo</span><span class="p">(</span><span class="s1">'minimal'</span><span class="p">,</span> <span class="s1">'i/minimal'</span><span class="p">)</span>
@@ -7802,7 +7802,7 @@ var element = document.getElementById('fa63217e-d498-4884-9a98-a94d7923ed9f');
 <div class="jp-InputPrompt jp-InputArea-prompt">
 </div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>&#23454;&#38469;&#19978;&#65292;&#22312; UNIX/Linux &#31995;&#32479;&#20869;&#26680;&#23436;&#25104;&#21021;&#22987;&#21270;&#21518;&#65292;&#21482;&#26377;&#19968;&#20010; init &#36827;&#31243;&#34987;&#21551;&#21160;&#65292;&#20174;&#27492;&#20197;&#21518;&#65292;&#25805;&#20316;&#31995;&#32479;&#20869;&#26680;&#23601;&#21270;&#36523;&#20026;&#20102;&#19968;&#20010;&#20107;&#20214;&#39537;&#21160;&#30340;&#31243;&#24207;&#12289;&#29366;&#24577;&#26426;&#30340;&#31649;&#29702;&#32773;&#65292;&#20165;&#22312;&#20013;&#26029;&#21644;&#31995;&#32479;&#35843;&#29992;&#21457;&#29983;&#26102;&#24320;&#22987;&#25191;&#34892;&#12290;&#25105;&#20204;&#30475;&#21040;&#30340; &#8220;&#33457;&#33457;&#19990;&#30028;&#8221;&#65292;&#23436;&#20840;&#26159;&#30001;&#36827;&#31243; (&#20063;&#23601;&#26159;&#29366;&#24577;&#26426;&#31649;&#29702;) &#31649;&#29702;&#30340; API (&#31995;&#32479;&#35843;&#29992;) &#21019;&#24314;&#20986;&#26469;&#30340;&#12290;</p>
+<p>实际上，在 UNIX/Linux 系统内核完成初始化后，只有一个 init 进程被启动，从此以后，操作系统内核就化身为了一个事件驱动的程序、状态机的管理者，仅在中断和系统调用发生时开始执行。我们看到的 “花花世界”，完全是由进程 (也就是状态机管理) 管理的 API (系统调用) 创建出来的。</p>
 </div>
 </div>
 </div>
@@ -7812,7 +7812,7 @@ var element = document.getElementById('fa63217e-d498-4884-9a98-a94d7923ed9f');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[5]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'15.2'</span><span class="p">)</span>
@@ -7841,7 +7841,7 @@ var element = document.getElementById('fa63217e-d498-4884-9a98-a94d7923ed9f');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[6]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">demo</span><span class="p">(</span><span class="s1">'fork-demo'</span><span class="p">,</span> <span class="s1">'v/fork-demo.c'</span><span class="p">)</span>
@@ -7873,7 +7873,7 @@ var element = document.getElementById('1db72f88-cfc2-48a9-bf5f-0d7807193a0d');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[7]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="p">(</span><span class="s1">'m/fork-demo.py'</span><span class="p">,</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -10891,7 +10891,7 @@ function visualize(divname, MODEL) {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[8]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">demo</span><span class="p">(</span><span class="s1">'fork-printf'</span><span class="p">,</span> <span class="s1">'v/fork-printf.c'</span><span class="p">)</span>
@@ -10923,7 +10923,7 @@ var element = document.getElementById('19cac3a3-dde6-4576-939f-50dc7e0eeba9');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[9]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="p">(</span><span class="s1">'m/fork-printf.py'</span><span class="p">,</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -10945,10 +10945,10 @@ var element = document.getElementById('19cac3a3-dde6-4576-939f-50dc7e0eeba9');
 <div class="highlight"><pre><span></span><span id="True-1"><span class="linenos">1</span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
 </span><span id="True-2"><span class="linenos">2</span>  <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
 </span><span id="True-3"><span class="linenos">3</span>    <span class="n">sys_fork</span><span class="p">()</span>
-</span><span id="True-4"><span class="linenos">4</span>    <span class="n">sys_write</span><span class="p">(</span><span class="s1">'&#11088;&#65039;'</span><span class="p">)</span>
+</span><span id="True-4"><span class="linenos">4</span>    <span class="n">sys_write</span><span class="p">(</span><span class="s1">'⭐️'</span><span class="p">)</span>
 </span><span id="True-5"><span class="linenos">5</span>
 </span><span id="True-6"><span class="linenos">6</span><span class="c1"># Outputs:</span>
-</span><span id="True-7"><span class="linenos">7</span><span class="c1"># &#11088;&#65039;&#11088;&#65039;&#11088;&#65039;&#11088;&#65039;&#11088;&#65039;&#11088;&#65039;</span>
+</span><span id="True-7"><span class="linenos">7</span><span class="c1"># ⭐️⭐️⭐️⭐️⭐️⭐️</span>
 </span></pre></div>
 </div>
 </div>
@@ -10965,7 +10965,7 @@ var element = document.getElementById('19cac3a3-dde6-4576-939f-50dc7e0eeba9');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[10]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="p">(</span><span class="s1">'m/fork-printf1.py'</span><span class="p">,</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -10988,11 +10988,11 @@ var element = document.getElementById('19cac3a3-dde6-4576-939f-50dc7e0eeba9');
 </span><span id="True-2"><span class="linenos">2</span>  <span class="n">heap</span><span class="o">.</span><span class="n">buf</span> <span class="o">=</span> <span class="s1">''</span>
 </span><span id="True-3"><span class="linenos">3</span>  <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
 </span><span id="True-4"><span class="linenos">4</span>    <span class="n">sys_fork</span><span class="p">()</span>
-</span><span id="True-5"><span class="linenos">5</span>    <span class="n">heap</span><span class="o">.</span><span class="n">buf</span> <span class="o">+=</span> <span class="s1">'&#11088;&#65039;'</span>
+</span><span id="True-5"><span class="linenos">5</span>    <span class="n">heap</span><span class="o">.</span><span class="n">buf</span> <span class="o">+=</span> <span class="s1">'⭐️'</span>
 </span><span id="True-6"><span class="linenos">6</span>  <span class="n">sys_write</span><span class="p">(</span><span class="n">heap</span><span class="o">.</span><span class="n">buf</span><span class="p">)</span>
 </span><span id="True-7"><span class="linenos">7</span>
 </span><span id="True-8"><span class="linenos">8</span><span class="c1"># Outputs:</span>
-</span><span id="True-9"><span class="linenos">9</span><span class="c1"># &#11088;&#65039;&#11088;&#65039;&#11088;&#65039;&#11088;&#65039;&#11088;&#65039;&#11088;&#65039;&#11088;&#65039;&#11088;&#65039;</span>
+</span><span id="True-9"><span class="linenos">9</span><span class="c1"># ⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️</span>
 </span></pre></div>
 </div>
 </div>
@@ -11009,7 +11009,7 @@ var element = document.getElementById('19cac3a3-dde6-4576-939f-50dc7e0eeba9');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[11]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'15.3'</span><span class="p">)</span>
@@ -11038,7 +11038,7 @@ var element = document.getElementById('19cac3a3-dde6-4576-939f-50dc7e0eeba9');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[12]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">demo</span><span class="p">(</span><span class="s1">'execve-demo'</span><span class="p">,</span> <span class="s1">'v/execve-demo.c'</span><span class="p">)</span>
@@ -11070,7 +11070,7 @@ var element = document.getElementById('9cbd9ed5-4784-4274-9b22-79fd8f13cd6f');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[13]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'15.4'</span><span class="p">)</span>
@@ -11099,7 +11099,7 @@ var element = document.getElementById('9cbd9ed5-4784-4274-9b22-79fd8f13cd6f');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[14]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">demo</span><span class="p">(</span><span class="s1">'exit-demo'</span><span class="p">,</span> <span class="s1">'v/exit-demo.c'</span><span class="p">)</span>
@@ -11134,28 +11134,28 @@ var element = document.getElementById('0f89fde4-84d2-426d-b905-7fbbd3666180');
 <div class="jp-InputPrompt jp-InputArea-prompt">
 </div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Take-away-Messages">Take-away Messages<a class="anchor-link" href="#Take-away-Messages">&#182;</a>
+<h2 id="Take-away-Messages">Take-away Messages<a class="anchor-link" href="#Take-away-Messages">¶</a>
 </h2>
-<p>&#22240;&#20026; &#8220;&#31243;&#24207; = &#29366;&#24577;&#26426;&#8221;&#65292;&#25805;&#20316;&#31995;&#32479;&#19978;&#36827;&#31243; (&#36816;&#34892;&#30340;&#31243;&#24207;) &#31649;&#29702;&#30340; API &#24456;&#33258;&#28982;&#22320;&#23601;&#26159;&#29366;&#24577;&#26426;&#30340;&#31649;&#29702;&#12290;&#22312; UNIX/Linux &#19990;&#30028;&#20013;&#65292;&#36825;&#26159;&#36890;&#36807;&#20197;&#19979;&#19977;&#20010;&#26368;&#37325;&#35201;&#30340;&#31995;&#32479;&#35843;&#29992;&#23454;&#29616;&#30340;&#65306;</p>
+<p>因为 “程序 = 状态机”，操作系统上进程 (运行的程序) 管理的 API 很自然地就是状态机的管理。在 UNIX/Linux 世界中，这是通过以下三个最重要的系统调用实现的：</p>
 <ul>
-<li>fork: &#23545;&#24403;&#21069;&#29366;&#24577;&#26426;&#29366;&#24577;&#36827;&#34892;&#23436;&#25972;&#22797;&#21046;</li>
-<li>execve: &#23558;&#24403;&#21069;&#29366;&#24577;&#26426;&#29366;&#24577;&#37325;&#32622;&#20026;&#26576;&#20010;&#21487;&#25191;&#34892;&#25991;&#20214;&#25551;&#36848;&#30340;&#29366;&#24577;&#26426;</li>
-<li>exit: &#38144;&#27585;&#24403;&#21069;&#29366;&#24577;&#26426;</li>
+<li>fork: 对当前状态机状态进行完整复制</li>
+<li>execve: 将当前状态机状态重置为某个可执行文件描述的状态机</li>
+<li>exit: 销毁当前状态机</li>
 </ul>
-<p>&#22312;&#23545;&#36825;&#20010;&#27010;&#24565;&#26377;&#20102;&#32477;&#23545;&#27491;&#30830;&#19988;&#32477;&#23545;&#20005;&#35880;&#30340;&#29702;&#35299;&#21518;&#65292;&#25805;&#20316;&#31995;&#32479;&#20063;&#23601;&#26174;&#24471;&#19981;&#37027;&#20040;&#31070;&#31192;&#20102;&#12290;</p>
-<h3 id="%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">&#35838;&#21518;&#20064;&#39064;/&#32534;&#31243;&#20316;&#19994;<a class="anchor-link" href="#%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">&#182;</a>
+<p>在对这个概念有了绝对正确且绝对严谨的理解后，操作系统也就显得不那么神秘了。</p>
+<h3 id="%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">课后习题/编程作业<a class="anchor-link" href="#%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">¶</a>
 </h3>
-<h4 id="1.-%E9%98%85%E8%AF%BB%E6%9D%90%E6%96%99">1. &#38405;&#35835;&#26448;&#26009;<a class="anchor-link" href="#1.-%E9%98%85%E8%AF%BB%E6%9D%90%E6%96%99">&#182;</a>
+<h4 id="1.-%E9%98%85%E8%AF%BB%E6%9D%90%E6%96%99">1. 阅读材料<a class="anchor-link" href="#1.-%E9%98%85%E8%AF%BB%E6%9D%90%E6%96%99">¶</a>
 </h4>
-<p>&#25945;&#31185;&#20070; <a href="https://pages.cs.wisc.edu/~remzi/OSTEP/">Operating Systems: Three Easy Pieces</a>:</p>
+<p>教科书 <a href="https://pages.cs.wisc.edu/~remzi/OSTEP/">Operating Systems: Three Easy Pieces</a>:</p>
 <ul>
-<li>&#31532; 3 &#31456; - Dialogue</li>
-<li>&#31532; 4 &#31456; - Processes</li>
-<li>&#31532; 5 &#31456; - Process API</li>
+<li>第 3 章 - Dialogue</li>
+<li>第 4 章 - Processes</li>
+<li>第 5 章 - Process API</li>
 </ul>
-<h4 id="2.-%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5">2. &#32534;&#31243;&#23454;&#36341;<a class="anchor-link" href="#2.-%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5">&#182;</a>
+<h4 id="2.-%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5">2. 编程实践<a class="anchor-link" href="#2.-%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5">¶</a>
 </h4>
-<p>&#22312;&#20320;&#30340;&#26426;&#22120;&#19978;&#37325;&#29616;&#35838;&#22530;&#20195;&#30721;&#19978;&#30340;&#32467;&#26524;&#65292;&#24182;&#30830;&#20445;&#20320;&#23545;&#20195;&#30721;&#30340;&#34892;&#20026;&#26377;&#28165;&#26970;&#30340;&#29702;&#35299;&#65292;&#20043;&#21518;&#23601;&#21487;&#20197;&#22312;&#25163;&#20876;&#30340;&#24110;&#21161;&#19979;&#23436;&#25104;&#23454;&#39564;&#12290;</p>
+<p>在你的机器上重现课堂代码上的结果，并确保你对代码的行为有清楚的理解，之后就可以在手册的帮助下完成实验。</p>
 </div>
 </div>
 </div>
@@ -11167,7 +11167,7 @@ var element = document.getElementById('0f89fde4-84d2-426d-b905-7fbbd3666180');
   <span class="text-muted">
     <center>
 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="/static/img/cc-4.0.png"></a>
-    &#160;&#160;&#160;<a style="color:inherit" href="https://beian.miit.gov.cn/">&#33487; ICP &#22791; 2020049101 &#21495;</a>
+       <a style="color:inherit" href="https://beian.miit.gov.cn/">苏 ICP 备 2020049101 号</a>
     </center>
   </span>
 </div>

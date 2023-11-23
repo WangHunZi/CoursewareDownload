@@ -2,7 +2,7 @@
 <head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>21. &#21487;&#25191;&#34892;&#25991;&#20214;&#21644;&#21152;&#36733;</title>
+<title>21. 可执行文件和加载</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script><script>
 (function() {
   function addWidgetsRenderer() {
@@ -6481,7 +6481,7 @@ cell outputs.
 
 .jp-Notebook .jp-Cell.jp-mod-dirty .jp-InputPrompt::before {
   color: var(--jp-warn-color1);
-  content: '&#8226;';
+  content: '•';
 }
 
 .jp-Notebook .jp-Cell.jp-mod-active.jp-mod-dirty .jp-Collapser {
@@ -7518,7 +7518,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[1]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">mosaic</span> <span class="kn">import</span> <span class="o">*</span>
@@ -7690,17 +7690,17 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-InputPrompt jp-InputArea-prompt">
 </div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="21.-%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6%E5%92%8C%E5%8A%A0%E8%BD%BD">21. &#21487;&#25191;&#34892;&#25991;&#20214;&#21644;&#21152;&#36733;<a class="anchor-link" href="#21.-%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6%E5%92%8C%E5%8A%A0%E8%BD%BD">&#182;</a>
+<h1 id="21.-%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6%E5%92%8C%E5%8A%A0%E8%BD%BD">21. 可执行文件和加载<a class="anchor-link" href="#21.-%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6%E5%92%8C%E5%8A%A0%E8%BD%BD">¶</a>
 </h1>
-<p><strong>Changelog &amp; &#21453;&#39304;</strong></p>
+<p><strong>Changelog & 反馈</strong></p>
 <ul>
-<li>&#20851;&#20110;&#38590;&#24230;/&#25945;&#23398;&#30340;&#35752;&#35770;</li>
+<li>关于难度/教学的讨论</li>
 </ul>
-<p><strong>&#32972;&#26223;&#22238;&#39038;</strong>&#65306;&#25105;&#20204;&#24050;&#32463;&#35265;&#35782;&#36807;&#22312;&#31995;&#32479;&#35843;&#29992; API &#21644;&#25805;&#20316;&#31995;&#32479;&#31995;&#32479;&#23545;&#35937;&#19978;&#23618;&#23618;&#23553;&#35013;&#24471;&#21040;&#30340;&#19990;&#30028;&#20102;&#12290;&#26159;&#26102;&#20505;&#23454;&#29616;&#19968;&#20123; &#8220;&#30495;&#27491;&#8221; &#30340;&#31243;&#24207;&#20102;&#8212;&#8212;&#35753;&#25105;&#20204;&#30475;&#19968;&#30475;&#21040;&#24213;&#20160;&#20040;&#26159;&#21487;&#25191;&#34892;&#25991;&#20214;&#65292;&#20197;&#21450;&#23427;&#20204;&#26159;&#22914;&#20309;&#34987;&#25805;&#20316;&#31995;&#32479;&#21152;&#36733;&#30340;&#12290;</p>
-<p><strong>&#26412;&#35762;&#20869;&#23481;</strong>&#65306;</p>
+<p><strong>背景回顾</strong>：我们已经见识过在系统调用 API 和操作系统系统对象上层层封装得到的世界了。是时候实现一些 “真正” 的程序了——让我们看一看到底什么是可执行文件，以及它们是如何被操作系统加载的。</p>
+<p><strong>本讲内容</strong>：</p>
 <ul>
-<li>&#21487;&#25191;&#34892;&#25991;&#20214;</li>
-<li>&#38745;&#24577;/&#21160;&#24577;&#38142;&#25509;&#21644;&#21152;&#36733;</li>
+<li>可执行文件</li>
+<li>静态/动态链接和加载</li>
 </ul>
 </div>
 </div>
@@ -7711,7 +7711,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[2]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'21.1'</span><span class="p">)</span>
@@ -7740,7 +7740,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">demo</span><span class="p">(</span><span class="s1">'loader-flat'</span><span class="p">,</span> <span class="s1">'v/loader-flat'</span><span class="p">)</span>
@@ -7772,7 +7772,7 @@ var element = document.getElementById('ce706515-1d19-4f38-87d9-53c40a71507e');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'21.2'</span><span class="p">)</span>
@@ -7801,7 +7801,7 @@ var element = document.getElementById('ce706515-1d19-4f38-87d9-53c40a71507e');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[5]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">demo</span><span class="p">(</span><span class="s1">'loader-static'</span><span class="p">,</span> <span class="s1">'v/loader-static.c'</span><span class="p">)</span>
@@ -7833,7 +7833,7 @@ var element = document.getElementById('9d0d5246-904a-4b71-b26e-72655f6208b6');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[6]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'21.3'</span><span class="p">)</span>
@@ -7862,7 +7862,7 @@ var element = document.getElementById('9d0d5246-904a-4b71-b26e-72655f6208b6');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[7]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">demo</span><span class="p">(</span><span class="s1">'dlbox'</span><span class="p">,</span> <span class="s1">'v/dlbox'</span><span class="p">)</span>
@@ -7897,14 +7897,14 @@ var element = document.getElementById('16832380-19ab-42de-9bc1-e57972088606');
 <div class="jp-InputPrompt jp-InputArea-prompt">
 </div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Take-away-Messages">Take-away Messages<a class="anchor-link" href="#Take-away-Messages">&#182;</a>
+<h2 id="Take-away-Messages">Take-away Messages<a class="anchor-link" href="#Take-away-Messages">¶</a>
 </h2>
-<p>&#21487;&#25191;&#34892;&#25991;&#20214;&#26159;&#19968;&#20010;&#25551;&#36848;&#29366;&#24577;&#26426;&#21021;&#22987;&#29366;&#24577;&#30340;&#25968;&#25454;&#32467;&#26500; (&#23383;&#33410;&#24207;&#21015;)&#65307;&#21152;&#36733;&#22120;&#23601;&#26159;&#25226;&#36825;&#20010; &#8220;&#21021;&#22987;&#29366;&#24577;&#8221; &#25644;&#36816;&#21040;&#25805;&#20316;&#31995;&#32479;&#20013;&#30340;&#31243;&#24207;&#12290;&#29992;&#25968;&#25454;&#32467;&#26500;&#30340;&#30524;&#20809;&#30475;&#21487;&#25191;&#34892;&#25991;&#20214;&#65292;&#23601;&#19981;&#38590;&#21457;&#29616;&#23427;&#19981;&#22909;&#38405;&#35835;&#30340;&#21407;&#22240;&#65306;&#23427;&#30340;&#35774;&#35745;&#32773;&#24182;&#27809;&#26377;&#25171;&#31639;&#35753;&#20320;&#38405;&#35835;&#23427;&#12290;&#21516;&#26102;&#65292;&#21160;&#24577;&#38142;&#25509;&#26159;&#19968;&#20010;&#38750;&#24120;&#33258;&#28982;&#30340;&#38656;&#27714;&#65306;&#25105;&#20204;&#24076;&#26395;&#25226;&#31243;&#24207;&#30340;&#20004;&#37096;&#20998; &#8220;&#20998;&#24320;&#8221;&#65307;&#26082;&#28982;&#22312;&#31243;&#24207;&#36816;&#34892;&#21069;&#19981;&#33021;&#30693;&#36947;&#21478;&#19968;&#37096;&#20998;&#34987;&#21152;&#36733;&#30340;&#20301;&#32622;&#65292;&#37027;&#23601;&#21482;&#33021;&#26597;&#34920;&#20102;&#12290;</p>
-<h3 id="%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">&#35838;&#21518;&#20064;&#39064;/&#32534;&#31243;&#20316;&#19994;<a class="anchor-link" href="#%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">&#182;</a>
+<p>可执行文件是一个描述状态机初始状态的数据结构 (字节序列)；加载器就是把这个 “初始状态” 搬运到操作系统中的程序。用数据结构的眼光看可执行文件，就不难发现它不好阅读的原因：它的设计者并没有打算让你阅读它。同时，动态链接是一个非常自然的需求：我们希望把程序的两部分 “分开”；既然在程序运行前不能知道另一部分被加载的位置，那就只能查表了。</p>
+<h3 id="%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">课后习题/编程作业<a class="anchor-link" href="#%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">¶</a>
 </h3>
-<h4 id="1.-%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5">1. &#32534;&#31243;&#23454;&#36341;<a class="anchor-link" href="#1.-%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5">&#182;</a>
+<h4 id="1.-%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5">1. 编程实践<a class="anchor-link" href="#1.-%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5">¶</a>
 </h4>
-<p>&#23436;&#25104;&#23454;&#39564;&#20316;&#19994;&#12290;</p>
+<p>完成实验作业。</p>
 </div>
 </div>
 </div>
@@ -7916,7 +7916,7 @@ var element = document.getElementById('16832380-19ab-42de-9bc1-e57972088606');
   <span class="text-muted">
     <center>
 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="/static/img/cc-4.0.png"></a>
-    &#160;&#160;&#160;<a style="color:inherit" href="https://beian.miit.gov.cn/">&#33487; ICP &#22791; 2020049101 &#21495;</a>
+       <a style="color:inherit" href="https://beian.miit.gov.cn/">苏 ICP 备 2020049101 号</a>
     </center>
   </span>
 </div>

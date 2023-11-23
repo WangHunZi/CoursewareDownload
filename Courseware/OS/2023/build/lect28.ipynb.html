@@ -2,7 +2,7 @@
 <head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>28. FAT &#21644; UNIX &#25991;&#20214;&#31995;&#32479;</title>
+<title>28. FAT 和 UNIX 文件系统</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script><script>
 (function() {
   function addWidgetsRenderer() {
@@ -6481,7 +6481,7 @@ cell outputs.
 
 .jp-Notebook .jp-Cell.jp-mod-dirty .jp-InputPrompt::before {
   color: var(--jp-warn-color1);
-  content: '&#8226;';
+  content: '•';
 }
 
 .jp-Notebook .jp-Cell.jp-mod-active.jp-mod-dirty .jp-Collapser {
@@ -7518,7 +7518,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[1]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">mosaic</span> <span class="kn">import</span> <span class="o">*</span>
@@ -7690,18 +7690,18 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-InputPrompt jp-InputArea-prompt">
 </div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="28.-FAT-%E5%92%8C-UNIX-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F">28. FAT &#21644; UNIX &#25991;&#20214;&#31995;&#32479;<a class="anchor-link" href="#28.-FAT-%E5%92%8C-UNIX-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F">&#182;</a>
+<h1 id="28.-FAT-%E5%92%8C-UNIX-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F">28. FAT 和 UNIX 文件系统<a class="anchor-link" href="#28.-FAT-%E5%92%8C-UNIX-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F">¶</a>
 </h1>
-<p><strong>Changelog &amp; &#21453;&#39304;</strong></p>
+<p><strong>Changelog & 反馈</strong></p>
 <ul>
-<li>Deadline: &#26399;&#26411;&#32771;&#35797;&#20043;&#21518;&#20805;&#35029;&#30340;&#26102;&#38388;&#12290;</li>
+<li>Deadline: 期末考试之后充裕的时间。</li>
 </ul>
-<p><strong>&#32972;&#26223;&#22238;&#39038;</strong>&#65306;&#25226;&#25991;&#20214;&#30475;&#25104;&#34394;&#25311;&#30340;&#30913;&#30424;&#65292;&#25991;&#20214;&#31995;&#32479;&#29702;&#35299;&#25104;&#34394;&#25311;&#30913;&#30424;&#30340;&#32034;&#24341;&#26426;&#21046;&#65292;&#23601;&#19981;&#38590;&#29702;&#35299;&#25991;&#20214;&#31995;&#32479;&#30340;&#35774;&#35745;&#12290;&#33267;&#27492;&#65292;&#25105;&#20204;&#24050;&#32463;&#26377;&#20102;&#36275;&#22815;&#30340;&#32972;&#26223;&#30693;&#35782;&#65292;&#21487;&#20197;&#21435;&#32771;&#34385;&#22914;&#20309;&#22312;&#30495;&#27491;&#30340;&#23384;&#20648;&#35774;&#22791;&#19978;&#23454;&#29616;&#25991;&#20214;&#31995;&#32479;&#20102;&#12290;</p>
-<p><strong>&#26412;&#35762;&#20869;&#23481;</strong>&#65306;</p>
+<p><strong>背景回顾</strong>：把文件看成虚拟的磁盘，文件系统理解成虚拟磁盘的索引机制，就不难理解文件系统的设计。至此，我们已经有了足够的背景知识，可以去考虑如何在真正的存储设备上实现文件系统了。</p>
+<p><strong>本讲内容</strong>：</p>
 <ul>
-<li>&#25991;&#20214;&#31995;&#32479;&#23454;&#29616;&#20998;&#26512;</li>
-<li>FAT &#25991;&#20214;&#31995;&#32479;</li>
-<li>UNIX &#25991;&#20214;&#31995;&#32479;</li>
+<li>文件系统实现分析</li>
+<li>FAT 文件系统</li>
+<li>UNIX 文件系统</li>
 </ul>
 </div>
 </div>
@@ -7712,7 +7712,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[2]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'28.1'</span><span class="p">)</span>
@@ -7741,7 +7741,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'28.2'</span><span class="p">)</span>
@@ -7770,7 +7770,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">demo</span><span class="p">(</span><span class="s1">'fat-tree'</span><span class="p">,</span> <span class="s1">'p/fat-tree'</span><span class="p">)</span>
@@ -7802,7 +7802,7 @@ var element = document.getElementById('21aa3254-c6df-4139-9f3f-39214724457b');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[5]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'28.3'</span><span class="p">)</span>
@@ -7834,17 +7834,17 @@ var element = document.getElementById('21aa3254-c6df-4139-9f3f-39214724457b');
 <div class="jp-InputPrompt jp-InputArea-prompt">
 </div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Take-away-Messages">Take-away Messages<a class="anchor-link" href="#Take-away-Messages">&#182;</a>
+<h2 id="Take-away-Messages">Take-away Messages<a class="anchor-link" href="#Take-away-Messages">¶</a>
 </h2>
-<p>&#25226;&#25991;&#20214;&#31995;&#32479;&#29702;&#35299;&#25104; &#8220;&#30913;&#30424;&#19978;&#30340;&#25968;&#25454;&#32467;&#26500;&#8221;&#65292;&#23601;&#19981;&#38590;&#20998;&#26512;&#20854;&#20013;&#30340;&#37325;&#28857;&#21644;&#23454;&#29616;&#35201;&#28857;&#8212;&#8212;&#25105;&#20204;&#24635;&#26159;&#25226;&#25968;&#25454;&#25353;&#29031;&#23616;&#37096;&#24615;&#32452;&#32455;&#36215;&#26469;&#65292;&#26080;&#35770;&#26159; FAT &#36824;&#26159; bitmap/inode &#30340;&#35774;&#35745;&#65292;&#37117;&#21033;&#29992;&#20102;&#36825;&#19968;&#28857;&#12290;&#21478;&#19968;&#20010;&#37325;&#35201;&#30340;&#35774;&#35745;&#26159; &#8220;&#30446;&#24405;&#20063;&#26159;&#25991;&#20214;&#8221;&#8212;&#8212;&#25991;&#20214;&#31995;&#32479;&#23454;&#29616;&#23558;&#30446;&#24405;&#25991;&#20214;&#20013;&#30340;&#25968;&#25454;&#20316;&#20986;&#35299;&#35835;&#65292;&#20174;&#32780;&#35299;&#26512;&#20986;&#20854;&#20013;&#30340;&#30446;&#24405;&#32467;&#26500;&#12290;</p>
-<h3 id="%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">&#35838;&#21518;&#20064;&#39064;/&#32534;&#31243;&#20316;&#19994;<a class="anchor-link" href="#%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">&#182;</a>
+<p>把文件系统理解成 “磁盘上的数据结构”，就不难分析其中的重点和实现要点——我们总是把数据按照局部性组织起来，无论是 FAT 还是 bitmap/inode 的设计，都利用了这一点。另一个重要的设计是 “目录也是文件”——文件系统实现将目录文件中的数据作出解读，从而解析出其中的目录结构。</p>
+<h3 id="%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">课后习题/编程作业<a class="anchor-link" href="#%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">¶</a>
 </h3>
-<h4 id="1.-%E9%98%85%E8%AF%BB%E6%9D%90%E6%96%99">1. &#38405;&#35835;&#26448;&#26009;<a class="anchor-link" href="#1.-%E9%98%85%E8%AF%BB%E6%9D%90%E6%96%99">&#182;</a>
+<h4 id="1.-%E9%98%85%E8%AF%BB%E6%9D%90%E6%96%99">1. 阅读材料<a class="anchor-link" href="#1.-%E9%98%85%E8%AF%BB%E6%9D%90%E6%96%99">¶</a>
 </h4>
-<p>&#25945;&#31185;&#20070; <a href="https://pages.cs.wisc.edu/~remzi/OSTEP/">Operating Systems: Three Easy Pieces</a>:</p>
+<p>教科书 <a href="https://pages.cs.wisc.edu/~remzi/OSTEP/">Operating Systems: Three Easy Pieces</a>:</p>
 <ul>
-<li>&#31532; 40 &#31456; - File System Implementation</li>
-<li>&#31532; 41 &#31456; - Fast File System (FFS)</li>
+<li>第 40 章 - File System Implementation</li>
+<li>第 41 章 - Fast File System (FFS)</li>
 </ul>
 </div>
 </div>
@@ -7857,7 +7857,7 @@ var element = document.getElementById('21aa3254-c6df-4139-9f3f-39214724457b');
   <span class="text-muted">
     <center>
 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="/static/img/cc-4.0.png"></a>
-    &#160;&#160;&#160;<a style="color:inherit" href="https://beian.miit.gov.cn/">&#33487; ICP &#22791; 2020049101 &#21495;</a>
+       <a style="color:inherit" href="https://beian.miit.gov.cn/">苏 ICP 备 2020049101 号</a>
     </center>
   </span>
 </div>

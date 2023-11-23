@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +209,7 @@ section .center {
 }
 </style>
 
-  <title>&#38405;&#35835;&#29702;&#35299;&#24182;&#21457;&#31243;&#24207;</title>
+  <title>阅读理解并发程序</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,21 +227,21 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#38405;&#35835;&#29702;&#35299;&#24182;&#21457;&#31243;&#24207;</h1>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">阅读理解并发程序</h1>
 <p class=" font-serif my-1"><include src="Slides_Author"><div><div class="py-16">
-<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">&#33931;&#28814;&#23721;</a></p>
+<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">蒋炎岩</a></p>
 </div>
 <div class="row">
 <div class="author-affiliation">
-    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#12288;&#12288;&#21335;&#20140;&#22823;&#23398;&#12288;&#12288;</p>
+    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">　　南京大学　　</p>
     <img class="inline-img h-24" src="../../../static/img/nju-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#31185;&#23398;&#19982;&#25216;&#26415;&#31995;</p>
+   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">计算机科学与技术系</p>
     <img class="inline-img h-24" src="../../../static/img/njucs-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#36719;&#20214;&#30740;&#31350;&#25152;</p>
+    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">计算机软件研究所</p>
     <img class="inline-img h-24" src="../../../static/img/ics-logo.png" style="display: inline-block;"></a>
   </div>
 </div></div></include></p></div></div></div>
@@ -255,18 +255,18 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#32972;&#26223;</h2>
-<p class=" font-serif my-1">&#24182;&#21457;&#32534;&#31243;&#65306;&#20174;&#20837;&#38376;&#21040;&#25918;&#24323;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">背景</h2>
+<p class=" font-serif my-1">并发编程：从入门到放弃</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20837;&#38376;&#65306;<code>threads.h</code></li>
-<li class=" ml-8">&#25918;&#24323;&#65306;&#21407;&#23376;&#24615;&#12289;&#39034;&#24207;&#12289;&#21487;&#35265;&#24615;&#30340;&#20007;&#22833;</li>
+<li class=" ml-8">入门：<code>threads.h</code></li>
+<li class=" ml-8">放弃：原子性、顺序、可见性的丧失</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#20294;&#25105;&#20204;&#36824;&#24471;&#20889;&#24182;&#21457;&#31243;&#24207;&#21834;&#65281;</p>
+<p class=" font-serif my-1">但我们还得写并发程序啊！</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#22810;&#22788;&#29702;&#22120;&#12289;&#22810;&#32447;&#31243;&#32534;&#31243;</li>
-<li class=" ml-8">GPU &#32534;&#31243;</li>
-<li class=" ml-8">&#8230;&#8230;</li>
+<li class=" ml-8">多处理器、多线程编程</li>
+<li class=" ml-8">GPU 编程</li>
+<li class=" ml-8">……</li>
 </ul></div>
         
       
@@ -278,15 +278,15 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26412;&#27425;&#35838;&#20869;&#23481;&#19982;&#30446;&#26631;</h2>
-<p class=" font-serif my-1">&#29992;&#29366;&#24577;&#26426;&#29702;&#35299;&#31243;&#24207;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">本次课内容与目标</h2>
+<p class=" font-serif my-1">用状态机理解程序</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">Tower of Hanoi</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#29992;&#29366;&#24577;&#26426;&#27169;&#22411;&#29702;&#35299;&#24182;&#21457;&#31243;&#24207;</p>
+<p class=" font-serif my-1">用状态机模型理解并发程序</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">Peterson &#31639;&#27861;</li>
+<li class=" ml-8">Peterson 算法</li>
 </ul></div>
         
       
@@ -302,7 +302,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#31243;&#24207;&#30340;&#38405;&#35835;&#29702;&#35299;&#65306;&#23454;&#36341;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">程序的阅读理解：实践</h1></div></div></div>
         
       
       </section>
@@ -313,17 +313,17 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20363;&#23376;&#65306;&#27721;&#35834;&#22612;</h2>
-<p class=" font-serif my-1">&#36824;&#35760;&#24471;&#31532;&#19968;&#27425;&#23398;&#30340;&#26102;&#20505;&#34987;&#27721;&#35834;&#22612;&#25903;&#37197;&#30340;&#24656;&#24807;&#65311;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">例子：汉诺塔</h2>
+<p class=" font-serif my-1">还记得第一次学的时候被汉诺塔支配的恐惧？</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#38754;&#35797;&#39064;&#65306;&#25226;&#19979;&#38754;&#30340;&#31243;&#24207;&#36716;&#25442;&#25104;&#38750;&#36882;&#24402;</li>
+<li class=" ml-8">面试题：把下面的程序转换成非递归</li>
 </ul>
 <hr>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">hanoi</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">from</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">to</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">via</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">"Move #1 %c -&gt; %c</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">from</span><span class="p">,</span><span class="w"> </span><span class="n">to</span><span class="p">);</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">"Move #1 %c -> %c</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">from</span><span class="p">,</span><span class="w"> </span><span class="n">to</span><span class="p">);</span>
 <span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">hanoi</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">from</span><span class="p">,</span><span class="w"> </span><span class="n">via</span><span class="p">,</span><span class="w"> </span><span class="n">to</span><span class="p">);</span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Move #%d %c -&gt; %c</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">from</span><span class="p">,</span><span class="w"> </span><span class="n">to</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Move #%d %c -> %c</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">from</span><span class="p">,</span><span class="w"> </span><span class="n">to</span><span class="p">);</span>
 <span class="w">    </span><span class="n">hanoi</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">via</span><span class="p">,</span><span class="w"> </span><span class="n">to</span><span class="p">,</span><span class="w"> </span><span class="n">from</span><span class="p">);</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
@@ -338,26 +338,26 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#36882;&#24402;&#21040;&#38750;&#36882;&#24402;&#30340;&#36716;&#25442;</h2>
-<p class=" font-serif my-1">&#31243;&#24207; = &#29366;&#24577;&#26426;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">递归到非递归的转换</h2>
+<p class=" font-serif my-1">程序 = 状态机</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><code>hanoi(3, 'A', 'C', 'B')</code> &#21040;&#24213;&#26159;&#22914;&#20309;&#36816;&#34892;&#30340;&#65311; </li>
+<li class=" ml-8"><code>hanoi(3, 'A', 'C', 'B')</code> 到底是如何运行的？ </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#8220;&#21407;&#22987;&#8221; &#30340;&#27169;&#22411; $(M, R)$ &#23545;&#20154;&#31867;&#27169;&#25311;&#25191;&#34892;&#22826;&#19981;&#21451;&#22909;&#20102;</p>
+<p class=" font-serif my-1">“原始” 的模型 $(M, R)$ 对人类模拟执行太不友好了</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#23450;&#20041;<red>&#20989;&#25968;&#35843;&#29992;&#26632;&#24103;</red><ul class=" list-disc font-serif">
-<li class=" ml-8">PC: &#19979;&#27425;&#25191;&#34892;&#30340;&#35821;&#21477;</li>
-<li class=" ml-8">&#23616;&#37096;&#21464;&#37327; (&#21253;&#25324;&#21442;&#25968;)</li>
+<li class=" ml-8">定义<red>函数调用栈帧</red><ul class=" list-disc font-serif">
+<li class=" ml-8">PC: 下次执行的语句</li>
+<li class=" ml-8">局部变量 (包括参数)</li>
 </ul>
 </li>
-<li class=" ml-8"><code>hanoi(2, 'A', 'B', 'C')</code> &#30340; operational semantics<ul class=" list-disc font-serif">
-<li class=" ml-8">&#24403;&#21069;&#26632;&#24103; PC + 1</li>
-<li class=" ml-8">&#21019;&#24314;&#26032;&#30340;&#26632;&#24103; (PC &#20026;&#31532;&#19968;&#26465;&#35821;&#21477;)</li>
+<li class=" ml-8"><code>hanoi(2, 'A', 'B', 'C')</code> 的 operational semantics<ul class=" list-disc font-serif">
+<li class=" ml-8">当前栈帧 PC + 1</li>
+<li class=" ml-8">创建新的栈帧 (PC 为第一条语句)</li>
 </ul>
 </li>
 <li class=" ml-8"><a href="../../../pages/OS/2021/demos/hanoi.c" class=" text-amber-900">hanoi.c</a><ul class=" list-disc font-serif">
-<li class=" ml-8">&#30334;&#24230;&#25628;&#24471;&#30340;&#20195;&#30721;&#24808;&#19981;&#24525;&#30585;&#65292;<del>&#21315;&#19975;&#19981;&#35201;&#20877;&#29992;&#30334;&#24230;&#20102;</del></li>
+<li class=" ml-8">百度搜得的代码惨不忍睹，<del>千万不要再用百度了</del></li>
 </ul>
 </li>
 </ul></div>
@@ -375,7 +375,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#24182;&#21457;&#31243;&#24207;&#30340;&#38405;&#35835;&#29702;&#35299;&#65306;&#23454;&#36341;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">并发程序的阅读理解：实践</h1></div></div></div>
         
       
       </section>
@@ -386,16 +386,16 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20363;&#23376;&#65306;&#20114;&#26021;&#31639;&#27861;</h2>
-<p class=" font-serif my-1">&#24076;&#26395;&#23454;&#29616; lock/unlock&#65292;&#20445;&#35777;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">例子：互斥算法</h2>
+<p class=" font-serif my-1">希望实现 lock/unlock，保证</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20551;&#35774;&#32534;&#35793;&#22120;&#21644;&#30828;&#20214;&#20445;&#35777;&#20102;&#39034;&#24207;&#21644;&#21487;&#35265;&#24615;</li>
-<li class=" ml-8"><red>&#23454;&#29616;&#19968;&#27573;&#20219;&#24847;&#38271;&#20195;&#30721;&#30340;&#21407;&#23376;&#24615;</red></li>
+<li class=" ml-8">假设编译器和硬件保证了顺序和可见性</li>
+<li class=" ml-8"><red>实现一段任意长代码的原子性</red></li>
 </ul>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">do_sum</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">lock</span><span class="p">();</span><span class="w"> </span><span class="c1">// &#20445;&#35777;&#39034;&#24207;&#12289;&#21407;&#23376;&#24615;&#12289;&#21487;&#35265;&#24615;</span>
-<span class="w">    </span><span class="c1">// critical section; &#20020;&#30028;&#21306;</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o"><</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">lock</span><span class="p">();</span><span class="w"> </span><span class="c1">// 保证顺序、原子性、可见性</span>
+<span class="w">    </span><span class="c1">// critical section; 临界区</span>
 <span class="w">    </span><span class="n">sum</span><span class="o">++</span><span class="p">;</span>
 <span class="w">    </span><span class="n">unlock</span><span class="p">();</span>
 <span class="w">  </span><span class="p">}</span>
@@ -411,20 +411,20 @@ section .center {
 
       
         
-        <div><h2 id="peterson-2" class=" text-xl mt-2 pb-2 font-sans">Peterson &#31639;&#27861;&#65306;&#23454;&#29616; 2 &#20154;&#30340;&#20114;&#26021;</h2>
-<p class=" font-serif my-1">&#20551;&#35774;&#20320;&#21644;&#20320;&#33293;&#21451;&#30340;&#34892;&#21160;&#36895;&#24230;&#37117;&#22826;&#24555;&#20102;&#65292;&#24517;&#39035;&#26377;&#19968;&#20010;&#26426;&#21046;&#20445;&#35777;&#20320;&#20204;&#26080;&#27861;&#21516;&#26102;&#36827;&#20837; WC</p>
+        <div><h2 id="peterson-2" class=" text-xl mt-2 pb-2 font-sans">Peterson 算法：实现 2 人的互斥</h2>
+<p class=" font-serif my-1">假设你和你舍友的行动速度都太快了，必须有一个机制保证你们无法同时进入 WC</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#19968;&#20010;&#20154;&#30636;&#38388;&#21482;&#33021;&#23436;&#25104;<ol class=" list-decimal font-serif">
-<li class=" ml-8">&#20030;&#36215;/&#25918;&#19979;&#33258;&#24049;&#25163;&#37324;&#30340;&#26071;</li>
-<li class=" ml-8">&#21521;&#21397;&#25152;&#38376;&#19978;&#36148;&#19968;&#20010;&#26631;&#31614; (&#35206;&#30422;&#20043;&#21069;&#36148;&#30340;&#20219;&#20309;&#20869;&#23481;)</li>
-<li class=" ml-8">&#26597;&#30475;&#26071;&#25110;&#26631;&#31614;&#30340;&#29366;&#24577;</li>
+<li class=" ml-8">一个人瞬间只能完成<ol class=" list-decimal font-serif">
+<li class=" ml-8">举起/放下自己手里的旗</li>
+<li class=" ml-8">向厕所门上贴一个标签 (覆盖之前贴的任何内容)</li>
+<li class=" ml-8">查看旗或标签的状态</li>
 </ol>
 </li>
-<li class=" ml-8">&#24819;&#19978;&#21397;&#25152;&#30340;&#20154;<ol class=" list-decimal font-serif">
-<li class=" ml-8">&#20030;&#36215;&#33258;&#24049;&#30340;&#26071;</li>
-<li class=" ml-8">&#36148;&#19978;&#26377;&#23545;&#26041;&#21517;&#23383;&#30340;&#26631;&#31614; (&#35878;&#35753;&#23545;&#26041;)</li>
-<li class=" ml-8">&#24403;&#23545;&#26041;&#27809;&#26377;&#20030;&#26071;&#25110;&#26631;&#31614;&#20889;&#30528;&#33258;&#24049;&#21517;&#23383;&#26102;&#65292;&#36827;&#20837; WC</li>
-<li class=" ml-8">&#20986; WC &#26102;&#25918;&#19979;&#26071;&#23376;</li>
+<li class=" ml-8">想上厕所的人<ol class=" list-decimal font-serif">
+<li class=" ml-8">举起自己的旗</li>
+<li class=" ml-8">贴上有对方名字的标签 (谦让对方)</li>
+<li class=" ml-8">当对方没有举旗或标签写着自己名字时，进入 WC</li>
+<li class=" ml-8">出 WC 时放下旗子</li>
 </ol>
 </li>
 </ul></div>
@@ -438,25 +438,25 @@ section .center {
 
       
         
-        <div><h2 id="peterson" class=" text-xl mt-2 pb-2 font-sans">Peterson &#31639;&#27861;&#65306;&#20195;&#30721;</h2>
+        <div><h2 id="peterson" class=" text-xl mt-2 pb-2 font-sans">Peterson 算法：代码</h2>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">turn</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">thread1</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">turn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">T2</span><span class="p">;</span>
-<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">y</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">turn</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">T2</span><span class="p">)</span><span class="w"> </span><span class="p">;</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">y</span><span class="w"> </span><span class="o">&&</span><span class="w"> </span><span class="n">turn</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">T2</span><span class="p">)</span><span class="w"> </span><span class="p">;</span>
 <span class="w">  </span><span class="c1">// critical section</span>
 <span class="w">  </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">thread2</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">turn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">T1</span><span class="p">;</span>
-<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">turn</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">T1</span><span class="p">)</span><span class="w"> </span><span class="p">;</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&&</span><span class="w"> </span><span class="n">turn</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">T1</span><span class="p">)</span><span class="w"> </span><span class="p">;</span>
 <span class="w">  </span><span class="c1">// critical section</span>
 <span class="w">  </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p class=" font-serif my-1"></p><center>(&#20551;&#35774;&#25554;&#20837;&#20102; barrier &#21644; fence &#25351;&#20196;)</center></div>
+<p class=" font-serif my-1"></p><center>(假设插入了 barrier 和 fence 指令)</center></div>
         
       
       </section>
@@ -467,22 +467,22 @@ section .center {
 
       
         
-        <div><h2 id="peterson" class=" text-xl mt-2 pb-2 font-sans">&#20026; Peterson &#31639;&#27861;&#26500;&#36896;&#29366;&#24577;&#26426;</h2>
-<p class=" font-serif my-1">Prove by brute force&#65306;&#28436;&#31034;</p>
+        <div><h2 id="peterson" class=" text-xl mt-2 pb-2 font-sans">为 Peterson 算法构造状态机</h2>
+<p class=" font-serif my-1">Prove by brute force：演示</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20026;&#27599;&#20010;&#32447;&#31243;&#26500;&#36896;&#31616;&#21270;&#30340;&#29366;&#24577;&#26426;</li>
-<li class=" ml-8">&#24182;&#21457;&#31243;&#24207;&#29366;&#24577;&#65306;$(PC_1, PC_2, x, y, turn)$</li>
+<li class=" ml-8">为每个线程构造简化的状态机</li>
+<li class=" ml-8">并发程序状态：$(PC_1, PC_2, x, y, turn)$</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#22914;&#20309;&#35777;&#26126; Peterson &#31639;&#27861;&#30340;&#27491;&#30830;&#24615;&#65311;</p>
+<p class=" font-serif my-1">如何证明 Peterson 算法的正确性？</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20004;&#31181;&#27491;&#30830;&#24615;<ul class=" list-disc font-serif">
-<li class=" ml-8">safety: &#22351;&#20107;&#24773;&#27704;&#36828;&#19981;&#20250;&#21457;&#29983;<ul class=" list-disc font-serif">
-<li class=" ml-8">$(X, X, *, *, *)$ &#29366;&#24577;&#27704;&#36828;&#19981;&#20250;&#21040;&#36798;</li>
+<li class=" ml-8">两种正确性<ul class=" list-disc font-serif">
+<li class=" ml-8">safety: 坏事情永远不会发生<ul class=" list-disc font-serif">
+<li class=" ml-8">$(X, X, *, *, *)$ 状态永远不会到达</li>
 </ul>
 </li>
-<li class=" ml-8">liveness: &#22909;&#20107;&#24773;&#27704;&#36828;&#20250;&#21457;&#29983;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#32473;&#20004;&#20010;&#32447;&#31243;&#26377;&#38480;&#27493;&#65292;&#19968;&#23450;&#26377;&#19968;&#20010;&#33021;&#36827;&#20837;&#29366;&#24577; $X$</li>
+<li class=" ml-8">liveness: 好事情永远会发生<ul class=" list-disc font-serif">
+<li class=" ml-8">给两个线程有限步，一定有一个能进入状态 $X$</li>
 </ul>
 </li>
 </ul>
@@ -498,22 +498,22 @@ section .center {
 
       
         
-        <div><h2 id="peterson" class=" text-xl mt-2 pb-2 font-sans">Peterson &#31639;&#27861;&#65306;&#24536;&#20102;&#23427;</h2>
-<p class=" font-serif my-1">&#24536;&#35760;&#23427;&#30340;&#29702;&#30001;</p>
+        <div><h2 id="peterson" class=" text-xl mt-2 pb-2 font-sans">Peterson 算法：忘了它</h2>
+<p class=" font-serif my-1">忘记它的理由</p>
 <ol class=" list-decimal font-serif">
-<li class=" ml-8">&#21482;&#33021;&#29992;&#20110;&#20004;&#20010;&#32447;&#31243;&#30340;&#20114;&#26021;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#22810;&#32447;&#31243;&#30340;&#25193;&#23637;&#65306;filter lock; &#24615;&#33021;&#26497;&#20302;</li>
+<li class=" ml-8">只能用于两个线程的互斥<ul class=" list-disc font-serif">
+<li class=" ml-8">多线程的扩展：filter lock; 性能极低</li>
 </ul>
 </li>
-<li class=" ml-8">&#23567;&#24515;&#32534;&#35793;&#22120;&#21644;&#22810;&#22788;&#29702;&#22120;&#30828;&#20214;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#23601;&#31639;&#23454;&#29616;&#23545;&#20102;&#65292;&#24615;&#33021;&#20063;&#26497;&#20302; (&#20309;&#20917;&#24456;&#23481;&#26131;&#23454;&#29616;&#38169;)</li>
+<li class=" ml-8">小心编译器和多处理器硬件<ul class=" list-disc font-serif">
+<li class=" ml-8">就算实现对了，性能也极低 (何况很容易实现错)</li>
 </ul>
 </li>
 </ol>
 <hr>
-<p class=" font-serif my-1">&#26159;&#20010;&#19981;&#38169;&#30340;&#32451;&#20064;&#65292;&#20294;<red>&#24212;&#35813;&#20174;&#36825;&#38376;&#35838;&#21024;&#38500;<red></red></red></p>
+<p class=" font-serif my-1">是个不错的练习，但<red>应该从这门课删除<red></red></red></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">(&#25105;&#20204;&#19981;&#26159;&#22312;&#35762;&#36825;&#20010;&#31639;&#27861;&#65307;&#32780;&#26159;&#22312;&#21578;&#35785;&#22823;&#23478;&#19981;&#35201;&#36825;&#20040;&#25630;)</li>
+<li class=" ml-8">(我们不是在讲这个算法；而是在告诉大家不要这么搞)</li>
 </ul></div>
         
       
@@ -529,7 +529,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#24635;&#32467;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">总结</h1></div></div></div>
         
       
       </section>
@@ -540,16 +540,16 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25105;&#20204;&#24471;&#21040;&#20102;&#20160;&#20040;&#65311;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">我们得到了什么？</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#35777;&#26126;&#20102; Peterson &#31639;&#27861;&#22312;&#26080;&#32534;&#35793;&#20248;&#21270;&#12289;&#21333;&#22788;&#29702;&#22120;&#19978;&#30340;&#27491;&#30830;&#24615;&#12290;
-(&#25105;&#20204;&#30340;&#31532;&#19968;&#20010; non-trivial &#24182;&#21457;&#31243;&#24207;&#30340;&#29702;&#35299;&#21644;&#35777;&#26126;)</p>
+<p class=" font-serif my-1">证明了 Peterson 算法在无编译优化、单处理器上的正确性。
+(我们的第一个 non-trivial 并发程序的理解和证明)</p>
 </blockquote>
 <hr>
-<p class=" font-serif my-1">&#22312;&#19968;&#20010;&#31616;&#21270;&#30340;&#31243;&#24207;&#25191;&#34892;&#27169;&#22411;&#19978;&#25506;&#32034;&#20102;&#31243;&#24207;&#30340;&#34892;&#20026;</p>
+<p class=" font-serif my-1">在一个简化的程序执行模型上探索了程序的行为</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#8220;model checking&#8221;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#25226;&#31243;&#24207;&#30340;&#27491;&#30830;&#24615;&#36716;&#25442;&#20026;&#20102;&#22270;&#38382;&#39064;</li>
+<li class=" ml-8">“model checking”<ul class=" list-disc font-serif">
+<li class=" ml-8">把程序的正确性转换为了图问题</li>
 <li class=" ml-8">R. Jhala and R. Majumdar. Software model checking. <em>ACM Computing Surveys</em>, 41(4), 2009.</li>
 </ul>
 </li>
@@ -564,17 +564,17 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#24635;&#32467;</h2>
-<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#20869;&#23481;&#19982;&#30446;&#26631;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">总结</h2>
+<p class=" font-serif my-1">本次课内容与目标</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#29992;&#29366;&#24577;&#26426;&#29702;&#35299;&#31243;&#24207; (Tower of Hanoi)</li>
-<li class=" ml-8">&#29992;&#29366;&#24577;&#26426;&#27169;&#22411;&#29702;&#35299;&#24182;&#21457;&#31243;&#24207; (Peterson's Algorithm)</li>
+<li class=" ml-8">用状态机理解程序 (Tower of Hanoi)</li>
+<li class=" ml-8">用状态机模型理解并发程序 (Peterson's Algorithm)</li>
 </ul>
 <hr>
 <p class=" font-serif my-1">Take-away message</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#31243;&#24207; = &#29366;&#24577;&#26426; = &#26377;&#21521;&#22270;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#36825;&#38376;&#35838;&#29992;&#21040;&#26368;&#37325;&#35201;&#30340;&#24037;&#20855;</li>
+<li class=" ml-8">程序 = 状态机 = 有向图<ul class=" list-disc font-serif">
+<li class=" ml-8">这门课用到最重要的工具</li>
 </ul>
 </li>
 </ul></div>

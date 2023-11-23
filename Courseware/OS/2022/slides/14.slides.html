@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +209,7 @@ section .center {
 }
 </style>
 
-  <title>C &#26631;&#20934;&#24211;&#30340;&#23454;&#29616;</title>
+  <title>C 标准库的实现</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,21 +227,21 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="c" class=" text-2xl mt-2 font-sans">C &#26631;&#20934;&#24211;&#30340;&#23454;&#29616;</h1>
+        <div><div class="center middle"><div style="width:100%"><h1 id="c" class=" text-2xl mt-2 font-sans">C 标准库的实现</h1>
 <p class=" font-serif my-1"><include src="Slides_Author"><div><div class="py-16">
-<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">&#33931;&#28814;&#23721;</a></p>
+<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">蒋炎岩</a></p>
 </div>
 <div class="row">
 <div class="author-affiliation">
-    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#12288;&#12288;&#21335;&#20140;&#22823;&#23398;&#12288;&#12288;</p>
+    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">　　南京大学　　</p>
     <img class="inline-img h-24" src="../../../static/img/nju-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#31185;&#23398;&#19982;&#25216;&#26415;&#31995;</p>
+   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">计算机科学与技术系</p>
     <img class="inline-img h-24" src="../../../static/img/njucs-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#36719;&#20214;&#30740;&#31350;&#25152;</p>
+    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">计算机软件研究所</p>
     <img class="inline-img h-24" src="../../../static/img/ics-logo.png" style="display: inline-block;"></a>
   </div>
 </div></div></include></p></div></div></div>
@@ -256,20 +256,20 @@ section .center {
       
         
         <div><h2 id="overview" class=" text-xl mt-2 pb-2 font-sans">Overview</h2>
-<p class=" font-serif my-1">&#22797;&#20064;</p>
+<p class=" font-serif my-1">复习</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><a href="../../../pages/OS/2022/demos/sh-xv6.c" class=" text-amber-900">sh-xv6.c</a>: &#20165;&#20381;&#36182;&#31995;&#32479;&#35843;&#29992;&#30340; &#8220;&#26368;&#23567;&#8221; &#21629;&#20196;&#34892; Shell</li>
+<li class=" ml-8"><a href="../../../pages/OS/2022/demos/sh-xv6.c" class=" text-amber-900">sh-xv6.c</a>: 仅依赖系统调用的 “最小” 命令行 Shell</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#22238;&#31572;&#30340;&#38382;&#39064;</p>
+<p class=" font-serif my-1">本次课回答的问题</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><strong>Q</strong>: &#22914;&#20309;&#22312;&#31995;&#32479;&#35843;&#29992;&#20043;&#19978;&#26500;&#24314;&#31243;&#24207;&#33021;&#22815;&#26222;&#36941;&#21463;&#24800;&#30340;&#26631;&#20934;&#24211;&#65311;</li>
+<li class=" ml-8"><strong>Q</strong>: 如何在系统调用之上构建程序能够普遍受惠的标准库？</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#20027;&#35201;&#20869;&#23481;</p>
+<p class=" font-serif my-1">本次课主要内容</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">C &#26631;&#20934;&#24211;&#35774;&#35745;&#19982;&#23454;&#29616;</li>
-<li class=" ml-8">&#22522;&#20110; libc &#30340;&#24212;&#29992;&#31243;&#24207;</li>
+<li class=" ml-8">C 标准库设计与实现</li>
+<li class=" ml-8">基于 libc 的应用程序</li>
 </ul></div>
         
       
@@ -285,7 +285,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="libc" class=" text-2xl mt-2 font-sans">&#29087;&#24713;&#21448;&#38476;&#29983;&#30340; libc</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="libc" class=" text-2xl mt-2 font-sans">熟悉又陌生的 libc</h1></div></div></div>
         
       
       </section>
@@ -296,8 +296,8 @@ section .center {
 
       
         
-        <div><h2 id="libc" class=" text-xl mt-2 pb-2 font-sans">&#20026;&#20160;&#20040;&#38656;&#35201; libc?</h2>
-<p class=" font-serif my-1">&#8220;&#35064;&#22868;&#8221; &#32534;&#31243;&#65306;&#33021;&#29992; (&#32780;&#19988;&#32477;&#23545;&#22815;&#29992;)&#65292;&#20294;&#19981;&#22909;&#29992;</p>
+        <div><h2 id="libc" class=" text-xl mt-2 pb-2 font-sans">为什么需要 libc?</h2>
+<p class=" font-serif my-1">“裸奔” 编程：能用 (而且绝对够用)，但不好用</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">long</span><span class="w"> </span><span class="nf">syscall</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="p">,</span><span class="w"> </span><span class="p">...)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kt">va_list</span><span class="w"> </span><span class="n">ap</span><span class="p">;</span>
 <span class="w">  </span><span class="n">va_start</span><span class="p">(</span><span class="n">ap</span><span class="p">,</span><span class="w"> </span><span class="n">num</span><span class="p">);</span>
@@ -323,8 +323,8 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20219;&#20309;&#31243;&#24207;&#37117;&#29992;&#24471;&#19978;&#30340;&#23450;&#20041;</h2>
-<p class=" font-serif my-1"><a href="https://en.cppreference.com/w/cpp/freestanding" class=" text-amber-900">Freestanding &#29615;&#22659;</a>&#19979;&#20063;&#21487;&#20197;&#20351;&#29992;&#30340;&#23450;&#20041;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">任何程序都用得上的定义</h2>
+<p class=" font-serif my-1"><a href="https://en.cppreference.com/w/cpp/freestanding" class=" text-amber-900">Freestanding 环境</a>下也可以使用的定义</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><a href="https://www.cplusplus.com/reference/cstddef/" class=" text-amber-900">stddef.h</a> - <code>size_t</code></li>
 <li class=" ml-8"><a href="https://www.cplusplus.com/reference/cstdint/" class=" text-amber-900">stdint.h</a> - <code>int32_t</code>, <code>uint64_t</code></li>
@@ -332,12 +332,12 @@ section .center {
 <li class=" ml-8"><a href="https://www.cplusplus.com/reference/cfloat/" class=" text-amber-900">float.h</a></li>
 <li class=" ml-8"><a href="https://www.cplusplus.com/reference/climits/" class=" text-amber-900">limits.h</a></li>
 <li class=" ml-8"><a href="https://www.cplusplus.com/reference/cstdarg/" class=" text-amber-900">stdarg.h</a><ul class=" list-disc font-serif">
-<li class=" ml-8">syscall &#23601;&#29992;&#21040;&#20102; (&#20294; syscall0, syscall1, ... &#26356;&#39640;&#25928;)</li>
+<li class=" ml-8">syscall 就用到了 (但 syscall0, syscall1, ... 更高效)</li>
 </ul>
 </li>
 <li class=" ml-8"><a href="https://www.cplusplus.com/reference/cinttypes/" class=" text-amber-900">inttypes.h</a><ul class=" list-disc font-serif">
-<li class=" ml-8">&#22238;&#31572;&#20102;&#20320;&#22810;&#24180;&#26469;&#30340;&#30097;&#38382;&#65281;</li>
-<li class=" ml-8">&#22312;&#20320;&#35835;&#36807;&#20102;&#23567;&#30333;&#38454;&#27573;&#20197;&#21518;&#65292;&#23601;&#30495;&#30340;&#26159; friendly manual &#20102;</li>
+<li class=" ml-8">回答了你多年来的疑问！</li>
+<li class=" ml-8">在你读过了小白阶段以后，就真的是 friendly manual 了</li>
 </ul>
 </li>
 </ul></div>
@@ -351,20 +351,20 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#28982;&#21518;&#65292;&#31995;&#32479;&#35843;&#29992;&#20063;&#35201;&#29992;&#24471;&#26041;&#20415;&#65281;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">然后，系统调用也要用得方便！</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#31995;&#32479;&#35843;&#29992;&#26159;&#25805;&#20316;&#31995;&#32479; &#8220;&#32039;&#20945;&#8221; &#30340;&#26368;&#23567;&#25509;&#21475;&#12290;&#24182;&#19981;&#26159;&#25152;&#26377;&#31995;&#32479;&#35843;&#29992;&#37117;&#20687; fork &#19968;&#26679;&#21487;&#20197;&#30452;&#25509;&#20351;&#29992;&#12290;</p>
+<p class=" font-serif my-1">系统调用是操作系统 “紧凑” 的最小接口。并不是所有系统调用都像 fork 一样可以直接使用。</p>
 </blockquote>
-<p class=" font-serif my-1">&#20302;&#24773;&#21830; API&#65306;</p>
+<p class=" font-serif my-1">低情商 API：</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">extern</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">environ</span><span class="p">;</span>
 <span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">"echo"</span><span class="p">,</span><span class="w"> </span><span class="s">"hello"</span><span class="p">,</span><span class="w"> </span><span class="s">"world"</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="p">};</span>
-<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">execve</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="n">argv</span><span class="p">,</span><span class="w"> </span><span class="n">environ</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">execve</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="n">argv</span><span class="p">,</span><span class="w"> </span><span class="n">environ</span><span class="p">)</span><span class="w"> </span><span class="o"><</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">perror</span><span class="p">(</span><span class="s">"exec"</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <hr>
-<p class=" font-serif my-1">&#39640;&#24773;&#21830; API&#65306;</p>
+<p class=" font-serif my-1">高情商 API：</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">execlp</span><span class="p">(</span><span class="s">"echo"</span><span class="p">,</span><span class="w"> </span><span class="s">"echo"</span><span class="p">,</span><span class="w"> </span><span class="s">"hello"</span><span class="p">,</span><span class="w"> </span><span class="s">"world"</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
 <span class="n">system</span><span class="p">(</span><span class="s">"echo hello world"</span><span class="p">);</span>
 </code></pre></div></div>
@@ -382,7 +382,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="1" class=" text-2xl mt-2 font-sans">&#23553;&#35013; (1): &#32431;&#31929;&#30340;&#35745;&#31639;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="1" class=" text-2xl mt-2 font-sans">封装 (1): 纯粹的计算</h1></div></div></div>
         
       
       </section>
@@ -393,10 +393,10 @@ section .center {
 
       
         
-        <div><h2 id="stringh" class=" text-xl mt-2 pb-2 font-sans"><a href="https://www.cplusplus.com/reference/cstring/" class=" text-amber-900">string.h</a>: &#23383;&#31526;&#20018;/&#25968;&#32452;&#25805;&#20316;</h2>
-<p class=" font-serif my-1">&#31616;&#21333;&#65292;&#19981;&#31616;&#21333;</p>
+        <div><h2 id="stringh" class=" text-xl mt-2 pb-2 font-sans"><a href="https://www.cplusplus.com/reference/cstring/" class=" text-amber-900">string.h</a>: 字符串/数组操作</h2>
+<p class=" font-serif my-1">简单，不简单</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="nf">memset</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o"><</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="p">((</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">s</span><span class="p">)[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">c</span><span class="p">;</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">s</span><span class="p">;</span>
@@ -404,11 +404,11 @@ section .center {
 </code></pre></div>
 
 <hr>
-<p class=" font-serif my-1">&#35753;&#25105;&#20204;&#30475;&#30475; clang &#25226;&#23427;&#32534;&#35793;&#25104;&#20102;&#20160;&#20040;&#8230;&#8230; </p>
+<p class=" font-serif my-1">让我们看看 clang 把它编译成了什么…… </p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20197;&#21450;&#65292;&#32447;&#31243;&#23433;&#20840;&#24615;&#65311;<a href="../../../pages/OS/2022/demos/memset-race.c" class=" text-amber-900">memset-race.c</a></li>
-<li class=" ml-8"><red>&#26631;&#20934;&#24211;&#21482;&#23545; &#8220;&#26631;&#20934;&#24211;&#20869;&#37096;&#25968;&#25454;&#8221; &#30340;&#32447;&#31243;&#23433;&#20840;&#24615;&#36127;&#36131;</red><ul class=" list-disc font-serif">
-<li class=" ml-8">&#20363;&#23376;&#65306;printf &#30340; buffer</li>
+<li class=" ml-8">以及，线程安全性？<a href="../../../pages/OS/2022/demos/memset-race.c" class=" text-amber-900">memset-race.c</a></li>
+<li class=" ml-8"><red>标准库只对 “标准库内部数据” 的线程安全性负责</red><ul class=" list-disc font-serif">
+<li class=" ml-8">例子：printf 的 buffer</li>
 </ul>
 </li>
 </ul></div>
@@ -422,8 +422,8 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25490;&#24207;&#21644;&#26597;&#25214;</h2>
-<p class=" font-serif my-1">&#20302;&#24773;&#21830; (&#20302;&#37197;&#32622;) API</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">排序和查找</h2>
+<p class=" font-serif my-1">低情商 (低配置) API</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">qsort</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">base</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">nmemb</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">size</span><span class="p">,</span>
 <span class="w">           </span><span class="kt">int</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">compar</span><span class="p">)(</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">));</span>
 
@@ -433,8 +433,8 @@ section .center {
 </code></pre></div>
 
 <hr>
-<p class=" font-serif my-1">&#39640;&#24773;&#21830; API</p>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">sort</span><span class="p">(</span><span class="n">xs</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">xs</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="p">[]</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{...});</span>
+<p class=" font-serif my-1">高情商 API</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">sort</span><span class="p">(</span><span class="n">xs</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">xs</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="p">[]</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="o">&</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="k">auto</span><span class="o">&</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{...});</span>
 </code></pre></div>
 
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">xs</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="k">lambda</span> <span class="n">key</span><span class="o">=...</span><span class="p">)</span>
@@ -449,24 +449,24 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26356;&#22810;&#30340;&#20363;&#23376;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">更多的例子</h2>
 <p class=" font-serif my-1">RTFM!</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#26356;&#22810;&#30340; <a href="https://www.cplusplus.com/reference/cstdlib/" class=" text-amber-900">stdlib.h</a> &#20013;&#30340;&#20363;&#23376;<ul class=" list-disc font-serif">
+<li class=" ml-8">更多的 <a href="https://www.cplusplus.com/reference/cstdlib/" class=" text-amber-900">stdlib.h</a> 中的例子<ul class=" list-disc font-serif">
 <li class=" ml-8">atoi, atol, atoll, strtoull, ...</li>
-<li class=" ml-8">rand (&#27880;&#24847;&#32447;&#31243;&#23433;&#20840;), ...</li>
+<li class=" ml-8">rand (注意线程安全), ...</li>
 </ul>
 </li>
 <li class=" ml-8"><a href="https://www.cplusplus.com/reference/csetjmp/" class=" text-amber-900">setjmp.h</a><ul class=" list-disc font-serif">
-<li class=" ml-8">&#20307;&#20250;&#21040;&#25105;&#20204;&#31934;&#24515;&#35774;&#35745;&#30340;&#33391;&#33510;&#29992;&#24515;&#65311;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#19968;&#27425;&#25481;&#38431;&#65292;&#32456;&#36523;&#25481;&#38431; &#128514;</li>
+<li class=" ml-8">体会到我们精心设计的良苦用心？<ul class=" list-disc font-serif">
+<li class=" ml-8">一次掉队，终身掉队 😂</li>
 </ul>
 </li>
 </ul>
 </li>
 <li class=" ml-8"><a href="https://www.cplusplus.com/reference/cmath/" class=" text-amber-900">math.h</a><ul class=" list-disc font-serif">
-<li class=" ml-8">&#36825;&#29609;&#24847;&#22797;&#26434;&#20102;; &#12298;&#25805;&#20316;&#31995;&#32479;&#12299;&#35838;&#30452;&#25509;&#25670;&#28866;<ul class=" list-disc font-serif">
-<li class=" ml-8"><a href="https://dl.acm.org/doi/10.1145/2737924.2737959" class=" text-amber-900">Automatically improving accuracy for floating point expressions</a> (PLDI'15, Distinguished Paper &#127941;)</li>
+<li class=" ml-8">这玩意复杂了; 《操作系统》课直接摆烂<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="https://dl.acm.org/doi/10.1145/2737924.2737959" class=" text-amber-900">Automatically improving accuracy for floating point expressions</a> (PLDI'15, Distinguished Paper 🏅)</li>
 </ul>
 </li>
 </ul>
@@ -486,7 +486,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="2" class=" text-2xl mt-2 font-sans">&#23553;&#35013; (2): &#25991;&#20214;&#25551;&#36848;&#31526;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="2" class=" text-2xl mt-2 font-sans">封装 (2): 文件描述符</h1></div></div></div>
         
       
       </section>
@@ -497,23 +497,23 @@ section .center {
 
       
         
-        <div><h2 id="stdioh" class=" text-xl mt-2 pb-2 font-sans"><a href="https://www.cplusplus.com/reference/cstdio/" class=" text-amber-900">stdio.h</a>: &#20320;&#29087;&#24713;&#30340;&#21619;&#36947;</h2>
-<p class=" font-serif my-1"><code>FILE *</code> &#32972;&#21518;&#20854;&#23454;&#26159;&#19968;&#20010;&#25991;&#20214;&#25551;&#36848;&#31526;</p>
+        <div><h2 id="stdioh" class=" text-xl mt-2 pb-2 font-sans"><a href="https://www.cplusplus.com/reference/cstdio/" class=" text-amber-900">stdio.h</a>: 你熟悉的味道</h2>
+<p class=" font-serif my-1"><code>FILE *</code> 背后其实是一个文件描述符</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25105;&#20204;&#21487;&#20197;&#29992; gdb &#26597;&#30475;&#20855;&#20307;&#30340; <code>FILE *</code> (&#20363;&#22914; stdout)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#21487;&#20197; &#8220;&#31397;&#25506;&#8221; &#21040; glibc &#30340;&#19968;&#20123;&#20869;&#37096;&#23454;&#29616;</li>
-<li class=" ml-8">&#21487;&#20197;&#21152;&#36733; glibc &#30340; debug symbols<ul class=" list-disc font-serif">
-<li class=" ml-8">&#22312;&#36825;&#38376;&#35838;&#19978;&#19981;&#25512;&#33616;&#65306;&#20320;&#35843;&#35797;&#36215;&#26469;&#20250;&#24456;&#28010;&#36153;&#26102;&#38388;</li>
+<li class=" ml-8">我们可以用 gdb 查看具体的 <code>FILE *</code> (例如 stdout)<ul class=" list-disc font-serif">
+<li class=" ml-8">可以 “窥探” 到 glibc 的一些内部实现</li>
+<li class=" ml-8">可以加载 glibc 的 debug symbols<ul class=" list-disc font-serif">
+<li class=" ml-8">在这门课上不推荐：你调试起来会很浪费时间</li>
 </ul>
 </li>
 </ul>
 </li>
-<li class=" ml-8">&#23553;&#35013;&#20102;&#25991;&#20214;&#25551;&#36848;&#31526;&#19978;&#30340;&#31995;&#32479;&#35843;&#29992; (fseek, fgetpos, ftell, feof, ...)</li>
+<li class=" ml-8">封装了文件描述符上的系统调用 (fseek, fgetpos, ftell, feof, ...)</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">vprintf &#31995;&#21015;</p>
+<p class=" font-serif my-1">vprintf 系列</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20351;&#29992;&#20102; <code>stdarg.h</code> &#30340;&#21442;&#25968;&#21015;&#34920;</li>
+<li class=" ml-8">使用了 <code>stdarg.h</code> 的参数列表</li>
 </ul>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">vfprintf</span><span class="p">(</span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">stream</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">format</span><span class="p">,</span><span class="w"> </span><span class="kt">va_list</span><span class="w"> </span><span class="n">ap</span><span class="p">);</span>
 <span class="kt">int</span><span class="w"> </span><span class="nf">vasprintf</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">ret</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">format</span><span class="p">,</span><span class="w"> </span><span class="kt">va_list</span><span class="w"> </span><span class="n">ap</span><span class="p">);</span>
@@ -528,16 +528,16 @@ section .center {
 
       
         
-        <div><h2 id="popen-pclose" class=" text-xl mt-2 pb-2 font-sans">popen &#21644; pclose</h2>
-<p class=" font-serif my-1">&#25105;&#20204;&#22312; <a href="../../../pages/OS/2022/demos/dosbox-hack.c" class=" text-amber-900">dosbox-hack.c</a> &#20013;&#20351;&#29992;&#20102;&#23427;</p>
+        <div><h2 id="popen-pclose" class=" text-xl mt-2 pb-2 font-sans">popen 和 pclose</h2>
+<p class=" font-serif my-1">我们在 <a href="../../../pages/OS/2022/demos/dosbox-hack.c" class=" text-amber-900">dosbox-hack.c</a> 中使用了它</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#19968;&#20010;&#35774;&#35745;&#26377;&#32570;&#38519;&#30340; API<ul class=" list-disc font-serif">
+<li class=" ml-8">一个设计有缺陷的 API<ul class=" list-disc font-serif">
 <li class=" ml-8">Since a pipe is by definition unidirectional, the type argument may specify only reading or writing, <em>not both</em>; the resulting stream is correspondingly read-only or write-only.</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#39640;&#24773;&#21830; API (&#29616;&#20195;&#32534;&#31243;&#35821;&#35328;)</p>
+<p class=" font-serif my-1">高情商 API (现代编程语言)</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">subprocess</span><span class="o">.</span><span class="n">check_output</span><span class="p">([</span><span class="s1">'cat'</span><span class="p">],</span>
   <span class="nb">input</span><span class="o">=</span><span class="sa">b</span><span class="s1">'Hello World'</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">STDOUT</span><span class="p">)</span>
 </code></pre></div>
@@ -561,7 +561,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="3" class=" text-2xl mt-2 font-sans">&#23553;&#35013; (3): &#26356;&#22810;&#30340;&#36827;&#31243;/&#25805;&#20316;&#31995;&#32479;&#21151;&#33021;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="3" class=" text-2xl mt-2 font-sans">封装 (3): 更多的进程/操作系统功能</h1></div></div></div>
         
       
       </section>
@@ -573,25 +573,25 @@ section .center {
       
         
         <div><h2 id="err-error-perror" class=" text-xl mt-2 pb-2 font-sans">err, error, perror</h2>
-<p class=" font-serif my-1">&#25152;&#26377; API &#37117;&#21487;&#33021;&#22833;&#36133;</p>
+<p class=" font-serif my-1">所有 API 都可能失败</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>$ gcc nonexist.c
 gcc: error: nonexist.c: No such file or directory
 </code></pre></div>
 
 <hr>
-<p class=" font-serif my-1">&#36825;&#20010; &#8220;No such file or directory&#8221; &#20284;&#20046;&#35265;&#24471;&#26377;&#28857;&#22810;&#65311;</p>
+<p class=" font-serif my-1">这个 “No such file or directory” 似乎见得有点多？</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><code>cat nonexist.c, wc nonexist.c</code> &#37117;&#26159;&#21516;&#26679;&#30340; error message</li>
-<li class=" ml-8">&#36825;&#19981;&#26159;&#24039;&#21512;&#65281;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#25105;&#20204;&#20063;&#21487;&#20197; &#8220;&#23665;&#23528;&#8221; &#20986;&#21516;&#26679;&#30340;&#25928;&#26524;</li>
-<li class=" ml-8"><code>warn("%s", fname);</code> (&#35266;&#23519; strace)<ul class=" list-disc font-serif">
-<li class=" ml-8"><code>err</code> &#21487;&#20197;&#39069;&#22806;&#36864;&#20986;&#31243;&#24207;</li>
+<li class=" ml-8"><code>cat nonexist.c, wc nonexist.c</code> 都是同样的 error message</li>
+<li class=" ml-8">这不是巧合！<ul class=" list-disc font-serif">
+<li class=" ml-8">我们也可以 “山寨” 出同样的效果</li>
+<li class=" ml-8"><code>warn("%s", fname);</code> (观察 strace)<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>err</code> 可以额外退出程序</li>
 </ul>
 </li>
 </ul>
 </li>
-<li class=" ml-8">errno &#26159;&#36827;&#31243;&#20849;&#20139;&#36824;&#26159;&#32447;&#31243;&#29420;&#20139;&#65311;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#36825;&#19979;&#30693;&#36947;&#21327;&#31243;&#30340;&#36731;&#37327;&#20102;&#21543;</li>
+<li class=" ml-8">errno 是进程共享还是线程独享？<ul class=" list-disc font-serif">
+<li class=" ml-8">这下知道协程的轻量了吧</li>
 </ul>
 </li>
 </ul></div>
@@ -607,17 +607,17 @@ gcc: error: nonexist.c: No such file or directory
         
         <div><h2 id="environ-7" class=" text-xl mt-2 pb-2 font-sans">environ (7)</h2>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/GET.jpg" width="400px"></p>
-<p class=" font-serif my-1">&#25105;&#20204;&#20063;&#21487;&#20197;&#23454;&#29616;&#33258;&#24049;&#30340; <a href="../../../pages/OS/2022/demos/env.c" class=" text-amber-900">env.c</a></p>
+<p class=" font-serif my-1">我们也可以实现自己的 <a href="../../../pages/OS/2022/demos/env.c" class=" text-amber-900">env.c</a></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#38382;&#39064;&#26469;&#20102;&#65306;environ &#26159;&#35841;&#36171;&#20540;&#30340;&#65311;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#36825;&#20010;&#20989;&#25968;&#21448;&#26159;&#22312;&#21738;&#37324;&#23450;&#20041;&#30340;&#65311;</li>
+<li class=" ml-8">问题来了：environ 是谁赋值的？<ul class=" list-disc font-serif">
+<li class=" ml-8">这个函数又是在哪里定义的？</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">RTFM &#21518;</p>
+<p class=" font-serif my-1">RTFM 后</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#23545;&#29615;&#22659;&#21464;&#37327;&#30340;&#29702;&#35299;&#21448;&#19978;&#21319;&#20102;</li>
+<li class=" ml-8">对环境变量的理解又上升了</li>
 </ul></div>
         
       
@@ -633,7 +633,7 @@ gcc: error: nonexist.c: No such file or directory
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="4" class=" text-2xl mt-2 font-sans">&#23553;&#35013; (4): &#22320;&#22336;&#31354;&#38388;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="4" class=" text-2xl mt-2 font-sans">封装 (4): 地址空间</h1></div></div></div>
         
       
       </section>
@@ -644,27 +644,27 @@ gcc: error: nonexist.c: No such file or directory
 
       
         
-        <div><h2 id="malloc-free" class=" text-xl mt-2 pb-2 font-sans">malloc &#21644; free</h2>
-<p class=" font-serif my-1">Specification &#24456;&#31616;&#21333; (&#21516; <a href="../Labs/L1.html" class=" text-amber-900">Lab1</a>)</p>
+        <div><h2 id="malloc-free" class=" text-xl mt-2 pb-2 font-sans">malloc 和 free</h2>
+<p class=" font-serif my-1">Specification 很简单 (同 <a href="../Labs/L1.html" class=" text-amber-900">Lab1</a>)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#22312;&#22823;&#21306;&#38388; $[L, R)$ &#20013;&#32500;&#25252;&#20114;&#19981;&#30456;&#20132;&#30340;&#21306;&#38388;&#30340;&#38598;&#21512;</li>
+<li class=" ml-8">在大区间 $[L, R)$ 中维护互不相交的区间的集合</li>
 </ul>
 <p class=" font-serif my-1">$$ M = \big\{ [\ell_0, r_0), [\ell_1, r_1), \ldots, [\ell_n, r_n) \big\}$$</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">malloc($s$) - &#36820;&#22238;&#19968;&#27573;&#22823;&#23567;&#20026; $s$ &#30340;&#21306;&#38388;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#24517;&#35201;&#26102;&#21487;&#20197;&#21521;&#25805;&#20316;&#31995;&#32479;&#30003;&#35831;&#39069;&#22806;&#30340; $[L, R)$ (&#35266;&#23519; strace)</li>
-<li class=" ml-8">&#20801;&#35768;&#22312;&#20869;&#23384;&#19981;&#36275;&#26102; &#8220;&#25298;&#32477;&#8221; &#35831;&#27714;</li>
+<li class=" ml-8">malloc($s$) - 返回一段大小为 $s$ 的区间<ul class=" list-disc font-serif">
+<li class=" ml-8">必要时可以向操作系统申请额外的 $[L, R)$ (观察 strace)</li>
+<li class=" ml-8">允许在内存不足时 “拒绝” 请求</li>
 </ul>
 </li>
-<li class=" ml-8">free($\ell, r$) - &#32473;&#23450; $\ell$&#65292;&#21024;&#38500; $[\ell, r) \in M$<ul class=" list-disc font-serif">
-<li class=" ml-8">&#26159;&#21542;&#24819;&#36215;&#20102;&#12298;&#31639;&#27861;&#23548;&#35770;&#12299;&#65311;</li>
+<li class=" ml-8">free($\ell, r$) - 给定 $\ell$，删除 $[\ell, r) \in M$<ul class=" list-disc font-serif">
+<li class=" ml-8">是否想起了《算法导论》？</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#22810;&#32447;&#31243;&#23433;&#20840;</p>
+<p class=" font-serif my-1">多线程安全</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">Scalability &#23601;&#26159;&#20010;&#24456;&#22823;&#30340;&#38382;&#39064;&#20102;</li>
+<li class=" ml-8">Scalability 就是个很大的问题了</li>
 </ul></div>
         
       
@@ -676,24 +676,24 @@ gcc: error: nonexist.c: No such file or directory
 
       
         
-        <div><h2 id="mallocfree" class=" text-xl mt-2 pb-2 font-sans">&#23454;&#29616;&#39640;&#25928;&#30340; malloc/free</h2>
+        <div><h2 id="mallocfree" class=" text-xl mt-2 pb-2 font-sans">实现高效的 malloc/free</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
 <p class=" font-serif my-1">Premature optimization is the root of all evil.</p>
-<p class=" font-serif my-1">&#8212;&#8212;D. E. Knuth</p>
+<p class=" font-serif my-1">——D. E. Knuth</p>
 </blockquote>
-<p class=" font-serif my-1">&#37325;&#35201;&#30340;&#20107;&#24773;&#35828;&#19977;&#36941;&#65306;</p>
+<p class=" font-serif my-1">重要的事情说三遍：</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><red>&#33073;&#31163; workload &#20570;&#20248;&#21270;&#23601;&#26159;&#32781;&#27969;&#27667;</red></li>
-<li class=" ml-8"><red>&#33073;&#31163; workload &#20570;&#20248;&#21270;&#23601;&#26159;&#32781;&#27969;&#27667;</red></li>
-<li class=" ml-8"><red>&#33073;&#31163; workload &#20570;&#20248;&#21270;&#23601;&#26159;&#32781;&#27969;&#27667;</red><ul class=" list-disc font-serif">
-<li class=" ml-8">&#22312;&#24320;&#22987;&#32771;&#34385;&#24615;&#33021;&#20043;&#21069;&#65292;&#29702;&#35299;&#20320;&#38656;&#35201;&#32771;&#34385;&#20160;&#20040;&#26679;&#30340;&#24615;&#33021;</li>
+<li class=" ml-8"><red>脱离 workload 做优化就是耍流氓</red></li>
+<li class=" ml-8"><red>脱离 workload 做优化就是耍流氓</red></li>
+<li class=" ml-8"><red>脱离 workload 做优化就是耍流氓</red><ul class=" list-disc font-serif">
+<li class=" ml-8">在开始考虑性能之前，理解你需要考虑什么样的性能</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#28982;&#21518;&#65292;&#21435;&#21738;&#37324;&#25214; workload?</p>
+<p class=" font-serif my-1">然后，去哪里找 workload?</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#24403;&#28982;&#26159; paper &#20102; (&#39034;&#20415;&#30333;&#24471;&#19968;&#20010;&#26041;&#26696;)<ul class=" list-disc font-serif">
+<li class=" ml-8">当然是 paper 了 (顺便白得一个方案)<ul class=" list-disc font-serif">
 <li class=" ml-8"><a href="https://www.microsoft.com/en-us/research/uploads/prod/2019/06/mimalloc-tr-v1.pdf" class=" text-amber-900">Mimalloc: free list sharding in action</a> (APLAS'19)</li>
 </ul>
 </li>
@@ -708,26 +708,26 @@ gcc: error: nonexist.c: No such file or directory
 
       
         
-        <div><h2 id="workload" class=" text-xl mt-2 pb-2 font-sans">Workload &#20998;&#26512;</h2>
+        <div><h2 id="workload" class=" text-xl mt-2 pb-2 font-sans">Workload 分析</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#25351;&#23548;&#24605;&#24819;&#65306;$O(n)$ &#22823;&#23567;&#30340;&#23545;&#35937;&#20998;&#37197;&#21518;&#33267;&#23569;&#26377; $\Omega(n)$ &#30340;&#35835;&#20889;&#25805;&#20316;&#65292;&#21542;&#21017;&#23601;&#26159; performance bug (&#19981;&#24212;&#35813;&#20998;&#37197;&#37027;&#20040;&#22810;)&#12290;</p>
+<p class=" font-serif my-1">指导思想：$O(n)$ 大小的对象分配后至少有 $\Omega(n)$ 的读写操作，否则就是 performance bug (不应该分配那么多)。</p>
 </blockquote>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#36234;&#23567;&#30340;&#23545;&#35937;&#21019;&#24314;/&#20998;&#37197;&#36234;&#39057;&#32321;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#23383;&#31526;&#20018;&#12289;&#20020;&#26102;&#23545;&#35937;&#31561; (&#20960;&#21313;&#21040;&#20960;&#30334;&#23383;&#33410;)&#65307;&#29983;&#23384;&#21608;&#26399;&#21487;&#38271;&#21487;&#30701; </li>
+<li class=" ml-8">越小的对象创建/分配越频繁<ul class=" list-disc font-serif">
+<li class=" ml-8">字符串、临时对象等 (几十到几百字节)；生存周期可长可短 </li>
 </ul>
 </li>
-<li class=" ml-8">&#36739;&#20026;&#39057;&#32321;&#22320;&#20998;&#37197;&#20013;&#31561;&#22823;&#23567;&#30340;&#23545;&#35937;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#36739;&#22823;&#30340;&#25968;&#32452;&#12289;&#22797;&#26434;&#30340;&#23545;&#35937;&#65307;&#26356;&#38271;&#30340;&#29983;&#23384;&#21608;&#26399;</li>
+<li class=" ml-8">较为频繁地分配中等大小的对象<ul class=" list-disc font-serif">
+<li class=" ml-8">较大的数组、复杂的对象；更长的生存周期</li>
 </ul>
 </li>
-<li class=" ml-8">&#20302;&#39057;&#29575;&#30340;&#22823;&#23545;&#35937;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#24040;&#22823;&#30340;&#23481;&#22120;&#12289;&#20998;&#37197;&#22120;&#65307;&#24456;&#38271;&#30340;&#29983;&#23384;&#21608;&#26399;</li>
+<li class=" ml-8">低频率的大对象<ul class=" list-disc font-serif">
+<li class=" ml-8">巨大的容器、分配器；很长的生存周期</li>
 </ul>
 </li>
-<li class=" ml-8"><red>&#24182;&#34892;&#12289;&#24182;&#34892;&#12289;&#20877;&#24182;&#34892;</red><ul class=" list-disc font-serif">
-<li class=" ml-8">&#25152;&#26377;&#20998;&#37197;&#37117;&#20250;&#22312;&#25152;&#26377;&#22788;&#29702;&#22120;&#19978;&#21457;&#29983;</li>
-<li class=" ml-8">&#20351;&#29992;&#38142;&#34920;/&#21306;&#38388;&#26641; (first fit) &#21487;&#19981;&#26159;&#20010;&#22909;&#24819;&#27861;</li>
+<li class=" ml-8"><red>并行、并行、再并行</red><ul class=" list-disc font-serif">
+<li class=" ml-8">所有分配都会在所有处理器上发生</li>
+<li class=" ml-8">使用链表/区间树 (first fit) 可不是个好想法</li>
 </ul>
 </li>
 </ul></div>
@@ -742,24 +742,24 @@ gcc: error: nonexist.c: No such file or directory
       
         
         <div><h2 id="malloc-fast-and-slow" class=" text-xl mt-2 pb-2 font-sans"><code>malloc</code>, Fast and Slow</h2>
-<p class=" font-serif my-1">&#35774;&#32622;&#20004;&#22871;&#31995;&#32479;&#65306;</p>
+<p class=" font-serif my-1">设置两套系统：</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">fast path<ul class=" list-disc font-serif">
-<li class=" ml-8">&#24615;&#33021;&#26497;&#22909;&#12289;&#24182;&#34892;&#24230;&#26497;&#39640;&#12289;&#35206;&#30422;&#22823;&#37096;&#20998;&#24773;&#20917;</li>
-<li class=" ml-8">&#20294;&#26377;&#23567;&#27010;&#29575;&#20250;&#22833;&#36133; (fall back to slow path)</li>
+<li class=" ml-8">性能极好、并行度极高、覆盖大部分情况</li>
+<li class=" ml-8">但有小概率会失败 (fall back to slow path)</li>
 </ul>
 </li>
 <li class=" ml-8">slow path<ul class=" list-disc font-serif">
-<li class=" ml-8">&#19981;&#22312;&#20046;&#37027;&#20040;&#24555;</li>
-<li class=" ml-8">&#20294;&#25226;&#22256;&#38590;&#30340;&#20107;&#24773;&#20570;&#22909;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#35745;&#31639;&#26426;&#31995;&#32479;&#37324;&#26377;&#24456;&#22810;&#36825;&#26679;&#30340;&#20363;&#23376; (&#27604;&#22914; cache)</li>
+<li class=" ml-8">不在乎那么快</li>
+<li class=" ml-8">但把困难的事情做好<ul class=" list-disc font-serif">
+<li class=" ml-8">计算机系统里有很多这样的例子 (比如 cache)</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#20154;&#31867;&#20063;&#26159;&#36825;&#26679;&#30340;&#31995;&#32479;</p>
+<p class=" font-serif my-1">人类也是这样的系统</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">Daniel Kahneman. <em>Thinking, Fast and Slow</em>. Farrar, Straus and Giroux, 2011.</li>
 </ul></div>
@@ -773,20 +773,20 @@ gcc: error: nonexist.c: No such file or directory
 
       
         
-        <div><h2 id="malloc-fast-path" class=" text-xl mt-2 pb-2 font-sans"><code>malloc</code>: Fast Path &#35774;&#35745;</h2>
-<p class=" font-serif my-1"><red>&#20351;&#25152;&#26377; CPU &#37117;&#33021;&#24182;&#34892;&#22320;&#30003;&#35831;&#20869;&#23384;</red></p>
+        <div><h2 id="malloc-fast-path" class=" text-xl mt-2 pb-2 font-sans"><code>malloc</code>: Fast Path 设计</h2>
+<p class=" font-serif my-1"><red>使所有 CPU 都能并行地申请内存</red></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#32447;&#31243;&#37117;&#20107;&#20808;&#29916;&#20998;&#19968;&#20123; &#8220;&#39046;&#22320;&#8221; (thread-local allocation buffer)</li>
-<li class=" ml-8">&#40664;&#35748;&#20174;&#33258;&#24049;&#30340;&#39046;&#22320;&#37324;&#20998;&#37197;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#38500;&#20102;&#22312;&#21478;&#19968;&#20010; CPU &#37322;&#25918;&#65292;acquire lock &#20960;&#20046;&#24635;&#26159;&#25104;&#21151;</li>
+<li class=" ml-8">线程都事先瓜分一些 “领地” (thread-local allocation buffer)</li>
+<li class=" ml-8">默认从自己的领地里分配<ul class=" list-disc font-serif">
+<li class=" ml-8">除了在另一个 CPU 释放，acquire lock 几乎总是成功</li>
 </ul>
 </li>
-<li class=" ml-8">&#22914;&#26524;&#33258;&#24049;&#30340;&#39046;&#22320;&#19981;&#36275;&#65292;&#23601;&#20174;&#20840;&#23616;&#30340;&#27744;&#23376;&#37324;&#20511;&#19968;&#28857;</li>
+<li class=" ml-8">如果自己的领地不足，就从全局的池子里借一点</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#19981;&#35201;&#22312;&#20046;&#19968;&#28857;&#23567;&#30340;&#28010;&#36153;</p>
+<p class=" font-serif my-1">不要在乎一点小的浪费</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#36825;&#23601;&#26159;&#20026;&#20160;&#20040;&#35201;&#23545;&#40784;&#21040; $2^k$ &#23383;&#33410;</li>
+<li class=" ml-8">这就是为什么要对齐到 $2^k$ 字节</li>
 </ul></div>
         
       
@@ -798,27 +798,27 @@ gcc: error: nonexist.c: No such file or directory
 
       
         
-        <div><h2 id="segregated-list" class=" text-xl mt-2 pb-2 font-sans">&#23567;&#20869;&#23384;&#65306;Segregated List</h2>
+        <div><h2 id="segregated-list" class=" text-xl mt-2 pb-2 font-sans">小内存：Segregated List</h2>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/slabs.jpg" width="400px"></p>
-<p class=" font-serif my-1">&#20998;&#37197;: Segregated List (Slab)</p>
+<p class=" font-serif my-1">分配: Segregated List (Slab)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#27599;&#20010; slab &#37324;&#30340;&#27599;&#20010;&#23545;&#35937;&#37117;&#19968;&#26679;&#22823;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#27599;&#20010;&#32447;&#31243;&#25317;&#26377;&#27599;&#20010;&#23545;&#35937;&#22823;&#23567;&#30340; slab</li>
-<li class=" ml-8">fast path &#8594; &#31435;&#21363;&#22312;&#32447;&#31243;&#26412;&#22320;&#20998;&#37197;&#23436;&#25104;</li>
-<li class=" ml-8">slow path &#8594; pgalloc()</li>
+<li class=" ml-8">每个 slab 里的每个对象都一样大<ul class=" list-disc font-serif">
+<li class=" ml-8">每个线程拥有每个对象大小的 slab</li>
+<li class=" ml-8">fast path → 立即在线程本地分配完成</li>
+<li class=" ml-8">slow path → pgalloc()</li>
 </ul>
 </li>
-<li class=" ml-8">&#20004;&#31181;&#23454;&#29616;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20840;&#23616;&#22823;&#38142;&#34920; v.s. List sharding (per-page &#23567;&#38142;&#34920;)</li>
+<li class=" ml-8">两种实现<ul class=" list-disc font-serif">
+<li class=" ml-8">全局大链表 v.s. List sharding (per-page 小链表)</li>
 </ul>
 </li>
 </ul>
 <hr>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/race.jpg" width="240px"></p>
-<p class=" font-serif my-1">&#22238;&#25910;</p>
+<p class=" font-serif my-1">回收</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#30452;&#25509;&#24402;&#36824;&#21040; slab &#20013;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#27880;&#24847;&#36825;&#21487;&#33021;&#26159;&#21478;&#19968;&#20010;&#32447;&#31243;&#25345;&#26377;&#30340; slab&#65292;&#38656;&#35201; per-slab &#38145; (&#23567;&#24515;&#25968;&#25454;&#31454;&#20105;)</li>
+<li class=" ml-8">直接归还到 slab 中<ul class=" list-disc font-serif">
+<li class=" ml-8">注意这可能是另一个线程持有的 slab，需要 per-slab 锁 (小心数据竞争)</li>
 </ul>
 </li>
 </ul></div>
@@ -832,19 +832,19 @@ gcc: error: nonexist.c: No such file or directory
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#22823;&#20869;&#23384;&#65306;&#19968;&#25226;&#22823;&#38145;&#20445;&#24179;&#23433;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">大内存：一把大锁保平安</h2>
 <p class=" font-serif my-1">Buddy system (1963)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#22914;&#26524;&#20320;&#24819;&#20998;&#37197; 1, 2, 3, 4, ... $n$ &#20010;&#36830;&#32493;&#30340;&#39029;&#38754;&#65311;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20363;&#22914;&#65306;64 KB/&#39029;&#38754;</li>
+<li class=" ml-8">如果你想分配 1, 2, 3, 4, ... $n$ 个连续的页面？<ul class=" list-disc font-serif">
+<li class=" ml-8">例如：64 KB/页面</li>
 </ul>
 </li>
-<li class=" ml-8">&#37027;&#23601; first fit &#25110;&#32773; best fit &#21543;&#8230;&#8230;</li>
+<li class=" ml-8">那就 first fit 或者 best fit 吧……</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#20320;&#21482;&#38656;&#35201;&#19968;&#20010;&#25968;&#25454;&#32467;&#26500;&#35299;&#20915;&#38382;&#39064;</p>
+<p class=" font-serif my-1">你只需要一个数据结构解决问题</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#21306;&#38388;&#26641;&#65307;&#32447;&#27573;&#26641;&#8230;&#8230;</li>
+<li class=" ml-8">区间树；线段树……</li>
 </ul></div>
         
       
@@ -856,15 +856,15 @@ gcc: error: nonexist.c: No such file or directory
 
       
         
-        <div><h2 id="mallocfree" class=" text-xl mt-2 pb-2 font-sans">&#29616;&#23454;&#19990;&#30028;&#20013;&#30340; malloc/free</h2>
-<p class=" font-serif my-1">&#20197;&#19978;&#23601;&#26159;&#25152;&#26377;&#29616;&#20195; malloc/free &#23454;&#29616;&#30340;&#22522;&#30784;</p>
+        <div><h2 id="mallocfree" class=" text-xl mt-2 pb-2 font-sans">现实世界中的 malloc/free</h2>
+<p class=" font-serif my-1">以上就是所有现代 malloc/free 实现的基础</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#24403;&#28982;&#65292;&#23454;&#38469;&#24773;&#20917;&#20250;&#22797;&#26434;&#19968;&#20123;&#65292;&#24615;&#33021;&#20063;&#26159;&#38193;&#38114;&#24517;&#36739;<ul class=" list-disc font-serif">
-<li class=" ml-8"><a href="https://sourceware.org/glibc/wiki/MallocInternals" class=" text-amber-900">glibc</a>: arena &#8594; heap &#8594; tcache (thread-local)</li>
+<li class=" ml-8">当然，实际情况会复杂一些，性能也是锱铢必较<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="https://sourceware.org/glibc/wiki/MallocInternals" class=" text-amber-900">glibc</a>: arena → heap → tcache (thread-local)</li>
 <li class=" ml-8"><a href="https://google.github.io/tcmalloc/design.html" class=" text-amber-900">tcmalloc</a>: thread-caching malloc, <a href="https://github.com/microsoft/mimalloc" class=" text-amber-900">mimalloc</a>
     <img alt="" class="center" src="../../../pages/OS/img/tcmalloc.png" width="640px"></li>
 <li class=" ml-8"><a href="https://wiki.openjdk.java.net/display/zgc/Main" class=" text-amber-900">OpenJDK: ZGC</a>: region based + tlab (thread-local)<ul class=" list-disc font-serif">
-<li class=" ml-8">managed memory &#20801;&#35768; object move&#65292;&#22240;&#27492;&#22797;&#26434;&#24471;&#22810;&#8230;&#8230;</li>
+<li class=" ml-8">managed memory 允许 object move，因此复杂得多……</li>
 </ul>
 </li>
 </ul>
@@ -884,7 +884,7 @@ gcc: error: nonexist.c: No such file or directory
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#26080;&#27490;&#22659;&#22320;&#23553;&#35013;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">无止境地封装</h1></div></div></div>
         
       
       </section>
@@ -895,19 +895,19 @@ gcc: error: nonexist.c: No such file or directory
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#24819;&#30693;&#36947;&#26377;&#27809;&#26377;&#26356;&#22810;&#30340;&#21151;&#33021;&#65311;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">想知道有没有更多的功能？</h2>
 <p class=" font-serif my-1">RTFM: <a href="https://www.gnu.org/software/libc/manual/" class=" text-amber-900">The GNU C Library</a>, RTFSC: <a href="https://sourceware.org/newlib/" class=" text-amber-900">Newlib</a></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#37117;&#19981;&#22826;&#38271; (glibc &#30340;&#25163;&#20876;&#21644; newlib &#30340;&#28304;&#30721;) &#20063;&#22909;&#35835;</li>
-<li class=" ml-8">Computer System &#31995;&#21015;&#35838;&#31243;&#30340;&#37325;&#35201;&#30446;&#26631;&#65306;&#25670;&#27491;&#30475;&#25163;&#20876;&#30340;&#24515;&#24577;</li>
+<li class=" ml-8">都不太长 (glibc 的手册和 newlib 的源码) 也好读</li>
+<li class=" ml-8">Computer System 系列课程的重要目标：摆正看手册的心态</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#20320;&#20250;&#21457;&#29616;&#24456;&#22810;&#23453;&#34255;</p>
+<p class=" font-serif my-1">你会发现很多宝藏</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">Globbing</li>
 <li class=" ml-8">Regex</li>
 <li class=" ml-8">Shell-style word expansion</li>
-<li class=" ml-8">&#8230;&#8230;</li>
+<li class=" ml-8">……</li>
 </ul></div>
         
       
@@ -919,23 +919,23 @@ gcc: error: nonexist.c: No such file or directory
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25105;&#20204;&#36824;&#21487;&#20197;&#8230;&#8230;</h2>
-<p class=" font-serif my-1">&#36208;&#20986; C &#30340;&#39046;&#22495;&#65292;&#22522;&#20110; libc &#23454;&#29616;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">我们还可以……</h2>
+<p class=" font-serif my-1">走出 C 的领域，基于 libc 实现</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">C++ &#32534;&#35793;&#22120;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#32487;&#32493;&#23454;&#29616; C++ Standard Library</li>
-<li class=" ml-8">&#32487;&#32493;&#23454;&#29616; <a href="https://openjdk.java.net/groups/hotspot/" class=" text-amber-900">OpenJDK (HotSpot)</a></li>
-<li class=" ml-8">&#32487;&#32493;&#23454;&#29616; <a href="https://v8.dev" class=" text-amber-900">V8</a> (JavaScript)</li>
+<li class=" ml-8">C++ 编译器<ul class=" list-disc font-serif">
+<li class=" ml-8">继续实现 C++ Standard Library</li>
+<li class=" ml-8">继续实现 <a href="https://openjdk.java.net/groups/hotspot/" class=" text-amber-900">OpenJDK (HotSpot)</a></li>
+<li class=" ml-8">继续实现 <a href="https://v8.dev" class=" text-amber-900">V8</a> (JavaScript)</li>
 </ul>
 </li>
 <li class=" ml-8">CPython</li>
 <li class=" ml-8">Go<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20877;&#20043;&#21518; Go &#23601;&#21487;&#20197;&#33258;&#24049;&#32534;&#35793;&#33258;&#24049;&#20102; (Goodbye, C!)</li>
+<li class=" ml-8">再之后 Go 就可以自己编译自己了 (Goodbye, C!)</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">Eventually, (&#21315;&#30126;&#30334;&#23380;) &#30340;&#25972;&#20010;&#35745;&#31639;&#26426;&#19990;&#30028;&#65281;</p>
+<p class=" font-serif my-1">Eventually, (千疮百孔) 的整个计算机世界！</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><a href="https://dl.acm.org/doi/pdf/10.1145/3209212" class=" text-amber-900">C is not a low-level language</a> (CACM'18)</li>
 <li class=" ml-8"><a href="https://gankra.github.io/blah/c-isnt-a-language/" class=" text-amber-900">C isn't a programming language any more</a> (Gankra's Blog)</li>
@@ -954,7 +954,7 @@ gcc: error: nonexist.c: No such file or directory
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#24635;&#32467;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">总结</h1></div></div></div>
         
       
       </section>
@@ -965,23 +965,23 @@ gcc: error: nonexist.c: No such file or directory
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#24635;&#32467;</h2>
-<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#22238;&#31572;&#30340;&#38382;&#39064;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">总结</h2>
+<p class=" font-serif my-1">本次课回答的问题</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><strong>Q</strong>: &#22914;&#20309;&#22312;&#31995;&#32479;&#35843;&#29992;&#20043;&#19978;&#26500;&#24314;&#31243;&#24207;&#33021;&#22815;&#26222;&#36941;&#21463;&#24800;&#30340;&#26631;&#20934;&#24211;&#65311;</li>
+<li class=" ml-8"><strong>Q</strong>: 如何在系统调用之上构建程序能够普遍受惠的标准库？</li>
 </ul>
 <hr>
 <p class=" font-serif my-1">Take-away messages</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">libc<ul class=" list-disc font-serif">
-<li class=" ml-8">RTFM; RTFSC: &#20805;&#28385;&#20102;&#23453;&#34255;</li>
-<li class=" ml-8">&#24615;&#33021;&#20248;&#21270;&#20013;&#30340; fast/slow path</li>
+<li class=" ml-8">RTFM; RTFSC: 充满了宝藏</li>
+<li class=" ml-8">性能优化中的 fast/slow path</li>
 </ul>
 </li>
-<li class=" ml-8">&#28982;&#21518;&#65292;&#20320;&#25317;&#26377;&#20102;&#25972;&#20010;&#19990;&#30028;&#65281;</li>
+<li class=" ml-8">然后，你拥有了整个世界！</li>
 </ul>
 <hr>
-<p class=" font-serif my-1"><red>4 &#26376; 2 &#26085; (&#21608;&#20845;) &#32447;&#19978;&#27979;&#39564;</red></p></div>
+<p class=" font-serif my-1"><red>4 月 2 日 (周六) 线上测验</red></p></div>
         
       
       </section>

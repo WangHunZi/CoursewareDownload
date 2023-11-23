@@ -2,7 +2,7 @@
 <head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>27. &#35774;&#22791;&#39537;&#21160;&#31243;&#24207;&#19982;&#25991;&#20214;&#31995;&#32479;</title>
+<title>27. 设备驱动程序与文件系统</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script><script>
 (function() {
   function addWidgetsRenderer() {
@@ -6481,7 +6481,7 @@ cell outputs.
 
 .jp-Notebook .jp-Cell.jp-mod-dirty .jp-InputPrompt::before {
   color: var(--jp-warn-color1);
-  content: '&#8226;';
+  content: '•';
 }
 
 .jp-Notebook .jp-Cell.jp-mod-active.jp-mod-dirty .jp-Collapser {
@@ -7518,7 +7518,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[1]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">mosaic</span> <span class="kn">import</span> <span class="o">*</span>
@@ -7690,18 +7690,18 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-InputPrompt jp-InputArea-prompt">
 </div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="27.-%E8%AE%BE%E5%A4%87%E9%A9%B1%E5%8A%A8%E7%A8%8B%E5%BA%8F%E4%B8%8E%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F">27. &#35774;&#22791;&#39537;&#21160;&#31243;&#24207;&#19982;&#25991;&#20214;&#31995;&#32479;<a class="anchor-link" href="#27.-%E8%AE%BE%E5%A4%87%E9%A9%B1%E5%8A%A8%E7%A8%8B%E5%BA%8F%E4%B8%8E%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F">&#182;</a>
+<h1 id="27.-%E8%AE%BE%E5%A4%87%E9%A9%B1%E5%8A%A8%E7%A8%8B%E5%BA%8F%E4%B8%8E%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F">27. 设备驱动程序与文件系统<a class="anchor-link" href="#27.-%E8%AE%BE%E5%A4%87%E9%A9%B1%E5%8A%A8%E7%A8%8B%E5%BA%8F%E4%B8%8E%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F">¶</a>
 </h1>
-<p><strong>Changelog &amp; &#21453;&#39304;</strong></p>
+<p><strong>Changelog & 反馈</strong></p>
 <ul>
-<li>&#33392;&#38590;&#22320;&#22788;&#29702;&#21508;&#31181;&#27424;&#19979;&#30340;&#20107;&#24773;</li>
-<li>Deadline &#20250;&#30456;&#24403;&#23485;&#26494;&#30340;&#65292;&#35831;&#22823;&#23478;&#25918;&#24515;</li>
+<li>艰难地处理各种欠下的事情</li>
+<li>Deadline 会相当宽松的，请大家放心</li>
 </ul>
-<p><strong>&#32972;&#26223;&#22238;&#39038;</strong>&#65306;&#25105;&#20204;&#21487;&#20197;&#25226;&#35774;&#22791;&#24819;&#35937;&#25104;&#19968;&#32452;&#23492;&#23384;&#22120;&#65292;&#20197;&#21450;&#23492;&#23384;&#22120;&#22522;&#30784;&#19978;&#30340;&#19968;&#20010;&#35774;&#22791;&#36890;&#20449;&#21327;&#35758;&#65292;&#33021;&#22815;&#23454;&#29616;&#22788;&#29702;&#22120;&#21644;&#35774;&#22791;&#20043;&#38388;&#30340;&#25968;&#25454;&#20132;&#25442;&#65306;&#25968;&#25454;&#21487;&#20197;&#23567;&#21040;&#19968;&#20010;&#23383;&#31526; (&#20018;&#21475;)&#65292;&#20063;&#21487;&#20197;&#22823;&#21040;&#31243;&#24207;&#21644;&#28023;&#37327;&#30340;&#25968;&#25454; (GPU)&#12290;</p>
-<p><strong>&#26412;&#35762;&#20869;&#23481;</strong>&#65306;&#24456;&#33258;&#28982;&#30340;&#38382;&#39064;&#26159;&#65292;&#22914;&#26524;&#25805;&#20316;&#31995;&#32479;&#19978;&#30340;&#31243;&#24207;&#24819;&#35201;&#35775;&#38382;&#35774;&#22791;&#65292;&#23601;&#24517;&#39035;&#25226;&#35774;&#22791;&#25277;&#35937;&#25104;&#19968;&#20010;&#36827;&#31243;&#21487;&#20197;&#20351;&#29992;&#31995;&#32479;&#35843;&#29992;&#35775;&#38382;&#30340;&#25805;&#20316;&#31995;&#32479;&#23545;&#35937;&#65292;&#20063;&#23601;&#26159;&#35774;&#22791;&#39537;&#21160;&#31243;&#24207;&#21644;&#25991;&#20214;&#31995;&#32479;&#65306;</p>
+<p><strong>背景回顾</strong>：我们可以把设备想象成一组寄存器，以及寄存器基础上的一个设备通信协议，能够实现处理器和设备之间的数据交换：数据可以小到一个字符 (串口)，也可以大到程序和海量的数据 (GPU)。</p>
+<p><strong>本讲内容</strong>：很自然的问题是，如果操作系统上的程序想要访问设备，就必须把设备抽象成一个进程可以使用系统调用访问的操作系统对象，也就是设备驱动程序和文件系统：</p>
 <ul>
-<li>&#35774;&#22791;&#39537;&#21160;&#31243;&#24207;</li>
-<li>&#25991;&#20214;&#31995;&#32479; API</li>
+<li>设备驱动程序</li>
+<li>文件系统 API</li>
 </ul>
 </div>
 </div>
@@ -7712,7 +7712,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[2]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'27.1'</span><span class="p">)</span>
@@ -7741,7 +7741,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'27.2'</span><span class="p">)</span>
@@ -7770,7 +7770,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">demo</span><span class="p">(</span><span class="s1">'launcher'</span><span class="p">,</span> <span class="s1">'p/launcher'</span><span class="p">)</span>
@@ -7802,7 +7802,7 @@ var element = document.getElementById('9c00cae8-9147-4494-b0a0-cc23343aac5c');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[5]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'27.3'</span><span class="p">)</span>
@@ -7831,7 +7831,7 @@ var element = document.getElementById('9c00cae8-9147-4494-b0a0-cc23343aac5c');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[6]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'27.4'</span><span class="p">)</span>
@@ -7860,7 +7860,7 @@ var element = document.getElementById('9c00cae8-9147-4494-b0a0-cc23343aac5c');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[7]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">demo</span><span class="p">(</span><span class="s1">'linux-minimal'</span><span class="p">,</span> <span class="s1">'v/linux-minimal'</span><span class="p">)</span>
@@ -7892,7 +7892,7 @@ var element = document.getElementById('15c571c7-7523-47b4-bb45-ee2d61cc4cbd');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[8]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">demo</span><span class="p">(</span><span class="s1">'fish'</span><span class="p">,</span> <span class="s1">'p/fish'</span><span class="p">)</span>
@@ -7927,16 +7927,16 @@ var element = document.getElementById('04d3b19e-e33a-45d0-885e-d5fc6e2bcfb2');
 <div class="jp-InputPrompt jp-InputArea-prompt">
 </div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Take-away-Messages">Take-away Messages<a class="anchor-link" href="#Take-away-Messages">&#182;</a>
+<h2 id="Take-away-Messages">Take-away Messages<a class="anchor-link" href="#Take-away-Messages">¶</a>
 </h2>
-<p>&#25805;&#20316;&#31995;&#32479;&#36890;&#36807;&#35774;&#22791;&#39537;&#21160;&#31243;&#24207;&#65292;&#23558;&#30828;&#20214;&#35774;&#22791;&#20116;&#33457;&#20843;&#38376;&#30340; &#8220;&#23492;&#23384;&#22120;&#21327;&#35758;&#8221; &#25277;&#35937;&#25104;&#20102;&#32479;&#19968;&#30340;&#25509;&#21475;&#65292;&#24182;&#19988;&#36827;&#32780;&#25104;&#20026;&#30446;&#24405;&#26641;&#30340;&#19968;&#37096;&#20998;&#12290;UNIX &#8220;&#19968;&#20999;&#30342;&#25991;&#20214;&#8221; &#30340;&#35774;&#35745;&#20351;&#24212;&#29992;&#31243;&#24207;&#21487;&#20197;&#33258;&#30001;&#35775;&#38382;&#21508;&#31867;&#35774;&#22791;&#65292;&#20294;&#24102;&#26469;&#30340;&#20195;&#20215;&#21017;&#26159;&#25991;&#20214;&#31995;&#32479;&#37096;&#20998;&#24040;&#22823;&#30340;&#21382;&#21490;&#21253;&#34993;&#21644;&#31227;&#26893;&#24615;&#38382;&#39064;&#65306;&#25805;&#20316;&#31995;&#32479;&#30340;&#22797;&#26434;&#24615;&#26159;&#38590;&#20197;&#25513;&#30422;&#30340;&#65292;&#23427;&#20204;&#24635;&#20250;&#22312;&#26576;&#20010;&#22320;&#26041; &#8220;&#33192;&#32960;&#8221;&#12290;</p>
-<h3 id="%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">&#35838;&#21518;&#20064;&#39064;/&#32534;&#31243;&#20316;&#19994;<a class="anchor-link" href="#%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">&#182;</a>
+<p>操作系统通过设备驱动程序，将硬件设备五花八门的 “寄存器协议” 抽象成了统一的接口，并且进而成为目录树的一部分。UNIX “一切皆文件” 的设计使应用程序可以自由访问各类设备，但带来的代价则是文件系统部分巨大的历史包袱和移植性问题：操作系统的复杂性是难以掩盖的，它们总会在某个地方 “膨胀”。</p>
+<h3 id="%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">课后习题/编程作业<a class="anchor-link" href="#%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">¶</a>
 </h3>
-<h4 id="1.-%E9%98%85%E8%AF%BB%E6%9D%90%E6%96%99">1. &#38405;&#35835;&#26448;&#26009;<a class="anchor-link" href="#1.-%E9%98%85%E8%AF%BB%E6%9D%90%E6%96%99">&#182;</a>
+<h4 id="1.-%E9%98%85%E8%AF%BB%E6%9D%90%E6%96%99">1. 阅读材料<a class="anchor-link" href="#1.-%E9%98%85%E8%AF%BB%E6%9D%90%E6%96%99">¶</a>
 </h4>
-<p>&#25945;&#31185;&#20070; <a href="https://pages.cs.wisc.edu/~remzi/OSTEP/">Operating Systems: Three Easy Pieces</a>:</p>
+<p>教科书 <a href="https://pages.cs.wisc.edu/~remzi/OSTEP/">Operating Systems: Three Easy Pieces</a>:</p>
 <ul>
-<li>&#31532; 39 &#31456; - Files and Directories</li>
+<li>第 39 章 - Files and Directories</li>
 </ul>
 </div>
 </div>
@@ -7949,7 +7949,7 @@ var element = document.getElementById('04d3b19e-e33a-45d0-885e-d5fc6e2bcfb2');
   <span class="text-muted">
     <center>
 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="/static/img/cc-4.0.png"></a>
-    &#160;&#160;&#160;<a style="color:inherit" href="https://beian.miit.gov.cn/">&#33487; ICP &#22791; 2020049101 &#21495;</a>
+       <a style="color:inherit" href="https://beian.miit.gov.cn/">苏 ICP 备 2020049101 号</a>
     </center>
   </span>
 </div>

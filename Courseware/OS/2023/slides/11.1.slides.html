@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +209,7 @@ section .center {
 }
 </style>
 
-  <title>&#39640;&#24615;&#33021;&#35745;&#31639;&#20013;&#30340;&#24182;&#34892;&#32534;&#31243;</title>
+  <title>高性能计算中的并行编程</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,10 +227,10 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="11.1.slides.html" class=" text-amber-900">&#39640;&#24615;&#33021;&#35745;&#31639;&#20013;&#30340;&#24182;&#34892;&#32534;&#31243;</a></h1>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="11.1.slides.html" class=" text-amber-900">高性能计算中的并行编程</a></h1>
 <p class=" font-serif my-1"><br></p>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/Cray-1.jpg" width="300px"></p>
-<p class=" font-serif my-1"></p><center><a href="https://dl.acm.org/doi/10.1145/359327.359336" class=" text-amber-900">CRAY-1 Supercomputer</a>, &#8220;the world's most expensive love-seat&#8221;<br>1976, 138 MFLOPS @ 115kW
+<p class=" font-serif my-1"></p><center><a href="https://dl.acm.org/doi/10.1145/359327.359336" class=" text-amber-900">CRAY-1 Supercomputer</a>, “the world's most expensive love-seat”<br>1976, 138 MFLOPS @ 115kW
 </center></div></div></div>
         
       
@@ -242,20 +242,20 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">(&#32463;&#20856;) &#39640;&#24615;&#33021;&#35745;&#31639;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">(经典) 高性能计算</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#8220;A technology that harnesses the power of supercomputers or computer clusters to solve complex problems requiring massive computation.&#8221; (IBM)</p>
+<p class=" font-serif my-1">“A technology that harnesses the power of supercomputers or computer clusters to solve complex problems requiring massive computation.” (IBM)</p>
 </blockquote>
 <hr>
-<p class=" font-serif my-1">&#28304;&#33258;&#25968;&#20540;&#23494;&#38598;&#22411;&#31185;&#23398;&#35745;&#31639;&#20219;&#21153;</p>
+<p class=" font-serif my-1">源自数值密集型科学计算任务</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#29289;&#29702;&#31995;&#32479;&#27169;&#25311;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#22825;&#27668;&#39044;&#25253;&#12289;&#33322;&#22825;&#12289;&#21046;&#36896;&#12289;&#33021;&#28304;&#12289;&#21046;&#33647;&#12289;&#8230;&#8230;</li>
-<li class=" ml-8">&#22823;&#21040;&#23431;&#23449;&#23567;&#21040;&#37327;&#23376;&#65292;&#26377;&#27169;&#22411;&#23601;&#33021;&#27169;&#25311;</li>
+<li class=" ml-8">物理系统模拟<ul class=" list-disc font-serif">
+<li class=" ml-8">天气预报、航天、制造、能源、制药、……</li>
+<li class=" ml-8">大到宇宙小到量子，有模型就能模拟</li>
 </ul>
 </li>
-<li class=" ml-8">&#30719;&#21378; (&#29616;&#22312;&#19981;&#37027;&#20040;&#28909;&#20102;)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#32431;&#31929;&#30340; hash &#35745;&#31639;</li>
+<li class=" ml-8">矿厂 (现在不那么热了)<ul class=" list-disc font-serif">
+<li class=" ml-8">纯粹的 hash 计算</li>
 </ul>
 </li>
 <li class=" ml-8"><a href="http://www.hpc100.cn/top100/21/" class=" text-amber-900">HPC-China 100</a></li>
@@ -270,10 +270,10 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#39640;&#24615;&#33021;&#35745;&#31639;&#31243;&#24207;&#65306;&#29305;&#28857;</h2>
-<p class=" font-serif my-1">&#29289;&#29702;&#19990;&#30028;&#20855;&#26377; &#8220;&#31354;&#38388;&#23616;&#37096;&#24615;&#8221;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">高性能计算程序：特点</h2>
+<p class=" font-serif my-1">物理世界具有 “空间局部性”</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#19968;&#20999; &#8220;&#27169;&#25311;&#29289;&#29702;&#19990;&#30028;&#8221; &#30340;&#31995;&#32479;&#37117;&#20855;&#26377; embarrassingly parallel &#30340;&#29305;&#24615;</li>
+<li class=" ml-8">一切 “模拟物理世界” 的系统都具有 embarrassingly parallel 的特性</li>
 </ul>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/Mandelbrot.jpg" width="600px"></p></div>
         
@@ -286,24 +286,24 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#39640;&#24615;&#33021;&#35745;&#31639;&#65306;&#20851;&#38190;&#38382;&#39064;</h2>
-<p class=" font-serif my-1">&#38382;&#39064; 1&#65306;&#35745;&#31639;&#20219;&#21153;&#22914;&#20309;&#20998;&#35299;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">高性能计算：关键问题</h2>
+<p class=" font-serif my-1">问题 1：计算任务如何分解</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#36890;&#24120;&#35745;&#31639;&#22270;&#23481;&#26131;&#38745;&#24577;&#20999;&#20998; (&#26426;&#22120;-&#32447;&#31243;&#20004;&#32423;&#20219;&#21153;&#20998;&#35299;)</li>
-<li class=" ml-8">&#29983;&#20135;&#32773;-&#28040;&#36153;&#32773;&#35299;&#20915;&#19968;&#20999;<ul class=" list-disc font-serif">
-<li class=" ml-8"><a href="https://hpc-tutorials.llnl.gov/mpi/" class=" text-amber-900">MPI</a> - &#8220;a specification for the developers and users of message passing libraries&#8221;, <a href="https://www.openmp.org/" class=" text-amber-900">OpenMP</a> - &#8220;multi-platform shared-memory parallel programming in C/C++ and Fortran&#8221;</li>
+<li class=" ml-8">通常计算图容易静态切分 (机器-线程两级任务分解)</li>
+<li class=" ml-8">生产者-消费者解决一切<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="https://hpc-tutorials.llnl.gov/mpi/" class=" text-amber-900">MPI</a> - “a specification for the developers and users of message passing libraries”, <a href="https://www.openmp.org/" class=" text-amber-900">OpenMP</a> - “multi-platform shared-memory parallel programming in C/C++ and Fortran”</li>
 <li class=" ml-8"><a href="https://web.mit.edu/dimitrib/www/pdc.html" class=" text-amber-900">Parallel and Distributed Computation: Numerical Methods</a></li>
 </ul>
 </li>
 </ul>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#pragma omp parallel num_threads(128)</span>
-<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">1024</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o"><</span><span class="w"> </span><span class="mi">1024</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">&#38382;&#39064; 2&#65306;&#28023;&#37327;&#32447;&#31243;&#20043;&#38388;&#30340;&#22914;&#20309;&#21516;&#27493;&#21644;&#36890;&#20449;</p>
+<p class=" font-serif my-1">问题 2：海量线程之间的如何同步和通信</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25345;&#20037;&#23384;&#20648; (~PB) &#8594; CPU/&#20869;&#23384; (~TB) &#8594; GPU/&#26174;&#23384; (~10GB) &#8594; &#32531;&#23384; (~MB)</li>
+<li class=" ml-8">持久存储 (~PB) → CPU/内存 (~TB) → GPU/显存 (~10GB) → 缓存 (~MB)</li>
 </ul></div>
         
       

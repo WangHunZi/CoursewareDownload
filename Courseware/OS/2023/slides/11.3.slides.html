@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +209,7 @@ section .center {
 }
 </style>
 
-  <title>&#20154;&#24037;&#26234;&#33021;&#26102;&#20195;&#30340;&#20998;&#24067;&#24335;&#26426;&#22120;&#23398;&#20064;</title>
+  <title>人工智能时代的分布式机器学习</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,7 +227,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="11.3.slides.html" class=" text-amber-900">&#20154;&#24037;&#26234;&#33021;&#26102;&#20195;&#30340;&#20998;&#24067;&#24335;&#26426;&#22120;&#23398;&#20064;</a></h1>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="11.3.slides.html" class=" text-amber-900">人工智能时代的分布式机器学习</a></h1>
 <p class=" font-serif my-1"><br></p>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/dgx.jpg" width="700px"></p>
 <p class=" font-serif my-1"></p><center>
@@ -245,21 +245,21 @@ ref. CRAY-1: 138 MFLOPS @ 115kW
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26426;&#22120;&#23398;&#20064;&#65306;&#26082;&#35745;&#31639;&#23494;&#38598;&#65292;&#21448;&#25968;&#25454;&#23494;&#38598;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">机器学习：既计算密集，又数据密集</h2>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/transformer.png" width="350px"></p>
 <p class=" font-serif my-1">GPT-3: <a href="https://arxiv.org/abs/2005.14165" class=" text-amber-900">Language models are few-shot learners</a></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">Transformer &#26550;&#26500;<ul class=" list-disc font-serif">
+<li class=" ml-8">Transformer 架构<ul class=" list-disc font-serif">
 <li class=" ml-8"><a href="https://arxiv.org/abs/1706.03762" class=" text-amber-900">Attention Is All You Need</a></li>
 </ul>
 </li>
-<li class=" ml-8">175B &#21442;&#25968; (~300GB VRAM, FP-16)<ul class=" list-disc font-serif">
+<li class=" ml-8">175B 参数 (~300GB VRAM, FP-16)<ul class=" list-disc font-serif">
 <li class=" ml-8">GPT-3 single training run cost: ~$5,000,000</li>
-<li class=" ml-8">&#32654;&#22269;&#20154;&#26029;&#20379;&#33455;&#29255; = &#19977;&#20307;&#20154;&#34892;&#20026;</li>
+<li class=" ml-8">美国人断供芯片 = 三体人行为</li>
 </ul>
 </li>
-<li class=" ml-8">320TB &#35821;&#26009;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#30456;&#27604;&#22270;&#29255;&#21644;&#35270;&#39057;&#65292;&#36824;&#26159;&#23567;&#24351;&#24351;</li>
+<li class=" ml-8">320TB 语料<ul class=" list-disc font-serif">
+<li class=" ml-8">相比图片和视频，还是小弟弟</li>
 </ul>
 </li>
 </ul></div>
@@ -273,7 +273,7 @@ ref. CRAY-1: 138 MFLOPS @ 115kW
 
       
         
-        <div><h2 id="dependency-graph-is-all-you-need" class=" text-xl mt-2 pb-2 font-sans">&#24182;&#34892;&#21270;&#65306;Dependency Graph is All You Need</h2>
+        <div><h2 id="dependency-graph-is-all-you-need" class=" text-xl mt-2 pb-2 font-sans">并行化：Dependency Graph is All You Need</h2>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/distro-ml.png" width="900px"></p></div>
         
       
@@ -285,15 +285,15 @@ ref. CRAY-1: 138 MFLOPS @ 115kW
 
       
         
-        <div><h2 id="1simt" class=" text-xl mt-2 pb-2 font-sans">&#35745;&#31639;&#23494;&#38598;&#37096;&#20998; (1)&#65306;SIMT</h2>
+        <div><h2 id="1simt" class=" text-xl mt-2 pb-2 font-sans">计算密集部分 (1)：SIMT</h2>
 <p class=" font-serif my-1">Single Instruction, Multiple Threads</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#19968;&#20010; PC&#65292;&#25511;&#21046; 32 &#20010;&#25191;&#34892;&#27969;&#21516;&#26102;&#25191;&#34892;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#36923;&#36753;&#32447;&#31243;&#21487;&#20197;&#26356;&#22810;</li>
+<li class=" ml-8">一个 PC，控制 32 个执行流同时执行<ul class=" list-disc font-serif">
+<li class=" ml-8">逻辑线程可以更多</li>
 </ul>
 </li>
-<li class=" ml-8">&#25191;&#34892;&#27969;&#26377;&#29420;&#31435;&#30340;&#23492;&#23384;&#22120;<ul class=" list-disc font-serif">
-<li class=" ml-8">$x, y, z$ &#19977;&#20010;&#23492;&#23384;&#22120;&#29992;&#20110;&#26631;&#35760; &#8220;&#32447;&#31243;&#21495;&#8221;&#65292;&#20915;&#23450;&#32447;&#31243;&#25191;&#34892;&#30340;&#21160;&#20316;</li>
+<li class=" ml-8">执行流有独立的寄存器<ul class=" list-disc font-serif">
+<li class=" ml-8">$x, y, z$ 三个寄存器用于标记 “线程号”，决定线程执行的动作</li>
 </ul>
 </li>
 </ul>
@@ -308,11 +308,11 @@ ref. CRAY-1: 138 MFLOPS @ 115kW
 
       
         
-        <div><h2 id="2simd" class=" text-xl mt-2 pb-2 font-sans">&#35745;&#31639;&#23494;&#38598;&#37096;&#20998; (2)&#65306;SIMD</h2>
+        <div><h2 id="2simd" class=" text-xl mt-2 pb-2 font-sans">计算密集部分 (2)：SIMD</h2>
 <p class=" font-serif my-1">Single Instruction, Multiple Data</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">Tensor &#25351;&#20196; (Tensor Core)&#65306;&#28151;&#21512;&#31934;&#24230; $A \times B + C$<ul class=" list-disc font-serif">
-<li class=" ml-8">&#21333;&#26465;&#25351;&#20196;&#23436;&#25104; $4\times4\times4$ &#20010;&#20056;&#27861;&#36816;&#31639;</li>
+<li class=" ml-8">Tensor 指令 (Tensor Core)：混合精度 $A \times B + C$<ul class=" list-disc font-serif">
+<li class=" ml-8">单条指令完成 $4\times4\times4$ 个乘法运算</li>
 </ul>
 </li>
 </ul>
@@ -327,11 +327,11 @@ ref. CRAY-1: 138 MFLOPS @ 115kW
 
       
         
-        <div><h2 id="3" class=" text-xl mt-2 pb-2 font-sans">&#35745;&#31639;&#23494;&#38598;&#37096;&#20998; (3)&#65306;&#22534;&#26356;&#22810;&#30340;&#22788;&#29702;&#21333;&#20803;&#65281;</h2>
+        <div><h2 id="3" class=" text-xl mt-2 pb-2 font-sans">计算密集部分 (3)：堆更多的处理单元！</h2>
 <p class=" font-serif my-1">GH100 Spec</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">144 SMs</li>
-<li class=" ml-8">18432 CUDA Cores (&#24182;&#34892;&#30340; Threads)<ul class=" list-disc font-serif">
+<li class=" ml-8">18432 CUDA Cores (并行的 Threads)<ul class=" list-disc font-serif">
 <li class=" ml-8">AVX512: 512bits = 16 x Float32</li>
 </ul>
 </li>
@@ -341,10 +341,10 @@ ref. CRAY-1: 138 MFLOPS @ 115kW
 <li class=" ml-8">60 MB L2 cache</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#36825;&#21482;&#26159;&#19968;&#20010; GPU</p>
+<p class=" font-serif my-1">这只是一个 GPU</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#26174;&#23384;/&#32531;&#23384;&#20915;&#23450;&#20102; GPU &#20869;&#22534;&#22788;&#29702;&#22120;&#30340;&#19978;&#38480;</li>
-<li class=" ml-8">&#20294;&#25105;&#20204;&#21487;&#20197;&#26377;&#22810;&#21488;&#26426;&#22120;&#12289;&#27599;&#20010;&#26426;&#22120;&#26377;&#22810;&#21488; GPU&#65281;</li>
+<li class=" ml-8">显存/缓存决定了 GPU 内堆处理器的上限</li>
+<li class=" ml-8">但我们可以有多台机器、每个机器有多台 GPU！</li>
 </ul></div>
         
       
@@ -356,8 +356,8 @@ ref. CRAY-1: 138 MFLOPS @ 115kW
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20998;&#24067;&#24335;&#26426;&#22120;&#23398;&#20064;</h2>
-<p class=" font-serif my-1">&#39640;&#24615;&#33021;&#35745;&#31639; (GPU) + &#25968;&#25454;&#20013;&#24515;&#35745;&#31639;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">分布式机器学习</h2>
+<p class=" font-serif my-1">高性能计算 (GPU) + 数据中心计算</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><a href="https://www.usenix.org/conference/osdi14/technical-sessions/presentation/li_mu" class=" text-amber-900">Scaling distributed machine learning with the parameter server</a> (OSDI'14)</li>
 </ul>

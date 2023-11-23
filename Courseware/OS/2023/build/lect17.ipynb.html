@@ -2,7 +2,7 @@
 <head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>17. Linux &#36827;&#31243;&#30340;&#22320;&#22336;&#31354;&#38388;</title>
+<title>17. Linux 进程的地址空间</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script><script>
 (function() {
   function addWidgetsRenderer() {
@@ -6481,7 +6481,7 @@ cell outputs.
 
 .jp-Notebook .jp-Cell.jp-mod-dirty .jp-InputPrompt::before {
   color: var(--jp-warn-color1);
-  content: '&#8226;';
+  content: '•';
 }
 
 .jp-Notebook .jp-Cell.jp-mod-active.jp-mod-dirty .jp-Collapser {
@@ -7518,7 +7518,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[1]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">mosaic</span> <span class="kn">import</span> <span class="o">*</span>
@@ -7690,23 +7690,23 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-InputPrompt jp-InputArea-prompt">
 </div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="17.-Linux-%E8%BF%9B%E7%A8%8B%E7%9A%84%E5%9C%B0%E5%9D%80%E7%A9%BA%E9%97%B4">17. Linux &#36827;&#31243;&#30340;&#22320;&#22336;&#31354;&#38388;<a class="anchor-link" href="#17.-Linux-%E8%BF%9B%E7%A8%8B%E7%9A%84%E5%9C%B0%E5%9D%80%E7%A9%BA%E9%97%B4">&#182;</a>
+<h1 id="17.-Linux-%E8%BF%9B%E7%A8%8B%E7%9A%84%E5%9C%B0%E5%9D%80%E7%A9%BA%E9%97%B4">17. Linux 进程的地址空间<a class="anchor-link" href="#17.-Linux-%E8%BF%9B%E7%A8%8B%E7%9A%84%E5%9C%B0%E5%9D%80%E7%A9%BA%E9%97%B4">¶</a>
 </h1>
-<p><strong>Changelog &amp; &#21453;&#39304;</strong></p>
+<p><strong>Changelog & 反馈</strong></p>
 <ul>
-<li>&#21608;&#26085;&#35843;&#20241;&#19978;&#35838; (&#19978;&#21608;&#20108;&#30340;&#35838;)</li>
-<li>L2/M3 &#20195;&#30721;&#21457;&#24067; (Deadline: 5.14)</li>
-<li>&#20026;&#20160;&#20040;&#32473;&#37027;&#20040;&#38271;&#26102;&#38388;&#65311;&#26159;&#22240;&#20026;&#30495;&#30340;&#38656;&#35201;&#37027;&#20040;&#38271;&#26102;&#38388;&#20570;</li>
+<li>周日调休上课 (上周二的课)</li>
+<li>L2/M3 代码发布 (Deadline: 5.14)</li>
+<li>为什么给那么长时间？是因为真的需要那么长时间做</li>
 </ul>
-<p><strong>&#32972;&#26223;&#22238;&#39038;</strong>&#65306;Linux &#20174;&#19968;&#20010;&#21021;&#22987;&#30340;&#31243;&#24207; (&#29366;&#24577;&#26426;) &#24320;&#22987;&#65292;&#26500;&#24314;&#20986;&#20102;&#25972;&#20010;&#24212;&#29992;&#31243;&#24207;&#19990;&#30028;&#8212;&#8212;&#36890;&#36807; fork, execve, exit&#65292;&#25105;&#20204;&#21487;&#20197;&#22312;&#25805;&#20316;&#31995;&#32479;&#20013;&#21019;&#24314;&#20986;&#24456;&#22810;&#24182;&#21457;/&#24182;&#34892;&#25191;&#34892;&#30340;&#31243;&#24207;&#12290;</p>
-<p><strong>&#26412;&#35762;&#20869;&#23481;</strong>&#65306;&#22312;&#25105;&#20204;&#30340;&#29366;&#24577;&#26426;&#27169;&#22411;&#20013;&#65292;&#36827;&#31243;&#30340;&#29366;&#24577;&#30001; $(M, R)$ &#20004;&#37096;&#20998;&#32452;&#25104;&#65307;&#20854;&#20013; $R$ (register) &#26159;&#30001;&#20307;&#31995;&#32467;&#26500;&#20915;&#23450;&#30340;&#65292;&#32780; $M$ (memory) &#21017;&#36824;&#26377;&#19968;&#20123;&#26410;&#35299;&#24320;&#30340;&#35868;&#39064;&#65306;&#31243;&#24207;&#22312;&#21021;&#22987;&#26102;&#65292;&#24182;&#19981;&#26159;&#25152;&#26377;&#30340;&#20869;&#23384;&#37117;&#21487;&#20197;&#35775;&#38382;&#30340;&#65292;&#20294;&#25105;&#20204;&#21364;&#21448;&#30340;&#30830;&#21487;&#20197;&#30003;&#35831;&#24456;&#22823;&#30340;&#20869;&#23384;&#12290;&#36825;&#26159;&#22914;&#20309;&#23454;&#29616;&#30340;&#65311;</p>
+<p><strong>背景回顾</strong>：Linux 从一个初始的程序 (状态机) 开始，构建出了整个应用程序世界——通过 fork, execve, exit，我们可以在操作系统中创建出很多并发/并行执行的程序。</p>
+<p><strong>本讲内容</strong>：在我们的状态机模型中，进程的状态由 $(M, R)$ 两部分组成；其中 $R$ (register) 是由体系结构决定的，而 $M$ (memory) 则还有一些未解开的谜题：程序在初始时，并不是所有的内存都可以访问的，但我们却又的确可以申请很大的内存。这是如何实现的？</p>
 <ul>
-<li>&#36827;&#31243;&#30340;&#22320;&#22336;&#31354;&#38388;</li>
-<li>mmap &#31995;&#32479;&#35843;&#29992;</li>
-<li>&#19977;&#31867;&#28216;&#25103;&#22806;&#25346;&#30340;&#23454;&#29616;&#21407;&#29702;<ul>
-<li>&#37329;&#23665;&#28216;&#20384;&#65306;&#20869;&#23384;&#20462;&#25913;</li>
-<li>&#25353;&#38190;&#31934;&#28789;&#65306;GUI &#20107;&#20214;&#21457;&#36865;</li>
-<li>&#21464;&#36895;&#40831;&#36718;&#65306;&#20195;&#30721;&#27880;&#20837;</li>
+<li>进程的地址空间</li>
+<li>mmap 系统调用</li>
+<li>三类游戏外挂的实现原理<ul>
+<li>金山游侠：内存修改</li>
+<li>按键精灵：GUI 事件发送</li>
+<li>变速齿轮：代码注入</li>
 </ul>
 </li>
 </ul>
@@ -7719,7 +7719,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[2]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'17.1'</span><span class="p">)</span>
@@ -7748,7 +7748,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">demo</span><span class="p">(</span><span class="s1">'minimal'</span><span class="p">,</span> <span class="s1">'i/minimal'</span><span class="p">)</span>
@@ -7780,7 +7780,7 @@ var element = document.getElementById('2902afe6-ea72-464b-9290-7d557263746d');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'17.2'</span><span class="p">)</span>
@@ -7809,7 +7809,7 @@ var element = document.getElementById('2902afe6-ea72-464b-9290-7d557263746d');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[5]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">demo</span><span class="p">(</span><span class="s1">'mmap-alloc'</span><span class="p">,</span> <span class="s1">'v/mmap-alloc.c'</span><span class="p">)</span>
@@ -7841,7 +7841,7 @@ var element = document.getElementById('6f295a9b-40a6-4655-ab24-756b062ffd14');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[6]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'17.3'</span><span class="p">)</span>
@@ -7870,7 +7870,7 @@ var element = document.getElementById('6f295a9b-40a6-4655-ab24-756b062ffd14');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[7]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">demo</span><span class="p">(</span><span class="s1">'knight'</span><span class="p">,</span> <span class="s1">'v/knight.c'</span><span class="p">)</span>
@@ -7902,7 +7902,7 @@ var element = document.getElementById('d20343e0-0159-403f-a790-f113597e447c');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[8]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">demo</span><span class="p">(</span><span class="s1">'hack'</span><span class="p">,</span> <span class="s1">'v/hack'</span><span class="p">)</span>
@@ -7937,7 +7937,7 @@ var element = document.getElementById('4afdb330-9483-47c0-934a-2151db719a21');
 <div class="jp-InputPrompt jp-InputArea-prompt">
 </div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>&#25216;&#26415;&#65292;&#26080;&#35770;&#26159;&#35745;&#31639;&#26426;&#31995;&#32479;&#12289;&#32534;&#31243;&#35821;&#35328;&#36824;&#26159;&#20154;&#24037;&#26234;&#33021;&#65292;&#37117;&#26159;&#32473;&#20154;&#31867;&#24102;&#26469;&#31119;&#31049;&#30340;&#12290;&#20294;&#36234;&#24378;&#22823;&#30340;&#25216;&#26415;&#23601;&#20063;&#26377;&#36234; &#8220;&#36127;&#38754;&#8221; &#30340;&#29992;&#36884;&#12290;&#20351;&#29992;&#28216;&#25103;&#22806;&#25346;&#30772;&#22351;&#28216;&#25103;&#30340;&#24179;&#34913;&#24615;&#12289;&#21033;&#29992;&#28431;&#27934;&#20837;&#20405;&#35745;&#31639;&#26426;&#31995;&#32479;&#65292;&#25110;&#26159;&#29992;&#20219;&#20309;&#25216;&#26415;&#21344;&#20182;&#20154;&#20043;&#20808;&#12289;&#25439;&#23475;&#20182;&#20154;&#30340;&#21033;&#30410;&#65292;&#37117;&#26159;&#19968;&#20214;&#21487;&#32827;&#30340;&#20107;&#24773;&#12290;&#21516;&#26679;&#65292;&#22914;&#26524;&#20320;&#24076;&#26395;&#22312;&#20154;&#29983;&#36825;&#22330; game (&#21338;&#24328;) &#20013;&#36208;&#24471;&#26356;&#36828;&#65292;&#25105;&#20204;&#20063;&#24076;&#26395; &#8220;&#35802;&#26420;&#38596;&#20255;&#8221; &#26159;&#27599;&#20010;&#21335;&#22823;&#20154;&#30340;&#27668;&#36136;&#12290;</p>
+<p>技术，无论是计算机系统、编程语言还是人工智能，都是给人类带来福祉的。但越强大的技术就也有越 “负面” 的用途。使用游戏外挂破坏游戏的平衡性、利用漏洞入侵计算机系统，或是用任何技术占他人之先、损害他人的利益，都是一件可耻的事情。同样，如果你希望在人生这场 game (博弈) 中走得更远，我们也希望 “诚朴雄伟” 是每个南大人的气质。</p>
 </div>
 </div>
 </div>
@@ -7950,22 +7950,22 @@ var element = document.getElementById('4afdb330-9483-47c0-934a-2151db719a21');
 <div class="jp-InputPrompt jp-InputArea-prompt">
 </div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Take-away-Messages">Take-away Messages<a class="anchor-link" href="#Take-away-Messages">&#182;</a>
+<h2 id="Take-away-Messages">Take-away Messages<a class="anchor-link" href="#Take-away-Messages">¶</a>
 </h2>
-<p>&#29366;&#24577;&#26426;&#30340;&#35270;&#35282;&#33258;&#28982;&#22320;&#23558;&#25105;&#20204;&#24341;&#20837; &#8220;&#20869;&#23384;&#21040;&#24213;&#26159;&#20160;&#20040;&#8221; &#30340;&#38382;&#39064;&#8212;&#8212;&#23427;&#30340;&#31572;&#26696;&#21516;&#26679;&#20063;&#24456;&#33258;&#28982;&#65306;&#24102;&#26377;&#35775;&#38382;&#26435;&#38480;&#25511;&#21046;&#30340;&#36830;&#32493;&#20869;&#23384;&#27573;&#12290;&#25105;&#20204;&#21487;&#20197;&#36890;&#36807; mmap&#12289;munmap&#12289;mprotect &#19977;&#20010;&#31995;&#32479;&#35843;&#29992;&#35843;&#25972;&#29366;&#24577;&#26426;&#30340;&#22320;&#22336;&#31354;&#38388;&#65292;&#21253;&#25324;&#20998;&#37197;&#21311;&#21517;&#30340;&#20869;&#23384;&#12289;&#26144;&#23556;&#25991;&#20214;&#20869;&#23481;&#21040;&#20869;&#23384;&#12289;&#20462;&#25913;&#35775;&#38382;&#26435;&#38480;&#31561;&#12290;&#26356;&#26377;&#36259;&#30340;&#26159;&#25805;&#20316;&#31995;&#32479;&#26377; &#8220;&#20860;&#23481;&#19968;&#20999;&#24212;&#29992;&#31243;&#24207;&#8221; &#30340;&#38656;&#27714;&#65292;&#35843;&#35797;&#22120;&#20063;&#19981;&#22312;&#35805;&#19979;&#8212;&#8212;&#36825;&#20063;&#32473;&#20102;&#25105;&#20204;&#20837;&#20405;&#20854;&#20182;&#36827;&#31243;&#22320;&#22336;&#31354;&#38388;&#30340;&#26426;&#21046;&#12290;</p>
-<h3 id="%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">&#35838;&#21518;&#20064;&#39064;/&#32534;&#31243;&#20316;&#19994;<a class="anchor-link" href="#%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">&#182;</a>
+<p>状态机的视角自然地将我们引入 “内存到底是什么” 的问题——它的答案同样也很自然：带有访问权限控制的连续内存段。我们可以通过 mmap、munmap、mprotect 三个系统调用调整状态机的地址空间，包括分配匿名的内存、映射文件内容到内存、修改访问权限等。更有趣的是操作系统有 “兼容一切应用程序” 的需求，调试器也不在话下——这也给了我们入侵其他进程地址空间的机制。</p>
+<h3 id="%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">课后习题/编程作业<a class="anchor-link" href="#%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">¶</a>
 </h3>
-<h4 id="1.-%E9%98%85%E8%AF%BB%E6%9D%90%E6%96%99">1. &#38405;&#35835;&#26448;&#26009;<a class="anchor-link" href="#1.-%E9%98%85%E8%AF%BB%E6%9D%90%E6%96%99">&#182;</a>
+<h4 id="1.-%E9%98%85%E8%AF%BB%E6%9D%90%E6%96%99">1. 阅读材料<a class="anchor-link" href="#1.-%E9%98%85%E8%AF%BB%E6%9D%90%E6%96%99">¶</a>
 </h4>
-<p>&#25945;&#31185;&#20070; <a href="https://pages.cs.wisc.edu/~remzi/OSTEP/">Operating Systems: Three Easy Pieces</a>:</p>
+<p>教科书 <a href="https://pages.cs.wisc.edu/~remzi/OSTEP/">Operating Systems: Three Easy Pieces</a>:</p>
 <ul>
-<li>&#31532; 12 &#31456; - Dialogue</li>
-<li>&#31532; 13 &#31456; - Address Spaces</li>
-<li>&#31532; 14 &#31456; - Memory API</li>
+<li>第 12 章 - Dialogue</li>
+<li>第 13 章 - Address Spaces</li>
+<li>第 14 章 - Memory API</li>
 </ul>
-<h4 id="2.-%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5">2. &#32534;&#31243;&#23454;&#36341;<a class="anchor-link" href="#2.-%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5">&#182;</a>
+<h4 id="2.-%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5">2. 编程实践<a class="anchor-link" href="#2.-%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5">¶</a>
 </h4>
-<p>&#36827;&#31243;&#22320;&#22336;&#31354;&#38388;&#31649;&#29702;&#26159;&#29702;&#35299;&#29616;&#20195;&#25805;&#20316;&#31995;&#32479; API &#30340;&#26680;&#24515;&#20869;&#23481;&#12290;&#21153;&#24517;&#22312;&#20320;&#30340;&#35745;&#31639;&#26426;&#19978;&#37325;&#29616;&#26412;&#27425;&#35838;&#20195;&#30721;&#20869;&#23481;&#24182;&#30830;&#20445;&#20320;&#29702;&#35299;&#23427;&#20204; (&#24517;&#35201;&#26102;&#38656;&#35201;&#20511;&#21161;&#35843;&#35797;&#22120;)&#12290;</p>
+<p>进程地址空间管理是理解现代操作系统 API 的核心内容。务必在你的计算机上重现本次课代码内容并确保你理解它们 (必要时需要借助调试器)。</p>
 </div>
 </div>
 </div>
@@ -7977,7 +7977,7 @@ var element = document.getElementById('4afdb330-9483-47c0-934a-2151db719a21');
   <span class="text-muted">
     <center>
 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="/static/img/cc-4.0.png"></a>
-    &#160;&#160;&#160;<a style="color:inherit" href="https://beian.miit.gov.cn/">&#33487; ICP &#22791; 2020049101 &#21495;</a>
+       <a style="color:inherit" href="https://beian.miit.gov.cn/">苏 ICP 备 2020049101 号</a>
     </center>
   </span>
 </div>

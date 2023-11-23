@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +209,7 @@ section .center {
 }
 </style>
 
-  <title>initrd &#20043;&#21518;</title>
+  <title>initrd 之后</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,7 +227,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="initrd" class=" text-2xl mt-2 font-sans"><a href="16.3.slides.html" class=" text-amber-900">initrd &#20043;&#21518;</a></h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="initrd" class=" text-2xl mt-2 font-sans"><a href="16.3.slides.html" class=" text-amber-900">initrd 之后</a></h1></div></div></div>
         
       
       </section>
@@ -238,13 +238,13 @@ section .center {
 
       
         
-        <div><h2 id="initrd-linux" class=" text-xl mt-2 pb-2 font-sans">initrd: &#24182;&#19981;&#26159;&#25105;&#20204;&#23454;&#38469;&#30475;&#21040;&#30340; Linux</h2>
-<p class=" font-serif my-1">&#21482;&#26159;&#19968;&#20010;&#20869;&#23384;&#37324;&#30340;&#23567;&#25991;&#20214;&#31995;&#32479;</p>
+        <div><h2 id="initrd-linux" class=" text-xl mt-2 pb-2 font-sans">initrd: 并不是我们实际看到的 Linux</h2>
+<p class=" font-serif my-1">只是一个内存里的小文件系统</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25105;&#20204; &#8220;&#30475;&#21040;&#8221; &#30340;&#37117;&#26159;&#34987; init &#21019;&#36896;&#20986;&#26469;&#30340;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#21152;&#36733;&#21097;&#20313;&#24517;&#35201;&#30340;&#39537;&#21160;&#31243;&#24207;&#65292;&#20363;&#22914;&#32593;&#21345;</li>
-<li class=" ml-8">&#26681;&#25454; fstab &#20013;&#30340;&#20449;&#24687;&#25346;&#36733;&#25991;&#20214;&#31995;&#32479;&#65292;&#20363;&#22914;&#32593;&#32476;&#39537;&#21160;&#22120;</li>
-<li class=" ml-8">&#23558;&#26681;&#25991;&#20214;&#31995;&#32479;&#21644;&#25511;&#21046;&#26435;&#31227;&#20132;&#32473;&#21478;&#19968;&#20010;&#31243;&#24207;&#65292;&#20363;&#22914; systemd</li>
+<li class=" ml-8">我们 “看到” 的都是被 init 创造出来的<ul class=" list-disc font-serif">
+<li class=" ml-8">加载剩余必要的驱动程序，例如网卡</li>
+<li class=" ml-8">根据 fstab 中的信息挂载文件系统，例如网络驱动器</li>
+<li class=" ml-8">将根文件系统和控制权移交给另一个程序，例如 systemd</li>
 </ul>
 </li>
 </ul></div>
@@ -258,15 +258,15 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26500;&#24314;&#19968;&#20010; &#8220;&#30495;&#27491;&#8221; &#30340;&#24212;&#29992;&#19990;&#30028;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">构建一个 “真正” 的应用世界</h2>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">pivot_root</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">new_root</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">put_old</span><span class="p">);</span>
 </code></pre></div>
 
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><code>pivot_root()</code> changes the root mount in the mount namespace of the calling process.  More precisely, it moves the root mount to the directory <code>put_old</code> and makes <code>new_root</code> the new root mount.  The calling process must have the <code>CAP_SYS_ADMIN</code> capability in the user namespace that owns the caller's mount namespace.</li>
-<li class=" ml-8">&#25191;&#34892; <code>/usr/sbin</code> (Kernel &#30340; init &#36873;&#39033;)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#30475;&#19968;&#30475;&#31995;&#32479;&#37324;&#30340;&#25991;&#20214;&#26159;&#20160;&#20040;&#21543;</li>
-<li class=" ml-8">&#35745;&#31639;&#26426;&#31995;&#32479;&#27809;&#26377;&#39764;&#27861; (&#19968;&#20999;&#37117;&#26377;&#21512;&#36866;&#30340;&#35299;&#37322;)</li>
+<li class=" ml-8">执行 <code>/usr/sbin</code> (Kernel 的 init 选项)<ul class=" list-disc font-serif">
+<li class=" ml-8">看一看系统里的文件是什么吧</li>
+<li class=" ml-8">计算机系统没有魔法 (一切都有合适的解释)</li>
 </ul>
 </li>
 </ul></div>
@@ -280,8 +280,8 @@ section .center {
 
       
         
-        <div><h2 id="noilinux-lite" class=" text-xl mt-2 pb-2 font-sans">&#20363;&#23376;&#65306;<a href="https://zhuanlan.zhihu.com/p/619237809" class=" text-amber-900">NOILinux Lite</a></h2>
-<p class=" font-serif my-1">&#22312; init &#26102;&#22810;&#20570;&#19968;&#20123;&#20107;</p>
+        <div><h2 id="noilinux-lite" class=" text-xl mt-2 pb-2 font-sans">例子：<a href="https://zhuanlan.zhihu.com/p/619237809" class=" text-amber-900">NOILinux Lite</a></h2>
+<p class=" font-serif my-1">在 init 时多做一些事</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span>/bin
 busybox<span class="w"> </span>mknod<span class="w"> </span>/dev/sda<span class="w"> </span>b<span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">0</span>
 busybox<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/newroot
@@ -290,12 +290,12 @@ busybox<span class="w"> </span>mount<span class="w"> </span>-t<span class="w"> <
 </code></pre></div>
 
 <ul class=" list-disc font-serif">
-<li class=" ml-8">pivot_root &#20043;&#21518;&#25165;&#21152;&#36733;&#32593;&#21345;&#39537;&#21160;&#12289;&#37197;&#32622; IP<ul class=" list-disc font-serif">
-<li class=" ml-8">&#36825;&#20123;&#37117;&#26159; systemd &#30340;&#24037;&#20316;</li>
-<li class=" ml-8">(&#20320;&#20250;&#30041;&#24847;&#21040; tty &#23383;&#20307;&#21464;&#20102;)</li>
+<li class=" ml-8">pivot_root 之后才加载网卡驱动、配置 IP<ul class=" list-disc font-serif">
+<li class=" ml-8">这些都是 systemd 的工作</li>
+<li class=" ml-8">(你会留意到 tty 字体变了)</li>
 </ul>
 </li>
-<li class=" ml-8">&#20043;&#21518; initramfs &#23601;&#21151;&#25104;&#36523;&#36864;&#65292;&#36164;&#28304;&#37322;&#25918;</li>
+<li class=" ml-8">之后 initramfs 就功成身退，资源释放</li>
 </ul></div>
         
       
