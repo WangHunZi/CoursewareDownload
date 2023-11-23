@@ -1,6 +1,7 @@
 import os
 import sys
 import requests
+import re
 from bs4 import BeautifulSoup
 from urllib.parse import urlparse
 
@@ -142,6 +143,19 @@ def file_analyse(filepath):
             WITHOUT_DOWNLOAD.append(url)
 
 
+def file_fix():
+    filename = os.listdir(os.path.join(BASE_DIR, "OS", "2023", "build"))
+    for item in filename:
+        filepath = os.path.join(BASE_DIR, "OS", "2023", "build", item)
+        with open(filepath, 'r', encoding='utf-8') as file:
+            content = file.read()
+        change = re.sub(r'/OS/2023/slides/', '../slides/', content)
+
+        with open(filepath, 'w', encoding='utf-8') as file:
+            file.write(change)
+
+
 if __name__ == "__main__":
     file_download_option()
     file_download()
+    file_fix()
