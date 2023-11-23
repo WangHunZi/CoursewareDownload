@@ -1,0 +1,941 @@
+<!DOCTYPE html><html class="h-100">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="../../../static/css/base.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
+
+  <style>
+    .font-sans {
+      font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+    }
+    .font-serif {
+      font-family: 'Source Serif Pro', 'Songti SC', 'SimSun', 'Serif', serif;
+    }
+  </style>
+  <link rel="stylesheet" href="../../../static/katex/katex.min.css">
+  <script defer src="../../../static/katex/katex.min.js"></script>
+  <script defer src="../../../static/katex/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+            // customised options
+            // &#8226; auto-render specific keys, e.g.:
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ],
+            // &#8226; rendering keys, e.g.:
+            throwOnError : false
+          });
+      });
+  </script>
+
+
+  
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="../../../static/reveal/reveal.css">
+<link rel="stylesheet" href="../../../static/reveal/theme/simple.css" id="theme">
+
+<style>
+.reveal .slide-number {
+  font-size: 26px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, .3);
+}
+
+.reveal .full-screen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.reveal .slides {
+  border: 1.5px #ddd solid;
+  border-radius: 7px;
+  text-align: left;
+  font-weight: 300;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  font-family: 'Lato', 'SimHei', 'STXihei', 'Droid Sans';
+  font-weight: 400;
+}
+
+.reveal p, .reveal li, .reveal center {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Droid Sans';
+}
+
+.reveal li + li {
+  margin-top: 10px;
+}
+
+.reveal ul {
+  display: block;
+  margin-right: 15px;
+}
+
+.reveal p, .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5 {
+  padding:  0 25px 0 25px;
+}
+
+.reveal table {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Sans Serif';
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.reveal th {
+  background-color: #eee;
+}
+
+.reveal tr:nth-child(even) {
+  background-color: #efffff;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  text-align: left;
+  margin: 0 0 20px 0;
+ color: #222; 
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
+
+
+.reveal h1 {
+  margin: 0 10 0 10;
+  font-size: 60px;
+}
+.reveal .middle h1 {
+  text-align: center;
+}
+
+.reveal h2 {
+  font-size: 48px;
+  border-bottom: 2px solid rgb(106, 0, 95);
+  padding-bottom: 5px;
+}
+.reveal h3 { font-size: 1.15em; }
+.reveal h4 { font-size: 1.05em; }
+
+.reveal .center {
+  text-align: center;
+}
+
+.reveal .middle {
+  height: 728px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.reveal pre {
+  font-size: 28px;
+ 
+  background-color: #eee;
+
+  border-radius: 3mm;
+  padding: 10px 10px 10px 10px;
+}
+
+.reveal pre code {
+  max-height: none;
+}
+
+.reveal code {
+  font-family: 'Inconsolata', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif', Monospace;
+}
+
+.reveal .middle blockquote {
+  text-align: center;
+  color: rgb(106, 0, 95);
+  background: none;
+  box-shadow: none;
+}
+
+.reveal .middle blockquote a {
+  color: inherit;
+}
+
+.reveal blockquote p, .reveal blockquote li {
+  font-family: 'Lato', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif';
+}
+
+section .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reveal .author-block {
+  margin: 75px 0 35px 0;
+}
+.reveal .author-affiliation img {
+  margin: 15px 0 0 0;
+}
+.reveal .author-block p, .reveal .author-affiliation p  {
+  font-family: 'Kaiti', 'STKaiti', 'Serif', 'Times', 'Times New Roman';
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+.reveal .author-affiliation {
+  display: inline-block;
+  font-size: 90%;
+}
+.reveal hr {
+  border: 10px solid rgba(0, 0, 0, 0);
+}
+.reveal li {
+  margin-top: 10px;
+}
+</style>
+
+  <title>I/O &#35774;&#22791;&#36873;&#35762;</title>
+</head>
+
+<body class="d-flex flex-column h-100">
+  
+  
+
+<div class="reveal">
+<div class="slides">
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="io" class=" text-2xl mt-2 font-sans">I/O &#35774;&#22791;&#36873;&#35762;</h1>
+<p class=" font-serif my-1"><include src="Slides_Author"><div><div class="py-16">
+<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">&#33931;&#28814;&#23721;</a></p>
+</div>
+<div class="row">
+<div class="author-affiliation">
+    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#12288;&#12288;&#21335;&#20140;&#22823;&#23398;&#12288;&#12288;</p>
+    <img class="inline-img h-24" src="../../../static/img/nju-logo.jpg" style="display: inline-block;"></a>
+  </div>
+<div class="author-affiliation">
+   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#31185;&#23398;&#19982;&#25216;&#26415;&#31995;</p>
+    <img class="inline-img h-24" src="../../../static/img/njucs-logo.jpg" style="display: inline-block;"></a>
+  </div>
+<div class="author-affiliation">
+    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#36719;&#20214;&#30740;&#31350;&#25152;</p>
+    <img class="inline-img h-24" src="../../../static/img/ics-logo.png" style="display: inline-block;"></a>
+  </div>
+</div></div></include></p></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25552;&#37266;</h2>
+<p class=" font-serif my-1">Lab3 (perftune) &#24050;&#24067;&#32622;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">soft deadline: 12.13</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26412;&#35762;&#27010;&#36848;</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">&#23545;&#25152;&#26377;&#23398;&#35745;&#31639;&#26426;&#30340;&#21516;&#23398;&#26469;&#35828;&#65292;&#8220;&#35774;&#22791;&#8221; &#25165;&#26159;&#30495;&#27491;&#35302;&#25720;&#21040;&#30340;&#65292;&#20294;&#35774;&#22791;&#21040;&#24213;&#26159;&#20160;&#20040;&#65311;</p>
+<p class=" font-serif my-1">&#25353;&#19979;&#38190;&#30424;&#20043;&#21518;&#65292;&#35745;&#31639;&#26426;&#30828;&#20214;/&#36719;&#20214;&#31995;&#32479;&#21040;&#24213;&#21457;&#29983;&#20102;&#20160;&#20040;&#65311;</p>
+</blockquote>
+<p class=" font-serif my-1">&#26412;&#35762;&#20869;&#23481;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22788;&#29702;&#22120;-&#35774;&#22791;&#25509;&#21475;</li>
+<li class=" ml-8">I/O &#35774;&#22791;&#36873;&#35762;</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="-" class=" text-2xl mt-2 font-sans">&#22788;&#29702;&#22120;-&#35774;&#22791;&#25509;&#21475;</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="io" class=" text-xl mt-2 pb-2 font-sans">&#22238;&#39038;&#65306;&#20026;&#20160;&#20040;&#20250;&#26377; I/O &#35774;&#22791;&#65311;</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">1950s: &#38543;&#30528;&#35745;&#31639;&#26426;&#36816;&#31639;&#36895;&#24230;&#21644;&#23384;&#20648;&#22120;&#30340;&#21457;&#23637;&#65292;&#35745;&#31639;&#26426;&#24050;&#32463;&#24555;&#21040;&#21487;&#20197; &#8220;&#35745;&#31639;&#8221; &#20154;&#31867;&#26085;&#24120;&#20219;&#21153;&#20102;&#12290;</p>
+</blockquote>
+<hr>
+<p class=" font-serif my-1">&#35745;&#31639;&#26426; &#8220;Turing Machine&#8221; &#20013;&#30340;&#19968;&#20999;&#37117;&#26159;&#25968;&#25454;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22240;&#27492;&#35745;&#31639;&#26426;&#19968;&#23450;&#20250;&#25552;&#20379;&#19968;&#20010;&#26426;&#21046;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20174;&#35774;&#22791;&#20013;&#35835;&#21462;&#25968;&#25454; (input data)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#38190;&#30424;&#25353;&#38190;&#30340;&#20195;&#30721;&#12289;&#40736;&#26631;&#31227;&#21160;&#30340;&#20559;&#31227;&#37327;&#12289;&#8230;&#8230;</li>
+</ul>
+</li>
+<li class=" ml-8">&#21521;&#35774;&#22791;&#20889;&#20837;&#25968;&#25454; (output data)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#36755;&#20986;&#21040;&#25171;&#21360;&#26426;&#30340;&#23383;&#31526;&#20018;&#12289;&#23631;&#24149;&#19978;&#26174;&#31034;&#30340;&#20687;&#32032;&#8230;&#8230;</li>
+</ul>
+</li>
+<li class=" ml-8">&#35774;&#22791;&#21487;&#20197;&#21521;&#22788;&#29702;&#22120;&#21457;&#36865;&#20013;&#26029; (&#21518;&#35805;)</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="-" class=" text-xl mt-2 pb-2 font-sans">&#35774;&#22791;-&#22788;&#29702;&#22120;&#25509;&#21475;</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">&#35774;&#22791; = &#19968;&#32452;&#23492;&#23384;&#22120;&#65292;&#27599;&#27425;&#21487;&#20197;&#20132;&#25442;&#19968;&#23450;&#25968;&#37327;&#30340;&#25968;&#25454;&#12290;</p>
+</blockquote>
+<hr>
+<p class=" font-serif my-1">&#27599;&#20010;&#23492;&#23384;&#22120;&#26377;&#29305;&#23450;&#30340;&#21547;&#20041;&#21644;&#26684;&#24335;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20027;&#35201;&#21151;&#33021;&#65306;&#35835;&#21462;&#25968;&#25454;/&#20889;&#20837;&#25968;&#25454;/&#37197;&#32622;&#35774;&#22791;</li>
+</ul>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/ICS/2020/slides/img/canonical-device.png" width="700px"></p>
+<p class=" font-serif my-1"></p><center>Image source: <a href="http://pages.cs.wisc.edu/~remzi/OSTEP/" class=" text-amber-900">OSTEP</a></center></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="-contd" class=" text-xl mt-2 pb-2 font-sans">&#35774;&#22791;-&#22788;&#29702;&#22120;&#25509;&#21475; (cont'd)</h2>
+<p class=" font-serif my-1">CPU &#21487;&#20197;&#30452;&#25509;&#36890;&#36807;&#25351;&#20196;&#35835;&#20889;&#36825;&#20123;&#23492;&#23384;&#22120;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Port-mapped I/O (PMIO)<ul class=" list-disc font-serif">
+<li class=" ml-8">I/O &#22320;&#22336;&#31354;&#38388; (port)</li>
+<li class=" ml-8">CPU &#30452;&#36830; I/O &#24635;&#32447;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Memory-mapped I/O (MMIO)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#30452;&#35266;&#65292;&#20351;&#29992;&#26222;&#36890;&#20869;&#23384;&#35835;&#20889;&#25351;&#20196;&#23601;&#33021;&#35775;&#38382;</li>
+<li class=" ml-8">&#24102;&#26469;&#19968;&#20123;&#35774;&#35745;&#21644;&#23454;&#29616;&#30340;&#40635;&#28902;&#65306;&#32534;&#35793;&#22120;&#20248;&#21270;&#12289;&#32531;&#23384;&#12289;&#20081;&#24207;&#25191;&#34892;&#8230;&#8230;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="io-x86-qemu-uart" class=" text-xl mt-2 pb-2 font-sans">&#22788;&#29702;&#22120;&#30524;&#20013;&#30340; I/O &#35774;&#22791;&#65306;x86-qemu UART</h2>
+<p class=" font-serif my-1">&#8220;COM1&#8221;; <code>putch()</code> &#30340;&#23454;&#29616;</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#define COM1 0x3f8</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">uart_init</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">outb</span><span class="p">(</span><span class="n">COM1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w">   </span><span class="c1">// &#25511;&#21046;&#22120;&#30456;&#20851;&#32454;&#33410;</span>
+<span class="w">  </span><span class="n">outb</span><span class="p">(</span><span class="n">COM1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mh">0x80</span><span class="p">);</span>
+<span class="w">  </span><span class="n">outb</span><span class="p">(</span><span class="n">COM1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">115200</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">9600</span><span class="p">);</span>
+<span class="w">  </span><span class="p">...</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">uart_tx</span><span class="p">(</span><span class="n">AM_UART_TX_T</span><span class="w"> </span><span class="o">*</span><span class="n">send</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">outb</span><span class="p">(</span><span class="n">COM1</span><span class="p">,</span><span class="w"> </span><span class="n">send</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">uart_rx</span><span class="p">(</span><span class="n">AM_UART_RX_T</span><span class="w"> </span><span class="o">*</span><span class="n">recv</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">recv</span><span class="o">-&gt;</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">inb</span><span class="p">(</span><span class="n">COM1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0x1</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">inb</span><span class="p">(</span><span class="n">COM1</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="postscript" class=" text-xl mt-2 pb-2 font-sans">&#26356;&#22797;&#26434;&#30340;&#35774;&#22791;&#65306;&#25171;&#21360;&#26426;&#19982; PostScript</h2>
+<p class=" font-serif my-1">&#25171;&#21360;&#26426;&#65306;&#23558;&#23383;&#33410;&#27969;&#25551;&#36848;&#30340;&#25991;&#23383;/&#22270;&#24418;&#25171;&#21360;&#21040;&#32440;&#24352;&#19978;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21487;&#31616;&#21333; (ASCII &#25991;&#26412;&#24207;&#21015;&#65292;&#20687;&#25171;&#23383;&#26426;&#19968;&#26679;&#25171;&#21360;&#65289;</li>
+<li class=" ml-8">&#21487;&#22797;&#26434; (&#32534;&#31243;&#35821;&#35328;&#25551;&#36848;&#30340;&#22270;&#24418;)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#39640;&#28165;&#20840;&#39029;&#22270;&#29255;&#30340;&#20256;&#36755;&#26159;&#24456;&#22823;&#30340;&#25361;&#25112;</li>
+<li class=" ml-8">&#23588;&#20854;&#26159;&#22312; 1980s</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#20363;&#23376;&#65306;PostScript (1984)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#19968;&#31181;&#25551;&#36848;&#39029;&#38754;&#24067;&#23616;&#30340; domain-specific language<ul class=" list-disc font-serif">
+<li class=" ml-8">&#31867;&#20284;&#20110;&#27719;&#32534;&#35821;&#35328;</li>
+<li class=" ml-8">&#21487;&#20197;&#22312;&#21629;&#20196;&#34892;&#20013;&#21019;&#24314;&#39640;&#36136;&#37327;&#30340;&#25991;&#31295;</li>
+</ul>
+</li>
+<li class=" ml-8">PDF &#26159;&#23427;&#30340; superset<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20363;&#23376;&#65306;<a href="../../../pages/ICS/2020/demos/page.ps" class=" text-amber-900">page.ps</a></li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="io" class=" text-xl mt-2 pb-2 font-sans">&#20004;&#20010;&#29305;&#27530;&#30340; I/O &#35774;&#22791;</h2>
+<p class=" font-serif my-1">&#24635;&#32447;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#31995;&#32479;&#37324;&#21487;&#33021;&#26377;&#24456;&#22810; (&#29978;&#33267;&#26159;&#21487;&#21464;&#30340;) I/O &#35774;&#22791;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#24635;&#32447;&#23454;&#29616;&#20102;&#35774;&#22791;&#30340;&#26597;&#25214;&#12289;&#26144;&#23556;&#12289;&#21644;&#21629;&#20196;/&#25968;&#25454;&#30340;&#36716;&#21457;</li>
+</ul>
+</li>
+<li class=" ml-8">CPU &#21487;&#20197;&#21482;&#30452;&#25509;&#36830;&#25509;&#21040;&#24635;&#32447;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#24635;&#32447;&#21487;&#20197;&#36830;&#25509;&#20854;&#20182;&#24635;&#32447;</li>
+<li class=" ml-8">&#20363;&#23376;&#65306;<code>lspci -t</code>, <code>lsusb -t</code></li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#20013;&#26029;&#25511;&#21046;&#22120;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#31649;&#29702;&#22810;&#20010;&#20135;&#29983;&#20013;&#26029;&#30340;&#35774;&#22791;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#27719;&#24635;&#25104;&#19968;&#20010;&#20013;&#26029;&#20449;&#21495;&#32473; CPU</li>
+<li class=" ml-8">&#25903;&#25345;&#20013;&#26029;&#30340;&#23631;&#34109;&#12289;&#20248;&#20808;&#32423;&#31649;&#29702;&#31561;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="-nes-1983" class=" text-xl mt-2 pb-2 font-sans">&#22788;&#29702;&#22120;-&#35774;&#22791;&#25509;&#21475;&#65306;NES &#23454;&#29616; (1983)</h2>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/ICS/2020/slides/img/NES-motherboard.png" width="800px"></p>
+<p class=" font-serif my-1"></p><center>Image by <a href="https://www.copetti.org/" class=" text-amber-900">Rodrigo Copetti</a>; &#20197;&#21450;<a href="../../../pages/ICS/2020/slides/img/Famicom.jpg" class=" text-amber-900">&#30005;&#36335;&#22270;</a></center></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#23567;&#32467;</h2>
+<p class=" font-serif my-1">I/O &#35774;&#22791;&#65306;&#8220;&#23567;&#35745;&#31639;&#26426;&#8221;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#23436;&#25104;&#21644;&#29289;&#29702;&#19990;&#30028;&#30340;&#20132;&#20114;&#21151;&#33021;</li>
+<li class=" ml-8">&#36830;&#25509;&#21040;&#24635;&#32447;/&#20013;&#26029;&#25511;&#21046;&#22120;</li>
+<li class=" ml-8">CPU &#36890;&#36807; PIO/MMIO &#35775;&#38382;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#20170;&#22825;&#24456;&#22810; I/O &#35774;&#22791;&#37117;&#24102;&#26377;&#25110;&#31616;&#21333;&#25110;&#22797;&#26434;&#30340; CPU</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#24102;&#36305;&#39532;&#28783;/&#32534;&#31243;&#21151;&#33021;&#30340;&#38190;&#30424;&#21644;&#40736;&#26631;</li>
+<li class=" ml-8">&#26174;&#31034;&#21152;&#36895;&#22120;&#21644; &#8220;&#26174;&#21345;&#35745;&#31639;&#8221;</li>
+<li class=" ml-8">&#8230;&#8230;</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="2d" class=" text-2xl mt-2 font-sans">2D &#22270;&#24418;&#32472;&#21046;&#30828;&#20214;</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#29702;&#35770;&#65306;&#19968;&#20999;&#30342;&#21487; &#8220;&#35745;&#31639;&#8221;</h2>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">H</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">W</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span>
+<span class="w">    </span><span class="n">putchar</span><span class="p">(</span><span class="n">j</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="sc">'*'</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="sc">' '</span><span class="p">);</span>
+<span class="w">  </span><span class="n">putchar</span><span class="p">(</span><span class="sc">'\n'</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<hr>
+<p class=" font-serif my-1">&#38590;&#21150;&#30340;&#26159;&#24615;&#33021;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">NES: 6502 @ 1.79Mhz; IPC = 0.43<ul class=" list-disc font-serif">
+<li class=" ml-8">&#23631;&#24149;&#20849;&#26377; 256 x 240 = 61K &#20687;&#32032; (256 &#33394;)</li>
+<li class=" ml-8">60FPS &#8594; &#27599;&#19968;&#24103;&#24517;&#39035;&#22312; ~10K &#26465;&#25351;&#20196;&#20869;&#23436;&#25104;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22914;&#20309;&#22312;&#26377;&#38480;&#30340; CPU &#36816;&#31639;&#21147;&#19979;&#23454;&#29616; 60Hz&#65311;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="rp2c02-picture-processing-unit-ppu" class=" text-xl mt-2 pb-2 font-sans">RP2C02 Picture Processing Unit (PPU)</h2>
+<p class=" font-serif my-1"></p><center><img alt="" height="300px" src="../../../pages/ICS/2020/slides/img/nes-sprite.png"> <img alt="" height="300px" src="../../../pages/ICS/2020/slides/img/nes-ppu.png"></center>
+<div class="float-right">
+
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>76543210
+||||||||
+||||||++- Palette
+|||+++--- Unimplemented
+||+------ Priority
+|+------- Flip horizontally
++-------- Flip vertically
+</code></pre></div>
+
+
+</div>
+
+<p class=" font-serif my-1">CPU &#21482;<red>&#25551;&#36848;</red> 8x8 &#8220;&#36148;&#22359;&#8221; &#30340;&#25670;&#25918;&#26041;&#27861;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#31867;&#20284;&#20110; PostScript &#33050;&#26412;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#32972;&#26223;&#26159; &#8220;&#22823;&#22270;&#8221; &#30340;&#19968;&#37096;&#20998;</li>
+<li class=" ml-8">&#27599;&#34892;&#30340;&#21069;&#26223;&#22359;&#19981;&#36229;&#36807; 8 &#20010;</li>
+</ul>
+</li>
+<li class=" ml-8">PPU &#23436;&#25104;&#22270;&#24418;&#30340;&#32472;&#21046;</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="ppu-cpu" class=" text-xl mt-2 pb-2 font-sans">PPU: &#21482;&#25191;&#34892;&#19968;&#20010;&#31243;&#24207;&#30340; CPU</h2>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">HEIGHT</span><span class="p">;</span><span class="w"> </span><span class="n">x</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// &#34892;&#25195;&#25551;</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">WIDTH</span><span class="p">;</span><span class="w"> </span><span class="n">y</span><span class="o">++</span><span class="p">,</span><span class="w"> </span><span class="n">pos</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">vbuf</span><span class="p">[</span><span class="n">pos</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">draw</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span><span class="w"> </span><span class="c1">// &#31639;&#20986; (x,y) &#30340;&#36148;&#22359; (&#21644;&#39068;&#33394;)</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>&#22320;&#22336;&#31354;&#38388;</th>
+<th>&#22823;&#23567;</th>
+<th>&#21151;&#33021;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$0000-$1FFF</code></td>
+<td>8 KB</td>
+<td><a href="https://wiki.nesdev.com/w/index.php/PPU_pattern_tables" class=" text-amber-900">Pattern tables</a></td>
+</tr>
+<tr>
+<td><code>$2000-$2FFF</code></td>
+<td>4 KB</td>
+<td><a href="https://wiki.nesdev.com/w/index.php/PPU_nametables" class=" text-amber-900">Nametable</a>s</td>
+</tr>
+<tr>
+<td><code>$3000-$3EFF</code></td>
+<td>3.75KB</td>
+<td>Mirrors of <code>$2000-$2EFF</code></td>
+</tr>
+<tr>
+<td><code>$3F00-$3F1F</code></td>
+<td>32B</td>
+<td><a href="https://wiki.nesdev.com/w/index.php/PPU_palettes" class=" text-amber-900">Palette RAM</a> indexes</td>
+</tr>
+<tr>
+<td><code>$3F20-$3FFF</code></td>
+<td>224B</td>
+<td>Mirrors of <code>$3F00-$3F1F</code></td>
+</tr>
+<tr>
+<td>OAM (DMA &#35775;&#38382;)</td>
+<td><red>256B</red></td>
+<td>Sprite Y, #, attribute, X</td>
+</tr>
+</tbody>
+</table></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#22312;&#21463;&#38480;&#30340;&#26426;&#33021;&#19979;&#25552;&#20379;&#20016;&#23500;&#30340;&#22270;&#24418;</h2>
+<p class=" font-serif my-1">&#21069;&#26223;&#65306;<a href="https://www.zhihu.com/question/38528261" class=" text-amber-900">&#12298;&#39746;&#26007;&#32599;&#12299;&#65288;Contra&#65289;&#20013;&#35282;&#33394;&#20026;&#20160;&#20040;&#35201;&#12300;&#33821;&#33673;&#24335;&#23624;&#33151;&#20463;&#21351;&#12301;&#65311;</a></p>
+<p class=" font-serif my-1"><img alt="" class="center" src="https://pic4.zhimg.com/80/v2-862ca6a052b48e07512fa0464666a802_1440w.jpg?source=1940ef5c" width="300px"></p></div>
+        
+      
+         <div class="fragment"> 
+        <div><hr>
+<p class=" font-serif my-1">&#32972;&#26223;&#65306;&#8220;&#21367;&#36724;&#8221; &#25805;&#20316;</p>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/ICS/2020/slides/img/nes-scroll.gif" width="800px"></p></div>
+         </div> 
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#22312;&#21463;&#38480;&#30340;&#30828;&#20214;&#19979;&#20570;&#28216;&#25103;&#65306;&#32972;&#26223;&#21160;&#30011;</h2>
+<p class=" font-serif my-1">&#36890;&#36807;&#20999;&#25442; tile pattern table &#23454;&#29616;&#32972;&#26223;&#21160;&#30011;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21516;&#26102;&#26356;&#26032;&#23631;&#24149;&#19978;&#30340;&#25152;&#26377; tiles</li>
+<li class=" ml-8">&#38590;&#24618;&#20026;&#20160;&#20040;&#26377;&#20123; &#8220;&#27425;&#19990;&#20195;&#8221; &#30340;&#28216;&#25103;&#30011;&#38754;&#37027;&#20040;&#31934;&#33391;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#26356;&#22823;&#30340;&#23384;&#20648;</li>
+<li class=" ml-8">&#19987;&#26377;&#30340;&#30828;&#20214; (&#22270;&#24418;&#29978;&#33267;&#25972;&#20010;&#35745;&#31639;&#31995;&#32479;)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20363;&#23376;&#65306;<a href="https://www.bilibili.com/video/BV1KW411v7Yq" class=" text-amber-900">GUN-NAC</a> (1990)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/ICS/2020/slides/img/nes-switch.gif" width="900px"></p></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="3d" class=" text-2xl mt-2 font-sans">3D &#22270;&#24418;&#32472;&#21046;&#30828;&#20214;</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="2d" class=" text-xl mt-2 pb-2 font-sans">&#26356;&#22909;&#30340; 2D &#28216;&#25103;&#24341;&#25806;</h2>
+<p class=" font-serif my-1">&#22914;&#26524;&#25105;&#20204;&#26377;&#26356;&#22810;&#30340;&#26230;&#20307;&#31649;&#65311;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">NES PPU &#30340;&#26412;&#36136;&#26159;&#21644;&#22352;&#26631;&#36724;&#24179;&#34892;&#30340; &#8220;&#36148;&#22359;&#22359;&#8221;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#23454;&#29616;&#19978;&#21482;&#38656;&#35201;&#21152;&#27861;&#21644;&#20301;&#36816;&#31639;</li>
+</ul>
+</li>
+<li class=" ml-8">&#26356;&#24378;&#22823;&#30340;&#35745;&#31639;&#33021;&#21147; = &#26356;&#22797;&#26434;&#30340;&#22270;&#24418;&#32472;&#21046;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">2D &#22270;&#24418;&#21152;&#36895;&#30828;&#20214;&#65306;&#22270;&#29255;&#30340; &#8220;&#35009;&#21098;&#8221; + &#8220;&#25340;&#36148;&#8221;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25903;&#25345;&#26059;&#36716;&#12289;&#26448;&#36136;&#26144;&#23556; (&#32553;&#25918;)&#12289;&#21518;&#22788;&#29702;&#12289;&#8230;&#8230;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#23454;&#29616; 3D</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#19977;&#32500;&#31354;&#38388;&#20013;&#30340;&#22810;&#36793;&#24418;&#65292;&#22312;&#35270;&#24179;&#38754;&#19978;&#20063;&#26159;&#22810;&#36793;&#24418;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20219;&#20309; $n$ &#36793;&#24418;&#37117;&#21487;&#20197;&#20998;&#35299;&#25104; $n-2$ &#20010;&#19977;&#35282;&#24418;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="3d" class=" text-xl mt-2 pb-2 font-sans">&#20197;&#20551;&#20081;&#30495;&#30340;&#21098;&#36148; 3D</h2>
+<p class=" font-serif my-1">GameBoy Advance</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">4 &#23618;&#32972;&#26223;; 128 &#20010;&#21098;&#36148; objects; 32 &#20010; affine objects<ul class=" list-disc font-serif">
+<li class=" ml-8">CPU &#32473;&#20986;&#25551;&#36848;&#65307;GPU &#32472;&#21046; (&#25191;&#34892; &#8220;&#19968;&#20010;&#31243;&#24207;&#8221; &#30340; CPU)</li>
+</ul>
+</li>
+</ul>
+<p class=" font-serif my-1"><img alt="" class="center" src="https://gamefabrique.com/storage/screenshots/gba/v-rally-3-05.png" width="480px"></p>
+<p class=" font-serif my-1"></p><center>(<a href="https://www.bilibili.com/video/BV1bT4y1g75x" class=" text-amber-900">V-Rally</a>; Game Boy Advance, 2002)</center></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="3d" class=" text-xl mt-2 pb-2 font-sans">&#20294;&#25105;&#20204;&#36824;&#26159;&#38656;&#35201;&#30495;&#27491;&#30340; 3D</h2>
+<p class=" font-serif my-1">&#19977;&#32500;&#31354;&#38388;&#20013;&#30340;&#19977;&#35282;&#24418;&#38656;&#35201;&#27491;&#30830;&#28210;&#26579;</p>
+<p class=" font-serif my-1"><img alt="" class="center" src="https://upload.wikimedia.org/wikipedia/commons/5/57/Perspective_correct_texture_mapping.jpg" width="800px"></p>
+<p class=" font-serif my-1"></p><center>&#8220;Perspective correct&#8221; texture mapping (Wikipedia)</center>
+<hr>
+<p class=" font-serif my-1">&#25105;&#20204;&#19981;&#35201;&#32440;&#29255;&#20154;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25105;&#20204;&#35201;&#30495;&#27491;&#30340; 3D</li>
+<li class=" ml-8">&#35201;&#25968;&#30334;&#19975;&#20010;&#22810;&#36793;&#24418;&#26500;&#36896;&#30340;&#31934;&#32454;&#22330;&#26223;</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="3d" class=" text-xl mt-2 pb-2 font-sans">&#29616;&#20195; 3D &#22270;&#24418;</h2>
+<p class=" font-serif my-1">CPU &#36127;&#36131;&#25551;&#36848;&#65292;GPU &#36127;&#36131;&#28210;&#26579;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">GPU &#25910;&#21040;&#20195;&#30721; + &#25968;&#25454; &#8594; &#36816;&#31639; &#8594; &#20889;&#22238;&#32467;&#26524;&#21040;&#20869;&#23384; &#8594; &#21457;&#36865;&#20013;&#26029;<ul class=" list-disc font-serif">
+<li class=" ml-8">GPU &#20013;&#26377;&#25968;&#21315;&#20010;&#36816;&#31639;&#21333;&#20803;&#23454;&#29616;&#24182;&#34892;&#30340;&#35745;&#31639;</li>
+</ul>
+</li>
+</ul>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/ICS/2020/slides/img/rendering-pipeline.png" width="70%"></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="3d" class=" text-xl mt-2 pb-2 font-sans">&#29616;&#20195; 3D &#22270;&#24418;&#65306;&#30828;&#20214;&#19978;&#30340;&#23454;&#29616;</h2>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">__global__</span><span class="w"> </span>
+<span class="kt">void</span><span class="w"> </span><span class="n">hello</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">a</span><span class="p">[</span><span class="n">threadIdx</span><span class="p">.</span><span class="n">x</span><span class="p">]</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="n">threadIdx</span><span class="p">.</span><span class="n">x</span><span class="p">];</span>
+<span class="p">}</span>
+<span class="kt">char</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">N</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Hello "</span><span class="p">;</span>
+<span class="kt">char</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="n">N</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">15</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">-11</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">};</span>
+<span class="n">cudaMalloc</span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="o">**</span><span class="p">)</span><span class="o">&amp;</span><span class="n">ad</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="w"> </span><span class="p">);</span>
+<span class="n">cudaMalloc</span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="o">**</span><span class="p">)</span><span class="o">&amp;</span><span class="n">bd</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="w"> </span><span class="p">);</span><span class="w"> </span>
+<span class="n">cudaMemcpy</span><span class="p">(</span><span class="w"> </span><span class="n">ad</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="p">,</span><span class="w"> </span><span class="n">cudaMemcpyHostToDevice</span><span class="w"> </span><span class="p">);</span><span class="w"> </span>
+<span class="n">cudaMemcpy</span><span class="p">(</span><span class="w"> </span><span class="n">bd</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="p">,</span><span class="w"> </span><span class="n">cudaMemcpyHostToDevice</span><span class="w"> </span><span class="p">);</span><span class="w"> </span>
+<span class="n">printf</span><span class="p">(</span><span class="s">"%s"</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">);</span><span class="w">     </span><span class="c1">// Hello </span>
+<span class="n">dim3</span><span class="w"> </span><span class="nf">dimBlock</span><span class="p">(</span><span class="w"> </span><span class="n">blocksize</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">);</span>
+<span class="n">dim3</span><span class="w"> </span><span class="nf">dimGrid</span><span class="p">(</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">);</span>
+<span class="n">hello</span><span class="o">&lt;&lt;&lt;</span><span class="n">dimGrid</span><span class="p">,</span><span class="w"> </span><span class="n">dimBlock</span><span class="o">&gt;&gt;&gt;</span><span class="p">(</span><span class="n">ad</span><span class="p">,</span><span class="w"> </span><span class="n">bd</span><span class="p">);</span><span class="w"> </span><span class="c1">// run on GPU</span>
+<span class="n">cudaMemcpy</span><span class="p">(</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">ad</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="p">,</span><span class="w"> </span><span class="n">cudaMemcpyDeviceToHost</span><span class="w"> </span><span class="p">);</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">"%s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">);</span><span class="w">   </span><span class="c1">// World! </span>
+<span class="p">...</span>
+</code></pre></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#39064;&#22806;&#35805;&#65306;&#22914;&#27492;&#20016;&#23500;&#30340;&#22270;&#24418;&#26159;&#24590;&#20040;&#26469;&#30340;&#65311;</h2>
+<p class=" font-serif my-1"><img alt="" class="center" src="https://myiblis.com/wp-content/uploads/2020/05/Assassins-Creed-Valhalla-2.jpg" width="900px"></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="ps" class=" text-xl mt-2 pb-2 font-sans">&#31572;&#26696;&#65306;&#20840;&#38752; PS (&#21518;&#22788;&#29702;)</h2>
+<p class=" font-serif my-1">&#20363;&#23376;&#65306;GLSL (Shading Language)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20351; &#8220;shader program&#8221; &#21487;&#20197;&#22312; GPU &#19978;&#25191;&#34892;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21487;&#20197;&#20316;&#29992;&#22312;&#21508;&#20010;&#28210;&#26579;&#32423;&#21035;&#19978;&#65306;vertex, fragment, pixel shader</li>
+<li class=" ml-8">&#30456;&#24403;&#20110;&#19968;&#20010; &#8220;PS&#8221; &#31243;&#24207;&#65292;&#31639;&#20986;&#27599;&#20010;&#37096;&#20998;&#30340;&#20809;&#29031;&#21464;&#21270;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20840;&#23616;&#20809;&#29031;&#12289;&#21453;&#23556;&#12289;&#38452;&#24433;&#12289;&#29615;&#22659;&#20809;&#36974;&#32617;&#8230;&#8230;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class=" font-serif my-1"><img alt="" class="center" src="https://photographyconcentrate.com/wp-content/uploads/2017/12/Editing-Skills-BeforeAfter-1.jpg" width="800px"></p>
+<p class=" font-serif my-1"></p><center>Photo by <a href="https://photographyconcentrate.com/15-snazzy-lightroom-and-afters/" class=" text-amber-900">Rob Lim</a></center></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#24635;&#32467;</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="io" class=" text-xl mt-2 pb-2 font-sans">I/O &#35774;&#22791;</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">&#20219;&#20309;&#33021;&#19982; CPU &#20132;&#25442;&#25968;&#25454;&#30340; &#8220;&#19996;&#35199;&#8221;&#12290;</p>
+</blockquote>
+<p class=" font-serif my-1">&#23436;&#25104;&#19982;&#29289;&#29702;&#19990;&#30028;&#30340;&#20132;&#20114;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#38190;&#30424;&#12289;&#40736;&#26631;&#12289;&#25171;&#21360;&#26426;&#8230;&#8230;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#25928;&#29575;&#26356;&#39640;&#30340;&#19987;&#29992;&#22788;&#29702;&#22120;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">GPU, NPU, FPGA, ...</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="end" class=" text-2xl mt-2 font-sans">End.</h1>
+<p class=" font-serif my-1"><br></p>
+<p class=" font-serif my-1">(&#20170;&#22825;&#24212;&#35813;&#35299;&#24320;&#20102;&#24456;&#22810;&#21516;&#23398;&#23545;&#35745;&#31639;&#26426;&#19987;&#19994;&#30340;&#30097;&#24785;&#65311;)</p></div></div></div>
+        
+      
+      </section>
+    
+    </section>
+  
+</div>
+</div>
+
+<script src="../../../static/reveal/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    
+    width: 1024, height: 768,
+    
+    slideNumber: 'c/t',
+    controlsTutorial: false,
+    progress: false,
+    hash: true,
+    center: false,
+    autoAnimateUnmatched: true,
+    autoAnimateEasing: 'ease-out',
+    autoAnimateDuration: 0.3,
+    transitionSpeed: 'fast'
+  });
+</script>
+
+
+</body>
+
+</html>

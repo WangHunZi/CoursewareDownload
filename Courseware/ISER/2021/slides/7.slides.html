@@ -1,0 +1,549 @@
+<!DOCTYPE html><html class="h-100">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="../../../static/css/base.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
+
+  <style>
+    .font-sans {
+      font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+    }
+    .font-serif {
+      font-family: 'Source Serif Pro', 'Songti SC', 'SimSun', 'Serif', serif;
+    }
+  </style>
+  <link rel="stylesheet" href="../../../static/katex/katex.min.css">
+  <script defer src="../../../static/katex/katex.min.js"></script>
+  <script defer src="../../../static/katex/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+            // customised options
+            // &#8226; auto-render specific keys, e.g.:
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ],
+            // &#8226; rendering keys, e.g.:
+            throwOnError : false
+          });
+      });
+  </script>
+
+
+  
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="../../../static/reveal/reveal.css">
+<link rel="stylesheet" href="../../../static/reveal/theme/simple.css" id="theme">
+
+<style>
+.reveal .slide-number {
+  font-size: 26px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, .3);
+}
+
+.reveal .full-screen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.reveal .slides {
+  border: 1.5px #ddd solid;
+  border-radius: 7px;
+  text-align: left;
+  font-weight: 300;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  font-family: 'Lato', 'SimHei', 'STXihei', 'Droid Sans';
+  font-weight: 400;
+}
+
+.reveal p, .reveal li, .reveal center {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Droid Sans';
+}
+
+.reveal li + li {
+  margin-top: 10px;
+}
+
+.reveal ul {
+  display: block;
+  margin-right: 15px;
+}
+
+.reveal p, .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5 {
+  padding:  0 25px 0 25px;
+}
+
+.reveal table {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Sans Serif';
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.reveal th {
+  background-color: #eee;
+}
+
+.reveal tr:nth-child(even) {
+  background-color: #efffff;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  text-align: left;
+  margin: 0 0 20px 0;
+ color: #222; 
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
+
+
+.reveal h1 {
+  margin: 0 10 0 10;
+  font-size: 60px;
+}
+.reveal .middle h1 {
+  text-align: center;
+}
+
+.reveal h2 {
+  font-size: 48px;
+  border-bottom: 2px solid rgb(106, 0, 95);
+  padding-bottom: 5px;
+}
+.reveal h3 { font-size: 1.15em; }
+.reveal h4 { font-size: 1.05em; }
+
+.reveal .center {
+  text-align: center;
+}
+
+.reveal .middle {
+  height: 728px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.reveal pre {
+  font-size: 28px;
+ 
+  background-color: #eee;
+
+  border-radius: 3mm;
+  padding: 10px 10px 10px 10px;
+}
+
+.reveal pre code {
+  max-height: none;
+}
+
+.reveal code {
+  font-family: 'Inconsolata', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif', Monospace;
+}
+
+.reveal .middle blockquote {
+  text-align: center;
+  color: rgb(106, 0, 95);
+  background: none;
+  box-shadow: none;
+}
+
+.reveal .middle blockquote a {
+  color: inherit;
+}
+
+.reveal blockquote p, .reveal blockquote li {
+  font-family: 'Lato', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif';
+}
+
+section .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reveal .author-block {
+  margin: 75px 0 35px 0;
+}
+.reveal .author-affiliation img {
+  margin: 15px 0 0 0;
+}
+.reveal .author-block p, .reveal .author-affiliation p  {
+  font-family: 'Kaiti', 'STKaiti', 'Serif', 'Times', 'Times New Roman';
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+.reveal .author-affiliation {
+  display: inline-block;
+  font-size: 90%;
+}
+.reveal hr {
+  border: 10px solid rgba(0, 0, 0, 0);
+}
+.reveal li {
+  margin-top: 10px;
+}
+</style>
+
+  <title>Summary &amp; Awards</title>
+</head>
+
+<body class="d-flex flex-column h-100">
+  
+  
+
+<div class="reveal">
+<div class="slides">
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="summary-awards" class=" text-2xl mt-2 font-sans">Summary &amp; Awards</h1>
+<p class=" font-serif my-1"><br></p>
+<p class=" font-serif my-1">Yanyan Jiang</p></div></div></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="introduction-to-se-research" class=" text-2xl mt-2 font-sans">Introduction to SE Research:</h1>
+<h1 id="three-easy-pieces" class=" text-2xl mt-2 font-sans">Three Easy Pieces</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="reading" class=" text-xl mt-2 pb-2 font-sans">Reading</h2>
+<p class=" font-serif my-1">Newbie phase (or unfamiliar research area)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Newbies: courses $\approx$ tutorials $&gt;$ textbooks $&gt;$ talks $&gt;$ papers</li>
+<li class=" ml-8">You will learn a lot!</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Professional phase (your topic's related research)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Virtually re-implement <em>every</em> paper (to make sure you digest them well)<ul class=" list-disc font-serif">
+<li class=" ml-8">be constructive, not destructive on every paper</li>
+</ul>
+</li>
+<li class=" ml-8">Make a reading list (now)!<ul class=" list-disc font-serif">
+<li class=" ml-8">get all top-conference papers in 10-15 years</li>
+<li class=" ml-8">build a reference graph</li>
+<li class=" ml-8">(a very hard time; but very useful)</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="writing" class=" text-xl mt-2 pb-2 font-sans">Writing</h2>
+<p class=" font-serif my-1">How to write?</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Lots of tedious details<ul class=" list-disc font-serif">
+<li class=" ml-8">&#8220;Least surprise principle&#8221; - your reader is a deep neural network; make their predictions in line</li>
+<li class=" ml-8">Find a manual, e.g., CMOS</li>
+</ul>
+</li>
+<li class=" ml-8">Give a lot of time to your advisor for revising your manuscript<ul class=" list-disc font-serif">
+<li class=" ml-8">$&gt;3$ months</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="hacking" class=" text-xl mt-2 pb-2 font-sans">Hacking</h2>
+<p class=" font-serif my-1">Write good code</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Readable - make specifications explicit</li>
+<li class=" ml-8">Verifiable - make correctness explicit</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Life is short, use</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Modern IDE and command line tools</li>
+<li class=" ml-8">Git</li>
+<li class=" ml-8">Python</li>
+<li class=" ml-8">Domain-specific languages<ul class=" list-disc font-serif">
+<li class=" ml-8">example: I use Jinja2 for spamming: <a href="../../../pages/ISER/2021/slides/review-form.md" class=" text-amber-900">review-form.md</a></li>
+<li class=" ml-8"><code>spam review-form.md assignment.csv</code></li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="awards" class=" text-2xl mt-2 font-sans">Awards</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="distinguished-review-award" class=" text-2xl mt-2 font-sans">Distinguished Review Award</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><p class=" font-serif my-1"><strong>Distinguished Review Awards</strong></p>
+<p class=" font-serif my-1"><br></p>
+<p class=" font-serif my-1">&#26446;&#33487;&#33728;</p>
+<p class=" font-serif my-1"><br></p>
+<p class=" font-serif my-1">&#24352;&#22825;&#27888;</p>
+<p class=" font-serif my-1"><br></p>
+<p class=" font-serif my-1">&#26417;&#26771;&#28304;</p></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="distinguished-proposal-award" class=" text-2xl mt-2 font-sans">Distinguished Proposal Award</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><p class=" font-serif my-1"><strong>Distinguished Proposal Awards</strong></p>
+<p class=" font-serif my-1"><br></p>
+<p class=" font-serif my-1">&#26460;&#26143;&#20142;</p>
+<p class=" font-serif my-1">&#8220;Detecting Breaking Changes in Python Libraries: A Systematic, Automatic Approach&#8221;</p>
+<p class=" font-serif my-1"><br></p>
+<p class=" font-serif my-1">&#21016;&#26031;&#23431;</p>
+<p class=" font-serif my-1">&#8220;JFass: A New Serverless Platform with Customized JVM Runtime&#8221;</p>
+<p class=" font-serif my-1"><br></p>
+<p class=" font-serif my-1">&#39068;&#20426;&#26753;</p>
+<p class=" font-serif my-1">&#8220;Incremental Pointer Analysis&#8221;</p></div></div></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="instructors-summary" class=" text-2xl mt-2 font-sans">Instructor's Summary</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="course-summary" class=" text-xl mt-2 pb-2 font-sans">Course Summary</h2>
+<p class=" font-serif my-1">Course contents (class meetings and assignments)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Same as the last year</li>
+<li class=" ml-8">But everything goes in English<ul class=" list-disc font-serif">
+<li class=" ml-8">(seems okay)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Better proceeding and Online Judge</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Not perfect (will improved next year...)<ul class=" list-disc font-serif">
+<li class=" ml-8">manually handled <code>.zip</code>, <code>.pdf</code>, and hash-ID for A5 &#128514;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="upcoming-next-year" class=" text-xl mt-2 pb-2 font-sans">Upcoming Next Year...</h2>
+<p class=" font-serif my-1">Larger paper pool</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">~10 must-reads and ~100 awesome papers</li>
+</ul></div>
+        
+      
+         <div class="fragment"> 
+        <div><hr>
+<p class=" font-serif my-1">Presentations go virtual</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Everyone presents a different paper (10-minute video)</li>
+<li class=" ml-8">One-week open online cyclic sessions (on b23.tv)</li>
+<li class=" ml-8">Everyone (including instructors) watches <em>all</em> presentations<ul class=" list-disc font-serif">
+<li class=" ml-8">in-class commentary</li>
+</ul>
+</li>
+</ul></div>
+         </div> 
+      
+         <div class="fragment"> 
+        <div><hr>
+<p class=" font-serif my-1">More class-meeting topics and more code</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">AI and SE, model checking and formal verification, constraint solving and program synthesis</li>
+<li class=" ml-8">Stronger emphasize on working code (live demos in class)</li>
+</ul></div>
+         </div> 
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="take-away-messages" class=" text-xl mt-2 pb-2 font-sans">Take Away Messages</h2>
+<p class=" font-serif my-1">Three easy pieces</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Reading</li>
+<li class=" ml-8">Writing</li>
+<li class=" ml-8">Hacking</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Set a higher bar!</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Seek changes</li>
+<li class=" ml-8">Seek challenges</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="for-fun-and-profits" class=" text-2xl mt-2 font-sans">For Fun and Profits!</h1>
+<p class=" font-serif my-1"><br></p>
+<p class=" font-serif my-1">(Or Drop PhD.)</p></div></div></div>
+        
+      
+      </section>
+    
+    </section>
+  
+</div>
+</div>
+
+<script src="../../../static/reveal/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    
+    width: 1024, height: 768,
+    
+    slideNumber: 'c/t',
+    controlsTutorial: false,
+    progress: false,
+    hash: true,
+    center: false,
+    autoAnimateUnmatched: true,
+    autoAnimateEasing: 'ease-out',
+    autoAnimateDuration: 0.3,
+    transitionSpeed: 'fast'
+  });
+</script>
+
+
+</body>
+
+</html>

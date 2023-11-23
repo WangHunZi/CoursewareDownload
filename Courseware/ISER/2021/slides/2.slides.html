@@ -1,0 +1,598 @@
+<!DOCTYPE html><html class="h-100">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="../../../static/css/base.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
+
+  <style>
+    .font-sans {
+      font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+    }
+    .font-serif {
+      font-family: 'Source Serif Pro', 'Songti SC', 'SimSun', 'Serif', serif;
+    }
+  </style>
+  <link rel="stylesheet" href="../../../static/katex/katex.min.css">
+  <script defer src="../../../static/katex/katex.min.js"></script>
+  <script defer src="../../../static/katex/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+            // customised options
+            // &#8226; auto-render specific keys, e.g.:
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ],
+            // &#8226; rendering keys, e.g.:
+            throwOnError : false
+          });
+      });
+  </script>
+
+
+  
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="../../../static/reveal/reveal.css">
+<link rel="stylesheet" href="../../../static/reveal/theme/simple.css" id="theme">
+
+<style>
+.reveal .slide-number {
+  font-size: 26px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, .3);
+}
+
+.reveal .full-screen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.reveal .slides {
+  border: 1.5px #ddd solid;
+  border-radius: 7px;
+  text-align: left;
+  font-weight: 300;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  font-family: 'Lato', 'SimHei', 'STXihei', 'Droid Sans';
+  font-weight: 400;
+}
+
+.reveal p, .reveal li, .reveal center {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Droid Sans';
+}
+
+.reveal li + li {
+  margin-top: 10px;
+}
+
+.reveal ul {
+  display: block;
+  margin-right: 15px;
+}
+
+.reveal p, .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5 {
+  padding:  0 25px 0 25px;
+}
+
+.reveal table {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Sans Serif';
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.reveal th {
+  background-color: #eee;
+}
+
+.reveal tr:nth-child(even) {
+  background-color: #efffff;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  text-align: left;
+  margin: 0 0 20px 0;
+ color: #222; 
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
+
+
+.reveal h1 {
+  margin: 0 10 0 10;
+  font-size: 60px;
+}
+.reveal .middle h1 {
+  text-align: center;
+}
+
+.reveal h2 {
+  font-size: 48px;
+  border-bottom: 2px solid rgb(106, 0, 95);
+  padding-bottom: 5px;
+}
+.reveal h3 { font-size: 1.15em; }
+.reveal h4 { font-size: 1.05em; }
+
+.reveal .center {
+  text-align: center;
+}
+
+.reveal .middle {
+  height: 728px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.reveal pre {
+  font-size: 28px;
+ 
+  background-color: #eee;
+
+  border-radius: 3mm;
+  padding: 10px 10px 10px 10px;
+}
+
+.reveal pre code {
+  max-height: none;
+}
+
+.reveal code {
+  font-family: 'Inconsolata', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif', Monospace;
+}
+
+.reveal .middle blockquote {
+  text-align: center;
+  color: rgb(106, 0, 95);
+  background: none;
+  box-shadow: none;
+}
+
+.reveal .middle blockquote a {
+  color: inherit;
+}
+
+.reveal blockquote p, .reveal blockquote li {
+  font-family: 'Lato', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif';
+}
+
+section .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reveal .author-block {
+  margin: 75px 0 35px 0;
+}
+.reveal .author-affiliation img {
+  margin: 15px 0 0 0;
+}
+.reveal .author-block p, .reveal .author-affiliation p  {
+  font-family: 'Kaiti', 'STKaiti', 'Serif', 'Times', 'Times New Roman';
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+.reveal .author-affiliation {
+  display: inline-block;
+  font-size: 90%;
+}
+.reveal hr {
+  border: 10px solid rgba(0, 0, 0, 0);
+}
+.reveal li {
+  margin-top: 10px;
+}
+</style>
+
+  <title>How to Code</title>
+</head>
+
+<body class="d-flex flex-column h-100">
+  
+  
+
+<div class="reveal">
+<div class="slides">
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="how-to-code" class=" text-2xl mt-2 font-sans">How to Code</h1>
+<p class=" font-serif my-1"><br></p>
+<p class=" font-serif my-1">Yanyan Jiang</p></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="overview" class=" text-xl mt-2 pb-2 font-sans">Overview</h2>
+<p class=" font-serif my-1">Life is short.</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Use command line.</li>
+<li class=" ml-8">Use Git.</li>
+<li class=" ml-8">Use Python.</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="life-is-short-use-command-line" class=" text-2xl mt-2 font-sans">Life is Short. Use Command Line.</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="why-use-command-line" class=" text-xl mt-2 pb-2 font-sans">Why Use Command Line?</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">Shell is a <em>Turing-Complete programming language</em>.</p>
+</blockquote>
+<p class=" font-serif my-1">That gives you sufficient expressiveness for daily work</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">UNIX Philosophy: keep it simple, stupid</li>
+<li class=" ml-8">everything is a file; write things to work together using text interface</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="how-to-use-command-line" class=" text-xl mt-2 pb-2 font-sans">How to Use Command Line?</h2>
+<p class=" font-serif my-1">UNIX is User-Friendly...</p>
+<p class=" font-serif my-1">It's just choosy about who its friends are!</p>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/xkcd-tar.png" width="800px"></p>
+<hr>
+<p class=" font-serif my-1">Modernize your command line!</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="https://github.com/jlevy/the-art-of-command-line" class=" text-amber-900">the art of command line</a></li>
+<li class=" ml-8">use fish/zsh and powerful features (<code>&lt;()</code>, <code>|&amp;</code>, ...)</li>
+<li class=" ml-8">...</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="other-tips" class=" text-xl mt-2 pb-2 font-sans">Other Tips</h2>
+<p class=" font-serif my-1">Learn a lot of programming languages</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">shell </li>
+<li class=" ml-8">vim (vim keybinding is everywhere!)</li>
+<li class=" ml-8">modern regular expressions</li>
+<li class=" ml-8">...</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Use modern variants</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">use modern tools like tldr, fzf, rg, ...</li>
+<li class=" ml-8">use Markdown (and a lot of tools)</li>
+<li class=" ml-8">...</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="short-summary" class=" text-xl mt-2 pb-2 font-sans">Short Summary</h2>
+<p class=" font-serif my-1">Ask yourself: did you know (almost all) these before?</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Yes &#8594; you're on the right track</li>
+<li class=" ml-8">No &#8594; rethink your life!</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="life-is-short-use-git" class=" text-2xl mt-2 font-sans">Life is Short. Use Git.</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="why-use-git" class=" text-xl mt-2 pb-2 font-sans">Why Use Git?</h2>
+<p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/ISER/2021/slides/img/git-fire.png" width="400px">
+What happens if you rush into my office and smash my computer?</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Nothing</li>
+<li class=" ml-8">I always push to remote when I leave my office!<ul class=" list-disc font-serif">
+<li class=" ml-8">$&gt;2$ up-to-date replicas</li>
+<li class=" ml-8">more (slightly) outdated replicas</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="what-is-git" class=" text-xl mt-2 pb-2 font-sans">What is Git?</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">I asked this question on postgraduate interview (all &#8220;top&#8221; students).</p>
+<p class=" font-serif my-1">I frequently got &#8220;something for downloading code from Internet&#8221;.</p>
+</blockquote>
+<hr>
+<p class=" font-serif my-1"><a href="https://git-scm.com" class=" text-amber-900">Git</a> is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. (git-scm.com)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="https://docs.microsoft.com/en-us/devops/develop/git/what-is-git" class=" text-amber-900">Microsoft docs for devops</a>: Git has become the worldwide standard for version control.</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="what-is-git" class=" text-xl mt-2 pb-2 font-sans">What is Git?</h2>
+<p class=" font-serif my-1">A simplified model</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">A lot of directory snapshots (commits)<ul class=" list-disc font-serif">
+<li class=" ml-8">saved in <code>.git</code> folder</li>
+</ul>
+</li>
+<li class=" ml-8">Each commit is associated with a commit message</li>
+<li class=" ml-8">Creating new commits by<ol class=" list-decimal font-serif">
+<li class=" ml-8">changing an existing commit</li>
+<li class=" ml-8">merging two existing commits</li>
+<li class=" ml-8">synchronizing with remote commits</li>
+</ol>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="how-to-use-git" class=" text-xl mt-2 pb-2 font-sans">How to Use Git?</h2>
+<p class=" font-serif my-1">For small projects (only you and your supervisor)</p>
+<ol class=" list-decimal font-serif">
+<li class=" ml-8">Never commit generated files (properly ignore them)</li>
+<li class=" ml-8">Commit early, commit often (with meaningful messages)</li>
+<li class=" ml-8">Make good use of branches</li>
+<li class=" ml-8">Stash incomplete work</li>
+</ol>
+<hr>
+<p class=" font-serif my-1">Further Reading</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="https://git-scm.com/book/en/v2" class=" text-amber-900">Pro Git</a></li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="life-is-short-use-python" class=" text-2xl mt-2 font-sans">Life is Short. Use Python.</h1>
+<p class=" font-serif my-1"><img alt="" src="../../../pages/talks/img/guido-python-tee.jpg"></p>
+<hr>
+<p class=" font-serif my-1">(You may have your own preferences: Javascript, Haskell, ...)</p></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="why-use-python" class=" text-xl mt-2 pb-2 font-sans">Why Use Python?</h2>
+<p class=" font-serif my-1">Sufficiently simple and powerful for daily tasks</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">borrow meeting rooms </li>
+<li class=" ml-8">send spam mails...</li>
+</ul>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">def</span> <span class="nf">send</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">subject</span><span class="p">,</span> <span class="n">md_text</span><span class="p">):</span>
+    <span class="n">html</span><span class="p">,</span> <span class="n">msg</span> <span class="o">=</span> <span class="n">markdown</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="n">md_text</span><span class="p">),</span> <span class="n">EmailMessage</span><span class="p">()</span>
+    <span class="n">msg</span><span class="p">[</span><span class="s1">'Subject'</span><span class="p">]</span> <span class="o">=</span> <span class="n">subject</span>
+    <span class="n">msg</span><span class="p">[</span><span class="s1">'From'</span><span class="p">]</span> <span class="o">=</span> <span class="n">Address</span><span class="p">(</span><span class="s1">'Yanyan Jiang'</span><span class="p">,</span> <span class="o">*</span><span class="n">MAIL</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'@'</span><span class="p">))</span>
+    <span class="n">msg</span><span class="p">[</span><span class="s1">'To'</span><span class="p">]</span> <span class="o">=</span> <span class="n">Address</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="o">*</span><span class="n">email</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'@'</span><span class="p">))</span>
+    <span class="n">msg</span><span class="o">.</span><span class="n">set_content</span><span class="p">(</span><span class="n">html</span><span class="p">,</span> <span class="n">subtype</span><span class="o">=</span><span class="s1">'html'</span><span class="p">)</span>
+    <span class="n">server</span><span class="o">.</span><span class="n">send_message</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+<span class="n">server</span> <span class="o">=</span> <span class="n">smtplib</span><span class="o">.</span><span class="n">SMTP_SSL</span><span class="p">(</span><span class="s1">'smtp.exmail.qq.com'</span><span class="p">,</span> <span class="mi">465</span><span class="p">)</span> 
+<span class="n">server</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="n">MAIL</span><span class="p">,</span> <span class="n">PASSWORD</span><span class="p">)</span> <span class="c1"># import getpass</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">'students.csv'</span><span class="p">))):</span>
+    <span class="nb">id</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">token</span> <span class="o">=</span> <span class="n">row</span>
+    <span class="n">send</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="nb">id</span><span class="si">}</span><span class="s1">@smail.nju.edu.cn'</span><span class="p">,</span> <span class="n">TITLE</span><span class="p">,</span> <span class="n">TEMPLATE</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">row</span><span class="p">))</span>
+<span class="n">server</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+</code></pre></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="use-modern-features" class=" text-xl mt-2 pb-2 font-sans">Use Modern Features</h2>
+<p class=" font-serif my-1">Useful features</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="https://docs.python.org/3/whatsnew/3.3.html" class=" text-amber-900">3.3</a>: <code>yield from xs</code>, venv</li>
+<li class=" ml-8"><a href="https://docs.python.org/3/whatsnew/3.4.html" class=" text-amber-900">3.4</a>: asyncio, enum, pathlib</li>
+<li class=" ml-8"><a href="https://docs.python.org/3/whatsnew/3.5.html" class=" text-amber-900">3.5</a>: <code>async/await</code>, typing</li>
+<li class=" ml-8"><a href="https://docs.python.org/3/whatsnew/3.6.html" class=" text-amber-900">3.6</a>: <code>f'{a}+{b}={a+b}'</code>, <code>[i async for i in aiter() if i % 2]</code></li>
+<li class=" ml-8"><a href="https://docs.python.org/3/whatsnew/3.7.html" class=" text-amber-900">3.7</a>: <code>@dataclass</code></li>
+<li class=" ml-8"><a href="https://docs.python.org/3/whatsnew/3.8.html" class=" text-amber-900">3.8</a>: <code>(x := read()) + 1</code>, <code>f'{x=}'</code></li>
+<li class=" ml-8"><a href="https://docs.python.org/3/whatsnew/3.9.html" class=" text-amber-900">3.9</a>: <code>s.removesuffix()</code>, <code>val: list[int] = []</code>, graphlib</li>
+<li class=" ml-8"><a href="https://docs.python.org/3.10/whatsnew/3.10.html" class=" text-amber-900">3.10</a>, prerelease<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>with (A() as a, B() as b)</code></li>
+<li class=" ml-8"><code>match/case</code></li>
+<li class=" ml-8"><code>def f(x: int | float) -&gt; int | float:</code></li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="summary" class=" text-2xl mt-2 font-sans">Summary</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="how-to-code" class=" text-xl mt-2 pb-2 font-sans">How to Code</h2>
+<p class=" font-serif my-1">Life is short.</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Use command line.</li>
+<li class=" ml-8">Use Git.</li>
+<li class=" ml-8">Use Python.</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="end" class=" text-2xl mt-2 font-sans">End.</h1></div></div></div>
+        
+      
+      </section>
+    
+    </section>
+  
+</div>
+</div>
+
+<script src="../../../static/reveal/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    
+    width: 1024, height: 768,
+    
+    slideNumber: 'c/t',
+    controlsTutorial: false,
+    progress: false,
+    hash: true,
+    center: false,
+    autoAnimateUnmatched: true,
+    autoAnimateEasing: 'ease-out',
+    autoAnimateDuration: 0.3,
+    transitionSpeed: 'fast'
+  });
+</script>
+
+
+</body>
+
+</html>

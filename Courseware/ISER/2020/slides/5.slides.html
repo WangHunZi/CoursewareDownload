@@ -1,0 +1,870 @@
+<!DOCTYPE html><html class="h-100">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="../../../static/css/base.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
+
+  <style>
+    .font-sans {
+      font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+    }
+    .font-serif {
+      font-family: 'Source Serif Pro', 'Songti SC', 'SimSun', 'Serif', serif;
+    }
+  </style>
+  <link rel="stylesheet" href="../../../static/katex/katex.min.css">
+  <script defer src="../../../static/katex/katex.min.js"></script>
+  <script defer src="../../../static/katex/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+            // customised options
+            // &#8226; auto-render specific keys, e.g.:
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ],
+            // &#8226; rendering keys, e.g.:
+            throwOnError : false
+          });
+      });
+  </script>
+
+
+  
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="../../../static/reveal/reveal.css">
+<link rel="stylesheet" href="../../../static/reveal/theme/simple.css" id="theme">
+
+<style>
+.reveal .slide-number {
+  font-size: 26px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, .3);
+}
+
+.reveal .full-screen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.reveal .slides {
+  border: 1.5px #ddd solid;
+  border-radius: 7px;
+  text-align: left;
+  font-weight: 300;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  font-family: 'Lato', 'SimHei', 'STXihei', 'Droid Sans';
+  font-weight: 400;
+}
+
+.reveal p, .reveal li, .reveal center {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Droid Sans';
+}
+
+.reveal li + li {
+  margin-top: 10px;
+}
+
+.reveal ul {
+  display: block;
+  margin-right: 15px;
+}
+
+.reveal p, .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5 {
+  padding:  0 25px 0 25px;
+}
+
+.reveal table {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Sans Serif';
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.reveal th {
+  background-color: #eee;
+}
+
+.reveal tr:nth-child(even) {
+  background-color: #efffff;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  text-align: left;
+  margin: 0 0 20px 0;
+ color: #222; 
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
+
+
+.reveal h1 {
+  margin: 0 10 0 10;
+  font-size: 60px;
+}
+.reveal .middle h1 {
+  text-align: center;
+}
+
+.reveal h2 {
+  font-size: 48px;
+  border-bottom: 2px solid rgb(106, 0, 95);
+  padding-bottom: 5px;
+}
+.reveal h3 { font-size: 1.15em; }
+.reveal h4 { font-size: 1.05em; }
+
+.reveal .center {
+  text-align: center;
+}
+
+.reveal .middle {
+  height: 728px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.reveal pre {
+  font-size: 28px;
+ 
+  background-color: #eee;
+
+  border-radius: 3mm;
+  padding: 10px 10px 10px 10px;
+}
+
+.reveal pre code {
+  max-height: none;
+}
+
+.reveal code {
+  font-family: 'Inconsolata', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif', Monospace;
+}
+
+.reveal .middle blockquote {
+  text-align: center;
+  color: rgb(106, 0, 95);
+  background: none;
+  box-shadow: none;
+}
+
+.reveal .middle blockquote a {
+  color: inherit;
+}
+
+.reveal blockquote p, .reveal blockquote li {
+  font-family: 'Lato', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif';
+}
+
+section .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reveal .author-block {
+  margin: 75px 0 35px 0;
+}
+.reveal .author-affiliation img {
+  margin: 15px 0 0 0;
+}
+.reveal .author-block p, .reveal .author-affiliation p  {
+  font-family: 'Kaiti', 'STKaiti', 'Serif', 'Times', 'Times New Roman';
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+.reveal .author-affiliation {
+  display: inline-block;
+  font-size: 90%;
+}
+.reveal hr {
+  border: 10px solid rgba(0, 0, 0, 0);
+}
+.reveal li {
+  margin-top: 10px;
+}
+</style>
+
+  <title>&#20889;&#20316;&#20013;&#30340;&#24120;&#35265;&#38382;&#39064;</title>
+</head>
+
+<body class="d-flex flex-column h-100">
+  <div class="watermark">DRAFT</div>
+  
+
+<div class="reveal">
+<div class="slides">
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#20889;&#20316;&#20013;&#30340;&#24120;&#35265;&#38382;&#39064;</h1>
+<p class=" font-serif my-1"><include src="Slides_Author"><div><div class="py-16">
+<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">&#33931;&#28814;&#23721;</a></p>
+</div>
+<div class="row">
+<div class="author-affiliation">
+    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#12288;&#12288;&#21335;&#20140;&#22823;&#23398;&#12288;&#12288;</p>
+    <img class="inline-img h-24" src="../../../static/img/nju-logo.jpg" style="display: inline-block;"></a>
+  </div>
+<div class="author-affiliation">
+   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#31185;&#23398;&#19982;&#25216;&#26415;&#31995;</p>
+    <img class="inline-img h-24" src="../../../static/img/njucs-logo.jpg" style="display: inline-block;"></a>
+  </div>
+<div class="author-affiliation">
+    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#36719;&#20214;&#30740;&#31350;&#25152;</p>
+    <img class="inline-img h-24" src="../../../static/img/ics-logo.png" style="display: inline-block;"></a>
+  </div>
+</div></div></include></p></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26412;&#35762;&#20027;&#39064;</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">Research Proposal &#36827;&#20837;&#20462;&#25913;&#38454;&#27573; (<a href="../assignments/A2.html" class=" text-amber-900">A2</a>)</p>
+<p class=" font-serif my-1">&#35831;&#20351;&#29992;<red>&#20462;&#35746;</red>&#21151;&#33021;&#26631;&#35760;&#20986;&#20320;&#30340;&#20462;&#25913;</p>
+</blockquote>
+<p class=" font-serif my-1">&#20889;&#20316;&#20013;&#30340;&#24120;&#35265;&#38382;&#39064;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22312;&#20570;&#30740;&#31350;/&#20889;&#20316;&#20043;&#21069;<ul class=" list-disc font-serif">
+<li class=" ml-8">academic integrity &#21644; benchmarking crimes</li>
+<li class=" ml-8">&#26126;&#30830;&#30740;&#31350;&#36129;&#29486;</li>
+</ul>
+</li>
+<li class=" ml-8">&#20889;&#20316;&#20013;&#24120;&#35265;&#30340;&#38382;&#39064;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#30740;&#31350;&#36129;&#29486;&#12289;&#20840;&#25991;&#34920;&#36798;&#12289;&#21477;&#23376;&#12289;&#29992;&#35789;&#12289;&#26631;&#28857;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#26412;&#25991;&#20013;&#37096;&#20998;&#24314;&#35758;&#26469;&#33258; [<a href="http://taoxie.cs.illinois.edu/publications/writepapers.pdf" class=" text-amber-900">1</a>, <a href="https://homes.cs.washington.edu/~mernst/advice/" class=" text-amber-900">2</a>]&#12290;</p></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#22312;&#24320;&#22987;&#20570;&#30740;&#31350;&#20043;&#21069;</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="academic-integrity" class=" text-xl mt-2 pb-2 font-sans">Academic Integrity: &#21117;&#31363;</h2>
+<p class=" font-serif my-1">(<a href="https://integrity.mit.edu/handbook/what-plagiarism" class=" text-amber-900">Academic Integrity at MIT</a>)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Plagiarism occurs when you use another&#8217;s words, ideas, assertions, data, or figures and do not acknowledge that you have done so.</li>
+<li class=" ml-8">If you use the words, ideas, or phrasing of another person or from published material, you must<ul class=" list-disc font-serif">
+<li class=" ml-8">Use quotation marks around the words and cite the source, or paraphrase or summarize acceptably and cite the source.</li>
+</ul>
+</li>
+<li class=" ml-8">If you use charts, graphs, data sets, or numerical information obtained from another person or from published material, you must also cite the source.</li>
+<li class=" ml-8">You must always acknowledge your sources by citing them. In this way, you have the right to use another&#8217;s creative output by giving that person credit for the work s/he has done.</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="benchmarking-crimes" class=" text-xl mt-2 pb-2 font-sans">Benchmarking Crimes</h2>
+<p class=" font-serif my-1">&#21015;&#20030;&#22312; USENIX &#25237;&#31295;&#26639;&#30446;&#20013;&#30340; <a href="https://www.cse.unsw.edu.au/~gernot/benchmarking-crimes.html" class=" text-amber-900">Systems Benchmarking Crimes</a></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">selective benchmarking</li>
+<li class=" ml-8">improper handling of benchmark results</li>
+<li class=" ml-8">using the wrong benchmarks</li>
+<li class=" ml-8">improper comparison of benchmark results</li>
+<li class=" ml-8">missing information</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#24320;&#22987;&#20889;&#20316;&#20043;&#21069;&#8230;&#8230;</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20808;&#32771;&#34385;&#22909;&#30740;&#31350;&#36129;&#29486;</h2>
+<p class=" font-serif my-1">&#22914;&#20309;&#29702;&#35299;&#19968;&#20221; &#8220;&#30740;&#31350;&#24037;&#20316;&#8221; &#30340;&#36129;&#29486;&#65311;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#38382;&#39064;&#26159;&#20160;&#20040;</li>
+<li class=" ml-8">&#38382;&#39064;/&#26041;&#27861;&#30340; significance &#21644; novelty (&#21487;&#33021;&#26159; difficulty)</li>
+<li class=" ml-8">&#38382;&#39064;&#24471;&#21040;&#35299;&#20915;&#30340;&#35777;&#25454;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Evaluation criteria (ICSE)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">soundness (&#25104;&#31435;&#19981;&#25104;&#31435;)</li>
+<li class=" ml-8">significance (&#37325;&#35201;&#19981;&#37325;&#35201;)</li>
+<li class=" ml-8">novelty (&#26032;&#39062;&#19981;&#26032;&#39062;)</li>
+<li class=" ml-8">verifiability (&#26159;&#19981;&#26159;&#30495;&#30340;)</li>
+<li class=" ml-8">presentation (&#33021;&#19981;&#33021;&#35835;&#25026;)</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20102;&#35299;&#20320;&#26368;&#38656;&#35201;&#32771;&#34385;&#30340;&#20004;&#31867;&#35835;&#32773;</h2>
+<ol class=" list-decimal font-serif">
+<li class=" ml-8">&#23481;&#26131;&#36305;&#20559;&#22411; (friendly &#30340; reviewer)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22823;&#21516;&#34892;&#65307;&#23545;&#20320;&#30340;&#25216;&#26415;&#32454;&#33410;&#24182;&#19981;&#20102;&#35299;</li>
+<li class=" ml-8">&#24456;&#23481;&#26131;&#24102;&#30528;&#20182;&#20204;&#21478;&#19968;&#20010;&#39046;&#22495;&#30340;&#24605;&#32500;</li>
+</ul>
+</li>
+<li class=" ml-8">&#33258;&#24102; SMT Solver &#21462;&#21453;&#22411; (critical &#30340; reviewer)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21482;&#35201;&#20320;&#27809;&#26377; clarify&#65292;&#35835;&#32773;&#23601;&#20250;<red>&#25509;&#21463;&#20320;&#34920;&#36848;&#30340;&#21453;&#38754;</red><ul class=" list-disc font-serif">
+<li class=" ml-8">&#22914;&#26524;&#20320;&#19981; argue &#38382;&#39064;&#30340;&#37325;&#35201;&#24615;&#65292;&#35835;&#32773;&#23601;&#20250;&#35748;&#20026;&#23427;&#19981;&#37325;&#35201;</li>
+<li class=" ml-8">&#22914;&#26524;&#20320;&#20351;&#29992;&#20102;&#22797;&#26434;&#30340;&#26041;&#27861;&#65292;&#38656;&#35201;&#35299;&#37322;&#28165;&#26970;&#20026;&#20160;&#20040;&#31616;&#21333;&#30340;&#26041;&#27861;&#19981; work</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#30740;&#31350;&#36129;&#29486;&#34920;&#36798;</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#22914;&#26524;&#20320;&#35748;&#20026;&#33258;&#24049;&#30340;&#24037;&#20316;&#26377;&#36129;&#29486;&#65292;&#22914;&#20309;&#24320;&#22987;&#65311;</h2>
+<p class=" font-serif my-1">&#20174;&#24050;&#26377;&#30340;&#19996;&#35199;&#24320;&#22987;&#65306;&#29992;&#24471;&#22810;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#8594; &#128161; &#25552;&#21319; XXX &#33021;&#24102;&#26469;&#32463;&#27982;&#25928;&#30410;</li>
+<li class=" ml-8">&#8594; &#128161; &#20986; XXX &#38382;&#39064;&#21361;&#23475;&#24456;&#22823;</li>
+<li class=" ml-8">&#8594; &#128161; &#19981;&#35299;&#20915; XXX &#23601;&#26080;&#27861;&#23454;&#29992;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#20174;&#19981;&#23384;&#22312;&#30340;&#19996;&#35199;&#24320;&#22987;&#65306;&#21069;&#26223;&#22909;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#8594; &#128161; &#22914;&#26524;&#36825;&#20214;&#20107;&#20570;&#25104;&#65292;&#26377; XXX &#22909;&#22788;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#22914;&#26524;&#20840;&#25991;&#30340;&#26041;&#27861;&#21644;&#23454;&#39564;&#35777;&#25454;&#33021; defend &#20320; claim &#30340;&#25925;&#20107;&#65292;&#35770;&#25991;&#22522;&#26412;&#23601;&#25104;&#21151;&#20102;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#24120;&#35265;&#38382;&#39064;&#65306;&#30740;&#31350;&#38382;&#39064;&#27627;&#26080;&#20215;&#20540; (<del>&#36864;&#23398;</del>)&#12289;&#27809;&#26377;&#25925;&#20107;&#12289;&#36923;&#36753;&#26029;&#35010;&#12289;&#35777;&#25454;&#19981;&#36275;</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="explode-osdi06-best-paper" class=" text-xl mt-2 pb-2 font-sans">&#20363;&#23376;&#65306;EXPLODE (OSDI'06; Best Paper)</h2>
+<p class=" font-serif my-1">&#25925;&#20107; &amp; &#38382;&#39064;&#65306;</p>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">Storage systems ... have a simple, basic contract: you give them data, they do not lose or corrupt it.
+Often they store the only copy, making its irrevocable loss almost arbitrarily bad.
+Unfortunately, their code is exceptionally hard to get right, ...</p>
+<p class=" font-serif my-1">This paper describes EXPLODE, a system that makes it easy to systematically check real storage systems for errors.</p>
+</blockquote></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="explode-osdi06-best-paper" class=" text-xl mt-2 pb-2 font-sans">&#20363;&#23376;&#65306;EXPLODE (OSDI'06; Best Paper)</h2>
+<p class=" font-serif my-1">&#35777;&#25454;&#65306;</p>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">It found serious bugs in a broad range of real storage systems (without requiring source code): ... We found bugs in every system we checked, 36 bugs in total, typically with little effort.</p>
+</blockquote></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25105;&#20204;&#26159;&#20570; &#8220;&#36719;&#20214;&#24037;&#31243;&#8221; &#30740;&#31350;&#30340;&#65281;</h2>
+<p class=" font-serif my-1">&#22312;&#26576;&#20010;&#26041;&#38754;&#25913;&#36827;&#36719;&#20214;&#30340;&#29983;&#20135;&#25110;&#20351;&#29992; (usefulness)</p>
+<hr>
+<p class=" font-serif my-1">&#35831;&#22823;&#23478;&#32771;&#34385;&#19968;&#19979;&#20320;&#30340;&#30740;&#31350;&#24037;&#20316;&#65306;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20320;&#30340;&#30446;&#26631;&#29992;&#25143;&#26159;&#35841;&#65311;</li>
+<li class=" ml-8">&#20320;&#24076;&#26395;&#22312;&#20309;&#31181;&#31243;&#24230;&#25913;&#36827;&#20102;&#20182;&#20204;&#30340;&#36719;&#20214;&#24037;&#31243;&#23454;&#36341;&#65311;&#20182;&#20204;&#20026;&#20160;&#20040;&#35201; care about &#20320;&#30340;&#24037;&#20316;&#65311;</li>
+<li class=" ml-8">&#20320;&#20197;&#24590;&#26679;&#30340;&#26041;&#24335;&#35777;&#23454; (&#25110;&#39044;&#35745;&#24590;&#26679;&#35777;&#23454;) &#20320;&#30340;&#24037;&#20316;&#26159;&#26377;&#25928;&#30340;&#12289;&#36798;&#21040;&#20102;&#20320; (&#21644;&#29992;&#25143;) &#30340;&#39044;&#26399;&#65311;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#20197;&#19978;&#26159;&#19968;&#20010; &#8220;&#19968;&#20998;&#38047;&#8221; &#29256;&#26412;&#30340; talk&#65292;&#29992;&#20110;&#21521;&#20854;&#20182;&#20154;&#25512;&#38144;&#33258;&#24049; (&#31995;&#37324;&#20598;&#36935;&#30340;&#32769;&#24072;&#12289;&#24320;&#20250;&#26102;&#36935;&#21040;&#30340;&#20249;&#20276;&#8230;&#8230;) &#26102;&#20351;&#29992;</p></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="presentation" class=" text-2xl mt-2 font-sans">&#20840;&#25991;&#34920;&#36798; (Presentation)</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#34920;&#36798;&#65306;&#30446;&#26631;</h2>
+<p class=" font-serif my-1">&#35753;&#35835;&#32773;&#33021;&#20934;&#30830;&#12289;&#36731;&#26494;&#22320;&#29702;&#35299;&#20320;&#24819;&#34920;&#36798;&#30340;&#20869;&#23481;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20316;&#20026; native speaker&#65292;&#21482;&#35201;&#33021;&#20934;&#30830;&#35835;&#25026;&#65292;&#21363;&#20415;&#34892;&#25991;&#26032;&#25163;&#12289;&#29992;&#35789;&#31967;&#31957;&#65292;&#20063;&#26159;&#33021;&#23481;&#24525;&#30340;</li>
+<li class=" ml-8">&#20294;&#20197;&#19979;&#19996;&#35199;&#26159;&#32477;&#23545;&#35835;&#19981;&#19979;&#21435;&#30340;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#36923;&#36753;&#28151;&#20081;</li>
+<li class=" ml-8">&#20551;&#22823;&#31354;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">Important goal: Don&#8217;t make readers a hard time in reading your papers! Your technical content is already hard enough.</p>
+</blockquote></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="concise-and-precise" class=" text-xl mt-2 pb-2 font-sans">Concise and Precise</h2>
+<p class=" font-serif my-1">&#25105;&#20204;&#22312;&#23398;&#33521;&#35821;&#26102;&#65292;&#32463;&#24120;&#35201;&#27714;&#20889;&#19968;&#20010; &#8220;&#19981;&#23569;&#20110; XXX words &#30340;&#20316;&#25991;&#8221;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20064;&#24815;&#65306;&#20889;&#19981;&#20986;&#19996;&#35199;&#30340;&#26102;&#20505;&#65292;&#21453;&#22797;&#35828;&#19968;&#20123;&#27809;&#29992;&#30340;&#26469;&#20945;</li>
+<li class=" ml-8">&#24536;&#35760;&#20102;&#20889;&#20316;&#30340;&#30446;&#30340;&#26159;<red>&#20934;&#30830;&#22320;&#34920;&#36798;</red> (&#35753;&#21035;&#20154;&#29702;&#35299;)</li>
+</ul>
+<hr>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">Vigorous writing is <em>concise</em>. A sentence should contain no unnecessary words, a paragraph no unnecessary sentences, for the same reason that a drawing should have no unnecessary lines and a machine no unnecessary parts.
+This requires not that the writer make all his sentences short, or that he avoid all detail and treat his subject only in outline, but that <em>every word tell</em>.</p>
+<p class=" font-serif my-1">&#8212;&#8212; The Elements of Style</p>
+</blockquote></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="logic-flow" class=" text-xl mt-2 pb-2 font-sans">&#25913;&#36827;&#20840;&#25991;&#34920;&#36798;&#65306;&#25226;&#25569;&#20840;&#25991;&#30340; Logic Flow</h2>
+<p class=" font-serif my-1">&#20840;&#25991;&#30340;&#36923;&#36753;&#24212;&#24403;&#26159;&#19968;&#33268;&#12289;&#36830;&#36143;&#12289;&#32039;&#20945;&#30340;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">introduction &#26159; abstract &#30340;&#39034;&#24207;&#23637;&#24320;</li>
+<li class=" ml-8">&#20840;&#25991;&#26159; introduction &#30340;&#39034;&#24207;&#23637;&#24320;</li>
+<li class=" ml-8">&#27573;&#33853;&#26159; topic sentence &#30340;&#39034;&#24207;&#23637;&#24320;</li>
+<li class=" ml-8">&#27599;&#20010;&#21477;&#23376;&#37117;&#25215;&#25509;&#19978;&#21477;&#12289;&#24341;&#23548;&#19979;&#21477;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#35835;&#32773;&#21487;&#20197;&#39034;&#30528;&#20320;&#30340;&#36923;&#36753;&#65292;&#24555;&#36895;&#39564;&#35777;&#34892;&#25991;&#30340;&#21512;&#29702;&#24615;</li>
+<li class=" ml-8">&#25105;&#20204;&#32463;&#24120;&#35835;&#33258;&#24049;/&#23398;&#29983;&#30340;&#35770;&#25991;&#26102;&#36935;&#21040;&#65306;<span class="red">&#36923;&#36753;&#26029;&#20102;</span></li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Q: &#22823;&#23478;&#30340; research proposal &#26159;&#25353;&#20160;&#20040;&#39034;&#24207;&#20889;&#20316;&#30340;&#65311;</p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20004;&#31181;&#20889;&#20316;&#26041;&#24335;</h2>
+<p class=" font-serif my-1">Top-down approach</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">abstract = introduction &#30340; topic sentences &#8594; introduction &#8594; &#20840;&#25991;</li>
+<li class=" ml-8">Pros: &#36827;&#24230;/&#24418;&#24335;&#19978;&#27604;&#36739;&#23481;&#26131;&#25226;&#25511;</li>
+<li class=" ml-8">Cons: &#22914;&#26524;&#21518;&#32493;&#20889;&#20316;&#26102;&#21457;&#29616;&#26356;&#22909;&#30340;&#34920;&#36798;&#26041;&#24335; (&#24120;&#24577;)&#65292;&#21487;&#33021;&#23548;&#33268;&#20840;&#25991;&#22823;&#25913;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Bottom-up approach</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25216;&#26415;&#20869;&#23481;&#21644; evaluation (plan) &#8594; &#32553;&#20943;&#25104; introduction &#8594; &#32553;&#20943;&#25104; abstract</li>
+<li class=" ml-8">Pros: &#20808;&#26377;&#25216;&#26415;&#20869;&#23481;&#30340;&#25552;&#28860;&#65292;&#36890;&#24120;&#23436;&#25104;&#24230;&#26356;&#22909;</li>
+<li class=" ml-8">Cons: &#25216;&#26415;&#37096;&#20998;&#30340; polish &#26102;&#38388;&#38590;&#25511;&#21046;</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="zoom-in" class=" text-2xl mt-2 font-sans">Zoom In: &#21477;&#23376;</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="1" class=" text-xl mt-2 pb-2 font-sans">&#22522;&#26412;&#21407;&#21017; (1): &#28040;&#28781;&#35821;&#27861;&#38169;&#35823;</h2>
+<p class=" font-serif my-1">&#39318;&#20808;&#65292;&#19981;&#35201;&#26377;&#25340;&#20889;&#38169;&#35823;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><red>&#27809;&#26377;&#23548;&#24072;/&#35835;&#32773;&#24895;&#24847;&#30475;&#21040;&#36824;&#26377;&#32418;&#32447;&#30340;&#25991;&#26723;</red></li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#28040;&#28781;&#35821;&#27861;&#38169;&#35823;&#23545; non-native speakers &#26469;&#35828;&#20854;&#23454;&#30456;&#24403;&#22256;&#38590; (&#23545; grammar checker &#20063;&#26159;)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#26102;&#24577;/&#21333;&#22797;&#25968;</li>
+<li class=" ml-8">&#20896;&#35789; (a &#21644; the)</li>
+<li class=" ml-8">that v.s. which?</li>
+<li class=" ml-8">&#20171;&#35789; which?</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="2-majumdar-and-niksic-popl18" class=" text-xl mt-2 pb-2 font-sans">&#22522;&#26412;&#21407;&#21017; (2): &#20445;&#25345;&#36923;&#36753;&#27969; (Majumdar and Niksic; POPL'18)</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">(1) [<em>Topic Sentence</em>] Large-scale distributed systems are difficult to build and test.
+(2) On top of the non-determinism arising out of concurrent exchange of messages, these systems must account for partial failures, where components or communication can fail along the way and produce incomplete results.
+(3) Fault-tolerant components are difficult to design and reason about, ...</p>
+</blockquote>
+<p class=" font-serif my-1">distributed systems &#8594; basic ideas &#8594; the hard part</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#34429;&#28982;&#26377;&#38271;&#21477; (2)&#65292;&#20294;&#35835;&#36215;&#26469;&#38750;&#24120;&#23481;&#26131;&#65306;&#21407;&#22240; (non-deterministic message exchange) &#8594; &#21518;&#26524; (must account for partial failure) &#8594; &#34917;&#20805;&#35299;&#37322; (fail along the way)</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="zoom-in" class=" text-2xl mt-2 font-sans">Zoom In: &#29992;&#35789;</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="1-be-precise" class=" text-xl mt-2 pb-2 font-sans">&#22522;&#26412;&#21407;&#21017; (1): Be Precise</h2>
+<p class=" font-serif my-1">&#27599;&#20010;&#21333;&#35789;&#37117;&#26377;&#23427;&#30340; <em>embedding</em></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#36825;&#20351;&#24471;&#33521;&#25991;&#22312;&#31185;&#25216;&#25991;&#29486;&#34920;&#36798;&#26102;&#26356;&#23481;&#26131;&#36873;&#20986;&#26368;&#31934;&#30830;&#30340;&#37027;&#20010;&#35789;</li>
+<li class=" ml-8">&#21453;&#22797;&#30952;&#28860;&#12289;&#21453;&#22797;&#20462;&#25913;&#65292;&#30452;&#21040;&#20320;&#35748;&#20026;&#38750;&#24120;&#28165;&#26970;&#22320;&#23436;&#25104;&#20102;&#34920;&#36798;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#21547;&#20041;&#27169;&#31946;&#12289;&#36807;&#24378;&#12289;offensive&#12289;&#21475;&#35821;&#21270;&#34920;&#36798;&#31561;&#37117;&#35201;&#36991;&#20813;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">it's &#8594; it is; can't &#8594; cannot</li>
+<li class=" ml-8">since &#8594; because (components may become coupled since the adaptation introduces dependency)</li>
+<li class=" ml-8">very well &#8594; satisfactory, ... (?)</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="2-be-consistent" class=" text-xl mt-2 pb-2 font-sans">&#22522;&#26412;&#21407;&#21017; (2): Be Consistent</h2>
+<p class=" font-serif my-1">&#38024;&#23545;&#21516;&#19968;&#20010;&#26415;&#35821;&#65292;&#22362;&#25345;&#20351;&#29992;&#21516;&#19968;&#20010;&#21517;&#23383;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20363;&#22914; software, program, code &#24456;&#22810;&#26102;&#20505;&#21487;&#20197;&#25442;&#29992;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20294;&#19968;&#26086;&#29992;&#26576;&#20010; term &#25351;&#20195;&#26576;&#20010;&#21547;&#20041; (&#27604;&#22914;&#29992; code &#34920;&#31034;&#24453;&#20998;&#26512;&#30340;&#20195;&#30721;)&#65292;&#23601;&#35201;&#22312;&#20840;&#25991;&#20013;&#25191;&#34892;&#19979;&#21435;</li>
+<li class=" ml-8">&#21542;&#21017;&#20250;&#24341;&#36215;&#35835;&#32773;&#30340;&#30097;&#24785;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="zoom-in" class=" text-2xl mt-2 font-sans">Zoom In: &#26631;&#28857;</h1>
+<p class=" font-serif my-1">(&#37117;&#26159;&#32454;&#33410;&#65292;&#23601;&#20030;&#20960;&#20010;&#20010;&#23481;&#26131;&#38169;&#30340;&#20363;&#23376;&#21543;)</p></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25324;&#21495;</h2>
+<p class=" font-serif my-1">&#20197;&#19979;&#21738;&#20010;&#26041;&#24335;&#26159;&#27491;&#30830;&#30340;&#65311;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">In EXPLODE[1], ...</li>
+<li class=" ml-8">In EXPLODE [1], ...</li>
+</ul>
+<hr>
+<p class=" font-serif my-1"><del>&#22823;&#23478;&#21487;&#33021;&#20250;&#35273;&#24471;&#36825;&#20010;&#35770;&#25991;&#20316;&#32773;&#26159;&#26143;&#38469;&#29609;&#23478;</del></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="oxford-comma" class=" text-xl mt-2 pb-2 font-sans">&#36887;&#21495;&#65306;Oxford Comma</h2>
+<p class=" font-serif my-1"><img alt="" class="center" src="https://annhandley.com/ah/wp-content/uploads/2018/02/Oxford-comma-explained.png" width="500px"></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#24341;&#21495;</h2>
+<p class=" font-serif my-1">&#24341;&#21495;&#20013;&#30340;&#26631;&#28857;&#35201;&#38750;&#24120;&#23567;&#24515;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">I wrote &#8220;fixing a mistake.&#8221; That's correct in US grammar. Or, &#8220;fixing a mistake,&#8221; if it were followed by a comma.</li>
+<li class=" ml-8">Not in the UK: you'd write &#8220;fixing a mistake&#8221;.</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">The one exception we agree on: If the quote is around a symbol.  For instance:</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">We denote this situation with the label &#8220;<math>O</math>&#8221;.</li>
+<li class=" ml-8">&#20882;&#21495;&#21518;&#29420;&#31435;&#21477;&#39318;&#35789;&#26082;&#21487;&#20197;&#22823;&#20889;&#65292;&#20063;&#21487;&#20197;&#23567;&#20889;</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#23567;&#32467;</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20889;&#20316;&#65306;&#23398;&#20064;&#24314;&#35758;</h2>
+<p class=" font-serif my-1">&#36825;&#26159;&#19968;&#20010;&#31215;&#32047;&#30340;&#36807;&#31243;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20174; native speaker&#12289;well-polished papers &#20013;&#23398;&#20064;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#35835;&#22815;&#37327;&#26159;&#20570;&#19968;&#20999;&#30740;&#31350;&#30340;&#20808;&#20915;&#22522;&#30784;</li>
+<li class=" ml-8">&#20320;&#20250;&#21457;&#29616;&#24456;&#22810; styles&#65292;&#36873;&#20320;&#26368;&#21916;&#27426;&#12289;&#35748;&#20026;&#26368;&#22909;&#30340;&#23398;&#20064; (&#27604;&#22914;&#26377;&#20154;&#25298;&#32477;&#38271;&#21477;&#65292;&#26377;&#20154;&#36955;&#30340;&#39134;&#36215;)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1"><img alt="" class="float-right" src="https://www.qdnow.com/sites/default/files/avataritunes/5/grammar-girl-2018_0.png" width="150px">
+&#26377;&#29992;&#30340;&#36164;&#28304;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">(QDT) Grammar Girl's Quick and Dirty Tips</li>
+<li class=" ml-8">(EOS) The Elements of Style</li>
+<li class=" ml-8">(CMOS) The Chicago Manual of Style</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#20844;&#24320;&#22788;&#21009;&#26102;&#38388;</h1></div></div></div>
+        
+      
+      </section>
+    
+    </section>
+  
+</div>
+</div>
+
+<script src="../../../static/reveal/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    
+    width: 1024, height: 768,
+    
+    slideNumber: 'c/t',
+    controlsTutorial: false,
+    progress: false,
+    hash: true,
+    center: false,
+    autoAnimateUnmatched: true,
+    autoAnimateEasing: 'ease-out',
+    autoAnimateDuration: 0.3,
+    transitionSpeed: 'fast'
+  });
+</script>
+
+
+</body>
+
+</html>

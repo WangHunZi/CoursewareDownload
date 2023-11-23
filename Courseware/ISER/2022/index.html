@@ -1,0 +1,249 @@
+<!DOCTYPE html><html class="h-100">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="../../static/css/base.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="../../static/img/favicon.png" type="image/x-icon">
+
+  <style>
+    .font-sans {
+      font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+    }
+    .font-serif {
+      font-family: 'Source Serif Pro', 'Songti SC', 'SimSun', 'Serif', serif;
+    }
+  </style>
+  <link rel="stylesheet" href="../../static/katex/katex.min.css">
+  <script defer src="../../static/katex/katex.min.js"></script>
+  <script defer src="../../static/katex/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+            // customised options
+            // &#8226; auto-render specific keys, e.g.:
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ],
+            // &#8226; rendering keys, e.g.:
+            throwOnError : false
+          });
+      });
+  </script>
+
+
+  
+
+<style>
+.article {
+  -webkit-hyphens: auto;
+}
+form {
+  margin-block-end: 0;
+}
+img {
+  display: inline-block;
+}
+code { font-size: 85%; }
+pre {
+  font-size: 95%;
+  line-height: 120%;
+}
+blockquote {
+  font-size: 95%;
+}
+p {
+  font-size: 105%;
+  text-indent: 2em;
+}
+li {
+  font-size: 105%;
+}
+blockquote p {
+  text-indent: 0em;
+}
+.float-right {
+  padding-left: 10px;
+}
+.float-left {
+  padding-right: 10px;
+}
+a {
+  color: rgb(29 78 216);
+}
+strong {
+  font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+}
+.box        {
+  border-radius: 2px; padding: 1px 4px 2px 4px;
+  font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+  font-size: 95%;
+}
+.box-blue,  .badge-primary  { background-color: rgba(66, 139, 202, 0.5); color: #1d4ed8; }
+.box-green, .badge-success  { background-color: rgba(92, 184, 92, 0.5);  color: #15803d; }
+.box-red,   .badge-danger   { background-color: rgba(217, 83, 79, 0.5);  color: #b91c1c; }
+.box-yellow,.badge-warning  { background-color: rgba(240, 173, 78, 0.5); color: #a16207; }
+.box-gray   { background-color: #a0a0a0; }
+
+.badge {
+  padding: 1 4 1 4;
+  display: inline-block;
+  border-radius: 0.25rem;
+  border: 1px solid;
+}
+.message p {
+  text-indent: 0em;
+  margin-top: 1px;
+}
+.message h1, h2, h3, h4, h5 {
+  font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+}
+.message h2 {
+  font-size: 120%;
+  margin-top: 5px;
+  margin-bottom: 2px;
+}
+.message li {
+  list-style: disc;
+  margin-left: 2em;
+}
+li > p {
+  text-indent: 0em;
+}
+block-quote h4 {
+  float: left;
+  display: inline-block;
+}
+.center {
+  display: block;
+  margin: auto;
+}
+hr {
+  margin-top: 20px;
+  padding-bottom: 20px;
+}
+
+.fa-gradient {
+	background: -webkit-gradient(linear, left top, left bottom, from(rgb(99, 27, 103)), to(#333));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+</style>
+
+
+  <title>Introduction to Software Engineering Research (Fall 2022)</title>
+</head>
+
+<body class="d-flex flex-column h-100">
+  
+  
+
+<div>
+
+<div class="px-2 py-1 w-full fixed z-50 bg-gradient-to-r from-black via-purple-700 via-purple-500 shadow-lg" style="-webkit-backdrop-filter: saturate(150%) blur(4px); backdrop-filter: saturate(150%) blur(4px)">
+  <form>
+    <a href="../../index.html"><span class="text-lg px-2 text-white">Yanyan's Wiki</span></a>
+    <a href="../../OS/2023/index.html"><span class="text-sm px-2 text-white">&#25805;&#20316;&#31995;&#32479; (2023)</span></a>
+    <input maxlength="9" id="token-input" class="float-right appearance-none border border-transparent px-2 py-1 w-20 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-xs focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent font-mono" type="text" placeholder="TOKEN" oninput="login();">
+  </form>
+</div>
+
+<div class="article container mx-auto md:px-8 lg:px-8 xl:px-8 2xl:px-8 shadow-lg border pb-8 pt-10 max-w-screen-md text-justify divide-y-2 divide-white">
+  <div><h1 id="introduction-to-software-engineering-research-fall-2022" class=" text-2xl mt-2 font-sans">Introduction to Software Engineering Research (Fall 2022)</h1>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<h4 id="_1" class=" pt-2 pb-2 font-sans float-left text-sm box border mr-1 mt-1 box-red" style=" padding-bottom: 0;">&#9888;&#65039; &#20840;&#33521;&#25991;&#35838;&#31243;</h4>
+<p class=" font-serif my-1"><strong>Everything</strong> (class meeting, slides, notes, etc.) will be in English.</p>
+</blockquote>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Class meeting: Friday 10:10&#8212;12:00, &#20185; II-418</li>
+<li class=" ml-8">Advisors: <a href="http://cs.nju.edu.cn/changxu" class=" text-amber-900">Chang Xu (&#35768;&#30021;)</a>, <a href="http://cs.nju.edu.cn/ics/people/yanyanjiang/index.html" class=" text-amber-900">Yanyan Jiang (&#33931;&#28814;&#23721;)</a>, and <a href="http://cs.nju.edu.cn/ics/people/junma/index.html" class=" text-amber-900">Jun Ma (&#39532;&#39567;)</a></li>
+<li class=" ml-8">Teaching Assistant: Xianfei Ou (&#27431;&#20808;&#39134;)</li>
+<li class=" ml-8">Office hour: 14:00-15:00 Friday; 809 CST Building</li>
+</ul>
+<h2 id="modules" class=" text-xl mt-2 pb-2 font-sans">Modules</h2>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><span class="box box-red">(R) Reading and Presentation</span>
+  Graduate study suffers when you fail to catch the state of the art.
+  Attendees should try their best to read as many papers as possible.
+  There is no easy way, but this class offers a few tricks to make this journey less painful.</li>
+<li class=" ml-8"><span class="box box-green">(W) Writing and Experiments</span>
+  Writing is the cornerstone of research communication.
+  Writing is also particularly difficult for Chinese native speakers.
+  Attendees will practice their writing skills through writing a short research proposal (up to 4 pages) to describe the project he/she is working on.</li>
+<li class=" ml-8"><span class="box box-blue">(H) Hacking Programs and Analysis</span>
+  Software engineering is the science of effective and efficient construction of large-scale software systems.
+  Attendees will learn basic static and dynamic hacking techniques for extracting information from programs and their executions.</li>
+</ul>
+<h2 id="class-meetings" class=" text-xl mt-2 pb-2 font-sans">Class Meetings</h2>
+<ol class=" list-decimal font-serif">
+<li class=" ml-8"><span class="box box-red">R</span> (Sept 23) <a href="slides/1.slides.html" class=" text-amber-900">The Craft of (Software Engineering) Research</a></li>
+<li class=" ml-8"><span class="box box-blue">H</span> (Sept 30) <a href="slides/2.slides.html" class=" text-amber-900">Compilers and Semantics of Programming Languages</a></li>
+<li class=" ml-8"><span class="box box-red">R</span> (Oct 7) How to Speak</li>
+<li class=" ml-8"><span class="box box-green">W</span> (Oct 14) <a href="../../pages/ISER/2022/slides/4.pdf" class=" text-amber-900">Experiment Design in Software Engineering Research</a></li>
+<li class=" ml-8"><span class="box box-green">W</span> (Oct 21) <a href="slides/5.slides.html" class=" text-amber-900">Traps and Pitfalls in Academic Writing</a></li>
+<li class=" ml-8"><span class="box box-blue">H</span> (Oct 28) <a href="../../pages/ISER/2022/slides/6.pdf" class=" text-amber-900">Source Code Parsing and Static Analysis</a></li>
+<li class=" ml-8"><span class="box box-blue">H</span> (Nov 4) <a href="../../pages/ISER/2022/slides/7.pdf" class=" text-amber-900">Tracing, Profiling, and Dynamic Analysis</a></li>
+<li class=" ml-8"><span class="box box-green">W</span> (Nov 11) <a href="slides/8.slides.html" class=" text-amber-900">Research Proposal Commentary</a></li>
+<li class=" ml-8"><span class="box box-green">W</span> (Nov 18) <a href="../../pages/ISER/2022/slides/9.pdf" class=" text-amber-900">The $\TeX$ Typesetting System</a></li>
+<li class=" ml-8"><span class="box box-red">R</span> (Dec 2) <a href="slides/10.slides.html" class=" text-amber-900">Presentation Commentary</a></li>
+<li class=" ml-8"><span class="box box-blue">H</span> (Dec 9) <a href="http://localhost:5001/ISER/2022/slides/11.slides" class=" text-amber-900">Software Testing and Validation</a></li>
+<li class=" ml-8"><span class="box box-blue">H</span> (Dec 16) <a href="slides/12.slides.html" class=" text-amber-900">Fault, Failure, Error, and Debugging</a></li>
+<li class=" ml-8">(Dec 23) Summary and Awards</li>
+</ol>
+<h2 id="assignments-and-grading" class=" text-xl mt-2 pb-2 font-sans">Assignments and Grading</h2>
+<ol class=" list-decimal font-serif">
+<li class=" ml-8">[A1, 20%] <a href="A1.html" class=" text-amber-900">Paper selection and reference graph</a> (Oct 9)</li>
+<li class=" ml-8">[A2, 10%] <a href="A2.html" class=" text-amber-900">Research proposal draft</a> (Nov 11)</li>
+<li class=" ml-8">[A3, 30%] <a href="A3.html" class=" text-amber-900">Presentation video</a> (Nov 25)</li>
+<li class=" ml-8">[A4, 10%] <a href="A4.html" class=" text-amber-900">Research proposal revision</a> (Dec 2)</li>
+<li class=" ml-8">[A5, 30%] <a href="A5.html" class=" text-amber-900">Research proposal finalization</a> (Dec 30)</li>
+<li class=" ml-8">(Due to the COVID issue, there is no peer-review in this year's ISER course.)</li>
+</ol>
+<div style="display:none">
+</div></div>
+</div>
+
+<div class="container text-xs py-3">
+  <span class="text-muted">
+    <center><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="../../static/img/cc-4.0.png"></a>
+    &#160;&#160;&#160;<a style="color:inherit" href="https://beian.miit.gov.cn/">&#33487; ICP &#22791; 2020049101 &#21495;</a>
+    </center>
+  </span>
+</div>
+
+</div>
+
+<script src="../../static/js/jquery.min.js"></script>
+
+<script>
+function get_token() {
+  var match = document.cookie.match(new RegExp('(^| )token=([^;]+)'));
+  if (match) return match[2];
+  else return "";
+}
+var token = get_token();
+var hint = "token", box = $("#token-input");
+
+if (token == "") { }
+else { box.val(token); }
+
+function login() {
+  var token = box.val()
+  if (!token) {
+    document.cookie = ''
+  } else {
+    document.cookie = 'token=' + token + '; expires=Fri, 31 Dec 9999 23:59:59 GMT;'
+  }
+}
+</script>
+
+
+</body>
+
+</html>

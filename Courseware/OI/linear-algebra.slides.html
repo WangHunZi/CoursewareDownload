@@ -1,0 +1,1290 @@
+<!DOCTYPE html><html class="h-100">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="../static/css/base.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="../static/img/favicon.png" type="image/x-icon">
+
+  <style>
+    .font-sans {
+      font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+    }
+    .font-serif {
+      font-family: 'Source Serif Pro', 'Songti SC', 'SimSun', 'Serif', serif;
+    }
+  </style>
+  <link rel="stylesheet" href="../static/katex/katex.min.css">
+  <script defer src="../static/katex/katex.min.js"></script>
+  <script defer src="../static/katex/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+            // customised options
+            // &#8226; auto-render specific keys, e.g.:
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ],
+            // &#8226; rendering keys, e.g.:
+            throwOnError : false
+          });
+      });
+  </script>
+
+
+  
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="../static/reveal/reveal.css">
+<link rel="stylesheet" href="../static/reveal/theme/simple.css" id="theme">
+
+<style>
+.reveal .slide-number {
+  font-size: 26px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, .3);
+}
+
+.reveal .full-screen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.reveal .slides {
+  border: 1.5px #ddd solid;
+  border-radius: 7px;
+  text-align: left;
+  font-weight: 300;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  font-family: 'Lato', 'SimHei', 'STXihei', 'Droid Sans';
+  font-weight: 400;
+}
+
+.reveal p, .reveal li, .reveal center {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Droid Sans';
+}
+
+.reveal li + li {
+  margin-top: 10px;
+}
+
+.reveal ul {
+  display: block;
+  margin-right: 15px;
+}
+
+.reveal p, .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5 {
+  padding:  0 25px 0 25px;
+}
+
+.reveal table {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Sans Serif';
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.reveal th {
+  background-color: #eee;
+}
+
+.reveal tr:nth-child(even) {
+  background-color: #efffff;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  text-align: left;
+  margin: 0 0 20px 0;
+ color: #222; 
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
+
+
+.reveal h1 {
+  margin: 0 10 0 10;
+  font-size: 60px;
+}
+.reveal .middle h1 {
+  text-align: center;
+}
+
+.reveal h2 {
+  font-size: 48px;
+  border-bottom: 2px solid rgb(106, 0, 95);
+  padding-bottom: 5px;
+}
+.reveal h3 { font-size: 1.15em; }
+.reveal h4 { font-size: 1.05em; }
+
+.reveal .center {
+  text-align: center;
+}
+
+.reveal .middle {
+  height: 728px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.reveal pre {
+  font-size: 28px;
+ 
+  background-color: #eee;
+
+  border-radius: 3mm;
+  padding: 10px 10px 10px 10px;
+}
+
+.reveal pre code {
+  max-height: none;
+}
+
+.reveal code {
+  font-family: 'Inconsolata', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif', Monospace;
+}
+
+.reveal .middle blockquote {
+  text-align: center;
+  color: rgb(106, 0, 95);
+  background: none;
+  box-shadow: none;
+}
+
+.reveal .middle blockquote a {
+  color: inherit;
+}
+
+.reveal blockquote p, .reveal blockquote li {
+  font-family: 'Lato', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif';
+}
+
+section .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reveal .author-block {
+  margin: 75px 0 35px 0;
+}
+.reveal .author-affiliation img {
+  margin: 15px 0 0 0;
+}
+.reveal .author-block p, .reveal .author-affiliation p  {
+  font-family: 'Kaiti', 'STKaiti', 'Serif', 'Times', 'Times New Roman';
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+.reveal .author-affiliation {
+  display: inline-block;
+  font-size: 90%;
+}
+.reveal hr {
+  border: 10px solid rgba(0, 0, 0, 0);
+}
+.reveal li {
+  margin-top: 10px;
+}
+</style>
+
+  <title>&#32447;&#24615;&#20195;&#25968;&#22522;&#30784;</title>
+</head>
+
+<body class="d-flex flex-column h-100">
+  
+  
+
+<div class="reveal">
+<div class="slides">
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#32447;&#24615;&#20195;&#25968;&#22522;&#30784;</h1>
+<p class=" font-serif my-1"><include src="Slides_Author"><div><div class="py-16">
+<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">&#33931;&#28814;&#23721;</a></p>
+</div>
+<div class="row">
+<div class="author-affiliation">
+    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#12288;&#12288;&#21335;&#20140;&#22823;&#23398;&#12288;&#12288;</p>
+    <img class="inline-img h-24" src="../static/img/nju-logo.jpg" style="display: inline-block;"></a>
+  </div>
+<div class="author-affiliation">
+   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#31185;&#23398;&#19982;&#25216;&#26415;&#31995;</p>
+    <img class="inline-img h-24" src="../static/img/njucs-logo.jpg" style="display: inline-block;"></a>
+  </div>
+<div class="author-affiliation">
+    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#36719;&#20214;&#30740;&#31350;&#25152;</p>
+    <img class="inline-img h-24" src="../static/img/ics-logo.png" style="display: inline-block;"></a>
+  </div>
+</div></div></include></p></div></div></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#31639;&#26415;&#12289;&#20195;&#25968;&#19982;&#31639;&#27861;</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="arithmetic-algebra" class=" text-xl mt-2 pb-2 font-sans">&#31639;&#26415; (Arithmetic) &#21644;&#20195;&#25968; (Algebra)</h2>
+<p class=" font-serif my-1">&#23567;&#23398;&#30340; &#8220;&#31639;&#26415;&#8221;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#32473;&#19968;&#20010; &#8220;&#34920;&#36798;&#24335;&#8221; &#21644;&#19968;&#31995;&#21015; &#8220;&#31561;&#20215;&#21464;&#25442;&#8221; &#35268;&#21017;&#65292;&#27714;&#20986;&#34920;&#36798;&#24335;&#30340;&#20540;<ul class=" list-disc font-serif">
+<li class=" ml-8">$(3 + 4) \times 5 = 7 \times 5 = 35$</li>
+<li class=" ml-8">$753 + 672 = 1300 + 120 + 5 = 1425$</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#20013;&#23398;&#30340; &#8220;&#20195;&#25968;&#8221;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20801;&#35768;&#34920;&#36798;&#24335;&#20013;&#20986;&#29616;&#20195;&#34920;&#26576;&#20010;&#25968;&#20540;&#30340; &#8220;&#21464;&#37327;&#8221;&#65307;&#34920;&#36798;&#24335;&#20381;&#28982;&#25104;&#31435;<ul class=" list-disc font-serif">
+<li class=" ml-8">$x^2 - 2x - 3 = 0 \Rightarrow x\in \{ -1, 3 \}$</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#20026;&#20160;&#20040; &#8220;&#20195;&#25968;&#8221; &#27604; &#8220;&#31639;&#26415;&#8221; &#26356;&#38590;&#65311;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#31639;&#26415;&#30340;&#35745;&#31639;&#36807;&#31243;&#26159;&#30830;&#23450;&#30340;&#8212;&#8212;&#24635;&#26159;&#26397;&#30528; &#8220;&#21464;&#31616;&#21333;&#8221; &#30340;&#26041;&#21521;&#36208;</li>
+<li class=" ml-8">&#20195;&#25968;&#20570;&#20160;&#20040;&#21464;&#25442; &#8220;&#27604;&#36739;&#22909;&#8221; &#26159;&#22256;&#38590;&#30340;<ul class=" list-disc font-serif">
+<li class=" ml-8">$x^2 - 2x - 3 = 0 \Rightarrow x^2 - 2x + 1 - 4 = 0$</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="algorithm" class=" text-xl mt-2 pb-2 font-sans">&#31639;&#27861; (Algorithm)</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">&#8220;&#35299;&#20915;&#38382;&#39064;&#30340;&#26041;&#27861;&#19982;&#27493;&#39588;&#12290;&#8221;</p>
+</blockquote>
+<hr>
+<p class=" font-serif my-1">&#21644; &#8220;&#31639;&#26415;&#8221; &#21644; &#8220;&#20195;&#25968;&#8221; &#19981;&#21516;&#65292;&#31639;&#27861;&#26159; &#8220;<red>&#25353;&#29031;&#23567;&#27493;&#24037;&#20316;</red>&#8221; &#30340;&#33258;&#21160;&#35745;&#31639;&#36807;&#31243;</p>
+<p class=" font-serif my-1"><img alt="" class="float-right" src="../pages/OI/img/david-hilbert.jpg" width="200px"></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#8220;&#33258;&#21160; AC &#26426;&#8221;<ul class=" list-disc font-serif">
+<li class=" ml-8">Hilbert &#31532;&#21313;&#38382;&#39064;&#65306;&#32473;&#20986;&#19968;&#20010;&#31639;&#27861;&#65292;&#36755;&#20837;&#19968;&#20010;&#25972;&#31995;&#25968;&#22810;&#39033;&#24335; (&#20363;&#22914; $x^3 + y^3 = z^3$)&#65292;&#22914;&#26524;&#26377;&#25972;&#25968;&#35299;&#36755;&#20986; Yes&#65292;&#21542;&#21017;&#36755;&#20986; No</li>
+<li class=" ml-8">&#19968;&#27573; C++ &#20195;&#30721;&#65292;&#36755;&#20837;&#19968;&#20010;&#24179;&#38754;&#20960;&#20309;&#21629;&#39064; (&#20363;&#22914;&#20320;&#20204;&#32771;&#35797;&#30340;&#39064;&#30446;)&#65292;&#33258;&#21160;&#32473;&#20986;&#19968;&#20010;&#35777;&#26126;</li>
+<li class=" ml-8">&#8230;&#8230;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26412;&#35762;&#20869;&#23481;&#65306;&#32447;&#24615;&#20195;&#25968;&#22522;&#30784;</h2>
+<p class=" font-serif my-1">&#32447;&#24615;&#31639;&#26415;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21521;&#37327; (vector) &#21644;&#21521;&#37327;&#30340;&#36816;&#31639;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#32447;&#24615;&#20195;&#25968;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20174;&#32447;&#24615;&#31639;&#26415;&#34893;&#29983;&#20986;&#30340;&#19968;&#31995;&#21015;&#26377;&#36259;&#25968;&#23398;&#23545;&#35937;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#32447;&#24615;&#20195;&#25968;&#20013;&#30340;&#31639;&#27861;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#19968;&#20123;&#32447;&#24615;&#20195;&#25968;&#38382;&#39064;&#30340;&#35299;&#27861;</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#32447;&#24615;&#31639;&#26415;</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#32447;&#24615;&#31639;&#26415;&#65306;&#21521;&#37327;&#21644;&#21521;&#37327;&#30340;&#36816;&#31639;</h2>
+<p class=" font-serif my-1">&#21521;&#37327; (vector): &#19968;&#20010; $n$ &#32500;&#30340;&#25968;&#32452;&#65292;&#36890;&#24120;<red>&#31446;&#30528;</red>&#20070;&#20889;</p>
+<p class=" font-serif my-1">$$
+\vec{x} = \begin{bmatrix} 3 \\  4 \\ 1 \end{bmatrix}\qquad
+\vec{y} = \begin{bmatrix} 1.5 \\ -2 \end{bmatrix}
+$$</p>
+<hr>
+<p class=" font-serif my-1">&#21521;&#37327;&#30340;&#31639;&#26415;&#65306;(&#21152;&#27861;) &#27599;&#20010;&#32500;&#24230;&#20998;&#21035;&#30456;&#21152;&#65307;(&#25968;&#20056;) &#27599;&#20010;&#32500;&#24230;&#20998;&#21035;&#20056;&#20197;&#21516;&#19968;&#20010;&#25968;&#23383;</p>
+<p class=" font-serif my-1">$$
+\begin{bmatrix} 3 \\  4 \\ 1 \end{bmatrix} + 
+\begin{bmatrix} -1 \\ 0 \\ 1.5 \end{bmatrix} = 
+\begin{bmatrix} 2 \\ 4 \\ 2.5 \end{bmatrix}\qquad
+3
+\begin{bmatrix} 3 \\  4 \\ 1 \end{bmatrix} = 
+\begin{bmatrix} 9 \\  12 \\ 3 \end{bmatrix}
+$$</p>
+<p class=" font-serif my-1">&#36825;&#20284;&#20046;&#20063;&#8230;&#8230;&#22826;&#31616;&#21333;&#20102;&#21543;&#65311;</p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#32447;&#24615;&#31639;&#26415;&#30340;&#30452;&#35266;&#29702;&#35299;</h2>
+<p class=" font-serif my-1">&#8220;&#19968;&#20010;&#25968;&#32452;&#8221;</p>
+<hr>
+<p class=" font-serif my-1">&#8220;&#36215;&#28857;&#26159;&#21407;&#28857;&#30340;&#31661;&#22836;&#8221;</p>
+<hr>
+<p class=" font-serif my-1">&#8220;&#22352;&#26631;&#31995;&#20013;&#30340;&#19968;&#20010;&#28857;&#8221;</p>
+<hr>
+<p class=" font-serif my-1">&#20026;&#20160;&#20040;&#26159;<red>&#32447;&#24615;</red>&#65311;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#31661;&#22836;&#21487;&#20197;&#20998;&#35299;&#25104;&#31661;&#22836;&#30340;&#27714;&#21644;</li>
+<li class=" ml-8">&#25968;&#20056;&#21487;&#20197;&#20998;&#37197;&#21040;&#27714;&#21644;&#37324;</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#32447;&#24615;&#31639;&#26415;&#30340;&#26032;&#36816;&#31639;&#65306;&#32447;&#24615;&#21464;&#25442;</h2>
+<p class=" font-serif my-1">&#20160;&#20040;&#36816;&#31639; ($\rightarrow$) &#21487;&#20197;&#25226;&#19968;&#20010;&#21521;&#37327; (&#31661;&#22836;) &#21464;&#25104;&#21478;&#19968;&#20010;&#65311;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25289;&#20280;</li>
+</ul>
+<p class=" font-serif my-1">$$
+\begin{bmatrix} 0 \\  0 \end{bmatrix} \textcolor{blue}\rightarrow
+\begin{bmatrix} 0 \\  0 \end{bmatrix} \qquad
+\begin{bmatrix} 1 \\  0 \end{bmatrix} \textcolor{blue}\rightarrow
+\begin{bmatrix} 2 \\  0 \end{bmatrix} \qquad
+\begin{bmatrix} 2 \\  -1 \end{bmatrix} \textcolor{blue}\rightarrow
+\begin{bmatrix} 4 \\  -2 \end{bmatrix}
+$$</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25289;&#20280; + &#26059;&#36716;</li>
+</ul>
+<p class=" font-serif my-1">$$
+\begin{bmatrix} 1 \\  0 \end{bmatrix} \textcolor{red}\rightarrow
+\begin{bmatrix} 3 \\  4 \end{bmatrix} \qquad
+\begin{bmatrix} 0 \\  1 \end{bmatrix} \textcolor{red}\rightarrow
+\begin{bmatrix} 0 \\  2 \end{bmatrix} \qquad
+\begin{bmatrix} 1 \\  1 \end{bmatrix} 
+=
+\begin{bmatrix} 1 \\  0 \end{bmatrix}  + 
+\begin{bmatrix} 0 \\  1 \end{bmatrix}
+\textcolor{red}\rightarrow
+\begin{bmatrix} 3 \\  6 \end{bmatrix}
+$$</p>
+<p class=" font-serif my-1">$$
+\begin{bmatrix} x \\  y \end{bmatrix} = 
+x \begin{bmatrix} 1 \\  0 \end{bmatrix} + 
+y \begin{bmatrix} 0 \\  1 \end{bmatrix} \textcolor{red}\rightarrow
+x \begin{bmatrix} 3 \\  4 \end{bmatrix} +
+y \begin{bmatrix} 0 \\  2 \end{bmatrix}
+$$</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><red>&#32447;&#24615;</red>&#65306;&#31354;&#38388;&#20013;&#30340;&#32593;&#26684;&#34987; &#8220;$\rightarrow$&#8221; &#23454;&#29616;&#20102;&#24179;&#34892;&#12289;&#31561;&#36317;&#30340;&#21464;&#25442;</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#20174; &#8220;&#32447;&#24615;&#31639;&#26415;&#8221; &#21040; &#8220;&#32447;&#24615;&#20195;&#25968;&#8221;</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#32447;&#24615;&#21464;&#25442;</h2>
+<p class=" font-serif my-1">&#27599;&#20010;&#22352;&#26631;&#36724;&#20998;&#21035;&#20570;&#20986;&#30340;&#25289;&#20280; + &#26059;&#36716;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25226; &#8220;&#21333;&#20301;&#27491;&#26041;&#24418;&#8221; &#21464;&#20026;&#19968;&#20010;&#26059;&#36716;&#30340; &#8220;&#24179;&#34892;&#22235;&#36793;&#24418;&#8221;</li>
+<li class=" ml-8">&#20445;&#25345;&#25152;&#26377;&#32593;&#26684;&#21464;&#25442;&#21518; &#8220;&#24179;&#34892;&#19988;&#31561;&#36317;&#8221;</li>
+</ul>
+<p class=" font-serif my-1">$$
+\begin{bmatrix} 1 \\  0 \end{bmatrix} \textcolor{red}\to
+\begin{bmatrix} a \\  b \end{bmatrix} \qquad
+\begin{bmatrix} 0 \\  1 \end{bmatrix} \textcolor{red}\to
+\begin{bmatrix} c \\  d \end{bmatrix} \qquad
+$$</p>
+<p class=" font-serif my-1">$$
+\left(
+\begin{bmatrix} x \\  y \end{bmatrix} = 
+x \begin{bmatrix} 1 \\  0 \end{bmatrix} + 
+y \begin{bmatrix} 0 \\  1 \end{bmatrix} 
+\right)
+\textcolor{red}\rightarrow
+x \begin{bmatrix} a \\  b \end{bmatrix} +
+y \begin{bmatrix} c \\  d \end{bmatrix}
+$$</p>
+<hr>
+<p class=" font-serif my-1">&#25152;&#20197;&#25105;&#20204;&#21482;&#35201;&#32771;&#34385; $(0,0)-(1,1)$ &#30340;&#21333;&#20301;&#26041;&#26684; &#8220;&#21464;&#25104;&#8221; &#20102;&#20160;&#20040;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20854;&#20182;&#21464;&#25442;&#37117;&#26159; &#8220;&#22797;&#21046;&#8221; &#30340;</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#30697;&#38453;&#19982;&#32447;&#24615;&#21464;&#25442;</h2>
+<p class=" font-serif my-1">&#22914;&#20309;&#34920;&#31034;&#32447;&#24615;&#21464;&#25442;&#25805;&#20316; &#8220;$\rightarrow$&#8221;&#65311;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><red>&#29992; &#8220;&#30697;&#38453;&#8221; &#34920;&#31034;&#32447;&#24615;&#21464;&#25442;</red></li>
+<li class=" ml-8">&#22823;&#23478;&#29087;&#24713;&#30340;&#23450;&#20041;</li>
+</ul>
+<p class=" font-serif my-1">$$
+\begin{bmatrix} a &amp; c \\ b &amp; d \end{bmatrix} 
+\begin{bmatrix} x \\  y \end{bmatrix} = 
+\begin{bmatrix} ax + cy \\ bx + dy \end{bmatrix}
+$$</p>
+<p class=" font-serif my-1">$$
+\begin{bmatrix} a &amp; d &amp; g \\ b &amp; e &amp; h \\ c &amp; f &amp; i \end{bmatrix} 
+\begin{bmatrix} x \\ y \\ z \end{bmatrix} =
+\begin{bmatrix} ax + dy + gz \\ bx + ey + hz \\ cx + fy + iz \end{bmatrix}
+$$</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#35797;&#30528;&#35745;&#31639;&#65306;<a href="https://www.wolframalpha.com/input/?i=%7B%7Ba%2Cd%2Cg%7D%2C%7Bb%2Ce%2Ch%7D%2C%7Bc%2Cf%2Ci%7D%7D+*+%7Bx%2Cy%2Cz%7D" class=" text-amber-900">WolframAlpha</a></li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#29702;&#35299;&#19977;&#32500; (&#21644;&#39640;&#32500;) &#31354;&#38388;&#30340;&#32447;&#24615;&#21464;&#25442;</h2>
+<p class=" font-serif my-1">$$
+\begin{array}{rcl}
+&amp; &amp; \begin{bmatrix} a &amp; d &amp; g \\ b &amp; e &amp; h \\ c &amp; f &amp; i \end{bmatrix} 
+\begin{bmatrix} x \\ y \\ z \end{bmatrix} \\ &amp; = &amp;
+\begin{bmatrix} a &amp; d &amp; g \\ b &amp; e &amp; h \\ c &amp; f &amp; i \end{bmatrix}
+\left(
+x \begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix} +
+y \begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix} +
+z \begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix}
+\right) \\
+&amp; = &amp;
+x \left( \begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix} {\to} \begin{bmatrix} a \\ b \\ c \end{bmatrix} \right) +
+y \left( \begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix} {\to} \begin{bmatrix} d \\ e \\ f \end{bmatrix} \right) +
+z \left( \begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix} {\to} \begin{bmatrix} g \\ h \\ i \end{bmatrix} \right) \\
+&amp; = &amp;
+\begin{bmatrix} ax + dy + gz \\ bx + ey + hz \\ cx + fy + iz \end{bmatrix}
+\end{array}
+$$</p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#32447;&#24615;&#21464;&#25442;&#65306;&#20363;&#23376;</h2>
+<p class=" font-serif my-1">&#8220;&#21387;&#32553;&#31354;&#38388;&#8221; &#30340;&#21464;&#25442;</p>
+<p class=" font-serif my-1">$$
+\begin{bmatrix} 0 &amp; 0 \\ 0 &amp; 0 \end{bmatrix} \qquad
+\qquad
+\begin{bmatrix} 1 &amp; -1 \\ -2 &amp; 2 \end{bmatrix} \qquad
+$$</p>
+<p class=" font-serif my-1">&#8220;&#19968;&#19968;&#23545;&#24212;&#8221; &#30340;&#21464;&#25442;&#65306;&#26059;&#36716; + &#32553;&#25918;</p>
+<p class=" font-serif my-1">$$
+\begin{bmatrix} 1 &amp; 0 \\ 0 &amp; 1 \end{bmatrix} \qquad
+\begin{bmatrix} 0 &amp; -1 \\ -1 &amp; 0 \end{bmatrix} \qquad
+\frac{1}{\sqrt2} \begin{bmatrix} 1 &amp; -1 \\ 1 &amp; 1 \end{bmatrix} \qquad
+\begin{bmatrix} 2 &amp; 1 \\ 3 &amp; 4 \end{bmatrix}
+$$</p>
+<p class=" font-serif my-1">&#8220;&#19968;&#19968;&#23545;&#24212;&#30340;&#21464;&#25442;&#20063;&#26377;&#36870;&#21464;&#25442;&#8221;</p>
+<p class=" font-serif my-1">$$
+\begin{bmatrix} 1 &amp; 0 \\ 0 &amp; 1 \end{bmatrix} \qquad
+\begin{bmatrix} 0 &amp; -1 \\ -1 &amp; 0 \end{bmatrix} \qquad
+\frac{1}{\sqrt2} \begin{bmatrix} 1 &amp; 1 \\ -1 &amp; 1 \end{bmatrix} \qquad
+\frac{1}{5} \begin{bmatrix} 4 &amp; -3 \\ -1 &amp; 2 \end{bmatrix}
+$$</p>
+<p class=" font-serif my-1">&#35797;&#19968;&#35797; <a href="https://web.ma.utexas.edu/users/ysulyma/matrix/" class=" text-amber-900">Visualizer</a> &#21644;&#19968;&#24352;<a href="http://jyywiki.cn/pages/OS/img/GET-square.jpg" class=" text-amber-900">&#22270;&#29255;</a></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#19968;&#28857;&#30697;&#38453;&#20056;&#27861;</h2>
+<p class=" font-serif my-1">&#30697;&#38453;&#30340;&#20056;&#27861; = &#32447;&#24615;&#21464;&#25442;&#30340; &#8220;&#32452;&#21512;&#8221;</p>
+<p class=" font-serif my-1">$$
+\begin{bmatrix} 0 &amp; -1 \\ -1 &amp; 0 \end{bmatrix} \times
+\begin{bmatrix} 0 &amp; -1 \\ -1 &amp; 0 \end{bmatrix} = 
+\begin{bmatrix} 1 &amp; 0 \\ 0 &amp; 1 \end{bmatrix}
+$$</p>
+<p class=" font-serif my-1">$$
+\begin{bmatrix} 1 &amp; -1 \\ 1 &amp; 1 \end{bmatrix} \times
+\begin{bmatrix} 1 &amp; 1 \\ -1 &amp; 1 \end{bmatrix} = 
+\begin{bmatrix} 2 &amp; 0 \\ 0 &amp; 2 \end{bmatrix}
+$$</p>
+<p class=" font-serif my-1">$$
+\begin{bmatrix} 2 &amp; 1 \\ 3 &amp; 4 \end{bmatrix} \times
+\begin{bmatrix} 4 &amp; -3 \\ -1 &amp; 2 \end{bmatrix} = 
+\begin{bmatrix} 5 &amp; 0 \\ 0 &amp; 5 \end{bmatrix}
+$$</p>
+<p class=" font-serif my-1">&#20808;&#26059;&#36716;&#12289;&#20877;&#25289;&#20280; (&#20174;&#21491;&#21521;&#24038;&#35745;&#31639;)</p>
+<p class=" font-serif my-1">$$
+\begin{bmatrix} 1 &amp; 1 \\ 0 &amp; 1 \end{bmatrix} 
+\left(
+\begin{bmatrix} 0 &amp; -1 \\ 1 &amp; 0 \end{bmatrix}
+\begin{bmatrix} x \\ y \end{bmatrix}
+\right) =
+\begin{bmatrix} 1 &amp; -1 \\ 1 &amp; 0 \end{bmatrix}
+\begin{bmatrix} x \\ y \end{bmatrix}
+$$</p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#29992;&#32447;&#24615;&#21464;&#25442;&#29702;&#35299;&#30697;&#38453;&#36816;&#31639;</h2>
+<p class=" font-serif my-1">$$
+\begin{bmatrix} 1 &amp; 1 \\ 0 &amp; 1 \end{bmatrix} 
+\left(
+\begin{bmatrix} 0 &amp; -1 \\ 1 &amp; 0 \end{bmatrix}
+\begin{bmatrix} x \\ y \end{bmatrix}
+\right) =
+\begin{bmatrix} 1 &amp; -1 \\ 1 &amp; 0 \end{bmatrix}
+\begin{bmatrix} x \\ y \end{bmatrix}
+$$</p>
+<p class=" font-serif my-1">&#30697;&#38453;&#20056;&#27861; = &#32447;&#24615;&#21464;&#25442;&#30340; &#8220;&#21472;&#21152;&#8221; (&#20174;&#21491;&#21521;&#24038;)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#36890;&#24120; $AB \ne BA$<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20808;&#25289;&#20280;&#20877;&#26059;&#36716; &#8594; &#21333;&#20301;&#26041;&#26684;&#21464;&#25104; &#8220;&#25380;&#21387;&#8221; &#30340;&#24179;&#34892;&#22235;&#36793;&#24418;</li>
+<li class=" ml-8">&#20808;&#26059;&#36716;&#20877;&#25289;&#20280; &#8594; &#21333;&#20301;&#26041;&#26684;&#21464;&#25104; &#8220;&#25745;&#24320;&#8221; &#30340;&#24179;&#34892;&#22235;&#36793;&#24418;</li>
+</ul>
+</li>
+<li class=" ml-8">$(AB) x = A(Bx)$</li>
+<li class=" ml-8">$A^{-1} A x = x$</li>
+<li class=" ml-8">$(ABC)^{-1} = C^{-1}B^{-1}A^{-1}$</li>
+<li class=" ml-8">&#36890;&#24120; $(A+B)^{-1} \ne A^{-1} + B^{-1}$</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="fibonacci" class=" text-xl mt-2 pb-2 font-sans">Fibonacci &#25968;&#21015;</h2>
+<p class=" font-serif my-1">$f_0 = 0, f_1 = 1, f_n = f_{n-1} + f_{n-2}$</p>
+<hr>
+<p class=" font-serif my-1">&#30697;&#38453;&#20056;&#27861;&#21487;&#20197;&#34920;&#31034;&#19968;&#32452;&#25968;&#23383;&#30340;&#20219;&#24847; &#8220;&#32447;&#24615;&#8221; &#36816;&#31639;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#8220;&#22352;&#26631;&#36724;&#21464;&#25442;&#30340;&#22810;&#27425;&#21472;&#21152;&#8221;</li>
+</ul>
+<p class=" font-serif my-1">$$
+\begin{array}{rcl}
+\begin{bmatrix} f_{n+1} \\ f_{n} \end{bmatrix}
+&amp; = &amp;
+\begin{bmatrix} 1 &amp; 1 \\ 1 &amp; 0 \end{bmatrix}
+\begin{bmatrix} f_{n} \\ f_{n-1} \end{bmatrix} \\
+&amp; = &amp;
+\begin{bmatrix} 1 &amp; 1 \\ 1 &amp; 0 \end{bmatrix}^n
+\begin{bmatrix} f_{1} \\ f_{0} \end{bmatrix}
+\end{array}
+$$</p>
+<hr>
+<p class=" font-serif my-1">&#20511;&#21161;&#30697;&#38453;&#30340;&#29305;&#27530;&#24615;&#65292;&#21033;&#29992; &#8220;&#29305;&#24449;&#22810;&#39033;&#24335;&#8221; &#21487;&#20197;&#23454;&#29616; $O(k^2\log n)$ &#29978;&#33267; $O(k \log k \log n)$ &#30340;&#24120;&#31995;&#25968;&#32447;&#24615;&#36882;&#25512;&#20851;&#31995;&#27714;&#35299;</p></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#39640;&#26031;&#28040;&#20803;&#27861;</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26041;&#31243;&#32452;&#19982;&#32447;&#24615;&#21464;&#25442;</h2>
+<p class=" font-serif my-1">&#30697;&#38453;&#23450;&#20041;&#20102;&#32447;&#24615;&#21464;&#25442;</p>
+<p class=" font-serif my-1">$$\begin{bmatrix} 1 &amp; 1 \\ 1 &amp; 0 \end{bmatrix}$$</p>
+<p class=" font-serif my-1">&#32473;&#23450; &#8220;&#21464;&#25442;&#21518;&#8221; &#30340;&#19968;&#20010;&#28857;&#65292;&#33021;&#21542;&#27714;&#20986;&#21464;&#25442;&#21069;&#30340;&#28857;&#65311;</p>
+<p class=" font-serif my-1">$$
+\begin{bmatrix} 1 &amp; 1 \\ 1 &amp; 0 \end{bmatrix}
+\begin{bmatrix} x \\ y \end{bmatrix} = 
+\begin{bmatrix} 13 \\ 8\end{bmatrix}
+$$</p>
+<p class=" font-serif my-1">&#36825;&#23601;&#26159;&#22823;&#23478;&#29087;&#24713;&#30340; &#8220;&#26041;&#31243;&#32452;&#8221;&#65281;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20551;&#35774;&#32447;&#24615;&#21464;&#25442; $A$ &#27809;&#26377; &#8220;&#25226;&#24179;&#38754;&#38477;&#32500;&#8221; (&#21387;&#32553;&#25104;&#30452;&#32447;/&#28857;)</li>
+</ul>
+<p class=" font-serif my-1">$$A \vec x = \vec b \Rightarrow \vec x = A^{-1} b$$</p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#36870;&#32447;&#24615;&#21464;&#25442;&#65306;&#29702;&#35299;</h2>
+<p class=" font-serif my-1">&#20219;&#32473;&#20004;&#20010;&#19981;&#20849;&#32447;&#30340;&#21521;&#37327;&#65292;&#37117;&#21487;&#20197;&#21435; &#8220;&#34920;&#31034;&#8221; &#20986;&#24179;&#38754;&#19978;&#20219;&#24847;&#19968;&#20010;&#21521;&#37327;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#8220;&#34920;&#31034;&#8221; &#30340;&#36807;&#31243;&#23601;&#26159;&#30697;&#38453;&#30340;&#36870;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">$$
+A = \begin{bmatrix} 2 &amp; -1 \\  3 &amp; 1 \end{bmatrix} 
+$$</p>
+<p class=" font-serif my-1">$$
+\begin{array}{rcl}
+\begin{bmatrix} x \\  y \end{bmatrix} &amp; = &amp;
+\displaystyle \frac{x+y}{5} \cdot \begin{bmatrix} 2 \\ 3 \\ \end{bmatrix} +
+\frac{-3x+2y}{5} \cdot \begin{bmatrix} -1 \\ 1 \\ \end{bmatrix} \\
+&amp; = &amp;
+\displaystyle
+\frac{1}{5}
+\begin{bmatrix} 1 &amp; 1 \\ -3 &amp; 2 \\ \end{bmatrix}
+\begin{bmatrix} 2 &amp; -1 \\ 3 &amp; 1 \\ \end{bmatrix}
+\begin{bmatrix} x \\ y \\ \end{bmatrix}
+\end{array}
+$$</p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#39640;&#26031;&#28040;&#20803;&#27861;</h2>
+<p class=" font-serif my-1">$$
+\left\{
+\begin{matrix}
+x &amp; + &amp; y &amp; = &amp; 10 \\
+2x &amp; + &amp; 4y &amp; = &amp; 32 \\
+\end{matrix}
+\right.
+$$</p>
+<p class=" font-serif my-1">&#23545;&#26041;&#31243;&#32452;&#30340; &#8220;&#31561;&#20215;&#21464;&#25442;&#8221;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#23558;&#26041;&#31243;&#32452;&#24038;&#21491;&#37117;&#20056;&#20197;&#26576;&#19968;&#38750;&#38646;&#25972;&#25968;</li>
+<li class=" ml-8">&#23558;&#20004;&#20010;&#26041;&#31243;&#32452;&#23545;&#24212;&#30456;&#21152; (&#30456;&#20943;)</li>
+</ul>
+<p class=" font-serif my-1">$$
+\left\{
+\begin{matrix}
+2x &amp; + &amp; 2y &amp; = &amp; 20 \\
+2x &amp; + &amp; 4y &amp; = &amp; 32 \\
+\end{matrix}
+\right.
+\qquad
+\left\{
+\begin{matrix}
+2x &amp; + &amp; 2y &amp; = &amp; 20 \\
+   &amp; + &amp; 2y &amp; = &amp; 12 \\
+\end{matrix}
+\right.
+$$</p>
+<p class=" font-serif my-1">$$
+\left\{
+\begin{matrix}
+2x &amp; + &amp;  &amp; = &amp; 8 \\
+ &amp; + &amp; 2y &amp; = &amp; 12 \\
+\end{matrix}
+\right.
+\qquad
+\left\{
+\begin{matrix}
+x &amp; + &amp;  &amp; = &amp; 4 \\
+   &amp; + &amp; y &amp; = &amp; 6 \\
+\end{matrix}
+\right.
+$$</p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#39640;&#26031;&#28040;&#20803;&#27861;&#65306;&#19968;&#27493;&#19968;&#27493;&#25289;&#30452;&#22352;&#26631;&#36724;&#65307;&#39034;&#20415;&#27714;&#36870;</h2>
+<p class=" font-serif my-1">$$
+\begin{bmatrix} 1 &amp; 1 \\ 2 &amp; 4 \end{bmatrix} 
+\begin{bmatrix} x \\ y \end{bmatrix}
+=
+\begin{bmatrix} 10 \\ 32 \end{bmatrix}
+$$</p>
+<p class=" font-serif my-1">$$
+\begin{bmatrix} 2 &amp; 0 \\ 0 &amp; 1 \end{bmatrix}
+\begin{bmatrix} 1 &amp; 1 \\ 2 &amp; 4 \end{bmatrix} 
+\begin{bmatrix} x \\ y \end{bmatrix}
+=
+\begin{bmatrix} 20 \\ 32 \end{bmatrix}
+$$</p>
+<p class=" font-serif my-1">$$
+\begin{bmatrix} 1 &amp; 0 \\ -1 &amp; 1 \end{bmatrix}
+\begin{bmatrix} 2 &amp; 0 \\ 0 &amp; 1 \end{bmatrix}
+\begin{bmatrix} 1 &amp; 1 \\ 2 &amp; 4 \end{bmatrix} 
+\begin{bmatrix} x \\ y \end{bmatrix}
+=
+\begin{bmatrix} 20 \\ 12 \end{bmatrix}
+$$</p>
+<p class=" font-serif my-1">$$
+\begin{bmatrix} 1 &amp; -1 \\ 0 &amp; 1 \end{bmatrix}
+\begin{bmatrix} 1 &amp; 0 \\ -1 &amp; 1 \end{bmatrix}
+\begin{bmatrix} 2 &amp; 0 \\ 0 &amp; 1 \end{bmatrix}
+\begin{bmatrix} 1 &amp; 1 \\ 2 &amp; 4 \end{bmatrix} 
+\begin{bmatrix} x \\ y \end{bmatrix}
+=
+\begin{bmatrix} 8 \\ 12 \end{bmatrix}
+$$</p>
+<p class=" font-serif my-1">$$
+\color{red}
+\begin{bmatrix} 2 &amp; 0 \\ 0 &amp; 2 \end{bmatrix}
+\begin{bmatrix} x \\ y \end{bmatrix}
+=
+\begin{bmatrix} 8 \\ 12 \end{bmatrix}
+$$</p></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#19968;&#28857;&#28857;&#31639;&#27861;</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#29289;&#29702;&#19990;&#30028;&#20013;&#30340;&#32447;&#24615;&#31995;&#32479;</h2>
+<p class=" font-serif my-1">&#30697;&#38453; = &#32447;&#24615;&#21464;&#25442; = &#29289;&#29702;&#19990;&#30028;&#20013;&#30340;&#19968;&#20010;&#27493;&#39588;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Fibonacci &#25968;&#21015;</li>
+</ul>
+<p class=" font-serif my-1">$$ \begin{bmatrix} f_{n+1} \\ f_{n} \end{bmatrix} =
+\begin{bmatrix} 1 &amp; 1 \\ 1 &amp; 0 \end{bmatrix}
+\begin{bmatrix} f_{n} \\ f_{n-1} \end{bmatrix} $$</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22270;&#30340;&#37051;&#25509;&#30697;&#38453;</li>
+<li class=" ml-8">&#27969;&#32593;&#32476;</li>
+<li class=" ml-8">&#8230;&#8230;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#32447;&#24615;&#20195;&#25968;&#19982;&#29289;&#29702;&#19990;&#30028;&#30340;&#32852;&#31995;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">$A^n$ ($n\to\infty$) &#30340;&#24615;&#36136;&#20195;&#34920; &#8220;&#26080;&#38480;&#37325;&#22797;&#8221; &#20570;&#19968;&#20214;&#20107;&#30340;&#29305;&#24449;</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20363;&#23376;&#65306;&#32447;&#24615;&#26041;&#31243;&#32452;&#30340;&#36845;&#20195;&#27714;&#35299;</h2>
+<p class=" font-serif my-1">&#8220;&#36138;&#24515;&#27861;&#8221;&#65306;&#27599;&#27425;&#37117;&#20351;&#25105;&#20204;&#31163;&#26041;&#31243;&#30340;&#35299;&#36817;&#19968;&#28857;</p>
+<p class=" font-serif my-1">$$
+\left\{
+\begin{matrix}
+x &amp; + &amp; y &amp; = &amp; 10 \\
+2x &amp; + &amp; 4y &amp; = &amp; 32 \\
+\end{matrix}
+\right.
+\qquad
+\left\{
+\begin{matrix}
+x' = 10 - y \\
+y' = 8 - x/2 \\
+\end{matrix}
+\right.
+$$</p>
+<p class=" font-serif my-1">$$
+\begin{bmatrix} x' \\ y' \\ 1 \end{bmatrix} =
+\begin{bmatrix} 0 &amp; -1 &amp; 10 \\ -1/2 &amp; 0 &amp; 8 \\ 0 &amp; 0 &amp; 1 \end{bmatrix}
+\begin{bmatrix} x \\ y \\ 1 \end{bmatrix}
+$$</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#28155;&#21152;&#19968;&#20010; 1 &#30340;&#32500;&#24230;&#26159;&#35745;&#31639;&#26426;&#22270;&#24418;&#23398;&#20013;&#38750;&#24120;&#24120;&#35265;&#30340;&#25216;&#24039;</li>
+</ul>
+<p class=" font-serif my-1">$$
+\begin{bmatrix} 1 \\ 1 \end{bmatrix} {\to}
+\begin{bmatrix} 9 \\ 7.5 \end{bmatrix} {\to}
+\begin{bmatrix} 2.5 \\ 3.5 \end{bmatrix} {\to}
+\begin{bmatrix} 6.5 \\ 6.75 \end{bmatrix} {\to}
+\begin{bmatrix} 3.25 \\ 4.75 \end{bmatrix} {\to} \ldots \to
+\begin{bmatrix} 3.997 \\ 5.995 \end{bmatrix}
+$$</p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="an" class=" text-xl mt-2 pb-2 font-sans">$A^n$ &#37324;&#30340;&#23453;&#34255;</h2>
+<p class=" font-serif my-1">&#36845;&#20195;&#27861;&#30340;&#25104;&#21151;&#19981;&#26159;&#20598;&#28982;&#30340;</p>
+<p class=" font-serif my-1">$$
+\begin{bmatrix} 0 &amp; -1 &amp; 10 \\ -1/2 &amp; 0 &amp; 8 \\ 0 &amp; 0 &amp; 1 \end{bmatrix}^\infty
+=
+\begin{bmatrix} 0 &amp; 0 &amp; 4 \\ 0 &amp; 0 &amp; 6 \\ 0 &amp; 0 &amp; 1 \end{bmatrix}
+$$</p>
+<p class=" font-serif my-1">&#26377;&#20123;&#32447;&#24615;&#21464;&#25442;&#21487;&#20197;&#34920;&#36798;&#25104; &#8220;&#26059;&#36716;&#8221; - &#8220;&#20280;&#32553;&#8221; - &#8220;&#36870;&#26059;&#36716;&#8221;</p>
+<p class=" font-serif my-1">$$
+\small
+\begin{bmatrix} 0 &amp; -1 &amp; 10 \\ -\frac12 &amp; 0 &amp; 8 \\ 0 &amp; 0 &amp; 1 \end{bmatrix} =
+\begin{bmatrix} 4 &amp; \sqrt2 &amp; -\sqrt2 \\ 6 &amp; 1 &amp; 1 \\ 1 &amp; 0 &amp; 0 \end{bmatrix} 
+\begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; -\frac{1}{\sqrt2} &amp; 0 \\ 0 &amp; 0 &amp; \frac{1}{\sqrt2} \end{bmatrix} 
+\begin{bmatrix} 4 &amp; \sqrt2 &amp; -\sqrt2 \\ 6 &amp; 1 &amp; 1 \\ 1 &amp; 0 &amp; 0 \end{bmatrix}^{-1}
+$$</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#8220;&#29305;&#24449;&#21521;&#37327;&#8221;&#65306;&#26059;&#36716;&#21040; &#8220;&#24688;&#22909;&#20301;&#32622;&#8221; &#30340;&#32447;&#24615;&#21464;&#25442;</li>
+<li class=" ml-8">&#8220;&#29305;&#24449;&#20540;&#8221;&#65306;&#20280;&#32553;&#30340;&#27604;&#20363;</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="25000000000" class=" text-xl mt-2 pb-2 font-sans">&#20363;&#23376;&#65306;&#20215;&#20540; $25,000,000,000 &#30340;&#29305;&#24449;&#21521;&#37327;</h2>
+<p class=" font-serif my-1">Google &#25104;&#21151;&#30340;&#31192;&#35776;&#65306;&#20026;&#20114;&#32852;&#32593;&#19978;&#25152;&#26377;&#30340;&#39029;&#38754;&#37325;&#35201;&#24615;&#25490;&#24207;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Google &#27599;&#22825;&#37117;&#29228;&#21462;&#25972;&#20010;&#20114;&#32852;&#32593;&#19978;&#30340;&#25968;&#25454;&#65292;&#24182;&#19988;&#24314;&#31435;&#39029;&#38754;&#30340;&#32034;&#24341;&#21644;&#38142;&#25509;&#20851;&#31995;&#65292;&#24182;<red>&#35745;&#31639;&#25152;&#26377;&#32593;&#39029;&#30340;&#25490;&#24207;</red></li>
+<li class=" ml-8">Page Rank: &#22312;&#32593;&#39029;&#19978;&#30340; random walk<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22312;&#27599;&#20010;&#32593;&#39029;&#37117;&#38543;&#26426;&#28857;&#20987;&#38142;&#25509;</li>
+<li class=" ml-8">$Ax = x$ &#23601;&#26159;&#31283;&#23450;&#30340; &#8220;&#27010;&#29575;&#20998;&#24067;&#8221; ($A^\infty$ &#24688;&#22909;&#26159;&#23427;&#30340;&#35299;)</li>
+</ul>
+</li>
+</ul>
+<p class=" font-serif my-1"><img alt="" class="float-right" src="../pages/OI/img/larry-page.jpg" width="300px"> </p>
+<p class=" font-serif my-1">$$
+\small
+A = \begin{bmatrix}
+0 &amp; 0 &amp; 1 &amp; 1/2 \\
+1/3 &amp; 0 &amp; 0 &amp; 0 \\
+1/3 &amp; 1/2 &amp; 0 &amp; 1/2 \\
+1/3 &amp; 1/2 &amp; 0 &amp; 0 \\
+\end{bmatrix} \qquad
+x = \begin{bmatrix}
+0.387 \\ 0.129 \\ 0.290 \\ 0.194
+\end{bmatrix}
+$$</p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20363;&#23376;&#65306;&#28120;&#23453;&#32972;&#21518;&#30340;&#32447;&#24615;&#20195;&#25968;</h2>
+<p class=" font-serif my-1"><img alt="" class="float-right" src="../pages/OI/img/tb-recsys.jpg" width="200px"></p>
+<p class=" font-serif my-1">&#25512;&#33616;&#31995;&#32479;&#65306;&#22914;&#20309;&#20026;&#20320;&#39044;&#27979;&#23545;&#21830;&#21697;&#30340;&#35780;&#20998;&#65311;</p>
+<p class=" font-serif my-1">$$
+\small
+\begin{matrix}
+&amp; \text{Alice} &amp; \text{Bob} &amp; \text{Cathy} &amp; \text{Dave} \\
+\text{&#33529;&#26524;} &amp; 1 &amp; ? &amp; 1 &amp; ? \\
+\text{&#27225;&#23376;} &amp; ? &amp; ? &amp; ? &amp; 3 \\
+\text{&#39321;&#34121;} &amp; 3 &amp; ? &amp; ? &amp; ? \\
+\text{&#35199;&#29916;} &amp; 5 &amp; 4 &amp; ? &amp; ? \\
+\end{matrix}
+$$</p>
+<hr>
+<p class=" font-serif my-1">&#30697;&#38453;&#20998;&#35299;&#65306;$M_{m\times n} = P_{m\times k} \times Q_{k\times n}$</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">$k$ &#26159;&#38544;&#34255;&#30340; &#8220;&#32500;&#24230;&#8221; (Latent factor model)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22914;&#26524; $k$ &#24456;&#23567;&#65292;&#25105;&#20204;&#23601;&#26377;&#36275;&#22815;&#30340;&#25968;&#25454;&#27714;&#35299;&#20986; &#8220;&#26368;&#21512;&#36866;&#8221; &#30340; $P$ &#21644; $Q$</li>
+</ul>
+</li>
+<li class=" ml-8">&#27599;&#20010;&#20154;&#23545;&#29289;&#21697;&#30340;&#20559;&#22909;&#26159;&#19968;&#31995;&#21015;&#29305;&#24449;&#30340;&#32447;&#24615;&#32452;&#21512;</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#32447;&#24615;&#20195;&#25968;&#30340;&#24212;&#29992;</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">&#29289;&#29702;&#19990;&#30028;&#20013;&#30340;&#24456;&#22810;&#36807;&#31243;&#37117;&#26159;&#32447;&#24615; (&#25110;&#32773;&#21487;&#20197;&#32447;&#24615;&#36817;&#20284;) &#30340;&#12290;</p>
+</blockquote>
+<hr>
+<p class=" font-serif my-1">&#32447;&#24615;&#20195;&#25968;&#30340;&#24212;&#29992;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#35745;&#31639;&#26426;&#22270;&#24418;&#23398;</li>
+<li class=" ml-8">&#27969;&#32593;&#32476; (&#29615;&#27969;)</li>
+<li class=" ml-8">&#32447;&#24615;&#35268;&#21010;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21028;&#23450; $Ax \le b$ &#26159;&#21542;&#23384;&#22312;&#35299;</li>
+</ul>
+</li>
+<li class=" ml-8">&#34892;&#21015;&#24335;&#19982;&#35745;&#25968;<ul class=" list-disc font-serif">
+<li class=" ml-8">FKT Algorithm</li>
+<li class=" ml-8">Kirchhoff's Matrix Tree Theorem</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#20877;&#21152;&#19968;&#28857;&#28857;&#25277;&#35937;</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#22238;&#21040;&#21521;&#37327;&#31639;&#26415;</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">&#8220;&#21152;&#8221; &#21644; &#8220;&#20056;&#8221; &#30340;&#23545;&#35937;&#21487;&#20197;&#19981;&#26159;&#23454;&#25968;&#65281;</p>
+</blockquote>
+<p class=" font-serif my-1">&#21521;&#37327; (vector): &#19968;&#20010; $n$ &#32500;&#30340;&#25968;&#32452;&#65292;&#36890;&#24120;&#31446;&#30528;&#20070;&#20889;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#8220;&#21521;&#37327;&#8221; &#21487;&#20197;&#26159;&#20219;&#24847;&#30340; $\mathbb{F}^n$<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20219;&#20309;&#19968;&#31181;&#21487;&#36827;&#34892;&#21152;&#12289;&#20943;&#12289;&#20056;&#21644;&#38500;&#36816;&#31639;&#30340;&#20195;&#25968;&#32467;&#26500;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#35828;&#20154;&#35805;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#8220;&#36816;&#31639;&#8221; &#21487;&#20197;&#26159; mod 2 &#30340;&#25972;&#25968;&#36816;&#31639;</li>
+<li class=" ml-8">&#21487;&#20197;&#26159;&#19981;&#26159;&#25968;&#30340;&#25968;&#23398;&#23545;&#35937; (&#27604;&#22914;&#20989;&#25968;)</li>
+<li class=" ml-8">&#29978;&#33267;&#21487;&#20197;&#19981;&#26159; $n$ &#32500;&#25968;&#32452;<ul class=" list-disc font-serif">
+<li class=" ml-8"><red>&#25152;&#26377;&#19981;&#20381;&#36182;&#20110; &#8220;&#23454;&#25968;&#8221; &#20551;&#35774;&#30340;&#23450;&#29702;&#21644;&#31639;&#27861;&#20840;&#37096;&#25104;&#31435;</red></li>
+<li class=" ml-8">$\Rightarrow$ &#36825;&#23601;&#26159;&#25968;&#23398;&#65281;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#30495;&#27491;&#30340; &#8220;&#32447;&#24615;&#20195;&#25968;&#8221;&#8212;&#8212;&#32771;&#34385;&#25277;&#35937;&#30340;&#25968;&#23398;&#23545;&#35937;</h2>
+<p class=" font-serif my-1">&#35774; $F$ &#26159;&#19968;&#20010;&#22495;&#12290;$F$ &#19978;&#30340;&#21521;&#37327;&#31354;&#38388;&#26159;&#38598;&#21512; $V$ &#19978;&#30340;&#20004;&#20010;&#36816;&#31639;&#65306;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21152;&#27861; $V+V \to V$</li>
+<li class=" ml-8">&#25968;&#20056; $F\times V \to V$</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#19988;&#28385;&#36275;&#20197;&#19979;&#20844;&#29702; (&#40664;&#35748; $u,v,w\in V$, $a, b \in F$)&#65306;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21152;&#27861;&#30340;&#20132;&#25442;/&#32467;&#21512;&#24459; $u+v=v+u$; $u+(v+w) = (u+v)+w$</li>
+<li class=" ml-8">&#23384;&#22312;&#21152;&#27861;&#38646;&#20803;&#21644;&#36870;&#20803; $v + 0 = v$; $v + w = 0$</li>
+<li class=" ml-8">&#25968;&#20056;&#21644;&#21152;&#27861;&#30340;&#20998;&#37197;&#24459; $a(v+w)=av+aw$; $(a+b)v = av + bv$</li>
+<li class=" ml-8">&#25968;&#20056;&#20316;&#29992;&#20110; $V$ &#30340;&#20998;&#37197;&#29575; $a(bv)=(ab)v$</li>
+<li class=" ml-8">&#25968;&#20056;&#23384;&#22312;&#38646;&#20803; $1v = 1$<ul class=" list-disc font-serif">
+<li class=" ml-8">&#30475;&#36215;&#26469;&#21644;&#23454;&#25968;&#19968;&#26679;&#65307;&#20294;&#20063;&#21487;&#20197;&#24456;&#19981;&#19968;&#26679; (&#20363;&#22914; $F$ &#21487;&#20197;&#26159;&#26377;&#38480;&#30340;)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20174;&#32780;&#25670;&#33073;&#20102;&#25152;&#26377;&#20851;&#20110; &#8220;&#22352;&#26631;&#31995;&#8221; &#30340;&#26463;&#32538;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20363;&#23376;&#65306;&#24067;&#23572;&#31867;&#22411;&#19978;&#30340;&#21521;&#37327;&#31639;&#26415;</h2>
+<p class=" font-serif my-1">&#19968;&#20010;&#26032;&#30340;&#36816;&#31639;&#65306;$1 + 0 = 1, 1 + 1 = 0, 1 \cdot 1 = 1, 1 \cdot 0 = 0$</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21152;&#27861;&#20854;&#23454;&#26159;&#24322;&#25110; ($\oplus$)&#65307;&#25968;&#20056;&#26159;&#36923;&#36753;&#19982; ($\land$)</li>
+<li class=" ml-8">&#25105;&#20204;&#33258;&#21160;&#24471;&#21040;&#20043;&#21069;&#25512;&#23548;&#30340;&#12289;&#19981;&#20381;&#36182;&#20110; &#8220;&#23454;&#25968;&#8221; &#20551;&#35774;&#30340;&#25152;&#26377;&#25512;&#35770;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#26041;&#31243;&#32452;&#20381;&#28982;&#21487;&#20197;&#26377;&#65307;&#30697;&#38453;&#20381;&#28982;&#21487;&#20197;&#20998;&#35299;&#8230;&#8230;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">$$
+\begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix} + 
+\begin{bmatrix} 1 \\ 1 \\ 0 \end{bmatrix} =
+\begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix}
+$$</p>
+<p class=" font-serif my-1">$$
+\begin{bmatrix} 0 &amp; 1 &amp; 0 \\ 1 &amp; 1 &amp; 0 \\ 0 &amp; 1 &amp; 1 \end{bmatrix} \cdot
+\begin{bmatrix} 1 \\ 1 \\ 0 \end{bmatrix} =
+\begin{bmatrix} 1 \\ 0 \\ 1 \end{bmatrix}
+$$</p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="xor" class=" text-xl mt-2 pb-2 font-sans">&#20363;&#23376;&#65306;&#26368;&#22823; XOR &#23376;&#38598;</h2>
+<p class=" font-serif my-1">&#32473;&#23450; $n$ &#20010;&#25972;&#25968;&#65292;&#20174;&#20013;&#21462;&#19968;&#37096;&#20998;&#65292;&#20351;&#21462;&#20986;&#25968;&#20540;&#30340;&#24322;&#25110;&#20540;&#26368;&#22823;</p>
+<hr>
+<p class=" font-serif my-1">&#29992;&#19968;&#20010;&#21464;&#37327; $x_i \in \{0,1\}$ &#34920;&#31034;&#31532; $i$ &#20010;&#25968;&#23383;&#26159;&#21542;&#35201;&#21462;&#12289;$y_j$ &#34920;&#31034;&#26368;&#32456;&#32467;&#26524;&#30340;&#31532; $j$ &#20010; bit &#26159;&#21542;&#20026; 1</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20174;&#26368;&#39640;&#20301;&#24320;&#22987;&#28155;&#21152; $y_j = 1$ &#30340;&#26041;&#31243;&#65292;&#26080;&#35299;&#26102;&#20196; $y_j = 0$</li>
+<li class=" ml-8">&#22238;&#39038;&#32447;&#24615;&#20195;&#25968;&#65306;&#32447;&#24615;&#31354;&#38388;&#20013;&#30340; &#8220;&#22352;&#26631;&#36724;&#21464;&#25442;&#8221;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21487;&#20197;&#35797;&#22270;&#29992; $y$ &#21435;&#34920;&#31034; $x$&#65281;</li>
+<li class=" ml-8">&#32447;&#24615;&#31354;&#38388;&#30340; &#8220;&#22522;&#8221; (basis)</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#24635;&#32467;</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#19968;&#33410;&#19981;&#22826;&#19968;&#26679;&#30340;&#32447;&#24615;&#20195;&#25968;&#35838;</h2>
+<p class=" font-serif my-1">&#8220;&#31639;&#26415;&#8221;&#12289;&#8220;&#20195;&#25968;&#8221; &#21644; &#8220;&#31639;&#27861;&#8221;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20174;&#32447;&#24615;&#31639;&#26415; (&#21521;&#37327; = &#24179;&#38754;/&#31354;&#38388;&#20013;&#30340;&#28857;&#65307;&#30697;&#38453; = &#32447;&#24615;&#21464;&#25442;) &#20986;&#21457;</li>
+<li class=" ml-8">&#25552;&#20986;&#35299;&#20915;&#38382;&#39064;&#30340;&#31639;&#27861; (&#35745;&#31639;&#26426;&#31185;&#23398;)&#65307;&#21521;&#26356;&#22810;&#30340;&#39046;&#22495;&#25512;&#24191;&#25277;&#35937; (&#25968;&#23398;)</li>
+</ul>
+<p class=" font-serif my-1"><img alt="" class="center" src="../pages/OI/img/linear-transform.png" width="400px"></p>
+<p class=" font-serif my-1">&#24102;&#30528;&#36825;&#20010;&#29702;&#35299;&#21435;&#37325;&#26032;&#29702;&#35299;&#20320;&#23398;&#36807;&#12298;&#32447;&#24615;&#20195;&#25968;&#12299;&#30340;&#20840;&#37096;</p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="end" class=" text-2xl mt-2 font-sans">End.</h1>
+<p class=" font-serif my-1"><br></p>
+<p class=" font-serif my-1">3Blue1Brown: <a href="https://www.bilibili.com/video/BV1ys411472E" class=" text-amber-900">&#32447;&#24615;&#20195;&#25968;&#30340;&#26412;&#36136;</a></p></div></div></div>
+        
+      
+      </section>
+    
+    </section>
+  
+</div>
+</div>
+
+<script src="../static/reveal/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    
+    width: 1024, height: 768,
+    
+    slideNumber: 'c/t',
+    controlsTutorial: false,
+    progress: false,
+    hash: true,
+    center: false,
+    autoAnimateUnmatched: true,
+    autoAnimateEasing: 'ease-out',
+    autoAnimateDuration: 0.3,
+    transitionSpeed: 'fast'
+  });
+</script>
+
+
+</body>
+
+</html>

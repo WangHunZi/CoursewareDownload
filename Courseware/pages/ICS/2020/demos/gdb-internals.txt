@@ -1,0 +1,21 @@
+set detach-on-fork off
+set follow-fork-mode child
+set breakpoint pending on
+
+file gcc
+
+break execve
+commands
+  silent
+  echo \n\n\n---------- EXECVE ----------\n
+  printf "program to execute: %s\n", $rdi
+  set $i = 0
+  set $argv = (char **)$rsi
+  while ($argv[$i])
+    printf "argv[%d] = %s\n", $i, $argv[$i]
+    set $i = $i + 1
+  end
+  echo \n
+end
+
+run a.c

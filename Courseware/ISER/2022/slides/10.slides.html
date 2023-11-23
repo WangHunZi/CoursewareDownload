@@ -1,0 +1,511 @@
+<!DOCTYPE html><html class="h-100">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="../../../static/css/base.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
+
+  <style>
+    .font-sans {
+      font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+    }
+    .font-serif {
+      font-family: 'Source Serif Pro', 'Songti SC', 'SimSun', 'Serif', serif;
+    }
+  </style>
+  <link rel="stylesheet" href="../../../static/katex/katex.min.css">
+  <script defer src="../../../static/katex/katex.min.js"></script>
+  <script defer src="../../../static/katex/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+            // customised options
+            // &#8226; auto-render specific keys, e.g.:
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ],
+            // &#8226; rendering keys, e.g.:
+            throwOnError : false
+          });
+      });
+  </script>
+
+
+  
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="../../../static/reveal/reveal.css">
+<link rel="stylesheet" href="../../../static/reveal/theme/night.css" id="theme">
+
+<style>
+.reveal .slide-number {
+  font-size: 26px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, .3);
+}
+
+.reveal .full-screen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.reveal .slides {
+  border: 1.5px #ddd solid;
+  border-radius: 7px;
+  text-align: left;
+  font-weight: 300;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  font-family: 'Lato', 'SimHei', 'STXihei', 'Droid Sans';
+  font-weight: 400;
+}
+
+.reveal p, .reveal li, .reveal center {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Droid Sans';
+}
+
+.reveal li + li {
+  margin-top: 10px;
+}
+
+.reveal ul {
+  display: block;
+  margin-right: 15px;
+}
+
+.reveal p, .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5 {
+  padding:  0 25px 0 25px;
+}
+
+.reveal table {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Sans Serif';
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.reveal th {
+  background-color: #eee;
+}
+
+.reveal tr:nth-child(even) {
+  background-color: #efffff;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  text-align: left;
+  margin: 0 0 20px 0;
+
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
+
+.reveal pre {
+  background-color: #222;
+}
+
+
+.reveal h1 {
+  margin: 0 10 0 10;
+  font-size: 60px;
+}
+.reveal .middle h1 {
+  text-align: center;
+}
+
+.reveal h2 {
+  font-size: 48px;
+  border-bottom: 2px solid rgb(106, 0, 95);
+  padding-bottom: 5px;
+}
+.reveal h3 { font-size: 1.15em; }
+.reveal h4 { font-size: 1.05em; }
+
+.reveal .center {
+  text-align: center;
+}
+
+.reveal .middle {
+  height: 728px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.reveal pre {
+  font-size: 28px;
+
+  border-radius: 3mm;
+  padding: 10px 10px 10px 10px;
+}
+
+.reveal pre code {
+  max-height: none;
+}
+
+.reveal code {
+  font-family: 'Inconsolata', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif', Monospace;
+}
+
+.reveal .middle blockquote {
+  text-align: center;
+  color: rgb(106, 0, 95);
+  background: none;
+  box-shadow: none;
+}
+
+.reveal .middle blockquote a {
+  color: inherit;
+}
+
+.reveal blockquote p, .reveal blockquote li {
+  font-family: 'Lato', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif';
+}
+
+section .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reveal .author-block {
+  margin: 75px 0 35px 0;
+}
+.reveal .author-affiliation img {
+  margin: 15px 0 0 0;
+}
+.reveal .author-block p, .reveal .author-affiliation p  {
+  font-family: 'Kaiti', 'STKaiti', 'Serif', 'Times', 'Times New Roman';
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+.reveal .author-affiliation {
+  display: inline-block;
+  font-size: 90%;
+}
+.reveal hr {
+  border: 10px solid rgba(0, 0, 0, 0);
+}
+.reveal li {
+  margin-top: 10px;
+}
+</style>
+
+  <title>Presentation Commentary</title>
+</head>
+
+<body class="d-flex flex-column h-100">
+  
+  
+
+<div class="reveal">
+<div class="slides">
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="presentation-commentary" class=" text-2xl mt-2 font-sans">Presentation Commentary</h1>
+<p class=" font-serif my-1"><br></p>
+<p class=" font-serif my-1">Yanyan Jiang</p></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="overview" class=" text-xl mt-2 pb-2 font-sans">Overview</h2>
+<p class=" font-serif my-1">Beware of the deadlines!</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">A4 (Research proposal revision): <red>Today</red></li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Presentation Commentary</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">How to speak<ul class=" list-disc font-serif">
+<li class=" ml-8">Rules of thumb</li>
+<li class=" ml-8">Rules of Lint Warning</li>
+</ul>
+</li>
+<li class=" ml-8">Examples</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="how-to-speak" class=" text-2xl mt-2 font-sans">How to Speak?</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="outline" class=" text-xl mt-2 pb-2 font-sans">Outline</h2>
+<p class=" font-serif my-1">EXPLODE: A Lightweight, General System for Finding Serious Storage System Errors</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Background</li>
+<li class=" ml-8">Related work</li>
+<li class=" ml-8">Motivation</li>
+<li class=" ml-8">Design</li>
+<li class=" ml-8">Implementation</li>
+<li class=" ml-8">Evaluation</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="how-to-speak-again" class=" text-xl mt-2 pb-2 font-sans">How to Speak, Again</h2>
+<p class=" font-serif my-1">Let's watch the first 2.5 minutes</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Again, again, and again...</li>
+<li class=" ml-8"><a href="https://www.bilibili.com/video/BV1K54y1m7M6" class=" text-amber-900">Video</a></li>
+</ul>
+<hr>
+<p class=" font-serif my-1">The opening is amazing!</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Well... He did a much better job than I do.</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="build-audiences-mental-model" class=" text-xl mt-2 pb-2 font-sans">Build Audiences' Mental Model</h2>
+<p class=" font-serif my-1">Take care of all types audiences</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Experts - <em>everything</em> in this domain is trivial to them</li>
+<li class=" ml-8">Students - have some expertise, but not yet matured</li>
+<li class=" ml-8">Outsiders - CS undergraduates seeking for advisors</li>
+<li class=" ml-8">Big bosses - randomly comes in and out</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Audiences are essentially <em>state machines</em></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">States<ul class=" list-disc font-serif">
+<li class=" ml-8">(N)ormal, (E)xciting, D(elighted), (C)onfused, (B)oring, (S)leeping, (L)eaving + (K)nowledge Learned</li>
+</ul>
+</li>
+<li class=" ml-8">Transitions<ul class=" list-disc font-serif">
+<li class=" ml-8">Your slides and words</li>
+<li class=" ml-8">Same words, different transitions for different audiences</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="rules-of-thumb" class=" text-xl mt-2 pb-2 font-sans">Rules of Thumb</h2>
+<p class=" font-serif my-1">Tell a story</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Refer to &#8220;How to speak&#8221;!</li>
+<li class=" ml-8">My invited talk at <a href="https://www.bilibili.com/video/BV1C84y1r7Ek" class=" text-amber-900">Chinasoft'22</a><ul class=" list-disc font-serif">
+<li class=" ml-8">I prepared this talk in a rush (~3 hours)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Link the slides (and titles)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Tree structure of presentation</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Reduce dependencies</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">The &#8220;least assumption&#8221; principle</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">(Reflect these ideas on the state machine model)</p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="rules-of-lint-warning-1" class=" text-xl mt-2 pb-2 font-sans">Rules of Lint Warning (1)</h2>
+<p class=" font-serif my-1">Text blocks</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">To read, or not to read?</li>
+</ul>
+<hr>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/ISER/2022/slides/img/lint-1.png" width="700px"></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="rules-of-lint-warning-2" class=" text-xl mt-2 pb-2 font-sans">Rules of Lint Warning (2)</h2>
+<p class=" font-serif my-1">Formulas</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Exception: Just showing &#8220;there is a formula&#8221;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/ISER/2022/slides/img/lint-2.png" width="700px"></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="rules-of-lint-warning-3" class=" text-xl mt-2 pb-2 font-sans">Rules of Lint Warning (3)</h2>
+<p class=" font-serif my-1">Algorithms</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">$\le$ 5 lines, OK; otherwise, not OK</li>
+</ul>
+<hr>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/ISER/2022/slides/img/lint-3.png" width="700px"></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="rules-of-lint-warning-4" class=" text-xl mt-2 pb-2 font-sans">Rules of Lint Warning (4)</h2>
+<p class=" font-serif my-1">Experimental results (tables, figures, etc.)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Always deliver messages (opinions)</li>
+<li class=" ml-8">&#8220;Improved the SOTA by XX%&#8221; is meaningless to most of the audiences&#8212;So what?</li>
+</ul>
+<hr>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/ISER/2022/slides/img/lint-4.png" width="700px"></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="live-broadcast-week" class=" text-xl mt-2 pb-2 font-sans">Live Broadcast Week!</h2>
+<p class=" font-serif my-1">Next week (Dec 5&#8212;Dec 11)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">On <a href="http://live.bilibili.com/21816941" class=" text-amber-900">bilibili</a></li>
+<li class=" ml-8">A virtual meeting online?<ul class=" list-disc font-serif">
+<li class=" ml-8">An ssh chat room?</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#20844;&#24320;&#22788;&#21009;&#26102;&#38388;</h1></div></div></div>
+        
+      
+      </section>
+    
+    </section>
+  
+</div>
+</div>
+
+<script src="../../../static/reveal/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    
+    width: 1024, height: 768,
+    
+    slideNumber: 'c/t',
+    controlsTutorial: false,
+    progress: false,
+    hash: true,
+    center: false,
+    autoAnimateUnmatched: true,
+    autoAnimateEasing: 'ease-out',
+    autoAnimateDuration: 0.3,
+    transitionSpeed: 'fast'
+  });
+</script>
+
+
+</body>
+
+</html>

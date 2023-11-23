@@ -1,0 +1,842 @@
+<!DOCTYPE html><html class="h-100">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="../../../static/css/base.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
+
+  <style>
+    .font-sans {
+      font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+    }
+    .font-serif {
+      font-family: 'Source Serif Pro', 'Songti SC', 'SimSun', 'Serif', serif;
+    }
+  </style>
+  <link rel="stylesheet" href="../../../static/katex/katex.min.css">
+  <script defer src="../../../static/katex/katex.min.js"></script>
+  <script defer src="../../../static/katex/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+            // customised options
+            // &#8226; auto-render specific keys, e.g.:
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ],
+            // &#8226; rendering keys, e.g.:
+            throwOnError : false
+          });
+      });
+  </script>
+
+
+  
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="../../../static/reveal/reveal.css">
+<link rel="stylesheet" href="../../../static/reveal/theme/simple.css" id="theme">
+
+<style>
+.reveal .slide-number {
+  font-size: 26px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, .3);
+}
+
+.reveal .full-screen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.reveal .slides {
+  border: 1.5px #ddd solid;
+  border-radius: 7px;
+  text-align: left;
+  font-weight: 300;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  font-family: 'Lato', 'SimHei', 'STXihei', 'Droid Sans';
+  font-weight: 400;
+}
+
+.reveal p, .reveal li, .reveal center {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Droid Sans';
+}
+
+.reveal li + li {
+  margin-top: 10px;
+}
+
+.reveal ul {
+  display: block;
+  margin-right: 15px;
+}
+
+.reveal p, .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5 {
+  padding:  0 25px 0 25px;
+}
+
+.reveal table {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Sans Serif';
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.reveal th {
+  background-color: #eee;
+}
+
+.reveal tr:nth-child(even) {
+  background-color: #efffff;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  text-align: left;
+  margin: 0 0 20px 0;
+ color: #222; 
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
+
+
+.reveal h1 {
+  margin: 0 10 0 10;
+  font-size: 60px;
+}
+.reveal .middle h1 {
+  text-align: center;
+}
+
+.reveal h2 {
+  font-size: 48px;
+  border-bottom: 2px solid rgb(106, 0, 95);
+  padding-bottom: 5px;
+}
+.reveal h3 { font-size: 1.15em; }
+.reveal h4 { font-size: 1.05em; }
+
+.reveal .center {
+  text-align: center;
+}
+
+.reveal .middle {
+  height: 728px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.reveal pre {
+  font-size: 28px;
+ 
+  background-color: #eee;
+
+  border-radius: 3mm;
+  padding: 10px 10px 10px 10px;
+}
+
+.reveal pre code {
+  max-height: none;
+}
+
+.reveal code {
+  font-family: 'Inconsolata', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif', Monospace;
+}
+
+.reveal .middle blockquote {
+  text-align: center;
+  color: rgb(106, 0, 95);
+  background: none;
+  box-shadow: none;
+}
+
+.reveal .middle blockquote a {
+  color: inherit;
+}
+
+.reveal blockquote p, .reveal blockquote li {
+  font-family: 'Lato', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif';
+}
+
+section .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reveal .author-block {
+  margin: 75px 0 35px 0;
+}
+.reveal .author-affiliation img {
+  margin: 15px 0 0 0;
+}
+.reveal .author-block p, .reveal .author-affiliation p  {
+  font-family: 'Kaiti', 'STKaiti', 'Serif', 'Times', 'Times New Roman';
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+.reveal .author-affiliation {
+  display: inline-block;
+  font-size: 90%;
+}
+.reveal hr {
+  border: 10px solid rgba(0, 0, 0, 0);
+}
+.reveal li {
+  margin-top: 10px;
+}
+</style>
+
+  <title>Typesetting with LaTeX</title>
+</head>
+
+<body class="d-flex flex-column h-100">
+  
+  
+
+<div class="reveal">
+<div class="slides">
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="typesetting-with-latex" class=" text-2xl mt-2 font-sans">Typesetting with LaTeX</h1>
+<p class=" font-serif my-1"><br></p>
+<p class=" font-serif my-1">Yanyan Jiang</p></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="overview" class=" text-xl mt-2 pb-2 font-sans">Overview</h2>
+<p class=" font-serif my-1">Always produce high quality documents</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Characters, words, formulas, paragraphs</li>
+<li class=" ml-8">Figures and plots</li>
+<li class=" ml-8">Tables</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="a-brief-history-of-typesetting" class=" text-2xl mt-2 font-sans">A Brief History of Typesetting</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="typesetting-in-the-pre-computer-age-1" class=" text-xl mt-2 pb-2 font-sans">Typesetting in the Pre-Computer Age (1)</h2>
+<p class=" font-serif my-1">By hand, of course</p>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/ISER/2021/slides/img/Rosetta.jpg" width="500px"></p>
+<p class=" font-serif my-1"></p><center>(The Rosetta Stone)</center></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="typesetting-in-the-pre-computer-age-2" class=" text-xl mt-2 pb-2 font-sans">Typesetting in the Pre-Computer Age (2)</h2>
+<p class=" font-serif my-1">Or by a typesetting machine</p>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/ISER/2021/slides/img/typesetter.jpg" width="700px"></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="typesetting-in-the-pre-gui-age-2" class=" text-xl mt-2 pb-2 font-sans">Typesetting in the Pre-GUI Age (2)</h2>
+<p class=" font-serif my-1"><img alt="" class="float-right" height="500px" src="../../../pages/ISER/2021/slides/img/STOC69.png"></p>
+<p class=" font-serif my-1">By programming languages!</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="https://cmd.inp.nsk.su/old/cmd2/manuals/unix/UNIX_Unleashed/ch08.htm" class=" text-amber-900">troff/nroff</a> (based on runoff)<ul class=" list-disc font-serif">
+<li class=" ml-8">translates a document to printer commands</li>
+</ul>
+</li>
+<li class=" ml-8">Example: <code>\d</code>/<code>\u</code> to move down/up for half line<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>Jan 26\u\s-2th\s+2\d is a sample.</code></li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="typesetting-today" class=" text-xl mt-2 pb-2 font-sans">Typesetting Today</h2>
+<p class=" font-serif my-1">PostScript (1984)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">A low-level (assembly) DSL for describing vector drawings</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">PDF is today's standard</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">A supserset of PostScript<ul class=" list-disc font-serif">
+<li class=" ml-8">example: <a href="../../../pages/ISER/2021/slides/img/page.txt" class=" text-amber-900">page.txt</a></li>
+</ul>
+</li>
+<li class=" ml-8">A container of fragments<ul class=" list-disc font-serif">
+<li class=" ml-8">like MP4</li>
+</ul>
+</li>
+</ul>
+<hr>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">But nobody wants to code in assembly!</p>
+</blockquote></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="what-is-texlatex" class=" text-xl mt-2 pb-2 font-sans">What is TeX/LaTeX?</h2>
+<p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/ISER/2021/slides/img/texbook.jpg" width="300px"></p>
+<p class=" font-serif my-1">A <em>high-level</em> programming language (and toolchain) for typesetting</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">produces a lower-level language (PostScript, HTML, ...)</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Less user-friendly (e.g., compared with Microsoft Word)</p>
+<hr>
+<p class=" font-serif my-1">Better flexibility</p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="use-it-now" class=" text-xl mt-2 pb-2 font-sans">Use It Now!</h2>
+<p class=" font-serif my-1">Cloud editors <a href="https://tex.nju.edu.cn" class=" text-amber-900">tex.nju.edu.cn</a> or <a href="https://overleaf.com" class=" text-amber-900">overleaf.com</a></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">The editor supports Vim/Emacs key bindings!</li>
+<li class=" ml-8">Let's do it!</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Texlive binary</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Binary install package (Windows/macOS)</li>
+<li class=" ml-8"><code>apt install texlive-full</code> (Linux)</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="characters" class=" text-2xl mt-2 font-sans">Characters</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="fonts" class=" text-xl mt-2 pb-2 font-sans">Fonts</h2>
+<p class=" font-serif my-1">Sans Serif vs. Serif</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Helvetica/Arial/Microsoft YaHei vs. Times/Crimson/SimSun</li>
+<li class=" ml-8"><a href="https://www.bilibili.com/video/av14868042" class=" text-amber-900">Documentary: Helvetica</a></li>
+<li class=" ml-8">In the Web Age<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="https://googlefonts.cn" class=" text-amber-900">Google Fonts</a></li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Widely used fonts</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">acmart: Linux Libertine</li>
+<li class=" ml-8">LaTeX Default: Computer Modern Roman (CMR)<ul class=" list-disc font-serif">
+<li class=" ml-8">$\textrm{Computer Modern Roman}$</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="font-modifications" class=" text-xl mt-2 pb-2 font-sans">Font Modifications</h2>
+<p class=" font-serif my-1">When to use them?</p>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/ISER/2020/img/font-modifications-latex.png" width="480px"></p></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="words" class=" text-2xl mt-2 font-sans">Words</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="kerning-and-ligatures" class=" text-xl mt-2 pb-2 font-sans">Kerning and Ligatures</h2>
+<p class=" font-serif my-1">TeX system has nearly perfect kerning</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="http://www.ctex.org/documents/shredder/src/texbook.pdf" class=" text-amber-900">The TeXbook</a>; Example: fi/ffi/...</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Fixed-width fonts (Fira Code, Cascadia Code, ...)</p>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/ISER/2021/slides/img/fira-code.jpg" width="750px"></p></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="formulas" class=" text-2xl mt-2 font-sans">Formulas</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="tex-is-for-scientists" class=" text-xl mt-2 pb-2 font-sans">TeX is for Scientists</h2>
+<p class=" font-serif my-1">Beautiful formulas</p>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/ISER/2020/img/integral.png" width="640px"></p>
+<hr>
+<p class=" font-serif my-1">(Needs a lot of tuning)</p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="follow-conventions" class=" text-xl mt-2 pb-2 font-sans">Follow Conventions</h2>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">$History.append(nextState(currentState));$</li>
+<li class=" ml-8">$H \leftarrow H :: \delta(\sigma)$<ul class=" list-disc font-serif">
+<li class=" ml-8">follow the natural meanings of symbols<ul class=" list-disc font-serif">
+<li class=" ml-8">$\alpha$, $\beta$, $\varepsilon$, ..., $\Delta$, $\Phi$, ...</li>
+<li class=" ml-8">$M$, $t$, $\mathbf{X}$, $\mathbb{N}$, $\mathcal{F}$</li>
+<li class=" ml-8">$\prec$, $\succ$, ...</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class=" ml-8"><code>texdoc symbols</code></li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Read (PL) papers carefully</p></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="paragraphs" class=" text-2xl mt-2 font-sans">Paragraphs</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="word-breaks" class=" text-xl mt-2 pb-2 font-sans">Word Breaks</h2>
+<p class=" font-serif my-1">Words may not properly break</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Most of the time, use <code>\-</code></li>
+<li class=" ml-8"><code>\hyphenation</code>, <code>\babelhyphenation</code> may be useful</li>
+<li class=" ml-8">Search the friendly Web</li>
+</ul>
+<hr>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/ISER/2020/img/word-break.png" width="900px"></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="for-those-picky-guys" class=" text-xl mt-2 pb-2 font-sans">For Those Picky Guys</h2>
+<p class=" font-serif my-1">Use <code>microtype</code>!</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">subliminal refinements towards typographical perfection</li>
+</ul>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/ISER/2020/img/microtype.gif" width="900px"></p>
+<hr>
+<p class=" font-serif my-1">Quick quiz:</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Use what algorithm to find optimal word wrap?</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="latex-typesetting-fun-facts" class=" text-xl mt-2 pb-2 font-sans">LaTeX Typesetting: Fun Facts</h2>
+<p class=" font-serif my-1">It's an iterative algorithm</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Each iteration leaves some results (aux, bbl, ...)</li>
+<li class=" ml-8">Next iteration uses these results<ul class=" list-disc font-serif">
+<li class=" ml-8">e.g., a fresh build has &#8220;??&#8221; and no references</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">LaTeX does not guarantee a fixed point</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Table of contents (your thesis)<ul class=" list-disc font-serif">
+<li class=" ml-8">blank &#8594; correct TOC &#8594; correct TOC pages</li>
+</ul>
+</li>
+<li class=" ml-8">There can be documents without a fixed point</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="figures-and-tables" class=" text-2xl mt-2 font-sans">Figures and Tables</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="why-use-figures" class=" text-xl mt-2 pb-2 font-sans">Why Use Figures?</h2>
+<p class=" font-serif my-1">Help readers understand the flow of (dense) technical contents</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Figures can be non-linear<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="https://dl.acm.org/doi/10.1145/3238147.3238159" class=" text-amber-900">ReScue (ASE'18)</a></li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Tips for figures</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><red>Be informative</red><ul class=" list-disc font-serif">
+<li class=" ml-8">don't just list a few boxes (text explains this well)</li>
+</ul>
+</li>
+<li class=" ml-8"><red>Be self-contained</red><ul class=" list-disc font-serif">
+<li class=" ml-8">figures + captions = everything</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="tikz" class=" text-xl mt-2 pb-2 font-sans">TikZ</h2>
+<p class=" font-serif my-1"><a href="http://www.texample.net/tikz/examples/" class=" text-amber-900">Examples</a></p>
+<p class=" font-serif my-1"><img alt="" class="center" src="https://texample.net/media/tikz/examples/PNG/fir-filter.png" width="480px"></p>
+<p class=" font-serif my-1">Perfectly integrates with the TeX system</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Example: connecting two document parts</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="why-use-tables" class=" text-xl mt-2 pb-2 font-sans">Why Use Tables?</h2>
+<p class=" font-serif my-1">List a lot of <em>objects</em></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Experimental subjects, results, ...</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Tips for tables</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><red>Be readable</red><ul class=" list-disc font-serif">
+<li class=" ml-8">use visual signals to help readers identify your message</li>
+</ul>
+</li>
+<li class=" ml-8"><red>Be self-contained</red><ul class=" list-disc font-serif">
+<li class=" ml-8">same as figures</li>
+</ul>
+</li>
+<li class=" ml-8">(minor) Fine tune your tables<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="https://dl.acm.org/doi/10.1145/3377811.3380382" class=" text-amber-900">ComboDroid (ICSE'20)</a></li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="summary-and-more-tips" class=" text-2xl mt-2 font-sans">Summary and More Tips</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="latex-is-a-programming-language" class=" text-xl mt-2 pb-2 font-sans">LaTeX is a Programming Language</h2>
+<p class=" font-serif my-1">Write readable code!</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Split code into files</li>
+<li class=" ml-8">Use macros</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Host your code on Overleaf/Git</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Collaborate with your teammates</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">There is LaTeX diff</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">See how your advisor revise your document</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="generate-plain-text" class=" text-xl mt-2 pb-2 font-sans">Generate Plain Text</h2>
+<p class=" font-serif my-1">Text is useful to other tools (e.g., <a href="https://grammarly.com" class=" text-amber-900">Grammarly</a>)</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>pandoc<span class="w"> </span><span class="se">\ </span><span class="c1"># use another compiler</span>
+<span class="w">  </span>--wrap<span class="o">=</span>none<span class="w"> </span>main.tex<span class="w"> </span>-t<span class="w"> </span>plain<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>python3<span class="w"> </span>run.py<span class="w"> </span>&gt;<span class="w"> </span>main.txt
+</code></pre></div>
+
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="c1"># run.py</span>
+<span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">re</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">"\s+([,.])"</span><span class="p">,</span> <span class="sa">r</span><span class="s2">"\1"</span><span class="p">,</span> \
+      <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">"(\s)+"</span><span class="p">,</span> <span class="sa">r</span><span class="s2">"\1"</span><span class="p">,</span> \
+      <span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">read</span><span class="p">())))</span>
+</code></pre></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="other-useful-tricks" class=" text-xl mt-2 pb-2 font-sans">Other Useful Tricks</h2>
+<p class=" font-serif my-1">Command-line tools</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">texdoc - manpages</li>
+<li class=" ml-8">pdfcrop - very useful when your figures are PowerPoint<ul class=" list-disc font-serif">
+<li class=" ml-8">PowerPoint has COM API for automation</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Packages</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">microtype</li>
+<li class=" ml-8">xpsace - <code>compare \tool{} with...</code> &#8594; <code>compare \tool with...</code></li>
+<li class=" ml-8">cleveref - <code>Figure~\ref{fig:example}</code> &#8594; <code>\Cref{fig:example}</code></li>
+<li class=" ml-8">Any more?</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="end" class=" text-2xl mt-2 font-sans">End.</h1></div></div></div>
+        
+      
+      </section>
+    
+    </section>
+  
+</div>
+</div>
+
+<script src="../../../static/reveal/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    
+    width: 1024, height: 768,
+    
+    slideNumber: 'c/t',
+    controlsTutorial: false,
+    progress: false,
+    hash: true,
+    center: false,
+    autoAnimateUnmatched: true,
+    autoAnimateEasing: 'ease-out',
+    autoAnimateDuration: 0.3,
+    transitionSpeed: 'fast'
+  });
+</script>
+
+
+</body>
+
+</html>

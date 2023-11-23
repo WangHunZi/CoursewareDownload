@@ -1,0 +1,825 @@
+<!DOCTYPE html><html class="h-100">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="../../../static/css/base.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
+
+  <style>
+    .font-sans {
+      font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+    }
+    .font-serif {
+      font-family: 'Source Serif Pro', 'Songti SC', 'SimSun', 'Serif', serif;
+    }
+  </style>
+  <link rel="stylesheet" href="../../../static/katex/katex.min.css">
+  <script defer src="../../../static/katex/katex.min.js"></script>
+  <script defer src="../../../static/katex/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+            // customised options
+            // &#8226; auto-render specific keys, e.g.:
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ],
+            // &#8226; rendering keys, e.g.:
+            throwOnError : false
+          });
+      });
+  </script>
+
+
+  
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="../../../static/reveal/reveal.css">
+<link rel="stylesheet" href="../../../static/reveal/theme/simple.css" id="theme">
+
+<style>
+.reveal .slide-number {
+  font-size: 26px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, .3);
+}
+
+.reveal .full-screen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.reveal .slides {
+  border: 1.5px #ddd solid;
+  border-radius: 7px;
+  text-align: left;
+  font-weight: 300;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  font-family: 'Lato', 'SimHei', 'STXihei', 'Droid Sans';
+  font-weight: 400;
+}
+
+.reveal p, .reveal li, .reveal center {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Droid Sans';
+}
+
+.reveal li + li {
+  margin-top: 10px;
+}
+
+.reveal ul {
+  display: block;
+  margin-right: 15px;
+}
+
+.reveal p, .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5 {
+  padding:  0 25px 0 25px;
+}
+
+.reveal table {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Sans Serif';
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.reveal th {
+  background-color: #eee;
+}
+
+.reveal tr:nth-child(even) {
+  background-color: #efffff;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  text-align: left;
+  margin: 0 0 20px 0;
+ color: #222; 
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
+
+
+.reveal h1 {
+  margin: 0 10 0 10;
+  font-size: 60px;
+}
+.reveal .middle h1 {
+  text-align: center;
+}
+
+.reveal h2 {
+  font-size: 48px;
+  border-bottom: 2px solid rgb(106, 0, 95);
+  padding-bottom: 5px;
+}
+.reveal h3 { font-size: 1.15em; }
+.reveal h4 { font-size: 1.05em; }
+
+.reveal .center {
+  text-align: center;
+}
+
+.reveal .middle {
+  height: 728px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.reveal pre {
+  font-size: 28px;
+ 
+  background-color: #eee;
+
+  border-radius: 3mm;
+  padding: 10px 10px 10px 10px;
+}
+
+.reveal pre code {
+  max-height: none;
+}
+
+.reveal code {
+  font-family: 'Inconsolata', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif', Monospace;
+}
+
+.reveal .middle blockquote {
+  text-align: center;
+  color: rgb(106, 0, 95);
+  background: none;
+  box-shadow: none;
+}
+
+.reveal .middle blockquote a {
+  color: inherit;
+}
+
+.reveal blockquote p, .reveal blockquote li {
+  font-family: 'Lato', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif';
+}
+
+section .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reveal .author-block {
+  margin: 75px 0 35px 0;
+}
+.reveal .author-affiliation img {
+  margin: 15px 0 0 0;
+}
+.reveal .author-block p, .reveal .author-affiliation p  {
+  font-family: 'Kaiti', 'STKaiti', 'Serif', 'Times', 'Times New Roman';
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+.reveal .author-affiliation {
+  display: inline-block;
+  font-size: 90%;
+}
+.reveal hr {
+  border: 10px solid rgba(0, 0, 0, 0);
+}
+.reveal li {
+  margin-top: 10px;
+}
+</style>
+
+  <title>Static Program Analysis</title>
+</head>
+
+<body class="d-flex flex-column h-100">
+  
+  
+
+<div class="reveal">
+<div class="slides">
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="static-program-analysis" class=" text-2xl mt-2 font-sans">Static Program Analysis</h1>
+<p class=" font-serif my-1"><br></p>
+<p class=" font-serif my-1">Yanyan Jiang</p></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="overview" class=" text-xl mt-2 pb-2 font-sans">Overview</h2>
+<p class=" font-serif my-1">Deadline of A1 (research proposal): Nov. 4</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Don't procrastinate!</li>
+<li class=" ml-8">Ask your supervisor for comments and suggestions!</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Static program analysis</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Lexical analysis</li>
+<li class=" ml-8">Syntax analysis on AST</li>
+<li class=" ml-8">Semantic analysis</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="static-program-analysis-overview" class=" text-2xl mt-2 font-sans">Static Program Analysis: Overview</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="what-is-static-analysis" class=" text-xl mt-2 pb-2 font-sans">What is Static Analysis?</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">A program that takes programs as input and produces useful results.</p>
+</blockquote>
+<p class=" font-serif my-1"><object alt="" class="center" src="/pages/ISER/2021/slides/img/static-analysis.svg" width="100%" data="../../../pages/ISER/2021/slides/img/static-analysis.svg"></object></p>
+<p class=" font-serif my-1">Examples</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Compilers (and optimization passes)</li>
+<li class=" ml-8">Static checkers (<code>-Wall</code>, lint, and more)</li>
+<li class=" ml-8">Useful results for SE practices</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="example-empirical-study-on-variable-naming" class=" text-xl mt-2 pb-2 font-sans">Example: Empirical Study on Variable Naming</h2>
+<p class=" font-serif my-1">What are the style, name, abbreviation, ... of variable names?</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Are they correlated to bugs/code quality/...?</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">You can study this by treating code as a tokenized text stream</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="s2">"(a + b) * 2"</span> <span class="o">=&gt;</span>
+  <span class="p">[</span> <span class="p">(</span><span class="n">SYM</span><span class="p">,</span> <span class="s1">'('</span><span class="p">),</span> <span class="p">(</span><span class="n">ID</span><span class="p">,</span> <span class="s1">'a'</span><span class="p">),</span> <span class="p">(</span><span class="n">BIN_OP</span><span class="p">,</span> <span class="s1">'+'</span><span class="p">),</span> <span class="p">(</span><span class="n">ID</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">),</span> <span class="p">(</span><span class="n">SYM</span><span class="p">,</span> <span class="s1">')'</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">BIN_OP</span><span class="p">,</span> <span class="s1">'*'</span><span class="p">),</span> <span class="p">(</span><span class="n">INT</span><span class="p">,</span> <span class="s1">'2'</span><span class="p">)</span> <span class="p">]</span>
+</code></pre></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="example-differencing-files" class=" text-xl mt-2 pb-2 font-sans">Example: Differencing Files</h2>
+<p class=" font-serif my-1">How to define &#8220;diffs&#8221; between two file versions?</p>
+<hr>
+<p class=" font-serif my-1"><img alt="" class="center" src="https://www.vim.org/images/vimdiff.png" width="700px"></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="the-edit-distance-approximation" class=" text-xl mt-2 pb-2 font-sans">The Edit Distance Approximation</h2>
+<p class=" font-serif my-1"><img alt="" class="center" height="500px" src="../../../pages/ISER/2020/img/edit-distance.png"></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Eugene W. Myers. An $O(ND)$ difference algorithm and its variations. <em>Algorithmica</em>, 1986.</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="is-edit-distance-a-good-idea" class=" text-xl mt-2 pb-2 font-sans">Is Edit Distance a Good Idea?</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">Open Problem: How to produce even more developer-friendly diffs?</p>
+</blockquote>
+<p class=" font-serif my-1">Minimizing edit distance is a good hack</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Lacks semantic explanations to what are changed</li>
+<li class=" ml-8">Not work for adding indention, renaming variables, ...<ul class=" list-disc font-serif">
+<li class=" ml-8">you can work out a paper on this!</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="syntax-analysis-on-ast" class=" text-2xl mt-2 font-sans">Syntax Analysis on AST</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="abstract-syntax-tree-ast" class=" text-xl mt-2 pb-2 font-sans">Abstract Syntax Tree (AST)</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">AST: A tree representation of the abstract syntactic structure of source code</p>
+</blockquote>
+<hr>
+<p class=" font-serif my-1"><object alt="" class="center" src="/pages/ISER/2021/slides/img/expr.svg" width="50%" data="../../../pages/ISER/2021/slides/img/expr.svg"></object></p>
+<p class=" font-serif my-1">The syntax of a PL is defined by a context-free grammar</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">The grammar expansion forms a tree</li>
+<li class=" ml-8">Can also infer semantics information (e.g., variable type) on AST</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="example-clang-ast-dump" class=" text-xl mt-2 pb-2 font-sans">Example: Clang AST Dump</h2>
+<p class=" font-serif my-1">Usage: <code>(linux) $ clang -Xclang -ast-dump -fsyntax-only a.c</code></p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">b</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="p">;</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+
+<hr>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>|-FunctionDecl used f 'int (int, int)'
+| |-ParmVarDecl used a 'int'
+| |-ParmVarDecl used b 'int'
+| `-CompoundStmt
+|   `-IfStmt
+|     |-BinaryOperator 'int' '=='
+|     | |-ImplicitCastExpr 'int'
+|     | | `-DeclRefExpr 'int' lvalue ParmVar 'b' 'int'
+|     | `-IntegerLiteral 'int' 0
+|     |-ReturnStmt
+|     | `-ImplicitCastExpr 'int'
+|     |   `-DeclRefExpr 'int' lvalue ParmVar 'a' 'int'
+|     `-...
+</code></pre></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="application-lint" class=" text-xl mt-2 pb-2 font-sans">Application: Lint</h2>
+<p class=" font-serif my-1">Checks if trivial errors (e.g., <a href="http://google.github.io/styleguide/" class=" text-amber-900">style violations</a>)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Each line is at most 80 characters long.</li>
+<li class=" ml-8">Variable names (function parameters) and data members are all lowercase.</li>
+<li class=" ml-8">Data members of classes (but not structs) additionally have trailing underscores.</li>
+<li class=" ml-8">Avoid using run-time type information (RTTI).</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Most of the rules can be checked by source-code scan or AST.</p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="ast-for-software-metrics" class=" text-xl mt-2 pb-2 font-sans">AST for Software Metrics</h2>
+<p class=" font-serif my-1">Halstead&#8217;s &#8220;software physics&#8221;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">$n_1/n_2$: distinct operator/operand</li>
+<li class=" ml-8">$N_1/N_2$: occurrences of operator/operand</li>
+<li class=" ml-8">program length $N = N_1 + N_2$</li>
+<li class=" ml-8">program volume $V = N \log_2 (n_1 + n_2)$</li>
+<li class=" ml-8">specification abstraction level $L = 2n_2 / (n_1 \cdot N_2)$</li>
+<li class=" ml-8">program effort $E = (n_1 + N_2 \cdot N \cdot \log_2(n_1+n_2) ) / 2n_2$</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">We can mine correlations between software metrics and quality/maintainability/...</p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="ast-for-clone-detection" class=" text-xl mt-2 pb-2 font-sans">AST for Clone Detection</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">&#8220;&#25105;&#20204;&#19981;&#29983;&#20135;&#20195;&#30721;&#65292;&#25105;&#20204;&#21482;&#26159;&#20114;&#32852;&#32593;&#30340;&#25644;&#36816;&#24037;&#8221;</p>
+</blockquote>
+<hr>
+<p class=" font-serif my-1">Code clone is killing projects (e.g., high-vote buggy code on Stackoverflow)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Token-based detection: &#8220;CCFinder: A multilinguistic token-based code clone detection system for large scale source code&#8221; (TSE, 28(7), 2002)</li>
+<li class=" ml-8">Tree-based detection: &#8220;Scalable detection of semantic clones&#8221; (ICSE'08)</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="ast-for-code-transformation" class=" text-xl mt-2 pb-2 font-sans">AST for Code Transformation</h2>
+<p class=" font-serif my-1">Code formatting</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">GNU indent, bcpp, <a href="https://github.com/google/google-java-format" class=" text-amber-900">Google Java format</a>, ...</li>
+<li class=" ml-8">Formatting = traversal of AST (with style rules)</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Transcompiler (transpiler), source-to-source compiler</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">ES6/ES10/JSX &#8594; ES5 (for maximized compatibility)</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Many other applications in software engineering research</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Mutation testing, e.g., <a href="https://cs.gmu.edu/~offutt/mujava/" class=" text-amber-900"><em>&#181;Java</em></a></li>
+<li class=" ml-8">Mutation space and <a href="https://squareslab.github.io/genprog-code/" class=" text-amber-900">GenProg</a> for program repair<ul class=" list-disc font-serif">
+<li class=" ml-8">this paper is also recommended!</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="limitations-of-ast-based-analyses" class=" text-xl mt-2 pb-2 font-sans">Limitations of AST-based Analyses</h2>
+<p class=" font-serif my-1">Lacks good understanding of program semantics</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">E.g., checking that all paths return a value</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Hard to do with meta-programming</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#define FORALL(X) X(Tom) X(Jerry) X(Spike) X(Tyke)</span>
+<span class="cp">#define PRINT(x) puts(#x);</span>
+<span class="c1">// usage: FORALL(PRINT)</span>
+</code></pre></div></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="semantics-analysis" class=" text-2xl mt-2 font-sans">Semantics Analysis</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="semantics-analysis" class=" text-xl mt-2 pb-2 font-sans">Semantics Analysis</h2>
+<p class=" font-serif my-1">Tells you something about program's <em>execution</em></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">whether <code>foo()</code> is reachable</li>
+<li class=" ml-8">whether a pointer access is valid (not <code>NULL</code>, in bound, ...)</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Semantics analyses are useful to </p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">compilers (and optimizations)</li>
+<li class=" ml-8">bug/security analysis</li>
+<li class=" ml-8">program verification...</li>
+</ul>
+<hr>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">char</span><span class="w"> </span><span class="n">buf</span><span class="p">[</span><span class="n">SIZE</span><span class="p">];</span>
+<span class="n">strncpy</span><span class="p">(</span><span class="n">dest</span><span class="p">,</span><span class="w"> </span><span class="n">src</span><span class="p">,</span><span class="w"> </span><span class="n">SIZE</span><span class="p">);</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">strlen</span><span class="p">(</span><span class="n">dest</span><span class="p">);</span><span class="w"> </span><span class="c1">// insecure!</span>
+</code></pre></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="a-vision" class=" text-xl mt-2 pb-2 font-sans">A Vision</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">In 2050, our compiler will reject a program if it cannot prove all assertions in the program.</p>
+</blockquote>
+<hr>
+<p class=" font-serif my-1">Seemingly crazy today.</p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="hardness-of-semantics-analysis" class=" text-xl mt-2 pb-2 font-sans">Hardness of Semantics Analysis</h2>
+<p class=" font-serif my-1">A general program analyzer gives you <em>infinite</em> computational power (and thus does not exist!)</p>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">Rice's Theorem: All non-trivial, semantic properties of programs are undecidable.</p>
+</blockquote>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">def</span> <span class="nf">booooom</span><span class="p">():</span> <span class="o">...</span> <span class="c1"># Reachable?</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="k">while</span> <span class="n">n</span> <span class="o">:=</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">2</span><span class="p">:</span>
+    <span class="n">sols</span> <span class="o">=</span> <span class="p">[</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">n</span> <span class="o">-</span> <span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span> \
+        <span class="k">if</span> <span class="n">is_prime</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="ow">and</span> <span class="n">is_prime</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="n">i</span><span class="p">)</span> <span class="p">]</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">sols</span><span class="p">:</span> <span class="c1"># replace this with halting problem</span>
+        <span class="n">booooom</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1"> = '</span> <span class="o">+</span> <span class="s1">' = '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s1"> + </span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s1">'</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">sols</span><span class="p">))</span>
+</code></pre></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="semantics-analyses" class=" text-xl mt-2 pb-2 font-sans">Semantics Analyses</h2>
+<p class=" font-serif my-1">Suppose that </p>
+<ol class=" list-decimal font-serif">
+<li class=" ml-8">Goldbach conjecture holds</li>
+<li class=" ml-8">We have infinite memory</li>
+</ol>
+<p class=" font-serif my-1">A practical static analyzer may report:</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>booooom</code> is unreachable, <code>print</code> is reachable (sound, complete)</li>
+<li class=" ml-8"><code>booooom, print</code> may be reachable (sound, incomplete)</li>
+<li class=" ml-8"><code>print</code> is unreachable (unsound, usually problematic to compilers)</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Sometimes the term &#8220;sound/complete&#8221; have reverse meaning in SE papers</p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="comments-on-soundness" class=" text-xl mt-2 pb-2 font-sans">Comments on Soundness</h2>
+<p class=" font-serif my-1">A trivial sound reachability analysis:</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Everything may be reachable.</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Any sound reachability analysis should do:</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">reporting <code>foo</code> unreachable &#8594; <code>foo</code> is indeed unreachable</li>
+<li class=" ml-8">Not missing any reachable function</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="comments-on-soundness-contd" class=" text-xl mt-2 pb-2 font-sans">Comments on Soundness (cont'd)</h2>
+<p class=" font-serif my-1">Extremely difficult to prove a function being unreachable!</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Control flow (Goldbach conjecture)</li>
+<li class=" ml-8">Dynamic dispatching <code>lut[name]()</code></li>
+<li class=" ml-8">Dynamic code <code>eval('pri' + 'nt(1)')</code></li>
+<li class=" ml-8">Foreign code (C, inline assembly, ...)<ul class=" list-disc font-serif">
+<li class=" ml-8">existing analyzers provide <em>limited</em> soundness</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Until 2020...</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#8220;Static analysis of Java enterprise applications: frameworks and caches, the elephants in the room&#8221; (PLDI'20)<ul class=" list-disc font-serif">
+<li class=" ml-8">They're mainly doing reachability analysis!</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="implementing-static-analyses" class=" text-xl mt-2 pb-2 font-sans">Implementing Static Analyses</h2>
+<p class=" font-serif my-1">Translate a program to an easier-to-handle representation</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Intermediate Representation (IR) for small-step semantics</li>
+<li class=" ml-8">Usually single static assignment (SSA) that each assignment creates a new variable</li>
+</ul>
+<p class=" font-serif my-1"><img alt="" class="center" src="https://releases.llvm.org/2.6/docs/tutorial/JITTutorial2-1.png" width="800px"></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="examples" class=" text-xl mt-2 pb-2 font-sans">Examples</h2>
+<p class=" font-serif my-1">Program slicing (ICSE'81)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Highlights &#8220;dependent&#8221; code for a given program part<ul class=" list-disc font-serif">
+<li class=" ml-8">we used this (simple intra-procedure one) in our ICSE'21 paper</li>
+</ul>
+</li>
+</ul>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">foo</span><span class="p">();</span><span class="w"> </span><span class="n">bar</span><span class="p">();</span><span class="w"> </span><span class="n">baz</span><span class="p">();</span>
+<span class="n">assert</span><span class="p">(</span><span class="n">global</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+</code></pre></div>
+
+<hr>
+<p class=" font-serif my-1">Taint analysis</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">See input's &#8220;reachable&#8221; part</li>
+<li class=" ml-8">Useful in many security analyses</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="summary" class=" text-2xl mt-2 font-sans">Summary</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="static-program-analysis" class=" text-xl mt-2 pb-2 font-sans">Static Program Analysis</h2>
+<p class=" font-serif my-1"><object alt="" class="center" src="/pages/ISER/2021/slides/img/static-analysis.svg" width="100%" data="../../../pages/ISER/2021/slides/img/static-analysis.svg"></object></p>
+<p class=" font-serif my-1">Most SE research use existing analyses as <red>black-box</red> (use Clang/LLVM, Soot, ...)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Don't expect too much</li>
+<li class=" ml-8">Acknowledge the limitations of available tools (analysis is undecidable!)</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Related courses at NJU</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Software analysis (by &#26446;&#27198; &amp; &#35885;&#28155;)</li>
+<li class=" ml-8">Formal semantics of programming languages (by &#26753;&#32418;&#29822;)</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="end" class=" text-2xl mt-2 font-sans">End.</h1></div></div></div>
+        
+      
+      </section>
+    
+    </section>
+  
+</div>
+</div>
+
+<script src="../../../static/reveal/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    
+    width: 1024, height: 768,
+    
+    slideNumber: 'c/t',
+    controlsTutorial: false,
+    progress: false,
+    hash: true,
+    center: false,
+    autoAnimateUnmatched: true,
+    autoAnimateEasing: 'ease-out',
+    autoAnimateDuration: 0.3,
+    transitionSpeed: 'fast'
+  });
+</script>
+
+
+</body>
+
+</html>

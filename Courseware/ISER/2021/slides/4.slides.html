@@ -1,0 +1,716 @@
+<!DOCTYPE html><html class="h-100">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="../../../static/css/base.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
+
+  <style>
+    .font-sans {
+      font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+    }
+    .font-serif {
+      font-family: 'Source Serif Pro', 'Songti SC', 'SimSun', 'Serif', serif;
+    }
+  </style>
+  <link rel="stylesheet" href="../../../static/katex/katex.min.css">
+  <script defer src="../../../static/katex/katex.min.js"></script>
+  <script defer src="../../../static/katex/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+            // customised options
+            // &#8226; auto-render specific keys, e.g.:
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ],
+            // &#8226; rendering keys, e.g.:
+            throwOnError : false
+          });
+      });
+  </script>
+
+
+  
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="../../../static/reveal/reveal.css">
+<link rel="stylesheet" href="../../../static/reveal/theme/simple.css" id="theme">
+
+<style>
+.reveal .slide-number {
+  font-size: 26px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, .3);
+}
+
+.reveal .full-screen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.reveal .slides {
+  border: 1.5px #ddd solid;
+  border-radius: 7px;
+  text-align: left;
+  font-weight: 300;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  font-family: 'Lato', 'SimHei', 'STXihei', 'Droid Sans';
+  font-weight: 400;
+}
+
+.reveal p, .reveal li, .reveal center {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Droid Sans';
+}
+
+.reveal li + li {
+  margin-top: 10px;
+}
+
+.reveal ul {
+  display: block;
+  margin-right: 15px;
+}
+
+.reveal p, .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5 {
+  padding:  0 25px 0 25px;
+}
+
+.reveal table {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Sans Serif';
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.reveal th {
+  background-color: #eee;
+}
+
+.reveal tr:nth-child(even) {
+  background-color: #efffff;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  text-align: left;
+  margin: 0 0 20px 0;
+ color: #222; 
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
+
+
+.reveal h1 {
+  margin: 0 10 0 10;
+  font-size: 60px;
+}
+.reveal .middle h1 {
+  text-align: center;
+}
+
+.reveal h2 {
+  font-size: 48px;
+  border-bottom: 2px solid rgb(106, 0, 95);
+  padding-bottom: 5px;
+}
+.reveal h3 { font-size: 1.15em; }
+.reveal h4 { font-size: 1.05em; }
+
+.reveal .center {
+  text-align: center;
+}
+
+.reveal .middle {
+  height: 728px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.reveal pre {
+  font-size: 28px;
+ 
+  background-color: #eee;
+
+  border-radius: 3mm;
+  padding: 10px 10px 10px 10px;
+}
+
+.reveal pre code {
+  max-height: none;
+}
+
+.reveal code {
+  font-family: 'Inconsolata', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif', Monospace;
+}
+
+.reveal .middle blockquote {
+  text-align: center;
+  color: rgb(106, 0, 95);
+  background: none;
+  box-shadow: none;
+}
+
+.reveal .middle blockquote a {
+  color: inherit;
+}
+
+.reveal blockquote p, .reveal blockquote li {
+  font-family: 'Lato', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif';
+}
+
+section .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reveal .author-block {
+  margin: 75px 0 35px 0;
+}
+.reveal .author-affiliation img {
+  margin: 15px 0 0 0;
+}
+.reveal .author-block p, .reveal .author-affiliation p  {
+  font-family: 'Kaiti', 'STKaiti', 'Serif', 'Times', 'Times New Roman';
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+.reveal .author-affiliation {
+  display: inline-block;
+  font-size: 90%;
+}
+.reveal hr {
+  border: 10px solid rgba(0, 0, 0, 0);
+}
+.reveal li {
+  margin-top: 10px;
+}
+</style>
+
+  <title>Dynamic Program Analysis</title>
+</head>
+
+<body class="d-flex flex-column h-100">
+  
+  
+
+<div class="reveal">
+<div class="slides">
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="dynamic-program-analysis" class=" text-2xl mt-2 font-sans">Dynamic Program Analysis</h1>
+<p class=" font-serif my-1"><br></p>
+<p class=" font-serif my-1">Yanyan Jiang</p></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="overview" class=" text-xl mt-2 pb-2 font-sans">Overview</h2>
+<p class=" font-serif my-1">Static analysis</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">A program that takes programs as input and produces useful results (without executing it).</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Dynamic analysis</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">A program that monitors and alters program execution to produce useful results.</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="computer-systems-as-state-machine" class=" text-2xl mt-2 font-sans">Computer Systems as State Machine</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="computer-systems" class=" text-xl mt-2 pb-2 font-sans">Computer Systems...</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">Computer system = state machine of (memory, registers) whose running is driven by instructions.</p>
+<p class=" font-serif my-1">(Because computer systems are simply circuits.)</p>
+</blockquote>
+<hr>
+<p class=" font-serif my-1">This model works for</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">user-level programs (<code>syscall</code> is a special non-deterministic instruction)</li>
+<li class=" ml-8">operating systems (may have external interrupts)</li>
+<li class=" ml-8">concurrent/multiprocessor systems (we can choose a thread for executing an instruction)</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="dynamic-analysis" class=" text-xl mt-2 pb-2 font-sans">Dynamic Analysis</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">A program that monitors and alters program execution to produce useful results.</p>
+</blockquote>
+<hr>
+<p class=" font-serif my-1">That is, a function $f(\tau)$ to produce useful results given the execution trace $\tau$ of a state machine (program/computer system).</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Only provides useful results for the given $\tau$<ul class=" list-disc font-serif">
+<li class=" ml-8">usually complete but unsound<ul class=" list-disc font-serif">
+<li class=" ml-8">complements static analyses</li>
+</ul>
+</li>
+<li class=" ml-8">SE tasks tolerate unsound and incomplete analyses<ul class=" list-disc font-serif">
+<li class=" ml-8">as long as results are useful in engineering</li>
+<li class=" ml-8"><del>PL guys don't like this</del></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="debuggers" class=" text-2xl mt-2 font-sans">Debuggers</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="the-gnu-project-debugger-gdb" class=" text-xl mt-2 pb-2 font-sans">The GNU Project Debugger (GDB)</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">GDB, the GNU Project debugger, allows you to see what is going on &#8220;inside&#8221; another program while it executes -- or what another program was doing at the moment it crashed.</p>
+</blockquote>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Start your program, specifying anything that might affect its behavior.</li>
+<li class=" ml-8">Make your program stop on specified conditions.</li>
+<li class=" ml-8">Examine what has happened when your program has stopped.</li>
+<li class=" ml-8">Change things in your program, so you can experiment with correcting the effects of one bug and go on to learn about another.</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="gdbs-offer" class=" text-xl mt-2 pb-2 font-sans">GDB's Offer</h2>
+<p class=" font-serif my-1">Lots of commands</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Execution control <code>r</code>, <code>c</code>, <code>f</code>, <code>s</code>, <code>si</code>,...</li>
+<li class=" ml-8">Breakpoints <code>b</code>, <code>hb</code>, <code>wa</code>, ...</li>
+<li class=" ml-8">Program state display <code>p</code>, <code>x</code>, <code>i</code>, <code>bt</code>, ...</li>
+<li class=" ml-8">Program state modification <code>set</code>, ...</li>
+<li class=" ml-8">Black magic: <code>rc</code>, <code>rn</code>, <code>rsi</code>, ...</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Suffices for <em>anything</em></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">GDB captures the entire &#8220;state transition&#8221; procedure of a process</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="implementing-gdb" class=" text-xl mt-2 pb-2 font-sans">Implementing GDB</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">The fundamental problem: how to pause program execution at an instruction (address) or statement?</p>
+</blockquote></div>
+        
+      
+         <div class="fragment"> 
+        <div><hr>
+<p class=" font-serif my-1">Dynamic program instrumentation</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">patch the instruction! (quite clever idea)<ul class=" list-disc font-serif">
+<li class=" ml-8">make the code writable (thus cannot breakpoint on ROM addresses)</li>
+<li class=" ml-8">patch the instruction with a &#8220;debugger trap&#8221;<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>int $3</code> (<code>0xcc</code> for x86) or <code>ebreak</code> (for risc-v)</li>
+<li class=" ml-8">OS will send a signal to the parent process (gdb)</li>
+</ul>
+</li>
+<li class=" ml-8">restore the instruction after hitting the breakpoint</li>
+</ul>
+</li>
+</ul></div>
+         </div> 
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="debugger-is-all-dynamic-analyses" class=" text-xl mt-2 pb-2 font-sans">Debugger is <em>ALL</em> Dynamic Analyses</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">Any practical dynamic analysis is a &#8220;simplified&#8221; (and more efficient) debugger.</p>
+</blockquote>
+<hr>
+<p class=" font-serif my-1">Virtually, we can do any observation or perturbation on a debugger</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Understanding program states<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>info inferiors</code>; <code>thread 1</code>; <code>info registers</code>; <code>x/i $rip</code></li>
+</ul>
+</li>
+<li class=" ml-8">Modifying program states<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>set var = value</code></li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">But single-step execution incurs</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">1000X slowdown and GB/s instruction log &#129300;</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="dynamic-analyses-in-se-research" class=" text-2xl mt-2 font-sans">Dynamic Analyses in SE Research</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="dynamic-analyses-in-se-research" class=" text-xl mt-2 pb-2 font-sans">Dynamic Analyses in SE Research</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">How to implement <blue><em>lightweight logging</em></blue> and <green><em>efficient analysis</em></green> for a specific <red><em>SE research task</em></red>&#65311;</p>
+</blockquote>
+<hr>
+<p class=" font-serif my-1">Problem space</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">What to be analyzed?<ul class=" list-disc font-serif">
+<li class=" ml-8">follow existing work? Practical cases?</li>
+<li class=" ml-8">(most of my research are from a single practical case)</li>
+</ul>
+</li>
+</ul>
+<p class=" font-serif my-1">Design space</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">what to log (system design)</li>
+<li class=" ml-8">how to efficiently log (hacking)</li>
+<li class=" ml-8">how to analyze the logs (algorithm design)</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="example-1-record-and-replay" class=" text-xl mt-2 pb-2 font-sans">Example (1): Record and Replay</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">We don't need every memory/register snapshots on each instruction for a deterministic replay.</p>
+</blockquote>
+<hr>
+<p class=" font-serif my-1">We only need to record non-determinism outcomes</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Non-deterministic instructions (e.g., RDRAND)</li>
+<li class=" ml-8">I/O (or system call)</li>
+<li class=" ml-8">Timing of context switch</li>
+<li class=" ml-8">Shared memory &#8592; hard problem; my PhD thesis</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="example-2-profiler" class=" text-xl mt-2 pb-2 font-sans">Example (2): Profiler</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">Record even less to see which parts took the most time.</p>
+</blockquote>
+<p class=" font-serif my-1">Premature optimization is the root of all evil (D. E. Knuth)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Use profiler (gprof, perf/systemtap, VisualVM, ...)</li>
+<li class=" ml-8">How to implement?<ul class=" list-disc font-serif">
+<li class=" ml-8">place a lot of &#8220;probes&#8221; in the code<ul class=" list-disc font-serif">
+<li class=" ml-8">function call, system call, interrupt, ...</li>
+<li class=" ml-8">you can implement a profiler in your OSLab!</li>
+</ul>
+</li>
+<li class=" ml-8">record time stamp and some statistics</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="example-3-program-comprehension" class=" text-xl mt-2 pb-2 font-sans">Example (3): Program Comprehension</h2>
+<p class=" font-serif my-1">Invariant Mining </p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="https://plse.cs.washington.edu/daikon/" class=" text-amber-900">Daikon</a><ul class=" list-disc font-serif">
+<li class=" ml-8">What I see is what should happen</li>
+<li class=" ml-8">What I didn't see is what shouldn't happen</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Useful in many scenarios!</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Sequential programs, CSP, concurrent programs, distributed systems, ...</li>
+<li class=" ml-8">You may find more research opportunities: contracts, etc.</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="example-4-bug-detection" class=" text-xl mt-2 pb-2 font-sans">Example (4): Bug Detection</h2>
+<p class=" font-serif my-1">Online monitoring of <a href="https://github.com/google/sanitizers" class=" text-amber-900">predefined bug patterns</a></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">AddressSanitizer (ASan)<ul class=" list-disc font-serif">
+<li class=" ml-8">memory errors: use-after-free, use-after-return, stack/heap/buffer overflow, by a shadow memory</li>
+<li class=" ml-8">we have this paper in the reading list (Valgrind provides shadow register/memory, with better soundness)</li>
+</ul>
+</li>
+<li class=" ml-8">ThreadSanitizer (TSan)<ul class=" list-disc font-serif">
+<li class=" ml-8">race detector</li>
+</ul>
+</li>
+<li class=" ml-8">UndefinedBehaviorSanitizer (UBSan)<ul class=" list-disc font-serif">
+<li class=" ml-8">checks for other problems (e.g., signed integer overflows)</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="implementing-ubsanitizer" class=" text-xl mt-2 pb-2 font-sans">Implementing UBSanitizer</h2>
+<p class=" font-serif my-1">Signed integer overflow is undefined behavior</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Why? &#8594; to support one's complement and weird machines that throw exceptions on overflow</li>
+<li class=" ml-8">How to detect them?</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Add a check on each signed integer operation</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">AST rewrite: <code>foo(i++, j++) + 1</code> &#8594; <code>ADD(foo(INC(i), INC(j)), 1)</code></li>
+<li class=" ml-8">IR instrumentation: a lot easier</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="example-5-self-adaptive-systems" class=" text-xl mt-2 pb-2 font-sans">Example (5): Self-Adaptive Systems</h2>
+<p class=" font-serif my-1">Dynamic analyses can also <red>perturb</red> the program execution at runtime!</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="https://dl.acm.org/citation.cfm?id=2522735" class=" text-amber-900">Reliable concurrency</a><ul class=" list-disc font-serif">
+<li class=" ml-8">eliminate any unseen thread schedules to avoid concurrency bugs</li>
+</ul>
+</li>
+<li class=" ml-8">Recovery (micro-reboot, Erlang's supervision tree)<ul class=" list-disc font-serif">
+<li class=" ml-8">what to do on Powerpoint crash?</li>
+<li class=" ml-8">recovery at many levels: txbegin/txend &#8594; setjmp/longjmp &#8594; fork</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="summary" class=" text-2xl mt-2 font-sans">Summary</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="dynamic-analysis-a-simplified-debugger" class=" text-xl mt-2 pb-2 font-sans">Dynamic Analysis: A Simplified Debugger</h2>
+<p class=" font-serif my-1">(For SE tasks.)</p>
+<hr>
+<p class=" font-serif my-1">Implementations</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Program instrumentation<ul class=" list-disc font-serif">
+<li class=" ml-8">by changing AST/IR (using clang/LLVM pass/Soot/...)</li>
+</ul>
+</li>
+<li class=" ml-8">Dynamic instruction<ul class=" list-disc font-serif">
+<li class=" ml-8">by patching instructions (gdb, PIN)</li>
+</ul>
+</li>
+<li class=" ml-8">Hardware assisted<ul class=" list-disc font-serif">
+<li class=" ml-8">watch point, VM exit, PMU, PT, ...</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="end" class=" text-2xl mt-2 font-sans">End.</h1>
+<p class=" font-serif my-1">Read (a lot of) papers.</p></div></div></div>
+        
+      
+      </section>
+    
+    </section>
+  
+</div>
+</div>
+
+<script src="../../../static/reveal/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    
+    width: 1024, height: 768,
+    
+    slideNumber: 'c/t',
+    controlsTutorial: false,
+    progress: false,
+    hash: true,
+    center: false,
+    autoAnimateUnmatched: true,
+    autoAnimateEasing: 'ease-out',
+    autoAnimateDuration: 0.3,
+    transitionSpeed: 'fast'
+  });
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,741 @@
+<!DOCTYPE html><html class="h-100">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="../static/css/base.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="../static/img/favicon.png" type="image/x-icon">
+
+  <style>
+    .font-sans {
+      font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+    }
+    .font-serif {
+      font-family: 'Source Serif Pro', 'Songti SC', 'SimSun', 'Serif', serif;
+    }
+  </style>
+  <link rel="stylesheet" href="../static/katex/katex.min.css">
+  <script defer src="../static/katex/katex.min.js"></script>
+  <script defer src="../static/katex/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+            // customised options
+            // &#8226; auto-render specific keys, e.g.:
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ],
+            // &#8226; rendering keys, e.g.:
+            throwOnError : false
+          });
+      });
+  </script>
+
+
+  
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="../static/reveal/reveal.css">
+<link rel="stylesheet" href="../static/reveal/theme/simple.css" id="theme">
+
+<style>
+.reveal .slide-number {
+  font-size: 26px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, .3);
+}
+
+.reveal .full-screen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.reveal .slides {
+  border: 1.5px #ddd solid;
+  border-radius: 7px;
+  text-align: left;
+  font-weight: 300;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  font-family: 'Lato', 'SimHei', 'STXihei', 'Droid Sans';
+  font-weight: 400;
+}
+
+.reveal p, .reveal li, .reveal center {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Droid Sans';
+}
+
+.reveal li + li {
+  margin-top: 10px;
+}
+
+.reveal ul {
+  display: block;
+  margin-right: 15px;
+}
+
+.reveal p, .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5 {
+  padding:  0 25px 0 25px;
+}
+
+.reveal table {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Sans Serif';
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.reveal th {
+  background-color: #eee;
+}
+
+.reveal tr:nth-child(even) {
+  background-color: #efffff;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  text-align: left;
+  margin: 0 0 20px 0;
+ color: #222; 
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
+
+
+.reveal h1 {
+  margin: 0 10 0 10;
+  font-size: 60px;
+}
+.reveal .middle h1 {
+  text-align: center;
+}
+
+.reveal h2 {
+  font-size: 48px;
+  border-bottom: 2px solid rgb(106, 0, 95);
+  padding-bottom: 5px;
+}
+.reveal h3 { font-size: 1.15em; }
+.reveal h4 { font-size: 1.05em; }
+
+.reveal .center {
+  text-align: center;
+}
+
+.reveal .middle {
+  height: 728px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.reveal pre {
+  font-size: 28px;
+ 
+  background-color: #eee;
+
+  border-radius: 3mm;
+  padding: 10px 10px 10px 10px;
+}
+
+.reveal pre code {
+  max-height: none;
+}
+
+.reveal code {
+  font-family: 'Inconsolata', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif', Monospace;
+}
+
+.reveal .middle blockquote {
+  text-align: center;
+  color: rgb(106, 0, 95);
+  background: none;
+  box-shadow: none;
+}
+
+.reveal .middle blockquote a {
+  color: inherit;
+}
+
+.reveal blockquote p, .reveal blockquote li {
+  font-family: 'Lato', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif';
+}
+
+section .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reveal .author-block {
+  margin: 75px 0 35px 0;
+}
+.reveal .author-affiliation img {
+  margin: 15px 0 0 0;
+}
+.reveal .author-block p, .reveal .author-affiliation p  {
+  font-family: 'Kaiti', 'STKaiti', 'Serif', 'Times', 'Times New Roman';
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+.reveal .author-affiliation {
+  display: inline-block;
+  font-size: 90%;
+}
+.reveal hr {
+  border: 10px solid rgba(0, 0, 0, 0);
+}
+.reveal li {
+  margin-top: 10px;
+}
+</style>
+
+  <title>&#29983;&#25104;&#20989;&#25968;&#36873;&#35762;</title>
+</head>
+
+<body class="d-flex flex-column h-100">
+  
+  
+
+<div class="reveal">
+<div class="slides">
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#29983;&#25104;&#20989;&#25968;&#36873;&#35762;</h1>
+<p class=" font-serif my-1"><include src="Slides_Author"><div><div class="py-16">
+<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">&#33931;&#28814;&#23721;</a></p>
+</div>
+<div class="row">
+<div class="author-affiliation">
+    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#12288;&#12288;&#21335;&#20140;&#22823;&#23398;&#12288;&#12288;</p>
+    <img class="inline-img h-24" src="../static/img/nju-logo.jpg" style="display: inline-block;"></a>
+  </div>
+<div class="author-affiliation">
+   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#31185;&#23398;&#19982;&#25216;&#26415;&#31995;</p>
+    <img class="inline-img h-24" src="../static/img/njucs-logo.jpg" style="display: inline-block;"></a>
+  </div>
+<div class="author-affiliation">
+    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#36719;&#20214;&#30740;&#31350;&#25152;</p>
+    <img class="inline-img h-24" src="../static/img/ics-logo.png" style="display: inline-block;"></a>
+  </div>
+</div></div></include></p></div></div></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#32972;&#26223;&#65306;&#19977;&#20010;&#29087;&#24713;&#30340;&#25968;&#23398;&#38382;&#39064;</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="1" class=" text-xl mt-2 pb-2 font-sans">(1) &#22810;&#39033;&#24335;</h2>
+<p class=" font-serif my-1">&#22823;&#23478;&#29087;&#24713;&#30340; $f(x) = ax^2 + bx + c$</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#38382;&#39064;&#65306;&#27714;&#26041;&#31243;&#30340;&#35299; ($f(x) = 0$)</li>
+<li class=" ml-8">&#20363;&#23376;&#65306;&#27714; $x^4 + x^2 - 1 = 0$ &#30340;&#35299;</li>
+</ul>
+<p class=" font-serif my-1">$$ x = \pm \sqrt\frac{-1 + \sqrt 5}{2}$$</p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="2" class=" text-xl mt-2 pb-2 font-sans">(2) &#25968;&#21015;&#21644;&#36882;&#25512;</h2>
+<p class=" font-serif my-1">&#22823;&#23478;&#29087;&#24713;&#30340; Fibonacci &#25968;&#21015;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">$f(0) = 0$, $f(1) = 1$</li>
+<li class=" ml-8">$f(n) = f(n-1) + f(n-2)$ ($n \ge 2$)<ul class=" list-disc font-serif">
+<li class=" ml-8">0, 1, 1, 2, 3, 5, 8, ...</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="3-0dot9-1" class=" text-xl mt-2 pb-2 font-sans">(3) $0.\dot{9}$ &#21644; $1$ &#35841;&#22823;&#35841;&#23567;&#65311;</h2>
+<p class=" font-serif my-1">&#22823;&#23478;&#29087;&#24713; (&#20294;&#20063;&#22256;&#25200;&#24050;&#20037;) &#30340;&#32463;&#20856;&#38382;&#39064;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">$0.\dot{9} = 1$ &#21527;&#65311;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#30475;&#36215;&#26469;&#65292;&#24038;&#36793;&#24635;&#26159; &#8220;&#23567;&#19968;&#28857;&#8221; ($0.\dot{9} &lt; 1$)</li>
+<li class=" ml-8">$0.\dot{1} = \frac{1}{9}$, &#25152;&#20197; $0.\dot{9} = 9 \cdot \frac{1}{9} = 1$</li>
+</ul>
+</li>
+<li class=" ml-8">&#21738;&#37324;&#20986;&#20102;&#38382;&#39064;&#65311;</li>
+</ul></div>
+        
+      
+         <div class="fragment"> 
+        <div><hr>
+<p class=" font-serif my-1">&#22914;&#20309;&#23450;&#20041; &#8220;$\ldots$&#8221;&#65311;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">$0.\dot{9} = \frac{9}{10} + \frac{9}{100} + \frac{9}{1000} + \frac{9}{10000} +  \ldots $<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21491;&#36793;&#26159;&#26080;&#31351;&#22810;&#20010;&#25968;&#23383;&#30340;&#21644;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22914;&#26524;&#23427;&#19968;&#23450;&#35201; &#8220;&#31561;&#20110;&#8221; &#19968;&#20010;&#25968; $a$&#65292;&#24212;&#35813;&#26159;&#22810;&#23569;&#21602;&#65311;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></div>
+         </div> 
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#19977;&#20010;&#38382;&#39064;&#20043;&#38388;&#30340;&#20851;&#32852;</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">&#8220;&#26080;&#31351;&#22810;&#39033;&#8221; &#30340;&#22810;&#39033;&#24335; = &#22810;&#39033;&#24335; + &#25968;&#21015; + &#26080;&#31351;&#27714;&#21644;</p>
+</blockquote>
+<hr>
+<p class=" font-serif my-1">$$ \begin{align} f(x) &amp; = a_0 + a_1 x + a_2 x^2 + a_3 x^3 + \ldots \\ &amp; = \sum_{ i \ge 0} a_i x^i \end{align} $$</p>
+<hr>
+<p class=" font-serif my-1">&#31561;&#20110;&#21495;&#30340;&#21547;&#20041;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22312;&#26576;&#20010;&#33539;&#22260;&#20869; (&#20363;&#22914; $0 &lt; x &lt; 1$)&#65292;&#31561;&#24335;&#24038;&#21491; &#8220;&#35201;&#22810;&#25509;&#36817;&#26377;&#22810;&#25509;&#36817;&#8221;</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#31070;&#22855;&#30340;&#22810;&#39033;&#24335;</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="a-1-1-1-ldots" class=" text-xl mt-2 pb-2 font-sans">$a = [1, 1, 1, \ldots]$ &#30340;&#22810;&#39033;&#24335;</h2>
+<p class=" font-serif my-1">$$ F(x) = 1 + x + x^2 + x^3 + \ldots = {?}$$</p>
+<p class=" font-serif my-1">&#20363;&#23376;</p>
+<p class=" font-serif my-1">$$F(1/2) = 1 + \frac{1}{2} + \frac{1}{4} + \frac{1}{8} \ldots $$</p>
+<p class=" font-serif my-1">&#20363;&#23376;&#65306;&#31561;&#27604;&#25968;&#21015;&#27714;&#21644;&#20844;&#24335;</p>
+<p class=" font-serif my-1">$$\frac{a_0}{1-q}(1-q^n)$$</p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#31070;&#22855;&#30340;&#22810;&#39033;&#24335;</h2>
+<p class=" font-serif my-1">$$\frac{1}{1-x} = 1 + x + x^2 + x^3 + \ldots\qquad(|x| &lt; 1)$$</p>
+<p class=" font-serif my-1">$$a = [1, 1, 1, 1, \ldots]$$</p>
+<hr>
+<p class=" font-serif my-1">$$\sin(x) = x - \frac{1}{3!}x^3 + \frac{1}{5!}x^5 - \frac{1}{7!}x^7 + \ldots\quad(x\in\mathbb R)$$</p>
+<p class=" font-serif my-1">$$a = [0, 1, 0, -\frac{1}{6}, 0, \frac{1}{120}, 0, -\frac{1}{40320}, \ldots]$$</p>
+<hr>
+<p class=" font-serif my-1"></p><center>(&#20110;&#26159;&#25105;&#20204;&#26377;&#20102;<red>&#29983;&#25104;&#20989;&#25968;</red>&#65306;&#25968;&#21015;&#30340;&#20989;&#25968;&#34920;&#31034;)</center></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25361;&#25112;&#19968;&#19979;</h2>
+<p class=" font-serif my-1">$$F(x) = x + x^2 + 2x^3 + 3x^4 + 5x^5 + 8x^6 + \ldots = {?}$$</p>
+<p class=" font-serif my-1">&#20160;&#20040;&#26679;&#30340; $F(x)$ &#29983;&#25104;&#20102; Fibonacci &#25968;&#21015;&#65311;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">$f(0) = 0$, $f(1) = 1$</li>
+<li class=" ml-8">$f(n) = f(n-1) + f(n-2)$</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#25968;&#21015;&#30340;&#29983;&#25104;&#20989;&#25968;</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#29983;&#25104;&#20989;&#25968;&#65306;&#20989;&#25968;&#19982;&#25968;&#21015;&#20043;&#38388;&#30340;&#26725;&#26753;</h2>
+<p class=" font-serif my-1"><img alt="" class="center" src="../pages/OI/img/gf-idea.png" width="800px"></p>
+<hr>
+<p class=" font-serif my-1">&#35797;&#35797; <a href="https://www.wolframalpha.com/input/" class=" text-amber-900">Wolfram Alpha</a></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#8220;series x/(1-x-x^2) to order 20&#8221;</li>
+<li class=" ml-8">&#8220;simplify[x/(1-x-x^2)]&#8221;</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">&#29983;&#25104;&#20989;&#25968;&#65306;&#20989;&#25968;&#19982;&#25968;&#21015;&#20043;&#38388;&#30340;&#26725;&#26753; (cont'd)</h2>
+<p class=" font-serif my-1"><img alt="" class="center" src="../pages/OI/img/gf-idea.png" width="800px"></p>
+<p class=" font-serif my-1">&#29992;&#20989;&#25968; (&#22810;&#39033;&#24335;&#20195;&#25968;) &#34920;&#31034;&#21508;&#31181;&#25968;&#21015;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">$c\cdot F(x)$ &#8594; &#25968;&#21015;&#20493;&#22686;</li>
+<li class=" ml-8">$x\cdot F(x)$ &#8594; &#25968;&#21015;&#21491;&#31227; (&#34917; 0)</li>
+<li class=" ml-8">$[F(x) - f(0)] / x$ &#8594; &#25968;&#21015;&#24038;&#31227;</li>
+<li class=" ml-8">$F_1(x) \pm F_2(x)$ &#8594; &#25968;&#21015;&#27714;&#21644;/&#24046;</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26725;&#26753;&#65306;&#20363;&#23376;</h2>
+<p class=" font-serif my-1">&#27714; Fibonacci &#25968;&#21015;&#30340;&#36890;&#39033;&#20844;&#24335;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">$f(0) = 0$, $f(1) = 1$</li>
+<li class=" ml-8">$f(n) = f(n-1) + f(n-2)$</li>
+<li class=" ml-8">$F(x) = x/(1-x-x^2)$</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#27714; $f(n, k) = f(n - 1, k) + f(n - 1, k - 1)$ &#30340;&#36890;&#39033;&#20844;&#24335;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">$f(n, 0) = 1$</li>
+<li class=" ml-8">$B_n(x) = \sum_{k\ge 0} f(n,k) x^k$</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#29983;&#25104;&#20989;&#25968;&#65306;&#20989;&#25968;&#19982;&#25968;&#21015;&#20043;&#38388;&#30340;&#26725;&#26753;</h2>
+<p class=" font-serif my-1"><img alt="" class="center" src="../pages/OI/img/gf-idea.png" width="800px"></p>
+<p class=" font-serif my-1">&#29992;&#20989;&#25968; (&#22810;&#39033;&#24335;&#20195;&#25968;) &#34920;&#31034;&#21508;&#31181;&#25968;&#21015;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">$F'(x)$ &#8594; &#25968;&#21015;&#20056;&#24130;&#27425; + &#24038;&#31227;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#23548;&#25968;: $(c)' = 0$, $(x^n)' = nx^{n-1}$</li>
+</ul>
+</li>
+<li class=" ml-8">$F_1(x) \cdot F_2(x)$ &#8594; &#25968;&#21015;&#21367;&#31215;</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#31070;&#22855;&#30340;&#21367;&#31215;</h2>
+<p class=" font-serif my-1">&#35797;&#35797; </p>
+<p class=" font-serif my-1">$$F(x) \cdot \frac{1}{1-x}$$</p>
+<hr>
+<p class=" font-serif my-1">&#20363;&#23376;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#27714; $1 + 2^2 + 3^2 + 4^2 + \ldots$</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#20989;&#25968;&#19982;&#25968;&#21015;&#30340;&#26725;&#26753;</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26356;&#22810;&#30340;&#29983;&#25104;&#20989;&#25968;</h2>
+<p class=" font-serif my-1">&#25351;&#25968;&#29983;&#25104;&#20989;&#25968;</p>
+<p class=" font-serif my-1">$$F(x) = a_0 + a_1 x + a_2 \frac{x^2}{2!} + a_3 \frac{x^3}{3!} + \ldots$$</p>
+<hr>
+<p class=" font-serif my-1">Dirichlet &#32423;&#25968;&#29983;&#25104;&#20989;&#25968;</p>
+<p class=" font-serif my-1">$$F(s) = a_1 + \frac{a_2}{2^s} + \frac{a_3}{3^s} + \frac{a_3}{3^s} + \ldots$$</p>
+<hr>
+<p class=" font-serif my-1">&#32451;&#20064;&#65306;$F \cdot G$ &#30340;&#25512;&#23548;</p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="riemanns-zeta-function" class=" text-xl mt-2 pb-2 font-sans">Riemann's Zeta Function</h2>
+<p class=" font-serif my-1">$$\zeta(s) = 1 + \frac{1}{2^s} + \frac{1}{3^s} + \ldots\quad(a_i = 1)$$</p>
+<hr>
+<p class=" font-serif my-1">&#20195;&#25968; (&#25968;&#35770;)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">$\displaystyle F(s) \cdot G(s) = \sum_{n \ge 1} \sum_{d|n} a_d b_{n/d}$</li>
+</ul>
+<p class=" font-serif my-1">&#25968;&#23398;&#20998;&#26512;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">$\displaystyle \zeta(2) = 1 + \frac{1}{2^2} + \frac{1}{3^2} + \ldots = \frac{\pi^2}{6}$</li>
+<li class=" ml-8"><a href="https://www.bilibili.com/video/BV1tx411y7VG" class=" text-amber-900">3Blue1Brown &#30340;&#35270;&#39057;</a></li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">(&#20170;&#22825;&#21807;&#19968;&#30340;) &#20363;&#39064;</h2>
+<p class=" font-serif my-1">&#27714;&#38271;&#24230;&#20026; $n$ &#30340; 01 &#23383;&#31526;&#20018;&#20013;&#19981;&#21487;&#20998;&#35299;&#23383;&#31526;&#20018;&#30340;&#20010;&#25968;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#8220;&#19981;&#21487;&#20998;&#35299;&#8221; &#25351;&#19981;&#33021;&#20889;&#25104;&#20004;&#20010;&#25110;&#22810;&#20010;&#30456;&#21516;&#23383;&#31526;&#20018;&#30340;&#25340;&#25509;<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>"100100100" == "100" * 3</code> &#21487;&#20998;&#35299;</li>
+<li class=" ml-8"><code>"1101"</code> &#19981;&#21487;&#20998;&#35299;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#19968;&#20010;&#26080;&#20851;&#30340;&#25216;&#24039;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22810;&#23398;&#20250;&#19968;&#31181;&#32534;&#31243;&#35821;&#35328;&#65292;&#21487;&#33021;&#26377;&#22855;&#25928; (<a href="../pages/OI/demos/brute-force.py" class=" text-amber-900">brute-force.py</a>)<ul class=" list-disc font-serif">
+<li class=" ml-8">Python: &#24555;&#36895;&#23581;&#35797;&#12289;&#23545;&#25293;&#8230;&#8230;&#30340;&#26368;&#20339;&#36873;&#25321;<ul class=" list-disc font-serif">
+<li class=" ml-8">Linux &#33258;&#24102;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#24635;&#32467;</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#36808;&#21521; &#8220;&#39640;&#31561;&#8221; &#25968;&#23398;&#30340;&#31532;&#19968;&#27493;</h2>
+<p class=" font-serif my-1">$$ f(x) = a_0 + a_1 x + a_2 x^2 + a_3 x^3 + \ldots $$</p>
+<hr>
+<p class=" font-serif my-1">&#22810;&#39033;&#24335;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">$f(x) = ax^2 + bx + c$</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#25968;&#21015;&#21644;&#36882;&#25512;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">$f(0) = 0$, $f(1) = 1$, $f(n) = f(n-1) + f(n-2)$ ($n \ge 2$)</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#26080;&#38480;&#24490;&#29615;&#23567;&#25968;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">$0.\dot{9} = \frac{9}{10} + \frac{9}{100} + \frac{9}{1000} + \frac{9}{10000} + \ldots = {?}$</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="ne" class=" text-xl mt-2 pb-2 font-sans">&#25968;&#23398; $\ne$ &#20570;&#25968;&#23398;&#39064;</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">&#25968;&#23398;&#30340;&#26412;&#36136;&#8212;&#8212;&#25506;&#32034;&#21644;&#21457;&#29616;</p>
+<p class=" font-serif my-1">&#8220;&#34920;&#36798;&#8221;&#12289;&#8220;&#25277;&#35937;&#8221;&#12289;&#8220;&#24314;&#31435;&#32852;&#31995;&#8221;</p>
+</blockquote>
+<hr>
+<p class=" font-serif my-1"><img alt="" class="center" src="../pages/OI/img/gf-idea.png" width="800px"></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#24310;&#20280;&#38405;&#35835;</h2>
+<p class=" font-serif my-1">Concrete Mathematics&#12298;&#20855;&#20307;&#25968;&#23398;&#12299;</p>
+<hr>
+<p class=" font-serif my-1">Generatingfunctionology (by Herbert S. Wilf)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#36275;&#22815;&#28385;&#36275; OI/MO &#30340;&#25152;&#26377;&#29983;&#25104;&#20989;&#25968;&#25216;&#24039;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Burn Math Class (by Jason Wilkes) &#12298;&#28903;&#25481;&#25968;&#23398;&#20070;&#12299; </p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#36866;&#21512;&#20013;&#23398;&#29983;&#30340;&#31532;&#19968;&#26412;&#25968;&#23398;&#20998;&#26512; (&#20294;&#26377;&#28857;&#38590;&#65292;&#38656;&#35201;&#32769;&#24072;&#25945;)</li>
+<li class=" ml-8">&#20070;&#35780;&#65306;&#8220;&#39318;&#20808;&#38656;&#35201;&#35686;&#24789;&#30340;&#26159;&#25226;&#23398;&#29983;&#35757;&#32451;&#25104;&#20570;&#39064;&#26426;&#22120;&#30340;&#25968;&#23398;&#36741;&#23548;&#20070;&#8221;&#12289;&#8220;&#36824;&#26377;&#19968;&#31867;&#38656;&#35201;&#35686;&#24789;&#30340;&#20070;&#26159;&#29992;&#20005;&#26684;&#24615;&#25240;&#30952;&#23398;&#29983;&#30340;&#22823;&#23398;&#25968;&#23398;&#35838;&#26412;&#8221;</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="end" class=" text-2xl mt-2 font-sans">End.</h1></div></div></div>
+        
+      
+      </section>
+    
+    </section>
+  
+</div>
+</div>
+
+<script src="../static/reveal/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    
+    width: 1024, height: 768,
+    
+    slideNumber: 'c/t',
+    controlsTutorial: false,
+    progress: false,
+    hash: true,
+    center: false,
+    autoAnimateUnmatched: true,
+    autoAnimateEasing: 'ease-out',
+    autoAnimateDuration: 0.3,
+    transitionSpeed: 'fast'
+  });
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,977 @@
+<!DOCTYPE html><html class="h-100">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="../../../static/css/base.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
+
+  <style>
+    .font-sans {
+      font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+    }
+    .font-serif {
+      font-family: 'Source Serif Pro', 'Songti SC', 'SimSun', 'Serif', serif;
+    }
+  </style>
+  <link rel="stylesheet" href="../../../static/katex/katex.min.css">
+  <script defer src="../../../static/katex/katex.min.js"></script>
+  <script defer src="../../../static/katex/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+            // customised options
+            // &#8226; auto-render specific keys, e.g.:
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ],
+            // &#8226; rendering keys, e.g.:
+            throwOnError : false
+          });
+      });
+  </script>
+
+
+  
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="../../../static/reveal/reveal.css">
+<link rel="stylesheet" href="../../../static/reveal/theme/simple.css" id="theme">
+
+<style>
+.reveal .slide-number {
+  font-size: 26px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, .3);
+}
+
+.reveal .full-screen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.reveal .slides {
+  border: 1.5px #ddd solid;
+  border-radius: 7px;
+  text-align: left;
+  font-weight: 300;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  font-family: 'Lato', 'SimHei', 'STXihei', 'Droid Sans';
+  font-weight: 400;
+}
+
+.reveal p, .reveal li, .reveal center {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Droid Sans';
+}
+
+.reveal li + li {
+  margin-top: 10px;
+}
+
+.reveal ul {
+  display: block;
+  margin-right: 15px;
+}
+
+.reveal p, .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5 {
+  padding:  0 25px 0 25px;
+}
+
+.reveal table {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Sans Serif';
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.reveal th {
+  background-color: #eee;
+}
+
+.reveal tr:nth-child(even) {
+  background-color: #efffff;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  text-align: left;
+  margin: 0 0 20px 0;
+ color: #222; 
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
+
+
+.reveal h1 {
+  margin: 0 10 0 10;
+  font-size: 60px;
+}
+.reveal .middle h1 {
+  text-align: center;
+}
+
+.reveal h2 {
+  font-size: 48px;
+  border-bottom: 2px solid rgb(106, 0, 95);
+  padding-bottom: 5px;
+}
+.reveal h3 { font-size: 1.15em; }
+.reveal h4 { font-size: 1.05em; }
+
+.reveal .center {
+  text-align: center;
+}
+
+.reveal .middle {
+  height: 728px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.reveal pre {
+  font-size: 28px;
+ 
+  background-color: #eee;
+
+  border-radius: 3mm;
+  padding: 10px 10px 10px 10px;
+}
+
+.reveal pre code {
+  max-height: none;
+}
+
+.reveal code {
+  font-family: 'Inconsolata', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif', Monospace;
+}
+
+.reveal .middle blockquote {
+  text-align: center;
+  color: rgb(106, 0, 95);
+  background: none;
+  box-shadow: none;
+}
+
+.reveal .middle blockquote a {
+  color: inherit;
+}
+
+.reveal blockquote p, .reveal blockquote li {
+  font-family: 'Lato', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif';
+}
+
+section .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reveal .author-block {
+  margin: 75px 0 35px 0;
+}
+.reveal .author-affiliation img {
+  margin: 15px 0 0 0;
+}
+.reveal .author-block p, .reveal .author-affiliation p  {
+  font-family: 'Kaiti', 'STKaiti', 'Serif', 'Times', 'Times New Roman';
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+.reveal .author-affiliation {
+  display: inline-block;
+  font-size: 90%;
+}
+.reveal hr {
+  border: 10px solid rgba(0, 0, 0, 0);
+}
+.reveal li {
+  margin-top: 10px;
+}
+</style>
+
+  <title>C &#35821;&#35328;&#25342;&#36951; (2): &#32534;&#31243;&#23454;&#36341;</title>
+</head>
+
+<body class="d-flex flex-column h-100">
+  
+  
+
+<div class="reveal">
+<div class="slides">
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="c-2" class=" text-2xl mt-2 font-sans">C &#35821;&#35328;&#25342;&#36951; (2): &#32534;&#31243;&#23454;&#36341;</h1>
+<p class=" font-serif my-1"><include src="Slides_Author"><div><div class="py-16">
+<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">&#33931;&#28814;&#23721;</a></p>
+</div>
+<div class="row">
+<div class="author-affiliation">
+    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#12288;&#12288;&#21335;&#20140;&#22823;&#23398;&#12288;&#12288;</p>
+    <img class="inline-img h-24" src="../../../static/img/nju-logo.jpg" style="display: inline-block;"></a>
+  </div>
+<div class="author-affiliation">
+   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#31185;&#23398;&#19982;&#25216;&#26415;&#31995;</p>
+    <img class="inline-img h-24" src="../../../static/img/njucs-logo.jpg" style="display: inline-block;"></a>
+  </div>
+<div class="author-affiliation">
+    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#36719;&#20214;&#30740;&#31350;&#25152;</p>
+    <img class="inline-img h-24" src="../../../static/img/ics-logo.png" style="display: inline-block;"></a>
+  </div>
+</div></div></include></p></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26412;&#35762;&#27010;&#36848;</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">HW1 &#21644; Lab1 &#24050;&#21457;&#24067;&#12290;</p>
+</blockquote>
+<hr>
+<p class=" font-serif my-1">&#20551;&#35774;&#20320;&#24050;&#32463;&#29087;&#32451;&#20351;&#29992;&#21508;&#31181; C &#35821;&#35328;&#26426;&#21046; (<del>&#24182;&#27809;&#26377;</del>)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21407;&#21017;&#19978;&#32473;&#38656;&#27714;&#23601;&#33021;&#25630;&#23450;&#20219;&#20309;&#20195;&#30721; (<del>&#24182;&#19981;&#26159;</del>)</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#31243;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#24590;&#26679;&#20889;&#20195;&#30721;&#25165;&#33021;&#20174;&#19968;&#20010;&#22823;&#22411;&#39033;&#30446;&#37324;&#23384;&#27963;&#19979;&#26469;&#65311;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#26680;&#24515;&#20934;&#21017;&#65306;&#32534;&#20889;&#21487;&#35835;&#20195;&#30721;</li>
+<li class=" ml-8">&#20004;&#20010;&#20363;&#23376;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#26680;&#24515;&#20934;&#21017;&#65306;&#32534;&#20889;&#21487;&#35835;&#20195;&#30721;</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#19968;&#20010;&#26497;&#31471; (&#19981;&#21487;&#35835;) &#30340;&#20363;&#23376;</h2>
+<p class=" font-serif my-1"><a href="https://www.ioccc.org/2011/hou/hou.c" class=" text-amber-900">IOCCC'11 best self documenting program</a></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#19981;&#21487;&#35835; = &#19981;&#21487;&#32500;&#25252;</li>
+</ul>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">puts</span><span class="p">(</span><span class="n">usage</span><span class="o">:</span><span class="w"> </span><span class="n">calculator</span><span class="w"> </span><span class="mi">11</span><span class="o">/</span><span class="mi">26</span><span class="o">+</span><span class="mi">222</span><span class="o">/</span><span class="mi">31</span>
+<span class="w">  </span><span class="o">+~~~~~~~~~~~~~~~~~~~~~~~~</span><span class="n">calculator</span><span class="o">-</span>\
+<span class="w">  </span><span class="o">!</span><span class="w">                          </span><span class="mf">7.584</span><span class="p">,</span><span class="mi">367</span><span class="w"> </span><span class="p">)</span>
+<span class="w">  </span><span class="o">+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+</span>
+<span class="w">  </span><span class="o">!</span><span class="w"> </span><span class="n">clear</span><span class="w"> </span><span class="o">!</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">||</span><span class="n">l</span><span class="w">   </span><span class="o">-</span><span class="n">x</span><span class="w">  </span><span class="n">l</span><span class="w">   </span><span class="n">tan</span><span class="w">  </span><span class="n">I</span><span class="w"> </span><span class="p">(</span><span class="o">/</span><span class="p">)</span><span class="w"> </span><span class="o">|</span>
+<span class="w">  </span><span class="o">+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+</span>
+<span class="w">  </span><span class="o">!</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">||</span><span class="n">l</span><span class="w">  </span><span class="mi">1</span><span class="o">/</span><span class="n">x</span><span class="w">  </span><span class="n">l</span><span class="w">   </span><span class="n">cos</span><span class="w">  </span><span class="n">I</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="o">|</span>
+<span class="w">  </span><span class="o">+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+</span>
+<span class="w">  </span><span class="o">!</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="o">||</span><span class="n">l</span><span class="w">  </span><span class="n">exp</span><span class="w">  </span><span class="n">l</span><span class="w">  </span><span class="n">sqrt</span><span class="w">  </span><span class="n">I</span><span class="w"> </span><span class="p">(</span><span class="o">+</span><span class="p">)</span><span class="w"> </span><span class="o">|</span>
+<span class="w">  </span><span class="o">+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+</span>
+<span class="w">  </span><span class="o">!</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">9</span><span class="w"> </span><span class="o">||</span><span class="n">l</span><span class="w">  </span><span class="n">sin</span><span class="w">  </span><span class="n">l</span><span class="w">   </span><span class="n">log</span><span class="w">  </span><span class="n">I</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="p">)</span><span class="w"> </span><span class="o">|</span>
+<span class="w">  </span><span class="o">+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span><span class="p">(</span><span class="mi">0</span>
+<span class="p">);</span>
+</code></pre></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#19968;&#20010;&#29616;&#23454;&#20013;&#21487;&#33021;&#36935;&#21040;&#30340;&#20363;&#23376;</h2>
+<p class=" font-serif my-1">&#20154;&#31867;&#19981;&#21487;&#35835;&#29256; (STFW: clockwise/spiral rule)</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">signal</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">sig</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">func</span><span class="p">)(</span><span class="kt">int</span><span class="p">)))(</span><span class="kt">int</span><span class="p">);</span>
+</code></pre></div></div>
+        
+      
+         <div class="fragment"> 
+        <div><hr>
+<p class=" font-serif my-1">&#20154;&#31867;&#21487;&#35835;&#29256;</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="kt">sighandler_t</span><span class="p">)(</span><span class="kt">int</span><span class="p">);</span>
+<span class="kt">sighandler_t</span><span class="w"> </span><span class="nf">signal</span><span class="p">(</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">sighandler_t</span><span class="p">);</span>
+</code></pre></div></div>
+         </div> 
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#32534;&#20889;&#20195;&#30721;&#30340;&#20934;&#21017;&#65306;&#38477;&#20302;&#32500;&#25252;&#25104;&#26412;</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">Programs are meant to be read by humans and only incidentally for computers to execute. &#8212; <em>D. E. Knuth</em></p>
+<p class=" font-serif my-1">(&#31243;&#24207;&#39318;&#20808;&#26159;&#25343;&#32473;&#20154;&#35835;&#30340;&#65292;&#20854;&#27425;&#25165;&#26159;&#34987;&#26426;&#22120;&#25191;&#34892;&#12290;)</p>
+</blockquote>
+<p class=" font-serif my-1">&#23439;&#35266;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20570;&#22909;&#20998;&#35299;&#21644;&#35299;&#32806; (&#29616;&#23454;&#19990;&#30028;&#20063;&#26159;&#36825;&#26679;&#31649;&#29702;&#22797;&#26434;&#31995;&#32479;&#30340;)<ul class=" list-disc font-serif">
+<li class=" ml-8"><del>&#26377;&#21516;&#23398;&#38382;&#65306;PA &#26159;&#21542;&#20801;&#35768;&#28155;&#21152;&#39069;&#22806;&#30340;&#25991;&#20214;&#65311;</del></li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#24494;&#35266;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#8220;&#19981;&#35328;&#33258;&#26126;&#8221;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#36890;&#36807;<red>&#38405;&#35835;&#20195;&#30721;</red>&#33021;&#29702;&#35299;&#19968;&#27573;&#31243;&#24207;&#26159;&#20570;&#20160;&#20040;&#30340; (specification)</li>
+</ul>
+</li>
+<li class=" ml-8">&#8220;&#19981;&#35328;&#33258;&#35777;&#8221;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#36890;&#36807;<red>&#38405;&#35835;&#20195;&#30721;</red>&#33021;&#39564;&#35777;&#19968;&#27573;&#31243;&#24207;&#19982; specification &#30340;&#19968;&#33268;&#24615;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#20363;&#23376;&#65306;&#23454;&#29616;&#25968;&#23383;&#36923;&#36753;&#30005;&#36335;&#27169;&#25311;&#22120;</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25968;&#23383;&#36923;&#36753;&#30005;&#36335;&#27169;&#25311;&#22120;</h2>
+<p class=" font-serif my-1">&#20551;&#24819;&#30340;&#25968;&#23383;&#36923;&#36753;&#30005;&#36335;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#33509;&#24178;&#20010; 1-bit &#36793;&#27839;&#35302;&#21457;&#23492;&#23384;&#22120; (<code>X</code>, <code>Y</code>, ...)</li>
+<li class=" ml-8">&#33509;&#24178;&#20010;&#36923;&#36753;&#38376;</li>
+</ul>
+<p class=" font-serif my-1">&#20320;&#20250;&#22914;&#20309;&#35774;&#35745;&#65311;</p></div>
+        
+      
+         <div class="fragment"> 
+        <div><ul class=" list-disc font-serif">
+<li class=" ml-8">&#22522;&#26412;&#24605;&#36335;&#65306;&#29366;&#24577; (&#23384;&#20648;) &#27169;&#25311; + &#35745;&#31639;&#27169;&#25311;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#29366;&#24577; = &#21464;&#37327;<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>int X = 0, Y = 0;</code></li>
+</ul>
+</li>
+<li class=" ml-8">&#35745;&#31639;<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>X1 = !X &amp;&amp; Y;</code></li>
+<li class=" ml-8"><code>Y1 = !X &amp;&amp; !Y;</code></li>
+<li class=" ml-8"><code>X = X1; Y = Y1;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></div>
+         </div> 
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">&#36890;&#29992;&#25968;&#23383;&#36923;&#36753;&#30005;&#36335;&#27169;&#25311;&#22120; (cont'd)</h2>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#define FORALL_REGS(_)  _(X) _(Y)</span>
+<span class="cp">#define LOGIC           X1 = !X &amp;&amp; Y; \</span>
+<span class="cp">                        Y1 = !X &amp;&amp; !Y;</span>
+
+<span class="cp">#define DEFINE(X)       static int X, X##1;</span>
+<span class="cp">#define UPDATE(X)       X = X##1;</span>
+<span class="cp">#define PRINT(X)        printf(#X " = %d; ", X);</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">FORALL_REGS</span><span class="p">(</span><span class="n">DEFINE</span><span class="p">);</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// clock</span>
+<span class="w">    </span><span class="n">FORALL_REGS</span><span class="p">(</span><span class="n">PRINT</span><span class="p">);</span><span class="w"> </span><span class="n">putchar</span><span class="p">(</span><span class="sc">'\n'</span><span class="p">);</span><span class="w"> </span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="n">LOGIC</span><span class="p">;</span>
+<span class="w">    </span><span class="n">FORALL_REGS</span><span class="p">(</span><span class="n">UPDATE</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="good-and-bad" class=" text-xl mt-2 pb-2 font-sans">&#20351;&#29992;&#39044;&#32534;&#35793;&#65306;Good and Bad</h2>
+<p class=" font-serif my-1">Good</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22686;&#21152;/&#21024;&#38500;&#23492;&#23384;&#22120;&#21482;&#35201;&#25913;&#19968;&#20010;&#22320;&#26041;</li>
+<li class=" ml-8">&#38459;&#27490;&#20102;&#19968;&#20123;&#32534;&#31243;&#38169;&#35823;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#24536;&#35760;&#26356;&#26032;&#23492;&#23384;&#22120;</li>
+<li class=" ml-8">&#24536;&#35760;&#25171;&#21360;&#23492;&#23384;&#22120;</li>
+</ul>
+</li>
+<li class=" ml-8">&#8220;&#19981;&#35328;&#33258;&#26126;&#8221; &#36824;&#31639;&#19981;&#38169;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Bad</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21487;&#35835;&#24615;&#21464;&#24046; (&#26356;&#19981;&#20687; C &#20195;&#30721;&#20102;)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#8220;&#19981;&#35328;&#33258;&#35777;&#8221; &#36824;&#32570;&#19968;&#20123;</li>
+</ul>
+</li>
+<li class=" ml-8">&#32473; IDE &#35299;&#26512;&#24102;&#26469;&#19968;&#20123;&#22256;&#38590;</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26356;&#23436;&#25972;&#30340;&#23454;&#29616;&#65306;&#25968;&#30721;&#31649;&#26174;&#31034;</h2>
+<p class=" font-serif my-1"><a href="../../../pages/ICS/2020/demos/logisim.c" class=" text-amber-900">logisim.c</a> &#21644; <a href="../../../pages/ICS/2020/demos/display.py" class=" text-amber-900">display.py</a></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20320;&#20063;&#21487;&#20197;&#32771;&#34385;&#22686;&#21152;&#35832;&#22914;&#24320;&#20851;&#12289;UART &#31561;&#22806;&#35774;</li>
+<li class=" ml-8">&#21407;&#29702;&#26080;&#38480;&#25509;&#36817;&#22823;&#23478;&#25968;&#23383;&#30005;&#36335;&#35838;&#29609;&#36807;&#30340; FPGA</li>
+</ul></div>
+        
+      
+         <div class="fragment"> 
+        <div><hr>
+<p class=" font-serif my-1"><img alt="" class="float-right" src="../../../static/img/projectn.jpg" width="250px"></p>
+<p class=" font-serif my-1">&#31561;&#31561;&#8230;&#8230;FPGA&#65311;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#36825;&#29609;&#24847;&#19981;&#26159;&#19975;&#33021;&#30340;&#21527;&#65311;&#65311;&#65311;</li>
+<li class=" ml-8">&#25105;&#20204;&#33021;&#27169;&#25311;&#23427;&#65292;&#26159;&#19981;&#26159;&#23601;&#33021;&#27169;&#25311;&#35745;&#31639;&#26426;&#31995;&#32479;&#65311;<ul class=" list-disc font-serif">
+<li class=" ml-8">Yes!</li>
+<li class=" ml-8">&#25105;&#20204;&#23454;&#29616;&#20102;&#19968;&#20010;&#36229;&#32423;&#36229;&#32423;&#20302;&#37197;&#29256; NEMU!</li>
+</ul>
+</li>
+</ul></div>
+         </div> 
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="yemu" class=" text-2xl mt-2 font-sans">&#20363;&#23376;&#65306;&#23454;&#29616; YEMU &#20840;&#31995;&#32479;&#27169;&#25311;&#22120;</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25945;&#31185;&#20070;&#31532;&#19968;&#31456;&#19978;&#30340; &#8220;&#35745;&#31639;&#26426;&#31995;&#32479;&#8221;</h2>
+<p class=" font-serif my-1">&#23384;&#20648;&#31995;&#32479;</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>&#23492;&#23384;&#22120;: PC, R0 (RA), R1, R2, R3 (8-bit)
+&#20869;&#23384;&#65306;  16&#23383;&#33410; (&#25353;&#23383;&#33410;&#35775;&#38382;)
+</code></pre></div>
+
+<p class=" font-serif my-1">&#25351;&#20196;&#38598;</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>       7 6 5 4   3 2   1 0
+mov   [0 0 0 0] [ rt] [ rs]
+add   [0 0 0 1] [ rt] [ rs]
+load  [1 1 1 0] [   addr  ]
+store [1 1 1 1] [   addr  ]
+</code></pre></div>
+
+<p class=" font-serif my-1">&#26377; &#8220;&#35745;&#31639;&#26426;&#31995;&#32479;&#8221; &#30340;&#24863;&#35273;&#20102;&#65311;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#23427;&#26174;&#28982;&#21487;&#20197;&#29992;&#25968;&#23383;&#36923;&#36753;&#30005;&#36335;&#23454;&#29616;</li>
+<li class=" ml-8">&#19981;&#36807;&#25105;&#20204;<red>&#19981;&#38656;&#35201;&#22312;&#38376;&#23618;&#38754;&#23454;&#29616;&#23427;</red><ul class=" list-disc font-serif">
+<li class=" ml-8">&#25105;&#20204;&#25509;&#19979;&#26469;&#23454;&#29616;&#19968;&#20010;&#36229;&#32423;&#20302;&#37197;&#29256; NEMU&#8230;&#8230;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="y-emulator-yemu" class=" text-xl mt-2 pb-2 font-sans">Y-Emulator (YEMU) &#35774;&#35745;&#19982;&#23454;&#29616;</h2>
+<p class=" font-serif my-1">&#23384;&#20648;&#27169;&#22411;&#65306;&#20869;&#23384; + &#23492;&#23384;&#22120; (&#21253;&#21547; PC)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">16 + 5 = 21 bytes = 168 bits</li>
+<li class=" ml-8">&#24635;&#20849;&#26377; $2^{168}$ &#31181;&#19981;&#21516;&#30340;&#21462;&#20540;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20219;&#32473;&#19968;&#20010;&#29366;&#24577;&#65292;&#25105;&#20204;&#37117;&#33021;&#35745;&#31639;&#20986; PC &#22788;&#30340;&#25351;&#20196;&#65292;&#20174;&#32780;&#35745;&#31639;&#20986;&#19979;&#19968;&#20010;&#29366;&#24577;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+         <div class="fragment"> 
+        <div><hr>
+<p class=" font-serif my-1">&#29702;&#35770;&#19978;&#65292;&#20219;&#20309;&#35745;&#31639;&#26426;&#31995;&#32479;&#37117;&#26159;&#36825;&#26679;&#30340;<red>&#29366;&#24577;&#26426;</red></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">$(M, R)$ &#26500;&#25104;&#20102;&#35745;&#31639;&#26426;&#31995;&#32479;&#30340;&#29366;&#24577;</li>
+<li class=" ml-8">32 GiB &#20869;&#23384;&#26377; $2^{274877906944}$ &#31181;&#19981;&#21516;&#30340;&#29366;&#24577;&#8230;&#8230;</li>
+<li class=" ml-8">&#27599;&#20010;&#26102;&#38047;&#21608;&#26399;&#65292;&#21462;&#20986; $M[R[PC]]$ &#30340;&#25351;&#20196;&#65307;&#25191;&#34892;&#65307;&#20889;&#22238;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21463;&#21046;&#20110;&#29289;&#29702;&#23454;&#29616; (&#21644;&#21151;&#32791;) &#30340;&#38480;&#21046;&#65292;&#36890;&#24120;&#27599;&#20010;&#26102;&#38047;&#21608;&#26399;&#21482;&#33021;&#25913;&#21464;&#23569;&#37327;&#23492;&#23384;&#22120;&#21644;&#20869;&#23384;&#30340;&#29366;&#24577;</li>
+<li class=" ml-8">(&#37327;&#23376;&#35745;&#31639;&#26426;&#39072;&#35206;&#20102;&#36825;&#20010;&#27169;&#22411;&#65306;&#21516;&#19968;&#26102;&#21051;&#21487;&#20197;&#22788;&#20110;&#22810;&#20010;&#29366;&#24577;)</li>
+</ul>
+</li>
+</ul></div>
+         </div> 
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="yemu" class=" text-xl mt-2 pb-2 font-sans">YEMU: &#27169;&#25311;&#23384;&#20648;</h2>
+<p class=" font-serif my-1"><red>&#23384;&#20648;</red>&#26159;&#35745;&#31639;&#26426;&#33021;&#23454;&#29616; &#8220;&#35745;&#31639;&#8221; &#30340;&#37325;&#35201;&#22522;&#30784;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#23492;&#23384;&#22120; (PC)&#12289;&#20869;&#23384;</li>
+<li class=" ml-8">&#36825;&#31616;&#21333;&#65292;&#29992;&#20840;&#23616;&#21464;&#37327;&#23601;&#22909;&#20102;&#65281;</li>
+</ul>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdint.h&gt;</span>
+<span class="cp">#define NREG 4</span>
+<span class="cp">#define NMEM 16</span>
+<span class="k">typedef</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">u8</span><span class="p">;</span><span class="w"> </span><span class="c1">// &#27809;&#29992;&#36807; uint8_t&#65311;</span>
+<span class="n">u8</span><span class="w"> </span><span class="n">pc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">R</span><span class="p">[</span><span class="n">NREG</span><span class="p">],</span><span class="w"> </span><span class="n">M</span><span class="p">[</span><span class="n">NMEM</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">};</span>
+</code></pre></div>
+
+<hr>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#24314;&#35758; STFW (C &#26631;&#20934;&#24211;) &#8594; bool &#26377;&#27809;&#26377;&#65311;</li>
+<li class=" ml-8">&#29616;&#20195;&#35745;&#31639;&#26426;&#31995;&#32479;&#65306;<code>uint8_t == unsigned char</code><ul class=" list-disc font-serif">
+<li class=" ml-8">C Tips: &#20351;&#29992; <code>unsigned int</code> &#36991;&#20813;&#28508;&#22312;&#30340; UB<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>-fwrapv</code> &#21487;&#20197;&#24378;&#21046;&#26377;&#31526;&#21495;&#25972;&#25968;&#28322;&#20986;&#20026; wraparound</li>
+</ul>
+</li>
+<li class=" ml-8">C Quiz: &#25226;&#25351;&#38024;&#36716;&#25442;&#25104;&#25972;&#25968;&#65292;&#24212;&#35813;&#29992;&#20160;&#20040;&#31867;&#22411;&#65311;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25552;&#21319;&#20195;&#30721;&#36136;&#37327;</h2>
+<p class=" font-serif my-1">&#32473;&#23492;&#23384;&#22120;&#21517;&#23383;&#65311;</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#define NREG 4</span>
+<span class="n">u8</span><span class="w"> </span><span class="n">R</span><span class="p">[</span><span class="n">NREG</span><span class="p">],</span><span class="w"> </span><span class="n">pc</span><span class="p">;</span><span class="w"> </span><span class="c1">// &#26377;&#20123;&#25351;&#20196;&#26159;&#29992;&#23492;&#23384;&#22120;&#21517;&#25551;&#36848;&#30340;</span>
+<span class="cp">#define RA 1    </span><span class="c1">// BUG: &#25968;&#32452;&#19979;&#26631;&#20174;0&#24320;&#22987;</span>
+<span class="p">...</span><span class="w"> </span>
+</code></pre></div></div>
+        
+      
+         <div class="fragment"> 
+        <div><hr>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">enum</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">RA</span><span class="p">,</span><span class="w"> </span><span class="n">R1</span><span class="p">,</span><span class="w"> </span><span class="p">...,</span><span class="w"> </span><span class="n">PC</span><span class="w"> </span><span class="p">};</span>
+<span class="n">u8</span><span class="w"> </span><span class="n">R</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">[</span><span class="n">RA</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">  </span><span class="c1">// &#36825;&#26159;&#20160;&#20040;&#35821;&#27861;&#65311;&#65311;</span>
+<span class="w">  </span><span class="p">[</span><span class="n">R1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">  </span><span class="p">...</span>
+<span class="w">  </span><span class="p">[</span><span class="n">PC</span><span class="p">]</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">init_pc</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="cp">#define pc (R[PC]) </span><span class="c1">// &#25226; PC &#20063;&#20316;&#20026;&#23492;&#23384;&#22120;&#30340;&#19968;&#37096;&#20998;</span>
+<span class="cp">#define NREG (sizeof(R) / sizeof(u8))</span>
+</code></pre></div></div>
+         </div> 
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20174;&#19968;&#23567;&#27573;&#20195;&#30721;&#30475;&#36719;&#20214;&#35774;&#35745;</h2>
+<p class=" font-serif my-1">&#36719;&#20214;&#37324;&#26377;&#24456;&#22810;&#38544;&#34255;&#30340; dependencies (&#19968;&#20123;&#39069;&#22806;&#30340;&#12289;&#20195;&#30721;&#20013;&#27809;&#26377;&#20307;&#29616;&#21644;&#32422;&#26463;&#30340; &#8220;&#35268;&#21017;&#8221;)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#19968;&#22788;&#25913;&#20102;&#65292;&#21478;&#19968;&#22788;&#24536;&#20102; (&#20363;&#22914;&#21152;&#20102;&#19968;&#20010;&#23492;&#23384;&#22120;&#24536;&#35760;&#26356;&#26032; <code>NREG</code>...)</li>
+<li class=" ml-8"><red>&#20943;&#23569; dependencies</red> &#8594; <red>&#38477;&#20302;&#20195;&#30721;&#32806;&#21512;&#31243;&#24230;</red></li>
+</ul>
+<hr>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="c1">// breaks when adding a register</span>
+<span class="cp">#define NREG 5 </span><span class="c1">// &#38544;&#34255;&#20551;&#35774;max{RA, RB, ... PC} == (NREG - 1)</span>
+
+<span class="c1">// breaks when changing register size</span>
+<span class="cp">#define NREG (sizeof(R) / sizeof(u8)) </span><span class="c1">// &#38544;&#34255;&#20551;&#35774;&#23492;&#23384;&#22120;&#26159;8-bit</span>
+
+<span class="c1">// never breaks</span>
+<span class="cp">#define NREG (sizeof(R) / sizeof(R[0])) </span><span class="c1">// &#20294;&#38656;&#35201;R&#30340;&#23450;&#20041;</span>
+
+<span class="c1">// even better (why?)</span>
+<span class="k">enum</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">RA</span><span class="p">,</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">PC</span><span class="p">,</span><span class="w"> </span><span class="n">NREG</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="pa-cpu_state" class=" text-xl mt-2 pb-2 font-sans">PA &#26694;&#26550;&#20195;&#30721;&#20013;&#30340; <code>CPU_state</code></h2>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">CPU_state</span><span class="w"> </span><span class="p">{</span>
+<span class="p">};</span>
+
+<span class="c1">// C is not C++</span>
+<span class="c1">// cannot declare "CPU_state state";</span>
+
+<span class="cp">#define reg_l(index) (cpu.gpr[check_reg_index(index)]._32)</span>
+<span class="cp">#define reg_w(index) (cpu.gpr[check_reg_index(index)]._16)</span>
+<span class="cp">#define reg_b(index) (cpu.gpr[check_reg_index(index) &amp; 0x3]._8[index &gt;&gt; 2])</span>
+</code></pre></div>
+
+<hr>
+<p class=" font-serif my-1">&#23545;&#20110;&#22797;&#26434;&#30340;&#24773;&#20917;&#65292;struct/union &#26159;&#26356;&#22909;&#30340;&#35774;&#35745;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25285;&#24515;&#24615;&#33021; (<code>check_reg_index</code>)&#65311;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22312;&#36229;&#24378;&#30340;&#32534;&#35793;&#22120;&#20248;&#21270;&#38754;&#21069;&#65292;&#19981;&#23384;&#22312;&#30340;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="yemu" class=" text-xl mt-2 pb-2 font-sans">YEMU: &#27169;&#25311;&#25351;&#20196;&#25191;&#34892;</h2>
+<p class=" font-serif my-1">&#22312;&#26102;&#38047;&#20449;&#21495;&#39537;&#21160;&#19979;&#65292;&#26681;&#25454; $(M,R)$ &#26356;&#26032;&#31995;&#32479;&#30340;&#29366;&#24577;</p>
+<p class=" font-serif my-1">RISC &#22788;&#29702;&#22120; (&#20197;&#21450;&#23454;&#38469;&#30340; CISC &#22788;&#29702;&#22120;&#23454;&#29616;)&#65306;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21462;&#25351;&#20196; (fetch): &#35835;&#20986; <code>M[R[PC]]</code> &#30340;&#19968;&#26465;&#25351;&#20196;</li>
+<li class=" ml-8">&#35793;&#30721; (decode): &#26681;&#25454;&#25351;&#20196;&#38598;&#35268;&#33539;&#35299;&#26512;&#25351;&#20196;&#30340;&#35821;&#20041; (&#39034;&#20415;&#21462;&#20986;&#25805;&#20316;&#25968;)</li>
+<li class=" ml-8">&#25191;&#34892; (execute): &#25191;&#34892;&#25351;&#20196;&#12289;&#36816;&#31639;&#21518;&#20889;&#22238;&#23492;&#23384;&#22120;&#25110;&#20869;&#23384;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#26368;&#37325;&#35201;&#30340;&#23601;&#26159;&#23454;&#29616; <code>idex()</code></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#36825;&#23601;&#26159; PA &#37324;&#20320;&#20204;&#26368;&#25379;&#25166;&#30340;&#22320;&#26041; (&#22218;&#25324;&#20102;&#25972;&#20010;&#25163;&#20876;)</li>
+</ul>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">is_halt</span><span class="p">(</span><span class="n">M</span><span class="p">[</span><span class="n">pc</span><span class="p">]))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">idex</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="1" class=" text-xl mt-2 pb-2 font-sans">&#20195;&#30721;&#20363;&#23376; 1</h2>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">idex</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">M</span><span class="p">[</span><span class="n">pc</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">R</span><span class="p">[(</span><span class="n">M</span><span class="p">[</span><span class="n">pc</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">R</span><span class="p">[</span><span class="n">M</span><span class="p">[</span><span class="n">pc</span><span class="p">]</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mi">3</span><span class="p">];</span>
+<span class="w">    </span><span class="n">pc</span><span class="o">++</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">M</span><span class="p">[</span><span class="n">pc</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">R</span><span class="p">[(</span><span class="n">M</span><span class="p">[</span><span class="n">pc</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">R</span><span class="p">[</span><span class="n">M</span><span class="p">[</span><span class="n">pc</span><span class="p">]</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mi">3</span><span class="p">];</span>
+<span class="w">    </span><span class="n">pc</span><span class="o">++</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">M</span><span class="p">[</span><span class="n">pc</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">14</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">R</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">M</span><span class="p">[</span><span class="n">M</span><span class="p">[</span><span class="n">pc</span><span class="p">]</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0xf</span><span class="p">];</span><span class="w"> </span>
+<span class="w">    </span><span class="n">pc</span><span class="o">++</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">M</span><span class="p">[</span><span class="n">pc</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">15</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">M</span><span class="p">[</span><span class="n">M</span><span class="p">[</span><span class="n">pc</span><span class="p">]</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0xf</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">R</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="w">    </span><span class="n">pc</span><span class="o">++</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="2" class=" text-xl mt-2 pb-2 font-sans">&#20195;&#30721;&#20363;&#23376; 2</h2>
+<p class=" font-serif my-1">&#26159;&#21542;&#22909;&#19968;&#20123;&#65311;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#19981;&#35328;&#33258;&#26126;&#65311;&#19981;&#35328;&#33258;&#35777;&#65311;</li>
+</ul>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">idex</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">u8</span><span class="w"> </span><span class="n">inst</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">M</span><span class="p">[</span><span class="n">pc</span><span class="o">++</span><span class="p">];</span>
+<span class="w">  </span><span class="n">u8</span><span class="w"> </span><span class="n">op</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">inst</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">op</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">0x0</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">op</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">0x1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">rt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">inst</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="n">rs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">inst</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w">      </span><span class="p">(</span><span class="n">op</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">0x0</span><span class="p">)</span><span class="w"> </span><span class="n">R</span><span class="p">[</span><span class="n">rt</span><span class="p">]</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">R</span><span class="p">[</span><span class="n">rs</span><span class="p">];</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">op</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">0x1</span><span class="p">)</span><span class="w"> </span><span class="n">R</span><span class="p">[</span><span class="n">rt</span><span class="p">]</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">R</span><span class="p">[</span><span class="n">rs</span><span class="p">];</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">op</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">0xe</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">op</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">0xf</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">addr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">inst</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0xf</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w">      </span><span class="p">(</span><span class="n">op</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">0xe</span><span class="p">)</span><span class="w"> </span><span class="n">R</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">M</span><span class="p">[</span><span class="n">addr</span><span class="p">];</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">op</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">0xf</span><span class="p">)</span><span class="w"> </span><span class="n">M</span><span class="p">[</span><span class="n">addr</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">R</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="3-yemu" class=" text-xl mt-2 pb-2 font-sans">&#20195;&#30721;&#20363;&#23376; 3 (<a href="../../../pages/ICS/2020/demos/yemu.tar.gz" class=" text-amber-900">YEMU &#20195;&#30721;</a>)</h2>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="k">union</span><span class="w"> </span><span class="nc">inst</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">u8</span><span class="w"> </span><span class="n">rs</span><span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">rt</span><span class="o">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">op</span><span class="o">:</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="n">rtype</span><span class="p">;</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">u8</span><span class="w"> </span><span class="n">addr</span><span class="o">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">        </span><span class="n">op</span><span class="o">:</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="n">mtype</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="n">inst_t</span><span class="p">;</span>
+<span class="cp">#define RTYPE(i) u8 rt = (i)-&gt;rtype.rt, rs = (i)-&gt;rtype.rs;</span>
+<span class="cp">#define MTYPE(i) u8 addr = (i)-&gt;mtype.addr;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">idex</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">inst_t</span><span class="w"> </span><span class="o">*</span><span class="n">cur</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">inst_t</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">M</span><span class="p">[</span><span class="n">pc</span><span class="p">];</span>
+<span class="w">  </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">cur</span><span class="o">-&gt;</span><span class="n">rtype</span><span class="p">.</span><span class="n">op</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="mb">0b0000</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">RTYPE</span><span class="p">(</span><span class="n">cur</span><span class="p">);</span><span class="w"> </span><span class="n">R</span><span class="p">[</span><span class="n">rt</span><span class="p">]</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">R</span><span class="p">[</span><span class="n">rs</span><span class="p">];</span><span class="w">   </span><span class="n">pc</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="k">break</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="mb">0b0001</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">RTYPE</span><span class="p">(</span><span class="n">cur</span><span class="p">);</span><span class="w"> </span><span class="n">R</span><span class="p">[</span><span class="n">rt</span><span class="p">]</span><span class="w">  </span><span class="o">+=</span><span class="w"> </span><span class="n">R</span><span class="p">[</span><span class="n">rs</span><span class="p">];</span><span class="w">   </span><span class="n">pc</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="k">break</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="mb">0b1110</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">MTYPE</span><span class="p">(</span><span class="n">cur</span><span class="p">);</span><span class="w"> </span><span class="n">R</span><span class="p">[</span><span class="n">RA</span><span class="p">]</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">M</span><span class="p">[</span><span class="n">addr</span><span class="p">];</span><span class="w"> </span><span class="n">pc</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="k">break</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="mb">0b1111</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">MTYPE</span><span class="p">(</span><span class="n">cur</span><span class="p">);</span><span class="w"> </span><span class="n">M</span><span class="p">[</span><span class="n">addr</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">R</span><span class="p">[</span><span class="n">RA</span><span class="p">];</span><span class="w">   </span><span class="n">pc</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="k">break</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="k">default</span><span class="o">:</span><span class="w"> </span><span class="n">panic</span><span class="p">(</span><span class="s">"invalid instruction at PC = %x"</span><span class="p">,</span><span class="w"> </span><span class="n">pc</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="c" class=" text-xl mt-2 pb-2 font-sans">&#26377;&#29992;&#30340; C &#35821;&#35328;&#29305;&#24615;</h2>
+<p class=" font-serif my-1">Union / bit fields</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="k">union</span><span class="w"> </span><span class="nc">inst</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">u8</span><span class="w"> </span><span class="n">rs</span><span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">rt</span><span class="o">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">op</span><span class="o">:</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="n">rtype</span><span class="p">;</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">u8</span><span class="w"> </span><span class="n">addr</span><span class="o">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">        </span><span class="n">op</span><span class="o">:</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="n">mtype</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="n">inst_t</span><span class="p">;</span>
+</code></pre></div>
+
+<hr>
+<p class=" font-serif my-1">&#25351;&#38024;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20869;&#23384;&#21482;&#26159;&#20010;<red>&#23383;&#33410;&#24207;&#21015;</red></li>
+<li class=" ml-8">&#26080;&#35770;&#20309;&#31181;&#31867;&#22411;&#30340;&#25351;&#38024;&#37117;&#21482;&#26159;<red>&#22320;&#22336;</red> + &#23545;&#25351;&#21521;&#20869;&#23384;&#30340;<red>&#35299;&#35835;</red></li>
+</ul>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">inst_t</span><span class="w"> </span><span class="o">*</span><span class="n">cur</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">inst_t</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">M</span><span class="p">[</span><span class="n">pc</span><span class="p">];</span>
+<span class="w">  </span><span class="c1">// cur-&gt;rtype.op</span>
+<span class="w">  </span><span class="c1">// cur-&gt;mtype.addr</span>
+<span class="w">  </span><span class="c1">// ...</span>
+</code></pre></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#23567;&#32467;</h2>
+<p class=" font-serif my-1">&#22914;&#20309;&#31649;&#29702; &#8220;&#26356;&#22823;&#8221; &#30340;&#39033;&#30446; (YEMU)?</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25105;&#20204;&#20998;&#22810;&#20010;&#25991;&#20214;&#31649;&#29702;&#23427;<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>yemu.h</code> - &#23492;&#23384;&#22120;&#21517;&#65307;&#24517;&#35201;&#30340;&#22768;&#26126;</li>
+<li class=" ml-8"><code>yemu.c</code> - &#25968;&#25454;&#23450;&#20041;&#12289;&#20027;&#20989;&#25968;</li>
+<li class=" ml-8"><code>idex.c</code> - &#35793;&#30721;&#25191;&#34892;</li>
+<li class=" ml-8"><code>Makefile</code> - &#32534;&#35793;&#33050;&#26412; (&#33021;&#23454;&#29616;&#22686;&#37327;&#32534;&#35793;)</li>
+</ul>
+</li>
+<li class=" ml-8">&#20351;&#29992;&#21512;&#29702;&#30340;&#32534;&#31243;&#27169;&#24335;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20943;&#23569;&#27169;&#22359;&#20043;&#38388;&#30340;&#20381;&#36182;<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>enum { RA, ... , NREG }</code></li>
+</ul>
+</li>
+<li class=" ml-8">&#21512;&#29702;&#20351;&#29992;&#35821;&#35328;&#29305;&#24615;&#65292;&#32534;&#20889;&#21487;&#35835;&#12289;&#21487;&#35777;&#26126;&#30340;&#20195;&#30721;<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>inst_t *cur = (inst_t *)&amp;M[pc]</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class=" ml-8"><red>NEMU &#23601;&#26159;&#21152;&#24378;&#29256;&#30340; YEMU</red></li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26356;&#22810;&#30340;&#35745;&#31639;&#26426;&#31995;&#32479;&#27169;&#25311;&#22120;</h2>
+<p class=" font-serif my-1"><code>am-kernels/litenes</code></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#19968;&#20010; &#8220;&#26368;&#23567;&#8221; &#30340; NES &#27169;&#25311;&#22120;</li>
+<li class=" ml-8">&#33258;&#24102;&#30828;&#32534;&#30721;&#30340; ROM &#25991;&#20214;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1"><code>fceux-am</code></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#19968;&#20010;&#38750;&#24120;&#23436;&#25972;&#30340;&#39640;&#24615;&#33021; NES &#27169;&#25311;&#22120;</li>
+<li class=" ml-8">&#21253;&#21547;&#23545;&#21345;&#24102;&#23450;&#21046;&#33455;&#29255;&#30340;&#27169;&#25311; (<code>src/boards</code>)</li>
+</ul>
+<hr>
+<p class=" font-serif my-1"><code>QEMU</code></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#24037;&#19994;&#32423;&#30340;&#20840;&#31995;&#32479;&#27169;&#25311;&#22120;<ul class=" list-disc font-serif">
+<li class=" ml-8">2011 &#24180;&#21457;&#24067; 1.0 &#29256;&#26412;</li>
+<li class=" ml-8">&#26377;&#20852;&#36259;&#30340;&#21516;&#23398;&#21487;&#20197; <a href="http://wiki.qemu.org/download/qemu-1.0.tar.gz" class=" text-amber-900">RTFSC</a></li>
+</ul>
+</li>
+<li class=" ml-8">&#20316;&#32773;&#65306;&#20256;&#22855;&#40657;&#23458; <a href="https://bellard.org/" class=" text-amber-900">Fabrice Bellard</a></li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="end" class=" text-2xl mt-2 font-sans">End.</h1>
+<p class=" font-serif my-1"><br></p>
+<p class=" font-serif my-1">&#27704;&#36828;&#19981;&#35201;&#20572;&#27490;&#23545;&#22909;&#20195;&#30721;&#30340;&#36861;&#27714;</p>
+<p class=" font-serif my-1"><del>&#20877;&#32534;&#19979;&#21435;&#23601;&#35201;&#21333;&#36523;&#19968;&#36744;&#23376;&#20102;</del></p></div></div></div>
+        
+      
+      </section>
+    
+    </section>
+  
+</div>
+</div>
+
+<script src="../../../static/reveal/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    
+    width: 1024, height: 768,
+    
+    slideNumber: 'c/t',
+    controlsTutorial: false,
+    progress: false,
+    hash: true,
+    center: false,
+    autoAnimateUnmatched: true,
+    autoAnimateEasing: 'ease-out',
+    autoAnimateDuration: 0.3,
+    transitionSpeed: 'fast'
+  });
+</script>
+
+
+</body>
+
+</html>

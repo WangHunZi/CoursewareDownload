@@ -1,0 +1,241 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0055)http://www.cs.wmich.edu/~yang/teach/cs485/C-syntax.html -->
+<HTML><HEAD><TITLE>The syntax of C in Backus-Naur form</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+
+<META content="MSHTML 6.00.2900.2668" name=GENERATOR></HEAD>
+<BODY>
+<H1>The syntax of C in Backus-Naur Form</H1><PRE>&lt;translation-unit&gt; ::= {&lt;external-declaration&gt;}*
+
+&lt;external-declaration&gt; ::= &lt;function-definition&gt;
+                         | &lt;declaration&gt;
+
+&lt;function-definition&gt; ::= {&lt;declaration-specifier&gt;}* &lt;declarator&gt; {&lt;declaration&gt;}* &lt;compound-statement&gt;
+
+&lt;declaration-specifier&gt; ::= &lt;storage-class-specifier&gt;
+                          | &lt;type-specifier&gt;
+                          | &lt;type-qualifier&gt;
+
+&lt;storage-class-specifier&gt; ::= auto
+                            | register
+                            | static
+                            | extern
+                            | typedef
+
+&lt;type-specifier&gt; ::= void
+                   | char
+                   | short
+                   | int
+                   | long
+                   | float
+                   | double
+                   | signed
+                   | unsigned
+                   | &lt;struct-or-union-specifier&gt;
+                   | &lt;enum-specifier&gt;
+                   | &lt;typedef-name&gt;
+
+&lt;struct-or-union-specifier&gt; ::= &lt;struct-or-union&gt; &lt;identifier&gt; { {&lt;struct-declaration&gt;}+ }
+                              | &lt;struct-or-union&gt; { {&lt;struct-declaration&gt;}+ }
+                              | &lt;struct-or-union&gt; &lt;identifier&gt;
+
+&lt;struct-or-union&gt; ::= struct
+                    | union
+
+&lt;struct-declaration&gt; ::= {&lt;specifier-qualifier&gt;}* &lt;struct-declarator-list&gt;
+
+&lt;specifier-qualifier&gt; ::= &lt;type-specifier&gt;
+                        | &lt;type-qualifier&gt;
+
+&lt;struct-declarator-list&gt; ::= &lt;struct-declarator&gt;
+                           | &lt;struct-declarator-list&gt; , &lt;struct-declarator&gt;
+
+&lt;struct-declarator&gt; ::= &lt;declarator&gt;
+                      | &lt;declarator&gt; : &lt;constant-expression&gt;
+                      | : &lt;constant-expression&gt;
+
+&lt;declarator&gt; ::= {&lt;pointer&gt;}? &lt;direct-declarator&gt;
+
+&lt;pointer&gt; ::= * {&lt;type-qualifier&gt;}* {&lt;pointer&gt;}?
+
+&lt;type-qualifier&gt; ::= const
+                   | volatile
+
+&lt;direct-declarator&gt; ::= &lt;identifier&gt;
+                      | ( &lt;declarator&gt; )
+                      | &lt;direct-declarator&gt; [ {&lt;constant-expression&gt;}? ]
+                      | &lt;direct-declarator&gt; ( &lt;parameter-type-list&gt; )
+                      | &lt;direct-declarator&gt; ( {&lt;identifier&gt;}* )
+
+&lt;constant-expression&gt; ::= &lt;conditional-expression&gt;
+
+&lt;conditional-expression&gt; ::= &lt;logical-or-expression&gt;
+                           | &lt;logical-or-expression&gt; ? &lt;expression&gt; : &lt;conditional-expression&gt;
+
+&lt;logical-or-expression&gt; ::= &lt;logical-and-expression&gt;
+                          | &lt;logical-or-expression&gt || &lt;logical-and-expression&gt;
+
+&lt;logical-and-expression&gt; ::= &lt;inclusive-or-expression&gt;
+                           | &lt;logical-and-expression&gt &amp;&amp; &lt;inclusive-or-expression&gt;
+
+&lt;inclusive-or-expression&gt; ::= &lt;exclusive-or-expression&gt;
+                            | &lt;inclusive-or-expression&gt; | &lt;exclusive-or-expression&gt;
+
+&lt;exclusive-or-expression&gt; ::= &lt;and-expression&gt;
+                            | &lt;exclusive-or-expression&gt; ^ &lt;and-expression&gt;
+
+&lt;and-expression&gt; ::= &lt;equality-expression&gt;
+                   | &lt;and-expression&gt; &amp; &lt;equality-expression&gt;
+
+&lt;equality-expression&gt; ::= &lt;relational-expression&gt;
+                        | &lt;equality-expression&gt; == &lt;relational-expression&gt;
+                        | &lt;equality-expression&gt; != &lt;relational-expression&gt;
+
+&lt;relational-expression&gt; ::= &lt;shift-expression&gt;
+                          | &lt;relational-expression&gt; &lt; &lt;shift-expression&gt;
+                          | &lt;relational-expression&gt; &gt; &lt;shift-expression&gt;
+                          | &lt;relational-expression&gt; &lt;= &lt;shift-expression&gt;
+                          | &lt;relational-expression&gt; &gt;= &lt;shift-expression&gt;
+
+&lt;shift-expression&gt; ::= &lt;additive-expression&gt;
+                     | &lt;shift-expression&gt; &lt;&lt; &lt;additive-expression&gt;
+                     | &lt;shift-expression&gt; &gt;&gt; &lt;additive-expression&gt;
+
+&lt;additive-expression&gt; ::= &lt;multiplicative-expression&gt;
+                        | &lt;additive-expression&gt; + &lt;multiplicative-expression&gt;
+                        | &lt;additive-expression&gt; - &lt;multiplicative-expression&gt;
+
+&lt;multiplicative-expression&gt; ::= &lt;cast-expression&gt;
+                              | &lt;multiplicative-expression&gt; * &lt;cast-expression&gt;
+                              | &lt;multiplicative-expression&gt; / &lt;cast-expression&gt;
+                              | &lt;multiplicative-expression&gt; % &lt;cast-expression&gt;
+
+&lt;cast-expression&gt; ::= &lt;unary-expression&gt;
+                    | ( &lt;type-name&gt; ) &lt;cast-expression&gt;
+
+&lt;unary-expression&gt; ::= &lt;postfix-expression&gt;
+                     | ++ &lt;unary-expression&gt;
+                     | -- &lt;unary-expression&gt;
+                     | &lt;unary-operator&gt; &lt;cast-expression&gt;
+                     | sizeof &lt;unary-expression&gt;
+                     | sizeof &lt;type-name&gt;
+
+&lt;postfix-expression&gt; ::= &lt;primary-expression&gt;
+                       | &lt;postfix-expression&gt; [ &lt;expression&gt; ]
+                       | &lt;postfix-expression&gt; ( {&lt;assignment-expression&gt;}* )
+                       | &lt;postfix-expression&gt; . &lt;identifier&gt;
+                       | &lt;postfix-expression&gt; -&gt; &lt;identifier&gt;
+                       | &lt;postfix-expression&gt; ++
+                       | &lt;postfix-expression&gt; --
+
+&lt;primary-expression&gt; ::= &lt;identifier&gt;
+                       | &lt;constant&gt;
+                       | &lt;string&gt;
+                       | ( &lt;expression&gt; )
+
+&lt;constant&gt; ::= &lt;integer-constant&gt;
+             | &lt;character-constant&gt;
+             | &lt;floating-constant&gt;
+             | &lt;enumeration-constant&gt;
+
+&lt;expression&gt; ::= &lt;assignment-expression&gt;
+               | &lt;expression&gt; , &lt;assignment-expression&gt;
+
+&lt;assignment-expression&gt; ::= &lt;conditional-expression&gt;
+                          | &lt;unary-expression&gt; &lt;assignment-operator&gt; &lt;assignment-expression&gt;
+
+&lt;assignment-operator&gt; ::= =
+                        | *=
+                        | /=
+                        | %=
+                        | +=
+                        | -=
+                        | &lt;&lt;=
+                        | &gt;&gt;=
+                        | &amp;=
+                        | ^=
+                        | |=
+
+&lt;unary-operator&gt; ::= &amp;
+                   | *
+                   | +
+                   | -
+                   | ~
+                   | !
+
+&lt;type-name&gt; ::= {&lt;specifier-qualifier&gt;}+ {&lt;abstract-declarator&gt;}?
+
+&lt;parameter-type-list&gt; ::= &lt;parameter-list&gt;
+                        | &lt;parameter-list&gt; , ...
+
+&lt;parameter-list&gt; ::= &lt;parameter-declaration&gt;
+                   | &lt;parameter-list&gt; , &lt;parameter-declaration&gt;
+
+&lt;parameter-declaration&gt; ::= {&lt;declaration-specifier&gt;}+ &lt;declarator&gt;
+                          | {&lt;declaration-specifier&gt;}+ &lt;abstract-declarator&gt;
+                          | {&lt;declaration-specifier&gt;}+
+
+&lt;abstract-declarator&gt; ::= &lt;pointer&gt;
+                        | &lt;pointer&gt; &lt;direct-abstract-declarator&gt;
+                        | &lt;direct-abstract-declarator&gt;
+
+&lt;direct-abstract-declarator&gt; ::=  ( &lt;abstract-declarator&gt; )
+                               | {&lt;direct-abstract-declarator&gt;}? [ {&lt;constant-expression&gt;}? ]
+                               | {&lt;direct-abstract-declarator&gt;}? ( {&lt;parameter-type-list&gt;}? )
+
+&lt;enum-specifier&gt; ::= enum &lt;identifier&gt; { &lt;enumerator-list&gt; }
+                   | enum { &lt;enumerator-list&gt; }
+                   | enum &lt;identifier&gt;
+
+&lt;enumerator-list&gt; ::= &lt;enumerator&gt;
+                    | &lt;enumerator-list&gt; , &lt;enumerator&gt;
+
+&lt;enumerator&gt; ::= &lt;identifier&gt;
+               | &lt;identifier&gt; = &lt;constant-expression&gt;
+
+&lt;typedef-name&gt; ::= &lt;identifier&gt;
+
+&lt;declaration&gt; ::=  {&lt;declaration-specifier&gt;}+ {&lt;init-declarator&gt;}* ;
+
+&lt;init-declarator&gt; ::= &lt;declarator&gt;
+                    | &lt;declarator&gt; = &lt;initializer&gt;
+
+&lt;initializer&gt; ::= &lt;assignment-expression&gt;
+                | { &lt;initializer-list&gt; }
+                | { &lt;initializer-list&gt; , }
+
+&lt;initializer-list&gt; ::= &lt;initializer&gt;
+                     | &lt;initializer-list&gt; , &lt;initializer&gt;
+
+&lt;compound-statement&gt; ::= { {&lt;declaration&gt;}* {&lt;statement&gt;}* }
+
+&lt;statement&gt; ::= &lt;labeled-statement&gt;
+              | &lt;expression-statement&gt;
+              | &lt;compound-statement&gt;
+              | &lt;selection-statement&gt;
+              | &lt;iteration-statement&gt;
+              | &lt;jump-statement&gt;
+
+&lt;labeled-statement&gt; ::= &lt;identifier&gt; : &lt;statement&gt;
+                      | case &lt;constant-expression&gt; : &lt;statement&gt;
+                      | default : &lt;statement&gt;
+
+&lt;expression-statement&gt; ::= {&lt;expression&gt;}? ;
+
+&lt;selection-statement&gt; ::= if ( &lt;expression&gt; ) &lt;statement&gt;
+                        | if ( &lt;expression&gt; ) &lt;statement&gt; else &lt;statement&gt;
+                        | switch ( &lt;expression&gt; ) &lt;statement&gt;
+
+&lt;iteration-statement&gt; ::= while ( &lt;expression&gt; ) &lt;statement&gt;
+                        | do &lt;statement&gt; while ( &lt;expression&gt; ) ;
+                        | for ( {&lt;expression&gt;}? ; {&lt;expression&gt;}? ; {&lt;expression&gt;}? ) &lt;statement&gt;
+
+&lt;jump-statement&gt; ::= goto &lt;identifier&gt; ;
+                   | continue ;
+                   | break ;
+                   | return {&lt;expression&gt;}? ;
+</PRE>
+<P>This grammar was adapted from Section A13 of <I>The C programming 
+language</I>, 2nd edition, by Brian W. Kernighan and Dennis M. Ritchie,Prentice 
+Hall, 1988. </P>
+</BODY></HTML>

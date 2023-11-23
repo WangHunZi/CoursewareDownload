@@ -1,0 +1,875 @@
+<!DOCTYPE html><html class="h-100">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="../../../static/css/base.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
+
+  <style>
+    .font-sans {
+      font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+    }
+    .font-serif {
+      font-family: 'Source Serif Pro', 'Songti SC', 'SimSun', 'Serif', serif;
+    }
+  </style>
+  <link rel="stylesheet" href="../../../static/katex/katex.min.css">
+  <script defer src="../../../static/katex/katex.min.js"></script>
+  <script defer src="../../../static/katex/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+            // customised options
+            // &#8226; auto-render specific keys, e.g.:
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ],
+            // &#8226; rendering keys, e.g.:
+            throwOnError : false
+          });
+      });
+  </script>
+
+
+  
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="../../../static/reveal/reveal.css">
+<link rel="stylesheet" href="../../../static/reveal/theme/simple.css" id="theme">
+
+<style>
+.reveal .slide-number {
+  font-size: 26px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, .3);
+}
+
+.reveal .full-screen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.reveal .slides {
+  border: 1.5px #ddd solid;
+  border-radius: 7px;
+  text-align: left;
+  font-weight: 300;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  font-family: 'Lato', 'SimHei', 'STXihei', 'Droid Sans';
+  font-weight: 400;
+}
+
+.reveal p, .reveal li, .reveal center {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Droid Sans';
+}
+
+.reveal li + li {
+  margin-top: 10px;
+}
+
+.reveal ul {
+  display: block;
+  margin-right: 15px;
+}
+
+.reveal p, .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5 {
+  padding:  0 25px 0 25px;
+}
+
+.reveal table {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Sans Serif';
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.reveal th {
+  background-color: #eee;
+}
+
+.reveal tr:nth-child(even) {
+  background-color: #efffff;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  text-align: left;
+  margin: 0 0 20px 0;
+ color: #222; 
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
+
+
+.reveal h1 {
+  margin: 0 10 0 10;
+  font-size: 60px;
+}
+.reveal .middle h1 {
+  text-align: center;
+}
+
+.reveal h2 {
+  font-size: 48px;
+  border-bottom: 2px solid rgb(106, 0, 95);
+  padding-bottom: 5px;
+}
+.reveal h3 { font-size: 1.15em; }
+.reveal h4 { font-size: 1.05em; }
+
+.reveal .center {
+  text-align: center;
+}
+
+.reveal .middle {
+  height: 728px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.reveal pre {
+  font-size: 28px;
+ 
+  background-color: #eee;
+
+  border-radius: 3mm;
+  padding: 10px 10px 10px 10px;
+}
+
+.reveal pre code {
+  max-height: none;
+}
+
+.reveal code {
+  font-family: 'Inconsolata', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif', Monospace;
+}
+
+.reveal .middle blockquote {
+  text-align: center;
+  color: rgb(106, 0, 95);
+  background: none;
+  box-shadow: none;
+}
+
+.reveal .middle blockquote a {
+  color: inherit;
+}
+
+.reveal blockquote p, .reveal blockquote li {
+  font-family: 'Lato', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif';
+}
+
+section .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reveal .author-block {
+  margin: 75px 0 35px 0;
+}
+.reveal .author-affiliation img {
+  margin: 15px 0 0 0;
+}
+.reveal .author-block p, .reveal .author-affiliation p  {
+  font-family: 'Kaiti', 'STKaiti', 'Serif', 'Times', 'Times New Roman';
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+.reveal .author-affiliation {
+  display: inline-block;
+  font-size: 90%;
+}
+.reveal hr {
+  border: 10px solid rgba(0, 0, 0, 0);
+}
+.reveal li {
+  margin-top: 10px;
+}
+</style>
+
+  <title>NEMU &#26694;&#26550;&#36873;&#35762; (1): &#32534;&#35793;&#36816;&#34892;</title>
+</head>
+
+<body class="d-flex flex-column h-100">
+  
+  
+
+<div class="reveal">
+<div class="slides">
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="nemu-1" class=" text-2xl mt-2 font-sans">NEMU &#26694;&#26550;&#36873;&#35762; (1): &#32534;&#35793;&#36816;&#34892;</h1>
+<p class=" font-serif my-1"><include src="Slides_Author"><div><div class="py-16">
+<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">&#33931;&#28814;&#23721;</a></p>
+</div>
+<div class="row">
+<div class="author-affiliation">
+    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#12288;&#12288;&#21335;&#20140;&#22823;&#23398;&#12288;&#12288;</p>
+    <img class="inline-img h-24" src="../../../static/img/nju-logo.jpg" style="display: inline-block;"></a>
+  </div>
+<div class="author-affiliation">
+   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#31185;&#23398;&#19982;&#25216;&#26415;&#31995;</p>
+    <img class="inline-img h-24" src="../../../static/img/njucs-logo.jpg" style="display: inline-block;"></a>
+  </div>
+<div class="author-affiliation">
+    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#36719;&#20214;&#30740;&#31350;&#25152;</p>
+    <img class="inline-img h-24" src="../../../static/img/ics-logo.png" style="display: inline-block;"></a>
+  </div>
+</div></div></include></p></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26412;&#35762;&#27010;&#36848;</h2>
+<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#31243;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Git, GitHub &#19982;&#20195;&#30721;&#20179;&#24211;<ul class=" list-disc font-serif">
+<li class=" ml-8">Git &#36873;&#35762;</li>
+<li class=" ml-8">Git &#22312;&#23454;&#39564;&#35838;&#20013;&#30340;&#24212;&#29992;</li>
+</ul>
+</li>
+<li class=" ml-8">&#39033;&#30446;&#30340;&#26500;&#24314;<ul class=" list-disc font-serif">
+<li class=" ml-8">Lab</li>
+<li class=" ml-8">NEMU</li>
+<li class=" ml-8">AbstractMachine</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="git-github" class=" text-2xl mt-2 font-sans">Git, GitHub &#19982;&#20195;&#30721;&#20179;&#24211;</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="the-unix-haters-handbook-and-beyond" class=" text-xl mt-2 pb-2 font-sans">The UNIX-Hater's Handbook (and Beyond)</h2>
+<p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/ICS/2020/slides/img/ugh.jpg" width="300px"></p>
+<p class=" font-serif my-1">&#20889;&#20110; 1994 &#24180;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Simson Garfinkel &#30340;&#20027;&#39029;&#26377;<a href="https://web.mit.edu/~simsong/www/ugh.pdf" class=" text-amber-900">&#30005;&#23376;&#29256;</a><ul class=" list-disc font-serif">
+<li class=" ml-8">&#35828;&#26377;&#36947;&#29702;&#20063;&#26377;&#36947;&#29702;</li>
+<li class=" ml-8">&#35828;&#27809;&#36947;&#29702;&#20063;&#27809;&#36947;&#29702;</li>
+</ul>
+</li>
+<li class=" ml-8">&#33267;&#23569;&#25351;&#20986;&#20102; UNIX &#30340;&#19968;&#20123;&#32570;&#38519;<ul class=" list-disc font-serif">
+<li class=" ml-8">user friendly</li>
+<li class=" ml-8">&#21629;&#20196;&#34892;/&#31995;&#32479;&#24037;&#20855;&#30340;&#32570;&#38519;</li>
+</ul>
+</li>
+<li class=" ml-8">&#20294;&#20170;&#22825; UNIX/Linux &#24050;&#32463;&#25104;&#29087;&#22810;&#20102;&#65281;</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="the-community-way" class=" text-xl mt-2 pb-2 font-sans">The Community Way</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">&#24320;&#28304;&#31038;&#21306; (&#30334;&#24230;&#30334;&#31185;)&#65306;&#26681;&#25454;&#30456;&#24212;&#30340;&#24320;&#28304;&#36719;&#20214;&#35768;&#21487;&#35777;&#21327;&#35758;&#20844;&#24067;&#36719;&#20214;&#28304;&#20195;&#30721;&#30340;&#32593;&#32476;&#24179;&#21488;&#65292;&#21516;&#26102;&#20063;&#20026;&#32593;&#32476;&#25104;&#21592;&#25552;&#20379;&#19968;&#20010;&#33258;&#30001;&#23398;&#20064;&#20132;&#27969;&#30340;&#31354;&#38388;&#12290;</p>
+</blockquote>
+<p class=" font-serif my-1">&#20174; GitHub &#33719;&#21462;&#20195;&#30721;</p>
+<p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/ICS/2020/slides/img/github.png" width="250px"></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20256;&#32479;&#24037;&#20855;&#38142; + &#8220;&#29616;&#20195;&#8221; &#32534;&#31243;&#20307;&#39564;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20854;&#23454;&#25105;&#20204;&#24456;&#24819;&#29992; Github Classroom<ul class=" list-disc font-serif">
+<li class=" ml-8"><del>&#20294;&#22269;&#20869;&#32593;&#32476;&#23454;&#22312;&#19981;&#38752;&#35889;&#8230;&#8230;</del></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>git clone -b 2020 https://github.com/NJU-ProjectN/ics-pa ics2020
+git clone https://github.com/NJU-ProjectN/ics-workbench
+</code></pre></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="the-community-way-contd" class=" text-xl mt-2 pb-2 font-sans">The Community Way (cont'd)</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">GitHub is a development platform inspired by the way you work. From open source to business, you can host and review code, manage projects, and build software alongside 50 million developers. (&#19981;&#24871;&#20026;&#20840;&#29699;&#26368;&#22823;&#30340;<del>&#21516;&#24615;</del>&#20132;&#21451;&#32593;&#31449;)</p>
+</blockquote>
+<p class=" font-serif my-1"><red>&#26080;&#25152;&#19981;&#33021;&#30340;&#20195;&#30721;&#32858;&#38598;&#22320;</red></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#26377;&#25972;&#20010;&#35745;&#31639;&#26426;&#31995;&#32479;&#19990;&#30028;&#30340;&#20195;&#30721;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#30828;&#20214;&#12289;&#25805;&#20316;&#31995;&#32479;&#12289;&#20998;&#24067;&#24335;&#31995;&#32479;&#12289;&#24211;&#20989;&#25968;&#12289;&#24212;&#29992;&#31243;&#24207;&#8230;&#8230;</li>
+</ul>
+</li>
+</ul>
+<p class=" font-serif my-1"><red>&#23398;&#20064;&#21508;&#31181;&#25216;&#26415;&#30340;&#26368;&#20339;&#24179;&#21488;</red></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#28023;&#37327;&#30340;&#25991;&#26723;&#12289;&#23398;&#20064;&#36164;&#26009;&#12289;&#21338;&#23458; (&#26032;&#19990;&#30028;&#30340;&#22823;&#38376;)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25552;&#20379;&#21451;&#22909;&#30340;&#25628;&#32034;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20363;&#23376;&#65306;awesome C</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="git" class=" text-xl mt-2 pb-2 font-sans">&#23398;&#20064; Git&#65311;</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">&#20869;&#24515;&#29420;&#30333;&#65306;<del>&#25105;&#9607;&#65292;&#21448;&#35201;&#25105;&#23398;&#19968;&#20010;&#26032;&#19996;&#35199;&#65292;&#21171;&#36164;&#19981;&#35201;</del></p>
+</blockquote>
+<p class=" font-serif my-1">RTFM? STFW!</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#30334;&#24230;&#65306;&#24471;&#21040;&#19968;&#22534;&#19981;&#22826;&#38752;&#35889;&#30340;&#25945;&#31243;<ul class=" list-disc font-serif">
+<li class=" ml-8"><del>&#35831;&#20462;&#25913; hosts &#27704;&#20037;&#23631;&#34109;&#30334;&#24230;</del></li>
+</ul>
+</li>
+<li class=" ml-8">&#22823;&#23478;&#24050;&#32463;&#35265;&#35782;&#36807;<red>&#24320;&#28304;&#31038;&#21306;</red>&#30340;&#21147;&#37327;&#20102;<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="https://marklodato.github.io/visual-git-guide/index-en.html" class=" text-amber-900">A Visual Git Reference</a></li>
+<li class=" ml-8">&#22909;&#30340;&#25991;&#26723;&#26159;&#23384;&#22312;&#30340;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#36824;&#35760;&#24471; tldr &#21527;&#65311;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="a-visual-git-reference" class=" text-xl mt-2 pb-2 font-sans">A Visual Git Reference</h2>
+<p class=" font-serif my-1"><object alt="" class="center" src="https://marklodato.github.io/visual-git-guide/conventions.svg" width="900px" data="https://marklodato.github.io/visual-git-guide/conventions.svg"></object></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="a-visual-git-reference-contd" class=" text-xl mt-2 pb-2 font-sans">A Visual Git Reference (cont'd)</h2>
+<p class=" font-serif my-1"><object alt="" class="center" src="https://marklodato.github.io/visual-git-guide/basic-usage.svg" width="900px" data="https://marklodato.github.io/visual-git-guide/basic-usage.svg"></object></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="comments" class=" text-xl mt-2 pb-2 font-sans">&#19968;&#20123; Comments</h2>
+<p class=" font-serif my-1">&#26377;&#36259;&#30340; &#8220;<code>--</code>&#8221;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">UNIX &#30340;&#35774;&#35745;&#32570;&#38519; (UGH &#20013;&#28857;&#21517;&#25209;&#35780;)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#34429;&#28982;&#26159;&#32534;&#31243;&#35821;&#35328;&#65292;&#20294; Shell &#26356;&#36148;&#36817;&#33258;&#28982;&#35821;&#35328;</li>
+<li class=" ml-8">&#26377;&#24456;&#22810; corner cases<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22914;&#26524;&#26377;&#19968;&#20010;&#25991;&#20214;&#21483; &#8220;<code>-rf</code>&#8221;&#8230;&#8230;&#24590;&#20040;&#21024;&#38500;&#23427;&#65311;&#65311;&#65311;</li>
+<li class=" ml-8">best practice: &#25991;&#20214;&#21517;&#19981;&#20197; &#8220;<code>-</code>&#8221; &#24320;&#22836;&#12289;&#19981;&#21547;&#31354;&#26684;/&#31526;&#21495;&#8230;&#8230;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#20307;&#39564; Git</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21019;&#24314;&#19968;&#20010;&#26032;&#30340; repo&#65292;&#33258;&#30001;&#25506;&#32034;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20026;&#20160;&#20040; &#8220;&#39044;&#35745;&#23436;&#25104;&#26102;&#38388; XX &#23567;&#26102;&#8221; &#26159;&#39575;&#20154;&#30340;&#65311;<ul class=" list-disc font-serif">
+<li class=" ml-8"><del>&#39044;&#35745;&#23436;&#25104;&#26102;&#38388;&#26159;&#20551;&#35774;&#20320;&#22312;&#22823;&#19968;&#24320;&#22987;&#23601;&#29992; Git &#30340;</del></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class=" ml-8"><a href="http://onlywei.github.io/explain-git-with-d3" class=" text-amber-900">Visualizing Git Concepts with D3</a></li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="comments-contd" class=" text-xl mt-2 pb-2 font-sans">&#19968;&#20123; Comments (cont'd)</h2>
+<p class=" font-serif my-1">&#25105;&#20204;&#20351;&#29992;&#20102; &#8220;&#30333;&#21517;&#21333;&#8221; <code>.gitignore</code> &#25991;&#20214;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21482;&#22312; Git repo &#37324;&#31649;&#29702; <code>.c</code>, <code>.h</code> &#21644; <code>Makefile</code> <ul class=" list-disc font-serif">
+<li class=" ml-8">&#22522;&#26412;&#21407;&#21017;&#65306;&#19968;&#20999;<strong>&#29983;&#25104;</strong>&#30340;&#25991;&#20214;&#37117;&#19981;&#25918;&#22312; Git &#20179;&#24211;&#20013;</li>
+</ul>
+</li>
+</ul>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="o">*</span><span class="w">       </span>#<span class="w"> </span>&#24573;&#30053;&#19968;&#20999;&#25991;&#20214;
+<span class="sx">!*/     # &#38500;&#20102;&#30446;&#24405;</span>
+<span class="sx">!*.c    # .c</span>
+<span class="sx">!*.h    # ...</span>
+<span class="sx">!Makefile*</span>
+<span class="sx">!.gitignore</span>
+</code></pre></div>
+
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20026;&#20160;&#20040; <code>ls</code> &#30475;&#19981;&#21040;&#36825;&#20010;&#25991;&#20214;&#65311;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#24590;&#20040;&#36824;&#26377;&#19968;&#20010; <code>.git</code></li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25552;&#20132;&#33050;&#26412;</h2>
+<p class=" font-serif my-1"><code>make submit</code> &#20250;&#19979;&#36733;&#25191;&#34892; <code>http://jyywiki.cn/static/submit.sh</code></p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">"</span><span class="k">$(</span>curl<span class="w"> </span>-s<span class="w"> </span>http://jyywiki.cn/static/submit.sh<span class="k">)</span><span class="s2">"</span>
+</code></pre></div>
+
+<hr>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="c1"># submit.sh (&#26381;&#21153;&#22120;)</span>
+<span class="nv">COURSE</span><span class="o">=</span>ICS2020
+<span class="nv">MODULE</span><span class="o">=</span><span class="k">$(</span>git<span class="w"> </span>rev-parse<span class="w"> </span>--abbrev-ref<span class="w"> </span>HEAD<span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span><span class="s1">'[a-z]'</span><span class="w"> </span><span class="s1">'[A-Z]'</span><span class="k">)</span>
+<span class="nv">NAME</span><span class="o">=</span><span class="k">$(</span>basename<span class="w"> </span><span class="k">$(</span>realpath<span class="w"> </span>.<span class="k">))</span>
+<span class="nv">FILE</span><span class="o">=</span>/tmp/upload.tar.bz2
+
+<span class="nb">cd</span><span class="w"> </span>..<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+tar<span class="w"> </span>caf<span class="w"> </span><span class="s2">"</span><span class="nv">$FILE</span><span class="s2">"</span><span class="w"> </span><span class="s2">"</span><span class="nv">$NAME</span><span class="s2">/.git"</span><span class="w"> </span><span class="k">$(</span>find<span class="w"> </span><span class="nv">$NAME</span><span class="w"> </span>-maxdepth<span class="w"> </span><span class="m">1</span><span class="w"> </span>-name<span class="w"> </span><span class="s2">"*.pdf"</span><span class="k">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+curl<span class="w"> </span>-F<span class="w"> </span><span class="s2">"stuid=</span><span class="nv">$STUID</span><span class="s2">"</span><span class="w"> </span>-F<span class="w"> </span><span class="s2">"stuname=</span><span class="nv">$STUNAME</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-F<span class="w"> </span><span class="s2">"course=</span><span class="nv">$COURSE</span><span class="s2">"</span><span class="w"> </span>-F<span class="w"> </span><span class="s2">"module=</span><span class="nv">$MODULE</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-F<span class="w"> </span><span class="s2">"file=@</span><span class="nv">$FILE</span><span class="s2">"</span><span class="w"> </span>http://jyywiki.cn/upload
+</code></pre></div>
+
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25105;&#20204;&#20570;&#20102;&#20160;&#20040;&#65311;</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="git" class=" text-xl mt-2 pb-2 font-sans">Git &#36861;&#36394;</h2>
+<p class=" font-serif my-1">&#21478;&#19968;&#27573;&#31070;&#31192;&#20195;&#30721; (&#26469;&#33258; <code>Makefile.lab</code>)</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="nf">git</span><span class="o">:</span>
+<span class="w">  </span>@git<span class="w"> </span>add<span class="w"> </span><span class="k">$(</span>shell<span class="w"> </span>find<span class="w"> </span>.<span class="w"> </span>-name<span class="w"> </span><span class="s2">"*.c"</span><span class="k">)</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="k">$(</span>shell<span class="w"> </span>find<span class="w"> </span>.<span class="w"> </span>-name<span class="w"> </span><span class="s2">"*.h"</span><span class="k">)</span><span class="w"> </span>-A<span class="w"> </span>--ignore-errors
+<span class="w">  </span>@while<span class="w"> </span><span class="o">(</span><span class="nb">test</span><span class="w"> </span>-e<span class="w"> </span>.git/index.lock<span class="o">)</span><span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span>sleep<span class="w"> </span><span class="m">0</span>.1<span class="p">;</span><span class="w"> </span><span class="k">done</span>
+<span class="w">  </span>@<span class="o">(</span>hostnamectl<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>uptime<span class="o">)</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>git<span class="w"> </span>commit<span class="w"> </span>-F<span class="w"> </span>-<span class="w"> </span>-q<span class="w"> </span>--author<span class="o">=</span>...<span class="w"> </span>--no-verify<span class="w"> </span>--allow-empty
+<span class="w">  </span>@sync<span class="w"> </span><span class="c1"># &#12298;&#25805;&#20316;&#31995;&#32479;&#12299;&#35838;&#31243;&#20026;&#22823;&#23478;&#25581;&#31192;</span>
+</code></pre></div>
+
+<hr>
+<p class=" font-serif my-1">&#22312;&#27599;&#27425; <code>make</code> &#25191;&#34892;&#26102;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>git</code> &#30446;&#26631;&#37117;&#20250;&#34987;&#25191;&#34892;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#23558; <code>.c</code> &#21644; <code>.h</code> &#28155;&#21152;&#12289;&#24378;&#21046;&#25552;&#20132;&#21040; Git repo</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#36825;&#26159;&#20160;&#20040;&#65311;</h2>
+<p class=" font-serif my-1">&#23545;&#25220;&#34989;&#20195;&#30721;&#30340;&#19968;&#31181;&#23041;&#24913;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="https://zhuanlan.zhihu.com/p/40568346" class=" text-amber-900">&#22914;&#20309;&#25235;&#25220;&#34989;</a><ul class=" list-disc font-serif">
+<li class=" ml-8">&#26087;&#26041;&#27861;&#65307;&#20294;&#33267;&#20170;&#20173;&#22312;&#20351;&#29992;</li>
+</ul>
+</li>
+<li class=" ml-8">Git &#36861;&#36394;&#26159; &#8220;&#19968;&#21171;&#27704;&#36920;&#30340;&#26032;&#26041;&#27861;&#8221;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#36879;&#36807;&#23427;&#65292;&#25105;&#20204;&#30475;&#21040;&#21335;&#22823;&#23398;&#23376;&#30340;&#20154;&#29983;&#30334;&#24577;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#35760;&#24471; academic integrity</li>
+<li class=" ml-8"><red>&#25105;&#20204;&#30041;&#20102;&#36275;&#22815;&#22810;&#30340;&#20998;&#25968;&#32473;&#21162;&#21147;&#23581;&#35797;&#36807;&#30340;&#21516;&#23398;&#36890;&#36807;</red></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class=" ml-8"><del>&#25105;&#20204;&#27491;&#22312;&#30740;&#21046;&#32456;&#26497;&#21152;&#24378;&#29256;</del></li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#23567;&#32467;&#65306;&#29616;&#20195;&#21270;&#30340;&#39033;&#30446;&#31649;&#29702;&#26041;&#24335;</h2>
+<p class=" font-serif my-1">Git: &#20195;&#30721;&#24555;&#29031;&#31649;&#29702;&#24037;&#20855;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#26159;&#19968;&#31181; &#8220;&#21487;&#25345;&#20037;&#21270;&#25968;&#25454;&#32467;&#26500;&#8221;</li>
+<li class=" ml-8">&#25299;&#23637;&#38405;&#35835;&#65306;<a href="https://git-scm.com/book/en/v2" class=" text-amber-900">Pro Git</a></li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#26694;&#26550;&#20195;&#30721;&#20013;&#30340;&#20004;&#22788;&#38750;&#24120;&#35268; Git &#20351;&#29992;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25552;&#20132;&#33050;&#26412;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20165;&#19978;&#20256; <code>.git</code>&#65307;&#22312;&#26381;&#21153;&#22120;&#25191;&#34892; <code>git reset</code></li>
+<li class=" ml-8">&#20943;&#23569;&#25552;&#20132;&#22823;&#23567; (&#20165;&#28304;&#25991;&#20214;)</li>
+</ul>
+</li>
+<li class=" ml-8">Git &#36861;&#36394;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#32534;&#35793;&#26102;&#24378;&#21046;&#25552;&#20132;&#65292;&#33719;&#21462;&#21516;&#23398;&#32534;&#30721;&#30340;&#36807;&#31243;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#24605;&#32771;&#39064;&#65306;&#22914;&#20309;&#31649;&#29702;&#33258;&#24049;&#30340;&#20195;&#30721;&#24555;&#29031;&#65311;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25552;&#31034;&#65306;&#20998;&#25903;/HEAD/... &#21482;&#26159;&#25351;&#21521;&#24555;&#29031;&#30340;&#25351;&#38024; (references)</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#39033;&#30446;&#26500;&#24314;</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="make" class=" text-xl mt-2 pb-2 font-sans">Make &#24037;&#20855;</h2>
+<p class=" font-serif my-1">&#22238;&#39038;&#65306;<a href="../../../pages/ICS/2020/demos/yemu.tar.gz" class=" text-amber-900">YEMU &#27169;&#25311;&#22120;</a></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Makefile &#26159;&#19968;&#27573; &#8220;declarative&#8221; &#30340;&#20195;&#30721;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25551;&#36848;&#20102;<red>&#26500;&#24314;&#30446;&#26631;</red>&#20043;&#38388;&#30340;&#20381;&#36182;&#20851;&#31995;&#21644;&#26356;&#26032;&#26041;&#27861;</li>
+<li class=" ml-8">&#21516;&#26102;&#20063;&#26159;&#21644; Shell &#32467;&#21512;&#32039;&#23494;&#30340;<red>&#32534;&#31243;&#35821;&#35328;</red><ul class=" list-disc font-serif">
+<li class=" ml-8">&#33021;&#22815;&#29983;&#25104;&#21508;&#31181;&#23383;&#31526;&#20018;</li>
+<li class=" ml-8">&#25903;&#25345; &#8220;&#20803;&#32534;&#31243;&#8221; (<code>#include</code>, <code>#define</code>, ...)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="lab" class=" text-xl mt-2 pb-2 font-sans">Lab &#20195;&#30721;&#30340;&#26500;&#24314;</h2>
+<p class=" font-serif my-1">&#39030;&#23618; (top-level) Makefile:</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="c"># := -&gt; C #define</span>
+<span class="w">       </span>NAME<span class="w">   </span>:<span class="o">=</span><span class="w"> </span><span class="k">$(</span>shell<span class="w"> </span>basename<span class="w"> </span><span class="k">$(</span>PWD<span class="k">))</span>
+<span class="k">export </span><span class="nv">MODULE</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span>Lab1
+
+<span class="c"># &#21464;&#37327; -&gt; &#23383;&#38754;&#26367;&#25442;</span>
+<span class="nf">all</span><span class="o">:</span><span class="w"> </span><span class="k">$(</span><span class="nv">NAME</span><span class="k">)</span>-64 <span class="k">$(</span><span class="nv">NAME</span><span class="k">)</span>-32
+
+<span class="c"># include -&gt; C #include</span>
+<span class="cp">include ../Makefile</span>
+</code></pre></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="lab-contd" class=" text-xl mt-2 pb-2 font-sans">Lab &#20195;&#30721;&#30340;&#26500;&#24314; (cont'd)</h2>
+<p class=" font-serif my-1">&#26500;&#24314;&#30446;&#26631;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#24635;&#30446;&#26631;<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>.DEFAULT_GOAL := commit-and-make</code></li>
+<li class=" ml-8"><code>commit-and-make: git all</code> (all &#22312;&#39030;&#23618; Makefile &#20013;&#23450;&#20041;)</li>
+</ul>
+</li>
+<li class=" ml-8">&#21487;&#25191;&#34892;&#25991;&#20214;<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>multimod-64</code>: <code>gcc -m64</code></li>
+<li class=" ml-8"><code>multimod-32</code>: <code>gcc -m32</code></li>
+</ul>
+</li>
+<li class=" ml-8">&#20849;&#20139;&#24211; (&#20043;&#21518;&#30340; lab &#20351;&#29992;)<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>multimod-64.so</code>: <code>gcc -fPIC -shared -m64</code></li>
+<li class=" ml-8"><code>multimod-32.so</code>: <code>gcc -fPIC -shared -m32</code></li>
+</ul>
+</li>
+<li class=" ml-8"><code>clean</code><ul class=" list-disc font-serif">
+<li class=" ml-8">&#21024;&#38500;&#26500;&#24314;&#30340;&#20195;&#30721;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="nemu" class=" text-xl mt-2 pb-2 font-sans">NEMU &#20195;&#30721;&#26500;&#24314;</h2>
+<p class=" font-serif my-1">Makefile &#30495;&#22797;&#26434;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><del>&#25918;&#24323;</del></li>
+</ul></div>
+        
+      
+         <div class="fragment"> 
+        <div><p class=" font-serif my-1">&#19968;&#20010;&#23567;&#35776;&#31373;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20808;&#35266;&#23519; make &#21629;&#20196;<red>&#23454;&#38469;&#25191;&#34892;&#20102;&#20160;&#20040;</red> (trace)</li>
+<li class=" ml-8">RTFM/STFW: make &#25552;&#20379;&#30340;&#20004;&#20010;&#26377;&#29992;&#30340;&#36873;&#39033;<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>-n</code> &#21482;&#25171;&#21360;&#21629;&#20196;&#19981;&#36816;&#34892;</li>
+<li class=" ml-8"><code>-B</code> &#24378;&#21046; make &#25152;&#26377;&#30446;&#26631;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>make<span class="w"> </span>-nB<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-ve<span class="w"> </span><span class="s1">'^\(\#\|echo\|mkdir\)'</span><span class="w"> </span><span class="se">\</span>
+<span class="w"> </span><span class="p">|</span><span class="w"> </span>vim<span class="w"> </span>-
+</code></pre></div></div>
+         </div> 
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="nemu-contd" class=" text-xl mt-2 pb-2 font-sans">NEMU &#20195;&#30721;&#26500;&#24314; (cont'd)</h2>
+<p class=" font-serif my-1">&#22079;&#65281;&#20854;&#23454;&#27809;&#37027;&#20040;&#22797;&#26434;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#23601;&#26159;&#19968;&#22534; <code>gcc -c</code> (&#32534;&#35793;) &#21644;&#19968;&#20010; <code>gcc</code> (&#38142;&#25509;) &#35830;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21407;&#26469;&#22823;&#37096;&#20998; Makefile &#37117;&#26159;&#32534;&#35793;&#36873;&#39033;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Read the friendly source code!</p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="abstractmachine" class=" text-xl mt-2 pb-2 font-sans">AbstractMachine &#20195;&#30721;&#26500;&#24314;</h2>
+<p class=" font-serif my-1">&#26356;&#38271;&#65292;&#26356;&#38590;&#35835;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20294;&#25105;&#20204;&#32473;&#22823;&#23478;&#30041;&#20102;&#19968;&#20010;&#23567;&#24425;&#34507;</li>
+<li class=" ml-8">&#8220;&#29616;&#20195;&#8221; &#30340;&#25991;&#26723;&#32534;&#20889;&#26041;&#24335;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#8220;docs as code&#8221;</li>
+<li class=" ml-8">&#20363;&#23376;&#65306;LLVM &#20351;&#29992; Doxygen <a href="http://llvm.org/doxygen/" class=" text-amber-900">&#33258;&#21160;&#29983;&#25104;&#25991;&#26723;</a></li>
+</ul>
+</li>
+</ul>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="c">### *Get a more readable version of this Makefile* by `make html` (requires python-markdown)</span>
+<span class="nf">html</span><span class="o">:</span>
+<span class="w">    </span>cat<span class="w"> </span>Makefile<span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">'s/^\([^#]\)/    \1/g'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>markdown_py<span class="w"> </span>&gt;<span class="w"> </span>Makefile.html
+<span class="nf">.PHONY</span><span class="o">:</span><span class="w"> </span><span class="n">html</span>
+</code></pre></div></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#24635;&#32467;</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20851;&#20110;&#12298;&#35745;&#31639;&#26426;&#31995;&#32479;&#22522;&#30784;&#12299;&#20064;&#39064;&#35838;</h2>
+<p class=" font-serif my-1">&#25945;&#20250;&#22823;&#23478; &#8220;&#35745;&#31639;&#26426;&#30340;&#27491;&#30830;&#25171;&#24320;&#26041;&#24335;&#8221;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#32534;&#31243; &#8800; &#38391;&#22836;&#20889;&#20195;&#30721;</li>
+<li class=" ml-8">&#20351;&#29992;&#24037;&#20855;&#20063;&#26159;&#32534;&#31243;&#30340;&#19968;&#37096;&#20998;<ul class=" list-disc font-serif">
+<li class=" ml-8">version-control systems: git, svn, ...</li>
+<li class=" ml-8">build systems: make, cmake (C++), maven (Java), ...</li>
+<li class=" ml-8">shell: bash, zsh, ...</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#22522;&#26412;&#21407;&#21017;&#65306;<red>&#20219;&#20309;&#24863;&#21040;&#19981;&#29245;&#30340;&#20107;&#24773;&#37117;&#19968;&#23450;&#26377;&#24037;&#20855;&#33021;&#24110;&#20320;</red></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22914;&#26524;&#30495;&#30340;&#27809;&#26377;&#65292;&#33258;&#24049;&#36896;&#19968;&#20010;&#30340;&#23601;&#20250;&#23601;&#26469;&#20102;<ul class=" list-disc font-serif">
+<li class=" ml-8">(&#19981;&#22826;&#21487;&#33021;&#26159;&#30495;&#30340;)</li>
+<li class=" ml-8">&#20294;&#36825;&#23558;&#20250;&#26159;&#19968;&#20221;&#38750;&#24120;&#22909;&#30340;&#30740;&#31350;&#24037;&#20316;</li>
+</ul>
+</li>
+</ul>
+<hr></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="end" class=" text-2xl mt-2 font-sans">End.</h1>
+<p class=" font-serif my-1">(RTFM &amp; RTFSC)</p></div></div></div>
+        
+      
+      </section>
+    
+    </section>
+  
+</div>
+</div>
+
+<script src="../../../static/reveal/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    
+    width: 1024, height: 768,
+    
+    slideNumber: 'c/t',
+    controlsTutorial: false,
+    progress: false,
+    hash: true,
+    center: false,
+    autoAnimateUnmatched: true,
+    autoAnimateEasing: 'ease-out',
+    autoAnimateDuration: 0.3,
+    transitionSpeed: 'fast'
+  });
+</script>
+
+
+</body>
+
+</html>

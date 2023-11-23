@@ -1,0 +1,920 @@
+<!DOCTYPE html><html class="h-100">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="../../../static/css/base.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
+
+  <style>
+    .font-sans {
+      font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+    }
+    .font-serif {
+      font-family: 'Source Serif Pro', 'Songti SC', 'SimSun', 'Serif', serif;
+    }
+  </style>
+  <link rel="stylesheet" href="../../../static/katex/katex.min.css">
+  <script defer src="../../../static/katex/katex.min.js"></script>
+  <script defer src="../../../static/katex/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+            // customised options
+            // &#8226; auto-render specific keys, e.g.:
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ],
+            // &#8226; rendering keys, e.g.:
+            throwOnError : false
+          });
+      });
+  </script>
+
+
+  
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="../../../static/reveal/reveal.css">
+<link rel="stylesheet" href="../../../static/reveal/theme/night.css" id="theme">
+
+<style>
+.reveal .slide-number {
+  font-size: 26px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, .3);
+}
+
+.reveal .full-screen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.reveal .slides {
+  border: 1.5px #ddd solid;
+  border-radius: 7px;
+  text-align: left;
+  font-weight: 300;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  font-family: 'Lato', 'SimHei', 'STXihei', 'Droid Sans';
+  font-weight: 400;
+}
+
+.reveal p, .reveal li, .reveal center {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Droid Sans';
+}
+
+.reveal li + li {
+  margin-top: 10px;
+}
+
+.reveal ul {
+  display: block;
+  margin-right: 15px;
+}
+
+.reveal p, .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5 {
+  padding:  0 25px 0 25px;
+}
+
+.reveal table {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Sans Serif';
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.reveal th {
+  background-color: #eee;
+}
+
+.reveal tr:nth-child(even) {
+  background-color: #efffff;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  text-align: left;
+  margin: 0 0 20px 0;
+
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
+
+.reveal pre {
+  background-color: #222;
+}
+
+
+.reveal h1 {
+  margin: 0 10 0 10;
+  font-size: 60px;
+}
+.reveal .middle h1 {
+  text-align: center;
+}
+
+.reveal h2 {
+  font-size: 48px;
+  border-bottom: 2px solid rgb(106, 0, 95);
+  padding-bottom: 5px;
+}
+.reveal h3 { font-size: 1.15em; }
+.reveal h4 { font-size: 1.05em; }
+
+.reveal .center {
+  text-align: center;
+}
+
+.reveal .middle {
+  height: 728px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.reveal pre {
+  font-size: 28px;
+
+  border-radius: 3mm;
+  padding: 10px 10px 10px 10px;
+}
+
+.reveal pre code {
+  max-height: none;
+}
+
+.reveal code {
+  font-family: 'Inconsolata', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif', Monospace;
+}
+
+.reveal .middle blockquote {
+  text-align: center;
+  color: rgb(106, 0, 95);
+  background: none;
+  box-shadow: none;
+}
+
+.reveal .middle blockquote a {
+  color: inherit;
+}
+
+.reveal blockquote p, .reveal blockquote li {
+  font-family: 'Lato', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif';
+}
+
+section .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reveal .author-block {
+  margin: 75px 0 35px 0;
+}
+.reveal .author-affiliation img {
+  margin: 15px 0 0 0;
+}
+.reveal .author-block p, .reveal .author-affiliation p  {
+  font-family: 'Kaiti', 'STKaiti', 'Serif', 'Times', 'Times New Roman';
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+.reveal .author-affiliation {
+  display: inline-block;
+  font-size: 90%;
+}
+.reveal hr {
+  border: 10px solid rgba(0, 0, 0, 0);
+}
+.reveal li {
+  margin-top: 10px;
+}
+</style>
+
+  <title>Traps and Pitfalls in Academic Writing</title>
+</head>
+
+<body class="d-flex flex-column h-100">
+  
+  
+
+<div class="reveal">
+<div class="slides">
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="traps-and-pitfalls-inacademic-writing" class=" text-2xl mt-2 font-sans">Traps and Pitfalls in<br>Academic Writing</h1>
+<p class=" font-serif my-1"><br></p>
+<p class=" font-serif my-1">Yanyan Jiang</p></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="overview" class=" text-xl mt-2 pb-2 font-sans">Overview</h2>
+<p class=" font-serif my-1">Beware of the deadlines!</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">A2 (research proposal draft): Nov 11</li>
+<li class=" ml-8">A3 (presentation video): Nov 25</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Traps and pitfalls in academic writing</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Before doing any research</li>
+<li class=" ml-8">Before writing anything</li>
+<li class=" ml-8">When you are writing</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Advices are from <a href="http://taoxie.cs.illinois.edu/publications/writepapers.pdf" class=" text-amber-900">Tao Xie</a> and <a href="https://homes.cs.washington.edu/~mernst/advice/" class=" text-amber-900">Michael Ernst</a>.</p></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="before-doing-any-research" class=" text-2xl mt-2 font-sans">Before Doing Any Research...</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="academic-integrity" class=" text-xl mt-2 pb-2 font-sans">Academic Integrity</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">&#8220;Research&#8221; means always setting the <red><em>highest bar</em></red>.</p>
+</blockquote>
+<p class=" font-serif my-1">No fake</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Everything should be a truth</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Don't hide</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Show the strengths of your technique</li>
+<li class=" ml-8">But also show equally its weaknesses and limitations<ul class=" list-disc font-serif">
+<li class=" ml-8">This is <em>integrity</em></li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Too bad that we all became academic salesman in the involution</p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="plagiarism" class=" text-xl mt-2 pb-2 font-sans">Plagiarism</h2>
+<p class=" font-serif my-1"><a href="https://integrity.mit.edu/handbook/what-plagiarism" class=" text-amber-900">What is plagiarism</a></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Plagiarism occurs when you use another&#8217;s words, ideas, assertions, data, or figures and do not acknowledge that you have done so.</li>
+<li class=" ml-8">If you use the words, ideas, or phrasing of another person or from published material, you must<ul class=" list-disc font-serif">
+<li class=" ml-8">Use quotation marks around the words and cite the source, or paraphrase or summarize acceptably and cite the source.</li>
+</ul>
+</li>
+<li class=" ml-8">If you use charts, graphs, data sets, or numerical information obtained from another person or from published material, you must also cite the source.</li>
+<li class=" ml-8">You must always acknowledge your sources by citing them. In this way, you have the right to use another&#8217;s creative output by giving that person credit for the work s/he has done.</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="benchmarking-crimes" class=" text-xl mt-2 pb-2 font-sans">Benchmarking Crimes</h2>
+<p class=" font-serif my-1"><a href="https://www.cse.unsw.edu.au/~gernot/benchmarking-crimes.html" class=" text-amber-900">Benchmarking crimes</a></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">selective benchmarking</li>
+<li class=" ml-8">improper handling of benchmark results</li>
+<li class=" ml-8">using the wrong benchmarks</li>
+<li class=" ml-8">improper comparison of benchmark results</li>
+<li class=" ml-8">missing information</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="before-writing-anything" class=" text-2xl mt-2 font-sans">Before Writing Anything...</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="whats-your-research-contribution" class=" text-xl mt-2 pb-2 font-sans">What's Your Research Contribution?</h2>
+<p class=" font-serif my-1">How to evaluate a research work's contributions</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Problem?</li>
+<li class=" ml-8">Significance and novelty?</li>
+<li class=" ml-8">Evidences?<ul class=" list-disc font-serif">
+<li class=" ml-8">Badly: <em>we submit too many useless &#8220;toilet papers&#8221;</em></li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Evaluation criteria (SE conferences)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Soundness</li>
+<li class=" ml-8">Significance</li>
+<li class=" ml-8">Novelty</li>
+<li class=" ml-8">Verifiability</li>
+<li class=" ml-8">Presentation</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="take-good-care-of-your-reviewers" class=" text-xl mt-2 pb-2 font-sans">Take Good Care of Your Reviewers</h2>
+<ol class=" list-decimal font-serif">
+<li class=" ml-8">Outsiders<ul class=" list-disc font-serif">
+<li class=" ml-8">Knows nothing about your specific research</li>
+<li class=" ml-8">But carries with their own logics</li>
+</ul>
+</li>
+<li class=" ml-8">Expert reviewers<ul class=" list-disc font-serif">
+<li class=" ml-8">Everything is trivial in their perspectives</li>
+</ul>
+</li>
+<li class=" ml-8">Nitpick reviewers<ul class=" list-disc font-serif">
+<li class=" ml-8">Comes with an SMT solver that negates all your claims</li>
+<li class=" ml-8">No clarification &#8594; <red>accept it's counterpart</red><ul class=" list-disc font-serif">
+<li class=" ml-8">Don't argue for significance &#8594; insignificant</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="finally" class=" text-xl mt-2 pb-2 font-sans">Finally...</h2>
+<p class=" font-serif my-1">Start writing early!</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Writing is a hard time for everyone (also the case for your advisors)</li>
+<li class=" ml-8">I start early.</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">My mechanism to ensure early writing</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Create a shared repo on Overleaf<ul class=" list-disc font-serif">
+<li class=" ml-8">Paid $180/yr for premium features!</li>
+</ul>
+</li>
+<li class=" ml-8">Watch over the progress</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="understanding-research-contributions" class=" text-2xl mt-2 font-sans">Understanding Research Contributions</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="how-to-claim-your-contributions" class=" text-xl mt-2 pb-2 font-sans">How to Claim Your Contributions?</h2>
+<p class=" font-serif my-1">From an existing problem (incremental work)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#8594; Improvements bring real practical benefits</li>
+<li class=" ml-8">&#8594; Harmful if the problem is not solved</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">From a new and important problem</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#8594; This is the first work to ...</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">And defend your claim of contributions</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Common traps<ul class=" list-disc font-serif">
+<li class=" ml-8">Insignificant research (<del>quit PhD asap</del>)</li>
+<li class=" ml-8">Lacks a story</li>
+<li class=" ml-8">Broken logic</li>
+<li class=" ml-8">Insufficient evidences</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="example-explode-osdi06-best-paper" class=" text-xl mt-2 pb-2 font-sans">Example: EXPLODE (OSDI'06; Best Paper)</h2>
+<p class=" font-serif my-1">Story and problem</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Storage systems ... have a simple, basic contract: you give them data, they do not lose or corrupt it.
+Often they store the only copy, making its irrevocable loss almost arbitrarily bad.
+Unfortunately, their code is exceptionally hard to get right, ...</li>
+<li class=" ml-8">This paper describes EXPLODE, a system that makes it easy to systematically check real storage systems for errors.</li>
+</ul>
+<p class=" font-serif my-1">Evidences</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">It found serious bugs in a broad range of real storage systems (without requiring source code): ... We found bugs in every system we checked, 36 bugs in total, typically with little effort.</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="for-software-engineering-papers" class=" text-xl mt-2 pb-2 font-sans">For Software Engineering Papers</h2>
+<p class=" font-serif my-1">Useful in improving software quality or productivity</p>
+<hr>
+<p class=" font-serif my-1">Think of your work</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Whom are you serving?</li>
+<li class=" ml-8">To what extent have you changed their software engineering practices?</li>
+<li class=" ml-8">Why must they care about your work?<ul class=" list-disc font-serif">
+<li class=" ml-8">The &#8220;programmer test&#8221;</li>
+</ul>
+</li>
+<li class=" ml-8">How to validate your claim by experiments?</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Think of a one-minute introduction of your work to big bosses</p></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="presentation" class=" text-2xl mt-2 font-sans">Presentation</h1>
+<p class=" font-serif my-1"><br></p>
+<p class=" font-serif my-1">Don&#8217;t make readers a hard time in reading your papers!</p>
+<p class=" font-serif my-1">Your technical content is already hard enough.</p></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="concise-and-precise" class=" text-xl mt-2 pb-2 font-sans">Concise and Precise</h2>
+<p class=" font-serif my-1">The bad practice: write an essay (at least 120 words)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Your writings are usually <em>verbose</em> (meet the requirements) rather than <em>precise</em> and <em>concise</em> (convince the others)</li>
+</ul>
+<hr>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">Vigorous writing is <em>concise</em>. A sentence should contain no unnecessary words, a paragraph no unnecessary sentences, for the same reason that a drawing should have no unnecessary lines and a machine no unnecessary parts.
+This requires not that the writer make all his sentences short, or that he avoid all detail and treat his subject only in outline, but that <em>every word tell</em>.</p>
+<p class=" font-serif my-1">&#8212;&#8212; The Elements of Style</p>
+</blockquote></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="improving-your-logic-flow" class=" text-xl mt-2 pb-2 font-sans">Improving Your Logic Flow</h2>
+<p class=" font-serif my-1">A &#8220;least surprise&#8221; paper</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Introduction is the expansion of abstract</li>
+<li class=" ml-8">Paper is the expansion of introduction</li>
+<li class=" ml-8">Paragraph is the expansion of topic sentences</li>
+<li class=" ml-8">Every sentence connects its contexts<ul class=" list-disc font-serif">
+<li class=" ml-8">Readers can quickly verify your paper's soundness with minimal effort</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="two-approaches-to-writing" class=" text-xl mt-2 pb-2 font-sans">Two Approaches to Writing</h2>
+<p class=" font-serif my-1">Top-down approach</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Abstract &#8594; introduction &#8594; full paper</li>
+<li class=" ml-8">Pros: helps you quickly finish the paper</li>
+<li class=" ml-8">Cons: the abstract/intro may be suboptimal</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Bottom-up approach</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Technical parts and evaluation (plan) &#8594; introduction &#8594; abstract</li>
+<li class=" ml-8">Pros: better paper</li>
+<li class=" ml-8">Cons: wastes time on polishing technical parts</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="zoom-in-sentences" class=" text-2xl mt-2 font-sans">Zoom In: Sentences</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="principle-1-no-grammatical-mistakes" class=" text-xl mt-2 pb-2 font-sans">Principle (1): No Grammatical Mistakes</h2>
+<p class=" font-serif my-1">First, no spelling mistakes!</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><red>Don't insult your expert readers.</red></li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Eliminating grammatical mistakes are challenging for non-native speakers</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Tenses (sometimes we have conventions, e.g., present simple in describing your experiments)</li>
+<li class=" ml-8">A v.s. the</li>
+<li class=" ml-8">That v.s. which?</li>
+<li class=" ml-8">...</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="principles-2-keep-logic-flowing" class=" text-xl mt-2 pb-2 font-sans">Principles (2): Keep Logic Flowing</h2>
+<p class=" font-serif my-1">(Majumdar and Niksic; POPL'18)</p>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">(1) [<em>Topic Sentence</em>] Large-scale distributed systems are difficult to build and test.
+(2) On top of the non-determinism arising out of concurrent exchange of messages, these systems must account for partial failures, where components or communication can fail along the way and produce incomplete results.
+(3) Fault-tolerant components are difficult to design and reason about, ...</p>
+</blockquote>
+<p class=" font-serif my-1">distributed systems &#8594; basic ideas &#8594; the hard part</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Long sentence (2), but the logic is easy to follow.</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="zoom-in-words" class=" text-2xl mt-2 font-sans">Zoom In: Words</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="principle-1-be-precise" class=" text-xl mt-2 pb-2 font-sans">Principle (1): Be Precise</h2>
+<p class=" font-serif my-1">Each word has its distributed representation (embedding)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Software (emphasizes that it is a product)<ul class=" list-disc font-serif">
+<li class=" ml-8">software engineering</li>
+</ul>
+</li>
+<li class=" ml-8">Program (the most general and neutral term)<ul class=" list-disc font-serif">
+<li class=" ml-8">program synthesis, program synthesis</li>
+</ul>
+</li>
+<li class=" ml-8">Code (usually a subject to be analyzed)<ul class=" list-disc font-serif">
+<li class=" ml-8">code generation, code completion</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="principle-2-be-consistent" class=" text-xl mt-2 pb-2 font-sans">Principle (2): Be Consistent</h2>
+<p class=" font-serif my-1">Use words consistently across your paper</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Example: software, program, and code are sometimes interchangeable<ul class=" list-disc font-serif">
+<li class=" ml-8">but don't switch between them to indicate a same thing</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="common-anti-patterns" class=" text-xl mt-2 pb-2 font-sans">Common Anti-patterns</h2>
+<p class=" font-serif my-1">Vague/offensive/subjective words</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Very well &#8594; satisfactory, ... (still not satisfactory)</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Informal writing</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">It's &#8594; it is; can't &#8594; cannot</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Other minor issues</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Since &#8594; because (components may become coupled since the adaptation introduces dependency)</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="zoom-in-punctuation" class=" text-2xl mt-2 font-sans">Zoom In: Punctuation</h1>
+<p class=" font-serif my-1">(Just a few examples)</p></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="parentheses-and-brackets" class=" text-xl mt-2 pb-2 font-sans">Parentheses and Brackets</h2>
+<p class=" font-serif my-1">Which one is correct?</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Please read the analysis. (You'll be amazed.)</li>
+<li class=" ml-8">Please read the analysis (you'll be amazed.)</li>
+<li class=" ml-8">Please read the analysis (you'll be amazed).</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Which one is correct?</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">In EXPLODE[1], ...</li>
+<li class=" ml-8">In EXPLODE [1], ...</li>
+</ul>
+<hr>
+<p class=" font-serif my-1"><del>Starcraft players usually cannot see the difference.</del></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="oxford-comma" class=" text-xl mt-2 pb-2 font-sans">Oxford Comma</h2>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/ISER/2022/slides/img/Oxford-comma-explained.png" width="480px"></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="quotation-marks" class=" text-xl mt-2 pb-2 font-sans">Quotation Marks</h2>
+<p class=" font-serif my-1">Be careful!</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">I wrote &#8220;fixing a mistake.&#8221; That's correct in US grammar. Or, &#8220;fixing a mistake,&#8221; if it were followed by a comma.</li>
+<li class=" ml-8">Not in the UK: you'd write &#8220;fixing a mistake&#8221;.</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">The one exception we agree on: If the quote is around a symbol. For instance:</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">We denote this situation with the label &#8220;<math>O</math>&#8221;.</li>
+<li class=" ml-8">Colons: be careful!</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="summary" class=" text-2xl mt-2 font-sans">Summary</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="tips" class=" text-xl mt-2 pb-2 font-sans">Tips</h2>
+<p class=" font-serif my-1">Learn from native speaker's papers</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Read sufficiently many papers</li>
+<li class=" ml-8">Find the style you loved</li>
+<li class=" ml-8">Practice</li>
+</ul>
+<p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/ISER/2022/slides/img/grammar-girl.png" width="250px"></p>
+<hr>
+<p class=" font-serif my-1">Find useful resources</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">(QDT) Grammar Girl's Quick and Dirty Tips</li>
+<li class=" ml-8">(EOS) The Elements of Style</li>
+<li class=" ml-8">(CMOS) The Chicago Manual of Style</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="end" class=" text-2xl mt-2 font-sans">End.</h1></div></div></div>
+        
+      
+      </section>
+    
+    </section>
+  
+</div>
+</div>
+
+<script src="../../../static/reveal/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    
+    width: 1024, height: 768,
+    
+    slideNumber: 'c/t',
+    controlsTutorial: false,
+    progress: false,
+    hash: true,
+    center: false,
+    autoAnimateUnmatched: true,
+    autoAnimateEasing: 'ease-out',
+    autoAnimateDuration: 0.3,
+    transitionSpeed: 'fast'
+  });
+</script>
+
+
+</body>
+
+</html>

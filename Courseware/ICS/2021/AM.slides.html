@@ -1,0 +1,863 @@
+<!DOCTYPE html><html class="h-100">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="../../static/css/base.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="../../static/img/favicon.png" type="image/x-icon">
+
+  <style>
+    .font-sans {
+      font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+    }
+    .font-serif {
+      font-family: 'Source Serif Pro', 'Songti SC', 'SimSun', 'Serif', serif;
+    }
+  </style>
+  <link rel="stylesheet" href="../../static/katex/katex.min.css">
+  <script defer src="../../static/katex/katex.min.js"></script>
+  <script defer src="../../static/katex/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+            // customised options
+            // &#8226; auto-render specific keys, e.g.:
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ],
+            // &#8226; rendering keys, e.g.:
+            throwOnError : false
+          });
+      });
+  </script>
+
+
+  
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="../../static/reveal/reveal.css">
+<link rel="stylesheet" href="../../static/reveal/theme/simple.css" id="theme">
+
+<style>
+.reveal .slide-number {
+  font-size: 26px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, .3);
+}
+
+.reveal .full-screen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.reveal .slides {
+  border: 1.5px #ddd solid;
+  border-radius: 7px;
+  text-align: left;
+  font-weight: 300;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  font-family: 'Lato', 'SimHei', 'STXihei', 'Droid Sans';
+  font-weight: 400;
+}
+
+.reveal p, .reveal li, .reveal center {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Droid Sans';
+}
+
+.reveal li + li {
+  margin-top: 10px;
+}
+
+.reveal ul {
+  display: block;
+  margin-right: 15px;
+}
+
+.reveal p, .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5 {
+  padding:  0 25px 0 25px;
+}
+
+.reveal table {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Sans Serif';
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.reveal th {
+  background-color: #eee;
+}
+
+.reveal tr:nth-child(even) {
+  background-color: #efffff;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  text-align: left;
+  margin: 0 0 20px 0;
+ color: #222; 
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
+
+
+.reveal h1 {
+  margin: 0 10 0 10;
+  font-size: 60px;
+}
+.reveal .middle h1 {
+  text-align: center;
+}
+
+.reveal h2 {
+  font-size: 48px;
+  border-bottom: 2px solid rgb(106, 0, 95);
+  padding-bottom: 5px;
+}
+.reveal h3 { font-size: 1.15em; }
+.reveal h4 { font-size: 1.05em; }
+
+.reveal .center {
+  text-align: center;
+}
+
+.reveal .middle {
+  height: 728px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.reveal pre {
+  font-size: 28px;
+ 
+  background-color: #eee;
+
+  border-radius: 3mm;
+  padding: 10px 10px 10px 10px;
+}
+
+.reveal pre code {
+  max-height: none;
+}
+
+.reveal code {
+  font-family: 'Inconsolata', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif', Monospace;
+}
+
+.reveal .middle blockquote {
+  text-align: center;
+  color: rgb(106, 0, 95);
+  background: none;
+  box-shadow: none;
+}
+
+.reveal .middle blockquote a {
+  color: inherit;
+}
+
+.reveal blockquote p, .reveal blockquote li {
+  font-family: 'Lato', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif';
+}
+
+section .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reveal .author-block {
+  margin: 75px 0 35px 0;
+}
+.reveal .author-affiliation img {
+  margin: 15px 0 0 0;
+}
+.reveal .author-block p, .reveal .author-affiliation p  {
+  font-family: 'Kaiti', 'STKaiti', 'Serif', 'Times', 'Times New Roman';
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+.reveal .author-affiliation {
+  display: inline-block;
+  font-size: 90%;
+}
+.reveal hr {
+  border: 10px solid rgba(0, 0, 0, 0);
+}
+.reveal li {
+  margin-top: 10px;
+}
+</style>
+
+  <title>AbstractMachine &#36873;&#35762;</title>
+</head>
+
+<body class="d-flex flex-column h-100">
+  
+  
+
+<div class="reveal">
+<div class="slides">
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="abstractmachine" class=" text-2xl mt-2 font-sans">AbstractMachine &#36873;&#35762;</h1>
+<p class=" font-serif my-1"><include src="Slides_Author"><div><div class="py-16">
+<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">&#33931;&#28814;&#23721;</a></p>
+</div>
+<div class="row">
+<div class="author-affiliation">
+    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#12288;&#12288;&#21335;&#20140;&#22823;&#23398;&#12288;&#12288;</p>
+    <img class="inline-img h-24" src="../../static/img/nju-logo.jpg" style="display: inline-block;"></a>
+  </div>
+<div class="author-affiliation">
+   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#31185;&#23398;&#19982;&#25216;&#26415;&#31995;</p>
+    <img class="inline-img h-24" src="../../static/img/njucs-logo.jpg" style="display: inline-block;"></a>
+  </div>
+<div class="author-affiliation">
+    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#36719;&#20214;&#30740;&#31350;&#25152;</p>
+    <img class="inline-img h-24" src="../../static/img/ics-logo.png" style="display: inline-block;"></a>
+  </div>
+</div></div></include></p></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26412;&#35762;&#27010;&#36848;</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">&#22256;&#24785;&#65306;&#20026;&#20160;&#20040;&#38656;&#35201; AbstractMachine?</p>
+</blockquote>
+<hr>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22797;&#26434;&#31995;&#32479;&#30340;&#26500;&#36896;&#19982;&#35299;&#37322;</li>
+<li class=" ml-8">&#29702;&#35299;&#35745;&#31639;&#26426;&#31995;&#32479;</li>
+<li class=" ml-8">&#20195;&#30721;&#23548;&#35835;</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#28145;&#21463;&#25240;&#30952;&#30340;&#12298;&#35745;&#31639;&#26426;&#31995;&#32479;&#22522;&#30784;&#12299;</h1>
+<hr>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../pages/ICS/2021/img/wa.jpg" width="600px"></p></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26469;&#19978;&#12298;&#35745;&#31639;&#26426;&#31995;&#32479;&#22522;&#30784;&#12299;&#30340;&#21021;&#34935;</h2>
+<p class=" font-serif my-1">&#20320;&#26159;&#21542;&#22256;&#24785;&#65292;&#8220;&#23398;&#36825;&#20010;&#19996;&#35199;&#21040;&#24213;&#26377;&#20160;&#20040;&#29992;&#8221;&#65311;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20320;&#26159;&#21542;&#29992; &#8220;&#24635;&#26377;&#29992;&#30340;&#8221; &#26469;&#40635;&#30201;&#33258;&#24049;&#65311;</li>
+<li class=" ml-8">&#20320;&#26159;&#21542;&#20026;&#32771;&#20102; 90 &#20998;/&#32771;&#36807;&#20102;/...&#27838;&#27838;&#33258;&#21916;&#65311;</li>
+<li class=" ml-8">&#20320;&#35748;&#20026;&#20320;&#26159;&#25166;&#23454;&#22320;&#25484;&#25569;&#20102;&#20869;&#23481;&#65292;&#36824;&#26159;&#19968;&#36807;&#21363;&#24536;&#30340;&#24212;&#35797;&#65311;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">John Hopcroft (1986 Turing Award, with Robert Tarjan)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Hopcroft-Karp Algorithm, $O(E\sqrt V)$ &#20108;&#20998;&#22270;&#21305;&#37197;<ul class=" list-disc font-serif">
+<li class=" ml-8"><img alt="" class="float-right" src="../../pages/ICS/2021/img/john.jpg" width="300px">
+  &#20013;&#22269;&#26412;&#31185;&#29983;&#25945;&#32946;&#24182;&#27809;&#26377;&#20026;&#30740;&#31350;&#22411;&#21338;&#22763;&#21019;&#36896;&#20986;&#36275;&#22815;&#30340;&#39640;&#36136;&#37327;&#30003;&#35831;&#20154;</li>
+<li class=" ml-8">&#20013;&#22269;&#39640;&#26657;&#36807;&#20110;&#27880;&#37325;&#22269;&#38469;&#22768;&#26395;&#65292;&#25226;&#32463;&#36153;&#21644;&#35770;&#25991;&#25968;&#37327;&#20316;&#20026;&#37325;&#35201;&#30340;&#34913;&#37327;&#25351;&#26631;</li>
+<li class=" ml-8">&#39640;&#36136;&#37327;&#26412;&#31185;&#29983;&#25968;&#37327;&#36828;&#36828;&#26080;&#27861;&#36798;&#21040;&#31038;&#20250;&#38656;&#27714;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="1974" class=" text-xl mt-2 pb-2 font-sans">&#35753;&#26102;&#38388;&#22238;&#21040; 1974 &#24180;&#8230;&#8230;</h2>
+<p class=" font-serif my-1">&#19990;&#30028;&#19978;&#31532;&#19968;&#21488; PC (Altair-8800, Intel 8080)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="../../pages/OS/manuals/i8080.pdf" class=" text-amber-900">Intel 8080 Manual</a><ul class=" list-disc font-serif">
+<li class=" ml-8">&#26377;&#23427;&#65292;&#23601;&#26377;&#25972;&#20010;&#19990;&#30028;</li>
+<li class=" ml-8">&#23601;&#20687;&#20320;&#20204;&#22312; PA2 &#37324;&#20307;&#39564;&#30340;&#37027;&#26679;<ul class=" list-disc font-serif">
+<li class=" ml-8">Simple, but not simpler</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class=" font-serif my-1"></p><center><img alt="" height="300px" src="../../pages/OS/img/altair-8800.jpg"> <img alt="" height="300px" src="../../pages/OS/img/litenes.jpg"></center></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#23601;&#22312;&#20960;&#20046;&#21516;&#26102;&#8230;&#8230;</h2>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../pages/ICS/2021/img/microsoft.jpg" width="700px"></p>
+<p class=" font-serif my-1">Bill Gates &#20174; Harvard &#36864;&#23398;&#65292;&#21019;&#24314; Microsoft (1975)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#36825;&#26159;&#32819;&#29087;&#33021;&#35814;&#30340;&#25925;&#20107;</li>
+</ul></div>
+        
+      
+         <div class="fragment"> 
+        <div><p class=" font-serif my-1"><img alt="" class="float-right" src="../../pages/ICS/2021/img/pdp-10.jpg" width="200px"></p>
+<hr>
+<p class=" font-serif my-1">Bill Gates &#21644; Paul Allen &#22312; PDP-10 &#19978;&#23454;&#29616;&#20102; Altair 8800 &#30340;&#20840;&#31995;&#32479;&#27169;&#25311;&#22120;&#21644; BASIC &#35299;&#37322;&#22120;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25104;&#23601;&#20102; PC &#30340;&#20256;&#22855;</li>
+<li class=" ml-8">&#27809;&#26377;&#36719;&#20214;&#65292;&#30828;&#20214;&#27605;&#31455;&#21482;&#26159;&#19968;&#22534;&#28866;&#38081;</li>
+</ul></div>
+         </div> 
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="40-bill-gates" class=" text-xl mt-2 pb-2 font-sans">&#25105;&#20204;&#33457;&#20102; 40 &#24180;&#36861;&#19978;&#20102; Bill Gates &#30340;&#33050;&#27493;</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">&#25105;&#20204;&#24212;&#35813;&#39640;&#20852;&#65311;&#39640;&#20852;&#65311;&#36824;&#26159;&#39640;&#20852;&#65311;</p>
+</blockquote>
+<hr>
+<p class=" font-serif my-1">&#25105;&#20204;&#30340; modernize &#36824;&#26377;&#24456;&#38271;&#30340;&#36335;&#35201;&#36208;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21253;&#25324;&#12298;&#35745;&#31639;&#26426;&#31995;&#32479;&#22522;&#30784;&#12299;</li>
+<li class=" ml-8">&#24517;&#39035;&#20197; &#8220;&#34701;&#20250;&#36143;&#36890;&#8221; &#30340;&#26631;&#20934;&#35201;&#27714;&#22823;&#23478;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#8220;&#28151;&#20010;&#30524;&#29087;&#65292;&#20197;&#21518;&#20877;&#23398;&#8221; $=$ &#33258;&#27450;&#27450;&#20154;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#35745;&#31639;&#26426;&#31995;&#32479;&#30340;&#26500;&#36896;&#19982;&#35299;&#37322;</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#12298;&#35745;&#31639;&#26426;&#31995;&#32479;&#22522;&#30784;&#12299;&#37324;&#30340;&#19977;&#35201;&#32032;</h2>
+<p class=" font-serif my-1">&#20195;&#30721;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="../../pages/ICS/2021/img/hanoi-r.c" class=" text-amber-900">hanoi-r.c</a>; &#38750;&#36882;&#24402;&#29256;&#26412; <a href="../../pages/ICS/2021/img/hanoi-nr.c" class=" text-amber-900">hanoi-nr.c</a></li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#25351;&#20196;&#38598;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">x86-64, RV32IM, ...</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#30005;&#36335;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#36923;&#36753;&#38376;&#12289;&#23548;&#32447;&#12289;&#35302;&#21457;&#22120;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#20195;&#30721; (C) &#8594; &#25351;&#20196;&#38598; &#8594; &#36923;&#36753;&#38376; (&#35745;&#31639;&#26426;)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><del>&#36825;&#20063;&#22826;&#38590;&#20102;&#21543;</del></li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#22797;&#26434;&#20013;&#38544;&#34255;&#30340;&#31209;&#24207;</h2>
+<p class=" font-serif my-1">&#29702;&#35299;/&#26500;&#36896;&#19968;&#20010;&#22797;&#26434;&#31995;&#32479; (&#25805;&#20316;&#31995;&#32479;/&#22788;&#29702;&#22120;/&#33322;&#27597;)&#65311;</p></div>
+        
+      
+         <div class="fragment"> 
+        <div><ul class=" list-disc font-serif">
+<li class=" ml-8">USS Midway (CV-41); 1945 &#24180;&#39318;&#33322;&#65292;&#8220;&#27801;&#28448;&#39118;&#26292;&#8221; &#34892;&#21160;&#21518;&#36864;&#24441;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#33328;&#33337;&#37197;&#32622;&#65307;&#36164;&#28304;&#31649;&#29702;/&#35843;&#24230;&#65307;&#23481;&#38169;&#8230;&#8230;</li>
+</ul>
+</li>
+</ul>
+<p class=" font-serif my-1"></p><center>
+<img alt="" height="320px" src="../../pages/ICS/2021/img/CV41.jpg"> <img alt="" height="320px" src="../../pages/ICS/2021/img/CV41-internal.jpg">
+</center>
+<p class=" font-serif my-1"></p><center>(picture: www.seaforces.org; familyvacationhub.com)</center></div>
+         </div> 
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">&#22797;&#26434;&#20013;&#38544;&#34255;&#30340;&#31209;&#24207; (cont'd)</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">&#33322;&#27597;&#19981;&#26159;&#19968;&#22825;&#36896;&#25104;&#30340;&#12290;</p>
+</blockquote>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../pages/ICS/2021/img/CV-1.jpg" width="800px"></p>
+<p class=" font-serif my-1"></p><center>(picture: portsmouthnavalshipyardmuseum.com)</center></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">&#22797;&#26434;&#20013;&#38544;&#34255;&#30340;&#31209;&#24207; (cont'd)</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">&#37319;&#30719;&#33337;&#32487;&#25215;&#20102;&#33322;&#28023;&#26102;&#20195;&#30340;&#35774;&#35745;&#12290;</p>
+</blockquote>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../pages/ICS/2021/img/Santa-Maria.jpg" width="600px"></p>
+<p class=" font-serif my-1"></p><center>(picture: onlyinyourstate.com)</center></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">&#22797;&#26434;&#20013;&#38544;&#34255;&#30340;&#31209;&#24207; (cont'd)</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">&#22797;&#26434;&#31995;&#32479;&#30340;&#28436;&#21270;&#36890;&#24120;&#26159; <em>evolutionary</em> &#30340;&#32780;&#19981;&#26159; <em>revolutionary</em> &#30340;&#12290;</p>
+</blockquote>
+<p class=" font-serif my-1">&#26080;&#27861;&#31532;&#19968;&#27425;&#23601;&#35774;&#35745;&#20986; &#8220;&#32477;&#23545;&#23436;&#32654;&#8221; &#30340;&#22797;&#26434;&#31995;&#32479;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">(&#22240;&#20026;&#29615;&#22659;&#19968;&#30452;&#22312;&#21464;)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20363;&#23376;&#65306;bash v.s. PowerShell</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#23454;&#38469;&#24773;&#20917;&#65306;&#20174; minimal, simple, and usable &#30340;&#31995;&#32479;&#19981;&#26029;&#32463;&#36807; local modifications (trial and errors)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#35745;&#31639;&#26426;&#30828;&#20214;</li>
+<li class=" ml-8">&#25805;&#20316;&#31995;&#32479;</li>
+<li class=" ml-8">&#32534;&#35793;&#22120;/&#31243;&#24207;&#35774;&#35745;&#35821;&#35328;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#38656;&#27714;&#21644;&#31995;&#32479;&#35774;&#35745;/&#23454;&#29616;&#34746;&#26059;&#24335;&#36845;&#20195;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="a-new-approach-to-ics" class=" text-2xl mt-2 font-sans">A New Approach to ICS</h1>
+<p class=" font-serif my-1"><br></p>
+<h1 id="jyy" class=" text-2xl mt-2 font-sans">(&#20197;&#21450; jyy &#30340;&#28040;&#22833;)</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#22312;&#35745;&#31639;&#26426;&#35806;&#29983;&#20043;&#21069;&#8230;&#8230;</h2>
+<p class=" font-serif my-1">&#25105;&#20204;&#21487;&#20197;&#29992;&#36923;&#36753;&#30005;&#36335;&#25645;&#35745;&#31639;&#22120;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25105;&#20204;&#21487;&#20197;&#20998;&#25104; core, uncore, ...</li>
+</ul>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../pages/ICS/2021/img/calc.jpg" width="500px"></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25226;&#35745;&#31639;&#22120;&#21464;&#25104;&#35745;&#31639;&#26426;</h2>
+<p class=" font-serif my-1">&#21482;&#38656;&#35201;&#20004;&#26465;&#25351;&#20196;&#21644;&#19968;&#20010;&#32534;&#35793;&#22120;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="../../pages/ICS/2021/img/hello.c" class=" text-amber-900">hello.c</a>, <a href="../../pages/ICS/2021/img/baremetal.h" class=" text-amber-900">baremetal.h</a></li>
+</ul>
+<hr>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>00000000 &lt;entry&gt;:
+   0:   00100513   li  a0,1    # R[a0] &lt;- 1
+   4:   04800593   li  a1,72   # R[a1] &lt;- 0x48 ('H')
+   8:   00100073   ebreak      # hyper-call(a0, a1)
+   c:   06900593   li  a1,105  # R[a1] &lt;- 0x69 ('i')
+  10:   00100073   ebreak
+  14:   00a00593   li  a1,10   # R[a1] &lt;- 0x0a ('\n')
+  18:   00100073   ebreak
+  1c:   00200513   li  a0,3    # R[a0] &lt;- 3
+  20:   00100073   ebreak
+</code></pre></div>
+
+<hr>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22238;&#39038;&#65306;&#20195;&#30721; (C) &#8594; &#25351;&#20196;&#38598; &#8594; &#36923;&#36753;&#38376; (&#35745;&#31639;&#26426;)</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="von-neumann" class=" text-xl mt-2 pb-2 font-sans">von Neumann &#35745;&#31639;&#26426;</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">&#21487;&#20197;&#25226;&#29366;&#24577;&#26426;&#30340;&#24418;&#24577;&#20445;&#23384;&#22312;&#23384;&#20648;&#22120;&#37324;&#65292;&#32780;&#19981;&#35201;&#27599;&#27425;&#37325;&#26032;&#35774;&#32622;&#12290;(&#23384;&#20648;&#31243;&#24207;&#30340;&#36890;&#29992;&#24615;&#30495;&#27491;&#25472;&#36215;&#20102;&#35745;&#31639;&#26426;&#36208;&#21521;&#20840;&#39046;&#22495;&#30340;&#38761;&#21629;&#12290;)</p>
+</blockquote>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../pages/ICS/2021/img/IBM709.jpg" width="600px"></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25105;&#20204;&#36824;&#38656;&#35201;&#20160;&#20040;&#65311;</h2>
+<p class=" font-serif my-1">&#20320;&#20204;&#22312;&#12298;&#35745;&#31639;&#26426;&#31995;&#32479;&#22522;&#30784;&#12299;&#20013;&#23398;&#20064;&#30340;&#26426;&#21046;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">I/O + &#20013;&#26029; = &#20016;&#23500;&#30340;&#24212;&#29992;</li>
+<li class=" ml-8">&#20013;&#26029; + &#26356;&#22823;&#30340;&#20869;&#23384; = &#20998;&#26102;&#22810;&#32447;&#31243;</li>
+<li class=" ml-8">&#20998;&#26102;&#22810;&#32447;&#31243; + &#34394;&#25311;&#23384;&#20648; = &#36827;&#31243;</li>
+<li class=" ml-8">&#22810;&#22788;&#29702;&#22120;</li>
+<li class=" ml-8">&#8230;&#8230;</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="abstractmachine" class=" text-xl mt-2 pb-2 font-sans">AbstractMachine &#30340;&#35774;&#35745;&#21462;&#33293;</h2>
+<p class=" font-serif my-1">&#25552;&#20379;<red>&#26368;&#23569;</red>&#26426;&#21046;&#20197;&#23454;&#29616;&#29616;&#20195;&#35745;&#31639;&#26426;&#31995;&#32479;&#36719;&#20214;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">TRM (&#31243;&#24207;&#25152;&#38656;&#26368;&#23567;&#30340;&#36816;&#34892;&#29615;&#22659;)</li>
+<li class=" ml-8">IOE (&#20165;&#25552;&#20379;&#19968;&#20123;&#31995;&#32479;&#26080;&#20851;&#30340;&#35774;&#22791;&#25277;&#35937;)</li>
+<li class=" ml-8">CTE (&#31616;&#21270;&#12289;&#32479;&#19968;&#12289;&#30456;&#23545;&#20302;&#25928;&#30340;&#20013;&#26029;&#22788;&#29702;)</li>
+<li class=" ml-8">VME (&#22522;&#20110;&#39029;&#30340;&#26144;&#23556;&#65292;&#24573;&#30053;&#30828;&#20214;&#23454;&#29616;)</li>
+<li class=" ml-8">MPE (&#20551;&#35774; race-freedom&#12289;&#31616;&#21270;&#30340;&#31995;&#32479;&#27169;&#22411;)</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#25105;&#20204;&#30340;&#35774;&#35745;&#20570;&#20102;&#24590;&#26679;&#30340;&#21462;&#33293;&#65311;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#24471;&#21040;&#65306;&#32479;&#19968;&#31616;&#27905;&#30340;&#25509;&#21475;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#36866;&#21512;&#25945;&#23398;&#65307;&#36328;&#20307;&#31995;&#32467;&#26500;&#23384;&#27963; (&#29978;&#33267;&#26377; native)</li>
+</ul>
+</li>
+<li class=" ml-8">&#22833;&#21435;&#65306;&#23454;&#38469;&#31995;&#32479;&#30340;&#29305;&#24615;&#25903;&#25345;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#19981;&#36830;&#32493;&#30340;&#20869;&#23384;&#12289;&#28909;&#25554;&#25300;&#20869;&#23384;&#12289;Access/Dirty Bit&#8230;&#8230;</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#20195;&#30721;&#23548;&#35835;</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="makefile" class=" text-xl mt-2 pb-2 font-sans">Makefile</h2>
+<p class=" font-serif my-1">Make &#26159;&#22823;&#23478;&#25509;&#35302;&#30340;&#31532;&#19968;&#20010; build system</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Classic<ul class=" list-disc font-serif">
+<li class=" ml-8">GNU Make (&#26377;&#20154;&#38382;&#36215;&#36807; CMake)</li>
+</ul>
+</li>
+<li class=" ml-8">Modern<ul class=" list-disc font-serif">
+<li class=" ml-8">Markdown + Doc comments (<code>#</code> &#30340;&#20351;&#29992;)</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#19979;&#19968;&#27493;&#65311;</h2>
+<p class=" font-serif my-1">&#20026;&#20160;&#20040;&#25351;&#23450;&#20102; <code>ARCH</code>&#65292;&#23601;&#21487;&#20197;&#32534;&#35793;&#20986;&#19968;&#20010;&#30446;&#26631;&#24179;&#21488;&#30340;&#21487;&#25191;&#34892;&#25991;&#20214;&#65311;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">RTFSC? RTFM?</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#19968;&#20999;&#30342;&#31243;&#24207; (command-line shell; makefile; ...)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#29702;&#35299;&#31243;&#24207;&#26377;&#20004;&#31181;&#26041;&#27861;&#65306;&#38745;&#24577; v.s. &#21160;&#24577;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25105;&#20204;&#21487;&#20197;&#30475;&#25191;&#34892;&#30340; <red>trace</red>&#65281;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#12298;&#35745;&#31639;&#26426;&#31995;&#32479;&#22522;&#30784;&#12299;&#22788;&#22788;&#26159;&#24425;&#34507;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#35745;&#31639;&#26426;&#31995;&#32479;&#30340;&#19968;&#20999;&#22312;&#27492;&#21051;&#19981;&#20877;&#31070;&#31192; (<red>&#29992;&#23545;&#30340;&#26041;&#24335;&#20570;&#23545;&#30340;&#20107;</red>)</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>$ make -nB \
+  | grep -ve '^\(\#\|echo\|mkdir\|make\)' \
+  | sed "s#$AM_HOME#\$AM_HOME#g" \
+  | sed "s#$PWD#.#g" \
+  | vim -
+</code></pre></div></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#24635;&#32467;</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26641;&#31435;&#19968;&#20010; &#8220;&#26631;&#20934;&#8221;</h2>
+<p class=" font-serif my-1">&#22256;&#38590;&#30340;&#19996;&#35199;&#24635;&#26159;&#23384;&#22312;&#31616;&#21333;&#30340;&#35299;&#37322;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#31616;&#21333; $\ne$ trivial</li>
+<li class=" ml-8">&#31616;&#21333; $\ne$ &#33298;&#36866;</li>
+<li class=" ml-8">&#31616;&#21333; $\ne$ &#20869;&#21367;</li>
+<li class=" ml-8">&#31616;&#21333; $=$ &#19987;&#19994;&#30340;&#35757;&#32451;&#21644;&#32032;&#36136;</li>
+<li class=" ml-8">&#31616;&#21333; $=$ &#30171;&#33510;&#30340;&#25240;&#30952;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1"><del>&#36825;&#25165;&#26159;&#20320;&#20204;&#35201;&#19978;&#30340;&#22823;&#23398;</del></p>
+<hr>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">Real power can't be given. It must be taken. &#8212;&#8212;Godfather</p>
+</blockquote></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="1-pa" class=" text-xl mt-2 pb-2 font-sans">&#20843;&#21350; (1): PA &#30340;&#30001;&#26469;</h2>
+<p class=" font-serif my-1">yzh &#35273;&#24471;&#8230;&#8230;&#22909;&#20687;&#21482;&#26377; OS &#19981;&#22815;&#21170;&#21834;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#32780;&#19988; OSLab &#19978;&#26469;&#23601;&#25226; x86 &#30340;&#25163;&#20876;&#20002;&#32473;&#20320;&#22909;&#20687;&#19981;&#22826;&#22909;&#29609;</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#37027;&#23601;&#35753;&#22823;&#23478;&#22909;&#22909;&#35835;&#35835; x86 &#25163;&#20876;&#21543;&#8230;&#8230;&#37027;&#8230;&#8230;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#23601;&#20570;&#20010;&#27169;&#25311;&#22120;&#22909;&#21862;&#65292;&#21453;&#27491;&#23601;&#26159;&#29031;&#30528;&#25163;&#20876;&#20889;&#19968;&#36941;&#30340;&#20107;</li>
+<li class=" ml-8">&#20110;&#26159;&#23601;&#26377;&#20102; PA: &#31616;&#26131; x86 &#20840;&#31995;&#32479;&#27169;&#25311;&#22120;</li>
+<li class=" ml-8">&#30446;&#30340;&#26159;&#35753;&#22823;&#23478;&#30693;&#36947;&#8220;&#20160;&#20040;&#26159;&#35745;&#31639;&#26426;&#8221;</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="2-pa" class=" text-xl mt-2 pb-2 font-sans">&#20843;&#21350; (2): PA &#30340;&#21518;&#32493;</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">&#35273;&#24471;&#34429;&#28982;&#20307;&#31995;&#37324;&#30340;&#30830;&#20160;&#20040;&#37117;&#26377;&#20102;&#65292;&#20294;&#36824;&#26159;&#19981;&#22815;&#21170;&#21834;&#65292;&#19981;&#22914;&#29609;&#20010;&#22823;&#30340;&#65311;</p>
+</blockquote>
+<p class=" font-serif my-1"></p><center>
+&#33258;&#24049;&#20889;&#20010; CPU
+<p class=" font-serif my-1">&#19978;&#38754;&#36305;&#33258;&#24049;&#30340; OS</p>
+<p class=" font-serif my-1">&#19978;&#38754;&#36305;&#33258;&#24049;&#32534;&#35793;&#22120;&#32534;&#35793;&#20986;&#26469;&#30340;&#24212;&#29992;&#31243;&#24207;</p>
+<p class=" font-serif my-1">&#24212;&#29992;&#31243;&#24207;&#21487;&#20197;&#26159; NEMU</p>
+<p class=" font-serif my-1">NEMU &#21448;&#36305;&#33258;&#24049;&#30340; OS&#8230;&#8230;
+</p></center></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="3-pa" class=" text-xl mt-2 pb-2 font-sans">&#20843;&#21350; (3): PA &#30340;&#21518;&#32493;</h2>
+<p class=" font-serif my-1">RISC-V &#24688;&#22914;&#20854;&#26102;&#22320;&#20986;&#29616;&#20102;</p>
+<hr>
+<p class=" font-serif my-1">&#26159;&#26102;&#20505;&#38761;&#20102;&#12298;&#35745;&#31639;&#26426;&#31995;&#32479;&#22522;&#30784;&#12299;&#30340;&#21629;&#20102;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20195;&#30721;-&#25351;&#20196;-&#30828;&#20214;</li>
+<li class=" ml-8">(&#20570;&#22909;&#36339;&#31080;&#20934;&#22791;)</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="end" class=" text-2xl mt-2 font-sans">End.</h1>
+<hr>
+<p class=" font-serif my-1">Happy Hacking!</p></div></div></div>
+        
+      
+      </section>
+    
+    </section>
+  
+</div>
+</div>
+
+<script src="../../static/reveal/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    
+    width: 1024, height: 768,
+    
+    slideNumber: 'c/t',
+    controlsTutorial: false,
+    progress: false,
+    hash: true,
+    center: false,
+    autoAnimateUnmatched: true,
+    autoAnimateEasing: 'ease-out',
+    autoAnimateDuration: 0.3,
+    transitionSpeed: 'fast'
+  });
+</script>
+
+
+</body>
+
+</html>

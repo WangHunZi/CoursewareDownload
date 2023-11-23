@@ -1,0 +1,254 @@
+<!DOCTYPE html><html class="h-100">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="../../static/css/base.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="../../static/img/favicon.png" type="image/x-icon">
+
+  <style>
+    .font-sans {
+      font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+    }
+    .font-serif {
+      font-family: 'Source Serif Pro', 'Songti SC', 'SimSun', 'Serif', serif;
+    }
+  </style>
+  <link rel="stylesheet" href="../../static/katex/katex.min.css">
+  <script defer src="../../static/katex/katex.min.js"></script>
+  <script defer src="../../static/katex/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+            // customised options
+            // &#8226; auto-render specific keys, e.g.:
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ],
+            // &#8226; rendering keys, e.g.:
+            throwOnError : false
+          });
+      });
+  </script>
+
+
+  
+
+<style>
+.article {
+  -webkit-hyphens: auto;
+}
+form {
+  margin-block-end: 0;
+}
+img {
+  display: inline-block;
+}
+code { font-size: 85%; }
+pre {
+  font-size: 95%;
+  line-height: 120%;
+}
+blockquote {
+  font-size: 95%;
+}
+p {
+  font-size: 105%;
+  text-indent: 2em;
+}
+li {
+  font-size: 105%;
+}
+blockquote p {
+  text-indent: 0em;
+}
+.float-right {
+  padding-left: 10px;
+}
+.float-left {
+  padding-right: 10px;
+}
+a {
+  color: rgb(29 78 216);
+}
+strong {
+  font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+}
+.box        {
+  border-radius: 2px; padding: 1px 4px 2px 4px;
+  font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+  font-size: 95%;
+}
+.box-blue,  .badge-primary  { background-color: rgba(66, 139, 202, 0.5); color: #1d4ed8; }
+.box-green, .badge-success  { background-color: rgba(92, 184, 92, 0.5);  color: #15803d; }
+.box-red,   .badge-danger   { background-color: rgba(217, 83, 79, 0.5);  color: #b91c1c; }
+.box-yellow,.badge-warning  { background-color: rgba(240, 173, 78, 0.5); color: #a16207; }
+.box-gray   { background-color: #a0a0a0; }
+
+.badge {
+  padding: 1 4 1 4;
+  display: inline-block;
+  border-radius: 0.25rem;
+  border: 1px solid;
+}
+.message p {
+  text-indent: 0em;
+  margin-top: 1px;
+}
+.message h1, h2, h3, h4, h5 {
+  font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+}
+.message h2 {
+  font-size: 120%;
+  margin-top: 5px;
+  margin-bottom: 2px;
+}
+.message li {
+  list-style: disc;
+  margin-left: 2em;
+}
+li > p {
+  text-indent: 0em;
+}
+block-quote h4 {
+  float: left;
+  display: inline-block;
+}
+.center {
+  display: block;
+  margin: auto;
+}
+hr {
+  margin-top: 20px;
+  padding-bottom: 20px;
+}
+
+.fa-gradient {
+	background: -webkit-gradient(linear, left top, left bottom, from(rgb(99, 27, 103)), to(#333));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+</style>
+
+
+  <title>Measuring Code Similarity</title>
+</head>
+
+<body class="d-flex flex-column h-100">
+  
+  
+
+<div>
+
+<div class="px-2 py-1 w-full fixed z-50 bg-gradient-to-r from-black via-purple-700 via-purple-500 shadow-lg" style="-webkit-backdrop-filter: saturate(150%) blur(4px); backdrop-filter: saturate(150%) blur(4px)">
+  <form>
+    <a href="../../index.html"><span class="text-lg px-2 text-white">Yanyan's Wiki</span></a>
+    <a href="../../OS/2023/index.html"><span class="text-sm px-2 text-white">&#25805;&#20316;&#31995;&#32479; (2023)</span></a>
+    <input maxlength="9" id="token-input" class="float-right appearance-none border border-transparent px-2 py-1 w-20 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-xs focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent font-mono" type="text" placeholder="TOKEN" oninput="login();">
+  </form>
+</div>
+
+<div class="article container mx-auto md:px-8 lg:px-8 xl:px-8 2xl:px-8 shadow-lg border pb-8 pt-10 max-w-screen-md text-justify divide-y-2 divide-white">
+  <div><h1 id="measuring-code-similarity" class=" text-2xl mt-2 font-sans">Measuring Code Similarity</h1>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">Deadline: <red>Sunday 12 Dec 2021 23:59:59</red>.</p>
+<p class=" font-serif my-1">Submit via command line:</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>curl http://jyywiki.cn/upload \
+  -F course=ISER2021 \
+  -F module=PA1 \
+  -F token={{your token}} \
+  -F stuid={{student id}} \
+  -F stuname={{name (chinese)}} \
+  -F file=@{{path to your submission}}
+</code></pre></div>
+
+</blockquote>
+<p class=" font-serif my-1"><oj-status course="ISER2021" module="PA1"><div class="divide-y divide-dashed">
+    <div class="flex font-semibold">
+      ISER2021-PA1 &#25552;&#20132;&#32467;&#26524;
+    </div>
+    
+  </div>
+</oj-status></p>
+<h2 id="1-background" class=" text-xl mt-2 pb-2 font-sans">1. Background</h2>
+<p class=" font-serif my-1">You may have copied other's code in your undergraduate program. Our <a href="https://zhuanlan.zhihu.com/p/40568346" class=" text-amber-900">study</a> indicate that &gt;80% students were suspected of plagiarism in a particular programming assignment at a 985 university, and 53% are verbatim copies with negligible changes! How could you prevent this from happening (by some software engineering research tricks)? In this experiment, let's have fun being evil and identify possible assignment plagiarism by measuring code similarity.</p>
+<h2 id="2-the-assignment" class=" text-xl mt-2 pb-2 font-sans">2. The Assignment</h2>
+<p class=" font-serif my-1">Suppose we want to perform a similarity check on some programming assignments on Online Judge to find as many suspects of copied programs as possible. For this experiment, we assume that each program on Online Judge is a single-file C++ program that can be compiled by gcc or clang under the <code>-std=c++17</code> (C++ 17 standard) and <code>-pedantic</code> (reject non-standard programs) options.</p>
+<p class=" font-serif my-1">You can use any major programming language you are familiar with (C/C++/Java/Python/JavaScript/Scala/Rust/Go/...) to implement a command line tool <code>codesim</code> that runs under Linux and is used to compare the similarity of two C++ programs. Your <code>codesim</code>  should be run from the command line, given the filenames of the two programs as arguments, and it outputs a line with a floating-point percentage representing the similarity of the code. The percentages do not need to have an exact meaning, just as high a similarity as possible to the code that is actually copied.</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>$ codesim --help
+usage: codesim [-v|--verbose] [-h|--help] code1 code2
+$ codesim foo.cc bar.cpp
+99.3
+</code></pre></div>
+
+<p class=" font-serif my-1">We expect you to write a user-friendly command line tool that</p>
+<ol class=" list-decimal font-serif">
+<li class=" ml-8"><strong>follows the basic specifications of a command line tool</strong>. For example, your command line tool may be called by other scripts, so please do not print any additional information (such as logs) in the standard output. A better practice is to provide <code>-v</code> or <code>-verbose</code> options to print more information in verbose mode, which can also help you debug. </li>
+<li class=" ml-8"><strong>does not create extra temporary files in the current directory</strong>. Linux provides the <code>mktemp</code> family of functions, and every major programming language has an API for this. </li>
+<li class=" ml-8"><strong>does not generate redundant output</strong>. Your tool may be used in conjunction with other tools, so make sure that stdout outputs only one line of similarity percentage. In the case of an error, you can leave it out, but please also follow the command line tool's specification to output the error message to stderr and return a non-zero return code.</li>
+</ol>
+<p class=" font-serif my-1">We expect you to design/choose an appropriate algorithm (possibly provided by existing tool)  to implement <code>codesim</code>. clang will make your life easier in parsing (modern) C++ code; or you can compile the source code and analyze the assembly or binary. Modern programming languages are exceptionally complex and simple manual implementations are almost unrealistic - so try to avoid reinventing the wheel and implement your algorithm on top of existing projects.</p>
+<h2 id="3-the-algorithm" class=" text-xl mt-2 pb-2 font-sans">3. The Algorithm</h2>
+<p class=" font-serif my-1">Code similarity/plagiarism detection is not a new problem. We encourage you to review some of the existing literatures: copy-paste behavior in software (even in the open source community) is a major cause of low quality code propagation and reduced software maintainability. There are even specific methods for detecting code plagiarism, such as the famous <a href="https://theory.stanford.edu/%7Eaiken/moss/" class=" text-amber-900">MOSS</a>. We encourage you to digest the methods in existing literatures and come up with your own ideas, rather than following their original implementations.</p>
+<h2 id="4-submission" class=" text-xl mt-2 pb-2 font-sans">4. Submission</h2>
+<p class=" font-serif my-1">Upload the following as a zip file (zip or tar).</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Source code for the tool (<strong>make sure</strong> that only the source code is included and the library functions that your source code depends on are readily available; <strong>do not</strong> put files that can be generated from the source code (dependencies, binaries, etc.) into your zip archive - they may cause your zip file to exceed the size limit).</li>
+<li class=" ml-8">Short compilation instructions, including how dependent libraries are obtained. (Better use existing dependency management systems.)</li>
+<li class=" ml-8">A report in pdf format (English), briefly describing your algorithm for implementing code similarity checking and key implementation techniques. Please describe your algorithm concisely and precisely. The report should be no more than two A4 pages.</li>
+</ul>
+<p class=" font-serif my-1">This experiment is an open experiment and there is no absolute objective criterion for judging it. We will use your tool to perform a pair-wise comparison  on a set of programs, ranked by similarity, against our known facts.</p>
+<div style="display: none;">
+## 4. Artifact
+
+In order to better facilitate subsequent research, it is essential to release the code of your research work as an open source project. Therefore, in this course, we ask you to choose a programming assignment (codesim or jmtrace) and maintain it according to the general standards of open source software. For artifacts, you are **responsible** for the code to the best of your ability, as other researchers may conduct other research based on your code in the future.
+
+&gt; Special note: You can alternatively choose either PA1 (codesim) or PA2 (jmtrace) as the artifact. Please refer to [Artifact Preparation Guide](Artifact) for more information on how to prepare for an artifact.
+
+</div></div>
+</div>
+
+<div class="container text-xs py-3">
+  <span class="text-muted">
+    <center><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="../../static/img/cc-4.0.png"></a>
+    &#160;&#160;&#160;<a style="color:inherit" href="https://beian.miit.gov.cn/">&#33487; ICP &#22791; 2020049101 &#21495;</a>
+    </center>
+  </span>
+</div>
+
+</div>
+
+<script src="../../static/js/jquery.min.js"></script>
+
+<script>
+function get_token() {
+  var match = document.cookie.match(new RegExp('(^| )token=([^;]+)'));
+  if (match) return match[2];
+  else return "";
+}
+var token = get_token();
+var hint = "token", box = $("#token-input");
+
+if (token == "") { }
+else { box.val(token); }
+
+function login() {
+  var token = box.val()
+  if (!token) {
+    document.cookie = ''
+  } else {
+    document.cookie = 'token=' + token + '; expires=Fri, 31 Dec 9999 23:59:59 GMT;'
+  }
+}
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+0    08048530 <sort>:
+1    8048530:  55                       push   %ebp
+2    8048531:  89 e5                    mov    %esp,%ebp
+3    8048533:  83 ec 10                 sub    $0x10,%esp
+4    8048536:  c7 45 f8 00 00 00 00     movl   $0x0,-0x8(%ebp)
+5    804853d:  c7 45 fc 00 00 00 00     movl   $0x0,-0x4(%ebp)
+6    8048544:  e9 93 00 00 00           jmp    80485dc <sort+0xac>
+7    8048549:  8b 45 fc                 mov    -0x4(%ebp),%eax
+8    804854c:  0f b6 14 c5 60 a0 04 08  movzbl 0x804a060(,%eax,8),%edx
+9    8048554:  8b 45 fc                 mov    -0x4(%ebp),%eax
+10   8048557:  83 c0 01                 add    $0x1,%eax
+11   804855a:  0f b6 04 c5 60 a0 04 08  movzbl 0x804a060(,%eax,8),%eax
+12   8048562:  38 c2                    cmp    %al,%dl
+13   8048564:  76 72                    jbe    80485d8 <sort+0xa8>
+14   8048566:  8b 45 fc                 mov    -0x4(%ebp),%eax
+15   8048569:  0f b6 04 c5 60 a0 04 08  movzbl 0x804a060(,%eax,8),%eax
+16   8048571:  88 45 f0                 mov    %al,-0x10(%ebp)
+17   8048574:  8b 45 fc                 mov    -0x4(%ebp),%eax
+18   8048577:  8b 04 c5 64 a0 04 08     mov    0x804a064(,%eax,8),%eax
+19   804857e:  89 45 f4                 mov    %eax,-0xc(%ebp)
+...  ...       ...                      ...
+38   80485d1:  c7 45 f8 01 00 00 00     movl   $0x1,-0x8(%ebp)
+39   80485d8:  83 45 fc 01              addl   $0x1,-0x4(%ebp)
+40   80485dc:  a1 80 86 04 08           mov    0x8048680,%eax
+41   80485e1:  83 e8 01                 sub    $0x1,%eax
+42   80485e4:  3b 45 fc                 cmp    -0x4(%ebp),%eax
+43   80485e7:  0f 8f 5c ff ff ff        jg     8048549 <sort+0x19>
+44   80485ed:  83 7d f8 00              cmpl   $0x0,-0x8(%ebp)
+45   80485f1:  0f 85 3f ff ff ff        jne    8048536 <sort+0x6>
+46   80485f7:  90                       nop
+47   80485f8:  c9                       leave  
+48   80485f9:  c3                       ret    

@@ -1,0 +1,701 @@
+<!DOCTYPE html><html class="h-100">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="../../../static/css/base.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
+
+  <style>
+    .font-sans {
+      font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+    }
+    .font-serif {
+      font-family: 'Source Serif Pro', 'Songti SC', 'SimSun', 'Serif', serif;
+    }
+  </style>
+  <link rel="stylesheet" href="../../../static/katex/katex.min.css">
+  <script defer src="../../../static/katex/katex.min.js"></script>
+  <script defer src="../../../static/katex/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+            // customised options
+            // &#8226; auto-render specific keys, e.g.:
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ],
+            // &#8226; rendering keys, e.g.:
+            throwOnError : false
+          });
+      });
+  </script>
+
+
+  
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="../../../static/reveal/reveal.css">
+<link rel="stylesheet" href="../../../static/reveal/theme/night.css" id="theme">
+
+<style>
+.reveal .slide-number {
+  font-size: 26px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, .3);
+}
+
+.reveal .full-screen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.reveal .slides {
+  border: 1.5px #ddd solid;
+  border-radius: 7px;
+  text-align: left;
+  font-weight: 300;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  font-family: 'Lato', 'SimHei', 'STXihei', 'Droid Sans';
+  font-weight: 400;
+}
+
+.reveal p, .reveal li, .reveal center {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Droid Sans';
+}
+
+.reveal li + li {
+  margin-top: 10px;
+}
+
+.reveal ul {
+  display: block;
+  margin-right: 15px;
+}
+
+.reveal p, .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5 {
+  padding:  0 25px 0 25px;
+}
+
+.reveal table {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Sans Serif';
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.reveal th {
+  background-color: #eee;
+}
+
+.reveal tr:nth-child(even) {
+  background-color: #efffff;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  text-align: left;
+  margin: 0 0 20px 0;
+
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
+
+.reveal pre {
+  background-color: #222;
+}
+
+
+.reveal h1 {
+  margin: 0 10 0 10;
+  font-size: 60px;
+}
+.reveal .middle h1 {
+  text-align: center;
+}
+
+.reveal h2 {
+  font-size: 48px;
+  border-bottom: 2px solid rgb(106, 0, 95);
+  padding-bottom: 5px;
+}
+.reveal h3 { font-size: 1.15em; }
+.reveal h4 { font-size: 1.05em; }
+
+.reveal .center {
+  text-align: center;
+}
+
+.reveal .middle {
+  height: 728px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.reveal pre {
+  font-size: 28px;
+
+  border-radius: 3mm;
+  padding: 10px 10px 10px 10px;
+}
+
+.reveal pre code {
+  max-height: none;
+}
+
+.reveal code {
+  font-family: 'Inconsolata', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif', Monospace;
+}
+
+.reveal .middle blockquote {
+  text-align: center;
+  color: rgb(106, 0, 95);
+  background: none;
+  box-shadow: none;
+}
+
+.reveal .middle blockquote a {
+  color: inherit;
+}
+
+.reveal blockquote p, .reveal blockquote li {
+  font-family: 'Lato', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif';
+}
+
+section .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reveal .author-block {
+  margin: 75px 0 35px 0;
+}
+.reveal .author-affiliation img {
+  margin: 15px 0 0 0;
+}
+.reveal .author-block p, .reveal .author-affiliation p  {
+  font-family: 'Kaiti', 'STKaiti', 'Serif', 'Times', 'Times New Roman';
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+.reveal .author-affiliation {
+  display: inline-block;
+  font-size: 90%;
+}
+.reveal hr {
+  border: 10px solid rgba(0, 0, 0, 0);
+}
+.reveal li {
+  margin-top: 10px;
+}
+</style>
+
+  <title>Compilers and Semantics of Programming Languages</title>
+</head>
+
+<body class="d-flex flex-column h-100">
+  
+  
+
+<div class="reveal">
+<div class="slides">
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="compilers-and-semantics-of-programming-languages" class=" text-2xl mt-2 font-sans">Compilers and Semantics of Programming Languages</h1>
+<p class=" font-serif my-1"><br></p>
+<p class=" font-serif my-1">Yanyan Jiang</p></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="overview" class=" text-xl mt-2 pb-2 font-sans">Overview</h2>
+<p class=" font-serif my-1">Compilers</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">A minimal compiler for expressions</li>
+<li class=" ml-8">An optimized compiler and beyond</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Semantics</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Formal semantics of the $\textbf{while}$ language</li>
+<li class=" ml-8">Why formal semantics?</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="compilers" class=" text-2xl mt-2 font-sans">Compilers</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="compiler" class=" text-xl mt-2 pb-2 font-sans">Compiler</h2>
+<p class=" font-serif my-1">A program for translating programs to lower-level programs</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Examples <ul class=" list-disc font-serif">
+<li class=" ml-8">C (<a href="../../../pages/ISER/2022/slides/BNF-C.html" class=" text-amber-900">The syntax of C in Backus-Naur Form</a>) &#8594; assembly (.S)</li>
+<li class=" ml-8">Java (<a href="https://docs.oracle.com/javase/specs/jls/se19/html/jls-19.html" class=" text-amber-900">Java Language Specification</a>) &#8594; bytecode (.class)<ul class=" list-disc font-serif">
+<li class=" ml-8">(Bytecode is further just-in-time/<a href="https://openjdk.org/jeps/295" class=" text-amber-900">ahead-of-time</a> compiled)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/ISER/2022/slides/img/llvm.jpg" width="900px"></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="a-compiler-for-simple-expressions" class=" text-xl mt-2 pb-2 font-sans">A Compiler for Simple Expressions</h2>
+<p class=" font-serif my-1">Expression compiler <a href="../../../pages/ISER/2022/slides/demos/ecc.py" class=" text-amber-900">ecc.py</a></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Based on the <a href="https://lark-parser.readthedocs.io/en/latest/" class=" text-amber-900">lark</a> library<ul class=" list-disc font-serif">
+<li class=" ml-8">A modern parsing library (<a href="https://lark-parser.readthedocs.io/en/latest/philosophy.html" class=" text-amber-900">design philosophy</a>)</li>
+<li class=" ml-8">Parses any context-free grammar</li>
+</ul>
+</li>
+<li class=" ml-8">Creates a stack-based compilation to x86-64 assembly<ul class=" list-disc font-serif">
+<li class=" ml-8">Produces slow and verbose code</li>
+</ul>
+</li>
+<li class=" ml-8">Can be assembled and linked (e.g., <a href="../../../pages/ISER/2022/slides/demos/test-main.c" class=" text-amber-900">test-main.c</a>)</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Example (<code>foo.e</code>):</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>foo: (x + 1) * (x + 1)
+</code></pre></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="optimized-compilers" class=" text-xl mt-2 pb-2 font-sans">Optimized Compilers</h2>
+<p class=" font-serif my-1">Static Single Assignments (SSA)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Each assignment receives a new name<ul class=" list-disc font-serif">
+<li class=" ml-8">Instruction = Value</li>
+<li class=" ml-8">Try clang with <code>-emit-llvm -c -S</code><ul class=" list-disc font-serif">
+<li class=" ml-8">(Many papers in the <a href="../Reading_List.html" class=" text-amber-900">reading list</a> are related to compilers)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Rewriting rules and <em>iterate until fixed point</em></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Inlining (<a href="https://dl.acm.org/doi/10.1145/3503222.3507744" class=" text-amber-900">ASPLOS'22</a> &#127941;)</li>
+<li class=" ml-8">Constant Propagation</li>
+<li class=" ml-8">Dead Code Elimination</li>
+<li class=" ml-8">(Problems remain open)</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="playing-with-compilers" class=" text-xl mt-2 pb-2 font-sans">Playing with Compilers</h2>
+<p class=" font-serif my-1">Create an optimized compiler</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="../../../pages/ISER/2022/slides/demos/ecc-opt.py" class=" text-amber-900">ecc-opt.py</a></li>
+<li class=" ml-8">By &#8220;program synthesis&#8221;!<ul class=" list-disc font-serif">
+<li class=" ml-8">Constraint solving for equivalent code templates</li>
+<li class=" ml-8">A quick reference to <a href="https://ericpony.github.io/z3py-tutorial/guide-examples.htm" class=" text-amber-900">Z3 Python API</a></li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Try it</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Optimize <code>(x + 1) * (x + 1) - (x - 1) * (x - 1)</code></li>
+<li class=" ml-8">Optimize <code>x * 9</code></li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="semantics" class=" text-2xl mt-2 font-sans">Semantics</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="semantics-of-expressions" class=" text-xl mt-2 pb-2 font-sans">Semantics of Expressions</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">Can we &#8220;know better&#8221; about an expression's value?</p>
+</blockquote>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>?sum: product
+    | sum "+" product   -&gt; add
+?product: atom
+    | product "*" atom  -&gt; mul
+?atom: NUMBER           -&gt; num
+     | "(" sum ")"
+</code></pre></div>
+
+<p class=" font-serif my-1">Semantics: the &#8220;value&#8221; of expressions</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>eval('3 + 4 * 5') &#8594; 23</code> (expressions are trees!)<ul class=" list-disc font-serif">
+<li class=" ml-8">$\llbracket E + P \rrbracket = \llbracket E \rrbracket + \llbracket P \rrbracket$, $\llbracket E \times P \rrbracket = \llbracket E \rrbracket \times \llbracket P \rrbracket$, $\llbracket (E) \rrbracket = \llbracket E \rrbracket$</li>
+<li class=" ml-8">$\llbracket n \rrbracket = n$ (this is the base case!)</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="semantics-of-expressions-with-variables" class=" text-xl mt-2 pb-2 font-sans">Semantics of Expressions, with Variables</h2>
+<p class=" font-serif my-1"><code>eval('x + y * z') &#8594; ?</code></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Introducing the <red><em>program state</em></red><ul class=" list-disc font-serif">
+<li class=" ml-8">Example: $\sigma = \{ x \mapsto 1, y \mapsto 2, z\mapsto 3\}$</li>
+</ul>
+</li>
+<li class=" ml-8">Semantics of expressions, with variables<ul class=" list-disc font-serif">
+<li class=" ml-8">&#8220;Expression value given variable assignments&#8221;</li>
+<li class=" ml-8">$\llbracket v \rrbracket_\sigma = \sigma(v)$</li>
+<li class=" ml-8"><code>eval('x + y * z')</code> under $\sigma$<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>eval('1 + 2 * 3') &#8594; 4</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="denotational-semantics" class=" text-xl mt-2 pb-2 font-sans">Denotational Semantics</h2>
+<p class=" font-serif my-1">Programs are simply <em>state transformers</em>!</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">$\sigma' = P(\sigma)$, i.e., $(\sigma, \sigma') \in P$<ul class=" list-disc font-serif">
+<li class=" ml-8">Variables may be assigned undefined values ($\bot$)</li>
+<li class=" ml-8">Program states can also be undefined ($\bot$)</li>
+</ul>
+</li>
+<li class=" ml-8">Semantics of $P$ can be recursively defined (just like expressions)<ul class=" list-disc font-serif">
+<li class=" ml-8">$\llbracket \textbf{skip} \rrbracket_\sigma$</li>
+<li class=" ml-8">$\llbracket x := e \rrbracket_\sigma$</li>
+<li class=" ml-8">$\llbracket c_1;\ c_2 \rrbracket_\sigma$</li>
+<li class=" ml-8">$\llbracket \textbf{if}\ b\ {\bf then}\ c_1\ {\bf else}\ c_2 \rrbracket_\sigma $</li>
+<li class=" ml-8">$\llbracket \textbf{while}\ b\ {\bf do}\ c \rrbracket_\sigma =
+   \llbracket \textbf{if}\ b\ \textbf{then}\ (c; \textbf{while}\ b\ {\bf do}\ c)\ \textbf{else skip} \rrbracket_\sigma $<ul class=" list-disc font-serif">
+<li class=" ml-8">Right?</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="loops-may-not-terminate" class=" text-xl mt-2 pb-2 font-sans">Loops May Not Terminate!</h2>
+<p class=" font-serif my-1">What is</p>
+<p class=" font-serif my-1">$$
+\llbracket \textbf{while}\ \textbf{true}\ \textbf{do}\ \textbf{skip} \rrbracket_\sigma?
+$$</p>
+<p class=" font-serif my-1">$$
+\llbracket \textbf{while}\ \textbf{true}\ \textbf{do}\ \textbf{skip} \rrbracket_\sigma =
+\llbracket \textbf{while}\ \textbf{true}\ \textbf{do}\ \textbf{skip} \rrbracket_\sigma?
+$$</p>
+<hr>
+<p class=" font-serif my-1">Loop semantics should be the <em>least fixed point</em> satisfying
+$$\llbracket \textbf{while}\ b\ {\bf do}\ c \rrbracket_\sigma =
+       \llbracket \textbf{if}\ b\ \textbf{then}\ (c; \textbf{while}\ b\ {\bf do}\ c)\ \textbf{else skip} \rrbracket_\sigma $$</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Awkward heading to infinity!<ul class=" list-disc font-serif">
+<li class=" ml-8">Requires many non-trivial treatments</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="operational-semantics" class=" text-xl mt-2 pb-2 font-sans">Operational Semantics</h2>
+<p class=" font-serif my-1">We can define a small step of evaluation</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Each step &#8220;reduces&#8221; the program a little bit</li>
+<li class=" ml-8">Inferences rules: premises satisfied $\to$ conclusion is also satisfied<ul class=" list-disc font-serif">
+<li class=" ml-8">There is a &#8220;proof tree&#8221;!</li>
+</ul>
+</li>
+</ul>
+<p class=" font-serif my-1">$$
+\frac{
+}
+{
+\quad
+\llbracket {\bf while}\ b\ {\bf do}\ c \rrbracket_\sigma = \llbracket \textbf{if}\ b\ \textbf{then}\ (c; {\bf while}\ b\ {\bf do}\ c)\ \textbf{else skip} \rrbracket_\sigma 
+\quad
+}
+$$</p>
+<hr>
+<p class=" font-serif my-1">$$
+\frac{
+\qquad \llbracket b \rrbracket_\sigma = {\rm true}
+\qquad \llbracket c; {\bf while}\ b\ {\bf do}\ c \rrbracket_\sigma = \sigma' \quad
+}
+{
+\quad
+\llbracket {\bf while}\ b\ {\bf do}\ c \rrbracket_\sigma = \sigma'
+\quad
+}
+$$</p>
+<hr>
+<p class=" font-serif my-1">$$
+\frac{
+\quad \llbracket b \rrbracket_\sigma = {\rm false}
+\quad
+}
+{
+\quad
+\llbracket {\bf while}\ b\ {\bf do}\ c \rrbracket_\sigma = \sigma
+\quad
+}
+$$</p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="operational-semantics-contd" class=" text-xl mt-2 pb-2 font-sans">Operational Semantics (cont'd)</h2>
+<p class=" font-serif my-1">Can also add a <em><red>program (step) counter</red></em> to the state!</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">State (variable assignments) $\sigma$</li>
+<li class=" ml-8">Current location (label) $\ell$<ul class=" list-disc font-serif">
+<li class=" ml-8">Just like we're single-step debugging
+$$
+(\sigma, \ell) \xRightarrow{\rm single-step} (\sigma', \ell')
+$$</li>
+<li class=" ml-8">Operational semantics defines this <em>transition</em> (instead of $P$)</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="why-bother" class=" text-2xl mt-2 font-sans">Why Bother?</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="going-rigorous" class=" text-xl mt-2 pb-2 font-sans">Going Rigorous</h2>
+<p class=" font-serif my-1">Semantics enables <em>studying programs as <red>mathematical objects</red></em></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Developing theorems (properties) of programs<ul class=" list-disc font-serif">
+<li class=" ml-8">Example: $\llbracket x + x \rrbracket_\sigma = \llbracket x \times 2 \rrbracket_\sigma$ for all $\sigma$<ul class=" list-disc font-serif">
+<li class=" ml-8">Obvious in this case; but also applies to complicated cases</li>
+</ul>
+</li>
+<li class=" ml-8">A rigorous foundation for (static and dynamic) program analyses</li>
+</ul>
+</li>
+<li class=" ml-8">All theorems can be <em>checked</em> by a proof assistant<ul class=" list-disc font-serif">
+<li class=" ml-8">An interpreter can be automatically deduced<ul class=" list-disc font-serif">
+<li class=" ml-8">Further reading: <a href="http://softwarefoundations.cis.upenn.edu" class=" text-amber-900">Software Foundations</a></li>
+</ul>
+</li>
+<li class=" ml-8">Verified systems<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="https://compcert.org/" class=" text-amber-900">CompCert</a>: all optimizations preserve semantics</li>
+<li class=" ml-8"><a href="http://sel4.systems/" class=" text-amber-900">seL4</a>: the OS kernel functions and never crashes</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="going-rigorous-contd" class=" text-xl mt-2 pb-2 font-sans">Going Rigorous (cont'd)</h2>
+<p class=" font-serif my-1">Need a non-recursive implementation of the Tower of Hanoi?</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">See the semantics of call/ret: <a href="../../../pages/OS/2022/demos/hanoi-nr.c" class=" text-amber-900">hanoi-nr.c</a></li>
+</ul>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">hanoi</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">from</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">to</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">via</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">"%c -&gt; %c</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">from</span><span class="p">,</span><span class="w"> </span><span class="n">to</span><span class="p">);</span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">hanoi</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">from</span><span class="p">,</span><span class="w"> </span><span class="n">via</span><span class="p">,</span><span class="w"> </span><span class="n">to</span><span class="p">);</span>
+<span class="w">    </span><span class="n">hanoi</span><span class="p">(</span><span class="w">    </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">from</span><span class="p">,</span><span class="w"> </span><span class="n">to</span><span class="p">,</span><span class="w"> </span><span class="n">via</span><span class="p">);</span>
+<span class="w">    </span><span class="n">hanoi</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">via</span><span class="p">,</span><span class="w"> </span><span class="n">to</span><span class="p">,</span><span class="w"> </span><span class="n">from</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="end" class=" text-2xl mt-2 font-sans">End.</h1></div></div></div>
+        
+      
+      </section>
+    
+    </section>
+  
+</div>
+</div>
+
+<script src="../../../static/reveal/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    
+    width: 1024, height: 768,
+    
+    slideNumber: 'c/t',
+    controlsTutorial: false,
+    progress: false,
+    hash: true,
+    center: false,
+    autoAnimateUnmatched: true,
+    autoAnimateEasing: 'ease-out',
+    autoAnimateDuration: 0.3,
+    transitionSpeed: 'fast'
+  });
+</script>
+
+
+</body>
+
+</html>

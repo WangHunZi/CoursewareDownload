@@ -1,0 +1,950 @@
+<!DOCTYPE html><html class="h-100">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="../../../static/css/base.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
+
+  <style>
+    .font-sans {
+      font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+    }
+    .font-serif {
+      font-family: 'Source Serif Pro', 'Songti SC', 'SimSun', 'Serif', serif;
+    }
+  </style>
+  <link rel="stylesheet" href="../../../static/katex/katex.min.css">
+  <script defer src="../../../static/katex/katex.min.js"></script>
+  <script defer src="../../../static/katex/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+            // customised options
+            // &#8226; auto-render specific keys, e.g.:
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ],
+            // &#8226; rendering keys, e.g.:
+            throwOnError : false
+          });
+      });
+  </script>
+
+
+  
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="../../../static/reveal/reveal.css">
+<link rel="stylesheet" href="../../../static/reveal/theme/simple.css" id="theme">
+
+<style>
+.reveal .slide-number {
+  font-size: 26px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, .3);
+}
+
+.reveal .full-screen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.reveal .slides {
+  border: 1.5px #ddd solid;
+  border-radius: 7px;
+  text-align: left;
+  font-weight: 300;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  font-family: 'Lato', 'SimHei', 'STXihei', 'Droid Sans';
+  font-weight: 400;
+}
+
+.reveal p, .reveal li, .reveal center {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Droid Sans';
+}
+
+.reveal li + li {
+  margin-top: 10px;
+}
+
+.reveal ul {
+  display: block;
+  margin-right: 15px;
+}
+
+.reveal p, .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5 {
+  padding:  0 25px 0 25px;
+}
+
+.reveal table {
+  font-size: 32px;
+  font-family: 'Lato', 'STHeiti', 'SimHei', 'Sans Serif';
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.reveal th {
+  background-color: #eee;
+}
+
+.reveal tr:nth-child(even) {
+  background-color: #efffff;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  text-align: left;
+  margin: 0 0 20px 0;
+ color: #222; 
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
+
+
+.reveal h1 {
+  margin: 0 10 0 10;
+  font-size: 60px;
+}
+.reveal .middle h1 {
+  text-align: center;
+}
+
+.reveal h2 {
+  font-size: 48px;
+  border-bottom: 2px solid rgb(106, 0, 95);
+  padding-bottom: 5px;
+}
+.reveal h3 { font-size: 1.15em; }
+.reveal h4 { font-size: 1.05em; }
+
+.reveal .center {
+  text-align: center;
+}
+
+.reveal .middle {
+  height: 728px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.reveal pre {
+  font-size: 28px;
+ 
+  background-color: #eee;
+
+  border-radius: 3mm;
+  padding: 10px 10px 10px 10px;
+}
+
+.reveal pre code {
+  max-height: none;
+}
+
+.reveal code {
+  font-family: 'Inconsolata', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif', Monospace;
+}
+
+.reveal .middle blockquote {
+  text-align: center;
+  color: rgb(106, 0, 95);
+  background: none;
+  box-shadow: none;
+}
+
+.reveal .middle blockquote a {
+  color: inherit;
+}
+
+.reveal blockquote p, .reveal blockquote li {
+  font-family: 'Lato', 'AR PL Ukai CN', 'STKaiti', 'KaiTi', 'Sans Serif';
+}
+
+section .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reveal .author-block {
+  margin: 75px 0 35px 0;
+}
+.reveal .author-affiliation img {
+  margin: 15px 0 0 0;
+}
+.reveal .author-block p, .reveal .author-affiliation p  {
+  font-family: 'Kaiti', 'STKaiti', 'Serif', 'Times', 'Times New Roman';
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+.reveal .author-affiliation {
+  display: inline-block;
+  font-size: 90%;
+}
+.reveal hr {
+  border: 10px solid rgba(0, 0, 0, 0);
+}
+.reveal li {
+  margin-top: 10px;
+}
+</style>
+
+  <title>The Craft of Software Engineering Research</title>
+</head>
+
+<body class="d-flex flex-column h-100">
+  
+  
+
+<div class="reveal">
+<div class="slides">
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="the-craft-ofsoftware-engineering-research" class=" text-2xl mt-2 font-sans">The Craft of<br>(Software Engineering) Research</h1>
+<p class=" font-serif my-1"><br></p>
+<p class=" font-serif my-1">Yanyan Jiang</p></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="welcome" class=" text-xl mt-2 pb-2 font-sans">Welcome!</h2>
+<p class=" font-serif my-1">Nice to see you all!</p>
+<hr>
+<p class=" font-serif my-1"></p><center>And...</center>
+<hr>
+<p class=" font-serif my-1">You may not get the idea of doing &#8220;serious research&#8221;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">This is why we created this course!</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="overview" class=" text-xl mt-2 pb-2 font-sans">Overview</h2>
+<p class=" font-serif my-1">Check <a href="../index.html" class=" text-amber-900">course homepage</a></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Video playbacks will be available</li>
+<li class=" ml-8"><a href="../A1.html" class=" text-amber-900">Assignment 1</a> due: Oct 9</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">In this lecture</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Introduction to software engineering research</li>
+<li class=" ml-8">How to read research papers</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="the-craft-of-research" class=" text-2xl mt-2 font-sans">The Craft of Research</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="what-is-research" class=" text-xl mt-2 pb-2 font-sans">What is Research?</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">&#8220;In the broadest terms, we do research whenever we gather information to answer a question that solves a problem.&#8221;</p>
+<p class=" font-serif my-1">&#8212;&#8212;The Craft of Research</p>
+</blockquote>
+<p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/ISER/2022/slides/img/TCR.jpg" width="250px"></p>
+<p class=" font-serif my-1">Example</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><strong>PROBLEM</strong>: To settle a bet, I need to know when Michael Jordan was born.</li>
+<li class=" ml-8"><strong>RESEARCH</strong>: You Google &#8220;Michael Jordan birthday.&#8221;</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="academic-research" class=" text-xl mt-2 pb-2 font-sans">Academic Research</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">Solving <em><red>significant</red></em> problems with <em><red>novel</red></em> insights.</p>
+</blockquote>
+<p class=" font-serif my-1">This is a <em>key difference</em> between research projects and assignments</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Usually nobody has a clear answer</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Research papers</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">A piece of work that <em><red>teaches peers a lesson</red></em>.<ul class=" list-disc font-serif">
+<li class=" ml-8">Peers: researchers, practitioners, ...</li>
+<li class=" ml-8">The crux of publishing papers for juniors: your readers know much better than you do</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="the-craft-of" class=" text-2xl mt-2 font-sans">The Craft of</h1>
+<h1 id="software-engineering-research" class=" text-2xl mt-2 font-sans">Software Engineering Research</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="two-fundamental-questions" class=" text-xl mt-2 pb-2 font-sans">Two Fundamental Questions</h2>
+<ol class=" list-decimal font-serif">
+<li class=" ml-8">What is a Software?</li>
+<li class=" ml-8">What is Software's Engineering?</li>
+</ol></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="software-engineerings-big-problem" class=" text-xl mt-2 pb-2 font-sans">Software Engineering's Big Problem</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1"><em>How to build and understand software</em>?</p>
+</blockquote>
+<hr>
+<p class=" font-serif my-1">Make &#30721;&#20892; an easier life</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><em>Faster</em> (productivity)</li>
+<li class=" ml-8"><em>Better</em> (quality)</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Ultimate goal</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Take over human's role in software development</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="more-specific-topics-problems" class=" text-xl mt-2 pb-2 font-sans">More Specific Topics (Problems)</h2>
+<p class=" font-serif my-1">See ICSE's <a href="https://conf.researchr.org/track/icse-2023/icse-2023-technical-track" class=" text-amber-900">call for papers</a></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">API design and evolution</li>
+<li class=" ml-8">Apps and app store analysis</li>
+<li class=" ml-8">Debugging and fault localization</li>
+<li class=" ml-8">Evolution and maintenance</li>
+<li class=" ml-8">Feedback, user, and requirements management...</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#8220;ICSE, the IEEE/ACM International Conference on Software Engineering, is the premier software engineering conference. Since 1975, ICSE provides a forum where researchers, practitioners, and educators gather together to present and discuss the most recent innovations, trends, experiences and issues in the field of software engineering.&#8221;</p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="examples" class=" text-xl mt-2 pb-2 font-sans">Examples</h2>
+<p class=" font-serif my-1">&#8220;Empirical and human study for understanding&#8221;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="https://dijkstra.eecs.umich.edu/fmri/icse20-data/icse2020-fmri-preprint.pdf" class=" text-amber-900">What happens to a programmer's brain</a> (ICSE'20)</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#8220;Technologies for solving problems&#8221;</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="https://github.com/features/copilot/" class=" text-amber-900">Github copilot</a> and <a href="https://alphacode.deepmind.com/" class=" text-amber-900">AlphaCode</a></li>
+<li class=" ml-8"><a href="https://www.microsoft.com/en-us/research/video/the-story-of-flash-fill-and-how-it-shaped-me/" class=" text-amber-900">FlashFill</a> in Excel (POPL'11)</li>
+<li class=" ml-8">AddressSanitizer (ATC'12)</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">For <em>fun</em> and <em>profits</em></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Solve hard problems; build useful tools!</li>
+<li class=" ml-8">A quick test for evaluating your work: will real engineers (e.g., Google/Facebook guys) care about your work?</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="software-engineering-research-three-easy-pieces" class=" text-2xl mt-2 font-sans">Software Engineering Research: Three Easy Pieces</h1>
+<p class=" font-serif my-1"><br></p>
+<p class=" font-serif my-1">Reading, Writing, and Hacking</p></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="1-reading" class=" text-xl mt-2 pb-2 font-sans">1 - Reading</h2>
+<p class=" font-serif my-1"><red>Read a lot</red>. (40% pts.)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="../Reading_List.html" class=" text-amber-900">Some</a> good papers (novel and significant)<ul class=" list-disc font-serif">
+<li class=" ml-8">Studies</li>
+<li class=" ml-8">Compilers; static analysis and checking</li>
+<li class=" ml-8">Dynamic analysis and trace; debugging</li>
+<li class=" ml-8">Testing and validation</li>
+<li class=" ml-8">Verification and synthesis</li>
+</ul>
+</li>
+<li class=" ml-8">Assignment: paper presentation<ul class=" list-disc font-serif">
+<li class=" ml-8">Cycled broadcast on Bilibili for 1 week</li>
+<li class=" ml-8">&lt;10% Distinguished Presentation Awards &#127941;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">(Reading is today's topic)</p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="2-writing" class=" text-xl mt-2 pb-2 font-sans">2 - Writing</h2>
+<p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/ISER/2022/slides/img/paper-revision.jpg" width="300px"></p>
+<p class=" font-serif my-1">Be <red>concise and precise</red>. (60% pts.)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Bad writing practices<ul class=" list-disc font-serif">
+<li class=" ml-8">Broken logic</li>
+<li class=" ml-8">Imprecise wording</li>
+<li class=" ml-8">Verbose writing</li>
+</ul>
+</li>
+<li class=" ml-8">Assignment: research proposal<ul class=" list-disc font-serif">
+<li class=" ml-8">&lt;10% Distinguished Proposal Award &#127941;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">SUGGESTIONS</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Start writing as early as possible</li>
+<li class=" ml-8">Rush into your supervisor's office and let him face-to-face revise your manuscripts<ul class=" list-disc font-serif">
+<li class=" ml-8">Refused &#8594; drop PhD immediately</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="3-hacking" class=" text-xl mt-2 pb-2 font-sans">3 - Hacking</h2>
+<p class=" font-serif my-1"><red>RTFM, STFW, RTFSC</red>. (0% pts.)</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Drop course if you don't know how to use Git</li>
+<li class=" ml-8">(Programming assignments moved to group-private courses)</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">&#8220;Trivial&#8221; implementation examples</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Intercept file system calls; capture block-device traces</li>
+<li class=" ml-8">Modify Android Runtime (ART) to expose a debugging interface</li>
+<li class=" ml-8">Modify Java regex engine to obtain matching traces</li>
+<li class=" ml-8">Parse source code via Clang/LLVM</li>
+<li class=" ml-8">(Maybe non-trivial for an undergrad; trivial for experts)</li>
+</ul></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="how-to-read" class=" text-2xl mt-2 font-sans">How to Read</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="how-to-find-papers" class=" text-xl mt-2 pb-2 font-sans">How to Find Papers?</h2>
+<p class=" font-serif my-1">All papers form a <em>citation graph</em></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Your advisor should have given you some <em>seed papers</em><ul class=" list-disc font-serif">
+<li class=" ml-8">If not &#8594; drop PhD now</li>
+<li class=" ml-8">If of low quality &#8594; drop PhD now</li>
+<li class=" ml-8">Traverse the graph (from the seeds) to find more papers<ul class=" list-disc font-serif">
+<li class=" ml-8">Favor papers in <em>good venues</em> (top conference/journals)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class=" ml-8">Web resources: Google Scholar recommendations, hacker news, blogs, tweets, github repos, ...</li>
+<li class=" ml-8">Textbooks: further reading (usually awesome classical papers!)</li>
+<li class=" ml-8">Magazines: Communications of the ACM, IEEE Spectrum, IEEE Software, ...</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="how-many-should-i-read" class=" text-xl mt-2 pb-2 font-sans">How Many Should I Read?</h2>
+<p class=" font-serif my-1">A LOT!</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Papers: 100/year (~1000 pages, very dense)<ul class=" list-disc font-serif">
+<li class=" ml-8">2 per week</li>
+</ul>
+</li>
+<li class=" ml-8">Textbooks: 20/year (~5000 pages, very comprehensive)<ul class=" list-disc font-serif">
+<li class=" ml-8">Better with online courses</li>
+</ul>
+</li>
+<li class=" ml-8">Magazines: 24/year (~2400 pages, less dense)</li>
+<li class=" ml-8">Conference talks</li>
+<li class=" ml-8">...</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="how-to-read-a-paper" class=" text-xl mt-2 pb-2 font-sans">How to Read a Paper</h2>
+<blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
+<p class=" font-serif my-1">S. Keshav. <a href="http://ccr.sigcomm.org/online/files/p83-keshavA.pdf" class=" text-amber-900">How to read a paper</a>, <em>ACM SIGCOMM Computer Communication Review</em>, 3(37), 2007.</p>
+</blockquote>
+<p class=" font-serif my-1">Three-pass approach</p>
+<ol class=" list-decimal font-serif">
+<li class=" ml-8">Quick scan<ul class=" list-disc font-serif">
+<li class=" ml-8">category, context, correctness, contributions, clarity</li>
+</ul>
+</li>
+<li class=" ml-8">Jot down the key points<ul class=" list-disc font-serif">
+<li class=" ml-8">read with care, but ignore details as proofs</li>
+</ul>
+</li>
+<li class=" ml-8">Virtual re-implement<ul class=" list-disc font-serif">
+<li class=" ml-8">re-create the work as if you were the author</li>
+</ul>
+</li>
+</ol></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="how-to-read-a-paper-contd" class=" text-xl mt-2 pb-2 font-sans">How to Read a Paper (cont'd)</h2>
+<p class=" font-serif my-1">A &#8220;machine-learning&#8221; approach</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">New problems<ul class=" list-disc font-serif">
+<li class=" ml-8">Back prop: why didn't I notice this important problem?</li>
+</ul>
+</li>
+<li class=" ml-8">Old problems<ul class=" list-disc font-serif">
+<li class=" ml-8">Mask the solution and try (like training a Transformer!)</li>
+<li class=" ml-8">Back prop: why didn't I figure out this solution?</li>
+</ul>
+</li>
+<li class=" ml-8">Afterward<ul class=" list-disc font-serif">
+<li class=" ml-8">Watch the author's presentation to check their own understanding</li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="traps-and-pitfalls-in-paper-reading" class=" text-xl mt-2 pb-2 font-sans">Traps and Pitfalls in Paper Reading</h2>
+<p class=" font-serif my-1"><del>Only papers solving my problem are relevant</del></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Good problem solvers have lots of hammers</li>
+</ul>
+<hr>
+<p class=" font-serif my-1"><del>This paper is limited in XXXX. What a piece of junk!</del></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Every paper is limited</li>
+<li class=" ml-8">Be <em>constructive</em>: anything I can learn?</li>
+</ul>
+<hr>
+<p class=" font-serif my-1"><del>I give up!</del></p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Not ready yet</li>
+<li class=" ml-8">Get some background materials</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="short-summary" class=" text-xl mt-2 pb-2 font-sans">Short Summary</h2>
+<ol class=" list-decimal font-serif">
+<li class=" ml-8">Read a lot of papers</li>
+<li class=" ml-8">Read really good papers (to get &#8220;correct&#8221; tastes on research)<ul class=" list-disc font-serif">
+<li class=" ml-8">Training data is crucial to DNN model quality</li>
+<li class=" ml-8">90% &#8220;top-conference&#8221; papers have nearly zero &#8220;real&#8221; contributions<ul class=" list-disc font-serif">
+<li class=" ml-8">May did a very well job, but not groundbreaking</li>
+</ul>
+</li>
+<li class=" ml-8">Lots of papers have negative contributions<ul class=" list-disc font-serif">
+<li class=" ml-8">Mislead junior researchers</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="example" class=" text-2xl mt-2 font-sans">Example</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="flashfill" class=" text-xl mt-2 pb-2 font-sans">FlashFill</h2>
+<p class=" font-serif my-1">Sumit Gulwani. <em>Automating string processing in spreadsheets using input-output examples</em> (POPL'11, Most Influential Test-of-Time Paper Award in 2021)</p>
+<hr>
+<p class=" font-serif my-1">1st pass: the problem is to find a program $P$ that generalizes existing &#8220;examples&#8221; (and 90% students stop here)</p>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/ISER/2022/slides/img/flashfill.gif"></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="ready-for-the-second-pass" class=" text-xl mt-2 pb-2 font-sans">Ready for the Second Pass?</h2>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/ISER/2022/slides/img/ff-fig1.png" width="700px"></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="ready-for-reading-this-paper" class=" text-xl mt-2 pb-2 font-sans">Ready for Reading This Paper?</h2>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/ISER/2022/slides/img/ff-fig2.png" width="520px"></p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="i-cannot-hold" class=" text-xl mt-2 pb-2 font-sans">I Cannot Hold &#128514;&#128514;&#128514;</h2>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/ISER/2022/slides/img/ff-fig3.png" width="900px">
+<img alt="" class="center" src="../../../pages/ISER/2022/slides/img/ff-fig4.png" width="900px"></p>
+<p class=" font-serif my-1">(Unix is user-friendly; it's just choosy about who its friends are.)</p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="ready-for-the-second-pass" class=" text-xl mt-2 pb-2 font-sans">Ready for the Second Pass?</h2>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/ISER/2022/slides/img/ff-intersection.png" width="800px"></p>
+<p class=" font-serif my-1">What's this?</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">A textbook algorithm in the automata theory</li>
+<li class=" ml-8">(ICPC WF'08 Problem I: Password Suspects) find the count of all $n$-length passwords consistent with a given set of observations.<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>*123*</code>, <code>abcd*</code>, <code>a*d*4</code> &#8594; <code>abcd1234</code>, <code>123abcd4</code>, ... </li>
+</ul>
+</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="read-more" class=" text-xl mt-2 pb-2 font-sans">Read More.</h2>
+<p class=" font-serif my-1">Trust the authors: papers are self-contained. Reading them only requires textbook knowledge.</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">[<strong>Corollary</strong>] Go read (good enough) textbooks if you find you can't understand a paper<ul class=" list-disc font-serif">
+<li class=" ml-8">Compilers, mathematical logics, algorithms, programing language theory (optional)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Find open courses on Youtube (or Bilibili)</p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="more-comments-on-reading" class=" text-xl mt-2 pb-2 font-sans">More Comments on Reading...</h2>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/ISER/2022/slides/img/reading-book.jpg" width="1000px"></p>
+<p class=" font-serif my-1">See Manuel Blum's <a href="http://www.cs.cmu.edu/~mblum/research/pdf/grad.html" class=" text-amber-900">advice to a beginning graduate student</a>.</p></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="ready-for-the-3rd-pass" class=" text-xl mt-2 pb-2 font-sans">Ready for the 3rd Pass?</h2>
+<p class=" font-serif my-1">Virtually implement the paper's idea</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">You may get a new paper (similar technique)!<ul class=" list-disc font-serif">
+<li class=" ml-8">&#8220;Push-button synthesis of watch companions for Android apps&#8221; (ICSE'22)</li>
+<li class=" ml-8">Copy-pasted the algorithm of FlashFill</li>
+</ul>
+</li>
+</ul>
+<p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/ISER/2022/slides/img/Jigsaw.png" width="800px"></p></div>
+        
+      
+      </section>
+    
+    </section>
+   
+    <section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="summary" class=" text-2xl mt-2 font-sans">Summary</h1></div></div></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><h2 id="summary" class=" text-xl mt-2 pb-2 font-sans">Summary</h2>
+<p class=" font-serif my-1">Takeaways</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">Research is serious<ul class=" list-disc font-serif">
+<li class=" ml-8">All about solving <em>significant</em> problems with <em>novel</em> insights</li>
+</ul>
+</li>
+<li class=" ml-8">Read a lot<ul class=" list-disc font-serif">
+<li class=" ml-8">Keshav's &#8220;How to read a paper&#8221;</li>
+<li class=" ml-8">The Craft of Research</li>
+<li class=" ml-8">Blum's advice to a beginning graduate student...</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p class=" font-serif my-1">Assignment</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="../A1.html" class=" text-amber-900">Assignment 1</a> due: Oct 9</li>
+</ul></div>
+        
+      
+      </section>
+    
+      
+      <section>
+      
+
+      
+        
+        <div><div class="center middle"><div style="width:100%"><h1 id="end" class=" text-2xl mt-2 font-sans">End.</h1>
+<p class=" font-serif my-1"><br></p>
+<p class=" font-serif my-1"><red>Drop course (and quit PhD) if you're not ready for the challenges.</red></p></div></div></div>
+        
+      
+      </section>
+    
+    </section>
+  
+</div>
+</div>
+
+<script src="../../../static/reveal/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    
+    width: 1024, height: 768,
+    
+    slideNumber: 'c/t',
+    controlsTutorial: false,
+    progress: false,
+    hash: true,
+    center: false,
+    autoAnimateUnmatched: true,
+    autoAnimateEasing: 'ease-out',
+    autoAnimateDuration: 0.3,
+    transitionSpeed: 'fast'
+  });
+</script>
+
+
+</body>
+
+</html>
