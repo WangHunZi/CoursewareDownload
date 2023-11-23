@@ -144,15 +144,17 @@ def file_analyse(filepath):
 
 
 def file_fix():
-    filename = os.listdir(os.path.join(BASE_DIR, "OS", "2023", "build"))
-    for item in filename:
-        filepath = os.path.join(BASE_DIR, "OS", "2023", "build", item)
-        with open(filepath, 'r', encoding='utf-8') as file:
-            content = file.read()
-        change = re.sub(r'/OS/2023/slides/', '../slides/', content)
+    filedir = os.path.join(BASE_DIR, "OS", "2023", "build")
+    if os.path.exists(filedir) and os.path.isdir(filedir):
+        filename = os.listdir(filedir)
+        for item in filename:
+            filepath = os.path.join(BASE_DIR, "OS", "2023", "build", item)
+            with open(filepath, 'r', encoding='utf-8') as file:
+                content = file.read()
+            change = re.sub(r'/OS/2023/slides/', '../slides/', content)
 
-        with open(filepath, 'w', encoding='utf-8') as file:
-            file.write(change)
+            with open(filepath, 'w', encoding='utf-8') as file:
+                file.write(change)
 
 
 if __name__ == "__main__":
