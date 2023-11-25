@@ -6,6 +6,7 @@ import html
 from bs4 import BeautifulSoup
 from urllib.parse import urlparse
 
+
 BASE_URL = "https://jyywiki.cn"
 BASE_DIR = os.path.join(os.getcwd(), "Courseware")
 WITHOUT_DOWNLOAD = [
@@ -24,56 +25,55 @@ WITHOUT_DOWNLOAD = [
     "https://jyywiki.cn/ISER2023/1-intro/",                    # unnecessary
     "https://jyywiki.cn/index.html",                           # unnecessary
 ]
-KEY_YEAR = {'A': "2021", 'B': "2022", 'C': "2023", 'D': "ALL", '': "2023"}
-
+fail_download = []
 sources_url_path_pairs = {}
 
 
+# 通过某一文件路径以及文件中出现的相对链接，拼接成文件在本地的存储地址
 def get_full_path(path, link):
-    pathdir = os.path.dirname(path).replace("/", os.sep)
-    filepath = ""
+    pathdir = os.path.dirname(path).replace("/", os.sep)    # 用os.sep替换文件中提取出来的路径（文件中的路径都是`/`)
     if link.startswith("/"):
-        if link.find("../") != -1:
+        if link.find("../") != -1:  # 滤过`/path/to/file/../path/to/file`
             return None
-        filepath = os.path.join(BASE_DIR, link[1:].replace("/", os.sep))
+        return os.path.join(BASE_DIR, link[1:].replace("/", os.sep))    # 舍弃第一个字符`/`
     elif link.startswith("../"):
         urlsplit = link.split("/")
         pathsplit = pathdir.split(os.sep)
-        count = sum([-1 for item in urlsplit if item == ".."])
-        filepath = os.path.join(os.sep.join(pathsplit[:count]), os.sep.join(urlsplit[-count:]))
+        count = sum([-1 for item in urlsplit if item == ".."])  # 多个`../`这样的路径的处理
+        return os.path.join(os.sep.join(pathsplit[:count]), os.sep.join(urlsplit[-count:]))
     else:
-        filepath = os.path.join(pathdir, link.replace("/", os.sep))
-
-    return filepath
+        return os.path.join(pathdir, link.replace("/", os.sep))
 
 
 def get_full_url(path):
-    return path.replace(BASE_DIR, BASE_URL).replace("\\", "/")
+    return path.replace(BASE_DIR, BASE_URL).replace("\\", "/")  # url都是`/`，替换path中所有的`\`为`/`
 
 
-def download(url_, path_):
-    if not os.path.exists(os.path.dirname(path_)):
-        os.makedirs(os.path.dirname(path_))
-    if os.path.exists(path_):
+def download(url, path):
+    if not os.path.exists(os.path.dirname(path)):
+        os.makedirs(os.path.dirname(path))
+    if os.path.exists(path):
         return True
-    response = requests.get(url_)
+    response = requests.get(url)
     if response.status_code == 200:
         if response.headers['Content-Type'].startswith('text'):
-            with open(path_, 'w', encoding="utf-8") as file:
+            with open(path, 'w', encoding="utf-8") as file:
                 file.write(response.text)
         else:
-            with open(path_, 'wb') as file:
+            with open(path, 'wb') as file:  # 非文本文件
                 file.write(response.content)
-        print(f"\033[32m已下载 \033[0m文件链接 {url_}, 文件路径 {path_}")
+        print(f"\033[32m已下载 \033[0m文件链接 {url}, 文件路径 {path}")
         return True
     else:
-        print(f"\033[91m无法下载文件链接：状态码：\033[0m{response.status_code} \033[0m{url_}\033[91m")
+        fail_download.append([response.status_code, url, path])
         return False
 
 
 def file_download_option():
     global sources_url_path_pairs
     global WITHOUT_DOWNLOAD
+    KEY_YEAR = {'A': "2021", 'B': "2022", 'C': "2023", 'D': "ALL", '': "2023"}
+
     def build_courseware_url_path(year):
         url_ = f'{BASE_URL}/OS/{year}/index.html'
         path_ = os.path.join(BASE_DIR, "OS", year, "index.html")
@@ -83,7 +83,7 @@ def file_download_option():
                             "通过选项下载对应年份课件，回车默认下载2023年课件，输入其他符号则退出\n" +
                             "\033[32mA\033[0m:2021 \033[32mB\033[0m:2022 "
                             "\033[32mC\033[0m:2023 \033[32mD\033[0m:All\n")
-    year = KEY_YEAR.get(year, "Invalid")  # 将按键转化为年份
+    year = KEY_YEAR.get(year, "Invalid")  # 将输入转化为年份
 
     if year == "ALL":
         for item in ['2021', '2022', '2023']:
@@ -109,6 +109,10 @@ def file_download():
                 file_analyse(_path)
             else:
                 WITHOUT_DOWNLOAD.append(_url)
+    if fail_download:
+        print("\033[91m无法下载如下文件：\033[0m")
+        for code, url, path in fail_download:     # 输出失败的文件下载以及应该在本地存储的位置
+            print(f"\033[91m状态码：\033[0m{code} \033[0m{url}\033[91m 应存放：f{path}")
                 
 
 # 提取每个文件中的链接
@@ -118,20 +122,19 @@ def file_analyse(filepath):
     # 对非HTML文件不做分析
     if filepath.endswith(".html"):
         with open(filepath, 'r', encoding='utf-8') as file:
-            content = file.read()
-            soup = BeautifulSoup(content, 'html.parser')
+            soup = BeautifulSoup(file.read(), 'html.parser')
     else:
         return
 
     # 提取文件中的相对链接
-    _links_tags = soup.find_all(href=True) + soup.find_all(src=True) + soup.find_all(data=True)
-    _links_attr = []
-    for link in _links_tags:
-        _links_attr.extend([link.get("href"), link.get("src"), link.get("data")])
-    _links_attr = list(set(_links_attr))  # 去除重复的元素
+    links_tags = soup.find_all(href=True) + soup.find_all(src=True) + soup.find_all(data=True)
+    links_attr = []
+    for link in links_tags:
+        links_attr.extend([link.get("href"), link.get("src"), link.get("data")])
+    links_attr = list(set(links_attr))  # 去除重复的元素
 
     # 以filepath指定的文件为参照补全文件中的网址以及在本地存储的地址
-    for link in _links_attr:
+    for link in links_attr:
         if link is None or link.startswith(("http", "data")):  # data是ipynb.html文件资源
             continue
         link = urlparse(link).path  # 清除锚点
@@ -151,8 +154,7 @@ def file_fix():
         for item in filename:
             filepath = os.path.join(BASE_DIR, "OS", "2023", "build", item)
             with open(filepath, 'r', encoding='utf-8') as file:
-                content = file.read()
-            change = re.sub(r'/OS/2023/slides/', '../slides/', content)
+                change = re.sub(r'/OS/2023/slides/', '../slides/', file.read())
 
             with open(filepath, 'w', encoding='utf-8') as file:
                 file.write(change)
@@ -163,8 +165,7 @@ def file_decode():
         for item in files:
             if item.endswith(".html"):
                 with open(os.path.join(root, item), 'r', encoding='utf-8') as file:
-                    content = file.read()
-                change = html.unescape(content)
+                    change = html.unescape(file.read())
 
                 with open(os.path.join(root, item), 'w', encoding='utf-8') as file:
                     file.write(change)
