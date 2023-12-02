@@ -3,6 +3,7 @@ import sys
 import requests
 import re
 import html
+import time
 from bs4 import BeautifulSoup
 from urllib.parse import urlparse
 
@@ -25,11 +26,35 @@ WITHOUT_DOWNLOAD = [
     "https://jyywiki.cn/ISER2023/1-intro/",                    # unnecessary
     "https://jyywiki.cn/index.html",                           # unnecessary
 ]
+name_time_count = {}
 fail_download = []
 sources_url_path_pairs = {}
 
+def file_time():
+    print(f"{'NAME':<20}{'TIME':>12}{'COUNT':>11}")
+    for name, item in name_time_count.items():
+        print(f"{name:<20} {'{:.2f}'.format(item[0]):>11} {str(item[1]):>10}")
+
+
+def timecalc(func):
+    def wrapper(*arg, **kwargs):
+        global time_calc
+        start = time.time()
+        result = func(*arg, **kwargs)
+        total = time.time() - start
+        func_name = func.__name__.ljust(20)
+        if func_name in name_time_count:
+            item_list = name_time_count[func_name]
+            item_list[0] += total
+            item_list[1] += 1
+        else:
+            name_time_count[func_name] = [total, 1]
+        return result
+    return wrapper
+
 
 # 通过某一文件路径以及文件中出现的相对链接，拼接成文件在本地的存储地址
+@timecalc
 def get_full_path(path, link):
     pathdir = os.path.dirname(path).replace("/", os.sep)    # 用os.sep替换文件中提取出来的路径（文件中的路径都是`/`)
     if link.startswith("/"):
@@ -45,10 +70,12 @@ def get_full_path(path, link):
         return os.path.join(pathdir, link.replace("/", os.sep))
 
 
+@timecalc
 def get_full_url(path):
     return path.replace(BASE_DIR, BASE_URL).replace("\\", "/")  # url都是`/`，替换path中所有的`\`为`/`
 
 
+@timecalc
 def download(url, path):
     if not os.path.exists(os.path.dirname(path)):
         os.makedirs(os.path.dirname(path))
@@ -69,6 +96,7 @@ def download(url, path):
         return False
 
 
+@timecalc
 def file_download_option():
     global sources_url_path_pairs
     global WITHOUT_DOWNLOAD
@@ -97,6 +125,7 @@ def file_download_option():
         sys.exit()
 
 
+@timecalc
 def file_download():
     global sources_url_path_pairs
     global WITHOUT_DOWNLOAD
@@ -113,9 +142,10 @@ def file_download():
         print("\033[91m无法下载如下文件：\033[0m")
         for code, url, path in fail_download:     # 输出失败的文件下载以及应该在本地存储的位置
             print(f"\033[91m状态码：\033[0m{code} \033[0m{url}\033[91m 应存放：f{path}")
-                
+
 
 # 提取每个文件中的链接
+@timecalc
 def file_analyse(filepath):
     global sources_url_path_pairs
     global WITHOUT_DOWNLOAD
@@ -146,7 +176,7 @@ def file_analyse(filepath):
             sources_url_path_pairs.update({url: absolute_path})
             WITHOUT_DOWNLOAD.append(url)
 
-
+@timecalc
 def file_fix():
     filedir = os.path.join(BASE_DIR, "OS", "2023", "build")
     if os.path.exists(filedir) and os.path.isdir(filedir):
@@ -159,7 +189,7 @@ def file_fix():
             with open(filepath, 'w', encoding='utf-8') as file:
                 file.write(change)
 
-
+@timecalc
 def file_decode():
     for root, dirs, files in os.walk(BASE_DIR):
         for item in files:
@@ -176,3 +206,4 @@ if __name__ == "__main__":
     file_download()
     file_fix()
     file_decode()
+    file_time()
