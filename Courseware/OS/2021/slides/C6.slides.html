@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // • auto-render specific keys, e.g.:
+            // &#8226; auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // • rendering keys, e.g.:
+            // &#8226; rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +209,7 @@ section .center {
 }
 </style>
 
-  <title>[C6] 与并发 Bugs 相处</title>
+  <title>[C6] &#19982;&#24182;&#21457; Bugs &#30456;&#22788;</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,21 +227,21 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="c6-bugs" class=" text-2xl mt-2 font-sans">[C6] 与并发 Bugs 相处</h1>
+        <div><div class="center middle"><div style="width:100%"><h1 id="c6-bugs" class=" text-2xl mt-2 font-sans">[C6] &#19982;&#24182;&#21457; Bugs &#30456;&#22788;</h1>
 <p class=" font-serif my-1"><include src="Slides_Author"><div><div class="py-16">
-<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">蒋炎岩</a></p>
+<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">&#33931;&#28814;&#23721;</a></p>
 </div>
 <div class="row">
 <div class="author-affiliation">
-    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">　　南京大学　　</p>
+    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#12288;&#12288;&#21335;&#20140;&#22823;&#23398;&#12288;&#12288;</p>
     <img class="inline-img h-24" src="../../../static/img/nju-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">计算机科学与技术系</p>
+   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#31185;&#23398;&#19982;&#25216;&#26415;&#31995;</p>
     <img class="inline-img h-24" src="../../../static/img/njucs-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">计算机软件研究所</p>
+    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#36719;&#20214;&#30740;&#31350;&#25152;</p>
     <img class="inline-img h-24" src="../../../static/img/ics-logo.png" style="display: inline-block;"></a>
   </div>
 </div></div></include></p></div></div></div>
@@ -255,19 +255,19 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">背景</h2>
-<p class=" font-serif my-1">同步、互斥的时候我们已经讲了很多 “不对” 的案例</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#32972;&#26223;</h2>
+<p class=" font-serif my-1">&#21516;&#27493;&#12289;&#20114;&#26021;&#30340;&#26102;&#20505;&#25105;&#20204;&#24050;&#32463;&#35762;&#20102;&#24456;&#22810; &#8220;&#19981;&#23545;&#8221; &#30340;&#26696;&#20363;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">并发编程：从入门到放弃</li>
-<li class=" ml-8">哲 ♂ 学家死锁</li>
-<li class=" ml-8">各种错误的自旋锁</li>
-<li class=" ml-8">教科书上的条件变量 signal 错线程</li>
-<li class=" ml-8">……</li>
+<li class=" ml-8">&#24182;&#21457;&#32534;&#31243;&#65306;&#20174;&#20837;&#38376;&#21040;&#25918;&#24323;</li>
+<li class=" ml-8">&#21746; &#9794; &#23398;&#23478;&#27515;&#38145;</li>
+<li class=" ml-8">&#21508;&#31181;&#38169;&#35823;&#30340;&#33258;&#26059;&#38145;</li>
+<li class=" ml-8">&#25945;&#31185;&#20070;&#19978;&#30340;&#26465;&#20214;&#21464;&#37327; signal &#38169;&#32447;&#31243;</li>
+<li class=" ml-8">&#8230;&#8230;</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">不要笑！🤡 竟是我自己</p>
+<p class=" font-serif my-1">&#19981;&#35201;&#31505;&#65281;&#129313; &#31455;&#26159;&#25105;&#33258;&#24049;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">并发 bugs 怎么办？</li>
+<li class=" ml-8">&#24182;&#21457; bugs &#24590;&#20040;&#21150;&#65311;</li>
 </ul></div>
         
       
@@ -279,22 +279,22 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">本次课内容与目标</h2>
-<p class=" font-serif my-1">复习调试理论</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26412;&#27425;&#35838;&#20869;&#23481;&#19982;&#30446;&#26631;</h2>
+<p class=" font-serif my-1">&#22797;&#20064;&#35843;&#35797;&#29702;&#35770;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">你在《操作系统》课上活下来所需的最重要的理论</li>
+<li class=" ml-8">&#20320;&#22312;&#12298;&#25805;&#20316;&#31995;&#32479;&#12299;&#35838;&#19978;&#27963;&#19979;&#26469;&#25152;&#38656;&#30340;&#26368;&#37325;&#35201;&#30340;&#29702;&#35770;</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">理解并发 bugs 的类型、产生原因和预防方法</p>
+<p class=" font-serif my-1">&#29702;&#35299;&#24182;&#21457; bugs &#30340;&#31867;&#22411;&#12289;&#20135;&#29983;&#21407;&#22240;&#21644;&#39044;&#38450;&#26041;&#27861;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">死锁 (lockdep)</li>
-<li class=" ml-8">原子性/顺序违反 (测试 + 检查)</li>
+<li class=" ml-8">&#27515;&#38145; (lockdep)</li>
+<li class=" ml-8">&#21407;&#23376;&#24615;/&#39034;&#24207;&#36829;&#21453; (&#27979;&#35797; + &#26816;&#26597;)</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">应用调试理论</p>
+<p class=" font-serif my-1">&#24212;&#29992;&#35843;&#35797;&#29702;&#35770;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">如何在编写操作系统内核时保护自己少受伤害？<ul class=" list-disc font-serif">
-<li class=" ml-8">(不受伤是不可能的啦……)</li>
+<li class=" ml-8">&#22914;&#20309;&#22312;&#32534;&#20889;&#25805;&#20316;&#31995;&#32479;&#20869;&#26680;&#26102;&#20445;&#25252;&#33258;&#24049;&#23569;&#21463;&#20260;&#23475;&#65311;<ul class=" list-disc font-serif">
+<li class=" ml-8">(&#19981;&#21463;&#20260;&#26159;&#19981;&#21487;&#33021;&#30340;&#21862;&#8230;&#8230;)</li>
 </ul>
 </li>
 </ul></div>
@@ -312,7 +312,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">调试理论：复习</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#35843;&#35797;&#29702;&#35770;&#65306;&#22797;&#20064;</h1></div></div></div>
         
       
       </section>
@@ -323,21 +323,21 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">基本原则</h2>
-<p class=" font-serif my-1">在《计算机系统基础》实验中提出 (<a href="https://www.bilibili.com/video/BV1qa4y1j7xk?p=10" class=" text-amber-900">视频回看</a>)</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#22522;&#26412;&#21407;&#21017;</h2>
+<p class=" font-serif my-1">&#22312;&#12298;&#35745;&#31639;&#26426;&#31995;&#32479;&#22522;&#30784;&#12299;&#23454;&#39564;&#20013;&#25552;&#20986; (<a href="https://www.bilibili.com/video/BV1qa4y1j7xk?p=10" class=" text-amber-900">&#35270;&#39057;&#22238;&#30475;</a>)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">只要写代码，就会一直伴随大家</li>
+<li class=" ml-8">&#21482;&#35201;&#20889;&#20195;&#30721;&#65292;&#23601;&#20250;&#19968;&#30452;&#20276;&#38543;&#22823;&#23478;</li>
 </ul>
 <hr>
-<p class=" font-serif my-1"><red>机器永远是对的</red></p>
+<p class=" font-serif my-1"><red>&#26426;&#22120;&#27704;&#36828;&#26159;&#23545;&#30340;</red></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">(ICS) 不管是 crash 了，图形显示不正常了，还是 <code>HIT BAD TRAP</code> 了，最后都是你自己背锅</li>
-<li class=" ml-8">(OS) 不管是卡死、异常还是虚拟机重启，都是你自己的 bug</li>
+<li class=" ml-8">(ICS) &#19981;&#31649;&#26159; crash &#20102;&#65292;&#22270;&#24418;&#26174;&#31034;&#19981;&#27491;&#24120;&#20102;&#65292;&#36824;&#26159; <code>HIT BAD TRAP</code> &#20102;&#65292;&#26368;&#21518;&#37117;&#26159;&#20320;&#33258;&#24049;&#32972;&#38149;</li>
+<li class=" ml-8">(OS) &#19981;&#31649;&#26159;&#21345;&#27515;&#12289;&#24322;&#24120;&#36824;&#26159;&#34394;&#25311;&#26426;&#37325;&#21551;&#65292;&#37117;&#26159;&#20320;&#33258;&#24049;&#30340; bug</li>
 </ul>
 <hr>
-<p class=" font-serif my-1"><red>未测代码永远是错的</red></p>
+<p class=" font-serif my-1"><red>&#26410;&#27979;&#20195;&#30721;&#27704;&#36828;&#26159;&#38169;&#30340;</red></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">(ICS/OS) 你以为最不可能出 bug 的地方，往往 bug 就在那躺着</li>
+<li class=" ml-8">(ICS/OS) &#20320;&#20197;&#20026;&#26368;&#19981;&#21487;&#33021;&#20986; bug &#30340;&#22320;&#26041;&#65292;&#24448;&#24448; bug &#23601;&#22312;&#37027;&#36538;&#30528;</li>
 </ul></div>
         
       
@@ -349,18 +349,18 @@ section .center {
 
       
         
-        <div><h2 id="debug" class=" text-xl mt-2 pb-2 font-sans">调试理论：为什么 Debug 那么困难？</h2>
-<p class=" font-serif my-1">程序：<red>人类世界需求在信息世界的投影</red></p>
+        <div><h2 id="debug" class=" text-xl mt-2 pb-2 font-sans">&#35843;&#35797;&#29702;&#35770;&#65306;&#20026;&#20160;&#20040; Debug &#37027;&#20040;&#22256;&#38590;&#65311;</h2>
+<p class=" font-serif my-1">&#31243;&#24207;&#65306;<red>&#20154;&#31867;&#19990;&#30028;&#38656;&#27714;&#22312;&#20449;&#24687;&#19990;&#30028;&#30340;&#25237;&#24433;</red></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">程序中的 bug 是程序与设计/意图违反之处<ul class=" list-disc font-serif">
-<li class=" ml-8">debug 就是定位到程序中 bug 的过程</li>
+<li class=" ml-8">&#31243;&#24207;&#20013;&#30340; bug &#26159;&#31243;&#24207;&#19982;&#35774;&#35745;/&#24847;&#22270;&#36829;&#21453;&#20043;&#22788;<ul class=" list-disc font-serif">
+<li class=" ml-8">debug &#23601;&#26159;&#23450;&#20301;&#21040;&#31243;&#24207;&#20013; bug &#30340;&#36807;&#31243;</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">程序员：犯的是 Fault，看到的是 Failure</p>
+<p class=" font-serif my-1">&#31243;&#24207;&#21592;&#65306;&#29359;&#30340;&#26159; Fault&#65292;&#30475;&#21040;&#30340;&#26159; Failure</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">Fault (bug) → Error (程序状态错) → Failure (可观测的结果错)</li>
+<li class=" ml-8">Fault (bug) &#8594; Error (&#31243;&#24207;&#29366;&#24577;&#38169;) &#8594; Failure (&#21487;&#35266;&#27979;&#30340;&#32467;&#26524;&#38169;)</li>
 </ul>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/ICS/2020/slides/img/fault-error-failure.png" width="800px"></p></div>
         
@@ -373,16 +373,16 @@ section .center {
 
       
         
-        <div><h2 id="bug" class=" text-xl mt-2 pb-2 font-sans">调试理论：如何找到 Bug?</h2>
+        <div><h2 id="bug" class=" text-xl mt-2 pb-2 font-sans">&#35843;&#35797;&#29702;&#35770;&#65306;&#22914;&#20309;&#25214;&#21040; Bug?</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">调试理论：如果我们能判定任意程序状态的正确性，那么给定一个 Failure，通过二分查找定位到第一个 Error 的状态，导致此状态的代码就是 Fault (bug)。</p>
-<p class=" font-serif my-1">在实际中的应用：状态机的执行可能很长，但我们只要标记出一些<red>关键的状态</red>，就能帮我们缩小排查问题的范围</p>
+<p class=" font-serif my-1">&#35843;&#35797;&#29702;&#35770;&#65306;&#22914;&#26524;&#25105;&#20204;&#33021;&#21028;&#23450;&#20219;&#24847;&#31243;&#24207;&#29366;&#24577;&#30340;&#27491;&#30830;&#24615;&#65292;&#37027;&#20040;&#32473;&#23450;&#19968;&#20010; Failure&#65292;&#36890;&#36807;&#20108;&#20998;&#26597;&#25214;&#23450;&#20301;&#21040;&#31532;&#19968;&#20010; Error &#30340;&#29366;&#24577;&#65292;&#23548;&#33268;&#27492;&#29366;&#24577;&#30340;&#20195;&#30721;&#23601;&#26159; Fault (bug)&#12290;</p>
+<p class=" font-serif my-1">&#22312;&#23454;&#38469;&#20013;&#30340;&#24212;&#29992;&#65306;&#29366;&#24577;&#26426;&#30340;&#25191;&#34892;&#21487;&#33021;&#24456;&#38271;&#65292;&#20294;&#25105;&#20204;&#21482;&#35201;&#26631;&#35760;&#20986;&#19968;&#20123;<red>&#20851;&#38190;&#30340;&#29366;&#24577;</red>&#65292;&#23601;&#33021;&#24110;&#25105;&#20204;&#32553;&#23567;&#25490;&#26597;&#38382;&#39064;&#30340;&#33539;&#22260;</p>
 </blockquote>
 <hr>
-<p class=" font-serif my-1">实际中的调试：更 “人类友好” 的分段检查</p>
+<p class=" font-serif my-1">&#23454;&#38469;&#20013;&#30340;&#35843;&#35797;&#65306;&#26356; &#8220;&#20154;&#31867;&#21451;&#22909;&#8221; &#30340;&#20998;&#27573;&#26816;&#26597;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">printf → 自定义 log 的 trace</li>
-<li class=" ml-8">gdb → 指令/语句级 trace</li>
+<li class=" ml-8">printf &#8594; &#33258;&#23450;&#20041; log &#30340; trace</li>
+<li class=" ml-8">gdb &#8594; &#25351;&#20196;/&#35821;&#21477;&#32423; trace</li>
 </ul></div>
         
       
@@ -398,7 +398,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">坠入并发的深渊……</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#22368;&#20837;&#24182;&#21457;&#30340;&#28145;&#28170;&#8230;&#8230;</h1></div></div></div>
         
       
       </section>
@@ -409,21 +409,21 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">并发：调试理论的灾难</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#24182;&#21457;&#65306;&#35843;&#35797;&#29702;&#35770;&#30340;&#28798;&#38590;</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">在无法 “准确复现一次执行” 的基础上，“找到第一个 error 的状态” 变难了……</p>
+<p class=" font-serif my-1">&#22312;&#26080;&#27861; &#8220;&#20934;&#30830;&#22797;&#29616;&#19968;&#27425;&#25191;&#34892;&#8221; &#30340;&#22522;&#30784;&#19978;&#65292;&#8220;&#25214;&#21040;&#31532;&#19968;&#20010; error &#30340;&#29366;&#24577;&#8221; &#21464;&#38590;&#20102;&#8230;&#8230;</p>
 </blockquote>
 <hr>
-<p class=" font-serif my-1">Fault → Error</p>
+<p class=" font-serif my-1">Fault &#8594; Error</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">每次的 Error 都不一样</li>
-<li class=" ml-8">无法 “二分”</li>
+<li class=" ml-8">&#27599;&#27425;&#30340; Error &#37117;&#19981;&#19968;&#26679;</li>
+<li class=" ml-8">&#26080;&#27861; &#8220;&#20108;&#20998;&#8221;</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">Error → Failure</p>
+<p class=" font-serif my-1">Error &#8594; Failure</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">日志仍然能帮助我们缩小 Error 发生的范围</li>
-<li class=" ml-8">但 Failure 更难理解 (错误的输出/神秘异常/神秘重启/...)</li>
+<li class=" ml-8">&#26085;&#24535;&#20173;&#28982;&#33021;&#24110;&#21161;&#25105;&#20204;&#32553;&#23567; Error &#21457;&#29983;&#30340;&#33539;&#22260;</li>
+<li class=" ml-8">&#20294; Failure &#26356;&#38590;&#29702;&#35299; (&#38169;&#35823;&#30340;&#36755;&#20986;/&#31070;&#31192;&#24322;&#24120;/&#31070;&#31192;&#37325;&#21551;/...)</li>
 </ul></div>
         
       
@@ -435,23 +435,23 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">挣扎：使用调试理论</h2>
-<p class=" font-serif my-1">调试理论告诉我们：failure point 很重要</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25379;&#25166;&#65306;&#20351;&#29992;&#35843;&#35797;&#29702;&#35770;</h2>
+<p class=" font-serif my-1">&#35843;&#35797;&#29702;&#35770;&#21578;&#35785;&#25105;&#20204;&#65306;failure point &#24456;&#37325;&#35201;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">可以追溯出一些 error states</li>
-<li class=" ml-8">QEMU 设计者当然知道这一点<ul class=" list-disc font-serif">
-<li class=" ml-8"><red>如果我们希望有什么，那一定会有的！</red></li>
+<li class=" ml-8">&#21487;&#20197;&#36861;&#28335;&#20986;&#19968;&#20123; error states</li>
+<li class=" ml-8">QEMU &#35774;&#35745;&#32773;&#24403;&#28982;&#30693;&#36947;&#36825;&#19968;&#28857;<ul class=" list-disc font-serif">
+<li class=" ml-8"><red>&#22914;&#26524;&#25105;&#20204;&#24076;&#26395;&#26377;&#20160;&#20040;&#65292;&#37027;&#19968;&#23450;&#20250;&#26377;&#30340;&#65281;</red></li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">RTFM: QEMU Monitor (例子：<a href="../../../pages/OS/2021/demos/cpu-reset.c" class=" text-amber-900">cpu-reset.c</a>)</p>
+<p class=" font-serif my-1">RTFM: QEMU Monitor (&#20363;&#23376;&#65306;<a href="../../../pages/OS/2021/demos/cpu-reset.c" class=" text-amber-900">cpu-reset.c</a>)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">得到详尽的日志: <code>log int,cpu_reset,exec</code><ul class=" list-disc font-serif">
-<li class=" ml-8">fault → error → failure<ul class=" list-disc font-serif">
-<li class=" ml-8"><code>int,cpu_reset</code> - 帮助我们定位 failure</li>
-<li class=" ml-8"><code>exec</code> - 帮助我们定位 error (执行流)<ul class=" list-disc font-serif">
-<li class=" ml-8">甚至可以开发一个小工具，“绘制” 出程序执行的路径</li>
+<li class=" ml-8">&#24471;&#21040;&#35814;&#23613;&#30340;&#26085;&#24535;: <code>log int,cpu_reset,exec</code><ul class=" list-disc font-serif">
+<li class=" ml-8">fault &#8594; error &#8594; failure<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>int,cpu_reset</code> - &#24110;&#21161;&#25105;&#20204;&#23450;&#20301; failure</li>
+<li class=" ml-8"><code>exec</code> - &#24110;&#21161;&#25105;&#20204;&#23450;&#20301; error (&#25191;&#34892;&#27969;)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#29978;&#33267;&#21487;&#20197;&#24320;&#21457;&#19968;&#20010;&#23567;&#24037;&#20855;&#65292;&#8220;&#32472;&#21046;&#8221; &#20986;&#31243;&#24207;&#25191;&#34892;&#30340;&#36335;&#24452;</li>
 </ul>
 </li>
 </ul>
@@ -469,19 +469,19 @@ section .center {
 
       
         
-        <div><h2 id="bugs" class=" text-xl mt-2 pb-2 font-sans">并发 Bugs 到底长什么样？</h2>
-<p class=" font-serif my-1">一种研究流派：实证研究 (empirical study)</p>
+        <div><h2 id="bugs" class=" text-xl mt-2 pb-2 font-sans">&#24182;&#21457; Bugs &#21040;&#24213;&#38271;&#20160;&#20040;&#26679;&#65311;</h2>
+<p class=" font-serif my-1">&#19968;&#31181;&#30740;&#31350;&#27969;&#27966;&#65306;&#23454;&#35777;&#30740;&#31350; (empirical study)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">为了更好地解决并发 bugs 的问题<ul class=" list-disc font-serif">
-<li class=" ml-8">从现实数据集中 (随机) 选取一定比例的例子</li>
-<li class=" ml-8">对结论进行归纳总结</li>
+<li class=" ml-8">&#20026;&#20102;&#26356;&#22909;&#22320;&#35299;&#20915;&#24182;&#21457; bugs &#30340;&#38382;&#39064;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20174;&#29616;&#23454;&#25968;&#25454;&#38598;&#20013; (&#38543;&#26426;) &#36873;&#21462;&#19968;&#23450;&#27604;&#20363;&#30340;&#20363;&#23376;</li>
+<li class=" ml-8">&#23545;&#32467;&#35770;&#36827;&#34892;&#24402;&#32435;&#24635;&#32467;</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">一些实证研究</p>
+<p class=" font-serif my-1">&#19968;&#20123;&#23454;&#35777;&#30740;&#31350;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">S. Lu, et al. <a href="https://dl.acm.org/doi/10.1145/1353535.1346323" class=" text-amber-900">Learning from mistakes — A comprehensive study on real world concurrency bug characteristics</a>. In <em>Proc. of ASPLOS</em>, 2008.</li>
+<li class=" ml-8">S. Lu, et al. <a href="https://dl.acm.org/doi/10.1145/1353535.1346323" class=" text-amber-900">Learning from mistakes &#8212; A comprehensive study on real world concurrency bug characteristics</a>. In <em>Proc. of ASPLOS</em>, 2008.</li>
 <li class=" ml-8">Z. Yin, et al. <a href="https://dl.acm.org/doi/10.1145/2025113.2025121" class=" text-amber-900">How do fixes become bugs? A comprehensive characteristic study on incorrect fixes in commercial and
 open source operating systems</a>. In <em>Proc. of ESEC/FSE</em>, 2011.</li>
 </ul></div>
@@ -499,7 +499,7 @@ open source operating systems</a>. In <em>Proc. of ESEC/FSE</em>, 2011.</li>
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="deadlock" class=" text-2xl mt-2 font-sans">死锁 (Deadlock)</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="deadlock" class=" text-2xl mt-2 font-sans">&#27515;&#38145; (Deadlock)</h1></div></div></div>
         
       
       </section>
@@ -510,12 +510,12 @@ open source operating systems</a>. In <em>Proc. of ESEC/FSE</em>, 2011.</li>
 
       
         
-        <div><h2 id="deadlock" class=" text-xl mt-2 pb-2 font-sans">死锁 (Deadlock)</h2>
+        <div><h2 id="deadlock" class=" text-xl mt-2 pb-2 font-sans">&#27515;&#38145; (Deadlock)</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
 <p class=" font-serif my-1">A deadlock is a state in which each member of a group is waiting for another member, including itself, to take action.</p>
 <p class=" font-serif my-1">Empirical study: MySQL (14/9), Apache (13/4), Mozilla (41/16), OpenOffice (6/2)</p>
 </blockquote>
-<p class=" font-serif my-1">出现线程 “互相等待” 的情况 (路口空间 = 资源)</p>
+<p class=" font-serif my-1">&#20986;&#29616;&#32447;&#31243; &#8220;&#20114;&#30456;&#31561;&#24453;&#8221; &#30340;&#24773;&#20917; (&#36335;&#21475;&#31354;&#38388; = &#36164;&#28304;)</p>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/deadlock-car.jpg" width="500px"></p></div>
         
       
@@ -528,21 +528,21 @@ open source operating systems</a>. In <em>Proc. of ESEC/FSE</em>, 2011.</li>
       
         
         <div><h2 id="aa-deadlock" class=" text-xl mt-2 pb-2 font-sans">AA-Deadlock</h2>
-<p class=" font-serif my-1">假设你的 spinlock 不小心发生了中断</p>
+<p class=" font-serif my-1">&#20551;&#35774;&#20320;&#30340; spinlock &#19981;&#23567;&#24515;&#21457;&#29983;&#20102;&#20013;&#26029;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">错误实现的 popcli</li>
-<li class=" ml-8">不应该发生的 <code>yield()</code></li>
+<li class=" ml-8">&#38169;&#35823;&#23454;&#29616;&#30340; popcli</li>
+<li class=" ml-8">&#19981;&#24212;&#35813;&#21457;&#29983;&#30340; <code>yield()</code></li>
 </ul>
 <hr>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">os_run</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">spin_lock</span><span class="p">(</span><span class="o">&</span><span class="n">list_lock</span><span class="p">);</span>
-<span class="w">  </span><span class="n">spin_lock</span><span class="p">(</span><span class="o">&</span><span class="n">xxx</span><span class="p">);</span>
-<span class="w">  </span><span class="n">spin_unlock</span><span class="p">(</span><span class="o">&</span><span class="n">xxx</span><span class="p">);</span><span class="w"> </span><span class="c1">// ---------+</span>
+<span class="w">  </span><span class="n">spin_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">list_lock</span><span class="p">);</span>
+<span class="w">  </span><span class="n">spin_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">xxx</span><span class="p">);</span>
+<span class="w">  </span><span class="n">spin_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">xxx</span><span class="p">);</span><span class="w"> </span><span class="c1">// ---------+</span>
 <span class="p">}</span><span class="w">                          </span><span class="c1">//    |</span>
 <span class="w">                           </span><span class="c1">//    |</span>
 <span class="kt">void</span><span class="w"> </span><span class="nf">on_interrupt</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">      </span><span class="c1">//    |</span>
-<span class="w">  </span><span class="n">spin_lock</span><span class="p">(</span><span class="o">&</span><span class="n">list_lock</span><span class="p">);</span><span class="w">   </span><span class="c1">// <--+</span>
-<span class="w">  </span><span class="n">spin_unlock</span><span class="p">(</span><span class="o">&</span><span class="n">list_lock</span><span class="p">);</span>
+<span class="w">  </span><span class="n">spin_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">list_lock</span><span class="p">);</span><span class="w">   </span><span class="c1">// &lt;--+</span>
+<span class="w">  </span><span class="n">spin_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">list_lock</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div></div>
         
@@ -557,20 +557,20 @@ open source operating systems</a>. In <em>Proc. of ESEC/FSE</em>, 2011.</li>
         
         <div><h2 id="abba-deadlock" class=" text-xl mt-2 pb-2 font-sans">ABBA-Deadlock</h2>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">obj_move</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">spin_lock</span><span class="p">(</span><span class="o">&</span><span class="n">lock</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
-<span class="w">  </span><span class="n">spin_lock</span><span class="p">(</span><span class="o">&</span><span class="n">lock</span><span class="p">[</span><span class="n">j</span><span class="p">]);</span>
+<span class="w">  </span><span class="n">spin_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<span class="w">  </span><span class="n">spin_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">[</span><span class="n">j</span><span class="p">]);</span>
 <span class="w">  </span><span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span>
 <span class="w">  </span><span class="n">arr</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
-<span class="w">  </span><span class="n">spin_unlock</span><span class="p">(</span><span class="o">&</span><span class="n">lock</span><span class="p">[</span><span class="n">j</span><span class="p">]);</span>
-<span class="w">  </span><span class="n">spin_unlock</span><span class="p">(</span><span class="o">&</span><span class="n">lock</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<span class="w">  </span><span class="n">spin_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">[</span><span class="n">j</span><span class="p">]);</span>
+<span class="w">  </span><span class="n">spin_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <hr>
-<p class=" font-serif my-1">上锁的顺序很重要……</p>
+<p class=" font-serif my-1">&#19978;&#38145;&#30340;&#39034;&#24207;&#24456;&#37325;&#35201;&#8230;&#8230;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><code>obj_move</code> 本身看起来没有问题<ul class=" list-disc font-serif">
-<li class=" ml-8"><code>obj_move(1, 2)</code>; <code>obj_move(2, 1)</code> → 死锁</li>
+<li class=" ml-8"><code>obj_move</code> &#26412;&#36523;&#30475;&#36215;&#26469;&#27809;&#26377;&#38382;&#39064;<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>obj_move(1, 2)</code>; <code>obj_move(2, 1)</code> &#8594; &#27515;&#38145;</li>
 </ul>
 </li>
 </ul></div>
@@ -584,19 +584,19 @@ open source operating systems</a>. In <em>Proc. of ESEC/FSE</em>, 2011.</li>
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">避免死锁</h2>
-<p class=" font-serif my-1">死锁产生的四个必要条件 (<a href="https://en.wikipedia.org/wiki/Edward_G._Coffman,_Jr." class=" text-amber-900">Edward G. Coffman</a>, 1971):</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#36991;&#20813;&#27515;&#38145;</h2>
+<p class=" font-serif my-1">&#27515;&#38145;&#20135;&#29983;&#30340;&#22235;&#20010;&#24517;&#35201;&#26465;&#20214; (<a href="https://en.wikipedia.org/wiki/Edward_G._Coffman,_Jr." class=" text-amber-900">Edward G. Coffman</a>, 1971):</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">互斥：一个资源每次只能被一个进程使用</li>
-<li class=" ml-8">请求与保持：一个进程请求资阻塞时，不释放已获得的资源</li>
-<li class=" ml-8">不剥夺：进程已获得的资源不能强行剥夺</li>
-<li class=" ml-8">循环等待：若干进程之间形成头尾相接的循环等待资源关系</li>
+<li class=" ml-8">&#20114;&#26021;&#65306;&#19968;&#20010;&#36164;&#28304;&#27599;&#27425;&#21482;&#33021;&#34987;&#19968;&#20010;&#36827;&#31243;&#20351;&#29992;</li>
+<li class=" ml-8">&#35831;&#27714;&#19982;&#20445;&#25345;&#65306;&#19968;&#20010;&#36827;&#31243;&#35831;&#27714;&#36164;&#38459;&#22622;&#26102;&#65292;&#19981;&#37322;&#25918;&#24050;&#33719;&#24471;&#30340;&#36164;&#28304;</li>
+<li class=" ml-8">&#19981;&#21093;&#22842;&#65306;&#36827;&#31243;&#24050;&#33719;&#24471;&#30340;&#36164;&#28304;&#19981;&#33021;&#24378;&#34892;&#21093;&#22842;</li>
+<li class=" ml-8">&#24490;&#29615;&#31561;&#24453;&#65306;&#33509;&#24178;&#36827;&#31243;&#20043;&#38388;&#24418;&#25104;&#22836;&#23614;&#30456;&#25509;&#30340;&#24490;&#29615;&#31561;&#24453;&#36164;&#28304;&#20851;&#31995;</li>
 </ul>
 <hr>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">“理解了死锁的原因，尤其是产生死锁的四个必要条件，就可以最大可能地避免、预防和解除死锁。所以，在系统设计、进程调度等方面注意如何不让这四个必要条件成立，如何确定资源的合理分配算法，避免进程永久占据系统资源。此外，也要防止进程在处于等待状态的情况下占用资源。因此，对资源的分配要给予合理的规划。”
-——<red>Bullshit</red>.</p>
-<p class=" font-serif my-1">破坏每一个条件都是非常困难的 (请阅读教科书)</p>
+<p class=" font-serif my-1">&#8220;&#29702;&#35299;&#20102;&#27515;&#38145;&#30340;&#21407;&#22240;&#65292;&#23588;&#20854;&#26159;&#20135;&#29983;&#27515;&#38145;&#30340;&#22235;&#20010;&#24517;&#35201;&#26465;&#20214;&#65292;&#23601;&#21487;&#20197;&#26368;&#22823;&#21487;&#33021;&#22320;&#36991;&#20813;&#12289;&#39044;&#38450;&#21644;&#35299;&#38500;&#27515;&#38145;&#12290;&#25152;&#20197;&#65292;&#22312;&#31995;&#32479;&#35774;&#35745;&#12289;&#36827;&#31243;&#35843;&#24230;&#31561;&#26041;&#38754;&#27880;&#24847;&#22914;&#20309;&#19981;&#35753;&#36825;&#22235;&#20010;&#24517;&#35201;&#26465;&#20214;&#25104;&#31435;&#65292;&#22914;&#20309;&#30830;&#23450;&#36164;&#28304;&#30340;&#21512;&#29702;&#20998;&#37197;&#31639;&#27861;&#65292;&#36991;&#20813;&#36827;&#31243;&#27704;&#20037;&#21344;&#25454;&#31995;&#32479;&#36164;&#28304;&#12290;&#27492;&#22806;&#65292;&#20063;&#35201;&#38450;&#27490;&#36827;&#31243;&#22312;&#22788;&#20110;&#31561;&#24453;&#29366;&#24577;&#30340;&#24773;&#20917;&#19979;&#21344;&#29992;&#36164;&#28304;&#12290;&#22240;&#27492;&#65292;&#23545;&#36164;&#28304;&#30340;&#20998;&#37197;&#35201;&#32473;&#20104;&#21512;&#29702;&#30340;&#35268;&#21010;&#12290;&#8221;
+&#8212;&#8212;<red>Bullshit</red>.</p>
+<p class=" font-serif my-1">&#30772;&#22351;&#27599;&#19968;&#20010;&#26465;&#20214;&#37117;&#26159;&#38750;&#24120;&#22256;&#38590;&#30340; (&#35831;&#38405;&#35835;&#25945;&#31185;&#20070;)</p>
 </blockquote></div>
         
       
@@ -608,10 +608,10 @@ open source operating systems</a>. In <em>Proc. of ESEC/FSE</em>, 2011.</li>
 
       
         
-        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">避免死锁 (cont'd)</h2>
+        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">&#36991;&#20813;&#27515;&#38145; (cont'd)</h2>
 <p class=" font-serif my-1">AA-Deadlock</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">AA 型的死锁容易检测，及早报告，及早修复</li>
+<li class=" ml-8">AA &#22411;&#30340;&#27515;&#38145;&#23481;&#26131;&#26816;&#27979;&#65292;&#21450;&#26089;&#25253;&#21578;&#65292;&#21450;&#26089;&#20462;&#22797;</li>
 <li class=" ml-8"><a href="../../../pages/OS/2021/demos/spinlock-xv6.c" class=" text-amber-900">spinlock.c</a><ul class=" list-disc font-serif">
 <li class=" ml-8"><code>if (holding(lk)) panic();</code></li>
 </ul>
@@ -620,10 +620,10 @@ open source operating systems</a>. In <em>Proc. of ESEC/FSE</em>, 2011.</li>
 <hr>
 <p class=" font-serif my-1">ABBA-Deadlock</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">任意时刻系统中的锁都是有限的</li>
-<li class=" ml-8">严格按照固定的顺序获得所有锁 (lock ordering; 消除 “循环等待”)<ul class=" list-disc font-serif">
-<li class=" ml-8">试一试：用状态机证明 $T_1: A\to B\to C; T_2: B \to C$ 是安全的<ul class=" list-disc font-serif">
-<li class=" ml-8">“在任意时刻总是有一个线程 (获得 “最靠后” 锁的) 可以继续执行”</li>
+<li class=" ml-8">&#20219;&#24847;&#26102;&#21051;&#31995;&#32479;&#20013;&#30340;&#38145;&#37117;&#26159;&#26377;&#38480;&#30340;</li>
+<li class=" ml-8">&#20005;&#26684;&#25353;&#29031;&#22266;&#23450;&#30340;&#39034;&#24207;&#33719;&#24471;&#25152;&#26377;&#38145; (lock ordering; &#28040;&#38500; &#8220;&#24490;&#29615;&#31561;&#24453;&#8221;)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#35797;&#19968;&#35797;&#65306;&#29992;&#29366;&#24577;&#26426;&#35777;&#26126; $T_1: A\to B\to C; T_2: B \to C$ &#26159;&#23433;&#20840;&#30340;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#8220;&#22312;&#20219;&#24847;&#26102;&#21051;&#24635;&#26159;&#26377;&#19968;&#20010;&#32447;&#31243; (&#33719;&#24471; &#8220;&#26368;&#38752;&#21518;&#8221; &#38145;&#30340;) &#21487;&#20197;&#32487;&#32493;&#25191;&#34892;&#8221;</li>
 </ul>
 </li>
 </ul>
@@ -639,7 +639,7 @@ open source operating systems</a>. In <em>Proc. of ESEC/FSE</em>, 2011.</li>
 
       
         
-        <div><h2 id="lock-ordering-linux-kernel-rmapc" class=" text-xl mt-2 pb-2 font-sans">Lock Ordering: 应用 (Linux Kernel: rmap.c)</h2>
+        <div><h2 id="lock-ordering-linux-kernel-rmapc" class=" text-xl mt-2 pb-2 font-sans">Lock Ordering: &#24212;&#29992; (Linux Kernel: rmap.c)</h2>
 <p class=" font-serif my-1"><img alt="" src="../../../pages/OS/img/kernel-rmap.png" width="800px"></p></div>
         
       
@@ -651,10 +651,10 @@ open source operating systems</a>. In <em>Proc. of ESEC/FSE</em>, 2011.</li>
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">你大约察觉了……</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20320;&#22823;&#32422;&#23519;&#35273;&#20102;&#8230;&#8230;</h2>
 <p class=" font-serif my-1">Textbooks will tell you that if you always lock in the same order, you will never get this kind of deadlock. Practice will tell you that this approach doesn't scale: when I create a new lock, I don't understand enough of the kernel to figure out where in the 5000 lock hierarchy it will fit.</p>
 <p class=" font-serif my-1">The best locks are encapsulated: they <em>never get exposed in headers</em>, and are <em>never held around calls to non-trivial functions outside the same file</em>. You can read through this code and see that it will never deadlock, because it never tries to grab another lock while it has that one. People using your code don't even need to know you are using a lock.</p>
-<p class=" font-serif my-1">—— <em>Unreliable Guide To Locking</em> by Rusty Russell</p></div>
+<p class=" font-serif my-1">&#8212;&#8212; <em>Unreliable Guide To Locking</em> by Rusty Russell</p></div>
         
       
       </section>
@@ -665,25 +665,25 @@ open source operating systems</a>. In <em>Proc. of ESEC/FSE</em>, 2011.</li>
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">让程序员彻底避免死锁？你想多了……</h2>
-<p class=" font-serif my-1">调试公理：未测代码永远是错的</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#35753;&#31243;&#24207;&#21592;&#24443;&#24213;&#36991;&#20813;&#27515;&#38145;&#65311;&#20320;&#24819;&#22810;&#20102;&#8230;&#8230;</h2>
+<p class=" font-serif my-1">&#35843;&#35797;&#20844;&#29702;&#65306;&#26410;&#27979;&#20195;&#30721;&#27704;&#36828;&#26159;&#38169;&#30340;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">并发那么复杂，程序员哪能充分测试啊……</li>
+<li class=" ml-8">&#24182;&#21457;&#37027;&#20040;&#22797;&#26434;&#65292;&#31243;&#24207;&#21592;&#21738;&#33021;&#20805;&#20998;&#27979;&#35797;&#21834;&#8230;&#8230;</li>
 </ul>
 <hr>
 <p class=" font-serif my-1"><a href="../../OS_Lockdep.html" class=" text-amber-900">lockdep</a>, since Linux Kernel 2.6.17; also in <a href="https://gitee.com/openharmony" class=" text-amber-900">OpenHarmony</a>!</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">为每一个 “lock class” 检查 (分配一个 key)<ul class=" list-disc font-serif">
-<li class=" ml-8"><a href="../../../pages/OS/2021/demos/lock-site.c" class=" text-amber-900">lock-site.c</a>; 我们也可以在 xv6 里实现一个！</li>
+<li class=" ml-8">&#20026;&#27599;&#19968;&#20010; &#8220;lock class&#8221; &#26816;&#26597; (&#20998;&#37197;&#19968;&#20010; key)<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="../../../pages/OS/2021/demos/lock-site.c" class=" text-amber-900">lock-site.c</a>; &#25105;&#20204;&#20063;&#21487;&#20197;&#22312; xv6 &#37324;&#23454;&#29616;&#19968;&#20010;&#65281;</li>
 </ul>
 </li>
-<li class=" ml-8">在运行时观察所有的 lock/unlock<ul class=" list-disc font-serif">
-<li class=" ml-8">lock/unlock 时记录所有可能的上锁顺序<ul class=" list-disc font-serif">
-<li class=" ml-8">线程获得 $X, Y, Z$ 会记录 $X \to Y, X \to Z, Y \to Z$</li>
+<li class=" ml-8">&#22312;&#36816;&#34892;&#26102;&#35266;&#23519;&#25152;&#26377;&#30340; lock/unlock<ul class=" list-disc font-serif">
+<li class=" ml-8">lock/unlock &#26102;&#35760;&#24405;&#25152;&#26377;&#21487;&#33021;&#30340;&#19978;&#38145;&#39034;&#24207;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#32447;&#31243;&#33719;&#24471; $X, Y, Z$ &#20250;&#35760;&#24405; $X \to Y, X \to Z, Y \to Z$</li>
 </ul>
 </li>
-<li class=" ml-8">检查是否存在 $A \to B$ 和 $B \to A$ (deadlock)<ul class=" list-disc font-serif">
-<li class=" ml-8">即便死锁没有真正发生，但只要有 ABBA 的风险就会报告</li>
+<li class=" ml-8">&#26816;&#26597;&#26159;&#21542;&#23384;&#22312; $A \to B$ &#21644; $B \to A$ (deadlock)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21363;&#20415;&#27515;&#38145;&#27809;&#26377;&#30495;&#27491;&#21457;&#29983;&#65292;&#20294;&#21482;&#35201;&#26377; ABBA &#30340;&#39118;&#38505;&#23601;&#20250;&#25253;&#21578;</li>
 </ul>
 </li>
 </ul>
@@ -699,20 +699,20 @@ open source operating systems</a>. In <em>Proc. of ESEC/FSE</em>, 2011.</li>
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">死锁：锁并不是唯一的原因</h2>
-<p class=" font-serif my-1">在涉及同步的时候，情况就复杂得多了……</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#27515;&#38145;&#65306;&#38145;&#24182;&#19981;&#26159;&#21807;&#19968;&#30340;&#21407;&#22240;</h2>
+<p class=" font-serif my-1">&#22312;&#28041;&#21450;&#21516;&#27493;&#30340;&#26102;&#20505;&#65292;&#24773;&#20917;&#23601;&#22797;&#26434;&#24471;&#22810;&#20102;&#8230;&#8230;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">老总打电话给秘书：“这几天我陪你去北京玩玩，你准备一下”</li>
-<li class=" ml-8">秘书打电话给老公：“这几天我要和老总去北京开会”</li>
-<li class=" ml-8">老公打电话给情人：“这几天我老婆不在家，陪我”</li>
-<li class=" ml-8">情人打电话给辅导学生：“这几天老师有事，停课”</li>
-<li class=" ml-8">学生打电话给爷爷：“这几天不上课，爷爷你陪我玩”</li>
-<li class=" ml-8">爷爷给秘书打电话：“北京去不了了，孙子要我陪”</li>
-<li class=" ml-8">秘书给老公打电话：“老总突然有事不去北京开会了”</li>
-<li class=" ml-8">老公给情人打电话：“老婆不走了，下次再说”</li>
-<li class=" ml-8">情人给辅导学生打电话：“这几天照常上课”</li>
-<li class=" ml-8">学生给爷爷打电话：“555 老师说这几天照常上课”</li>
-<li class=" ml-8">爷爷给秘书打电话：还是去北京吧，你准备准备</li>
+<li class=" ml-8">&#32769;&#24635;&#25171;&#30005;&#35805;&#32473;&#31192;&#20070;&#65306;&#8220;&#36825;&#20960;&#22825;&#25105;&#38506;&#20320;&#21435;&#21271;&#20140;&#29609;&#29609;&#65292;&#20320;&#20934;&#22791;&#19968;&#19979;&#8221;</li>
+<li class=" ml-8">&#31192;&#20070;&#25171;&#30005;&#35805;&#32473;&#32769;&#20844;&#65306;&#8220;&#36825;&#20960;&#22825;&#25105;&#35201;&#21644;&#32769;&#24635;&#21435;&#21271;&#20140;&#24320;&#20250;&#8221;</li>
+<li class=" ml-8">&#32769;&#20844;&#25171;&#30005;&#35805;&#32473;&#24773;&#20154;&#65306;&#8220;&#36825;&#20960;&#22825;&#25105;&#32769;&#23110;&#19981;&#22312;&#23478;&#65292;&#38506;&#25105;&#8221;</li>
+<li class=" ml-8">&#24773;&#20154;&#25171;&#30005;&#35805;&#32473;&#36741;&#23548;&#23398;&#29983;&#65306;&#8220;&#36825;&#20960;&#22825;&#32769;&#24072;&#26377;&#20107;&#65292;&#20572;&#35838;&#8221;</li>
+<li class=" ml-8">&#23398;&#29983;&#25171;&#30005;&#35805;&#32473;&#29239;&#29239;&#65306;&#8220;&#36825;&#20960;&#22825;&#19981;&#19978;&#35838;&#65292;&#29239;&#29239;&#20320;&#38506;&#25105;&#29609;&#8221;</li>
+<li class=" ml-8">&#29239;&#29239;&#32473;&#31192;&#20070;&#25171;&#30005;&#35805;&#65306;&#8220;&#21271;&#20140;&#21435;&#19981;&#20102;&#20102;&#65292;&#23385;&#23376;&#35201;&#25105;&#38506;&#8221;</li>
+<li class=" ml-8">&#31192;&#20070;&#32473;&#32769;&#20844;&#25171;&#30005;&#35805;&#65306;&#8220;&#32769;&#24635;&#31361;&#28982;&#26377;&#20107;&#19981;&#21435;&#21271;&#20140;&#24320;&#20250;&#20102;&#8221;</li>
+<li class=" ml-8">&#32769;&#20844;&#32473;&#24773;&#20154;&#25171;&#30005;&#35805;&#65306;&#8220;&#32769;&#23110;&#19981;&#36208;&#20102;&#65292;&#19979;&#27425;&#20877;&#35828;&#8221;</li>
+<li class=" ml-8">&#24773;&#20154;&#32473;&#36741;&#23548;&#23398;&#29983;&#25171;&#30005;&#35805;&#65306;&#8220;&#36825;&#20960;&#22825;&#29031;&#24120;&#19978;&#35838;&#8221;</li>
+<li class=" ml-8">&#23398;&#29983;&#32473;&#29239;&#29239;&#25171;&#30005;&#35805;&#65306;&#8220;555 &#32769;&#24072;&#35828;&#36825;&#20960;&#22825;&#29031;&#24120;&#19978;&#35838;&#8221;</li>
+<li class=" ml-8">&#29239;&#29239;&#32473;&#31192;&#20070;&#25171;&#30005;&#35805;&#65306;&#36824;&#26159;&#21435;&#21271;&#20140;&#21543;&#65292;&#20320;&#20934;&#22791;&#20934;&#22791;</li>
 </ul></div>
         
       
@@ -728,9 +728,9 @@ open source operating systems</a>. In <em>Proc. of ESEC/FSE</em>, 2011.</li>
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="bug" class=" text-2xl mt-2 font-sans">并发 Bug：不仅是死锁</h1>
+        <div><div class="center middle"><div style="width:100%"><h1 id="bug" class=" text-2xl mt-2 font-sans">&#24182;&#21457; Bug&#65306;&#19981;&#20165;&#26159;&#27515;&#38145;</h1>
 <p class=" font-serif my-1"><br></p>
-<p class=" font-serif my-1">不上锁不就没有死锁了吗？</p></div></div></div>
+<p class=" font-serif my-1">&#19981;&#19978;&#38145;&#19981;&#23601;&#27809;&#26377;&#27515;&#38145;&#20102;&#21527;&#65311;</p></div></div></div>
         
       
       </section>
@@ -741,20 +741,20 @@ open source operating systems</a>. In <em>Proc. of ESEC/FSE</em>, 2011.</li>
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">程序员：花式犯错</h2>
-<p class=" font-serif my-1">回顾我们实现并发控制的工具</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#31243;&#24207;&#21592;&#65306;&#33457;&#24335;&#29359;&#38169;</h2>
+<p class=" font-serif my-1">&#22238;&#39038;&#25105;&#20204;&#23454;&#29616;&#24182;&#21457;&#25511;&#21046;&#30340;&#24037;&#20855;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">互斥锁 (lock/unlock) - 原子性</li>
-<li class=" ml-8">条件变量 (wait/signal) - 同步</li>
+<li class=" ml-8">&#20114;&#26021;&#38145; (lock/unlock) - &#21407;&#23376;&#24615;</li>
+<li class=" ml-8">&#26465;&#20214;&#21464;&#37327; (wait/signal) - &#21516;&#27493;</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">忘记上锁——原子性违反 (Atomicity Violation, AV)</p>
-<p class=" font-serif my-1">忘记同步——顺序违反 (Order Violation, OV)</p>
+<p class=" font-serif my-1">&#24536;&#35760;&#19978;&#38145;&#8212;&#8212;&#21407;&#23376;&#24615;&#36829;&#21453; (Atomicity Violation, AV)</p>
+<p class=" font-serif my-1">&#24536;&#35760;&#21516;&#27493;&#8212;&#8212;&#39034;&#24207;&#36829;&#21453; (Order Violation, OV)</p>
 <hr>
-<p class=" font-serif my-1">Empirical study: 在 105 个并发 bug 中 (non-deadlock/deadlock)</p>
+<p class=" font-serif my-1">Empirical study: &#22312; 105 &#20010;&#24182;&#21457; bug &#20013; (non-deadlock/deadlock)</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">MySQL (14/9), Apache (13/4), Mozilla (41/16), OpenOffice (6/2)</li>
-<li class=" ml-8"><red>97% 的非死锁并发 bug 都是 AV 或 OV</red>。</li>
+<li class=" ml-8"><red>97% &#30340;&#38750;&#27515;&#38145;&#24182;&#21457; bug &#37117;&#26159; AV &#25110; OV</red>&#12290;</li>
 </ul></div>
         
       
@@ -766,10 +766,10 @@ open source operating systems</a>. In <em>Proc. of ESEC/FSE</em>, 2011.</li>
 
       
         
-        <div><h2 id="av" class=" text-xl mt-2 pb-2 font-sans">原子性违反 (AV)</h2>
-<p class=" font-serif my-1">“ABA”</p>
+        <div><h2 id="av" class=" text-xl mt-2 pb-2 font-sans">&#21407;&#23376;&#24615;&#36829;&#21453; (AV)</h2>
+<p class=" font-serif my-1">&#8220;ABA&#8221;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">我以为一段代码没啥事呢，但被人强势插入了</li>
+<li class=" ml-8">&#25105;&#20197;&#20026;&#19968;&#27573;&#20195;&#30721;&#27809;&#21861;&#20107;&#21602;&#65292;&#20294;&#34987;&#20154;&#24378;&#21183;&#25554;&#20837;&#20102;</li>
 </ul>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/av-bug.png" width="900px"></p></div>
         
@@ -782,10 +782,10 @@ open source operating systems</a>. In <em>Proc. of ESEC/FSE</em>, 2011.</li>
 
       
         
-        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">原子性违反 (cont'd)</h2>
-<p class=" font-serif my-1">有时候上锁也不解决问题</p>
+        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">&#21407;&#23376;&#24615;&#36829;&#21453; (cont'd)</h2>
+<p class=" font-serif my-1">&#26377;&#26102;&#20505;&#19978;&#38145;&#20063;&#19981;&#35299;&#20915;&#38382;&#39064;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">“TOCTTOU” - time of check to time of use</li>
+<li class=" ml-8">&#8220;TOCTTOU&#8221; - time of check to time of use</li>
 </ul>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/tocttou.png" width="640px"></p>
 <ul class=" list-disc font-serif">
@@ -801,11 +801,11 @@ open source operating systems</a>. In <em>Proc. of ESEC/FSE</em>, 2011.</li>
 
       
         
-        <div><h2 id="ov" class=" text-xl mt-2 pb-2 font-sans">顺序违反 (OV)</h2>
-<p class=" font-serif my-1">“BA”</p>
+        <div><h2 id="ov" class=" text-xl mt-2 pb-2 font-sans">&#39034;&#24207;&#36829;&#21453; (OV)</h2>
+<p class=" font-serif my-1">&#8220;BA&#8221;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">怎么就没按我预想的顺序来呢？<ul class=" list-disc font-serif">
-<li class=" ml-8">例子：concurrent use after free  </li>
+<li class=" ml-8">&#24590;&#20040;&#23601;&#27809;&#25353;&#25105;&#39044;&#24819;&#30340;&#39034;&#24207;&#26469;&#21602;&#65311;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20363;&#23376;&#65306;concurrent use after free  </li>
 </ul>
 </li>
 </ul>
@@ -820,20 +820,20 @@ open source operating systems</a>. In <em>Proc. of ESEC/FSE</em>, 2011.</li>
 
       
         
-        <div><h2 id="empirical-study" class=" text-xl mt-2 pb-2 font-sans">Empirical Study 的意义</h2>
-<p class=" font-serif my-1">程序员：我本地都跑了几万次了，没问题啊</p>
+        <div><h2 id="empirical-study" class=" text-xl mt-2 pb-2 font-sans">Empirical Study &#30340;&#24847;&#20041;</h2>
+<p class=" font-serif my-1">&#31243;&#24207;&#21592;&#65306;&#25105;&#26412;&#22320;&#37117;&#36305;&#20102;&#20960;&#19975;&#27425;&#20102;&#65292;&#27809;&#38382;&#39064;&#21834;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">一部署到生产环境里就 💥 爆炸了</li>
+<li class=" ml-8">&#19968;&#37096;&#32626;&#21040;&#29983;&#20135;&#29615;&#22659;&#37324;&#23601; &#128165; &#29190;&#28856;&#20102;</li>
 </ul>
-<p class=" font-serif my-1">我：在本地测的好好的啊</p>
+<p class=" font-serif my-1">&#25105;&#65306;&#22312;&#26412;&#22320;&#27979;&#30340;&#22909;&#22909;&#30340;&#21834;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">提交到 Online Judge 上连 easy tests 都过不了 (真实)</li>
+<li class=" ml-8">&#25552;&#20132;&#21040; Online Judge &#19978;&#36830; easy tests &#37117;&#36807;&#19981;&#20102; (&#30495;&#23454;)</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">Empirical study 给了我们更多有趣的发现，指导 bug 的发现/修复：</p>
+<p class=" font-serif my-1">Empirical study &#32473;&#20102;&#25105;&#20204;&#26356;&#22810;&#26377;&#36259;&#30340;&#21457;&#29616;&#65292;&#25351;&#23548; bug &#30340;&#21457;&#29616;/&#20462;&#22797;&#65306;</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">Almost all (96%) of the examined bugs are guaranteed to manifest if certain partial order between <em>2 threads</em> is enforced. </li>
-<li class=" ml-8">Many (66%) of the examined non-deadlock bugs’ manifestation involves concurrent accesses to <em>only one variable</em>. </li>
+<li class=" ml-8">Many (66%) of the examined non-deadlock bugs&#8217; manifestation involves concurrent accesses to <em>only one variable</em>. </li>
 <li class=" ml-8">Almost all (97%) of the examined deadlock bugs involve <em>two threads</em> circularly waiting for at most two resources. </li>
 </ul></div>
         
@@ -850,7 +850,7 @@ open source operating systems</a>. In <em>Proc. of ESEC/FSE</em>, 2011.</li>
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="lab-1-pmm" class=" text-2xl mt-2 font-sans">调试理论应用：Lab 1 (PMM)</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="lab-1-pmm" class=" text-2xl mt-2 font-sans">&#35843;&#35797;&#29702;&#35770;&#24212;&#29992;&#65306;Lab 1 (PMM)</h1></div></div></div>
         
       
       </section>
@@ -861,25 +861,25 @@ open source operating systems</a>. In <em>Proc. of ESEC/FSE</em>, 2011.</li>
 
       
         
-        <div><h2 id="online-judge" class=" text-xl mt-2 pb-2 font-sans">Online Judge 体验极差</h2>
-<p class=" font-serif my-1">Lab 1 有一定难度</p>
+        <div><h2 id="online-judge" class=" text-xl mt-2 pb-2 font-sans">Online Judge &#20307;&#39564;&#26497;&#24046;</h2>
+<p class=" font-serif my-1">Lab 1 &#26377;&#19968;&#23450;&#38590;&#24230;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">有一点轻微的并发 bug → Wrong Answer</li>
-<li class=" ml-8">用一把大锁 → Wrong Answer (< 1Mop/s)<ul class=" list-disc font-serif">
-<li class=" ml-8">大部分分数到手，建议从这里开始</li>
+<li class=" ml-8">&#26377;&#19968;&#28857;&#36731;&#24494;&#30340;&#24182;&#21457; bug &#8594; Wrong Answer</li>
+<li class=" ml-8">&#29992;&#19968;&#25226;&#22823;&#38145; &#8594; Wrong Answer (&lt; 1Mop/s)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22823;&#37096;&#20998;&#20998;&#25968;&#21040;&#25163;&#65292;&#24314;&#35758;&#20174;&#36825;&#37324;&#24320;&#22987;</li>
 </ul>
 </li>
 </ul>
 <hr>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">如果你调试了很久都没有想法，不如用一点系统化的手段。</p>
-<p class=" font-serif my-1">“跳出问题看问题” 是专业人士应当具备的素质。</p>
+<p class=" font-serif my-1">&#22914;&#26524;&#20320;&#35843;&#35797;&#20102;&#24456;&#20037;&#37117;&#27809;&#26377;&#24819;&#27861;&#65292;&#19981;&#22914;&#29992;&#19968;&#28857;&#31995;&#32479;&#21270;&#30340;&#25163;&#27573;&#12290;</p>
+<p class=" font-serif my-1">&#8220;&#36339;&#20986;&#38382;&#39064;&#30475;&#38382;&#39064;&#8221; &#26159;&#19987;&#19994;&#20154;&#22763;&#24212;&#24403;&#20855;&#22791;&#30340;&#32032;&#36136;&#12290;</p>
 </blockquote>
 <hr>
-<p class=" font-serif my-1">做好 Lab1 的测试框架</p>
+<p class=" font-serif my-1">&#20570;&#22909; Lab1 &#30340;&#27979;&#35797;&#26694;&#26550;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">虽然大家可以硬来 (xjb 改程序直到 Online Judge 通过)</li>
-<li class=" ml-8">但总有一天大家会面对交付代码给客户的场景</li>
+<li class=" ml-8">&#34429;&#28982;&#22823;&#23478;&#21487;&#20197;&#30828;&#26469; (xjb &#25913;&#31243;&#24207;&#30452;&#21040; Online Judge &#36890;&#36807;)</li>
+<li class=" ml-8">&#20294;&#24635;&#26377;&#19968;&#22825;&#22823;&#23478;&#20250;&#38754;&#23545;&#20132;&#20184;&#20195;&#30721;&#32473;&#23458;&#25143;&#30340;&#22330;&#26223;</li>
 </ul></div>
         
       
@@ -891,15 +891,15 @@ open source operating systems</a>. In <em>Proc. of ESEC/FSE</em>, 2011.</li>
 
       
         
-        <div><h2 id="fault-error" class=" text-xl mt-2 pb-2 font-sans">Fault → Error: 我们需要更多的测试用例！</h2>
+        <div><h2 id="fault-error" class=" text-xl mt-2 pb-2 font-sans">Fault &#8594; Error: &#25105;&#20204;&#38656;&#35201;&#26356;&#22810;&#30340;&#27979;&#35797;&#29992;&#20363;&#65281;</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">想糊弄？糊弄不过去的。</p>
+<p class=" font-serif my-1">&#24819;&#31946;&#24324;&#65311;&#31946;&#24324;&#19981;&#36807;&#21435;&#30340;&#12290;</p>
 </blockquote>
-<p class=" font-serif my-1">来构造 kalloc 的 workload 吧！</p>
+<p class=" font-serif my-1">&#26469;&#26500;&#36896; kalloc &#30340; workload &#21543;&#65281;</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">os_run</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">pmm</span><span class="o">-></span><span class="n">alloc</span><span class="p">(</span><span class="n">random_size</span><span class="p">());</span>
-<span class="w">    </span><span class="c1">// Insufficient: pmm->alloc(32);</span>
+<span class="w">    </span><span class="n">pmm</span><span class="o">-&gt;</span><span class="n">alloc</span><span class="p">(</span><span class="n">random_size</span><span class="p">());</span>
+<span class="w">    </span><span class="c1">// Insufficient: pmm-&gt;alloc(32);</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div></div>
@@ -913,22 +913,22 @@ open source operating systems</a>. In <em>Proc. of ESEC/FSE</em>, 2011.</li>
 
       
         
-        <div><h2 id="workload-kalloc" class=" text-xl mt-2 pb-2 font-sans">创建合理的 Workload: <code>kalloc</code></h2>
-<p class=" font-serif my-1">Online Judge 上的 workload:</p>
+        <div><h2 id="workload-kalloc" class=" text-xl mt-2 pb-2 font-sans">&#21019;&#24314;&#21512;&#29702;&#30340; Workload: <code>kalloc</code></h2>
+<p class=" font-serif my-1">Online Judge &#19978;&#30340; workload:</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">为每一种分配大小 $(2^{i-1} + 1) \ldots 2^{i}$ 设置概率</li>
-<li class=" ml-8">频繁的小内存分配、频繁的大内存分配 (4 KiB)、混合的内存分配……</li>
+<li class=" ml-8">&#20026;&#27599;&#19968;&#31181;&#20998;&#37197;&#22823;&#23567; $(2^{i-1} + 1) \ldots 2^{i}$ &#35774;&#32622;&#27010;&#29575;</li>
+<li class=" ml-8">&#39057;&#32321;&#30340;&#23567;&#20869;&#23384;&#20998;&#37197;&#12289;&#39057;&#32321;&#30340;&#22823;&#20869;&#23384;&#20998;&#37197; (4 KiB)&#12289;&#28151;&#21512;&#30340;&#20869;&#23384;&#20998;&#37197;&#8230;&#8230;</li>
 </ul>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">workload</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">pr</span><span class="p">[</span><span class="n">N</span><span class="p">],</span><span class="w"> </span><span class="n">sum</span><span class="p">;</span><span class="w"> </span><span class="c1">// sum = pr[0] + pr[1] + ... pr[N-1]</span>
-<span class="w">                    </span><span class="c1">// roll(0, sum-1) => allocation size</span>
+<span class="w">                    </span><span class="c1">// roll(0, sum-1) =&gt; allocation size</span>
 <span class="p">};</span>
 
 <span class="k">static</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">workload</span>
 <span class="w">  </span><span class="n">wl_typical</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{.</span><span class="n">pr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">}</span><span class="w"> </span><span class="p">},</span>
 <span class="w">  </span><span class="n">wl_stress</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">{.</span><span class="n">pr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">400</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">}</span><span class="w"> </span><span class="p">},</span>
 <span class="w">  </span><span class="n">wl_page</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="p">{.</span><span class="n">pr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="w">  </span><span class="mi">1</span><span class="p">,</span><span class="w">  </span><span class="mi">1</span><span class="p">,</span><span class="w">  </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">}</span><span class="w"> </span><span class="p">};</span>
-<span class="k">static</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">workload</span><span class="w"> </span><span class="o">*</span><span class="n">workload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&</span><span class="n">wl_typical</span><span class="p">;</span>
+<span class="k">static</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">workload</span><span class="w"> </span><span class="o">*</span><span class="n">workload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">wl_typical</span><span class="p">;</span>
 </code></pre></div></div>
         
       
@@ -940,28 +940,28 @@ open source operating systems</a>. In <em>Proc. of ESEC/FSE</em>, 2011.</li>
 
       
         
-        <div><h2 id="workload-kfree" class=" text-xl mt-2 pb-2 font-sans">创建合理的 Workload: <code>kfree</code></h2>
+        <div><h2 id="workload-kfree" class=" text-xl mt-2 pb-2 font-sans">&#21019;&#24314;&#21512;&#29702;&#30340; Workload: <code>kfree</code></h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">并发的 alloc-free 是很多问题的来源。</p>
-<p class=" font-serif my-1">但同学们一定是懒得去测试的。  —— jyy</p>
+<p class=" font-serif my-1">&#24182;&#21457;&#30340; alloc-free &#26159;&#24456;&#22810;&#38382;&#39064;&#30340;&#26469;&#28304;&#12290;</p>
+<p class=" font-serif my-1">&#20294;&#21516;&#23398;&#20204;&#19968;&#23450;&#26159;&#25042;&#24471;&#21435;&#27979;&#35797;&#30340;&#12290;  &#8212;&#8212; jyy</p>
 </blockquote>
 <hr>
-<p class=" font-serif my-1">Online Judge: 会把分配的结果保存到一个并发数据结构中</p>
+<p class=" font-serif my-1">Online Judge: &#20250;&#25226;&#20998;&#37197;&#30340;&#32467;&#26524;&#20445;&#23384;&#21040;&#19968;&#20010;&#24182;&#21457;&#25968;&#25454;&#32467;&#26500;&#20013;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">用 C11 <a href="https://en.cppreference.com/w/c/atomic" class=" text-amber-900"><code>stdatomic.h</code></a> 实现<ul class=" list-disc font-serif">
-<li class=" ml-8">保证合法的 kalloc/kfree 序列</li>
-<li class=" ml-8">但一个 CPU 的申请的内存可以在另一个 CPU free</li>
+<li class=" ml-8">&#29992; C11 <a href="https://en.cppreference.com/w/c/atomic" class=" text-amber-900"><code>stdatomic.h</code></a> &#23454;&#29616;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20445;&#35777;&#21512;&#27861;&#30340; kalloc/kfree &#24207;&#21015;</li>
+<li class=" ml-8">&#20294;&#19968;&#20010; CPU &#30340;&#30003;&#35831;&#30340;&#20869;&#23384;&#21487;&#20197;&#22312;&#21478;&#19968;&#20010; CPU free</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">想自己实现个简单的？</p>
+<p class=" font-serif my-1">&#24819;&#33258;&#24049;&#23454;&#29616;&#20010;&#31616;&#21333;&#30340;&#65311;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">在 CPU 本地缓存本 CPU 的 allocation log<ul class=" list-disc font-serif">
-<li class=" ml-8">达到一定大小后放入共享队列中 (队列满即丢弃)</li>
+<li class=" ml-8">&#22312; CPU &#26412;&#22320;&#32531;&#23384;&#26412; CPU &#30340; allocation log<ul class=" list-disc font-serif">
+<li class=" ml-8">&#36798;&#21040;&#19968;&#23450;&#22823;&#23567;&#21518;&#25918;&#20837;&#20849;&#20139;&#38431;&#21015;&#20013; (&#38431;&#21015;&#28385;&#21363;&#20002;&#24323;)</li>
 </ul>
 </li>
-<li class=" ml-8">每隔一段时间从队列中取一个 log 执行 free</li>
+<li class=" ml-8">&#27599;&#38548;&#19968;&#27573;&#26102;&#38388;&#20174;&#38431;&#21015;&#20013;&#21462;&#19968;&#20010; log &#25191;&#34892; free</li>
 </ul></div>
         
       
@@ -973,19 +973,19 @@ open source operating systems</a>. In <em>Proc. of ESEC/FSE</em>, 2011.</li>
 
       
         
-        <div><h2 id="workload" class=" text-xl mt-2 pb-2 font-sans">更多的测试用例：不仅是 Workload</h2>
+        <div><h2 id="workload" class=" text-xl mt-2 pb-2 font-sans">&#26356;&#22810;&#30340;&#27979;&#35797;&#29992;&#20363;&#65306;&#19981;&#20165;&#26159; Workload</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">基本想法: workload + 在适当的时候插入 <code>delay()</code></p>
+<p class=" font-serif my-1">&#22522;&#26412;&#24819;&#27861;: workload + &#22312;&#36866;&#24403;&#30340;&#26102;&#20505;&#25554;&#20837; <code>delay()</code></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">这才是 Online Judge 测试的精髓<ul class=" list-disc font-serif">
+<li class=" ml-8">&#36825;&#25165;&#26159; Online Judge &#27979;&#35797;&#30340;&#31934;&#39635;<ul class=" list-disc font-serif">
 <li class=" ml-8">allocation-biased/free-biased/mixed</li>
 </ul>
 </li>
 </ul>
 </blockquote>
-<p class=" font-serif my-1">ABBA (deadlock), ABA (AV), BA (OV) 都可以通过这种方式触发</p>
+<p class=" font-serif my-1">ABBA (deadlock), ABA (AV), BA (OV) &#37117;&#21487;&#20197;&#36890;&#36807;&#36825;&#31181;&#26041;&#24335;&#35302;&#21457;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">插入 delay 是个技术活<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25554;&#20837; delay &#26159;&#20010;&#25216;&#26415;&#27963;<ul class=" list-disc font-serif">
 <li class=" ml-8">K. Sen. <a href="https://dl.acm.org/doi/10.1145/1375581.1375584" class=" text-amber-900">Race directed random testing of concurrent programs</a>. In <em>Proc. of PLDI</em>, 2008.</li>
 <li class=" ml-8">D. Chen, et al. <a href="https://dl.acm.org/doi/10.1145/3236024.3236077" class=" text-amber-900">Testing multithreaded programs via thread speed control</a>. In <em>Proc. of ESEC/FSE, 2018</em>.</li>
 <li class=" ml-8">G. Li, et al. <a href="https://dl.acm.org/doi/10.1145/3341301.3359638" class=" text-amber-900">Efficient scalable thread-safety-violation detection: Finding thousands of concurrency bugs during testing</a>. In <em>Proc. SOSP</em>, 2019.</li>
@@ -1002,27 +1002,27 @@ open source operating systems</a>. In <em>Proc. of ESEC/FSE</em>, 2011.</li>
 
       
         
-        <div><h2 id="error-failure" class=" text-xl mt-2 pb-2 font-sans">Error → Failure: 我们需要更多的检查！</h2>
+        <div><h2 id="error-failure" class=" text-xl mt-2 pb-2 font-sans">Error &#8594; Failure: &#25105;&#20204;&#38656;&#35201;&#26356;&#22810;&#30340;&#26816;&#26597;&#65281;</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">很多程序应该满足的 specification 并没有被检查</p>
+<p class=" font-serif my-1">&#24456;&#22810;&#31243;&#24207;&#24212;&#35813;&#28385;&#36275;&#30340; specification &#24182;&#27809;&#26377;&#34987;&#26816;&#26597;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">C/C++ 为了性能考虑，就让 undefined behavior 发生<ul class=" list-disc font-serif">
-<li class=" ml-8">并不总是显现 “显著” 的后果</li>
-<li class=" ml-8">给你一种程序好像没问题的错觉</li>
+<li class=" ml-8">C/C++ &#20026;&#20102;&#24615;&#33021;&#32771;&#34385;&#65292;&#23601;&#35753; undefined behavior &#21457;&#29983;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#24182;&#19981;&#24635;&#26159;&#26174;&#29616; &#8220;&#26174;&#33879;&#8221; &#30340;&#21518;&#26524;</li>
+<li class=" ml-8">&#32473;&#20320;&#19968;&#31181;&#31243;&#24207;&#22909;&#20687;&#27809;&#38382;&#39064;&#30340;&#38169;&#35273;</li>
 </ul>
 </li>
 </ul>
 </blockquote>
-<p class=" font-serif my-1">在程序中设计各种检查 (就像 <a href="../../../pages/OS/2021/demos/spinlock-xv6.c" class=" text-amber-900">spinlock.c</a> 那样)</p>
+<p class=" font-serif my-1">&#22312;&#31243;&#24207;&#20013;&#35774;&#35745;&#21508;&#31181;&#26816;&#26597; (&#23601;&#20687; <a href="../../../pages/OS/2021/demos/spinlock-xv6.c" class=" text-amber-900">spinlock.c</a> &#37027;&#26679;)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">double acquire, dangling release, 持有锁时开中断, 不配对的 unlock</li>
+<li class=" ml-8">double acquire, dangling release, &#25345;&#26377;&#38145;&#26102;&#24320;&#20013;&#26029;, &#19981;&#37197;&#23545;&#30340; unlock</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">检查：不必大费周章</p>
+<p class=" font-serif my-1">&#26816;&#26597;&#65306;&#19981;&#24517;&#22823;&#36153;&#21608;&#31456;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">统计当前的 spin count<ul class=" list-disc font-serif">
-<li class=" ml-8">如果超过某个明显不正常的数值就报告<ul class=" list-disc font-serif">
-<li class=" ml-8">配合调试器 backtrace 一秒诊断死锁</li>
+<li class=" ml-8">&#32479;&#35745;&#24403;&#21069;&#30340; spin count<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22914;&#26524;&#36229;&#36807;&#26576;&#20010;&#26126;&#26174;&#19981;&#27491;&#24120;&#30340;&#25968;&#20540;&#23601;&#25253;&#21578;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#37197;&#21512;&#35843;&#35797;&#22120; backtrace &#19968;&#31186;&#35786;&#26029;&#27515;&#38145;</li>
 </ul>
 </li>
 </ul>
@@ -1038,22 +1038,22 @@ open source operating systems</a>. In <em>Proc. of ESEC/FSE</em>, 2011.</li>
 
       
         
-        <div><h2 id="double-allocation" class=" text-xl mt-2 pb-2 font-sans">更多的检查: Double-Allocation</h2>
-<p class=" font-serif my-1">内存分配要求：已分配内存 $S = [\ell_0, r_0) \cup [\ell_1, r_1) \cup \ldots$</p>
+        <div><h2 id="double-allocation" class=" text-xl mt-2 pb-2 font-sans">&#26356;&#22810;&#30340;&#26816;&#26597;: Double-Allocation</h2>
+<p class=" font-serif my-1">&#20869;&#23384;&#20998;&#37197;&#35201;&#27714;&#65306;&#24050;&#20998;&#37197;&#20869;&#23384; $S = [\ell_0, r_0) \cup [\ell_1, r_1) \cup \ldots$</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">kalloc($s$) 返回的 $[\ell, r)$ 必须满足 $[\ell, r) \cap S = \varnothing$<ul class=" list-disc font-serif">
-<li class=" ml-8">thread-local allocation + 并发的 free 还蛮容易弄错的</li>
+<li class=" ml-8">kalloc($s$) &#36820;&#22238;&#30340; $[\ell, r)$ &#24517;&#39035;&#28385;&#36275; $[\ell, r) \cap S = \varnothing$<ul class=" list-disc font-serif">
+<li class=" ml-8">thread-local allocation + &#24182;&#21457;&#30340; free &#36824;&#34542;&#23481;&#26131;&#24324;&#38169;&#30340;</li>
 </ul>
 </li>
 </ul>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="c1">// allocation</span>
-<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">u32</span><span class="p">)</span><span class="w"> </span><span class="o"><=</span><span class="w"> </span><span class="n">size</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">u32</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">size</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">panic_on</span><span class="p">(((</span><span class="n">u32</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">ptr</span><span class="p">)[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">MAGIC</span><span class="p">,</span><span class="w"> </span><span class="s">"double-allocation"</span><span class="p">);</span>
 <span class="w">  </span><span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MAGIC</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="c1">// free</span>
-<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">u32</span><span class="p">)</span><span class="w"> </span><span class="o"><=</span><span class="w"> </span><span class="n">alloc_size</span><span class="p">(</span><span class="n">ptr</span><span class="p">);</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">u32</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">alloc_size</span><span class="p">(</span><span class="n">ptr</span><span class="p">);</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">panic_on</span><span class="p">(((</span><span class="n">u32</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">ptr</span><span class="p">)[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s">"double-free"</span><span class="p">);</span>
 <span class="w">  </span><span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
@@ -1068,16 +1068,16 @@ open source operating systems</a>. In <em>Proc. of ESEC/FSE</em>, 2011.</li>
 
       
         
-        <div><h2 id="buffer-overrun" class=" text-xl mt-2 pb-2 font-sans">更多的检查: Buffer Overrun</h2>
-<p class=" font-serif my-1">Canary (金丝雀) 对一氧化碳非常敏感</p>
+        <div><h2 id="buffer-overrun" class=" text-xl mt-2 pb-2 font-sans">&#26356;&#22810;&#30340;&#26816;&#26597;: Buffer Overrun</h2>
+<p class=" font-serif my-1">Canary (&#37329;&#19997;&#38592;) &#23545;&#19968;&#27687;&#21270;&#30899;&#38750;&#24120;&#25935;&#24863;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">用生命预警矿井下的瓦斯泄露 (since 1911)</li>
+<li class=" ml-8">&#29992;&#29983;&#21629;&#39044;&#35686;&#30719;&#20117;&#19979;&#30340;&#29926;&#26031;&#27844;&#38706; (since 1911)</li>
 </ul>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/canary_with_miner.jpg" width="400px"></p>
 <p class=" font-serif my-1">Canary</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">“牺牲” 一些内存单元，来预警 memory bug 的发生<ul class=" list-disc font-serif">
-<li class=" ml-8">(程序运行时没有动物受到实质的伤害)</li>
+<li class=" ml-8">&#8220;&#29306;&#29298;&#8221; &#19968;&#20123;&#20869;&#23384;&#21333;&#20803;&#65292;&#26469;&#39044;&#35686; memory bug &#30340;&#21457;&#29983;<ul class=" list-disc font-serif">
+<li class=" ml-8">(&#31243;&#24207;&#36816;&#34892;&#26102;&#27809;&#26377;&#21160;&#29289;&#21463;&#21040;&#23454;&#36136;&#30340;&#20260;&#23475;)</li>
 </ul>
 </li>
 </ul></div>
@@ -1091,20 +1091,20 @@ open source operating systems</a>. In <em>Proc. of ESEC/FSE</em>, 2011.</li>
 
       
         
-        <div><h2 id="canary" class=" text-xl mt-2 pb-2 font-sans">Canary 的例子：保护内核栈</h2>
+        <div><h2 id="canary" class=" text-xl mt-2 pb-2 font-sans">Canary &#30340;&#20363;&#23376;&#65306;&#20445;&#25252;&#20869;&#26680;&#26632;</h2>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#define MAGIC 0x55555555</span>
 <span class="cp">#define BOTTOM (STK_SZ / sizeof(u32) - 1)</span>
 <span class="k">struct</span><span class="w"> </span><span class="nc">kernel_stack</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="n">STK_SZ</span><span class="p">];</span><span class="w"> </span><span class="p">};</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">canary_init</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">kernel_stack</span><span class="w"> </span><span class="o">*</span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">u32</span><span class="w"> </span><span class="o">*</span><span class="n">ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">u32</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">s</span><span class="p">;</span>
-<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o"><</span><span class="w"> </span><span class="n">CANARY_SZ</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">CANARY_SZ</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
 <span class="w">    </span><span class="n">ptr</span><span class="p">[</span><span class="n">BOTTOM</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ptr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MAGIC</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">canary_check</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">kernel_stack</span><span class="w"> </span><span class="o">*</span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">u32</span><span class="w"> </span><span class="o">*</span><span class="n">ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">u32</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">s</span><span class="p">;</span>
-<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o"><</span><span class="w"> </span><span class="n">CANARY_SZ</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">CANARY_SZ</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">panic_on</span><span class="p">(</span><span class="n">ptr</span><span class="p">[</span><span class="n">BOTTOM</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">MAGIC</span><span class="p">,</span><span class="w"> </span><span class="s">"underflow"</span><span class="p">);</span>
 <span class="w">    </span><span class="n">panic_on</span><span class="p">(</span><span class="n">ptr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">MAGIC</span><span class="p">,</span><span class="w"> </span><span class="s">"overflow"</span><span class="p">);</span>
 <span class="w">  </span><span class="p">}</span>
@@ -1120,23 +1120,23 @@ open source operating systems</a>. In <em>Proc. of ESEC/FSE</em>, 2011.</li>
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">烫烫烫和屯屯屯</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#28907;&#28907;&#28907;&#21644;&#23663;&#23663;&#23663;</h2>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/GET.jpg" width="250px"></p>
-<p class=" font-serif my-1">msvc 中 debug mode 的 guard/fence/canary</p>
+<p class=" font-serif my-1">msvc &#20013; debug mode &#30340; guard/fence/canary</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">未初始化栈: <code>0xcccccccc</code></li>
-<li class=" ml-8">未初始化堆: <code>0xcdcdcdcd</code></li>
-<li class=" ml-8">对象头尾: <code>0xfdfdfdfd</code></li>
-<li class=" ml-8">已回收内存: <code>0xdddddddd</code></li>
+<li class=" ml-8">&#26410;&#21021;&#22987;&#21270;&#26632;: <code>0xcccccccc</code></li>
+<li class=" ml-8">&#26410;&#21021;&#22987;&#21270;&#22534;: <code>0xcdcdcdcd</code></li>
+<li class=" ml-8">&#23545;&#35937;&#22836;&#23614;: <code>0xfdfdfdfd</code></li>
+<li class=" ml-8">&#24050;&#22238;&#25910;&#20869;&#23384;: <code>0xdddddddd</code></li>
 </ul>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>>>> (b'\xcc' * 80).decode('gb2312')
-'烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫'
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>&gt;&gt;&gt; (b'\xcc' * 80).decode('gb2312')
+'&#28907;&#28907;&#28907;&#28907;&#28907;&#28907;&#28907;&#28907;&#28907;&#28907;&#28907;&#28907;&#28907;&#28907;&#28907;&#28907;&#28907;&#28907;&#28907;&#28907;&#28907;&#28907;&#28907;&#28907;&#28907;&#28907;&#28907;&#28907;&#28907;&#28907;&#28907;&#28907;&#28907;&#28907;&#28907;&#28907;&#28907;&#28907;&#28907;&#28907;'
 </code></pre></div>
 
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">手持两把锟斤拷，口中疾呼烫烫烫</p>
-<p class=" font-serif my-1">脚踏千朵屯屯屯，笑看万物锘锘锘</p>
-<p class=" font-serif my-1">(这些曾经可怕的形象原来一直在无形中保护你)</p>
+<p class=" font-serif my-1">&#25163;&#25345;&#20004;&#25226;&#38175;&#26020;&#25335;&#65292;&#21475;&#20013;&#30142;&#21628;&#28907;&#28907;&#28907;</p>
+<p class=" font-serif my-1">&#33050;&#36367;&#21315;&#26421;&#23663;&#23663;&#23663;&#65292;&#31505;&#30475;&#19975;&#29289;&#38168;&#38168;&#38168;</p>
+<p class=" font-serif my-1">(&#36825;&#20123;&#26366;&#32463;&#21487;&#24597;&#30340;&#24418;&#35937;&#21407;&#26469;&#19968;&#30452;&#22312;&#26080;&#24418;&#20013;&#20445;&#25252;&#20320;)</p>
 </blockquote></div>
         
       
@@ -1148,28 +1148,28 @@ open source operating systems</a>. In <em>Proc. of ESEC/FSE</em>, 2011.</li>
 
       
         
-        <div><h2 id="sanitizers" class=" text-xl mt-2 pb-2 font-sans">更多的检查: Sanitizers</h2>
-<p class=" font-serif my-1">“动态程序分析”</p>
+        <div><h2 id="sanitizers" class=" text-xl mt-2 pb-2 font-sans">&#26356;&#22810;&#30340;&#26816;&#26597;: Sanitizers</h2>
+<p class=" font-serif my-1">&#8220;&#21160;&#24577;&#31243;&#24207;&#20998;&#26512;&#8221;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">在程序运行时进行观测和检查；适当的时候对程序行为进行调控</li>
+<li class=" ml-8">&#22312;&#31243;&#24207;&#36816;&#34892;&#26102;&#36827;&#34892;&#35266;&#27979;&#21644;&#26816;&#26597;&#65307;&#36866;&#24403;&#30340;&#26102;&#20505;&#23545;&#31243;&#24207;&#34892;&#20026;&#36827;&#34892;&#35843;&#25511;</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">常见的动态分析：检查某些 specification 是否被违反</p>
+<p class=" font-serif my-1">&#24120;&#35265;&#30340;&#21160;&#24577;&#20998;&#26512;&#65306;&#26816;&#26597;&#26576;&#20123; specification &#26159;&#21542;&#34987;&#36829;&#21453;</p>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/observe.jpg" width="200px"></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">可以把动态分析理解成两个部分<ul class=" list-disc font-serif">
-<li class=" ml-8">一个部分不断地在程序运行时打印日志 <ul class=" list-disc font-serif">
+<li class=" ml-8">&#21487;&#20197;&#25226;&#21160;&#24577;&#20998;&#26512;&#29702;&#35299;&#25104;&#20004;&#20010;&#37096;&#20998;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#19968;&#20010;&#37096;&#20998;&#19981;&#26029;&#22320;&#22312;&#31243;&#24207;&#36816;&#34892;&#26102;&#25171;&#21360;&#26085;&#24535; <ul class=" list-disc font-serif">
 <li class=" ml-8">lock, unlock, memory access, ...</li>
 </ul>
 </li>
-<li class=" ml-8">另一个部分解析日志，查看有没有什么问题<ul class=" list-disc font-serif">
-<li class=" ml-8">lockdep: 检查是否存在 ABBA</li>
+<li class=" ml-8">&#21478;&#19968;&#20010;&#37096;&#20998;&#35299;&#26512;&#26085;&#24535;&#65292;&#26597;&#30475;&#26377;&#27809;&#26377;&#20160;&#20040;&#38382;&#39064;<ul class=" list-disc font-serif">
+<li class=" ml-8">lockdep: &#26816;&#26597;&#26159;&#21542;&#23384;&#22312; ABBA</li>
 </ul>
 </li>
 </ul>
 </li>
-<li class=" ml-8">付出程序变慢的代价<ul class=" list-disc font-serif">
-<li class=" ml-8">但是非常值得</li>
+<li class=" ml-8">&#20184;&#20986;&#31243;&#24207;&#21464;&#24930;&#30340;&#20195;&#20215;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20294;&#26159;&#38750;&#24120;&#20540;&#24471;</li>
 </ul>
 </li>
 </ul></div>
@@ -1183,26 +1183,26 @@ open source operating systems</a>. In <em>Proc. of ESEC/FSE</em>, 2011.</li>
 
       
         
-        <div><h2 id="sanitizers" class=" text-xl mt-2 pb-2 font-sans">Sanitizers: 前所未有的宝藏</h2>
+        <div><h2 id="sanitizers" class=" text-xl mt-2 pb-2 font-sans">Sanitizers: &#21069;&#25152;&#26410;&#26377;&#30340;&#23453;&#34255;</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">如果你没用过 lint/sanitizers，根本不能算会编程。</p>
+<p class=" font-serif my-1">&#22914;&#26524;&#20320;&#27809;&#29992;&#36807; lint/sanitizers&#65292;&#26681;&#26412;&#19981;&#33021;&#31639;&#20250;&#32534;&#31243;&#12290;</p>
 </blockquote>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><a href="https://clang.llvm.org/docs/AddressSanitizer.html" class=" text-amber-900">AddressSanitizer</a> (asan); <a href="https://www.usenix.org/conference/atc12/technical-sessions/presentation/serebryany" class=" text-amber-900">(paper)</a><ul class=" list-disc font-serif">
-<li class=" ml-8">检查各种非法地址访问: buffer (heap/stack/global) overflow, use-after-free, use-after-return, double-free, ...</li>
-<li class=" ml-8">demo: <a href="../../../pages/OS/2021/demos/uaf.c" class=" text-amber-900">uaf.c</a>; <a href="https://www.kernel.org/doc/html/latest/dev-tools/kasan.html" class=" text-amber-900">kasan 现已加入 Linux 内核</a></li>
+<li class=" ml-8">&#26816;&#26597;&#21508;&#31181;&#38750;&#27861;&#22320;&#22336;&#35775;&#38382;: buffer (heap/stack/global) overflow, use-after-free, use-after-return, double-free, ...</li>
+<li class=" ml-8">demo: <a href="../../../pages/OS/2021/demos/uaf.c" class=" text-amber-900">uaf.c</a>; <a href="https://www.kernel.org/doc/html/latest/dev-tools/kasan.html" class=" text-amber-900">kasan &#29616;&#24050;&#21152;&#20837; Linux &#20869;&#26680;</a></li>
 </ul>
 </li>
 <li class=" ml-8"><a href="https://clang.llvm.org/docs/MemorySanitizer.html" class=" text-amber-900">MemorySanitizer</a> (msan)<ul class=" list-disc font-serif">
-<li class=" ml-8">检查未初始化的读取</li>
+<li class=" ml-8">&#26816;&#26597;&#26410;&#21021;&#22987;&#21270;&#30340;&#35835;&#21462;</li>
 </ul>
 </li>
 <li class=" ml-8"><a href="https://clang.llvm.org/docs/UndefinedBehaviorSanitizer.html" class=" text-amber-900">ThreadSanitizer</a> (tsan)<ul class=" list-disc font-serif">
-<li class=" ml-8">检查是否存在数据竞争 (data race)</li>
+<li class=" ml-8">&#26816;&#26597;&#26159;&#21542;&#23384;&#22312;&#25968;&#25454;&#31454;&#20105; (data race)</li>
 </ul>
 </li>
 <li class=" ml-8"><a href="https://clang.llvm.org/docs/UndefinedBehaviorSanitizer.html" class=" text-amber-900">UBSanitizer</a> (ubsan)<ul class=" list-disc font-serif">
-<li class=" ml-8">检查是否存在各种看起来没问题的 undefined behavior: misaligned pointer, signed integer overflow, ...</li>
+<li class=" ml-8">&#26816;&#26597;&#26159;&#21542;&#23384;&#22312;&#21508;&#31181;&#30475;&#36215;&#26469;&#27809;&#38382;&#39064;&#30340; undefined behavior: misaligned pointer, signed integer overflow, ...</li>
 </ul>
 </li>
 </ul></div>
@@ -1216,15 +1216,15 @@ open source operating systems</a>. In <em>Proc. of ESEC/FSE</em>, 2011.</li>
 
       
         
-        <div><h2 id="sanitizer" class=" text-xl mt-2 pb-2 font-sans">我的操作系统内核如何实现 Sanitizer?</h2>
-<p class=" font-serif my-1">你知道很多变量的<red>含义</red></p>
+        <div><h2 id="sanitizer" class=" text-xl mt-2 pb-2 font-sans">&#25105;&#30340;&#25805;&#20316;&#31995;&#32479;&#20869;&#26680;&#22914;&#20309;&#23454;&#29616; Sanitizer?</h2>
+<p class=" font-serif my-1">&#20320;&#30693;&#36947;&#24456;&#22810;&#21464;&#37327;&#30340;<red>&#21547;&#20041;</red></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><code>CHECK_INT(waitlist->count, >= 0)</code></li>
-<li class=" ml-8"><code>CHECK_INT(pid, < MAX_PROCS)</code></li>
-<li class=" ml-8"><code>CHECK_HEAP(ctx->rip)</code></li>
-<li class=" ml-8">含义发生改变 → memory error<ul class=" list-disc font-serif">
-<li class=" ml-8">不要小看这些检查</li>
-<li class=" ml-8">它们很可能在虚拟机神秘重启/卡住/...前发出警报</li>
+<li class=" ml-8"><code>CHECK_INT(waitlist-&gt;count, &gt;= 0)</code></li>
+<li class=" ml-8"><code>CHECK_INT(pid, &lt; MAX_PROCS)</code></li>
+<li class=" ml-8"><code>CHECK_HEAP(ctx-&gt;rip)</code></li>
+<li class=" ml-8">&#21547;&#20041;&#21457;&#29983;&#25913;&#21464; &#8594; memory error<ul class=" list-disc font-serif">
+<li class=" ml-8">&#19981;&#35201;&#23567;&#30475;&#36825;&#20123;&#26816;&#26597;</li>
+<li class=" ml-8">&#23427;&#20204;&#24456;&#21487;&#33021;&#22312;&#34394;&#25311;&#26426;&#31070;&#31192;&#37325;&#21551;/&#21345;&#20303;/...&#21069;&#21457;&#20986;&#35686;&#25253;</li>
 </ul>
 </li>
 </ul>
@@ -1248,7 +1248,7 @@ open source operating systems</a>. In <em>Proc. of ESEC/FSE</em>, 2011.</li>
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">总结</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#24635;&#32467;</h1></div></div></div>
         
       
       </section>
@@ -1259,22 +1259,22 @@ open source operating systems</a>. In <em>Proc. of ESEC/FSE</em>, 2011.</li>
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">总结</h2>
-<p class=" font-serif my-1">本次课内容与目标</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#24635;&#32467;</h2>
+<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#20869;&#23481;&#19982;&#30446;&#26631;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">复习调试理论 (Fault, Error, Failure)</li>
-<li class=" ml-8">理解并发 bugs</li>
-<li class=" ml-8">将调试理论应用到并发</li>
+<li class=" ml-8">&#22797;&#20064;&#35843;&#35797;&#29702;&#35770; (Fault, Error, Failure)</li>
+<li class=" ml-8">&#29702;&#35299;&#24182;&#21457; bugs</li>
+<li class=" ml-8">&#23558;&#35843;&#35797;&#29702;&#35770;&#24212;&#29992;&#21040;&#24182;&#21457;</li>
 </ul>
 <hr>
 <p class=" font-serif my-1">Take-away messages</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">“好的东西” 离我们一点也不远</li>
-<li class=" ml-8">Fault → Error: 我们需要更多的测试用例！<ul class=" list-disc font-serif">
-<li class=" ml-8">构造更强的 workloads</li>
+<li class=" ml-8">&#8220;&#22909;&#30340;&#19996;&#35199;&#8221; &#31163;&#25105;&#20204;&#19968;&#28857;&#20063;&#19981;&#36828;</li>
+<li class=" ml-8">Fault &#8594; Error: &#25105;&#20204;&#38656;&#35201;&#26356;&#22810;&#30340;&#27979;&#35797;&#29992;&#20363;&#65281;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#26500;&#36896;&#26356;&#24378;&#30340; workloads</li>
 </ul>
 </li>
-<li class=" ml-8">Error → Failure: 我们需要更多的检查！<ul class=" list-disc font-serif">
+<li class=" ml-8">Error &#8594; Failure: &#25105;&#20204;&#38656;&#35201;&#26356;&#22810;&#30340;&#26816;&#26597;&#65281;<ul class=" list-disc font-serif">
 <li class=" ml-8">assertions, sanitizers, ...</li>
 </ul>
 </li>

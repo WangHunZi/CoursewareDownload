@@ -2,7 +2,7 @@
 <head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>24. 进程的实现</title>
+<title>24. &#36827;&#31243;&#30340;&#23454;&#29616;</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script><script>
 (function() {
   function addWidgetsRenderer() {
@@ -6481,7 +6481,7 @@ cell outputs.
 
 .jp-Notebook .jp-Cell.jp-mod-dirty .jp-InputPrompt::before {
   color: var(--jp-warn-color1);
-  content: '•';
+  content: '&#8226;';
 }
 
 .jp-Notebook .jp-Cell.jp-mod-active.jp-mod-dirty .jp-Collapser {
@@ -7518,7 +7518,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">mosaic</span> <span class="kn">import</span> <span class="o">*</span>
@@ -7690,18 +7690,18 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-InputPrompt jp-InputArea-prompt">
 </div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="24.-%E8%BF%9B%E7%A8%8B%E7%9A%84%E5%AE%9E%E7%8E%B0">24. 进程的实现<a class="anchor-link" href="#24.-%E8%BF%9B%E7%A8%8B%E7%9A%84%E5%AE%9E%E7%8E%B0">¶</a>
+<h1 id="24.-%E8%BF%9B%E7%A8%8B%E7%9A%84%E5%AE%9E%E7%8E%B0">24. &#36827;&#31243;&#30340;&#23454;&#29616;<a class="anchor-link" href="lect24.ipynb.html#24.-%E8%BF%9B%E7%A8%8B%E7%9A%84%E5%AE%9E%E7%8E%B0">&#182;</a>
 </h1>
-<p><strong>Changelog & 反馈</strong></p>
+<p><strong>Changelog &amp; &#21453;&#39304;</strong></p>
 <ul>
-<li>非常繁忙的一周终于快要过去了</li>
-<li>(保重身体，预防猝死)</li>
+<li>&#38750;&#24120;&#32321;&#24537;&#30340;&#19968;&#21608;&#32456;&#20110;&#24555;&#35201;&#36807;&#21435;&#20102;</li>
+<li>(&#20445;&#37325;&#36523;&#20307;&#65292;&#39044;&#38450;&#29469;&#27515;)</li>
 </ul>
-<p><strong>背景回顾</strong>：我们已经了解了应用视角的操作系统：操作系统是状态机的管理者，也为状态机提供一组系统调用 API。那么，进程 (状态机) 在操作系统内究竟是如何实现的？</p>
-<p><strong>本讲内容</strong>：</p>
+<p><strong>&#32972;&#26223;&#22238;&#39038;</strong>&#65306;&#25105;&#20204;&#24050;&#32463;&#20102;&#35299;&#20102;&#24212;&#29992;&#35270;&#35282;&#30340;&#25805;&#20316;&#31995;&#32479;&#65306;&#25805;&#20316;&#31995;&#32479;&#26159;&#29366;&#24577;&#26426;&#30340;&#31649;&#29702;&#32773;&#65292;&#20063;&#20026;&#29366;&#24577;&#26426;&#25552;&#20379;&#19968;&#32452;&#31995;&#32479;&#35843;&#29992; API&#12290;&#37027;&#20040;&#65292;&#36827;&#31243; (&#29366;&#24577;&#26426;) &#22312;&#25805;&#20316;&#31995;&#32479;&#20869;&#31350;&#31455;&#26159;&#22914;&#20309;&#23454;&#29616;&#30340;&#65311;</p>
+<p><strong>&#26412;&#35762;&#20869;&#23481;</strong>&#65306;</p>
 <ul>
-<li>进程的实现</li>
-<li>处理器调度</li>
+<li>&#36827;&#31243;&#30340;&#23454;&#29616;</li>
+<li>&#22788;&#29702;&#22120;&#35843;&#24230;</li>
 </ul>
 </div>
 </div>
@@ -7712,7 +7712,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'24.1'</span><span class="p">)</span>
@@ -7741,7 +7741,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">demo</span><span class="p">(</span><span class="s1">'thread-os'</span><span class="p">,</span> <span class="s1">'c/thread-os-singlecpu'</span><span class="p">)</span>
@@ -7773,7 +7773,7 @@ var element = document.getElementById('1ef48309-2f0d-4d62-8ad2-8a3374657eb9');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">demo</span><span class="p">(</span><span class="s1">'large'</span><span class="p">,</span> <span class="s1">'v/large.c'</span><span class="p">)</span>
@@ -7805,7 +7805,7 @@ var element = document.getElementById('248a7c94-8798-4071-b0ee-02f83cf9d227');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">demo</span><span class="p">(</span><span class="s1">'vm'</span><span class="p">,</span> <span class="s1">'v/vm.c'</span><span class="p">)</span>
@@ -7837,7 +7837,7 @@ var element = document.getElementById('cbf294f5-4c38-493a-a668-df1e8627267a');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">demo</span><span class="p">(</span><span class="s1">'cow-test'</span><span class="p">,</span> <span class="s1">'v/cow-test.c'</span><span class="p">)</span>
@@ -7869,7 +7869,7 @@ var element = document.getElementById('b42d169c-dcdf-4d36-9539-6f1dbbd4bde5');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'24.2'</span><span class="p">)</span>
@@ -7898,7 +7898,7 @@ var element = document.getElementById('b42d169c-dcdf-4d36-9539-6f1dbbd4bde5');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'24.3'</span><span class="p">)</span>
@@ -7927,7 +7927,7 @@ var element = document.getElementById('b42d169c-dcdf-4d36-9539-6f1dbbd4bde5');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[9]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">demo</span><span class="p">(</span><span class="s1">'sum'</span><span class="p">,</span> <span class="s1">'c/sum-atomic.c'</span><span class="p">,</span> <span class="n">libs</span><span class="o">=</span><span class="p">[</span><span class="s1">'thread.h'</span><span class="p">])</span>
@@ -7962,21 +7962,21 @@ var element = document.getElementById('44243272-945c-4c05-8ecb-3962eeca03c7');
 <div class="jp-InputPrompt jp-InputArea-prompt">
 </div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Take-away-Messages">Take-away Messages<a class="anchor-link" href="#Take-away-Messages">¶</a>
+<h2 id="Take-away-Messages">Take-away Messages<a class="anchor-link" href="lect24.ipynb.html#Take-away-Messages">&#182;</a>
 </h2>
-<p>进程在操作系统中的实现是简单又复杂的。从简单来说，进程就是带有独立地址空间的线程；通过硬件提供的分页机制，就能给线程戴上 “VR 眼镜”，使得看到的内存并不是真实的内存。同时，进程也是复杂的：我们可以借助虚拟内存实现 demand paging、copy-on-write fork 等有趣的机制；而如何调度系统中的进程，在现代多处理器时代也显得愈加复杂。</p>
-<h4 id="1.-%E9%98%85%E8%AF%BB%E6%9D%90%E6%96%99">1. 阅读材料<a class="anchor-link" href="#1.-%E9%98%85%E8%AF%BB%E6%9D%90%E6%96%99">¶</a>
+<p>&#36827;&#31243;&#22312;&#25805;&#20316;&#31995;&#32479;&#20013;&#30340;&#23454;&#29616;&#26159;&#31616;&#21333;&#21448;&#22797;&#26434;&#30340;&#12290;&#20174;&#31616;&#21333;&#26469;&#35828;&#65292;&#36827;&#31243;&#23601;&#26159;&#24102;&#26377;&#29420;&#31435;&#22320;&#22336;&#31354;&#38388;&#30340;&#32447;&#31243;&#65307;&#36890;&#36807;&#30828;&#20214;&#25552;&#20379;&#30340;&#20998;&#39029;&#26426;&#21046;&#65292;&#23601;&#33021;&#32473;&#32447;&#31243;&#25140;&#19978; &#8220;VR &#30524;&#38236;&#8221;&#65292;&#20351;&#24471;&#30475;&#21040;&#30340;&#20869;&#23384;&#24182;&#19981;&#26159;&#30495;&#23454;&#30340;&#20869;&#23384;&#12290;&#21516;&#26102;&#65292;&#36827;&#31243;&#20063;&#26159;&#22797;&#26434;&#30340;&#65306;&#25105;&#20204;&#21487;&#20197;&#20511;&#21161;&#34394;&#25311;&#20869;&#23384;&#23454;&#29616; demand paging&#12289;copy-on-write fork &#31561;&#26377;&#36259;&#30340;&#26426;&#21046;&#65307;&#32780;&#22914;&#20309;&#35843;&#24230;&#31995;&#32479;&#20013;&#30340;&#36827;&#31243;&#65292;&#22312;&#29616;&#20195;&#22810;&#22788;&#29702;&#22120;&#26102;&#20195;&#20063;&#26174;&#24471;&#24840;&#21152;&#22797;&#26434;&#12290;</p>
+<h4 id="1.-%E9%98%85%E8%AF%BB%E6%9D%90%E6%96%99">1. &#38405;&#35835;&#26448;&#26009;<a class="anchor-link" href="lect24.ipynb.html#1.-%E9%98%85%E8%AF%BB%E6%9D%90%E6%96%99">&#182;</a>
 </h4>
-<p>教科书 <a href="https://pages.cs.wisc.edu/~remzi/OSTEP/">Operating Systems: Three Easy Pieces</a>:</p>
+<p>&#25945;&#31185;&#20070; <a href="https://pages.cs.wisc.edu/~remzi/OSTEP/">Operating Systems: Three Easy Pieces</a>:</p>
 <ul>
-<li>第 15 章 - Address Translation</li>
-<li>第 16 章 - Segmentation</li>
-<li>第 18 章 - Introduction to Paging</li>
-<li>第 19 章 - Translation Lookaside Buffers</li>
-<li>第 20 章 - Advanced Page Tables</li>
-<li>第 21 章 - Swapping: Mechanisms</li>
-<li>第 22 章 - Swapping: Policies</li>
-<li>第 24 章 - Complete VM Systems</li>
+<li>&#31532; 15 &#31456; - Address Translation</li>
+<li>&#31532; 16 &#31456; - Segmentation</li>
+<li>&#31532; 18 &#31456; - Introduction to Paging</li>
+<li>&#31532; 19 &#31456; - Translation Lookaside Buffers</li>
+<li>&#31532; 20 &#31456; - Advanced Page Tables</li>
+<li>&#31532; 21 &#31456; - Swapping: Mechanisms</li>
+<li>&#31532; 22 &#31456; - Swapping: Policies</li>
+<li>&#31532; 24 &#31456; - Complete VM Systems</li>
 </ul>
 </div>
 </div>
@@ -7988,8 +7988,8 @@ var element = document.getElementById('44243272-945c-4c05-8ecb-3962eeca03c7');
 <div class="container text-xs py-3">
   <span class="text-muted">
     <center>
-<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="/static/img/cc-4.0.png"></a>
-       <a style="color:inherit" href="https://beian.miit.gov.cn/">苏 ICP 备 2020049101 号</a>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="../../../static/img/cc-4.0.png"></a>
+    &#160;&#160;&#160;<a style="color:inherit" href="https://beian.miit.gov.cn/">&#33487; ICP &#22791; 2020049101 &#21495;</a>
     </center>
   </span>
 </div>

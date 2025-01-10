@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // • auto-render specific keys, e.g.:
+            // &#8226; auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // • rendering keys, e.g.:
+            // &#8226; rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +209,7 @@ section .center {
 }
 </style>
 
-  <title>理解并发程序执行</title>
+  <title>&#29702;&#35299;&#24182;&#21457;&#31243;&#24207;&#25191;&#34892;</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,21 +227,21 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">理解并发程序执行</h1>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#29702;&#35299;&#24182;&#21457;&#31243;&#24207;&#25191;&#34892;</h1>
 <p class=" font-serif my-1"><include src="Slides_Author"><div><div class="py-16">
-<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">蒋炎岩</a></p>
+<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">&#33931;&#28814;&#23721;</a></p>
 </div>
 <div class="row">
 <div class="author-affiliation">
-    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">　　南京大学　　</p>
+    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#12288;&#12288;&#21335;&#20140;&#22823;&#23398;&#12288;&#12288;</p>
     <img class="inline-img h-24" src="../../../static/img/nju-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">计算机科学与技术系</p>
+   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#31185;&#23398;&#19982;&#25216;&#26415;&#31995;</p>
     <img class="inline-img h-24" src="../../../static/img/njucs-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">计算机软件研究所</p>
+    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#36719;&#20214;&#30740;&#31350;&#25152;</p>
     <img class="inline-img h-24" src="../../../static/img/ics-logo.png" style="display: inline-block;"></a>
   </div>
 </div></div></include></p></div></div></div>
@@ -256,19 +256,19 @@ section .center {
       
         
         <div><h2 id="overview" class=" text-xl mt-2 pb-2 font-sans">Overview</h2>
-<p class=" font-serif my-1">复习</p>
+<p class=" font-serif my-1">&#22797;&#20064;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">并发程序 = 多个执行流、共享内存的状态机</li>
+<li class=" ml-8">&#24182;&#21457;&#31243;&#24207; = &#22810;&#20010;&#25191;&#34892;&#27969;&#12289;&#20849;&#20139;&#20869;&#23384;&#30340;&#29366;&#24577;&#26426;</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">本次课回答的问题</p>
+<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#22238;&#31572;&#30340;&#38382;&#39064;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><strong>Q</strong>: 如何阅读理解教科书/互联网/期末试卷上的各种并发程序？</li>
+<li class=" ml-8"><strong>Q</strong>: &#22914;&#20309;&#38405;&#35835;&#29702;&#35299;&#25945;&#31185;&#20070;/&#20114;&#32852;&#32593;/&#26399;&#26411;&#35797;&#21367;&#19978;&#30340;&#21508;&#31181;&#24182;&#21457;&#31243;&#24207;&#65311;</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">本次课主要内容</p>
+<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#20027;&#35201;&#20869;&#23481;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">(自动) 画状态机理解并发程序</li>
+<li class=" ml-8">(&#33258;&#21160;) &#30011;&#29366;&#24577;&#26426;&#29702;&#35299;&#24182;&#21457;&#31243;&#24207;</li>
 </ul></div>
         
       
@@ -284,7 +284,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">画状态机理解并发程序</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#30011;&#29366;&#24577;&#26426;&#29702;&#35299;&#24182;&#21457;&#31243;&#24207;</h1></div></div></div>
         
       
       </section>
@@ -295,23 +295,23 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">一个互斥算法</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#19968;&#20010;&#20114;&#26021;&#31639;&#27861;</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">互斥：保证两个线程不能同时执行一段代码。</p>
+<p class=" font-serif my-1">&#20114;&#26021;&#65306;&#20445;&#35777;&#20004;&#20010;&#32447;&#31243;&#19981;&#33021;&#21516;&#26102;&#25191;&#34892;&#19968;&#27573;&#20195;&#30721;&#12290;</p>
 </blockquote>
-<p class=" font-serif my-1">插入 “神秘代码”，使得 <a href="../../../pages/OS/2022/demos/sum.c" class=" text-amber-900">sum.c</a> (或者任意其他代码) 能够正常工作</p>
+<p class=" font-serif my-1">&#25554;&#20837; &#8220;&#31070;&#31192;&#20195;&#30721;&#8221;&#65292;&#20351;&#24471; <a href="../../../pages/OS/2022/demos/sum.c" class=" text-amber-900">sum.c</a> (&#25110;&#32773;&#20219;&#24847;&#20854;&#20182;&#20195;&#30721;) &#33021;&#22815;&#27491;&#24120;&#24037;&#20316;</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">Tsum</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// 神秘代码</span>
+<span class="w">  </span><span class="c1">// &#31070;&#31192;&#20195;&#30721;</span>
 <span class="w">  </span><span class="n">sum</span><span class="o">++</span><span class="p">;</span>
-<span class="w">  </span><span class="c1">// 神秘代码</span>
+<span class="w">  </span><span class="c1">// &#31070;&#31192;&#20195;&#30721;</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <ul class=" list-disc font-serif">
-<li class=" ml-8">假设一个内存的读/写可以保证顺序、原子完成</li>
+<li class=" ml-8">&#20551;&#35774;&#19968;&#20010;&#20869;&#23384;&#30340;&#35835;/&#20889;&#21487;&#20197;&#20445;&#35777;&#39034;&#24207;&#12289;&#21407;&#23376;&#23436;&#25104;</li>
 </ul>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">__sync_synchronize</span><span class="p">();</span>
-<span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c1">// 或 int t = x;</span>
+<span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c1">// &#25110; int t = x;</span>
 <span class="n">__sync_synchronize</span><span class="p">();</span>
 </code></pre></div></div>
         
@@ -324,7 +324,7 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">失败的尝试</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#22833;&#36133;&#30340;&#23581;&#35797;</h2>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">locked</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UNLOCK</span><span class="p">;</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">critical_section</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -340,9 +340,9 @@ section .center {
 <span class="p">}</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">和山寨 <a href="../../../pages/OS/2022/demos/alipay.c" class=" text-amber-900">alipay.c</a> 完全一样的错误</p>
+<p class=" font-serif my-1">&#21644;&#23665;&#23528; <a href="../../../pages/OS/2022/demos/alipay.c" class=" text-amber-900">alipay.c</a> &#23436;&#20840;&#19968;&#26679;&#30340;&#38169;&#35823;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">处理器默认不保证 load + store 的原子性</li>
+<li class=" ml-8">&#22788;&#29702;&#22120;&#40664;&#35748;&#19981;&#20445;&#35777; load + store &#30340;&#21407;&#23376;&#24615;</li>
 </ul></div>
         
       
@@ -354,19 +354,19 @@ section .center {
 
       
         
-        <div><h2 id="peterson" class=" text-xl mt-2 pb-2 font-sans">正确性不明的奇怪尝试 (Peterson 算法)</h2>
-<p class=" font-serif my-1">A 和 B 争用厕所的包厢</p>
+        <div><h2 id="peterson" class=" text-xl mt-2 pb-2 font-sans">&#27491;&#30830;&#24615;&#19981;&#26126;&#30340;&#22855;&#24618;&#23581;&#35797; (Peterson &#31639;&#27861;)</h2>
+<p class=" font-serif my-1">A &#21644; B &#20105;&#29992;&#21397;&#25152;&#30340;&#21253;&#21410;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">想进入包厢之前，A/B 都要先举起自己的旗子<ul class=" list-disc font-serif">
-<li class=" ml-8">A 确认旗子举好以后，往厕所门上贴上 “B 正在使用” 的标签</li>
-<li class=" ml-8">B 确认旗子举好以后，往厕所门上贴上 “A 正在使用” 的标签</li>
+<li class=" ml-8">&#24819;&#36827;&#20837;&#21253;&#21410;&#20043;&#21069;&#65292;A/B &#37117;&#35201;&#20808;&#20030;&#36215;&#33258;&#24049;&#30340;&#26071;&#23376;<ul class=" list-disc font-serif">
+<li class=" ml-8">A &#30830;&#35748;&#26071;&#23376;&#20030;&#22909;&#20197;&#21518;&#65292;&#24448;&#21397;&#25152;&#38376;&#19978;&#36148;&#19978; &#8220;B &#27491;&#22312;&#20351;&#29992;&#8221; &#30340;&#26631;&#31614;</li>
+<li class=" ml-8">B &#30830;&#35748;&#26071;&#23376;&#20030;&#22909;&#20197;&#21518;&#65292;&#24448;&#21397;&#25152;&#38376;&#19978;&#36148;&#19978; &#8220;A &#27491;&#22312;&#20351;&#29992;&#8221; &#30340;&#26631;&#31614;</li>
 </ul>
 </li>
-<li class=" ml-8">然后，<red>如果对方的旗子举起来，且门上的名字不是自己</red>，等待<ul class=" list-disc font-serif">
-<li class=" ml-8">否则可以进入包厢</li>
+<li class=" ml-8">&#28982;&#21518;&#65292;<red>&#22914;&#26524;&#23545;&#26041;&#30340;&#26071;&#23376;&#20030;&#36215;&#26469;&#65292;&#19988;&#38376;&#19978;&#30340;&#21517;&#23383;&#19981;&#26159;&#33258;&#24049;</red>&#65292;&#31561;&#24453;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21542;&#21017;&#21487;&#20197;&#36827;&#20837;&#21253;&#21410;</li>
 </ul>
 </li>
-<li class=" ml-8">出包厢后，放下自己的旗子</li>
+<li class=" ml-8">&#20986;&#21253;&#21410;&#21518;&#65292;&#25918;&#19979;&#33258;&#24049;&#30340;&#26071;&#23376;</li>
 </ul>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/wc.jpg" width="500px"></p></div>
         
@@ -379,28 +379,28 @@ section .center {
 
       
         
-        <div><h2 id="peterson" class=" text-xl mt-2 pb-2 font-sans">习题：证明 Peterson 算法正确，或给出反例</h2>
-<p class=" font-serif my-1">进入临界区的情况</p>
+        <div><h2 id="peterson" class=" text-xl mt-2 pb-2 font-sans">&#20064;&#39064;&#65306;&#35777;&#26126; Peterson &#31639;&#27861;&#27491;&#30830;&#65292;&#25110;&#32473;&#20986;&#21453;&#20363;</h2>
+<p class=" font-serif my-1">&#36827;&#20837;&#20020;&#30028;&#21306;&#30340;&#24773;&#20917;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">如果只有一个人举旗，他就可以直接进入</li>
-<li class=" ml-8">如果两个人同时举旗，由厕所门上的标签决定谁进<ul class=" list-disc font-serif">
-<li class=" ml-8">手快 🈶️ (被另一个人的标签覆盖)、手慢 🈚 </li>
+<li class=" ml-8">&#22914;&#26524;&#21482;&#26377;&#19968;&#20010;&#20154;&#20030;&#26071;&#65292;&#20182;&#23601;&#21487;&#20197;&#30452;&#25509;&#36827;&#20837;</li>
+<li class=" ml-8">&#22914;&#26524;&#20004;&#20010;&#20154;&#21516;&#26102;&#20030;&#26071;&#65292;&#30001;&#21397;&#25152;&#38376;&#19978;&#30340;&#26631;&#31614;&#20915;&#23450;&#35841;&#36827;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25163;&#24555; &#127542;&#65039; (&#34987;&#21478;&#19968;&#20010;&#20154;&#30340;&#26631;&#31614;&#35206;&#30422;)&#12289;&#25163;&#24930; &#127514; </li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">一些具体的细节情况</p>
+<p class=" font-serif my-1">&#19968;&#20123;&#20855;&#20307;&#30340;&#32454;&#33410;&#24773;&#20917;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">A 看到 B 没有举旗<ul class=" list-disc font-serif">
-<li class=" ml-8">B 一定不在临界区</li>
-<li class=" ml-8">或者 B 想进但还没来得及把 “A 正在使用” 贴在门上<ul class=" list-disc font-serif">
+<li class=" ml-8">A &#30475;&#21040; B &#27809;&#26377;&#20030;&#26071;<ul class=" list-disc font-serif">
+<li class=" ml-8">B &#19968;&#23450;&#19981;&#22312;&#20020;&#30028;&#21306;</li>
+<li class=" ml-8">&#25110;&#32773; B &#24819;&#36827;&#20294;&#36824;&#27809;&#26469;&#24471;&#21450;&#25226; &#8220;A &#27491;&#22312;&#20351;&#29992;&#8221; &#36148;&#22312;&#38376;&#19978;<ul class=" list-disc font-serif">
 <li class=" ml-8">memory ordering</li>
 </ul>
 </li>
 </ul>
 </li>
-<li class=" ml-8">A 看到 B 举旗子<ul class=" list-disc font-serif">
-<li class=" ml-8">A 一定已经把旗子举起来了 (<em>!@^#</em>&!%^(&^!@%#</li>
+<li class=" ml-8">A &#30475;&#21040; B &#20030;&#26071;&#23376;<ul class=" list-disc font-serif">
+<li class=" ml-8">A &#19968;&#23450;&#24050;&#32463;&#25226;&#26071;&#23376;&#20030;&#36215;&#26469;&#20102; (<em>!@^#</em>&amp;!%^(&amp;^!@%#</li>
 </ul>
 </li>
 </ul></div>
@@ -415,7 +415,7 @@ section .center {
       
         
         <div><h2 id="prove-by-brute-force" class=" text-xl mt-2 pb-2 font-sans">Prove by Brute-force!</h2>
-<p class=" font-serif my-1">枚举状态机的全部状态 (假设没有乱序、每步执行一行)</p>
+<p class=" font-serif my-1">&#26522;&#20030;&#29366;&#24577;&#26426;&#30340;&#20840;&#37096;&#29366;&#24577; (&#20551;&#35774;&#27809;&#26377;&#20081;&#24207;&#12289;&#27599;&#27493;&#25191;&#34892;&#19968;&#34892;)</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">$(PC_1, PC_2, x, y, turn)$; <a href="../../../pages/OS/2022/demos/peterson-simple.c" class=" text-amber-900">peterson-simple.c</a> </li>
 </ul>
@@ -424,14 +424,14 @@ section .center {
 <span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="cm">/* PC=1 */</span><span class="w">  </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 <span class="cm">/* PC=2 */</span><span class="w">  </span><span class="n">turn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">B</span><span class="p">;</span>
-<span class="cm">/* PC=3 */</span><span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">y</span><span class="w"> </span><span class="o">&&</span><span class="w"> </span><span class="n">turn</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">B</span><span class="p">)</span><span class="w"> </span><span class="p">;</span>
+<span class="cm">/* PC=3 */</span><span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">y</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">turn</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">B</span><span class="p">)</span><span class="w"> </span><span class="p">;</span>
 <span class="w">            </span><span class="n">critical_section</span><span class="p">();</span>
 <span class="cm">/* PC=4 */</span><span class="w">  </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
 <span class="kt">void</span><span class="w"> </span><span class="nf">TB</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="cm">/* PC=1 */</span><span class="w">  </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 <span class="cm">/* PC=2 */</span><span class="w">  </span><span class="n">turn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">A</span><span class="p">;</span>
-<span class="cm">/* PC=3 */</span><span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&&</span><span class="w"> </span><span class="n">turn</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">A</span><span class="p">)</span><span class="w"> </span><span class="p">;</span>
+<span class="cm">/* PC=3 */</span><span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">turn</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">A</span><span class="p">)</span><span class="w"> </span><span class="p">;</span>
 <span class="w">            </span><span class="n">critical_section</span><span class="p">();</span>
 <span class="cm">/* PC=4 */</span><span class="w">  </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div></div>
@@ -445,22 +445,22 @@ section .center {
 
       
         
-        <div><h2 id="petersons-protocol-verified" class=" text-xl mt-2 pb-2 font-sans">Peterson's Protocol Verified 🎖</h2>
+        <div><h2 id="petersons-protocol-verified" class=" text-xl mt-2 pb-2 font-sans">Peterson's Protocol Verified &#127894;</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">我们 (在完全不理解算法的前提下) 证明了 Sequential 内存模型下 Peterson's Protocol 的 Safety。它能够实现互斥。</p>
+<p class=" font-serif my-1">&#25105;&#20204; (&#22312;&#23436;&#20840;&#19981;&#29702;&#35299;&#31639;&#27861;&#30340;&#21069;&#25552;&#19979;) &#35777;&#26126;&#20102; Sequential &#20869;&#23384;&#27169;&#22411;&#19979; Peterson's Protocol &#30340; Safety&#12290;&#23427;&#33021;&#22815;&#23454;&#29616;&#20114;&#26021;&#12290;</p>
 </blockquote>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/peterson-paper.png" width="450px"></p>
-<p class=" font-serif my-1">并发编程比大家想象得困难</p>
+<p class=" font-serif my-1">&#24182;&#21457;&#32534;&#31243;&#27604;&#22823;&#23478;&#24819;&#35937;&#24471;&#22256;&#38590;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">感受一下 <a href="../../../pages/OS/2022/demos/dekker.py" class=" text-amber-900">dekker.py</a></li>
-<li class=" ml-8">“<a href="https://zoo.cs.yale.edu/classes/cs323/doc/Peterson.pdf" class=" text-amber-900">Myths about the mutual exclusion problem</a>” (IPL, 1981)</li>
+<li class=" ml-8">&#24863;&#21463;&#19968;&#19979; <a href="../../../pages/OS/2022/demos/dekker.py" class=" text-amber-900">dekker.py</a></li>
+<li class=" ml-8">&#8220;<a href="https://zoo.cs.yale.edu/classes/cs323/doc/Peterson.pdf" class=" text-amber-900">Myths about the mutual exclusion problem</a>&#8221; (IPL, 1981)</li>
 </ul>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/TAOMP.jpg" width="200px"></p>
-<p class=" font-serif my-1">和一些现状</p>
+<p class=" font-serif my-1">&#21644;&#19968;&#20123;&#29616;&#29366;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">今天有非常坚 (内) 实 (卷) 的理论体系</li>
-<li class=" ml-8">小心编译器和多处理器硬件<ul class=" list-disc font-serif">
-<li class=" ml-8"><a href="../../../pages/OS/2022/demos/peterson-barrier.c" class=" text-amber-900">peterson-barrier.c</a> (哪些 barrier 是多余的吗？)</li>
+<li class=" ml-8">&#20170;&#22825;&#26377;&#38750;&#24120;&#22362; (&#20869;) &#23454; (&#21367;) &#30340;&#29702;&#35770;&#20307;&#31995;</li>
+<li class=" ml-8">&#23567;&#24515;&#32534;&#35793;&#22120;&#21644;&#22810;&#22788;&#29702;&#22120;&#30828;&#20214;<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="../../../pages/OS/2022/demos/peterson-barrier.c" class=" text-amber-900">peterson-barrier.c</a> (&#21738;&#20123; barrier &#26159;&#22810;&#20313;&#30340;&#21527;&#65311;)</li>
 </ul>
 </li>
 </ul></div>
@@ -478,7 +478,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">(自动) 画状态机理解并发程序</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">(&#33258;&#21160;) &#30011;&#29366;&#24577;&#26426;&#29702;&#35299;&#24182;&#21457;&#31243;&#24207;</h1></div></div></div>
         
       
       </section>
@@ -489,18 +489,18 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">画状态机实在太累了</h2>
-<p class=" font-serif my-1">并发算法的设计困境</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#30011;&#29366;&#24577;&#26426;&#23454;&#22312;&#22826;&#32047;&#20102;</h2>
+<p class=" font-serif my-1">&#24182;&#21457;&#31639;&#27861;&#30340;&#35774;&#35745;&#22256;&#22659;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">不敢不画：谁知道有什么奇怪情况会发生？</li>
-<li class=" ml-8">不敢乱画：画错了就都完了</li>
+<li class=" ml-8">&#19981;&#25954;&#19981;&#30011;&#65306;&#35841;&#30693;&#36947;&#26377;&#20160;&#20040;&#22855;&#24618;&#24773;&#20917;&#20250;&#21457;&#29983;&#65311;</li>
+<li class=" ml-8">&#19981;&#25954;&#20081;&#30011;&#65306;&#30011;&#38169;&#20102;&#23601;&#37117;&#23436;&#20102;</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">解决困境 💡</p>
+<p class=" font-serif my-1">&#35299;&#20915;&#22256;&#22659; &#128161;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">能不能让电脑帮我们画？</li>
-<li class=" ml-8">我们有程序的形式语义 (数学定义)，就能写解释器模拟执行<ul class=" list-disc font-serif">
-<li class=" ml-8">说起来容易，但需要写多少代码呢……？</li>
+<li class=" ml-8">&#33021;&#19981;&#33021;&#35753;&#30005;&#33041;&#24110;&#25105;&#20204;&#30011;&#65311;</li>
+<li class=" ml-8">&#25105;&#20204;&#26377;&#31243;&#24207;&#30340;&#24418;&#24335;&#35821;&#20041; (&#25968;&#23398;&#23450;&#20041;)&#65292;&#23601;&#33021;&#20889;&#35299;&#37322;&#22120;&#27169;&#25311;&#25191;&#34892;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#35828;&#36215;&#26469;&#23481;&#26131;&#65292;&#20294;&#38656;&#35201;&#20889;&#22810;&#23569;&#20195;&#30721;&#21602;&#8230;&#8230;&#65311;</li>
 </ul>
 </li>
 </ul></div>
@@ -514,27 +514,27 @@ section .center {
 
       
         
-        <div><h2 id="model-checker" class=" text-xl mt-2 pb-2 font-sans">年轻人的第一个 Model Checker</h2>
+        <div><h2 id="model-checker" class=" text-xl mt-2 pb-2 font-sans">&#24180;&#36731;&#20154;&#30340;&#31532;&#19968;&#20010; Model Checker</h2>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/talks/img/guido-python-tee.jpg" width="500px"></p>
-<p class=" font-serif my-1">选择正确的语言</p>
+<p class=" font-serif my-1">&#36873;&#25321;&#27491;&#30830;&#30340;&#35821;&#35328;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">当然是 Python 啦</li>
-<li class=" ml-8">容易 hack 的动态语言</li>
-<li class=" ml-8">丰富的库函数</li>
+<li class=" ml-8">&#24403;&#28982;&#26159; Python &#21862;</li>
+<li class=" ml-8">&#23481;&#26131; hack &#30340;&#21160;&#24577;&#35821;&#35328;</li>
+<li class=" ml-8">&#20016;&#23500;&#30340;&#24211;&#20989;&#25968;</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">选正确的语言机制</p>
+<p class=" font-serif my-1">&#36873;&#27491;&#30830;&#30340;&#35821;&#35328;&#26426;&#21046;</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><a href="../../../pages/OS/2022/demos/model-checker.py" class=" text-amber-900">model-checker.py</a><ul class=" list-disc font-serif">
-<li class=" ml-8"><del>代码量达到了惊人的 150 行</del>！</li>
-<li class=" ml-8">UNIX Philosophy: 写能合作的程序<ul class=" list-disc font-serif">
-<li class=" ml-8">Model checker 只负责输出 “状态图”</li>
+<li class=" ml-8"><del>&#20195;&#30721;&#37327;&#36798;&#21040;&#20102;&#24778;&#20154;&#30340; 150 &#34892;</del>&#65281;</li>
+<li class=" ml-8">UNIX Philosophy: &#20889;&#33021;&#21512;&#20316;&#30340;&#31243;&#24207;<ul class=" list-disc font-serif">
+<li class=" ml-8">Model checker &#21482;&#36127;&#36131;&#36755;&#20986; &#8220;&#29366;&#24577;&#22270;&#8221;</li>
 </ul>
 </li>
 </ul>
 </li>
-<li class=" ml-8">试试威力：<a href="../../../pages/OS/2022/demos/mutex-bad.py" class=" text-amber-900">mutex-bad.py</a>, <a href="../../../pages/OS/2022/demos/peterson-flag.py" class=" text-amber-900">peterson-flag.py</a>, <a href="../../../pages/OS/2022/demos/dekker.py" class=" text-amber-900">dekker.py</a><ul class=" list-disc font-serif">
-<li class=" ml-8">我们的输出格式有什么特别的用意吗？</li>
+<li class=" ml-8">&#35797;&#35797;&#23041;&#21147;&#65306;<a href="../../../pages/OS/2022/demos/mutex-bad.py" class=" text-amber-900">mutex-bad.py</a>, <a href="../../../pages/OS/2022/demos/peterson-flag.py" class=" text-amber-900">peterson-flag.py</a>, <a href="../../../pages/OS/2022/demos/dekker.py" class=" text-amber-900">dekker.py</a><ul class=" list-disc font-serif">
+<li class=" ml-8">&#25105;&#20204;&#30340;&#36755;&#20986;&#26684;&#24335;&#26377;&#20160;&#20040;&#29305;&#21035;&#30340;&#29992;&#24847;&#21527;&#65311;</li>
 </ul>
 </li>
 </ul></div>
@@ -548,8 +548,8 @@ section .center {
 
       
         
-        <div><h2 id="python-generator" class=" text-xl mt-2 pb-2 font-sans">代码导读：Python Generator</h2>
-<p class=" font-serif my-1">死循环也能返回？</p>
+        <div><h2 id="python-generator" class=" text-xl mt-2 pb-2 font-sans">&#20195;&#30721;&#23548;&#35835;&#65306;Python Generator</h2>
+<p class=" font-serif my-1">&#27515;&#24490;&#29615;&#20063;&#33021;&#36820;&#22238;&#65311;</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">def</span> <span class="nf">numbers</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
     <span class="n">n</span> <span class="o">=</span> <span class="n">init</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
@@ -557,12 +557,12 @@ section .center {
         <span class="k">yield</span> <span class="n">n</span>
 </code></pre></div>
 
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>>>> g = numbers()
->>> g
-<generator object numbers at 0x107f873c0>
->>> g.__next__()
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>&gt;&gt;&gt; g = numbers()
+&gt;&gt;&gt; g
+&lt;generator object numbers at 0x107f873c0&gt;
+&gt;&gt;&gt; g.__next__()
 1
->>> g.__next__()
+&gt;&gt;&gt; g.__next__()
 2
 </code></pre></div></div>
         
@@ -575,17 +575,17 @@ section .center {
 
       
         
-        <div><h2 id="generator" class=" text-xl mt-2 pb-2 font-sans">Generator: 也是状态机</h2>
-<p class=" font-serif my-1"><code>g = numbers()</code> 是一个状态机 (类似是线程，但不并发执行)</p>
+        <div><h2 id="generator" class=" text-xl mt-2 pb-2 font-sans">Generator: &#20063;&#26159;&#29366;&#24577;&#26426;</h2>
+<p class=" font-serif my-1"><code>g = numbers()</code> &#26159;&#19968;&#20010;&#29366;&#24577;&#26426; (&#31867;&#20284;&#26159;&#32447;&#31243;&#65292;&#20294;&#19981;&#24182;&#21457;&#25191;&#34892;)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><code>g.__next__()</code> 会切换到状态机执行，直到 <code>yield</code></li>
-<li class=" ml-8">状态机返回会触发 <code>StopIteration</code> 异常</li>
+<li class=" ml-8"><code>g.__next__()</code> &#20250;&#20999;&#25442;&#21040;&#29366;&#24577;&#26426;&#25191;&#34892;&#65292;&#30452;&#21040; <code>yield</code></li>
+<li class=" ml-8">&#29366;&#24577;&#26426;&#36820;&#22238;&#20250;&#35302;&#21457; <code>StopIteration</code> &#24322;&#24120;</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">在 C 语言里同样可以实现 (MiniLab 2)</p>
+<p class=" font-serif my-1">&#22312; C &#35821;&#35328;&#37324;&#21516;&#26679;&#21487;&#20197;&#23454;&#29616; (MiniLab 2)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">只要为状态机分配栈空间和寄存器即可</li>
-<li class=" ml-8"><code>yield()</code> 切换到另外的状态机/线程执行</li>
+<li class=" ml-8">&#21482;&#35201;&#20026;&#29366;&#24577;&#26426;&#20998;&#37197;&#26632;&#31354;&#38388;&#21644;&#23492;&#23384;&#22120;&#21363;&#21487;</li>
+<li class=" ml-8"><code>yield()</code> &#20999;&#25442;&#21040;&#21478;&#22806;&#30340;&#29366;&#24577;&#26426;/&#32447;&#31243;&#25191;&#34892;</li>
 </ul></div>
         
       
@@ -597,7 +597,7 @@ section .center {
 
       
         
-        <div><h2 id="model-checker" class=" text-xl mt-2 pb-2 font-sans">Model Checker: 实现</h2>
+        <div><h2 id="model-checker" class=" text-xl mt-2 pb-2 font-sans">Model Checker: &#23454;&#29616;</h2>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">class</span> <span class="nc">Mutex</span><span class="p">:</span>
     <span class="n">locked</span> <span class="o">=</span> <span class="s1">''</span>
 
@@ -605,16 +605,16 @@ section .center {
         <span class="k">yield</span> <span class="n">checkpoint</span><span class="p">()</span>
         <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
             <span class="k">yield</span> <span class="n">checkpoint</span><span class="p">()</span>
-            <span class="k">while</span> <span class="bp">self</span><span class="o">.</span><span class="n">locked</span> <span class="o">==</span> <span class="s1">'🔒'</span><span class="p">:</span>
+            <span class="k">while</span> <span class="bp">self</span><span class="o">.</span><span class="n">locked</span> <span class="o">==</span> <span class="s1">'&#128274;'</span><span class="p">:</span>
                 <span class="k">yield</span> <span class="n">checkpoint</span><span class="p">()</span>
                 <span class="k">pass</span>
             <span class="k">yield</span> <span class="n">checkpoint</span><span class="p">()</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">locked</span> <span class="o">=</span> <span class="s1">'🔒'</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">locked</span> <span class="o">=</span> <span class="s1">'&#128274;'</span>
             <span class="o">...</span>
 </code></pre></div>
 
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">thread_state</span> <span class="o">=</span> <span class="n">mutex_obj</span><span class="p">()</span><span class="o">.</span><span class="n">T1</span><span class="p">()</span>
-<span class="n">thread_state</span><span class="o">.</span><span class="fm">__next__</span><span class="p">()</span> <span class="c1"># 单步执行一行; see: execute()</span>
+<span class="n">thread_state</span><span class="o">.</span><span class="fm">__next__</span><span class="p">()</span> <span class="c1"># &#21333;&#27493;&#25191;&#34892;&#19968;&#34892;; see: execute()</span>
 </code></pre></div></div>
         
       
@@ -626,19 +626,19 @@ section .center {
 
       
         
-        <div><h2 id="model-checker-contd" class=" text-xl mt-2 pb-2 font-sans">Model Checker: 实现 (cont'd)</h2>
-<p class=" font-serif my-1">什么是状态空间？</p>
+        <div><h2 id="model-checker-contd" class=" text-xl mt-2 pb-2 font-sans">Model Checker: &#23454;&#29616; (cont'd)</h2>
+<p class=" font-serif my-1">&#20160;&#20040;&#26159;&#29366;&#24577;&#31354;&#38388;&#65311;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">所有可能的状态机执行序列</li>
-<li class=" ml-8">BFS 生成，合并重复状态</li>
+<li class=" ml-8">&#25152;&#26377;&#21487;&#33021;&#30340;&#29366;&#24577;&#26426;&#25191;&#34892;&#24207;&#21015;</li>
+<li class=" ml-8">BFS &#29983;&#25104;&#65292;&#21512;&#24182;&#37325;&#22797;&#29366;&#24577;</li>
 </ul>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>[0]      T1
 [1]      T2
-[0,0]    T1 -> T1
-[0,1]    T1 -> T2
-[0,0,0]  T1 -> T1 -> T1
-[0,0,1]  T1 -> T1 -> T2
-[0,1,0]  T1 -> T2 -> T1
+[0,0]    T1 -&gt; T1
+[0,1]    T1 -&gt; T2
+[0,0,0]  T1 -&gt; T1 -&gt; T1
+[0,0,1]  T1 -&gt; T1 -&gt; T2
+[0,1,0]  T1 -&gt; T2 -&gt; T1
 ...      ...
 </code></pre></div></div>
         
@@ -655,7 +655,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="model-checking" class=" text-2xl mt-2 font-sans">Model Checking 和工具的故事</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="model-checking" class=" text-2xl mt-2 font-sans">Model Checking &#21644;&#24037;&#20855;&#30340;&#25925;&#20107;</h1></div></div></div>
         
       
       </section>
@@ -668,20 +668,20 @@ section .center {
         
         <div><h2 id="model-checker" class=" text-xl mt-2 pb-2 font-sans">Model Checker</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">Model checking is a method for formally verifying finite-state systems——只要能为系统建立模型，就能用 prove by brute-force 证明正确/找到错误。</p>
+<p class=" font-serif my-1">Model checking is a method for formally verifying finite-state systems&#8212;&#8212;&#21482;&#35201;&#33021;&#20026;&#31995;&#32479;&#24314;&#31435;&#27169;&#22411;&#65292;&#23601;&#33021;&#29992; prove by brute-force &#35777;&#26126;&#27491;&#30830;/&#25214;&#21040;&#38169;&#35823;&#12290;</p>
 </blockquote>
-<p class=" font-serif my-1">Model checker 的一切就是状态机！</p>
+<p class=" font-serif my-1">Model checker &#30340;&#19968;&#20999;&#23601;&#26159;&#29366;&#24577;&#26426;&#65281;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">Safety: 红色的状态不可到达<ul class=" list-disc font-serif">
-<li class=" ml-8">$G(V, E)$ 上的可达性问题</li>
+<li class=" ml-8">Safety: &#32418;&#33394;&#30340;&#29366;&#24577;&#19981;&#21487;&#21040;&#36798;<ul class=" list-disc font-serif">
+<li class=" ml-8">$G(V, E)$ &#19978;&#30340;&#21487;&#36798;&#24615;&#38382;&#39064;</li>
 </ul>
 </li>
-<li class=" ml-8">(Strong) Liveness: 从任意状态出发，都能到达绿/蓝色状态<ul class=" list-disc font-serif">
-<li class=" ml-8">$G(V, E)$ 上的什么问题？</li>
+<li class=" ml-8">(Strong) Liveness: &#20174;&#20219;&#24847;&#29366;&#24577;&#20986;&#21457;&#65292;&#37117;&#33021;&#21040;&#36798;&#32511;/&#34013;&#33394;&#29366;&#24577;<ul class=" list-disc font-serif">
+<li class=" ml-8">$G(V, E)$ &#19978;&#30340;&#20160;&#20040;&#38382;&#39064;&#65311;</li>
 </ul>
 </li>
-<li class=" ml-8">如何展示这个状态机？</li>
-<li class=" ml-8">如何能避免无效的探索？</li>
+<li class=" ml-8">&#22914;&#20309;&#23637;&#31034;&#36825;&#20010;&#29366;&#24577;&#26426;&#65311;</li>
+<li class=" ml-8">&#22914;&#20309;&#33021;&#36991;&#20813;&#26080;&#25928;&#30340;&#25506;&#32034;&#65311;</li>
 </ul></div>
         
       
@@ -693,17 +693,17 @@ section .center {
 
       
         
-        <div><h2 id="model-checker" class=" text-xl mt-2 pb-2 font-sans">更多的 Model Checker</h2>
-<p class=" font-serif my-1">真实程序的状态空间太大？</p>
+        <div><h2 id="model-checker" class=" text-xl mt-2 pb-2 font-sans">&#26356;&#22810;&#30340; Model Checker</h2>
+<p class=" font-serif my-1">&#30495;&#23454;&#31243;&#24207;&#30340;&#29366;&#24577;&#31354;&#38388;&#22826;&#22823;&#65311;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><a href="https://dl.acm.org/doi/abs/10.1145/263699.263717" class=" text-amber-900">Model checking for programming languages using VeriSoft</a> (POPL'97, 第一个 “software model checker”)</li>
-<li class=" ml-8"><a href="https://dl.acm.org/doi/10.5555/1855741.1855760" class=" text-amber-900">Finding and reproducing Heisenbugs in concurrent programs</a> (OSDI'08, Small Scope Hypothesis 🪳🪳🪳)</li>
-<li class=" ml-8"><a href="https://dl.acm.org/doi/10.1145/1189256.1189259" class=" text-amber-900">Using model checking to find serious file system errors</a> (OSDI'04, Best Paper 🏅，可以用在不并发的系统上)</li>
+<li class=" ml-8"><a href="https://dl.acm.org/doi/abs/10.1145/263699.263717" class=" text-amber-900">Model checking for programming languages using VeriSoft</a> (POPL'97, &#31532;&#19968;&#20010; &#8220;software model checker&#8221;)</li>
+<li class=" ml-8"><a href="https://dl.acm.org/doi/10.5555/1855741.1855760" class=" text-amber-900">Finding and reproducing Heisenbugs in concurrent programs</a> (OSDI'08, Small Scope Hypothesis &#129715;&#129715;&#129715;)</li>
+<li class=" ml-8"><a href="https://dl.acm.org/doi/10.1145/1189256.1189259" class=" text-amber-900">Using model checking to find serious file system errors</a> (OSDI'04, Best Paper &#127941;&#65292;&#21487;&#20197;&#29992;&#22312;&#19981;&#24182;&#21457;&#30340;&#31995;&#32479;&#19978;)</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">不满足于简单的内存模型？</p>
+<p class=" font-serif my-1">&#19981;&#28385;&#36275;&#20110;&#31616;&#21333;&#30340;&#20869;&#23384;&#27169;&#22411;&#65311;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><a href="https://dl.acm.org/doi/abs/10.1145/3445814.3446748" class=" text-amber-900">VSync: Push-button verification and optimization for synchronization primitives on weak memory models</a> (ASPLOS'21, Distinguished Paper 🏅)</li>
+<li class=" ml-8"><a href="https://dl.acm.org/doi/abs/10.1145/3445814.3446748" class=" text-amber-900">VSync: Push-button verification and optimization for synchronization primitives on weak memory models</a> (ASPLOS'21, Distinguished Paper &#127941;)</li>
 </ul></div>
         
       
@@ -715,23 +715,23 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">工具的故事</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#24037;&#20855;&#30340;&#25925;&#20107;</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">没有人能阻止程序员写 bug，但<red>工具</red>可以。</p>
+<p class=" font-serif my-1">&#27809;&#26377;&#20154;&#33021;&#38459;&#27490;&#31243;&#24207;&#21592;&#20889; bug&#65292;&#20294;<red>&#24037;&#20855;</red>&#21487;&#20197;&#12290;</p>
 </blockquote>
-<p class=" font-serif my-1">至今为止我们用过的自动化工具 (他们拯救了你无数次)</p>
+<p class=" font-serif my-1">&#33267;&#20170;&#20026;&#27490;&#25105;&#20204;&#29992;&#36807;&#30340;&#33258;&#21160;&#21270;&#24037;&#20855; (&#20182;&#20204;&#25327;&#25937;&#20102;&#20320;&#26080;&#25968;&#27425;)</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">Type safety check</li>
 <li class=" ml-8"><code>-Wall -Werror</code></li>
 <li class=" ml-8">Differential testing</li>
 <li class=" ml-8">Model checker</li>
-<li class=" ml-8">……</li>
+<li class=" ml-8">&#8230;&#8230;</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">这门课的另一个 take-away</p>
+<p class=" font-serif my-1">&#36825;&#38376;&#35838;&#30340;&#21478;&#19968;&#20010; take-away</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">操作系统是一个巨大的<red>工程</red></li>
-<li class=" ml-8">没有工具 (编程、测试、调试……)，不做系统</li>
+<li class=" ml-8">&#25805;&#20316;&#31995;&#32479;&#26159;&#19968;&#20010;&#24040;&#22823;&#30340;<red>&#24037;&#31243;</red></li>
+<li class=" ml-8">&#27809;&#26377;&#24037;&#20855; (&#32534;&#31243;&#12289;&#27979;&#35797;&#12289;&#35843;&#35797;&#8230;&#8230;)&#65292;&#19981;&#20570;&#31995;&#32479;</li>
 </ul></div>
         
       
@@ -747,7 +747,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">总结</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#24635;&#32467;</h1></div></div></div>
         
       
       </section>
@@ -758,21 +758,21 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">总结</h2>
-<p class=" font-serif my-1">本次课回答的问题</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#24635;&#32467;</h2>
+<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#22238;&#31572;&#30340;&#38382;&#39064;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><strong>Q</strong>: 如何理解各种并发程序？</li>
+<li class=" ml-8"><strong>Q</strong>: &#22914;&#20309;&#29702;&#35299;&#21508;&#31181;&#24182;&#21457;&#31243;&#24207;&#65311;</li>
 </ul>
 <hr>
 <p class=" font-serif my-1">Take-away message</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">并发程序 = 状态机<ul class=" list-disc font-serif">
-<li class=" ml-8">线程共享内存</li>
-<li class=" ml-8">每一步非确定选择线程执行</li>
+<li class=" ml-8">&#24182;&#21457;&#31243;&#24207; = &#29366;&#24577;&#26426;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#32447;&#31243;&#20849;&#20139;&#20869;&#23384;</li>
+<li class=" ml-8">&#27599;&#19968;&#27493;&#38750;&#30830;&#23450;&#36873;&#25321;&#32447;&#31243;&#25191;&#34892;</li>
 </ul>
 </li>
-<li class=" ml-8">画状态机就对了<ul class=" list-disc font-serif">
-<li class=" ml-8">当然，用工具帮你画 (model checker)</li>
+<li class=" ml-8">&#30011;&#29366;&#24577;&#26426;&#23601;&#23545;&#20102;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#24403;&#28982;&#65292;&#29992;&#24037;&#20855;&#24110;&#20320;&#30011; (model checker)</li>
 </ul>
 </li>
 </ul></div>

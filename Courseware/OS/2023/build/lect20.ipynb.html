@@ -2,7 +2,7 @@
 <head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>20. C 标准库和实现</title>
+<title>20. C &#26631;&#20934;&#24211;&#21644;&#23454;&#29616;</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script><script>
 (function() {
   function addWidgetsRenderer() {
@@ -6481,7 +6481,7 @@ cell outputs.
 
 .jp-Notebook .jp-Cell.jp-mod-dirty .jp-InputPrompt::before {
   color: var(--jp-warn-color1);
-  content: '•';
+  content: '&#8226;';
 }
 
 .jp-Notebook .jp-Cell.jp-mod-active.jp-mod-dirty .jp-Collapser {
@@ -7518,7 +7518,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">mosaic</span> <span class="kn">import</span> <span class="o">*</span>
@@ -7690,17 +7690,17 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-InputPrompt jp-InputArea-prompt">
 </div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="20.-C-%E6%A0%87%E5%87%86%E5%BA%93%E5%92%8C%E5%AE%9E%E7%8E%B0">20. C 标准库和实现<a class="anchor-link" href="#20.-C-%E6%A0%87%E5%87%86%E5%BA%93%E5%92%8C%E5%AE%9E%E7%8E%B0">¶</a>
+<h1 id="20.-C-%E6%A0%87%E5%87%86%E5%BA%93%E5%92%8C%E5%AE%9E%E7%8E%B0">20. C &#26631;&#20934;&#24211;&#21644;&#23454;&#29616;<a class="anchor-link" href="lect20.ipynb.html#20.-C-%E6%A0%87%E5%87%86%E5%BA%93%E5%92%8C%E5%AE%9E%E7%8E%B0">&#182;</a>
 </h1>
-<p><strong>Changelog & 反馈</strong></p>
+<p><strong>Changelog &amp; &#21453;&#39304;</strong></p>
 <ul>
-<li>Online Judge 和更多的作业已上线 (Lab2: 见识一下 “在机房练死劲” 是不行的)</li>
+<li>Online Judge &#21644;&#26356;&#22810;&#30340;&#20316;&#19994;&#24050;&#19978;&#32447; (Lab2: &#35265;&#35782;&#19968;&#19979; &#8220;&#22312;&#26426;&#25151;&#32451;&#27515;&#21170;&#8221; &#26159;&#19981;&#34892;&#30340;)</li>
 <li>"The hitchhiker's guide to operating systems" accepted to USENIX ATC'23</li>
 </ul>
-<p><strong>背景回顾</strong>：我们在先前的课程中讲解了如何在一套十分精简的机制 (硬件、系统调用) 上构建起整个应用程序世界。为了让这个世界更丰富多彩，为开发者提供便利就是至关重要的。使 UNIX 世界蓬勃发展离不开 C 语言和它的标准库，长久以来都为系统编程树立了一套标杆。</p>
-<p><strong>本讲内容</strong>：</p>
+<p><strong>&#32972;&#26223;&#22238;&#39038;</strong>&#65306;&#25105;&#20204;&#22312;&#20808;&#21069;&#30340;&#35838;&#31243;&#20013;&#35762;&#35299;&#20102;&#22914;&#20309;&#22312;&#19968;&#22871;&#21313;&#20998;&#31934;&#31616;&#30340;&#26426;&#21046; (&#30828;&#20214;&#12289;&#31995;&#32479;&#35843;&#29992;) &#19978;&#26500;&#24314;&#36215;&#25972;&#20010;&#24212;&#29992;&#31243;&#24207;&#19990;&#30028;&#12290;&#20026;&#20102;&#35753;&#36825;&#20010;&#19990;&#30028;&#26356;&#20016;&#23500;&#22810;&#24425;&#65292;&#20026;&#24320;&#21457;&#32773;&#25552;&#20379;&#20415;&#21033;&#23601;&#26159;&#33267;&#20851;&#37325;&#35201;&#30340;&#12290;&#20351; UNIX &#19990;&#30028;&#34028;&#21187;&#21457;&#23637;&#31163;&#19981;&#24320; C &#35821;&#35328;&#21644;&#23427;&#30340;&#26631;&#20934;&#24211;&#65292;&#38271;&#20037;&#20197;&#26469;&#37117;&#20026;&#31995;&#32479;&#32534;&#31243;&#26641;&#31435;&#20102;&#19968;&#22871;&#26631;&#26438;&#12290;</p>
+<p><strong>&#26412;&#35762;&#20869;&#23481;</strong>&#65306;</p>
 <ul>
-<li>C 标准库和实现</li>
+<li>C &#26631;&#20934;&#24211;&#21644;&#23454;&#29616;</li>
 </ul>
 </div>
 </div>
@@ -7711,7 +7711,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'20.1'</span><span class="p">)</span>
@@ -7740,7 +7740,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'20.2'</span><span class="p">)</span>
@@ -7769,7 +7769,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">demo</span><span class="p">(</span><span class="s1">'memset'</span><span class="p">,</span> <span class="s1">'v/memset-race.c'</span><span class="p">,</span> <span class="n">libs</span><span class="o">=</span><span class="p">[</span><span class="s1">'thread.h'</span><span class="p">])</span>
@@ -7801,7 +7801,7 @@ var element = document.getElementById('114c7279-6baf-41bc-a872-8f5fcb87978c');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'20.3'</span><span class="p">)</span>
@@ -7830,7 +7830,7 @@ var element = document.getElementById('114c7279-6baf-41bc-a872-8f5fcb87978c');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">demo</span><span class="p">(</span><span class="s1">'env'</span><span class="p">,</span> <span class="s1">'v/env.c'</span><span class="p">)</span>
@@ -7862,7 +7862,7 @@ var element = document.getElementById('13199a27-08f3-4520-8eed-be6f368d0806');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'20.4'</span><span class="p">)</span>
@@ -7894,18 +7894,18 @@ var element = document.getElementById('13199a27-08f3-4520-8eed-be6f368d0806');
 <div class="jp-InputPrompt jp-InputArea-prompt">
 </div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Take-away-Messages">Take-away Messages<a class="anchor-link" href="#Take-away-Messages">¶</a>
+<h2 id="Take-away-Messages">Take-away Messages<a class="anchor-link" href="lect20.ipynb.html#Take-away-Messages">&#182;</a>
 </h2>
-<p>在系统调用和语言机制的基础上，libc 为我们提供了开发跨平台应用程序的 “第一级抽象”。在此基础上构建起了万千世界：C++ (扩充了 C 标准库)、Java、浏览器世界……今天，C 语言在应用开发方面有很多缺陷，但仍然为 “第一级抽象” 提供了一个有趣的范本：</p>
+<p>&#22312;&#31995;&#32479;&#35843;&#29992;&#21644;&#35821;&#35328;&#26426;&#21046;&#30340;&#22522;&#30784;&#19978;&#65292;libc &#20026;&#25105;&#20204;&#25552;&#20379;&#20102;&#24320;&#21457;&#36328;&#24179;&#21488;&#24212;&#29992;&#31243;&#24207;&#30340; &#8220;&#31532;&#19968;&#32423;&#25277;&#35937;&#8221;&#12290;&#22312;&#27492;&#22522;&#30784;&#19978;&#26500;&#24314;&#36215;&#20102;&#19975;&#21315;&#19990;&#30028;&#65306;C++ (&#25193;&#20805;&#20102; C &#26631;&#20934;&#24211;)&#12289;Java&#12289;&#27983;&#35272;&#22120;&#19990;&#30028;&#8230;&#8230;&#20170;&#22825;&#65292;C &#35821;&#35328;&#22312;&#24212;&#29992;&#24320;&#21457;&#26041;&#38754;&#26377;&#24456;&#22810;&#32570;&#38519;&#65292;&#20294;&#20173;&#28982;&#20026; &#8220;&#31532;&#19968;&#32423;&#25277;&#35937;&#8221; &#25552;&#20379;&#20102;&#19968;&#20010;&#26377;&#36259;&#30340;&#33539;&#26412;&#65306;</p>
 <ul>
 <li><a href="https://dl.acm.org/doi/pdf/10.1145/3209212">C is not a low-level language</a></li>
 <li><a href="https://gankra.github.io/blah/c-isnt-a-language/">C isn't a programming language any more</a></li>
 </ul>
-<h3 id="%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">课后习题/编程作业<a class="anchor-link" href="#%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">¶</a>
+<h3 id="%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">&#35838;&#21518;&#20064;&#39064;/&#32534;&#31243;&#20316;&#19994;<a class="anchor-link" href="lect20.ipynb.html#%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">&#182;</a>
 </h3>
-<h4 id="1.-%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5">1. 编程实践<a class="anchor-link" href="#1.-%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5">¶</a>
+<h4 id="1.-%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5">1. &#32534;&#31243;&#23454;&#36341;<a class="anchor-link" href="lect20.ipynb.html#1.-%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5">&#182;</a>
 </h4>
-<p>试着浏览 libc 的头文件/手册，找到你认为有趣的函数，并且观察 musl 是如何实现的。</p>
+<p>&#35797;&#30528;&#27983;&#35272; libc &#30340;&#22836;&#25991;&#20214;/&#25163;&#20876;&#65292;&#25214;&#21040;&#20320;&#35748;&#20026;&#26377;&#36259;&#30340;&#20989;&#25968;&#65292;&#24182;&#19988;&#35266;&#23519; musl &#26159;&#22914;&#20309;&#23454;&#29616;&#30340;&#12290;</p>
 </div>
 </div>
 </div>
@@ -7916,8 +7916,8 @@ var element = document.getElementById('13199a27-08f3-4520-8eed-be6f368d0806');
 <div class="container text-xs py-3">
   <span class="text-muted">
     <center>
-<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="/static/img/cc-4.0.png"></a>
-       <a style="color:inherit" href="https://beian.miit.gov.cn/">苏 ICP 备 2020049101 号</a>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="../../../static/img/cc-4.0.png"></a>
+    &#160;&#160;&#160;<a style="color:inherit" href="https://beian.miit.gov.cn/">&#33487; ICP &#22791; 2020049101 &#21495;</a>
     </center>
   </span>
 </div>

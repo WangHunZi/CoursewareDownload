@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // • auto-render specific keys, e.g.:
+            // &#8226; auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // • rendering keys, e.g.:
+            // &#8226; rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +209,7 @@ section .center {
 }
 </style>
 
-  <title>操作系统对象的封装</title>
+  <title>&#25805;&#20316;&#31995;&#32479;&#23545;&#35937;&#30340;&#23553;&#35013;</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,7 +227,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="20.3.slides.html" class=" text-amber-900">操作系统对象与环境</a></h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="20.3.slides.html" class=" text-amber-900">&#25805;&#20316;&#31995;&#32479;&#23545;&#35937;&#19982;&#29615;&#22659;</a></h1></div></div></div>
         
       
       </section>
@@ -238,19 +238,19 @@ section .center {
 
       
         
-        <div><h2 id="stdioh" class=" text-xl mt-2 pb-2 font-sans"><a href="https://www.cplusplus.com/reference/cstdio/" class=" text-amber-900">stdio.h</a>: 你熟悉的味道</h2>
-<p class=" font-serif my-1"><code>FILE *</code> 背后其实是一个文件描述符</p>
+        <div><h2 id="stdioh" class=" text-xl mt-2 pb-2 font-sans"><a href="https://www.cplusplus.com/reference/cstdio/" class=" text-amber-900">stdio.h</a>: &#20320;&#29087;&#24713;&#30340;&#21619;&#36947;</h2>
+<p class=" font-serif my-1"><code>FILE *</code> &#32972;&#21518;&#20854;&#23454;&#26159;&#19968;&#20010;&#25991;&#20214;&#25551;&#36848;&#31526;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">我们可以用 gdb 查看具体的 <code>FILE *</code><ul class=" list-disc font-serif">
-<li class=" ml-8">例如 stdout</li>
+<li class=" ml-8">&#25105;&#20204;&#21487;&#20197;&#29992; gdb &#26597;&#30475;&#20855;&#20307;&#30340; <code>FILE *</code><ul class=" list-disc font-serif">
+<li class=" ml-8">&#20363;&#22914; stdout</li>
 </ul>
 </li>
-<li class=" ml-8">封装了文件描述符上的系统调用 (fseek, fgetpos, ftell, feof, ...)</li>
+<li class=" ml-8">&#23553;&#35013;&#20102;&#25991;&#20214;&#25551;&#36848;&#31526;&#19978;&#30340;&#31995;&#32479;&#35843;&#29992; (fseek, fgetpos, ftell, feof, ...)</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">vprintf 系列</p>
+<p class=" font-serif my-1">vprintf &#31995;&#21015;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">使用了 <code>stdarg.h</code> 的参数列表</li>
+<li class=" ml-8">&#20351;&#29992;&#20102; <code>stdarg.h</code> &#30340;&#21442;&#25968;&#21015;&#34920;</li>
 </ul>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">vfprintf</span><span class="p">(</span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">stream</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">format</span><span class="p">,</span><span class="w"> </span><span class="kt">va_list</span><span class="w"> </span><span class="n">ap</span><span class="p">);</span>
 <span class="kt">int</span><span class="w"> </span><span class="nf">vasprintf</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">ret</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">format</span><span class="p">,</span><span class="w"> </span><span class="kt">va_list</span><span class="w"> </span><span class="n">ap</span><span class="p">);</span>
@@ -265,16 +265,16 @@ section .center {
 
       
         
-        <div><h2 id="popen-pclose" class=" text-xl mt-2 pb-2 font-sans">popen 和 pclose</h2>
-<p class=" font-serif my-1">我们在游戏修改器中使用了它</p>
+        <div><h2 id="popen-pclose" class=" text-xl mt-2 pb-2 font-sans">popen &#21644; pclose</h2>
+<p class=" font-serif my-1">&#25105;&#20204;&#22312;&#28216;&#25103;&#20462;&#25913;&#22120;&#20013;&#20351;&#29992;&#20102;&#23427;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">一个设计有缺陷的 API<ul class=" list-disc font-serif">
+<li class=" ml-8">&#19968;&#20010;&#35774;&#35745;&#26377;&#32570;&#38519;&#30340; API<ul class=" list-disc font-serif">
 <li class=" ml-8">Since a pipe is by definition unidirectional, the type argument may specify only reading or writing, <em>not both</em>; the resulting stream is correspondingly read-only or write-only.</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">高情商 API (现代编程语言)</p>
+<p class=" font-serif my-1">&#39640;&#24773;&#21830; API (&#29616;&#20195;&#32534;&#31243;&#35821;&#35328;)</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">subprocess</span><span class="o">.</span><span class="n">check_output</span><span class="p">([</span><span class="s1">'cat'</span><span class="p">],</span>
   <span class="nb">input</span><span class="o">=</span><span class="sa">b</span><span class="s1">'Hello World'</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">STDOUT</span><span class="p">)</span>
 </code></pre></div>
@@ -295,25 +295,25 @@ section .center {
       
         
         <div><h2 id="err-error-perror" class=" text-xl mt-2 pb-2 font-sans">err, error, perror</h2>
-<p class=" font-serif my-1">所有 API 都可能失败</p>
+<p class=" font-serif my-1">&#25152;&#26377; API &#37117;&#21487;&#33021;&#22833;&#36133;</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>$ gcc nonexist.c
 gcc: error: nonexist.c: No such file or directory
 </code></pre></div>
 
 <hr>
-<p class=" font-serif my-1">这个 “No such file or directory” 似乎见得有点多？</p>
+<p class=" font-serif my-1">&#36825;&#20010; &#8220;No such file or directory&#8221; &#20284;&#20046;&#35265;&#24471;&#26377;&#28857;&#22810;&#65311;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><code>cat nonexist.c, wc nonexist.c</code> 都是同样的 error message</li>
-<li class=" ml-8">这不是巧合！<ul class=" list-disc font-serif">
-<li class=" ml-8">我们也可以 “山寨” 出同样的效果</li>
-<li class=" ml-8"><code>warn("%s", fname);</code> (观察 strace)<ul class=" list-disc font-serif">
-<li class=" ml-8"><code>err</code> 可以额外退出程序</li>
+<li class=" ml-8"><code>cat nonexist.c, wc nonexist.c</code> &#37117;&#26159;&#21516;&#26679;&#30340; error message</li>
+<li class=" ml-8">&#36825;&#19981;&#26159;&#24039;&#21512;&#65281;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25105;&#20204;&#20063;&#21487;&#20197; &#8220;&#23665;&#23528;&#8221; &#20986;&#21516;&#26679;&#30340;&#25928;&#26524;</li>
+<li class=" ml-8"><code>warn("%s", fname);</code> (&#35266;&#23519; strace)<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>err</code> &#21487;&#20197;&#39069;&#22806;&#36864;&#20986;&#31243;&#24207;</li>
 </ul>
 </li>
 </ul>
 </li>
-<li class=" ml-8">errno 是进程共享还是线程独享？<ul class=" list-disc font-serif">
-<li class=" ml-8">这下知道协程的轻量了吧</li>
+<li class=" ml-8">errno &#26159;&#36827;&#31243;&#20849;&#20139;&#36824;&#26159;&#32447;&#31243;&#29420;&#20139;&#65311;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#36825;&#19979;&#30693;&#36947;&#21327;&#31243;&#30340;&#36731;&#37327;&#20102;&#21543;</li>
 </ul>
 </li>
 </ul></div>
@@ -329,10 +329,10 @@ gcc: error: nonexist.c: No such file or directory
         
         <div><h2 id="environ-7" class=" text-xl mt-2 pb-2 font-sans">environ (7)</h2>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/GET.jpg" width="400px"></p>
-<p class=" font-serif my-1">我们也可以实现自己的 env.c</p>
+<p class=" font-serif my-1">&#25105;&#20204;&#20063;&#21487;&#20197;&#23454;&#29616;&#33258;&#24049;&#30340; env.c</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">问题来了：environ 是谁赋值的？<ul class=" list-disc font-serif">
-<li class=" ml-8">是时候请出我们的老朋友 watch point 了</li>
+<li class=" ml-8">&#38382;&#39064;&#26469;&#20102;&#65306;environ &#26159;&#35841;&#36171;&#20540;&#30340;&#65311;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#26159;&#26102;&#20505;&#35831;&#20986;&#25105;&#20204;&#30340;&#32769;&#26379;&#21451; watch point &#20102;</li>
 </ul>
 </li>
 <li class=" ml-8">RTFM: <a href="../../../pages/OS/manuals/sysv-abi.pdf" class=" text-amber-900">System V ABI</a><ul class=" list-disc font-serif">

@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // • auto-render specific keys, e.g.:
+            // &#8226; auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // • rendering keys, e.g.:
+            // &#8226; rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +209,7 @@ section .center {
 }
 </style>
 
-  <title>并发控制：互斥</title>
+  <title>&#24182;&#21457;&#25511;&#21046;&#65306;&#20114;&#26021;</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,21 +227,21 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">并发控制：互斥</h1>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#24182;&#21457;&#25511;&#21046;&#65306;&#20114;&#26021;</h1>
 <p class=" font-serif my-1"><include src="Slides_Author"><div><div class="py-16">
-<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">蒋炎岩</a></p>
+<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">&#33931;&#28814;&#23721;</a></p>
 </div>
 <div class="row">
 <div class="author-affiliation">
-    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">　　南京大学　　</p>
+    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#12288;&#12288;&#21335;&#20140;&#22823;&#23398;&#12288;&#12288;</p>
     <img class="inline-img h-24" src="../../../static/img/nju-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">计算机科学与技术系</p>
+   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#31185;&#23398;&#19982;&#25216;&#26415;&#31995;</p>
     <img class="inline-img h-24" src="../../../static/img/njucs-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">计算机软件研究所</p>
+    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#36719;&#20214;&#30740;&#31350;&#25152;</p>
     <img class="inline-img h-24" src="../../../static/img/ics-logo.png" style="display: inline-block;"></a>
   </div>
 </div></div></include></p></div></div></div>
@@ -256,20 +256,20 @@ section .center {
       
         
         <div><h2 id="overview" class=" text-xl mt-2 pb-2 font-sans">Overview</h2>
-<p class=" font-serif my-1">复习</p>
+<p class=" font-serif my-1">&#22797;&#20064;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">状态机、状态机、状态机</li>
+<li class=" ml-8">&#29366;&#24577;&#26426;&#12289;&#29366;&#24577;&#26426;&#12289;&#29366;&#24577;&#26426;</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">本次课回答的问题</p>
+<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#22238;&#31572;&#30340;&#38382;&#39064;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><strong>Q</strong>: 如何在多处理器上实现线程互斥？</li>
+<li class=" ml-8"><strong>Q</strong>: &#22914;&#20309;&#22312;&#22810;&#22788;&#29702;&#22120;&#19978;&#23454;&#29616;&#32447;&#31243;&#20114;&#26021;&#65311;</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">本次课主要内容</p>
+<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#20027;&#35201;&#20869;&#23481;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">自旋锁的实现</li>
-<li class=" ml-8">互斥锁的实现</li>
+<li class=" ml-8">&#33258;&#26059;&#38145;&#30340;&#23454;&#29616;</li>
+<li class=" ml-8">&#20114;&#26021;&#38145;&#30340;&#23454;&#29616;</li>
 </ul></div>
         
       
@@ -285,7 +285,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">共享内存上的互斥</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#20849;&#20139;&#20869;&#23384;&#19978;&#30340;&#20114;&#26021;</h1></div></div></div>
         
       
       </section>
@@ -296,16 +296,16 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">回顾：并发编程</h2>
-<p class=" font-serif my-1">理解并发的工具</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#22238;&#39038;&#65306;&#24182;&#21457;&#32534;&#31243;</h2>
+<p class=" font-serif my-1">&#29702;&#35299;&#24182;&#21457;&#30340;&#24037;&#20855;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">线程 = 人 (大脑能完成局部存储和计算)</li>
-<li class=" ml-8">共享内存 = 物理世界 (物理世界天生并行)</li>
-<li class=" ml-8">一切都是状态机</li>
+<li class=" ml-8">&#32447;&#31243; = &#20154; (&#22823;&#33041;&#33021;&#23436;&#25104;&#23616;&#37096;&#23384;&#20648;&#21644;&#35745;&#31639;)</li>
+<li class=" ml-8">&#20849;&#20139;&#20869;&#23384; = &#29289;&#29702;&#19990;&#30028; (&#29289;&#29702;&#19990;&#30028;&#22825;&#29983;&#24182;&#34892;)</li>
+<li class=" ml-8">&#19968;&#20999;&#37117;&#26159;&#29366;&#24577;&#26426;</li>
 </ul>
 <hr>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/wc.jpg" width="600px"></p>
-<p class=" font-serif my-1"></p><center>“躲进厕所锁上门，我就把全世界人锁在了厕所外”</center></div>
+<p class=" font-serif my-1"></p><center>&#8220;&#36530;&#36827;&#21397;&#25152;&#38145;&#19978;&#38376;&#65292;&#25105;&#23601;&#25226;&#20840;&#19990;&#30028;&#20154;&#38145;&#22312;&#20102;&#21397;&#25152;&#22806;&#8221;</center></div>
         
       
       </section>
@@ -316,10 +316,10 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">回顾：互斥算法</h2>
-<p class=" font-serif my-1">互斥 (mutual exclusion)，“互相排斥”</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#22238;&#39038;&#65306;&#20114;&#26021;&#31639;&#27861;</h2>
+<p class=" font-serif my-1">&#20114;&#26021; (mutual exclusion)&#65292;&#8220;&#20114;&#30456;&#25490;&#26021;&#8221;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">实现 <code>lock_t</code> 数据结构和 <code>lock/unlock</code> API:</li>
+<li class=" ml-8">&#23454;&#29616; <code>lock_t</code> &#25968;&#25454;&#32467;&#26500;&#21644; <code>lock/unlock</code> API:</li>
 </ul>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="p">...</span>
@@ -329,9 +329,9 @@ section .center {
 </code></pre></div>
 
 <hr>
-<p class=" font-serif my-1">一把 “排他性” 的锁——对于锁对象 <code>lk</code></p>
+<p class=" font-serif my-1">&#19968;&#25226; &#8220;&#25490;&#20182;&#24615;&#8221; &#30340;&#38145;&#8212;&#8212;&#23545;&#20110;&#38145;&#23545;&#35937; <code>lk</code></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">如果某个线程持有锁，则其他线程的 <code>lock</code> <red>不能返回</red></li>
+<li class=" ml-8">&#22914;&#26524;&#26576;&#20010;&#32447;&#31243;&#25345;&#26377;&#38145;&#65292;&#21017;&#20854;&#20182;&#32447;&#31243;&#30340; <code>lock</code> <red>&#19981;&#33021;&#36820;&#22238;</red></li>
 </ul></div>
         
       
@@ -343,28 +343,28 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">在共享内存上实现互斥</h2>
-<p class=" font-serif my-1">失败的尝试</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#22312;&#20849;&#20139;&#20869;&#23384;&#19978;&#23454;&#29616;&#20114;&#26021;</h2>
+<p class=" font-serif my-1">&#22833;&#36133;&#30340;&#23581;&#35797;</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><a href="../../../pages/OS/2022/demos/mutex-bad.py" class=" text-amber-900">mutex-bad.py</a></li>
 </ul>
 <hr>
-<p class=" font-serif my-1">(部分) 成功的尝试</p>
+<p class=" font-serif my-1">(&#37096;&#20998;) &#25104;&#21151;&#30340;&#23581;&#35797;</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><a href="../../../pages/OS/2022/demos/peterson-barrier.c" class=" text-amber-900">peterson-barrier.c</a></li>
 </ul>
 <hr>
-<p class=" font-serif my-1">实现互斥的根本困难：<red>不能同时读/写共享内存</red></p>
+<p class=" font-serif my-1">&#23454;&#29616;&#20114;&#26021;&#30340;&#26681;&#26412;&#22256;&#38590;&#65306;<red>&#19981;&#33021;&#21516;&#26102;&#35835;/&#20889;&#20849;&#20139;&#20869;&#23384;</red></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">load (环顾四周) 的时候不能写，只能 “看一眼就把眼睛闭上”<ul class=" list-disc font-serif">
-<li class=" ml-8">看到的东西马上就过时了</li>
+<li class=" ml-8">load (&#29615;&#39038;&#22235;&#21608;) &#30340;&#26102;&#20505;&#19981;&#33021;&#20889;&#65292;&#21482;&#33021; &#8220;&#30475;&#19968;&#30524;&#23601;&#25226;&#30524;&#30555;&#38381;&#19978;&#8221;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#30475;&#21040;&#30340;&#19996;&#35199;&#39532;&#19978;&#23601;&#36807;&#26102;&#20102;</li>
 </ul>
 </li>
-<li class=" ml-8">store (改变物理世界状态) 的时候不能读，只能 “闭着眼睛动手”<ul class=" list-disc font-serif">
-<li class=" ml-8">也不知道把什么改成了什么</li>
+<li class=" ml-8">store (&#25913;&#21464;&#29289;&#29702;&#19990;&#30028;&#29366;&#24577;) &#30340;&#26102;&#20505;&#19981;&#33021;&#35835;&#65292;&#21482;&#33021; &#8220;&#38381;&#30528;&#30524;&#30555;&#21160;&#25163;&#8221;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20063;&#19981;&#30693;&#36947;&#25226;&#20160;&#20040;&#25913;&#25104;&#20102;&#20160;&#20040;</li>
 </ul>
 </li>
-<li class=" ml-8">这是<del>简单、粗暴 (稳定)、有效</del>的《操作系统》课</li>
+<li class=" ml-8">&#36825;&#26159;<del>&#31616;&#21333;&#12289;&#31895;&#26292; (&#31283;&#23450;)&#12289;&#26377;&#25928;</del>&#30340;&#12298;&#25805;&#20316;&#31995;&#32479;&#12299;&#35838;</li>
 </ul></div>
         
       
@@ -380,7 +380,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="spin-lock" class=" text-2xl mt-2 font-sans">自旋锁 (Spin Lock)</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="spin-lock" class=" text-2xl mt-2 font-sans">&#33258;&#26059;&#38145; (Spin Lock)</h1></div></div></div>
         
       
       </section>
@@ -391,20 +391,20 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">解决问题的两种方法</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#35299;&#20915;&#38382;&#39064;&#30340;&#20004;&#31181;&#26041;&#27861;</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">提出算法、解决问题 (Dekker/Peterson/...'s Protocols)</p>
+<p class=" font-serif my-1">&#25552;&#20986;&#31639;&#27861;&#12289;&#35299;&#20915;&#38382;&#39064; (Dekker/Peterson/...'s Protocols)</p>
 </blockquote>
-<p class=" font-serif my-1">或者……</p>
+<p class=" font-serif my-1">&#25110;&#32773;&#8230;&#8230;</p>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">改变假设 (软件不够，硬件来凑)</p>
+<p class=" font-serif my-1">&#25913;&#21464;&#20551;&#35774; (&#36719;&#20214;&#19981;&#22815;&#65292;&#30828;&#20214;&#26469;&#20945;)</p>
 </blockquote>
 <hr>
-<p class=" font-serif my-1"><red>假设硬件能为我们提供一条 “瞬间完成” 的读 + 写指令</red></p>
+<p class=" font-serif my-1"><red>&#20551;&#35774;&#30828;&#20214;&#33021;&#20026;&#25105;&#20204;&#25552;&#20379;&#19968;&#26465; &#8220;&#30636;&#38388;&#23436;&#25104;&#8221; &#30340;&#35835; + &#20889;&#25351;&#20196;</red></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">请所有人闭上眼睛，看一眼 (load)，然后贴上标签 (store)<ul class=" list-disc font-serif">
-<li class=" ml-8">如果多人同时请求，硬件选出一个 “胜者”</li>
-<li class=" ml-8">“败者” 要等 “胜者” 完成后才能继续执行</li>
+<li class=" ml-8">&#35831;&#25152;&#26377;&#20154;&#38381;&#19978;&#30524;&#30555;&#65292;&#30475;&#19968;&#30524; (load)&#65292;&#28982;&#21518;&#36148;&#19978;&#26631;&#31614; (store)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22914;&#26524;&#22810;&#20154;&#21516;&#26102;&#35831;&#27714;&#65292;&#30828;&#20214;&#36873;&#20986;&#19968;&#20010; &#8220;&#32988;&#32773;&#8221;</li>
+<li class=" ml-8">&#8220;&#36133;&#32773;&#8221; &#35201;&#31561; &#8220;&#32988;&#32773;&#8221; &#23436;&#25104;&#21518;&#25165;&#33021;&#32487;&#32493;&#25191;&#34892;</li>
 </ul>
 </li>
 </ul></div>
@@ -418,8 +418,8 @@ section .center {
 
       
         
-        <div><h2 id="x86-lock" class=" text-xl mt-2 pb-2 font-sans">x86 原子操作：<code>LOCK</code> 指令前缀</h2>
-<p class=" font-serif my-1">例子：<a href="../../../pages/OS/2022/demos/sum-atomic.c" class=" text-amber-900"><code>sum-atomic.c</code></a></p>
+        <div><h2 id="x86-lock" class=" text-xl mt-2 pb-2 font-sans">x86 &#21407;&#23376;&#25805;&#20316;&#65306;<code>LOCK</code> &#25351;&#20196;&#21069;&#32512;</h2>
+<p class=" font-serif my-1">&#20363;&#23376;&#65306;<a href="../../../pages/OS/2022/demos/sum-atomic.c" class=" text-amber-900"><code>sum-atomic.c</code></a></p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><code>sum = 200000000</code></li>
 </ul>
@@ -433,7 +433,7 @@ section .center {
 <span class="p">}</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">更多的原子指令：<a href="https://en.cppreference.com/w/cpp/header/stdatomic.h" class=" text-amber-900">stdatomic.h</a> (C11)</p></div>
+<p class=" font-serif my-1">&#26356;&#22810;&#30340;&#21407;&#23376;&#25351;&#20196;&#65306;<a href="https://en.cppreference.com/w/cpp/header/stdatomic.h" class=" text-amber-900">stdatomic.h</a> (C11)</p></div>
         
       
       </section>
@@ -444,26 +444,26 @@ section .center {
 
       
         
-        <div><h2 id="xchg" class=" text-xl mt-2 pb-2 font-sans">用 <code>xchg</code> 实现互斥</h2>
-<p class=" font-serif my-1">如何协调宿舍若干位同学上厕所问题？</p>
+        <div><h2 id="xchg" class=" text-xl mt-2 pb-2 font-sans">&#29992; <code>xchg</code> &#23454;&#29616;&#20114;&#26021;</h2>
+<p class=" font-serif my-1">&#22914;&#20309;&#21327;&#35843;&#23487;&#33293;&#33509;&#24178;&#20301;&#21516;&#23398;&#19978;&#21397;&#25152;&#38382;&#39064;&#65311;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">在厕所门口放一个桌子 (共享变量)<ul class=" list-disc font-serif">
-<li class=" ml-8">初始时，桌上是 🔑</li>
+<li class=" ml-8">&#22312;&#21397;&#25152;&#38376;&#21475;&#25918;&#19968;&#20010;&#26700;&#23376; (&#20849;&#20139;&#21464;&#37327;)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21021;&#22987;&#26102;&#65292;&#26700;&#19978;&#26159; &#128273;</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">实现互斥的协议</p>
+<p class=" font-serif my-1">&#23454;&#29616;&#20114;&#26021;&#30340;&#21327;&#35758;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">想上厕所的同学 (一条 xchg 指令)<ul class=" list-disc font-serif">
-<li class=" ml-8">天黑请闭眼</li>
-<li class=" ml-8">看一眼桌子上有什么 (🔑 或 🔞)</li>
-<li class=" ml-8">把 🔞 放到桌上 (覆盖之前有的任何东西)</li>
-<li class=" ml-8">天亮请睁眼；看到 🔑 才可以进厕所哦</li>
+<li class=" ml-8">&#24819;&#19978;&#21397;&#25152;&#30340;&#21516;&#23398; (&#19968;&#26465; xchg &#25351;&#20196;)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22825;&#40657;&#35831;&#38381;&#30524;</li>
+<li class=" ml-8">&#30475;&#19968;&#30524;&#26700;&#23376;&#19978;&#26377;&#20160;&#20040; (&#128273; &#25110; &#128286;)</li>
+<li class=" ml-8">&#25226; &#128286; &#25918;&#21040;&#26700;&#19978; (&#35206;&#30422;&#20043;&#21069;&#26377;&#30340;&#20219;&#20309;&#19996;&#35199;)</li>
+<li class=" ml-8">&#22825;&#20142;&#35831;&#30529;&#30524;&#65307;&#30475;&#21040; &#128273; &#25165;&#21487;&#20197;&#36827;&#21397;&#25152;&#21734;</li>
 </ul>
 </li>
-<li class=" ml-8">出厕所的同学<ul class=" list-disc font-serif">
-<li class=" ml-8">把 🔑 放到桌上</li>
+<li class=" ml-8">&#20986;&#21397;&#25152;&#30340;&#21516;&#23398;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25226; &#128273; &#25918;&#21040;&#26700;&#19978;</li>
 </ul>
 </li>
 </ul></div>
@@ -477,25 +477,25 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">实现互斥：自旋锁</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#23454;&#29616;&#20114;&#26021;&#65306;&#33258;&#26059;&#38145;</h2>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">table</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">YES</span><span class="p">;</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">lock</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="nl">retry</span><span class="p">:</span>
-<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">got</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xchg</span><span class="p">(</span><span class="o">&</span><span class="n">table</span><span class="p">,</span><span class="w"> </span><span class="n">NOPE</span><span class="p">);</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">got</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xchg</span><span class="p">(</span><span class="o">&amp;</span><span class="n">table</span><span class="p">,</span><span class="w"> </span><span class="n">NOPE</span><span class="p">);</span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">got</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">NOPE</span><span class="p">)</span>
 <span class="w">    </span><span class="k">goto</span><span class="w"> </span><span class="n">retry</span><span class="p">;</span>
 <span class="w">  </span><span class="n">assert</span><span class="p">(</span><span class="n">got</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">YES</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">unlock</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">xchg</span><span class="p">(</span><span class="o">&</span><span class="n">table</span><span class="p">,</span><span class="w"> </span><span class="n">YES</span><span class="p">)</span>
+<span class="w">  </span><span class="n">xchg</span><span class="p">(</span><span class="o">&amp;</span><span class="n">table</span><span class="p">,</span><span class="w"> </span><span class="n">YES</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">locked</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="kt">void</span><span class="w"> </span><span class="nf">lock</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">xchg</span><span class="p">(</span><span class="o">&</span><span class="n">locked</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="kt">void</span><span class="w"> </span><span class="nf">unlock</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">xchg</span><span class="p">(</span><span class="o">&</span><span class="n">locked</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">lock</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">xchg</span><span class="p">(</span><span class="o">&amp;</span><span class="n">locked</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">unlock</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">xchg</span><span class="p">(</span><span class="o">&amp;</span><span class="n">locked</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div></div>
         
       
@@ -507,17 +507,17 @@ section .center {
 
       
         
-        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">实现互斥：自旋锁 (cont'd)</h2>
-<p class=" font-serif my-1">并发编程：千万小心</p>
+        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">&#23454;&#29616;&#20114;&#26021;&#65306;&#33258;&#26059;&#38145; (cont'd)</h2>
+<p class=" font-serif my-1">&#24182;&#21457;&#32534;&#31243;&#65306;&#21315;&#19975;&#23567;&#24515;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">做详尽的测试 (在此省略，你们做 Labs 就知道了)</li>
-<li class=" ml-8">尽可能地证明 (<a href="../../../pages/OS/2022/demos/model-checker.py" class=" text-amber-900">model-checker.py</a> 和 <a href="../../../pages/OS/2022/demos/spinlock.py" class=" text-amber-900">spinlock.py</a>)</li>
+<li class=" ml-8">&#20570;&#35814;&#23613;&#30340;&#27979;&#35797; (&#22312;&#27492;&#30465;&#30053;&#65292;&#20320;&#20204;&#20570; Labs &#23601;&#30693;&#36947;&#20102;)</li>
+<li class=" ml-8">&#23613;&#21487;&#33021;&#22320;&#35777;&#26126; (<a href="../../../pages/OS/2022/demos/model-checker.py" class=" text-amber-900">model-checker.py</a> &#21644; <a href="../../../pages/OS/2022/demos/spinlock.py" class=" text-amber-900">spinlock.py</a>)</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">原子指令的模型</p>
+<p class=" font-serif my-1">&#21407;&#23376;&#25351;&#20196;&#30340;&#27169;&#22411;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">保证之前的 store 都写入内存</li>
-<li class=" ml-8">保证 load/store 不与原子指令乱序</li>
+<li class=" ml-8">&#20445;&#35777;&#20043;&#21069;&#30340; store &#37117;&#20889;&#20837;&#20869;&#23384;</li>
+<li class=" ml-8">&#20445;&#35777; load/store &#19981;&#19982;&#21407;&#23376;&#25351;&#20196;&#20081;&#24207;</li>
 </ul></div>
         
       
@@ -529,8 +529,8 @@ section .center {
 
       
         
-        <div><h2 id="bus-lock-80486" class=" text-xl mt-2 pb-2 font-sans">原子指令的诞生：Bus Lock (80486)</h2>
-<p class=" font-serif my-1">486 (20-50MHz) 就支持 dual-socket 了</p>
+        <div><h2 id="bus-lock-80486" class=" text-xl mt-2 pb-2 font-sans">&#21407;&#23376;&#25351;&#20196;&#30340;&#35806;&#29983;&#65306;Bus Lock (80486)</h2>
+<p class=" font-serif my-1">486 (20-50MHz) &#23601;&#25903;&#25345; dual-socket &#20102;</p>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/80486-arch.jpg" width="800px"></p></div>
         
       
@@ -542,22 +542,22 @@ section .center {
 
       
         
-        <div><h2 id="lock" class=" text-xl mt-2 pb-2 font-sans">Lock 指令的现代实现</h2>
-<p class=" font-serif my-1">在 L1 cache 层保持一致性 (ring/mesh bus)</p>
+        <div><h2 id="lock" class=" text-xl mt-2 pb-2 font-sans">Lock &#25351;&#20196;&#30340;&#29616;&#20195;&#23454;&#29616;</h2>
+<p class=" font-serif my-1">&#22312; L1 cache &#23618;&#20445;&#25345;&#19968;&#33268;&#24615; (ring/mesh bus)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">相当于每个 cache line 有分别的锁</li>
-<li class=" ml-8">store(x) 进入 L1 缓存即保证对其他处理器可见<ul class=" list-disc font-serif">
-<li class=" ml-8">但要小心 store buffer 和乱序执行</li>
+<li class=" ml-8">&#30456;&#24403;&#20110;&#27599;&#20010; cache line &#26377;&#20998;&#21035;&#30340;&#38145;</li>
+<li class=" ml-8">store(x) &#36827;&#20837; L1 &#32531;&#23384;&#21363;&#20445;&#35777;&#23545;&#20854;&#20182;&#22788;&#29702;&#22120;&#21487;&#35265;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20294;&#35201;&#23567;&#24515; store buffer &#21644;&#20081;&#24207;&#25191;&#34892;</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">L1 cache line 根据状态进行协调</p>
+<p class=" font-serif my-1">L1 cache line &#26681;&#25454;&#29366;&#24577;&#36827;&#34892;&#21327;&#35843;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">M (Modified), 脏值</li>
-<li class=" ml-8">E (Exclusive), 独占访问</li>
-<li class=" ml-8">S (Shared), 只读共享</li>
-<li class=" ml-8">I (Invalid), 不拥有 cache line</li>
+<li class=" ml-8">M (Modified), &#33039;&#20540;</li>
+<li class=" ml-8">E (Exclusive), &#29420;&#21344;&#35775;&#38382;</li>
+<li class=" ml-8">S (Shared), &#21482;&#35835;&#20849;&#20139;</li>
+<li class=" ml-8">I (Invalid), &#19981;&#25317;&#26377; cache line</li>
 </ul></div>
         
       
@@ -569,8 +569,8 @@ section .center {
 
       
         
-        <div><h2 id="risc-v" class=" text-xl mt-2 pb-2 font-sans">RISC-V: 另一种原子操作的设计</h2>
-<p class=" font-serif my-1">考虑常见的原子操作：</p>
+        <div><h2 id="risc-v" class=" text-xl mt-2 pb-2 font-sans">RISC-V: &#21478;&#19968;&#31181;&#21407;&#23376;&#25805;&#20316;&#30340;&#35774;&#35745;</h2>
+<p class=" font-serif my-1">&#32771;&#34385;&#24120;&#35265;&#30340;&#21407;&#23376;&#25805;&#20316;&#65306;</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">atomic test-and-set<ul class=" list-disc font-serif">
 <li class=" ml-8"><code>reg = load(x); if (reg == XX) { store(x, YY); }</code></li>
@@ -586,10 +586,10 @@ section .center {
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">它们的本质都是：</p>
+<p class=" font-serif my-1">&#23427;&#20204;&#30340;&#26412;&#36136;&#37117;&#26159;&#65306;</p>
 <ol class=" list-decimal font-serif">
 <li class=" ml-8">load</li>
-<li class=" ml-8">exec (处理器本地寄存器的运算)</li>
+<li class=" ml-8">exec (&#22788;&#29702;&#22120;&#26412;&#22320;&#23492;&#23384;&#22120;&#30340;&#36816;&#31639;)</li>
 <li class=" ml-8">store</li>
 </ol></div>
         
@@ -603,14 +603,14 @@ section .center {
       
         
         <div><h2 id="load-reservedstore-conditional-lrsc" class=" text-xl mt-2 pb-2 font-sans">Load-Reserved/Store-Conditional (LR/SC)</h2>
-<p class=" font-serif my-1">LR: 在内存上标记 reserved (盯上你了)，中断、其他处理器写入都会导致标记消除</p>
+<p class=" font-serif my-1">LR: &#22312;&#20869;&#23384;&#19978;&#26631;&#35760; reserved (&#30447;&#19978;&#20320;&#20102;)&#65292;&#20013;&#26029;&#12289;&#20854;&#20182;&#22788;&#29702;&#22120;&#20889;&#20837;&#37117;&#20250;&#23548;&#33268;&#26631;&#35760;&#28040;&#38500;</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>lr.w rd, (rs1)
   rd = M[rs1]
   reserve M[rs1]
 </code></pre></div>
 
 <hr>
-<p class=" font-serif my-1">SC: 如果 “盯上” 未被解除，则写入</p>
+<p class=" font-serif my-1">SC: &#22914;&#26524; &#8220;&#30447;&#19978;&#8221; &#26410;&#34987;&#35299;&#38500;&#65292;&#21017;&#20889;&#20837;</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>sc.w rd, rs2, (rs1)
   if still reserved:
     M[rs1] = rs2
@@ -628,7 +628,7 @@ section .center {
 
       
         
-        <div><h2 id="compare-and-swap-lrsc" class=" text-xl mt-2 pb-2 font-sans">Compare-and-Swap 的 LR/SC 实现</h2>
+        <div><h2 id="compare-and-swap-lrsc" class=" text-xl mt-2 pb-2 font-sans">Compare-and-Swap &#30340; LR/SC &#23454;&#29616;</h2>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">cas</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">addr</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">cmp_val</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">new_val</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">old_val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">addr</span><span class="p">;</span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">old_val</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">cmp_val</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -639,7 +639,7 @@ section .center {
 
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>cas:
   lr.w  t0, (a0)       # Load original value.
-  bne   t0, a1, fail   # Doesn’t match, so fail.
+  bne   t0, a1, fail   # Doesn&#8217;t match, so fail.
   sc.w  t0, a2, (a0)   # Try to update.
   bnez  t0, cas        # Retry if store-conditional failed.
   li a0, 0             # Set return to success.
@@ -658,17 +658,17 @@ fail:
 
       
         
-        <div><h2 id="lrsc" class=" text-xl mt-2 pb-2 font-sans">LR/SC 的硬件实现</h2>
+        <div><h2 id="lrsc" class=" text-xl mt-2 pb-2 font-sans">LR/SC &#30340;&#30828;&#20214;&#23454;&#29616;</h2>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/boom-pipeline-detailed.png" width="400px"></p>
 <p class=" font-serif my-1">BOOM (Berkeley Out-of-Order Processor)</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><a href="https://github.com/riscv-boom/riscv-boom" class=" text-amber-900">riscv-boom</a><ul class=" list-disc font-serif">
 <li class=" ml-8"><a href="https://github.com/riscv-boom/riscv-boom/blob/master/src/main/scala/lsu/dcache.scala#L655" class=" text-amber-900"><code>lsu/dcache.scala</code></a></li>
-<li class=" ml-8">留意 <code>s2_sc_fail</code> 的条件<ul class=" list-disc font-serif">
-<li class=" ml-8">s2 是流水线 Stage 2</li>
+<li class=" ml-8">&#30041;&#24847; <code>s2_sc_fail</code> &#30340;&#26465;&#20214;<ul class=" list-disc font-serif">
+<li class=" ml-8">s2 &#26159;&#27969;&#27700;&#32447; Stage 2</li>
 </ul>
 </li>
-<li class=" ml-8">(yzh 扒出的代码)</li>
+<li class=" ml-8">(yzh &#25170;&#20986;&#30340;&#20195;&#30721;)</li>
 </ul>
 </li>
 </ul></div>
@@ -686,7 +686,7 @@ fail:
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="mutex-lock" class=" text-2xl mt-2 font-sans">互斥锁 (Mutex Lock)</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="mutex-lock" class=" text-2xl mt-2 font-sans">&#20114;&#26021;&#38145; (Mutex Lock)</h1></div></div></div>
         
       
       </section>
@@ -697,26 +697,26 @@ fail:
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">自旋锁的缺陷</h2>
-<p class=" font-serif my-1">性能问题 (0)</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#33258;&#26059;&#38145;&#30340;&#32570;&#38519;</h2>
+<p class=" font-serif my-1">&#24615;&#33021;&#38382;&#39064; (0)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">自旋 (共享变量) 会触发处理器间的缓存同步，延迟增加</li>
+<li class=" ml-8">&#33258;&#26059; (&#20849;&#20139;&#21464;&#37327;) &#20250;&#35302;&#21457;&#22788;&#29702;&#22120;&#38388;&#30340;&#32531;&#23384;&#21516;&#27493;&#65292;&#24310;&#36831;&#22686;&#21152;</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">性能问题 (1)</p>
+<p class=" font-serif my-1">&#24615;&#33021;&#38382;&#39064; (1)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">除了进入临界区的线程，其他处理器上的线程都在<red>空转</red></li>
-<li class=" ml-8">争抢锁的处理器越多，利用率越低</li>
+<li class=" ml-8">&#38500;&#20102;&#36827;&#20837;&#20020;&#30028;&#21306;&#30340;&#32447;&#31243;&#65292;&#20854;&#20182;&#22788;&#29702;&#22120;&#19978;&#30340;&#32447;&#31243;&#37117;&#22312;<red>&#31354;&#36716;</red></li>
+<li class=" ml-8">&#20105;&#25250;&#38145;&#30340;&#22788;&#29702;&#22120;&#36234;&#22810;&#65292;&#21033;&#29992;&#29575;&#36234;&#20302;</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">性能问题 (2)</p>
+<p class=" font-serif my-1">&#24615;&#33021;&#38382;&#39064; (2)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">获得自旋锁的线程<red>可能被操作系统切换出去</red><ul class=" list-disc font-serif">
-<li class=" ml-8">操作系统不 “感知” 线程在做什么</li>
-<li class=" ml-8">(但为什么不能呢？)</li>
+<li class=" ml-8">&#33719;&#24471;&#33258;&#26059;&#38145;&#30340;&#32447;&#31243;<red>&#21487;&#33021;&#34987;&#25805;&#20316;&#31995;&#32479;&#20999;&#25442;&#20986;&#21435;</red><ul class=" list-disc font-serif">
+<li class=" ml-8">&#25805;&#20316;&#31995;&#32479;&#19981; &#8220;&#24863;&#30693;&#8221; &#32447;&#31243;&#22312;&#20570;&#20160;&#20040;</li>
+<li class=" ml-8">(&#20294;&#20026;&#20160;&#20040;&#19981;&#33021;&#21602;&#65311;)</li>
 </ul>
 </li>
-<li class=" ml-8">实现 100% 的资源浪费</li>
+<li class=" ml-8">&#23454;&#29616; 100% &#30340;&#36164;&#28304;&#28010;&#36153;</li>
 </ul></div>
         
       
@@ -728,18 +728,18 @@ fail:
 
       
         
-        <div><h2 id="scalability" class=" text-xl mt-2 pb-2 font-sans">Scalability: 性能的新维度</h2>
+        <div><h2 id="scalability" class=" text-xl mt-2 pb-2 font-sans">Scalability: &#24615;&#33021;&#30340;&#26032;&#32500;&#24230;</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">同一份计算任务，时间 (CPU cycles) 和空间 (mapped memory) 会随处理器数量的增长而变化。</p>
+<p class=" font-serif my-1">&#21516;&#19968;&#20221;&#35745;&#31639;&#20219;&#21153;&#65292;&#26102;&#38388; (CPU cycles) &#21644;&#31354;&#38388; (mapped memory) &#20250;&#38543;&#22788;&#29702;&#22120;&#25968;&#37327;&#30340;&#22686;&#38271;&#32780;&#21464;&#21270;&#12290;</p>
 </blockquote>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/spinlock-scalability.jpg" width="500px"></p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><a href="../../../pages/OS/2022/demos/sum-scalability.c" class=" text-amber-900">sum-scalability.c</a></li>
 <li class=" ml-8"><a href="../../../pages/OS/2022/demos/thread-sync.h" class=" text-amber-900">thread-sync.h</a><ul class=" list-disc font-serif">
-<li class=" ml-8">严谨的统计很难<ul class=" list-disc font-serif">
-<li class=" ml-8">CPU 动态功耗</li>
-<li class=" ml-8">系统中的其他进程</li>
-<li class=" ml-8">……</li>
+<li class=" ml-8">&#20005;&#35880;&#30340;&#32479;&#35745;&#24456;&#38590;<ul class=" list-disc font-serif">
+<li class=" ml-8">CPU &#21160;&#24577;&#21151;&#32791;</li>
+<li class=" ml-8">&#31995;&#32479;&#20013;&#30340;&#20854;&#20182;&#36827;&#31243;</li>
+<li class=" ml-8">&#8230;&#8230;</li>
 </ul>
 </li>
 <li class=" ml-8"><a href="https://www.cse.unsw.edu.au/~gernot/benchmarking-crimes.html" class=" text-amber-900">Benchmarking crimes</a></li>
@@ -756,23 +756,23 @@ fail:
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">自旋锁的使用场景</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#33258;&#26059;&#38145;&#30340;&#20351;&#29992;&#22330;&#26223;</h2>
 <ol class=" list-decimal font-serif">
-<li class=" ml-8">临界区几乎不 “拥堵”</li>
-<li class=" ml-8">持有自旋锁时禁止执行流切换</li>
+<li class=" ml-8">&#20020;&#30028;&#21306;&#20960;&#20046;&#19981; &#8220;&#25317;&#22581;&#8221;</li>
+<li class=" ml-8">&#25345;&#26377;&#33258;&#26059;&#38145;&#26102;&#31105;&#27490;&#25191;&#34892;&#27969;&#20999;&#25442;</li>
 </ol>
 <hr>
-<p class=" font-serif my-1">使用场景：<red>操作系统内核的并发数据结构 (短临界区)</red></p>
+<p class=" font-serif my-1">&#20351;&#29992;&#22330;&#26223;&#65306;<red>&#25805;&#20316;&#31995;&#32479;&#20869;&#26680;&#30340;&#24182;&#21457;&#25968;&#25454;&#32467;&#26500; (&#30701;&#20020;&#30028;&#21306;)</red></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">操作系统可以关闭中断和抢占<ul class=" list-disc font-serif">
-<li class=" ml-8">保证锁的持有者在很短的时间内可以释放锁</li>
+<li class=" ml-8">&#25805;&#20316;&#31995;&#32479;&#21487;&#20197;&#20851;&#38381;&#20013;&#26029;&#21644;&#25250;&#21344;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20445;&#35777;&#38145;&#30340;&#25345;&#26377;&#32773;&#22312;&#24456;&#30701;&#30340;&#26102;&#38388;&#20869;&#21487;&#20197;&#37322;&#25918;&#38145;</li>
 </ul>
 </li>
-<li class=" ml-8">(如果是虚拟机呢...😂)<ul class=" list-disc font-serif">
-<li class=" ml-8">PAUSE 指令会触发 VM Exit</li>
+<li class=" ml-8">(&#22914;&#26524;&#26159;&#34394;&#25311;&#26426;&#21602;...&#128514;)<ul class=" list-disc font-serif">
+<li class=" ml-8">PAUSE &#25351;&#20196;&#20250;&#35302;&#21457; VM Exit</li>
 </ul>
 </li>
-<li class=" ml-8">但依旧很难做好<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20294;&#20381;&#26087;&#24456;&#38590;&#20570;&#22909;<ul class=" list-disc font-serif">
 <li class=" ml-8"><a href="https://www.usenix.org/conference/osdi10/analysis-linux-scalability-many-cores" class=" text-amber-900">An analysis of Linux scalability to many cores</a> (OSDI'10)</li>
 </ul>
 </li>
@@ -787,19 +787,19 @@ fail:
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">实现线程 + 长临界区的互斥</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#23454;&#29616;&#32447;&#31243; + &#38271;&#20020;&#30028;&#21306;&#30340;&#20114;&#26021;</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">作业那么多，与其干等 Online Judge 发布，不如把自己 (CPU) 让给其他作业 (线程) 执行？</p>
+<p class=" font-serif my-1">&#20316;&#19994;&#37027;&#20040;&#22810;&#65292;&#19982;&#20854;&#24178;&#31561; Online Judge &#21457;&#24067;&#65292;&#19981;&#22914;&#25226;&#33258;&#24049; (CPU) &#35753;&#32473;&#20854;&#20182;&#20316;&#19994; (&#32447;&#31243;) &#25191;&#34892;&#65311;</p>
 </blockquote>
-<p class=" font-serif my-1">“让” 不是 C 语言代码可以做到的 (C 代码只能计算)</p>
+<p class=" font-serif my-1">&#8220;&#35753;&#8221; &#19981;&#26159; C &#35821;&#35328;&#20195;&#30721;&#21487;&#20197;&#20570;&#21040;&#30340; (C &#20195;&#30721;&#21482;&#33021;&#35745;&#31639;)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">把锁的实现放到操作系统里就好啦！<ul class=" list-disc font-serif">
-<li class=" ml-8"><code>syscall(SYSCALL_lock, &lk);</code><ul class=" list-disc font-serif">
-<li class=" ml-8">试图获得 <code>lk</code>，但如果失败，就切换到其他线程</li>
+<li class=" ml-8">&#25226;&#38145;&#30340;&#23454;&#29616;&#25918;&#21040;&#25805;&#20316;&#31995;&#32479;&#37324;&#23601;&#22909;&#21862;&#65281;<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>syscall(SYSCALL_lock, &amp;lk);</code><ul class=" list-disc font-serif">
+<li class=" ml-8">&#35797;&#22270;&#33719;&#24471; <code>lk</code>&#65292;&#20294;&#22914;&#26524;&#22833;&#36133;&#65292;&#23601;&#20999;&#25442;&#21040;&#20854;&#20182;&#32447;&#31243;</li>
 </ul>
 </li>
-<li class=" ml-8"><code>syscall(SYSCALL_unlock, &lk);</code><ul class=" list-disc font-serif">
-<li class=" ml-8">释放 <code>lk</code>，如果有等待锁的线程就唤醒</li>
+<li class=" ml-8"><code>syscall(SYSCALL_unlock, &amp;lk);</code><ul class=" list-disc font-serif">
+<li class=" ml-8">&#37322;&#25918; <code>lk</code>&#65292;&#22914;&#26524;&#26377;&#31561;&#24453;&#38145;&#30340;&#32447;&#31243;&#23601;&#21796;&#37266;</li>
 </ul>
 </li>
 </ul>
@@ -815,27 +815,27 @@ fail:
 
       
         
-        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">实现线程 + 长临界区的互斥 (cont'd)</h2>
+        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">&#23454;&#29616;&#32447;&#31243; + &#38271;&#20020;&#30028;&#21306;&#30340;&#20114;&#26021; (cont'd)</h2>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/locker.jpg" width="300px"></p>
-<p class=" font-serif my-1">操作系统 = 更衣室管理员</p>
+<p class=" font-serif my-1">&#25805;&#20316;&#31995;&#32479; = &#26356;&#34915;&#23460;&#31649;&#29702;&#21592;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">先到的人 (线程)<ul class=" list-disc font-serif">
-<li class=" ml-8">成功获得手环，进入游泳馆 </li>
-<li class=" ml-8"><code>*lk = 🔒</code>，系统调用直接返回</li>
+<li class=" ml-8">&#20808;&#21040;&#30340;&#20154; (&#32447;&#31243;)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25104;&#21151;&#33719;&#24471;&#25163;&#29615;&#65292;&#36827;&#20837;&#28216;&#27891;&#39302; </li>
+<li class=" ml-8"><code>*lk = &#128274;</code>&#65292;&#31995;&#32479;&#35843;&#29992;&#30452;&#25509;&#36820;&#22238;</li>
 </ul>
 </li>
-<li class=" ml-8">后到的人 (线程)<ul class=" list-disc font-serif">
-<li class=" ml-8">不能进入游泳馆，排队等待</li>
-<li class=" ml-8">线程放入等待队列，执行线程切换 (yield)</li>
+<li class=" ml-8">&#21518;&#21040;&#30340;&#20154; (&#32447;&#31243;)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#19981;&#33021;&#36827;&#20837;&#28216;&#27891;&#39302;&#65292;&#25490;&#38431;&#31561;&#24453;</li>
+<li class=" ml-8">&#32447;&#31243;&#25918;&#20837;&#31561;&#24453;&#38431;&#21015;&#65292;&#25191;&#34892;&#32447;&#31243;&#20999;&#25442; (yield)</li>
 </ul>
 </li>
-<li class=" ml-8">洗完澡出来的人 (线程)<ul class=" list-disc font-serif">
-<li class=" ml-8">交还手环给管理员；管理员把手环再交给排队的人</li>
-<li class=" ml-8">如果等待队列不空，从等待队列中取出一个线程允许执行</li>
-<li class=" ml-8">如果等待队列为空，<code>*lk = ✅</code></li>
+<li class=" ml-8">&#27927;&#23436;&#28577;&#20986;&#26469;&#30340;&#20154; (&#32447;&#31243;)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20132;&#36824;&#25163;&#29615;&#32473;&#31649;&#29702;&#21592;&#65307;&#31649;&#29702;&#21592;&#25226;&#25163;&#29615;&#20877;&#20132;&#32473;&#25490;&#38431;&#30340;&#20154;</li>
+<li class=" ml-8">&#22914;&#26524;&#31561;&#24453;&#38431;&#21015;&#19981;&#31354;&#65292;&#20174;&#31561;&#24453;&#38431;&#21015;&#20013;&#21462;&#20986;&#19968;&#20010;&#32447;&#31243;&#20801;&#35768;&#25191;&#34892;</li>
+<li class=" ml-8">&#22914;&#26524;&#31561;&#24453;&#38431;&#21015;&#20026;&#31354;&#65292;<code>*lk = &#9989;</code></li>
 </ul>
 </li>
-<li class=" ml-8"><red>管理员 (OS) 使用自旋锁确保自己处理手环的过程是原子的</red></li>
+<li class=" ml-8"><red>&#31649;&#29702;&#21592; (OS) &#20351;&#29992;&#33258;&#26059;&#38145;&#30830;&#20445;&#33258;&#24049;&#22788;&#29702;&#25163;&#29615;&#30340;&#36807;&#31243;&#26159;&#21407;&#23376;&#30340;</red></li>
 </ul></div>
         
       
@@ -862,27 +862,27 @@ fail:
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">关于互斥的一些分析</h2>
-<p class=" font-serif my-1">自旋锁 (线程直接共享 locked)</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20851;&#20110;&#20114;&#26021;&#30340;&#19968;&#20123;&#20998;&#26512;</h2>
+<p class=" font-serif my-1">&#33258;&#26059;&#38145; (&#32447;&#31243;&#30452;&#25509;&#20849;&#20139; locked)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">更快的 fast path<ul class=" list-disc font-serif">
-<li class=" ml-8">xchg 成功 → 立即进入临界区，开销很小</li>
+<li class=" ml-8">&#26356;&#24555;&#30340; fast path<ul class=" list-disc font-serif">
+<li class=" ml-8">xchg &#25104;&#21151; &#8594; &#31435;&#21363;&#36827;&#20837;&#20020;&#30028;&#21306;&#65292;&#24320;&#38144;&#24456;&#23567;</li>
 </ul>
 </li>
-<li class=" ml-8">更慢的 slow path<ul class=" list-disc font-serif">
-<li class=" ml-8">xchg 失败 → 浪费 CPU 自旋等待</li>
+<li class=" ml-8">&#26356;&#24930;&#30340; slow path<ul class=" list-disc font-serif">
+<li class=" ml-8">xchg &#22833;&#36133; &#8594; &#28010;&#36153; CPU &#33258;&#26059;&#31561;&#24453;</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">睡眠锁 (通过系统调用访问 locked)</p>
+<p class=" font-serif my-1">&#30561;&#30496;&#38145; (&#36890;&#36807;&#31995;&#32479;&#35843;&#29992;&#35775;&#38382; locked)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">更快的 slow path<ul class=" list-disc font-serif">
-<li class=" ml-8">上锁失败线程不再占用 CPU</li>
+<li class=" ml-8">&#26356;&#24555;&#30340; slow path<ul class=" list-disc font-serif">
+<li class=" ml-8">&#19978;&#38145;&#22833;&#36133;&#32447;&#31243;&#19981;&#20877;&#21344;&#29992; CPU</li>
 </ul>
 </li>
-<li class=" ml-8">更慢的 fast path<ul class=" list-disc font-serif">
-<li class=" ml-8">即便上锁成功也需要进出内核 (syscall)</li>
+<li class=" ml-8">&#26356;&#24930;&#30340; fast path<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21363;&#20415;&#19978;&#38145;&#25104;&#21151;&#20063;&#38656;&#35201;&#36827;&#20986;&#20869;&#26680; (syscall)</li>
 </ul>
 </li>
 </ul></div>
@@ -898,24 +898,24 @@ fail:
         
         <div><h2 id="futex-fast-userspace-mutexes" class=" text-xl mt-2 pb-2 font-sans">Futex: Fast Userspace muTexes</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">小孩子才做选择。我当然是全都要啦！</p>
+<p class=" font-serif my-1">&#23567;&#23401;&#23376;&#25165;&#20570;&#36873;&#25321;&#12290;&#25105;&#24403;&#28982;&#26159;&#20840;&#37117;&#35201;&#21862;&#65281;</p>
 </blockquote>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">Fast path: 一条原子指令，上锁成功立即返回</li>
-<li class=" ml-8">Slow path: 上锁失败，执行系统调用睡眠<ul class=" list-disc font-serif">
-<li class=" ml-8"><red>性能优化的最常见技巧</red><ul class=" list-disc font-serif">
-<li class=" ml-8">看 average (frequent) case 而不是 worst case</li>
+<li class=" ml-8">Fast path: &#19968;&#26465;&#21407;&#23376;&#25351;&#20196;&#65292;&#19978;&#38145;&#25104;&#21151;&#31435;&#21363;&#36820;&#22238;</li>
+<li class=" ml-8">Slow path: &#19978;&#38145;&#22833;&#36133;&#65292;&#25191;&#34892;&#31995;&#32479;&#35843;&#29992;&#30561;&#30496;<ul class=" list-disc font-serif">
+<li class=" ml-8"><red>&#24615;&#33021;&#20248;&#21270;&#30340;&#26368;&#24120;&#35265;&#25216;&#24039;</red><ul class=" list-disc font-serif">
+<li class=" ml-8">&#30475; average (frequent) case &#32780;&#19981;&#26159; worst case</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">POSIX 线程库中的互斥锁 (<code>pthread_mutex</code>)</p>
+<p class=" font-serif my-1">POSIX &#32447;&#31243;&#24211;&#20013;&#30340;&#20114;&#26021;&#38145; (<code>pthread_mutex</code>)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><a href="../../../pages/OS/2022/demos/sum-scalability.c" class=" text-amber-900">sum-scalability.c</a>，换成 mutex<ul class=" list-disc font-serif">
-<li class=" ml-8">观察系统调用 (strace)</li>
-<li class=" ml-8">gdb 调试<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="../../../pages/OS/2022/demos/sum-scalability.c" class=" text-amber-900">sum-scalability.c</a>&#65292;&#25442;&#25104; mutex<ul class=" list-disc font-serif">
+<li class=" ml-8">&#35266;&#23519;&#31995;&#32479;&#35843;&#29992; (strace)</li>
+<li class=" ml-8">gdb &#35843;&#35797;<ul class=" list-disc font-serif">
 <li class=" ml-8"><code>set scheduler-locking on</code>, <code>info threads</code>, <code>thread X</code></li>
 </ul>
 </li>
@@ -933,23 +933,23 @@ fail:
       
         
         <div><h2 id="futex-fast-userspace-mutexes-contd" class=" text-xl mt-2 pb-2 font-sans">Futex: Fast Userspace muTexes (cont'd)</h2>
-<p class=" font-serif my-1">先在用户空间自旋</p>
+<p class=" font-serif my-1">&#20808;&#22312;&#29992;&#25143;&#31354;&#38388;&#33258;&#26059;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">如果获得锁，直接进入</li>
-<li class=" ml-8">未能获得锁，系统调用</li>
-<li class=" ml-8">解锁以后也需要系统调用<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22914;&#26524;&#33719;&#24471;&#38145;&#65292;&#30452;&#25509;&#36827;&#20837;</li>
+<li class=" ml-8">&#26410;&#33021;&#33719;&#24471;&#38145;&#65292;&#31995;&#32479;&#35843;&#29992;</li>
+<li class=" ml-8">&#35299;&#38145;&#20197;&#21518;&#20063;&#38656;&#35201;&#31995;&#32479;&#35843;&#29992;<ul class=" list-disc font-serif">
 <li class=" ml-8"><a href="../../../pages/OS/2022/demos/futex.py" class=" text-amber-900">futex.py</a></li>
-<li class=" ml-8">更好的设计可以在 fast-path 不进行系统调用</li>
+<li class=" ml-8">&#26356;&#22909;&#30340;&#35774;&#35745;&#21487;&#20197;&#22312; fast-path &#19981;&#36827;&#34892;&#31995;&#32479;&#35843;&#29992;</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">RTFM (劝退)</p>
+<p class=" font-serif my-1">RTFM (&#21149;&#36864;)</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">futex (7), futex (2)</li>
 <li class=" ml-8"><a href="https://lwn.net/Articles/360699/" class=" text-amber-900">A futex overview and update</a> (LWN)</li>
-<li class=" ml-8"><a href="../../../pages/OS/manuals/futexes-are-tricky.pdf" class=" text-amber-900">Futexes are tricky</a> (论 model checker 的重要性)</li>
-<li class=" ml-8">(我们不讲并发算法)</li>
+<li class=" ml-8"><a href="../../../pages/OS/manuals/futexes-are-tricky.pdf" class=" text-amber-900">Futexes are tricky</a> (&#35770; model checker &#30340;&#37325;&#35201;&#24615;)</li>
+<li class=" ml-8">(&#25105;&#20204;&#19981;&#35762;&#24182;&#21457;&#31639;&#27861;)</li>
 </ul></div>
         
       
@@ -965,7 +965,7 @@ fail:
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">总结</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#24635;&#32467;</h1></div></div></div>
         
       
       </section>
@@ -976,20 +976,20 @@ fail:
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">总结</h2>
-<p class=" font-serif my-1">本次课回答的问题</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#24635;&#32467;</h2>
+<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#22238;&#31572;&#30340;&#38382;&#39064;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><strong>Q</strong>: 如何在多处理器系统上实现互斥？</li>
+<li class=" ml-8"><strong>Q</strong>: &#22914;&#20309;&#22312;&#22810;&#22788;&#29702;&#22120;&#31995;&#32479;&#19978;&#23454;&#29616;&#20114;&#26021;&#65311;</li>
 </ul>
 <hr>
 <p class=" font-serif my-1">Take-away message</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">软件不够，硬件来凑 (自旋锁)</li>
-<li class=" ml-8">用户不够，内核来凑 (互斥锁)<ul class=" list-disc font-serif">
-<li class=" ml-8"><red>找到你依赖的假设，并大胆地打破它</red></li>
+<li class=" ml-8">&#36719;&#20214;&#19981;&#22815;&#65292;&#30828;&#20214;&#26469;&#20945; (&#33258;&#26059;&#38145;)</li>
+<li class=" ml-8">&#29992;&#25143;&#19981;&#22815;&#65292;&#20869;&#26680;&#26469;&#20945; (&#20114;&#26021;&#38145;)<ul class=" list-disc font-serif">
+<li class=" ml-8"><red>&#25214;&#21040;&#20320;&#20381;&#36182;&#30340;&#20551;&#35774;&#65292;&#24182;&#22823;&#32966;&#22320;&#25171;&#30772;&#23427;</red></li>
 </ul>
 </li>
-<li class=" ml-8">Fast/slow paths: 性能优化的重要途径</li>
+<li class=" ml-8">Fast/slow paths: &#24615;&#33021;&#20248;&#21270;&#30340;&#37325;&#35201;&#36884;&#24452;</li>
 </ul></div>
         
       

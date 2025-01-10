@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // • auto-render specific keys, e.g.:
+            // &#8226; auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // • rendering keys, e.g.:
+            // &#8226; rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +209,7 @@ section .center {
 }
 </style>
 
-  <title>自动运行时检查</title>
+  <title>&#33258;&#21160;&#36816;&#34892;&#26102;&#26816;&#26597;</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,7 +227,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="13.3.slides.html" class=" text-amber-900">自动运行时检查</a></h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="13.3.slides.html" class=" text-amber-900">&#33258;&#21160;&#36816;&#34892;&#26102;&#26816;&#26597;</a></h1></div></div></div>
         
       
       </section>
@@ -238,20 +238,20 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">动态程序分析</h2>
-<p class=" font-serif my-1">通用 (固定) bug 模式的自动检查</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#21160;&#24577;&#31243;&#24207;&#20998;&#26512;</h2>
+<p class=" font-serif my-1">&#36890;&#29992; (&#22266;&#23450;) bug &#27169;&#24335;&#30340;&#33258;&#21160;&#26816;&#26597;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">ABBA 型死锁</li>
-<li class=" ml-8">数据竞争</li>
-<li class=" ml-8">带符号整数溢出 (undefined behavior)</li>
+<li class=" ml-8">ABBA &#22411;&#27515;&#38145;</li>
+<li class=" ml-8">&#25968;&#25454;&#31454;&#20105;</li>
+<li class=" ml-8">&#24102;&#31526;&#21495;&#25972;&#25968;&#28322;&#20986; (undefined behavior)</li>
 <li class=" ml-8">Use after free</li>
-<li class=" ml-8">……</li>
+<li class=" ml-8">&#8230;&#8230;</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">动态程序分析：状态机执行历史的一个函数 $f(\tau)$</p>
+<p class=" font-serif my-1">&#21160;&#24577;&#31243;&#24207;&#20998;&#26512;&#65306;&#29366;&#24577;&#26426;&#25191;&#34892;&#21382;&#21490;&#30340;&#19968;&#20010;&#20989;&#25968; $f(\tau)$</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">付出程序执行变慢的代价</li>
-<li class=" ml-8">找到更多 bugs</li>
+<li class=" ml-8">&#20184;&#20986;&#31243;&#24207;&#25191;&#34892;&#21464;&#24930;&#30340;&#20195;&#20215;</li>
+<li class=" ml-8">&#25214;&#21040;&#26356;&#22810; bugs</li>
 </ul></div>
         
       
@@ -263,24 +263,24 @@ section .center {
 
       
         
-        <div><h2 id="lockdep-lock-ordering" class=" text-xl mt-2 pb-2 font-sans">Lockdep: 运行时 Lock Ordering 检查</h2>
-<p class=" font-serif my-1">Lockdep 规约 (Specification)</p>
+        <div><h2 id="lockdep-lock-ordering" class=" text-xl mt-2 pb-2 font-sans">Lockdep: &#36816;&#34892;&#26102; Lock Ordering &#26816;&#26597;</h2>
+<p class=" font-serif my-1">Lockdep &#35268;&#32422; (Specification)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">为每一个锁确定唯一的 “allocation site”<ul class=" list-disc font-serif">
-<li class=" ml-8">assert: 同一个 allocation site 的锁存在全局唯一的上锁顺序</li>
+<li class=" ml-8">&#20026;&#27599;&#19968;&#20010;&#38145;&#30830;&#23450;&#21807;&#19968;&#30340; &#8220;allocation site&#8221;<ul class=" list-disc font-serif">
+<li class=" ml-8">assert: &#21516;&#19968;&#20010; allocation site &#30340;&#38145;&#23384;&#22312;&#20840;&#23616;&#21807;&#19968;&#30340;&#19978;&#38145;&#39034;&#24207;</li>
 </ul>
 </li>
 </ul>
-<p class=" font-serif my-1">检查方法：printf</p>
+<p class=" font-serif my-1">&#26816;&#26597;&#26041;&#27861;&#65306;printf</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">记录所有观察到的上锁顺序，例如 $$[x, y, z] \Rightarrow x \to y, x \to z, y \to z$$</li>
-<li class=" ml-8">检查是否存在 $x \rightsquigarrow y \land y \rightsquigarrow x$<ul class=" list-disc font-serif">
-<li class=" ml-8">我们有一个 “山寨版” 的例子</li>
+<li class=" ml-8">&#35760;&#24405;&#25152;&#26377;&#35266;&#23519;&#21040;&#30340;&#19978;&#38145;&#39034;&#24207;&#65292;&#20363;&#22914; $$[x, y, z] \Rightarrow x \to y, x \to z, y \to z$$</li>
+<li class=" ml-8">&#26816;&#26597;&#26159;&#21542;&#23384;&#22312; $x \rightsquigarrow y \land y \rightsquigarrow x$<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25105;&#20204;&#26377;&#19968;&#20010; &#8220;&#23665;&#23528;&#29256;&#8221; &#30340;&#20363;&#23376;</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1"><a href="../../OS_Lockdep.html" class=" text-amber-900">Lockdep 的实现</a></p>
+<p class=" font-serif my-1"><a href="../../OS_Lockdep.html" class=" text-amber-900">Lockdep &#30340;&#23454;&#29616;</a></p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">Since Linux Kernel 2.6.17, also in <a href="https://gitee.com/openharmony" class=" text-amber-900">OpenHarmony</a>!</li>
 </ul></div>
@@ -294,18 +294,18 @@ section .center {
 
       
         
-        <div><h2 id="threadsanitizer" class=" text-xl mt-2 pb-2 font-sans">ThreadSanitizer: 运行时的数据竞争检查</h2>
-<p class=" font-serif my-1">并发程序的执行 trace</p>
+        <div><h2 id="threadsanitizer" class=" text-xl mt-2 pb-2 font-sans">ThreadSanitizer: &#36816;&#34892;&#26102;&#30340;&#25968;&#25454;&#31454;&#20105;&#26816;&#26597;</h2>
+<p class=" font-serif my-1">&#24182;&#21457;&#31243;&#24207;&#30340;&#25191;&#34892; trace</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">内存读写指令 (load/store)</li>
-<li class=" ml-8">同步函数调用</li>
-<li class=" ml-8">Happens-before: program order 和 release acquire 的传递闭包</li>
+<li class=" ml-8">&#20869;&#23384;&#35835;&#20889;&#25351;&#20196; (load/store)</li>
+<li class=" ml-8">&#21516;&#27493;&#20989;&#25968;&#35843;&#29992;</li>
+<li class=" ml-8">Happens-before: program order &#21644; release acquire &#30340;&#20256;&#36882;&#38381;&#21253;</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">对于发生在不同线程且至少有一个是写的 $x,y$ 检查
+<p class=" font-serif my-1">&#23545;&#20110;&#21457;&#29983;&#22312;&#19981;&#21516;&#32447;&#31243;&#19988;&#33267;&#23569;&#26377;&#19968;&#20010;&#26159;&#20889;&#30340; $x,y$ &#26816;&#26597;
 $$x \prec y \lor y \prec x$$</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">实现：Lamport's Vector Clock</li>
+<li class=" ml-8">&#23454;&#29616;&#65306;Lamport's Vector Clock</li>
 <li class=" ml-8"><a href="https://dl.acm.org/doi/10.1145/359545.359563" class=" text-amber-900">Time, clocks, and the ordering of events in a distributed system</a></li>
 </ul></div>
         
@@ -318,23 +318,23 @@ $$x \prec y \lor y \prec x$$</p>
 
       
         
-        <div><h2 id="sanitizers" class=" text-xl mt-2 pb-2 font-sans">更多的 Sanitizers</h2>
-<p class=" font-serif my-1">现代复杂软件系统必备的支撑工具</p>
+        <div><h2 id="sanitizers" class=" text-xl mt-2 pb-2 font-sans">&#26356;&#22810;&#30340; Sanitizers</h2>
+<p class=" font-serif my-1">&#29616;&#20195;&#22797;&#26434;&#36719;&#20214;&#31995;&#32479;&#24517;&#22791;&#30340;&#25903;&#25745;&#24037;&#20855;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><a href="https://clang.llvm.org/docs/AddressSanitizer.html" class=" text-amber-900">AddressSanitizer</a> (asan); <a href="https://www.usenix.org/conference/atc12/technical-sessions/presentation/serebryany" class=" text-amber-900">(paper)</a>: 非法内存访问<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="https://clang.llvm.org/docs/AddressSanitizer.html" class=" text-amber-900">AddressSanitizer</a> (asan); <a href="https://www.usenix.org/conference/atc12/technical-sessions/presentation/serebryany" class=" text-amber-900">(paper)</a>: &#38750;&#27861;&#20869;&#23384;&#35775;&#38382;<ul class=" list-disc font-serif">
 <li class=" ml-8">Buffer (heap/stack/global) overflow, use-after-free, use-after-return, double-free, ...</li>
-<li class=" ml-8">Linux Kernel 也有 <a href="https://www.kernel.org/doc/html/latest/dev-tools/kasan.html" class=" text-amber-900">kasan</a></li>
+<li class=" ml-8">Linux Kernel &#20063;&#26377; <a href="https://www.kernel.org/doc/html/latest/dev-tools/kasan.html" class=" text-amber-900">kasan</a></li>
 </ul>
 </li>
-<li class=" ml-8"><a href="https://clang.llvm.org/docs/UndefinedBehaviorSanitizer.html" class=" text-amber-900">ThreadSanitizer</a> (tsan): 数据竞争</li>
-<li class=" ml-8"><a href="https://clang.llvm.org/docs/MemorySanitizer.html" class=" text-amber-900">MemorySanitizer</a> (msan): 未初始化的读取</li>
+<li class=" ml-8"><a href="https://clang.llvm.org/docs/UndefinedBehaviorSanitizer.html" class=" text-amber-900">ThreadSanitizer</a> (tsan): &#25968;&#25454;&#31454;&#20105;</li>
+<li class=" ml-8"><a href="https://clang.llvm.org/docs/MemorySanitizer.html" class=" text-amber-900">MemorySanitizer</a> (msan): &#26410;&#21021;&#22987;&#21270;&#30340;&#35835;&#21462;</li>
 <li class=" ml-8"><a href="https://clang.llvm.org/docs/UndefinedBehaviorSanitizer.html" class=" text-amber-900">UBSanitizer</a> (ubsan): undefined behavior<ul class=" list-disc font-serif">
 <li class=" ml-8">Misaligned pointer, signed integer overflow, ...</li>
-<li class=" ml-8">Kernel 会带着 <code>-fwrapv</code> 编译</li>
+<li class=" ml-8">Kernel &#20250;&#24102;&#30528; <code>-fwrapv</code> &#32534;&#35793;</li>
 </ul>
 </li>
 <li class=" ml-8">IntelliSanitize<ul class=" list-disc font-serif">
-<li class=" ml-8">等你开发</li>
+<li class=" ml-8">&#31561;&#20320;&#24320;&#21457;</li>
 </ul>
 </li>
 </ul></div>

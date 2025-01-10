@@ -1,64 +1,9 @@
 # 说明
-python脚本下载[jyy老师](https://jyywiki.cn/index.html)的主页课程课件。
+[jyy老师](https://jyywiki.cn/index.html)的主页课程课件。
 
 如有文件缺失或者代码bug，欢迎补充。
 
-# 使用和说明
-
-1. 需要提前安装好python环境。【Python 3.10.12和Python 3.12.0下能够正常运行】
-2. 执行`python3 --version`或者`python --version`能够得到正确的输出后，使用cd命令或者打开IDE进入到存放本脚本的文件夹中
-3. 执行`python main.py`或者在IDE中选择`运行`【run】
-4. 运行脚本后，会提示并等待你得输入，输入对应选项后稍待片刻即可在与脚本同一文件夹下的`Courseware`中得到相应课件
-
-当注释下面这行时，再执行代码时无论提供哪个下载选项，你会下载到`https://jyywiki.cn/`下**几乎**所有的文件。
-
-```python
-#"https://jyywiki.cn/index.html",                           # unnecessary
+## V2.7 2025-1-10
+```shell
+wget --no-check-certificate -r -p -k https://jyywiki.cn/
 ```
-原因是文件中存在相互引用，而`https://jyywiki.cn/index.html`中包含所有的课程链接，而课程文件中又包含了主界面和其他资源文件的链接……
-
-由于因为不知道`https://jyywiki.cn`这个主页对应的文件，所以无法下载该页面，也就无法找到该页面应用的文件比如`https://jyywiki.cn/Letter.md`
-
-还有部分文件内嵌在`ipynb.html`中，也没有指明文件链接，同时，由于生成`html`文件压缩了代码，嵌入在`html`中的文件是不可读的，所以当`ipynb.html`代码无法显示时，只能在往期的版本中查找是否有对应的显示正确的`html`课件。问题在于往期文件中也存在各种各样的问题，由于个人原因，没办法一个一个检查哪个文件是比较好的，哪个文件是有问题的。
-
-也因为文件众多，实在无法一个一个看过来，所以如果你发现了问题，无论是代码还是文件，你都可以提一个issue或者PR，成为本项目的贡献者，我也非常非常欢迎。我会在文末列举一个贡献者名单，指向你的私人链接。
-
-# 更新
-## V2.6 2023-11-25
-- 添加了注释，对代码做了部分修改
-- 添加了文件`lab-makefile.png`
-- 本次更新主要是为了发布一个`release`。上个`release`中的文件存在无法加载PPT的问题，需要执行代码选择并输入`D`选择ALL或者`C`选择2023，即可修复路径引用的问题，才可以正常查看嵌入`.ipynb.html`文件中的PPT。
-
-## V2.5 2023-11-23
-很久没有维护仓库了，其实也知道存在一些问题。今天一并完善好了。
-
-本次更新修复了随着jyy老师更新课件而产生的bug，主要的问题是新的课件中路径的转变，导致以前的代码运行会出现众多的文件链接生成错误。
-
-- 重写了路径生成的相关代码，但这部分代码有点难以阅读，也没有写注释，总体还是在解决路径问题，包括Linux和Windows下不同的分隔符。
-- 添加了`visualize.py`这个文件到`Courseware/pages/OS/2022/demos/visualize.py`路径下，该文件属于文件中没有引用链接仅有关键字的文件，而且在`https://jyywiki.cn/`网站中也没有这个文件。
-- 发现本地的文件没办法加载出PPT，原因出在了`src="/OS/2023/build/slides/xx.xx.slides.html"`，对比以前的文件发现是这么写的`../slides/xx.xx.slides.html`，能够正常加载PPT，添加了一个`file_fix()`，将`/OS/build/2023/slides`替换为`../sildes`。【防止出现误替换，所以加长了匹配的字符】
-- 修复了`file_fix()`没有判定文件夹存在可能导致错误的问题。
-- 将html文件中被编码的数字转化为中文，也使得关键字查找更加方便。
-
-## V2.4 2023-09-14
-忘了验证其他年份课件的下载了，然后发现jupyter课件中的`href`属性中提供的链接是这样的
-```html
-<h3 id="Demo%EF%BC%9A%E4%BD%BF%E7%94%A8-tar-%E5%91%BD%E4%BB%A4">Demo&#65306;&#20351;&#29992; tar &#21629;&#20196;<a class="anchor-link" href="lect1.ipynb.html#Demo%EF%BC%9A%E4%BD%BF%E7%94%A8-tar-%E5%91%BD%E4%BB%A4">&#182;</a>
-```
-导致解析后下载出现了奇怪的文件夹，添加一行`link = urlparse(link).path`即可解决问题，这行代码直接提取出目的相对链接`lect1.ipynb.html`
-
-## V2.3 2023-09-14
-算是比较重要的一次更新了，本次更新的代码解决了课件中文件下载不全的问题，之前下载不全是因为要猜测会有什么样类型的文件，现在不用猜测了，只需要跟着链接下载即可。
-
-问题也随之而来，老师的`html`文件中出现了莫名其妙的路径引用比如
-```html
-<p class="font-serif my-1"><object alt="" class="center" src="/pages/OS/2021/labs/../../img/flame-graph.svg" width="500px" data="../../../pages/OS/img/flame-graph.svg"></object></p>
-```
-首先这个办法是没有问题的，确实识别到了众多文件类型，`cc`,`go`,`svg`,`pdf`等等。
-
-但是这个问题出现的时候直接导致代码出现了`IndexError`，查了原因就是`/pages/OS/2021/labs/../../img/flame-graph.svg`惹的祸，然后识别出现问题，可我又要下载怎么办呢？难不成要进行特判？我不能接受，然后看到了后面的`data`，然后就通过`data`来下载这个文件了。~~速度我管不着，代码简洁才是真。~~
-
-
-## V1.0 2023-09-07
-第一版代码写得略微粗糙，全是for+if，逻辑很朴实，大致思路就是从index.html开始下载，然后对下载的文件中的资源执行分析，然后对分析的链接再次下载......反复执行这个过程。
-主要的限制在于只能下载2023年的课件。

@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // • auto-render specific keys, e.g.:
+            // &#8226; auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // • rendering keys, e.g.:
+            // &#8226; rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +209,7 @@ section .center {
 }
 </style>
 
-  <title>虚拟化：进程抽象</title>
+  <title>&#34394;&#25311;&#21270;&#65306;&#36827;&#31243;&#25277;&#35937;</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,21 +227,21 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">虚拟化：进程抽象</h1>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#34394;&#25311;&#21270;&#65306;&#36827;&#31243;&#25277;&#35937;</h1>
 <p class=" font-serif my-1"><include src="Slides_Author"><div><div class="py-16">
-<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">蒋炎岩</a></p>
+<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">&#33931;&#28814;&#23721;</a></p>
 </div>
 <div class="row">
 <div class="author-affiliation">
-    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">　　南京大学　　</p>
+    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#12288;&#12288;&#21335;&#20140;&#22823;&#23398;&#12288;&#12288;</p>
     <img class="inline-img h-24" src="../../../static/img/nju-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">计算机科学与技术系</p>
+   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#31185;&#23398;&#19982;&#25216;&#26415;&#31995;</p>
     <img class="inline-img h-24" src="../../../static/img/njucs-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">计算机软件研究所</p>
+    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#36719;&#20214;&#30740;&#31350;&#25152;</p>
     <img class="inline-img h-24" src="../../../static/img/ics-logo.png" style="display: inline-block;"></a>
   </div>
 </div></div></include></p></div></div></div>
@@ -255,14 +255,14 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">背景</h2>
-<p class=" font-serif my-1">一言难尽的并发部分终于结束</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#32972;&#26223;</h2>
+<p class=" font-serif my-1">&#19968;&#35328;&#38590;&#23613;&#30340;&#24182;&#21457;&#37096;&#20998;&#32456;&#20110;&#32467;&#26463;</p>
 <hr>
-<p class=" font-serif my-1">我们学了什么？</p>
+<p class=" font-serif my-1">&#25105;&#20204;&#23398;&#20102;&#20160;&#20040;&#65311;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">(并发) 程序的状态机模型</li>
-<li class=" ml-8">编写 (<code>threads.h</code>) 和阅读并发程序 (model checker)</li>
-<li class=" ml-8">互斥 (并发数据结构) 和同步 (条件变量、信号量)</li>
+<li class=" ml-8">(&#24182;&#21457;) &#31243;&#24207;&#30340;&#29366;&#24577;&#26426;&#27169;&#22411;</li>
+<li class=" ml-8">&#32534;&#20889; (<code>threads.h</code>) &#21644;&#38405;&#35835;&#24182;&#21457;&#31243;&#24207; (model checker)</li>
+<li class=" ml-8">&#20114;&#26021; (&#24182;&#21457;&#25968;&#25454;&#32467;&#26500;) &#21644;&#21516;&#27493; (&#26465;&#20214;&#21464;&#37327;&#12289;&#20449;&#21495;&#37327;)</li>
 </ul></div>
         
       
@@ -274,12 +274,12 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">本次课内容与目标</h2>
-<p class=" font-serif my-1">精彩的内容就此开始！</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26412;&#27425;&#35838;&#20869;&#23481;&#19982;&#30446;&#26631;</h2>
+<p class=" font-serif my-1">&#31934;&#24425;&#30340;&#20869;&#23481;&#23601;&#27492;&#24320;&#22987;&#65281;</p>
 <hr>
-<p class=" font-serif my-1">用 “状态机” 的视角重新理解进程</p>
+<p class=" font-serif my-1">&#29992; &#8220;&#29366;&#24577;&#26426;&#8221; &#30340;&#35270;&#35282;&#37325;&#26032;&#29702;&#35299;&#36827;&#31243;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">学习 UNIX 进程管理 API</li>
+<li class=" ml-8">&#23398;&#20064; UNIX &#36827;&#31243;&#31649;&#29702; API</li>
 </ul></div>
         
       
@@ -295,7 +295,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">虚拟化：进程抽象</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#34394;&#25311;&#21270;&#65306;&#36827;&#31243;&#25277;&#35937;</h1></div></div></div>
         
       
       </section>
@@ -306,8 +306,8 @@ section .center {
 
       
         
-        <div><h2 id="1950s" class=" text-xl mt-2 pb-2 font-sans">回到 1950s (没有操作系统的时代)</h2>
-<p class=" font-serif my-1">假想你们对 OSLab0 (amgame) 编程</p>
+        <div><h2 id="1950s" class=" text-xl mt-2 pb-2 font-sans">&#22238;&#21040; 1950s (&#27809;&#26377;&#25805;&#20316;&#31995;&#32479;&#30340;&#26102;&#20195;)</h2>
+<p class=" font-serif my-1">&#20551;&#24819;&#20320;&#20204;&#23545; OSLab0 (amgame) &#32534;&#31243;</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="p">...</span>
@@ -316,16 +316,16 @@ section .center {
 </code></pre></div>
 
 <hr>
-<p class=" font-serif my-1">如果想<red>同时</red>运行两个程序？</p>
+<p class=" font-serif my-1">&#22914;&#26524;&#24819;<red>&#21516;&#26102;</red>&#36816;&#34892;&#20004;&#20010;&#31243;&#24207;&#65311;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">那找两台机器吧</li>
+<li class=" ml-8">&#37027;&#25214;&#20004;&#21488;&#26426;&#22120;&#21543;</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">今天的程序能也能在 1950s 的计算机上运行吗？</p>
+<p class=" font-serif my-1">&#20170;&#22825;&#30340;&#31243;&#24207;&#33021;&#20063;&#33021;&#22312; 1950s &#30340;&#35745;&#31639;&#26426;&#19978;&#36816;&#34892;&#21527;&#65311;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">只要没有 “进程间通信”</li>
-<li class=" ml-8">ls, grep, cat, 简易编译器...<ul class=" list-disc font-serif">
-<li class=" ml-8">就像 OSLab0, 它们都可以 “直接在计算机上运行”</li>
+<li class=" ml-8">&#21482;&#35201;&#27809;&#26377; &#8220;&#36827;&#31243;&#38388;&#36890;&#20449;&#8221;</li>
+<li class=" ml-8">ls, grep, cat, &#31616;&#26131;&#32534;&#35793;&#22120;...<ul class=" list-disc font-serif">
+<li class=" ml-8">&#23601;&#20687; OSLab0, &#23427;&#20204;&#37117;&#21487;&#20197; &#8220;&#30452;&#25509;&#22312;&#35745;&#31639;&#26426;&#19978;&#36816;&#34892;&#8221;</li>
 </ul>
 </li>
 </ul></div>
@@ -339,17 +339,17 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">(单线程) 程序的状态机模型</h2>
-<p class=" font-serif my-1">你们太熟悉了：指令驱动的状态迁移</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">(&#21333;&#32447;&#31243;) &#31243;&#24207;&#30340;&#29366;&#24577;&#26426;&#27169;&#22411;</h2>
+<p class=" font-serif my-1">&#20320;&#20204;&#22826;&#29087;&#24713;&#20102;&#65306;&#25351;&#20196;&#39537;&#21160;&#30340;&#29366;&#24577;&#36801;&#31227;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">绝大部分指令只能执行 $(M, R)$ 上的确定性计算</li>
-<li class=" ml-8">少数指令可能造成不确定性 (例如 rdrand)</li>
-<li class=" ml-8">唯一一个和 “外界” 交互的指令：syscall </li>
+<li class=" ml-8">&#32477;&#22823;&#37096;&#20998;&#25351;&#20196;&#21482;&#33021;&#25191;&#34892; $(M, R)$ &#19978;&#30340;&#30830;&#23450;&#24615;&#35745;&#31639;</li>
+<li class=" ml-8">&#23569;&#25968;&#25351;&#20196;&#21487;&#33021;&#36896;&#25104;&#19981;&#30830;&#23450;&#24615; (&#20363;&#22914; rdrand)</li>
+<li class=" ml-8">&#21807;&#19968;&#19968;&#20010;&#21644; &#8220;&#22806;&#30028;&#8221; &#20132;&#20114;&#30340;&#25351;&#20196;&#65306;syscall </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">类似于 AbstractMachine (TRM + IOE)</p>
+<p class=" font-serif my-1">&#31867;&#20284;&#20110; AbstractMachine (TRM + IOE)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">IO 操作相当于 syscall</li>
+<li class=" ml-8">IO &#25805;&#20316;&#30456;&#24403;&#20110; syscall</li>
 </ul></div>
         
       
@@ -361,22 +361,22 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">运行多个程序 = 运行多个状态机</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#36816;&#34892;&#22810;&#20010;&#31243;&#24207; = &#36816;&#34892;&#22810;&#20010;&#29366;&#24577;&#26426;</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">嗷！操作系统 “模拟” 了其中所有进程的状态机！</p>
+<p class=" font-serif my-1">&#22007;&#65281;&#25805;&#20316;&#31995;&#32479; &#8220;&#27169;&#25311;&#8221; &#20102;&#20854;&#20013;&#25152;&#26377;&#36827;&#31243;&#30340;&#29366;&#24577;&#26426;&#65281;</p>
 </blockquote>
-<p class=" font-serif my-1">这就是 “虚拟化”</p>
+<p class=" font-serif my-1">&#36825;&#23601;&#26159; &#8220;&#34394;&#25311;&#21270;&#8221;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">程序仿佛自己独占 CPU 执行 (进程在执行时确实独占)</li>
-<li class=" ml-8">但还有它看不见的 “其他状态”</li>
+<li class=" ml-8">&#31243;&#24207;&#20223;&#20315;&#33258;&#24049;&#29420;&#21344; CPU &#25191;&#34892; (&#36827;&#31243;&#22312;&#25191;&#34892;&#26102;&#30830;&#23454;&#29420;&#21344;)</li>
+<li class=" ml-8">&#20294;&#36824;&#26377;&#23427;&#30475;&#19981;&#35265;&#30340; &#8220;&#20854;&#20182;&#29366;&#24577;&#8221;</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">所有状态机都保存在共享内存里</p>
+<p class=" font-serif my-1">&#25152;&#26377;&#29366;&#24577;&#26426;&#37117;&#20445;&#23384;&#22312;&#20849;&#20139;&#20869;&#23384;&#37324;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">操作系统代码借助中断、虚拟存储等机制完成切换<ul class=" list-disc font-serif">
-<li class=" ml-8">“操作系统是一个中断处理程序”<ul class=" list-disc font-serif">
-<li class=" ml-8">被动的中断：硬件 (时钟、I/O设备、NMI, ...)</li>
-<li class=" ml-8">主动的中断：系统调用</li>
+<li class=" ml-8">&#25805;&#20316;&#31995;&#32479;&#20195;&#30721;&#20511;&#21161;&#20013;&#26029;&#12289;&#34394;&#25311;&#23384;&#20648;&#31561;&#26426;&#21046;&#23436;&#25104;&#20999;&#25442;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#8220;&#25805;&#20316;&#31995;&#32479;&#26159;&#19968;&#20010;&#20013;&#26029;&#22788;&#29702;&#31243;&#24207;&#8221;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#34987;&#21160;&#30340;&#20013;&#26029;&#65306;&#30828;&#20214; (&#26102;&#38047;&#12289;I/O&#35774;&#22791;&#12289;NMI, ...)</li>
+<li class=" ml-8">&#20027;&#21160;&#30340;&#20013;&#26029;&#65306;&#31995;&#32479;&#35843;&#29992;</li>
 </ul>
 </li>
 </ul>
@@ -392,26 +392,26 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">经典操作系统中最重要的三类系统调用</h2>
-<p class=" font-serif my-1">进程 (状态机) 管理</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#32463;&#20856;&#25805;&#20316;&#31995;&#32479;&#20013;&#26368;&#37325;&#35201;&#30340;&#19977;&#31867;&#31995;&#32479;&#35843;&#29992;</h2>
+<p class=" font-serif my-1">&#36827;&#31243; (&#29366;&#24577;&#26426;) &#31649;&#29702;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">fork, execve, exit - 状态机的创建/改变/删除</li>
+<li class=" ml-8">fork, execve, exit - &#29366;&#24577;&#26426;&#30340;&#21019;&#24314;/&#25913;&#21464;/&#21024;&#38500;</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">存储 (地址空间) 管理</p>
+<p class=" font-serif my-1">&#23384;&#20648; (&#22320;&#22336;&#31354;&#38388;) &#31649;&#29702;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">mmap - 对进程虚拟地址空间的一部分进行映射</li>
-<li class=" ml-8">brk - 虚拟地址空间管理 </li>
+<li class=" ml-8">mmap - &#23545;&#36827;&#31243;&#34394;&#25311;&#22320;&#22336;&#31354;&#38388;&#30340;&#19968;&#37096;&#20998;&#36827;&#34892;&#26144;&#23556;</li>
+<li class=" ml-8">brk - &#34394;&#25311;&#22320;&#22336;&#31354;&#38388;&#31649;&#29702; </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">文件 (数据对象) 管理</p>
+<p class=" font-serif my-1">&#25991;&#20214; (&#25968;&#25454;&#23545;&#35937;) &#31649;&#29702;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">open, close - 文件访问管理</li>
-<li class=" ml-8">read, write - 数据管理</li>
-<li class=" ml-8">mkdir, link, unlink - 目录管理</li>
+<li class=" ml-8">open, close - &#25991;&#20214;&#35775;&#38382;&#31649;&#29702;</li>
+<li class=" ml-8">read, write - &#25968;&#25454;&#31649;&#29702;</li>
+<li class=" ml-8">mkdir, link, unlink - &#30446;&#24405;&#31649;&#29702;</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">(<red>操作系统课可以在此结束，剩下部分大家完全可以自学了</red>)</p></div>
+<p class=" font-serif my-1">(<red>&#25805;&#20316;&#31995;&#32479;&#35838;&#21487;&#20197;&#22312;&#27492;&#32467;&#26463;&#65292;&#21097;&#19979;&#37096;&#20998;&#22823;&#23478;&#23436;&#20840;&#21487;&#20197;&#33258;&#23398;&#20102;</red>)</p></div>
         
       
       </section>
@@ -437,19 +437,19 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">状态机管理：创建状态机</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#29366;&#24577;&#26426;&#31649;&#29702;&#65306;&#21019;&#24314;&#29366;&#24577;&#26426;</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">如果要创建状态机，我们应该提供什么样的 API？</p>
+<p class=" font-serif my-1">&#22914;&#26524;&#35201;&#21019;&#24314;&#29366;&#24577;&#26426;&#65292;&#25105;&#20204;&#24212;&#35813;&#25552;&#20379;&#20160;&#20040;&#26679;&#30340; API&#65311;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">UNIX 的答案: fork<ul class=" list-disc font-serif">
-<li class=" ml-8">做一份状态机完整的复制 (内存、寄存器现场)</li>
+<li class=" ml-8">UNIX &#30340;&#31572;&#26696;: fork<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20570;&#19968;&#20221;&#29366;&#24577;&#26426;&#23436;&#25972;&#30340;&#22797;&#21046; (&#20869;&#23384;&#12289;&#23492;&#23384;&#22120;&#29616;&#22330;)</li>
 </ul>
 </li>
 </ul>
 </blockquote>
 <p class=" font-serif my-1"><code>int fork();</code></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">复制状态机，新创建的进程返回 0，执行 fork 的进程返回进程号</li>
+<li class=" ml-8">&#22797;&#21046;&#29366;&#24577;&#26426;&#65292;&#26032;&#21019;&#24314;&#30340;&#36827;&#31243;&#36820;&#22238; 0&#65292;&#25191;&#34892; fork &#30340;&#36827;&#31243;&#36820;&#22238;&#36827;&#31243;&#21495;</li>
 </ul>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/2-fork.jpg" width="300px"></p></div>
         
@@ -463,11 +463,11 @@ section .center {
       
         
         <div><h2 id="fork-bomb" class=" text-xl mt-2 pb-2 font-sans">Fork Bomb</h2>
-<p class=" font-serif my-1">模拟状态机需要资源</p>
+<p class=" font-serif my-1">&#27169;&#25311;&#29366;&#24577;&#26426;&#38656;&#35201;&#36164;&#28304;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">只要不停地创建进程，系统还是会挂掉的</li>
+<li class=" ml-8">&#21482;&#35201;&#19981;&#20572;&#22320;&#21019;&#24314;&#36827;&#31243;&#65292;&#31995;&#32479;&#36824;&#26159;&#20250;&#25346;&#25481;&#30340;</li>
 <li class=" ml-8">Don't try it (or try it in docker)<ul class=" list-disc font-serif">
-<li class=" ml-8">你们交这个到 Online Judge 是不会挂的</li>
+<li class=" ml-8">&#20320;&#20204;&#20132;&#36825;&#20010;&#21040; Online Judge &#26159;&#19981;&#20250;&#25346;&#30340;</li>
 </ul>
 </li>
 </ul>
@@ -482,15 +482,15 @@ section .center {
 
       
         
-        <div><h2 id="fork-bomb" class=" text-xl mt-2 pb-2 font-sans">代码解析: Fork Bomb</h2>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>:<span class="o">(){</span>:<span class="p">|</span>:<span class="p">&</span><span class="o">}</span><span class="p">;</span>:<span class="w">   </span><span class="c1"># 刚才的一行版本</span>
+        <div><h2 id="fork-bomb" class=" text-xl mt-2 pb-2 font-sans">&#20195;&#30721;&#35299;&#26512;: Fork Bomb</h2>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>:<span class="o">(){</span>:<span class="p">|</span>:<span class="p">&amp;</span><span class="o">}</span><span class="p">;</span>:<span class="w">   </span><span class="c1"># &#21018;&#25165;&#30340;&#19968;&#34892;&#29256;&#26412;</span>
 
-:<span class="o">()</span><span class="w"> </span><span class="o">{</span><span class="w">         </span><span class="c1"># 格式化一下</span>
-<span class="w">  </span>:<span class="w"> </span><span class="p">|</span><span class="w"> </span>:<span class="w"> </span><span class="p">&</span>
+:<span class="o">()</span><span class="w"> </span><span class="o">{</span><span class="w">         </span><span class="c1"># &#26684;&#24335;&#21270;&#19968;&#19979;</span>
+<span class="w">  </span>:<span class="w"> </span><span class="p">|</span><span class="w"> </span>:<span class="w"> </span><span class="p">&amp;</span>
 <span class="o">}</span><span class="p">;</span><span class="w"> </span>:
 
-fork<span class="o">()</span><span class="w"> </span><span class="o">{</span><span class="w">      </span><span class="c1"># bash: 允许冒号作为标识符……</span>
-<span class="w">  </span>fork<span class="w"> </span><span class="p">|</span><span class="w"> </span>fork<span class="w"> </span><span class="p">&</span>
+fork<span class="o">()</span><span class="w"> </span><span class="o">{</span><span class="w">      </span><span class="c1"># bash: &#20801;&#35768;&#20882;&#21495;&#20316;&#20026;&#26631;&#35782;&#31526;&#8230;&#8230;</span>
+<span class="w">  </span>fork<span class="w"> </span><span class="p">|</span><span class="w"> </span>fork<span class="w"> </span><span class="p">&amp;</span>
 <span class="o">}</span><span class="p">;</span><span class="w"> </span>fork
 </code></pre></div>
 
@@ -505,10 +505,10 @@ fork<span class="o">()</span><span class="w"> </span><span class="o">{</span><sp
 
       
         
-        <div><h2 id="fork" class=" text-xl mt-2 pb-2 font-sans">这次你们记住 Fork 了！</h2>
-<p class=" font-serif my-1">因为状态机是复制的，因此总能找到 “父子关系”</p>
+        <div><h2 id="fork" class=" text-xl mt-2 pb-2 font-sans">&#36825;&#27425;&#20320;&#20204;&#35760;&#20303; Fork &#20102;&#65281;</h2>
+<p class=" font-serif my-1">&#22240;&#20026;&#29366;&#24577;&#26426;&#26159;&#22797;&#21046;&#30340;&#65292;&#22240;&#27492;&#24635;&#33021;&#25214;&#21040; &#8220;&#29238;&#23376;&#20851;&#31995;&#8221;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">因此有了进程树 (pstree)</li>
+<li class=" ml-8">&#22240;&#27492;&#26377;&#20102;&#36827;&#31243;&#26641; (pstree)</li>
 </ul>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>systemd-+-accounts-daemon---2*[{accounts-daemon}]
         |-agetty
@@ -531,12 +531,12 @@ fork<span class="o">()</span><span class="w"> </span><span class="o">{</span><sp
 
       
         
-        <div><h2 id="fork-1" class=" text-xl mt-2 pb-2 font-sans">理解 fork: 习题 (1)</h2>
-<p class=" font-serif my-1">试着拿出一张纸，写出以下程序的输出结果</p>
+        <div><h2 id="fork-1" class=" text-xl mt-2 pb-2 font-sans">&#29702;&#35299; fork: &#20064;&#39064; (1)</h2>
+<p class=" font-serif my-1">&#35797;&#30528;&#25343;&#20986;&#19968;&#24352;&#32440;&#65292;&#20889;&#20986;&#20197;&#19979;&#31243;&#24207;&#30340;&#36755;&#20986;&#32467;&#26524;</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><a href="../../../pages/OS/2021/demos/fork-demo.c" class=" text-amber-900">fork-demo.c</a><ul class=" list-disc font-serif">
-<li class=" ml-8">你心里可能立即想，运行一下不就完了吗？</li>
-<li class=" ml-8">试图去理解它</li>
+<li class=" ml-8">&#20320;&#24515;&#37324;&#21487;&#33021;&#31435;&#21363;&#24819;&#65292;&#36816;&#34892;&#19968;&#19979;&#19981;&#23601;&#23436;&#20102;&#21527;&#65311;</li>
+<li class=" ml-8">&#35797;&#22270;&#21435;&#29702;&#35299;&#23427;</li>
 </ul>
 </li>
 </ul>
@@ -555,19 +555,19 @@ fork<span class="o">()</span><span class="w"> </span><span class="o">{</span><sp
 
       
         
-        <div><h2 id="fork-2" class=" text-xl mt-2 pb-2 font-sans">理解 fork: 习题 (2)</h2>
-<p class=" font-serif my-1">问以下程序的输出结果</p>
+        <div><h2 id="fork-2" class=" text-xl mt-2 pb-2 font-sans">&#29702;&#35299; fork: &#20064;&#39064; (2)</h2>
+<p class=" font-serif my-1">&#38382;&#20197;&#19979;&#31243;&#24207;&#30340;&#36755;&#20986;&#32467;&#26524;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">一个更好的版本: <a href="../../../pages/OS/2021/demos/fork-printf.c" class=" text-amber-900">fork-printf.c</a><ul class=" list-disc font-serif">
-<li class=" ml-8">用状态机的视角再试一次</li>
-<li class=" ml-8">然后考虑一下进程持有的操作系统对象应该被如何复制？</li>
+<li class=" ml-8">&#19968;&#20010;&#26356;&#22909;&#30340;&#29256;&#26412;: <a href="../../../pages/OS/2021/demos/fork-printf.c" class=" text-amber-900">fork-printf.c</a><ul class=" list-disc font-serif">
+<li class=" ml-8">&#29992;&#29366;&#24577;&#26426;&#30340;&#35270;&#35282;&#20877;&#35797;&#19968;&#27425;</li>
+<li class=" ml-8">&#28982;&#21518;&#32771;&#34385;&#19968;&#19979;&#36827;&#31243;&#25345;&#26377;&#30340;&#25805;&#20316;&#31995;&#32479;&#23545;&#35937;&#24212;&#35813;&#34987;&#22914;&#20309;&#22797;&#21046;&#65311;</li>
 </ul>
 </li>
 </ul>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#define n 2</span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o"><</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">fork</span><span class="p">();</span>
 <span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Hello</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
 <span class="w">  </span><span class="p">}</span>
@@ -575,7 +575,7 @@ fork<span class="o">()</span><span class="w"> </span><span class="o">{</span><sp
 </code></pre></div>
 
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">计算机系统里没有魔法。机器永远是对的。</p>
+<p class=" font-serif my-1">&#35745;&#31639;&#26426;&#31995;&#32479;&#37324;&#27809;&#26377;&#39764;&#27861;&#12290;&#26426;&#22120;&#27704;&#36828;&#26159;&#23545;&#30340;&#12290;</p>
 </blockquote></div>
         
       
@@ -587,18 +587,18 @@ fork<span class="o">()</span><span class="w"> </span><span class="o">{</span><sp
 
       
         
-        <div><h2 id="fork-3" class=" text-xl mt-2 pb-2 font-sans">理解 fork: 习题 (3)</h2>
-<p class=" font-serif my-1">多线程程序的某个线程执行 <code>fork()</code>，应该发生什么？</p>
+        <div><h2 id="fork-3" class=" text-xl mt-2 pb-2 font-sans">&#29702;&#35299; fork: &#20064;&#39064; (3)</h2>
+<p class=" font-serif my-1">&#22810;&#32447;&#31243;&#31243;&#24207;&#30340;&#26576;&#20010;&#32447;&#31243;&#25191;&#34892; <code>fork()</code>&#65292;&#24212;&#35813;&#21457;&#29983;&#20160;&#20040;&#65311;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">这是个很有趣的问题：创造 fork 时创始人并没有考虑线程</li>
+<li class=" ml-8">&#36825;&#26159;&#20010;&#24456;&#26377;&#36259;&#30340;&#38382;&#39064;&#65306;&#21019;&#36896; fork &#26102;&#21019;&#22987;&#20154;&#24182;&#27809;&#26377;&#32771;&#34385;&#32447;&#31243;</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">我们可能作出以下设计：</p>
+<p class=" font-serif my-1">&#25105;&#20204;&#21487;&#33021;&#20316;&#20986;&#20197;&#19979;&#35774;&#35745;&#65306;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">仅有执行 fork 的线程被复制，其他线程 “卡死”</li>
-<li class=" ml-8">仅有执行 fork 的线程被复制，其他线程退出</li>
-<li class=" ml-8">所有的线程都被复制并继续执行<ul class=" list-disc font-serif">
-<li class=" ml-8">这三种设计分别会带来什么问题？</li>
+<li class=" ml-8">&#20165;&#26377;&#25191;&#34892; fork &#30340;&#32447;&#31243;&#34987;&#22797;&#21046;&#65292;&#20854;&#20182;&#32447;&#31243; &#8220;&#21345;&#27515;&#8221;</li>
+<li class=" ml-8">&#20165;&#26377;&#25191;&#34892; fork &#30340;&#32447;&#31243;&#34987;&#22797;&#21046;&#65292;&#20854;&#20182;&#32447;&#31243;&#36864;&#20986;</li>
+<li class=" ml-8">&#25152;&#26377;&#30340;&#32447;&#31243;&#37117;&#34987;&#22797;&#21046;&#24182;&#32487;&#32493;&#25191;&#34892;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#36825;&#19977;&#31181;&#35774;&#35745;&#20998;&#21035;&#20250;&#24102;&#26469;&#20160;&#20040;&#38382;&#39064;&#65311;</li>
 </ul>
 </li>
 </ul></div>
@@ -627,21 +627,21 @@ fork<span class="o">()</span><span class="w"> </span><span class="o">{</span><sp
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">状态机管理：替换状态机</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#29366;&#24577;&#26426;&#31649;&#29702;&#65306;&#26367;&#25442;&#29366;&#24577;&#26426;</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">光有 fork 还不够，我们还需要能 “执行别的程序” 啊？</p>
+<p class=" font-serif my-1">&#20809;&#26377; fork &#36824;&#19981;&#22815;&#65292;&#25105;&#20204;&#36824;&#38656;&#35201;&#33021; &#8220;&#25191;&#34892;&#21035;&#30340;&#31243;&#24207;&#8221; &#21834;&#65311;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">UNIX 的答案: execve<ul class=" list-disc font-serif">
-<li class=" ml-8">将当前运行的状态机重置成成另一个程序的初始状态</li>
+<li class=" ml-8">UNIX &#30340;&#31572;&#26696;: execve<ul class=" list-disc font-serif">
+<li class=" ml-8">&#23558;&#24403;&#21069;&#36816;&#34892;&#30340;&#29366;&#24577;&#26426;&#37325;&#32622;&#25104;&#25104;&#21478;&#19968;&#20010;&#31243;&#24207;&#30340;&#21021;&#22987;&#29366;&#24577;</li>
 </ul>
 </li>
 </ul>
 </blockquote>
 <p class=" font-serif my-1"><code>int execve(const char *filename, char * const argv, char * const envp);</code></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">执行名为 <code>filename</code> 的程序</li>
-<li class=" ml-8">允许对新状态机设置参数 <code>argv</code> (v) 和环境变量 <code>envp</code> (e)<ul class=" list-disc font-serif">
-<li class=" ml-8">刚好对应了 <code>main()</code> 的参数！</li>
+<li class=" ml-8">&#25191;&#34892;&#21517;&#20026; <code>filename</code> &#30340;&#31243;&#24207;</li>
+<li class=" ml-8">&#20801;&#35768;&#23545;&#26032;&#29366;&#24577;&#26426;&#35774;&#32622;&#21442;&#25968; <code>argv</code> (v) &#21644;&#29615;&#22659;&#21464;&#37327; <code>envp</code> (e)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21018;&#22909;&#23545;&#24212;&#20102; <code>main()</code> &#30340;&#21442;&#25968;&#65281;</li>
 <li class=" ml-8"><a href="../../../pages/OS/2021/demos/execve-demo.c" class=" text-amber-900">execve-demo.c</a></li>
 </ul>
 </li>
@@ -656,20 +656,20 @@ fork<span class="o">()</span><span class="w"> </span><span class="o">{</span><sp
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">环境变量</h2>
-<p class=" font-serif my-1">“应用程序执行的环境”</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#29615;&#22659;&#21464;&#37327;</h2>
+<p class=" font-serif my-1">&#8220;&#24212;&#29992;&#31243;&#24207;&#25191;&#34892;&#30340;&#29615;&#22659;&#8221;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">使用 <code>env</code> 命令查看<ul class=" list-disc font-serif">
-<li class=" ml-8"><code>PATH</code>: 可执行文件搜索路径</li>
-<li class=" ml-8"><code>PWD</code>: 当前路径</li>
-<li class=" ml-8"><code>HOME</code>: home 目录</li>
-<li class=" ml-8"><code>DISPLAY</code>: 图形输出</li>
-<li class=" ml-8"><code>PS1</code>: shell 的提示符</li>
+<li class=" ml-8">&#20351;&#29992; <code>env</code> &#21629;&#20196;&#26597;&#30475;<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>PATH</code>: &#21487;&#25191;&#34892;&#25991;&#20214;&#25628;&#32034;&#36335;&#24452;</li>
+<li class=" ml-8"><code>PWD</code>: &#24403;&#21069;&#36335;&#24452;</li>
+<li class=" ml-8"><code>HOME</code>: home &#30446;&#24405;</li>
+<li class=" ml-8"><code>DISPLAY</code>: &#22270;&#24418;&#36755;&#20986;</li>
+<li class=" ml-8"><code>PS1</code>: shell &#30340;&#25552;&#31034;&#31526;</li>
 </ul>
 </li>
-<li class=" ml-8"><code>export</code>: 告诉 shell 在创建子进程时设置环境变量<ul class=" list-disc font-serif">
-<li class=" ml-8">小技巧：<code>export ARCH=x86_64-qemu</code> 或 <code>export ARCH=native</code></li>
-<li class=" ml-8">上学期的 <code>AM_HOME</code> 终于破案了</li>
+<li class=" ml-8"><code>export</code>: &#21578;&#35785; shell &#22312;&#21019;&#24314;&#23376;&#36827;&#31243;&#26102;&#35774;&#32622;&#29615;&#22659;&#21464;&#37327;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#23567;&#25216;&#24039;&#65306;<code>export ARCH=x86_64-qemu</code> &#25110; <code>export ARCH=native</code></li>
+<li class=" ml-8">&#19978;&#23398;&#26399;&#30340; <code>AM_HOME</code> &#32456;&#20110;&#30772;&#26696;&#20102;</li>
 </ul>
 </li>
 </ul></div>
@@ -683,10 +683,10 @@ fork<span class="o">()</span><span class="w"> </span><span class="o">{</span><sp
 
       
         
-        <div><h2 id="path" class=" text-xl mt-2 pb-2 font-sans">环境变量：<code>PATH</code></h2>
-<p class=" font-serif my-1">可执行文件搜索路径</p>
+        <div><h2 id="path" class=" text-xl mt-2 pb-2 font-sans">&#29615;&#22659;&#21464;&#37327;&#65306;<code>PATH</code></h2>
+<p class=" font-serif my-1">&#21487;&#25191;&#34892;&#25991;&#20214;&#25628;&#32034;&#36335;&#24452;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">还记得 gcc 的 strace 结果吗？</li>
+<li class=" ml-8">&#36824;&#35760;&#24471; gcc &#30340; strace &#32467;&#26524;&#21527;&#65311;</li>
 </ul>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>[pid 28369] execve("/usr/local/sbin/as", ["as", "--64", ...
 [pid 28369] execve("/usr/local/bin/as", ["as", "--64", ...
@@ -695,7 +695,7 @@ fork<span class="o">()</span><span class="w"> </span><span class="o">{</span><sp
 </code></pre></div>
 
 <ul class=" list-disc font-serif">
-<li class=" ml-8">这个搜索顺序恰好是 <code>PATH</code> 里指定的顺序</li>
+<li class=" ml-8">&#36825;&#20010;&#25628;&#32034;&#39034;&#24207;&#24688;&#22909;&#26159; <code>PATH</code> &#37324;&#25351;&#23450;&#30340;&#39034;&#24207;</li>
 </ul>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>$ PATH="" /usr/bin/gcc fork-demo.c
 gcc: error trying to exec 'as': execvp: No such file or directory
@@ -703,7 +703,7 @@ $ PATH="/usr/bin/" gcc fork-demo.c
 </code></pre></div>
 
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">计算机系统里没有魔法。机器永远是对的。</p>
+<p class=" font-serif my-1">&#35745;&#31639;&#26426;&#31995;&#32479;&#37324;&#27809;&#26377;&#39764;&#27861;&#12290;&#26426;&#22120;&#27704;&#36828;&#26159;&#23545;&#30340;&#12290;</p>
 </blockquote></div>
         
       
@@ -730,25 +730,25 @@ $ PATH="/usr/bin/" gcc fork-demo.c
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">状态机管理：终止状态机</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#29366;&#24577;&#26426;&#31649;&#29702;&#65306;&#32456;&#27490;&#29366;&#24577;&#26426;</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">有了 fork, execve 我们就能自由执行任何程序了，还缺一个销毁状态机的函数</p>
+<p class=" font-serif my-1">&#26377;&#20102; fork, execve &#25105;&#20204;&#23601;&#33021;&#33258;&#30001;&#25191;&#34892;&#20219;&#20309;&#31243;&#24207;&#20102;&#65292;&#36824;&#32570;&#19968;&#20010;&#38144;&#27585;&#29366;&#24577;&#26426;&#30340;&#20989;&#25968;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">UNIX 的答案: <code>_exit</code><ul class=" list-disc font-serif">
-<li class=" ml-8">立即摧毁状态机</li>
+<li class=" ml-8">UNIX &#30340;&#31572;&#26696;: <code>_exit</code><ul class=" list-disc font-serif">
+<li class=" ml-8">&#31435;&#21363;&#25703;&#27585;&#29366;&#24577;&#26426;</li>
 </ul>
 </li>
 </ul>
 </blockquote>
 <p class=" font-serif my-1"><code>void _exit(int status)</code></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">销毁当前状态机，并允许有一个返回值</li>
-<li class=" ml-8">子进程终止会通知父进程 (后续课程解释)</li>
+<li class=" ml-8">&#38144;&#27585;&#24403;&#21069;&#29366;&#24577;&#26426;&#65292;&#24182;&#20801;&#35768;&#26377;&#19968;&#20010;&#36820;&#22238;&#20540;</li>
+<li class=" ml-8">&#23376;&#36827;&#31243;&#32456;&#27490;&#20250;&#36890;&#30693;&#29238;&#36827;&#31243; (&#21518;&#32493;&#35838;&#31243;&#35299;&#37322;)</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">这个简单……</p>
+<p class=" font-serif my-1">&#36825;&#20010;&#31616;&#21333;&#8230;&#8230;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">但问题来了：多线程程序怎么办？</li>
+<li class=" ml-8">&#20294;&#38382;&#39064;&#26469;&#20102;&#65306;&#22810;&#32447;&#31243;&#31243;&#24207;&#24590;&#20040;&#21150;&#65311;</li>
 </ul></div>
         
       
@@ -760,24 +760,24 @@ $ PATH="/usr/bin/" gcc fork-demo.c
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">结束程序执行的三种方法</h2>
-<p class=" font-serif my-1">exit 的几种写法 (它们是<red>不同</red>)</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#32467;&#26463;&#31243;&#24207;&#25191;&#34892;&#30340;&#19977;&#31181;&#26041;&#27861;</h2>
+<p class=" font-serif my-1">exit &#30340;&#20960;&#31181;&#20889;&#27861; (&#23427;&#20204;&#26159;<red>&#19981;&#21516;</red>)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><code>exit(0)</code> - <code>stdlib.h</code> 中声明的 libc 函数<ul class=" list-disc font-serif">
-<li class=" ml-8">会调用 <code>atexit</code></li>
+<li class=" ml-8"><code>exit(0)</code> - <code>stdlib.h</code> &#20013;&#22768;&#26126;&#30340; libc &#20989;&#25968;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20250;&#35843;&#29992; <code>atexit</code></li>
 </ul>
 </li>
-<li class=" ml-8"><code>_exit(0)</code> - glibc 的 syscall wrapper<ul class=" list-disc font-serif">
-<li class=" ml-8">执行 “<code>exit_group</code>” 系统调用终止整个进程 (所有线程)<ul class=" list-disc font-serif">
-<li class=" ml-8">细心的同学已经在 strace 中发现了</li>
+<li class=" ml-8"><code>_exit(0)</code> - glibc &#30340; syscall wrapper<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25191;&#34892; &#8220;<code>exit_group</code>&#8221; &#31995;&#32479;&#35843;&#29992;&#32456;&#27490;&#25972;&#20010;&#36827;&#31243; (&#25152;&#26377;&#32447;&#31243;)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#32454;&#24515;&#30340;&#21516;&#23398;&#24050;&#32463;&#22312; strace &#20013;&#21457;&#29616;&#20102;</li>
 </ul>
 </li>
-<li class=" ml-8">不会调用 <code>atexit</code></li>
+<li class=" ml-8">&#19981;&#20250;&#35843;&#29992; <code>atexit</code></li>
 </ul>
 </li>
 <li class=" ml-8"><code>syscall(SYS_exit, 0)</code><ul class=" list-disc font-serif">
-<li class=" ml-8">执行 “<code>exit</code>” 系统调用终止当前线程</li>
-<li class=" ml-8">不会调用 <code>atexit</code></li>
+<li class=" ml-8">&#25191;&#34892; &#8220;<code>exit</code>&#8221; &#31995;&#32479;&#35843;&#29992;&#32456;&#27490;&#24403;&#21069;&#32447;&#31243;</li>
+<li class=" ml-8">&#19981;&#20250;&#35843;&#29992; <code>atexit</code></li>
 </ul>
 </li>
 </ul></div>
@@ -791,12 +791,12 @@ $ PATH="/usr/bin/" gcc fork-demo.c
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">不妨试一试</h2>
-<p class=" font-serif my-1">结束当前进程执行的四种方式</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#19981;&#22952;&#35797;&#19968;&#35797;</h2>
+<p class=" font-serif my-1">&#32467;&#26463;&#24403;&#21069;&#36827;&#31243;&#25191;&#34892;&#30340;&#22235;&#31181;&#26041;&#24335;</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><code>return</code>, <code>exit</code>, <code>_exit</code>, <code>syscall</code></li>
 <li class=" ml-8"><a href="../../../pages/OS/2021/demos/exit-demo.c" class=" text-amber-900">exit-demo.c</a><ul class=" list-disc font-serif">
-<li class=" ml-8">用 strace 观察程序的执行</li>
+<li class=" ml-8">&#29992; strace &#35266;&#23519;&#31243;&#24207;&#30340;&#25191;&#34892;</li>
 </ul>
 </li>
 </ul></div>
@@ -814,7 +814,7 @@ $ PATH="/usr/bin/" gcc fork-demo.c
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">总结</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#24635;&#32467;</h1></div></div></div>
         
       
       </section>
@@ -825,19 +825,19 @@ $ PATH="/usr/bin/" gcc fork-demo.c
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">总结</h2>
-<p class=" font-serif my-1">本次课内容与目标</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#24635;&#32467;</h2>
+<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#20869;&#23481;&#19982;&#30446;&#26631;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">用 “状态机” 的视角重新理解进程<ul class=" list-disc font-serif">
-<li class=" ml-8">学习 UNIX 进程管理 API</li>
+<li class=" ml-8">&#29992; &#8220;&#29366;&#24577;&#26426;&#8221; &#30340;&#35270;&#35282;&#37325;&#26032;&#29702;&#35299;&#36827;&#31243;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#23398;&#20064; UNIX &#36827;&#31243;&#31649;&#29702; API</li>
 </ul>
 </li>
 </ul>
 <hr>
 <p class=" font-serif my-1">Takeaway messages</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">进程 = 状态机</li>
-<li class=" ml-8">进程管理 = 状态机创建、重置、删除</li>
+<li class=" ml-8">&#36827;&#31243; = &#29366;&#24577;&#26426;</li>
+<li class=" ml-8">&#36827;&#31243;&#31649;&#29702; = &#29366;&#24577;&#26426;&#21019;&#24314;&#12289;&#37325;&#32622;&#12289;&#21024;&#38500;</li>
 </ul></div>
         
       

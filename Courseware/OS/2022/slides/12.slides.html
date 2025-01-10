@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // • auto-render specific keys, e.g.:
+            // &#8226; auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // • rendering keys, e.g.:
+            // &#8226; rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +209,7 @@ section .center {
 }
 </style>
 
-  <title>进程的地址空间</title>
+  <title>&#36827;&#31243;&#30340;&#22320;&#22336;&#31354;&#38388;</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,21 +227,21 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">进程的地址空间</h1>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#36827;&#31243;&#30340;&#22320;&#22336;&#31354;&#38388;</h1>
 <p class=" font-serif my-1"><include src="Slides_Author"><div><div class="py-16">
-<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">蒋炎岩</a></p>
+<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">&#33931;&#28814;&#23721;</a></p>
 </div>
 <div class="row">
 <div class="author-affiliation">
-    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">　　南京大学　　</p>
+    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#12288;&#12288;&#21335;&#20140;&#22823;&#23398;&#12288;&#12288;</p>
     <img class="inline-img h-24" src="../../../static/img/nju-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">计算机科学与技术系</p>
+   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#31185;&#23398;&#19982;&#25216;&#26415;&#31995;</p>
     <img class="inline-img h-24" src="../../../static/img/njucs-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">计算机软件研究所</p>
+    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#36719;&#20214;&#30740;&#31350;&#25152;</p>
     <img class="inline-img h-24" src="../../../static/img/ics-logo.png" style="display: inline-block;"></a>
   </div>
 </div></div></include></p></div></div></div>
@@ -256,20 +256,20 @@ section .center {
       
         
         <div><h2 id="overview" class=" text-xl mt-2 pb-2 font-sans">Overview</h2>
-<p class=" font-serif my-1">复习</p>
+<p class=" font-serif my-1">&#22797;&#20064;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">操作系统：加载第一个 <code>init</code> 程序，随后变为 “异常处理程序”</li>
-<li class=" ml-8"><code>init</code>: fork, execve, exit 和其他系统调用创造整个操作系统世界</li>
+<li class=" ml-8">&#25805;&#20316;&#31995;&#32479;&#65306;&#21152;&#36733;&#31532;&#19968;&#20010; <code>init</code> &#31243;&#24207;&#65292;&#38543;&#21518;&#21464;&#20026; &#8220;&#24322;&#24120;&#22788;&#29702;&#31243;&#24207;&#8221;</li>
+<li class=" ml-8"><code>init</code>: fork, execve, exit &#21644;&#20854;&#20182;&#31995;&#32479;&#35843;&#29992;&#21019;&#36896;&#25972;&#20010;&#25805;&#20316;&#31995;&#32479;&#19990;&#30028;</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">本次课回答的问题</p>
+<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#22238;&#31572;&#30340;&#38382;&#39064;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><strong>Q</strong>: 进程的地址空间是如何创建、如何更改的？</li>
+<li class=" ml-8"><strong>Q</strong>: &#36827;&#31243;&#30340;&#22320;&#22336;&#31354;&#38388;&#26159;&#22914;&#20309;&#21019;&#24314;&#12289;&#22914;&#20309;&#26356;&#25913;&#30340;&#65311;</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">本次课主要内容</p>
+<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#20027;&#35201;&#20869;&#23481;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">进程的地址空间和管理 (mmap)</li>
+<li class=" ml-8">&#36827;&#31243;&#30340;&#22320;&#22336;&#31354;&#38388;&#21644;&#31649;&#29702; (mmap)</li>
 </ul></div>
         
       
@@ -285,7 +285,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">进程的地址空间</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#36827;&#31243;&#30340;&#22320;&#22336;&#31354;&#38388;</h1></div></div></div>
         
       
       </section>
@@ -296,25 +296,25 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">进程的地址空间</h2>
-<p class=" font-serif my-1"><code>char *p</code> 可以和 <code>intptr_t</code> 互相转换</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#36827;&#31243;&#30340;&#22320;&#22336;&#31354;&#38388;</h2>
+<p class=" font-serif my-1"><code>char *p</code> &#21487;&#20197;&#21644; <code>intptr_t</code> &#20114;&#30456;&#36716;&#25442;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">可以指向 “任何地方”</li>
-<li class=" ml-8">合法的地址 (可读或可写)<ul class=" list-disc font-serif">
-<li class=" ml-8">代码 (<code>main</code>, <code>%rip</code> 会从此处取出待执行的指令)，只读</li>
-<li class=" ml-8">数据 (<code>static int x</code>)，读写</li>
-<li class=" ml-8">堆栈 (<code>int y</code>)，读写</li>
-<li class=" ml-8">运行时分配的内存 (???)，读写</li>
-<li class=" ml-8">动态链接库 (???)</li>
+<li class=" ml-8">&#21487;&#20197;&#25351;&#21521; &#8220;&#20219;&#20309;&#22320;&#26041;&#8221;</li>
+<li class=" ml-8">&#21512;&#27861;&#30340;&#22320;&#22336; (&#21487;&#35835;&#25110;&#21487;&#20889;)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20195;&#30721; (<code>main</code>, <code>%rip</code> &#20250;&#20174;&#27492;&#22788;&#21462;&#20986;&#24453;&#25191;&#34892;&#30340;&#25351;&#20196;)&#65292;&#21482;&#35835;</li>
+<li class=" ml-8">&#25968;&#25454; (<code>static int x</code>)&#65292;&#35835;&#20889;</li>
+<li class=" ml-8">&#22534;&#26632; (<code>int y</code>)&#65292;&#35835;&#20889;</li>
+<li class=" ml-8">&#36816;&#34892;&#26102;&#20998;&#37197;&#30340;&#20869;&#23384; (???)&#65292;&#35835;&#20889;</li>
+<li class=" ml-8">&#21160;&#24577;&#38142;&#25509;&#24211; (???)</li>
 </ul>
 </li>
-<li class=" ml-8">非法的地址<ul class=" list-disc font-serif">
-<li class=" ml-8"><code>NULL</code>，导致 segmentation fault</li>
+<li class=" ml-8">&#38750;&#27861;&#30340;&#22320;&#22336;<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>NULL</code>&#65292;&#23548;&#33268; segmentation fault</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">它们停留在概念中，但实际呢？</p></div>
+<p class=" font-serif my-1">&#23427;&#20204;&#20572;&#30041;&#22312;&#27010;&#24565;&#20013;&#65292;&#20294;&#23454;&#38469;&#21602;&#65311;</p></div>
         
       
       </section>
@@ -325,21 +325,21 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">查看进程的地址空间</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26597;&#30475;&#36827;&#31243;&#30340;&#22320;&#22336;&#31354;&#38388;</h2>
 <p class=" font-serif my-1">pmap (1) - report memory of a process</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">Claim: pmap 是通过访问 procfs (<code>/proc/</code>) 实现的</li>
-<li class=" ml-8">如何验证这一点？</li>
+<li class=" ml-8">Claim: pmap &#26159;&#36890;&#36807;&#35775;&#38382; procfs (<code>/proc/</code>) &#23454;&#29616;&#30340;</li>
+<li class=" ml-8">&#22914;&#20309;&#39564;&#35777;&#36825;&#19968;&#28857;&#65311;</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">查看进程的地址空间</p>
+<p class=" font-serif my-1">&#26597;&#30475;&#36827;&#31243;&#30340;&#22320;&#22336;&#31354;&#38388;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><a href="../../../pages/OS/2022/demos/minimal.S" class=" text-amber-900">minimal.S</a> (静态链接)</li>
-<li class=" ml-8">最小的 Hello World (静态/动态链接)<ul class=" list-disc font-serif">
-<li class=" ml-8">进程的地址空间：<red>若干连续的 “段”</red></li>
-<li class=" ml-8">“段” 的内存可以访问</li>
-<li class=" ml-8">不在段内/违反权限的内存访问 触发 SIGSEGV<ul class=" list-disc font-serif">
-<li class=" ml-8">gdb 可以 “越权访问”，但不能访问 “不存在” 的地址</li>
+<li class=" ml-8"><a href="../../../pages/OS/2022/demos/minimal.S" class=" text-amber-900">minimal.S</a> (&#38745;&#24577;&#38142;&#25509;)</li>
+<li class=" ml-8">&#26368;&#23567;&#30340; Hello World (&#38745;&#24577;/&#21160;&#24577;&#38142;&#25509;)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#36827;&#31243;&#30340;&#22320;&#22336;&#31354;&#38388;&#65306;<red>&#33509;&#24178;&#36830;&#32493;&#30340; &#8220;&#27573;&#8221;</red></li>
+<li class=" ml-8">&#8220;&#27573;&#8221; &#30340;&#20869;&#23384;&#21487;&#20197;&#35775;&#38382;</li>
+<li class=" ml-8">&#19981;&#22312;&#27573;&#20869;/&#36829;&#21453;&#26435;&#38480;&#30340;&#20869;&#23384;&#35775;&#38382; &#35302;&#21457; SIGSEGV<ul class=" list-disc font-serif">
+<li class=" ml-8">gdb &#21487;&#20197; &#8220;&#36234;&#26435;&#35775;&#38382;&#8221;&#65292;&#20294;&#19981;&#33021;&#35775;&#38382; &#8220;&#19981;&#23384;&#22312;&#8221; &#30340;&#22320;&#22336;</li>
 </ul>
 </li>
 </ul>
@@ -355,19 +355,19 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">操作系统提供查看进程地址空间的机制</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25805;&#20316;&#31995;&#32479;&#25552;&#20379;&#26597;&#30475;&#36827;&#31243;&#22320;&#22336;&#31354;&#38388;&#30340;&#26426;&#21046;</h2>
 <p class=" font-serif my-1">RTFM: <code>/proc/[pid]/maps</code> (man 5 proc)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">进程地址空间中的每一段<ul class=" list-disc font-serif">
-<li class=" ml-8">地址 (范围) 和权限 (rwxsp)</li>
-<li class=" ml-8">对应的文件: offset, dev, inode, pathname<ul class=" list-disc font-serif">
-<li class=" ml-8">TFM 里有更详细的解释</li>
+<li class=" ml-8">&#36827;&#31243;&#22320;&#22336;&#31354;&#38388;&#20013;&#30340;&#27599;&#19968;&#27573;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22320;&#22336; (&#33539;&#22260;) &#21644;&#26435;&#38480; (rwxsp)</li>
+<li class=" ml-8">&#23545;&#24212;&#30340;&#25991;&#20214;: offset, dev, inode, pathname<ul class=" list-disc font-serif">
+<li class=" ml-8">TFM &#37324;&#26377;&#26356;&#35814;&#32454;&#30340;&#35299;&#37322;</li>
 </ul>
 </li>
 </ul>
 </li>
-<li class=" ml-8">和 readelf (<code>-l</code>) 里的信息互相验证<ul class=" list-disc font-serif">
-<li class=" ml-8">课后习题：定义一些代码/数据，观察变化</li>
+<li class=" ml-8">&#21644; readelf (<code>-l</code>) &#37324;&#30340;&#20449;&#24687;&#20114;&#30456;&#39564;&#35777;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#35838;&#21518;&#20064;&#39064;&#65306;&#23450;&#20041;&#19968;&#20123;&#20195;&#30721;/&#25968;&#25454;&#65292;&#35266;&#23519;&#21464;&#21270;</li>
 </ul>
 </li>
 </ul>
@@ -388,7 +388,7 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">更完整的地址空间映象</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26356;&#23436;&#25972;&#30340;&#22320;&#22336;&#31354;&#38388;&#26144;&#35937;</h2>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>0000555555554000 r--p     a.out
 0000555555555000 r-xp     a.out
 0000555555556000 r--p     a.out
@@ -399,16 +399,16 @@ section .center {
 00007ffff7f5b000 r--p     libc-2.31.so
 00007ffff7fa9000 r--p     libc-2.31.so
 00007ffff7fad000 rw-p     libc-2.31.so
-00007ffff7faf000 rw-p     (这是什么？)
-00007ffff7fcb000 r--p     [vvar] (这又是什么？)
-00007ffff7fce000 r-xp     [vdso] (这叒是什么？)
-00007ffff7fcf000 r--p     (省略相似的 ld-2.31.so)
+00007ffff7faf000 rw-p     (&#36825;&#26159;&#20160;&#20040;&#65311;)
+00007ffff7fcb000 r--p     [vvar] (&#36825;&#21448;&#26159;&#20160;&#20040;&#65311;)
+00007ffff7fce000 r-xp     [vdso] (&#36825;&#21458;&#26159;&#20160;&#20040;&#65311;)
+00007ffff7fcf000 r--p     (&#30465;&#30053;&#30456;&#20284;&#30340; ld-2.31.so)
 00007ffffffde000 rw-p     [stack]
-ffffffffff600000 --xp     [vsyscall] (这叕是什么？)
+ffffffffff600000 --xp     [vsyscall] (&#36825;&#21461;&#26159;&#20160;&#20040;&#65311;)
 </code></pre></div>
 
 <ul class=" list-disc font-serif">
-<li class=" ml-8">是不是 bss? 给我们的代码加一个大数组试试！</li>
+<li class=" ml-8">&#26159;&#19981;&#26159; bss? &#32473;&#25105;&#20204;&#30340;&#20195;&#30721;&#21152;&#19968;&#20010;&#22823;&#25968;&#32452;&#35797;&#35797;&#65281;</li>
 </ul></div>
         
       
@@ -420,24 +420,24 @@ ffffffffff600000 --xp     [vsyscall] (这叕是什么？)
 
       
         
-        <div><h2 id="rtfm-5-proc" class=" text-xl mt-2 pb-2 font-sans">RTFM (5 proc): 我们发现的宝藏</h2>
+        <div><h2 id="rtfm-5-proc" class=" text-xl mt-2 pb-2 font-sans">RTFM (5 proc): &#25105;&#20204;&#21457;&#29616;&#30340;&#23453;&#34255;</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">vdso (7): Virtual system calls: 只读的系统调用也许可以不陷入内核执行。</p>
+<p class=" font-serif my-1">vdso (7): Virtual system calls: &#21482;&#35835;&#30340;&#31995;&#32479;&#35843;&#29992;&#20063;&#35768;&#21487;&#20197;&#19981;&#38519;&#20837;&#20869;&#26680;&#25191;&#34892;&#12290;</p>
 </blockquote>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/end-world.jpg" width="400px"> </p>
-<p class=" font-serif my-1">无需陷入内核的系统调用</p>
+<p class=" font-serif my-1">&#26080;&#38656;&#38519;&#20837;&#20869;&#26680;&#30340;&#31995;&#32479;&#35843;&#29992;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">例子: time (2)<ul class=" list-disc font-serif">
-<li class=" ml-8">直接调试 <a href="../../../pages/OS/2022/demos/vdso.c" class=" text-amber-900">vdso.c</a></li>
-<li class=" ml-8">时间：内核维护秒级的时间 (所有进程映射同一个页面)</li>
+<li class=" ml-8">&#20363;&#23376;: time (2)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#30452;&#25509;&#35843;&#35797; <a href="../../../pages/OS/2022/demos/vdso.c" class=" text-amber-900">vdso.c</a></li>
+<li class=" ml-8">&#26102;&#38388;&#65306;&#20869;&#26680;&#32500;&#25252;&#31186;&#32423;&#30340;&#26102;&#38388; (&#25152;&#26377;&#36827;&#31243;&#26144;&#23556;&#21516;&#19968;&#20010;&#39029;&#38754;)</li>
 </ul>
 </li>
-<li class=" ml-8">例子: gettimeofday (2)<ul class=" list-disc font-serif">
-<li class=" ml-8"><a href="https://elixir.bootlin.com/linux/latest/source/lib/vdso/gettimeofday.c#L49" class=" text-amber-900">RTFSC</a> (非常聪明的实现)</li>
+<li class=" ml-8">&#20363;&#23376;: gettimeofday (2)<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="https://elixir.bootlin.com/linux/latest/source/lib/vdso/gettimeofday.c#L49" class=" text-amber-900">RTFSC</a> (&#38750;&#24120;&#32874;&#26126;&#30340;&#23454;&#29616;)</li>
 </ul>
 </li>
-<li class=" ml-8">更多的例子：RTFM<ul class=" list-disc font-serif">
-<li class=" ml-8">计算机系统里没有魔法！我们理解了进程地址空间的<red>全部</red>！</li>
+<li class=" ml-8">&#26356;&#22810;&#30340;&#20363;&#23376;&#65306;RTFM<ul class=" list-disc font-serif">
+<li class=" ml-8">&#35745;&#31639;&#26426;&#31995;&#32479;&#37324;&#27809;&#26377;&#39764;&#27861;&#65281;&#25105;&#20204;&#29702;&#35299;&#20102;&#36827;&#31243;&#22320;&#22336;&#31354;&#38388;&#30340;<red>&#20840;&#37096;</red>&#65281;</li>
 </ul>
 </li>
 </ul></div>
@@ -451,23 +451,23 @@ ffffffffff600000 --xp     [vsyscall] (这叕是什么？)
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">(小知识) 系统调用的实现</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">(&#23567;&#30693;&#35782;) &#31995;&#32479;&#35843;&#29992;&#30340;&#23454;&#29616;</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">“执行系统调用时，进程陷入内核态执行”——不，不是的。</p>
+<p class=" font-serif my-1">&#8220;&#25191;&#34892;&#31995;&#32479;&#35843;&#29992;&#26102;&#65292;&#36827;&#31243;&#38519;&#20837;&#20869;&#26680;&#24577;&#25191;&#34892;&#8221;&#8212;&#8212;&#19981;&#65292;&#19981;&#26159;&#30340;&#12290;</p>
 </blockquote>
-<p class=" font-serif my-1">系统调用就是一组接口的约定，谁说一定要 <code>int</code> 指令？</p>
+<p class=" font-serif my-1">&#31995;&#32479;&#35843;&#29992;&#23601;&#26159;&#19968;&#32452;&#25509;&#21475;&#30340;&#32422;&#23450;&#65292;&#35841;&#35828;&#19968;&#23450;&#35201; <code>int</code> &#25351;&#20196;&#65311;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">光一条指令就要保存 ss, rsp, cs, rip, rflags (40 字节) 到内存</li>
+<li class=" ml-8">&#20809;&#19968;&#26465;&#25351;&#20196;&#23601;&#35201;&#20445;&#23384; ss, rsp, cs, rip, rflags (40 &#23383;&#33410;) &#21040;&#20869;&#23384;</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">SYSCALL — Fast System Call</p>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>RCX    <- RIP; (* 下条指令执行的地址 *)
-RIP    <- IA32_LSTAR;
-R11    <- RFLAGS;
-RFLAGS <- RFLAGS & ~(IA32_FMASK);
-CPL    <- 0; (* 进入 Ring 0 执行 *)
-CS.Selector <- IA32_STAR[47:32] & 0xFFFC
-SS.Selector <- IA32_STAR[47:32] + 8;
+<p class=" font-serif my-1">SYSCALL &#8212; Fast System Call</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>RCX    &lt;- RIP; (* &#19979;&#26465;&#25351;&#20196;&#25191;&#34892;&#30340;&#22320;&#22336; *)
+RIP    &lt;- IA32_LSTAR;
+R11    &lt;- RFLAGS;
+RFLAGS &lt;- RFLAGS &amp; ~(IA32_FMASK);
+CPL    &lt;- 0; (* &#36827;&#20837; Ring 0 &#25191;&#34892; *)
+CS.Selector &lt;- IA32_STAR[47:32] &amp; 0xFFFC
+SS.Selector &lt;- IA32_STAR[47:32] + 8;
 </code></pre></div></div>
         
       
@@ -479,22 +479,22 @@ SS.Selector <- IA32_STAR[47:32] + 8;
 
       
         
-        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">(小知识) 系统调用的实现 (cont'd)</h2>
-<p class=" font-serif my-1">能不能让其他系统调用也 trap 进入内核？</p>
+        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">(&#23567;&#30693;&#35782;) &#31995;&#32479;&#35843;&#29992;&#30340;&#23454;&#29616; (cont'd)</h2>
+<p class=" font-serif my-1">&#33021;&#19981;&#33021;&#35753;&#20854;&#20182;&#31995;&#32479;&#35843;&#29992;&#20063; trap &#36827;&#20837;&#20869;&#26680;&#65311;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">疯狂的事情也许真的是能实现的 (这算是魔法吗？)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#30127;&#29378;&#30340;&#20107;&#24773;&#20063;&#35768;&#30495;&#30340;&#26159;&#33021;&#23454;&#29616;&#30340; (&#36825;&#31639;&#26159;&#39764;&#27861;&#21527;&#65311;)<ul class=" list-disc font-serif">
 <li class=" ml-8"><a href="https://www.usenix.org/conference/osdi10/flexsc-flexible-system-call-scheduling-exception-less-system-calls" class=" text-amber-900">FlexSC: Flexible system call scheduling with exception-less system calls</a> (OSDI'10).</li>
 </ul>
 </li>
 </ul>
 <hr>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/GET.jpg" width="220px">
-使用共享内存和内核通信！</p>
+&#20351;&#29992;&#20849;&#20139;&#20869;&#23384;&#21644;&#20869;&#26680;&#36890;&#20449;&#65281;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">内核线程在 spinning 等待系统调用的到来</li>
-<li class=" ml-8">收到系统调用请求后立即开始执行</li>
-<li class=" ml-8">进程 spin 等待系统调用完成</li>
-<li class=" ml-8">如果系统调用很多，可以打包处理</li>
+<li class=" ml-8">&#20869;&#26680;&#32447;&#31243;&#22312; spinning &#31561;&#24453;&#31995;&#32479;&#35843;&#29992;&#30340;&#21040;&#26469;</li>
+<li class=" ml-8">&#25910;&#21040;&#31995;&#32479;&#35843;&#29992;&#35831;&#27714;&#21518;&#31435;&#21363;&#24320;&#22987;&#25191;&#34892;</li>
+<li class=" ml-8">&#36827;&#31243; spin &#31561;&#24453;&#31995;&#32479;&#35843;&#29992;&#23436;&#25104;</li>
+<li class=" ml-8">&#22914;&#26524;&#31995;&#32479;&#35843;&#29992;&#24456;&#22810;&#65292;&#21487;&#20197;&#25171;&#21253;&#22788;&#29702;</li>
 </ul></div>
         
       
@@ -510,7 +510,7 @@ SS.Selector <- IA32_STAR[47:32] + 8;
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">进程的地址空间管理</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#36827;&#31243;&#30340;&#22320;&#22336;&#31354;&#38388;&#31649;&#29702;</h1></div></div></div>
         
       
       </section>
@@ -521,19 +521,19 @@ SS.Selector <- IA32_STAR[47:32] + 8;
 
       
         
-        <div><h2 id="execve" class=" text-xl mt-2 pb-2 font-sans">Execve 之后……</h2>
-<p class=" font-serif my-1">进程只有少量内存映射</p>
+        <div><h2 id="execve" class=" text-xl mt-2 pb-2 font-sans">Execve &#20043;&#21518;&#8230;&#8230;</h2>
+<p class=" font-serif my-1">&#36827;&#31243;&#21482;&#26377;&#23569;&#37327;&#20869;&#23384;&#26144;&#23556;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">静态链接：代码、数据、堆栈、堆区</li>
-<li class=" ml-8">动态链接：代码、数据、堆栈、堆区、INTERP (ld.so)</li>
+<li class=" ml-8">&#38745;&#24577;&#38142;&#25509;&#65306;&#20195;&#30721;&#12289;&#25968;&#25454;&#12289;&#22534;&#26632;&#12289;&#22534;&#21306;</li>
+<li class=" ml-8">&#21160;&#24577;&#38142;&#25509;&#65306;&#20195;&#30721;&#12289;&#25968;&#25454;&#12289;&#22534;&#26632;&#12289;&#22534;&#21306;&#12289;INTERP (ld.so)</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">地址空间里剩下的部分是怎么创建的？</p>
+<p class=" font-serif my-1">&#22320;&#22336;&#31354;&#38388;&#37324;&#21097;&#19979;&#30340;&#37096;&#20998;&#26159;&#24590;&#20040;&#21019;&#24314;&#30340;&#65311;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">libc.so 都没有啊……</li>
-<li class=" ml-8">创建了以后，我们还能修改它吗？<ul class=" list-disc font-serif">
-<li class=" ml-8">肯定是能的：动态链接库可以动态加载 (M4)</li>
-<li class=" ml-8"><red>当然是通过系统调用了</red></li>
+<li class=" ml-8">libc.so &#37117;&#27809;&#26377;&#21834;&#8230;&#8230;</li>
+<li class=" ml-8">&#21019;&#24314;&#20102;&#20197;&#21518;&#65292;&#25105;&#20204;&#36824;&#33021;&#20462;&#25913;&#23427;&#21527;&#65311;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#32943;&#23450;&#26159;&#33021;&#30340;&#65306;&#21160;&#24577;&#38142;&#25509;&#24211;&#21487;&#20197;&#21160;&#24577;&#21152;&#36733; (M4)</li>
+<li class=" ml-8"><red>&#24403;&#28982;&#26159;&#36890;&#36807;&#31995;&#32479;&#35843;&#29992;&#20102;</red></li>
 </ul>
 </li>
 </ul></div>
@@ -547,28 +547,28 @@ SS.Selector <- IA32_STAR[47:32] + 8;
 
       
         
-        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">进程的地址空间 (cont'd)</h2>
-<p class=" font-serif my-1">进程的地址空间 = 内存里若干连续的 “段”</p>
+        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">&#36827;&#31243;&#30340;&#22320;&#22336;&#31354;&#38388; (cont'd)</h2>
+<p class=" font-serif my-1">&#36827;&#31243;&#30340;&#22320;&#22336;&#31354;&#38388; = &#20869;&#23384;&#37324;&#33509;&#24178;&#36830;&#32493;&#30340; &#8220;&#27573;&#8221;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">每一段是可访问 (读/写/执行) 的内存<ul class=" list-disc font-serif">
-<li class=" ml-8">可能映射到某个文件和/或在进程间共享</li>
+<li class=" ml-8">&#27599;&#19968;&#27573;&#26159;&#21487;&#35775;&#38382; (&#35835;/&#20889;/&#25191;&#34892;) &#30340;&#20869;&#23384;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21487;&#33021;&#26144;&#23556;&#21040;&#26576;&#20010;&#25991;&#20214;&#21644;/&#25110;&#22312;&#36827;&#31243;&#38388;&#20849;&#20139;</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">管理进程地址空间的系统调用</p>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="c1">// 映射</span>
+<p class=" font-serif my-1">&#31649;&#29702;&#36827;&#31243;&#22320;&#22336;&#31354;&#38388;&#30340;&#31995;&#32479;&#35843;&#29992;</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="c1">// &#26144;&#23556;</span>
 <span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="nf">mmap</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">addr</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">length</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">prot</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">flags</span><span class="p">,</span>
 <span class="w">           </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="kt">off_t</span><span class="w"> </span><span class="n">offset</span><span class="p">);</span>
 <span class="kt">int</span><span class="w"> </span><span class="nf">munmap</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">addr</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">length</span><span class="p">);</span>
 
-<span class="c1">// 修改映射权限</span>
+<span class="c1">// &#20462;&#25913;&#26144;&#23556;&#26435;&#38480;</span>
 <span class="kt">int</span><span class="w"> </span><span class="nf">mprotect</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">addr</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">length</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">prot</span><span class="p">);</span>
 </code></pre></div>
 
 <ul class=" list-disc font-serif">
 <li class=" ml-8">RTFM<ul class=" list-disc font-serif">
-<li class=" ml-8">说人话：状态上增加/删除/修改一段可访问的内存</li>
+<li class=" ml-8">&#35828;&#20154;&#35805;&#65306;&#29366;&#24577;&#19978;&#22686;&#21152;/&#21024;&#38500;/&#20462;&#25913;&#19968;&#27573;&#21487;&#35775;&#38382;&#30340;&#20869;&#23384;</li>
 </ul>
 </li>
 </ul></div>
@@ -582,15 +582,15 @@ SS.Selector <- IA32_STAR[47:32] + 8;
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">把文件映射到进程地址空间？</h2>
-<p class=" font-serif my-1">它们的确好像没有什么区别</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25226;&#25991;&#20214;&#26144;&#23556;&#21040;&#36827;&#31243;&#22320;&#22336;&#31354;&#38388;&#65311;</h2>
+<p class=" font-serif my-1">&#23427;&#20204;&#30340;&#30830;&#22909;&#20687;&#27809;&#26377;&#20160;&#20040;&#21306;&#21035;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">文件 = 字节序列</li>
-<li class=" ml-8">内存 = 字节序列</li>
-<li class=" ml-8">操作系统允许映射好像挺合理的……<ul class=" list-disc font-serif">
-<li class=" ml-8">带来了很大的方便</li>
-<li class=" ml-8">ELF loader 用 mmap 非常容易实现<ul class=" list-disc font-serif">
-<li class=" ml-8">解析出要加载哪部分到内存，直接 mmap 就完了</li>
+<li class=" ml-8">&#25991;&#20214; = &#23383;&#33410;&#24207;&#21015;</li>
+<li class=" ml-8">&#20869;&#23384; = &#23383;&#33410;&#24207;&#21015;</li>
+<li class=" ml-8">&#25805;&#20316;&#31995;&#32479;&#20801;&#35768;&#26144;&#23556;&#22909;&#20687;&#25402;&#21512;&#29702;&#30340;&#8230;&#8230;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#24102;&#26469;&#20102;&#24456;&#22823;&#30340;&#26041;&#20415;</li>
+<li class=" ml-8">ELF loader &#29992; mmap &#38750;&#24120;&#23481;&#26131;&#23454;&#29616;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#35299;&#26512;&#20986;&#35201;&#21152;&#36733;&#21738;&#37096;&#20998;&#21040;&#20869;&#23384;&#65292;&#30452;&#25509; mmap &#23601;&#23436;&#20102;</li>
 </ul>
 </li>
 </ul>
@@ -606,21 +606,21 @@ SS.Selector <- IA32_STAR[47:32] + 8;
 
       
         
-        <div><h2 id="memory-mapping" class=" text-xl mt-2 pb-2 font-sans">使用 Memory Mapping</h2>
+        <div><h2 id="memory-mapping" class=" text-xl mt-2 pb-2 font-sans">&#20351;&#29992; Memory Mapping</h2>
 <p class=" font-serif my-1">Example 1:</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">用 mmap 申请大量内存空间 (<a href="../../../pages/OS/2022/demos/mmap-alloc.c" class=" text-amber-900">mmap-alloc.c</a>)<ul class=" list-disc font-serif">
-<li class=" ml-8">瞬间完成</li>
-<li class=" ml-8">不妨 strace/gdb 看一下</li>
-<li class=" ml-8">libc 的 malloc/free 在初始空间用完后使用 sbrk/mmap 申请空间</li>
+<li class=" ml-8">&#29992; mmap &#30003;&#35831;&#22823;&#37327;&#20869;&#23384;&#31354;&#38388; (<a href="../../../pages/OS/2022/demos/mmap-alloc.c" class=" text-amber-900">mmap-alloc.c</a>)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#30636;&#38388;&#23436;&#25104;</li>
+<li class=" ml-8">&#19981;&#22952; strace/gdb &#30475;&#19968;&#19979;</li>
+<li class=" ml-8">libc &#30340; malloc/free &#22312;&#21021;&#22987;&#31354;&#38388;&#29992;&#23436;&#21518;&#20351;&#29992; sbrk/mmap &#30003;&#35831;&#31354;&#38388;</li>
 </ul>
 </li>
 </ul>
 <hr>
 <p class=" font-serif my-1">Example 2:</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">用 mmap 映射整个磁盘 (<a href="../../../pages/OS/2022/demos/mmap-disk.py" class=" text-amber-900">mmap-disk.py</a>)<ul class=" list-disc font-serif">
-<li class=" ml-8">瞬间完成</li>
+<li class=" ml-8">&#29992; mmap &#26144;&#23556;&#25972;&#20010;&#30913;&#30424; (<a href="../../../pages/OS/2022/demos/mmap-disk.py" class=" text-amber-900">mmap-disk.py</a>)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#30636;&#38388;&#23436;&#25104;</li>
 </ul>
 </li>
 </ul></div>
@@ -634,28 +634,28 @@ SS.Selector <- IA32_STAR[47:32] + 8;
 
       
         
-        <div><h2 id="memory-mapped-file" class=" text-xl mt-2 pb-2 font-sans">Memory-Mapped File: 一致性</h2>
-<p class=" font-serif my-1">但我们好像带来了一些问题……</p>
+        <div><h2 id="memory-mapped-file" class=" text-xl mt-2 pb-2 font-sans">Memory-Mapped File: &#19968;&#33268;&#24615;</h2>
+<p class=" font-serif my-1">&#20294;&#25105;&#20204;&#22909;&#20687;&#24102;&#26469;&#20102;&#19968;&#20123;&#38382;&#39064;&#8230;&#8230;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">如果把页面映射到文件<ul class=" list-disc font-serif">
-<li class=" ml-8">修改什么时候生效？<ul class=" list-disc font-serif">
-<li class=" ml-8">立即生效：那会造成巨大量的磁盘 I/O</li>
-<li class=" ml-8">unmap (进程终止) 时生效：好像又太迟了……</li>
+<li class=" ml-8">&#22914;&#26524;&#25226;&#39029;&#38754;&#26144;&#23556;&#21040;&#25991;&#20214;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20462;&#25913;&#20160;&#20040;&#26102;&#20505;&#29983;&#25928;&#65311;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#31435;&#21363;&#29983;&#25928;&#65306;&#37027;&#20250;&#36896;&#25104;&#24040;&#22823;&#37327;&#30340;&#30913;&#30424; I/O</li>
+<li class=" ml-8">unmap (&#36827;&#31243;&#32456;&#27490;) &#26102;&#29983;&#25928;&#65306;&#22909;&#20687;&#21448;&#22826;&#36831;&#20102;&#8230;&#8230;</li>
 </ul>
 </li>
-<li class=" ml-8">若干个映射到同一个文件的进程？<ul class=" list-disc font-serif">
-<li class=" ml-8">共享一份内存？</li>
-<li class=" ml-8">各自有本地的副本？</li>
+<li class=" ml-8">&#33509;&#24178;&#20010;&#26144;&#23556;&#21040;&#21516;&#19968;&#20010;&#25991;&#20214;&#30340;&#36827;&#31243;&#65311;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20849;&#20139;&#19968;&#20221;&#20869;&#23384;&#65311;</li>
+<li class=" ml-8">&#21508;&#33258;&#26377;&#26412;&#22320;&#30340;&#21103;&#26412;&#65311;</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">请查阅手册，看看操作系统是如何规定这些操作的行为的</p>
+<p class=" font-serif my-1">&#35831;&#26597;&#38405;&#25163;&#20876;&#65292;&#30475;&#30475;&#25805;&#20316;&#31995;&#32479;&#26159;&#22914;&#20309;&#35268;&#23450;&#36825;&#20123;&#25805;&#20316;&#30340;&#34892;&#20026;&#30340;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">例如阅读 <code>msync (2)</code></li>
-<li class=" ml-8">这才是操作系统真正的复杂性</li>
+<li class=" ml-8">&#20363;&#22914;&#38405;&#35835; <code>msync (2)</code></li>
+<li class=" ml-8">&#36825;&#25165;&#26159;&#25805;&#20316;&#31995;&#32479;&#30495;&#27491;&#30340;&#22797;&#26434;&#24615;</li>
 </ul></div>
         
       
@@ -671,7 +671,7 @@ SS.Selector <- IA32_STAR[47:32] + 8;
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">地址空间的隔离</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#22320;&#22336;&#31354;&#38388;&#30340;&#38548;&#31163;</h1></div></div></div>
         
       
       </section>
@@ -682,17 +682,17 @@ SS.Selector <- IA32_STAR[47:32] + 8;
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">地址空间：实现进程隔离</h2>
-<p class=" font-serif my-1">每个 <code>*ptr</code> 都只能访问<red>本进程 (状态机)</red> 的内存</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#22320;&#22336;&#31354;&#38388;&#65306;&#23454;&#29616;&#36827;&#31243;&#38548;&#31163;</h2>
+<p class=" font-serif my-1">&#27599;&#20010; <code>*ptr</code> &#37117;&#21482;&#33021;&#35775;&#38382;<red>&#26412;&#36827;&#31243; (&#29366;&#24577;&#26426;)</red> &#30340;&#20869;&#23384;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">除非 mmap 显示指定、映射共享文件或共享内存多线程</li>
-<li class=" ml-8">实现了操作系统最重要的功能：进程之间的隔离</li>
+<li class=" ml-8">&#38500;&#38750; mmap &#26174;&#31034;&#25351;&#23450;&#12289;&#26144;&#23556;&#20849;&#20139;&#25991;&#20214;&#25110;&#20849;&#20139;&#20869;&#23384;&#22810;&#32447;&#31243;</li>
+<li class=" ml-8">&#23454;&#29616;&#20102;&#25805;&#20316;&#31995;&#32479;&#26368;&#37325;&#35201;&#30340;&#21151;&#33021;&#65306;&#36827;&#31243;&#20043;&#38388;&#30340;&#38548;&#31163;</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">任何一个程序都不能因为 bug 或恶意行为侵犯其他程序执行</p>
+<p class=" font-serif my-1">&#20219;&#20309;&#19968;&#20010;&#31243;&#24207;&#37117;&#19981;&#33021;&#22240;&#20026; bug &#25110;&#24694;&#24847;&#34892;&#20026;&#20405;&#29359;&#20854;&#20182;&#31243;&#24207;&#25191;&#34892;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">“连方法都没有”</li>
-<li class=" ml-8">吗……？</li>
+<li class=" ml-8">&#8220;&#36830;&#26041;&#27861;&#37117;&#27809;&#26377;&#8221;</li>
+<li class=" ml-8">&#21527;&#8230;&#8230;&#65311;</li>
 </ul></div>
         
       
@@ -704,11 +704,11 @@ SS.Selector <- IA32_STAR[47:32] + 8;
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">电子游戏的上一个黄金时代</h2>
-<p class=" font-serif my-1">电子竞技的先行者：“即时战略游戏” (Real-Time Strategy)</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#30005;&#23376;&#28216;&#25103;&#30340;&#19978;&#19968;&#20010;&#40644;&#37329;&#26102;&#20195;</h2>
+<p class=" font-serif my-1">&#30005;&#23376;&#31454;&#25216;&#30340;&#20808;&#34892;&#32773;&#65306;&#8220;&#21363;&#26102;&#25112;&#30053;&#28216;&#25103;&#8221; (Real-Time Strategy)</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><a href="https://www.bilibili.com/video/BV1Yq4y1G7bQ" class=" text-amber-900">Command and Conquer</a> (Westwood), Starcraft (<del>Microsoft</del>), ...<ul class=" list-disc font-serif">
-<li class=" ml-8">如果我们想 “侵犯” 游戏的执行……呢？</li>
+<li class=" ml-8">&#22914;&#26524;&#25105;&#20204;&#24819; &#8220;&#20405;&#29359;&#8221; &#28216;&#25103;&#30340;&#25191;&#34892;&#8230;&#8230;&#21602;&#65311;</li>
 </ul>
 </li>
 </ul>
@@ -723,14 +723,14 @@ SS.Selector <- IA32_STAR[47:32] + 8;
 
       
         
-        <div><h2 id="1" class=" text-xl mt-2 pb-2 font-sans">前互联网时代的神器 (1): 金山游侠</h2>
-<p class=" font-serif my-1"><red>在进程的内存中找到代表 “金钱”、“生命” 的重要属性并且改掉</red></p>
+        <div><h2 id="1" class=" text-xl mt-2 pb-2 font-sans">&#21069;&#20114;&#32852;&#32593;&#26102;&#20195;&#30340;&#31070;&#22120; (1): &#37329;&#23665;&#28216;&#20384;</h2>
+<p class=" font-serif my-1"><red>&#22312;&#36827;&#31243;&#30340;&#20869;&#23384;&#20013;&#25214;&#21040;&#20195;&#34920; &#8220;&#37329;&#38065;&#8221;&#12289;&#8220;&#29983;&#21629;&#8221; &#30340;&#37325;&#35201;&#23646;&#24615;&#24182;&#19988;&#25913;&#25481;</red></p>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/knight.jpg" width="500px"></p>
 <hr>
-<p class=" font-serif my-1">只要有访问其他进程内存和在程序上 “悬浮显示” 的 API 即可</p>
+<p class=" font-serif my-1">&#21482;&#35201;&#26377;&#35775;&#38382;&#20854;&#20182;&#36827;&#31243;&#20869;&#23384;&#21644;&#22312;&#31243;&#24207;&#19978; &#8220;&#24748;&#28014;&#26174;&#31034;&#8221; &#30340; API &#21363;&#21487;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">想象成是另一个进程内存的 “调试器”</li>
-<li class=" ml-8">在 Linux 中可以轻松拥有：<a href="../../../pages/OS/2022/demos/dosbox-hack.c" class=" text-amber-900">dosbox-hack.c</a></li>
+<li class=" ml-8">&#24819;&#35937;&#25104;&#26159;&#21478;&#19968;&#20010;&#36827;&#31243;&#20869;&#23384;&#30340; &#8220;&#35843;&#35797;&#22120;&#8221;</li>
+<li class=" ml-8">&#22312; Linux &#20013;&#21487;&#20197;&#36731;&#26494;&#25317;&#26377;&#65306;<a href="../../../pages/OS/2022/demos/dosbox-hack.c" class=" text-amber-900">dosbox-hack.c</a></li>
 </ul></div>
         
       
@@ -742,16 +742,16 @@ SS.Selector <- IA32_STAR[47:32] + 8;
 
       
         
-        <div><h2 id="2" class=" text-xl mt-2 pb-2 font-sans">前互联网时代的神器 (2): 按键精灵</h2>
-<p class=" font-serif my-1"><red>大量重复固定的任务 (例如 2 秒 17 枪)</red></p>
+        <div><h2 id="2" class=" text-xl mt-2 pb-2 font-sans">&#21069;&#20114;&#32852;&#32593;&#26102;&#20195;&#30340;&#31070;&#22120; (2): &#25353;&#38190;&#31934;&#28789;</h2>
+<p class=" font-serif my-1"><red>&#22823;&#37327;&#37325;&#22797;&#22266;&#23450;&#30340;&#20219;&#21153; (&#20363;&#22914; 2 &#31186; 17 &#26538;)</red></p>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/ajjl.jpg" width="600px"></p>
 <hr>
-<p class=" font-serif my-1">这个简单，就是给进程发送键盘/鼠标事件</p>
+<p class=" font-serif my-1">&#36825;&#20010;&#31616;&#21333;&#65292;&#23601;&#26159;&#32473;&#36827;&#31243;&#21457;&#36865;&#38190;&#30424;/&#40736;&#26631;&#20107;&#20214;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">做个驱动；或者</li>
-<li class=" ml-8">利用操作系统/窗口管理器提供的 API<ul class=" list-disc font-serif">
-<li class=" ml-8"><a href="https://github.com/jordansissel/xdotool" class=" text-amber-900">xdotool</a> (我们用这玩意测试 vscode 的插件)</li>
-<li class=" ml-8"><a href="https://www.kernel.org/doc/html/latest/input/input.html" class=" text-amber-900">evdev</a> (我们用这玩意显示按键；仅课堂展示有效)</li>
+<li class=" ml-8">&#20570;&#20010;&#39537;&#21160;&#65307;&#25110;&#32773;</li>
+<li class=" ml-8">&#21033;&#29992;&#25805;&#20316;&#31995;&#32479;/&#31383;&#21475;&#31649;&#29702;&#22120;&#25552;&#20379;&#30340; API<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="https://github.com/jordansissel/xdotool" class=" text-amber-900">xdotool</a> (&#25105;&#20204;&#29992;&#36825;&#29609;&#24847;&#27979;&#35797; vscode &#30340;&#25554;&#20214;)</li>
+<li class=" ml-8"><a href="https://www.kernel.org/doc/html/latest/input/input.html" class=" text-amber-900">evdev</a> (&#25105;&#20204;&#29992;&#36825;&#29609;&#24847;&#26174;&#31034;&#25353;&#38190;&#65307;&#20165;&#35838;&#22530;&#23637;&#31034;&#26377;&#25928;)</li>
 </ul>
 </li>
 </ul></div>
@@ -765,17 +765,17 @@ SS.Selector <- IA32_STAR[47:32] + 8;
 
       
         
-        <div><h2 id="3" class=" text-xl mt-2 pb-2 font-sans">前互联网时代的神器 (3): 变速齿轮</h2>
-<p class=" font-serif my-1"><red>调整游戏的逻辑更新速度</red></p>
+        <div><h2 id="3" class=" text-xl mt-2 pb-2 font-sans">&#21069;&#20114;&#32852;&#32593;&#26102;&#20195;&#30340;&#31070;&#22120; (3): &#21464;&#36895;&#40831;&#36718;</h2>
+<p class=" font-serif my-1"><red>&#35843;&#25972;&#28216;&#25103;&#30340;&#36923;&#36753;&#26356;&#26032;&#36895;&#24230;</red></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">比如<a href="https://baike.baidu.com/item/%E5%8F%B0%E6%B9%BE%E5%A4%A9%E5%A0%82%E9%B8%9F%E8%B5%84%E8%AE%AF%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8/8443017" class=" text-amber-900">某神秘公司</a>慢到难以忍受的跑图和战斗</li>
+<li class=" ml-8">&#27604;&#22914;<a href="https://baike.baidu.com/item/%E5%8F%B0%E6%B9%BE%E5%A4%A9%E5%A0%82%E9%B8%9F%E8%B5%84%E8%AE%AF%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8/8443017" class=" text-amber-900">&#26576;&#31070;&#31192;&#20844;&#21496;</a>&#24930;&#21040;&#38590;&#20197;&#24525;&#21463;&#30340;&#36305;&#22270;&#21644;&#25112;&#26007;</li>
 </ul>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/speed-up.jpg" width="500px"></p>
 <hr>
-<p class=" font-serif my-1">本质是 “欺骗” 进程的时钟</p>
+<p class=" font-serif my-1">&#26412;&#36136;&#26159; &#8220;&#27450;&#39575;&#8221; &#36827;&#31243;&#30340;&#26102;&#38047;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">源头：闹钟、睡眠、<code>gettimeofday</code></li>
-<li class=" ml-8">拦截它们需要稍稍更复杂的技术</li>
+<li class=" ml-8">&#28304;&#22836;&#65306;&#38393;&#38047;&#12289;&#30561;&#30496;&#12289;<code>gettimeofday</code></li>
+<li class=" ml-8">&#25318;&#25130;&#23427;&#20204;&#38656;&#35201;&#31245;&#31245;&#26356;&#22797;&#26434;&#30340;&#25216;&#26415;</li>
 </ul></div>
         
       
@@ -787,11 +787,11 @@ SS.Selector <- IA32_STAR[47:32] + 8;
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">更强大的游戏外挂？</h2>
-<p class=" font-serif my-1">游戏也是程序，也是状态机</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26356;&#24378;&#22823;&#30340;&#28216;&#25103;&#22806;&#25346;&#65311;</h2>
+<p class=" font-serif my-1">&#28216;&#25103;&#20063;&#26159;&#31243;&#24207;&#65292;&#20063;&#26159;&#29366;&#24577;&#26426;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">通过 API 调用 (和系统调用) 最终取得状态、修改状态</li>
-<li class=" ml-8">想象成是一个 “为这个游戏专门设计的 gdb”</li>
+<li class=" ml-8">&#36890;&#36807; API &#35843;&#29992; (&#21644;&#31995;&#32479;&#35843;&#29992;) &#26368;&#32456;&#21462;&#24471;&#29366;&#24577;&#12289;&#20462;&#25913;&#29366;&#24577;</li>
+<li class=" ml-8">&#24819;&#35937;&#25104;&#26159;&#19968;&#20010; &#8220;&#20026;&#36825;&#20010;&#28216;&#25103;&#19987;&#38376;&#35774;&#35745;&#30340; gdb&#8221;</li>
 </ul>
 <p class=" font-serif my-1"><a href="https://www.bilibili.com/video/BV1Wx41177np" class=" text-amber-900"><img alt="" class="center" src="../../../pages/OS/img/lfg.jpg" width="600px"></a></p></div>
         
@@ -804,11 +804,11 @@ SS.Selector <- IA32_STAR[47:32] + 8;
 
       
         
-        <div><h2 id="hooking" class=" text-xl mt-2 pb-2 font-sans">代码注入 (Hooking)</h2>
-<p class=" font-serif my-1">我们可以改内存，也可以改代码！</p>
+        <div><h2 id="hooking" class=" text-xl mt-2 pb-2 font-sans">&#20195;&#30721;&#27880;&#20837; (Hooking)</h2>
+<p class=" font-serif my-1">&#25105;&#20204;&#21487;&#20197;&#25913;&#20869;&#23384;&#65292;&#20063;&#21487;&#20197;&#25913;&#20195;&#30721;&#65281;</p>
 <p class=" font-serif my-1">The Light Side</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">“软件热补丁” <a href="../../../pages/OS/2022/demos/dsu.c" class=" text-amber-900">dsu.c</a> (mprotect)</li>
+<li class=" ml-8">&#8220;&#36719;&#20214;&#28909;&#34917;&#19969;&#8221; <a href="../../../pages/OS/2022/demos/dsu.c" class=" text-amber-900">dsu.c</a> (mprotect)</li>
 <li class=" ml-8"><a href="https://dl.acm.org/doi/10.1145/1519065.1519085" class=" text-amber-900">Ksplice: Automatic rebootless Kernel updates</a> (EuroSys'09)</li>
 </ul></div>
         
@@ -817,8 +817,8 @@ SS.Selector <- IA32_STAR[47:32] + 8;
         <div><hr>
 <p class=" font-serif my-1">The Dark Side</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">对于外挂，代码可以静态/动态/vtable/DLL... 注入<ul class=" list-disc font-serif">
-<li class=" ml-8"><code>render(objects)</code> → <code>render_hacked(objects)</code></li>
+<li class=" ml-8">&#23545;&#20110;&#22806;&#25346;&#65292;&#20195;&#30721;&#21487;&#20197;&#38745;&#24577;/&#21160;&#24577;/vtable/DLL... &#27880;&#20837;<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>render(objects)</code> &#8594; <code>render_hacked(objects)</code></li>
 </ul>
 </li>
 </ul>
@@ -833,27 +833,27 @@ SS.Selector <- IA32_STAR[47:32] + 8;
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">游戏外挂：攻与防</h2>
-<p class=" font-serif my-1">控制/数据流完整性</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#28216;&#25103;&#22806;&#25346;&#65306;&#25915;&#19982;&#38450;</h2>
+<p class=" font-serif my-1">&#25511;&#21046;/&#25968;&#25454;&#27969;&#23436;&#25972;&#24615;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">保护进程的完整性<ul class=" list-disc font-serif">
-<li class=" ml-8">独立的进程/驱动做完整性验证</li>
+<li class=" ml-8">&#20445;&#25252;&#36827;&#31243;&#30340;&#23436;&#25972;&#24615;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#29420;&#31435;&#30340;&#36827;&#31243;/&#39537;&#21160;&#20570;&#23436;&#25972;&#24615;&#39564;&#35777;</li>
 </ul>
 </li>
-<li class=" ml-8">保护隐私数据不被其他进程读写<ul class=" list-disc font-serif">
-<li class=" ml-8">拦截向本进程的 <code>ReadProcessMemory</code> 和 <code>WriteProcessMemory</code>，发现后立即拒绝执行</li>
+<li class=" ml-8">&#20445;&#25252;&#38544;&#31169;&#25968;&#25454;&#19981;&#34987;&#20854;&#20182;&#36827;&#31243;&#35835;&#20889;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25318;&#25130;&#21521;&#26412;&#36827;&#31243;&#30340; <code>ReadProcessMemory</code> &#21644; <code>WriteProcessMemory</code>&#65292;&#21457;&#29616;&#21518;&#31435;&#21363;&#25298;&#32477;&#25191;&#34892;</li>
 </ul>
 </li>
-<li class=" ml-8">例子 <ul class=" list-disc font-serif">
+<li class=" ml-8">&#20363;&#23376; <ul class=" list-disc font-serif">
 <li class=" ml-8"><a href="https://irdeto.com/denuvo/anti-cheat/" class=" text-amber-900">Denuvo Anti-Cheat</a>, <a href="https://dev.epicgames.com/docs/services/en-US/GameServices/AntiCheat/UsingAntiCheat/index.html" class=" text-amber-900">Epic Anti-Cheat Interface</a></li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">其他解决方法</p>
+<p class=" font-serif my-1">&#20854;&#20182;&#35299;&#20915;&#26041;&#27861;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">AI 监控/社会工程学：如果你强得不正常，当然要盯上你</li>
-<li class=" ml-8">云/沙盒 (Enclave) 渲染：“计算不再信任操作系统”</li>
+<li class=" ml-8">AI &#30417;&#25511;/&#31038;&#20250;&#24037;&#31243;&#23398;&#65306;&#22914;&#26524;&#20320;&#24378;&#24471;&#19981;&#27491;&#24120;&#65292;&#24403;&#28982;&#35201;&#30447;&#19978;&#20320;</li>
+<li class=" ml-8">&#20113;/&#27801;&#30418; (Enclave) &#28210;&#26579;&#65306;&#8220;&#35745;&#31639;&#19981;&#20877;&#20449;&#20219;&#25805;&#20316;&#31995;&#32479;&#8221;</li>
 </ul></div>
         
       
@@ -869,7 +869,7 @@ SS.Selector <- IA32_STAR[47:32] + 8;
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">总结</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#24635;&#32467;</h1></div></div></div>
         
       
       </section>
@@ -880,22 +880,22 @@ SS.Selector <- IA32_STAR[47:32] + 8;
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">总结</h2>
-<p class=" font-serif my-1">本次课回答的问题</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#24635;&#32467;</h2>
+<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#22238;&#31572;&#30340;&#38382;&#39064;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><strong>Q</strong>: 进程的地址空间是如何创建、如何更改的？</li>
+<li class=" ml-8"><strong>Q</strong>: &#36827;&#31243;&#30340;&#22320;&#22336;&#31354;&#38388;&#26159;&#22914;&#20309;&#21019;&#24314;&#12289;&#22914;&#20309;&#26356;&#25913;&#30340;&#65311;</li>
 </ul>
 <hr>
 <p class=" font-serif my-1">Take-away messages</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">进程的地址空间<ul class=" list-disc font-serif">
-<li class=" ml-8">能文件关联的、带有访问权限的连续内存段<ul class=" list-disc font-serif">
+<li class=" ml-8">&#36827;&#31243;&#30340;&#22320;&#22336;&#31354;&#38388;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#33021;&#25991;&#20214;&#20851;&#32852;&#30340;&#12289;&#24102;&#26377;&#35775;&#38382;&#26435;&#38480;&#30340;&#36830;&#32493;&#20869;&#23384;&#27573;<ul class=" list-disc font-serif">
 <li class=" ml-8">a.out, ld.so, libc.so, heap, stack, vdso</li>
 </ul>
 </li>
 </ul>
 </li>
-<li class=" ml-8">进程地址空间的管理 API<ul class=" list-disc font-serif">
+<li class=" ml-8">&#36827;&#31243;&#22320;&#22336;&#31354;&#38388;&#30340;&#31649;&#29702; API<ul class=" list-disc font-serif">
 <li class=" ml-8">mmap</li>
 </ul>
 </li>

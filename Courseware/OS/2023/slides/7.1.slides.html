@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // • auto-render specific keys, e.g.:
+            // &#8226; auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // • rendering keys, e.g.:
+            // &#8226; rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +209,7 @@ section .center {
 }
 </style>
 
-  <title>互斥问题：定义与假设</title>
+  <title>&#20114;&#26021;&#38382;&#39064;&#65306;&#23450;&#20041;&#19982;&#20551;&#35774;</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,7 +227,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="7.1.slides.html" class=" text-amber-900">互斥问题：定义与假设</a></h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="7.1.slides.html" class=" text-amber-900">&#20114;&#26021;&#38382;&#39064;&#65306;&#23450;&#20041;&#19982;&#20551;&#35774;</a></h1></div></div></div>
         
       
       </section>
@@ -238,16 +238,16 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">回顾：并发编程</h2>
-<p class=" font-serif my-1">理解并发的工具</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#22238;&#39038;&#65306;&#24182;&#21457;&#32534;&#31243;</h2>
+<p class=" font-serif my-1">&#29702;&#35299;&#24182;&#21457;&#30340;&#24037;&#20855;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">线程 = 人 (大脑能完成局部存储和计算)</li>
-<li class=" ml-8">共享内存 = 物理世界 (物理世界天生并行)</li>
-<li class=" ml-8">一切都是状态机 (debugger & model checker)</li>
+<li class=" ml-8">&#32447;&#31243; = &#20154; (&#22823;&#33041;&#33021;&#23436;&#25104;&#23616;&#37096;&#23384;&#20648;&#21644;&#35745;&#31639;)</li>
+<li class=" ml-8">&#20849;&#20139;&#20869;&#23384; = &#29289;&#29702;&#19990;&#30028; (&#29289;&#29702;&#19990;&#30028;&#22825;&#29983;&#24182;&#34892;)</li>
+<li class=" ml-8">&#19968;&#20999;&#37117;&#26159;&#29366;&#24577;&#26426; (debugger &amp; model checker)</li>
 </ul>
 <hr>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/wc.jpg" width="600px"></p>
-<p class=" font-serif my-1"></p><center>“躲进厕所锁上门，我就把全世界人锁在了厕所外”</center></div>
+<p class=" font-serif my-1"></p><center>&#8220;&#36530;&#36827;&#21397;&#25152;&#38145;&#19978;&#38376;&#65292;&#25105;&#23601;&#25226;&#20840;&#19990;&#30028;&#20154;&#38145;&#22312;&#20102;&#21397;&#25152;&#22806;&#8221;</center></div>
         
       
       </section>
@@ -258,10 +258,10 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">互斥问题：定义</h2>
-<p class=" font-serif my-1">互斥 (mutual exclusion)，“互相排斥”</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20114;&#26021;&#38382;&#39064;&#65306;&#23450;&#20041;</h2>
+<p class=" font-serif my-1">&#20114;&#26021; (mutual exclusion)&#65292;&#8220;&#20114;&#30456;&#25490;&#26021;&#8221;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">实现 <code>lock_t</code> 数据结构和 <code>lock/unlock</code> API:</li>
+<li class=" ml-8">&#23454;&#29616; <code>lock_t</code> &#25968;&#25454;&#32467;&#26500;&#21644; <code>lock/unlock</code> API:</li>
 </ul>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="p">...</span>
@@ -271,11 +271,11 @@ section .center {
 </code></pre></div>
 
 <hr>
-<p class=" font-serif my-1">一把 “排他性” 的锁——对于锁对象 <code>lk</code></p>
+<p class=" font-serif my-1">&#19968;&#25226; &#8220;&#25490;&#20182;&#24615;&#8221; &#30340;&#38145;&#8212;&#8212;&#23545;&#20110;&#38145;&#23545;&#35937; <code>lk</code></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">如果某个线程持有锁，则其他线程的 <code>lock</code> 不能返回 (Safety)</li>
-<li class=" ml-8">在多个线程执行 <code>lock</code> 时，至少有一个可以返回 (Liveness)</li>
-<li class=" ml-8">能<red>正确处理处理器乱序、宽松内存模型和编译优化</red></li>
+<li class=" ml-8">&#22914;&#26524;&#26576;&#20010;&#32447;&#31243;&#25345;&#26377;&#38145;&#65292;&#21017;&#20854;&#20182;&#32447;&#31243;&#30340; <code>lock</code> &#19981;&#33021;&#36820;&#22238; (Safety)</li>
+<li class=" ml-8">&#22312;&#22810;&#20010;&#32447;&#31243;&#25191;&#34892; <code>lock</code> &#26102;&#65292;&#33267;&#23569;&#26377;&#19968;&#20010;&#21487;&#20197;&#36820;&#22238; (Liveness)</li>
+<li class=" ml-8">&#33021;<red>&#27491;&#30830;&#22788;&#29702;&#22788;&#29702;&#22120;&#20081;&#24207;&#12289;&#23485;&#26494;&#20869;&#23384;&#27169;&#22411;&#21644;&#32534;&#35793;&#20248;&#21270;</red></li>
 </ul></div>
         
       
@@ -287,23 +287,23 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">互斥问题的经典算法</h2>
-<p class=" font-serif my-1">Peterson 算法</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20114;&#26021;&#38382;&#39064;&#30340;&#32463;&#20856;&#31639;&#27861;</h2>
+<p class=" font-serif my-1">Peterson &#31639;&#27861;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">包间、旗子和门上的字条</li>
-<li class=" ml-8"><red>假设 atomic load/store</red><ul class=" list-disc font-serif">
-<li class=" ml-8">实现这个假设也不是非常容易的 (<a href="../../../pages/OS/2023/c/peterson.c" class=" text-amber-900">peterson.c</a>)</li>
+<li class=" ml-8">&#21253;&#38388;&#12289;&#26071;&#23376;&#21644;&#38376;&#19978;&#30340;&#23383;&#26465;</li>
+<li class=" ml-8"><red>&#20551;&#35774; atomic load/store</red><ul class=" list-disc font-serif">
+<li class=" ml-8">&#23454;&#29616;&#36825;&#20010;&#20551;&#35774;&#20063;&#19981;&#26159;&#38750;&#24120;&#23481;&#26131;&#30340; (<a href="../../../pages/OS/2023/c/peterson.c" class=" text-amber-900">peterson.c</a>)</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">因此，<red>假设很重要</red></p>
+<p class=" font-serif my-1">&#22240;&#27492;&#65292;<red>&#20551;&#35774;&#24456;&#37325;&#35201;</red></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">不能同时读/写共享内存 (1960s) 不是一个好的假设<ul class=" list-disc font-serif">
-<li class=" ml-8">Load (环顾四周) 的时候不能写，“看一眼就把眼睛闭上”</li>
-<li class=" ml-8">Store (改变物理世界状态) 的时候不能读，“闭着眼睛动手”</li>
-<li class=" ml-8">这是《操作系统》课<ul class=" list-disc font-serif">
-<li class=" ml-8">更喜欢直观、简单、粗暴 (稳定)、有效的解决方法 </li>
+<li class=" ml-8">&#19981;&#33021;&#21516;&#26102;&#35835;/&#20889;&#20849;&#20139;&#20869;&#23384; (1960s) &#19981;&#26159;&#19968;&#20010;&#22909;&#30340;&#20551;&#35774;<ul class=" list-disc font-serif">
+<li class=" ml-8">Load (&#29615;&#39038;&#22235;&#21608;) &#30340;&#26102;&#20505;&#19981;&#33021;&#20889;&#65292;&#8220;&#30475;&#19968;&#30524;&#23601;&#25226;&#30524;&#30555;&#38381;&#19978;&#8221;</li>
+<li class=" ml-8">Store (&#25913;&#21464;&#29289;&#29702;&#19990;&#30028;&#29366;&#24577;) &#30340;&#26102;&#20505;&#19981;&#33021;&#35835;&#65292;&#8220;&#38381;&#30528;&#30524;&#30555;&#21160;&#25163;&#8221;</li>
+<li class=" ml-8">&#36825;&#26159;&#12298;&#25805;&#20316;&#31995;&#32479;&#12299;&#35838;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#26356;&#21916;&#27426;&#30452;&#35266;&#12289;&#31616;&#21333;&#12289;&#31895;&#26292; (&#31283;&#23450;)&#12289;&#26377;&#25928;&#30340;&#35299;&#20915;&#26041;&#27861; </li>
 </ul>
 </li>
 </ul>
@@ -319,26 +319,26 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">实现互斥的基本假设</h2>
-<p class=" font-serif my-1">允许使用使我们可以<red>不管一切麻烦事</red>的原子指令</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#23454;&#29616;&#20114;&#26021;&#30340;&#22522;&#26412;&#20551;&#35774;</h2>
+<p class=" font-serif my-1">&#20801;&#35768;&#20351;&#29992;&#20351;&#25105;&#20204;&#21487;&#20197;<red>&#19981;&#31649;&#19968;&#20999;&#40635;&#28902;&#20107;</red>&#30340;&#21407;&#23376;&#25351;&#20196;</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">atomic_inc</span><span class="p">(</span><span class="kt">long</span><span class="w"> </span><span class="o">*</span><span class="n">ptr</span><span class="p">);</span>
 <span class="kt">int</span><span class="w"> </span><span class="nf">atomic_xchg</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">val</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">ptr</span><span class="p">);</span>
 </code></pre></div>
 
 <hr>
-<p class=" font-serif my-1">看起来是一个普通的函数，但<red>假设</red>：</p>
+<p class=" font-serif my-1">&#30475;&#36215;&#26469;&#26159;&#19968;&#20010;&#26222;&#36890;&#30340;&#20989;&#25968;&#65292;&#20294;<red>&#20551;&#35774;</red>&#65306;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">包含一个原子指令<ul class=" list-disc font-serif">
-<li class=" ml-8">指令的执行不能被打断</li>
+<li class=" ml-8">&#21253;&#21547;&#19968;&#20010;&#21407;&#23376;&#25351;&#20196;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25351;&#20196;&#30340;&#25191;&#34892;&#19981;&#33021;&#34987;&#25171;&#26029;</li>
 </ul>
 </li>
-<li class=" ml-8">包含一个 compiler barrier<ul class=" list-disc font-serif">
-<li class=" ml-8">无论何种优化都不可越过此函数</li>
+<li class=" ml-8">&#21253;&#21547;&#19968;&#20010; compiler barrier<ul class=" list-disc font-serif">
+<li class=" ml-8">&#26080;&#35770;&#20309;&#31181;&#20248;&#21270;&#37117;&#19981;&#21487;&#36234;&#36807;&#27492;&#20989;&#25968;</li>
 </ul>
 </li>
-<li class=" ml-8">包含一个 memory fence<ul class=" list-disc font-serif">
-<li class=" ml-8">保证处理器在 stop-the-world 前所有对内存的 store 都 “生效”</li>
-<li class=" ml-8">即对 resume-the-world 之后的 load 可见</li>
+<li class=" ml-8">&#21253;&#21547;&#19968;&#20010; memory fence<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20445;&#35777;&#22788;&#29702;&#22120;&#22312; stop-the-world &#21069;&#25152;&#26377;&#23545;&#20869;&#23384;&#30340; store &#37117; &#8220;&#29983;&#25928;&#8221;</li>
+<li class=" ml-8">&#21363;&#23545; resume-the-world &#20043;&#21518;&#30340; load &#21487;&#35265;</li>
 </ul>
 </li>
 </ul></div>
@@ -352,11 +352,11 @@ section .center {
 
       
         
-        <div><h2 id="atomic-exchange" class=" text-xl mt-2 pb-2 font-sans">Atomic Exchange 实现</h2>
+        <div><h2 id="atomic-exchange" class=" text-xl mt-2 pb-2 font-sans">Atomic Exchange &#23454;&#29616;</h2>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">xchg</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="k">volatile</span><span class="w"> </span><span class="o">*</span><span class="n">ptr</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">newval</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
 <span class="w">  </span><span class="k">asm</span><span class="w"> </span><span class="k">volatile</span><span class="p">(</span>
-<span class="w">    </span><span class="c1">// 指令自带 memory barrier</span>
+<span class="w">    </span><span class="c1">// &#25351;&#20196;&#33258;&#24102; memory barrier</span>
 <span class="w">    </span><span class="s">"lock xchgl %0, %1"</span>
 <span class="w">    </span><span class="o">:</span><span class="w"> </span><span class="s">"+m"</span><span class="p">(</span><span class="o">*</span><span class="n">ptr</span><span class="p">),</span><span class="w"> </span><span class="s">"=a"</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 <span class="w">    </span><span class="o">:</span><span class="w"> </span><span class="s">"1"</span><span class="p">(</span><span class="n">newval</span><span class="p">)</span>

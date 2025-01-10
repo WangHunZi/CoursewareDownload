@@ -2,7 +2,7 @@
 <head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>5. 多处理器编程：从入门到放弃</title>
+<title>5. &#22810;&#22788;&#29702;&#22120;&#32534;&#31243;&#65306;&#20174;&#20837;&#38376;&#21040;&#25918;&#24323;</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script><script>
 (function() {
   function addWidgetsRenderer() {
@@ -6481,7 +6481,7 @@ cell outputs.
 
 .jp-Notebook .jp-Cell.jp-mod-dirty .jp-InputPrompt::before {
   color: var(--jp-warn-color1);
-  content: '•';
+  content: '&#8226;';
 }
 
 .jp-Notebook .jp-Cell.jp-mod-active.jp-mod-dirty .jp-Collapser {
@@ -7518,7 +7518,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">mosaic</span> <span class="kn">import</span> <span class="o">*</span>
@@ -7679,22 +7679,22 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-InputPrompt jp-InputArea-prompt">
 </div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="5.-%E5%A4%9A%E5%A4%84%E7%90%86%E5%99%A8%E7%BC%96%E7%A8%8B%EF%BC%9A%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83">5. 多处理器编程：从入门到放弃<a class="anchor-link" href="#5.-%E5%A4%9A%E5%A4%84%E7%90%86%E5%99%A8%E7%BC%96%E7%A8%8B%EF%BC%9A%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83">¶</a>
+<h1 id="5.-%E5%A4%9A%E5%A4%84%E7%90%86%E5%99%A8%E7%BC%96%E7%A8%8B%EF%BC%9A%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83">5. &#22810;&#22788;&#29702;&#22120;&#32534;&#31243;&#65306;&#20174;&#20837;&#38376;&#21040;&#25918;&#24323;<a class="anchor-link" href="lect5.ipynb.html#5.-%E5%A4%9A%E5%A4%84%E7%90%86%E5%99%A8%E7%BC%96%E7%A8%8B%EF%BC%9A%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83">&#182;</a>
 </h1>
-<p><strong>Changelog & 反馈</strong></p>
+<p><strong>Changelog &amp; &#21453;&#39304;</strong></p>
 <ul>
-<li>翻车的 sum.py: 漏了 store 之后的 <code>sys_sched()</code>，这样 store-load 就总是原子执行<ul>
-<li>并发：总是相信自己错了</li>
+<li>&#32763;&#36710;&#30340; sum.py: &#28431;&#20102; store &#20043;&#21518;&#30340; <code>sys_sched()</code>&#65292;&#36825;&#26679; store-load &#23601;&#24635;&#26159;&#21407;&#23376;&#25191;&#34892;<ul>
+<li>&#24182;&#21457;&#65306;&#24635;&#26159;&#30456;&#20449;&#33258;&#24049;&#38169;&#20102;</li>
 </ul>
 </li>
-<li>想起了相机有曝光补偿，不用后期折腾了</li>
-<li>Clarification: 网页上的状态机仅是 “一次执行”， 请下载 mosaic.py 运行</li>
+<li>&#24819;&#36215;&#20102;&#30456;&#26426;&#26377;&#26333;&#20809;&#34917;&#20607;&#65292;&#19981;&#29992;&#21518;&#26399;&#25240;&#33150;&#20102;</li>
+<li>Clarification: &#32593;&#39029;&#19978;&#30340;&#29366;&#24577;&#26426;&#20165;&#26159; &#8220;&#19968;&#27425;&#25191;&#34892;&#8221;&#65292; &#35831;&#19979;&#36733; mosaic.py &#36816;&#34892;</li>
 </ul>
-<p><strong>背景回顾</strong>：“操作系统玩具” 给出了理解操作系统的新视角：操作系统是状态机的管理者。因为在 <code>sys_sched()</code> 之后操作系统拥有随机选择状态机执行的权力，因此也带来了并发性。操作系统是世界上最早的并发程序。</p>
-<p><strong>本讲内容</strong>：多处理器编程：从入门到放弃：</p>
+<p><strong>&#32972;&#26223;&#22238;&#39038;</strong>&#65306;&#8220;&#25805;&#20316;&#31995;&#32479;&#29609;&#20855;&#8221; &#32473;&#20986;&#20102;&#29702;&#35299;&#25805;&#20316;&#31995;&#32479;&#30340;&#26032;&#35270;&#35282;&#65306;&#25805;&#20316;&#31995;&#32479;&#26159;&#29366;&#24577;&#26426;&#30340;&#31649;&#29702;&#32773;&#12290;&#22240;&#20026;&#22312; <code>sys_sched()</code> &#20043;&#21518;&#25805;&#20316;&#31995;&#32479;&#25317;&#26377;&#38543;&#26426;&#36873;&#25321;&#29366;&#24577;&#26426;&#25191;&#34892;&#30340;&#26435;&#21147;&#65292;&#22240;&#27492;&#20063;&#24102;&#26469;&#20102;&#24182;&#21457;&#24615;&#12290;&#25805;&#20316;&#31995;&#32479;&#26159;&#19990;&#30028;&#19978;&#26368;&#26089;&#30340;&#24182;&#21457;&#31243;&#24207;&#12290;</p>
+<p><strong>&#26412;&#35762;&#20869;&#23481;</strong>&#65306;&#22810;&#22788;&#29702;&#22120;&#32534;&#31243;&#65306;&#20174;&#20837;&#38376;&#21040;&#25918;&#24323;&#65306;</p>
 <ul>
-<li>入门：多线程编程库</li>
-<li>放弃：原子性、可见性、顺序</li>
+<li>&#20837;&#38376;&#65306;&#22810;&#32447;&#31243;&#32534;&#31243;&#24211;</li>
+<li>&#25918;&#24323;&#65306;&#21407;&#23376;&#24615;&#12289;&#21487;&#35265;&#24615;&#12289;&#39034;&#24207;</li>
 </ul>
 </div>
 </div>
@@ -7705,7 +7705,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'5.1'</span><span class="p">)</span>
@@ -7734,7 +7734,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="p">(</span><span class="s1">'m/print.py'</span><span class="p">,</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -10706,7 +10706,7 @@ function visualize(divname, MODEL) {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">demo</span><span class="p">(</span><span class="s1">'hello'</span><span class="p">,</span> <span class="s1">'c/hello.c'</span><span class="p">,</span> <span class="n">libs</span><span class="o">=</span><span class="p">[</span><span class="s1">'thread.h'</span><span class="p">])</span>
@@ -10738,7 +10738,7 @@ var element = document.getElementById('d966c833-4354-47f2-8069-95becbfe9c79');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">demo</span><span class="p">(</span><span class="s1">'stack-probe'</span><span class="p">,</span> <span class="s1">'c/stack-probe.c'</span><span class="p">,</span> <span class="n">libs</span><span class="o">=</span><span class="p">[</span><span class="s1">'thread.h'</span><span class="p">])</span>
@@ -10770,7 +10770,7 @@ var element = document.getElementById('b443a5ef-9875-4163-9ba9-81f1aedfc2f7');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'5.2'</span><span class="p">)</span>
@@ -10799,7 +10799,7 @@ var element = document.getElementById('b443a5ef-9875-4163-9ba9-81f1aedfc2f7');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">demo</span><span class="p">(</span><span class="s1">'alipay'</span><span class="p">,</span> <span class="s1">'c/alipay.c'</span><span class="p">,</span> <span class="n">libs</span><span class="o">=</span><span class="p">[</span><span class="s1">'thread.h'</span><span class="p">])</span>
@@ -10831,7 +10831,7 @@ var element = document.getElementById('662735b8-f65b-47c1-808a-25f212be11c3');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">demo</span><span class="p">(</span><span class="s1">'sum'</span><span class="p">,</span> <span class="s1">'c/sum.c'</span><span class="p">,</span> <span class="n">libs</span><span class="o">=</span><span class="p">[</span><span class="s1">'thread.h'</span><span class="p">])</span>
@@ -10863,7 +10863,7 @@ var element = document.getElementById('7955d984-d6b0-491b-a92f-d0e6240d06e1');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[9]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'5.3'</span><span class="p">)</span>
@@ -10892,7 +10892,7 @@ var element = document.getElementById('7955d984-d6b0-491b-a92f-d0e6240d06e1');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[10]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">demo</span><span class="p">(</span><span class="s1">'sum-opt'</span><span class="p">,</span> <span class="s1">'c/sum.c'</span><span class="p">,</span> <span class="n">libs</span><span class="o">=</span><span class="p">[</span><span class="s1">'thread.h'</span><span class="p">])</span>
@@ -10924,7 +10924,7 @@ var element = document.getElementById('9889b1d2-77ce-4f53-85c4-be64de6da22c');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[11]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'5.4'</span><span class="p">)</span>
@@ -10953,7 +10953,7 @@ var element = document.getElementById('9889b1d2-77ce-4f53-85c4-be64de6da22c');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[12]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="p">(</span><span class="s1">'m/store-load.py'</span><span class="p">,</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -11006,7 +11006,7 @@ var element = document.getElementById('9889b1d2-77ce-4f53-85c4-be64de6da22c');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[13]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">demo</span><span class="p">(</span><span class="s1">'store-load'</span><span class="p">,</span> <span class="s1">'c/store-load.c'</span><span class="p">,</span> <span class="n">libs</span><span class="o">=</span><span class="p">[</span><span class="s1">'thread.h'</span><span class="p">])</span>
@@ -11041,36 +11041,36 @@ var element = document.getElementById('5599e227-2bb4-4bd8-96b3-4f324c36ce45');
 <div class="jp-InputPrompt jp-InputArea-prompt">
 </div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Take-away-Messages">Take-away Messages<a class="anchor-link" href="#Take-away-Messages">¶</a>
+<h2 id="Take-away-Messages">Take-away Messages<a class="anchor-link" href="lect5.ipynb.html#Take-away-Messages">&#182;</a>
 </h2>
-<p>在一个简化的模型中，多线程/多进程程序就是 “状态机的集合”，每一步选一个状态机执行一步。然而，真实的系统可能带来一些复杂性：</p>
+<p>&#22312;&#19968;&#20010;&#31616;&#21270;&#30340;&#27169;&#22411;&#20013;&#65292;&#22810;&#32447;&#31243;/&#22810;&#36827;&#31243;&#31243;&#24207;&#23601;&#26159; &#8220;&#29366;&#24577;&#26426;&#30340;&#38598;&#21512;&#8221;&#65292;&#27599;&#19968;&#27493;&#36873;&#19968;&#20010;&#29366;&#24577;&#26426;&#25191;&#34892;&#19968;&#27493;&#12290;&#28982;&#32780;&#65292;&#30495;&#23454;&#30340;&#31995;&#32479;&#21487;&#33021;&#24102;&#26469;&#19968;&#20123;&#22797;&#26434;&#24615;&#65306;</p>
 <ul>
-<li>指令/代码执行原子性假设不再成立</li>
-<li>程序的顺序执行假设不再成立</li>
-<li>多处理器间内存访问无法即时可见</li>
+<li>&#25351;&#20196;/&#20195;&#30721;&#25191;&#34892;&#21407;&#23376;&#24615;&#20551;&#35774;&#19981;&#20877;&#25104;&#31435;</li>
+<li>&#31243;&#24207;&#30340;&#39034;&#24207;&#25191;&#34892;&#20551;&#35774;&#19981;&#20877;&#25104;&#31435;</li>
+<li>&#22810;&#22788;&#29702;&#22120;&#38388;&#20869;&#23384;&#35775;&#38382;&#26080;&#27861;&#21363;&#26102;&#21487;&#35265;</li>
 </ul>
-<p>然而，人类本质上是物理世界 (宏观时间) 中的 “sequential creature”，因此我们在编程时，也 “只能” 习惯单线程的顺序/选择/循环结构，真实多处理器上的并发编程是非常具有挑战性的 “底层技术”，例如 <a href="https://www.usenix.org/events/osdi10/tech/full_papers/Xiong.pdf">Ad hoc synchronization 引发了很多系统软件中的 bugs</a>。因此，我们需要并发控制技术 (之后的课程涉及)，使得程序能在不共享内存的时候并行执行，并且在需要共享内存时的行为能够 “容易理解”。</p>
-<h3 id="%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">课后习题/编程作业<a class="anchor-link" href="#%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">¶</a>
+<p>&#28982;&#32780;&#65292;&#20154;&#31867;&#26412;&#36136;&#19978;&#26159;&#29289;&#29702;&#19990;&#30028; (&#23439;&#35266;&#26102;&#38388;) &#20013;&#30340; &#8220;sequential creature&#8221;&#65292;&#22240;&#27492;&#25105;&#20204;&#22312;&#32534;&#31243;&#26102;&#65292;&#20063; &#8220;&#21482;&#33021;&#8221; &#20064;&#24815;&#21333;&#32447;&#31243;&#30340;&#39034;&#24207;/&#36873;&#25321;/&#24490;&#29615;&#32467;&#26500;&#65292;&#30495;&#23454;&#22810;&#22788;&#29702;&#22120;&#19978;&#30340;&#24182;&#21457;&#32534;&#31243;&#26159;&#38750;&#24120;&#20855;&#26377;&#25361;&#25112;&#24615;&#30340; &#8220;&#24213;&#23618;&#25216;&#26415;&#8221;&#65292;&#20363;&#22914; <a href="https://www.usenix.org/events/osdi10/tech/full_papers/Xiong.pdf">Ad hoc synchronization &#24341;&#21457;&#20102;&#24456;&#22810;&#31995;&#32479;&#36719;&#20214;&#20013;&#30340; bugs</a>&#12290;&#22240;&#27492;&#65292;&#25105;&#20204;&#38656;&#35201;&#24182;&#21457;&#25511;&#21046;&#25216;&#26415; (&#20043;&#21518;&#30340;&#35838;&#31243;&#28041;&#21450;)&#65292;&#20351;&#24471;&#31243;&#24207;&#33021;&#22312;&#19981;&#20849;&#20139;&#20869;&#23384;&#30340;&#26102;&#20505;&#24182;&#34892;&#25191;&#34892;&#65292;&#24182;&#19988;&#22312;&#38656;&#35201;&#20849;&#20139;&#20869;&#23384;&#26102;&#30340;&#34892;&#20026;&#33021;&#22815; &#8220;&#23481;&#26131;&#29702;&#35299;&#8221;&#12290;</p>
+<h3 id="%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">&#35838;&#21518;&#20064;&#39064;/&#32534;&#31243;&#20316;&#19994;<a class="anchor-link" href="lect5.ipynb.html#%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">&#182;</a>
 </h3>
-<h4 id="1.-%E9%98%85%E8%AF%BB%E6%9D%90%E6%96%99">1. 阅读材料<a class="anchor-link" href="#1.-%E9%98%85%E8%AF%BB%E6%9D%90%E6%96%99">¶</a>
+<h4 id="1.-%E9%98%85%E8%AF%BB%E6%9D%90%E6%96%99">1. &#38405;&#35835;&#26448;&#26009;<a class="anchor-link" href="lect5.ipynb.html#1.-%E9%98%85%E8%AF%BB%E6%9D%90%E6%96%99">&#182;</a>
 </h4>
-<p>教科书 <a href="https://pages.cs.wisc.edu/~remzi/OSTEP/">Operating Systems: Three Easy Pieces</a>:</p>
+<p>&#25945;&#31185;&#20070; <a href="https://pages.cs.wisc.edu/~remzi/OSTEP/">Operating Systems: Three Easy Pieces</a>:</p>
 <ul>
-<li>第 25 章 - Dialogue on Concurrency</li>
-<li>第 26 章 - Concurrency and Threads</li>
-<li>第 27 章 - Thread API</li>
+<li>&#31532; 25 &#31456; - Dialogue on Concurrency</li>
+<li>&#31532; 26 &#31456; - Concurrency and Threads</li>
+<li>&#31532; 27 &#31456; - Thread API</li>
 </ul>
-<p>注意：我们的课程和教科书有较大的重叠，但教科书提供了许多授课时间比较难以花时间讲清楚的细节，因此仔细阅读教科书同样重要。</p>
-<h4 id="2.-%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5">2. 编程实践<a class="anchor-link" href="#2.-%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5">¶</a>
+<p>&#27880;&#24847;&#65306;&#25105;&#20204;&#30340;&#35838;&#31243;&#21644;&#25945;&#31185;&#20070;&#26377;&#36739;&#22823;&#30340;&#37325;&#21472;&#65292;&#20294;&#25945;&#31185;&#20070;&#25552;&#20379;&#20102;&#35768;&#22810;&#25480;&#35838;&#26102;&#38388;&#27604;&#36739;&#38590;&#20197;&#33457;&#26102;&#38388;&#35762;&#28165;&#26970;&#30340;&#32454;&#33410;&#65292;&#22240;&#27492;&#20180;&#32454;&#38405;&#35835;&#25945;&#31185;&#20070;&#21516;&#26679;&#37325;&#35201;&#12290;</p>
+<h4 id="2.-%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5">2. &#32534;&#31243;&#23454;&#36341;<a class="anchor-link" href="lect5.ipynb.html#2.-%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5">&#182;</a>
 </h4>
-<p>在你的 Linux 中运行课堂上的代码示例。同学们也可以打开 thread.h：它使用起来很简单 (直接创建线程即可)，但实现也很有趣。例如，pthreads 线程接受一个 <code>void *</code> 类型的参数，且必须返回一个 <code>void *</code>。我们用 wrapper function 的方法解决这个问题：所有的线程的实际入口都是名为 wrapper 的函数，它会在内部调用线程的 entry 函数。</p>
+<p>&#22312;&#20320;&#30340; Linux &#20013;&#36816;&#34892;&#35838;&#22530;&#19978;&#30340;&#20195;&#30721;&#31034;&#20363;&#12290;&#21516;&#23398;&#20204;&#20063;&#21487;&#20197;&#25171;&#24320; thread.h&#65306;&#23427;&#20351;&#29992;&#36215;&#26469;&#24456;&#31616;&#21333; (&#30452;&#25509;&#21019;&#24314;&#32447;&#31243;&#21363;&#21487;)&#65292;&#20294;&#23454;&#29616;&#20063;&#24456;&#26377;&#36259;&#12290;&#20363;&#22914;&#65292;pthreads &#32447;&#31243;&#25509;&#21463;&#19968;&#20010; <code>void *</code> &#31867;&#22411;&#30340;&#21442;&#25968;&#65292;&#19988;&#24517;&#39035;&#36820;&#22238;&#19968;&#20010; <code>void *</code>&#12290;&#25105;&#20204;&#29992; wrapper function &#30340;&#26041;&#27861;&#35299;&#20915;&#36825;&#20010;&#38382;&#39064;&#65306;&#25152;&#26377;&#30340;&#32447;&#31243;&#30340;&#23454;&#38469;&#20837;&#21475;&#37117;&#26159;&#21517;&#20026; wrapper &#30340;&#20989;&#25968;&#65292;&#23427;&#20250;&#22312;&#20869;&#37096;&#35843;&#29992;&#32447;&#31243;&#30340; entry &#20989;&#25968;&#12290;</p>
 <div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="nf">wrapper</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">arg</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">thread</span><span class="w"> </span><span class="o">*</span><span class="kr">thread</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">thread</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">arg</span><span class="p">;</span>
-<span class="w">  </span><span class="kr">thread</span><span class="o">-></span><span class="n">entry</span><span class="p">(</span><span class="kr">thread</span><span class="o">-></span><span class="n">id</span><span class="p">);</span>
+<span class="w">  </span><span class="kr">thread</span><span class="o">-&gt;</span><span class="n">entry</span><span class="p">(</span><span class="kr">thread</span><span class="o">-&gt;</span><span class="n">id</span><span class="p">);</span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
-<p>此外，代码中还有一些可以学习的编程技巧，例如 ctor 和 dtor 等。</p>
+<p>&#27492;&#22806;&#65292;&#20195;&#30721;&#20013;&#36824;&#26377;&#19968;&#20123;&#21487;&#20197;&#23398;&#20064;&#30340;&#32534;&#31243;&#25216;&#24039;&#65292;&#20363;&#22914; ctor &#21644; dtor &#31561;&#12290;</p>
 </div>
 </div>
 </div>
@@ -11081,8 +11081,8 @@ var element = document.getElementById('5599e227-2bb4-4bd8-96b3-4f324c36ce45');
 <div class="container text-xs py-3">
   <span class="text-muted">
     <center>
-<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="/static/img/cc-4.0.png"></a>
-       <a style="color:inherit" href="https://beian.miit.gov.cn/">苏 ICP 备 2020049101 号</a>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="../../../static/img/cc-4.0.png"></a>
+    &#160;&#160;&#160;<a style="color:inherit" href="https://beian.miit.gov.cn/">&#33487; ICP &#22791; 2020049101 &#21495;</a>
     </center>
   </span>
 </div>

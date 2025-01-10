@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // • auto-render specific keys, e.g.:
+            // &#8226; auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // • rendering keys, e.g.:
+            // &#8226; rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +209,7 @@ section .center {
 }
 </style>
 
-  <title>中断与分时多任务</title>
+  <title>&#20013;&#26029;&#19982;&#20998;&#26102;&#22810;&#20219;&#21153;</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,21 +227,21 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">中断与分时多任务</h1>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#20013;&#26029;&#19982;&#20998;&#26102;&#22810;&#20219;&#21153;</h1>
 <p class=" font-serif my-1"><include src="Slides_Author"><div><div class="py-16">
-<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">蒋炎岩</a></p>
+<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">&#33931;&#28814;&#23721;</a></p>
 </div>
 <div class="row">
 <div class="author-affiliation">
-    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">　　南京大学　　</p>
+    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#12288;&#12288;&#21335;&#20140;&#22823;&#23398;&#12288;&#12288;</p>
     <img class="inline-img h-24" src="../../../static/img/nju-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">计算机科学与技术系</p>
+   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#31185;&#23398;&#19982;&#25216;&#26415;&#31995;</p>
     <img class="inline-img h-24" src="../../../static/img/njucs-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">计算机软件研究所</p>
+    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#36719;&#20214;&#30740;&#31350;&#25152;</p>
     <img class="inline-img h-24" src="../../../static/img/ics-logo.png" style="display: inline-block;"></a>
   </div>
 </div></div></include></p></div></div></div>
@@ -255,15 +255,15 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">本讲概述</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26412;&#35762;&#27010;&#36848;</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">为什么 <code>while (1) ;</code> 死循环不会把电脑卡死？</p>
+<p class=" font-serif my-1">&#20026;&#20160;&#20040; <code>while (1) ;</code> &#27515;&#24490;&#29615;&#19981;&#20250;&#25226;&#30005;&#33041;&#21345;&#27515;&#65311;</p>
 </blockquote>
 <hr>
-<p class=" font-serif my-1">本讲内容</p>
+<p class=" font-serif my-1">&#26412;&#35762;&#20869;&#23481;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">中断机制</li>
-<li class=" ml-8">实现分时多任务</li>
+<li class=" ml-8">&#20013;&#26029;&#26426;&#21046;</li>
+<li class=" ml-8">&#23454;&#29616;&#20998;&#26102;&#22810;&#20219;&#21153;</li>
 </ul></div>
         
       
@@ -279,7 +279,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">中断机制</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#20013;&#26029;&#26426;&#21046;</h1></div></div></div>
         
       
       </section>
@@ -290,22 +290,22 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">回到一个经典问题</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#22238;&#21040;&#19968;&#20010;&#32463;&#20856;&#38382;&#39064;</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">为什么 <code>while (1) ;</code> 死循环不会把电脑卡死？</p>
+<p class=" font-serif my-1">&#20026;&#20160;&#20040; <code>while (1) ;</code> &#27515;&#24490;&#29615;&#19981;&#20250;&#25226;&#30005;&#33041;&#21345;&#27515;&#65311;</p>
 </blockquote>
-<p class=" font-serif my-1">因为有中断</p>
+<p class=" font-serif my-1">&#22240;&#20026;&#26377;&#20013;&#26029;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">相当于在指令之后插入一段代码</li>
+<li class=" ml-8">&#30456;&#24403;&#20110;&#22312;&#25351;&#20196;&#20043;&#21518;&#25554;&#20837;&#19968;&#27573;&#20195;&#30721;</li>
 </ul>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">has_interrupt</span><span class="w"> </span><span class="o">&&</span><span class="w"> </span><span class="n">int_enabled</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">has_interrupt</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">int_enabled</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">interrupt_handler</span><span class="p">();</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <ul class=" list-disc font-serif">
-<li class=" ml-8">类似的是异常机制<ul class=" list-disc font-serif">
-<li class=" ml-8">有时候称为同步中断</li>
+<li class=" ml-8">&#31867;&#20284;&#30340;&#26159;&#24322;&#24120;&#26426;&#21046;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#26377;&#26102;&#20505;&#31216;&#20026;&#21516;&#27493;&#20013;&#26029;</li>
 </ul>
 </li>
 </ul></div>
@@ -319,23 +319,23 @@ section .center {
 
       
         
-        <div><h2 id="x86-64" class=" text-xl mt-2 pb-2 font-sans">x86-64 中断过程</h2>
-<p class=" font-serif my-1">比 “函数调用” 复杂一些</p>
+        <div><h2 id="x86-64" class=" text-xl mt-2 pb-2 font-sans">x86-64 &#20013;&#26029;&#36807;&#31243;</h2>
+<p class=" font-serif my-1">&#27604; &#8220;&#20989;&#25968;&#35843;&#29992;&#8221; &#22797;&#26434;&#19968;&#20123;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">函数调用需要保存 PC 到堆栈 (<code>%rsp</code>)<ul class=" list-disc font-serif">
-<li class=" ml-8">但中断不仅要保存 PC (尤其是在有特权级切换的时候)</li>
+<li class=" ml-8">&#20989;&#25968;&#35843;&#29992;&#38656;&#35201;&#20445;&#23384; PC &#21040;&#22534;&#26632; (<code>%rsp</code>)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20294;&#20013;&#26029;&#19981;&#20165;&#35201;&#20445;&#23384; PC (&#23588;&#20854;&#26159;&#22312;&#26377;&#29305;&#26435;&#32423;&#20999;&#25442;&#30340;&#26102;&#20505;)</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">中断处理</p>
+<p class=" font-serif my-1">&#20013;&#26029;&#22788;&#29702;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">自动保存 RIP, CS, RFLAGS, RSP, SS, (Error Code)</li>
-<li class=" ml-8">根据中断/异常号跳转到处理程序 (特权级切换会触发堆栈切换)<ul class=" list-disc font-serif">
-<li class=" ml-8"><code>int $0x80</code> 指令可以产生 128 号异常</li>
-<li class=" ml-8">时钟会产生 32 号中断</li>
-<li class=" ml-8">键盘会产生 33 号中断</li>
-<li class=" ml-8">……</li>
+<li class=" ml-8">&#33258;&#21160;&#20445;&#23384; RIP, CS, RFLAGS, RSP, SS, (Error Code)</li>
+<li class=" ml-8">&#26681;&#25454;&#20013;&#26029;/&#24322;&#24120;&#21495;&#36339;&#36716;&#21040;&#22788;&#29702;&#31243;&#24207; (&#29305;&#26435;&#32423;&#20999;&#25442;&#20250;&#35302;&#21457;&#22534;&#26632;&#20999;&#25442;)<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>int $0x80</code> &#25351;&#20196;&#21487;&#20197;&#20135;&#29983; 128 &#21495;&#24322;&#24120;</li>
+<li class=" ml-8">&#26102;&#38047;&#20250;&#20135;&#29983; 32 &#21495;&#20013;&#26029;</li>
+<li class=" ml-8">&#38190;&#30424;&#20250;&#20135;&#29983; 33 &#21495;&#20013;&#26029;</li>
+<li class=" ml-8">&#8230;&#8230;</li>
 </ul>
 </li>
 </ul></div>
@@ -349,17 +349,17 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">为什么死循环不会把电脑卡死？</h2>
-<p class=" font-serif my-1">中断是强制的 (普通的进程不能关闭)</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20026;&#20160;&#20040;&#27515;&#24490;&#29615;&#19981;&#20250;&#25226;&#30005;&#33041;&#21345;&#27515;&#65311;</h2>
+<p class=" font-serif my-1">&#20013;&#26029;&#26159;&#24378;&#21046;&#30340; (&#26222;&#36890;&#30340;&#36827;&#31243;&#19981;&#33021;&#20851;&#38381;)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">Ring 3 关闭中断将导致 <code>Exception(GP(0))</code> (<a href="https://c9x.me/x86/html/file_module_x86_id_31.html" class=" text-amber-900">手册</a>)<ul class=" list-disc font-serif">
-<li class=" ml-8">发生 13 号异常</li>
+<li class=" ml-8">Ring 3 &#20851;&#38381;&#20013;&#26029;&#23558;&#23548;&#33268; <code>Exception(GP(0))</code> (<a href="https://c9x.me/x86/html/file_module_x86_id_31.html" class=" text-amber-900">&#25163;&#20876;</a>)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21457;&#29983; 13 &#21495;&#24322;&#24120;</li>
 <li class=" ml-8">Error Code 0<ul class=" list-disc font-serif">
-<li class=" ml-8">异常机制进入操作系统代码执行</li>
-<li class=" ml-8">操作系统发送 SIGSEGV 信号</li>
+<li class=" ml-8">&#24322;&#24120;&#26426;&#21046;&#36827;&#20837;&#25805;&#20316;&#31995;&#32479;&#20195;&#30721;&#25191;&#34892;</li>
+<li class=" ml-8">&#25805;&#20316;&#31995;&#32479;&#21457;&#36865; SIGSEGV &#20449;&#21495;</li>
 </ul>
 </li>
-<li class=" ml-8">捕捉 SIGSEGV: <a href="../../../pages/ICS/2020/demos/cli.c" class=" text-amber-900">cli.c</a></li>
+<li class=" ml-8">&#25429;&#25417; SIGSEGV: <a href="../../../pages/ICS/2020/demos/cli.c" class=" text-amber-900">cli.c</a></li>
 </ul>
 </li>
 </ul></div>
@@ -367,9 +367,9 @@ section .center {
       
          <div class="fragment"> 
         <div><hr>
-<p class=" font-serif my-1">中断发生后，操作系统代码将会切换到另一个进程执行</p>
+<p class=" font-serif my-1">&#20013;&#26029;&#21457;&#29983;&#21518;&#65292;&#25805;&#20316;&#31995;&#32479;&#20195;&#30721;&#23558;&#20250;&#20999;&#25442;&#21040;&#21478;&#19968;&#20010;&#36827;&#31243;&#25191;&#34892;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">“调度”：让进程公平地共享 CPU</li>
+<li class=" ml-8">&#8220;&#35843;&#24230;&#8221;&#65306;&#35753;&#36827;&#31243;&#20844;&#24179;&#22320;&#20849;&#20139; CPU</li>
 </ul></div>
          </div> 
       
@@ -385,7 +385,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">实现分时多任务</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#23454;&#29616;&#20998;&#26102;&#22810;&#20219;&#21153;</h1></div></div></div>
         
       
       </section>
@@ -396,17 +396,17 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">代码选讲</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20195;&#30721;&#36873;&#35762;</h2>
 <p class=" font-serif my-1">Abstract Machine</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">trap64.S</li>
 <li class=" ml-8">cte.c</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">调试 “迷你” 操作系统</p>
+<p class=" font-serif my-1">&#35843;&#35797; &#8220;&#36855;&#20320;&#8221; &#25805;&#20316;&#31995;&#32479;</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><a href="../../../pages/ICS/2020/demos/thread-os.c" class=" text-amber-900">thread-os.c</a><ul class=" list-disc font-serif">
-<li class=" ml-8"><code>-s -S</code> 启动 QEMU</li>
+<li class=" ml-8"><code>-s -S</code> &#21551;&#21160; QEMU</li>
 <li class=" ml-8">gdb <code>target remote localhost:1234</code><ul class=" list-disc font-serif">
 <li class=" ml-8"><a href="http://csapp.cs.cmu.edu/public/docs/gdbnotes-x86-64.pdf" class=" text-amber-900">gdbnotes for CSAPP</a></li>
 </ul>
@@ -428,7 +428,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">总结</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#24635;&#32467;</h1></div></div></div>
         
       
       </section>
@@ -439,21 +439,21 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">操作系统：中断驱动的上下文切换</h2>
-<p class=" font-serif my-1">应用程序视角</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25805;&#20316;&#31995;&#32479;&#65306;&#20013;&#26029;&#39537;&#21160;&#30340;&#19978;&#19979;&#25991;&#20999;&#25442;</h2>
+<p class=" font-serif my-1">&#24212;&#29992;&#31243;&#24207;&#35270;&#35282;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">一组系统调用的 API<ul class=" list-disc font-serif">
-<li class=" ml-8">进程管理、存储管理、文件管理……</li>
+<li class=" ml-8">&#19968;&#32452;&#31995;&#32479;&#35843;&#29992;&#30340; API<ul class=" list-disc font-serif">
+<li class=" ml-8">&#36827;&#31243;&#31649;&#29702;&#12289;&#23384;&#20648;&#31649;&#29702;&#12289;&#25991;&#20214;&#31649;&#29702;&#8230;&#8230;</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">硬件视角</p>
+<p class=" font-serif my-1">&#30828;&#20214;&#35270;&#35282;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">操作系统是一个中断处理程序<ul class=" list-disc font-serif">
-<li class=" ml-8">设备中断：上下文切换；调用设备驱动程序；……</li>
-<li class=" ml-8">系统调用：操作系统代码执行 (API 实现)</li>
-<li class=" ml-8">异常：发送信号 (类似系统调用)</li>
+<li class=" ml-8">&#25805;&#20316;&#31995;&#32479;&#26159;&#19968;&#20010;&#20013;&#26029;&#22788;&#29702;&#31243;&#24207;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#35774;&#22791;&#20013;&#26029;&#65306;&#19978;&#19979;&#25991;&#20999;&#25442;&#65307;&#35843;&#29992;&#35774;&#22791;&#39537;&#21160;&#31243;&#24207;&#65307;&#8230;&#8230;</li>
+<li class=" ml-8">&#31995;&#32479;&#35843;&#29992;&#65306;&#25805;&#20316;&#31995;&#32479;&#20195;&#30721;&#25191;&#34892; (API &#23454;&#29616;)</li>
+<li class=" ml-8">&#24322;&#24120;&#65306;&#21457;&#36865;&#20449;&#21495; (&#31867;&#20284;&#31995;&#32479;&#35843;&#29992;)</li>
 </ul>
 </li>
 </ul></div>

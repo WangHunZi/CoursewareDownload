@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // • auto-render specific keys, e.g.:
+            // &#8226; auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // • rendering keys, e.g.:
+            // &#8226; rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +209,7 @@ section .center {
 }
 </style>
 
-  <title>崩溃一致性与崩溃恢复</title>
+  <title>&#23849;&#28291;&#19968;&#33268;&#24615;&#19982;&#23849;&#28291;&#24674;&#22797;</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,7 +227,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="29.3.slides.html" class=" text-amber-900">崩溃一致性与崩溃恢复</a></h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="29.3.slides.html" class=" text-amber-900">&#23849;&#28291;&#19968;&#33268;&#24615;&#19982;&#23849;&#28291;&#24674;&#22797;</a></h1></div></div></div>
         
       
       </section>
@@ -238,17 +238,17 @@ section .center {
 
       
         
-        <div><h2 id="crash-consistency" class=" text-xl mt-2 pb-2 font-sans">崩溃一致性 (Crash Consistency)</h2>
+        <div><h2 id="crash-consistency" class=" text-xl mt-2 pb-2 font-sans">&#23849;&#28291;&#19968;&#33268;&#24615; (Crash Consistency)</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
 <p class=" font-serif my-1"><strong>Crash Consistency</strong>: Move the file system from one consistent state (e.g., before the file got appended to) to another atomically (e.g., after the inode, bitmap, and new data block have been written to disk).</p>
 </blockquote>
-<p class=" font-serif my-1"></p><center>(你们平时编程时假设不会发生的事，操作系统都要给你兜底)</center>
+<p class=" font-serif my-1"></p><center>(&#20320;&#20204;&#24179;&#26102;&#32534;&#31243;&#26102;&#20551;&#35774;&#19981;&#20250;&#21457;&#29983;&#30340;&#20107;&#65292;&#25805;&#20316;&#31995;&#32479;&#37117;&#35201;&#32473;&#20320;&#20828;&#24213;)</center>
 <hr>
-<p class=" font-serif my-1">磁盘不提供多块读写 “all or nothing” 的支持</p>
+<p class=" font-serif my-1">&#30913;&#30424;&#19981;&#25552;&#20379;&#22810;&#22359;&#35835;&#20889; &#8220;all or nothing&#8221; &#30340;&#25903;&#25345;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">甚至为了性能，没有顺序保证<ul class=" list-disc font-serif">
-<li class=" ml-8">bwrite 可能被乱序</li>
-<li class=" ml-8">所以磁盘还提供了 bflush 等待已写入的数据落盘</li>
+<li class=" ml-8">&#29978;&#33267;&#20026;&#20102;&#24615;&#33021;&#65292;&#27809;&#26377;&#39034;&#24207;&#20445;&#35777;<ul class=" list-disc font-serif">
+<li class=" ml-8">bwrite &#21487;&#33021;&#34987;&#20081;&#24207;</li>
+<li class=" ml-8">&#25152;&#20197;&#30913;&#30424;&#36824;&#25552;&#20379;&#20102; bflush &#31561;&#24453;&#24050;&#20889;&#20837;&#30340;&#25968;&#25454;&#33853;&#30424;</li>
 </ul>
 </li>
 </ul></div>
@@ -263,19 +263,19 @@ section .center {
       
         
         <div><h2 id="file-system-checking-fsck" class=" text-xl mt-2 pb-2 font-sans">File System Checking (FSCK)</h2>
-<p class=" font-serif my-1">根据磁盘上已有的信息，恢复出 “最可能” 的数据结构</p>
+<p class=" font-serif my-1">&#26681;&#25454;&#30913;&#30424;&#19978;&#24050;&#26377;&#30340;&#20449;&#24687;&#65292;&#24674;&#22797;&#20986; &#8220;&#26368;&#21487;&#33021;&#8221; &#30340;&#25968;&#25454;&#32467;&#26500;</p>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/fsck-recovery.png" width="750px"></p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><a href="https://dl.acm.org/doi/10.5555/1855741.1855751" class=" text-amber-900">SQCK: A declarative file system checker</a> (OSDI'08)</li>
 <li class=" ml-8"><a href="https://dl.acm.org/doi/10.1145/3281031" class=" text-amber-900">Towards robust file system checkers</a> (FAST'18)<ul class=" list-disc font-serif">
-<li class=" ml-8">“widely used file systems (EXT4, XFS, BtrFS, and F2FS) may leave the file system in an uncorrectable state if the repair procedure is interrupted unexpectedly” 😂</li>
+<li class=" ml-8">&#8220;widely used file systems (EXT4, XFS, BtrFS, and F2FS) may leave the file system in an uncorrectable state if the repair procedure is interrupted unexpectedly&#8221; &#128514;</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">针对 crash，我们需要更可靠的方法我们需要一个更可靠的方法</p>
+<p class=" font-serif my-1">&#38024;&#23545; crash&#65292;&#25105;&#20204;&#38656;&#35201;&#26356;&#21487;&#38752;&#30340;&#26041;&#27861;&#25105;&#20204;&#38656;&#35201;&#19968;&#20010;&#26356;&#21487;&#38752;&#30340;&#26041;&#27861;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">文件系统不一致的根本原因是<red>存储设备无法提供多次写入的原子性</red></li>
+<li class=" ml-8">&#25991;&#20214;&#31995;&#32479;&#19981;&#19968;&#33268;&#30340;&#26681;&#26412;&#21407;&#22240;&#26159;<red>&#23384;&#20648;&#35774;&#22791;&#26080;&#27861;&#25552;&#20379;&#22810;&#27425;&#20889;&#20837;&#30340;&#21407;&#23376;&#24615;</red></li>
 </ul></div>
         
       
@@ -287,26 +287,26 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">重新思考数据结构的存储</h2>
-<p class=" font-serif my-1">两个 “视角”</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#37325;&#26032;&#24605;&#32771;&#25968;&#25454;&#32467;&#26500;&#30340;&#23384;&#20648;</h2>
+<p class=" font-serif my-1">&#20004;&#20010; &#8220;&#35270;&#35282;&#8221;</p>
 <ol class=" list-decimal font-serif">
-<li class=" ml-8">存储实际<red>数据结构</red><ul class=" list-disc font-serif">
-<li class=" ml-8">文件系统的 “直观” 表示</li>
+<li class=" ml-8">&#23384;&#20648;&#23454;&#38469;<red>&#25968;&#25454;&#32467;&#26500;</red><ul class=" list-disc font-serif">
+<li class=" ml-8">&#25991;&#20214;&#31995;&#32479;&#30340; &#8220;&#30452;&#35266;&#8221; &#34920;&#31034;</li>
 <li class=" ml-8">crash unsafe</li>
 </ul>
 </li>
-<li class=" ml-8">Append-only 记录所有<red>历史操作</red><ul class=" list-disc font-serif">
-<li class=" ml-8">“重做” 所有操作得到数据结构的当前状态</li>
-<li class=" ml-8">容易实现崩溃一致性</li>
+<li class=" ml-8">Append-only &#35760;&#24405;&#25152;&#26377;<red>&#21382;&#21490;&#25805;&#20316;</red><ul class=" list-disc font-serif">
+<li class=" ml-8">&#8220;&#37325;&#20570;&#8221; &#25152;&#26377;&#25805;&#20316;&#24471;&#21040;&#25968;&#25454;&#32467;&#26500;&#30340;&#24403;&#21069;&#29366;&#24577;</li>
+<li class=" ml-8">&#23481;&#26131;&#23454;&#29616;&#23849;&#28291;&#19968;&#33268;&#24615;</li>
 </ul>
 </li>
 </ol>
 <hr>
-<p class=" font-serif my-1">二者的融合</p>
+<p class=" font-serif my-1">&#20108;&#32773;&#30340;&#34701;&#21512;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">数据结构操作发生时，用 (2) append-only 记录日志</li>
-<li class=" ml-8">日志落盘后，用 (1) 更新数据结构</li>
-<li class=" ml-8">崩溃后，重放日志并清除 (称为 redo log；相应也可以 undo log)</li>
+<li class=" ml-8">&#25968;&#25454;&#32467;&#26500;&#25805;&#20316;&#21457;&#29983;&#26102;&#65292;&#29992; (2) append-only &#35760;&#24405;&#26085;&#24535;</li>
+<li class=" ml-8">&#26085;&#24535;&#33853;&#30424;&#21518;&#65292;&#29992; (1) &#26356;&#26032;&#25968;&#25454;&#32467;&#26500;</li>
+<li class=" ml-8">&#23849;&#28291;&#21518;&#65292;&#37325;&#25918;&#26085;&#24535;&#24182;&#28165;&#38500; (&#31216;&#20026; redo log&#65307;&#30456;&#24212;&#20063;&#21487;&#20197; undo log)</li>
 </ul></div>
         
       
@@ -318,17 +318,17 @@ section .center {
 
       
         
-        <div><h2 id="atomic-append" class=" text-xl mt-2 pb-2 font-sans">实现 Atomic Append</h2>
-<p class=" font-serif my-1">用 bread, bwrite 和 bflush 实现 append()</p>
+        <div><h2 id="atomic-append" class=" text-xl mt-2 pb-2 font-sans">&#23454;&#29616; Atomic Append</h2>
+<p class=" font-serif my-1">&#29992; bread, bwrite &#21644; bflush &#23454;&#29616; append()</p>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/fs-journaling.png" width="800px"></p>
 <ol class=" list-decimal font-serif">
-<li class=" ml-8">定位到 journal 的末尾 (bread)</li>
-<li class=" ml-8">bwrite TXBegin 和所有数据结构操作</li>
-<li class=" ml-8">bflush 等待数据落盘</li>
+<li class=" ml-8">&#23450;&#20301;&#21040; journal &#30340;&#26411;&#23614; (bread)</li>
+<li class=" ml-8">bwrite TXBegin &#21644;&#25152;&#26377;&#25968;&#25454;&#32467;&#26500;&#25805;&#20316;</li>
+<li class=" ml-8">bflush &#31561;&#24453;&#25968;&#25454;&#33853;&#30424;</li>
 <li class=" ml-8">bwrite TXEnd</li>
-<li class=" ml-8">bflush 等待数据落盘</li>
-<li class=" ml-8">将数据结构操作写入实际数据结构区域</li>
-<li class=" ml-8">等待数据落盘后，删除 (标记) 日志</li>
+<li class=" ml-8">bflush &#31561;&#24453;&#25968;&#25454;&#33853;&#30424;</li>
+<li class=" ml-8">&#23558;&#25968;&#25454;&#32467;&#26500;&#25805;&#20316;&#20889;&#20837;&#23454;&#38469;&#25968;&#25454;&#32467;&#26500;&#21306;&#22495;</li>
+<li class=" ml-8">&#31561;&#24453;&#25968;&#25454;&#33853;&#30424;&#21518;&#65292;&#21024;&#38500; (&#26631;&#35760;) &#26085;&#24535;</li>
 </ol></div>
         
       
@@ -340,25 +340,25 @@ section .center {
 
       
         
-        <div><h2 id="journaling" class=" text-xl mt-2 pb-2 font-sans">Journaling: 优化</h2>
-<p class=" font-serif my-1">现在磁盘需要写入双份的数据</p>
+        <div><h2 id="journaling" class=" text-xl mt-2 pb-2 font-sans">Journaling: &#20248;&#21270;</h2>
+<p class=" font-serif my-1">&#29616;&#22312;&#30913;&#30424;&#38656;&#35201;&#20889;&#20837;&#21452;&#20221;&#30340;&#25968;&#25454;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">批处理 (xv6; jbd)<ul class=" list-disc font-serif">
-<li class=" ml-8">多次系统调用的 Tx 合并成一个，减少 log 的大小</li>
-<li class=" ml-8">jbd: 定期 write back</li>
+<li class=" ml-8">&#25209;&#22788;&#29702; (xv6; jbd)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22810;&#27425;&#31995;&#32479;&#35843;&#29992;&#30340; Tx &#21512;&#24182;&#25104;&#19968;&#20010;&#65292;&#20943;&#23569; log &#30340;&#22823;&#23567;</li>
+<li class=" ml-8">jbd: &#23450;&#26399; write back</li>
 </ul>
 </li>
 <li class=" ml-8">Checksum (ext4)<ul class=" list-disc font-serif">
-<li class=" ml-8">不再标记 TxBegin/TxEnd</li>
-<li class=" ml-8">直接标记 Tx 的长度和 checksum</li>
+<li class=" ml-8">&#19981;&#20877;&#26631;&#35760; TxBegin/TxEnd</li>
+<li class=" ml-8">&#30452;&#25509;&#26631;&#35760; Tx &#30340;&#38271;&#24230;&#21644; checksum</li>
 </ul>
 </li>
 <li class=" ml-8">Metadata journaling (ext4 default)<ul class=" list-disc font-serif">
-<li class=" ml-8">数据占磁盘写入的绝大部分<ul class=" list-disc font-serif">
-<li class=" ml-8">只对 inode 和 bitmap 做 journaling 可以提高性能</li>
+<li class=" ml-8">&#25968;&#25454;&#21344;&#30913;&#30424;&#20889;&#20837;&#30340;&#32477;&#22823;&#37096;&#20998;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21482;&#23545; inode &#21644; bitmap &#20570; journaling &#21487;&#20197;&#25552;&#39640;&#24615;&#33021;</li>
 </ul>
 </li>
-<li class=" ml-8">保证文件系统的目录结构是一致的；但数据可能丢失</li>
+<li class=" ml-8">&#20445;&#35777;&#25991;&#20214;&#31995;&#32479;&#30340;&#30446;&#24405;&#32467;&#26500;&#26159;&#19968;&#33268;&#30340;&#65307;&#20294;&#25968;&#25454;&#21487;&#33021;&#20002;&#22833;</li>
 </ul>
 </li>
 </ul></div>
@@ -373,24 +373,24 @@ section .center {
       
         
         <div><h2 id="metadata-journaling" class=" text-xl mt-2 pb-2 font-sans">Metadata Journaling</h2>
-<p class=" font-serif my-1">从应用视角来看，文件系统的行为可能很怪异</p>
+<p class=" font-serif my-1">&#20174;&#24212;&#29992;&#35270;&#35282;&#26469;&#30475;&#65292;&#25991;&#20214;&#31995;&#32479;&#30340;&#34892;&#20026;&#21487;&#33021;&#24456;&#24618;&#24322;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">各类系统软件 (git, sqlite, gdbm, ...) 不幸中招<ul class=" list-disc font-serif">
-<li class=" ml-8"><a href="https://cn.bing.com/search?q=All+file+systems+are+not+created+equal%3A+On+the+complexity+of+crafting+crash-consistent+applications&form=APMCS1&PC=APMC" class=" text-amber-900">All file systems are not created equal: On the complexity of crafting crash-consistent applications</a> (OSDI'14)</li>
-<li class=" ml-8">(os-workbench 里的小秘密)</li>
+<li class=" ml-8">&#21508;&#31867;&#31995;&#32479;&#36719;&#20214; (git, sqlite, gdbm, ...) &#19981;&#24184;&#20013;&#25307;<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="https://cn.bing.com/search?q=All+file+systems+are+not+created+equal%3A+On+the+complexity+of+crafting+crash-consistent+applications&amp;form=APMCS1&amp;PC=APMC" class=" text-amber-900">All file systems are not created equal: On the complexity of crafting crash-consistent applications</a> (OSDI'14)</li>
+<li class=" ml-8">(os-workbench &#37324;&#30340;&#23567;&#31192;&#23494;)</li>
 </ul>
 </li>
-<li class=" ml-8"><a href="https://zhuanlan.zhihu.com/p/25188921" class=" text-amber-900">更多的应用程序可能发生 data loss</a><ul class=" list-disc font-serif">
-<li class=" ml-8">我们的工作: GNU coreutils, gmake, gzip, ... 也有问题</li>
+<li class=" ml-8"><a href="https://zhuanlan.zhihu.com/p/25188921" class=" text-amber-900">&#26356;&#22810;&#30340;&#24212;&#29992;&#31243;&#24207;&#21487;&#33021;&#21457;&#29983; data loss</a><ul class=" list-disc font-serif">
+<li class=" ml-8">&#25105;&#20204;&#30340;&#24037;&#20316;: GNU coreutils, gmake, gzip, ... &#20063;&#26377;&#38382;&#39064;</li>
 <li class=" ml-8"><a href="https://dl.acm.org/doi/10.1145/2950290.2950327" class=" text-amber-900">Crash consistency validation made easy</a> (FSE'16)</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">更为一劳永逸的方案：TxOS</p>
+<p class=" font-serif my-1">&#26356;&#20026;&#19968;&#21171;&#27704;&#36920;&#30340;&#26041;&#26696;&#65306;TxOS</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">xbegin/xend/xabort 系统调用实现跨 syscall 的 “all-or-nothing”<ul class=" list-disc font-serif">
-<li class=" ml-8">应用场景：数据更新、软件更新、check-use……</li>
+<li class=" ml-8">xbegin/xend/xabort &#31995;&#32479;&#35843;&#29992;&#23454;&#29616;&#36328; syscall &#30340; &#8220;all-or-nothing&#8221;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#24212;&#29992;&#22330;&#26223;&#65306;&#25968;&#25454;&#26356;&#26032;&#12289;&#36719;&#20214;&#26356;&#26032;&#12289;check-use&#8230;&#8230;</li>
 <li class=" ml-8"><a href="https://dl.acm.org/doi/10.1145/1629575.1629591" class=" text-amber-900">Operating systems transactions</a> (SOSP'09)</li>
 </ul>
 </li>

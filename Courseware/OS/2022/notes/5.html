@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // • auto-render specific keys, e.g.:
+            // &#8226; auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // • rendering keys, e.g.:
+            // &#8226; rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -137,7 +137,7 @@ hr {
 </style>
 
 
-  <title>本周阅读材料</title>
+  <title>&#26412;&#21608;&#38405;&#35835;&#26448;&#26009;</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -149,22 +149,22 @@ hr {
 <div class="px-2 py-1 w-full fixed z-50 bg-gradient-to-r from-black via-purple-700 via-purple-500 shadow-lg" style="-webkit-backdrop-filter: saturate(150%) blur(4px); backdrop-filter: saturate(150%) blur(4px)">
   <form>
     <a href="../../../index.html"><span class="text-lg px-2 text-white">Yanyan's Wiki</span></a>
-    <a href="../../2023/index.html"><span class="text-sm px-2 text-white">操作系统 (2023)</span></a>
+    <a href="../../2023/index.html"><span class="text-sm px-2 text-white">&#25805;&#20316;&#31995;&#32479; (2023)</span></a>
     <input maxlength="9" id="token-input" class="float-right appearance-none border border-transparent px-2 py-1 w-20 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-xs focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent font-mono" type="text" placeholder="TOKEN" oninput="login();">
   </form>
 </div>
 
 <div class="article container mx-auto md:px-8 lg:px-8 xl:px-8 2xl:px-8 shadow-lg border pb-8 pt-10 max-w-screen-md text-justify divide-y-2 divide-white">
-  <div><h1 id="_1" class=" text-2xl mt-2 font-sans">本周阅读材料</h1>
-<h2 id="_2" class=" text-xl mt-2 pb-2 font-sans">阅读理解示例代码</h2>
-<p class=" font-serif my-1"><a href="../../../pages/OS/2022/demos/thread-os.c" class=" text-amber-900">thread-os.c</a> 对大家理解操作系统非常关键。确保你掌握了课堂上的阅读代码和调试技术，这对于大家从操作系统内核实验中 “存活下来” 是至关重要的。然后，你可以试着调试一下 thread-os，例如检查 <code>yield()</code> 之后发生了什么。</p>
-<p class=" font-serif my-1">然后，你可以试着去建立 AbstractMachine 每一个操作的 “形式语义”——它们会对状态机作出怎样的修改？在理解了这部分内容后，你会发现实现操作系统也不过如此；而且掌握操作系统实现的关键 “碎片”，例如并发编程、上下文切换 (M2 - libco)，都已经掌握在你手中了！</p></div>
+  <div><h1 id="_1" class=" text-2xl mt-2 font-sans">&#26412;&#21608;&#38405;&#35835;&#26448;&#26009;</h1>
+<h2 id="_2" class=" text-xl mt-2 pb-2 font-sans">&#38405;&#35835;&#29702;&#35299;&#31034;&#20363;&#20195;&#30721;</h2>
+<p class=" font-serif my-1"><a href="../../../pages/OS/2022/demos/thread-os.c" class=" text-amber-900">thread-os.c</a> &#23545;&#22823;&#23478;&#29702;&#35299;&#25805;&#20316;&#31995;&#32479;&#38750;&#24120;&#20851;&#38190;&#12290;&#30830;&#20445;&#20320;&#25484;&#25569;&#20102;&#35838;&#22530;&#19978;&#30340;&#38405;&#35835;&#20195;&#30721;&#21644;&#35843;&#35797;&#25216;&#26415;&#65292;&#36825;&#23545;&#20110;&#22823;&#23478;&#20174;&#25805;&#20316;&#31995;&#32479;&#20869;&#26680;&#23454;&#39564;&#20013; &#8220;&#23384;&#27963;&#19979;&#26469;&#8221; &#26159;&#33267;&#20851;&#37325;&#35201;&#30340;&#12290;&#28982;&#21518;&#65292;&#20320;&#21487;&#20197;&#35797;&#30528;&#35843;&#35797;&#19968;&#19979; thread-os&#65292;&#20363;&#22914;&#26816;&#26597; <code>yield()</code> &#20043;&#21518;&#21457;&#29983;&#20102;&#20160;&#20040;&#12290;</p>
+<p class=" font-serif my-1">&#28982;&#21518;&#65292;&#20320;&#21487;&#20197;&#35797;&#30528;&#21435;&#24314;&#31435; AbstractMachine &#27599;&#19968;&#20010;&#25805;&#20316;&#30340; &#8220;&#24418;&#24335;&#35821;&#20041;&#8221;&#8212;&#8212;&#23427;&#20204;&#20250;&#23545;&#29366;&#24577;&#26426;&#20316;&#20986;&#24590;&#26679;&#30340;&#20462;&#25913;&#65311;&#22312;&#29702;&#35299;&#20102;&#36825;&#37096;&#20998;&#20869;&#23481;&#21518;&#65292;&#20320;&#20250;&#21457;&#29616;&#23454;&#29616;&#25805;&#20316;&#31995;&#32479;&#20063;&#19981;&#36807;&#22914;&#27492;&#65307;&#32780;&#19988;&#25484;&#25569;&#25805;&#20316;&#31995;&#32479;&#23454;&#29616;&#30340;&#20851;&#38190; &#8220;&#30862;&#29255;&#8221;&#65292;&#20363;&#22914;&#24182;&#21457;&#32534;&#31243;&#12289;&#19978;&#19979;&#25991;&#20999;&#25442; (M2 - libco)&#65292;&#37117;&#24050;&#32463;&#25484;&#25569;&#22312;&#20320;&#25163;&#20013;&#20102;&#65281;</p></div>
 </div>
 
 <div class="container text-xs py-3">
   <span class="text-muted">
     <center><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="../../../static/img/cc-4.0.png"></a>
-       <a style="color:inherit" href="https://beian.miit.gov.cn/">苏 ICP 备 2020049101 号</a>
+    &#160;&#160;&#160;<a style="color:inherit" href="https://beian.miit.gov.cn/">&#33487; ICP &#22791; 2020049101 &#21495;</a>
     </center>
   </span>
 </div>

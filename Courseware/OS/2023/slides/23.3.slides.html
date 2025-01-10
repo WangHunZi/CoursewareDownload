@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // • auto-render specific keys, e.g.:
+            // &#8226; auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // • rendering keys, e.g.:
+            // &#8226; rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +209,7 @@ section .center {
 }
 </style>
 
-  <title>状态机：建模理解程序的世界</title>
+  <title>&#29366;&#24577;&#26426;&#65306;&#24314;&#27169;&#29702;&#35299;&#31243;&#24207;&#30340;&#19990;&#30028;</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,7 +227,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="23.3.slides.html" class=" text-amber-900">️🌶️ 状态机：建模理解程序的世界</a></h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="23.3.slides.html" class=" text-amber-900">&#65039;&#127798;&#65039; &#29366;&#24577;&#26426;&#65306;&#24314;&#27169;&#29702;&#35299;&#31243;&#24207;&#30340;&#19990;&#30028;</a></h1></div></div></div>
         
       
       </section>
@@ -238,26 +238,26 @@ section .center {
 
       
         
-        <div><h2 id="1-trace" class=" text-xl mt-2 pb-2 font-sans">(1) Trace 和调试器</h2>
-<p class=" font-serif my-1">程序执行 = 状态机执行</p>
+        <div><h2 id="1-trace" class=" text-xl mt-2 pb-2 font-sans">(1) Trace &#21644;&#35843;&#35797;&#22120;</h2>
+<p class=" font-serif my-1">&#31243;&#24207;&#25191;&#34892; = &#29366;&#24577;&#26426;&#25191;&#34892;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">我们能不能 “hack” 进这个状态机<ul class=" list-disc font-serif">
-<li class=" ml-8">观察状态机的执行<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25105;&#20204;&#33021;&#19981;&#33021; &#8220;hack&#8221; &#36827;&#36825;&#20010;&#29366;&#24577;&#26426;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#35266;&#23519;&#29366;&#24577;&#26426;&#30340;&#25191;&#34892;<ul class=" list-disc font-serif">
 <li class=" ml-8">strace/gdb</li>
 </ul>
 </li>
-<li class=" ml-8">甚至记录和<red>改变</red>状态机的执行</li>
+<li class=" ml-8">&#29978;&#33267;&#35760;&#24405;&#21644;<red>&#25913;&#21464;</red>&#29366;&#24577;&#26426;&#30340;&#25191;&#34892;</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">Time-Travel Debugging & Record-replay</p>
+<p class=" font-serif my-1">Time-Travel Debugging &amp; Record-replay</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">如何退回到 $ s_0 \to s_1 \to s_2 \to \ldots $ 中的任何一个状态？<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22914;&#20309;&#36864;&#22238;&#21040; $ s_0 \to s_1 \to s_2 \to \ldots $ &#20013;&#30340;&#20219;&#20309;&#19968;&#20010;&#29366;&#24577;&#65311;<ul class=" list-disc font-serif">
 <li class=" ml-8">AskGPT: How is time-travel debugging implemented in gdb?</li>
 </ul>
 </li>
-<li class=" ml-8">我们甚至可以完整记录程序的执行<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25105;&#20204;&#29978;&#33267;&#21487;&#20197;&#23436;&#25972;&#35760;&#24405;&#31243;&#24207;&#30340;&#25191;&#34892;<ul class=" list-disc font-serif">
 <li class=" ml-8"><a href="https://dl.acm.org/doi/10.1145/3386277" class=" text-amber-900">rr</a>, QEMU, ...</li>
 </ul>
 </li>
@@ -272,21 +272,21 @@ section .center {
 
       
         
-        <div><h2 id="2-profiler" class=" text-xl mt-2 pb-2 font-sans">(2) 性能优化和 Profiler</h2>
+        <div><h2 id="2-profiler" class=" text-xl mt-2 pb-2 font-sans">(2) &#24615;&#33021;&#20248;&#21270;&#21644; Profiler</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
 <p class=" font-serif my-1">Premature optimization is the root of all evil. (D. E. Knuth)</p>
 </blockquote>
-<p class=" font-serif my-1">那到底怎么样才算 mature 呢？</p>
+<p class=" font-serif my-1">&#37027;&#21040;&#24213;&#24590;&#20040;&#26679;&#25165;&#31639; mature &#21602;&#65311;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">状态机的执行需要时间；对象需要占用空间</li>
-<li class=" ml-8">需要理解好 “时间花在哪里”、“什么对象占用了空间”</li>
+<li class=" ml-8">&#29366;&#24577;&#26426;&#30340;&#25191;&#34892;&#38656;&#35201;&#26102;&#38388;&#65307;&#23545;&#35937;&#38656;&#35201;&#21344;&#29992;&#31354;&#38388;</li>
+<li class=" ml-8">&#38656;&#35201;&#29702;&#35299;&#22909; &#8220;&#26102;&#38388;&#33457;&#22312;&#21738;&#37324;&#8221;&#12289;&#8220;&#20160;&#20040;&#23545;&#35937;&#21344;&#29992;&#20102;&#31354;&#38388;&#8221;</li>
 </ul>
 <hr>
 <p class=" font-serif my-1"><img alt="" class="float-right px-4" src="../../../pages/OS/img/safari-profiling.png" width="500px"></p>
-<p class=" font-serif my-1">我们需要真实执行的<red>性能摘要</red>！</p>
+<p class=" font-serif my-1">&#25105;&#20204;&#38656;&#35201;&#30495;&#23454;&#25191;&#34892;&#30340;<red>&#24615;&#33021;&#25688;&#35201;</red>&#65281;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">本质的回答：“为了做某件事到底花去了多少资源”</li>
-<li class=" ml-8">简化的回答：“一段时间内资源的消耗情况”</li>
+<li class=" ml-8">&#26412;&#36136;&#30340;&#22238;&#31572;&#65306;&#8220;&#20026;&#20102;&#20570;&#26576;&#20214;&#20107;&#21040;&#24213;&#33457;&#21435;&#20102;&#22810;&#23569;&#36164;&#28304;&#8221;</li>
+<li class=" ml-8">&#31616;&#21270;&#30340;&#22238;&#31572;&#65306;&#8220;&#19968;&#27573;&#26102;&#38388;&#20869;&#36164;&#28304;&#30340;&#28040;&#32791;&#24773;&#20917;&#8221;</li>
 </ul></div>
         
       
@@ -298,23 +298,23 @@ section .center {
 
       
         
-        <div><h2 id="profiler" class=" text-xl mt-2 pb-2 font-sans">Profiler 和性能摘要</h2>
-<p class=" font-serif my-1">隔一段时间 “暂停” 程序、观察状态机的执行</p>
+        <div><h2 id="profiler" class=" text-xl mt-2 pb-2 font-sans">Profiler &#21644;&#24615;&#33021;&#25688;&#35201;</h2>
+<p class=" font-serif my-1">&#38548;&#19968;&#27573;&#26102;&#38388; &#8220;&#26242;&#20572;&#8221; &#31243;&#24207;&#12289;&#35266;&#23519;&#29366;&#24577;&#26426;&#30340;&#25191;&#34892;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">中断就可以做到</li>
-<li class=" ml-8">将状态 $s \to s'$ “记账”<ul class=" list-disc font-serif">
-<li class=" ml-8">执行的语句</li>
-<li class=" ml-8">函数调用栈</li>
-<li class=" ml-8">服务的请求</li>
+<li class=" ml-8">&#20013;&#26029;&#23601;&#21487;&#20197;&#20570;&#21040;</li>
+<li class=" ml-8">&#23558;&#29366;&#24577; $s \to s'$ &#8220;&#35760;&#36134;&#8221;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25191;&#34892;&#30340;&#35821;&#21477;</li>
+<li class=" ml-8">&#20989;&#25968;&#35843;&#29992;&#26632;</li>
+<li class=" ml-8">&#26381;&#21153;&#30340;&#35831;&#27714;</li>
 </ul>
 </li>
-<li class=" ml-8">得到统计意义的性能摘要</li>
+<li class=" ml-8">&#24471;&#21040;&#32479;&#35745;&#24847;&#20041;&#30340;&#24615;&#33021;&#25688;&#35201;</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">例子：Linux Kernel perf (支持硬件 PMU)</p>
+<p class=" font-serif my-1">&#20363;&#23376;&#65306;Linux Kernel perf (&#25903;&#25345;&#30828;&#20214; PMU)</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">perf list, perf stat (-e), perf record, perf report</li>
-<li class=" ml-8">案例：如果你部署了 100 台一模一样的机器，但有一台 CPU 100%，应该怎么办？</li>
+<li class=" ml-8">&#26696;&#20363;&#65306;&#22914;&#26524;&#20320;&#37096;&#32626;&#20102; 100 &#21488;&#19968;&#27169;&#19968;&#26679;&#30340;&#26426;&#22120;&#65292;&#20294;&#26377;&#19968;&#21488; CPU 100%&#65292;&#24212;&#35813;&#24590;&#20040;&#21150;&#65311;</li>
 </ul></div>
         
       
@@ -326,21 +326,21 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">实际中的性能优化</h2>
-<p class=" font-serif my-1">你们遇到的大部分情况</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#23454;&#38469;&#20013;&#30340;&#24615;&#33021;&#20248;&#21270;</h2>
+<p class=" font-serif my-1">&#20320;&#20204;&#36935;&#21040;&#30340;&#22823;&#37096;&#20998;&#24773;&#20917;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">二八定律：80% 的时间消耗在非常集中的几处代码</li>
-<li class=" ml-8">L1 (pmm): 小内存分配时的 lock contention<ul class=" list-disc font-serif">
-<li class=" ml-8">profiler 直接帮你解决问题</li>
+<li class=" ml-8">&#20108;&#20843;&#23450;&#24459;&#65306;80% &#30340;&#26102;&#38388;&#28040;&#32791;&#22312;&#38750;&#24120;&#38598;&#20013;&#30340;&#20960;&#22788;&#20195;&#30721;</li>
+<li class=" ml-8">L1 (pmm): &#23567;&#20869;&#23384;&#20998;&#37197;&#26102;&#30340; lock contention<ul class=" list-disc font-serif">
+<li class=" ml-8">profiler &#30452;&#25509;&#24110;&#20320;&#35299;&#20915;&#38382;&#39064;</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">工业界遇到的大部分情况</p>
+<p class=" font-serif my-1">&#24037;&#19994;&#30028;&#36935;&#21040;&#30340;&#22823;&#37096;&#20998;&#24773;&#20917;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">木桶效应：每个部分都已经 tune 到局部最优了<ul class=" list-disc font-serif">
-<li class=" ml-8">剩下的部分要么 profiler 信息不完整，要么就不好解决</li>
-<li class=" ml-8">(工程师整天都对着 profiler 看得头都大了)</li>
+<li class=" ml-8">&#26408;&#26742;&#25928;&#24212;&#65306;&#27599;&#20010;&#37096;&#20998;&#37117;&#24050;&#32463; tune &#21040;&#23616;&#37096;&#26368;&#20248;&#20102;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21097;&#19979;&#30340;&#37096;&#20998;&#35201;&#20040; profiler &#20449;&#24687;&#19981;&#23436;&#25972;&#65292;&#35201;&#20040;&#23601;&#19981;&#22909;&#35299;&#20915;</li>
+<li class=" ml-8">(&#24037;&#31243;&#24072;&#25972;&#22825;&#37117;&#23545;&#30528; profiler &#30475;&#24471;&#22836;&#37117;&#22823;&#20102;)</li>
 <li class=" ml-8"><a href="https://cacm.acm.org/magazines/2016/6/202665-the-flame-graph/fulltext" class=" text-amber-900">The flame graph</a> (CACM'16)</li>
 </ul>
 </li>
@@ -355,23 +355,23 @@ section .center {
 
       
         
-        <div><h2 id="3-model-checker-verifier" class=" text-xl mt-2 pb-2 font-sans">(3) Model Checker 和 Verifier</h2>
-<p class=" font-serif my-1">一些真正的 model checkers</p>
+        <div><h2 id="3-model-checker-verifier" class=" text-xl mt-2 pb-2 font-sans">(3) Model Checker &#21644; Verifier</h2>
+<p class=" font-serif my-1">&#19968;&#20123;&#30495;&#27491;&#30340; model checkers</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><a href="https://lamport.azurewebsites.net/tla/tla.html" class=" text-amber-900">TLA+</a> by Leslie Lamport; </li>
-<li class=" ml-8"><a href="https://ti.arc.nasa.gov/tech/rse/vandv/jpf/" class=" text-amber-900">Java PathFinder (JFP)</a> 和 <a href="http://spinroot.com" class=" text-amber-900">SPIN</a></li>
-<li class=" ml-8">如果你希望直接验证<red>程序</red>？</li>
+<li class=" ml-8"><a href="https://ti.arc.nasa.gov/tech/rse/vandv/jpf/" class=" text-amber-900">Java PathFinder (JFP)</a> &#21644; <a href="http://spinroot.com" class=" text-amber-900">SPIN</a></li>
+<li class=" ml-8">&#22914;&#26524;&#20320;&#24076;&#26395;&#30452;&#25509;&#39564;&#35777;<red>&#31243;&#24207;</red>&#65311;</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">任何 “non-deterministic” 的状态机都可以检查</p>
+<p class=" font-serif my-1">&#20219;&#20309; &#8220;non-deterministic&#8221; &#30340;&#29366;&#24577;&#26426;&#37117;&#21487;&#20197;&#26816;&#26597;</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">u32</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rdrand</span><span class="p">(),</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rdrand</span><span class="p">();</span>
-<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">></span><span class="w"> </span><span class="n">y</span><span class="p">)</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">y</span><span class="p">)</span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">65</span><span class="p">)</span>
-<span class="w">    </span><span class="n">bug</span><span class="p">();</span><span class="w">  </span><span class="c1">// 如何有效地检验？</span>
+<span class="w">    </span><span class="n">bug</span><span class="p">();</span><span class="w">  </span><span class="c1">// &#22914;&#20309;&#26377;&#25928;&#22320;&#26816;&#39564;&#65311;</span>
 </code></pre></div>
 
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><a href="https://dl.acm.org/doi/10.5555/1855741.1855756" class=" text-amber-900">KLEE: Unassisted and automatic generation of high-coverage tests for complex systems programs</a> (OSDI'08, Best Paper 🏅)</li>
+<li class=" ml-8"><a href="https://dl.acm.org/doi/10.5555/1855741.1855756" class=" text-amber-900">KLEE: Unassisted and automatic generation of high-coverage tests for complex systems programs</a> (OSDI'08, Best Paper &#127941;)</li>
 </ul></div>
         
       

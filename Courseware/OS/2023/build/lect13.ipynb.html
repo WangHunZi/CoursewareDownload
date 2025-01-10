@@ -2,7 +2,7 @@
 <head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>13. 并发 Bug 的应对</title>
+<title>13. &#24182;&#21457; Bug &#30340;&#24212;&#23545;</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script><script>
 (function() {
   function addWidgetsRenderer() {
@@ -6481,7 +6481,7 @@ cell outputs.
 
 .jp-Notebook .jp-Cell.jp-mod-dirty .jp-InputPrompt::before {
   color: var(--jp-warn-color1);
-  content: '•';
+  content: '&#8226;';
 }
 
 .jp-Notebook .jp-Cell.jp-mod-active.jp-mod-dirty .jp-Collapser {
@@ -7518,7 +7518,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">mosaic</span> <span class="kn">import</span> <span class="o">*</span>
@@ -7690,18 +7690,18 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-InputPrompt jp-InputArea-prompt">
 </div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="13.-%E5%B9%B6%E5%8F%91-Bug-%E7%9A%84%E5%BA%94%E5%AF%B9">13. 并发 Bug 的应对<a class="anchor-link" href="#13.-%E5%B9%B6%E5%8F%91-Bug-%E7%9A%84%E5%BA%94%E5%AF%B9">¶</a>
+<h1 id="13.-%E5%B9%B6%E5%8F%91-Bug-%E7%9A%84%E5%BA%94%E5%AF%B9">13. &#24182;&#21457; Bug &#30340;&#24212;&#23545;<a class="anchor-link" href="lect13.ipynb.html#13.-%E5%B9%B6%E5%8F%91-Bug-%E7%9A%84%E5%BA%94%E5%AF%B9">&#182;</a>
 </h1>
-<p><strong>Changelog & 反馈</strong></p>
+<p><strong>Changelog &amp; &#21453;&#39304;</strong></p>
 <ul>
-<li>的确是 Mandelbrot set (但选了一个比较特别的放大的区域)</li>
+<li>&#30340;&#30830;&#26159; Mandelbrot set (&#20294;&#36873;&#20102;&#19968;&#20010;&#27604;&#36739;&#29305;&#21035;&#30340;&#25918;&#22823;&#30340;&#21306;&#22495;)</li>
 </ul>
-<p><strong>背景回顾</strong>：我们在编写并发程序时，难免会遇到死锁、数据竞争、原子性/顺序违反等类型的并发 bugs。即便我们知道它们的定义和触发条件，直接在编程时消灭它们依然是十分困难的。以数据竞争为例，它的定义貌似简单：两个线程同时访问同一内存地址，并且至少有一个是写。但 “访问内存” 则可能出其不意——例如 ret 指令和栈上数据的修改产生的数据竞争。那么，我们应该如何应对这些并发 bugs？</p>
-<p><strong>本讲内容</strong>：<strong>一节真正的 “编程 ”课</strong>：如何正确地 (并发) 编程：</p>
+<p><strong>&#32972;&#26223;&#22238;&#39038;</strong>&#65306;&#25105;&#20204;&#22312;&#32534;&#20889;&#24182;&#21457;&#31243;&#24207;&#26102;&#65292;&#38590;&#20813;&#20250;&#36935;&#21040;&#27515;&#38145;&#12289;&#25968;&#25454;&#31454;&#20105;&#12289;&#21407;&#23376;&#24615;/&#39034;&#24207;&#36829;&#21453;&#31561;&#31867;&#22411;&#30340;&#24182;&#21457; bugs&#12290;&#21363;&#20415;&#25105;&#20204;&#30693;&#36947;&#23427;&#20204;&#30340;&#23450;&#20041;&#21644;&#35302;&#21457;&#26465;&#20214;&#65292;&#30452;&#25509;&#22312;&#32534;&#31243;&#26102;&#28040;&#28781;&#23427;&#20204;&#20381;&#28982;&#26159;&#21313;&#20998;&#22256;&#38590;&#30340;&#12290;&#20197;&#25968;&#25454;&#31454;&#20105;&#20026;&#20363;&#65292;&#23427;&#30340;&#23450;&#20041;&#35980;&#20284;&#31616;&#21333;&#65306;&#20004;&#20010;&#32447;&#31243;&#21516;&#26102;&#35775;&#38382;&#21516;&#19968;&#20869;&#23384;&#22320;&#22336;&#65292;&#24182;&#19988;&#33267;&#23569;&#26377;&#19968;&#20010;&#26159;&#20889;&#12290;&#20294; &#8220;&#35775;&#38382;&#20869;&#23384;&#8221; &#21017;&#21487;&#33021;&#20986;&#20854;&#19981;&#24847;&#8212;&#8212;&#20363;&#22914; ret &#25351;&#20196;&#21644;&#26632;&#19978;&#25968;&#25454;&#30340;&#20462;&#25913;&#20135;&#29983;&#30340;&#25968;&#25454;&#31454;&#20105;&#12290;&#37027;&#20040;&#65292;&#25105;&#20204;&#24212;&#35813;&#22914;&#20309;&#24212;&#23545;&#36825;&#20123;&#24182;&#21457; bugs&#65311;</p>
+<p><strong>&#26412;&#35762;&#20869;&#23481;</strong>&#65306;<strong>&#19968;&#33410;&#30495;&#27491;&#30340; &#8220;&#32534;&#31243; &#8221;&#35838;</strong>&#65306;&#22914;&#20309;&#27491;&#30830;&#22320; (&#24182;&#21457;) &#32534;&#31243;&#65306;</p>
 <ul>
 <li>Lock ordering</li>
-<li>防御性编程</li>
-<li>运行时检查</li>
+<li>&#38450;&#24481;&#24615;&#32534;&#31243;</li>
+<li>&#36816;&#34892;&#26102;&#26816;&#26597;</li>
 </ul>
 </div>
 </div>
@@ -7712,7 +7712,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'13.1'</span><span class="p">)</span>
@@ -7741,7 +7741,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">demo</span><span class="p">(</span><span class="s1">'lock-ordering'</span><span class="p">,</span> <span class="s1">'c/lock-ordering.c'</span><span class="p">,</span> <span class="n">libs</span><span class="o">=</span><span class="p">[</span><span class="s1">'thread.h'</span><span class="p">,</span> <span class="s1">'thread-sync.h'</span><span class="p">])</span>
@@ -7776,7 +7776,7 @@ var element = document.getElementById('6e236a5b-55c0-4a00-9692-9b41e66f1489');
 <div class="jp-InputPrompt jp-InputArea-prompt">
 </div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>即便是最容易发现、最容易预防的死锁类 bug，在实际的复杂系统中，想要使程序员能够正确遵守编程规范，也是十分困难的。因此，对于复杂的系统，我们必须总是假设程序员会花式犯错，最终才能得到高质量的系统。</p>
+<p>&#21363;&#20415;&#26159;&#26368;&#23481;&#26131;&#21457;&#29616;&#12289;&#26368;&#23481;&#26131;&#39044;&#38450;&#30340;&#27515;&#38145;&#31867; bug&#65292;&#22312;&#23454;&#38469;&#30340;&#22797;&#26434;&#31995;&#32479;&#20013;&#65292;&#24819;&#35201;&#20351;&#31243;&#24207;&#21592;&#33021;&#22815;&#27491;&#30830;&#36981;&#23432;&#32534;&#31243;&#35268;&#33539;&#65292;&#20063;&#26159;&#21313;&#20998;&#22256;&#38590;&#30340;&#12290;&#22240;&#27492;&#65292;&#23545;&#20110;&#22797;&#26434;&#30340;&#31995;&#32479;&#65292;&#25105;&#20204;&#24517;&#39035;&#24635;&#26159;&#20551;&#35774;&#31243;&#24207;&#21592;&#20250;&#33457;&#24335;&#29359;&#38169;&#65292;&#26368;&#32456;&#25165;&#33021;&#24471;&#21040;&#39640;&#36136;&#37327;&#30340;&#31995;&#32479;&#12290;</p>
 </div>
 </div>
 </div>
@@ -7786,7 +7786,7 @@ var element = document.getElementById('6e236a5b-55c0-4a00-9692-9b41e66f1489');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'13.2'</span><span class="p">)</span>
@@ -7815,7 +7815,7 @@ var element = document.getElementById('6e236a5b-55c0-4a00-9692-9b41e66f1489');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">demo</span><span class="p">(</span><span class="s1">'spinlock'</span><span class="p">,</span> <span class="s1">'c/spinlock-xv6.c'</span><span class="p">,</span> <span class="n">libs</span><span class="o">=</span><span class="p">[</span><span class="s1">'thread.h'</span><span class="p">,</span> <span class="s1">'thread-sync.h'</span><span class="p">])</span>
@@ -7850,7 +7850,7 @@ var element = document.getElementById('62869c6e-7ec7-4ad0-a0ea-5ac4b4b1dfbd');
 <div class="jp-InputPrompt jp-InputArea-prompt">
 </div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>防御性编程对大型系统来说是至关重要的。如果没有适当的 assertions，调试代码会变得非常艰难。</p>
+<p>&#38450;&#24481;&#24615;&#32534;&#31243;&#23545;&#22823;&#22411;&#31995;&#32479;&#26469;&#35828;&#26159;&#33267;&#20851;&#37325;&#35201;&#30340;&#12290;&#22914;&#26524;&#27809;&#26377;&#36866;&#24403;&#30340; assertions&#65292;&#35843;&#35797;&#20195;&#30721;&#20250;&#21464;&#24471;&#38750;&#24120;&#33392;&#38590;&#12290;</p>
 </div>
 </div>
 </div>
@@ -7860,7 +7860,7 @@ var element = document.getElementById('62869c6e-7ec7-4ad0-a0ea-5ac4b4b1dfbd');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'13.3'</span><span class="p">)</span>
@@ -7889,7 +7889,7 @@ var element = document.getElementById('62869c6e-7ec7-4ad0-a0ea-5ac4b4b1dfbd');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">demo</span><span class="p">(</span><span class="s1">'lockdep'</span><span class="p">,</span> <span class="s1">'c/lockdep.c'</span><span class="p">,</span> <span class="n">libs</span><span class="o">=</span><span class="p">[</span><span class="s1">'thread.h'</span><span class="p">])</span>
@@ -7921,7 +7921,7 @@ var element = document.getElementById('df76a82a-7e95-47c4-9df2-e6b326cd92f6');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">demo</span><span class="p">(</span><span class="s1">'uaf'</span><span class="p">,</span> <span class="s1">'d/uaf.c'</span><span class="p">)</span>
@@ -7953,7 +7953,7 @@ var element = document.getElementById('640299ab-c6c1-4594-9473-bbff0727bcca');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[9]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">demo</span><span class="p">(</span><span class="s1">'alipay'</span><span class="p">,</span> <span class="s1">'c/alipay.c'</span><span class="p">,</span> <span class="n">libs</span><span class="o">=</span><span class="p">[</span><span class="s1">'thread.h'</span><span class="p">])</span>
@@ -7985,7 +7985,7 @@ var element = document.getElementById('7a8c7669-2a2e-46f6-b091-da1da66ae39e');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[10]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'13.4'</span><span class="p">)</span>
@@ -8017,21 +8017,21 @@ var element = document.getElementById('7a8c7669-2a2e-46f6-b091-da1da66ae39e');
 <div class="jp-InputPrompt jp-InputArea-prompt">
 </div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Take-away-Messages">Take-away Messages<a class="anchor-link" href="#Take-away-Messages">¶</a>
+<h2 id="Take-away-Messages">Take-away Messages<a class="anchor-link" href="lect13.ipynb.html#Take-away-Messages">&#182;</a>
 </h2>
-<p>Bugs (包括并发 bugs) 一直以来困扰着所有软件工程的实践者。这是因为到目前，仍然没有经济、可靠的手段能帮助我们检查实现的程序逻辑 (状态机描述，一个纯粹的数学对象) 是否满足我们设计时的种种预期。因此，为了实现 “更正确” 的软件，我们把对程序的预期表达在程序中 (race-free, lock ordering, ...)，而不是让程序在自然状态下悄悄进入有问题的状态，就是我们目前解决程序调试问题的折中办法。</p>
-<p>各类 sanitizer 给我们带来的启发是：如果我们能清楚地追溯到问题产生的本源，我们就总是能找到好的应对方法——甚至是我们可以构造低配版的 “近似” sanitizer，它们在暗中帮助你实现 fail-fast 的程序，从而减轻你调试问题的负担。</p>
-<h3 id="%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">课后习题/编程作业<a class="anchor-link" href="#%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">¶</a>
+<p>Bugs (&#21253;&#25324;&#24182;&#21457; bugs) &#19968;&#30452;&#20197;&#26469;&#22256;&#25200;&#30528;&#25152;&#26377;&#36719;&#20214;&#24037;&#31243;&#30340;&#23454;&#36341;&#32773;&#12290;&#36825;&#26159;&#22240;&#20026;&#21040;&#30446;&#21069;&#65292;&#20173;&#28982;&#27809;&#26377;&#32463;&#27982;&#12289;&#21487;&#38752;&#30340;&#25163;&#27573;&#33021;&#24110;&#21161;&#25105;&#20204;&#26816;&#26597;&#23454;&#29616;&#30340;&#31243;&#24207;&#36923;&#36753; (&#29366;&#24577;&#26426;&#25551;&#36848;&#65292;&#19968;&#20010;&#32431;&#31929;&#30340;&#25968;&#23398;&#23545;&#35937;) &#26159;&#21542;&#28385;&#36275;&#25105;&#20204;&#35774;&#35745;&#26102;&#30340;&#31181;&#31181;&#39044;&#26399;&#12290;&#22240;&#27492;&#65292;&#20026;&#20102;&#23454;&#29616; &#8220;&#26356;&#27491;&#30830;&#8221; &#30340;&#36719;&#20214;&#65292;&#25105;&#20204;&#25226;&#23545;&#31243;&#24207;&#30340;&#39044;&#26399;&#34920;&#36798;&#22312;&#31243;&#24207;&#20013; (race-free, lock ordering, ...)&#65292;&#32780;&#19981;&#26159;&#35753;&#31243;&#24207;&#22312;&#33258;&#28982;&#29366;&#24577;&#19979;&#24708;&#24708;&#36827;&#20837;&#26377;&#38382;&#39064;&#30340;&#29366;&#24577;&#65292;&#23601;&#26159;&#25105;&#20204;&#30446;&#21069;&#35299;&#20915;&#31243;&#24207;&#35843;&#35797;&#38382;&#39064;&#30340;&#25240;&#20013;&#21150;&#27861;&#12290;</p>
+<p>&#21508;&#31867; sanitizer &#32473;&#25105;&#20204;&#24102;&#26469;&#30340;&#21551;&#21457;&#26159;&#65306;&#22914;&#26524;&#25105;&#20204;&#33021;&#28165;&#26970;&#22320;&#36861;&#28335;&#21040;&#38382;&#39064;&#20135;&#29983;&#30340;&#26412;&#28304;&#65292;&#25105;&#20204;&#23601;&#24635;&#26159;&#33021;&#25214;&#21040;&#22909;&#30340;&#24212;&#23545;&#26041;&#27861;&#8212;&#8212;&#29978;&#33267;&#26159;&#25105;&#20204;&#21487;&#20197;&#26500;&#36896;&#20302;&#37197;&#29256;&#30340; &#8220;&#36817;&#20284;&#8221; sanitizer&#65292;&#23427;&#20204;&#22312;&#26263;&#20013;&#24110;&#21161;&#20320;&#23454;&#29616; fail-fast &#30340;&#31243;&#24207;&#65292;&#20174;&#32780;&#20943;&#36731;&#20320;&#35843;&#35797;&#38382;&#39064;&#30340;&#36127;&#25285;&#12290;</p>
+<h3 id="%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">&#35838;&#21518;&#20064;&#39064;/&#32534;&#31243;&#20316;&#19994;<a class="anchor-link" href="lect13.ipynb.html#%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">&#182;</a>
 </h3>
-<h4 id="1.-%E9%98%85%E8%AF%BB%E6%9D%90%E6%96%99">1. 阅读材料<a class="anchor-link" href="#1.-%E9%98%85%E8%AF%BB%E6%9D%90%E6%96%99">¶</a>
+<h4 id="1.-%E9%98%85%E8%AF%BB%E6%9D%90%E6%96%99">1. &#38405;&#35835;&#26448;&#26009;<a class="anchor-link" href="lect13.ipynb.html#1.-%E9%98%85%E8%AF%BB%E6%9D%90%E6%96%99">&#182;</a>
 </h4>
-<p>教科书 <a href="https://pages.cs.wisc.edu/~remzi/OSTEP/">Operating Systems: Three Easy Pieces</a>:</p>
+<p>&#25945;&#31185;&#20070; <a href="https://pages.cs.wisc.edu/~remzi/OSTEP/">Operating Systems: Three Easy Pieces</a>:</p>
 <ul>
-<li>第 32 章 - Concurrency Bugs</li>
+<li>&#31532; 32 &#31456; - Concurrency Bugs</li>
 </ul>
-<h4 id="2.-%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5">2. 编程实践<a class="anchor-link" href="#2.-%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5">¶</a>
+<h4 id="2.-%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5">2. &#32534;&#31243;&#23454;&#36341;<a class="anchor-link" href="lect13.ipynb.html#2.-%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5">&#182;</a>
 </h4>
-<p>在实验中尽可能地增加运行时检查和压力测试，以帮助你诊断实验中可能发生的问题。</p>
+<p>&#22312;&#23454;&#39564;&#20013;&#23613;&#21487;&#33021;&#22320;&#22686;&#21152;&#36816;&#34892;&#26102;&#26816;&#26597;&#21644;&#21387;&#21147;&#27979;&#35797;&#65292;&#20197;&#24110;&#21161;&#20320;&#35786;&#26029;&#23454;&#39564;&#20013;&#21487;&#33021;&#21457;&#29983;&#30340;&#38382;&#39064;&#12290;</p>
 </div>
 </div>
 </div>
@@ -8042,8 +8042,8 @@ var element = document.getElementById('7a8c7669-2a2e-46f6-b091-da1da66ae39e');
 <div class="container text-xs py-3">
   <span class="text-muted">
     <center>
-<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="/static/img/cc-4.0.png"></a>
-       <a style="color:inherit" href="https://beian.miit.gov.cn/">苏 ICP 备 2020049101 号</a>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="../../../static/img/cc-4.0.png"></a>
+    &#160;&#160;&#160;<a style="color:inherit" href="https://beian.miit.gov.cn/">&#33487; ICP &#22791; 2020049101 &#21495;</a>
     </center>
   </span>
 </div>

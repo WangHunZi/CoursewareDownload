@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // • auto-render specific keys, e.g.:
+            // &#8226; auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // • rendering keys, e.g.:
+            // &#8226; rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +209,7 @@ section .center {
 }
 </style>
 
-  <title>信号量：应用</title>
+  <title>&#20449;&#21495;&#37327;&#65306;&#24212;&#29992;</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,7 +227,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="10.2.slides.html" class=" text-amber-900">信号量：应用</a></h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="10.2.slides.html" class=" text-amber-900">&#20449;&#21495;&#37327;&#65306;&#24212;&#29992;</a></h1></div></div></div>
         
       
       </section>
@@ -238,28 +238,28 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">信号量的两种典型应用</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20449;&#21495;&#37327;&#30340;&#20004;&#31181;&#20856;&#22411;&#24212;&#29992;</h2>
 <ol class=" list-decimal font-serif">
-<li class=" ml-8">实现一次临时的 happens-before<ul class=" list-disc font-serif">
-<li class=" ml-8">初始：s = 0</li>
+<li class=" ml-8">&#23454;&#29616;&#19968;&#27425;&#20020;&#26102;&#30340; happens-before<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21021;&#22987;&#65306;s = 0</li>
 <li class=" ml-8">A; V(s)</li>
 <li class=" ml-8">P(s); B<ul class=" list-disc font-serif">
-<li class=" ml-8">假设 s 只被使用一次，保证 A happens-before B</li>
+<li class=" ml-8">&#20551;&#35774; s &#21482;&#34987;&#20351;&#29992;&#19968;&#27425;&#65292;&#20445;&#35777; A happens-before B</li>
 </ul>
 </li>
 </ul>
 </li>
-<li class=" ml-8">实现计数型的同步<ul class=" list-disc font-serif">
-<li class=" ml-8">初始：done = 0</li>
+<li class=" ml-8">&#23454;&#29616;&#35745;&#25968;&#22411;&#30340;&#21516;&#27493;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21021;&#22987;&#65306;done = 0</li>
 <li class=" ml-8">Tworker: V(done)</li>
 <li class=" ml-8">Tmain: P(done) $\times T$</li>
 </ul>
 </li>
 </ol>
 <hr>
-<p class=" font-serif my-1">对应了两种线程 join 的方法</p>
+<p class=" font-serif my-1">&#23545;&#24212;&#20102;&#20004;&#31181;&#32447;&#31243; join &#30340;&#26041;&#27861;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">$T_1 \to T_2 \to \ldots$ v.s. 完成就行，不管顺序</li>
+<li class=" ml-8">$T_1 \to T_2 \to \ldots$ v.s. &#23436;&#25104;&#23601;&#34892;&#65292;&#19981;&#31649;&#39034;&#24207;</li>
 </ul></div>
         
       
@@ -271,16 +271,16 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">例子：实现计算图</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20363;&#23376;&#65306;&#23454;&#29616;&#35745;&#31639;&#22270;</h2>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/dep-graph.jpg" width="300px"></p>
-<p class=" font-serif my-1">对于任何计算图</p>
+<p class=" font-serif my-1">&#23545;&#20110;&#20219;&#20309;&#35745;&#31639;&#22270;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">为每个节点分配一个线程<ul class=" list-disc font-serif">
-<li class=" ml-8">对每条入边执行 P (wait) 操作 </li>
-<li class=" ml-8">完成计算任务</li>
-<li class=" ml-8">对每条出边执行 V (post/signal) 操作<ul class=" list-disc font-serif">
-<li class=" ml-8">每条边恰好 P 一次、V 一次</li>
-<li class=" ml-8">PLCS 直接就解决了啊？</li>
+<li class=" ml-8">&#20026;&#27599;&#20010;&#33410;&#28857;&#20998;&#37197;&#19968;&#20010;&#32447;&#31243;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#23545;&#27599;&#26465;&#20837;&#36793;&#25191;&#34892; P (wait) &#25805;&#20316; </li>
+<li class=" ml-8">&#23436;&#25104;&#35745;&#31639;&#20219;&#21153;</li>
+<li class=" ml-8">&#23545;&#27599;&#26465;&#20986;&#36793;&#25191;&#34892; V (post/signal) &#25805;&#20316;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#27599;&#26465;&#36793;&#24688;&#22909; P &#19968;&#27425;&#12289;V &#19968;&#27425;</li>
+<li class=" ml-8">PLCS &#30452;&#25509;&#23601;&#35299;&#20915;&#20102;&#21834;&#65311;</li>
 </ul>
 </li>
 </ul>
@@ -288,7 +288,7 @@ section .center {
 </ul>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">Tworker_d</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">P</span><span class="p">(</span><span class="n">bd</span><span class="p">);</span><span class="w"> </span><span class="n">P</span><span class="p">(</span><span class="n">ad</span><span class="p">);</span><span class="w"> </span><span class="n">P</span><span class="p">(</span><span class="n">cd</span><span class="p">);</span>
-<span class="w">  </span><span class="c1">// 完成节点 d 上的计算任务</span>
+<span class="w">  </span><span class="c1">// &#23436;&#25104;&#33410;&#28857; d &#19978;&#30340;&#35745;&#31639;&#20219;&#21153;</span>
 <span class="w">  </span><span class="n">V</span><span class="p">(</span><span class="n">de</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div></div>
@@ -302,26 +302,26 @@ section .center {
 
       
         
-        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">实现计算图 (cont'd)</h2>
-<p class=" font-serif my-1">乍一看很厉害</p>
+        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">&#23454;&#29616;&#35745;&#31639;&#22270; (cont'd)</h2>
+<p class=" font-serif my-1">&#20045;&#19968;&#30475;&#24456;&#21385;&#23475;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">完美解决了并行问题</li>
+<li class=" ml-8">&#23436;&#32654;&#35299;&#20915;&#20102;&#24182;&#34892;&#38382;&#39064;</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">实际上……</p>
+<p class=" font-serif my-1">&#23454;&#38469;&#19978;&#8230;&#8230;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">创建那么多线程和那么多信号量 = Time Limit Exceeded</li>
-<li class=" ml-8">解决线程太多的问题<ul class=" list-disc font-serif">
-<li class=" ml-8">一个线程负责多个节点的计算<ul class=" list-disc font-serif">
-<li class=" ml-8">静态划分 → 覆盖问题</li>
-<li class=" ml-8">动态调度 → 又变回了生产者-消费者</li>
+<li class=" ml-8">&#21019;&#24314;&#37027;&#20040;&#22810;&#32447;&#31243;&#21644;&#37027;&#20040;&#22810;&#20449;&#21495;&#37327; = Time Limit Exceeded</li>
+<li class=" ml-8">&#35299;&#20915;&#32447;&#31243;&#22826;&#22810;&#30340;&#38382;&#39064;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#19968;&#20010;&#32447;&#31243;&#36127;&#36131;&#22810;&#20010;&#33410;&#28857;&#30340;&#35745;&#31639;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#38745;&#24577;&#21010;&#20998; &#8594; &#35206;&#30422;&#38382;&#39064;</li>
+<li class=" ml-8">&#21160;&#24577;&#35843;&#24230; &#8594; &#21448;&#21464;&#22238;&#20102;&#29983;&#20135;&#32773;-&#28040;&#36153;&#32773;</li>
 </ul>
 </li>
 </ul>
 </li>
-<li class=" ml-8">解决信号量太多的问题<ul class=" list-disc font-serif">
-<li class=" ml-8">计算节点共享信号量<ul class=" list-disc font-serif">
-<li class=" ml-8">可能出现 “假唤醒” → 又变回了条件变量</li>
+<li class=" ml-8">&#35299;&#20915;&#20449;&#21495;&#37327;&#22826;&#22810;&#30340;&#38382;&#39064;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#35745;&#31639;&#33410;&#28857;&#20849;&#20139;&#20449;&#21495;&#37327;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21487;&#33021;&#20986;&#29616; &#8220;&#20551;&#21796;&#37266;&#8221; &#8594; &#21448;&#21464;&#22238;&#20102;&#26465;&#20214;&#21464;&#37327;</li>
 </ul>
 </li>
 </ul>
@@ -337,21 +337,21 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">例子：毫无意义的练习题</h2>
-<p class=" font-serif my-1">有三种线程</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20363;&#23376;&#65306;&#27627;&#26080;&#24847;&#20041;&#30340;&#32451;&#20064;&#39064;</h2>
+<p class=" font-serif my-1">&#26377;&#19977;&#31181;&#32447;&#31243;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">Ta 若干: 死循环打印 <code><</code></li>
-<li class=" ml-8">Tb 若干: 死循环打印 <code>></code></li>
-<li class=" ml-8">Tc 若干: 死循环打印 <code>_</code></li>
-<li class=" ml-8">如何同步这些线程，保证打印出 <code><><_</code> 和 <code>><>_</code> 的序列？</li>
+<li class=" ml-8">Ta &#33509;&#24178;: &#27515;&#24490;&#29615;&#25171;&#21360; <code>&lt;</code></li>
+<li class=" ml-8">Tb &#33509;&#24178;: &#27515;&#24490;&#29615;&#25171;&#21360; <code>&gt;</code></li>
+<li class=" ml-8">Tc &#33509;&#24178;: &#27515;&#24490;&#29615;&#25171;&#21360; <code>_</code></li>
+<li class=" ml-8">&#22914;&#20309;&#21516;&#27493;&#36825;&#20123;&#32447;&#31243;&#65292;&#20445;&#35777;&#25171;&#21360;&#20986; <code>&lt;&gt;&lt;_</code> &#21644; <code>&gt;&lt;&gt;_</code> &#30340;&#24207;&#21015;&#65311;</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">信号量的困难</p>
+<p class=" font-serif my-1">&#20449;&#21495;&#37327;&#30340;&#22256;&#38590;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">上一条鱼打印后，<code><</code> 和 <code>></code> 都是可行的</li>
-<li class=" ml-8">我应该 P 哪个信号量？<ul class=" list-disc font-serif">
-<li class=" ml-8">可以 P 我自己的</li>
-<li class=" ml-8">由打印 <code>_</code> 的线程随机选一个</li>
+<li class=" ml-8">&#19978;&#19968;&#26465;&#40060;&#25171;&#21360;&#21518;&#65292;<code>&lt;</code> &#21644; <code>&gt;</code> &#37117;&#26159;&#21487;&#34892;&#30340;</li>
+<li class=" ml-8">&#25105;&#24212;&#35813; P &#21738;&#20010;&#20449;&#21495;&#37327;&#65311;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21487;&#20197; P &#25105;&#33258;&#24049;&#30340;</li>
+<li class=" ml-8">&#30001;&#25171;&#21360; <code>_</code> &#30340;&#32447;&#31243;&#38543;&#26426;&#36873;&#19968;&#20010;</li>
 </ul>
 </li>
 </ul></div>
@@ -365,18 +365,18 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">例子：使用信号量实现条件变量</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20363;&#23376;&#65306;&#20351;&#29992;&#20449;&#21495;&#37327;&#23454;&#29616;&#26465;&#20214;&#21464;&#37327;</h2>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/cv-sem.png" width="155px"></p>
-<p class=" font-serif my-1">当然是问 AI 了</p>
+<p class=" font-serif my-1">&#24403;&#28982;&#26159;&#38382; AI &#20102;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">ChatGPT (GPT-3.5) 直接一本正经胡说八道<ul class=" list-disc font-serif">
-<li class=" ml-8">这个对 LLM 还是太困难了</li>
+<li class=" ml-8">ChatGPT (GPT-3.5) &#30452;&#25509;&#19968;&#26412;&#27491;&#32463;&#32993;&#35828;&#20843;&#36947;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#36825;&#20010;&#23545; LLM &#36824;&#26159;&#22826;&#22256;&#38590;&#20102;</li>
 </ul>
 </li>
-<li class=" ml-8">New Bing 给出了一种 “思路”<ul class=" list-disc font-serif">
-<li class=" ml-8">第一个 wait 的线程会在持有 mutex 的情况下 P(cond)</li>
-<li class=" ml-8">从此再也没有人能获得互斥锁……<ul class=" list-disc font-serif">
-<li class=" ml-8"><del>像极了我改期末试卷的体验</del></li>
+<li class=" ml-8">New Bing &#32473;&#20986;&#20102;&#19968;&#31181; &#8220;&#24605;&#36335;&#8221;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#31532;&#19968;&#20010; wait &#30340;&#32447;&#31243;&#20250;&#22312;&#25345;&#26377; mutex &#30340;&#24773;&#20917;&#19979; P(cond)</li>
+<li class=" ml-8">&#20174;&#27492;&#20877;&#20063;&#27809;&#26377;&#20154;&#33021;&#33719;&#24471;&#20114;&#26021;&#38145;&#8230;&#8230;<ul class=" list-disc font-serif">
+<li class=" ml-8"><del>&#20687;&#26497;&#20102;&#25105;&#25913;&#26399;&#26411;&#35797;&#21367;&#30340;&#20307;&#39564;</del></li>
 </ul>
 </li>
 </ul>
@@ -392,8 +392,8 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">使用信号量实现条件变量：本质困难</h2>
-<p class=" font-serif my-1">操作系统用自旋锁保证 wait 的原子性</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20351;&#29992;&#20449;&#21495;&#37327;&#23454;&#29616;&#26465;&#20214;&#21464;&#37327;&#65306;&#26412;&#36136;&#22256;&#38590;</h2>
+<p class=" font-serif my-1">&#25805;&#20316;&#31995;&#32479;&#29992;&#33258;&#26059;&#38145;&#20445;&#35777; wait &#30340;&#21407;&#23376;&#24615;</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>wait(cv, mutex) {
   release(mutex);
   sleep();
@@ -401,16 +401,16 @@ section .center {
 </code></pre></div>
 
 <hr>
-<p class=" font-serif my-1"><a href="http://birrell.org/andrew/papers/ImplementingCVs.pdf" class=" text-amber-900">信号量实现的矛盾</a></p>
+<p class=" font-serif my-1"><a href="http://birrell.org/andrew/papers/ImplementingCVs.pdf" class=" text-amber-900">&#20449;&#21495;&#37327;&#23454;&#29616;&#30340;&#30683;&#30462;</a></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">不能带着锁睡眠 (NewBing 犯的错误)</li>
-<li class=" ml-8">也不能先释放锁<ul class=" list-disc font-serif">
+<li class=" ml-8">&#19981;&#33021;&#24102;&#30528;&#38145;&#30561;&#30496; (NewBing &#29359;&#30340;&#38169;&#35823;)</li>
+<li class=" ml-8">&#20063;&#19981;&#33021;&#20808;&#37322;&#25918;&#38145;<ul class=" list-disc font-serif">
 <li class=" ml-8"><code>P(mutex); nwait++; V(mutex);</code></li>
-<li class=" ml-8">此时 signal/broadcast 发生，唤醒了后 wait 的线程</li>
+<li class=" ml-8">&#27492;&#26102; signal/broadcast &#21457;&#29983;&#65292;&#21796;&#37266;&#20102;&#21518; wait &#30340;&#32447;&#31243;</li>
 <li class=" ml-8"><code>P(sleep);</code></li>
 </ul>
 </li>
-<li class=" ml-8">(我们稍后介绍解决这种矛盾的方法)</li>
+<li class=" ml-8">(&#25105;&#20204;&#31245;&#21518;&#20171;&#32461;&#35299;&#20915;&#36825;&#31181;&#30683;&#30462;&#30340;&#26041;&#27861;)</li>
 </ul></div>
         
       
@@ -422,15 +422,15 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">信号量的使用：小结</h2>
-<p class=" font-serif my-1">信号量是对 “袋子和球/手环” 的抽象</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20449;&#21495;&#37327;&#30340;&#20351;&#29992;&#65306;&#23567;&#32467;</h2>
+<p class=" font-serif my-1">&#20449;&#21495;&#37327;&#26159;&#23545; &#8220;&#34955;&#23376;&#21644;&#29699;/&#25163;&#29615;&#8221; &#30340;&#25277;&#35937;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">实现一次 happens-before，或是计数型的同步<ul class=" list-disc font-serif">
-<li class=" ml-8">能够写出优雅的代码</li>
+<li class=" ml-8">&#23454;&#29616;&#19968;&#27425; happens-before&#65292;&#25110;&#26159;&#35745;&#25968;&#22411;&#30340;&#21516;&#27493;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#33021;&#22815;&#20889;&#20986;&#20248;&#38597;&#30340;&#20195;&#30721;</li>
 <li class=" ml-8"><code>P(empty); printf("("); V(fill)</code></li>
 </ul>
 </li>
-<li class=" ml-8"><red>但并不是所有的同步条件都容易用这个抽象来表达</red></li>
+<li class=" ml-8"><red>&#20294;&#24182;&#19981;&#26159;&#25152;&#26377;&#30340;&#21516;&#27493;&#26465;&#20214;&#37117;&#23481;&#26131;&#29992;&#36825;&#20010;&#25277;&#35937;&#26469;&#34920;&#36798;</red></li>
 </ul>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/cv-generalize.png" width="900px"></p></div>
         

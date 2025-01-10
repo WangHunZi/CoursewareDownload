@@ -2,7 +2,7 @@
 <head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>19. 系统调用和 UNIX Shell</title>
+<title>19. &#31995;&#32479;&#35843;&#29992;&#21644; UNIX Shell</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script><script>
 (function() {
   function addWidgetsRenderer() {
@@ -6481,7 +6481,7 @@ cell outputs.
 
 .jp-Notebook .jp-Cell.jp-mod-dirty .jp-InputPrompt::before {
   color: var(--jp-warn-color1);
-  content: '•';
+  content: '&#8226;';
 }
 
 .jp-Notebook .jp-Cell.jp-mod-active.jp-mod-dirty .jp-Collapser {
@@ -7518,7 +7518,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">mosaic</span> <span class="kn">import</span> <span class="o">*</span>
@@ -7690,19 +7690,19 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-InputPrompt jp-InputArea-prompt">
 </div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="19.-%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E5%92%8C-UNIX-Shell">19. 系统调用和 UNIX Shell<a class="anchor-link" href="#19.-%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E5%92%8C-UNIX-Shell">¶</a>
+<h1 id="19.-%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E5%92%8C-UNIX-Shell">19. &#31995;&#32479;&#35843;&#29992;&#21644; UNIX Shell<a class="anchor-link" href="lect19.ipynb.html#19.-%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E5%92%8C-UNIX-Shell">&#182;</a>
 </h1>
-<p><strong>Changelog & 反馈</strong></p>
+<p><strong>Changelog &amp; &#21453;&#39304;</strong></p>
 <ul>
-<li>五一假期愉快</li>
-<li>期间会上线 Online Judge</li>
+<li>&#20116;&#19968;&#20551;&#26399;&#24841;&#24555;</li>
+<li>&#26399;&#38388;&#20250;&#19978;&#32447; Online Judge</li>
 </ul>
-<p><strong>背景回顾</strong>：整个计算机系统世界的 “创建” 从 CPU Reset 开始，Firmware 加载操作系统内核代码，操作系统成为状态机的管理者，初始化第一个进程，从而成为一个中断处理程序和系统调用执行者。《操作系统》课程的很重要部分就是操作系统中的对象和操纵这些对象的 API。</p>
-<p>然而，让用户和系统管理员直接 “使用” 操作系统内核提供的 API 是非常困难的：我们需要一系列人类友好的应用程序，协助我们完成日常工作。</p>
-<p><strong>本讲内容</strong>：</p>
+<p><strong>&#32972;&#26223;&#22238;&#39038;</strong>&#65306;&#25972;&#20010;&#35745;&#31639;&#26426;&#31995;&#32479;&#19990;&#30028;&#30340; &#8220;&#21019;&#24314;&#8221; &#20174; CPU Reset &#24320;&#22987;&#65292;Firmware &#21152;&#36733;&#25805;&#20316;&#31995;&#32479;&#20869;&#26680;&#20195;&#30721;&#65292;&#25805;&#20316;&#31995;&#32479;&#25104;&#20026;&#29366;&#24577;&#26426;&#30340;&#31649;&#29702;&#32773;&#65292;&#21021;&#22987;&#21270;&#31532;&#19968;&#20010;&#36827;&#31243;&#65292;&#20174;&#32780;&#25104;&#20026;&#19968;&#20010;&#20013;&#26029;&#22788;&#29702;&#31243;&#24207;&#21644;&#31995;&#32479;&#35843;&#29992;&#25191;&#34892;&#32773;&#12290;&#12298;&#25805;&#20316;&#31995;&#32479;&#12299;&#35838;&#31243;&#30340;&#24456;&#37325;&#35201;&#37096;&#20998;&#23601;&#26159;&#25805;&#20316;&#31995;&#32479;&#20013;&#30340;&#23545;&#35937;&#21644;&#25805;&#32437;&#36825;&#20123;&#23545;&#35937;&#30340; API&#12290;</p>
+<p>&#28982;&#32780;&#65292;&#35753;&#29992;&#25143;&#21644;&#31995;&#32479;&#31649;&#29702;&#21592;&#30452;&#25509; &#8220;&#20351;&#29992;&#8221; &#25805;&#20316;&#31995;&#32479;&#20869;&#26680;&#25552;&#20379;&#30340; API &#26159;&#38750;&#24120;&#22256;&#38590;&#30340;&#65306;&#25105;&#20204;&#38656;&#35201;&#19968;&#31995;&#21015;&#20154;&#31867;&#21451;&#22909;&#30340;&#24212;&#29992;&#31243;&#24207;&#65292;&#21327;&#21161;&#25105;&#20204;&#23436;&#25104;&#26085;&#24120;&#24037;&#20316;&#12290;</p>
+<p><strong>&#26412;&#35762;&#20869;&#23481;</strong>&#65306;</p>
 <ul>
 <li>Shell</li>
-<li>xv6 shell 代码讲解</li>
+<li>xv6 shell &#20195;&#30721;&#35762;&#35299;</li>
 </ul>
 </div>
 </div>
@@ -7713,7 +7713,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">demo</span><span class="p">(</span><span class="s1">'linux'</span><span class="p">,</span> <span class="s1">'v/linux-minimal'</span><span class="p">)</span>
@@ -7745,7 +7745,7 @@ var element = document.getElementById('bd986ab4-0c67-4137-b042-37035277558a');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'19.1'</span><span class="p">)</span>
@@ -7774,7 +7774,7 @@ var element = document.getElementById('bd986ab4-0c67-4137-b042-37035277558a');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'19.2'</span><span class="p">)</span>
@@ -7803,7 +7803,7 @@ var element = document.getElementById('bd986ab4-0c67-4137-b042-37035277558a');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">demo</span><span class="p">(</span><span class="s1">'sh'</span><span class="p">,</span> <span class="s1">'v/sh'</span><span class="p">)</span>
@@ -7835,7 +7835,7 @@ var element = document.getElementById('a89a18c8-aa6d-43dd-a453-38ce8ac9ee5c');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'19.3'</span><span class="p">)</span>
@@ -7867,20 +7867,20 @@ var element = document.getElementById('a89a18c8-aa6d-43dd-a453-38ce8ac9ee5c');
 <div class="jp-InputPrompt jp-InputArea-prompt">
 </div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Take-away-Messages">Take-away Messages<a class="anchor-link" href="#Take-away-Messages">¶</a>
+<h2 id="Take-away-Messages">Take-away Messages<a class="anchor-link" href="lect19.ipynb.html#Take-away-Messages">&#182;</a>
 </h2>
-<p>通过 freestanding 的 shell，我们阐释了 “可以在系统调用上创建整个操作系统应用世界” 的真正含义：操作系统的 API 和应用程序是互相成就、螺旋生长的：有了新的应用需求，就有了新的操作系统功能。而 UNIX 为我们提供了一个非常精简、稳定的接口 (fork, execve, exit, pipe ,...)，纵然有沉重的历史负担，它在今天依然工作得很好。</p>
-<h3 id="%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">课后习题/编程作业<a class="anchor-link" href="#%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">¶</a>
+<p>&#36890;&#36807; freestanding &#30340; shell&#65292;&#25105;&#20204;&#38416;&#37322;&#20102; &#8220;&#21487;&#20197;&#22312;&#31995;&#32479;&#35843;&#29992;&#19978;&#21019;&#24314;&#25972;&#20010;&#25805;&#20316;&#31995;&#32479;&#24212;&#29992;&#19990;&#30028;&#8221; &#30340;&#30495;&#27491;&#21547;&#20041;&#65306;&#25805;&#20316;&#31995;&#32479;&#30340; API &#21644;&#24212;&#29992;&#31243;&#24207;&#26159;&#20114;&#30456;&#25104;&#23601;&#12289;&#34746;&#26059;&#29983;&#38271;&#30340;&#65306;&#26377;&#20102;&#26032;&#30340;&#24212;&#29992;&#38656;&#27714;&#65292;&#23601;&#26377;&#20102;&#26032;&#30340;&#25805;&#20316;&#31995;&#32479;&#21151;&#33021;&#12290;&#32780; UNIX &#20026;&#25105;&#20204;&#25552;&#20379;&#20102;&#19968;&#20010;&#38750;&#24120;&#31934;&#31616;&#12289;&#31283;&#23450;&#30340;&#25509;&#21475; (fork, execve, exit, pipe ,...)&#65292;&#32437;&#28982;&#26377;&#27785;&#37325;&#30340;&#21382;&#21490;&#36127;&#25285;&#65292;&#23427;&#22312;&#20170;&#22825;&#20381;&#28982;&#24037;&#20316;&#24471;&#24456;&#22909;&#12290;</p>
+<h3 id="%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">&#35838;&#21518;&#20064;&#39064;/&#32534;&#31243;&#20316;&#19994;<a class="anchor-link" href="lect19.ipynb.html#%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">&#182;</a>
 </h3>
-<h4 id="1.-%E9%98%85%E8%AF%BB%E6%9D%90%E6%96%99">1. 阅读材料<a class="anchor-link" href="#1.-%E9%98%85%E8%AF%BB%E6%9D%90%E6%96%99">¶</a>
+<h4 id="1.-%E9%98%85%E8%AF%BB%E6%9D%90%E6%96%99">1. &#38405;&#35835;&#26448;&#26009;<a class="anchor-link" href="lect19.ipynb.html#1.-%E9%98%85%E8%AF%BB%E6%9D%90%E6%96%99">&#182;</a>
 </h4>
-<p>教科书 <a href="https://pages.cs.wisc.edu/~remzi/OSTEP/">Operating Systems: Three Easy Pieces</a>:</p>
+<p>&#25945;&#31185;&#20070; <a href="https://pages.cs.wisc.edu/~remzi/OSTEP/">Operating Systems: Three Easy Pieces</a>:</p>
 <ul>
-<li>第 5 章 - Process API (继续阅读)</li>
+<li>&#31532; 5 &#31456; - Process API (&#32487;&#32493;&#38405;&#35835;)</li>
 </ul>
-<h4 id="2.-%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5">2. 编程实践<a class="anchor-link" href="#2.-%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5">¶</a>
+<h4 id="2.-%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5">2. &#32534;&#31243;&#23454;&#36341;<a class="anchor-link" href="lect19.ipynb.html#2.-%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5">&#182;</a>
 </h4>
-<p>Freestanding shell 很好地揭开了操作系统上应用程序的 “真面目”。理解 sh.c 是非常重要的——调试它、在课堂演示的基础上考虑如何对 visualize.py 作出你认为更适合的改进，你就能逐渐体会有/无工具的效率差别。</p>
+<p>Freestanding shell &#24456;&#22909;&#22320;&#25581;&#24320;&#20102;&#25805;&#20316;&#31995;&#32479;&#19978;&#24212;&#29992;&#31243;&#24207;&#30340; &#8220;&#30495;&#38754;&#30446;&#8221;&#12290;&#29702;&#35299; sh.c &#26159;&#38750;&#24120;&#37325;&#35201;&#30340;&#8212;&#8212;&#35843;&#35797;&#23427;&#12289;&#22312;&#35838;&#22530;&#28436;&#31034;&#30340;&#22522;&#30784;&#19978;&#32771;&#34385;&#22914;&#20309;&#23545; visualize.py &#20316;&#20986;&#20320;&#35748;&#20026;&#26356;&#36866;&#21512;&#30340;&#25913;&#36827;&#65292;&#20320;&#23601;&#33021;&#36880;&#28176;&#20307;&#20250;&#26377;/&#26080;&#24037;&#20855;&#30340;&#25928;&#29575;&#24046;&#21035;&#12290;</p>
 </div>
 </div>
 </div>
@@ -7891,8 +7891,8 @@ var element = document.getElementById('a89a18c8-aa6d-43dd-a453-38ce8ac9ee5c');
 <div class="container text-xs py-3">
   <span class="text-muted">
     <center>
-<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="/static/img/cc-4.0.png"></a>
-       <a style="color:inherit" href="https://beian.miit.gov.cn/">苏 ICP 备 2020049101 号</a>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="../../../static/img/cc-4.0.png"></a>
+    &#160;&#160;&#160;<a style="color:inherit" href="https://beian.miit.gov.cn/">&#33487; ICP &#22791; 2020049101 &#21495;</a>
     </center>
   </span>
 </div>

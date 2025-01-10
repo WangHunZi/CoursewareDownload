@@ -2,7 +2,7 @@
 <head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>22. 可执行文件和加载 (2)</title>
+<title>22. &#21487;&#25191;&#34892;&#25991;&#20214;&#21644;&#21152;&#36733; (2)</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script><script>
 (function() {
   function addWidgetsRenderer() {
@@ -6481,7 +6481,7 @@ cell outputs.
 
 .jp-Notebook .jp-Cell.jp-mod-dirty .jp-InputPrompt::before {
   color: var(--jp-warn-color1);
-  content: '•';
+  content: '&#8226;';
 }
 
 .jp-Notebook .jp-Cell.jp-mod-active.jp-mod-dirty .jp-Collapser {
@@ -7518,7 +7518,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">mosaic</span> <span class="kn">import</span> <span class="o">*</span>
@@ -7690,17 +7690,17 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-InputPrompt jp-InputArea-prompt">
 </div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="22.-%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6%E5%92%8C%E5%8A%A0%E8%BD%BD-(2)">22. 可执行文件和加载 (2)<a class="anchor-link" href="#22.-%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6%E5%92%8C%E5%8A%A0%E8%BD%BD-(2)">¶</a>
+<h1 id="22.-%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6%E5%92%8C%E5%8A%A0%E8%BD%BD-(2)">22. &#21487;&#25191;&#34892;&#25991;&#20214;&#21644;&#21152;&#36733; (2)<a class="anchor-link" href="lect22.ipynb.html#22.-%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6%E5%92%8C%E5%8A%A0%E8%BD%BD-(2)">&#182;</a>
 </h1>
-<p><strong>Changelog & 反馈</strong></p>
+<p><strong>Changelog &amp; &#21453;&#39304;</strong></p>
 <ul>
-<li>最近要背锅……所以有些更新延迟</li>
+<li>&#26368;&#36817;&#35201;&#32972;&#38149;&#8230;&#8230;&#25152;&#20197;&#26377;&#20123;&#26356;&#26032;&#24310;&#36831;</li>
 </ul>
-<p><strong>背景回顾</strong>：可执行文件就是 “描述状态机初始状态的数据结构”。除了静态链接 (完整的初始状态) 之外，程序也可以是动态链接的，也就是允许初始状态中部分库函数实现在运行时指定。</p>
-<p><strong>本讲内容</strong>：</p>
+<p><strong>&#32972;&#26223;&#22238;&#39038;</strong>&#65306;&#21487;&#25191;&#34892;&#25991;&#20214;&#23601;&#26159; &#8220;&#25551;&#36848;&#29366;&#24577;&#26426;&#21021;&#22987;&#29366;&#24577;&#30340;&#25968;&#25454;&#32467;&#26500;&#8221;&#12290;&#38500;&#20102;&#38745;&#24577;&#38142;&#25509; (&#23436;&#25972;&#30340;&#21021;&#22987;&#29366;&#24577;) &#20043;&#22806;&#65292;&#31243;&#24207;&#20063;&#21487;&#20197;&#26159;&#21160;&#24577;&#38142;&#25509;&#30340;&#65292;&#20063;&#23601;&#26159;&#20801;&#35768;&#21021;&#22987;&#29366;&#24577;&#20013;&#37096;&#20998;&#24211;&#20989;&#25968;&#23454;&#29616;&#22312;&#36816;&#34892;&#26102;&#25351;&#23450;&#12290;</p>
+<p><strong>&#26412;&#35762;&#20869;&#23481;</strong>&#65306;</p>
 <ul>
-<li>动态链接与加载</li>
-<li>ELF 的动态链接</li>
+<li>&#21160;&#24577;&#38142;&#25509;&#19982;&#21152;&#36733;</li>
+<li>ELF &#30340;&#21160;&#24577;&#38142;&#25509;</li>
 <li>
 <code>LD_PRELOAD</code> Hooking</li>
 </ul>
@@ -7713,7 +7713,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'22.1'</span><span class="p">)</span>
@@ -7742,7 +7742,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">demo</span><span class="p">(</span><span class="s1">'dlbox'</span><span class="p">,</span> <span class="s1">'v/dlbox'</span><span class="p">)</span>
@@ -7774,7 +7774,7 @@ var element = document.getElementById('41da28cb-f8d2-45b0-a8d6-90a926581127');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'22.2'</span><span class="p">)</span>
@@ -7803,7 +7803,7 @@ var element = document.getElementById('41da28cb-f8d2-45b0-a8d6-90a926581127');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">demo</span><span class="p">(</span><span class="s1">'custom-loader'</span><span class="p">,</span> <span class="s1">'v/custom-loader'</span><span class="p">)</span>
@@ -7835,7 +7835,7 @@ var element = document.getElementById('f1bff5e2-2442-4467-bea0-0429ae33d2f5');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'22.3'</span><span class="p">)</span>
@@ -7864,7 +7864,7 @@ var element = document.getElementById('f1bff5e2-2442-4467-bea0-0429ae33d2f5');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">demo</span><span class="p">(</span><span class="s1">'hook'</span><span class="p">,</span> <span class="s1">'v/hook'</span><span class="p">)</span>
@@ -7899,14 +7899,14 @@ var element = document.getElementById('e2ba3356-2d5d-4bff-8429-9e0b2dbe154c');
 <div class="jp-InputPrompt jp-InputArea-prompt">
 </div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Take-away-Messages">Take-away Messages<a class="anchor-link" href="#Take-away-Messages">¶</a>
+<h2 id="Take-away-Messages">Take-away Messages<a class="anchor-link" href="lect22.ipynb.html#Take-away-Messages">&#182;</a>
 </h2>
-<p>找到正确的思路，我们就能在复杂的机制中找到主干，并逐渐在主干的引领下理解其中各种细节——在这个过程中，问出好的问题、借助好的工具远比 “记忆” 来得重要。同时，运用操作系统给我们提供的机制，把已有程序 “打开” 不再是难事：无论是扫描和修改进程地址空间中的内存，或是对库函数进行注入，都有许多现实应用。</p>
-<h3 id="%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">课后习题/编程作业<a class="anchor-link" href="#%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">¶</a>
+<p>&#25214;&#21040;&#27491;&#30830;&#30340;&#24605;&#36335;&#65292;&#25105;&#20204;&#23601;&#33021;&#22312;&#22797;&#26434;&#30340;&#26426;&#21046;&#20013;&#25214;&#21040;&#20027;&#24178;&#65292;&#24182;&#36880;&#28176;&#22312;&#20027;&#24178;&#30340;&#24341;&#39046;&#19979;&#29702;&#35299;&#20854;&#20013;&#21508;&#31181;&#32454;&#33410;&#8212;&#8212;&#22312;&#36825;&#20010;&#36807;&#31243;&#20013;&#65292;&#38382;&#20986;&#22909;&#30340;&#38382;&#39064;&#12289;&#20511;&#21161;&#22909;&#30340;&#24037;&#20855;&#36828;&#27604; &#8220;&#35760;&#24518;&#8221; &#26469;&#24471;&#37325;&#35201;&#12290;&#21516;&#26102;&#65292;&#36816;&#29992;&#25805;&#20316;&#31995;&#32479;&#32473;&#25105;&#20204;&#25552;&#20379;&#30340;&#26426;&#21046;&#65292;&#25226;&#24050;&#26377;&#31243;&#24207; &#8220;&#25171;&#24320;&#8221; &#19981;&#20877;&#26159;&#38590;&#20107;&#65306;&#26080;&#35770;&#26159;&#25195;&#25551;&#21644;&#20462;&#25913;&#36827;&#31243;&#22320;&#22336;&#31354;&#38388;&#20013;&#30340;&#20869;&#23384;&#65292;&#25110;&#26159;&#23545;&#24211;&#20989;&#25968;&#36827;&#34892;&#27880;&#20837;&#65292;&#37117;&#26377;&#35768;&#22810;&#29616;&#23454;&#24212;&#29992;&#12290;</p>
+<h3 id="%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">&#35838;&#21518;&#20064;&#39064;/&#32534;&#31243;&#20316;&#19994;<a class="anchor-link" href="lect22.ipynb.html#%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">&#182;</a>
 </h3>
-<h4 id="1.-%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5">1. 编程实践<a class="anchor-link" href="#1.-%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5">¶</a>
+<h4 id="1.-%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5">1. &#32534;&#31243;&#23454;&#36341;<a class="anchor-link" href="lect22.ipynb.html#1.-%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5">&#182;</a>
 </h4>
-<p>完成实验作业。</p>
+<p>&#23436;&#25104;&#23454;&#39564;&#20316;&#19994;&#12290;</p>
 </div>
 </div>
 </div>
@@ -7917,8 +7917,8 @@ var element = document.getElementById('e2ba3356-2d5d-4bff-8429-9e0b2dbe154c');
 <div class="container text-xs py-3">
   <span class="text-muted">
     <center>
-<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="/static/img/cc-4.0.png"></a>
-       <a style="color:inherit" href="https://beian.miit.gov.cn/">苏 ICP 备 2020049101 号</a>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="../../../static/img/cc-4.0.png"></a>
+    &#160;&#160;&#160;<a style="color:inherit" href="https://beian.miit.gov.cn/">&#33487; ICP &#22791; 2020049101 &#21495;</a>
     </center>
   </span>
 </div>

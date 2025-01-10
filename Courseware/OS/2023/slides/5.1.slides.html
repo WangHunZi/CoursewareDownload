@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // • auto-render specific keys, e.g.:
+            // &#8226; auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // • rendering keys, e.g.:
+            // &#8226; rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +209,7 @@ section .center {
 }
 </style>
 
-  <title>多处理器编程入门</title>
+  <title>&#22810;&#22788;&#29702;&#22120;&#32534;&#31243;&#20837;&#38376;</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,7 +227,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="5.1.slides.html" class=" text-amber-900">多处理器编程入门</a></h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="5.1.slides.html" class=" text-amber-900">&#22810;&#22788;&#29702;&#22120;&#32534;&#31243;&#20837;&#38376;</a></h1></div></div></div>
         
       
       </section>
@@ -238,11 +238,11 @@ section .center {
 
       
         
-        <div><h2 id="three-easy-pieces" class=" text-xl mt-2 pb-2 font-sans">Three Easy Pieces: 并发</h2>
-<p class=" font-serif my-1">操作系统作为 “状态机的管理者”，引入了共享的状态</p>
+        <div><h2 id="three-easy-pieces" class=" text-xl mt-2 pb-2 font-sans">Three Easy Pieces: &#24182;&#21457;</h2>
+<p class=" font-serif my-1">&#25805;&#20316;&#31995;&#32479;&#20316;&#20026; &#8220;&#29366;&#24577;&#26426;&#30340;&#31649;&#29702;&#32773;&#8221;&#65292;&#24341;&#20837;&#20102;&#20849;&#20139;&#30340;&#29366;&#24577;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">带来了并发</li>
-<li class=" ml-8">(操作系统是最早的并发程序)</li>
+<li class=" ml-8">&#24102;&#26469;&#20102;&#24182;&#21457;</li>
+<li class=" ml-8">(&#25805;&#20316;&#31995;&#32479;&#26159;&#26368;&#26089;&#30340;&#24182;&#21457;&#31243;&#24207;)</li>
 </ul>
 <hr>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">def</span> <span class="nf">Tprint</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
@@ -254,7 +254,7 @@ section .center {
 </code></pre></div>
 
 <ul class=" list-disc font-serif">
-<li class=" ml-8">使用 model checker 绘制状态图</li>
+<li class=" ml-8">&#20351;&#29992; model checker &#32472;&#21046;&#29366;&#24577;&#22270;</li>
 </ul></div>
         
       
@@ -266,26 +266,26 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">多线程共享内存并发</h2>
-<p class=" font-serif my-1">线程：共享内存的执行流</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#22810;&#32447;&#31243;&#20849;&#20139;&#20869;&#23384;&#24182;&#21457;</h2>
+<p class=" font-serif my-1">&#32447;&#31243;&#65306;&#20849;&#20139;&#20869;&#23384;&#30340;&#25191;&#34892;&#27969;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">执行流拥有独立的堆栈/寄存器</li>
+<li class=" ml-8">&#25191;&#34892;&#27969;&#25317;&#26377;&#29420;&#31435;&#30340;&#22534;&#26632;/&#23492;&#23384;&#22120;</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">简化的线程 API (thread.h)</p>
+<p class=" font-serif my-1">&#31616;&#21270;&#30340;&#32447;&#31243; API (thread.h)</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><code>spawn(fn)</code><ul class=" list-disc font-serif">
-<li class=" ml-8">创建一个入口函数是 <code>fn</code> 的线程，并立即开始执行<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21019;&#24314;&#19968;&#20010;&#20837;&#21475;&#20989;&#25968;&#26159; <code>fn</code> &#30340;&#32447;&#31243;&#65292;&#24182;&#31435;&#21363;&#24320;&#22987;&#25191;&#34892;<ul class=" list-disc font-serif">
 <li class=" ml-8"><code>void fn(int tid) { ... }</code></li>
-<li class=" ml-8">参数 <code>tid</code> 从 1 开始编号</li>
+<li class=" ml-8">&#21442;&#25968; <code>tid</code> &#20174; 1 &#24320;&#22987;&#32534;&#21495;</li>
 </ul>
 </li>
-<li class=" ml-8">行为：<code>sys_spawn(fn, tid)</code></li>
+<li class=" ml-8">&#34892;&#20026;&#65306;<code>sys_spawn(fn, tid)</code></li>
 </ul>
 </li>
 <li class=" ml-8"><code>join()</code><ul class=" list-disc font-serif">
-<li class=" ml-8">等待所有运行线程的返回 (也可以不调用)</li>
-<li class=" ml-8">行为：<code>while (done != T) sys_sched()</code></li>
+<li class=" ml-8">&#31561;&#24453;&#25152;&#26377;&#36816;&#34892;&#32447;&#31243;&#30340;&#36820;&#22238; (&#20063;&#21487;&#20197;&#19981;&#35843;&#29992;)</li>
+<li class=" ml-8">&#34892;&#20026;&#65306;<code>while (done != T) sys_sched()</code></li>
 </ul>
 </li>
 </ul></div>
@@ -299,8 +299,8 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">多线程共享内存并发：入门</h2>
-<p class=" font-serif my-1">多处理器编程：一个 API 搞定</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#22810;&#32447;&#31243;&#20849;&#20139;&#20869;&#23384;&#24182;&#21457;&#65306;&#20837;&#38376;</h2>
+<p class=" font-serif my-1">&#22810;&#22788;&#29702;&#22120;&#32534;&#31243;&#65306;&#19968;&#20010; API &#25630;&#23450;</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">"thread.h"</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">Ta</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">"a"</span><span class="p">);</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
@@ -313,9 +313,9 @@ section .center {
 </code></pre></div>
 
 <ul class=" list-disc font-serif">
-<li class=" ml-8">这个程序可以利用系统中的多处理器<ul class=" list-disc font-serif">
-<li class=" ml-8">操作系统会自动把线程放置在不同的处理器上</li>
-<li class=" ml-8">CPU 使用率超过了 100%</li>
+<li class=" ml-8">&#36825;&#20010;&#31243;&#24207;&#21487;&#20197;&#21033;&#29992;&#31995;&#32479;&#20013;&#30340;&#22810;&#22788;&#29702;&#22120;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25805;&#20316;&#31995;&#32479;&#20250;&#33258;&#21160;&#25226;&#32447;&#31243;&#25918;&#32622;&#22312;&#19981;&#21516;&#30340;&#22788;&#29702;&#22120;&#19978;</li>
+<li class=" ml-8">CPU &#20351;&#29992;&#29575;&#36229;&#36807;&#20102; 100%</li>
 </ul>
 </li>
 </ul></div>
@@ -329,22 +329,22 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">问出更多的问题</h2>
-<p class=" font-serif my-1"><code>Ta</code> 和 <code>Tb</code> 真的共享内存吗？</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#38382;&#20986;&#26356;&#22810;&#30340;&#38382;&#39064;</h2>
+<p class=" font-serif my-1"><code>Ta</code> &#21644; <code>Tb</code> &#30495;&#30340;&#20849;&#20139;&#20869;&#23384;&#21527;&#65311;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">如何证明/否证这件事？</li>
+<li class=" ml-8">&#22914;&#20309;&#35777;&#26126;/&#21542;&#35777;&#36825;&#20214;&#20107;&#65311;</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">如何证明线程具有独立堆栈 (以及确定堆栈的范围)？</p>
+<p class=" font-serif my-1">&#22914;&#20309;&#35777;&#26126;&#32447;&#31243;&#20855;&#26377;&#29420;&#31435;&#22534;&#26632; (&#20197;&#21450;&#30830;&#23450;&#22534;&#26632;&#30340;&#33539;&#22260;)&#65311;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">输出混乱，应该如何处理？</li>
+<li class=" ml-8">&#36755;&#20986;&#28151;&#20081;&#65292;&#24212;&#35813;&#22914;&#20309;&#22788;&#29702;&#65311;</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">更多的 “好问题” 和解决</p>
+<p class=" font-serif my-1">&#26356;&#22810;&#30340; &#8220;&#22909;&#38382;&#39064;&#8221; &#21644;&#35299;&#20915;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">创建线程使用的是哪个系统调用？</li>
-<li class=" ml-8">能不能用 gdb 调试？<ul class=" list-disc font-serif">
-<li class=" ml-8">基本原则：<red>有需求，就能做到</red> (<a href="https://sourceware.org/gdb/onlinedocs/gdb/Threads.html" class=" text-amber-900">RTFM</a>)</li>
+<li class=" ml-8">&#21019;&#24314;&#32447;&#31243;&#20351;&#29992;&#30340;&#26159;&#21738;&#20010;&#31995;&#32479;&#35843;&#29992;&#65311;</li>
+<li class=" ml-8">&#33021;&#19981;&#33021;&#29992; gdb &#35843;&#35797;&#65311;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22522;&#26412;&#21407;&#21017;&#65306;<red>&#26377;&#38656;&#27714;&#65292;&#23601;&#33021;&#20570;&#21040;</red> (<a href="https://sourceware.org/gdb/onlinedocs/gdb/Threads.html" class=" text-amber-900">RTFM</a>)</li>
 </ul>
 </li>
 </ul></div>
@@ -358,19 +358,19 @@ section .center {
 
       
         
-        <div><h2 id="threadh-posix-threads" class=" text-xl mt-2 pb-2 font-sans"><code>thread.h</code> 背后：POSIX Threads</h2>
-<p class=" font-serif my-1">想进一步配置线程？</p>
+        <div><h2 id="threadh-posix-threads" class=" text-xl mt-2 pb-2 font-sans"><code>thread.h</code> &#32972;&#21518;&#65306;POSIX Threads</h2>
+<p class=" font-serif my-1">&#24819;&#36827;&#19968;&#27493;&#37197;&#32622;&#32447;&#31243;&#65311;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">设置更大的线程栈</li>
-<li class=" ml-8">设置 detach 运行 (不在进程结束后被杀死，也不能 join)</li>
-<li class=" ml-8">……</li>
+<li class=" ml-8">&#35774;&#32622;&#26356;&#22823;&#30340;&#32447;&#31243;&#26632;</li>
+<li class=" ml-8">&#35774;&#32622; detach &#36816;&#34892; (&#19981;&#22312;&#36827;&#31243;&#32467;&#26463;&#21518;&#34987;&#26432;&#27515;&#65292;&#20063;&#19981;&#33021; join)</li>
+<li class=" ml-8">&#8230;&#8230;</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">POSIX 为我们提供了线程库 (pthreads)</p>
+<p class=" font-serif my-1">POSIX &#20026;&#25105;&#20204;&#25552;&#20379;&#20102;&#32447;&#31243;&#24211; (pthreads)</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><code>man 7 pthreads</code></li>
-<li class=" ml-8">练习：改写 thread.h，使得线程拥有更大的栈<ul class=" list-disc font-serif">
-<li class=" ml-8">可以用 stack probe 的程序验证</li>
+<li class=" ml-8">&#32451;&#20064;&#65306;&#25913;&#20889; thread.h&#65292;&#20351;&#24471;&#32447;&#31243;&#25317;&#26377;&#26356;&#22823;&#30340;&#26632;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21487;&#20197;&#29992; stack probe &#30340;&#31243;&#24207;&#39564;&#35777;</li>
 </ul>
 </li>
 </ul></div>

@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // • auto-render specific keys, e.g.:
+            // &#8226; auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // • rendering keys, e.g.:
+            // &#8226; rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +209,7 @@ section .center {
 }
 </style>
 
-  <title>硬件与程序员的约定</title>
+  <title>&#30828;&#20214;&#19982;&#31243;&#24207;&#21592;&#30340;&#32422;&#23450;</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,7 +227,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="3.2.slides.html" class=" text-amber-900">硬件与程序员的约定</a></h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="3.2.slides.html" class=" text-amber-900">&#30828;&#20214;&#19982;&#31243;&#24207;&#21592;&#30340;&#32422;&#23450;</a></h1></div></div></div>
         
       
       </section>
@@ -238,22 +238,22 @@ section .center {
 
       
         
-        <div><h2 id="bare-metal" class=" text-xl mt-2 pb-2 font-sans">Bare-metal 与程序员的约定</h2>
-<p class=" font-serif my-1">Bare-metal 与厂商的约定</p>
+        <div><h2 id="bare-metal" class=" text-xl mt-2 pb-2 font-sans">Bare-metal &#19982;&#31243;&#24207;&#21592;&#30340;&#32422;&#23450;</h2>
+<p class=" font-serif my-1">Bare-metal &#19982;&#21378;&#21830;&#30340;&#32422;&#23450;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">CPU Reset 后的状态 (寄存器值)<ul class=" list-disc font-serif">
-<li class=" ml-8">厂商自由处理这个地址上的值</li>
+<li class=" ml-8">CPU Reset &#21518;&#30340;&#29366;&#24577; (&#23492;&#23384;&#22120;&#20540;)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21378;&#21830;&#33258;&#30001;&#22788;&#29702;&#36825;&#20010;&#22320;&#22336;&#19978;&#30340;&#20540;</li>
 <li class=" ml-8">Memory-mapped I/O</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">厂商为操作系统开发者提供 Firmware</p>
+<p class=" font-serif my-1">&#21378;&#21830;&#20026;&#25805;&#20316;&#31995;&#32479;&#24320;&#21457;&#32773;&#25552;&#20379; Firmware</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">管理硬件和系统配置</li>
-<li class=" ml-8"><red>把存储设备上的代码加载到内存</red><ul class=" list-disc font-serif">
-<li class=" ml-8">例如存储介质上的第二级 loader (加载器)</li>
-<li class=" ml-8">或者直接加载操作系统 (嵌入式系统)</li>
+<li class=" ml-8">&#31649;&#29702;&#30828;&#20214;&#21644;&#31995;&#32479;&#37197;&#32622;</li>
+<li class=" ml-8"><red>&#25226;&#23384;&#20648;&#35774;&#22791;&#19978;&#30340;&#20195;&#30721;&#21152;&#36733;&#21040;&#20869;&#23384;</red><ul class=" list-disc font-serif">
+<li class=" ml-8">&#20363;&#22914;&#23384;&#20648;&#20171;&#36136;&#19978;&#30340;&#31532;&#20108;&#32423; loader (&#21152;&#36733;&#22120;)</li>
+<li class=" ml-8">&#25110;&#32773;&#30452;&#25509;&#21152;&#36733;&#25805;&#20316;&#31995;&#32479; (&#23884;&#20837;&#24335;&#31995;&#32479;)</li>
 </ul>
 </li>
 </ul></div>
@@ -269,12 +269,12 @@ section .center {
         
         <div><h2 id="x86-family-cpu-reset" class=" text-xl mt-2 pb-2 font-sans">x86 Family: CPU Reset</h2>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/intel-cpu-reset.png" width="420px"></p>
-<p class=" font-serif my-1">CPU Reset (<a href="https://software.intel.com/en-us/articles/intel-sdm" class=" text-amber-900">Intel® 64 and IA-32 Architectures Software Developer’s Manual</a>, Volume 3A/3B)</p>
+<p class=" font-serif my-1">CPU Reset (<a href="https://software.intel.com/en-us/articles/intel-sdm" class=" text-amber-900">Intel&#174; 64 and IA-32 Architectures Software Developer&#8217;s Manual</a>, Volume 3A/3B)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">寄存器会有确定的初始状态<ul class=" list-disc font-serif">
+<li class=" ml-8">&#23492;&#23384;&#22120;&#20250;&#26377;&#30830;&#23450;&#30340;&#21021;&#22987;&#29366;&#24577;<ul class=" list-disc font-serif">
 <li class=" ml-8"><code>EIP = 0x0000fff0</code></li>
 <li class=" ml-8"><code>CR0 = 0x60000010</code><ul class=" list-disc font-serif">
-<li class=" ml-8">处理器处于 16-bit 模式</li>
+<li class=" ml-8">&#22788;&#29702;&#22120;&#22788;&#20110; 16-bit &#27169;&#24335;</li>
 </ul>
 </li>
 <li class=" ml-8"><code>EFLAGS = 0x00000002</code><ul class=" list-disc font-serif">
@@ -283,8 +283,8 @@ section .center {
 </li>
 </ul>
 </li>
-<li class=" ml-8">TFM (5,000 页+)<ul class=" list-disc font-serif">
-<li class=" ml-8">最需要的 Volume 3A 只有 ~400 页 (我们更需要 AI)</li>
+<li class=" ml-8">TFM (5,000 &#39029;+)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#26368;&#38656;&#35201;&#30340; Volume 3A &#21482;&#26377; ~400 &#39029; (&#25105;&#20204;&#26356;&#38656;&#35201; AI)</li>
 </ul>
 </li>
 </ul></div>
@@ -298,28 +298,28 @@ section .center {
 
       
         
-        <div><h2 id="cpu-reset" class=" text-xl mt-2 pb-2 font-sans">其他平台上的 CPU Reset</h2>
-<p class=" font-serif my-1">Reset 后处理器都从固定地址 (Reset Vector) 启动</p>
+        <div><h2 id="cpu-reset" class=" text-xl mt-2 pb-2 font-sans">&#20854;&#20182;&#24179;&#21488;&#19978;&#30340; CPU Reset</h2>
+<p class=" font-serif my-1">Reset &#21518;&#22788;&#29702;&#22120;&#37117;&#20174;&#22266;&#23450;&#22320;&#22336; (Reset Vector) &#21551;&#21160;</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">MIPS: 0xbfc00000<ul class=" list-disc font-serif">
-<li class=" ml-8">Specification 规定</li>
+<li class=" ml-8">Specification &#35268;&#23450;</li>
 </ul>
 </li>
 <li class=" ml-8">ARM: 0x00000000<ul class=" list-disc font-serif">
-<li class=" ml-8">Specification 规定</li>
-<li class=" ml-8">允许配置 Reset Vector Base Address Register</li>
+<li class=" ml-8">Specification &#35268;&#23450;</li>
+<li class=" ml-8">&#20801;&#35768;&#37197;&#32622; Reset Vector Base Address Register</li>
 </ul>
 </li>
 <li class=" ml-8">RISC-V: Implementation defined<ul class=" list-disc font-serif">
-<li class=" ml-8">给厂商最大程度的自由</li>
+<li class=" ml-8">&#32473;&#21378;&#21830;&#26368;&#22823;&#31243;&#24230;&#30340;&#33258;&#30001;</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">Firmware 负责加载操作系统</p>
+<p class=" font-serif my-1">Firmware &#36127;&#36131;&#21152;&#36733;&#25805;&#20316;&#31995;&#32479;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">开发板：直接把加载器写入 ROM</li>
-<li class=" ml-8">QEMU：<code>-kernel</code> 可以绕过 Firmware 直接加载内核 (<a href="https://www.qemu.org/docs/master/system/invocation.html#hxtool-8" class=" text-amber-900">RTFM</a>)</li>
+<li class=" ml-8">&#24320;&#21457;&#26495;&#65306;&#30452;&#25509;&#25226;&#21152;&#36733;&#22120;&#20889;&#20837; ROM</li>
+<li class=" ml-8">QEMU&#65306;<code>-kernel</code> &#21487;&#20197;&#32469;&#36807; Firmware &#30452;&#25509;&#21152;&#36733;&#20869;&#26680; (<a href="https://www.qemu.org/docs/master/system/invocation.html#hxtool-8" class=" text-amber-900">RTFM</a>)</li>
 </ul></div>
         
       
@@ -331,12 +331,12 @@ section .center {
 
       
         
-        <div><h2 id="x86-cpu-reset" class=" text-xl mt-2 pb-2 font-sans">x86 CPU Reset 之后：到底执行了什么？</h2>
-<p class=" font-serif my-1">状态机 (初始状态) 开始执行</p>
+        <div><h2 id="x86-cpu-reset" class=" text-xl mt-2 pb-2 font-sans">x86 CPU Reset &#20043;&#21518;&#65306;&#21040;&#24213;&#25191;&#34892;&#20102;&#20160;&#20040;&#65311;</h2>
+<p class=" font-serif my-1">&#29366;&#24577;&#26426; (&#21021;&#22987;&#29366;&#24577;) &#24320;&#22987;&#25191;&#34892;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">从 PC 取指令、译码、执行……</li>
-<li class=" ml-8">开始执行厂商 “安排好” 的 Firmware 代码<ul class=" list-disc font-serif">
-<li class=" ml-8">x86 Reset Vector 是一条向 Firmware 跳转的 jmp 指令</li>
+<li class=" ml-8">&#20174; PC &#21462;&#25351;&#20196;&#12289;&#35793;&#30721;&#12289;&#25191;&#34892;&#8230;&#8230;</li>
+<li class=" ml-8">&#24320;&#22987;&#25191;&#34892;&#21378;&#21830; &#8220;&#23433;&#25490;&#22909;&#8221; &#30340; Firmware &#20195;&#30721;<ul class=" list-disc font-serif">
+<li class=" ml-8">x86 Reset Vector &#26159;&#19968;&#26465;&#21521; Firmware &#36339;&#36716;&#30340; jmp &#25351;&#20196;</li>
 </ul>
 </li>
 </ul>
@@ -344,12 +344,12 @@ section .center {
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/bios-firmware.png" width="400px"></p>
 <p class=" font-serif my-1">Firmware: <a href="https://www.zhihu.com/question/21672895" class=" text-amber-900">BIOS vs. UEFI</a></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">一个小 “操作系统”<ul class=" list-disc font-serif">
-<li class=" ml-8">管理、配置硬件；加载操作系统</li>
+<li class=" ml-8">&#19968;&#20010;&#23567; &#8220;&#25805;&#20316;&#31995;&#32479;&#8221;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#31649;&#29702;&#12289;&#37197;&#32622;&#30828;&#20214;&#65307;&#21152;&#36733;&#25805;&#20316;&#31995;&#32479;</li>
 </ul>
 </li>
 <li class=" ml-8">Legacy BIOS (Basic I/O System)<ul class=" list-disc font-serif">
-<li class=" ml-8">IBM PC 所有设备/BIOS 中断是有 specification 的 (成就了 “兼容机”)</li>
+<li class=" ml-8">IBM PC &#25152;&#26377;&#35774;&#22791;/BIOS &#20013;&#26029;&#26159;&#26377; specification &#30340; (&#25104;&#23601;&#20102; &#8220;&#20860;&#23481;&#26426;&#8221;)</li>
 </ul>
 </li>
 <li class=" ml-8">UEFI (Unified Extensible Firmware Interface)</li>
@@ -364,12 +364,12 @@ section .center {
 
       
         
-        <div><h2 id="uefi" class=" text-xl mt-2 pb-2 font-sans">为什么需要 UEFI？</h2>
-<p class=" font-serif my-1">今天的 Firmware 面临麻烦得多的硬件：</p>
+        <div><h2 id="uefi" class=" text-xl mt-2 pb-2 font-sans">&#20026;&#20160;&#20040;&#38656;&#35201; UEFI&#65311;</h2>
+<p class=" font-serif my-1">&#20170;&#22825;&#30340; Firmware &#38754;&#20020;&#40635;&#28902;&#24471;&#22810;&#30340;&#30828;&#20214;&#65306;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">指纹锁、USB 转接器上的 Linux-to-Go 优盘、山寨网卡上的 PXE 网络启动、USB 蓝牙转接器连接的蓝牙键盘、……<ul class=" list-disc font-serif">
-<li class=" ml-8">这些设备都需要 “驱动程序” 才能访问</li>
-<li class=" ml-8">解决 BIOS 逐渐碎片化的问题</li>
+<li class=" ml-8">&#25351;&#32441;&#38145;&#12289;USB &#36716;&#25509;&#22120;&#19978;&#30340; Linux-to-Go &#20248;&#30424;&#12289;&#23665;&#23528;&#32593;&#21345;&#19978;&#30340; PXE &#32593;&#32476;&#21551;&#21160;&#12289;USB &#34013;&#29273;&#36716;&#25509;&#22120;&#36830;&#25509;&#30340;&#34013;&#29273;&#38190;&#30424;&#12289;&#8230;&#8230;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#36825;&#20123;&#35774;&#22791;&#37117;&#38656;&#35201; &#8220;&#39537;&#21160;&#31243;&#24207;&#8221; &#25165;&#33021;&#35775;&#38382;</li>
+<li class=" ml-8">&#35299;&#20915; BIOS &#36880;&#28176;&#30862;&#29255;&#21270;&#30340;&#38382;&#39064;</li>
 </ul>
 </li>
 </ul>
@@ -384,26 +384,26 @@ section .center {
 
       
         
-        <div><h2 id="legacy-bios" class=" text-xl mt-2 pb-2 font-sans">回到 Legacy BIOS: 约定</h2>
-<p class=" font-serif my-1">BIOS 提供机制，将<red>程序员的代码</red>载入内存</p>
+        <div><h2 id="legacy-bios" class=" text-xl mt-2 pb-2 font-sans">&#22238;&#21040; Legacy BIOS: &#32422;&#23450;</h2>
+<p class=" font-serif my-1">BIOS &#25552;&#20379;&#26426;&#21046;&#65292;&#23558;<red>&#31243;&#24207;&#21592;&#30340;&#20195;&#30721;</red>&#36733;&#20837;&#20869;&#23384;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">Legacy BIOS 把第一个可引导设备的第一个 512 字节加载到物理内存的 <code>7c00</code> 位置<ul class=" list-disc font-serif">
-<li class=" ml-8">此时处理器处于 16-bit 模式</li>
-<li class=" ml-8">规定 <code>CS:IP = 0x7c00</code>, <code>(R[CS] << 4) | R[IP] == 0x7c00</code><ul class=" list-disc font-serif">
-<li class=" ml-8">可能性1：<code>CS = 0x07c0, IP = 0</code></li>
-<li class=" ml-8">可能性2：<code>CS = 0, IP = 0x7c00</code></li>
+<li class=" ml-8">Legacy BIOS &#25226;&#31532;&#19968;&#20010;&#21487;&#24341;&#23548;&#35774;&#22791;&#30340;&#31532;&#19968;&#20010; 512 &#23383;&#33410;&#21152;&#36733;&#21040;&#29289;&#29702;&#20869;&#23384;&#30340; <code>7c00</code> &#20301;&#32622;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#27492;&#26102;&#22788;&#29702;&#22120;&#22788;&#20110; 16-bit &#27169;&#24335;</li>
+<li class=" ml-8">&#35268;&#23450; <code>CS:IP = 0x7c00</code>, <code>(R[CS] &lt;&lt; 4) | R[IP] == 0x7c00</code><ul class=" list-disc font-serif">
+<li class=" ml-8">&#21487;&#33021;&#24615;1&#65306;<code>CS = 0x07c0, IP = 0</code></li>
+<li class=" ml-8">&#21487;&#33021;&#24615;2&#65306;<code>CS = 0, IP = 0x7c00</code></li>
 </ul>
 </li>
-<li class=" ml-8">其他没有任何约束</li>
+<li class=" ml-8">&#20854;&#20182;&#27809;&#26377;&#20219;&#20309;&#32422;&#26463;</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">虽然最多只有 446 字节代码 (64B 分区表 + 2B 标识)</p>
+<p class=" font-serif my-1">&#34429;&#28982;&#26368;&#22810;&#21482;&#26377; 446 &#23383;&#33410;&#20195;&#30721; (64B &#20998;&#21306;&#34920; + 2B &#26631;&#35782;)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">但控制权已经回到程序员手中了！</li>
-<li class=" ml-8">你甚至可以让 ChatGPT 给你写一个 Hello World<ul class=" list-disc font-serif">
-<li class=" ml-8">当然，他是抄作业的 (而且是有些小问题的)</li>
+<li class=" ml-8">&#20294;&#25511;&#21046;&#26435;&#24050;&#32463;&#22238;&#21040;&#31243;&#24207;&#21592;&#25163;&#20013;&#20102;&#65281;</li>
+<li class=" ml-8">&#20320;&#29978;&#33267;&#21487;&#20197;&#35753; ChatGPT &#32473;&#20320;&#20889;&#19968;&#20010; Hello World<ul class=" list-disc font-serif">
+<li class=" ml-8">&#24403;&#28982;&#65292;&#20182;&#26159;&#25220;&#20316;&#19994;&#30340; (&#32780;&#19988;&#26159;&#26377;&#20123;&#23567;&#38382;&#39064;&#30340;)</li>
 </ul>
 </li>
 </ul></div>
@@ -417,28 +417,28 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">能不能看一下代码？</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#33021;&#19981;&#33021;&#30475;&#19968;&#19979;&#20195;&#30721;&#65311;</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
 <p class=" font-serif my-1">Talk is cheap. Show me the code. 
-——Linus Torvalds</p>
+&#8212;&#8212;Linus Torvalds</p>
 </blockquote>
-<p class=" font-serif my-1">有没有可能我们真的去看从 CPU Reset 以后每一条指令的执行？</p></div>
+<p class=" font-serif my-1">&#26377;&#27809;&#26377;&#21487;&#33021;&#25105;&#20204;&#30495;&#30340;&#21435;&#30475;&#20174; CPU Reset &#20197;&#21518;&#27599;&#19968;&#26465;&#25351;&#20196;&#30340;&#25191;&#34892;&#65311;</p></div>
         
       
          <div class="fragment"> 
         <div><hr>
-<p class=" font-serif my-1"><red>计算机系统公理：你想到的就一定有人做到</red></p>
+<p class=" font-serif my-1"><red>&#35745;&#31639;&#26426;&#31995;&#32479;&#20844;&#29702;&#65306;&#20320;&#24819;&#21040;&#30340;&#23601;&#19968;&#23450;&#26377;&#20154;&#20570;&#21040;</red></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">模拟方案：QEMU<ul class=" list-disc font-serif">
-<li class=" ml-8">传奇黑客、天才程序员 <a href="https://www.zhihu.com/question/28388113" class=" text-amber-900">Fabrice Bellard</a> 的杰作<ul class=" list-disc font-serif">
+<li class=" ml-8">&#27169;&#25311;&#26041;&#26696;&#65306;QEMU<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20256;&#22855;&#40657;&#23458;&#12289;&#22825;&#25165;&#31243;&#24207;&#21592; <a href="https://www.zhihu.com/question/28388113" class=" text-amber-900">Fabrice Bellard</a> &#30340;&#26480;&#20316;<ul class=" list-disc font-serif">
 <li class=" ml-8"><a href="https://www.usenix.org/legacy/publications/library/proceedings/usenix05/tech/freenix/full_papers/bellard/bellard.pdf" class=" text-amber-900">QEMU, A fast and portable dynamic translator</a> (USENIX ATC'05)</li>
-<li class=" ml-8">Android Virtual Device, VirtualBox, ... 背后都是 QEMU</li>
+<li class=" ml-8">Android Virtual Device, VirtualBox, ... &#32972;&#21518;&#37117;&#26159; QEMU</li>
 </ul>
 </li>
 </ul>
 </li>
-<li class=" ml-8">真机方案：JTAG (Joint Test Action Group) debugger<ul class=" list-disc font-serif">
-<li class=" ml-8">一系列 (物理) 调试寄存器，可以实现 gdb 接口 (!!!)</li>
+<li class=" ml-8">&#30495;&#26426;&#26041;&#26696;&#65306;JTAG (Joint Test Action Group) debugger<ul class=" list-disc font-serif">
+<li class=" ml-8">&#19968;&#31995;&#21015; (&#29289;&#29702;) &#35843;&#35797;&#23492;&#23384;&#22120;&#65292;&#21487;&#20197;&#23454;&#29616; gdb &#25509;&#21475; (!!!)</li>
 </ul>
 </li>
 </ul></div>
@@ -452,22 +452,22 @@ section .center {
 
       
         
-        <div><h2 id="uefi" class=" text-xl mt-2 pb-2 font-sans">️🌶️ UEFI 上的操作系统加载</h2>
-<p class=" font-serif my-1">标准化的加载流程</p>
+        <div><h2 id="uefi" class=" text-xl mt-2 pb-2 font-sans">&#65039;&#127798;&#65039; UEFI &#19978;&#30340;&#25805;&#20316;&#31995;&#32479;&#21152;&#36733;</h2>
+<p class=" font-serif my-1">&#26631;&#20934;&#21270;&#30340;&#21152;&#36733;&#27969;&#31243;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">磁盘必须按 GPT (GUID Partition Table) 方式格式化</li>
-<li class=" ml-8">预留一个 FAT32 分区 (lsblk/fdisk 可以看到)</li>
-<li class=" ml-8">Firmware 能够加载任意大小的 PE 可执行文件 <code>.efi</code><ul class=" list-disc font-serif">
-<li class=" ml-8">没有 legacy boot 512 字节限制</li>
-<li class=" ml-8">EFI 应用可以返回 firmware</li>
+<li class=" ml-8">&#30913;&#30424;&#24517;&#39035;&#25353; GPT (GUID Partition Table) &#26041;&#24335;&#26684;&#24335;&#21270;</li>
+<li class=" ml-8">&#39044;&#30041;&#19968;&#20010; FAT32 &#20998;&#21306; (lsblk/fdisk &#21487;&#20197;&#30475;&#21040;)</li>
+<li class=" ml-8">Firmware &#33021;&#22815;&#21152;&#36733;&#20219;&#24847;&#22823;&#23567;&#30340; PE &#21487;&#25191;&#34892;&#25991;&#20214; <code>.efi</code><ul class=" list-disc font-serif">
+<li class=" ml-8">&#27809;&#26377; legacy boot 512 &#23383;&#33410;&#38480;&#21046;</li>
+<li class=" ml-8">EFI &#24212;&#29992;&#21487;&#20197;&#36820;&#22238; firmware</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">更好的程序支持</p>
+<p class=" font-serif my-1">&#26356;&#22909;&#30340;&#31243;&#24207;&#25903;&#25345;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">设备驱动框架</li>
-<li class=" ml-8">更多的功能，例如 Secure Boot，只能启动 “信任” 的操作系统</li>
+<li class=" ml-8">&#35774;&#22791;&#39537;&#21160;&#26694;&#26550;</li>
+<li class=" ml-8">&#26356;&#22810;&#30340;&#21151;&#33021;&#65292;&#20363;&#22914; Secure Boot&#65292;&#21482;&#33021;&#21551;&#21160; &#8220;&#20449;&#20219;&#8221; &#30340;&#25805;&#20316;&#31995;&#32479;</li>
 </ul></div>
         
       
@@ -479,23 +479,23 @@ section .center {
 
       
         
-        <div><h2 id="hacking-firmware-1998" class=" text-xl mt-2 pb-2 font-sans">小插曲：Hacking Firmware (1998)</h2>
-<p class=" font-serif my-1">Firmware 通常是只读的 (当然……)</p>
+        <div><h2 id="hacking-firmware-1998" class=" text-xl mt-2 pb-2 font-sans">&#23567;&#25554;&#26354;&#65306;Hacking Firmware (1998)</h2>
+<p class=" font-serif my-1">Firmware &#36890;&#24120;&#26159;&#21482;&#35835;&#30340; (&#24403;&#28982;&#8230;&#8230;)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">Intel 430TX (Pentium) 芯片组允许<red>写入 Flash ROM</red><ul class=" list-disc font-serif">
-<li class=" ml-8">只要向 Flash BIOS 写入特定序列，Flash ROM 就变为可写<ul class=" list-disc font-serif">
-<li class=" ml-8">留给 Firmware 更新的通道</li>
+<li class=" ml-8">Intel 430TX (Pentium) &#33455;&#29255;&#32452;&#20801;&#35768;<red>&#20889;&#20837; Flash ROM</red><ul class=" list-disc font-serif">
+<li class=" ml-8">&#21482;&#35201;&#21521; Flash BIOS &#20889;&#20837;&#29305;&#23450;&#24207;&#21015;&#65292;Flash ROM &#23601;&#21464;&#20026;&#21487;&#20889;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#30041;&#32473; Firmware &#26356;&#26032;&#30340;&#36890;&#36947;</li>
 </ul>
 </li>
-<li class=" ml-8">要得到这个序列其实并不困难<ul class=" list-disc font-serif">
-<li class=" ml-8">似乎文档里就有 🤔 Boom……</li>
+<li class=" ml-8">&#35201;&#24471;&#21040;&#36825;&#20010;&#24207;&#21015;&#20854;&#23454;&#24182;&#19981;&#22256;&#38590;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20284;&#20046;&#25991;&#26723;&#37324;&#23601;&#26377; &#129300; Boom&#8230;&#8230;</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">CIH 病毒的作者陈盈豪被逮捕，但并未被定罪</p>
+<p class=" font-serif my-1">CIH &#30149;&#27602;&#30340;&#20316;&#32773;&#38472;&#30408;&#35946;&#34987;&#36910;&#25429;&#65292;&#20294;&#24182;&#26410;&#34987;&#23450;&#32618;</p>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/cih-virus.gif" width="480px"></p></div>
         
       

@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // • auto-render specific keys, e.g.:
+            // &#8226; auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // • rendering keys, e.g.:
+            // &#8226; rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +209,7 @@ section .center {
 }
 </style>
 
-  <title>伤人性命的并发 Bug</title>
+  <title>&#20260;&#20154;&#24615;&#21629;&#30340;&#24182;&#21457; Bug</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,7 +227,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="bug" class=" text-2xl mt-2 font-sans"><a href="12.1.slides.html" class=" text-amber-900">伤人性命的并发 Bug</a></h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="bug" class=" text-2xl mt-2 font-sans"><a href="12.1.slides.html" class=" text-amber-900">&#20260;&#20154;&#24615;&#21629;&#30340;&#24182;&#21457; Bug</a></h1></div></div></div>
         
       
       </section>
@@ -238,11 +238,11 @@ section .center {
 
       
         
-        <div><h2 id="bug" class=" text-xl mt-2 pb-2 font-sans">先回顾一个并发 Bug</h2>
-<p class=" font-serif my-1">在捡起东西的瞬间 “拿起” 物品，“拿起” 的物品会变成 “捡起” 的物品</p>
+        <div><h2 id="bug" class=" text-xl mt-2 pb-2 font-sans">&#20808;&#22238;&#39038;&#19968;&#20010;&#24182;&#21457; Bug</h2>
+<p class=" font-serif my-1">&#22312;&#25441;&#36215;&#19996;&#35199;&#30340;&#30636;&#38388; &#8220;&#25343;&#36215;&#8221; &#29289;&#21697;&#65292;&#8220;&#25343;&#36215;&#8221; &#30340;&#29289;&#21697;&#20250;&#21464;&#25104; &#8220;&#25441;&#36215;&#8221; &#30340;&#29289;&#21697;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><a href="../../../pages/OS/img/diablo-item-clone.mp4" class=" text-amber-900">视频</a></li>
-<li class=" ml-8">似乎是由共享状态引起的</li>
+<li class=" ml-8"><a href="../../../pages/OS/img/diablo-item-clone.mp4" class=" text-amber-900">&#35270;&#39057;</a></li>
+<li class=" ml-8">&#20284;&#20046;&#26159;&#30001;&#20849;&#20139;&#29366;&#24577;&#24341;&#36215;&#30340;</li>
 </ul>
 <hr>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"$1"</span><span class="p">;</span>
@@ -267,11 +267,11 @@ section .center {
 
       
         
-        <div><h2 id="killed-by-a-machine" class=" text-xl mt-2 pb-2 font-sans">“Killed by a Machine”</h2>
+        <div><h2 id="killed-by-a-machine" class=" text-xl mt-2 pb-2 font-sans">&#8220;Killed by a Machine&#8221;</h2>
 <p class=" font-serif my-1">Therac-25 Incident (1985-1987)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">至少导致 6 人死亡</li>
-<li class=" ml-8">事件驱动导致的并发 bug (没有多线程)</li>
+<li class=" ml-8">&#33267;&#23569;&#23548;&#33268; 6 &#20154;&#27515;&#20129;</li>
+<li class=" ml-8">&#20107;&#20214;&#39537;&#21160;&#23548;&#33268;&#30340;&#24182;&#21457; bug (&#27809;&#26377;&#22810;&#32447;&#31243;)</li>
 </ul>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/therac-25.jpg" width="600px"></p></div>
         
@@ -286,7 +286,7 @@ section .center {
         
         <div><h2 id="the-therac-25" class=" text-xl mt-2 pb-2 font-sans">The Therac-25</h2>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/therac-25-bug.png" width="700px"></p>
-<p class=" font-serif my-1">在更早的产品中，使用电路互锁 (interlock) 在 assert fail 时停机</p>
+<p class=" font-serif my-1">&#22312;&#26356;&#26089;&#30340;&#20135;&#21697;&#20013;&#65292;&#20351;&#29992;&#30005;&#36335;&#20114;&#38145; (interlock) &#22312; assert fail &#26102;&#20572;&#26426;</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">assert</span> <span class="n">mode</span> <span class="ow">in</span> <span class="p">[</span><span class="n">XRay</span><span class="p">,</span> <span class="n">Electron</span><span class="p">]</span>
 <span class="k">assert</span> <span class="n">mirror</span> <span class="ow">in</span> <span class="p">[</span><span class="n">On</span><span class="p">,</span> <span class="n">Off</span><span class="p">]</span>
 <span class="k">assert</span> <span class="ow">not</span> <span class="p">(</span><span class="n">mode</span> <span class="o">==</span> <span class="n">XRay</span> <span class="ow">and</span> <span class="n">mirror</span> <span class="o">==</span> <span class="n">Off</span><span class="p">)</span>
@@ -303,19 +303,19 @@ section .center {
         
         <div><h2 id="the-killer-software-bug-in-history" class=" text-xl mt-2 pb-2 font-sans">The Killer Software Bug in History</h2>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/vt100.jpg" width="400px"></p>
-<p class=" font-serif my-1">原子性 + 异步执行假设导致的灾难</p>
+<p class=" font-serif my-1">&#21407;&#23376;&#24615; + &#24322;&#27493;&#25191;&#34892;&#20551;&#35774;&#23548;&#33268;&#30340;&#28798;&#38590;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">选择 X-ray Mode<ul class=" list-disc font-serif">
-<li class=" ml-8">机器开始移动 mirror</li>
-<li class=" ml-8">需要 ~8s 完成</li>
+<li class=" ml-8">&#36873;&#25321; X-ray Mode<ul class=" list-disc font-serif">
+<li class=" ml-8">&#26426;&#22120;&#24320;&#22987;&#31227;&#21160; mirror</li>
+<li class=" ml-8">&#38656;&#35201; ~8s &#23436;&#25104;</li>
 </ul>
 </li>
-<li class=" ml-8">此时切换到 Electron Mode<ul class=" list-disc font-serif">
-<li class=" ml-8">射线源以 X-ray Mode 运行</li>
-<li class=" ml-8">Mirror 尚未到位</li>
+<li class=" ml-8">&#27492;&#26102;&#20999;&#25442;&#21040; Electron Mode<ul class=" list-disc font-serif">
+<li class=" ml-8">&#23556;&#32447;&#28304;&#20197; X-ray Mode &#36816;&#34892;</li>
+<li class=" ml-8">Mirror &#23578;&#26410;&#21040;&#20301;</li>
 <li class=" ml-8">Malfunction 54<ul class=" list-disc font-serif">
-<li class=" ml-8">每天处理各种 Malfunction 的操作员下意识地 Continue</li>
-<li class=" ml-8">灾难发生</li>
+<li class=" ml-8">&#27599;&#22825;&#22788;&#29702;&#21508;&#31181; Malfunction &#30340;&#25805;&#20316;&#21592;&#19979;&#24847;&#35782;&#22320; Continue</li>
+<li class=" ml-8">&#28798;&#38590;&#21457;&#29983;</li>
 </ul>
 </li>
 </ul>
@@ -331,16 +331,16 @@ section .center {
 
       
         
-        <div><h2 id="therac-25-bug" class=" text-xl mt-2 pb-2 font-sans">这甚至不是 Therac-25 里的最后一个杀人 Bug</h2>
-<p class=" font-serif my-1">问题修复后……</p>
+        <div><h2 id="therac-25-bug" class=" text-xl mt-2 pb-2 font-sans">&#36825;&#29978;&#33267;&#19981;&#26159; Therac-25 &#37324;&#30340;&#26368;&#21518;&#19968;&#20010;&#26432;&#20154; Bug</h2>
+<p class=" font-serif my-1">&#38382;&#39064;&#20462;&#22797;&#21518;&#8230;&#8230;</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">If the operator sent a command at the exact moment the counter overflowed, the machine would skip setting up some of the beam accessories</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">最终解决方法</p>
+<p class=" font-serif my-1">&#26368;&#32456;&#35299;&#20915;&#26041;&#27861;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">独立的硬件安全方案</li>
-<li class=" ml-8">在大计量照射发生时直接停机</li>
+<li class=" ml-8">&#29420;&#31435;&#30340;&#30828;&#20214;&#23433;&#20840;&#26041;&#26696;</li>
+<li class=" ml-8">&#22312;&#22823;&#35745;&#37327;&#29031;&#23556;&#21457;&#29983;&#26102;&#30452;&#25509;&#20572;&#26426;</li>
 </ul></div>
         
       

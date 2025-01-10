@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // • auto-render specific keys, e.g.:
+            // &#8226; auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // • rendering keys, e.g.:
+            // &#8226; rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +209,7 @@ section .center {
 }
 </style>
 
-  <title>持久数据的可靠性</title>
+  <title>&#25345;&#20037;&#25968;&#25454;&#30340;&#21487;&#38752;&#24615;</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,21 +227,21 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">持久数据的可靠性</h1>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#25345;&#20037;&#25968;&#25454;&#30340;&#21487;&#38752;&#24615;</h1>
 <p class=" font-serif my-1"><include src="Slides_Author"><div><div class="py-16">
-<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">蒋炎岩</a></p>
+<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">&#33931;&#28814;&#23721;</a></p>
 </div>
 <div class="row">
 <div class="author-affiliation">
-    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">　　南京大学　　</p>
+    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#12288;&#12288;&#21335;&#20140;&#22823;&#23398;&#12288;&#12288;</p>
     <img class="inline-img h-24" src="../../../static/img/nju-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">计算机科学与技术系</p>
+   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#31185;&#23398;&#19982;&#25216;&#26415;&#31995;</p>
     <img class="inline-img h-24" src="../../../static/img/njucs-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">计算机软件研究所</p>
+    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#36719;&#20214;&#30740;&#31350;&#25152;</p>
     <img class="inline-img h-24" src="../../../static/img/ics-logo.png" style="display: inline-block;"></a>
   </div>
 </div></div></include></p></div></div></div>
@@ -255,18 +255,18 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">背景</h2>
-<p class=" font-serif my-1">文件系统 = 把设备抽象成目录树</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#32972;&#26223;</h2>
+<p class=" font-serif my-1">&#25991;&#20214;&#31995;&#32479; = &#25226;&#35774;&#22791;&#25277;&#35937;&#25104;&#30446;&#24405;&#26641;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">mount - 文件系统管理</li>
-<li class=" ml-8">mkdir, rmkdir, link, symlink, unlink... - 目录管理</li>
-<li class=" ml-8">open, mmap, read, write, lseek... - 文件管理<ul class=" list-disc font-serif">
-<li class=" ml-8">使用链表、索引、……实现</li>
+<li class=" ml-8">mount - &#25991;&#20214;&#31995;&#32479;&#31649;&#29702;</li>
+<li class=" ml-8">mkdir, rmkdir, link, symlink, unlink... - &#30446;&#24405;&#31649;&#29702;</li>
+<li class=" ml-8">open, mmap, read, write, lseek... - &#25991;&#20214;&#31649;&#29702;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20351;&#29992;&#38142;&#34920;&#12289;&#32034;&#24341;&#12289;&#8230;&#8230;&#23454;&#29616;</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">如何实现<red>高可靠、高性能</red>？</p></div>
+<p class=" font-serif my-1">&#22914;&#20309;&#23454;&#29616;<red>&#39640;&#21487;&#38752;&#12289;&#39640;&#24615;&#33021;</red>&#65311;</p></div>
         
       
       </section>
@@ -277,15 +277,15 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">本次课内容与目标</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26412;&#27425;&#35838;&#20869;&#23481;&#19982;&#30446;&#26631;</h2>
 <p class=" font-serif my-1">RAID: Redundant Array of Inexpensive Disks</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">把多块磁盘虚拟化成一块性能更好、更可靠的磁盘</li>
+<li class=" ml-8">&#25226;&#22810;&#22359;&#30913;&#30424;&#34394;&#25311;&#21270;&#25104;&#19968;&#22359;&#24615;&#33021;&#26356;&#22909;&#12289;&#26356;&#21487;&#38752;&#30340;&#30913;&#30424;</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">崩溃一致性</p>
+<p class=" font-serif my-1">&#23849;&#28291;&#19968;&#33268;&#24615;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">如何在硬件可能崩溃的情况下保证文件系统 (数据结构) 的一致性</li>
+<li class=" ml-8">&#22914;&#20309;&#22312;&#30828;&#20214;&#21487;&#33021;&#23849;&#28291;&#30340;&#24773;&#20917;&#19979;&#20445;&#35777;&#25991;&#20214;&#31995;&#32479; (&#25968;&#25454;&#32467;&#26500;) &#30340;&#19968;&#33268;&#24615;</li>
 </ul></div>
         
       
@@ -312,14 +312,14 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">持久数据的可靠性</h2>
-<p class=" font-serif my-1">任何物理存储介质都有失效的可能</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25345;&#20037;&#25968;&#25454;&#30340;&#21487;&#38752;&#24615;</h2>
+<p class=" font-serif my-1">&#20219;&#20309;&#29289;&#29702;&#23384;&#20648;&#20171;&#36136;&#37117;&#26377;&#22833;&#25928;&#30340;&#21487;&#33021;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">你依然希望在存储设备失效的时候能保持数据的完整<ul class=" list-disc font-serif">
-<li class=" ml-8">极小概率事件：战争爆发/三体人进攻地球/世界毁灭 😂</li>
-<li class=" ml-8">小概率事件：硬盘损坏<ul class=" list-disc font-serif">
-<li class=" ml-8">大量重复 = 必然发生<ul class=" list-disc font-serif">
-<li class=" ml-8">但我们还是希望系统能照常运转</li>
+<li class=" ml-8">&#20320;&#20381;&#28982;&#24076;&#26395;&#22312;&#23384;&#20648;&#35774;&#22791;&#22833;&#25928;&#30340;&#26102;&#20505;&#33021;&#20445;&#25345;&#25968;&#25454;&#30340;&#23436;&#25972;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#26497;&#23567;&#27010;&#29575;&#20107;&#20214;&#65306;&#25112;&#20105;&#29190;&#21457;/&#19977;&#20307;&#20154;&#36827;&#25915;&#22320;&#29699;/&#19990;&#30028;&#27585;&#28781; &#128514;</li>
+<li class=" ml-8">&#23567;&#27010;&#29575;&#20107;&#20214;&#65306;&#30828;&#30424;&#25439;&#22351;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22823;&#37327;&#37325;&#22797; = &#24517;&#28982;&#21457;&#29983;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20294;&#25105;&#20204;&#36824;&#26159;&#24076;&#26395;&#31995;&#32479;&#33021;&#29031;&#24120;&#36816;&#36716;</li>
 </ul>
 </li>
 </ul>
@@ -337,20 +337,20 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">增加持久数据可靠性的方法</h2>
-<p class=" font-serif my-1"><red>备胎</red>：鸡蛋不能放在一个篮子里</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#22686;&#21152;&#25345;&#20037;&#25968;&#25454;&#21487;&#38752;&#24615;&#30340;&#26041;&#27861;</h2>
+<p class=" font-serif my-1"><red>&#22791;&#32974;</red>&#65306;&#40481;&#34507;&#19981;&#33021;&#25918;&#22312;&#19968;&#20010;&#31726;&#23376;&#37324;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">教务处：物理备份<ul class=" list-disc font-serif">
-<li class=" ml-8">期末考试后会提交所有批阅的试卷、成绩表、成绩分布</li>
-<li class=" ml-8">假设教务系统崩溃 v.s. 教务处崩溃是独立事件<ul class=" list-disc font-serif">
-<li class=" ml-8">两个极小概率事件同时发生，那就认倒霉吧</li>
+<li class=" ml-8">&#25945;&#21153;&#22788;&#65306;&#29289;&#29702;&#22791;&#20221;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#26399;&#26411;&#32771;&#35797;&#21518;&#20250;&#25552;&#20132;&#25152;&#26377;&#25209;&#38405;&#30340;&#35797;&#21367;&#12289;&#25104;&#32489;&#34920;&#12289;&#25104;&#32489;&#20998;&#24067;</li>
+<li class=" ml-8">&#20551;&#35774;&#25945;&#21153;&#31995;&#32479;&#23849;&#28291; v.s. &#25945;&#21153;&#22788;&#23849;&#28291;&#26159;&#29420;&#31435;&#20107;&#20214;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20004;&#20010;&#26497;&#23567;&#27010;&#29575;&#20107;&#20214;&#21516;&#26102;&#21457;&#29983;&#65292;&#37027;&#23601;&#35748;&#20498;&#38665;&#21543;</li>
 </ul>
 </li>
 </ul>
 </li>
-<li class=" ml-8">服务器：数据备份<ul class=" list-disc font-serif">
-<li class=" ml-8">所有数据同时写入两块磁盘</li>
-<li class=" ml-8">每日或每周备份<ul class=" list-disc font-serif">
+<li class=" ml-8">&#26381;&#21153;&#22120;&#65306;&#25968;&#25454;&#22791;&#20221;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25152;&#26377;&#25968;&#25454;&#21516;&#26102;&#20889;&#20837;&#20004;&#22359;&#30913;&#30424;</li>
+<li class=" ml-8">&#27599;&#26085;&#25110;&#27599;&#21608;&#22791;&#20221;<ul class=" list-disc font-serif">
 <li class=" ml-8">crontab (time-based job scheduler)</li>
 </ul>
 </li>
@@ -367,22 +367,22 @@ section .center {
 
       
         
-        <div><h2 id="raid" class=" text-xl mt-2 pb-2 font-sans">RAID: 存储设备的虚拟化</h2>
+        <div><h2 id="raid" class=" text-xl mt-2 pb-2 font-sans">RAID: &#23384;&#20648;&#35774;&#22791;&#30340;&#34394;&#25311;&#21270;</h2>
 <p class=" font-serif my-1">Redundant Array of Inexpensive (<em>Independent</em>) Disks (RAID)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">把多个 (不可靠的) 磁盘虚拟成一块非常可靠的虚拟磁盘</li>
+<li class=" ml-8">&#25226;&#22810;&#20010; (&#19981;&#21487;&#38752;&#30340;) &#30913;&#30424;&#34394;&#25311;&#25104;&#19968;&#22359;&#38750;&#24120;&#21487;&#38752;&#30340;&#34394;&#25311;&#30913;&#30424;</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">类比我们见过的虚拟化</p>
+<p class=" font-serif my-1">&#31867;&#27604;&#25105;&#20204;&#35265;&#36807;&#30340;&#34394;&#25311;&#21270;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">进程：把一个 CPU 分时虚拟成多个虚拟 CPU</li>
-<li class=" ml-8">虚存：把一份内存通过 MMU 虚拟成多个地址空间</li>
-<li class=" ml-8">文件：把一个存储设备虚拟成多个虚拟磁盘</li>
+<li class=" ml-8">&#36827;&#31243;&#65306;&#25226;&#19968;&#20010; CPU &#20998;&#26102;&#34394;&#25311;&#25104;&#22810;&#20010;&#34394;&#25311; CPU</li>
+<li class=" ml-8">&#34394;&#23384;&#65306;&#25226;&#19968;&#20221;&#20869;&#23384;&#36890;&#36807; MMU &#34394;&#25311;&#25104;&#22810;&#20010;&#22320;&#22336;&#31354;&#38388;</li>
+<li class=" ml-8">&#25991;&#20214;&#65306;&#25226;&#19968;&#20010;&#23384;&#20648;&#35774;&#22791;&#34394;&#25311;&#25104;&#22810;&#20010;&#34394;&#25311;&#30913;&#30424;</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">RAID 的虚拟化是 “反向” 的</p>
+<p class=" font-serif my-1">RAID &#30340;&#34394;&#25311;&#21270;&#26159; &#8220;&#21453;&#21521;&#8221; &#30340;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">(一个 → 多个) vs. (多个 → 一个)</li>
+<li class=" ml-8">(&#19968;&#20010; &#8594; &#22810;&#20010;) vs. (&#22810;&#20010; &#8594; &#19968;&#20010;)</li>
 </ul></div>
         
       
@@ -394,25 +394,25 @@ section .center {
 
       
         
-        <div><h2 id="raid-fault-model-fail-stop" class=" text-xl mt-2 pb-2 font-sans">RAID 的 Fault Model: Fail-Stop</h2>
-<p class=" font-serif my-1">磁盘可能在某个时刻忽然彻底无法访问 (数据好像完全消失)。</p>
+        <div><h2 id="raid-fault-model-fail-stop" class=" text-xl mt-2 pb-2 font-sans">RAID &#30340; Fault Model: Fail-Stop</h2>
+<p class=" font-serif my-1">&#30913;&#30424;&#21487;&#33021;&#22312;&#26576;&#20010;&#26102;&#21051;&#24573;&#28982;&#24443;&#24213;&#26080;&#27861;&#35775;&#38382; (&#25968;&#25454;&#22909;&#20687;&#23436;&#20840;&#28040;&#22833;)&#12290;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">机械故障、芯片故障……<ul class=" list-disc font-serif">
-<li class=" ml-8">磁盘好像就 “忽然消失” 了</li>
-<li class=" ml-8">假设磁盘能报告这个问题 (如何报告？)</li>
+<li class=" ml-8">&#26426;&#26800;&#25925;&#38556;&#12289;&#33455;&#29255;&#25925;&#38556;&#8230;&#8230;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#30913;&#30424;&#22909;&#20687;&#23601; &#8220;&#24573;&#28982;&#28040;&#22833;&#8221; &#20102;</li>
+<li class=" ml-8">&#20551;&#35774;&#30913;&#30424;&#33021;&#25253;&#21578;&#36825;&#20010;&#38382;&#39064; (&#22914;&#20309;&#25253;&#21578;&#65311;)</li>
 </ul>
 </li>
 <li class=" ml-8">L. Bairavasundaram, et al. An analysis of data corruption in the storage stack. In <em>Proc. of FAST</em>, 2008.</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">你还敢用这个硬盘做 {教务系统, 支付宝, 银行, …} 吗？</p>
+<p class=" font-serif my-1">&#20320;&#36824;&#25954;&#29992;&#36825;&#20010;&#30828;&#30424;&#20570; {&#25945;&#21153;&#31995;&#32479;, &#25903;&#20184;&#23453;, &#38134;&#34892;, &#8230;} &#21527;&#65311;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">总有一天，一定有磁盘会坏掉的<ul class=" list-disc font-serif">
-<li class=" ml-8">坏事件一旦发生，就有数据会丢失</li>
-<li class=" ml-8">永远不丢失数据似乎是不可能的</li>
+<li class=" ml-8">&#24635;&#26377;&#19968;&#22825;&#65292;&#19968;&#23450;&#26377;&#30913;&#30424;&#20250;&#22351;&#25481;&#30340;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22351;&#20107;&#20214;&#19968;&#26086;&#21457;&#29983;&#65292;&#23601;&#26377;&#25968;&#25454;&#20250;&#20002;&#22833;</li>
+<li class=" ml-8">&#27704;&#36828;&#19981;&#20002;&#22833;&#25968;&#25454;&#20284;&#20046;&#26159;&#19981;&#21487;&#33021;&#30340;</li>
 </ul>
 </li>
-<li class=" ml-8">我们还能构造可靠的 (单机) 存储系统吗？</li>
+<li class=" ml-8">&#25105;&#20204;&#36824;&#33021;&#26500;&#36896;&#21487;&#38752;&#30340; (&#21333;&#26426;) &#23384;&#20648;&#31995;&#32479;&#21527;&#65311;</li>
 </ul></div>
         
       
@@ -424,19 +424,19 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">当然可以！</h2>
-<p class=" font-serif my-1">假设我愿意在系统里多接入一块硬盘用于容灾</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#24403;&#28982;&#21487;&#20197;&#65281;</h2>
+<p class=" font-serif my-1">&#20551;&#35774;&#25105;&#24895;&#24847;&#22312;&#31995;&#32479;&#37324;&#22810;&#25509;&#20837;&#19968;&#22359;&#30828;&#30424;&#29992;&#20110;&#23481;&#28798;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">通过设备驱动程序抽象成 “一个磁盘” $V$ (例如 1TB)<ul class=" list-disc font-serif">
-<li class=" ml-8">实际由 $A$, $B$ 两块 1TB 的物理磁盘组成<red>镜像</red></li>
+<li class=" ml-8">&#36890;&#36807;&#35774;&#22791;&#39537;&#21160;&#31243;&#24207;&#25277;&#35937;&#25104; &#8220;&#19968;&#20010;&#30913;&#30424;&#8221; $V$ (&#20363;&#22914; 1TB)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#23454;&#38469;&#30001; $A$, $B$ &#20004;&#22359; 1TB &#30340;&#29289;&#29702;&#30913;&#30424;&#32452;&#25104;<red>&#38236;&#20687;</red></li>
 </ul>
 </li>
 <li class=" ml-8">readb($V$, blk)<ul class=" list-disc font-serif">
-<li class=" ml-8">可以从 $A$ 或 $B$ 中的任意一个读取</li>
+<li class=" ml-8">&#21487;&#20197;&#20174; $A$ &#25110; $B$ &#20013;&#30340;&#20219;&#24847;&#19968;&#20010;&#35835;&#21462;</li>
 </ul>
 </li>
 <li class=" ml-8">writeb($V$, blk)<ul class=" list-disc font-serif">
-<li class=" ml-8">将同样的数据写入 $A$, $B$ 的同一位置  </li>
+<li class=" ml-8">&#23558;&#21516;&#26679;&#30340;&#25968;&#25454;&#20889;&#20837; $A$, $B$ &#30340;&#21516;&#19968;&#20301;&#32622;  </li>
 </ul>
 </li>
 </ul></div>
@@ -444,12 +444,12 @@ section .center {
       
          <div class="fragment"> 
         <div><hr>
-<p class=" font-serif my-1">假设内存带宽远高于磁盘带宽</p>
+<p class=" font-serif my-1">&#20551;&#35774;&#20869;&#23384;&#24102;&#23485;&#36828;&#39640;&#20110;&#30913;&#30424;&#24102;&#23485;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">1X write (浪费了 1/2 的总带宽)</li>
+<li class=" ml-8">1X write (&#28010;&#36153;&#20102; 1/2 &#30340;&#24635;&#24102;&#23485;)</li>
 <li class=" ml-8">2X sequential read (tricky)</li>
-<li class=" ml-8">2X random read (使用了 100% 的总带宽)</li>
-<li class=" ml-8">抵抗任意一块盘的损坏</li>
+<li class=" ml-8">2X random read (&#20351;&#29992;&#20102; 100% &#30340;&#24635;&#24102;&#23485;)</li>
+<li class=" ml-8">&#25269;&#25239;&#20219;&#24847;&#19968;&#22359;&#30424;&#30340;&#25439;&#22351;</li>
 </ul></div>
          </div> 
       
@@ -463,22 +463,22 @@ section .center {
         
         <div><h2 id="raid-design-space" class=" text-xl mt-2 pb-2 font-sans">RAID: Design Space</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">RAID (虚拟化) = 虚拟磁盘块到物理磁盘块的 “映射”。</p>
+<p class=" font-serif my-1">RAID (&#34394;&#25311;&#21270;) = &#34394;&#25311;&#30913;&#30424;&#22359;&#21040;&#29289;&#29702;&#30913;&#30424;&#22359;&#30340; &#8220;&#26144;&#23556;&#8221;&#12290;</p>
 </blockquote>
-<p class=" font-serif my-1">RAID-0: 把多块盘 “交替拼接”</p>
+<p class=" font-serif my-1">RAID-0: &#25226;&#22810;&#22359;&#30424; &#8220;&#20132;&#26367;&#25340;&#25509;&#8221;</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">$V_0 \to A_0$, $V_1 \to B_0$, $V_{2i} \to A_i$, $V_{2i+1} \to B_i$</li>
-<li class=" ml-8">完美扩展的高性能虚拟磁盘<ul class=" list-disc font-serif">
-<li class=" ml-8">100% 顺序/随机读写总带宽</li>
+<li class=" ml-8">&#23436;&#32654;&#25193;&#23637;&#30340;&#39640;&#24615;&#33021;&#34394;&#25311;&#30913;&#30424;<ul class=" list-disc font-serif">
+<li class=" ml-8">100% &#39034;&#24207;/&#38543;&#26426;&#35835;&#20889;&#24635;&#24102;&#23485;</li>
 </ul>
 </li>
-<li class=" ml-8">但完全不能容错</li>
+<li class=" ml-8">&#20294;&#23436;&#20840;&#19981;&#33021;&#23481;&#38169;</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">RAID-1 (镜像)</p>
+<p class=" font-serif my-1">RAID-1 (&#38236;&#20687;)</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">$V_0 \to (A_0, B_0)$</li>
-<li class=" ml-8">容忍一块盘 fail</li>
+<li class=" ml-8">&#23481;&#24525;&#19968;&#22359;&#30424; fail</li>
 </ul></div>
         
       
@@ -492,7 +492,7 @@ section .center {
         
         <div><h2 id="raid-design-space-contd" class=" text-xl mt-2 pb-2 font-sans">RAID: Design Space (cont'd)</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">RAID: 允许 “多对多” 的映射 (一组映射称为 “条带”, stripe)</p>
+<p class=" font-serif my-1">RAID: &#20801;&#35768; &#8220;&#22810;&#23545;&#22810;&#8221; &#30340;&#26144;&#23556; (&#19968;&#32452;&#26144;&#23556;&#31216;&#20026; &#8220;&#26465;&#24102;&#8221;, stripe)</p>
 </blockquote>
 <p class=" font-serif my-1">RAID-10</p>
 <ul class=" list-disc font-serif">
@@ -502,10 +502,10 @@ section .center {
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">另一种可能的方式</p>
+<p class=" font-serif my-1">&#21478;&#19968;&#31181;&#21487;&#33021;&#30340;&#26041;&#24335;</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">$(V_0, V_1, V_2) \to (A_0, B_0, C_0, D_0)$<ul class=" list-disc font-serif">
-<li class=" ml-8">“三块映射到四块”</li>
+<li class=" ml-8">&#8220;&#19977;&#22359;&#26144;&#23556;&#21040;&#22235;&#22359;&#8221;</li>
 </ul>
 </li>
 </ul></div>
@@ -522,15 +522,15 @@ section .center {
         <div><h2 id="raid-design-space-contd" class=" text-xl mt-2 pb-2 font-sans">RAID: Design Space (cont'd)</h2>
 <p class=" font-serif my-1">$(V_0, V_1, V_2) \to (A_0, B_0, C_0, D_0)$</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">不妨假设所有的条带 $V_i, A_i, B_i, C_i, D_i$ 都只有 1-bit</li>
-<li class=" ml-8">问题：<red>如何用 4 个 bit 存储 3-bit 信息，使得 4 个 bit 中的任何一个丢失，都能恢复出存储的 3-bit 的信息？</red><ul class=" list-disc font-serif">
-<li class=" ml-8">奇偶校验！</li>
-<li class=" ml-8">对于 bits $a_1, a_2, \ldots, a_n$<ul class=" list-disc font-serif">
-<li class=" ml-8">存储 $a_{n+1} = a_1 \oplus a_2 \oplus \ldots \oplus a_n$<ul class=" list-disc font-serif">
-<li class=" ml-8">移项得 $a_1 \oplus a_2 \oplus \ldots \oplus a_n \oplus a_{n+1} = 0$</li>
+<li class=" ml-8">&#19981;&#22952;&#20551;&#35774;&#25152;&#26377;&#30340;&#26465;&#24102; $V_i, A_i, B_i, C_i, D_i$ &#37117;&#21482;&#26377; 1-bit</li>
+<li class=" ml-8">&#38382;&#39064;&#65306;<red>&#22914;&#20309;&#29992; 4 &#20010; bit &#23384;&#20648; 3-bit &#20449;&#24687;&#65292;&#20351;&#24471; 4 &#20010; bit &#20013;&#30340;&#20219;&#20309;&#19968;&#20010;&#20002;&#22833;&#65292;&#37117;&#33021;&#24674;&#22797;&#20986;&#23384;&#20648;&#30340; 3-bit &#30340;&#20449;&#24687;&#65311;</red><ul class=" list-disc font-serif">
+<li class=" ml-8">&#22855;&#20598;&#26657;&#39564;&#65281;</li>
+<li class=" ml-8">&#23545;&#20110; bits $a_1, a_2, \ldots, a_n$<ul class=" list-disc font-serif">
+<li class=" ml-8">&#23384;&#20648; $a_{n+1} = a_1 \oplus a_2 \oplus \ldots \oplus a_n$<ul class=" list-disc font-serif">
+<li class=" ml-8">&#31227;&#39033;&#24471; $a_1 \oplus a_2 \oplus \ldots \oplus a_n \oplus a_{n+1} = 0$</li>
 </ul>
 </li>
-<li class=" ml-8">任何一个 bit 丢失 (对应 $A,B,C,D$ 中某块硬盘不能启动)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20219;&#20309;&#19968;&#20010; bit &#20002;&#22833; (&#23545;&#24212; $A,B,C,D$ &#20013;&#26576;&#22359;&#30828;&#30424;&#19981;&#33021;&#21551;&#21160;)<ul class=" list-disc font-serif">
 <li class=" ml-8">$a_i = a_1 \oplus \ldots \oplus a_{i-1} \oplus a_{i+1} \oplus \ldots \oplus a_n \oplus a_{n+1}$</li>
 </ul>
 </li>
@@ -550,26 +550,26 @@ section .center {
       
         
         <div><h2 id="raid-4-parity-disk" class=" text-xl mt-2 pb-2 font-sans">RAID-4: Parity Disk</h2>
-<p class=" font-serif my-1">专门留一块磁盘作为奇偶校验盘。</p>
+<p class=" font-serif my-1">&#19987;&#38376;&#30041;&#19968;&#22359;&#30913;&#30424;&#20316;&#20026;&#22855;&#20598;&#26657;&#39564;&#30424;&#12290;</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">$(V_0, V_1, V_2) \to (A_0, B_0, C_0, D_0)$<ul class=" list-disc font-serif">
 <li class=" ml-8">$A_0 = V_0$, $B_0 = V_1$, $C_0 = V_2$</li>
-<li class=" ml-8">$D_0 = V_0 \oplus V_1 \oplus V_2$ (奇偶校验)</li>
+<li class=" ml-8">$D_0 = V_0 \oplus V_1 \oplus V_2$ (&#22855;&#20598;&#26657;&#39564;)</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">性能分析</p>
+<p class=" font-serif my-1">&#24615;&#33021;&#20998;&#26512;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">sequential/random read: 3x (75% 总带宽)</li>
-<li class=" ml-8">sequential write: 3x (75% 总带宽)</li>
+<li class=" ml-8">sequential/random read: 3x (75% &#24635;&#24102;&#23485;)</li>
+<li class=" ml-8">sequential write: 3x (75% &#24635;&#24102;&#23485;)</li>
 <li class=" ml-8">random write (tricky)<ul class=" list-disc font-serif">
 <li class=" ml-8">$D_0 = V_0 \oplus V_1 \oplus V_2$</li>
-<li class=" ml-8">写入任意 $V_0, V_1, V_2$ 都需要更新 $D_0$<ul class=" list-disc font-serif">
-<li class=" ml-8">更新 $V_0$ 需要 readb($\{A_0,D_0\})$, writeb($\{A_0,D_0\}$)</li>
+<li class=" ml-8">&#20889;&#20837;&#20219;&#24847; $V_0, V_1, V_2$ &#37117;&#38656;&#35201;&#26356;&#26032; $D_0$<ul class=" list-disc font-serif">
+<li class=" ml-8">&#26356;&#26032; $V_0$ &#38656;&#35201; readb($\{A_0,D_0\})$, writeb($\{A_0,D_0\}$)</li>
 </ul>
 </li>
-<li class=" ml-8">奇偶校验盘成为了瓶颈: 0.5x</li>
+<li class=" ml-8">&#22855;&#20598;&#26657;&#39564;&#30424;&#25104;&#20026;&#20102;&#29942;&#39048;: 0.5x</li>
 </ul>
 </li>
 </ul></div>
@@ -584,7 +584,7 @@ section .center {
       
         
         <div><h2 id="raid-5-rotating-parity" class=" text-xl mt-2 pb-2 font-sans">RAID-5: Rotating Parity</h2>
-<p class=" font-serif my-1">“交错排列” parity block!</p>
+<p class=" font-serif my-1">&#8220;&#20132;&#38169;&#25490;&#21015;&#8221; parity block!</p>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/raid5.png" width="800px"></p></div>
         
       
@@ -596,18 +596,18 @@ section .center {
 
       
         
-        <div><h2 id="raid-5" class=" text-xl mt-2 pb-2 font-sans">RAID-5: 性能分析</h2>
-<p class=" font-serif my-1">让每一块盘都有均等的机会存储 parity</p>
+        <div><h2 id="raid-5" class=" text-xl mt-2 pb-2 font-sans">RAID-5: &#24615;&#33021;&#20998;&#26512;</h2>
+<p class=" font-serif my-1">&#35753;&#27599;&#19968;&#22359;&#30424;&#37117;&#26377;&#22343;&#31561;&#30340;&#26426;&#20250;&#23384;&#20648; parity</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">sequential read/write: 3x (75% 总带宽)</li>
+<li class=" ml-8">sequential read/write: 3x (75% &#24635;&#24102;&#23485;)</li>
 <li class=" ml-8">random read (tricky)<ul class=" list-disc font-serif">
-<li class=" ml-8">(read 足够大，所有磁盘都可以提供数据) 4x (100% 总带宽)</li>
+<li class=" ml-8">(read &#36275;&#22815;&#22823;&#65292;&#25152;&#26377;&#30913;&#30424;&#37117;&#21487;&#20197;&#25552;&#20379;&#25968;&#25454;) 4x (100% &#24635;&#24102;&#23485;)</li>
 </ul>
 </li>
 <li class=" ml-8">random write (tricky)<ul class=" list-disc font-serif">
-<li class=" ml-8">$D_0 = V_0 \oplus V_1 \oplus V_2$; 写入任意 $V_0, V_1, V_2$ 都需要更新 $D_0$</li>
-<li class=" ml-8">奇偶校验依然严重拖慢了随机写入<ul class=" list-disc font-serif">
-<li class=" ml-8">但至少 $n$ 块盘可以获得 $n/4$ 的随机写性能 (能够 scale)</li>
+<li class=" ml-8">$D_0 = V_0 \oplus V_1 \oplus V_2$; &#20889;&#20837;&#20219;&#24847; $V_0, V_1, V_2$ &#37117;&#38656;&#35201;&#26356;&#26032; $D_0$</li>
+<li class=" ml-8">&#22855;&#20598;&#26657;&#39564;&#20381;&#28982;&#20005;&#37325;&#25302;&#24930;&#20102;&#38543;&#26426;&#20889;&#20837;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20294;&#33267;&#23569; $n$ &#22359;&#30424;&#21487;&#20197;&#33719;&#24471; $n/4$ &#30340;&#38543;&#26426;&#20889;&#24615;&#33021; (&#33021;&#22815; scale)</li>
 </ul>
 </li>
 </ul>
@@ -623,21 +623,21 @@ section .center {
 
       
         
-        <div><h2 id="raid" class=" text-xl mt-2 pb-2 font-sans">RAID: 讨论</h2>
+        <div><h2 id="raid" class=" text-xl mt-2 pb-2 font-sans">RAID: &#35752;&#35770;</h2>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/emc-vnx5300.jpg" width="400px"></p>
-<p class=" font-serif my-1">更快、更可靠、近乎免费的大容量磁盘</p>
+<p class=" font-serif my-1">&#26356;&#24555;&#12289;&#26356;&#21487;&#38752;&#12289;&#36817;&#20046;&#20813;&#36153;&#30340;&#22823;&#23481;&#37327;&#30913;&#30424;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">今天服务器的标准配置</li>
+<li class=" ml-8">&#20170;&#22825;&#26381;&#21153;&#22120;&#30340;&#26631;&#20934;&#37197;&#32622;</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">RAID 的可靠性</p>
+<p class=" font-serif my-1">RAID &#30340;&#21487;&#38752;&#24615;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">RAID 系统发生断电？<ul class=" list-disc font-serif">
-<li class=" ml-8">例子：RAID-1 镜像盘出现不一致的数据</li>
+<li class=" ml-8">RAID &#31995;&#32479;&#21457;&#29983;&#26029;&#30005;&#65311;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20363;&#23376;&#65306;RAID-1 &#38236;&#20687;&#30424;&#20986;&#29616;&#19981;&#19968;&#33268;&#30340;&#25968;&#25454;</li>
 </ul>
 </li>
-<li class=" ml-8">检测到磁盘坏？<ul class=" list-disc font-serif">
-<li class=" ml-8">自动重组</li>
+<li class=" ml-8">&#26816;&#27979;&#21040;&#30913;&#30424;&#22351;&#65311;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#33258;&#21160;&#37325;&#32452;</li>
 </ul>
 </li>
 </ul></div>
@@ -655,7 +655,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">崩溃一致性与崩溃恢复</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#23849;&#28291;&#19968;&#33268;&#24615;&#19982;&#23849;&#28291;&#24674;&#22797;</h1></div></div></div>
         
       
       </section>
@@ -666,17 +666,17 @@ section .center {
 
       
         
-        <div><h2 id="fault-model" class=" text-xl mt-2 pb-2 font-sans">另一种 Fault Model</h2>
-<p class=" font-serif my-1">磁盘并没有故障</p>
+        <div><h2 id="fault-model" class=" text-xl mt-2 pb-2 font-sans">&#21478;&#19968;&#31181; Fault Model</h2>
+<p class=" font-serif my-1">&#30913;&#30424;&#24182;&#27809;&#26377;&#25925;&#38556;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">但操作系统内核可能 crash，系统可能断电</li>
+<li class=" ml-8">&#20294;&#25805;&#20316;&#31995;&#32479;&#20869;&#26680;&#21487;&#33021; crash&#65292;&#31995;&#32479;&#21487;&#33021;&#26029;&#30005;</li>
 </ul>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/cat-crash-consistency.jpg" width="400px"></p>
-<p class=" font-serif my-1">文件系统：设备上的树结构</p>
+<p class=" font-serif my-1">&#25991;&#20214;&#31995;&#32479;&#65306;&#35774;&#22791;&#19978;&#30340;&#26641;&#32467;&#26500;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">即便只是 append 一个字节，也涉及多处磁盘的修改<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21363;&#20415;&#21482;&#26159; append &#19968;&#20010;&#23383;&#33410;&#65292;&#20063;&#28041;&#21450;&#22810;&#22788;&#30913;&#30424;&#30340;&#20462;&#25913;<ul class=" list-disc font-serif">
 <li class=" ml-8">inode, inode-bitmap, block-bitmap</li>
-<li class=" ml-8">不同的 block，因此无法同时完成</li>
+<li class=" ml-8">&#19981;&#21516;&#30340; block&#65292;&#22240;&#27492;&#26080;&#27861;&#21516;&#26102;&#23436;&#25104;</li>
 </ul>
 </li>
 </ul></div>
@@ -690,18 +690,18 @@ section .center {
 
       
         
-        <div><h2 id="crash-consistency" class=" text-xl mt-2 pb-2 font-sans">崩溃一致性 (Crash Consistency)</h2>
+        <div><h2 id="crash-consistency" class=" text-xl mt-2 pb-2 font-sans">&#23849;&#28291;&#19968;&#33268;&#24615; (Crash Consistency)</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
 <p class=" font-serif my-1"><strong>Crash Consistency</strong>: Move the file system from one consistent state (e.g., before the file got appended to) to another atomically (e.g., after the inode, bitmap, and new data block have been written to disk).</p>
 </blockquote>
-<p class=" font-serif my-1"></p><center>(你们平时编程时假设不会发生的事，操作系统都要给你兜底)</center>
+<p class=" font-serif my-1"></p><center>(&#20320;&#20204;&#24179;&#26102;&#32534;&#31243;&#26102;&#20551;&#35774;&#19981;&#20250;&#21457;&#29983;&#30340;&#20107;&#65292;&#25805;&#20316;&#31995;&#32479;&#37117;&#35201;&#32473;&#20320;&#20828;&#24213;)</center>
 <hr>
-<p class=" font-serif my-1">导致崩溃一致性的原因</p>
+<p class=" font-serif my-1">&#23548;&#33268;&#23849;&#28291;&#19968;&#33268;&#24615;&#30340;&#21407;&#22240;</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">RAID: write($V_0$) $\to$ write($A_0$) write($B_0$)</li>
-<li class=" ml-8">ext2 (文件追加写入一块): write(inode); write(bitmap); write(data);<ul class=" list-disc font-serif">
-<li class=" ml-8">但是存储设备的多次写入没有原子性保证 😂</li>
-<li class=" ml-8">甚至为了性能，没有顺序保证 (并发编程：从入门到放弃)</li>
+<li class=" ml-8">ext2 (&#25991;&#20214;&#36861;&#21152;&#20889;&#20837;&#19968;&#22359;): write(inode); write(bitmap); write(data);<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20294;&#26159;&#23384;&#20648;&#35774;&#22791;&#30340;&#22810;&#27425;&#20889;&#20837;&#27809;&#26377;&#21407;&#23376;&#24615;&#20445;&#35777; &#128514;</li>
+<li class=" ml-8">&#29978;&#33267;&#20026;&#20102;&#24615;&#33021;&#65292;&#27809;&#26377;&#39034;&#24207;&#20445;&#35777; (&#24182;&#21457;&#32534;&#31243;&#65306;&#20174;&#20837;&#38376;&#21040;&#25918;&#24323;)</li>
 </ul>
 </li>
 </ul></div>
@@ -715,14 +715,14 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">原子性的丧失：后果</h2>
-<p class=" font-serif my-1">考虑追加写入一个数据块，磁盘上数据结构的更新</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#21407;&#23376;&#24615;&#30340;&#20007;&#22833;&#65306;&#21518;&#26524;</h2>
+<p class=" font-serif my-1">&#32771;&#34385;&#36861;&#21152;&#20889;&#20837;&#19968;&#20010;&#25968;&#25454;&#22359;&#65292;&#30913;&#30424;&#19978;&#25968;&#25454;&#32467;&#26500;&#30340;&#26356;&#26032;</p>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/fs-layout.png" width="900px"></p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">b: bitmap; i: inode; d: data<ul class=" list-disc font-serif">
 <li class=" ml-8">$\{b\}$ - dead block</li>
 <li class=" ml-8">$\{i\}$ - dangling pointer</li>
-<li class=" ml-8">$\{d\}$ - random writes (没有一致性问题)</li>
+<li class=" ml-8">$\{d\}$ - random writes (&#27809;&#26377;&#19968;&#33268;&#24615;&#38382;&#39064;)</li>
 <li class=" ml-8">$\{b,i\}$ - incorrect data</li>
 <li class=" ml-8">$\{i,d\}$ - dangling pointer</li>
 <li class=" ml-8">$\{b,d\}$ - dead block</li>
@@ -743,7 +743,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="fsck" class=" text-2xl mt-2 font-sans">崩溃恢复: FSCK</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="fsck" class=" text-2xl mt-2 font-sans">&#23849;&#28291;&#24674;&#22797;: FSCK</h1></div></div></div>
         
       
       </section>
@@ -755,17 +755,17 @@ section .center {
       
         
         <div><h2 id="file-system-checking-fsck" class=" text-xl mt-2 pb-2 font-sans">File System Checking (FSCK)</h2>
-<p class=" font-serif my-1">根据磁盘上已有的信息，恢复出 “最可能” 的数据结构</p>
+<p class=" font-serif my-1">&#26681;&#25454;&#30913;&#30424;&#19978;&#24050;&#26377;&#30340;&#20449;&#24687;&#65292;&#24674;&#22797;&#20986; &#8220;&#26368;&#21487;&#33021;&#8221; &#30340;&#25968;&#25454;&#32467;&#26500;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">检查 inode 标记的数据块是否 bitmap 都标记为 “1”</li>
-<li class=" ml-8">检查 inode 数据是否 “看起来合法”，否则删除</li>
-<li class=" ml-8">检查是否存在 dangling link<ul class=" list-disc font-serif">
-<li class=" ml-8">没有链接的 inode 被移到 lost+found 目录中</li>
+<li class=" ml-8">&#26816;&#26597; inode &#26631;&#35760;&#30340;&#25968;&#25454;&#22359;&#26159;&#21542; bitmap &#37117;&#26631;&#35760;&#20026; &#8220;1&#8221;</li>
+<li class=" ml-8">&#26816;&#26597; inode &#25968;&#25454;&#26159;&#21542; &#8220;&#30475;&#36215;&#26469;&#21512;&#27861;&#8221;&#65292;&#21542;&#21017;&#21024;&#38500;</li>
+<li class=" ml-8">&#26816;&#26597;&#26159;&#21542;&#23384;&#22312; dangling link<ul class=" list-disc font-serif">
+<li class=" ml-8">&#27809;&#26377;&#38142;&#25509;&#30340; inode &#34987;&#31227;&#21040; lost+found &#30446;&#24405;&#20013;</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">刚才的哪些情况可以由 fsck 修复？</p>
+<p class=" font-serif my-1">&#21018;&#25165;&#30340;&#21738;&#20123;&#24773;&#20917;&#21487;&#20197;&#30001; fsck &#20462;&#22797;&#65311;</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">$\{b,i\}$ - incorrect data</li>
 <li class=" ml-8">$\{i,d\}$ - dangling pointer</li>
@@ -781,8 +781,8 @@ section .center {
 
       
         
-        <div><h2 id="fsck" class=" text-xl mt-2 pb-2 font-sans">FSCK 的难题</h2>
-<p class=" font-serif my-1">在发生不一致时，“到底什么是对的”？</p>
+        <div><h2 id="fsck" class=" text-xl mt-2 pb-2 font-sans">FSCK &#30340;&#38590;&#39064;</h2>
+<p class=" font-serif my-1">&#22312;&#21457;&#29983;&#19981;&#19968;&#33268;&#26102;&#65292;&#8220;&#21040;&#24213;&#20160;&#20040;&#26159;&#23545;&#30340;&#8221;&#65311;</p>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/fsck-recovery.png" width="750px"></p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">H. S. Gunawi, et al. SQCK: A declarative file system checker. In <em>Proc. of OSDI</em>, 2008.</li>
@@ -797,19 +797,19 @@ section .center {
 
       
         
-        <div><h2 id="fsck" class=" text-xl mt-2 pb-2 font-sans">如果 fsck 的时候发生崩溃 😂</h2>
-<p class=" font-serif my-1">fsck 也是程序，fsck 也要访问文件系统</p>
+        <div><h2 id="fsck" class=" text-xl mt-2 pb-2 font-sans">&#22914;&#26524; fsck &#30340;&#26102;&#20505;&#21457;&#29983;&#23849;&#28291; &#128514;</h2>
+<p class=" font-serif my-1">fsck &#20063;&#26159;&#31243;&#24207;&#65292;fsck &#20063;&#35201;&#35775;&#38382;&#25991;&#20214;&#31995;&#32479;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">如果 fsck 时发生崩溃，文件系统可能进入彻底无法恢复的状态！<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22914;&#26524; fsck &#26102;&#21457;&#29983;&#23849;&#28291;&#65292;&#25991;&#20214;&#31995;&#32479;&#21487;&#33021;&#36827;&#20837;&#24443;&#24213;&#26080;&#27861;&#24674;&#22797;&#30340;&#29366;&#24577;&#65281;<ul class=" list-disc font-serif">
 <li class=" ml-8">O. R. Gatla, et al. Towards robust file system checkers. In <em>Proc. of FAST</em>, 2018.</li>
 </ul>
 </li>
-<li class=" ml-8">fsck 更多用于磁盘发生部分损坏时的数据抢救</li>
+<li class=" ml-8">fsck &#26356;&#22810;&#29992;&#20110;&#30913;&#30424;&#21457;&#29983;&#37096;&#20998;&#25439;&#22351;&#26102;&#30340;&#25968;&#25454;&#25250;&#25937;</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">针对 crash，我们需要更可靠的方法我们需要一个更可靠的方法</p>
+<p class=" font-serif my-1">&#38024;&#23545; crash&#65292;&#25105;&#20204;&#38656;&#35201;&#26356;&#21487;&#38752;&#30340;&#26041;&#27861;&#25105;&#20204;&#38656;&#35201;&#19968;&#20010;&#26356;&#21487;&#38752;&#30340;&#26041;&#27861;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">文件系统不一致的根本原因是<red>存储设备无法提供多次写入的原子性</red></li>
+<li class=" ml-8">&#25991;&#20214;&#31995;&#32479;&#19981;&#19968;&#33268;&#30340;&#26681;&#26412;&#21407;&#22240;&#26159;<red>&#23384;&#20648;&#35774;&#22791;&#26080;&#27861;&#25552;&#20379;&#22810;&#27425;&#20889;&#20837;&#30340;&#21407;&#23376;&#24615;</red></li>
 </ul></div>
         
       
@@ -825,7 +825,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="journaling" class=" text-2xl mt-2 font-sans">崩溃恢复: Journaling</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="journaling" class=" text-2xl mt-2 font-sans">&#23849;&#28291;&#24674;&#22797;: Journaling</h1></div></div></div>
         
       
       </section>
@@ -836,22 +836,22 @@ section .center {
 
       
         
-        <div><h2 id="journaling" class=" text-xl mt-2 pb-2 font-sans">日志 (Journaling)</h2>
-<p class=" font-serif my-1">能否在磁盘 API 上实现可靠的 multi-write 原子性？</p>
+        <div><h2 id="journaling" class=" text-xl mt-2 pb-2 font-sans">&#26085;&#24535; (Journaling)</h2>
+<p class=" font-serif my-1">&#33021;&#21542;&#22312;&#30913;&#30424; API &#19978;&#23454;&#29616;&#21487;&#38752;&#30340; multi-write &#21407;&#23376;&#24615;&#65311;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">readb (读一块), writeb (写一块), sync (等待所有过去的写入落盘)</li>
+<li class=" ml-8">readb (&#35835;&#19968;&#22359;), writeb (&#20889;&#19968;&#22359;), sync (&#31561;&#24453;&#25152;&#26377;&#36807;&#21435;&#30340;&#20889;&#20837;&#33853;&#30424;)</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">数据结构有两种实现方法</p>
+<p class=" font-serif my-1">&#25968;&#25454;&#32467;&#26500;&#26377;&#20004;&#31181;&#23454;&#29616;&#26041;&#27861;</p>
 <ol class=" list-decimal font-serif">
-<li class=" ml-8">存储实际<red>数据结构</red><ul class=" list-disc font-serif">
-<li class=" ml-8">文件系统的 “直观” 表示</li>
+<li class=" ml-8">&#23384;&#20648;&#23454;&#38469;<red>&#25968;&#25454;&#32467;&#26500;</red><ul class=" list-disc font-serif">
+<li class=" ml-8">&#25991;&#20214;&#31995;&#32479;&#30340; &#8220;&#30452;&#35266;&#8221; &#34920;&#31034;</li>
 <li class=" ml-8">crash unsafe</li>
 </ul>
 </li>
-<li class=" ml-8">append-only 记录所有<red>历史操作</red><ul class=" list-disc font-serif">
-<li class=" ml-8">“重做” 所有操作得到数据结构的当前状态</li>
-<li class=" ml-8">容易实现崩溃一致性</li>
+<li class=" ml-8">append-only &#35760;&#24405;&#25152;&#26377;<red>&#21382;&#21490;&#25805;&#20316;</red><ul class=" list-disc font-serif">
+<li class=" ml-8">&#8220;&#37325;&#20570;&#8221; &#25152;&#26377;&#25805;&#20316;&#24471;&#21040;&#25968;&#25454;&#32467;&#26500;&#30340;&#24403;&#21069;&#29366;&#24577;</li>
+<li class=" ml-8">&#23481;&#26131;&#23454;&#29616;&#23849;&#28291;&#19968;&#33268;&#24615;</li>
 </ul>
 </li>
 </ol></div>
@@ -865,18 +865,18 @@ section .center {
 
       
         
-        <div><h2 id="atomic-append" class=" text-xl mt-2 pb-2 font-sans">实现 Atomic Append</h2>
+        <div><h2 id="atomic-append" class=" text-xl mt-2 pb-2 font-sans">&#23454;&#29616; Atomic Append</h2>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/fs-journaling.png" width="800px"></p>
 <ol class=" list-decimal font-serif">
-<li class=" ml-8">定位到 journal 的末尾 (使用 readb)</li>
-<li class=" ml-8">在 journal 末尾 append TXBegin，并记录所有操作<ul class=" list-disc font-serif">
-<li class=" ml-8">记录文件系统操作 v.s. 记录磁盘块操作</li>
+<li class=" ml-8">&#23450;&#20301;&#21040; journal &#30340;&#26411;&#23614; (&#20351;&#29992; readb)</li>
+<li class=" ml-8">&#22312; journal &#26411;&#23614; append TXBegin&#65292;&#24182;&#35760;&#24405;&#25152;&#26377;&#25805;&#20316;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#35760;&#24405;&#25991;&#20214;&#31995;&#32479;&#25805;&#20316; v.s. &#35760;&#24405;&#30913;&#30424;&#22359;&#25805;&#20316;</li>
 </ul>
 </li>
-<li class=" ml-8">sync，等待数据落盘</li>
+<li class=" ml-8">sync&#65292;&#31561;&#24453;&#25968;&#25454;&#33853;&#30424;</li>
 <li class=" ml-8">append TXEnd</li>
-<li class=" ml-8">sync，等待 TXEnd 落盘<ul class=" list-disc font-serif">
-<li class=" ml-8">sync 返回后持久化完成 (“committed”)</li>
+<li class=" ml-8">sync&#65292;&#31561;&#24453; TXEnd &#33853;&#30424;<ul class=" list-disc font-serif">
+<li class=" ml-8">sync &#36820;&#22238;&#21518;&#25345;&#20037;&#21270;&#23436;&#25104; (&#8220;committed&#8221;)</li>
 </ul>
 </li>
 </ol></div>
@@ -890,21 +890,21 @@ section .center {
 
       
         
-        <div><h2 id="crash-consistency" class=" text-xl mt-2 pb-2 font-sans">实现 Crash Consistency</h2>
+        <div><h2 id="crash-consistency" class=" text-xl mt-2 pb-2 font-sans">&#23454;&#29616; Crash Consistency</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">小孩子才做选择，我文件系统全都要！</p>
+<p class=" font-serif my-1">&#23567;&#23401;&#23376;&#25165;&#20570;&#36873;&#25321;&#65292;&#25105;&#25991;&#20214;&#31995;&#32479;&#20840;&#37117;&#35201;&#65281;</p>
 </blockquote>
-<p class=" font-serif my-1">主要维护文件系统的结构，但预留一定的 journal 区域</p>
+<p class=" font-serif my-1">&#20027;&#35201;&#32500;&#25252;&#25991;&#20214;&#31995;&#32479;&#30340;&#32467;&#26500;&#65292;&#20294;&#39044;&#30041;&#19968;&#23450;&#30340; journal &#21306;&#22495;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">journal commit 后，可以将 journal 中的操作直接应用到文件系统上 (checkpoint)<ul class=" list-disc font-serif">
-<li class=" ml-8">redo logging (write-ahead logging): journal 记录 “做什么”<ul class=" list-disc font-serif">
-<li class=" ml-8">先写 journal，再写文件系统</li>
-<li class=" ml-8">崩溃恢复时，重做 journal 中的操作</li>
+<li class=" ml-8">journal commit &#21518;&#65292;&#21487;&#20197;&#23558; journal &#20013;&#30340;&#25805;&#20316;&#30452;&#25509;&#24212;&#29992;&#21040;&#25991;&#20214;&#31995;&#32479;&#19978; (checkpoint)<ul class=" list-disc font-serif">
+<li class=" ml-8">redo logging (write-ahead logging): journal &#35760;&#24405; &#8220;&#20570;&#20160;&#20040;&#8221;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20808;&#20889; journal&#65292;&#20877;&#20889;&#25991;&#20214;&#31995;&#32479;</li>
+<li class=" ml-8">&#23849;&#28291;&#24674;&#22797;&#26102;&#65292;&#37325;&#20570; journal &#20013;&#30340;&#25805;&#20316;</li>
 </ul>
 </li>
-<li class=" ml-8">undo logging: 记录如何 “撤销” 操作 (即块中的数值)<ul class=" list-disc font-serif">
-<li class=" ml-8">先写文件系统，再写 journal</li>
-<li class=" ml-8">崩溃恢复时，撤销文件系统中的</li>
+<li class=" ml-8">undo logging: &#35760;&#24405;&#22914;&#20309; &#8220;&#25764;&#38144;&#8221; &#25805;&#20316; (&#21363;&#22359;&#20013;&#30340;&#25968;&#20540;)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20808;&#20889;&#25991;&#20214;&#31995;&#32479;&#65292;&#20877;&#20889; journal</li>
+<li class=" ml-8">&#23849;&#28291;&#24674;&#22797;&#26102;&#65292;&#25764;&#38144;&#25991;&#20214;&#31995;&#32479;&#20013;&#30340;</li>
 </ul>
 </li>
 </ul>
@@ -920,25 +920,25 @@ section .center {
 
       
         
-        <div><h2 id="journaling" class=" text-xl mt-2 pb-2 font-sans">Journaling: 优化</h2>
-<p class=" font-serif my-1">现在磁盘需要写入双份的数据</p>
+        <div><h2 id="journaling" class=" text-xl mt-2 pb-2 font-sans">Journaling: &#20248;&#21270;</h2>
+<p class=" font-serif my-1">&#29616;&#22312;&#30913;&#30424;&#38656;&#35201;&#20889;&#20837;&#21452;&#20221;&#30340;&#25968;&#25454;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">批处理 (xv6; jbd)<ul class=" list-disc font-serif">
-<li class=" ml-8">多次系统调用的 Tx 合并成一个，减少 log 的大小</li>
-<li class=" ml-8">jbd: 定期 write back</li>
+<li class=" ml-8">&#25209;&#22788;&#29702; (xv6; jbd)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22810;&#27425;&#31995;&#32479;&#35843;&#29992;&#30340; Tx &#21512;&#24182;&#25104;&#19968;&#20010;&#65292;&#20943;&#23569; log &#30340;&#22823;&#23567;</li>
+<li class=" ml-8">jbd: &#23450;&#26399; write back</li>
 </ul>
 </li>
 <li class=" ml-8">Checksum (ext4)<ul class=" list-disc font-serif">
-<li class=" ml-8">不再标记 TxBegin/TxEnd</li>
-<li class=" ml-8">直接标记 Tx 的长度和 checksum</li>
+<li class=" ml-8">&#19981;&#20877;&#26631;&#35760; TxBegin/TxEnd</li>
+<li class=" ml-8">&#30452;&#25509;&#26631;&#35760; Tx &#30340;&#38271;&#24230;&#21644; checksum</li>
 </ul>
 </li>
 <li class=" ml-8">Metadata journaling (ext4 default)<ul class=" list-disc font-serif">
-<li class=" ml-8">数据占磁盘写入的绝大部分<ul class=" list-disc font-serif">
-<li class=" ml-8">只对 inode 和 bitmap 做 journaling 可以提高性能</li>
+<li class=" ml-8">&#25968;&#25454;&#21344;&#30913;&#30424;&#20889;&#20837;&#30340;&#32477;&#22823;&#37096;&#20998;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21482;&#23545; inode &#21644; bitmap &#20570; journaling &#21487;&#20197;&#25552;&#39640;&#24615;&#33021;</li>
 </ul>
 </li>
-<li class=" ml-8">保证文件系统的目录结构是一致的；但数据可能丢失</li>
+<li class=" ml-8">&#20445;&#35777;&#25991;&#20214;&#31995;&#32479;&#30340;&#30446;&#24405;&#32467;&#26500;&#26159;&#19968;&#33268;&#30340;&#65307;&#20294;&#25968;&#25454;&#21487;&#33021;&#20002;&#22833;</li>
 </ul>
 </li>
 </ul></div>
@@ -953,18 +953,18 @@ section .center {
       
         
         <div><h2 id="metadata-journaling" class=" text-xl mt-2 pb-2 font-sans">Metadata Journaling</h2>
-<p class=" font-serif my-1">从应用视角来看，文件系统的行为可能很怪异</p>
+<p class=" font-serif my-1">&#20174;&#24212;&#29992;&#35270;&#35282;&#26469;&#30475;&#65292;&#25991;&#20214;&#31995;&#32479;&#30340;&#34892;&#20026;&#21487;&#33021;&#24456;&#24618;&#24322;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">各类系统软件 (git, sqlite, gdbm, ...) 不幸中招<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21508;&#31867;&#31995;&#32479;&#36719;&#20214; (git, sqlite, gdbm, ...) &#19981;&#24184;&#20013;&#25307;<ul class=" list-disc font-serif">
 <li class=" ml-8">T. S. Pillai. All file systems are not created equal: On the complexity of crafting crash-consistent applications. In <em>Proc. of OSDI</em>, 2014.</li>
-<li class=" ml-8">(os-workbench 里的小秘密)</li>
+<li class=" ml-8">(os-workbench &#37324;&#30340;&#23567;&#31192;&#23494;)</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1"><a href="https://zhuanlan.zhihu.com/p/25188921" class=" text-amber-900">更多的应用程序可能发生 data loss</a></p>
+<p class=" font-serif my-1"><a href="https://zhuanlan.zhihu.com/p/25188921" class=" text-amber-900">&#26356;&#22810;&#30340;&#24212;&#29992;&#31243;&#24207;&#21487;&#33021;&#21457;&#29983; data loss</a></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">我们的工作: GNU coreutils, gmake, gzip, ... 也有问题<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25105;&#20204;&#30340;&#24037;&#20316;: GNU coreutils, gmake, gzip, ... &#20063;&#26377;&#38382;&#39064;<ul class=" list-disc font-serif">
 <li class=" ml-8">Y. Jiang, et al. Crash consistency validation made easy. In <em>Proc. of FSE</em>, 2016.</li>
 </ul>
 </li>
@@ -979,12 +979,12 @@ section .center {
 
       
         
-        <div><h2 id="multi-write" class=" text-xl mt-2 pb-2 font-sans">为应用程序提供 Multi-Write 的一致性？</h2>
-<p class=" font-serif my-1">TxOS: 提供三个新的系统调用</p>
+        <div><h2 id="multi-write" class=" text-xl mt-2 pb-2 font-sans">&#20026;&#24212;&#29992;&#31243;&#24207;&#25552;&#20379; Multi-Write &#30340;&#19968;&#33268;&#24615;&#65311;</h2>
+<p class=" font-serif my-1">TxOS: &#25552;&#20379;&#19977;&#20010;&#26032;&#30340;&#31995;&#32479;&#35843;&#29992;</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">xbegin, xend, xabort</li>
-<li class=" ml-8">实现多个系统调用的原子性<ul class=" list-disc font-serif">
-<li class=" ml-8">应用场景：数据更新、软件更新、check-use……</li>
+<li class=" ml-8">&#23454;&#29616;&#22810;&#20010;&#31995;&#32479;&#35843;&#29992;&#30340;&#21407;&#23376;&#24615;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#24212;&#29992;&#22330;&#26223;&#65306;&#25968;&#25454;&#26356;&#26032;&#12289;&#36719;&#20214;&#26356;&#26032;&#12289;check-use&#8230;&#8230;</li>
 </ul>
 </li>
 <li class=" ml-8">D. E. Porter, et al. Operating systems transactions. In <em>Proc. of SOSP</em>, 2009.</li>
@@ -1003,7 +1003,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">总结</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#24635;&#32467;</h1></div></div></div>
         
       
       </section>
@@ -1014,20 +1014,20 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">总结</h2>
-<p class=" font-serif my-1">本次课内容与目标</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#24635;&#32467;</h2>
+<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#20869;&#23481;&#19982;&#30446;&#26631;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">持久数据的可靠性<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25345;&#20037;&#25968;&#25454;&#30340;&#21487;&#38752;&#24615;<ul class=" list-disc font-serif">
 <li class=" ml-8">fail-stop: RAID</li>
-<li class=" ml-8">随机损坏：fsck</li>
-<li class=" ml-8">崩溃：journaling</li>
+<li class=" ml-8">&#38543;&#26426;&#25439;&#22351;&#65306;fsck</li>
+<li class=" ml-8">&#23849;&#28291;&#65306;journaling</li>
 </ul>
 </li>
 </ul>
 <hr>
 <p class=" font-serif my-1">Takeaway messages</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">把磁盘理解成 “数据结构”</li>
+<li class=" ml-8">&#25226;&#30913;&#30424;&#29702;&#35299;&#25104; &#8220;&#25968;&#25454;&#32467;&#26500;&#8221;</li>
 </ul></div>
         
       

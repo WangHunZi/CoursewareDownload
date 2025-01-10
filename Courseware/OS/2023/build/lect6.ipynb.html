@@ -2,7 +2,7 @@
 <head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>6. 并发控制基础</title>
+<title>6. &#24182;&#21457;&#25511;&#21046;&#22522;&#30784;</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script><script>
 (function() {
   function addWidgetsRenderer() {
@@ -6481,7 +6481,7 @@ cell outputs.
 
 .jp-Notebook .jp-Cell.jp-mod-dirty .jp-InputPrompt::before {
   color: var(--jp-warn-color1);
-  content: '•';
+  content: '&#8226;';
 }
 
 .jp-Notebook .jp-Cell.jp-mod-active.jp-mod-dirty .jp-Collapser {
@@ -7518,7 +7518,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">mosaic</span> <span class="kn">import</span> <span class="o">*</span>
@@ -7679,26 +7679,26 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-InputPrompt jp-InputArea-prompt">
 </div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="6.-%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6%E5%9F%BA%E7%A1%80">6. 并发控制基础<a class="anchor-link" href="#6.-%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6%E5%9F%BA%E7%A1%80">¶</a>
+<h1 id="6.-%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6%E5%9F%BA%E7%A1%80">6. &#24182;&#21457;&#25511;&#21046;&#22522;&#30784;<a class="anchor-link" href="lect6.ipynb.html#6.-%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6%E5%9F%BA%E7%A1%80">&#182;</a>
 </h1>
-<p><strong>Changelog & 反馈</strong></p>
+<p><strong>Changelog &amp; &#21453;&#39304;</strong></p>
 <ul>
-<li>L0 & M1 都已经发布<ul>
-<li>框架代码存在缺陷，请 3.7 18:00 前下载框架代码的同学重新下载</li>
-<li>校外无法访问 git.nju.edu.cn 是暂时的 (优先保证上课同学的体验)</li>
+<li>L0 &amp; M1 &#37117;&#24050;&#32463;&#21457;&#24067;<ul>
+<li>&#26694;&#26550;&#20195;&#30721;&#23384;&#22312;&#32570;&#38519;&#65292;&#35831; 3.7 18:00 &#21069;&#19979;&#36733;&#26694;&#26550;&#20195;&#30721;&#30340;&#21516;&#23398;&#37325;&#26032;&#19979;&#36733;</li>
+<li>&#26657;&#22806;&#26080;&#27861;&#35775;&#38382; git.nju.edu.cn &#26159;&#26242;&#26102;&#30340; (&#20248;&#20808;&#20445;&#35777;&#19978;&#35838;&#21516;&#23398;&#30340;&#20307;&#39564;)</li>
 </ul>
 </li>
-<li>增加了 🌶️ 的标记 (扩展内容)</li>
-<li>修复了 lecture notes 的 bugs</li>
-<li>其他内容会慢慢实现/修复 😂</li>
+<li>&#22686;&#21152;&#20102; &#127798;&#65039; &#30340;&#26631;&#35760; (&#25193;&#23637;&#20869;&#23481;)</li>
+<li>&#20462;&#22797;&#20102; lecture notes &#30340; bugs</li>
+<li>&#20854;&#20182;&#20869;&#23481;&#20250;&#24930;&#24930;&#23454;&#29616;/&#20462;&#22797; &#128514;</li>
 </ul>
-<p><strong>背景回顾</strong>：虽然 “线程库” 入门简单，但多处理器编程 + 编译优化会给我们带来很多意想不到的惊喜。在编写多线程程序时，们必须放弃许多对顺序程序编程时的基本假设，这也是并发编程困难的原因。</p>
-<p><strong>本讲内容</strong>：并发编程困难不代表我们只能摆烂——我们还可以创造出新的手段，帮助我们编写正确的并发程序：</p>
+<p><strong>&#32972;&#26223;&#22238;&#39038;</strong>&#65306;&#34429;&#28982; &#8220;&#32447;&#31243;&#24211;&#8221; &#20837;&#38376;&#31616;&#21333;&#65292;&#20294;&#22810;&#22788;&#29702;&#22120;&#32534;&#31243; + &#32534;&#35793;&#20248;&#21270;&#20250;&#32473;&#25105;&#20204;&#24102;&#26469;&#24456;&#22810;&#24847;&#24819;&#19981;&#21040;&#30340;&#24778;&#21916;&#12290;&#22312;&#32534;&#20889;&#22810;&#32447;&#31243;&#31243;&#24207;&#26102;&#65292;&#20204;&#24517;&#39035;&#25918;&#24323;&#35768;&#22810;&#23545;&#39034;&#24207;&#31243;&#24207;&#32534;&#31243;&#26102;&#30340;&#22522;&#26412;&#20551;&#35774;&#65292;&#36825;&#20063;&#26159;&#24182;&#21457;&#32534;&#31243;&#22256;&#38590;&#30340;&#21407;&#22240;&#12290;</p>
+<p><strong>&#26412;&#35762;&#20869;&#23481;</strong>&#65306;&#24182;&#21457;&#32534;&#31243;&#22256;&#38590;&#19981;&#20195;&#34920;&#25105;&#20204;&#21482;&#33021;&#25670;&#28866;&#8212;&#8212;&#25105;&#20204;&#36824;&#21487;&#20197;&#21019;&#36896;&#20986;&#26032;&#30340;&#25163;&#27573;&#65292;&#24110;&#21161;&#25105;&#20204;&#32534;&#20889;&#27491;&#30830;&#30340;&#24182;&#21457;&#31243;&#24207;&#65306;</p>
 <ul>
-<li>互斥问题和 Peterson 算法</li>
-<li>Peterson 算法的正确性和模型检验</li>
-<li>Peterson 算法在现代多处理器系统上的实现</li>
-<li>实现并发控制的硬件和编译器机制</li>
+<li>&#20114;&#26021;&#38382;&#39064;&#21644; Peterson &#31639;&#27861;</li>
+<li>Peterson &#31639;&#27861;&#30340;&#27491;&#30830;&#24615;&#21644;&#27169;&#22411;&#26816;&#39564;</li>
+<li>Peterson &#31639;&#27861;&#22312;&#29616;&#20195;&#22810;&#22788;&#29702;&#22120;&#31995;&#32479;&#19978;&#30340;&#23454;&#29616;</li>
+<li>&#23454;&#29616;&#24182;&#21457;&#25511;&#21046;&#30340;&#30828;&#20214;&#21644;&#32534;&#35793;&#22120;&#26426;&#21046;</li>
 </ul>
 </div>
 </div>
@@ -7709,7 +7709,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'6.1'</span><span class="p">)</span>
@@ -7738,7 +7738,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="p">(</span><span class="s1">'m/spin.py'</span><span class="p">,</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -10685,27 +10685,27 @@ function visualize(divname, MODEL) {
 <div id="container1" style="width:70%; height:400px; float:left; background-color: #eee"></div>
 <div id="code" style="width:30%; height:400px; overflow: scroll; float:left">
 <div class="highlight"><pre><span></span><span id="True-1"><span class="linenos"> 1</span><span class="k">def</span> <span class="nf">T1</span><span class="p">():</span>
-</span><span id="True-2"><span class="linenos"> 2</span>  <span class="k">while</span> <span class="n">heap</span><span class="o">.</span><span class="n">lock</span> <span class="o">!=</span> <span class="s1">'✅'</span><span class="p">:</span>
+</span><span id="True-2"><span class="linenos"> 2</span>  <span class="k">while</span> <span class="n">heap</span><span class="o">.</span><span class="n">lock</span> <span class="o">!=</span> <span class="s1">'&#9989;'</span><span class="p">:</span>
 </span><span id="True-3"><span class="linenos"> 3</span>    <span class="n">sys_sched</span><span class="p">()</span>
 </span><span id="True-4"><span class="linenos"> 4</span>  <span class="n">sys_sched</span><span class="p">()</span>
-</span><span id="True-5"><span class="linenos"> 5</span>  <span class="n">heap</span><span class="o">.</span><span class="n">lock</span> <span class="o">=</span> <span class="s1">'❌'</span>
-</span><span id="True-6"><span class="linenos"> 6</span>  <span class="n">sys_write</span><span class="p">(</span><span class="s1">'❶'</span><span class="p">)</span>
+</span><span id="True-5"><span class="linenos"> 5</span>  <span class="n">heap</span><span class="o">.</span><span class="n">lock</span> <span class="o">=</span> <span class="s1">'&#10060;'</span>
+</span><span id="True-6"><span class="linenos"> 6</span>  <span class="n">sys_write</span><span class="p">(</span><span class="s1">'&#10102;'</span><span class="p">)</span>
 </span><span id="True-7"><span class="linenos"> 7</span>
 </span><span id="True-8"><span class="linenos"> 8</span><span class="k">def</span> <span class="nf">T2</span><span class="p">():</span>
-</span><span id="True-9"><span class="linenos"> 9</span>  <span class="k">while</span> <span class="n">heap</span><span class="o">.</span><span class="n">lock</span> <span class="o">!=</span> <span class="s1">'✅'</span><span class="p">:</span>
+</span><span id="True-9"><span class="linenos"> 9</span>  <span class="k">while</span> <span class="n">heap</span><span class="o">.</span><span class="n">lock</span> <span class="o">!=</span> <span class="s1">'&#9989;'</span><span class="p">:</span>
 </span><span id="True-10"><span class="linenos">10</span>    <span class="n">sys_sched</span><span class="p">()</span>
 </span><span id="True-11"><span class="linenos">11</span>  <span class="n">sys_sched</span><span class="p">()</span>
-</span><span id="True-12"><span class="linenos">12</span>  <span class="n">heap</span><span class="o">.</span><span class="n">lock</span> <span class="o">=</span> <span class="s1">'❌'</span>
-</span><span id="True-13"><span class="linenos">13</span>  <span class="n">sys_write</span><span class="p">(</span><span class="s1">'❷'</span><span class="p">)</span>
+</span><span id="True-12"><span class="linenos">12</span>  <span class="n">heap</span><span class="o">.</span><span class="n">lock</span> <span class="o">=</span> <span class="s1">'&#10060;'</span>
+</span><span id="True-13"><span class="linenos">13</span>  <span class="n">sys_write</span><span class="p">(</span><span class="s1">'&#10103;'</span><span class="p">)</span>
 </span><span id="True-14"><span class="linenos">14</span>
 </span><span id="True-15"><span class="linenos">15</span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-</span><span id="True-16"><span class="linenos">16</span>  <span class="n">heap</span><span class="o">.</span><span class="n">lock</span> <span class="o">=</span> <span class="s1">'✅'</span>
+</span><span id="True-16"><span class="linenos">16</span>  <span class="n">heap</span><span class="o">.</span><span class="n">lock</span> <span class="o">=</span> <span class="s1">'&#9989;'</span>
 </span><span id="True-17"><span class="linenos">17</span>  <span class="n">sys_spawn</span><span class="p">(</span><span class="n">T1</span><span class="p">)</span>
 </span><span id="True-18"><span class="linenos">18</span>  <span class="n">sys_spawn</span><span class="p">(</span><span class="n">T2</span><span class="p">)</span>
 </span><span id="True-19"><span class="linenos">19</span>
 </span><span id="True-20"><span class="linenos">20</span><span class="c1"># Outputs:</span>
-</span><span id="True-21"><span class="linenos">21</span><span class="c1"># ❶❷</span>
-</span><span id="True-22"><span class="linenos">22</span><span class="c1"># ❷❶</span>
+</span><span id="True-21"><span class="linenos">21</span><span class="c1"># &#10102;&#10103;</span>
+</span><span id="True-22"><span class="linenos">22</span><span class="c1"># &#10103;&#10102;</span>
 </span></pre></div>
 </div>
 </div>
@@ -10725,7 +10725,7 @@ function visualize(divname, MODEL) {
 <div class="jp-InputPrompt jp-InputArea-prompt">
 </div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>上面的代码展示了两个线程同时试图获得锁时同时进入临界区的行为。注意 $T_1$ 和 $T_2$ 都没有释放锁，因此如果互斥实现正确，我们应该只能看到 ❶ 或 ❷。如果我们修改代码，会发现第 4 行和 第 11 行的 <code>sys_sched()</code> 对于触发同时进入临界区是必不可少的：如果没有这个 <code>sys_sched</code>，检查 heap.lock 是否锁定和设置锁定状态就在模型中成为了不可打断的原子操作。</p>
+<p>&#19978;&#38754;&#30340;&#20195;&#30721;&#23637;&#31034;&#20102;&#20004;&#20010;&#32447;&#31243;&#21516;&#26102;&#35797;&#22270;&#33719;&#24471;&#38145;&#26102;&#21516;&#26102;&#36827;&#20837;&#20020;&#30028;&#21306;&#30340;&#34892;&#20026;&#12290;&#27880;&#24847; $T_1$ &#21644; $T_2$ &#37117;&#27809;&#26377;&#37322;&#25918;&#38145;&#65292;&#22240;&#27492;&#22914;&#26524;&#20114;&#26021;&#23454;&#29616;&#27491;&#30830;&#65292;&#25105;&#20204;&#24212;&#35813;&#21482;&#33021;&#30475;&#21040; &#10102; &#25110; &#10103;&#12290;&#22914;&#26524;&#25105;&#20204;&#20462;&#25913;&#20195;&#30721;&#65292;&#20250;&#21457;&#29616;&#31532; 4 &#34892;&#21644; &#31532; 11 &#34892;&#30340; <code>sys_sched()</code> &#23545;&#20110;&#35302;&#21457;&#21516;&#26102;&#36827;&#20837;&#20020;&#30028;&#21306;&#26159;&#24517;&#19981;&#21487;&#23569;&#30340;&#65306;&#22914;&#26524;&#27809;&#26377;&#36825;&#20010; <code>sys_sched</code>&#65292;&#26816;&#26597; heap.lock &#26159;&#21542;&#38145;&#23450;&#21644;&#35774;&#32622;&#38145;&#23450;&#29366;&#24577;&#23601;&#22312;&#27169;&#22411;&#20013;&#25104;&#20026;&#20102;&#19981;&#21487;&#25171;&#26029;&#30340;&#21407;&#23376;&#25805;&#20316;&#12290;</p>
 </div>
 </div>
 </div>
@@ -10735,7 +10735,7 @@ function visualize(divname, MODEL) {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'6.2'</span><span class="p">)</span>
@@ -10764,7 +10764,7 @@ function visualize(divname, MODEL) {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="p">(</span><span class="s1">'m/peterson.py'</span><span class="p">,</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -10785,43 +10785,43 @@ function visualize(divname, MODEL) {
 <div id="code" style="width:30%; height:400px; overflow: scroll; float:left">
 <div class="highlight"><pre><span></span><span id="True-1"><span class="linenos"> 1</span><span class="k">def</span> <span class="nf">T1</span><span class="p">():</span>
 </span><span id="True-2"><span class="linenos"> 2</span>  <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-</span><span id="True-3"><span class="linenos"> 3</span>    <span class="n">heap</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="s1">'🏴'</span>
+</span><span id="True-3"><span class="linenos"> 3</span>    <span class="n">heap</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="s1">'&#127988;'</span>
 </span><span id="True-4"><span class="linenos"> 4</span>    <span class="n">sys_sched</span><span class="p">()</span>
-</span><span id="True-5"><span class="linenos"> 5</span>    <span class="n">heap</span><span class="o">.</span><span class="n">turn</span> <span class="o">=</span> <span class="s1">'❷'</span>
+</span><span id="True-5"><span class="linenos"> 5</span>    <span class="n">heap</span><span class="o">.</span><span class="n">turn</span> <span class="o">=</span> <span class="s1">'&#10103;'</span>
 </span><span id="True-6"><span class="linenos"> 6</span>    <span class="n">sys_sched</span><span class="p">()</span>
 </span><span id="True-7"><span class="linenos"> 7</span>    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
 </span><span id="True-8"><span class="linenos"> 8</span>      <span class="n">t</span> <span class="o">=</span> <span class="n">heap</span><span class="o">.</span><span class="n">turn</span>
 </span><span id="True-9"><span class="linenos"> 9</span>      <span class="n">sys_sched</span><span class="p">()</span>
 </span><span id="True-10"><span class="linenos">10</span>      <span class="n">y</span> <span class="o">=</span> <span class="n">heap</span><span class="o">.</span><span class="n">y</span> <span class="o">!=</span> <span class="s1">''</span>
 </span><span id="True-11"><span class="linenos">11</span>      <span class="n">sys_sched</span><span class="p">()</span>
-</span><span id="True-12"><span class="linenos">12</span>      <span class="k">if</span> <span class="ow">not</span> <span class="n">y</span> <span class="ow">or</span> <span class="n">t</span> <span class="o">==</span> <span class="s1">'❶'</span><span class="p">:</span>
+</span><span id="True-12"><span class="linenos">12</span>      <span class="k">if</span> <span class="ow">not</span> <span class="n">y</span> <span class="ow">or</span> <span class="n">t</span> <span class="o">==</span> <span class="s1">'&#10102;'</span><span class="p">:</span>
 </span><span id="True-13"><span class="linenos">13</span>        <span class="k">break</span>
 </span><span id="True-14"><span class="linenos">14</span>    <span class="n">sys_sched</span><span class="p">()</span>
-</span><span id="True-15"><span class="linenos">15</span>    <span class="n">heap</span><span class="o">.</span><span class="n">cs</span> <span class="o">+=</span> <span class="s1">'❶'</span>
+</span><span id="True-15"><span class="linenos">15</span>    <span class="n">heap</span><span class="o">.</span><span class="n">cs</span> <span class="o">+=</span> <span class="s1">'&#10102;'</span>
 </span><span id="True-16"><span class="linenos">16</span>    <span class="n">sys_sched</span><span class="p">()</span>
-</span><span id="True-17"><span class="linenos">17</span>    <span class="n">heap</span><span class="o">.</span><span class="n">cs</span> <span class="o">=</span> <span class="n">heap</span><span class="o">.</span><span class="n">cs</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'❶'</span><span class="p">,</span> <span class="s1">''</span><span class="p">)</span>
+</span><span id="True-17"><span class="linenos">17</span>    <span class="n">heap</span><span class="o">.</span><span class="n">cs</span> <span class="o">=</span> <span class="n">heap</span><span class="o">.</span><span class="n">cs</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'&#10102;'</span><span class="p">,</span> <span class="s1">''</span><span class="p">)</span>
 </span><span id="True-18"><span class="linenos">18</span>    <span class="n">sys_sched</span><span class="p">()</span>
 </span><span id="True-19"><span class="linenos">19</span>    <span class="n">heap</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="s1">''</span>
 </span><span id="True-20"><span class="linenos">20</span>    <span class="n">sys_sched</span><span class="p">()</span>
 </span><span id="True-21"><span class="linenos">21</span> 
 </span><span id="True-22"><span class="linenos">22</span><span class="k">def</span> <span class="nf">T2</span><span class="p">():</span>
 </span><span id="True-23"><span class="linenos">23</span>  <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-</span><span id="True-24"><span class="linenos">24</span>    <span class="n">heap</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="s1">'🏁'</span>
+</span><span id="True-24"><span class="linenos">24</span>    <span class="n">heap</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="s1">'&#127937;'</span>
 </span><span id="True-25"><span class="linenos">25</span>    <span class="n">sys_sched</span><span class="p">()</span>
-</span><span id="True-26"><span class="linenos">26</span>    <span class="n">heap</span><span class="o">.</span><span class="n">turn</span> <span class="o">=</span> <span class="s1">'❶'</span>
+</span><span id="True-26"><span class="linenos">26</span>    <span class="n">heap</span><span class="o">.</span><span class="n">turn</span> <span class="o">=</span> <span class="s1">'&#10102;'</span>
 </span><span id="True-27"><span class="linenos">27</span>    <span class="n">sys_sched</span><span class="p">()</span>
 </span><span id="True-28"><span class="linenos">28</span>    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
 </span><span id="True-29"><span class="linenos">29</span>      <span class="n">t</span> <span class="o">=</span> <span class="n">heap</span><span class="o">.</span><span class="n">turn</span>
 </span><span id="True-30"><span class="linenos">30</span>      <span class="n">sys_sched</span><span class="p">()</span>
 </span><span id="True-31"><span class="linenos">31</span>      <span class="n">x</span> <span class="o">=</span> <span class="n">heap</span><span class="o">.</span><span class="n">x</span>
 </span><span id="True-32"><span class="linenos">32</span>      <span class="n">sys_sched</span><span class="p">()</span>
-</span><span id="True-33"><span class="linenos">33</span>      <span class="k">if</span> <span class="ow">not</span> <span class="n">x</span> <span class="ow">or</span> <span class="n">t</span> <span class="o">==</span> <span class="s1">'❷'</span><span class="p">:</span>
+</span><span id="True-33"><span class="linenos">33</span>      <span class="k">if</span> <span class="ow">not</span> <span class="n">x</span> <span class="ow">or</span> <span class="n">t</span> <span class="o">==</span> <span class="s1">'&#10103;'</span><span class="p">:</span>
 </span><span id="True-34"><span class="linenos">34</span>        <span class="k">break</span>
 </span><span id="True-35"><span class="linenos">35</span>      <span class="n">sys_sched</span><span class="p">()</span>
 </span><span id="True-36"><span class="linenos">36</span>    <span class="n">sys_sched</span><span class="p">()</span>
-</span><span id="True-37"><span class="linenos">37</span>    <span class="n">heap</span><span class="o">.</span><span class="n">cs</span> <span class="o">+=</span> <span class="s1">'❷'</span>
+</span><span id="True-37"><span class="linenos">37</span>    <span class="n">heap</span><span class="o">.</span><span class="n">cs</span> <span class="o">+=</span> <span class="s1">'&#10103;'</span>
 </span><span id="True-38"><span class="linenos">38</span>    <span class="n">sys_sched</span><span class="p">()</span>
-</span><span id="True-39"><span class="linenos">39</span>    <span class="n">heap</span><span class="o">.</span><span class="n">cs</span> <span class="o">=</span> <span class="n">heap</span><span class="o">.</span><span class="n">cs</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'❷'</span><span class="p">,</span> <span class="s1">''</span><span class="p">)</span>
+</span><span id="True-39"><span class="linenos">39</span>    <span class="n">heap</span><span class="o">.</span><span class="n">cs</span> <span class="o">=</span> <span class="n">heap</span><span class="o">.</span><span class="n">cs</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'&#10103;'</span><span class="p">,</span> <span class="s1">''</span><span class="p">)</span>
 </span><span id="True-40"><span class="linenos">40</span>    <span class="n">sys_sched</span><span class="p">()</span>
 </span><span id="True-41"><span class="linenos">41</span>    <span class="n">heap</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="s1">''</span>
 </span><span id="True-42"><span class="linenos">42</span>    <span class="n">sys_sched</span><span class="p">()</span>
@@ -10852,8 +10852,8 @@ function visualize(divname, MODEL) {
 <div class="jp-InputPrompt jp-InputArea-prompt">
 </div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Peterson 算法比那些 “玩具” 的例子复杂得多，“随时随地” 都有发生线程切换的可能性。这些可能性对于手工枚举来说，已经有些太过琐碎了——这也是在很长一段时间里，大家给出错误互斥算法的原因。而诸如 “x, y, turn”、“0、1” 这些抽象的数值，进一步增加了人脑在思考这些问题时的负担。我们使用 Emoji 来缓解这一点——例如用 🏴 表示第一个线程举起旗子希望进入临界区。这比 <code>x = 1</code> 要更直观。</p>
-<p>即便如此，你在阅读模型检查器的输出时依然感到很琐碎。状态图的可视化还有很大改进的空间。</p>
+<p>Peterson &#31639;&#27861;&#27604;&#37027;&#20123; &#8220;&#29609;&#20855;&#8221; &#30340;&#20363;&#23376;&#22797;&#26434;&#24471;&#22810;&#65292;&#8220;&#38543;&#26102;&#38543;&#22320;&#8221; &#37117;&#26377;&#21457;&#29983;&#32447;&#31243;&#20999;&#25442;&#30340;&#21487;&#33021;&#24615;&#12290;&#36825;&#20123;&#21487;&#33021;&#24615;&#23545;&#20110;&#25163;&#24037;&#26522;&#20030;&#26469;&#35828;&#65292;&#24050;&#32463;&#26377;&#20123;&#22826;&#36807;&#29712;&#30862;&#20102;&#8212;&#8212;&#36825;&#20063;&#26159;&#22312;&#24456;&#38271;&#19968;&#27573;&#26102;&#38388;&#37324;&#65292;&#22823;&#23478;&#32473;&#20986;&#38169;&#35823;&#20114;&#26021;&#31639;&#27861;&#30340;&#21407;&#22240;&#12290;&#32780;&#35832;&#22914; &#8220;x, y, turn&#8221;&#12289;&#8220;0&#12289;1&#8221; &#36825;&#20123;&#25277;&#35937;&#30340;&#25968;&#20540;&#65292;&#36827;&#19968;&#27493;&#22686;&#21152;&#20102;&#20154;&#33041;&#22312;&#24605;&#32771;&#36825;&#20123;&#38382;&#39064;&#26102;&#30340;&#36127;&#25285;&#12290;&#25105;&#20204;&#20351;&#29992; Emoji &#26469;&#32531;&#35299;&#36825;&#19968;&#28857;&#8212;&#8212;&#20363;&#22914;&#29992; &#127988; &#34920;&#31034;&#31532;&#19968;&#20010;&#32447;&#31243;&#20030;&#36215;&#26071;&#23376;&#24076;&#26395;&#36827;&#20837;&#20020;&#30028;&#21306;&#12290;&#36825;&#27604; <code>x = 1</code> &#35201;&#26356;&#30452;&#35266;&#12290;</p>
+<p>&#21363;&#20415;&#22914;&#27492;&#65292;&#20320;&#22312;&#38405;&#35835;&#27169;&#22411;&#26816;&#26597;&#22120;&#30340;&#36755;&#20986;&#26102;&#20381;&#28982;&#24863;&#21040;&#24456;&#29712;&#30862;&#12290;&#29366;&#24577;&#22270;&#30340;&#21487;&#35270;&#21270;&#36824;&#26377;&#24456;&#22823;&#25913;&#36827;&#30340;&#31354;&#38388;&#12290;</p>
 </div>
 </div>
 </div>
@@ -10863,7 +10863,7 @@ function visualize(divname, MODEL) {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">demo</span><span class="p">(</span><span class="s1">'peterson'</span><span class="p">,</span> <span class="s1">'c/peterson.c'</span><span class="p">,</span> <span class="n">libs</span><span class="o">=</span><span class="p">[</span><span class="s1">'thread.h'</span><span class="p">])</span>
@@ -10898,7 +10898,7 @@ var element = document.getElementById('f9491816-31c1-4aed-9ab9-b7408e16db30');
 <div class="jp-InputPrompt jp-InputArea-prompt">
 </div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>对于 “到底哪一个 barrier 是不可缺少” 这个问题已经超出了本门课程的讨论范围。我们试图用这个例子向大家传递一个思想：除非你对多处理器并发有足够的理解，请不要自作主张写聪明的并发程序。在 99.9% 的情况下，你都可以在不触及此类底层行为的前提下优化你的代码。</p>
+<p>&#23545;&#20110; &#8220;&#21040;&#24213;&#21738;&#19968;&#20010; barrier &#26159;&#19981;&#21487;&#32570;&#23569;&#8221; &#36825;&#20010;&#38382;&#39064;&#24050;&#32463;&#36229;&#20986;&#20102;&#26412;&#38376;&#35838;&#31243;&#30340;&#35752;&#35770;&#33539;&#22260;&#12290;&#25105;&#20204;&#35797;&#22270;&#29992;&#36825;&#20010;&#20363;&#23376;&#21521;&#22823;&#23478;&#20256;&#36882;&#19968;&#20010;&#24605;&#24819;&#65306;&#38500;&#38750;&#20320;&#23545;&#22810;&#22788;&#29702;&#22120;&#24182;&#21457;&#26377;&#36275;&#22815;&#30340;&#29702;&#35299;&#65292;&#35831;&#19981;&#35201;&#33258;&#20316;&#20027;&#24352;&#20889;&#32874;&#26126;&#30340;&#24182;&#21457;&#31243;&#24207;&#12290;&#22312; 99.9% &#30340;&#24773;&#20917;&#19979;&#65292;&#20320;&#37117;&#21487;&#20197;&#22312;&#19981;&#35302;&#21450;&#27492;&#31867;&#24213;&#23618;&#34892;&#20026;&#30340;&#21069;&#25552;&#19979;&#20248;&#21270;&#20320;&#30340;&#20195;&#30721;&#12290;</p>
 </div>
 </div>
 </div>
@@ -10908,7 +10908,7 @@ var element = document.getElementById('f9491816-31c1-4aed-9ab9-b7408e16db30');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'6.3'</span><span class="p">)</span>
@@ -10937,7 +10937,7 @@ var element = document.getElementById('f9491816-31c1-4aed-9ab9-b7408e16db30');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">demo</span><span class="p">(</span><span class="s1">'sum-atomic'</span><span class="p">,</span> <span class="s1">'c/sum-atomic.c'</span><span class="p">,</span> <span class="n">libs</span><span class="o">=</span><span class="p">[</span><span class="s1">'thread.h'</span><span class="p">])</span>
@@ -10972,22 +10972,22 @@ var element = document.getElementById('8004f4f0-6157-4440-b478-be21a177888f');
 <div class="jp-InputPrompt jp-InputArea-prompt">
 </div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Take-away-Messages">Take-away Messages<a class="anchor-link" href="#Take-away-Messages">¶</a>
+<h2 id="Take-away-Messages">Take-away Messages<a class="anchor-link" href="lect6.ipynb.html#Take-away-Messages">&#182;</a>
 </h2>
-<p>并发编程 “很难”：想要完全理解并发程序的行为，是非常困难的——我们甚至可以利用一个 “万能” 的调度器去帮助我们求解 NP-完全问题。因此，人类应对这种复杂性的方法就是退回到不并发。通过互斥实现 stop/resume the world，我们就可以使并发程序的执行变得更容易理解——而只要程序中 “能并行” 的部分足够多，串行化一小部分也并不会对性能带来致命的影响。</p>
-<h3 id="%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">课后习题/编程作业<a class="anchor-link" href="#%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">¶</a>
+<p>&#24182;&#21457;&#32534;&#31243; &#8220;&#24456;&#38590;&#8221;&#65306;&#24819;&#35201;&#23436;&#20840;&#29702;&#35299;&#24182;&#21457;&#31243;&#24207;&#30340;&#34892;&#20026;&#65292;&#26159;&#38750;&#24120;&#22256;&#38590;&#30340;&#8212;&#8212;&#25105;&#20204;&#29978;&#33267;&#21487;&#20197;&#21033;&#29992;&#19968;&#20010; &#8220;&#19975;&#33021;&#8221; &#30340;&#35843;&#24230;&#22120;&#21435;&#24110;&#21161;&#25105;&#20204;&#27714;&#35299; NP-&#23436;&#20840;&#38382;&#39064;&#12290;&#22240;&#27492;&#65292;&#20154;&#31867;&#24212;&#23545;&#36825;&#31181;&#22797;&#26434;&#24615;&#30340;&#26041;&#27861;&#23601;&#26159;&#36864;&#22238;&#21040;&#19981;&#24182;&#21457;&#12290;&#36890;&#36807;&#20114;&#26021;&#23454;&#29616; stop/resume the world&#65292;&#25105;&#20204;&#23601;&#21487;&#20197;&#20351;&#24182;&#21457;&#31243;&#24207;&#30340;&#25191;&#34892;&#21464;&#24471;&#26356;&#23481;&#26131;&#29702;&#35299;&#8212;&#8212;&#32780;&#21482;&#35201;&#31243;&#24207;&#20013; &#8220;&#33021;&#24182;&#34892;&#8221; &#30340;&#37096;&#20998;&#36275;&#22815;&#22810;&#65292;&#20018;&#34892;&#21270;&#19968;&#23567;&#37096;&#20998;&#20063;&#24182;&#19981;&#20250;&#23545;&#24615;&#33021;&#24102;&#26469;&#33268;&#21629;&#30340;&#24433;&#21709;&#12290;</p>
+<h3 id="%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">&#35838;&#21518;&#20064;&#39064;/&#32534;&#31243;&#20316;&#19994;<a class="anchor-link" href="lect6.ipynb.html#%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">&#182;</a>
 </h3>
-<h4 id="1.-%E9%98%85%E8%AF%BB%E6%9D%90%E6%96%99">1. 阅读材料<a class="anchor-link" href="#1.-%E9%98%85%E8%AF%BB%E6%9D%90%E6%96%99">¶</a>
+<h4 id="1.-%E9%98%85%E8%AF%BB%E6%9D%90%E6%96%99">1. &#38405;&#35835;&#26448;&#26009;<a class="anchor-link" href="lect6.ipynb.html#1.-%E9%98%85%E8%AF%BB%E6%9D%90%E6%96%99">&#182;</a>
 </h4>
-<p>继续阅读教科书 <a href="https://pages.cs.wisc.edu/~remzi/OSTEP/">Operating Systems: Three Easy Pieces</a> 第 5 次课布置的阅读材料：</p>
+<p>&#32487;&#32493;&#38405;&#35835;&#25945;&#31185;&#20070; <a href="https://pages.cs.wisc.edu/~remzi/OSTEP/">Operating Systems: Three Easy Pieces</a> &#31532; 5 &#27425;&#35838;&#24067;&#32622;&#30340;&#38405;&#35835;&#26448;&#26009;&#65306;</p>
 <ul>
-<li>第 25 章 - Dialogue on Concurrency</li>
-<li>第 26 章 - Concurrency and Threads</li>
-<li>第 27 章 - Thread API</li>
+<li>&#31532; 25 &#31456; - Dialogue on Concurrency</li>
+<li>&#31532; 26 &#31456; - Concurrency and Threads</li>
+<li>&#31532; 27 &#31456; - Thread API</li>
 </ul>
-<h4 id="2.-%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5">2. 编程实践<a class="anchor-link" href="#2.-%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5">¶</a>
+<h4 id="2.-%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5">2. &#32534;&#31243;&#23454;&#36341;<a class="anchor-link" href="lect6.ipynb.html#2.-%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5">&#182;</a>
 </h4>
-<p>确保你运行、理解课堂上的示例代码。完成编程实验。</p>
+<p>&#30830;&#20445;&#20320;&#36816;&#34892;&#12289;&#29702;&#35299;&#35838;&#22530;&#19978;&#30340;&#31034;&#20363;&#20195;&#30721;&#12290;&#23436;&#25104;&#32534;&#31243;&#23454;&#39564;&#12290;</p>
 </div>
 </div>
 </div>
@@ -10998,8 +10998,8 @@ var element = document.getElementById('8004f4f0-6157-4440-b478-be21a177888f');
 <div class="container text-xs py-3">
   <span class="text-muted">
     <center>
-<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="/static/img/cc-4.0.png"></a>
-       <a style="color:inherit" href="https://beian.miit.gov.cn/">苏 ICP 备 2020049101 号</a>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="../../../static/img/cc-4.0.png"></a>
+    &#160;&#160;&#160;<a style="color:inherit" href="https://beian.miit.gov.cn/">&#33487; ICP &#22791; 2020049101 &#21495;</a>
     </center>
   </span>
 </div>

@@ -2,7 +2,7 @@
 <head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>7. 并发控制：互斥</title>
+<title>7. &#24182;&#21457;&#25511;&#21046;&#65306;&#20114;&#26021;</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script><script>
 (function() {
   function addWidgetsRenderer() {
@@ -6481,7 +6481,7 @@ cell outputs.
 
 .jp-Notebook .jp-Cell.jp-mod-dirty .jp-InputPrompt::before {
   color: var(--jp-warn-color1);
-  content: '•';
+  content: '&#8226;';
 }
 
 .jp-Notebook .jp-Cell.jp-mod-active.jp-mod-dirty .jp-Collapser {
@@ -7518,7 +7518,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">mosaic</span> <span class="kn">import</span> <span class="o">*</span>
@@ -7679,20 +7679,20 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-InputPrompt jp-InputArea-prompt">
 </div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="7.-%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6%EF%BC%9A%E4%BA%92%E6%96%A5">7. 并发控制：互斥<a class="anchor-link" href="#7.-%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6%EF%BC%9A%E4%BA%92%E6%96%A5">¶</a>
+<h1 id="7.-%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6%EF%BC%9A%E4%BA%92%E6%96%A5">7. &#24182;&#21457;&#25511;&#21046;&#65306;&#20114;&#26021;<a class="anchor-link" href="lect7.ipynb.html#7.-%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6%EF%BC%9A%E4%BA%92%E6%96%A5">&#182;</a>
 </h1>
-<p><strong>Changelog & 反馈</strong></p>
+<p><strong>Changelog &amp; &#21453;&#39304;</strong></p>
 <ul>
-<li>修复了 rvemu.c 中的 sext bug (感谢报告的同学；但我找不到消息记录了 😂)</li>
-<li>M2 & Online Judge 上线</li>
-<li>Model checker 阅读体验提升：能够正确显示线程/进程名/进程终止</li>
+<li>&#20462;&#22797;&#20102; rvemu.c &#20013;&#30340; sext bug (&#24863;&#35874;&#25253;&#21578;&#30340;&#21516;&#23398;&#65307;&#20294;&#25105;&#25214;&#19981;&#21040;&#28040;&#24687;&#35760;&#24405;&#20102; &#128514;)</li>
+<li>M2 &amp; Online Judge &#19978;&#32447;</li>
+<li>Model checker &#38405;&#35835;&#20307;&#39564;&#25552;&#21319;&#65306;&#33021;&#22815;&#27491;&#30830;&#26174;&#31034;&#32447;&#31243;/&#36827;&#31243;&#21517;/&#36827;&#31243;&#32456;&#27490;</li>
 </ul>
-<p><strong>背景回顾</strong>：互斥 (Peterson 算法)：为了掌控并发程序的复杂行为，使程序退回到 “串行执行” 的 lock & unlock。</p>
-<p><strong>本讲内容</strong>：现代多处理器系统上的互斥实现：</p>
+<p><strong>&#32972;&#26223;&#22238;&#39038;</strong>&#65306;&#20114;&#26021; (Peterson &#31639;&#27861;)&#65306;&#20026;&#20102;&#25484;&#25511;&#24182;&#21457;&#31243;&#24207;&#30340;&#22797;&#26434;&#34892;&#20026;&#65292;&#20351;&#31243;&#24207;&#36864;&#22238;&#21040; &#8220;&#20018;&#34892;&#25191;&#34892;&#8221; &#30340; lock &amp; unlock&#12290;</p>
+<p><strong>&#26412;&#35762;&#20869;&#23481;</strong>&#65306;&#29616;&#20195;&#22810;&#22788;&#29702;&#22120;&#31995;&#32479;&#19978;&#30340;&#20114;&#26021;&#23454;&#29616;&#65306;</p>
 <ul>
-<li>互斥问题的定义和假设</li>
-<li>自旋锁</li>
-<li>互斥锁和 Futex</li>
+<li>&#20114;&#26021;&#38382;&#39064;&#30340;&#23450;&#20041;&#21644;&#20551;&#35774;</li>
+<li>&#33258;&#26059;&#38145;</li>
+<li>&#20114;&#26021;&#38145;&#21644; Futex</li>
 </ul>
 </div>
 </div>
@@ -7703,7 +7703,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'7.1'</span><span class="p">)</span>
@@ -7732,7 +7732,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'7.2'</span><span class="p">)</span>
@@ -7761,7 +7761,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="p">(</span><span class="s1">'m/spinlock.py'</span><span class="p">,</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -10710,20 +10710,20 @@ function visualize(divname, MODEL) {
 <div class="highlight"><pre><span></span><span id="True-1"><span class="linenos"> 1</span><span class="k">def</span> <span class="nf">Tworker</span><span class="p">(</span><span class="n">enter</span><span class="p">,</span> <span class="n">exit</span><span class="p">):</span>
 </span><span id="True-2"><span class="linenos"> 2</span>  <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
 </span><span id="True-3"><span class="linenos"> 3</span>    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-</span><span id="True-4"><span class="linenos"> 4</span>      <span class="n">seen</span><span class="p">,</span> <span class="n">heap</span><span class="o">.</span><span class="n">table</span> <span class="o">=</span> <span class="n">heap</span><span class="o">.</span><span class="n">table</span><span class="p">,</span> <span class="s1">'❌'</span>
+</span><span id="True-4"><span class="linenos"> 4</span>      <span class="n">seen</span><span class="p">,</span> <span class="n">heap</span><span class="o">.</span><span class="n">table</span> <span class="o">=</span> <span class="n">heap</span><span class="o">.</span><span class="n">table</span><span class="p">,</span> <span class="s1">'&#10060;'</span>
 </span><span id="True-5"><span class="linenos"> 5</span>      <span class="n">sys_sched</span><span class="p">()</span>
-</span><span id="True-6"><span class="linenos"> 6</span>      <span class="k">if</span> <span class="n">seen</span> <span class="o">==</span> <span class="s1">'✅'</span><span class="p">:</span>
+</span><span id="True-6"><span class="linenos"> 6</span>      <span class="k">if</span> <span class="n">seen</span> <span class="o">==</span> <span class="s1">'&#9989;'</span><span class="p">:</span>
 </span><span id="True-7"><span class="linenos"> 7</span>        <span class="k">break</span>
 </span><span id="True-8"><span class="linenos"> 8</span>    <span class="n">sys_sched</span><span class="p">()</span>
 </span><span id="True-9"><span class="linenos"> 9</span>    <span class="n">sys_write</span><span class="p">(</span><span class="n">enter</span><span class="p">)</span>
 </span><span id="True-10"><span class="linenos">10</span>    <span class="n">sys_sched</span><span class="p">()</span>
 </span><span id="True-11"><span class="linenos">11</span>    <span class="n">sys_write</span><span class="p">(</span><span class="n">exit</span><span class="p">)</span>
 </span><span id="True-12"><span class="linenos">12</span>    <span class="n">sys_sched</span><span class="p">()</span>
-</span><span id="True-13"><span class="linenos">13</span>    <span class="n">heap</span><span class="o">.</span><span class="n">table</span> <span class="o">=</span> <span class="s1">'✅'</span>
+</span><span id="True-13"><span class="linenos">13</span>    <span class="n">heap</span><span class="o">.</span><span class="n">table</span> <span class="o">=</span> <span class="s1">'&#9989;'</span>
 </span><span id="True-14"><span class="linenos">14</span>    <span class="n">sys_sched</span><span class="p">()</span>
 </span><span id="True-15"><span class="linenos">15</span>
 </span><span id="True-16"><span class="linenos">16</span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-</span><span id="True-17"><span class="linenos">17</span>  <span class="n">heap</span><span class="o">.</span><span class="n">table</span> <span class="o">=</span> <span class="s1">'✅'</span>
+</span><span id="True-17"><span class="linenos">17</span>  <span class="n">heap</span><span class="o">.</span><span class="n">table</span> <span class="o">=</span> <span class="s1">'&#9989;'</span>
 </span><span id="True-18"><span class="linenos">18</span>  <span class="n">sys_spawn</span><span class="p">(</span><span class="n">Tworker</span><span class="p">,</span> <span class="s1">'('</span><span class="p">,</span> <span class="s1">')'</span><span class="p">)</span>
 </span><span id="True-19"><span class="linenos">19</span>  <span class="n">sys_spawn</span><span class="p">(</span><span class="n">Tworker</span><span class="p">,</span> <span class="s1">'['</span><span class="p">,</span> <span class="s1">']'</span><span class="p">)</span>
 </span><span id="True-20"><span class="linenos">20</span>
@@ -10750,7 +10750,7 @@ function visualize(divname, MODEL) {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">demo</span><span class="p">(</span><span class="s1">'sum-spinlock'</span><span class="p">,</span> <span class="s1">'c/sum-spinlock.c'</span><span class="p">,</span> <span class="n">libs</span><span class="o">=</span><span class="p">[</span><span class="s1">'thread.h'</span><span class="p">])</span>
@@ -10782,7 +10782,7 @@ var element = document.getElementById('05597482-56ff-4292-a205-7cfdb86c6e65');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'7.3'</span><span class="p">)</span>
@@ -10811,7 +10811,7 @@ var element = document.getElementById('05597482-56ff-4292-a205-7cfdb86c6e65');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">demo</span><span class="p">(</span><span class="s1">'cmpxchg'</span><span class="p">,</span> <span class="s1">'c/cmpxchg.c'</span><span class="p">,</span> <span class="n">libs</span><span class="o">=</span><span class="p">[</span><span class="s1">'thread.h'</span><span class="p">])</span>
@@ -10843,7 +10843,7 @@ var element = document.getElementById('0db3a382-c2e5-44bc-9bbb-3fc25df50616');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'7.4'</span><span class="p">)</span>
@@ -10872,7 +10872,7 @@ var element = document.getElementById('0db3a382-c2e5-44bc-9bbb-3fc25df50616');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[9]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">demo</span><span class="p">(</span><span class="s1">'sum-scalability'</span><span class="p">,</span> <span class="s1">'c/sum-scalability.c'</span><span class="p">,</span> <span class="n">libs</span><span class="o">=</span><span class="p">[</span><span class="s1">'thread.h'</span><span class="p">,</span> <span class="s1">'thread-sync.h'</span><span class="p">])</span>
@@ -10904,7 +10904,7 @@ var element = document.getElementById('c0880393-470a-4f3b-bfff-223e050b555b');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[10]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">demo</span><span class="p">(</span><span class="s1">'sum-mutex'</span><span class="p">,</span> <span class="s1">'c/mutex'</span><span class="p">,</span> <span class="n">libs</span><span class="o">=</span><span class="p">[</span><span class="s1">'thread.h'</span><span class="p">,</span> <span class="s1">'thread-sync.h'</span><span class="p">])</span>
@@ -10939,27 +10939,27 @@ var element = document.getElementById('0c073240-e996-43b9-99a7-6289a7889e99');
 <div class="jp-InputPrompt jp-InputArea-prompt">
 </div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Take-away-Messages">Take-away Messages<a class="anchor-link" href="#Take-away-Messages">¶</a>
+<h2 id="Take-away-Messages">Take-away Messages<a class="anchor-link" href="lect7.ipynb.html#Take-away-Messages">&#182;</a>
 </h2>
-<p>为了实现现代多处理器系统上的互斥，我们首先需要理解 “原子操作” (例如 <code>atomic_xchg</code>) 的假设：</p>
+<p>&#20026;&#20102;&#23454;&#29616;&#29616;&#20195;&#22810;&#22788;&#29702;&#22120;&#31995;&#32479;&#19978;&#30340;&#20114;&#26021;&#65292;&#25105;&#20204;&#39318;&#20808;&#38656;&#35201;&#29702;&#35299; &#8220;&#21407;&#23376;&#25805;&#20316;&#8221; (&#20363;&#22914; <code>atomic_xchg</code>) &#30340;&#20551;&#35774;&#65306;</p>
 <ol>
-<li>操作本身是原子的、看起来无法被打断的，即它真的是一个 “原子操作”；</li>
-<li>操作自带一个 compiler barrier，防止优化跨过函数调用。这一点很重要——例如我们今天的编译器支持 Link-time Optimization (LTO)，如果缺少 compiler barrier，编译优化可以穿过 volatile 标记的汇编指令；</li>
-<li>操作自带一个 memory barrier，保证操作执行前指令的写入，能对其他处理器之后的 load 可见。</li>
+<li>&#25805;&#20316;&#26412;&#36523;&#26159;&#21407;&#23376;&#30340;&#12289;&#30475;&#36215;&#26469;&#26080;&#27861;&#34987;&#25171;&#26029;&#30340;&#65292;&#21363;&#23427;&#30495;&#30340;&#26159;&#19968;&#20010; &#8220;&#21407;&#23376;&#25805;&#20316;&#8221;&#65307;</li>
+<li>&#25805;&#20316;&#33258;&#24102;&#19968;&#20010; compiler barrier&#65292;&#38450;&#27490;&#20248;&#21270;&#36328;&#36807;&#20989;&#25968;&#35843;&#29992;&#12290;&#36825;&#19968;&#28857;&#24456;&#37325;&#35201;&#8212;&#8212;&#20363;&#22914;&#25105;&#20204;&#20170;&#22825;&#30340;&#32534;&#35793;&#22120;&#25903;&#25345; Link-time Optimization (LTO)&#65292;&#22914;&#26524;&#32570;&#23569; compiler barrier&#65292;&#32534;&#35793;&#20248;&#21270;&#21487;&#20197;&#31359;&#36807; volatile &#26631;&#35760;&#30340;&#27719;&#32534;&#25351;&#20196;&#65307;</li>
+<li>&#25805;&#20316;&#33258;&#24102;&#19968;&#20010; memory barrier&#65292;&#20445;&#35777;&#25805;&#20316;&#25191;&#34892;&#21069;&#25351;&#20196;&#30340;&#20889;&#20837;&#65292;&#33021;&#23545;&#20854;&#20182;&#22788;&#29702;&#22120;&#20043;&#21518;&#30340; load &#21487;&#35265;&#12290;</li>
 </ol>
-<p>在此假设的基础上，原子操作就成为了我们简化程序执行的基础机制。通过自旋 (spin)，可以很直观地实现 “轮询” 式的互斥。而为了节约共享内存线程在自旋上浪费的处理器，我们也可以通过系统调用请求操作系统来帮助现成完成互斥。</p>
-<h3 id="%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">课后习题/编程作业<a class="anchor-link" href="#%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">¶</a>
+<p>&#22312;&#27492;&#20551;&#35774;&#30340;&#22522;&#30784;&#19978;&#65292;&#21407;&#23376;&#25805;&#20316;&#23601;&#25104;&#20026;&#20102;&#25105;&#20204;&#31616;&#21270;&#31243;&#24207;&#25191;&#34892;&#30340;&#22522;&#30784;&#26426;&#21046;&#12290;&#36890;&#36807;&#33258;&#26059; (spin)&#65292;&#21487;&#20197;&#24456;&#30452;&#35266;&#22320;&#23454;&#29616; &#8220;&#36718;&#35810;&#8221; &#24335;&#30340;&#20114;&#26021;&#12290;&#32780;&#20026;&#20102;&#33410;&#32422;&#20849;&#20139;&#20869;&#23384;&#32447;&#31243;&#22312;&#33258;&#26059;&#19978;&#28010;&#36153;&#30340;&#22788;&#29702;&#22120;&#65292;&#25105;&#20204;&#20063;&#21487;&#20197;&#36890;&#36807;&#31995;&#32479;&#35843;&#29992;&#35831;&#27714;&#25805;&#20316;&#31995;&#32479;&#26469;&#24110;&#21161;&#29616;&#25104;&#23436;&#25104;&#20114;&#26021;&#12290;</p>
+<h3 id="%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">&#35838;&#21518;&#20064;&#39064;/&#32534;&#31243;&#20316;&#19994;<a class="anchor-link" href="lect7.ipynb.html#%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A">&#182;</a>
 </h3>
-<h4 id="1.-%E9%98%85%E8%AF%BB%E6%9D%90%E6%96%99">1. 阅读材料<a class="anchor-link" href="#1.-%E9%98%85%E8%AF%BB%E6%9D%90%E6%96%99">¶</a>
+<h4 id="1.-%E9%98%85%E8%AF%BB%E6%9D%90%E6%96%99">1. &#38405;&#35835;&#26448;&#26009;<a class="anchor-link" href="lect7.ipynb.html#1.-%E9%98%85%E8%AF%BB%E6%9D%90%E6%96%99">&#182;</a>
 </h4>
-<p>教科书 <a href="https://pages.cs.wisc.edu/~remzi/OSTEP/">Operating Systems: Three Easy Pieces</a>:</p>
+<p>&#25945;&#31185;&#20070; <a href="https://pages.cs.wisc.edu/~remzi/OSTEP/">Operating Systems: Three Easy Pieces</a>:</p>
 <ul>
-<li>第 28 章 - Locks</li>
+<li>&#31532; 28 &#31456; - Locks</li>
 </ul>
-<p>教科书补充了很多课堂上没有的细节，包括锁更详细的实现；因此阅读教科书是非常重要的。</p>
-<h4 id="2.-%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5">2. 编程实践<a class="anchor-link" href="#2.-%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5">¶</a>
+<p>&#25945;&#31185;&#20070;&#34917;&#20805;&#20102;&#24456;&#22810;&#35838;&#22530;&#19978;&#27809;&#26377;&#30340;&#32454;&#33410;&#65292;&#21253;&#25324;&#38145;&#26356;&#35814;&#32454;&#30340;&#23454;&#29616;&#65307;&#22240;&#27492;&#38405;&#35835;&#25945;&#31185;&#20070;&#26159;&#38750;&#24120;&#37325;&#35201;&#30340;&#12290;</p>
+<h4 id="2.-%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5">2. &#32534;&#31243;&#23454;&#36341;<a class="anchor-link" href="lect7.ipynb.html#2.-%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5">&#182;</a>
 </h4>
-<p>我们鼓励大家参考课堂上调试并发程序的代码 (包括 init.gdb)，自己是使用 GDB 调试并发程序的执行。你可能需要同时阅读 GDB 的文档。</p>
+<p>&#25105;&#20204;&#40723;&#21169;&#22823;&#23478;&#21442;&#32771;&#35838;&#22530;&#19978;&#35843;&#35797;&#24182;&#21457;&#31243;&#24207;&#30340;&#20195;&#30721; (&#21253;&#25324; init.gdb)&#65292;&#33258;&#24049;&#26159;&#20351;&#29992; GDB &#35843;&#35797;&#24182;&#21457;&#31243;&#24207;&#30340;&#25191;&#34892;&#12290;&#20320;&#21487;&#33021;&#38656;&#35201;&#21516;&#26102;&#38405;&#35835; GDB &#30340;&#25991;&#26723;&#12290;</p>
 </div>
 </div>
 </div>
@@ -10970,8 +10970,8 @@ var element = document.getElementById('0c073240-e996-43b9-99a7-6289a7889e99');
 <div class="container text-xs py-3">
   <span class="text-muted">
     <center>
-<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="/static/img/cc-4.0.png"></a>
-       <a style="color:inherit" href="https://beian.miit.gov.cn/">苏 ICP 备 2020049101 号</a>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="../../../static/img/cc-4.0.png"></a>
+    &#160;&#160;&#160;<a style="color:inherit" href="https://beian.miit.gov.cn/">&#33487; ICP &#22791; 2020049101 &#21495;</a>
     </center>
   </span>
 </div>

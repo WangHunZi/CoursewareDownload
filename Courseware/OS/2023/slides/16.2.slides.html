@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // • auto-render specific keys, e.g.:
+            // &#8226; auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // • rendering keys, e.g.:
+            // &#8226; rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +209,7 @@ section .center {
 }
 </style>
 
-  <title>构建最小 Linux 系统</title>
+  <title>&#26500;&#24314;&#26368;&#23567; Linux &#31995;&#32479;</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,7 +227,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="linux" class=" text-2xl mt-2 font-sans"><a href="16.2.slides.html" class=" text-amber-900">构建最小 Linux 系统</a></h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="linux" class=" text-2xl mt-2 font-sans"><a href="16.2.slides.html" class=" text-amber-900">&#26500;&#24314;&#26368;&#23567; Linux &#31995;&#32479;</a></h1></div></div></div>
         
       
       </section>
@@ -238,22 +238,22 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">一个想法</h2>
-<p class=" font-serif my-1">我们能不能控制 Linux Kernel 加载的 “第一个状态机”？</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#19968;&#20010;&#24819;&#27861;</h2>
+<p class=" font-serif my-1">&#25105;&#20204;&#33021;&#19981;&#33021;&#25511;&#21046; Linux Kernel &#21152;&#36733;&#30340; &#8220;&#31532;&#19968;&#20010;&#29366;&#24577;&#26426;&#8221;&#65311;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">计算机系统没有魔法</li>
-<li class=" ml-8">你能想到的事就能实现</li>
+<li class=" ml-8">&#35745;&#31639;&#26426;&#31995;&#32479;&#27809;&#26377;&#39764;&#27861;</li>
+<li class=" ml-8">&#20320;&#33021;&#24819;&#21040;&#30340;&#20107;&#23601;&#33021;&#23454;&#29616;</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">挑战 ChatGPT：</p>
+<p class=" font-serif my-1">&#25361;&#25112; ChatGPT&#65306;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">我希望用 QEMU 在给定的 Linux 内核完成初始化后，直接执行我自己编写的、静态链接的 init 二进制文件。我应该怎么做？</li>
+<li class=" ml-8">&#25105;&#24076;&#26395;&#29992; QEMU &#22312;&#32473;&#23450;&#30340; Linux &#20869;&#26680;&#23436;&#25104;&#21021;&#22987;&#21270;&#21518;&#65292;&#30452;&#25509;&#25191;&#34892;&#25105;&#33258;&#24049;&#32534;&#20889;&#30340;&#12289;&#38745;&#24577;&#38142;&#25509;&#30340; init &#20108;&#36827;&#21046;&#25991;&#20214;&#12290;&#25105;&#24212;&#35813;&#24590;&#20040;&#20570;&#65311;</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">我们的真正壁垒</p>
+<p class=" font-serif my-1">&#25105;&#20204;&#30340;&#30495;&#27491;&#22721;&#22418;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">怎样问出好问题</li>
-<li class=" ml-8">怎样回答问出的问题</li>
+<li class=" ml-8">&#24590;&#26679;&#38382;&#20986;&#22909;&#38382;&#39064;</li>
+<li class=" ml-8">&#24590;&#26679;&#22238;&#31572;&#38382;&#20986;&#30340;&#38382;&#39064;</li>
 </ul></div>
         
       
@@ -265,10 +265,10 @@ section .center {
 
       
         
-        <div><h2 id="linux" class=" text-xl mt-2 pb-2 font-sans">启动 Linux</h2>
-<p class=" font-serif my-1">熟悉的 QEMU，稍稍有些不熟悉的命令行选项</p>
+        <div><h2 id="linux" class=" text-xl mt-2 pb-2 font-sans">&#21551;&#21160; Linux</h2>
+<p class=" font-serif my-1">&#29087;&#24713;&#30340; QEMU&#65292;&#31245;&#31245;&#26377;&#20123;&#19981;&#29087;&#24713;&#30340;&#21629;&#20196;&#34892;&#36873;&#39033;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">再次挑战 ChatGPT：如果我希望用 QEMU 启动我给定的 Linux 内核二进制文件 vmlinuz 和初始内存文件系统 initramfs，应该使用怎样的 QEMU 参数使得 initramfs 中的 /bin/hello 作为第一个执行的程序？</li>
+<li class=" ml-8">&#20877;&#27425;&#25361;&#25112; ChatGPT&#65306;&#22914;&#26524;&#25105;&#24076;&#26395;&#29992; QEMU &#21551;&#21160;&#25105;&#32473;&#23450;&#30340; Linux &#20869;&#26680;&#20108;&#36827;&#21046;&#25991;&#20214; vmlinuz &#21644;&#21021;&#22987;&#20869;&#23384;&#25991;&#20214;&#31995;&#32479; initramfs&#65292;&#24212;&#35813;&#20351;&#29992;&#24590;&#26679;&#30340; QEMU &#21442;&#25968;&#20351;&#24471; initramfs &#20013;&#30340; /bin/hello &#20316;&#20026;&#31532;&#19968;&#20010;&#25191;&#34892;&#30340;&#31243;&#24207;&#65311;</li>
 </ul>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="nf">run</span><span class="o">:</span>
 <span class="c"># Run QEMU with the installed kernel and generated initramfs</span>

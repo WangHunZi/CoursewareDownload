@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // • auto-render specific keys, e.g.:
+            // &#8226; auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // • rendering keys, e.g.:
+            // &#8226; rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +209,7 @@ section .center {
 }
 </style>
 
-  <title>放弃 (1)：原子性</title>
+  <title>&#25918;&#24323; (1)&#65306;&#21407;&#23376;&#24615;</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,7 +227,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="1" class=" text-2xl mt-2 font-sans"><a href="5.2.slides.html" class=" text-amber-900">放弃 (1)：原子性</a></h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="1" class=" text-2xl mt-2 font-sans"><a href="5.2.slides.html" class=" text-amber-900">&#25918;&#24323; (1)&#65306;&#21407;&#23376;&#24615;</a></h1></div></div></div>
         
       
       </section>
@@ -238,17 +238,17 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">状态机的隐含假设</h2>
-<p class=" font-serif my-1">“世界上只有一个状态机”</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#29366;&#24577;&#26426;&#30340;&#38544;&#21547;&#20551;&#35774;</h2>
+<p class=" font-serif my-1">&#8220;&#19990;&#30028;&#19978;&#21482;&#26377;&#19968;&#20010;&#29366;&#24577;&#26426;&#8221;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">没有其他任何人能 “干涉” 程序的状态</li>
-<li class=" ml-8">推论：对变量的 load 一定返回本线程最后一次 store 的值<ul class=" list-disc font-serif">
-<li class=" ml-8">这也是编译优化的基本假设</li>
+<li class=" ml-8">&#27809;&#26377;&#20854;&#20182;&#20219;&#20309;&#20154;&#33021; &#8220;&#24178;&#28041;&#8221; &#31243;&#24207;&#30340;&#29366;&#24577;</li>
+<li class=" ml-8">&#25512;&#35770;&#65306;&#23545;&#21464;&#37327;&#30340; load &#19968;&#23450;&#36820;&#22238;&#26412;&#32447;&#31243;&#26368;&#21518;&#19968;&#27425; store &#30340;&#20540;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#36825;&#20063;&#26159;&#32534;&#35793;&#20248;&#21270;&#30340;&#22522;&#26412;&#20551;&#35774;</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">但<red>共享内存</red>推翻了这个假设</p>
+<p class=" font-serif my-1">&#20294;<red>&#20849;&#20139;&#20869;&#23384;</red>&#25512;&#32763;&#20102;&#36825;&#20010;&#20551;&#35774;</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">Tworker</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">);</span><span class="w">  </span><span class="c1">// Global x</span>
 <span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">);</span>
@@ -256,8 +256,8 @@ section .center {
 </code></pre></div>
 
 <ul class=" list-disc font-serif">
-<li class=" ml-8">其他线程随时可以修改 <code>x</code><ul class=" list-disc font-serif">
-<li class=" ml-8">导致两次可能读到不同的 <code>x</code></li>
+<li class=" ml-8">&#20854;&#20182;&#32447;&#31243;&#38543;&#26102;&#21487;&#20197;&#20462;&#25913; <code>x</code><ul class=" list-disc font-serif">
+<li class=" ml-8">&#23548;&#33268;&#20004;&#27425;&#21487;&#33021;&#35835;&#21040;&#19981;&#21516;&#30340; <code>x</code></li>
 </ul>
 </li>
 </ul></div>
@@ -271,11 +271,11 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">潘多拉的魔盒已经打开……</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#28504;&#22810;&#25289;&#30340;&#39764;&#30418;&#24050;&#32463;&#25171;&#24320;&#8230;&#8230;</h2>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">Talipay_withdraw</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">amt</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">balance</span><span class="w"> </span><span class="o">>=</span><span class="w"> </span><span class="n">amt</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">balance</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">amt</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">balance</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">amt</span><span class="p">;</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">SUCCESS</span><span class="p">;</span>
 <span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
@@ -284,11 +284,11 @@ section .center {
 <span class="p">}</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">两个线程并发支付 ¥100 会发生什么 (代码演示)</p>
+<p class=" font-serif my-1">&#20004;&#20010;&#32447;&#31243;&#24182;&#21457;&#25903;&#20184; &#165;100 &#20250;&#21457;&#29983;&#20160;&#20040; (&#20195;&#30721;&#28436;&#31034;)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">账户里会多出用不完的钱！</li>
-<li class=" ml-8">Bug/漏洞不跟你开玩笑：Mt. Gox Hack 损失 650,000 BTC<ul class=" list-disc font-serif">
-<li class=" ml-8">时值 ~$28,000,000,000</li>
+<li class=" ml-8">&#36134;&#25143;&#37324;&#20250;&#22810;&#20986;&#29992;&#19981;&#23436;&#30340;&#38065;&#65281;</li>
+<li class=" ml-8">Bug/&#28431;&#27934;&#19981;&#36319;&#20320;&#24320;&#29609;&#31505;&#65306;Mt. Gox Hack &#25439;&#22833; 650,000 BTC<ul class=" list-disc font-serif">
+<li class=" ml-8">&#26102;&#20540; ~$28,000,000,000</li>
 </ul>
 </li>
 </ul></div>
@@ -302,10 +302,10 @@ section .center {
 
       
         
-        <div><h2 id="diablo-i-1996" class=" text-xl mt-2 pb-2 font-sans">例子：Diablo I (1996)</h2>
-<p class=" font-serif my-1">在捡起要复制物品的瞬间拿起 1 块钱</p>
+        <div><h2 id="diablo-i-1996" class=" text-xl mt-2 pb-2 font-sans">&#20363;&#23376;&#65306;Diablo I (1996)</h2>
+<p class=" font-serif my-1">&#22312;&#25441;&#36215;&#35201;&#22797;&#21046;&#29289;&#21697;&#30340;&#30636;&#38388;&#25343;&#36215; 1 &#22359;&#38065;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">1 块钱会被 “覆盖” 成捡起的物品</li>
+<li class=" ml-8">1 &#22359;&#38065;&#20250;&#34987; &#8220;&#35206;&#30422;&#8221; &#25104;&#25441;&#36215;&#30340;&#29289;&#21697;</li>
 </ul>
 <p class=" font-serif my-1"></p><center>
 <video width="854" height="480" controls="controls" src="../../../pages/OS/img/diablo-item-clone.mp4" type="video/mp4"></video>
@@ -320,12 +320,12 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">例子：求和</h2>
-<p class=" font-serif my-1">分两个线程，计算 $1+1+1+\ldots+1$ (共计 $2n$ 个 $1$)</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20363;&#23376;&#65306;&#27714;&#21644;</h2>
+<p class=" font-serif my-1">&#20998;&#20004;&#20010;&#32447;&#31243;&#65292;&#35745;&#31639; $1+1+1+\ldots+1$ (&#20849;&#35745; $2n$ &#20010; $1$)</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#define N 100000000</span>
 <span class="kt">long</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 
-<span class="kt">void</span><span class="w"> </span><span class="nf">Tsum</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o"><</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="n">sum</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">Tsum</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="n">sum</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">create</span><span class="p">(</span><span class="n">Tsum</span><span class="p">);</span>
@@ -335,10 +335,10 @@ section .center {
 <span class="p">}</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">可能的结果</p>
+<p class=" font-serif my-1">&#21487;&#33021;&#30340;&#32467;&#26524;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">119790390, 99872322 (结果可以比 <code>N</code> 还要小), ...</li>
-<li class=" ml-8">直接使用汇编指令也不行</li>
+<li class=" ml-8">119790390, 99872322 (&#32467;&#26524;&#21487;&#20197;&#27604; <code>N</code> &#36824;&#35201;&#23567;), ...</li>
+<li class=" ml-8">&#30452;&#25509;&#20351;&#29992;&#27719;&#32534;&#25351;&#20196;&#20063;&#19981;&#34892;</li>
 </ul></div>
         
       
@@ -350,22 +350,22 @@ section .center {
 
       
         
-        <div><h2 id="1" class=" text-xl mt-2 pb-2 font-sans"><red>放弃 (1)：指令/代码执行原子性假设</red></h2>
+        <div><h2 id="1" class=" text-xl mt-2 pb-2 font-sans"><red>&#25918;&#24323; (1)&#65306;&#25351;&#20196;/&#20195;&#30721;&#25191;&#34892;&#21407;&#23376;&#24615;&#20551;&#35774;</red></h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">“处理器一次执行一条指令” 的基本假设在今天的计算机系统上不再成立 (我们的模型作出了简化的假设)。</p>
+<p class=" font-serif my-1">&#8220;&#22788;&#29702;&#22120;&#19968;&#27425;&#25191;&#34892;&#19968;&#26465;&#25351;&#20196;&#8221; &#30340;&#22522;&#26412;&#20551;&#35774;&#22312;&#20170;&#22825;&#30340;&#35745;&#31639;&#26426;&#31995;&#32479;&#19978;&#19981;&#20877;&#25104;&#31435; (&#25105;&#20204;&#30340;&#27169;&#22411;&#20316;&#20986;&#20102;&#31616;&#21270;&#30340;&#20551;&#35774;)&#12290;</p>
 </blockquote>
-<p class=" font-serif my-1">单处理器多线程</p>
+<p class=" font-serif my-1">&#21333;&#22788;&#29702;&#22120;&#22810;&#32447;&#31243;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">线程在运行时可能被中断，切换到另一个线程执行</li>
+<li class=" ml-8">&#32447;&#31243;&#22312;&#36816;&#34892;&#26102;&#21487;&#33021;&#34987;&#20013;&#26029;&#65292;&#20999;&#25442;&#21040;&#21478;&#19968;&#20010;&#32447;&#31243;&#25191;&#34892;</li>
 </ul>
-<p class=" font-serif my-1">多处理器多线程</p>
+<p class=" font-serif my-1">&#22810;&#22788;&#29702;&#22120;&#22810;&#32447;&#31243;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">线程根本就是并行执行的</li>
+<li class=" ml-8">&#32447;&#31243;&#26681;&#26412;&#23601;&#26159;&#24182;&#34892;&#25191;&#34892;&#30340;</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">(历史) 1960s，大家争先在共享内存上实现原子性 (互斥)</p>
+<p class=" font-serif my-1">(&#21382;&#21490;) 1960s&#65292;&#22823;&#23478;&#20105;&#20808;&#22312;&#20849;&#20139;&#20869;&#23384;&#19978;&#23454;&#29616;&#21407;&#23376;&#24615; (&#20114;&#26021;)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">但几乎所有的实现都是<red>错的</red>，直到 <a href="https://en.wikipedia.org/wiki/Dekker%27s_algorithm" class=" text-amber-900">Dekker's Algorithm</a>，还只能保证两个线程的互斥</li>
+<li class=" ml-8">&#20294;&#20960;&#20046;&#25152;&#26377;&#30340;&#23454;&#29616;&#37117;&#26159;<red>&#38169;&#30340;</red>&#65292;&#30452;&#21040; <a href="https://en.wikipedia.org/wiki/Dekker%27s_algorithm" class=" text-amber-900">Dekker's Algorithm</a>&#65292;&#36824;&#21482;&#33021;&#20445;&#35777;&#20004;&#20010;&#32447;&#31243;&#30340;&#20114;&#26021;</li>
 </ul></div>
         
       
@@ -377,15 +377,15 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">放弃原子性假设的后果</h2>
-<p class=" font-serif my-1"><code>printf</code> 还能在多线程程序里调用吗？</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25918;&#24323;&#21407;&#23376;&#24615;&#20551;&#35774;&#30340;&#21518;&#26524;</h2>
+<p class=" font-serif my-1"><code>printf</code> &#36824;&#33021;&#22312;&#22810;&#32447;&#31243;&#31243;&#24207;&#37324;&#35843;&#29992;&#21527;&#65311;</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">thread1</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">"a"</span><span class="p">);</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
 <span class="kt">void</span><span class="w"> </span><span class="nf">thread2</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">"b"</span><span class="p">);</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">我们都知道 printf 是有缓冲区的 (为什么？)</p>
+<p class=" font-serif my-1">&#25105;&#20204;&#37117;&#30693;&#36947; printf &#26159;&#26377;&#32531;&#20914;&#21306;&#30340; (&#20026;&#20160;&#20040;&#65311;)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">如果执行 <code>buf[pos++] = ch</code> (<code>pos</code> 共享) 不就 💥 了吗？</li>
+<li class=" ml-8">&#22914;&#26524;&#25191;&#34892; <code>buf[pos++] = ch</code> (<code>pos</code> &#20849;&#20139;) &#19981;&#23601; &#128165; &#20102;&#21527;&#65311;</li>
 </ul>
 <hr>
 <p class=" font-serif my-1">RTFM!</p></div>

@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // • auto-render specific keys, e.g.:
+            // &#8226; auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // • rendering keys, e.g.:
+            // &#8226; rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +209,7 @@ section .center {
 }
 </style>
 
-  <title>50 行实现操作系统内核</title>
+  <title>50 &#34892;&#23454;&#29616;&#25805;&#20316;&#31995;&#32479;&#20869;&#26680;</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,7 +227,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="50" class=" text-2xl mt-2 font-sans"><a href="14.3.slides.html" class=" text-amber-900">50 行实现操作系统内核</a></h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="50" class=" text-2xl mt-2 font-sans"><a href="14.3.slides.html" class=" text-amber-900">50 &#34892;&#23454;&#29616;&#25805;&#20316;&#31995;&#32479;&#20869;&#26680;</a></h1></div></div></div>
         
       
       </section>
@@ -238,21 +238,21 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">中断处理程序的秘密</h2>
-<p class=" font-serif my-1">参数和返回值 “Context”</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20013;&#26029;&#22788;&#29702;&#31243;&#24207;&#30340;&#31192;&#23494;</h2>
+<p class=" font-serif my-1">&#21442;&#25968;&#21644;&#36820;&#22238;&#20540; &#8220;Context&#8221;</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">Context</span><span class="w"> </span><span class="o">*</span><span class="nf">handler</span><span class="p">(</span><span class="n">Event</span><span class="w"> </span><span class="n">ev</span><span class="p">,</span><span class="w"> </span><span class="n">Context</span><span class="w"> </span><span class="o">*</span><span class="n">ctx</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="p">...</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <ul class=" list-disc font-serif">
-<li class=" ml-8">中断发生后，不能执行 “任何代码”<ul class=" list-disc font-serif">
-<li class=" ml-8"><code>movl $1, %rax</code> 先前状态机就被永久 “破坏” 了</li>
-<li class=" ml-8">除非把中断瞬间的处理器状态保存下来</li>
-<li class=" ml-8">中断返回时需要把寄存器恢复到处理器上</li>
+<li class=" ml-8">&#20013;&#26029;&#21457;&#29983;&#21518;&#65292;&#19981;&#33021;&#25191;&#34892; &#8220;&#20219;&#20309;&#20195;&#30721;&#8221;<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>movl $1, %rax</code> &#20808;&#21069;&#29366;&#24577;&#26426;&#23601;&#34987;&#27704;&#20037; &#8220;&#30772;&#22351;&#8221; &#20102;</li>
+<li class=" ml-8">&#38500;&#38750;&#25226;&#20013;&#26029;&#30636;&#38388;&#30340;&#22788;&#29702;&#22120;&#29366;&#24577;&#20445;&#23384;&#19979;&#26469;</li>
+<li class=" ml-8">&#20013;&#26029;&#36820;&#22238;&#26102;&#38656;&#35201;&#25226;&#23492;&#23384;&#22120;&#24674;&#22797;&#21040;&#22788;&#29702;&#22120;&#19978;</li>
 </ul>
 </li>
-<li class=" ml-8">看看 Context 里有什么吧</li>
+<li class=" ml-8">&#30475;&#30475; Context &#37324;&#26377;&#20160;&#20040;&#21543;</li>
 </ul></div>
         
       
@@ -264,18 +264,18 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">上下文切换</h2>
-<p class=" font-serif my-1">状态机在执行……</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#19978;&#19979;&#25991;&#20999;&#25442;</h2>
+<p class=" font-serif my-1">&#29366;&#24577;&#26426;&#22312;&#25191;&#34892;&#8230;&#8230;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">发生了中断<ul class=" list-disc font-serif">
-<li class=" ml-8">操作系统代码开始执行</li>
-<li class=" ml-8">状态机被 “封存”</li>
-<li class=" ml-8"><red>我们可以用代码 “切换” 到另一个状态机</red></li>
+<li class=" ml-8">&#21457;&#29983;&#20102;&#20013;&#26029;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25805;&#20316;&#31995;&#32479;&#20195;&#30721;&#24320;&#22987;&#25191;&#34892;</li>
+<li class=" ml-8">&#29366;&#24577;&#26426;&#34987; &#8220;&#23553;&#23384;&#8221;</li>
+<li class=" ml-8"><red>&#25105;&#20204;&#21487;&#20197;&#29992;&#20195;&#30721; &#8220;&#20999;&#25442;&#8221; &#21040;&#21478;&#19968;&#20010;&#29366;&#24577;&#26426;</red></li>
 </ul>
 </li>
-<li class=" ml-8">中断返回另一个状态机的状态<ul class=" list-disc font-serif">
-<li class=" ml-8">“封存” 的状态还在</li>
-<li class=" ml-8">下次可以被恢复到处理器上执行</li>
+<li class=" ml-8">&#20013;&#26029;&#36820;&#22238;&#21478;&#19968;&#20010;&#29366;&#24577;&#26426;&#30340;&#29366;&#24577;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#8220;&#23553;&#23384;&#8221; &#30340;&#29366;&#24577;&#36824;&#22312;</li>
+<li class=" ml-8">&#19979;&#27425;&#21487;&#20197;&#34987;&#24674;&#22797;&#21040;&#22788;&#29702;&#22120;&#19978;&#25191;&#34892;</li>
 </ul>
 </li>
 </ul></div>
@@ -289,24 +289,24 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">实现多处理器多线程</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#23454;&#29616;&#22810;&#22788;&#29702;&#22120;&#22810;&#32447;&#31243;</h2>
 <p class=" font-serif my-1">AbstractMachine API</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">你只需要提供一个栈，就可以创建一个可运行的 context</li>
+<li class=" ml-8">&#20320;&#21482;&#38656;&#35201;&#25552;&#20379;&#19968;&#20010;&#26632;&#65292;&#23601;&#21487;&#20197;&#21019;&#24314;&#19968;&#20010;&#21487;&#36816;&#34892;&#30340; context</li>
 </ul>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">Context</span><span class="w"> </span><span class="o">*</span><span class="nf">on_interrupt</span><span class="p">(</span><span class="n">Event</span><span class="w"> </span><span class="n">ev</span><span class="p">,</span><span class="w"> </span><span class="n">Context</span><span class="w"> </span><span class="o">*</span><span class="n">ctx</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">current</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&</span><span class="n">tasks</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span><span class="w">  </span><span class="c1">// First trap for this CPU</span>
+<span class="w">    </span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">tasks</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span><span class="w">  </span><span class="c1">// First trap for this CPU</span>
 <span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">current</span><span class="o">-></span><span class="n">context</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ctx</span><span class="p">;</span><span class="w"> </span><span class="c1">// Keep the stack-saved context</span>
+<span class="w">    </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">context</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ctx</span><span class="p">;</span><span class="w"> </span><span class="c1">// Keep the stack-saved context</span>
 <span class="w">  </span><span class="p">}</span>
 
 <span class="w">  </span><span class="c1">// Schedule</span>
 <span class="w">  </span><span class="k">do</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current</span><span class="o">-></span><span class="n">next</span><span class="p">;</span>
+<span class="w">    </span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
 <span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">on_this_cpu</span><span class="p">(</span><span class="n">current</span><span class="p">));</span>
 
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">current</span><span class="o">-></span><span class="n">context</span><span class="p">;</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">context</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div></div>
         

@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // • auto-render specific keys, e.g.:
+            // &#8226; auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // • rendering keys, e.g.:
+            // &#8226; rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +209,7 @@ section .center {
 }
 </style>
 
-  <title>真实的处理器调度</title>
+  <title>&#30495;&#23454;&#30340;&#22788;&#29702;&#22120;&#35843;&#24230;</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,7 +227,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="24.3.slides.html" class=" text-amber-900">🌶️ 真实的处理器调度</a></h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="24.3.slides.html" class=" text-amber-900">&#127798;&#65039; &#30495;&#23454;&#30340;&#22788;&#29702;&#22120;&#35843;&#24230;</a></h1></div></div></div>
         
       
       </section>
@@ -238,24 +238,24 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">不要高兴得太早</h2>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">jyy</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// 最低优先级</span>
-<span class="w">  </span><span class="n">mutex_lock</span><span class="p">(</span><span class="o">&</span><span class="n">wc_lock</span><span class="p">);</span>
-<span class="w">  </span><span class="c1">// 先到先得</span>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#19981;&#35201;&#39640;&#20852;&#24471;&#22826;&#26089;</h2>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">jyy</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// &#26368;&#20302;&#20248;&#20808;&#32423;</span>
+<span class="w">  </span><span class="n">mutex_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">wc_lock</span><span class="p">);</span>
+<span class="w">  </span><span class="c1">// &#20808;&#21040;&#20808;&#24471;</span>
 <span class="p">}</span>
 
-<span class="kt">void</span><span class="w"> </span><span class="nf">xi_zhu_ren</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// 中优先级</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">xi_zhu_ren</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// &#20013;&#20248;&#20808;&#32423;</span>
 <span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="kt">void</span><span class="w"> </span><span class="nf">xiao_zhang</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// 高优先级</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">xiao_zhang</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// &#39640;&#20248;&#20808;&#32423;</span>
 <span class="w">  </span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-<span class="w">  </span><span class="n">mutex_lock</span><span class="p">(</span><span class="o">&</span><span class="n">wc_lock</span><span class="p">);</span>
+<span class="w">  </span><span class="n">mutex_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">wc_lock</span><span class="p">);</span>
 <span class="w">  </span><span class="p">...</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">jyy 在持有互斥锁的时候被赶下了处理器……</p></div>
+<p class=" font-serif my-1">jyy &#22312;&#25345;&#26377;&#20114;&#26021;&#38145;&#30340;&#26102;&#20505;&#34987;&#36214;&#19979;&#20102;&#22788;&#29702;&#22120;&#8230;&#8230;</p></div>
         
       
       </section>
@@ -266,9 +266,9 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">这个故事在火星上发生过一次</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#36825;&#20010;&#25925;&#20107;&#22312;&#28779;&#26143;&#19978;&#21457;&#29983;&#36807;&#19968;&#27425;</h2>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/mpf-sojourner.jpg" width="850px"></p>
-<p class=" font-serif my-1"></p><center>Sojourner “探路者” (PathFinder)，1997 年 7 月 4 日登陆火星</center></div>
+<p class=" font-serif my-1"></p><center>Sojourner &#8220;&#25506;&#36335;&#32773;&#8221; (PathFinder)&#65292;1997 &#24180; 7 &#26376; 4 &#26085;&#30331;&#38470;&#28779;&#26143;</center></div>
         
       
       </section>
@@ -281,23 +281,23 @@ section .center {
         
         <div><h2 id="the-first-bug-on-mars" class=" text-xl mt-2 pb-2 font-sans"><a href="https://news.ycombinator.com/item?id=13210478" class=" text-amber-900">The First Bug on Mars</a></h2>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/PATHCOV.jpg" width="300px"></p>
-<p class=" font-serif my-1">Sojourner “探路者” (PathFinder)</p>
+<p class=" font-serif my-1">Sojourner &#8220;&#25506;&#36335;&#32773;&#8221; (PathFinder)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">Lander (登陆舱)<ul class=" list-disc font-serif">
+<li class=" ml-8">Lander (&#30331;&#38470;&#33329;)<ul class=" list-disc font-serif">
 <li class=" ml-8">IBM Rad6000 SC (20 MIPS), 128 MiB RAM, 6 MiB EEPROM</li>
-<li class=" ml-8">VxWorks “实时” 任务操作系统<ul class=" list-disc font-serif">
-<li class=" ml-8">ASI/MET task: 大气成分监测 (低)</li>
-<li class=" ml-8"><code>bc_dist</code> task: 分发任务 (中)</li>
-<li class=" ml-8"><code>bc_sched</code> task: 总线调度 (高)</li>
+<li class=" ml-8">VxWorks &#8220;&#23454;&#26102;&#8221; &#20219;&#21153;&#25805;&#20316;&#31995;&#32479;<ul class=" list-disc font-serif">
+<li class=" ml-8">ASI/MET task: &#22823;&#27668;&#25104;&#20998;&#30417;&#27979; (&#20302;)</li>
+<li class=" ml-8"><code>bc_dist</code> task: &#20998;&#21457;&#20219;&#21153; (&#20013;)</li>
+<li class=" ml-8"><code>bc_sched</code> task: &#24635;&#32447;&#35843;&#24230; (&#39640;)</li>
 </ul>
 </li>
 </ul>
 </li>
-<li class=" ml-8">Rover (火星车)<ul class=" list-disc font-serif">
+<li class=" ml-8">Rover (&#28779;&#26143;&#36710;)<ul class=" list-disc font-serif">
 <li class=" ml-8">Intel 80C85 (0.1 MIPS), 512K RAM, 176K Flash SSD</li>
 </ul>
 </li>
-<li class=" ml-8">着陆后开始出现系统重启</li>
+<li class=" ml-8">&#30528;&#38470;&#21518;&#24320;&#22987;&#20986;&#29616;&#31995;&#32479;&#37325;&#21551;</li>
 </ul></div>
         
       
@@ -312,8 +312,8 @@ section .center {
         <div><h2 id="the-first-bug-on-mars-contd" class=" text-xl mt-2 pb-2 font-sans">The First Bug on Mars (cont'd)</h2>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/marsbot.png" width="750px"></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">(低优先级) <code>select -> pipeIoctl -> selNodeAdd -> mutex_lock</code></li>
-<li class=" ml-8">(高优先级) <code>pipeWrite -> mutex_lock</code></li>
+<li class=" ml-8">(&#20302;&#20248;&#20808;&#32423;) <code>select -&gt; pipeIoctl -&gt; selNodeAdd -&gt; mutex_lock</code></li>
+<li class=" ml-8">(&#39640;&#20248;&#20808;&#32423;) <code>pipeWrite -&gt; mutex_lock</code></li>
 </ul></div>
         
       
@@ -325,23 +325,23 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">解决优先级反转问题</h2>
-<p class=" font-serif my-1">Linux: 解决不了，CFS 凑合用吧</p>
-<p class=" font-serif my-1">实时系统：火星车在 CPU Reset，不能摆烂啊</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#35299;&#20915;&#20248;&#20808;&#32423;&#21453;&#36716;&#38382;&#39064;</h2>
+<p class=" font-serif my-1">Linux: &#35299;&#20915;&#19981;&#20102;&#65292;CFS &#20945;&#21512;&#29992;&#21543;</p>
+<p class=" font-serif my-1">&#23454;&#26102;&#31995;&#32479;&#65306;&#28779;&#26143;&#36710;&#22312; CPU Reset&#65292;&#19981;&#33021;&#25670;&#28866;&#21834;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">优先级继承 (Priority Inheritance)/优先级提升 (Priority Ceiling)<ul class=" list-disc font-serif">
-<li class=" ml-8">持有 mutex 的线程/进程会继承 block 在该 mutex 上进程的最高优先级</li>
-<li class=" ml-8">但也不是万能的 (例如条件变量唤醒)</li>
+<li class=" ml-8">&#20248;&#20808;&#32423;&#32487;&#25215; (Priority Inheritance)/&#20248;&#20808;&#32423;&#25552;&#21319; (Priority Ceiling)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25345;&#26377; mutex &#30340;&#32447;&#31243;/&#36827;&#31243;&#20250;&#32487;&#25215; block &#22312;&#35813; mutex &#19978;&#36827;&#31243;&#30340;&#26368;&#39640;&#20248;&#20808;&#32423;</li>
+<li class=" ml-8">&#20294;&#20063;&#19981;&#26159;&#19975;&#33021;&#30340; (&#20363;&#22914;&#26465;&#20214;&#21464;&#37327;&#21796;&#37266;)</li>
 </ul>
 </li>
-<li class=" ml-8">在系统中动态维护资源依赖关系<ul class=" list-disc font-serif">
-<li class=" ml-8">优先级继承是它的特例</li>
-<li class=" ml-8">似乎更困难了……</li>
+<li class=" ml-8">&#22312;&#31995;&#32479;&#20013;&#21160;&#24577;&#32500;&#25252;&#36164;&#28304;&#20381;&#36182;&#20851;&#31995;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20248;&#20808;&#32423;&#32487;&#25215;&#26159;&#23427;&#30340;&#29305;&#20363;</li>
+<li class=" ml-8">&#20284;&#20046;&#26356;&#22256;&#38590;&#20102;&#8230;&#8230;</li>
 </ul>
 </li>
-<li class=" ml-8">避免高/低优先级的任务争抢资源<ul class=" list-disc font-serif">
-<li class=" ml-8">对潜在的优先级反转进行预警 (lockdep)</li>
-<li class=" ml-8">TX-based: 冲突的 TX 发生时，总是低优先级的 abort</li>
+<li class=" ml-8">&#36991;&#20813;&#39640;/&#20302;&#20248;&#20808;&#32423;&#30340;&#20219;&#21153;&#20105;&#25250;&#36164;&#28304;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#23545;&#28508;&#22312;&#30340;&#20248;&#20808;&#32423;&#21453;&#36716;&#36827;&#34892;&#39044;&#35686; (lockdep)</li>
+<li class=" ml-8">TX-based: &#20914;&#31361;&#30340; TX &#21457;&#29983;&#26102;&#65292;&#24635;&#26159;&#20302;&#20248;&#20808;&#32423;&#30340; abort</li>
 </ul>
 </li>
 </ul></div>
@@ -355,10 +355,10 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">还没完：多处理器调度</h2>
-<p class=" font-serif my-1">还没完：我们的计算机系统可是多核心、多线程的！</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#36824;&#27809;&#23436;&#65306;&#22810;&#22788;&#29702;&#22120;&#35843;&#24230;</h2>
+<p class=" font-serif my-1">&#36824;&#27809;&#23436;&#65306;&#25105;&#20204;&#30340;&#35745;&#31639;&#26426;&#31995;&#32479;&#21487;&#26159;&#22810;&#26680;&#24515;&#12289;&#22810;&#32447;&#31243;&#30340;&#65281;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">上周的小学生竞赛：租半小时阿里云 bare-metal 搞定评测</li>
+<li class=" ml-8">&#19978;&#21608;&#30340;&#23567;&#23398;&#29983;&#31454;&#36187;&#65306;&#31199;&#21322;&#23567;&#26102;&#38463;&#37324;&#20113; bare-metal &#25630;&#23450;&#35780;&#27979;</li>
 </ul>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/taskmgr.jpg" width="600px"></p></div>
         
@@ -371,17 +371,17 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">多处理器调度：被低估的复杂性</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#22810;&#22788;&#29702;&#22120;&#35843;&#24230;&#65306;&#34987;&#20302;&#20272;&#30340;&#22797;&#26434;&#24615;</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">“And you have to realize that there are not very many things that have aged as well as the scheduler. Which is just another proof that scheduling is easy.”
-——Linus Torvalds, 2001</p>
+<p class=" font-serif my-1">&#8220;And you have to realize that there are not very many things that have aged as well as the scheduler. Which is just another proof that scheduling is easy.&#8221;
+&#8212;&#8212;Linus Torvalds, 2001</p>
 </blockquote>
 <hr>
-<p class=" font-serif my-1">Linus 以为调度是个挺简单的问题？</p>
+<p class=" font-serif my-1">Linus &#20197;&#20026;&#35843;&#24230;&#26159;&#20010;&#25402;&#31616;&#21333;&#30340;&#38382;&#39064;&#65311;</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">As a central part of resource management, the OS thread scheduler must maintain the following, simple, invariant: <em>make sure that ready threads are scheduled on available cores</em>... this invariant is often broken in Linux. Cores may stay idle for seconds while ready threads are waiting in runqueues.<ul class=" list-disc font-serif">
 <li class=" ml-8"><a href="https://dl.acm.org/doi/10.1145/2901318.2901326" class=" text-amber-900">The Linux scheduler: A decade of wasted cores</a>. (EuroSys'16)<ul class=" list-disc font-serif">
-<li class=" ml-8">作者在狂黑 Linus 😂</li>
+<li class=" ml-8">&#20316;&#32773;&#22312;&#29378;&#40657; Linus &#128514;</li>
 </ul>
 </li>
 </ul>
@@ -397,21 +397,21 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">多处理器调度的困难所在</h2>
-<p class=" font-serif my-1">既不能简单地 “分配线程到处理器”</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#22810;&#22788;&#29702;&#22120;&#35843;&#24230;&#30340;&#22256;&#38590;&#25152;&#22312;</h2>
+<p class=" font-serif my-1">&#26082;&#19981;&#33021;&#31616;&#21333;&#22320; &#8220;&#20998;&#37197;&#32447;&#31243;&#21040;&#22788;&#29702;&#22120;&#8221;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">线程退出，瞬间处理器开始围观</li>
+<li class=" ml-8">&#32447;&#31243;&#36864;&#20986;&#65292;&#30636;&#38388;&#22788;&#29702;&#22120;&#24320;&#22987;&#22260;&#35266;</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">也不能简单地 “谁空丢给谁”</p>
+<p class=" font-serif my-1">&#20063;&#19981;&#33021;&#31616;&#21333;&#22320; &#8220;&#35841;&#31354;&#20002;&#32473;&#35841;&#8221;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">在处理器之间迁移会导致 cache/TLB 全都白给</li>
+<li class=" ml-8">&#22312;&#22788;&#29702;&#22120;&#20043;&#38388;&#36801;&#31227;&#20250;&#23548;&#33268; cache/TLB &#20840;&#37117;&#30333;&#32473;</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">多处理器调度的两难境地</p>
+<p class=" font-serif my-1">&#22810;&#22788;&#29702;&#22120;&#35843;&#24230;&#30340;&#20004;&#38590;&#22659;&#22320;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">迁移？可能过一会儿还得移回来</li>
-<li class=" ml-8">不迁移？造成处理器的浪费</li>
+<li class=" ml-8">&#36801;&#31227;&#65311;&#21487;&#33021;&#36807;&#19968;&#20250;&#20799;&#36824;&#24471;&#31227;&#22238;&#26469;</li>
+<li class=" ml-8">&#19981;&#36801;&#31227;&#65311;&#36896;&#25104;&#22788;&#29702;&#22120;&#30340;&#28010;&#36153;</li>
 </ul></div>
         
       
@@ -423,23 +423,23 @@ section .center {
 
       
         
-        <div><h2 id="1" class=" text-xl mt-2 pb-2 font-sans">实际情况 (1): 多用户、多任务</h2>
-<p class=" font-serif my-1">组里有一台 64-core 的服务器</p>
+        <div><h2 id="1" class=" text-xl mt-2 pb-2 font-sans">&#23454;&#38469;&#24773;&#20917; (1): &#22810;&#29992;&#25143;&#12289;&#22810;&#20219;&#21153;</h2>
+<p class=" font-serif my-1">&#32452;&#37324;&#26377;&#19968;&#21488; 64-core &#30340;&#26381;&#21153;&#22120;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">马上要到 paper deadline 了，A 和 B 要在服务器上跑实验<ul class=" list-disc font-serif">
-<li class=" ml-8">A 要跑一个任务，调用一个库，只能单线程跑</li>
-<li class=" ml-8">B 跑并行的任务，创建 10,000 个线程跑<ul class=" list-disc font-serif">
-<li class=" ml-8">B 获得几乎 100% 的 CPU</li>
+<li class=" ml-8">&#39532;&#19978;&#35201;&#21040; paper deadline &#20102;&#65292;A &#21644; B &#35201;&#22312;&#26381;&#21153;&#22120;&#19978;&#36305;&#23454;&#39564;<ul class=" list-disc font-serif">
+<li class=" ml-8">A &#35201;&#36305;&#19968;&#20010;&#20219;&#21153;&#65292;&#35843;&#29992;&#19968;&#20010;&#24211;&#65292;&#21482;&#33021;&#21333;&#32447;&#31243;&#36305;</li>
+<li class=" ml-8">B &#36305;&#24182;&#34892;&#30340;&#20219;&#21153;&#65292;&#21019;&#24314; 10,000 &#20010;&#32447;&#31243;&#36305;<ul class=" list-disc font-serif">
+<li class=" ml-8">B &#33719;&#24471;&#20960;&#20046; 100% &#30340; CPU</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">更糟糕的是，优先级解决不了这个问题……</p>
+<p class=" font-serif my-1">&#26356;&#31967;&#31957;&#30340;&#26159;&#65292;&#20248;&#20808;&#32423;&#35299;&#20915;&#19981;&#20102;&#36825;&#20010;&#38382;&#39064;&#8230;&#8230;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">B 不能随便提高自己进程的优先级<ul class=" list-disc font-serif">
-<li class=" ml-8">“An unprivileged user can only increase the nice value and such changes are irreversible...”</li>
+<li class=" ml-8">B &#19981;&#33021;&#38543;&#20415;&#25552;&#39640;&#33258;&#24049;&#36827;&#31243;&#30340;&#20248;&#20808;&#32423;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#8220;An unprivileged user can only increase the nice value and such changes are irreversible...&#8221;</li>
 </ul>
 </li>
 </ul></div>
@@ -456,10 +456,10 @@ section .center {
         <div><h2 id="linux-namespaces-control-groups-cgroups" class=" text-xl mt-2 pb-2 font-sans">Linux Namespaces Control Groups (cgroups)</h2>
 <p class=" font-serif my-1">namespaces (7), cgroups (7)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">轻量级虚拟化，创造 “操作系统中的操作系统”<ul class=" list-disc font-serif">
+<li class=" ml-8">&#36731;&#37327;&#32423;&#34394;&#25311;&#21270;&#65292;&#21019;&#36896; &#8220;&#25805;&#20316;&#31995;&#32479;&#20013;&#30340;&#25805;&#20316;&#31995;&#32479;&#8221;<ul class=" list-disc font-serif">
 <li class=" ml-8">Mount, pid, network, IPC, user, cgroup namespace, time</li>
-<li class=" ml-8">cgroup 允许以进程组为单位管理资源<ul class=" list-disc font-serif">
-<li class=" ml-8">Docker 就变得很容易实现了</li>
+<li class=" ml-8">cgroup &#20801;&#35768;&#20197;&#36827;&#31243;&#32452;&#20026;&#21333;&#20301;&#31649;&#29702;&#36164;&#28304;<ul class=" list-disc font-serif">
+<li class=" ml-8">Docker &#23601;&#21464;&#24471;&#24456;&#23481;&#26131;&#23454;&#29616;&#20102;</li>
 </ul>
 </li>
 </ul>
@@ -476,22 +476,22 @@ section .center {
 
       
         
-        <div><h2 id="2-biglittle" class=" text-xl mt-2 pb-2 font-sans">实际情况 (2): Big.LITTLE/能效比</h2>
+        <div><h2 id="2-biglittle" class=" text-xl mt-2 pb-2 font-sans">&#23454;&#38469;&#24773;&#20917; (2): Big.LITTLE/&#33021;&#25928;&#27604;</h2>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/Snapdragon-888.png" width="400px"></p>
 <p class=" font-serif my-1">Snapdragon 888</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">1X Prime Cortex-X1 (2.84GHz)</li>
 <li class=" ml-8">3X Performance Cortex-A78 (2.4GHz)</li>
 <li class=" ml-8">4X Efficiency Cortex-A55 (1.8GHz)<ul class=" list-disc font-serif">
-<li class=" ml-8">这比 P/E Cores 还要夸张 😂</li>
+<li class=" ml-8">&#36825;&#27604; P/E Cores &#36824;&#35201;&#22840;&#24352; &#128514;</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">“Dark silicon” 时代的困境</p>
+<p class=" font-serif my-1">&#8220;Dark silicon&#8221; &#26102;&#20195;&#30340;&#22256;&#22659;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">功率无法支撑所有电路同时工作</li>
-<li class=" ml-8">总得有一部分是停下的</li>
+<li class=" ml-8">&#21151;&#29575;&#26080;&#27861;&#25903;&#25745;&#25152;&#26377;&#30005;&#36335;&#21516;&#26102;&#24037;&#20316;</li>
+<li class=" ml-8">&#24635;&#24471;&#26377;&#19968;&#37096;&#20998;&#26159;&#20572;&#19979;&#30340;</li>
 <li class=" ml-8">Linux Kernel <a href="https://www.kernel.org/doc/html/latest/scheduler/sched-energy.html" class=" text-amber-900">EAS</a> (Energy Aware Scheduler)</li>
 </ul></div>
         
@@ -504,11 +504,11 @@ section .center {
 
       
         
-        <div><h2 id="2-biglittle-contd" class=" text-xl mt-2 pb-2 font-sans">实际情况 (2): Big.LITTLE/能耗 (cont'd)</h2>
-<p class=" font-serif my-1">软件可以配置 CPU 的工作模式</p>
+        <div><h2 id="2-biglittle-contd" class=" text-xl mt-2 pb-2 font-sans">&#23454;&#38469;&#24773;&#20917; (2): Big.LITTLE/&#33021;&#32791; (cont'd)</h2>
+<p class=" font-serif my-1">&#36719;&#20214;&#21487;&#20197;&#37197;&#32622; CPU &#30340;&#24037;&#20316;&#27169;&#24335;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">开/关/工作频率 (频率越低，能效越好)</li>
-<li class=" ml-8">如何在给定功率下平衡延迟 v.s. 吞吐量？</li>
+<li class=" ml-8">&#24320;/&#20851;/&#24037;&#20316;&#39057;&#29575; (&#39057;&#29575;&#36234;&#20302;&#65292;&#33021;&#25928;&#36234;&#22909;)</li>
+<li class=" ml-8">&#22914;&#20309;&#22312;&#32473;&#23450;&#21151;&#29575;&#19979;&#24179;&#34913;&#24310;&#36831; v.s. &#21534;&#21520;&#37327;&#65311;</li>
 </ul>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/power-curve.png" width="550px"></p></div>
         
@@ -521,11 +521,11 @@ section .center {
 
       
         
-        <div><h2 id="3-non-uniform-memory-access" class=" text-xl mt-2 pb-2 font-sans">实际情况 (3): Non-Uniform Memory Access</h2>
-<p class=" font-serif my-1">共享内存只是假象</p>
+        <div><h2 id="3-non-uniform-memory-access" class=" text-xl mt-2 pb-2 font-sans">&#23454;&#38469;&#24773;&#20917; (3): Non-Uniform Memory Access</h2>
+<p class=" font-serif my-1">&#20849;&#20139;&#20869;&#23384;&#21482;&#26159;&#20551;&#35937;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">L1 Cache 花了巨大的代价才让你感到内存是共享的</li>
-<li class=" ml-8">Producer/Consumer 位于同一个/不同 module 性能差距可能很大</li>
+<li class=" ml-8">L1 Cache &#33457;&#20102;&#24040;&#22823;&#30340;&#20195;&#20215;&#25165;&#35753;&#20320;&#24863;&#21040;&#20869;&#23384;&#26159;&#20849;&#20139;&#30340;</li>
+<li class=" ml-8">Producer/Consumer &#20301;&#20110;&#21516;&#19968;&#20010;/&#19981;&#21516; module &#24615;&#33021;&#24046;&#36317;&#21487;&#33021;&#24456;&#22823;</li>
 </ul>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/EPYC-NUMA.png" width="640px"></p></div>
         
@@ -538,11 +538,11 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">程序执行比你想象得复杂</h2>
-<p class=" font-serif my-1">基本的假设可能不再成立</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#31243;&#24207;&#25191;&#34892;&#27604;&#20320;&#24819;&#35937;&#24471;&#22797;&#26434;</h2>
+<p class=" font-serif my-1">&#22522;&#26412;&#30340;&#20551;&#35774;&#21487;&#33021;&#19981;&#20877;&#25104;&#31435;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">例子: more CPU time, more progress<ul class=" list-disc font-serif">
-<li class=" ml-8">我们课堂上的例子就可以 challenge 这一点</li>
+<li class=" ml-8">&#20363;&#23376;: more CPU time, more progress<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25105;&#20204;&#35838;&#22530;&#19978;&#30340;&#20363;&#23376;&#23601;&#21487;&#20197; challenge &#36825;&#19968;&#28857;</li>
 <li class=" ml-8">(sum-atomic)</li>
 </ul>
 </li>
@@ -552,10 +552,10 @@ $ time taskset -c 0,1 ./a.out
 </code></pre></div>
 
 <hr>
-<p class=" font-serif my-1">分配了 1/2 的处理器资源，反而速度更快了</p>
+<p class=" font-serif my-1">&#20998;&#37197;&#20102; 1/2 &#30340;&#22788;&#29702;&#22120;&#36164;&#28304;&#65292;&#21453;&#32780;&#36895;&#24230;&#26356;&#24555;&#20102;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">系统里进程的行为和交互是非常复杂的……<ul class=" list-disc font-serif">
-<li class=" ml-8">NUMA 里尤其重要 (当然上面的例子是个 performance bug)</li>
+<li class=" ml-8">&#31995;&#32479;&#37324;&#36827;&#31243;&#30340;&#34892;&#20026;&#21644;&#20132;&#20114;&#26159;&#38750;&#24120;&#22797;&#26434;&#30340;&#8230;&#8230;<ul class=" list-disc font-serif">
+<li class=" ml-8">NUMA &#37324;&#23588;&#20854;&#37325;&#35201; (&#24403;&#28982;&#19978;&#38754;&#30340;&#20363;&#23376;&#26159;&#20010; performance bug)</li>
 </ul>
 </li>
 </ul></div>
@@ -569,24 +569,24 @@ $ time taskset -c 0,1 ./a.out
 
       
         
-        <div><h2 id="4-cpu-hot-plug" class=" text-xl mt-2 pb-2 font-sans">实际情况 (4): CPU Hot-plug</h2>
-<p class=" font-serif my-1">😂😂😂 我讲不下去了</p>
+        <div><h2 id="4-cpu-hot-plug" class=" text-xl mt-2 pb-2 font-sans">&#23454;&#38469;&#24773;&#20917; (4): CPU Hot-plug</h2>
+<p class=" font-serif my-1">&#128514;&#128514;&#128514; &#25105;&#35762;&#19981;&#19979;&#21435;&#20102;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">实在是太复杂了</li>
-<li class=" ml-8">我不是代码的维护者，并不清楚这些细节<ul class=" list-disc font-serif">
-<li class=" ml-8">把上面都加起来<ul class=" list-disc font-serif">
-<li class=" ml-8">这得考虑多少情况，写多少代码……</li>
+<li class=" ml-8">&#23454;&#22312;&#26159;&#22826;&#22797;&#26434;&#20102;</li>
+<li class=" ml-8">&#25105;&#19981;&#26159;&#20195;&#30721;&#30340;&#32500;&#25252;&#32773;&#65292;&#24182;&#19981;&#28165;&#26970;&#36825;&#20123;&#32454;&#33410;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25226;&#19978;&#38754;&#37117;&#21152;&#36215;&#26469;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#36825;&#24471;&#32771;&#34385;&#22810;&#23569;&#24773;&#20917;&#65292;&#20889;&#22810;&#23569;&#20195;&#30721;&#8230;&#8230;</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">复杂的系统无人可以掌控</p>
+<p class=" font-serif my-1">&#22797;&#26434;&#30340;&#31995;&#32479;&#26080;&#20154;&#21487;&#20197;&#25484;&#25511;</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><a href="https://www.usenix.org/system/files/conference/atc18/atc18-bouron.pdf" class=" text-amber-900">The battle of the schedulers: FreeBSD ULE vs. Linux CFS</a>. (ATC'18)<ul class=" list-disc font-serif">
-<li class=" ml-8">结论：在现实面前，没有绝对的赢家和输家</li>
-<li class=" ml-8">如果你追求极致的性能，就不能全指望一个调度算法</li>
+<li class=" ml-8">&#32467;&#35770;&#65306;&#22312;&#29616;&#23454;&#38754;&#21069;&#65292;&#27809;&#26377;&#32477;&#23545;&#30340;&#36194;&#23478;&#21644;&#36755;&#23478;</li>
+<li class=" ml-8">&#22914;&#26524;&#20320;&#36861;&#27714;&#26497;&#33268;&#30340;&#24615;&#33021;&#65292;&#23601;&#19981;&#33021;&#20840;&#25351;&#26395;&#19968;&#20010;&#35843;&#24230;&#31639;&#27861;</li>
 </ul>
 </li>
 </ul></div>

@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // • auto-render specific keys, e.g.:
+            // &#8226; auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // • rendering keys, e.g.:
+            // &#8226; rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +209,7 @@ section .center {
 }
 </style>
 
-  <title>存储设备原理</title>
+  <title>&#23384;&#20648;&#35774;&#22791;&#21407;&#29702;</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,21 +227,21 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">存储设备原理</h1>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#23384;&#20648;&#35774;&#22791;&#21407;&#29702;</h1>
 <p class=" font-serif my-1"><include src="Slides_Author"><div><div class="py-16">
-<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">蒋炎岩</a></p>
+<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">&#33931;&#28814;&#23721;</a></p>
 </div>
 <div class="row">
 <div class="author-affiliation">
-    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">　　南京大学　　</p>
+    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#12288;&#12288;&#21335;&#20140;&#22823;&#23398;&#12288;&#12288;</p>
     <img class="inline-img h-24" src="../../../static/img/nju-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">计算机科学与技术系</p>
+   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#31185;&#23398;&#19982;&#25216;&#26415;&#31995;</p>
     <img class="inline-img h-24" src="../../../static/img/njucs-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">计算机软件研究所</p>
+    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#36719;&#20214;&#30740;&#31350;&#25152;</p>
     <img class="inline-img h-24" src="../../../static/img/ics-logo.png" style="display: inline-block;"></a>
   </div>
 </div></div></include></p></div></div></div>
@@ -256,24 +256,24 @@ section .center {
       
         
         <div><h2 id="overview" class=" text-xl mt-2 pb-2 font-sans">Overview</h2>
-<p class=" font-serif my-1">复习</p>
+<p class=" font-serif my-1">&#22797;&#20064;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">操作系统<ul class=" list-disc font-serif">
-<li class=" ml-8">状态机的管理者</li>
-<li class=" ml-8">对象 + API</li>
+<li class=" ml-8">&#25805;&#20316;&#31995;&#32479;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#29366;&#24577;&#26426;&#30340;&#31649;&#29702;&#32773;</li>
+<li class=" ml-8">&#23545;&#35937; + API</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">本次课回答的问题</p>
+<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#22238;&#31572;&#30340;&#38382;&#39064;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><strong>Q1</strong>: 状态机的状态是如何存储的？</li>
-<li class=" ml-8"><strong>Q2</strong>: 更多的持久状态是如何存储的？</li>
+<li class=" ml-8"><strong>Q1</strong>: &#29366;&#24577;&#26426;&#30340;&#29366;&#24577;&#26159;&#22914;&#20309;&#23384;&#20648;&#30340;&#65311;</li>
+<li class=" ml-8"><strong>Q2</strong>: &#26356;&#22810;&#30340;&#25345;&#20037;&#29366;&#24577;&#26159;&#22914;&#20309;&#23384;&#20648;&#30340;&#65311;</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">本次课主要内容</p>
+<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#20027;&#35201;&#20869;&#23481;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">1-bit 的存储方式</li>
+<li class=" ml-8">1-bit &#30340;&#23384;&#20648;&#26041;&#24335;</li>
 <li class=" ml-8">Volatile/non-volatile storage</li>
 </ul></div>
         
@@ -290,7 +290,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">状态机状态的存储</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#29366;&#24577;&#26426;&#29366;&#24577;&#30340;&#23384;&#20648;</h1></div></div></div>
         
       
       </section>
@@ -301,26 +301,26 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">计算机需要存储 “当前状态”</h2>
-<p class=" font-serif my-1">机器指令模型 (Instruction Set Architecture) 只有 “两种” 状态</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#35745;&#31639;&#26426;&#38656;&#35201;&#23384;&#20648; &#8220;&#24403;&#21069;&#29366;&#24577;&#8221;</h2>
+<p class=" font-serif my-1">&#26426;&#22120;&#25351;&#20196;&#27169;&#22411; (Instruction Set Architecture) &#21482;&#26377; &#8220;&#20004;&#31181;&#8221; &#29366;&#24577;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">寄存器: rax, rbx, ..., cr3, ...</li>
-<li class=" ml-8">物理内存</li>
+<li class=" ml-8">&#23492;&#23384;&#22120;: rax, rbx, ..., cr3, ...</li>
+<li class=" ml-8">&#29289;&#29702;&#20869;&#23384;</li>
 </ul>
 <hr>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/mechanical-tm.jpg" width="400px"></p>
-<p class=" font-serif my-1">存储 “当前状态” 的需求</p>
+<p class=" font-serif my-1">&#23384;&#20648; &#8220;&#24403;&#21069;&#29366;&#24577;&#8221; &#30340;&#38656;&#27714;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">可以寻址<ul class=" list-disc font-serif">
-<li class=" ml-8">根据编号读写数据</li>
+<li class=" ml-8">&#21487;&#20197;&#23547;&#22336;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#26681;&#25454;&#32534;&#21495;&#35835;&#20889;&#25968;&#25454;</li>
 </ul>
 </li>
-<li class=" ml-8">访问速度尽可能快<ul class=" list-disc font-serif">
-<li class=" ml-8">甚至不惜规定<red>状态在掉电后丢失</red><ul class=" list-disc font-serif">
-<li class=" ml-8">机械玩具就没有这个烦恼</li>
+<li class=" ml-8">&#35775;&#38382;&#36895;&#24230;&#23613;&#21487;&#33021;&#24555;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#29978;&#33267;&#19981;&#24796;&#35268;&#23450;<red>&#29366;&#24577;&#22312;&#25481;&#30005;&#21518;&#20002;&#22833;</red><ul class=" list-disc font-serif">
+<li class=" ml-8">&#26426;&#26800;&#29609;&#20855;&#23601;&#27809;&#26377;&#36825;&#20010;&#28902;&#24700;</li>
 </ul>
 </li>
-<li class=" ml-8">也因此有了 memory hierarchy</li>
+<li class=" ml-8">&#20063;&#22240;&#27492;&#26377;&#20102; memory hierarchy</li>
 </ul>
 </li>
 </ul></div>
@@ -334,26 +334,26 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">“当前状态” 的存储</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#8220;&#24403;&#21069;&#29366;&#24577;&#8221; &#30340;&#23384;&#20648;</h2>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/throw-ball.gif" width="300px"></p>
-<p class=" font-serif my-1">Delay line: 绳子</p>
+<p class=" font-serif my-1">Delay line: &#32499;&#23376;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">因为信号衰减，需要持续放大</li>
+<li class=" ml-8">&#22240;&#20026;&#20449;&#21495;&#34928;&#20943;&#65292;&#38656;&#35201;&#25345;&#32493;&#25918;&#22823;</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">Magnetic core: <a href="https://corememoryshield.com/index.html" class=" text-amber-900">磁铁</a></p>
+<p class=" font-serif my-1">Magnetic core: <a href="https://corememoryshield.com/index.html" class=" text-amber-900">&#30913;&#38081;</a></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><a href="../../../pages/OS/2022/demos/segfault.c" class=" text-amber-900">segfault.c</a>: “Segmentation fault (core dumped)”<ul class=" list-disc font-serif">
-<li class=" ml-8"><img alt="" class="float-right" src="../../../pages/OS/img/core-memory.jpg" width="300px"> ulimit -c 可以修改 core file size (默认为 0)</li>
-<li class=" ml-8"><code>/proc/sys/kernel/core_pattern</code> 指定了 core dump 文件格式</li>
+<li class=" ml-8"><a href="../../../pages/OS/2022/demos/segfault.c" class=" text-amber-900">segfault.c</a>: &#8220;Segmentation fault (core dumped)&#8221;<ul class=" list-disc font-serif">
+<li class=" ml-8"><img alt="" class="float-right" src="../../../pages/OS/img/core-memory.jpg" width="300px"> ulimit -c &#21487;&#20197;&#20462;&#25913; core file size (&#40664;&#35748;&#20026; 0)</li>
+<li class=" ml-8"><code>/proc/sys/kernel/core_pattern</code> &#25351;&#23450;&#20102; core dump &#25991;&#20214;&#26684;&#24335;</li>
 </ul>
 </li>
 <li class=" ml-8">Non-volatile memory!</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">SRAM/DRAM: Flip-Flop 和电容</p>
+<p class=" font-serif my-1">SRAM/DRAM: Flip-Flop &#21644;&#30005;&#23481;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">今天的实现方案</li>
+<li class=" ml-8">&#20170;&#22825;&#30340;&#23454;&#29616;&#26041;&#26696;</li>
 </ul></div>
         
       
@@ -365,20 +365,20 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">开始持久化之旅</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#24320;&#22987;&#25345;&#20037;&#21270;&#20043;&#26053;</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">Persistence: “<em>A firm or obstinate continuance in a course of action in spite of difficulty or opposition</em>.”</p>
-<p class=" font-serif my-1"><red>除了 “当前状态”，我们希望更大、更多的数据能 “留下来”</red> (并且被操作系统有效地管理起来)</p>
+<p class=" font-serif my-1">Persistence: &#8220;<em>A firm or obstinate continuance in a course of action in spite of difficulty or opposition</em>.&#8221;</p>
+<p class=" font-serif my-1"><red>&#38500;&#20102; &#8220;&#24403;&#21069;&#29366;&#24577;&#8221;&#65292;&#25105;&#20204;&#24076;&#26395;&#26356;&#22823;&#12289;&#26356;&#22810;&#30340;&#25968;&#25454;&#33021; &#8220;&#30041;&#19979;&#26469;&#8221;</red> (&#24182;&#19988;&#34987;&#25805;&#20316;&#31995;&#32479;&#26377;&#25928;&#22320;&#31649;&#29702;&#36215;&#26469;)</p>
 </blockquote>
-<p class=" font-serif my-1">持久化的第一课：持久存储介质</p>
+<p class=" font-serif my-1">&#25345;&#20037;&#21270;&#30340;&#31532;&#19968;&#35838;&#65306;&#25345;&#20037;&#23384;&#20648;&#20171;&#36136;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">构成一切文件的基础<ul class=" list-disc font-serif">
-<li class=" ml-8">逻辑上是一个 bit/byte array</li>
-<li class=" ml-8">根据局部性原理，允许我们按 “大块” 读写</li>
+<li class=" ml-8">&#26500;&#25104;&#19968;&#20999;&#25991;&#20214;&#30340;&#22522;&#30784;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#36923;&#36753;&#19978;&#26159;&#19968;&#20010; bit/byte array</li>
+<li class=" ml-8">&#26681;&#25454;&#23616;&#37096;&#24615;&#21407;&#29702;&#65292;&#20801;&#35768;&#25105;&#20204;&#25353; &#8220;&#22823;&#22359;&#8221; &#35835;&#20889;</li>
 </ul>
 </li>
-<li class=" ml-8">评价方法：价格、容量、速度、可靠性<ul class=" list-disc font-serif">
-<li class=" ml-8">再次见证人类文明的高光时刻！</li>
+<li class=" ml-8">&#35780;&#20215;&#26041;&#27861;&#65306;&#20215;&#26684;&#12289;&#23481;&#37327;&#12289;&#36895;&#24230;&#12289;&#21487;&#38752;&#24615;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20877;&#27425;&#35265;&#35777;&#20154;&#31867;&#25991;&#26126;&#30340;&#39640;&#20809;&#26102;&#21051;&#65281;</li>
 </ul>
 </li>
 </ul></div>
@@ -396,7 +396,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">存储介质：磁</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#23384;&#20648;&#20171;&#36136;&#65306;&#30913;</h1></div></div></div>
         
       
       </section>
@@ -407,12 +407,12 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">“持久化” 可能没有想象的那么困难</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#8220;&#25345;&#20037;&#21270;&#8221; &#21487;&#33021;&#27809;&#26377;&#24819;&#35937;&#30340;&#37027;&#20040;&#22256;&#38590;</h2>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/mag-draw-board.jpg" width="600px"></p>
-<p class=" font-serif my-1">更进一步：用铁磁体的 “磁化方向” 表示 1-Bit 信息</p>
+<p class=" font-serif my-1">&#26356;&#36827;&#19968;&#27493;&#65306;&#29992;&#38081;&#30913;&#20307;&#30340; &#8220;&#30913;&#21270;&#26041;&#21521;&#8221; &#34920;&#31034; 1-Bit &#20449;&#24687;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">读取：放大感应电流</li>
-<li class=" ml-8">写入：电磁铁磁化磁针</li>
+<li class=" ml-8">&#35835;&#21462;&#65306;&#25918;&#22823;&#24863;&#24212;&#30005;&#27969;</li>
+<li class=" ml-8">&#20889;&#20837;&#65306;&#30005;&#30913;&#38081;&#30913;&#21270;&#30913;&#38024;</li>
 </ul></div>
         
       
@@ -424,14 +424,14 @@ section .center {
 
       
         
-        <div><h2 id="magnetic-tape-1928" class=" text-xl mt-2 pb-2 font-sans">磁带 (Magnetic Tape, 1928)</h2>
-<p class=" font-serif my-1">1D 存储设备</p>
+        <div><h2 id="magnetic-tape-1928" class=" text-xl mt-2 pb-2 font-sans">&#30913;&#24102; (Magnetic Tape, 1928)</h2>
+<p class=" font-serif my-1">1D &#23384;&#20648;&#35774;&#22791;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">把 Bits “卷起来”<ul class=" list-disc font-serif">
-<li class=" ml-8">纸带上均匀粘上铁磁性颗粒</li>
+<li class=" ml-8">&#25226; Bits &#8220;&#21367;&#36215;&#26469;&#8221;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#32440;&#24102;&#19978;&#22343;&#21248;&#31896;&#19978;&#38081;&#30913;&#24615;&#39063;&#31890;</li>
 </ul>
 </li>
-<li class=" ml-8">只需要一个机械部件 (转动) 定位</li>
+<li class=" ml-8">&#21482;&#38656;&#35201;&#19968;&#20010;&#26426;&#26800;&#37096;&#20214; (&#36716;&#21160;) &#23450;&#20301;</li>
 </ul>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/fritz.jpg" width="500px"></p></div>
         
@@ -444,31 +444,31 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">磁带：作为存储设备的分析</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#30913;&#24102;&#65306;&#20316;&#20026;&#23384;&#20648;&#35774;&#22791;&#30340;&#20998;&#26512;</h2>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/mag-tape-today.jpg" width="300px"></p>
-<p class=" font-serif my-1">分析</p>
+<p class=" font-serif my-1">&#20998;&#26512;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">价格<ul class=" list-disc font-serif">
-<li class=" ml-8"><green>非常低</green> - 都是廉价的材料</li>
+<li class=" ml-8">&#20215;&#26684;<ul class=" list-disc font-serif">
+<li class=" ml-8"><green>&#38750;&#24120;&#20302;</green> - &#37117;&#26159;&#24265;&#20215;&#30340;&#26448;&#26009;</li>
 </ul>
 </li>
-<li class=" ml-8">容量<ul class=" list-disc font-serif">
-<li class=" ml-8"><green>非常高</green></li>
+<li class=" ml-8">&#23481;&#37327;<ul class=" list-disc font-serif">
+<li class=" ml-8"><green>&#38750;&#24120;&#39640;</green></li>
 </ul>
 </li>
-<li class=" ml-8">读写速度<ul class=" list-disc font-serif">
-<li class=" ml-8">顺序读取：<green>勉强</green> - 需要等待定位</li>
-<li class=" ml-8">随机读取：<red>几乎完全不行</red></li>
+<li class=" ml-8">&#35835;&#20889;&#36895;&#24230;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#39034;&#24207;&#35835;&#21462;&#65306;<green>&#21193;&#24378;</green> - &#38656;&#35201;&#31561;&#24453;&#23450;&#20301;</li>
+<li class=" ml-8">&#38543;&#26426;&#35835;&#21462;&#65306;<red>&#20960;&#20046;&#23436;&#20840;&#19981;&#34892;</red></li>
 </ul>
 </li>
-<li class=" ml-8">可靠性<ul class=" list-disc font-serif">
-<li class=" ml-8"><red>存在机械部件</red>、<red>需要保存的环境苛刻</red></li>
+<li class=" ml-8">&#21487;&#38752;&#24615;<ul class=" list-disc font-serif">
+<li class=" ml-8"><red>&#23384;&#22312;&#26426;&#26800;&#37096;&#20214;</red>&#12289;<red>&#38656;&#35201;&#20445;&#23384;&#30340;&#29615;&#22659;&#33499;&#21051;</red></li>
 </ul>
 </li>
 </ul>
-<p class=" font-serif my-1">今天的应用场景</p>
+<p class=" font-serif my-1">&#20170;&#22825;&#30340;&#24212;&#29992;&#22330;&#26223;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">冷数据的存档和备份</li>
+<li class=" ml-8">&#20919;&#25968;&#25454;&#30340;&#23384;&#26723;&#21644;&#22791;&#20221;</li>
 </ul></div>
         
       
@@ -480,15 +480,15 @@ section .center {
 
       
         
-        <div><h2 id="magnetic-drum-1932" class=" text-xl mt-2 pb-2 font-sans">磁鼓 (Magnetic Drum, 1932)</h2>
-<p class=" font-serif my-1">1D → 1.5D (1D x n)</p>
+        <div><h2 id="magnetic-drum-1932" class=" text-xl mt-2 pb-2 font-sans">&#30913;&#40723; (Magnetic Drum, 1932)</h2>
+<p class=" font-serif my-1">1D &#8594; 1.5D (1D x n)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">用旋转的二维平面存储数据<ul class=" list-disc font-serif">
-<li class=" ml-8">无法内卷，容量变小</li>
+<li class=" ml-8">&#29992;&#26059;&#36716;&#30340;&#20108;&#32500;&#24179;&#38754;&#23384;&#20648;&#25968;&#25454;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#26080;&#27861;&#20869;&#21367;&#65292;&#23481;&#37327;&#21464;&#23567;</li>
 </ul>
 </li>
-<li class=" ml-8">读写延迟不会超过旋转周期<ul class=" list-disc font-serif">
-<li class=" ml-8">随机读写速度大幅提升</li>
+<li class=" ml-8">&#35835;&#20889;&#24310;&#36831;&#19981;&#20250;&#36229;&#36807;&#26059;&#36716;&#21608;&#26399;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#38543;&#26426;&#35835;&#20889;&#36895;&#24230;&#22823;&#24133;&#25552;&#21319;</li>
 </ul>
 </li>
 </ul>
@@ -503,10 +503,10 @@ section .center {
 
       
         
-        <div><h2 id="hard-disk-1956" class=" text-xl mt-2 pb-2 font-sans">磁盘 (Hard Disk, 1956)</h2>
-<p class=" font-serif my-1">1D → 2.5D (2D x n)</p>
+        <div><h2 id="hard-disk-1956" class=" text-xl mt-2 pb-2 font-sans">&#30913;&#30424; (Hard Disk, 1956)</h2>
+<p class=" font-serif my-1">1D &#8594; 2.5D (2D x n)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">在二维平面上放置许多磁带</li>
+<li class=" ml-8">&#22312;&#20108;&#32500;&#24179;&#38754;&#19978;&#25918;&#32622;&#35768;&#22810;&#30913;&#24102;</li>
 </ul>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/disk-mechanism.jpg" width="700px"></p></div>
         
@@ -519,8 +519,8 @@ section .center {
 
       
         
-        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">磁盘 (cont'd)</h2>
-<p class=" font-serif my-1">克服许多工程挑战</p>
+        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">&#30913;&#30424; (cont'd)</h2>
+<p class=" font-serif my-1">&#20811;&#26381;&#35768;&#22810;&#24037;&#31243;&#25361;&#25112;</p>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/hard-disk-mag.jpg" width="800px"></p></div>
         
       
@@ -532,30 +532,30 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">磁盘：作为存储设备的分析</h2>
-<p class=" font-serif my-1">分析</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#30913;&#30424;&#65306;&#20316;&#20026;&#23384;&#20648;&#35774;&#22791;&#30340;&#20998;&#26512;</h2>
+<p class=" font-serif my-1">&#20998;&#26512;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">价格<ul class=" list-disc font-serif">
-<li class=" ml-8"><green>低</green> - 密度越高，成本越低</li>
+<li class=" ml-8">&#20215;&#26684;<ul class=" list-disc font-serif">
+<li class=" ml-8"><green>&#20302;</green> - &#23494;&#24230;&#36234;&#39640;&#65292;&#25104;&#26412;&#36234;&#20302;</li>
 </ul>
 </li>
-<li class=" ml-8">容量<ul class=" list-disc font-serif">
-<li class=" ml-8"><green>高</green> (2.5D) - 平面上可以有数万个磁道</li>
+<li class=" ml-8">&#23481;&#37327;<ul class=" list-disc font-serif">
+<li class=" ml-8"><green>&#39640;</green> (2.5D) - &#24179;&#38754;&#19978;&#21487;&#20197;&#26377;&#25968;&#19975;&#20010;&#30913;&#36947;</li>
 </ul>
 </li>
-<li class=" ml-8">读写速度<ul class=" list-disc font-serif">
-<li class=" ml-8">顺序读取：<green>较高</green></li>
-<li class=" ml-8">随机读取：<green>勉强</green></li>
+<li class=" ml-8">&#35835;&#20889;&#36895;&#24230;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#39034;&#24207;&#35835;&#21462;&#65306;<green>&#36739;&#39640;</green></li>
+<li class=" ml-8">&#38543;&#26426;&#35835;&#21462;&#65306;<green>&#21193;&#24378;</green></li>
 </ul>
 </li>
-<li class=" ml-8">可靠性<ul class=" list-disc font-serif">
-<li class=" ml-8"><red>存在机械部件，磁头划伤盘片导致数据损坏</red></li>
+<li class=" ml-8">&#21487;&#38752;&#24615;<ul class=" list-disc font-serif">
+<li class=" ml-8"><red>&#23384;&#22312;&#26426;&#26800;&#37096;&#20214;&#65292;&#30913;&#22836;&#21010;&#20260;&#30424;&#29255;&#23548;&#33268;&#25968;&#25454;&#25439;&#22351;</red></li>
 </ul>
 </li>
 </ul>
-<p class=" font-serif my-1">今天的应用场景</p>
+<p class=" font-serif my-1">&#20170;&#22825;&#30340;&#24212;&#29992;&#22330;&#26223;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">计算机系统的主力数据存储 (<del>海量数据：便宜才是王道</del>)</li>
+<li class=" ml-8">&#35745;&#31639;&#26426;&#31995;&#32479;&#30340;&#20027;&#21147;&#25968;&#25454;&#23384;&#20648; (<del>&#28023;&#37327;&#25968;&#25454;&#65306;&#20415;&#23452;&#25165;&#26159;&#29579;&#36947;</del>)</li>
 </ul></div>
         
       
@@ -567,25 +567,25 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">磁盘：性能调优</h2>
-<p class=" font-serif my-1">为了读/写一个扇区</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#30913;&#30424;&#65306;&#24615;&#33021;&#35843;&#20248;</h2>
+<p class=" font-serif my-1">&#20026;&#20102;&#35835;/&#20889;&#19968;&#20010;&#25159;&#21306;</p>
 <ol class=" list-decimal font-serif">
-<li class=" ml-8">读写头需要到对应的磁道<ul class=" list-disc font-serif">
-<li class=" ml-8">7200rpm → 120rps → “寻道” 时间 8.3ms</li>
+<li class=" ml-8">&#35835;&#20889;&#22836;&#38656;&#35201;&#21040;&#23545;&#24212;&#30340;&#30913;&#36947;<ul class=" list-disc font-serif">
+<li class=" ml-8">7200rpm &#8594; 120rps &#8594; &#8220;&#23547;&#36947;&#8221; &#26102;&#38388; 8.3ms</li>
 </ul>
 </li>
-<li class=" ml-8">转轴将盘片旋转到读写头的位置<ul class=" list-disc font-serif">
-<li class=" ml-8">读写头移动时间通常也需要几个 ms</li>
+<li class=" ml-8">&#36716;&#36724;&#23558;&#30424;&#29255;&#26059;&#36716;&#21040;&#35835;&#20889;&#22836;&#30340;&#20301;&#32622;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#35835;&#20889;&#22836;&#31227;&#21160;&#26102;&#38388;&#36890;&#24120;&#20063;&#38656;&#35201;&#20960;&#20010; ms</li>
 </ul>
 </li>
 </ol>
 <hr>
-<p class=" font-serif my-1">通过缓存/调度等缓解</p>
+<p class=" font-serif my-1">&#36890;&#36807;&#32531;&#23384;/&#35843;&#24230;&#31561;&#32531;&#35299;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">例如著名的 “电梯” 调度算法</li>
-<li class=" ml-8">现代 HDD 都有很好的 firmware 管理磁盘 I/O 调度<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20363;&#22914;&#33879;&#21517;&#30340; &#8220;&#30005;&#26799;&#8221; &#35843;&#24230;&#31639;&#27861;</li>
+<li class=" ml-8">&#29616;&#20195; HDD &#37117;&#26377;&#24456;&#22909;&#30340; firmware &#31649;&#29702;&#30913;&#30424; I/O &#35843;&#24230;<ul class=" list-disc font-serif">
 <li class=" ml-8"><code>/sys/block/[dev]/queue</code></li>
-<li class=" ml-8"><code>[mq-deadline] none</code> (读优先；但写也不至于饿死)</li>
+<li class=" ml-8"><code>[mq-deadline] none</code> (&#35835;&#20248;&#20808;&#65307;&#20294;&#20889;&#20063;&#19981;&#33267;&#20110;&#39295;&#27515;)</li>
 </ul>
 </li>
 </ul></div>
@@ -599,14 +599,14 @@ section .center {
 
       
         
-        <div><h2 id="floppy-disk-1971" class=" text-xl mt-2 pb-2 font-sans">软盘 (Floppy Disk, 1971)</h2>
+        <div><h2 id="floppy-disk-1971" class=" text-xl mt-2 pb-2 font-sans">&#36719;&#30424; (Floppy Disk, 1971)</h2>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/pal-floppy.jpg" width="280px"></p>
-<p class=" font-serif my-1">把读写头和盘片分开——实现数据移动</p>
+<p class=" font-serif my-1">&#25226;&#35835;&#20889;&#22836;&#21644;&#30424;&#29255;&#20998;&#24320;&#8212;&#8212;&#23454;&#29616;&#25968;&#25454;&#31227;&#21160;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">计算机上的软盘驱动器 (<a href="https://www.bilibili.com/video/BV1BS4y1X76n" class=" text-amber-900">drive</a>) + 可移动的盘片<ul class=" list-disc font-serif">
+<li class=" ml-8">&#35745;&#31639;&#26426;&#19978;&#30340;&#36719;&#30424;&#39537;&#21160;&#22120; (<a href="https://www.bilibili.com/video/BV1BS4y1X76n" class=" text-amber-900">drive</a>) + &#21487;&#31227;&#21160;&#30340;&#30424;&#29255;<ul class=" list-disc font-serif">
 <li class=" ml-8">8" (1971), 5.25" (1975), 3.5" (1981)<ul class=" list-disc font-serif">
-<li class=" ml-8">最初的软盘成本很低，就是个纸壳子</li>
-<li class=" ml-8">3.5 英寸软盘为了提高可靠性，已经是 “硬” 的了</li>
+<li class=" ml-8">&#26368;&#21021;&#30340;&#36719;&#30424;&#25104;&#26412;&#24456;&#20302;&#65292;&#23601;&#26159;&#20010;&#32440;&#22771;&#23376;</li>
+<li class=" ml-8">3.5 &#33521;&#23544;&#36719;&#30424;&#20026;&#20102;&#25552;&#39640;&#21487;&#38752;&#24615;&#65292;&#24050;&#32463;&#26159; &#8220;&#30828;&#8221; &#30340;&#20102;</li>
 </ul>
 </li>
 </ul>
@@ -623,30 +623,30 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">软盘：作为存储设备的分析</h2>
-<p class=" font-serif my-1">分析</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#36719;&#30424;&#65306;&#20316;&#20026;&#23384;&#20648;&#35774;&#22791;&#30340;&#20998;&#26512;</h2>
+<p class=" font-serif my-1">&#20998;&#26512;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">价格<ul class=" list-disc font-serif">
-<li class=" ml-8"><green>低</green> - 塑料、盘片和一些小材料</li>
+<li class=" ml-8">&#20215;&#26684;<ul class=" list-disc font-serif">
+<li class=" ml-8"><green>&#20302;</green> - &#22609;&#26009;&#12289;&#30424;&#29255;&#21644;&#19968;&#20123;&#23567;&#26448;&#26009;</li>
 </ul>
 </li>
-<li class=" ml-8">容量<ul class=" list-disc font-serif">
-<li class=" ml-8"><red>低</red> (暴露的存储介质，密度受限)</li>
+<li class=" ml-8">&#23481;&#37327;<ul class=" list-disc font-serif">
+<li class=" ml-8"><red>&#20302;</red> (&#26292;&#38706;&#30340;&#23384;&#20648;&#20171;&#36136;&#65292;&#23494;&#24230;&#21463;&#38480;)</li>
 </ul>
 </li>
-<li class=" ml-8">读写速度<ul class=" list-disc font-serif">
-<li class=" ml-8">顺序/随机读取：<red>低</red></li>
+<li class=" ml-8">&#35835;&#20889;&#36895;&#24230;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#39034;&#24207;/&#38543;&#26426;&#35835;&#21462;&#65306;<red>&#20302;</red></li>
 </ul>
 </li>
-<li class=" ml-8">可靠性<ul class=" list-disc font-serif">
-<li class=" ml-8"><red>低</red> (暴露的存储介质)</li>
+<li class=" ml-8">&#21487;&#38752;&#24615;<ul class=" list-disc font-serif">
+<li class=" ml-8"><red>&#20302;</red> (&#26292;&#38706;&#30340;&#23384;&#20648;&#20171;&#36136;)</li>
 </ul>
 </li>
 </ul>
-<p class=" font-serif my-1">今天的应用场景</p>
+<p class=" font-serif my-1">&#20170;&#22825;&#30340;&#24212;&#29992;&#22330;&#26223;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">躺在博物馆供人参观</li>
-<li class=" ml-8">彻底被 USB Flash Disk 杀死</li>
+<li class=" ml-8">&#36538;&#22312;&#21338;&#29289;&#39302;&#20379;&#20154;&#21442;&#35266;</li>
+<li class=" ml-8">&#24443;&#24213;&#34987; USB Flash Disk &#26432;&#27515;</li>
 </ul></div>
         
       
@@ -662,7 +662,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">存储介质：坑</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#23384;&#20648;&#20171;&#36136;&#65306;&#22353;</h1></div></div></div>
         
       
       </section>
@@ -673,7 +673,7 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">坑：天然容易 “阅读” 的数据存储</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#22353;&#65306;&#22825;&#28982;&#23481;&#26131; &#8220;&#38405;&#35835;&#8221; &#30340;&#25968;&#25454;&#23384;&#20648;</h2>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/sos-on-beach.jpg" width="500px"></p>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/fortran-card.jpg" width="600px"></p></div>
         
@@ -688,11 +688,11 @@ section .center {
         
         <div><h2 id="compact-disk-cd-1980" class=" text-xl mt-2 pb-2 font-sans">Compact Disk (CD, 1980)</h2>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/compactdisc.jpg" width="300px"></p>
-<p class=" font-serif my-1">在反射平面 (1) 上挖上粗糙的坑 (0)</p>
+<p class=" font-serif my-1">&#22312;&#21453;&#23556;&#24179;&#38754; (1) &#19978;&#25366;&#19978;&#31895;&#31961;&#30340;&#22353; (0)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">激光扫过表面，就能读出坑的信息来<ul class=" list-disc font-serif">
-<li class=" ml-8">飞利浦 (碟片) 和索尼 (数字音频) 发明</li>
-<li class=" ml-8">~700 MiB，在当时是非常巨大的容量</li>
+<li class=" ml-8">&#28608;&#20809;&#25195;&#36807;&#34920;&#38754;&#65292;&#23601;&#33021;&#35835;&#20986;&#22353;&#30340;&#20449;&#24687;&#26469;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#39134;&#21033;&#28006; (&#30879;&#29255;) &#21644;&#32034;&#23612; (&#25968;&#23383;&#38899;&#39057;) &#21457;&#26126;</li>
+<li class=" ml-8">~700 MiB&#65292;&#22312;&#24403;&#26102;&#26159;&#38750;&#24120;&#24040;&#22823;&#30340;&#23481;&#37327;</li>
 </ul>
 </li>
 </ul>
@@ -708,17 +708,17 @@ section .center {
       
         
         <div><h2 id="cd-rw" class=" text-xl mt-2 pb-2 font-sans">CD-RW</h2>
-<p class=" font-serif my-1">能否克服只读的限制？</p>
+<p class=" font-serif my-1">&#33021;&#21542;&#20811;&#26381;&#21482;&#35835;&#30340;&#38480;&#21046;&#65311;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">方法 1<ul class=" list-disc font-serif">
-<li class=" ml-8">用激光器烧出一个坑来 (“刻盘”)</li>
-<li class=" ml-8">使用持久化数据结构 (append-only)</li>
+<li class=" ml-8">&#26041;&#27861; 1<ul class=" list-disc font-serif">
+<li class=" ml-8">&#29992;&#28608;&#20809;&#22120;&#28903;&#20986;&#19968;&#20010;&#22353;&#26469; (&#8220;&#21051;&#30424;&#8221;)</li>
+<li class=" ml-8">&#20351;&#29992;&#25345;&#20037;&#21270;&#25968;&#25454;&#32467;&#26500; (append-only)</li>
 </ul>
 </li>
 </ul>
 <hr>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">方法 2：改变材料的反光特性<ul class=" list-disc font-serif">
+<li class=" ml-8">&#26041;&#27861; 2&#65306;&#25913;&#21464;&#26448;&#26009;&#30340;&#21453;&#20809;&#29305;&#24615;<ul class=" list-disc font-serif">
 <li class=" ml-8">PCM (Phase-change Material)</li>
 <li class=" ml-8"><a href="https://www.scientificamerican.com/article/how-do-rewriteable-cds-wo/" class=" text-amber-900">How do rewriteable CDs work?</a></li>
 </ul>
@@ -734,21 +734,21 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">挖坑的技术进展</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25366;&#22353;&#30340;&#25216;&#26415;&#36827;&#23637;</h2>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/ps5-drive.jpg" width="500px"></p>
 <p class=" font-serif my-1">CD (740 MB)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">780nm 红外激光</li>
+<li class=" ml-8">780nm &#32418;&#22806;&#28608;&#20809;</li>
 </ul>
 <hr>
 <p class=" font-serif my-1">DVD (4.7 GB)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">635nm 红色激光</li>
+<li class=" ml-8">635nm &#32418;&#33394;&#28608;&#20809;</li>
 </ul>
 <hr>
 <p class=" font-serif my-1">Blue Ray (100 GB)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">405nm 蓝紫色激光</li>
+<li class=" ml-8">405nm &#34013;&#32043;&#33394;&#28608;&#20809;</li>
 </ul></div>
         
       
@@ -760,30 +760,30 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">光盘：作为存储设备的分析</h2>
-<p class=" font-serif my-1">分析</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20809;&#30424;&#65306;&#20316;&#20026;&#23384;&#20648;&#35774;&#22791;&#30340;&#20998;&#26512;</h2>
+<p class=" font-serif my-1">&#20998;&#26512;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">价格<ul class=" list-disc font-serif">
-<li class=" ml-8"><green>很低</green> (而且很容易通过 “压盘” 复制)</li>
+<li class=" ml-8">&#20215;&#26684;<ul class=" list-disc font-serif">
+<li class=" ml-8"><green>&#24456;&#20302;</green> (&#32780;&#19988;&#24456;&#23481;&#26131;&#36890;&#36807; &#8220;&#21387;&#30424;&#8221; &#22797;&#21046;)</li>
 </ul>
 </li>
-<li class=" ml-8">容量<ul class=" list-disc font-serif">
-<li class=" ml-8"><green>高</green></li>
+<li class=" ml-8">&#23481;&#37327;<ul class=" list-disc font-serif">
+<li class=" ml-8"><green>&#39640;</green></li>
 </ul>
 </li>
-<li class=" ml-8">读写速度<ul class=" list-disc font-serif">
-<li class=" ml-8"><green>顺序读取速度高；随机读取勉强</green></li>
-<li class=" ml-8"><red>写入速度低</red> (挖坑容易填坑难)</li>
+<li class=" ml-8">&#35835;&#20889;&#36895;&#24230;<ul class=" list-disc font-serif">
+<li class=" ml-8"><green>&#39034;&#24207;&#35835;&#21462;&#36895;&#24230;&#39640;&#65307;&#38543;&#26426;&#35835;&#21462;&#21193;&#24378;</green></li>
+<li class=" ml-8"><red>&#20889;&#20837;&#36895;&#24230;&#20302;</red> (&#25366;&#22353;&#23481;&#26131;&#22635;&#22353;&#38590;)</li>
 </ul>
 </li>
-<li class=" ml-8">可靠性<ul class=" list-disc font-serif">
-<li class=" ml-8"><green>高</green></li>
+<li class=" ml-8">&#21487;&#38752;&#24615;<ul class=" list-disc font-serif">
+<li class=" ml-8"><green>&#39640;</green></li>
 </ul>
 </li>
 </ul>
-<p class=" font-serif my-1">今天的应用场景</p>
+<p class=" font-serif my-1">&#20170;&#22825;&#30340;&#24212;&#29992;&#22330;&#26223;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">数字媒体的分发 (即将被互联网 “按需分发” 淘汰)</li>
+<li class=" ml-8">&#25968;&#23383;&#23186;&#20307;&#30340;&#20998;&#21457; (&#21363;&#23558;&#34987;&#20114;&#32852;&#32593; &#8220;&#25353;&#38656;&#20998;&#21457;&#8221; &#28120;&#27760;)</li>
 </ul></div>
         
       
@@ -795,7 +795,7 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">“挖坑”：不止是数据存储</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#8220;&#25366;&#22353;&#8221;&#65306;&#19981;&#27490;&#26159;&#25968;&#25454;&#23384;&#20648;</h2>
 <p class=" font-serif my-1"><br></p>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/EUV.png" width="900px"></p></div>
         
@@ -812,7 +812,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="finally" class=" text-2xl mt-2 font-sans">Finally, 电</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="finally" class=" text-2xl mt-2 font-sans">Finally, &#30005;</h1></div></div></div>
         
       
       </section>
@@ -824,15 +824,15 @@ section .center {
       
         
         <div><h2 id="solid-state-drive-1991" class=" text-xl mt-2 pb-2 font-sans">Solid State Drive (1991)</h2>
-<p class=" font-serif my-1">之前的持久存储介质都有致命的缺陷</p>
+<p class=" font-serif my-1">&#20043;&#21069;&#30340;&#25345;&#20037;&#23384;&#20648;&#20171;&#36136;&#37117;&#26377;&#33268;&#21629;&#30340;&#32570;&#38519;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">磁：机械部件导致 ms 级延迟</li>
-<li class=" ml-8">坑 (光): 一旦挖坑，填坑很困难 (CD 是只读的)</li>
+<li class=" ml-8">&#30913;&#65306;&#26426;&#26800;&#37096;&#20214;&#23548;&#33268; ms &#32423;&#24310;&#36831;</li>
+<li class=" ml-8">&#22353; (&#20809;): &#19968;&#26086;&#25366;&#22353;&#65292;&#22635;&#22353;&#24456;&#22256;&#38590; (CD &#26159;&#21482;&#35835;&#30340;)</li>
 </ul>
-<p class=" font-serif my-1">最后还得靠<red>电</red> (电路) 解决问题</p>
+<p class=" font-serif my-1">&#26368;&#21518;&#36824;&#24471;&#38752;<red>&#30005;</red> (&#30005;&#36335;) &#35299;&#20915;&#38382;&#39064;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">Flash Memory “闪存”<ul class=" list-disc font-serif">
-<li class=" ml-8">Floating gate 的充电/放电实现 1-bit 信息的存储</li>
+<li class=" ml-8">Flash Memory &#8220;&#38378;&#23384;&#8221;<ul class=" list-disc font-serif">
+<li class=" ml-8">Floating gate &#30340;&#20805;&#30005;/&#25918;&#30005;&#23454;&#29616; 1-bit &#20449;&#24687;&#30340;&#23384;&#20648;</li>
 </ul>
 </li>
 </ul>
@@ -847,32 +847,32 @@ section .center {
 
       
         
-        <div><h2 id="flash-memory" class=" text-xl mt-2 pb-2 font-sans">Flash Memory: 几乎全是优点</h2>
-<p class=" font-serif my-1">分析</p>
+        <div><h2 id="flash-memory" class=" text-xl mt-2 pb-2 font-sans">Flash Memory: &#20960;&#20046;&#20840;&#26159;&#20248;&#28857;</h2>
+<p class=" font-serif my-1">&#20998;&#26512;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">价格<ul class=" list-disc font-serif">
-<li class=" ml-8"><green>低</green> (大规模集成电路，便宜)</li>
+<li class=" ml-8">&#20215;&#26684;<ul class=" list-disc font-serif">
+<li class=" ml-8"><green>&#20302;</green> (&#22823;&#35268;&#27169;&#38598;&#25104;&#30005;&#36335;&#65292;&#20415;&#23452;)</li>
 </ul>
 </li>
-<li class=" ml-8">容量<ul class=" list-disc font-serif">
-<li class=" ml-8"><green>高</green> (3D 空间里每个 $(x, y, z)$ 都是一个 bit)</li>
+<li class=" ml-8">&#23481;&#37327;<ul class=" list-disc font-serif">
+<li class=" ml-8"><green>&#39640;</green> (3D &#31354;&#38388;&#37324;&#27599;&#20010; $(x, y, z)$ &#37117;&#26159;&#19968;&#20010; bit)</li>
 </ul>
 </li>
-<li class=" ml-8">读写速度<ul class=" list-disc font-serif">
-<li class=" ml-8"><green>高</green> (直接通过电路读写)<ul class=" list-disc font-serif">
-<li class=" ml-8">不讲道理的特性：容量越大，速度越快 (电路级并行)</li>
-<li class=" ml-8">快到淘汰了旧的 SATA 接口标准 (NVMe)</li>
+<li class=" ml-8">&#35835;&#20889;&#36895;&#24230;<ul class=" list-disc font-serif">
+<li class=" ml-8"><green>&#39640;</green> (&#30452;&#25509;&#36890;&#36807;&#30005;&#36335;&#35835;&#20889;)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#19981;&#35762;&#36947;&#29702;&#30340;&#29305;&#24615;&#65306;&#23481;&#37327;&#36234;&#22823;&#65292;&#36895;&#24230;&#36234;&#24555; (&#30005;&#36335;&#32423;&#24182;&#34892;)</li>
+<li class=" ml-8">&#24555;&#21040;&#28120;&#27760;&#20102;&#26087;&#30340; SATA &#25509;&#21475;&#26631;&#20934; (NVMe)</li>
 </ul>
 </li>
 </ul>
 </li>
-<li class=" ml-8">可靠性<ul class=" list-disc font-serif">
-<li class=" ml-8"><green>高</green> (没有机械部件，随便摔)</li>
+<li class=" ml-8">&#21487;&#38752;&#24615;<ul class=" list-disc font-serif">
+<li class=" ml-8"><green>&#39640;</green> (&#27809;&#26377;&#26426;&#26800;&#37096;&#20214;&#65292;&#38543;&#20415;&#25684;)</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">但有一个意想不到的<red>缺点</red> (大家知道是什么吗？)</p></div>
+<p class=" font-serif my-1">&#20294;&#26377;&#19968;&#20010;&#24847;&#24819;&#19981;&#21040;&#30340;<red>&#32570;&#28857;</red> (&#22823;&#23478;&#30693;&#36947;&#26159;&#20160;&#20040;&#21527;&#65311;)</p></div>
         
       
       </section>
@@ -885,11 +885,11 @@ section .center {
         
         <div><h2 id="usb-flash-disk-1999" class=" text-xl mt-2 pb-2 font-sans">USB Flash Disk (1999)</h2>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/upan.jpg" width="400px"></p>
-<p class=" font-serif my-1">优盘容量大、速度快、相当便宜</p>
+<p class=" font-serif my-1">&#20248;&#30424;&#23481;&#37327;&#22823;&#12289;&#36895;&#24230;&#24555;&#12289;&#30456;&#24403;&#20415;&#23452;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">很快就取代了软盘，成为了人手 $n$ 个的存储介质<ul class=" list-disc font-serif">
+<li class=" ml-8">&#24456;&#24555;&#23601;&#21462;&#20195;&#20102;&#36719;&#30424;&#65292;&#25104;&#20026;&#20102;&#20154;&#25163; $n$ &#20010;&#30340;&#23384;&#20648;&#20171;&#36136;<ul class=" list-disc font-serif">
 <li class=" ml-8">Compact Flash (CF, 1994)</li>
-<li class=" ml-8">USB Flash Disk (1999, “朗科”)</li>
+<li class=" ml-8">USB Flash Disk (1999, &#8220;&#26391;&#31185;&#8221;)</li>
 </ul>
 </li>
 </ul></div>
@@ -897,11 +897,11 @@ section .center {
       
          <div class="fragment"> 
         <div><hr>
-<p class=" font-serif my-1">放电 (erase) 做不到 100% 放干净</p>
+<p class=" font-serif my-1">&#25918;&#30005; (erase) &#20570;&#19981;&#21040; 100% &#25918;&#24178;&#20928;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">放电<red>数千/数万次</red>以后，就好像是 “充电” 状态了</li>
-<li class=" ml-8">dead cell; “wear out”<ul class=" list-disc font-serif">
-<li class=" ml-8">必须解决这个问题 SSD 才能实用</li>
+<li class=" ml-8">&#25918;&#30005;<red>&#25968;&#21315;/&#25968;&#19975;&#27425;</red>&#20197;&#21518;&#65292;&#23601;&#22909;&#20687;&#26159; &#8220;&#20805;&#30005;&#8221; &#29366;&#24577;&#20102;</li>
+<li class=" ml-8">dead cell; &#8220;wear out&#8221;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#24517;&#39035;&#35299;&#20915;&#36825;&#20010;&#38382;&#39064; SSD &#25165;&#33021;&#23454;&#29992;</li>
 </ul>
 </li>
 </ul></div>
@@ -915,14 +915,14 @@ section .center {
 
       
         
-        <div><h2 id="nand-wear-out" class=" text-xl mt-2 pb-2 font-sans">NAND Wear-Out 的解决：软件定义磁盘</h2>
-<p class=" font-serif my-1">每一个 SSD 里都藏了一个完整的计算机系统</p>
+        <div><h2 id="nand-wear-out" class=" text-xl mt-2 pb-2 font-sans">NAND Wear-Out &#30340;&#35299;&#20915;&#65306;&#36719;&#20214;&#23450;&#20041;&#30913;&#30424;</h2>
+<p class=" font-serif my-1">&#27599;&#19968;&#20010; SSD &#37324;&#37117;&#34255;&#20102;&#19968;&#20010;&#23436;&#25972;&#30340;&#35745;&#31639;&#26426;&#31995;&#32479;</p>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/ssd.png" width="700px"></p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">FTL: Flash Translation Layer<ul class=" list-disc font-serif">
-<li class=" ml-8">“Wear Leveling”: 软件管理那些可能出问题的 blocks</li>
-<li class=" ml-8">像是 managed runtime (with garbage collection)<ul class=" list-disc font-serif">
-<li class=" ml-8">请阅读教科书</li>
+<li class=" ml-8">&#8220;Wear Leveling&#8221;: &#36719;&#20214;&#31649;&#29702;&#37027;&#20123;&#21487;&#33021;&#20986;&#38382;&#39064;&#30340; blocks</li>
+<li class=" ml-8">&#20687;&#26159; managed runtime (with garbage collection)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#35831;&#38405;&#35835;&#25945;&#31185;&#20070;</li>
 </ul>
 </li>
 </ul>
@@ -938,31 +938,31 @@ section .center {
 
       
         
-        <div><h2 id="ssd" class=" text-xl mt-2 pb-2 font-sans">优盘和 SSD 的区别</h2>
-<p class=" font-serif my-1">优盘, SD 卡, SSD 都是 NAND Flash</p>
+        <div><h2 id="ssd" class=" text-xl mt-2 pb-2 font-sans">&#20248;&#30424;&#21644; SSD &#30340;&#21306;&#21035;</h2>
+<p class=" font-serif my-1">&#20248;&#30424;, SD &#21345;, SSD &#37117;&#26159; NAND Flash</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">但软件/硬件系统的复杂程度不同，效率/寿命也不同<ul class=" list-disc font-serif">
-<li class=" ml-8">典型的 SSD<ul class=" list-disc font-serif">
-<li class=" ml-8">CPU, on-chip RAM, 缓存, store buffer, 操作系统 ...</li>
-<li class=" ml-8">寿命: ~1 PiB 数据写入 (~1,000 年寿命)
+<li class=" ml-8">&#20294;&#36719;&#20214;/&#30828;&#20214;&#31995;&#32479;&#30340;&#22797;&#26434;&#31243;&#24230;&#19981;&#21516;&#65292;&#25928;&#29575;/&#23551;&#21629;&#20063;&#19981;&#21516;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20856;&#22411;&#30340; SSD<ul class=" list-disc font-serif">
+<li class=" ml-8">CPU, on-chip RAM, &#32531;&#23384;, store buffer, &#25805;&#20316;&#31995;&#32479; ...</li>
+<li class=" ml-8">&#23551;&#21629;: ~1 PiB &#25968;&#25454;&#20889;&#20837; (~1,000 &#24180;&#23551;&#21629;)
 <img alt="" class="float-right" src="../../../pages/OS/img/fake-hdd.jpg" width="400px"></li>
 </ul>
 </li>
-<li class=" ml-8">SD 卡<ul class=" list-disc font-serif">
-<li class=" ml-8">SDHC 标准未规定<ul class=" list-disc font-serif">
-<li class=" ml-8">黑心商家一定会偷工减料 (毕竟接口完全一样)</li>
+<li class=" ml-8">SD &#21345;<ul class=" list-disc font-serif">
+<li class=" ml-8">SDHC &#26631;&#20934;&#26410;&#35268;&#23450;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#40657;&#24515;&#21830;&#23478;&#19968;&#23450;&#20250;&#20599;&#24037;&#20943;&#26009; (&#27605;&#31455;&#25509;&#21475;&#23436;&#20840;&#19968;&#26679;)</li>
 </ul>
 </li>
-<li class=" ml-8">但良心厂家依然有 <a href="https://www.bunniestudios.com/blog/?p=898" class=" text-amber-900">ARM 芯片</a></li>
+<li class=" ml-8">&#20294;&#33391;&#24515;&#21378;&#23478;&#20381;&#28982;&#26377; <a href="https://www.bunniestudios.com/blog/?p=898" class=" text-amber-900">ARM &#33455;&#29255;</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1"><red>一定不要用便宜的优盘保存重要数据</red></p>
+<p class=" font-serif my-1"><red>&#19968;&#23450;&#19981;&#35201;&#29992;&#20415;&#23452;&#30340;&#20248;&#30424;&#20445;&#23384;&#37325;&#35201;&#25968;&#25454;</red></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">× 宝 9.9 包邮的优盘，芯片一毛钱都能省……</li>
+<li class=" ml-8">&#215; &#23453; 9.9 &#21253;&#37038;&#30340;&#20248;&#30424;&#65292;&#33455;&#29255;&#19968;&#27611;&#38065;&#37117;&#33021;&#30465;&#8230;&#8230;</li>
 </ul></div>
         
       
@@ -974,28 +974,28 @@ section .center {
 
       
         
-        <div><h2 id="ftl" class=" text-xl mt-2 pb-2 font-sans">FTL: 性能、可靠性、安全性的难题</h2>
+        <div><h2 id="ftl" class=" text-xl mt-2 pb-2 font-sans">FTL: &#24615;&#33021;&#12289;&#21487;&#38752;&#24615;&#12289;&#23433;&#20840;&#24615;&#30340;&#38590;&#39064;</h2>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/chenguanxi.jpg" width="300px"></p>
-<p class=" font-serif my-1">大家可记得修电脑引发的血案？</p>
+<p class=" font-serif my-1">&#22823;&#23478;&#21487;&#35760;&#24471;&#20462;&#30005;&#33041;&#24341;&#21457;&#30340;&#34880;&#26696;&#65311;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">首先，(快速) 格式化是没用的<ul class=" list-disc font-serif">
-<li class=" ml-8">(M5 会告诉你这一点)</li>
+<li class=" ml-8">&#39318;&#20808;&#65292;(&#24555;&#36895;) &#26684;&#24335;&#21270;&#26159;&#27809;&#29992;&#30340;<ul class=" list-disc font-serif">
+<li class=" ml-8">(M5 &#20250;&#21578;&#35785;&#20320;&#36825;&#19968;&#28857;)</li>
 </ul>
 </li>
-<li class=" ml-8">在你理解了 FTL 之后<ul class=" list-disc font-serif">
-<li class=" ml-8">即便格式化后写入数据 (不写满)<ul class=" list-disc font-serif">
-<li class=" ml-8">同一个 logic block 被覆盖，physical block 依然存储了数据 (copy-on-write)</li>
-<li class=" ml-8">需要文件系统加密</li>
+<li class=" ml-8">&#22312;&#20320;&#29702;&#35299;&#20102; FTL &#20043;&#21518;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21363;&#20415;&#26684;&#24335;&#21270;&#21518;&#20889;&#20837;&#25968;&#25454; (&#19981;&#20889;&#28385;)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21516;&#19968;&#20010; logic block &#34987;&#35206;&#30422;&#65292;physical block &#20381;&#28982;&#23384;&#20648;&#20102;&#25968;&#25454; (copy-on-write)</li>
+<li class=" ml-8">&#38656;&#35201;&#25991;&#20214;&#31995;&#32479;&#21152;&#23494;</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">另一个 memory system 相关的安全问题</p>
+<p class=" font-serif my-1">&#21478;&#19968;&#20010; memory system &#30456;&#20851;&#30340;&#23433;&#20840;&#38382;&#39064;</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><a href="https://ieeexplore.ieee.org/document/8708249" class=" text-amber-900">Row Hammer</a> (TCAD'19)<ul class=" list-disc font-serif">
-<li class=" ml-8">更重的负载可能会 “干扰” 临近的 DRAM Cells</li>
+<li class=" ml-8">&#26356;&#37325;&#30340;&#36127;&#36733;&#21487;&#33021;&#20250; &#8220;&#24178;&#25200;&#8221; &#20020;&#36817;&#30340; DRAM Cells</li>
 </ul>
 </li>
 </ul></div>
@@ -1009,14 +1009,14 @@ section .center {
 
       
         
-        <div><h2 id="ssd" class=" text-xl mt-2 pb-2 font-sans">SSD 的可靠性：另一个故事</h2>
-<p class=" font-serif my-1">什么？硬件里的软件？</p>
+        <div><h2 id="ssd" class=" text-xl mt-2 pb-2 font-sans">SSD &#30340;&#21487;&#38752;&#24615;&#65306;&#21478;&#19968;&#20010;&#25925;&#20107;</h2>
+<p class=" font-serif my-1">&#20160;&#20040;&#65311;&#30828;&#20214;&#37324;&#30340;&#36719;&#20214;&#65311;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">其实非常复杂：算法, cache; store buffer; ...</li>
+<li class=" ml-8">&#20854;&#23454;&#38750;&#24120;&#22797;&#26434;&#65306;&#31639;&#27861;, cache; store buffer; ...</li>
 </ul>
-<p class=" font-serif my-1">谁写出来的？那可得有 bug 啊！</p>
+<p class=" font-serif my-1">&#35841;&#20889;&#20986;&#26469;&#30340;&#65311;&#37027;&#21487;&#24471;&#26377; bug &#21834;&#65281;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">让我们好好构造疯狂的 workloads，把它弄挂吧！<ul class=" list-disc font-serif">
+<li class=" ml-8">&#35753;&#25105;&#20204;&#22909;&#22909;&#26500;&#36896;&#30127;&#29378;&#30340; workloads&#65292;&#25226;&#23427;&#24324;&#25346;&#21543;&#65281;<ul class=" list-disc font-serif">
 <li class=" ml-8"><a href="https://dl.acm.org/doi/10.5555/2591272.2591300" class=" text-amber-900">Understanding the robustness of SSDs under power fault</a> (FAST'13)</li>
 </ul>
 </li>
@@ -1032,11 +1032,11 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">有趣的故事：结果</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26377;&#36259;&#30340;&#25925;&#20107;&#65306;&#32467;&#26524;</h2>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/ssd-power.png" width="250px"></p>
-<p class=" font-serif my-1">这篇 paper 促进了硬件厂商对 FTL 的大幅改进</p>
+<p class=" font-serif my-1">&#36825;&#31687; paper &#20419;&#36827;&#20102;&#30828;&#20214;&#21378;&#21830;&#23545; FTL &#30340;&#22823;&#24133;&#25913;&#36827;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">在 2015 年之后出产的产品，已经几乎无法找到这样的问题了 (cool!)</li>
+<li class=" ml-8">&#22312; 2015 &#24180;&#20043;&#21518;&#20986;&#20135;&#30340;&#20135;&#21697;&#65292;&#24050;&#32463;&#20960;&#20046;&#26080;&#27861;&#25214;&#21040;&#36825;&#26679;&#30340;&#38382;&#39064;&#20102; (cool!)</li>
 </ul>
 <hr>
 <table>
@@ -1095,7 +1095,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">总结</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#24635;&#32467;</h1></div></div></div>
         
       
       </section>
@@ -1106,25 +1106,25 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">总结</h2>
-<p class=" font-serif my-1">本次课回答的问题</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#24635;&#32467;</h2>
+<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#22238;&#31572;&#30340;&#38382;&#39064;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><strong>Q</strong>: 状态机的状态和持久的状态是如何存储的？</li>
+<li class=" ml-8"><strong>Q</strong>: &#29366;&#24577;&#26426;&#30340;&#29366;&#24577;&#21644;&#25345;&#20037;&#30340;&#29366;&#24577;&#26159;&#22914;&#20309;&#23384;&#20648;&#30340;&#65311;</li>
 </ul>
 <hr>
 <p class=" font-serif my-1">Take-away messages</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">1-Bit 信息的存储<ul class=" list-disc font-serif">
-<li class=" ml-8">磁 (磁带、磁盘)、坑 (光盘)、电 (Flash SSD)</li>
-<li class=" ml-8">构成性格各异的<red>存储设备</red></li>
+<li class=" ml-8">1-Bit &#20449;&#24687;&#30340;&#23384;&#20648;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#30913; (&#30913;&#24102;&#12289;&#30913;&#30424;)&#12289;&#22353; (&#20809;&#30424;)&#12289;&#30005; (Flash SSD)</li>
+<li class=" ml-8">&#26500;&#25104;&#24615;&#26684;&#21508;&#24322;&#30340;<red>&#23384;&#20648;&#35774;&#22791;</red></li>
 </ul>
 </li>
-<li class=" ml-8">重新思考 “状态的存储”<ul class=" list-disc font-serif">
-<li class=" ml-8">NVM 来了：主存的机器状态不会断电丢失<ul class=" list-disc font-serif">
-<li class=" ml-8">但寄存器/缓存依然是 volatile 的</li>
+<li class=" ml-8">&#37325;&#26032;&#24605;&#32771; &#8220;&#29366;&#24577;&#30340;&#23384;&#20648;&#8221;<ul class=" list-disc font-serif">
+<li class=" ml-8">NVM &#26469;&#20102;&#65306;&#20027;&#23384;&#30340;&#26426;&#22120;&#29366;&#24577;&#19981;&#20250;&#26029;&#30005;&#20002;&#22833;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20294;&#23492;&#23384;&#22120;/&#32531;&#23384;&#20381;&#28982;&#26159; volatile &#30340;</li>
 </ul>
 </li>
-<li class=" ml-8">计算机系统是否会经历彻底的 “重新设计”？<ul class=" list-disc font-serif">
+<li class=" ml-8">&#35745;&#31639;&#26426;&#31995;&#32479;&#26159;&#21542;&#20250;&#32463;&#21382;&#24443;&#24213;&#30340; &#8220;&#37325;&#26032;&#35774;&#35745;&#8221;&#65311;<ul class=" list-disc font-serif">
 <li class=" ml-8"><a href="https://dl.acm.org/doi/10.5555/1991596.1991599" class=" text-amber-900">Operating system implications of fast, cheap, non-volatile memory</a> (HotOS'13)</li>
 </ul>
 </li>

@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // • auto-render specific keys, e.g.:
+            // &#8226; auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // • rendering keys, e.g.:
+            // &#8226; rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +209,7 @@ section .center {
 }
 </style>
 
-  <title>多处理器编程：从入门到放弃</title>
+  <title>&#22810;&#22788;&#29702;&#22120;&#32534;&#31243;&#65306;&#20174;&#20837;&#38376;&#21040;&#25918;&#24323;</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,21 +227,21 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">多处理器编程：从入门到放弃</h1>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#22810;&#22788;&#29702;&#22120;&#32534;&#31243;&#65306;&#20174;&#20837;&#38376;&#21040;&#25918;&#24323;</h1>
 <p class=" font-serif my-1"><include src="Slides_Author"><div><div class="py-16">
-<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">蒋炎岩</a></p>
+<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">&#33931;&#28814;&#23721;</a></p>
 </div>
 <div class="row">
 <div class="author-affiliation">
-    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">　　南京大学　　</p>
+    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#12288;&#12288;&#21335;&#20140;&#22823;&#23398;&#12288;&#12288;</p>
     <img class="inline-img h-24" src="../../../static/img/nju-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">计算机科学与技术系</p>
+   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#31185;&#23398;&#19982;&#25216;&#26415;&#31995;</p>
     <img class="inline-img h-24" src="../../../static/img/njucs-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">计算机软件研究所</p>
+    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#36719;&#20214;&#30740;&#31350;&#25152;</p>
     <img class="inline-img h-24" src="../../../static/img/ics-logo.png" style="display: inline-block;"></a>
   </div>
 </div></div></include></p></div></div></div>
@@ -255,23 +255,23 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">背景</h2>
-<p class=" font-serif my-1">上次课重新理解了 “操作系统上的程序”</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#32972;&#26223;</h2>
+<p class=" font-serif my-1">&#19978;&#27425;&#35838;&#37325;&#26032;&#29702;&#35299;&#20102; &#8220;&#25805;&#20316;&#31995;&#32479;&#19978;&#30340;&#31243;&#24207;&#8221;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">程序 = 状态机</li>
-<li class=" ml-8">两种指令：计算和系统调用</li>
+<li class=" ml-8">&#31243;&#24207; = &#29366;&#24577;&#26426;</li>
+<li class=" ml-8">&#20004;&#31181;&#25351;&#20196;&#65306;&#35745;&#31639;&#21644;&#31995;&#32479;&#35843;&#29992;</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">但今天的 CPU 都是多处理器的</p>
+<p class=" font-serif my-1">&#20294;&#20170;&#22825;&#30340; CPU &#37117;&#26159;&#22810;&#22788;&#29702;&#22120;&#30340;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">服务器: AMD EPYC 7702 (64C/128T)</li>
+<li class=" ml-8">&#26381;&#21153;&#22120;: AMD EPYC 7702 (64C/128T)</li>
 <li class=" ml-8">PC: Intel i7-10700 (8C/16T)</li>
-<li class=" ml-8">手机: Apple A12Z (4 Big + 4 Small)</li>
+<li class=" ml-8">&#25163;&#26426;: Apple A12Z (4 Big + 4 Small)</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">如何写程序能利用好多处理器？</p>
+<p class=" font-serif my-1">&#22914;&#20309;&#20889;&#31243;&#24207;&#33021;&#21033;&#29992;&#22909;&#22810;&#22788;&#29702;&#22120;&#65311;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">10$\times$ 性能提升可不是个小数字</li>
+<li class=" ml-8">10$\times$ &#24615;&#33021;&#25552;&#21319;&#21487;&#19981;&#26159;&#20010;&#23567;&#25968;&#23383;</li>
 </ul></div>
         
       
@@ -283,15 +283,15 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">本次课内容与目标</h2>
-<p class=" font-serif my-1">学会编写简单的多线程并发程序</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26412;&#27425;&#35838;&#20869;&#23481;&#19982;&#30446;&#26631;</h2>
+<p class=" font-serif my-1">&#23398;&#20250;&#32534;&#20889;&#31616;&#21333;&#30340;&#22810;&#32447;&#31243;&#24182;&#21457;&#31243;&#24207;</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">threads.h</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">正确认识到 “并发编程” 的可怕</p>
+<p class=" font-serif my-1">&#27491;&#30830;&#35748;&#35782;&#21040; &#8220;&#24182;&#21457;&#32534;&#31243;&#8221; &#30340;&#21487;&#24597;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">多处理器编程：原子性、顺序、可见性的丧失</li>
+<li class=" ml-8">&#22810;&#22788;&#29702;&#22120;&#32534;&#31243;&#65306;&#21407;&#23376;&#24615;&#12289;&#39034;&#24207;&#12289;&#21487;&#35265;&#24615;&#30340;&#20007;&#22833;</li>
 </ul></div>
         
       
@@ -307,7 +307,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">多处理器编程：入门</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#22810;&#22788;&#29702;&#22120;&#32534;&#31243;&#65306;&#20837;&#38376;</h1></div></div></div>
         
       
       </section>
@@ -318,20 +318,20 @@ section .center {
 
       
         
-        <div><h2 id="three-easy-pieces" class=" text-xl mt-2 pb-2 font-sans">Three Easy Pieces: 并发</h2>
+        <div><h2 id="three-easy-pieces" class=" text-xl mt-2 pb-2 font-sans">Three Easy Pieces: &#24182;&#21457;</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
 <p class=" font-serif my-1">Concurrent: existing, happening, or done <em>at the same time</em>.</p>
 <p class=" font-serif my-1">In computer science, concurrency refers to the ability of different parts or units of a program, algorithm, or problem to be executed out-of-order or in partial order, without affecting the final outcome. (Wikipedia)</p>
 </blockquote>
-<p class=" font-serif my-1">为什么在这门课 (先) 讲并发？</p>
+<p class=" font-serif my-1">&#20026;&#20160;&#20040;&#22312;&#36825;&#38376;&#35838; (&#20808;) &#35762;&#24182;&#21457;&#65311;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">讲并发<ul class=" list-disc font-serif">
-<li class=" ml-8">操作系统是最早的并发程序之一</li>
+<li class=" ml-8">&#35762;&#24182;&#21457;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25805;&#20316;&#31995;&#32479;&#26159;&#26368;&#26089;&#30340;&#24182;&#21457;&#31243;&#24207;&#20043;&#19968;</li>
 </ul>
 </li>
-<li class=" ml-8">先讲并发<ul class=" list-disc font-serif">
-<li class=" ml-8">好做实验 (L1: 多处理器 bare-metal 上的 <code>malloc</code>/<code>free</code>)<ul class=" list-disc font-serif">
-<li class=" ml-8">警告：难度剧增</li>
+<li class=" ml-8">&#20808;&#35762;&#24182;&#21457;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22909;&#20570;&#23454;&#39564; (L1: &#22810;&#22788;&#29702;&#22120; bare-metal &#19978;&#30340; <code>malloc</code>/<code>free</code>)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#35686;&#21578;&#65306;&#38590;&#24230;&#21095;&#22686;</li>
 </ul>
 </li>
 </ul>
@@ -347,10 +347,10 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">并发的基本单位：线程</h2>
-<p class=" font-serif my-1">共享内存的执行流</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#24182;&#21457;&#30340;&#22522;&#26412;&#21333;&#20301;&#65306;&#32447;&#31243;</h2>
+<p class=" font-serif my-1">&#20849;&#20139;&#20869;&#23384;&#30340;&#25191;&#34892;&#27969;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">简单理解：“同时执行” 的函数</li>
+<li class=" ml-8">&#31616;&#21333;&#29702;&#35299;&#65306;&#8220;&#21516;&#26102;&#25191;&#34892;&#8221; &#30340;&#20989;&#25968;</li>
 </ul>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
 
@@ -375,24 +375,24 @@ Thread 0
 
       
         
-        <div><h2 id="api-posix-threads" class=" text-xl mt-2 pb-2 font-sans">多线程 API (POSIX Threads)</h2>
-<p class=" font-serif my-1">POSIX 为我们提供了线程库 (pthreads)</p>
+        <div><h2 id="api-posix-threads" class=" text-xl mt-2 pb-2 font-sans">&#22810;&#32447;&#31243; API (POSIX Threads)</h2>
+<p class=" font-serif my-1">POSIX &#20026;&#25105;&#20204;&#25552;&#20379;&#20102;&#32447;&#31243;&#24211; (pthreads)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">使用 <code>pthread_create</code> 创建并运行线程</li>
-<li class=" ml-8">使用 <code>pthread_join</code> 等待某个线程结束</li>
+<li class=" ml-8">&#20351;&#29992; <code>pthread_create</code> &#21019;&#24314;&#24182;&#36816;&#34892;&#32447;&#31243;</li>
+<li class=" ml-8">&#20351;&#29992; <code>pthread_join</code> &#31561;&#24453;&#26576;&#20010;&#32447;&#31243;&#32467;&#26463;</li>
 <li class=" ml-8"><code>man 7 pthreads</code></li>
 </ul>
 <hr>
-<p class=" font-serif my-1">线程</p>
+<p class=" font-serif my-1">&#32447;&#31243;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">线程间共享<ul class=" list-disc font-serif">
-<li class=" ml-8">完整的地址空间 (所有数据，包括代码)</li>
-<li class=" ml-8"><red>所有指令取指、执行都作用在同一个地址空间</red></li>
+<li class=" ml-8">&#32447;&#31243;&#38388;&#20849;&#20139;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#23436;&#25972;&#30340;&#22320;&#22336;&#31354;&#38388; (&#25152;&#26377;&#25968;&#25454;&#65292;&#21253;&#25324;&#20195;&#30721;)</li>
+<li class=" ml-8"><red>&#25152;&#26377;&#25351;&#20196;&#21462;&#25351;&#12289;&#25191;&#34892;&#37117;&#20316;&#29992;&#22312;&#21516;&#19968;&#20010;&#22320;&#22336;&#31354;&#38388;</red></li>
 </ul>
 </li>
-<li class=" ml-8">线程独立拥有<ul class=" list-disc font-serif">
-<li class=" ml-8">寄存器 (为什么？)</li>
-<li class=" ml-8">堆栈 (地址空间都共享了，堆栈如何独立？)</li>
+<li class=" ml-8">&#32447;&#31243;&#29420;&#31435;&#25317;&#26377;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#23492;&#23384;&#22120; (&#20026;&#20160;&#20040;&#65311;)</li>
+<li class=" ml-8">&#22534;&#26632; (&#22320;&#22336;&#31354;&#38388;&#37117;&#20849;&#20139;&#20102;&#65292;&#22534;&#26632;&#22914;&#20309;&#29420;&#31435;&#65311;)</li>
 </ul>
 </li>
 </ul></div>
@@ -407,18 +407,18 @@ Thread 0
       
         
         <div><h2 id="threadsh-simplified-thread-apis" class=" text-xl mt-2 pb-2 font-sans"><code>threads.h</code>: Simplified Thread APIs</h2>
-<p class=" font-serif my-1">操作系统课封装了线程 API (<a href="../../../pages/OS/2021/demos/threads.h" class=" text-amber-900"><code>threads.h</code></a>)</p>
+<p class=" font-serif my-1">&#25805;&#20316;&#31995;&#32479;&#35838;&#23553;&#35013;&#20102;&#32447;&#31243; API (<a href="../../../pages/OS/2021/demos/threads.h" class=" text-amber-900"><code>threads.h</code></a>)</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><code>create(fn)</code><ul class=" list-disc font-serif">
-<li class=" ml-8">创建并运行一个线程，该线程立即开始执行函数 <code>fn</code></li>
-<li class=" ml-8">函数原型 <code>void fn(int tid) { ... }</code></li>
-<li class=" ml-8"><code>tid</code> 是从 1 开始编号</li>
+<li class=" ml-8">&#21019;&#24314;&#24182;&#36816;&#34892;&#19968;&#20010;&#32447;&#31243;&#65292;&#35813;&#32447;&#31243;&#31435;&#21363;&#24320;&#22987;&#25191;&#34892;&#20989;&#25968; <code>fn</code></li>
+<li class=" ml-8">&#20989;&#25968;&#21407;&#22411; <code>void fn(int tid) { ... }</code></li>
+<li class=" ml-8"><code>tid</code> &#26159;&#20174; 1 &#24320;&#22987;&#32534;&#21495;</li>
 </ul>
 </li>
 <li class=" ml-8"><code>join(fn)</code><ul class=" list-disc font-serif">
-<li class=" ml-8">等待所有线程执行结束</li>
-<li class=" ml-8">执行函数 <code>fn</code></li>
-<li class=" ml-8">只能 join 一次</li>
+<li class=" ml-8">&#31561;&#24453;&#25152;&#26377;&#32447;&#31243;&#25191;&#34892;&#32467;&#26463;</li>
+<li class=" ml-8">&#25191;&#34892;&#20989;&#25968; <code>fn</code></li>
+<li class=" ml-8">&#21482;&#33021; join &#19968;&#27425;</li>
 </ul>
 </li>
 </ul></div>
@@ -432,8 +432,8 @@ Thread 0
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">多处理器编程：入门</h2>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf"><threads.h></span>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#22810;&#22788;&#29702;&#22120;&#32534;&#31243;&#65306;&#20837;&#38376;</h2>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;threads.h&gt;</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">a</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">"a"</span><span class="p">);</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
 <span class="kt">void</span><span class="w"> </span><span class="nf">b</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">"b"</span><span class="p">);</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
@@ -446,10 +446,10 @@ Thread 0
 </code></pre></div>
 
 <hr>
-<p class=" font-serif my-1">利用 <code>threads.h</code> 就可以写出利用多处理器的程序！</p>
+<p class=" font-serif my-1">&#21033;&#29992; <code>threads.h</code> &#23601;&#21487;&#20197;&#20889;&#20986;&#21033;&#29992;&#22810;&#22788;&#29702;&#22120;&#30340;&#31243;&#24207;&#65281;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">操作系统会自动把线程放置在不同的处理器上</li>
-<li class=" ml-8">在后台运行，可以看到 CPU 使用率超过了 100%</li>
+<li class=" ml-8">&#25805;&#20316;&#31995;&#32479;&#20250;&#33258;&#21160;&#25226;&#32447;&#31243;&#25918;&#32622;&#22312;&#19981;&#21516;&#30340;&#22788;&#29702;&#22120;&#19978;</li>
+<li class=" ml-8">&#22312;&#21518;&#21488;&#36816;&#34892;&#65292;&#21487;&#20197;&#30475;&#21040; CPU &#20351;&#29992;&#29575;&#36229;&#36807;&#20102; 100%</li>
 </ul></div>
         
       
@@ -461,26 +461,26 @@ Thread 0
 
       
         
-        <div><h2 id="1" class=" text-xl mt-2 pb-2 font-sans">“共享内存” 的含义 (1)</h2>
+        <div><h2 id="1" class=" text-xl mt-2 pb-2 font-sans">&#8220;&#20849;&#20139;&#20869;&#23384;&#8221; &#30340;&#21547;&#20041; (1)</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
 <ol class=" list-decimal font-serif">
-<li class=" ml-8">代码最终会编译成<red>指令</red></li>
-<li class=" ml-8">通过指令访问的内存都是同一个</li>
+<li class=" ml-8">&#20195;&#30721;&#26368;&#32456;&#20250;&#32534;&#35793;&#25104;<red>&#25351;&#20196;</red></li>
+<li class=" ml-8">&#36890;&#36807;&#25351;&#20196;&#35775;&#38382;&#30340;&#20869;&#23384;&#37117;&#26159;&#21516;&#19968;&#20010;</li>
 </ol>
 </blockquote>
 <hr>
-<p class=" font-serif my-1">多线程程序的状态机模型</p>
+<p class=" font-serif my-1">&#22810;&#32447;&#31243;&#31243;&#24207;&#30340;&#29366;&#24577;&#26426;&#27169;&#22411;</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">$(M, R) \to (M, R_1, R_2, \ldots, R_n)$ <ul class=" list-disc font-serif">
-<li class=" ml-8">独立堆栈通过为每个线程分配不同的 rsp 寄存器实现</li>
+<li class=" ml-8">&#29420;&#31435;&#22534;&#26632;&#36890;&#36807;&#20026;&#27599;&#20010;&#32447;&#31243;&#20998;&#37197;&#19981;&#21516;&#30340; rsp &#23492;&#23384;&#22120;&#23454;&#29616;</li>
 </ul>
 </li>
-<li class=" ml-8">在单处理器 CPU 上<ul class=" list-disc font-serif">
-<li class=" ml-8">某个线程执行一条指令</li>
+<li class=" ml-8">&#22312;&#21333;&#22788;&#29702;&#22120; CPU &#19978;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#26576;&#20010;&#32447;&#31243;&#25191;&#34892;&#19968;&#26465;&#25351;&#20196;</li>
 </ul>
 </li>
-<li class=" ml-8">在多处理器 CPU 上<ul class=" list-disc font-serif">
-<li class=" ml-8">“同时” 执行多个线程 → 万恶之源</li>
+<li class=" ml-8">&#22312;&#22810;&#22788;&#29702;&#22120; CPU &#19978;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#8220;&#21516;&#26102;&#8221; &#25191;&#34892;&#22810;&#20010;&#32447;&#31243; &#8594; &#19975;&#24694;&#20043;&#28304;</li>
 </ul>
 </li>
 </ul></div>
@@ -494,16 +494,16 @@ Thread 0
 
       
         
-        <div><h2 id="2" class=" text-xl mt-2 pb-2 font-sans">“共享内存” 的真正含义 (2)</h2>
-<p class=" font-serif my-1">如何相信真的启动了多个线程？如何证明线程确实共享内存？</p>
+        <div><h2 id="2" class=" text-xl mt-2 pb-2 font-sans">&#8220;&#20849;&#20139;&#20869;&#23384;&#8221; &#30340;&#30495;&#27491;&#21547;&#20041; (2)</h2>
+<p class=" font-serif my-1">&#22914;&#20309;&#30456;&#20449;&#30495;&#30340;&#21551;&#21160;&#20102;&#22810;&#20010;&#32447;&#31243;&#65311;&#22914;&#20309;&#35777;&#26126;&#32447;&#31243;&#30830;&#23454;&#20849;&#20139;&#20869;&#23384;&#65311;</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><a href="../../../pages/OS/2021/demos/hello-mt.c" class=" text-amber-900">hello-mt.c</a></li>
 </ul>
 <hr>
-<p class=" font-serif my-1">如何知道每个线程的堆栈范围和大小？</p>
+<p class=" font-serif my-1">&#22914;&#20309;&#30693;&#36947;&#27599;&#20010;&#32447;&#31243;&#30340;&#22534;&#26632;&#33539;&#22260;&#21644;&#22823;&#23567;&#65311;</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><a href="../../../pages/OS/2021/demos/stack-probe.c" class=" text-amber-900">stack-probe.c</a><ul class=" list-disc font-serif">
-<li class=" ml-8">上节课给大家查看过进程的地址空间</li>
+<li class=" ml-8">&#19978;&#33410;&#35838;&#32473;&#22823;&#23478;&#26597;&#30475;&#36807;&#36827;&#31243;&#30340;&#22320;&#22336;&#31354;&#38388;</li>
 </ul>
 </li>
 </ul></div>
@@ -517,21 +517,21 @@ Thread 0
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">可怕的事情在悄悄发生……</h2>
-<p class=" font-serif my-1">线程共享代码、数据，拥有独立堆栈</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#21487;&#24597;&#30340;&#20107;&#24773;&#22312;&#24708;&#24708;&#21457;&#29983;&#8230;&#8230;</h2>
+<p class=" font-serif my-1">&#32447;&#31243;&#20849;&#20139;&#20195;&#30721;&#12289;&#25968;&#25454;&#65292;&#25317;&#26377;&#29420;&#31435;&#22534;&#26632;</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">thread_func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w">  </span><span class="c1">// 通常 &y 不会被传递给其他线程</span>
-<span class="w">  </span><span class="n">x</span><span class="o">++</span><span class="p">;</span><span class="w">    </span><span class="c1">// 其他线程直接可见</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w">  </span><span class="c1">// &#36890;&#24120; &amp;y &#19981;&#20250;&#34987;&#20256;&#36882;&#32473;&#20854;&#20182;&#32447;&#31243;</span>
+<span class="w">  </span><span class="n">x</span><span class="o">++</span><span class="p">;</span><span class="w">    </span><span class="c1">// &#20854;&#20182;&#32447;&#31243;&#30452;&#25509;&#21487;&#35265;</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <hr>
-<p class=" font-serif my-1">多处理器系统中线程的代码可能<red>同时</red>执行</p>
+<p class=" font-serif my-1">&#22810;&#22788;&#29702;&#22120;&#31995;&#32479;&#20013;&#32447;&#31243;&#30340;&#20195;&#30721;&#21487;&#33021;<red>&#21516;&#26102;</red>&#25191;&#34892;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">两个线程同时执行 <code>x++</code>，结果会是什么呢？<ul class=" list-disc font-serif">
-<li class=" ml-8">想一想如果是用多线程实现的 “多处理器” NEMU？</li>
+<li class=" ml-8">&#20004;&#20010;&#32447;&#31243;&#21516;&#26102;&#25191;&#34892; <code>x++</code>&#65292;&#32467;&#26524;&#20250;&#26159;&#20160;&#20040;&#21602;&#65311;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#24819;&#19968;&#24819;&#22914;&#26524;&#26159;&#29992;&#22810;&#32447;&#31243;&#23454;&#29616;&#30340; &#8220;&#22810;&#22788;&#29702;&#22120;&#8221; NEMU&#65311;</li>
 </ul>
 </li>
 </ul></div>
@@ -549,7 +549,7 @@ Thread 0
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="1" class=" text-2xl mt-2 font-sans">多处理器编程：放弃 (1) 原子性</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="1" class=" text-2xl mt-2 font-sans">&#22810;&#22788;&#29702;&#22120;&#32534;&#31243;&#65306;&#25918;&#24323; (1) &#21407;&#23376;&#24615;</h1></div></div></div>
         
       
       </section>
@@ -560,9 +560,9 @@ Thread 0
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">例子：山寨多线程支付宝</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20363;&#23376;&#65306;&#23665;&#23528;&#22810;&#32447;&#31243;&#25903;&#20184;&#23453;</h2>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">pay</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">balance</span><span class="w"> </span><span class="o">>=</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">balance</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">balance</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">t</span><span class="p">;</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">SUCCESS</span><span class="p">;</span>
 <span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
@@ -571,14 +571,14 @@ Thread 0
 <span class="p">}</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">并发执行 <code>pay(100)</code> 会发生什么 (<code>balance == 100</code>)？</p>
+<p class=" font-serif my-1">&#24182;&#21457;&#25191;&#34892; <code>pay(100)</code> &#20250;&#21457;&#29983;&#20160;&#20040; (<code>balance == 100</code>)&#65311;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">如果 <code>balance</code> 是 <code>unsigned</code>，会发生更严重的后果<ul class=" list-disc font-serif">
-<li class=" ml-8">账户里会多出用不完的钱！</li>
+<li class=" ml-8">&#22914;&#26524; <code>balance</code> &#26159; <code>unsigned</code>&#65292;&#20250;&#21457;&#29983;&#26356;&#20005;&#37325;&#30340;&#21518;&#26524;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#36134;&#25143;&#37324;&#20250;&#22810;&#20986;&#29992;&#19981;&#23436;&#30340;&#38065;&#65281;</li>
 </ul>
 </li>
-<li class=" ml-8">即便钱足够，<code>balance -= t</code> 也非常危险<ul class=" list-disc font-serif">
-<li class=" ml-8">即便一条 sub 指令，硬件也会分成 load 和 store</li>
+<li class=" ml-8">&#21363;&#20415;&#38065;&#36275;&#22815;&#65292;<code>balance -= t</code> &#20063;&#38750;&#24120;&#21361;&#38505;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21363;&#20415;&#19968;&#26465; sub &#25351;&#20196;&#65292;&#30828;&#20214;&#20063;&#20250;&#20998;&#25104; load &#21644; store</li>
 </ul>
 </li>
 </ul></div>
@@ -592,12 +592,12 @@ Thread 0
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">另一个例子：求和</h2>
-<p class=" font-serif my-1">分两个线程，计算 $1+1+1+\ldots+1$ (共计 $2n$ 个 $1$)</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#21478;&#19968;&#20010;&#20363;&#23376;&#65306;&#27714;&#21644;</h2>
+<p class=" font-serif my-1">&#20998;&#20004;&#20010;&#32447;&#31243;&#65292;&#35745;&#31639; $1+1+1+\ldots+1$ (&#20849;&#35745; $2n$ &#20010; $1$)</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#define n 100000000</span>
 <span class="kt">long</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 
-<span class="kt">void</span><span class="w"> </span><span class="nf">do_sum</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o"><</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="n">sum</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">do_sum</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="n">sum</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 <span class="kt">void</span><span class="w"> </span><span class="nf">print</span><span class="p">()</span><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">"sum = %ld</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">sum</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -607,7 +607,7 @@ Thread 0
 <span class="p">}</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">结果</p>
+<p class=" font-serif my-1">&#32467;&#26524;</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">113863902</li>
 </ul></div>
@@ -621,26 +621,26 @@ Thread 0
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">原子性的丧失</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#21407;&#23376;&#24615;&#30340;&#20007;&#22833;</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">单线程程序状态机模型中 “程序一直执行” 的基本假设在多线程环境下不再成立。</p>
+<p class=" font-serif my-1">&#21333;&#32447;&#31243;&#31243;&#24207;&#29366;&#24577;&#26426;&#27169;&#22411;&#20013; &#8220;&#31243;&#24207;&#19968;&#30452;&#25191;&#34892;&#8221; &#30340;&#22522;&#26412;&#20551;&#35774;&#22312;&#22810;&#32447;&#31243;&#29615;&#22659;&#19979;&#19981;&#20877;&#25104;&#31435;&#12290;</p>
 </blockquote>
 <hr>
-<p class=" font-serif my-1">原子性：<red>一段代码执行 (例如 <code>pay()</code>) 不被干扰</red></p>
+<p class=" font-serif my-1">&#21407;&#23376;&#24615;&#65306;<red>&#19968;&#27573;&#20195;&#30721;&#25191;&#34892; (&#20363;&#22914; <code>pay()</code>) &#19981;&#34987;&#24178;&#25200;</red></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">单处理器多线程<ul class=" list-disc font-serif">
-<li class=" ml-8">线程在运行时可能被中断，切换到另一个线程执行</li>
+<li class=" ml-8">&#21333;&#22788;&#29702;&#22120;&#22810;&#32447;&#31243;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#32447;&#31243;&#22312;&#36816;&#34892;&#26102;&#21487;&#33021;&#34987;&#20013;&#26029;&#65292;&#20999;&#25442;&#21040;&#21478;&#19968;&#20010;&#32447;&#31243;&#25191;&#34892;</li>
 </ul>
 </li>
-<li class=" ml-8">多处理器多线程<ul class=" list-disc font-serif">
-<li class=" ml-8">线程根本就是并行执行的</li>
+<li class=" ml-8">&#22810;&#22788;&#29702;&#22120;&#22810;&#32447;&#31243;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#32447;&#31243;&#26681;&#26412;&#23601;&#26159;&#24182;&#34892;&#25191;&#34892;&#30340;</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">(历史) 1960s，大家争先在共享内存上实现原子性 (互斥)</p>
+<p class=" font-serif my-1">(&#21382;&#21490;) 1960s&#65292;&#22823;&#23478;&#20105;&#20808;&#22312;&#20849;&#20139;&#20869;&#23384;&#19978;&#23454;&#29616;&#21407;&#23376;&#24615; (&#20114;&#26021;)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">但几乎所有的实现都是<red>错的</red>，直到 <a href="https://en.wikipedia.org/wiki/Dekker%27s_algorithm" class=" text-amber-900">Dekker's Algorithm</a>，还只能保证两个线程的互斥</li>
+<li class=" ml-8">&#20294;&#20960;&#20046;&#25152;&#26377;&#30340;&#23454;&#29616;&#37117;&#26159;<red>&#38169;&#30340;</red>&#65292;&#30452;&#21040; <a href="https://en.wikipedia.org/wiki/Dekker%27s_algorithm" class=" text-amber-900">Dekker's Algorithm</a>&#65292;&#36824;&#21482;&#33021;&#20445;&#35777;&#20004;&#20010;&#32447;&#31243;&#30340;&#20114;&#26021;</li>
 </ul></div>
         
       
@@ -652,18 +652,18 @@ Thread 0
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">有没有感到后怕？</h2>
-<p class=" font-serif my-1"><code>printf</code> 还能在多线程程序里调用吗？</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26377;&#27809;&#26377;&#24863;&#21040;&#21518;&#24597;&#65311;</h2>
+<p class=" font-serif my-1"><code>printf</code> &#36824;&#33021;&#22312;&#22810;&#32447;&#31243;&#31243;&#24207;&#37324;&#35843;&#29992;&#21527;&#65311;</p>
 <hr>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">thread1</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">"a"</span><span class="p">);</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
 <span class="kt">void</span><span class="w"> </span><span class="nf">thread2</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">"b"</span><span class="p">);</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
 
 <hr>
-<p class=" font-serif my-1">我们都知道 printf 是有缓冲区的</p>
+<p class=" font-serif my-1">&#25105;&#20204;&#37117;&#30693;&#36947; printf &#26159;&#26377;&#32531;&#20914;&#21306;&#30340;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">为什么？</li>
-<li class=" ml-8">如果执行 <code>buf[pos++] = ch</code> (<code>pos</code> 共享) 不就 💥 了吗？</li>
+<li class=" ml-8">&#20026;&#20160;&#20040;&#65311;</li>
+<li class=" ml-8">&#22914;&#26524;&#25191;&#34892; <code>buf[pos++] = ch</code> (<code>pos</code> &#20849;&#20139;) &#19981;&#23601; &#128165; &#20102;&#21527;&#65311;</li>
 </ul>
 <hr>
 <p class=" font-serif my-1">RTFM!</p></div>
@@ -681,7 +681,7 @@ Thread 0
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="2" class=" text-2xl mt-2 font-sans">多处理器编程：放弃 (2) 顺序</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="2" class=" text-2xl mt-2 font-sans">&#22810;&#22788;&#29702;&#22120;&#32534;&#31243;&#65306;&#25918;&#24323; (2) &#39034;&#24207;</h1></div></div></div>
         
       
       </section>
@@ -692,12 +692,12 @@ Thread 0
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">求和的例子再次出现</h2>
-<p class=" font-serif my-1">分两个线程，计算 $1+1+1+\ldots+1$ (共计 $2n$ 个 $1$)</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#27714;&#21644;&#30340;&#20363;&#23376;&#20877;&#27425;&#20986;&#29616;</h2>
+<p class=" font-serif my-1">&#20998;&#20004;&#20010;&#32447;&#31243;&#65292;&#35745;&#31639; $1+1+1+\ldots+1$ (&#20849;&#35745; $2n$ &#20010; $1$)</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#define n 100000000</span>
 <span class="kt">long</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 
-<span class="kt">void</span><span class="w"> </span><span class="nf">do_sum</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o"><</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="n">sum</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">do_sum</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="n">sum</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 <span class="kt">void</span><span class="w"> </span><span class="nf">print</span><span class="p">()</span><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">"sum = %ld</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">sum</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -707,7 +707,7 @@ Thread 0
 <span class="p">}</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">开启编译优化</p>
+<p class=" font-serif my-1">&#24320;&#21551;&#32534;&#35793;&#20248;&#21270;</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><code>-O1</code>: 100000000 (???????)</li>
 <li class=" ml-8"><code>-O2</code>: 200000000</li>
@@ -722,21 +722,21 @@ Thread 0
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">顺序的丧失</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#39034;&#24207;&#30340;&#20007;&#22833;</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">编译器对程序的改写 (涉及内存访问指令的移动或删除) 仅对单线程执行有正确性保证。</p>
+<p class=" font-serif my-1">&#32534;&#35793;&#22120;&#23545;&#31243;&#24207;&#30340;&#25913;&#20889; (&#28041;&#21450;&#20869;&#23384;&#35775;&#38382;&#25351;&#20196;&#30340;&#31227;&#21160;&#25110;&#21024;&#38500;) &#20165;&#23545;&#21333;&#32447;&#31243;&#25191;&#34892;&#26377;&#27491;&#30830;&#24615;&#20445;&#35777;&#12290;</p>
 </blockquote>
-<p class=" font-serif my-1">编译器保证对任意执行</p>
+<p class=" font-serif my-1">&#32534;&#35793;&#22120;&#20445;&#35777;&#23545;&#20219;&#24847;&#25191;&#34892;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">程序外部 (如系统调用) 使用内存时，被用到的内存数值和不优化 (<code>-O0</code>) 时一致<ul class=" list-disc font-serif">
-<li class=" ml-8">允许在 $x \ne y$ 时交换 store($x$), load($y$)</li>
-<li class=" ml-8">允许在 store($x$) 在未来一定被覆盖时删除这次写</li>
+<li class=" ml-8">&#31243;&#24207;&#22806;&#37096; (&#22914;&#31995;&#32479;&#35843;&#29992;) &#20351;&#29992;&#20869;&#23384;&#26102;&#65292;&#34987;&#29992;&#21040;&#30340;&#20869;&#23384;&#25968;&#20540;&#21644;&#19981;&#20248;&#21270; (<code>-O0</code>) &#26102;&#19968;&#33268;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20801;&#35768;&#22312; $x \ne y$ &#26102;&#20132;&#25442; store($x$), load($y$)</li>
+<li class=" ml-8">&#20801;&#35768;&#22312; store($x$) &#22312;&#26410;&#26469;&#19968;&#23450;&#34987;&#35206;&#30422;&#26102;&#21024;&#38500;&#36825;&#27425;&#20889;</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">试一试</p>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o"><</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="n">sum</span><span class="o">++</span><span class="p">;</span>
+<p class=" font-serif my-1">&#35797;&#19968;&#35797;</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="n">sum</span><span class="o">++</span><span class="p">;</span>
 </code></pre></div></div>
         
       
@@ -752,7 +752,7 @@ Thread 0
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="3" class=" text-2xl mt-2 font-sans">多处理器编程：放弃 (3) 可见性</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="3" class=" text-2xl mt-2 font-sans">&#22810;&#22788;&#29702;&#22120;&#32534;&#31243;&#65306;&#25918;&#24323; (3) &#21487;&#35265;&#24615;</h1></div></div></div>
         
       
       </section>
@@ -763,7 +763,7 @@ Thread 0
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">今天最可怕的例子……</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20170;&#22825;&#26368;&#21487;&#24597;&#30340;&#20363;&#23376;&#8230;&#8230;</h2>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="kt">void</span><span class="w"> </span><span class="nf">thread_1</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">"y = %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span>
@@ -774,20 +774,20 @@ Thread 0
 </code></pre></div>
 
 <hr>
-<p class=" font-serif my-1">实验结果 (4 x Xeon X7460, 24-cores)</p>
+<p class=" font-serif my-1">&#23454;&#39564;&#32467;&#26524; (4 x Xeon X7460, 24-cores)</p>
 <table>
 <thead>
 <tr>
-<th>打印的 x</th>
-<th>打印的 y</th>
-<th>概率</th>
+<th>&#25171;&#21360;&#30340; x</th>
+<th>&#25171;&#21360;&#30340; y</th>
+<th>&#27010;&#29575;</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>0</td>
 <td>0</td>
-<td><font color="red">0.2%</font> (难以接受这个设定啊)</td>
+<td><font color="red">0.2%</font> (&#38590;&#20197;&#25509;&#21463;&#36825;&#20010;&#35774;&#23450;&#21834;)</td>
 </tr>
 <tr>
 <td>0</td>
@@ -816,21 +816,21 @@ Thread 0
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">放弃的理由：处理器间可见性的丧失</h2>
-<p class=" font-serif my-1">为了使 CPU 运行得更快，CPU 可以<red>不按顺序执行指令</red>！</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25918;&#24323;&#30340;&#29702;&#30001;&#65306;&#22788;&#29702;&#22120;&#38388;&#21487;&#35265;&#24615;&#30340;&#20007;&#22833;</h2>
+<p class=" font-serif my-1">&#20026;&#20102;&#20351; CPU &#36816;&#34892;&#24471;&#26356;&#24555;&#65292;CPU &#21487;&#20197;<red>&#19981;&#25353;&#39034;&#24207;&#25191;&#34892;&#25351;&#20196;</red>&#65281;</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>movl $1, (x)   # x = 1, cache miss
-               # 如果等这条指令执行完，会浪费大量时间
-movl (y), %eax # CPU 会立即执行这条指令
-               # (此时 y = 0)
+               # &#22914;&#26524;&#31561;&#36825;&#26465;&#25351;&#20196;&#25191;&#34892;&#23436;&#65292;&#20250;&#28010;&#36153;&#22823;&#37327;&#26102;&#38388;
+movl (y), %eax # CPU &#20250;&#31435;&#21363;&#25191;&#34892;&#36825;&#26465;&#25351;&#20196;
+               # (&#27492;&#26102; y = 0)
 ...
 </code></pre></div>
 
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/CAAQA.jpg" width="200px"></p>
-<p class=" font-serif my-1">现代处理器 (动态数据流分析)：</p>
+<p class=" font-serif my-1">&#29616;&#20195;&#22788;&#29702;&#22120; (&#21160;&#24577;&#25968;&#25454;&#27969;&#20998;&#26512;)&#65306;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">如果两条指令没有数据依赖关系，就让它们并行执行好了！</li>
-<li class=" ml-8">乱序执行 (out-of-order)<ul class=" list-disc font-serif">
-<li class=" ml-8">多处理器上执行的结果可以不等价于指令按照某个顺序执行的结果</li>
+<li class=" ml-8">&#22914;&#26524;&#20004;&#26465;&#25351;&#20196;&#27809;&#26377;&#25968;&#25454;&#20381;&#36182;&#20851;&#31995;&#65292;&#23601;&#35753;&#23427;&#20204;&#24182;&#34892;&#25191;&#34892;&#22909;&#20102;&#65281;</li>
+<li class=" ml-8">&#20081;&#24207;&#25191;&#34892; (out-of-order)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22810;&#22788;&#29702;&#22120;&#19978;&#25191;&#34892;&#30340;&#32467;&#26524;&#21487;&#20197;&#19981;&#31561;&#20215;&#20110;&#25351;&#20196;&#25353;&#29031;&#26576;&#20010;&#39034;&#24207;&#25191;&#34892;&#30340;&#32467;&#26524;</li>
 <li class=" ml-8"><a href="https://preshing.com/20120930/weak-vs-strong-memory-models/" class=" text-amber-900">Further reading</a></li>
 </ul>
 </li>
@@ -849,7 +849,7 @@ movl (y), %eax # CPU 会立即执行这条指令
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">多处理器编程：从入门到放弃</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#22810;&#22788;&#29702;&#22120;&#32534;&#31243;&#65306;&#20174;&#20837;&#38376;&#21040;&#25918;&#24323;</h1></div></div></div>
         
       
       </section>
@@ -860,23 +860,23 @@ movl (y), %eax # CPU 会立即执行这条指令
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">代码的执行比我们想象的复杂</h2>
-<p class=" font-serif my-1">在现代计算机系统上，即便是一个简单的 <code>x = 1</code> 也会经历：</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20195;&#30721;&#30340;&#25191;&#34892;&#27604;&#25105;&#20204;&#24819;&#35937;&#30340;&#22797;&#26434;</h2>
+<p class=" font-serif my-1">&#22312;&#29616;&#20195;&#35745;&#31639;&#26426;&#31995;&#32479;&#19978;&#65292;&#21363;&#20415;&#26159;&#19968;&#20010;&#31616;&#21333;&#30340; <code>x = 1</code> &#20063;&#20250;&#32463;&#21382;&#65306;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">源代码 → 二进制<ul class=" list-disc font-serif">
-<li class=" ml-8">编译器优化 → <red>顺序的丧失</red><ul class=" list-disc font-serif">
-<li class=" ml-8">编译器调整内存访问指令的顺序</li>
+<li class=" ml-8">&#28304;&#20195;&#30721; &#8594; &#20108;&#36827;&#21046;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#32534;&#35793;&#22120;&#20248;&#21270; &#8594; <red>&#39034;&#24207;&#30340;&#20007;&#22833;</red><ul class=" list-disc font-serif">
+<li class=" ml-8">&#32534;&#35793;&#22120;&#35843;&#25972;&#20869;&#23384;&#35775;&#38382;&#25351;&#20196;&#30340;&#39034;&#24207;</li>
 </ul>
 </li>
 </ul>
 </li>
-<li class=" ml-8">二进制 → 处理器执行<ul class=" list-disc font-serif">
-<li class=" ml-8">中断/并行 → <red>原子性的丧失</red><ul class=" list-disc font-serif">
-<li class=" ml-8">原子性被破坏</li>
+<li class=" ml-8">&#20108;&#36827;&#21046; &#8594; &#22788;&#29702;&#22120;&#25191;&#34892;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20013;&#26029;/&#24182;&#34892; &#8594; <red>&#21407;&#23376;&#24615;&#30340;&#20007;&#22833;</red><ul class=" list-disc font-serif">
+<li class=" ml-8">&#21407;&#23376;&#24615;&#34987;&#30772;&#22351;</li>
 </ul>
 </li>
-<li class=" ml-8">多处理器乱序执行 → <red>可见性的丧失</red><ul class=" list-disc font-serif">
-<li class=" ml-8">指令的结果不能立即对其他处理器可见</li>
+<li class=" ml-8">&#22810;&#22788;&#29702;&#22120;&#20081;&#24207;&#25191;&#34892; &#8594; <red>&#21487;&#35265;&#24615;&#30340;&#20007;&#22833;</red><ul class=" list-disc font-serif">
+<li class=" ml-8">&#25351;&#20196;&#30340;&#32467;&#26524;&#19981;&#33021;&#31435;&#21363;&#23545;&#20854;&#20182;&#22788;&#29702;&#22120;&#21487;&#35265;</li>
 </ul>
 </li>
 </ul>
@@ -892,22 +892,22 @@ movl (y), %eax # CPU 会立即执行这条指令
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">保证顺序</h2>
-<p class=" font-serif my-1">阻止编译器优化变量读写</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20445;&#35777;&#39034;&#24207;</h2>
+<p class=" font-serif my-1">&#38459;&#27490;&#32534;&#35793;&#22120;&#20248;&#21270;&#21464;&#37327;&#35835;&#20889;</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">delay</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">volatile</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o"><</span><span class="w"> </span><span class="n">DELAY_COUNT</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">;</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">volatile</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">DELAY_COUNT</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">在局部制止编译器调整指令顺序</p>
+<p class=" font-serif my-1">&#22312;&#23616;&#37096;&#21046;&#27490;&#32534;&#35793;&#22120;&#35843;&#25972;&#25351;&#20196;&#39034;&#24207;</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#define barrier() asm volatile ("":::"memory")</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">foo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">extern</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
 <span class="w">  </span><span class="n">x</span><span class="o">++</span><span class="p">;</span>
 <span class="w">  </span><span class="n">barrier</span><span class="p">();</span><span class="w"> </span><span class="c1">// ============================</span>
-<span class="w">  </span><span class="n">x</span><span class="o">++</span><span class="p">;</span><span class="w">       </span><span class="c1">// 阻止 x 的访问被合并</span>
-<span class="w">  </span><span class="n">y</span><span class="o">++</span><span class="p">;</span><span class="w">       </span><span class="c1">// y 的访问不能被移到 barrier 之前</span>
+<span class="w">  </span><span class="n">x</span><span class="o">++</span><span class="p">;</span><span class="w">       </span><span class="c1">// &#38459;&#27490; x &#30340;&#35775;&#38382;&#34987;&#21512;&#24182;</span>
+<span class="w">  </span><span class="n">y</span><span class="o">++</span><span class="p">;</span><span class="w">       </span><span class="c1">// y &#30340;&#35775;&#38382;&#19981;&#33021;&#34987;&#31227;&#21040; barrier &#20043;&#21069;</span>
 <span class="p">}</span>
 </code></pre></div></div>
         
@@ -920,19 +920,19 @@ movl (y), %eax # CPU 会立即执行这条指令
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">保证原子性</h2>
-<p class=" font-serif my-1">本学期的重要主题：互斥 (mutual exclusion)</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20445;&#35777;&#21407;&#23376;&#24615;</h2>
+<p class=" font-serif my-1">&#26412;&#23398;&#26399;&#30340;&#37325;&#35201;&#20027;&#39064;&#65306;&#20114;&#26021; (mutual exclusion)</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">stop_the_world</span><span class="p">();</span>
-<span class="p">...</span><span class="w"> </span><span class="c1">// critical section, 临界区</span>
+<span class="p">...</span><span class="w"> </span><span class="c1">// critical section, &#20020;&#30028;&#21306;</span>
 <span class="n">resume_the_world</span><span class="p">();</span>
 </code></pre></div>
 
 <hr>
-<p class=" font-serif my-1">临界区管理</p>
+<p class=" font-serif my-1">&#20020;&#30028;&#21306;&#31649;&#29702;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">执行 <code>stop_the_world()</code> 之后，整个系统中所有的其他线程都暂停</li>
-<li class=" ml-8">执行 <code>resume_the_world()</code> 后，系统中其他线程才恢复</li>
-<li class=" ml-8">这样就可以保证我们安静地完成 <code>pay()</code> 或者 <code>sum++</code> 了</li>
+<li class=" ml-8">&#25191;&#34892; <code>stop_the_world()</code> &#20043;&#21518;&#65292;&#25972;&#20010;&#31995;&#32479;&#20013;&#25152;&#26377;&#30340;&#20854;&#20182;&#32447;&#31243;&#37117;&#26242;&#20572;</li>
+<li class=" ml-8">&#25191;&#34892; <code>resume_the_world()</code> &#21518;&#65292;&#31995;&#32479;&#20013;&#20854;&#20182;&#32447;&#31243;&#25165;&#24674;&#22797;</li>
+<li class=" ml-8">&#36825;&#26679;&#23601;&#21487;&#20197;&#20445;&#35777;&#25105;&#20204;&#23433;&#38745;&#22320;&#23436;&#25104; <code>pay()</code> &#25110;&#32773; <code>sum++</code> &#20102;</li>
 </ul></div>
         
       
@@ -944,23 +944,23 @@ movl (y), %eax # CPU 会立即执行这条指令
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">保证可见性</h2>
-<p class=" font-serif my-1">本学期基本不涉及</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20445;&#35777;&#21487;&#35265;&#24615;</h2>
+<p class=" font-serif my-1">&#26412;&#23398;&#26399;&#22522;&#26412;&#19981;&#28041;&#21450;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">会介绍一个简化但够用的模型 (简化自 C11 Memory Model)</li>
+<li class=" ml-8">&#20250;&#20171;&#32461;&#19968;&#20010;&#31616;&#21270;&#20294;&#22815;&#29992;&#30340;&#27169;&#22411; (&#31616;&#21270;&#33258; C11 Memory Model)</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">保证可见性：需要硬件支持</p>
+<p class=" font-serif my-1">&#20445;&#35777;&#21487;&#35265;&#24615;&#65306;&#38656;&#35201;&#30828;&#20214;&#25903;&#25345;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">内存模型<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20869;&#23384;&#27169;&#22411;<ul class=" list-disc font-serif">
 <li class=" ml-8">Total Store Order (TSO); Partial Store Order (PSO); ...</li>
 </ul>
 </li>
-<li class=" ml-8">内存 “路障” 指令<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20869;&#23384; &#8220;&#36335;&#38556;&#8221; &#25351;&#20196;<ul class=" list-disc font-serif">
 <li class=" ml-8">fences (lfence, sfence, mfence, ...)</li>
 </ul>
 </li>
-<li class=" ml-8">原子指令<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21407;&#23376;&#25351;&#20196;<ul class=" list-disc font-serif">
 <li class=" ml-8">x86-family: lock prefix (<code>lock xchg</code>, ...)</li>
 <li class=" ml-8">riscv/mips: load-reservation/store-conditional (mip)</li>
 </ul>
@@ -980,7 +980,7 @@ movl (y), %eax # CPU 会立即执行这条指令
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">总结</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#24635;&#32467;</h1></div></div></div>
         
       
       </section>
@@ -991,24 +991,24 @@ movl (y), %eax # CPU 会立即执行这条指令
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">总结</h2>
-<p class=" font-serif my-1">本次课内容与目标</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#24635;&#32467;</h2>
+<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#20869;&#23481;&#19982;&#30446;&#26631;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">学会编写简单的多线程并发程序 (<code>threads.h</code>)</li>
-<li class=" ml-8">正确认识到 “并发编程” 的可怕 (原子性、顺序、可见性的丧失)<ul class=" list-disc font-serif">
-<li class=" ml-8">这是一门 system 课程，因此不讲并发理论和算法</li>
+<li class=" ml-8">&#23398;&#20250;&#32534;&#20889;&#31616;&#21333;&#30340;&#22810;&#32447;&#31243;&#24182;&#21457;&#31243;&#24207; (<code>threads.h</code>)</li>
+<li class=" ml-8">&#27491;&#30830;&#35748;&#35782;&#21040; &#8220;&#24182;&#21457;&#32534;&#31243;&#8221; &#30340;&#21487;&#24597; (&#21407;&#23376;&#24615;&#12289;&#39034;&#24207;&#12289;&#21487;&#35265;&#24615;&#30340;&#20007;&#22833;)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#36825;&#26159;&#19968;&#38376; system &#35838;&#31243;&#65292;&#22240;&#27492;&#19981;&#35762;&#24182;&#21457;&#29702;&#35770;&#21644;&#31639;&#27861;</li>
 </ul>
 </li>
 </ul>
 <hr>
 <p class=" font-serif my-1">Take-away message</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">不要自作主张写 “聪明” 的并发程序<ul class=" list-disc font-serif">
+<li class=" ml-8">&#19981;&#35201;&#33258;&#20316;&#20027;&#24352;&#20889; &#8220;&#32874;&#26126;&#8221; &#30340;&#24182;&#21457;&#31243;&#24207;<ul class=" list-disc font-serif">
 <li class=" ml-8">W. Xiong, et al. <a href="https://www.usenix.org/events/osdi10/tech/full_papers/Xiong.pdf" class=" text-amber-900">Ad hoc synchronization considered harmful</a>. In <em>Proceedings of OSDI</em>, 2010.</li>
 </ul>
 </li>
-<li class=" ml-8">老老实实使用久经考验的 API<ul class=" list-disc font-serif">
-<li class=" ml-8">写出读得懂、说明得了正确性的代码</li>
+<li class=" ml-8">&#32769;&#32769;&#23454;&#23454;&#20351;&#29992;&#20037;&#32463;&#32771;&#39564;&#30340; API<ul class=" list-disc font-serif">
+<li class=" ml-8">&#20889;&#20986;&#35835;&#24471;&#25026;&#12289;&#35828;&#26126;&#24471;&#20102;&#27491;&#30830;&#24615;&#30340;&#20195;&#30721;</li>
 </ul>
 </li>
 </ul></div>
@@ -1022,22 +1022,22 @@ movl (y), %eax # CPU 会立即执行这条指令
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">喜欢并发？</h2>
-<p class=" font-serif my-1">并发算法是非常有趣 (很难) 的研究问题！</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#21916;&#27426;&#24182;&#21457;&#65311;</h2>
+<p class=" font-serif my-1">&#24182;&#21457;&#31639;&#27861;&#26159;&#38750;&#24120;&#26377;&#36259; (&#24456;&#38590;) &#30340;&#30740;&#31350;&#38382;&#39064;&#65281;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">理论计算机科学和分布式计算领域有非常多有趣的结论</li>
+<li class=" ml-8">&#29702;&#35770;&#35745;&#31639;&#26426;&#31185;&#23398;&#21644;&#20998;&#24067;&#24335;&#35745;&#31639;&#39046;&#22495;&#26377;&#38750;&#24120;&#22810;&#26377;&#36259;&#30340;&#32467;&#35770;</li>
 </ul>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/TAOMP.jpg" width="250px"></p>
 <hr>
-<p class=" font-serif my-1">《并发算法与理论》 (秋季学期开课)</p>
+<p class=" font-serif my-1">&#12298;&#24182;&#21457;&#31639;&#27861;&#19982;&#29702;&#35770;&#12299; (&#31179;&#23395;&#23398;&#26399;&#24320;&#35838;)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">主讲：梁红瑾<ul class=" list-disc font-serif">
-<li class=" ml-8">研究方向：并发算法的正确性证明</li>
+<li class=" ml-8">&#20027;&#35762;&#65306;&#26753;&#32418;&#29822;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#30740;&#31350;&#26041;&#21521;&#65306;&#24182;&#21457;&#31639;&#27861;&#30340;&#27491;&#30830;&#24615;&#35777;&#26126;</li>
 <li class=" ml-8">SIGPLAN Distinguished Paper Award Winner (PLDI'19)</li>
 </ul>
 </li>
-<li class=" ml-8">使用右边这本世界上最好的并发教科书<ul class=" list-disc font-serif">
-<li class=" ml-8">Gödel Prize Winner</li>
+<li class=" ml-8">&#20351;&#29992;&#21491;&#36793;&#36825;&#26412;&#19990;&#30028;&#19978;&#26368;&#22909;&#30340;&#24182;&#21457;&#25945;&#31185;&#20070;<ul class=" list-disc font-serif">
+<li class=" ml-8">G&#246;del Prize Winner</li>
 </ul>
 </li>
 </ul></div>

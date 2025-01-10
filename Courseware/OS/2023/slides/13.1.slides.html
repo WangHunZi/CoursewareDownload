@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // • auto-render specific keys, e.g.:
+            // &#8226; auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // • rendering keys, e.g.:
+            // &#8226; rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +209,7 @@ section .center {
 }
 </style>
 
-  <title>死锁的应对</title>
+  <title>&#27515;&#38145;&#30340;&#24212;&#23545;</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,7 +227,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="13.1.slides.html" class=" text-amber-900">死锁的应对</a></h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="13.1.slides.html" class=" text-amber-900">&#27515;&#38145;&#30340;&#24212;&#23545;</a></h1></div></div></div>
         
       
       </section>
@@ -238,20 +238,20 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">回顾：死锁产生的必要条件</h2>
-<p class=" font-serif my-1"><a href="https://dl.acm.org/doi/10.1145/356586.356588" class=" text-amber-900">System deadlocks (1971)</a>：死锁产生的四个必要条件</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#22238;&#39038;&#65306;&#27515;&#38145;&#20135;&#29983;&#30340;&#24517;&#35201;&#26465;&#20214;</h2>
+<p class=" font-serif my-1"><a href="https://dl.acm.org/doi/10.1145/356586.356588" class=" text-amber-900">System deadlocks (1971)</a>&#65306;&#27515;&#38145;&#20135;&#29983;&#30340;&#22235;&#20010;&#24517;&#35201;&#26465;&#20214;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">用 “资源” 来描述<ul class=" list-disc font-serif">
-<li class=" ml-8">状态机视角：就是 “当前状态下持有的锁 (校园卡/球)”</li>
+<li class=" ml-8">&#29992; &#8220;&#36164;&#28304;&#8221; &#26469;&#25551;&#36848;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#29366;&#24577;&#26426;&#35270;&#35282;&#65306;&#23601;&#26159; &#8220;&#24403;&#21069;&#29366;&#24577;&#19979;&#25345;&#26377;&#30340;&#38145; (&#26657;&#22253;&#21345;/&#29699;)&#8221;</li>
 </ul>
 </li>
 </ul>
 <hr>
 <ol class=" list-decimal font-serif">
-<li class=" ml-8">Mutual-exclusion - 一张校园卡只能被一个人拥有</li>
-<li class=" ml-8">Wait-for - 一个人等其他校园卡时，不会释放已有的校园卡</li>
-<li class=" ml-8">No-preemption - 不能抢夺他人的校园卡</li>
-<li class=" ml-8">Circular-chain - 形成校园卡的循环等待关系</li>
+<li class=" ml-8">Mutual-exclusion - &#19968;&#24352;&#26657;&#22253;&#21345;&#21482;&#33021;&#34987;&#19968;&#20010;&#20154;&#25317;&#26377;</li>
+<li class=" ml-8">Wait-for - &#19968;&#20010;&#20154;&#31561;&#20854;&#20182;&#26657;&#22253;&#21345;&#26102;&#65292;&#19981;&#20250;&#37322;&#25918;&#24050;&#26377;&#30340;&#26657;&#22253;&#21345;</li>
+<li class=" ml-8">No-preemption - &#19981;&#33021;&#25250;&#22842;&#20182;&#20154;&#30340;&#26657;&#22253;&#21345;</li>
+<li class=" ml-8">Circular-chain - &#24418;&#25104;&#26657;&#22253;&#21345;&#30340;&#24490;&#29615;&#31561;&#24453;&#20851;&#31995;</li>
 </ol></div>
         
       
@@ -263,19 +263,19 @@ section .center {
 
       
         
-        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">应对死锁：死锁产生的必要条件 (cont'd)</h2>
-<p class=" font-serif my-1">站着说话不腰疼的教科书：</p>
+        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">&#24212;&#23545;&#27515;&#38145;&#65306;&#27515;&#38145;&#20135;&#29983;&#30340;&#24517;&#35201;&#26465;&#20214; (cont'd)</h2>
+<p class=" font-serif my-1">&#31449;&#30528;&#35828;&#35805;&#19981;&#33136;&#30140;&#30340;&#25945;&#31185;&#20070;&#65306;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">“理解了死锁的原因，尤其是产生死锁的四个必要条件，就可以最大可能地避免、预防和解除死锁。所以，在系统设计、进程调度等方面注意如何不让这四个必要条件成立，如何确定资源的合理分配算法，避免进程永久占据系统资源。此外，也要防止进程在处于等待状态的情况下占用资源。因此，对资源的分配要给予合理的规划。”</li>
+<li class=" ml-8">&#8220;&#29702;&#35299;&#20102;&#27515;&#38145;&#30340;&#21407;&#22240;&#65292;&#23588;&#20854;&#26159;&#20135;&#29983;&#27515;&#38145;&#30340;&#22235;&#20010;&#24517;&#35201;&#26465;&#20214;&#65292;&#23601;&#21487;&#20197;&#26368;&#22823;&#21487;&#33021;&#22320;&#36991;&#20813;&#12289;&#39044;&#38450;&#21644;&#35299;&#38500;&#27515;&#38145;&#12290;&#25152;&#20197;&#65292;&#22312;&#31995;&#32479;&#35774;&#35745;&#12289;&#36827;&#31243;&#35843;&#24230;&#31561;&#26041;&#38754;&#27880;&#24847;&#22914;&#20309;&#19981;&#35753;&#36825;&#22235;&#20010;&#24517;&#35201;&#26465;&#20214;&#25104;&#31435;&#65292;&#22914;&#20309;&#30830;&#23450;&#36164;&#28304;&#30340;&#21512;&#29702;&#20998;&#37197;&#31639;&#27861;&#65292;&#36991;&#20813;&#36827;&#31243;&#27704;&#20037;&#21344;&#25454;&#31995;&#32479;&#36164;&#28304;&#12290;&#27492;&#22806;&#65292;&#20063;&#35201;&#38450;&#27490;&#36827;&#31243;&#22312;&#22788;&#20110;&#31561;&#24453;&#29366;&#24577;&#30340;&#24773;&#20917;&#19979;&#21344;&#29992;&#36164;&#28304;&#12290;&#22240;&#27492;&#65292;&#23545;&#36164;&#28304;&#30340;&#20998;&#37197;&#35201;&#32473;&#20104;&#21512;&#29702;&#30340;&#35268;&#21010;&#12290;&#8221;</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">不能称为是一个合理的 argument</p>
+<p class=" font-serif my-1">&#19981;&#33021;&#31216;&#20026;&#26159;&#19968;&#20010;&#21512;&#29702;&#30340; argument</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">对于玩具系统/模型<ul class=" list-disc font-serif">
-<li class=" ml-8">我们可以直接证明系统是 deadlock-free 的</li>
+<li class=" ml-8">&#23545;&#20110;&#29609;&#20855;&#31995;&#32479;/&#27169;&#22411;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25105;&#20204;&#21487;&#20197;&#30452;&#25509;&#35777;&#26126;&#31995;&#32479;&#26159; deadlock-free &#30340;</li>
 </ul>
 </li>
-<li class=" ml-8">对于真正的复杂系统<ul class=" list-disc font-serif">
+<li class=" ml-8">&#23545;&#20110;&#30495;&#27491;&#30340;&#22797;&#26434;&#31995;&#32479;<ul class=" list-disc font-serif">
 <li class=" ml-8"><red>Bullshit</red></li>
 </ul>
 </li>
@@ -290,20 +290,20 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">如何在实际系统中避免死锁？</h2>
-<p class=" font-serif my-1">四个条件中最容易达成的</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#22914;&#20309;&#22312;&#23454;&#38469;&#31995;&#32479;&#20013;&#36991;&#20813;&#27515;&#38145;&#65311;</h2>
+<p class=" font-serif my-1">&#22235;&#20010;&#26465;&#20214;&#20013;&#26368;&#23481;&#26131;&#36798;&#25104;&#30340;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">避免循环等待</li>
+<li class=" ml-8">&#36991;&#20813;&#24490;&#29615;&#31561;&#24453;</li>
 </ul>
 <hr>
 <p class=" font-serif my-1">Lock ordering</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">任意时刻系统中的锁都是有限的</li>
-<li class=" ml-8">严格按照固定的顺序获得所有锁 (Lock Ordering)，就可以消灭循环等待<ul class=" list-disc font-serif">
-<li class=" ml-8">“在任意时刻获得 “最靠后” 锁的线程总是可以继续执行”</li>
+<li class=" ml-8">&#20219;&#24847;&#26102;&#21051;&#31995;&#32479;&#20013;&#30340;&#38145;&#37117;&#26159;&#26377;&#38480;&#30340;</li>
+<li class=" ml-8">&#20005;&#26684;&#25353;&#29031;&#22266;&#23450;&#30340;&#39034;&#24207;&#33719;&#24471;&#25152;&#26377;&#38145; (Lock Ordering)&#65292;&#23601;&#21487;&#20197;&#28040;&#28781;&#24490;&#29615;&#31561;&#24453;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#8220;&#22312;&#20219;&#24847;&#26102;&#21051;&#33719;&#24471; &#8220;&#26368;&#38752;&#21518;&#8221; &#38145;&#30340;&#32447;&#31243;&#24635;&#26159;&#21487;&#20197;&#32487;&#32493;&#25191;&#34892;&#8221;</li>
 </ul>
 </li>
-<li class=" ml-8">例子：修复哲学家吃饭问题</li>
+<li class=" ml-8">&#20363;&#23376;&#65306;&#20462;&#22797;&#21746;&#23398;&#23478;&#21507;&#39277;&#38382;&#39064;</li>
 </ul></div>
         
       
@@ -315,7 +315,7 @@ section .center {
 
       
         
-        <div><h2 id="lock-ordering-linux-kernel-rmapc" class=" text-xl mt-2 pb-2 font-sans">Lock Ordering: 应用 (Linux Kernel: rmap.c)</h2>
+        <div><h2 id="lock-ordering-linux-kernel-rmapc" class=" text-xl mt-2 pb-2 font-sans">Lock Ordering: &#24212;&#29992; (Linux Kernel: rmap.c)</h2>
 <p class=" font-serif my-1"><img alt="" src="../../../pages/OS/img/kernel-rmap.png" width="800px"></p></div>
         
       
@@ -327,12 +327,12 @@ section .center {
 
       
         
-        <div><h2 id="emmm" class=" text-xl mt-2 pb-2 font-sans">Emmm……</h2>
+        <div><h2 id="emmm" class=" text-xl mt-2 pb-2 font-sans">Emmm&#8230;&#8230;</h2>
 <p class=" font-serif my-1">Textbooks will tell you that if you always lock in the same order, you will never get this kind of deadlock. <red><em>Practice will tell you that this approach doesn't scale</em></red>: when I create a new lock, I don't understand enough of the kernel to figure out where in the 5000 lock hierarchy it will fit.</p>
 <p class=" font-serif my-1">The best locks are encapsulated: they <em>never get exposed in headers</em>, and are <em>never held around calls to non-trivial functions outside the same file</em>. You can read through this code and see that it will never deadlock, because it never tries to grab another lock while it has that one. People using your code don't even need to know you are using a lock.</p>
-<p class=" font-serif my-1">—— <em><a href="https://www.kernel.org/doc/html/latest/kernel-hacking/locking.html" class=" text-amber-900">Unreliable Guide to Locking</a></em> by Rusty Russell</p>
+<p class=" font-serif my-1">&#8212;&#8212; <em><a href="https://www.kernel.org/doc/html/latest/kernel-hacking/locking.html" class=" text-amber-900">Unreliable Guide to Locking</a></em> by Rusty Russell</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">最终犯错的还是人</li>
+<li class=" ml-8">&#26368;&#32456;&#29359;&#38169;&#30340;&#36824;&#26159;&#20154;</li>
 </ul></div>
         
       

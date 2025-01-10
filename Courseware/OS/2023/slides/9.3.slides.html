@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // • auto-render specific keys, e.g.:
+            // &#8226; auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // • rendering keys, e.g.:
+            // &#8226; rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +209,7 @@ section .center {
 }
 </style>
 
-  <title>条件变量：应用</title>
+  <title>&#26465;&#20214;&#21464;&#37327;&#65306;&#24212;&#29992;</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,7 +227,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="9.3.slides.html" class=" text-amber-900">条件变量：应用</a></h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="9.3.slides.html" class=" text-amber-900">&#26465;&#20214;&#21464;&#37327;&#65306;&#24212;&#29992;</a></h1></div></div></div>
         
       
       </section>
@@ -238,7 +238,7 @@ section .center {
 
       
         
-        <div><h2 id="m2" class=" text-xl mt-2 pb-2 font-sans">条件变量：万能并行计算框架 (M2)</h2>
+        <div><h2 id="m2" class=" text-xl mt-2 pb-2 font-sans">&#26465;&#20214;&#21464;&#37327;&#65306;&#19975;&#33021;&#24182;&#34892;&#35745;&#31639;&#26694;&#26550; (M2)</h2>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">work</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">run</span><span class="p">)(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">arg</span><span class="p">);</span>
 <span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">arg</span><span class="p">;</span>
@@ -252,8 +252,8 @@ section .center {
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">work</span><span class="p">)</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
 <span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="n">work</span><span class="o">-></span><span class="n">run</span><span class="p">(</span><span class="n">work</span><span class="o">-></span><span class="n">arg</span><span class="p">);</span><span class="w"> </span><span class="c1">// 允许生成新的 work (注意互斥)</span>
-<span class="w">      </span><span class="n">release</span><span class="p">(</span><span class="n">work</span><span class="p">);</span><span class="w">  </span><span class="c1">// 注意回收 work 分配的资源</span>
+<span class="w">      </span><span class="n">work</span><span class="o">-&gt;</span><span class="n">run</span><span class="p">(</span><span class="n">work</span><span class="o">-&gt;</span><span class="n">arg</span><span class="p">);</span><span class="w"> </span><span class="c1">// &#20801;&#35768;&#29983;&#25104;&#26032;&#30340; work (&#27880;&#24847;&#20114;&#26021;)</span>
+<span class="w">      </span><span class="n">release</span><span class="p">(</span><span class="n">work</span><span class="p">);</span><span class="w">  </span><span class="c1">// &#27880;&#24847;&#22238;&#25910; work &#20998;&#37197;&#30340;&#36164;&#28304;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
@@ -268,23 +268,23 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">条件变量：更古怪的习题/面试题</h2>
-<p class=" font-serif my-1">有三种线程</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26465;&#20214;&#21464;&#37327;&#65306;&#26356;&#21476;&#24618;&#30340;&#20064;&#39064;/&#38754;&#35797;&#39064;</h2>
+<p class=" font-serif my-1">&#26377;&#19977;&#31181;&#32447;&#31243;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">Ta 若干: 死循环打印 <code><</code></li>
-<li class=" ml-8">Tb 若干: 死循环打印 <code>></code></li>
-<li class=" ml-8">Tc 若干: 死循环打印 <code>_</code></li>
+<li class=" ml-8">Ta &#33509;&#24178;: &#27515;&#24490;&#29615;&#25171;&#21360; <code>&lt;</code></li>
+<li class=" ml-8">Tb &#33509;&#24178;: &#27515;&#24490;&#29615;&#25171;&#21360; <code>&gt;</code></li>
+<li class=" ml-8">Tc &#33509;&#24178;: &#27515;&#24490;&#29615;&#25171;&#21360; <code>_</code></li>
 </ul>
-<p class=" font-serif my-1">任务：</p>
+<p class=" font-serif my-1">&#20219;&#21153;&#65306;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">对这些线程进行同步，使得屏幕打印出 <code><><_</code> 和 <code>><>_</code> 的组合</li>
+<li class=" ml-8">&#23545;&#36825;&#20123;&#32447;&#31243;&#36827;&#34892;&#21516;&#27493;&#65292;&#20351;&#24471;&#23631;&#24149;&#25171;&#21360;&#20986; <code>&lt;&gt;&lt;_</code> &#21644; <code>&gt;&lt;&gt;_</code> &#30340;&#32452;&#21512;</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">使用条件变量，只要回答三个问题：</p>
+<p class=" font-serif my-1">&#20351;&#29992;&#26465;&#20214;&#21464;&#37327;&#65292;&#21482;&#35201;&#22238;&#31572;&#19977;&#20010;&#38382;&#39064;&#65306;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">打印 “<code><</code>” 的条件？</li>
-<li class=" ml-8">打印 “<code>></code>” 的条件？</li>
-<li class=" ml-8">打印 “<code>_</code>” 的条件？</li>
+<li class=" ml-8">&#25171;&#21360; &#8220;<code>&lt;</code>&#8221; &#30340;&#26465;&#20214;&#65311;</li>
+<li class=" ml-8">&#25171;&#21360; &#8220;<code>&gt;</code>&#8221; &#30340;&#26465;&#20214;&#65311;</li>
+<li class=" ml-8">&#25171;&#21360; &#8220;<code>_</code>&#8221; &#30340;&#26465;&#20214;&#65311;</li>
 </ul></div>
         
       

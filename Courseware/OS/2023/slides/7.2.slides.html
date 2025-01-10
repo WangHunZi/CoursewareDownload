@@ -23,14 +23,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // • auto-render specific keys, e.g.:
+            // &#8226; auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // • rendering keys, e.g.:
+            // &#8226; rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +209,7 @@ section .center {
 }
 </style>
 
-  <title>自旋锁 (Spin Lock)</title>
+  <title>&#33258;&#26059;&#38145; (Spin Lock)</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,7 +227,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="spin-lock" class=" text-2xl mt-2 font-sans"><a href="7.2.slides.html" class=" text-amber-900">自旋锁 (Spin Lock)</a></h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="spin-lock" class=" text-2xl mt-2 font-sans"><a href="7.2.slides.html" class=" text-amber-900">&#33258;&#26059;&#38145; (Spin Lock)</a></h1></div></div></div>
         
       
       </section>
@@ -238,27 +238,27 @@ section .center {
 
       
         
-        <div><h2 id="vs" class=" text-xl mt-2 pb-2 font-sans">实现互斥：做题家 v.s. 科学家</h2>
+        <div><h2 id="vs" class=" text-xl mt-2 pb-2 font-sans">&#23454;&#29616;&#20114;&#26021;&#65306;&#20570;&#39064;&#23478; v.s. &#31185;&#23398;&#23478;</h2>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">lock</span><span class="p">(</span><span class="n">lock_t</span><span class="w"> </span><span class="o">*</span><span class="n">lk</span><span class="p">);</span>
 <span class="kt">void</span><span class="w"> </span><span class="nf">unlock</span><span class="p">(</span><span class="n">lock_t</span><span class="w"> </span><span class="o">*</span><span class="n">lk</span><span class="p">);</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">做题家：拿到题就开始排列组合</p>
+<p class=" font-serif my-1">&#20570;&#39064;&#23478;&#65306;&#25343;&#21040;&#39064;&#23601;&#24320;&#22987;&#25490;&#21015;&#32452;&#21512;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><del>熟练得让人心疼</del><ul class=" list-disc font-serif">
-<li class=" ml-8">如果长久的训练都是 “必须在规定的时间内正确解出问题”，那么浪费时间的思考自然就少了</li>
+<li class=" ml-8"><del>&#29087;&#32451;&#24471;&#35753;&#20154;&#24515;&#30140;</del><ul class=" list-disc font-serif">
+<li class=" ml-8">&#22914;&#26524;&#38271;&#20037;&#30340;&#35757;&#32451;&#37117;&#26159; &#8220;&#24517;&#39035;&#22312;&#35268;&#23450;&#30340;&#26102;&#38388;&#20869;&#27491;&#30830;&#35299;&#20986;&#38382;&#39064;&#8221;&#65292;&#37027;&#20040;&#28010;&#36153;&#26102;&#38388;&#30340;&#24605;&#32771;&#33258;&#28982;&#23601;&#23569;&#20102;</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">科学家：考虑更多更根本的问题</p>
+<p class=" font-serif my-1">&#31185;&#23398;&#23478;&#65306;&#32771;&#34385;&#26356;&#22810;&#26356;&#26681;&#26412;&#30340;&#38382;&#39064;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">我们可以设计出怎样的原子指令？<ul class=" list-disc font-serif">
-<li class=" ml-8">它们的表达能力如何？</li>
+<li class=" ml-8">&#25105;&#20204;&#21487;&#20197;&#35774;&#35745;&#20986;&#24590;&#26679;&#30340;&#21407;&#23376;&#25351;&#20196;&#65311;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#23427;&#20204;&#30340;&#34920;&#36798;&#33021;&#21147;&#22914;&#20309;&#65311;</li>
 </ul>
 </li>
-<li class=" ml-8">计算机硬件可以提供比 “一次 load/store” 更强的原子性吗？<ul class=" list-disc font-serif">
-<li class=" ml-8">如果硬件很困难，软件/编译器可以么？</li>
+<li class=" ml-8">&#35745;&#31639;&#26426;&#30828;&#20214;&#21487;&#20197;&#25552;&#20379;&#27604; &#8220;&#19968;&#27425; load/store&#8221; &#26356;&#24378;&#30340;&#21407;&#23376;&#24615;&#21527;&#65311;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#22914;&#26524;&#30828;&#20214;&#24456;&#22256;&#38590;&#65292;&#36719;&#20214;/&#32534;&#35793;&#22120;&#21487;&#20197;&#20040;&#65311;</li>
 </ul>
 </li>
 </ul></div>
@@ -272,25 +272,25 @@ section .center {
 
       
         
-        <div><h2 id="xchg" class=" text-xl mt-2 pb-2 font-sans">自旋锁：用 <code>xchg</code> 实现互斥</h2>
+        <div><h2 id="xchg" class=" text-xl mt-2 pb-2 font-sans">&#33258;&#26059;&#38145;&#65306;&#29992; <code>xchg</code> &#23454;&#29616;&#20114;&#26021;</h2>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/spin.gif" width="300px"></p>
-<p class=" font-serif my-1">在厕所门口放一个桌子 (共享变量)</p>
+<p class=" font-serif my-1">&#22312;&#21397;&#25152;&#38376;&#21475;&#25918;&#19968;&#20010;&#26700;&#23376; (&#20849;&#20139;&#21464;&#37327;)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">初始时放着 🔑</li>
+<li class=" ml-8">&#21021;&#22987;&#26102;&#25918;&#30528; &#128273;</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">自旋锁 (Spin Lock)</p>
+<p class=" font-serif my-1">&#33258;&#26059;&#38145; (Spin Lock)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">想上厕所的同学 (一条 xchg 指令)<ul class=" list-disc font-serif">
+<li class=" ml-8">&#24819;&#19978;&#21397;&#25152;&#30340;&#21516;&#23398; (&#19968;&#26465; xchg &#25351;&#20196;)<ul class=" list-disc font-serif">
 <li class=" ml-8">Stop the world</li>
-<li class=" ml-8">看一眼桌子上有什么 (🔑 或 🛑)</li>
-<li class=" ml-8">把 🛑 放到桌上 (覆盖之前有的任何东西)</li>
+<li class=" ml-8">&#30475;&#19968;&#30524;&#26700;&#23376;&#19978;&#26377;&#20160;&#20040; (&#128273; &#25110; &#128721;)</li>
+<li class=" ml-8">&#25226; &#128721; &#25918;&#21040;&#26700;&#19978; (&#35206;&#30422;&#20043;&#21069;&#26377;&#30340;&#20219;&#20309;&#19996;&#35199;)</li>
 <li class=" ml-8">Resume the world</li>
-<li class=" ml-8">期间看到 🔑 才可以进厕所，否则重复</li>
+<li class=" ml-8">&#26399;&#38388;&#30475;&#21040; &#128273; &#25165;&#21487;&#20197;&#36827;&#21397;&#25152;&#65292;&#21542;&#21017;&#37325;&#22797;</li>
 </ul>
 </li>
-<li class=" ml-8">出厕所的同学<ul class=" list-disc font-serif">
-<li class=" ml-8">把 🔑 放到桌上</li>
+<li class=" ml-8">&#20986;&#21397;&#25152;&#30340;&#21516;&#23398;<ul class=" list-disc font-serif">
+<li class=" ml-8">&#25226; &#128273; &#25918;&#21040;&#26700;&#19978;</li>
 </ul>
 </li>
 </ul></div>
@@ -304,23 +304,23 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">实现互斥：自旋锁</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#23454;&#29616;&#20114;&#26021;&#65306;&#33258;&#26059;&#38145;</h2>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">table</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">YES</span><span class="p">;</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">lock</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="nl">retry</span><span class="p">:</span>
-<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">got</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xchg</span><span class="p">(</span><span class="o">&</span><span class="n">table</span><span class="p">,</span><span class="w"> </span><span class="n">NOPE</span><span class="p">);</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">got</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xchg</span><span class="p">(</span><span class="o">&amp;</span><span class="n">table</span><span class="p">,</span><span class="w"> </span><span class="n">NOPE</span><span class="p">);</span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">got</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">NOPE</span><span class="p">)</span>
 <span class="w">    </span><span class="k">goto</span><span class="w"> </span><span class="n">retry</span><span class="p">;</span>
 <span class="w">  </span><span class="n">assert</span><span class="p">(</span><span class="n">got</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">YES</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">unlock</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">xchg</span><span class="p">(</span><span class="o">&</span><span class="n">table</span><span class="p">,</span><span class="w"> </span><span class="n">YES</span><span class="p">);</span><span class="w">  </span><span class="c1">// 为什么不是 table = YES; ?</span>
+<span class="w">  </span><span class="n">xchg</span><span class="p">(</span><span class="o">&amp;</span><span class="n">table</span><span class="p">,</span><span class="w"> </span><span class="n">YES</span><span class="p">);</span><span class="w">  </span><span class="c1">// &#20026;&#20160;&#20040;&#19981;&#26159; table = YES; ?</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">(在 model checker 中检查)</p></div>
+<p class=" font-serif my-1">(&#22312; model checker &#20013;&#26816;&#26597;)</p></div>
         
       
       </section>
@@ -331,12 +331,12 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">实现互斥：自旋锁</h2>
-<p class=" font-serif my-1">在 xchg 的<red>假设</red>下简化实现</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#23454;&#29616;&#20114;&#26021;&#65306;&#33258;&#26059;&#38145;</h2>
+<p class=" font-serif my-1">&#22312; xchg &#30340;<red>&#20551;&#35774;</red>&#19979;&#31616;&#21270;&#23454;&#29616;</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">包含一个原子指令</li>
-<li class=" ml-8">包含一个 compiler barrier</li>
-<li class=" ml-8">包含一个 memory fence<ul class=" list-disc font-serif">
+<li class=" ml-8">&#21253;&#21547;&#19968;&#20010;&#21407;&#23376;&#25351;&#20196;</li>
+<li class=" ml-8">&#21253;&#21547;&#19968;&#20010; compiler barrier</li>
+<li class=" ml-8">&#21253;&#21547;&#19968;&#20010; memory fence<ul class=" list-disc font-serif">
 <li class=" ml-8">sum-spinlock demo</li>
 </ul>
 </li>
@@ -344,11 +344,11 @@ section .center {
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">locked</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">lock</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">xchg</span><span class="p">(</span><span class="o">&</span><span class="n">locked</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">));</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">xchg</span><span class="p">(</span><span class="o">&amp;</span><span class="n">locked</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">));</span>
 <span class="p">}</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">unlock</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">xchg</span><span class="p">(</span><span class="o">&</span><span class="n">locked</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="w">  </span><span class="n">xchg</span><span class="p">(</span><span class="o">&amp;</span><span class="n">locked</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div></div>
         
