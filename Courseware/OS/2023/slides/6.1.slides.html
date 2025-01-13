@@ -1,10 +1,11 @@
 <!DOCTYPE html><html class="h-100">
 
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="../../../static/css/base.css" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com/"></script>
   <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
 
@@ -23,14 +24,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +210,7 @@ section .center {
 }
 </style>
 
-  <title>&#20114;&#26021;&#38382;&#39064;</title>
+  <title>互斥问题</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,7 +228,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="6.1.slides.html" class=" text-amber-900">&#20114;&#26021;&#38382;&#39064;</a></h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="6.1.slides.html" class=" text-amber-900">互斥问题</a></h1></div></div></div>
         
       
       </section>
@@ -238,22 +239,22 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#24182;&#21457;&#32534;&#31243;&#65306;&#20174;&#20837;&#38376;&#21040;&#25918;&#24323;</h2>
-<p class=" font-serif my-1">&#20154;&#31867;&#26159; sequential creature</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">并发编程：从入门到放弃</h2>
+<p class=" font-serif my-1">人类是 sequential creature</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#32534;&#35793;&#20248;&#21270; + weak memory model &#23548;&#33268;&#38590;&#20197;&#29702;&#35299;&#30340;&#24182;&#21457;&#25191;&#34892;</li>
-<li class=" ml-8">&#26377;&#22810;&#38590;&#29702;&#35299;&#21602;&#65311;<ul class=" list-disc font-serif">
-<li class=" ml-8"><a href="https://epubs.siam.org/doi/10.1137/S0097539794279614" class=" text-amber-900">Verifying sequential consistency &#26159; NP-&#23436;&#20840;&#38382;&#39064;</a></li>
+<li class=" ml-8">编译优化 + weak memory model 导致难以理解的并发执行</li>
+<li class=" ml-8">有多难理解呢？<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="https://epubs.siam.org/doi/10.1137/S0097539794279614" class=" text-amber-900">Verifying sequential consistency 是 NP-完全问题</a></li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#20154;&#31867;&#26159; (&#19981;&#36731;&#35328;&#25918;&#24323;&#30340;) sequential creature</p>
+<p class=" font-serif my-1">人类是 (不轻言放弃的) sequential creature</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#26377;&#38382;&#39064;&#65292;&#23601;&#20250;&#35797;&#30528;&#21435;&#35299;&#20915;</li>
-<li class=" ml-8">&#25163;&#27573;&#65306;<red>&#8220;&#22238;&#36864;&#21040;&#8221; &#39034;&#24207;&#25191;&#34892;</red><ul class=" list-disc font-serif">
-<li class=" ml-8">&#26631;&#35760;&#33509;&#24178;&#22359;&#20195;&#30721;&#65292;&#20351;&#24471;&#36825;&#20123;&#20195;&#30721;&#19968;&#23450;&#33021;&#25353;&#26576;&#20010;&#39034;&#24207;&#25191;&#34892;</li>
-<li class=" ml-8">&#20363;&#22914;&#65292;&#25105;&#20204;&#21487;&#20197;&#23433;&#20840;&#22320;&#22312;&#22359;&#37324;&#35760;&#24405;&#25191;&#34892;&#30340;&#39034;&#24207;</li>
+<li class=" ml-8">有问题，就会试着去解决</li>
+<li class=" ml-8">手段：<red>“回退到” 顺序执行</red><ul class=" list-disc font-serif">
+<li class=" ml-8">标记若干块代码，使得这些代码一定能按某个顺序执行</li>
+<li class=" ml-8">例如，我们可以安全地在块里记录执行的顺序</li>
 </ul>
 </li>
 </ul></div>
@@ -267,14 +268,14 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#22238;&#36864;&#21040;&#39034;&#24207;&#25191;&#34892;&#65306;&#20114;&#26021;</h2>
-<p class=" font-serif my-1">&#25554;&#20837; &#8220;&#31070;&#31192;&#20195;&#30721;&#8221;&#65292;&#20351;&#24471;&#25152;&#26377;&#20854;&#20182; &#8220;&#31070;&#31192;&#20195;&#30721;&#8221; &#37117;&#19981;&#33021;&#24182;&#21457;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">回退到顺序执行：互斥</h2>
+<p class=" font-serif my-1">插入 “神秘代码”，使得所有其他 “神秘代码” 都不能并发</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#30001; &#8220;&#31070;&#31192;&#20195;&#30721;&#8221; &#39046;&#23548;&#19981;&#20250;&#24182;&#21457;&#30340;&#20195;&#30721; (&#20363;&#22914; pure functions) &#25191;&#34892;</li>
+<li class=" ml-8">由 “神秘代码” 领导不会并发的代码 (例如 pure functions) 执行</li>
 </ul>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">Tsum</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">stop_the_world</span><span class="p">();</span>
-<span class="w">  </span><span class="c1">// &#20020;&#30028;&#21306; critical section</span>
+<span class="w">  </span><span class="c1">// 临界区 critical section</span>
 <span class="w">  </span><span class="n">sum</span><span class="o">++</span><span class="p">;</span>
 <span class="w">  </span><span class="n">resume_the_world</span><span class="p">();</span>
 <span class="p">}</span>
@@ -282,11 +283,11 @@ section .center {
 
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/the-world.jpg" width="400px"></p>
 <hr>
-<p class=" font-serif my-1">Stop the world &#30495;&#30340;&#26159;&#21487;&#33021;&#30340;</p>
+<p class=" font-serif my-1">Stop the world 真的是可能的</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">Java &#26377; &#8220;stop the world GC&#8221;</li>
-<li class=" ml-8">&#21333;&#20010;&#22788;&#29702;&#22120;&#21487;&#20197;&#20851;&#38381;&#20013;&#26029;</li>
-<li class=" ml-8">&#22810;&#20010;&#22788;&#29702;&#22120;&#20063;&#21487;&#20197;&#21457;&#36865;&#26680;&#38388;&#20013;&#26029;</li>
+<li class=" ml-8">Java 有 “stop the world GC”</li>
+<li class=" ml-8">单个处理器可以关闭中断</li>
+<li class=" ml-8">多个处理器也可以发送核间中断</li>
 </ul></div>
         
       
@@ -298,7 +299,7 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#22833;&#36133;&#30340;&#23581;&#35797;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">失败的尝试</h2>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">locked</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UNLOCK</span><span class="p">;</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">critical_section</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -314,9 +315,9 @@ section .center {
 <span class="p">}</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">&#21644; &#8220;&#23665;&#23528;&#25903;&#20184;&#23453;&#8221; &#23436;&#20840;&#19968;&#26679;&#30340;&#38169;&#35823;</p>
+<p class=" font-serif my-1">和 “山寨支付宝” 完全一样的错误</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#24182;&#21457;&#31243;&#24207;&#19981;&#33021;&#20445;&#35777; load + store &#30340;&#21407;&#23376;&#24615;</li>
+<li class=" ml-8">并发程序不能保证 load + store 的原子性</li>
 </ul></div>
         
       
@@ -328,25 +329,25 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26356;&#20005;&#32899;&#22320;&#23581;&#35797;&#65306;&#30830;&#23450;&#20551;&#35774;&#12289;&#35774;&#35745;&#31639;&#27861;</h2>
-<p class=" font-serif my-1">&#20551;&#35774;&#65306;&#20869;&#23384;&#30340;&#35835;/&#20889;&#21487;&#20197;&#20445;&#35777;&#39034;&#24207;&#12289;&#21407;&#23376;&#23436;&#25104;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">更严肃地尝试：确定假设、设计算法</h2>
+<p class=" font-serif my-1">假设：内存的读/写可以保证顺序、原子完成</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><code>val = atomic_load(ptr)</code><ul class=" list-disc font-serif">
-<li class=" ml-8">&#30475;&#19968;&#30524;&#26576;&#20010;&#22320;&#26041;&#30340;&#23383;&#26465; (&#21482;&#33021;&#30475;&#21040;&#30636;&#38388;&#30340;&#23383;)</li>
-<li class=" ml-8">&#21018;&#30475;&#23436;&#23601;&#21487;&#33021;&#34987;&#25913;&#25481;</li>
+<li class=" ml-8">看一眼某个地方的字条 (只能看到瞬间的字)</li>
+<li class=" ml-8">刚看完就可能被改掉</li>
 </ul>
 </li>
 <li class=" ml-8"><code>atomic_store(ptr, val)</code><ul class=" list-disc font-serif">
-<li class=" ml-8">&#23545;&#24212;&#24448;&#26576;&#20010;&#22320;&#26041; &#8220;&#36148;&#19968;&#24352;&#32440;&#26465;&#8221; (&#24517;&#39035;&#38381;&#30524;&#30450;&#36148;)</li>
-<li class=" ml-8">&#36148;&#23436;&#19968;&#30636;&#38388;&#23601;&#21487;&#33021;&#34987;&#21035;&#20154;&#35206;&#30422;</li>
+<li class=" ml-8">对应往某个地方 “贴一张纸条” (必须闭眼盲贴)</li>
+<li class=" ml-8">贴完一瞬间就可能被别人覆盖</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#23545;&#24212;&#20110; model checker</p>
+<p class=" font-serif my-1">对应于 model checker</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#27599;&#19968;&#34892;&#21487;&#20197;&#25191;&#34892;&#19968;&#27425;&#20840;&#23616;&#21464;&#37327;&#35835;&#25110;&#20889;</li>
-<li class=" ml-8">&#27599;&#20010;&#25805;&#20316;&#25191;&#34892;&#20043;&#21518;&#37117;&#21457;&#29983; <code>sys_sched()</code></li>
+<li class=" ml-8">每一行可以执行一次全局变量读或写</li>
+<li class=" ml-8">每个操作执行之后都发生 <code>sys_sched()</code></li>
 </ul></div>
         
       
@@ -358,19 +359,19 @@ section .center {
 
       
         
-        <div><h2 id="peterson" class=" text-xl mt-2 pb-2 font-sans">&#27491;&#30830;&#24615;&#19981;&#26126;&#30340;&#22855;&#24618;&#23581;&#35797; (Peterson &#31639;&#27861;)</h2>
-<p class=" font-serif my-1">A &#21644; B &#20105;&#29992;&#21397;&#25152;&#30340;&#21253;&#21410;</p>
+        <div><h2 id="peterson" class=" text-xl mt-2 pb-2 font-sans">正确性不明的奇怪尝试 (Peterson 算法)</h2>
+<p class=" font-serif my-1">A 和 B 争用厕所的包厢</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#24819;&#36827;&#20837;&#21253;&#21410;&#20043;&#21069;&#65292;A/B &#37117;&#39318;&#20808;&#20030;&#36215;&#33258;&#24049;&#30340;&#26071;&#23376;<ul class=" list-disc font-serif">
-<li class=" ml-8">A &#24448;&#21397;&#25152;&#38376;&#19978;&#36148;&#19978; &#8220;B &#27491;&#22312;&#20351;&#29992;&#8221; &#30340;&#26631;&#31614;</li>
-<li class=" ml-8">B &#24448;&#21397;&#25152;&#38376;&#19978;&#36148;&#19978; &#8220;A &#27491;&#22312;&#20351;&#29992;&#8221; &#30340;&#26631;&#31614;</li>
+<li class=" ml-8">想进入包厢之前，A/B 都首先举起自己的旗子<ul class=" list-disc font-serif">
+<li class=" ml-8">A 往厕所门上贴上 “B 正在使用” 的标签</li>
+<li class=" ml-8">B 往厕所门上贴上 “A 正在使用” 的标签</li>
 </ul>
 </li>
-<li class=" ml-8">&#28982;&#21518;&#65292;<red>&#22914;&#26524;&#23545;&#26041;&#20030;&#30528;&#26071;&#65292;&#19988;&#38376;&#19978;&#30340;&#21517;&#23383;&#26159;&#23545;&#26041;</red>&#65292;&#31561;&#24453;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#21542;&#21017;&#21487;&#20197;&#36827;&#20837;&#21253;&#21410;</li>
+<li class=" ml-8">然后，<red>如果对方举着旗，且门上的名字是对方</red>，等待<ul class=" list-disc font-serif">
+<li class=" ml-8">否则可以进入包厢</li>
 </ul>
 </li>
-<li class=" ml-8">&#20986;&#21253;&#21410;&#21518;&#65292;&#25918;&#19979;&#33258;&#24049;&#30340;&#26071;&#23376; (&#23436;&#20840;&#19981;&#31649;&#38376;&#19978;&#30340;&#26631;&#31614;)</li>
+<li class=" ml-8">出包厢后，放下自己的旗子 (完全不管门上的标签)</li>
 </ul>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/wc.jpg" width="500px"></p></div>
         
@@ -383,26 +384,26 @@ section .center {
 
       
         
-        <div><h2 id="peterson" class=" text-xl mt-2 pb-2 font-sans">&#20064;&#39064;&#65306;&#35777;&#26126; Peterson &#31639;&#27861;&#27491;&#30830;&#65292;&#25110;&#32473;&#20986;&#21453;&#20363;</h2>
-<p class=" font-serif my-1">&#36827;&#20837;&#20020;&#30028;&#21306;&#30340;&#24773;&#20917;</p>
+        <div><h2 id="peterson" class=" text-xl mt-2 pb-2 font-sans">习题：证明 Peterson 算法正确，或给出反例</h2>
+<p class=" font-serif my-1">进入临界区的情况</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#22914;&#26524;&#21482;&#26377;&#19968;&#20010;&#20154;&#20030;&#26071;&#65292;&#20182;&#23601;&#21487;&#20197;&#30452;&#25509;&#36827;&#20837;</li>
-<li class=" ml-8">&#22914;&#26524;&#20004;&#20010;&#20154;&#21516;&#26102;&#20030;&#26071;&#65292;&#30001;&#21397;&#25152;&#38376;&#19978;&#30340;&#26631;&#31614;&#20915;&#23450;&#35841;&#36827;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#25163;&#24555; &#127542;&#65039; (&#34987;&#21478;&#19968;&#20010;&#20154;&#30340;&#26631;&#31614;&#35206;&#30422;)&#12289;&#25163;&#24930; &#127514; </li>
+<li class=" ml-8">如果只有一个人举旗，他就可以直接进入</li>
+<li class=" ml-8">如果两个人同时举旗，由厕所门上的标签决定谁进<ul class=" list-disc font-serif">
+<li class=" ml-8">手快 🈶️ (被另一个人的标签覆盖)、手慢 🈚 </li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#19968;&#20123;&#20855;&#20307;&#30340;&#32454;&#33410;&#24773;&#20917;</p>
+<p class=" font-serif my-1">一些具体的细节情况</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">A &#30475;&#21040; B &#27809;&#26377;&#20030;&#26071;<ul class=" list-disc font-serif">
-<li class=" ml-8">B &#19968;&#23450;&#19981;&#22312;&#20020;&#30028;&#21306;</li>
-<li class=" ml-8">&#25110;&#32773; B &#24819;&#36827;&#20294;&#36824;&#27809;&#26469;&#24471;&#21450;&#25226; &#8220;A &#27491;&#22312;&#20351;&#29992;&#8221; &#36148;&#22312;&#38376;&#19978;</li>
+<li class=" ml-8">A 看到 B 没有举旗<ul class=" list-disc font-serif">
+<li class=" ml-8">B 一定不在临界区</li>
+<li class=" ml-8">或者 B 想进但还没来得及把 “A 正在使用” 贴在门上</li>
 </ul>
 </li>
-<li class=" ml-8">A &#30475;&#21040; B &#20030;&#26071;&#23376;<ul class=" list-disc font-serif">
-<li class=" ml-8">A &#19968;&#23450;&#24050;&#32463;&#25226;&#26071;&#23376;&#20030;&#36215;&#26469;&#20102;</li>
-<li class=" ml-8">(<em>!@^#</em>&amp;!%^(&amp;^!@%#</li>
+<li class=" ml-8">A 看到 B 举旗子<ul class=" list-disc font-serif">
+<li class=" ml-8">A 一定已经把旗子举起来了</li>
+<li class=" ml-8">(<em>!@^#</em>&!%^(&^!@%#</li>
 </ul>
 </li>
 </ul></div>
@@ -416,23 +417,23 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#32469;&#26469;&#32469;&#21435;&#24456;&#23481;&#26131;&#26377;&#38169;&#28431;&#30340;&#24773;&#20917;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">绕来绕去很容易有错漏的情况</h2>
 <p class=" font-serif my-1">Prove by brute-force</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#26522;&#20030;&#29366;&#24577;&#26426;&#30340;&#20840;&#37096;&#29366;&#24577; $(PC_1, PC_2, x, y, turn)$</li>
-<li class=" ml-8">&#20294;&#25163;&#20889;&#36824;&#26159;&#24456;&#23481;&#26131;&#38169;&#21834;&#8212;&#8212;<red>&#21487;&#25191;&#34892;&#30340;&#29366;&#24577;&#26426;&#27169;&#22411;&#26377;&#29992;&#20102;</red>&#65281;</li>
+<li class=" ml-8">枚举状态机的全部状态 $(PC_1, PC_2, x, y, turn)$</li>
+<li class=" ml-8">但手写还是很容易错啊——<red>可执行的状态机模型有用了</red>！</li>
 </ul>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">TA</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/* &#10102; */</span><span class="w">  </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="cm">/* &#10103; */</span><span class="w">  </span><span class="n">turn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">B</span><span class="p">;</span>
-<span class="cm">/* &#10104; */</span><span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">y</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">turn</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">B</span><span class="p">)</span><span class="w"> </span><span class="p">;</span>
-<span class="cm">/* &#10105; */</span><span class="w">  </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+<span class="cm">/* ❶ */</span><span class="w">  </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="cm">/* ❷ */</span><span class="w">  </span><span class="n">turn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">B</span><span class="p">;</span>
+<span class="cm">/* ❸ */</span><span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">y</span><span class="w"> </span><span class="o">&&</span><span class="w"> </span><span class="n">turn</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">B</span><span class="p">)</span><span class="w"> </span><span class="p">;</span>
+<span class="cm">/* ❹ */</span><span class="w">  </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">TB</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/* &#9312; */</span><span class="w">  </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="cm">/* &#9313; */</span><span class="w">  </span><span class="n">turn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">A</span><span class="p">;</span>
-<span class="cm">/* &#9314; */</span><span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">turn</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">A</span><span class="p">)</span><span class="w"> </span><span class="p">;</span>
-<span class="cm">/* &#9315; */</span><span class="w">  </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+<span class="cm">/* ① */</span><span class="w">  </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="cm">/* ② */</span><span class="w">  </span><span class="n">turn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">A</span><span class="p">;</span>
+<span class="cm">/* ③ */</span><span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&&</span><span class="w"> </span><span class="n">turn</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">A</span><span class="p">)</span><span class="w"> </span><span class="p">;</span>
+<span class="cm">/* ④ */</span><span class="w">  </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div></div>
         
       
@@ -463,5 +464,6 @@ section .center {
 
 
 </body>
+
 
 </html>

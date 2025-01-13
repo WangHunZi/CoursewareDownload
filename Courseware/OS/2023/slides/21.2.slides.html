@@ -1,10 +1,11 @@
 <!DOCTYPE html><html class="h-100">
 
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="../../../static/css/base.css" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com/"></script>
   <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
 
@@ -23,14 +24,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +210,7 @@ section .center {
 }
 </style>
 
-  <title>&#38745;&#24577;&#38142;&#25509;&#21644;&#21152;&#36733;</title>
+  <title>静态链接和加载</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,7 +228,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="21.2.slides.html" class=" text-amber-900">&#38745;&#24577;&#38142;&#25509;&#21644;&#21152;&#36733;</a></h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="21.2.slides.html" class=" text-amber-900">静态链接和加载</a></h1></div></div></div>
         
       
       </section>
@@ -238,21 +239,21 @@ section .center {
 
       
         
-        <div><h2 id="elf-loader" class=" text-xl mt-2 pb-2 font-sans">&#22312;&#25805;&#20316;&#31995;&#32479;&#19978;&#23454;&#29616; ELF Loader</h2>
-<p class=" font-serif my-1">&#21152;&#36733;&#22120; (loader) &#30340;&#32844;&#36131;</p>
+        <div><h2 id="elf-loader" class=" text-xl mt-2 pb-2 font-sans">在操作系统上实现 ELF Loader</h2>
+<p class=" font-serif my-1">加载器 (loader) 的职责</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#35299;&#26512;&#25968;&#25454;&#32467;&#26500;</li>
-<li class=" ml-8">&#21019;&#24314;&#36827;&#31243;&#21021;&#22987;&#29366;&#24577;<ul class=" list-disc font-serif">
+<li class=" ml-8">解析数据结构</li>
+<li class=" ml-8">创建进程初始状态<ul class=" list-disc font-serif">
 <li class=" ml-8">argv, envp, ...</li>
-<li class=" ml-8">&#20877;&#19968;&#27425;&#65292;<a href="../../../pages/OS/manuals/sysv-abi.pdf" class=" text-amber-900">System V ABI</a></li>
+<li class=" ml-8">再一次，<a href="../../../pages/OS/manuals/sysv-abi.pdf" class=" text-amber-900">System V ABI</a></li>
 </ul>
 </li>
-<li class=" ml-8">&#36339;&#36716;&#25191;&#34892;</li>
+<li class=" ml-8">跳转执行</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#20195;&#30721;&#31034;&#20363;</p>
+<p class=" font-serif my-1">代码示例</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#33021;&#27491;&#30830;&#22788;&#29702;&#21442;&#25968;/&#29615;&#22659;&#21464;&#37327; <a href="../../../pages/OS/2023/v/env.c" class=" text-amber-900">env.c</a></li>
+<li class=" ml-8">能正确处理参数/环境变量 <a href="../../../pages/OS/2023/v/env.c" class=" text-amber-900">env.c</a></li>
 </ul></div>
         
       
@@ -265,17 +266,17 @@ section .center {
       
         
         <div><h2 id="boot-block-loader" class=" text-xl mt-2 pb-2 font-sans">Boot Block Loader</h2>
-<p class=" font-serif my-1">&#21152;&#36733;&#25805;&#20316;&#31995;&#32479;&#20869;&#26680;&#65311;</p>
+<p class=" font-serif my-1">加载操作系统内核？</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20063;&#26159;&#19968;&#20010; ELF &#25991;&#20214;</li>
-<li class=" ml-8">&#35299;&#26512;&#25968;&#25454;&#32467;&#26500; + &#22797;&#21046;&#21040;&#20869;&#23384; + &#36339;&#36716; </li>
+<li class=" ml-8">也是一个 ELF 文件</li>
+<li class=" ml-8">解析数据结构 + 复制到内存 + 跳转 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#20043;&#21069;&#32473;&#22823;&#23478;&#30475;&#36807;&#19968;&#30524;</p>
+<p class=" font-serif my-1">之前给大家看过一眼</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20570;&#24471;&#20107;&#24773;&#19982;&#38745;&#24577;&#21152;&#36733;&#22120;&#23436;&#20840;&#19968;&#26679;</li>
-<li class=" ml-8">&#27809;&#26377; mmap &#24590;&#20040;&#21150;&#65311;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#29992; I/O &#25351;&#20196;&#25226;&#25968;&#25454;&#20174;&#30913;&#30424;&#25644;&#21040;&#20869;&#23384;</li>
+<li class=" ml-8">做得事情与静态加载器完全一样</li>
+<li class=" ml-8">没有 mmap 怎么办？<ul class=" list-disc font-serif">
+<li class=" ml-8">用 I/O 指令把数据从磁盘搬到内存</li>
 </ul>
 </li>
 </ul></div>
@@ -289,23 +290,23 @@ section .center {
 
       
         
-        <div><h2 id="elf" class=" text-xl mt-2 pb-2 font-sans">ELF &#25991;&#20214;&#26159;&#22914;&#20309;&#29983;&#25104;&#30340;&#65311;</h2>
-<p class=" font-serif my-1">&#19968;&#20010;&#23383;&#33410;&#19968;&#20010;&#23383;&#33410; &#8220;&#20889;&#20986;&#26469;&#8221; &#30340;</p>
+        <div><h2 id="elf" class=" text-xl mt-2 pb-2 font-sans">ELF 文件是如何生成的？</h2>
+<p class=" font-serif my-1">一个字节一个字节 “写出来” 的</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><code>printf("\x7f");</code></li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#32477;&#22823;&#37096;&#20998;&#25351;&#20196;&#37117;&#26159;&#32534;&#35793;&#26102;&#23601;&#23436;&#20840;&#30830;&#23450;&#22909;&#30340;</p>
+<p class=" font-serif my-1">绝大部分指令都是编译时就完全确定好的</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20294;&#26377;&#23569;&#37096;&#20998;&#19981;&#33021;</li>
-<li class=" ml-8">&#20363;&#22914; printf &#30340;&#22320;&#22336;<ul class=" list-disc font-serif">
-<li class=" ml-8">call &#20250;&#32534;&#35793;&#25104; <code>e8 00 00 00</code><ul class=" list-disc font-serif">
-<li class=" ml-8">&#22797;&#20064;&#39064;&#65306;offset 0 &#26159;&#36339;&#36716;&#21040;&#21738;&#26465;&#25351;&#20196;&#65292;&#20026;&#20160;&#20040;&#65311;</li>
+<li class=" ml-8">但有少部分不能</li>
+<li class=" ml-8">例如 printf 的地址<ul class=" list-disc font-serif">
+<li class=" ml-8">call 会编译成 <code>e8 00 00 00</code><ul class=" list-disc font-serif">
+<li class=" ml-8">复习题：offset 0 是跳转到哪条指令，为什么？</li>
 </ul>
 </li>
-<li class=" ml-8">&#36830;&#25509;&#26102;&#38656;&#35201; relocate<ul class=" list-disc font-serif">
-<li class=" ml-8">&#36825;&#20063;&#26159; ELF &#8220;&#25968;&#25454;&#32467;&#26500;&#8221; &#30340;&#19968;&#37096;&#20998;</li>
-<li class=" ml-8">&#20320;&#21487;&#20197;&#29702;&#35299;&#25104; &#8220;<code>ADDR_OF(puts) + 4</code>&#8221; &#36825;&#31181;&#36816;&#31639;&#35268;&#21017;</li>
+<li class=" ml-8">连接时需要 relocate<ul class=" list-disc font-serif">
+<li class=" ml-8">这也是 ELF “数据结构” 的一部分</li>
+<li class=" ml-8">你可以理解成 “<code>ADDR_OF(puts) + 4</code>” 这种运算规则</li>
 </ul>
 </li>
 </ul>
@@ -321,23 +322,23 @@ section .center {
 
       
         
-        <div><h2 id="ics" class=" text-xl mt-2 pb-2 font-sans">&#20026;&#20160;&#20040; ICS &#35838;&#30340; &#8220;&#38142;&#25509;&#21644;&#21152;&#36733;&#8221; &#22914;&#27492;&#20725;&#30828;&#65311;</h2>
-<p class=" font-serif my-1">&#22240;&#20026; ELF &#19981;&#26159;&#19968;&#20010;&#22909;&#30340; &#8220;&#25551;&#36848;&#29366;&#24577;&#26426;&#25968;&#25454;&#32467;&#26500;&#8221; &#30340;&#26684;&#24335;</p>
+        <div><h2 id="ics" class=" text-xl mt-2 pb-2 font-sans">为什么 ICS 课的 “链接和加载” 如此僵硬？</h2>
+<p class=" font-serif my-1">因为 ELF 不是一个好的 “描述状态机数据结构” 的格式</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#24443;&#24213;&#36829;&#32972;&#20102;&#20449;&#24687;&#30340;&#23616;&#37096;&#24615;&#21407;&#21017;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#21547;&#20041;&#38544;&#26214;&#30340; <code>R_X86_64_32</code>, <code>R_X86_64_PLT32</code></li>
-<li class=" ml-8">&#19981;&#38752;&#35299;&#26512;&#26681;&#26412;&#19981;&#21487;&#33021;&#30475;&#25026;</li>
-<li class=" ml-8">&#22823;&#37327;&#30340; &#8220;&#25351;&#38024;&#8221; (&#20154;&#31867;&#26080;&#27861;&#38405;&#35835;&#30340;&#20559;&#31227;&#37327;)</li>
-<li class=" ml-8">&#31561;&#20110;&#30452;&#25509;&#35753;&#20320;&#21435;&#35835;&#19968;&#20010;&#20869;&#23384;&#25968;&#25454;&#32467;&#26500;&#30340; core dump</li>
+<li class=" ml-8">彻底违背了信息的局部性原则<ul class=" list-disc font-serif">
+<li class=" ml-8">含义隐晦的 <code>R_X86_64_32</code>, <code>R_X86_64_PLT32</code></li>
+<li class=" ml-8">不靠解析根本不可能看懂</li>
+<li class=" ml-8">大量的 “指针” (人类无法阅读的偏移量)</li>
+<li class=" ml-8">等于直接让你去读一个内存数据结构的 core dump</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#32473;&#25105;&#19968;&#20010;&#26426;&#20250;&#37325;&#26032;&#35774;&#35745;&#65311;</p>
+<p class=" font-serif my-1">给我一个机会重新设计？</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#21487;&#20197;&#20570;&#20010; JSON-based&#65292;&#21487;&#35835;&#30340;&#26684;&#24335;<ul class=" list-disc font-serif">
+<li class=" ml-8">可以做个 JSON-based，可读的格式<ul class=" list-disc font-serif">
 <li class=" ml-8">FLE: A Fast, Legible, and Expedient Binary Format<ul class=" list-disc font-serif">
-<li class=" ml-8">(&#36825;&#20010;&#21517;&#23383;&#20063;&#26159; GPT &#32473;&#25105;&#36215;&#30340;)</li>
+<li class=" ml-8">(这个名字也是 GPT 给我起的)</li>
 </ul>
 </li>
 </ul>
@@ -372,5 +373,6 @@ section .center {
 
 
 </body>
+
 
 </html>

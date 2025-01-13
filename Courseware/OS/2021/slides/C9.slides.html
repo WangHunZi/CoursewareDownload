@@ -1,10 +1,11 @@
 <!DOCTYPE html><html class="h-100">
 
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="../../../static/css/base.css" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com/"></script>
   <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
 
@@ -23,14 +24,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +210,7 @@ section .center {
 }
 </style>
 
-  <title>[C9] &#21160;&#24577;&#36830;&#25509;&#19982;&#21152;&#36733;</title>
+  <title>[C9] 动态连接与加载</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,21 +228,21 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="c9" class=" text-2xl mt-2 font-sans">[C9] &#21160;&#24577;&#36830;&#25509;&#19982;&#21152;&#36733;</h1>
-<p class=" font-serif my-1"><include src="Slides_Author"><div><div class="py-16">
-<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">&#33931;&#28814;&#23721;</a></p>
+        <div><div class="center middle"><div style="width:100%"><h1 id="c9" class=" text-2xl mt-2 font-sans">[C9] 动态连接与加载</h1>
+<p class=" font-serif my-1"><include src="Slides_Author/index.html"><div><div class="py-16">
+<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">蒋炎岩</a></p>
 </div>
 <div class="row">
 <div class="author-affiliation">
-    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#12288;&#12288;&#21335;&#20140;&#22823;&#23398;&#12288;&#12288;</p>
+    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">　　南京大学　　</p>
     <img class="inline-img h-24" src="../../../static/img/nju-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#31185;&#23398;&#19982;&#25216;&#26415;&#31995;</p>
+   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">计算机科学与技术系</p>
     <img class="inline-img h-24" src="../../../static/img/njucs-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#36719;&#20214;&#30740;&#31350;&#25152;</p>
+    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">计算机软件研究所</p>
     <img class="inline-img h-24" src="../../../static/img/ics-logo.png" style="display: inline-block;"></a>
   </div>
 </div></div></include></p></div></div></div>
@@ -255,8 +256,8 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#32972;&#26223;</h2>
-<p class=" font-serif my-1">ELF &#21487;&#25191;&#34892;&#25991;&#20214;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">背景</h2>
+<p class=" font-serif my-1">ELF 可执行文件</p>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/doge-double-click.jpg" width="1000px"></p></div>
         
       
@@ -268,16 +269,16 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26412;&#27425;&#35838;&#20869;&#23481;&#19982;&#30446;&#26631;</h2>
-<p class=" font-serif my-1">&#33258;&#24049;&#21160;&#25163;&#23454;&#29616;&#21160;&#24577;&#21152;&#36733;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">本次课内容与目标</h2>
+<p class=" font-serif my-1">自己动手实现动态加载</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#29702;&#35299;&#21160;&#24577;&#21152;&#36733;&#30340;&#21160;&#26426;</li>
-<li class=" ml-8">&#8220;lazy&#8221; &#30340;&#24310;&#36831;&#31526;&#21495;&#32465;&#23450;</li>
+<li class=" ml-8">理解动态加载的动机</li>
+<li class=" ml-8">“lazy” 的延迟符号绑定</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#21160;&#24577;&#38142;&#25509;&#19968;&#30452;&#37117;&#27809;&#33021;&#35762;&#24471;&#24456;&#31616;&#21333;</p>
+<p class=" font-serif my-1">动态链接一直都没能讲得很简单</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20170;&#22825;&#20877;&#35797;&#19968;&#27425;&#65281;</li>
+<li class=" ml-8">今天再试一次！</li>
 </ul></div>
         
       
@@ -293,7 +294,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#21160;&#24577;&#38142;&#25509;&#19982;&#21152;&#36733;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">动态链接与加载</h1></div></div></div>
         
       
       </section>
@@ -304,25 +305,25 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20026;&#20160;&#20040;&#38656;&#35201;&#21160;&#24577;&#38142;&#25509;/&#21152;&#36733;&#65311;</h2>
-<p class=" font-serif my-1">&#20363;&#23376;&#65306;libc.so</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">为什么需要动态链接/加载？</h2>
+<p class=" font-serif my-1">例子：libc.so</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">300K &#26465;&#25351;&#20196;&#65292;2 MiB &#22823;&#23567;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#27599;&#20010;&#31243;&#24207;&#22914;&#26524;&#37117;&#38745;&#24577;&#38142;&#25509;&#65292;&#28010;&#36153;&#30340;&#31354;&#38388;&#24456;&#22823;</li>
-<li class=" ml-8">&#26368;&#22909;&#26159;&#25972;&#20010;&#31995;&#32479;&#37324;&#21482;&#26377;&#19968;&#20010; libc &#30340;&#21103;&#26412;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#25991;&#20214;&#31995;&#32479;&#37324;&#21482;&#26377;&#19968;&#20010;&#21103;&#26412; (libc.so)</li>
-<li class=" ml-8">&#20869;&#23384;&#37324;&#21482;&#26377;&#19968;&#20010;&#21103;&#26412;</li>
+<li class=" ml-8">300K 条指令，2 MiB 大小<ul class=" list-disc font-serif">
+<li class=" ml-8">每个程序如果都静态链接，浪费的空间很大</li>
+<li class=" ml-8">最好是整个系统里只有一个 libc 的副本<ul class=" list-disc font-serif">
+<li class=" ml-8">文件系统里只有一个副本 (libc.so)</li>
+<li class=" ml-8">内存里只有一个副本</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#38382;&#39064;&#65306;&#30495;&#30340;&#25972;&#20010;&#25805;&#20316;&#31995;&#32479;&#37324;&#21482;&#26377;&#19968;&#20010; libc &#30340;&#21103;&#26412;&#21527;&#65311;</p>
+<p class=" font-serif my-1">问题：真的整个操作系统里只有一个 libc 的副本吗？</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#26041;&#27861; 1: &#30475; Linux Kernel &#30340; trace</li>
-<li class=" ml-8">&#26041;&#27861; 2: &#35843;&#35797; Linux Kernel, &#26597;&#30475;&#20869;&#23384;&#26144;&#23556; (QEMU monitor)</li>
-<li class=" ml-8">&#26041;&#27861; 3: &#31616;&#21333;&#20570;&#20010;&#23454;&#39564;</li>
+<li class=" ml-8">方法 1: 看 Linux Kernel 的 trace</li>
+<li class=" ml-8">方法 2: 调试 Linux Kernel, 查看内存映射 (QEMU monitor)</li>
+<li class=" ml-8">方法 3: 简单做个实验</li>
 </ul></div>
         
       
@@ -334,25 +335,25 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#35753;&#25105;&#20204;&#21152;&#36733;&#24456;&#22810;&#20010;&#24456;&#22823;&#30340;&#31243;&#24207;&#21543;&#65281;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">让我们加载很多个很大的程序吧！</h2>
 <p class=" font-serif my-1"><a href="../../../pages/OS/2021/demos/huge.c" class=" text-amber-900">huge.c</a></p>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span>seq<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1000</span><span class="k">)</span><span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="p">;</span><span class="w"> </span>./a.out<span class="w"> </span><span class="p">&amp;;</span><span class="w"> </span><span class="k">done</span>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span>seq<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1000</span><span class="k">)</span><span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="p">;</span><span class="w"> </span>./a.out<span class="w"> </span><span class="p">&;</span><span class="w"> </span><span class="k">done</span>
 </code></pre></div>
 
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#36890;&#36807; inline assembly &#21019;&#24314;&#19968;&#20010; &#8220;&#24040;&#22823;&#8221; &#30340;&#21487;&#25191;&#34892;&#25991;&#20214;<ul class=" list-disc font-serif">
-<li class=" ml-8">128M &#20010; nop</li>
+<li class=" ml-8">通过 inline assembly 创建一个 “巨大” 的可执行文件<ul class=" list-disc font-serif">
+<li class=" ml-8">128M 个 nop</li>
 </ul>
 </li>
-<li class=" ml-8">&#28982;&#21518;&#20877;&#21019;&#24314; 1000 &#20221;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#22914;&#26524;&#27599;&#20010;&#36827;&#31243;&#37117;&#26377;&#29420;&#31435;&#30340;&#20195;&#30721;&#21103;&#26412;&#65292;&#24635;&#20849;&#38656;&#35201; 128G &#20869;&#23384;</li>
+<li class=" ml-8">然后再创建 1000 份<ul class=" list-disc font-serif">
+<li class=" ml-8">如果每个进程都有独立的代码副本，总共需要 128G 内存</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#25805;&#20316;&#31995;&#32479;&#20869;&#26680;&#65306;&#19981;&#38590;&#23454;&#29616;</p>
+<p class=" font-serif my-1">操作系统内核：不难实现</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25152;&#26377;&#20197;&#21482;&#35835;&#26041;&#24335;&#26144;&#23556;&#21516;&#19968;&#20010;&#25991;&#20214;&#30340;&#37096;&#20998;&#26102;&#65292;&#37117;&#25351;&#21521;&#21516;&#19968;&#20010;&#21103;&#26412;</li>
+<li class=" ml-8">所有以只读方式映射同一个文件的部分时，都指向同一个副本</li>
 </ul></div>
         
       
@@ -368,7 +369,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#23454;&#29616;&#21160;&#24577;&#38142;&#25509;&#19982;&#21152;&#36733;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">实现动态链接与加载</h1></div></div></div>
         
       
       </section>
@@ -379,22 +380,22 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#38656;&#27714;&#20998;&#26512;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">需求分析</h2>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">printf</span><span class="p">(</span><span class="s">"Hello, World</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
 </code></pre></div>
 
 <hr>
-<p class=" font-serif my-1">&#38142;&#25509;&#26102;</p>
+<p class=" font-serif my-1">链接时</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#19981;&#30693;&#36947; <code>printf</code> &#31526;&#21495;&#30340;&#22320;&#22336;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#26080;&#27861;&#29992; rip &#30456;&#23545;&#23547;&#22336;&#30452;&#25509;&#35843;&#29992;</li>
+<li class=" ml-8">不知道 <code>printf</code> 符号的地址<ul class=" list-disc font-serif">
+<li class=" ml-8">无法用 rip 相对寻址直接调用</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#21152;&#36733;&#26102;</p>
+<p class=" font-serif my-1">加载时</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#21487;&#20197;&#27491;&#30830;&#36339;&#36716;&#21040; <code>printf</code> &#20195;&#30721;&#25191;&#34892;</li>
+<li class=" ml-8">可以正确跳转到 <code>printf</code> 代码执行</li>
 </ul></div>
         
       
@@ -406,8 +407,8 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#31532;&#19968;&#27493;&#65306;&#24211;&#20989;&#25968;&#21644;&#20301;&#32622;&#26080;&#20851;&#20195;&#30721;</h2>
-<p class=" font-serif my-1">&#24211;&#20869;&#30340;&#20195;&#30721;&#21644;&#25968;&#25454;&#65306;&#21482;&#38656;&#29983;&#25104;&#20301;&#32622;&#26080;&#20851;&#20195;&#30721;&#21363;&#21487;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">第一步：库函数和位置无关代码</h2>
+<p class=" font-serif my-1">库内的代码和数据：只需生成位置无关代码即可</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="nl">liba_foo:</span>
 <span class="w">  </span><span class="nf">movl</span><span class="w"> </span><span class="no">$1</span><span class="p">,</span><span class="w"> </span><span class="nv">%eax</span>
 <span class="w">  </span><span class="nf">ret</span>
@@ -430,25 +431,25 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#35775;&#38382;&#24211;&#20989;&#25968;&#65306;&#21160;&#24577;&#38142;&#25509;&#26102;&#23450;&#20301;</h2>
-<p class=" font-serif my-1">&#22914;&#26524;&#21478;&#19968;&#20010;&#24211;&#38656;&#35201;&#35843;&#29992; foo/bar&#65311;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">访问库函数：动态链接时定位</h2>
+<p class=" font-serif my-1">如果另一个库需要调用 foo/bar？</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="nl">libb_baz:</span>
-<span class="w">  </span><span class="nf">call</span><span class="w"> </span><span class="no">liba_bar</span><span class="w"> </span><span class="c1">// &#32534;&#35793;&#26102;: 00 00 00 00</span>
+<span class="w">  </span><span class="nf">call</span><span class="w"> </span><span class="no">liba_bar</span><span class="w"> </span><span class="c1">// 编译时: 00 00 00 00</span>
 <span class="w">  </span><span class="nf">ret</span>
 </code></pre></div>
 
 <hr>
-<p class=" font-serif my-1">&#20004;&#20010;&#38382;&#39064;</p>
+<p class=" font-serif my-1">两个问题</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#28010;&#36153;&#20102;&#20869;&#23384;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20195;&#30721;&#19981;&#20877;&#33021;&#20849;&#20139; (&#25805;&#20316;&#31995;&#32479;&#30340;&#31934;&#22937;&#35774;&#35745;)<ul class=" list-disc font-serif">
+<li class=" ml-8">浪费了内存<ul class=" list-disc font-serif">
+<li class=" ml-8">代码不再能共享 (操作系统的精妙设计)<ul class=" list-disc font-serif">
 <li class=" ml-8"><a href="../../../pages/OS/2021/demos/huge.c" class=" text-amber-900">huge.c</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class=" ml-8">&#28010;&#36153;&#20102;&#26102;&#38388;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#27809;&#26377;&#35843;&#29992;&#30340;&#20195;&#30721;&#20063;&#20250;&#34987;&#37325;&#23450;&#20301;</li>
+<li class=" ml-8">浪费了时间<ul class=" list-disc font-serif">
+<li class=" ml-8">没有调用的代码也会被重定位</li>
 </ul>
 </li>
 </ul></div>
@@ -462,23 +463,23 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20026;&#27599;&#19968;&#20010;&#31243;&#24207;&#21019;&#24314;&#19968;&#24352; &#8220;&#34920;&#8221;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">为每一个程序创建一张 “表”</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#25226;&#38656;&#35201;&#22320;&#22336;&#35299;&#26512;&#30340;&#37096;&#20998;&#38598;&#20013;&#22312;&#34920;&#37324;&#12290;</p>
+<p class=" font-serif my-1">把需要地址解析的部分集中在表里。</p>
 </blockquote>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="w">  </span><span class="nf">call</span><span class="w"> </span><span class="no">liba_bar</span>
 </code></pre></div>
 
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="na">.section</span><span class="w"> </span><span class="no">.data</span>
 <span class="nl">liba_bar_dyn:</span>
-<span class="w">  </span><span class="na">.quad</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="c1">// &#21152;&#36733;&#26102;&#37325;&#22635;</span>
+<span class="w">  </span><span class="na">.quad</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="c1">// 加载时重填</span>
 
 <span class="na">.section</span><span class="w"> </span><span class="no">.text</span>
 <span class="w">  </span><span class="nf">call</span><span class="w"> </span><span class="p">*</span><span class="no">liba_bar_dyn</span><span class="p">(</span><span class="nv">%rip</span><span class="p">)</span>
 </code></pre></div>
 
 <hr>
-<p class=" font-serif my-1">&#22914;&#26524;&#35201;&#32473;&#36825;&#24352;&#34920;&#19968;&#20010;&#21517;&#23383;&#65292;&#23601;&#21483;&#23427; GOT (Global Offset Table) &#21543;</p></div>
+<p class=" font-serif my-1">如果要给这张表一个名字，就叫它 GOT (Global Offset Table) 吧</p></div>
         
       
       </section>
@@ -489,8 +490,8 @@ section .center {
 
       
         
-        <div><h2 id="loader" class=" text-xl mt-2 pb-2 font-sans">&#33258;&#24049;&#21160;&#25163;&#23454;&#29616;&#21160;&#24577;&#24211;&#21644; Loader</h2>
-<p class=" font-serif my-1"><a href="../../../pages/OS/2021/demos/mini-loader.tar.gz" class=" text-amber-900">mini-loader.tar.gz</a></p>
+        <div><h2 id="loader" class=" text-xl mt-2 pb-2 font-sans">自己动手实现动态库和 Loader</h2>
+<p class=" font-serif my-1"><a href="../../../pages/OS/2021/demos/mini-loader.tar.gzip" class=" text-amber-900">mini-loader.tar.gz</a></p>
 <hr>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">symbol</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kt">int64_t</span><span class="w"> </span><span class="n">offset</span><span class="p">;</span>
@@ -498,12 +499,12 @@ section .center {
 <span class="p">};</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">&#21160;&#24577;&#24211;&#26159;&#30001; &#8220;symbol&#8221; &#21015;&#34920;&#12289;&#20195;&#30721; + &#25968;&#25454;&#32452;&#25104;</p>
+<p class=" font-serif my-1">动态库是由 “symbol” 列表、代码 + 数据组成</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">symbols &#20301;&#20110;&#21160;&#24577;&#24211;&#30340;&#22836;&#37096;&#65292;&#20197;&#31354;&#21517;&#23383;&#32467;&#26463;</li>
-<li class=" ml-8">&#20998;&#20026;&#20004;&#31181;&#31526;&#21495;<ul class=" list-disc font-serif">
-<li class=" ml-8">IMPORT (&#38656;&#35201;&#20174;&#20854;&#20182;&#24211;&#23548;&#20837;)</li>
-<li class=" ml-8">EXPORT (&#23548;&#20986;&#20854;&#20182;&#24211;&#21487;&#35265;)</li>
+<li class=" ml-8">symbols 位于动态库的头部，以空名字结束</li>
+<li class=" ml-8">分为两种符号<ul class=" list-disc font-serif">
+<li class=" ml-8">IMPORT (需要从其他库导入)</li>
+<li class=" ml-8">EXPORT (导出其他库可见)</li>
 </ul>
 </li>
 </ul></div>
@@ -517,19 +518,19 @@ section .center {
 
       
         
-        <div><h2 id="plt" class=" text-xl mt-2 pb-2 font-sans">PLT: &#26080;&#35770;&#20309;&#31181;&#31526;&#21495;&#65292;&#37117;&#20165;&#20351;&#29992;&#26222;&#36890;&#30340;&#36339;&#36716;</h2>
+        <div><h2 id="plt" class=" text-xl mt-2 pb-2 font-sans">PLT: 无论何种符号，都仅使用普通的跳转</h2>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">hello</span><span class="p">();</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">&#32534;&#35793;&#26102;&#26080;&#27861;&#20915;&#23450;&#26159;&#20197;&#19979;&#21738;&#31181;&#24773;&#20917;</p>
+<p class=" font-serif my-1">编译时无法决定是以下哪种情况</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="nf">call</span><span class="w"> </span><span class="no">hello</span>
 <span class="nf">call</span><span class="w"> </span><span class="p">*</span><span class="no">hello_dyn</span><span class="p">(</span><span class="nv">%rip</span><span class="p">)</span>
 </code></pre></div>
 
 <hr>
-<p class=" font-serif my-1">&#35299;&#20915;&#21150;&#27861;</p>
+<p class=" font-serif my-1">解决办法</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="nl">liba_bar@plt:</span>
-<span class="w">  </span><span class="nf">jmp</span><span class="w"> </span><span class="p">*</span><span class="no">liba_bar_dyn</span><span class="p">(</span><span class="nv">%rip</span><span class="p">)</span><span class="w"> </span><span class="c1">// &#36825;&#37324;&#21487;&#20197;&#23454;&#29616; &#8220;&#24310;&#36831;&#32465;&#23450;&#8221;</span>
+<span class="w">  </span><span class="nf">jmp</span><span class="w"> </span><span class="p">*</span><span class="no">liba_bar_dyn</span><span class="p">(</span><span class="nv">%rip</span><span class="p">)</span><span class="w"> </span><span class="c1">// 这里可以实现 “延迟绑定”</span>
 <span class="nl">puts_bar@plt:</span>
 <span class="w">  </span><span class="nf">jmp</span><span class="w"> </span><span class="p">*</span><span class="no">puts_dyn</span><span class="p">(</span><span class="nv">%rip</span><span class="p">)</span>
 
@@ -546,11 +547,11 @@ section .center {
 
       
         
-        <div><h2 id="elf" class=" text-xl mt-2 pb-2 font-sans">&#20877;&#26469;&#30475;&#30475;&#21160;&#24577;&#38142;&#25509;&#30340; ELF</h2>
-<p class=" font-serif my-1">Program header &#20013;&#26377; <code>PT_INTERP</code></p>
+        <div><h2 id="elf" class=" text-xl mt-2 pb-2 font-sans">再来看看动态链接的 ELF</h2>
+<p class=" font-serif my-1">Program header 中有 <code>PT_INTERP</code></p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">elf(5) <code>PT_INTERP</code>: The array element specifies the location and size of a null-terminated pathname to invoke as an interpreter.  This segment type is meaningful only for executable files (though it may occur for shared objects).  However it may not occur more than once in a file.  If it is present, it must precede any loadable segment entry.<ul class=" list-disc font-serif">
-<li class=" ml-8">system (UNIX) &#30340;&#19990;&#30028;&#21508;&#31181;&#19981;&#23436;&#32654;</li>
+<li class=" ml-8">system (UNIX) 的世界各种不完美</li>
 </ul>
 </li>
 </ul></div>
@@ -564,18 +565,18 @@ section .center {
 
       
         
-        <div><h2 id="elf" class=" text-xl mt-2 pb-2 font-sans">ELF &#30340;&#21152;&#36733;</h2>
+        <div><h2 id="elf" class=" text-xl mt-2 pb-2 font-sans">ELF 的加载</h2>
 <p class=" font-serif my-1">ldd</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">ldd &#27604; readelf &#20570;&#30340;&#20107;&#24773;&#31245;&#31245;&#22810;&#19968;&#20123;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#23427;&#20250;&#35797;&#30528; &#8220;&#21152;&#36733;&#8221;</li>
+<li class=" ml-8">ldd 比 readelf 做的事情稍稍多一些<ul class=" list-disc font-serif">
+<li class=" ml-8">它会试着 “加载”</li>
 <li class=" ml-8">RTFM</li>
 </ul>
 </li>
-<li class=" ml-8">ld.so &#20250;&#27604;&#25105;&#20204;&#30340; &#8220;&#31616;&#26131;&#8221; &#21152;&#36733;&#22120;&#23436;&#25104;&#26356;&#22810;&#30340;&#25805;&#20316;<ul class=" list-disc font-serif">
-<li class=" ml-8"><code>LD_PRELOAD</code> (&#20801;&#35768;&#25105;&#20204;&#39044;&#20808;&#21152;&#36733; &#8220;&#35206;&#30422;&#8221; &#19968;&#20123;&#31526;&#21495;)</li>
-<li class=" ml-8">&#36882;&#24402;&#35299;&#26512;&#20381;&#36182;&#20851;&#31995;</li>
-<li class=" ml-8">&#8230;&#8230;</li>
+<li class=" ml-8">ld.so 会比我们的 “简易” 加载器完成更多的操作<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>LD_PRELOAD</code> (允许我们预先加载 “覆盖” 一些符号)</li>
+<li class=" ml-8">递归解析依赖关系</li>
+<li class=" ml-8">……</li>
 </ul>
 </li>
 </ul></div>
@@ -593,7 +594,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#24635;&#32467;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">总结</h1></div></div></div>
         
       
       </section>
@@ -604,16 +605,16 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#24635;&#32467;</h2>
-<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#20869;&#23481;&#19982;&#30446;&#26631;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">总结</h2>
+<p class=" font-serif my-1">本次课内容与目标</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#33258;&#24049;&#23454;&#29616;&#21160;&#24577;&#21152;&#36733;</li>
+<li class=" ml-8">自己实现动态加载</li>
 </ul>
 <hr>
 <p class=" font-serif my-1">Take-away messages</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">RTFM; RTFSC</li>
-<li class=" ml-8">&#27491;&#30830;&#29702;&#35299;&#38656;&#27714;&#65292;&#20320;&#20063;&#33021;&#32473;&#20986;&#21644;&#24037;&#19994;&#30028;/&#24320;&#28304;&#31038;&#21306;&#19968;&#26679;&#30340;&#26041;&#26696;</li>
+<li class=" ml-8">正确理解需求，你也能给出和工业界/开源社区一样的方案</li>
 </ul></div>
         
       
@@ -644,5 +645,6 @@ section .center {
 
 
 </body>
+
 
 </html>

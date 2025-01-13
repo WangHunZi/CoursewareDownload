@@ -1,335 +1,82 @@
-<!DOCTYPE html><html class="h-100">
+<!DOCTYPE html><html>
+<head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width"/><title>Yanyan's Wiki</title><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"/><link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/default.min.css"/><meta name="next-head-count" content="5"/><link rel="preload" href="../_next/static/css/e993edd6a18ef4f0.css" as="style"/><link rel="stylesheet" href="../_next/static/css/e993edd6a18ef4f0.css" data-n-g=""/><noscript data-n-css=""></noscript><script defer="" nomodule="" src="../_next/static/chunks/polyfills-c67a75d1b6f99dc8.js"></script><script src="../_next/static/chunks/webpack-f73d82589f972e7d.js" defer=""></script><script src="../_next/static/chunks/framework-66d32731bdd20e83.js" defer=""></script><script src="../_next/static/chunks/main-3929bf55b0f13a18.js" defer=""></script><script src="../_next/static/chunks/pages/_app-00b06920b385caf1.js" defer=""></script><script src="../_next/static/chunks/pages/%5b%5b...index%5d%5d-877ec949b69be209.js" defer=""></script><script src="../_next/static/a2FwJzUPGFGc0QcwaUr13/_buildManifest.js" defer=""></script><script src="../_next/static/a2FwJzUPGFGc0QcwaUr13/_ssgManifest.js" defer=""></script></head><body><div id="__next"><div class="bg-slate-300/10"><div class="sticky top-0 z-40 w-full backdrop-blur flex-none border-b border-slate-900/10 bg-white/75 supports-backdrop-blur:bg-white/60"><div class="max-w-8xl mx-auto"><div class="py-4 border-b border-slate-900/10 lg:px-8 lg:border-0 dark:border-slate-300/10 mx-4 lg:mx-0"><div class="relative flex items-center"><a href="../index.html">Yanyan's wiki</a><form class="text-xs text-slate-500"> for <input type="text" name="token" class="font-mono text-xs w-16" maxLength="8"/></form><div class="relative hidden lg:flex items-center ml-4 pl-4 border-l"><nav class="text-sm leading-6 font-semibold text-slate-700 dark:text-slate-200"><ul class="flex space-x-8"><li><a class="hover:text-sky-500 dark:hover:text-sky-400" href="../OS/2025/index.html">操作系统 (2025 春)</a></li></ul></nav></div></div></div></div></div><div class="container mx-auto max-w-5xl flex flex-col min-h-screen px-4"><div class="wiki bg-neutral-200/10"><h1>AbstractMachine: 抽象计算机</h1>
+<p>AbstractMachine 是裸机上的 C 语言运行环境，提供 5 组 (15 个) 主要 API，可以实现各类系统软件 (如操作系统)：</p>
+<ul>
+<li>(TRM) <code>putch</code>/<code>halt</code> - 最基础的计算、显示和停机</li>
+<li>(IOE) <code>ioe_read/ioe_write</code> - I/O 设备管理</li>
+<li>(CTE) <code>ienabled</code>/<code>iset</code>/<code>yield</code>/<code>kcontext</code> - 中断和异常</li>
+<li>(VME) <code>protect</code>/<code>unprotect</code>/<code>map</code>/<code>ucontext</code> - 虚存管理</li>
+<li>(MPE) <code>cpu_count</code>/<code>cpu_current</code>/<code>atomic_xchg</code> - 多处理器</li>
+</ul>
+<div class="box blue-box"><div><span class="float-left text-4xl mr-3 mt-2">🗒️</span><span class="font-serif text-lg border-b border-slate-600"><b>目录</b></span><div class="font-serif pt-2"><ul>
+<li><a href="AM_Spec.html">AbstractMachine 规约 (Specifications)</a></li>
+<li>(WiP) Tutorial: <a href="AM_Programs/index.html">如何为 “裸机” (bare-metal) 编程</a></li>
+<li>(WiP) Tutorial: <a href="AM_klib/index.html">在 AbstractMachine 上封装库函数</a></li>
+<li>(WiP) <a href="AM_Design/index.html">AbstractMachine 设计概述</a></li>
+<li>(WiP) <a href="AM_Devices/index.html">AbstractMachine 设备规约</a></li>
+</ul></div></div></div>
+<h2>1. 简介</h2>
+<p>从硬件的视角，“操作系统” 就是一段指令序列；而从数学的视角，任何程序都是状态机——因此，我们没有道理不能轻松愉快地用高级语言 (例如 C 语言) 实现操作系统内核。当然，我们也知道操作系统内核需要管理中断、系统调用、虚拟存储、I/O、多处理器等计算机硬件为我们提供的功能，这些功能似乎并不是 C 语言所 “内置” 的：C 语言只支持纯粹的计算，非计算的部分都通过库函数实现，例如 <code>fwrite</code>、<code>setjmp</code> 等。AbstractMachine 通过 15 个 C API 实现了硬件抽象层 (hardware abstraction layer, HAL)，使我们可以在 C 代码中操纵计算机硬件。</p>
+<h2>2. 安装与配置</h2>
+<h3>2.1 配置 AbstractMachine</h3>
+<p>在操作系统实验的 <code>os-workbench</code> 中已经包含了 AbstractMachine 代码，并且实验框架代码已经完成了配置。如果你使用 Debian/Ubuntu 系统，你在编译代码时可能会遇到一些命令执行失败的情况，通常需要以下软件包 (如果有其他依赖，你可能会遇到编译错误，请相应解决)：</p>
+<ul>
+<li><code>gcc-multilib</code> (交叉编译用)</li>
+<li><code>libsdl2-dev</code> (图形库)</li>
+<li><code>qemu-system</code> (全系统模拟器)</li>
+</ul>
+<p>如果你希望建立自己的 AbstractMachine 项目或编译运行其他示例代码 (microbench, fceux, litenes, ...) 等，则需要先配置好 <code>AM_HOME</code> 环境变量，把它设置为 AbstractMachine 目录的<strong>绝对路径</strong>：</p>
+<pre><code class="hljs language-bash"><span class="hljs-built_in">export</span> AM_HOME=/abs/path/to/.../os-workbench/abstract-machine
+</code></pre>
+<p>你可以把这一行写在你 shell 的默认配置中 (例如 <code>.bashrc</code>)，使得不必每次打开终端都重新配置。如果你第一次使用 Linux，这会是一个比较痛苦的过程——你还需要学习 Shell 有关的基础知识。一份不错的入门材料是 MIT 的 “<a href="https://missing.csail.mit.edu/">The Missing Semester of Your CS Education</a>”。</p>
+<h2>2.2 Hello, AbstractMachine</h2>
+<p>完成必要软件的安装和正确的 <code>AM_HOME</code> 配置后，我们就可以在 AbstractMachine 上编程了。在文件系统的任意目录中创建一个 <code>.c</code> 文件和 <code>Makefile</code> (参考 <code>man 3 stdarg</code>)。例如，创建 hello.c:</p>
+<pre><code class="hljs language-c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string"><am.h></span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string"><stdarg.h></span></span>
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link href="../static/css/base.css" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
-  <link rel="shortcut icon" href="../static/img/favicon.png" type="image/x-icon">
-
-  <style>
-    .font-sans {
-      font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+<span class="hljs-type">void</span> <span class="hljs-title function_">print</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">char</span> *s, ...)</span> {
+    va_list ap;
+    va_start(ap, s);
+    <span class="hljs-keyword">while</span> (s) {
+        <span class="hljs-keyword">for</span> (; *s; s ++) putch(*s);
+        s = va_arg(ap, <span class="hljs-type">const</span> <span class="hljs-type">char</span> *);
     }
-    .font-serif {
-      font-family: 'Source Serif Pro', 'Songti SC', 'SimSun', 'Serif', serif;
-    }
-  </style>
-  <link rel="stylesheet" href="../static/katex/katex.min.css">
-  <script defer src="../static/katex/katex.min.js"></script>
-  <script defer src="../static/katex/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
-  <script>
-      document.addEventListener("DOMContentLoaded", function() {
-          renderMathInElement(document.body, {
-            // customised options
-            // &#8226; auto-render specific keys, e.g.:
-            delimiters: [
-                {left: '$$', right: '$$', display: true},
-                {left: '$', right: '$', display: false},
-                {left: '\\(', right: '\\)', display: false},
-                {left: '\\[', right: '\\]', display: true}
-            ],
-            // &#8226; rendering keys, e.g.:
-            throwOnError : false
-          });
-      });
-  </script>
-
-
-  
-
-<style>
-.article {
-  -webkit-hyphens: auto;
-}
-form {
-  margin-block-end: 0;
-}
-img {
-  display: inline-block;
-}
-code { font-size: 85%; }
-pre {
-  font-size: 95%;
-  line-height: 120%;
-}
-blockquote {
-  font-size: 95%;
-}
-p {
-  font-size: 105%;
-  text-indent: 2em;
-}
-li {
-  font-size: 105%;
-}
-blockquote p {
-  text-indent: 0em;
-}
-.float-right {
-  padding-left: 10px;
-}
-.float-left {
-  padding-right: 10px;
-}
-a {
-  color: rgb(29 78 216);
-}
-strong {
-  font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
-}
-.box        {
-  border-radius: 2px; padding: 1px 4px 2px 4px;
-  font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
-  font-size: 95%;
-}
-.box-blue,  .badge-primary  { background-color: rgba(66, 139, 202, 0.5); color: #1d4ed8; }
-.box-green, .badge-success  { background-color: rgba(92, 184, 92, 0.5);  color: #15803d; }
-.box-red,   .badge-danger   { background-color: rgba(217, 83, 79, 0.5);  color: #b91c1c; }
-.box-yellow,.badge-warning  { background-color: rgba(240, 173, 78, 0.5); color: #a16207; }
-.box-gray   { background-color: #a0a0a0; }
-
-.badge {
-  padding: 1 4 1 4;
-  display: inline-block;
-  border-radius: 0.25rem;
-  border: 1px solid;
-}
-.message p {
-  text-indent: 0em;
-  margin-top: 1px;
-}
-.message h1, h2, h3, h4, h5 {
-  font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
-}
-.message h2 {
-  font-size: 120%;
-  margin-top: 5px;
-  margin-bottom: 2px;
-}
-.message li {
-  list-style: disc;
-  margin-left: 2em;
-}
-li > p {
-  text-indent: 0em;
-}
-block-quote h4 {
-  float: left;
-  display: inline-block;
-}
-.center {
-  display: block;
-  margin: auto;
-}
-hr {
-  margin-top: 20px;
-  padding-bottom: 20px;
+    va_end(ap);
 }
 
-.fa-gradient {
-	background: -webkit-gradient(linear, left top, left bottom, from(rgb(99, 27, 103)), to(#333));
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
+<span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">char</span> *args)</span> {
+    print(<span class="hljs-string">"\""</span>, args, <span class="hljs-string">"\""</span>, <span class="hljs-string">" from "</span> __ISA__ <span class="hljs-string">" program!\n"</span>, <span class="hljs-literal">NULL</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 }
-
-</style>
-
-
-  <title>AbstractMachine: &#25277;&#35937;&#35745;&#31639;&#26426;</title>
-</head>
-
-<body class="d-flex flex-column h-100">
-  
-  
-
-<div>
-
-<div class="px-2 py-1 w-full fixed z-50 bg-gradient-to-r from-black via-purple-700 via-purple-500 shadow-lg" style="-webkit-backdrop-filter: saturate(150%) blur(4px); backdrop-filter: saturate(150%) blur(4px)">
-  <form>
-    <a href="../index.html"><span class="text-lg px-2 text-white">Yanyan's Wiki</span></a>
-    <a href="../OS/2023/index.html"><span class="text-sm px-2 text-white">&#25805;&#20316;&#31995;&#32479; (2023)</span></a>
-    <input maxlength="9" id="token-input" class="float-right appearance-none border border-transparent px-2 py-1 w-20 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-xs focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent font-mono" type="text" placeholder="TOKEN" oninput="login();">
-  </form>
-</div>
-
-<div class="article container mx-auto md:px-8 lg:px-8 xl:px-8 2xl:px-8 shadow-lg border pb-8 pt-10 max-w-screen-md text-justify divide-y-2 divide-white">
-  <div><h1 id="abstractmachine" class=" text-2xl mt-2 font-sans">AbstractMachine: &#25277;&#35937;&#35745;&#31639;&#26426;</h1>
-<p class=" font-serif my-1"><img alt="" class="float-right" src="../pages/talks/img/full-system.jpg" width="240px"></p>
-<p class=" font-serif my-1">AbstractMachine &#26159;&#35064;&#26426;&#19978;&#30340; C &#35821;&#35328;&#36816;&#34892;&#29615;&#22659;&#65292;&#25552;&#20379; 5 &#32452; (15 &#20010;) &#20027;&#35201; API&#65292;&#21487;&#20197;&#23454;&#29616;&#21508;&#31867;&#31995;&#32479;&#36719;&#20214; (&#22914;&#25805;&#20316;&#31995;&#32479;)&#65306;</p>
-<ul class=" list-disc font-serif">
-<li class=" ml-8">(TRM) <code>putch</code>/<code>halt</code> - &#26368;&#22522;&#30784;&#30340;&#35745;&#31639;&#12289;&#26174;&#31034;&#21644;&#20572;&#26426;</li>
-<li class=" ml-8">(IOE) <code>ioe_read/ioe_write</code> - I/O &#35774;&#22791;&#31649;&#29702;</li>
-<li class=" ml-8">(CTE) <code>ienabled</code>/<code>iset</code>/<code>yield</code>/<code>kcontext</code> - &#20013;&#26029;&#21644;&#24322;&#24120;</li>
-<li class=" ml-8">(VME) <code>protect</code>/<code>unprotect</code>/<code>map</code>/<code>ucontext</code> - &#34394;&#23384;&#31649;&#29702;</li>
-<li class=" ml-8">(MPE) <code>cpu_count</code>/<code>cpu_current</code>/<code>atomic_xchg</code> - &#22810;&#22788;&#29702;&#22120;</li>
-</ul>
-<hr>
-<ul class=" list-disc font-serif">
-<li class=" ml-8">AbstractMachine &#31616;&#20171;<ul class=" list-disc font-serif">
-<li class=" ml-8"><a href="AM_Programs.html" class=" text-amber-900">&#22914;&#20309;&#20026; &#8220;&#35064;&#26426;&#8221; (bare-metal) &#32534;&#31243;</a></li>
-<li class=" ml-8"><a href="AM_klib.html" class=" text-amber-900">&#22312; AbstractMachine &#19978;&#23553;&#35013;&#24211;&#20989;&#25968;</a></li>
-</ul>
-</li>
-<li class=" ml-8">&#35268;&#32422;&#19982;&#25991;&#26723;<ul class=" list-disc font-serif">
-<li class=" ml-8"><a href="AM_Design.html" class=" text-amber-900">AbstractMachine &#35774;&#35745;&#27010;&#36848;</a></li>
-<li class=" ml-8"><a href="AM_Spec.html" class=" text-amber-900">AbstractMachine &#35268;&#32422; (Specifications)</a></li>
-<li class=" ml-8"><a href="AM_Devices.html" class=" text-amber-900">AbstractMachine &#35774;&#22791;&#35268;&#32422;</a></li>
-</ul>
-</li>
-</ul>
-<div style="display:none">
-
-
-
-## 1. &#31616;&#20171;
-
-&#25105;&#20204;&#22312; C &#31243;&#24207;&#20013;&#35843;&#29992; AbstractMachine API &#23601;&#33021;&#23454;&#29616;&#25805;&#20316;&#31995;&#32479;&#65292;&#20174;&#32780;&#19981;&#38656;&#35201;&#30693;&#36947;&#24213;&#23618;&#30828;&#20214;&#30340;&#20013;&#26029;&#12289;&#34394;&#25311;&#23384;&#20648;&#31561;&#26159;&#22914;&#20309;&#22312;&#25351;&#20196;&#32423;&#23454;&#29616;&#30340;&#8212;&#8212;&#36825;&#26159;&#35745;&#31639;&#26426;&#31995;&#32479;&#35774;&#35745;&#19982;&#23454;&#29616;&#20013;&#30340;&#19968;&#31181;&#25277;&#35937;&#65307;&#19968;&#20010;&#31867;&#20284;&#30340;&#20363;&#23376;&#26159;&#25105;&#20204;&#22312;&#24212;&#29992;&#31243;&#24207;&#37324;&#35843;&#29992; libc &#24211;&#23601;&#33021;&#23436;&#25104;&#32477;&#22823;&#37096;&#20998;&#20219;&#21153;&#65292;&#32780;&#19981;&#38656;&#35201;&#30693;&#36947;&#24213;&#23618;&#30340;&#25805;&#20316;&#31995;&#32479; API&#12290;&#36825;&#26679;&#30340;&#35774;&#35745;&#26041;&#27861;&#22312;&#22797;&#26434;&#35745;&#31639;&#26426;&#31995;&#32479;&#30340;&#26500;&#36896;&#20013;&#21313;&#20998;&#24120;&#35265;&#65306;&#24213;&#23618;&#31995;&#32479;&#25552;&#20379;**&#26426;&#21046;** (mechanism)&#65292;&#19978;&#23618;&#31995;&#32479;&#21033;&#29992;&#36825;&#20123;&#26426;&#21046;&#23454;&#29616;**&#31574;&#30053;** (policy)&#12290;&#20856;&#22411;&#30340;&#26426;&#21046;/&#31574;&#30053;&#20998;&#31163;&#30340;&#25277;&#35937;&#23618;&#26377;&#25351;&#20196;&#38598;&#20307;&#31995;&#32467;&#26500;&#12289;&#31995;&#32479;&#35843;&#29992;&#12289;&#24211;&#20989;&#25968;&#31561;&#65307;AbstractMachine &#23646;&#20110;&#19968;&#31181;&#30828;&#20214;&#25277;&#35937;&#23618; (hardware abstraction layer, HAL)&#12290;
-
-## 2. &#23433;&#35013;&#19982;&#37197;&#32622;
-
-### 2.1. &#37197;&#32622; AbstractMachine
-
-&#23545;&#20110;&#25805;&#20316;&#31995;&#32479;&#23454;&#39564;&#30340;&#21516;&#23398;&#65292;`os-workbench` &#20013;&#24050;&#32463;&#21253;&#21547;&#20102; AbstractMachine &#20195;&#30721;&#65292;&#24182;&#19988;&#25805;&#20316;&#31995;&#32479;&#23454;&#39564;&#30340;&#26694;&#26550;&#20195;&#30721;&#24050;&#32463;&#23436;&#25104;&#20102;&#37197;&#32622;&#12290;&#22914;&#26524;&#20320;&#20351;&#29992; Debian/Ubuntu &#31995;&#32479;&#65292;&#20320;&#22312;&#32534;&#35793;&#20195;&#30721;&#26102;&#21487;&#33021;&#20250;&#36935;&#21040;&#19968;&#20123;&#21629;&#20196;&#25191;&#34892;&#22833;&#36133;&#30340;&#24773;&#20917;&#65292;&#36890;&#24120;&#38656;&#35201;&#20197;&#19979;&#36719;&#20214;&#21253; (&#20063;&#21487;&#33021;&#38656;&#35201;&#20854;&#20182;&#36719;&#20214;&#21253;&#65292;&#35831; STFW)&#65306;
-
-* `gcc-multilib` (&#20132;&#21449;&#32534;&#35793;&#29992;)
-* `libsdl2-dev` (&#22270;&#24418;&#24211;)
-* `qemu-system` (&#20840;&#31995;&#32479;&#27169;&#25311;&#22120;)
-
-&#22914;&#26524;&#20320;&#24076;&#26395;&#24314;&#31435;&#33258;&#24049;&#30340; AbstractMachine &#39033;&#30446; (&#20363;&#22914;&#20043;&#21518;&#30340; Hello World &#20363;&#23376;) &#25110;&#32534;&#35793;&#36816;&#34892;&#20854;&#20182;&#31034;&#20363;&#20195;&#30721; (microbench, fceux, litenes, ...) &#31561;&#65292;&#21017;&#38656;&#35201;&#20808;&#37197;&#32622;&#22909; `AM_HOME` &#29615;&#22659;&#21464;&#37327; (&#35831; STFW &#20160;&#20040;&#26159;&#29615;&#22659;&#21464;&#37327;&#12290;&#21487;&#20197;&#29992; `env` &#21629;&#20196;&#26597;&#30475;&#24403;&#21069;&#30340;&#29615;&#22659;&#21464;&#37327;)&#65292;&#25226;&#23427;&#35774;&#32622;&#20026; AbstractMachine &#30446;&#24405;&#30340;**&#32477;&#23545;&#36335;&#24452;**&#65306;
-
-
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">AM_HOME</span><span class="o">=</span>/abs/path/.../os-workbench/abstract-machine
-</code></pre></div>
-
-
-
-&#20320;&#21487;&#20197;&#25226;&#36825;&#19968;&#34892;&#20889;&#22312; `.bashrc`/`.zshrc` &#20013;&#65292;&#20351;&#24471;&#19981;&#24517;&#27599;&#27425;&#25171;&#24320;&#32456;&#31471;&#37117;&#37325;&#26032;&#37197;&#32622;&#12290;&#22914;&#26524;&#20320;&#31532;&#19968;&#27425;&#20351;&#29992; Linux&#65292;&#36825;&#20250;&#26159;&#19968;&#20010;&#27604;&#36739;&#30171;&#33510;&#30340;&#36807;&#31243;&#8212;&#8212;&#20320;&#36824;&#38656;&#35201;&#23398;&#20064; Shell &#26377;&#20851;&#30340;&#22522;&#30784;&#30693;&#35782;&#12290;&#19968;&#20221;&#19981;&#38169;&#30340;&#20837;&#38376;&#26448;&#26009;&#26159; MIT &#30340; &#8220;[The Missing Semester of Your CS Education](https://missing.csail.mit.edu/)&#8221;&#12290;
-
-## 2.2. Hello, AbstractMachine
-
-&#23436;&#25104;&#24517;&#35201;&#36719;&#20214;&#30340;&#23433;&#35013;&#21644;&#27491;&#30830;&#30340; `AM_HOME` &#37197;&#32622;&#21518;&#65292;&#25105;&#20204;&#23601;&#21487;&#20197;&#22312; AbstractMachine &#19978;&#32534;&#31243;&#20102;&#12290;&#22312;&#25991;&#20214;&#31995;&#32479;&#30340;&#20219;&#24847;&#30446;&#24405;&#20013;&#21019;&#24314;&#19968;&#20010; `.c` &#25991;&#20214;&#21644; `Makefile` (&#21442;&#32771; `man 3 stdarg`)&#65306;
-
-
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="c1">// hello.c</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;am.h&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdarg.h&gt;</span>
-
-<span class="kt">void</span><span class="w"> </span><span class="nf">print</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="p">...)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kt">va_list</span><span class="w"> </span><span class="n">ap</span><span class="p">;</span>
-<span class="w">  </span><span class="n">va_start</span><span class="p">(</span><span class="n">ap</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">);</span>
-<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(;</span><span class="w"> </span><span class="o">*</span><span class="n">s</span><span class="p">;</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="n">putch</span><span class="p">(</span><span class="o">*</span><span class="n">s</span><span class="p">);</span>
-<span class="w">    </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">va_arg</span><span class="p">(</span><span class="n">ap</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="w">  </span><span class="n">va_end</span><span class="p">(</span><span class="n">ap</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">print</span><span class="p">(</span><span class="s">"</span><span class="se">\"</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">args</span><span class="p">,</span><span class="w"> </span><span class="s">"</span><span class="se">\"</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="s">" from "</span><span class="w"> </span><span class="n">__ISA__</span><span class="w"> </span><span class="s">" program!</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-
-
-
-
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="c"># Makefile</span>
-<span class="nv">NAME</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span>hello
-<span class="nv">SRCS</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span>hello.c
-<span class="cp">include $(AM_HOME)/Makefile.app</span>
-</code></pre></div>
-
-
-
-&#25105;&#20204;&#23601;&#23436;&#25104;&#20102;&#19968;&#20010;**&#21487;&#31227;&#26893;**&#21040;&#22810;&#20010; &#8220;bare-metal&#8221; &#24179;&#21488;&#30340; Hello World &#31243;&#24207;&#65292;&#23427;&#20204;&#21487;&#20197;&#30452;&#25509;&#22312;&#27169;&#25311;&#22120;&#37324;&#36816;&#34892;&#65292;&#29978;&#33267;&#30452;&#25509;&#22312;&#24320;&#21457;&#26495;&#19978;&#36816;&#34892;&#65281;&#24403;&#28982;&#20102;&#65292;&#29616;&#22312;&#32534;&#35793;&#12289;&#38142;&#25509;&#12289;&#36816;&#34892;&#37117;&#20250;&#20132;&#32473; AbstractMachine &#20013;&#30340;&#20195;&#30721;&#24110;&#24537;&#25630;&#23450;&#12290;
-
-&#20026;&#20102;&#32534;&#35793;&#36816;&#34892;&#65292;AbstractMachine &#38656;&#35201;&#30693;&#36947;&#30446;&#26631;&#30340;&#24179;&#21488;/&#20307;&#31995;&#32467;&#26500;&#65292;&#36890;&#36807; `ARCH` &#29615;&#22659;&#21464;&#37327;&#25351;&#23450;&#12290;&#20363;&#22914;&#65292;&#25105;&#20204;&#24076;&#26395;&#32534;&#35793;&#20986;&#33021;&#22312; x86-64 (QEMU) &#19979;&#36816;&#34892;&#30340;&#38236;&#20687;&#65306;
-
-
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>$ make ARCH=x86_64-qemu
+</code></pre>
+<p>在同一个目录下，我们创建一个 Makefile:</p>
+<pre><code class="hljs language-Makefile">NAME := hello
+SRCS := hello.c
+<span class="hljs-keyword">include</span> <span class="hljs-variable">$(AM_HOME)</span>/Makefile.app
+</code></pre>
+<p>我们就完成了一个<strong>可移植</strong>到多个 “bare-metal” 平台的 Hello World 程序，它们可以直接在模拟器里运行，甚至直接在开发板上运行！当然了，现在编译、链接、运行都会交给 AbstractMachine 中的代码帮忙搞定。</p>
+<p>为了编译运行，AbstractMachine 需要知道目标的平台/体系结构，通过 <code>ARCH</code> 环境变量指定。例如，我们希望编译出能在 x86-64 (QEMU) 下运行的镜像：</p>
+<pre><code class="hljs language-text">$ make ARCH=x86_64-qemu
 # Building hello-image [x86_64-qemu]
 + CC hello.c
 ...
-+ CREATE -&gt; build/hello-x86_64-qemu
-</code></pre></div>
-
-
-
-&#20250;&#33258;&#21160;&#23436;&#25104;&#32534;&#35793;&#65292;&#24471;&#21040; `build/` &#30446;&#24405;&#19979;&#30340;&#33509;&#24178;&#25991;&#20214;&#65306;
-
-
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>build
-&#9500;&#9472;&#9472; hello-x86_64-qemu    // &#21487;&#36816;&#34892;&#12289;&#21253;&#21547; bootloader &#31561;&#30340;&#30913;&#30424;&#38236;&#20687;
-&#9500;&#9472;&#9472; hello-x86_64-qemu.o  // hello &#39033;&#30446;&#30340;&#20108;&#36827;&#21046;&#25991;&#20214;
-&#9492;&#9472;&#9472; x86_64-qemu
-    &#9500;&#9472;&#9472; hello.d          // hello.c &#20381;&#36182;&#30340;&#22836;&#25991;&#20214; (gcc -MMD &#29983;&#25104;)
-    &#9492;&#9472;&#9472; hello.o          // &#32534;&#35793; hello.c &#24471;&#21040;&#30340;&#30446;&#26631;&#25991;&#20214;
-</code></pre></div>
-
-
-
-&#19981;&#22952;&#29992; `objdump -d` &#21629;&#20196;&#26597;&#30475; `hello-x86_64-qemu.o` &#21453;&#27719;&#32534;&#21518;&#30340;&#20195;&#30721;&#65292;&#26159;&#30452;&#25509;&#36816;&#34892;&#22312;&#35064;&#26426;&#19978;&#30340; C &#31243;&#24207;&#20195;&#30721;&#65292;&#31243;&#24207;&#30340;&#20837;&#21475;&#26159; `_start`&#12290;Makefile &#20063;&#33258;&#24102;&#20102;&#36816;&#34892;&#21151;&#33021;&#65292;&#20256;&#20837; `mainargs` &#29615;&#22659;&#21464;&#37327;&#65292;&#21363;&#21487;&#23558;&#21442;&#25968;&#20256;&#36882;&#32473; `main` &#20989;&#25968;&#65306;
-
-
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>$ make run ARCH=x86_64-qemu mainargs="Hello World"
++ CREATE -> build/hello-x86_64-qemu
+</code></pre>
+<p>会自动完成编译，得到 <code>build/</code> 目录下的若干文件：</p>
+<pre><code class="hljs language-text">build
+├── hello-x86_64-qemu    // 可运行、包含 bootloader 等的磁盘镜像
+├── hello-x86_64-qemu.o  // hello 项目的二进制文件
+└── x86_64-qemu
+    ├── hello.d          // hello.c 依赖的头文件 (gcc -MMD 生成)
+    └── hello.o          // 编译 hello.c 得到的目标文件
+</code></pre>
+<p>不妨用 <code>objdump -d</code> 命令查看 <code>hello-x86_64-qemu.o</code> 反汇编后的代码，是直接运行在裸机上的 C 程序代码，程序的入口是 <code>_start</code>。Makefile 也自带了运行功能，传入 <code>mainargs</code> 环境变量，即可将参数传递给 <code>main</code> 函数：</p>
+<pre><code class="hljs language-text">$ make run ARCH=x86_64-qemu mainargs="Hello World"
 ...
 "Hello World" from x86_64 program!
 CPU #0 Halt (00).
-</code></pre></div>
-
-
-
-&#20320;&#21487;&#20197;&#23581;&#35797;&#20854;&#20182;&#30340; `ARCH` &#29615;&#22659;&#21464;&#37327;&#65306;`x86-qemu`, `native`&#65292;&#22312;&#19981;&#21516;&#24179;&#21488;&#19979;&#36816;&#34892;&#12290;&#20320;&#20063;&#21487;&#20197; export &#40664;&#35748;&#30340; `ARCH=x86_64-qemu`&#65292;&#36991;&#20813;&#27599;&#27425;&#38190;&#20837;&#12290;
-
-&gt; #### &#24605;&#32771;&#39064;&#65306;`__ISA__`
-&gt; 
-&gt; &#25105;&#20204;&#30340; Hello World &#31243;&#24207;&#24341;&#29992;&#20102;&#36825;&#20010;&#22855;&#24618;&#30340;&#23439;&#12290;&#36825;&#20010;&#23439;&#19981;&#26159; C &#26631;&#20934;&#37324;&#23450;&#20041;&#30340;&#65292;&#37027;&#20040;&#26159;&#35841;&#23450;&#20041;&#30340;&#65311;&#24403;&#25105;&#20204;&#35774;&#32622;&#19981;&#21516;&#30340; `ARCH`&#65292;&#25171;&#21360;&#30340; `__ISA__` &#20063;&#21508;&#19981;&#30456;&#21516;&#12290;&#36825;&#19968;&#23450;&#26159; Makefile &#20570;&#30340;&#12290;&#24590;&#20040;&#30693;&#36947;&#21602;&#65311;UNIX &#19990;&#30028;&#26089;&#23601;&#32473;&#25105;&#20204;&#25552;&#20379;&#20102;&#36275;&#22815;&#30340;&#24037;&#20855;&#26469;&#25630;&#23450;&#36825;&#20123;&#26085;&#24120;&#29712;&#20107;&#65306;
-&gt; 
-&gt;     :::text
-&gt;     find . -type f | xargs grep -ne __ISA__
-&gt; 
-&gt; (&#35831; RTFM &#29702;&#35299;&#36825;&#20010;&#21629;&#20196;&#30340;&#21547;&#20041;)&#12290;&#25105;&#20204;&#33021;&#23450;&#20301;&#21040; `Makefile` &#20013;&#30340;&#19968;&#34892;&#20195;&#30721;&#65292;&#23558; `__ISA__` &#30340;&#23450;&#20041;&#20351;&#29992; gcc &#30340; `-D` &#36873;&#39033;&#21152;&#20837;&#20102; `CFLAGS`&#12290;
-
-</div></div>
-</div>
-
-<div class="container text-xs py-3">
-  <span class="text-muted">
-    <center><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="../static/img/cc-4.0.png"></a>
-    &#160;&#160;&#160;<a style="color:inherit" href="https://beian.miit.gov.cn/">&#33487; ICP &#22791; 2020049101 &#21495;</a>
-    </center>
-  </span>
-</div>
-
-</div>
-
-<script src="../static/js/jquery.min.js"></script>
-
-<script>
-function get_token() {
-  var match = document.cookie.match(new RegExp('(^| )token=([^;]+)'));
-  if (match) return match[2];
-  else return "";
-}
-var token = get_token();
-var hint = "token", box = $("#token-input");
-
-if (token == "") { }
-else { box.val(token); }
-
-function login() {
-  var token = box.val()
-  if (!token) {
-    document.cookie = ''
-  } else {
-    document.cookie = 'token=' + token + '; expires=Fri, 31 Dec 9999 23:59:59 GMT;'
-  }
-}
-</script>
-
-
-</body>
-
+</code></pre>
+<p>你可以尝试其他的 <code>ARCH</code> 环境变量：<code>x86-qemu</code>, <code>native</code>，在不同平台下运行。你也可以 export 默认的 <code>ARCH=x86_64-qemu</code> (甚至写到 Makefile 中)，避免每次键入。</p>
+<div class="box blue-box"><div><span class="float-left text-4xl mr-3 mt-2">☕️</span><span class="font-serif text-lg border-b border-slate-600"><b>理解程序中的宏</b></span><div class="font-serif pt-2"><p>我们的 Hello World 程序引用了一些奇怪的宏，例如 <code>__ISA__</code>；我们可以在程序中使用它。这个宏不是 C 标准里定义的，那么是谁定义的？当我们设置不同的 <code>ARCH</code>，打印的 <code>__ISA__</code> 也各不相同。这一定是 Makefile 做的。怎么知道呢？我们可以对 AbstractMachine 代码做一个全文查找 “<code>__ISA__</code>”——我们能定位到 <code>Makefile</code> 中的一行代码，将 <code>__ISA__</code> 的定义使用 gcc 的 <code>-D</code> 选项加入了 <code>CFLAGS</code>。</p><p>没错，计算机系统没有魔法，“神奇” 的事情只是因为你对有些语言机制/用法并不熟悉。</p></div></div></div>
+<p><img src="img/full-system.webp" alt=""/></p></div></div><div class="bg-neutral-100 text-center text-neutral-600 dark:bg-neutral-600 dark:text-neutral-200 lg:text-left"><div class="bg-neutral-200 p-6 text-center dark:bg-neutral-700"><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons License: BY-NC 4.0</a><br/><a href="https://beian.miit.gov.cn/">苏 ICP 备 2020049101 号</a></div></div></div></div><script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{"source":{"compiledSource":"/*@jsxRuntime automatic @jsxImportSource react*/\nconst {Fragment: _Fragment, jsx: _jsx, jsxs: _jsxs} = arguments[0];\nconst {useMDXComponents: _provideComponents} = arguments[0];\nfunction _createMdxContent(props) {\n  const _components = Object.assign({\n    h1: \"h1\",\n    p: \"p\",\n    ul: \"ul\",\n    li: \"li\",\n    code: \"code\",\n    a: \"a\",\n    h2: \"h2\",\n    h3: \"h3\",\n    strong: \"strong\",\n    pre: \"pre\",\n    span: \"span\",\n    img: \"img\"\n  }, _provideComponents(), props.components), {Box} = _components;\n  if (!Box) _missingMdxReference(\"Box\", true);\n  return _jsxs(_Fragment, {\n    children: [_jsx(_components.h1, {\n      children: \"AbstractMachine: 抽象计算机\"\n    }), \"\\n\", _jsx(_components.p, {\n      children: \"AbstractMachine 是裸机上的 C 语言运行环境，提供 5 组 (15 个) 主要 API，可以实现各类系统软件 (如操作系统)：\"\n    }), \"\\n\", _jsxs(_components.ul, {\n      children: [\"\\n\", _jsxs(_components.li, {\n        children: [\"(TRM) \", _jsx(_components.code, {\n          children: \"putch\"\n        }), \"/\", _jsx(_components.code, {\n          children: \"halt\"\n        }), \" - 最基础的计算、显示和停机\"]\n      }), \"\\n\", _jsxs(_components.li, {\n        children: [\"(IOE) \", _jsx(_components.code, {\n          children: \"ioe_read/ioe_write\"\n        }), \" - I/O 设备管理\"]\n      }), \"\\n\", _jsxs(_components.li, {\n        children: [\"(CTE) \", _jsx(_components.code, {\n          children: \"ienabled\"\n        }), \"/\", _jsx(_components.code, {\n          children: \"iset\"\n        }), \"/\", _jsx(_components.code, {\n          children: \"yield\"\n        }), \"/\", _jsx(_components.code, {\n          children: \"kcontext\"\n        }), \" - 中断和异常\"]\n      }), \"\\n\", _jsxs(_components.li, {\n        children: [\"(VME) \", _jsx(_components.code, {\n          children: \"protect\"\n        }), \"/\", _jsx(_components.code, {\n          children: \"unprotect\"\n        }), \"/\", _jsx(_components.code, {\n          children: \"map\"\n        }), \"/\", _jsx(_components.code, {\n          children: \"ucontext\"\n        }), \" - 虚存管理\"]\n      }), \"\\n\", _jsxs(_components.li, {\n        children: [\"(MPE) \", _jsx(_components.code, {\n          children: \"cpu_count\"\n        }), \"/\", _jsx(_components.code, {\n          children: \"cpu_current\"\n        }), \"/\", _jsx(_components.code, {\n          children: \"atomic_xchg\"\n        }), \" - 多处理器\"]\n      }), \"\\n\"]\n    }), \"\\n\", _jsx(Box, {\n      logo: \"🗒️\",\n      title: \"目录\",\n      children: _jsxs(_components.ul, {\n        children: [\"\\n\", _jsx(_components.li, {\n          children: _jsx(_components.a, {\n            href: \"AM_Spec.md\",\n            children: \"AbstractMachine 规约 (Specifications)\"\n          })\n        }), \"\\n\", _jsxs(_components.li, {\n          children: [\"(WiP) Tutorial: \", _jsx(_components.a, {\n            href: \"AM_Programs\",\n            children: \"如何为 “裸机” (bare-metal) 编程\"\n          })]\n        }), \"\\n\", _jsxs(_components.li, {\n          children: [\"(WiP) Tutorial: \", _jsx(_components.a, {\n            href: \"AM_klib\",\n            children: \"在 AbstractMachine 上封装库函数\"\n          })]\n        }), \"\\n\", _jsxs(_components.li, {\n          children: [\"(WiP) \", _jsx(_components.a, {\n            href: \"AM_Design\",\n            children: \"AbstractMachine 设计概述\"\n          })]\n        }), \"\\n\", _jsxs(_components.li, {\n          children: [\"(WiP) \", _jsx(_components.a, {\n            href: \"AM_Devices\",\n            children: \"AbstractMachine 设备规约\"\n          })]\n        }), \"\\n\"]\n      })\n    }), \"\\n\", _jsx(_components.h2, {\n      children: \"1. 简介\"\n    }), \"\\n\", _jsxs(_components.p, {\n      children: [\"从硬件的视角，“操作系统” 就是一段指令序列；而从数学的视角，任何程序都是状态机——因此，我们没有道理不能轻松愉快地用高级语言 (例如 C 语言) 实现操作系统内核。当然，我们也知道操作系统内核需要管理中断、系统调用、虚拟存储、I/O、多处理器等计算机硬件为我们提供的功能，这些功能似乎并不是 C 语言所 “内置” 的：C 语言只支持纯粹的计算，非计算的部分都通过库函数实现，例如 \", _jsx(_components.code, {\n        children: \"fwrite\"\n      }), \"、\", _jsx(_components.code, {\n        children: \"setjmp\"\n      }), \" 等。AbstractMachine 通过 15 个 C API 实现了硬件抽象层 (hardware abstraction layer, HAL)，使我们可以在 C 代码中操纵计算机硬件。\"]\n    }), \"\\n\", _jsx(_components.h2, {\n      children: \"2. 安装与配置\"\n    }), \"\\n\", _jsx(_components.h3, {\n      children: \"2.1 配置 AbstractMachine\"\n    }), \"\\n\", _jsxs(_components.p, {\n      children: [\"在操作系统实验的 \", _jsx(_components.code, {\n        children: \"os-workbench\"\n      }), \" 中已经包含了 AbstractMachine 代码，并且实验框架代码已经完成了配置。如果你使用 Debian/Ubuntu 系统，你在编译代码时可能会遇到一些命令执行失败的情况，通常需要以下软件包 (如果有其他依赖，你可能会遇到编译错误，请相应解决)：\"]\n    }), \"\\n\", _jsxs(_components.ul, {\n      children: [\"\\n\", _jsxs(_components.li, {\n        children: [_jsx(_components.code, {\n          children: \"gcc-multilib\"\n        }), \" (交叉编译用)\"]\n      }), \"\\n\", _jsxs(_components.li, {\n        children: [_jsx(_components.code, {\n          children: \"libsdl2-dev\"\n        }), \" (图形库)\"]\n      }), \"\\n\", _jsxs(_components.li, {\n        children: [_jsx(_components.code, {\n          children: \"qemu-system\"\n        }), \" (全系统模拟器)\"]\n      }), \"\\n\"]\n    }), \"\\n\", _jsxs(_components.p, {\n      children: [\"如果你希望建立自己的 AbstractMachine 项目或编译运行其他示例代码 (microbench, fceux, litenes, ...) 等，则需要先配置好 \", _jsx(_components.code, {\n        children: \"AM_HOME\"\n      }), \" 环境变量，把它设置为 AbstractMachine 目录的\", _jsx(_components.strong, {\n        children: \"绝对路径\"\n      }), \"：\"]\n    }), \"\\n\", _jsx(_components.pre, {\n      children: _jsxs(_components.code, {\n        className: \"hljs language-bash\",\n        children: [_jsx(_components.span, {\n          className: \"hljs-built_in\",\n          children: \"export\"\n        }), \" AM_HOME=/abs/path/to/.../os-workbench/abstract-machine\\n\"]\n      })\n    }), \"\\n\", _jsxs(_components.p, {\n      children: [\"你可以把这一行写在你 shell 的默认配置中 (例如 \", _jsx(_components.code, {\n        children: \".bashrc\"\n      }), \")，使得不必每次打开终端都重新配置。如果你第一次使用 Linux，这会是一个比较痛苦的过程——你还需要学习 Shell 有关的基础知识。一份不错的入门材料是 MIT 的 “\", _jsx(_components.a, {\n        href: \"https://missing.csail.mit.edu/\",\n        children: \"The Missing Semester of Your CS Education\"\n      }), \"”。\"]\n    }), \"\\n\", _jsx(_components.h2, {\n      children: \"2.2 Hello, AbstractMachine\"\n    }), \"\\n\", _jsxs(_components.p, {\n      children: [\"完成必要软件的安装和正确的 \", _jsx(_components.code, {\n        children: \"AM_HOME\"\n      }), \" 配置后，我们就可以在 AbstractMachine 上编程了。在文件系统的任意目录中创建一个 \", _jsx(_components.code, {\n        children: \".c\"\n      }), \" 文件和 \", _jsx(_components.code, {\n        children: \"Makefile\"\n      }), \" (参考 \", _jsx(_components.code, {\n        children: \"man 3 stdarg\"\n      }), \")。例如，创建 hello.c:\"]\n    }), \"\\n\", _jsx(_components.pre, {\n      children: _jsxs(_components.code, {\n        className: \"hljs language-c\",\n        children: [_jsxs(_components.span, {\n          className: \"hljs-meta\",\n          children: [\"#\", _jsx(_components.span, {\n            className: \"hljs-keyword\",\n            children: \"include\"\n          }), \" \", _jsx(_components.span, {\n            className: \"hljs-string\",\n            children: \"\u003cam.h\u003e\"\n          })]\n        }), \"\\n\", _jsxs(_components.span, {\n          className: \"hljs-meta\",\n          children: [\"#\", _jsx(_components.span, {\n            className: \"hljs-keyword\",\n            children: \"include\"\n          }), \" \", _jsx(_components.span, {\n            className: \"hljs-string\",\n            children: \"\u003cstdarg.h\u003e\"\n          })]\n        }), \"\\n\\n\", _jsx(_components.span, {\n          className: \"hljs-type\",\n          children: \"void\"\n        }), \" \", _jsx(_components.span, {\n          className: \"hljs-title function_\",\n          children: \"print\"\n        }), _jsxs(_components.span, {\n          className: \"hljs-params\",\n          children: [\"(\", _jsx(_components.span, {\n            className: \"hljs-type\",\n            children: \"const\"\n          }), \" \", _jsx(_components.span, {\n            className: \"hljs-type\",\n            children: \"char\"\n          }), \" *s, ...)\"]\n        }), \" {\\n    va_list ap;\\n    va_start(ap, s);\\n    \", _jsx(_components.span, {\n          className: \"hljs-keyword\",\n          children: \"while\"\n        }), \" (s) {\\n        \", _jsx(_components.span, {\n          className: \"hljs-keyword\",\n          children: \"for\"\n        }), \" (; *s; s ++) putch(*s);\\n        s = va_arg(ap, \", _jsx(_components.span, {\n          className: \"hljs-type\",\n          children: \"const\"\n        }), \" \", _jsx(_components.span, {\n          className: \"hljs-type\",\n          children: \"char\"\n        }), \" *);\\n    }\\n    va_end(ap);\\n}\\n\\n\", _jsx(_components.span, {\n          className: \"hljs-type\",\n          children: \"int\"\n        }), \" \", _jsx(_components.span, {\n          className: \"hljs-title function_\",\n          children: \"main\"\n        }), _jsxs(_components.span, {\n          className: \"hljs-params\",\n          children: [\"(\", _jsx(_components.span, {\n            className: \"hljs-type\",\n            children: \"const\"\n          }), \" \", _jsx(_components.span, {\n            className: \"hljs-type\",\n            children: \"char\"\n          }), \" *args)\"]\n        }), \" {\\n    print(\", _jsx(_components.span, {\n          className: \"hljs-string\",\n          children: \"\\\"\\\\\\\"\\\"\"\n        }), \", args, \", _jsx(_components.span, {\n          className: \"hljs-string\",\n          children: \"\\\"\\\\\\\"\\\"\"\n        }), \", \", _jsx(_components.span, {\n          className: \"hljs-string\",\n          children: \"\\\" from \\\"\"\n        }), \" __ISA__ \", _jsx(_components.span, {\n          className: \"hljs-string\",\n          children: \"\\\" program!\\\\n\\\"\"\n        }), \", \", _jsx(_components.span, {\n          className: \"hljs-literal\",\n          children: \"NULL\"\n        }), \");\\n    \", _jsx(_components.span, {\n          className: \"hljs-keyword\",\n          children: \"return\"\n        }), \" \", _jsx(_components.span, {\n          className: \"hljs-number\",\n          children: \"0\"\n        }), \";\\n}\\n\"]\n      })\n    }), \"\\n\", _jsx(_components.p, {\n      children: \"在同一个目录下，我们创建一个 Makefile:\"\n    }), \"\\n\", _jsx(_components.pre, {\n      children: _jsxs(_components.code, {\n        className: \"hljs language-Makefile\",\n        children: [\"NAME := hello\\nSRCS := hello.c\\n\", _jsx(_components.span, {\n          className: \"hljs-keyword\",\n          children: \"include\"\n        }), \" \", _jsx(_components.span, {\n          className: \"hljs-variable\",\n          children: \"$(AM_HOME)\"\n        }), \"/Makefile.app\\n\"]\n      })\n    }), \"\\n\", _jsxs(_components.p, {\n      children: [\"我们就完成了一个\", _jsx(_components.strong, {\n        children: \"可移植\"\n      }), \"到多个 “bare-metal” 平台的 Hello World 程序，它们可以直接在模拟器里运行，甚至直接在开发板上运行！当然了，现在编译、链接、运行都会交给 AbstractMachine 中的代码帮忙搞定。\"]\n    }), \"\\n\", _jsxs(_components.p, {\n      children: [\"为了编译运行，AbstractMachine 需要知道目标的平台/体系结构，通过 \", _jsx(_components.code, {\n        children: \"ARCH\"\n      }), \" 环境变量指定。例如，我们希望编译出能在 x86-64 (QEMU) 下运行的镜像：\"]\n    }), \"\\n\", _jsx(_components.pre, {\n      children: _jsx(_components.code, {\n        className: \"hljs language-text\",\n        children: \"$ make ARCH=x86_64-qemu\\n# Building hello-image [x86_64-qemu]\\n+ CC hello.c\\n...\\n+ CREATE -\u003e build/hello-x86_64-qemu\\n\"\n      })\n    }), \"\\n\", _jsxs(_components.p, {\n      children: [\"会自动完成编译，得到 \", _jsx(_components.code, {\n        children: \"build/\"\n      }), \" 目录下的若干文件：\"]\n    }), \"\\n\", _jsx(_components.pre, {\n      children: _jsx(_components.code, {\n        className: \"hljs language-text\",\n        children: \"build\\n├── hello-x86_64-qemu    // 可运行、包含 bootloader 等的磁盘镜像\\n├── hello-x86_64-qemu.o  // hello 项目的二进制文件\\n└── x86_64-qemu\\n    ├── hello.d          // hello.c 依赖的头文件 (gcc -MMD 生成)\\n    └── hello.o          // 编译 hello.c 得到的目标文件\\n\"\n      })\n    }), \"\\n\", _jsxs(_components.p, {\n      children: [\"不妨用 \", _jsx(_components.code, {\n        children: \"objdump -d\"\n      }), \" 命令查看 \", _jsx(_components.code, {\n        children: \"hello-x86_64-qemu.o\"\n      }), \" 反汇编后的代码，是直接运行在裸机上的 C 程序代码，程序的入口是 \", _jsx(_components.code, {\n        children: \"_start\"\n      }), \"。Makefile 也自带了运行功能，传入 \", _jsx(_components.code, {\n        children: \"mainargs\"\n      }), \" 环境变量，即可将参数传递给 \", _jsx(_components.code, {\n        children: \"main\"\n      }), \" 函数：\"]\n    }), \"\\n\", _jsx(_components.pre, {\n      children: _jsx(_components.code, {\n        className: \"hljs language-text\",\n        children: \"$ make run ARCH=x86_64-qemu mainargs=\\\"Hello World\\\"\\n...\\n\\\"Hello World\\\" from x86_64 program!\\nCPU #0 Halt (00).\\n\"\n      })\n    }), \"\\n\", _jsxs(_components.p, {\n      children: [\"你可以尝试其他的 \", _jsx(_components.code, {\n        children: \"ARCH\"\n      }), \" 环境变量：\", _jsx(_components.code, {\n        children: \"x86-qemu\"\n      }), \", \", _jsx(_components.code, {\n        children: \"native\"\n      }), \"，在不同平台下运行。你也可以 export 默认的 \", _jsx(_components.code, {\n        children: \"ARCH=x86_64-qemu\"\n      }), \" (甚至写到 Makefile 中)，避免每次键入。\"]\n    }), \"\\n\", _jsxs(Box, {\n      logo: \"☕️\",\n      title: \"理解程序中的宏\",\n      children: [_jsxs(_components.p, {\n        children: [\"我们的 Hello World 程序引用了一些奇怪的宏，例如 \", _jsx(_components.code, {\n          children: \"__ISA__\"\n        }), \"；我们可以在程序中使用它。这个宏不是 C 标准里定义的，那么是谁定义的？当我们设置不同的 \", _jsx(_components.code, {\n          children: \"ARCH\"\n        }), \"，打印的 \", _jsx(_components.code, {\n          children: \"__ISA__\"\n        }), \" 也各不相同。这一定是 Makefile 做的。怎么知道呢？我们可以对 AbstractMachine 代码做一个全文查找 “\", _jsx(_components.code, {\n          children: \"__ISA__\"\n        }), \"”——我们能定位到 \", _jsx(_components.code, {\n          children: \"Makefile\"\n        }), \" 中的一行代码，将 \", _jsx(_components.code, {\n          children: \"__ISA__\"\n        }), \" 的定义使用 gcc 的 \", _jsx(_components.code, {\n          children: \"-D\"\n        }), \" 选项加入了 \", _jsx(_components.code, {\n          children: \"CFLAGS\"\n        }), \"。\"]\n      }), _jsx(_components.p, {\n        children: \"没错，计算机系统没有魔法，“神奇” 的事情只是因为你对有些语言机制/用法并不熟悉。\"\n      })]\n    }), \"\\n\", _jsx(_components.p, {\n      children: _jsx(_components.img, {\n        src: \"img/full-system.webp\",\n        alt: \"\"\n      })\n    })]\n  });\n}\nfunction MDXContent(props = {}) {\n  const {wrapper: MDXLayout} = Object.assign({}, _provideComponents(), props.components);\n  return MDXLayout ? _jsx(MDXLayout, Object.assign({}, props, {\n    children: _jsx(_createMdxContent, props)\n  })) : _createMdxContent(props);\n}\nreturn {\n  default: MDXContent\n};\nfunction _missingMdxReference(id, component) {\n  throw new Error(\"Expected \" + (component ? \"component\" : \"object\") + \" `\" + id + \"` to be defined: you likely forgot to import, pass, or provide it.\");\n}\n","frontmatter":{},"scope":{}},"frontmatter":{}},"__N_SSG":true},"page":"/[[...index]]","query":{"index":["AbstractMachine"]},"buildId":"a2FwJzUPGFGc0QcwaUr13","isFallback":false,"gsp":true,"scriptLoader":[]}</script></body>
 </html>

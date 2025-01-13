@@ -1,10 +1,11 @@
 <!DOCTYPE html><html class="h-100">
 
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="../../../static/css/base.css" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com/"></script>
   <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
 
@@ -23,14 +24,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +210,7 @@ section .center {
 }
 </style>
 
-  <title>&#35843;&#35797;&#65306;&#29702;&#35770;&#19982;&#23454;&#36341;</title>
+  <title>调试：理论与实践</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,21 +228,21 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#35843;&#35797;&#65306;&#29702;&#35770;&#19982;&#23454;&#36341;</h1>
-<p class=" font-serif my-1"><include src="Slides_Author"><div><div class="py-16">
-<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">&#33931;&#28814;&#23721;</a></p>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">调试：理论与实践</h1>
+<p class=" font-serif my-1"><include src="Slides_Author/index.html"><div><div class="py-16">
+<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">蒋炎岩</a></p>
 </div>
 <div class="row">
 <div class="author-affiliation">
-    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#12288;&#12288;&#21335;&#20140;&#22823;&#23398;&#12288;&#12288;</p>
+    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">　　南京大学　　</p>
     <img class="inline-img h-24" src="../../../static/img/nju-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#31185;&#23398;&#19982;&#25216;&#26415;&#31995;</p>
+   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">计算机科学与技术系</p>
     <img class="inline-img h-24" src="../../../static/img/njucs-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#36719;&#20214;&#30740;&#31350;&#25152;</p>
+    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">计算机软件研究所</p>
     <img class="inline-img h-24" src="../../../static/img/ics-logo.png" style="display: inline-block;"></a>
   </div>
 </div></div></include></p></div></div></div>
@@ -255,23 +256,23 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26412;&#35762;&#27010;&#36848;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">本讲概述</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#20195;&#30721;&#20986; bug &#20102;&#65311;&#21448;&#28010;&#36153;&#20102;&#19968;&#22825;&#65311;&#22826;&#30495;&#23454;&#20102;&#65311;</p>
+<p class=" font-serif my-1">代码出 bug 了？又浪费了一天？太真实了？</p>
 </blockquote>
-<p class=" font-serif my-1">&#26412;&#35762;&#20869;&#23481;</p>
+<p class=" font-serif my-1">本讲内容</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#35843;&#35797;&#29702;&#35770;</li>
-<li class=" ml-8">&#35843;&#35797;&#29702;&#35770;&#30340;&#24212;&#29992;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#35843;&#35797; &#8220;&#19981;&#26159;&#20195;&#30721;&#8221;</li>
-<li class=" ml-8">&#35843;&#35797; PA/Lab/&#20219;&#20309;&#20195;&#30721;</li>
+<li class=" ml-8">调试理论</li>
+<li class=" ml-8">调试理论的应用<ul class=" list-disc font-serif">
+<li class=" ml-8">调试 “不是代码”</li>
+<li class=" ml-8">调试 PA/Lab/任何代码</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#20026;&#20160;&#20040; PA2 &#37117;&#25130;&#27490;&#37027;&#20040;&#20037;&#20102;&#29616;&#22312;&#25165;&#35762;&#65311;</p>
+<p class=" font-serif my-1">为什么 PA2 都截止那么久了现在才讲？</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><del>&#22240;&#20026;&#20320;&#20204;&#19981;&#21507;&#33510;&#22836;&#26159;&#29702;&#35299;&#19981;&#20102;&#26041;&#27861;&#23398;&#30340;</del></li>
+<li class=" ml-8"><del>因为你们不吃苦头是理解不了方法学的</del></li>
 </ul></div>
         
       
@@ -287,7 +288,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#35843;&#35797;&#29702;&#35770;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">调试理论</h1></div></div></div>
         
       
       </section>
@@ -298,17 +299,17 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#24320;&#22987;&#35843;&#35797;&#20043;&#21069;</h2>
-<p class=" font-serif my-1">&#25670;&#27491;&#24515;&#24577; (&#32534;&#31243;&#21746; &#9794; &#23398;)</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">开始调试之前</h2>
+<p class=" font-serif my-1">摆正心态 (编程哲 ♂ 学)</p>
 <p class=" font-serif my-1"><br></p>
-<p class=" font-serif my-1"></p><center><red>&#26426;&#22120;&#27704;&#36828;&#26159;&#23545;&#30340;</red></center>
+<p class=" font-serif my-1"></p><center><red>机器永远是对的</red></center>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#19981;&#31649;&#26159; crash &#20102;&#65292;&#22270;&#24418;&#26174;&#31034;&#19981;&#27491;&#24120;&#20102;&#65292;&#36824;&#26159; <code>HIT BAD TRAP</code> &#20102;&#65292;&#26368;&#21518;&#37117;&#26159;&#20320;&#33258;&#24049;&#32972;&#38149;</p>
+<p class=" font-serif my-1">不管是 crash 了，图形显示不正常了，还是 <code>HIT BAD TRAP</code> 了，最后都是你自己背锅</p>
 </blockquote>
 <p class=" font-serif my-1"><br></p>
-<p class=" font-serif my-1"></p><center><red>&#26410;&#27979;&#20195;&#30721;&#27704;&#36828;&#26159;&#38169;&#30340;</red></center>
+<p class=" font-serif my-1"></p><center><red>未测代码永远是错的</red></center>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#20320;&#20197;&#20026;&#26368;&#19981;&#21487;&#33021;&#20986; bug &#30340;&#22320;&#26041;&#65292;&#24448;&#24448; bug &#23601;&#22312;&#37027;&#36538;&#30528;</p>
+<p class=" font-serif my-1">你以为最不可能出 bug 的地方，往往 bug 就在那躺着</p>
 </blockquote></div>
         
       
@@ -320,23 +321,23 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#35843;&#35797;&#29702;&#35770;</h2>
-<p class=" font-serif my-1"><img alt="" class="float-right" src="https://www.globalapptesting.com/hs-fs/hubfs/the-first-ever-bug---debugging.jpg?width=1080&amp;name=the-first-ever-bug---debugging.jpg" width="500px"></p>
-<p class=" font-serif my-1">&#31243;&#24207;&#30340;&#20004;&#20010;&#21151;&#33021;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">调试理论</h2>
+<p class=" font-serif my-1"><img alt="" class="float-right" src="https://www.globalapptesting.com/hs-fs/hubfs/the-first-ever-bug---debugging.jpg?width=1080&name=the-first-ever-bug---debugging.jpg" width="500px"></p>
+<p class=" font-serif my-1">程序的两个功能</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20154;&#31867;&#19990;&#30028;&#38656;&#27714;&#30340;&#36733;&#20307;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#29702;&#35299;&#38169;&#38656;&#27714; &#8594; bug</li>
+<li class=" ml-8">人类世界需求的载体<ul class=" list-disc font-serif">
+<li class=" ml-8">理解错需求 → bug</li>
 </ul>
 </li>
-<li class=" ml-8">&#35745;&#31639;&#36807;&#31243;&#30340;&#31934;&#30830;&#25551;&#36848;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#23454;&#29616;&#38169;&#35823; &#8594; bug</li>
+<li class=" ml-8">计算过程的精确描述<ul class=" list-disc font-serif">
+<li class=" ml-8">实现错误 → bug</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#35843;&#35797; (debugging)</p>
+<p class=" font-serif my-1">调试 (debugging)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#24050;&#30693;&#31243;&#24207;&#26377; bug&#65292;&#22914;&#20309;&#25214;&#21040;&#65311;</li>
+<li class=" ml-8">已知程序有 bug，如何找到？</li>
 </ul></div>
         
       
@@ -348,13 +349,13 @@ section .center {
 
       
         
-        <div><h2 id="debug" class=" text-xl mt-2 pb-2 font-sans">&#20026;&#20160;&#20040; debug &#37027;&#20040;&#22256;&#38590;&#65311;</h2>
-<p class=" font-serif my-1">&#22240;&#20026; bug &#30340;&#35302;&#21457;&#32463;&#21382;&#20102;&#28459;&#38271;&#30340;&#36807;&#31243;</p>
+        <div><h2 id="debug" class=" text-xl mt-2 pb-2 font-sans">为什么 debug 那么困难？</h2>
+<p class=" font-serif my-1">因为 bug 的触发经历了漫长的过程</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#38656;&#27714; &#8594; &#35774;&#35745; &#8594; &#20195;&#30721; &#8594; Fault (bug) &#8594; Error (&#31243;&#24207;&#29366;&#24577;&#38169;) &#8594; Failure<ul class=" list-disc font-serif">
-<li class=" ml-8">&#25105;&#20204;&#21482;&#33021;&#35266;&#27979;&#21040; failure (&#21487;&#35266;&#27979;&#30340;&#32467;&#26524;&#38169;)</li>
-<li class=" ml-8">&#25105;&#20204;&#21487;&#20197;&#26816;&#26597;&#29366;&#24577;&#30340;&#27491;&#30830;&#24615; (&#20294;&#38750;&#24120;&#36153;&#26102;)</li>
-<li class=" ml-8">&#26080;&#27861;&#39044;&#30693; bug &#22312;&#21738;&#37324; (&#27599;&#19968;&#34892; &#8220;&#30475;&#36215;&#26469;&#8221; &#37117;&#25402;&#23545;&#30340;)</li>
+<li class=" ml-8">需求 → 设计 → 代码 → Fault (bug) → Error (程序状态错) → Failure<ul class=" list-disc font-serif">
+<li class=" ml-8">我们只能观测到 failure (可观测的结果错)</li>
+<li class=" ml-8">我们可以检查状态的正确性 (但非常费时)</li>
+<li class=" ml-8">无法预知 bug 在哪里 (每一行 “看起来” 都挺对的)</li>
 </ul>
 </li>
 </ul>
@@ -369,24 +370,24 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#35843;&#35797;&#29702;&#35770;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">调试理论</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#35843;&#35797;&#29702;&#35770;&#65306;&#22914;&#26524;&#25105;&#20204;&#33021;&#21028;&#23450;&#20219;&#24847;&#31243;&#24207;&#29366;&#24577;&#30340;&#27491;&#30830;&#24615;&#65292;&#37027;&#20040;&#32473;&#23450;&#19968;&#20010; failure&#65292;&#25105;&#20204;&#21487;&#20197;&#36890;&#36807;&#20108;&#20998;&#26597;&#25214;&#23450;&#20301;&#21040;<red>&#31532;&#19968;&#20010;</red> error &#30340;&#29366;&#24577;&#65292;&#27492;&#26102;&#30340;&#20195;&#30721;&#23601;&#26159; fault (bug)&#12290;</p>
+<p class=" font-serif my-1">调试理论：如果我们能判定任意程序状态的正确性，那么给定一个 failure，我们可以通过二分查找定位到<red>第一个</red> error 的状态，此时的代码就是 fault (bug)。</p>
 </blockquote></div>
         
       
          <div class="fragment"> 
         <div><hr>
-<p class=" font-serif my-1">&#35843;&#35797;&#29702;&#35770;&#65306;&#25512;&#35770;</p>
+<p class=" font-serif my-1">调试理论：推论</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20026;&#20160;&#20040;&#25105;&#20204;&#21916;&#27426; &#8220;&#21333;&#27493;&#35843;&#35797;&#8221;&#65311;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20174;&#19968;&#20010;&#20551;&#23450;&#27491;&#30830;&#30340;&#29366;&#24577;&#20986;&#21457;</li>
-<li class=" ml-8">&#27599;&#20010;&#35821;&#21477;&#30340;&#34892;&#20026;&#26377;&#38480;&#65292;&#23481;&#26131;&#21028;&#23450;&#26159;&#21542;&#26159; error</li>
+<li class=" ml-8">为什么我们喜欢 “单步调试”？<ul class=" list-disc font-serif">
+<li class=" ml-8">从一个假定正确的状态出发</li>
+<li class=" ml-8">每个语句的行为有限，容易判定是否是 error</li>
 </ul>
 </li>
-<li class=" ml-8">&#20026;&#20160;&#20040;&#35843;&#35797;&#29702;&#35770;&#30475;&#36215;&#26469;&#27809;&#29992;&#65311;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#22240;&#20026;&#21028;&#23450;&#31243;&#24207;&#29366;&#24577;&#30340;&#27491;&#30830;&#24615;&#38750;&#24120;&#22256;&#38590;<ul class=" list-disc font-serif">
-<li class=" ml-8">(&#26159;&#21542;&#22312;&#35843;&#35797; DP &#39064;/&#22270;&#35770;&#31639;&#27861;&#26102;&#38519;&#20837;&#26102;&#38388;&#40657;&#27934;&#65311;)</li>
+<li class=" ml-8">为什么调试理论看起来没用？<ul class=" list-disc font-serif">
+<li class=" ml-8">因为判定程序状态的正确性非常困难<ul class=" list-disc font-serif">
+<li class=" ml-8">(是否在调试 DP 题/图论算法时陷入时间黑洞？)</li>
 </ul>
 </li>
 </ul>
@@ -402,24 +403,24 @@ section .center {
 
       
         
-        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">&#35843;&#35797;&#29702;&#35770; (cont'd)</h2>
-<p class=" font-serif my-1">&#23454;&#38469;&#20013;&#30340;&#35843;&#35797;&#65306;&#36890;&#36807;<red>&#35266;&#23519;&#31243;&#24207;&#25191;&#34892;&#30340;&#36712;&#36857;</red> (trace)</p>
+        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">调试理论 (cont'd)</h2>
+<p class=" font-serif my-1">实际中的调试：通过<red>观察程序执行的轨迹</red> (trace)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#32553;&#23567;&#38169;&#35823;&#29366;&#24577; (error) &#21487;&#33021;&#20135;&#29983;&#30340;&#20301;&#32622;</li>
-<li class=" ml-8">&#20316;&#20986;&#36866;&#24403;&#30340;&#20551;&#35774;</li>
-<li class=" ml-8">&#20877;&#36827;&#34892;&#32454;&#31890;&#24230;&#30340;&#23450;&#20301;&#21644;&#35786;&#26029;</li>
+<li class=" ml-8">缩小错误状态 (error) 可能产生的位置</li>
+<li class=" ml-8">作出适当的假设</li>
+<li class=" ml-8">再进行细粒度的定位和诊断</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#26368;&#37325;&#35201;&#30340;&#20004;&#20010;&#24037;&#20855;</p>
+<p class=" font-serif my-1">最重要的两个工具</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">printf &#8594; &#33258;&#23450;&#20041; log &#30340; trace<ul class=" list-disc font-serif">
-<li class=" ml-8"><code>+</code> &#28789;&#27963;&#21487;&#25511;&#12289;&#33021;&#24555;&#36895;&#23450;&#20301;&#38382;&#39064;&#22823;&#27010;&#20301;&#32622;&#12289;&#36866;&#29992;&#20110;&#22823;&#22411;&#36719;&#20214;</li>
-<li class=" ml-8"><code>-</code> &#26080;&#27861;&#31934;&#30830;&#23450;&#20301;&#12289;&#22823;&#37327;&#30340; logs &#31649;&#29702;&#36215;&#26469;&#27604;&#36739;&#40635;&#28902;</li>
+<li class=" ml-8">printf → 自定义 log 的 trace<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>+</code> 灵活可控、能快速定位问题大概位置、适用于大型软件</li>
+<li class=" ml-8"><code>-</code> 无法精确定位、大量的 logs 管理起来比较麻烦</li>
 </ul>
 </li>
-<li class=" ml-8">gdb &#8594; &#25351;&#20196;/&#35821;&#21477;&#32423; trace<ul class=" list-disc font-serif">
-<li class=" ml-8"><code>+</code> &#31934;&#30830;&#12289;&#25351;&#20196;&#32423;&#23450;&#20301;&#12289;&#20219;&#24847;&#26597;&#30475;&#31243;&#24207;&#20869;&#37096;&#29366;&#24577;</li>
-<li class=" ml-8"><code>-</code> &#32791;&#36153;&#22823;&#37327;&#26102;&#38388;</li>
+<li class=" ml-8">gdb → 指令/语句级 trace<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>+</code> 精确、指令级定位、任意查看程序内部状态</li>
+<li class=" ml-8"><code>-</code> 耗费大量时间</li>
 </ul>
 </li>
 </ul></div>
@@ -437,8 +438,8 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="1" class=" text-2xl mt-2 font-sans">&#35843;&#35797;&#29702;&#35770;&#65306;&#24212;&#29992; (1)</h1>
-<p class=" font-serif my-1">&#35843;&#35797; (&#19981;&#26159;&#19968;&#33324;&#24847;&#20041;&#19978; &#8220;&#31243;&#24207;&#8221; &#30340;) bug</p></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="1" class=" text-2xl mt-2 font-sans">调试理论：应用 (1)</h1>
+<p class=" font-serif my-1">调试 (不是一般意义上 “程序” 的) bug</p></div></div></div>
         
       
       </section>
@@ -449,11 +450,11 @@ section .center {
 
       
         
-        <div><h2 id="pa" class=" text-xl mt-2 pb-2 font-sans">PA &#20307;&#39564;&#26497;&#24046;</h2>
-<p class=" font-serif my-1">&#20570;&#23454;&#39564;&#20250;&#36935;&#21040;&#22823;&#37327;&#19982;&#32534;&#31243;&#26080;&#20851;&#30340;&#38382;&#39064;</p>
+        <div><h2 id="pa" class=" text-xl mt-2 pb-2 font-sans">PA 体验极差</h2>
+<p class=" font-serif my-1">做实验会遇到大量与编程无关的问题</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20063;&#35768;&#27809;&#26377;&#24819;&#36807;&#65306;<red>&#38382;&#39064;&#35786;&#26029;&#20854;&#23454;&#20063;&#26159;&#35843;&#35797;</red></li>
-<li class=" ml-8">&#25105;&#20204;&#24212;&#35813;&#21033;&#29992;&#35843;&#35797;&#29702;&#35770;&#21435;&#35299;&#20915;&#38382;&#39064;&#65281;</li>
+<li class=" ml-8">也许没有想过：<red>问题诊断其实也是调试</red></li>
+<li class=" ml-8">我们应该利用调试理论去解决问题！</li>
 </ul>
 <hr>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>bash: curl: command not found
@@ -461,7 +462,7 @@ section .center {
 
 <hr>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>fatal error: 'sys/cdefs.h': No such file or directory
-#include &lt;sys/cdefs.h&gt;
+#include <sys/cdefs.h>
 </code></pre></div>
 
 <hr>
@@ -480,18 +481,18 @@ make[1]: *** [run] Error 2
 
       
         
-        <div><h2 id="bug" class=" text-xl mt-2 pb-2 font-sans">&#35843;&#35797; (&#19981;&#26159;&#31243;&#24207;&#30340;) Bug</h2>
-<p class=" font-serif my-1">UNIX &#19990;&#30028;&#37324;&#20320;&#20570;&#20219;&#20309;&#20107;&#24773;&#37117;&#26159;&#22312;<red>&#32534;&#31243;</red></p>
+        <div><h2 id="bug" class=" text-xl mt-2 pb-2 font-sans">调试 (不是程序的) Bug</h2>
+<p class=" font-serif my-1">UNIX 世界里你做任何事情都是在<red>编程</red></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#22240;&#27492;&#37197;&#32622;&#38169;&#12289;make &#38169;&#31561;&#65292;&#37117;&#26159;<red>&#31243;&#24207;</red>&#25110;<red>&#36755;&#20837;/&#37197;&#32622;</red>&#26377; bug<ul class=" list-disc font-serif">
-<li class=" ml-8">(&#36755;&#20837;/&#37197;&#32622;&#21487;&#20197;&#30475;&#25104;&#26159;&#31243;&#24207;&#30340;&#19968;&#37096;&#20998;)</li>
+<li class=" ml-8">因此配置错、make 错等，都是<red>程序</red>或<red>输入/配置</red>有 bug<ul class=" list-disc font-serif">
+<li class=" ml-8">(输入/配置可以看成是程序的一部分)</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1"><red>&#27491;&#30830;&#30340;&#24577;&#24230;&#65306;&#25226;&#25152;&#26377;&#38382;&#39064;&#24403;&#31243;&#24207;&#26469;&#35843;&#35797;</red></p>
+<p class=" font-serif my-1"><red>正确的态度：把所有问题当程序来调试</red></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20320;&#20889;&#20102;&#19968;&#20010;&#31243;&#24207;&#65292;&#29616;&#22312;&#36825;&#20010;&#31243;&#24207;&#20986; bug &#20102; (&#20363;&#22914; Segmentation Fault)&#65292;&#20320;&#26159;&#24590;&#26679;&#25490;&#26597;&#36825;&#20010;&#38382;&#39064;&#30340;&#65311;<ul class=" list-disc font-serif">
+<li class=" ml-8">你写了一个程序，现在这个程序出 bug 了 (例如 Segmentation Fault)，你是怎样排查这个问题的？<ul class=" list-disc font-serif">
 <li class=" ml-8">curl: command not found</li>
 <li class=" ml-8"><code>'sys/cdefs.h'</code>: No such file or directory</li>
 <li class=" ml-8">make: run: No such file or directory</li>
@@ -508,25 +509,25 @@ make[1]: *** [run] Error 2
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20351;&#29992;&#35843;&#35797;&#29702;&#35770;</h2>
-<p class=" font-serif my-1">Debug (fault localization) &#30340;&#22522;&#26412;&#29702;&#35770;&#22238;&#39038;&#65306;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">使用调试理论</h2>
+<p class=" font-serif my-1">Debug (fault localization) 的基本理论回顾：</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">Fault (&#31243;&#24207;/&#36755;&#20837;/&#37197;&#32622;&#38169;) &#8594; Error &#8594; Failure (&#21487;&#35266;&#27979;)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#32477;&#22823;&#37096;&#20998;&#24037;&#20855;&#30340; Failure &#37117;&#26377; &#8220;&#21407;&#22240;&#25253;&#21578;&#8221;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#22240;&#27492;&#33021;&#24110;&#21161;&#20320;&#24555;&#36895;&#23450;&#20301; fault</li>
+<li class=" ml-8">Fault (程序/输入/配置错) → Error → Failure (可观测)<ul class=" list-disc font-serif">
+<li class=" ml-8">绝大部分工具的 Failure 都有 “原因报告”<ul class=" list-disc font-serif">
+<li class=" ml-8">因此能帮助你快速定位 fault</li>
 </ul>
 </li>
-<li class=" ml-8"><code>man perror</code>&#65306;&#26631;&#20934;&#24211;&#26377;&#25171;&#21360; error message &#30340;&#20989;&#25968;</li>
+<li class=" ml-8"><code>man perror</code>：标准库有打印 error message 的函数</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#20026;&#20160;&#20040;&#20250;&#25235;&#30606;&#65311;</p>
+<p class=" font-serif my-1">为什么会抓瞎？</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><red>&#20986;&#38169;&#21407;&#22240;&#25253;&#21578;&#19981;&#20934;&#30830;&#25110;&#19981;&#22815;&#35814;&#32454;</red></li>
-<li class=" ml-8"><red>&#31243;&#24207;&#25191;&#34892;&#30340;&#36807;&#31243;&#19981;&#35814;</red><ul class=" list-disc font-serif">
-<li class=" ml-8">&#26082;&#28982;&#25105;&#20204;&#26377;&#38656;&#27714;&#65292;&#37027;&#21035;&#20154;&#32943;&#23450;&#20063;&#20250;&#26377;&#36825;&#20010;&#38656;&#27714;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#19968;&#23450;&#26377;&#20449;&#24687;&#33021;&#24110;&#21161;&#25105;&#20204;&#65281;</li>
+<li class=" ml-8"><red>出错原因报告不准确或不够详细</red></li>
+<li class=" ml-8"><red>程序执行的过程不详</red><ul class=" list-disc font-serif">
+<li class=" ml-8">既然我们有需求，那别人肯定也会有这个需求<ul class=" list-disc font-serif">
+<li class=" ml-8">一定有信息能帮助我们！</li>
 </ul>
 </li>
 </ul>
@@ -542,18 +543,18 @@ make[1]: *** [run] Error 2
 
       
         
-        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">&#20351;&#29992;&#35843;&#35797;&#29702;&#35770; (cont'd)</h2>
-<p class=" font-serif my-1">&#27491;&#30830;&#30340;&#26041;&#27861;&#65306;&#29702;&#35299;&#31243;&#24207;&#30340;<red>&#25191;&#34892;&#36807;&#31243;</red>&#65292;&#24324;&#28165;&#26970;&#21040;&#24213;&#20026;&#20309;&#23548;&#33268;&#20102;bug</p>
+        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">使用调试理论 (cont'd)</h2>
+<p class=" font-serif my-1">正确的方法：理解程序的<red>执行过程</red>，弄清楚到底为何导致了bug</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><code>ssh</code>&#65306;&#20351;&#29992; <code>-v</code> &#36873;&#39033;&#26816;&#26597;&#26085;&#24535;</li>
-<li class=" ml-8"><code>gcc</code>&#65306;&#20351;&#29992; <code>-v</code> &#36873;&#39033;&#25171;&#21360;&#21508;&#31181;&#36807;&#31243;</li>
-<li class=" ml-8"><code>make</code>&#65306;&#20351;&#29992; <code>-n</code> &#36873;&#39033;&#26597;&#30475;&#23436;&#25972;&#21629;&#20196;<ul class=" list-disc font-serif">
-<li class=" ml-8"><code>make -nB | grep -ve '^\(echo\|mkdir\)'</code> &#21487;&#20197;&#26597;&#30475;&#23436;&#25972;&#32534;&#35793; nemu &#30340;&#32534;&#35793;&#36807;&#31243;</li>
+<li class=" ml-8"><code>ssh</code>：使用 <code>-v</code> 选项检查日志</li>
+<li class=" ml-8"><code>gcc</code>：使用 <code>-v</code> 选项打印各种过程</li>
+<li class=" ml-8"><code>make</code>：使用 <code>-n</code> 选项查看完整命令<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>make -nB | grep -ve '^\(echo\|mkdir\)'</code> 可以查看完整编译 nemu 的编译过程</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#21508;&#20010;&#24037;&#20855;&#26222;&#36941;&#25552;&#20379;&#35843;&#35797;&#21151;&#33021;&#65292;&#24110;&#21161;&#29992;&#25143;/&#24320;&#21457;&#32773;&#20102;&#35299;&#31243;&#24207;&#30340;<red>&#34892;&#20026;</red></p></div>
+<p class=" font-serif my-1">各个工具普遍提供调试功能，帮助用户/开发者了解程序的<red>行为</red></p></div>
         
       
       </section>
@@ -564,24 +565,24 @@ make[1]: *** [run] Error 2
 
       
         
-        <div><h2 id="syscdefsh" class=" text-xl mt-2 pb-2 font-sans">&#20363;&#23376;&#65306;&#25214;&#19981;&#21040; <code>sys/cdefs.h</code></h2>
-<p class=" font-serif my-1"><code>'sys/cdefs.h': No such file or directory</code>&#65292;&#25214;&#19981;&#21040;&#25991;&#20214; (&#36825;&#30475;&#36215;&#26469;&#26159;&#29992; <code>perror()</code> &#25171;&#21360;&#20986;&#26469;&#30340;&#21734;&#65281;)</p>
+        <div><h2 id="syscdefsh" class=" text-xl mt-2 pb-2 font-sans">例子：找不到 <code>sys/cdefs.h</code></h2>
+<p class=" font-serif my-1"><code>'sys/cdefs.h': No such file or directory</code>，找不到文件 (这看起来是用 <code>perror()</code> 打印出来的哦！)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><code>#include</code> = &#22797;&#21046;&#31896;&#36148;&#65292;&#33258;&#28982;&#20250;&#32463;&#36807;&#36335;&#24452;&#35299;&#26512;</li>
-<li class=" ml-8">(&#25240;&#33150;20&#20998;&#38047;) &#26126;&#26126; <code>/usr/include/x86_64-linux-gnu/sys/cdefs.h</code> &#26159;&#23384;&#22312;&#30340; (<code>man 1 locate</code>) &#8594; &#26497;&#24230;&#25387;&#36133;&#65292;&#20307;&#39564;&#26497;&#24046;</li>
+<li class=" ml-8"><code>#include</code> = 复制粘贴，自然会经过路径解析</li>
+<li class=" ml-8">(折腾20分钟) 明明 <code>/usr/include/x86_64-linux-gnu/sys/cdefs.h</code> 是存在的 (<code>man 1 locate</code>) → 极度挫败，体验极差</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#25512;&#29702;&#65306;<code>#include &lt;&gt;</code> &#19968;&#23450;&#26377;&#19968;&#20123;&#25628;&#32034;&#36335;&#24452;</p>
+<p class=" font-serif my-1">推理：<code>#include <></code> 一定有一些搜索路径</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20026;&#20160;&#20040;&#20004;&#20010;&#32534;&#35793;&#36873;&#39033;&#65292;&#19968;&#20010;&#36890;&#36807;&#65292;&#19968;&#20010;&#19981;&#36890;&#36807;&#65311;<ul class=" list-disc font-serif">
+<li class=" ml-8">为什么两个编译选项，一个通过，一个不通过？<ul class=" list-disc font-serif">
 <li class=" ml-8"><code>gcc -m32 -v</code> v.s. <code>gcc -v</code></li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#36825;&#26159;&#26631;&#20934;&#30340;&#35299;&#20915;&#38382;&#39064;&#21150;&#27861;&#65306;<red>&#33258;&#24049;&#21160;&#25163;&#25490;&#26597;</red></p>
+<p class=" font-serif my-1">这是标准的解决问题办法：<red>自己动手排查</red></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#22312;&#38754;&#23545;&#22797;&#26434;/&#23567;&#20247;&#38382;&#39064;&#26102;&#27604; STFW &#26377;&#25928;</li>
+<li class=" ml-8">在面对复杂/小众问题时比 STFW 有效</li>
 </ul></div>
         
       
@@ -597,8 +598,8 @@ make[1]: *** [run] Error 2
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="2" class=" text-2xl mt-2 font-sans">&#35843;&#35797;&#29702;&#35770;&#65306;&#24212;&#29992; (2)</h1>
-<p class=" font-serif my-1">&#35843;&#35797; PA/Lab/&#20219;&#20309;&#20195;&#30721;</p></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="2" class=" text-2xl mt-2 font-sans">调试理论：应用 (2)</h1>
+<p class=" font-serif my-1">调试 PA/Lab/任何代码</p></div></div></div>
         
       
       </section>
@@ -609,23 +610,23 @@ make[1]: *** [run] Error 2
 
       
         
-        <div><h2 id="nemu" class=" text-xl mt-2 pb-2 font-sans">&#35843;&#35797; NEMU &#30340;&#38590;&#22788;</h2>
-<p class=" font-serif my-1">(1) NEMU &#27809;&#26377;&#36825;&#20123; debug &#20449;&#24687;</p>
+        <div><h2 id="nemu" class=" text-xl mt-2 pb-2 font-sans">调试 NEMU 的难处</h2>
+<p class=" font-serif my-1">(1) NEMU 没有这些 debug 信息</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25351;&#20196;&#25191;&#34892;&#30528;&#25191;&#34892;&#30528;&#65292;&#24708;&#24708;&#23601;&#38169;&#20102;&#65292;&#30452;&#21040;&#22312;&#26576;&#20010;&#22320;&#26041;&#27515;&#24490;&#29615;</li>
-<li class=" ml-8">&#21040;&#24213;&#21738;&#37324;&#38169;&#20102;&#21602;&#65311;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#23545;&#20110; cpu-test&#65292;&#36824;&#33021;&#19968;&#26465;&#19968;&#26465;&#30475;&#25351;&#20196;&#26085;&#24535;</li>
-<li class=" ml-8">&#25171;&#23383;&#28216;&#25103;&#30340;&#26102;&#20505; bug &#20102;&#65292;&#37027;&#20040;&#22810;&#25351;&#20196;&#8230;&#8230;</li>
-<li class=" ml-8">LiteNES bug &#20102;&#65292;&#36825;&#19978;&#21738;&#29609;&#21834;&#8230;&#8230;</li>
+<li class=" ml-8">指令执行着执行着，悄悄就错了，直到在某个地方死循环</li>
+<li class=" ml-8">到底哪里错了呢？<ul class=" list-disc font-serif">
+<li class=" ml-8">对于 cpu-test，还能一条一条看指令日志</li>
+<li class=" ml-8">打字游戏的时候 bug 了，那么多指令……</li>
+<li class=" ml-8">LiteNES bug 了，这上哪玩啊……</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">(2) NEMU &#26377;&#20004;&#20010;&#23618;&#27425;&#30340;&#29366;&#24577;&#26426;</p>
+<p class=" font-serif my-1">(2) NEMU 有两个层次的状态机</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">NEMU binary &#26412;&#36523;&#26159;&#20010;&#29366;&#24577;&#26426;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#23427;&#27169;&#25311;&#20102;&#21478;&#19968;&#20010;&#29366;&#24577;&#26426; (&#25351;&#20196;&#24207;&#21015;)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#36825;&#23601;&#26159; monitor &#30340;&#29992;&#22788;&#65281;</li>
+<li class=" ml-8">NEMU binary 本身是个状态机<ul class=" list-disc font-serif">
+<li class=" ml-8">它模拟了另一个状态机 (指令序列)<ul class=" list-disc font-serif">
+<li class=" ml-8">这就是 monitor 的用处！</li>
 </ul>
 </li>
 </ul>
@@ -641,23 +642,23 @@ make[1]: *** [run] Error 2
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#35843;&#35797;&#29702;&#35770;&#65306;&#24212;&#29992;</h2>
-<p class=" font-serif my-1"></p><center>Fault &#8594; Error &#8594; Failure</center>
-<p class=" font-serif my-1">Fault &#8594; Error</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">调试理论：应用</h2>
+<p class=" font-serif my-1"></p><center>Fault → Error → Failure</center>
+<p class=" font-serif my-1">Fault → Error</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20805;&#20998;&#30340;&#27979;&#35797;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20363;&#23376;&#65306;Lab1 &#27979;&#35797;</li>
+<li class=" ml-8">充分的测试<ul class=" list-disc font-serif">
+<li class=" ml-8">例子：Lab1 测试</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">Error &#8594; Failure</p>
+<p class=" font-serif my-1">Error → Failure</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20805;&#36275;&#30340;&#26085;&#24535;</li>
-<li class=" ml-8">&#21450;&#26102;&#30340;&#26816;&#26597;</li>
+<li class=" ml-8">充足的日志</li>
+<li class=" ml-8">及时的检查</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#29992;&#22909;&#24037;&#20855;</p>
+<p class=" font-serif my-1">用好工具</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">monitor, gdb, ...</li>
 </ul></div>
@@ -671,23 +672,23 @@ make[1]: *** [run] Error 2
 
       
         
-        <div><h2 id="gdb" class=" text-xl mt-2 pb-2 font-sans">&#20363;&#23376;&#65306;&#20351;&#29992; GDB</h2>
+        <div><h2 id="gdb" class=" text-xl mt-2 pb-2 font-sans">例子：使用 GDB</h2>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>$<span class="w"> </span>./a.out
 Segmentation<span class="w"> </span>fault<span class="w"> </span><span class="o">(</span>core<span class="w"> </span>dumped<span class="o">)</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">GDB: &#26368;&#24120;&#29992;&#30340;&#21629;&#20196;&#22312; <a href="http://localhost:5001/static/wiki/ics/gdb-cheat-sheet.pdf" class=" text-amber-900">gdb cheat sheet</a></p>
+<p class=" font-serif my-1">GDB: 最常用的命令在 <a href="http://localhost:5001/static/wiki/ics/gdb-cheat-sheet.pdf" class=" text-amber-900">gdb cheat sheet</a></p>
 <hr>
-<p class=" font-serif my-1">Segmentation fault &#26159;&#19968;&#20010;&#38750;&#24120;&#22909;&#30340; failure</p>
+<p class=" font-serif my-1">Segmentation fault 是一个非常好的 failure</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#26576;&#26465;&#25351;&#20196;&#35775;&#38382;&#20102;&#38750;&#27861;&#20869;&#23384;</li>
-<li class=" ml-8">&#26080;&#38750;&#23601;&#26159;&#31354;&#25351;&#38024;&#12289;&#37326;&#25351;&#38024;&#12289;&#26632;&#28322;&#20986;&#12289;&#22534;&#28322;&#20986;&#8230;&#8230;</li>
+<li class=" ml-8">某条指令访问了非法内存</li>
+<li class=" ml-8">无非就是空指针、野指针、栈溢出、堆溢出……</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#24590;&#26679;&#23450;&#20301; segmentation fault &#21457;&#29983;&#26102;&#30340;&#35821;&#21477;/&#25351;&#20196;&#65311;</p>
+<p class=" font-serif my-1">怎样定位 segmentation fault 发生时的语句/指令？</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">(core dumped)</li>
-<li class=" ml-8">gdb - &#33258;&#24102; backtrace&#65292;95% &#37117;&#33021;&#24110;&#20320;&#23450;&#20301;&#21040;&#38382;&#39064;</li>
+<li class=" ml-8">gdb - 自带 backtrace，95% 都能帮你定位到问题</li>
 </ul></div>
         
       
@@ -699,13 +700,13 @@ Segmentation<span class="w"> </span>fault<span class="w"> </span><span class="o"
 
       
         
-        <div><h2 id="rtfm" class=" text-xl mt-2 pb-2 font-sans">&#24819;&#35201;&#26356;&#22909;&#30340;&#20307;&#39564;&#65311;RTFM&#65281;</h2>
-<p class=" font-serif my-1">&#27599;&#27425; gdb &#37117;&#35201;&#36755;&#20837;&#19968;&#22534;&#21629;&#20196;&#65292;&#37117;&#28902;&#20102;</p>
+        <div><h2 id="rtfm" class=" text-xl mt-2 pb-2 font-sans">想要更好的体验？RTFM！</h2>
+<p class=" font-serif my-1">每次 gdb 都要输入一堆命令，都烦了</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><red>&#24403;&#20320;&#24863;&#21040;&#19981;&#29245;&#30340;&#26102;&#20505;&#65292;&#19968;&#23450;&#26377;&#21150;&#27861;&#35299;&#20915;</red></li>
+<li class=" ml-8"><red>当你感到不爽的时候，一定有办法解决</red></li>
 </ul>
 <hr>
-<p class=" font-serif my-1">gdb &#21487;&#20197;&#25903;&#25345;&#21629;&#20196; (<code>-x</code>, <code>-ex</code>, ...)</p>
+<p class=" font-serif my-1">gdb 可以支持命令 (<code>-x</code>, <code>-ex</code>, ...)</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>set pagination off
 set confirm off
 layout asm
@@ -723,19 +724,19 @@ r
 
       
         
-        <div><h2 id="again" class=" text-xl mt-2 pb-2 font-sans">&#35843;&#35797;&#29702;&#35770;&#65306;&#24212;&#29992; (Again)</h2>
-<p class=" font-serif my-1"></p><center>&#38656;&#27714; &#8594; &#35774;&#35745; &#8594; &#20195;&#30721; &#8594; Fault &#8594; Error &#8594; Failure</center>
+        <div><h2 id="again" class=" text-xl mt-2 pb-2 font-sans">调试理论：应用 (Again)</h2>
+<p class=" font-serif my-1"></p><center>需求 → 设计 → 代码 → Fault → Error → Failure</center>
 <hr>
-<p class=" font-serif my-1">&#8220;Technical Debt&#8221;</p>
+<p class=" font-serif my-1">“Technical Debt”</p>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#27599;&#24403;&#20320;&#20889;&#20986;&#19981;&#22909;&#32500;&#25252;&#30340;&#20195;&#30721;&#65292;&#20320;&#37117;&#22312;&#32473;&#20320;&#26410;&#26469;&#30340;&#35843;&#35797;&#25366;&#22353;&#12290;</p>
+<p class=" font-serif my-1">每当你写出不好维护的代码，你都在给你未来的调试挖坑。</p>
 </blockquote>
 <hr>
-<p class=" font-serif my-1">&#20013;&#26538;&#20102;&#65311;</p>
+<p class=" font-serif my-1">中枪了？</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20026;&#20102;&#24555;&#28857;&#36305;&#31243;&#24207;&#65292;&#38543;&#20415;&#20889;&#30340; klib</li>
-<li class=" ml-8">&#20026;&#20102;&#36214;&#32039;&#23454;&#29616;&#25351;&#20196;&#65292;&#38543;&#25163;&#20889;&#30340;&#20195;&#30721;</li>
-<li class=" ml-8">&#8230;&#8230;</li>
+<li class=" ml-8">为了快点跑程序，随便写的 klib</li>
+<li class=" ml-8">为了赶紧实现指令，随手写的代码</li>
+<li class=" ml-8">……</li>
 </ul></div>
         
       
@@ -747,23 +748,23 @@ r
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#32534;&#31243;&#22522;&#26412;&#20934;&#21017;&#65306;&#22238;&#39038;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">编程基本准则：回顾</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">Programs are meant to be read by humans and only incidentally for computers to execute. &#8212; <em>D. E. Knuth</em></p>
-<p class=" font-serif my-1">(&#31243;&#24207;&#39318;&#20808;&#26159;&#25343;&#32473;&#20154;&#35835;&#30340;&#65292;&#20854;&#27425;&#25165;&#26159;&#34987;&#26426;&#22120;&#25191;&#34892;&#12290;)</p>
+<p class=" font-serif my-1">Programs are meant to be read by humans and only incidentally for computers to execute. — <em>D. E. Knuth</em></p>
+<p class=" font-serif my-1">(程序首先是拿给人读的，其次才是被机器执行。)</p>
 </blockquote>
-<p class=" font-serif my-1">&#22909;&#30340;&#31243;&#24207;</p>
+<p class=" font-serif my-1">好的程序</p>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="https://learning.oreilly.com/library/cover/9781449318482/250w/" width="200px"></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#19981;&#35328;&#33258;&#26126;&#65306;&#33021;&#30693;&#36947;&#26159;&#20570;&#20160;&#20040;&#30340; (<em>specification</em>)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#22240;&#27492;&#20195;&#30721;<red>&#39118;&#26684;</red>&#24456;&#37325;&#35201;</li>
+<li class=" ml-8">不言自明：能知道是做什么的 (<em>specification</em>)<ul class=" list-disc font-serif">
+<li class=" ml-8">因此代码<red>风格</red>很重要</li>
 </ul>
 </li>
 </ul>
 <hr>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#19981;&#35328;&#33258;&#35777;&#65306;&#33021;&#30830;&#35748;&#20195;&#30721;&#21644; specification &#19968;&#33268;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#22240;&#27492;&#20195;&#30721;&#20013;&#30340;<red>&#36923;&#36753;&#27969;</red>&#24456;&#37325;&#35201;</li>
+<li class=" ml-8">不言自证：能确认代码和 specification 一致<ul class=" list-disc font-serif">
+<li class=" ml-8">因此代码中的<red>逻辑流</red>很重要</li>
 </ul>
 </li>
 </ul></div>
@@ -777,19 +778,19 @@ r
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#35843;&#35797;&#29702;&#35770;&#30340;&#26368;&#37325;&#35201;&#24212;&#29992;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">调试理论的最重要应用</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1"><red>&#20889;&#22909;&#35835;&#12289;&#26131;&#39564;&#35777;&#30340;&#20195;&#30721;</red></p>
-<p class=" font-serif my-1"><red>&#22312;&#20195;&#30721;&#20013;&#28155;&#21152;&#26356;&#22810;&#30340;&#26029;&#35328; (assertions)</red></p>
+<p class=" font-serif my-1"><red>写好读、易验证的代码</red></p>
+<p class=" font-serif my-1"><red>在代码中添加更多的断言 (assertions)</red></p>
 </blockquote>
 <hr>
-<p class=" font-serif my-1">&#26029;&#35328;&#30340;&#24847;&#20041;</p>
+<p class=" font-serif my-1">断言的意义</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25226;&#20195;&#30721;&#20013;&#38544;&#34255;&#30340; specification &#20889;&#20986;&#26469;<ul class=" list-disc font-serif">
-<li class=" ml-8">Fault &#8594; Error (&#38752;&#27979;&#35797;)</li>
-<li class=" ml-8">Error &#8594; Failure (&#38752;&#26029;&#35328;)<ul class=" list-disc font-serif">
-<li class=" ml-8"><red>Error &#26292;&#38706;&#30340;&#36234;&#26202;&#65292;&#36234;&#38590;&#35843;&#35797;</red></li>
-<li class=" ml-8">&#36861;&#28335;&#23548;&#33268; assert failure &#30340;&#21464;&#37327;&#20540; (slice) &#36890;&#24120;&#21487;&#20197;&#24555;&#36895;&#23450;&#20301;&#21040; bug</li>
+<li class=" ml-8">把代码中隐藏的 specification 写出来<ul class=" list-disc font-serif">
+<li class=" ml-8">Fault → Error (靠测试)</li>
+<li class=" ml-8">Error → Failure (靠断言)<ul class=" list-disc font-serif">
+<li class=" ml-8"><red>Error 暴露的越晚，越难调试</red></li>
+<li class=" ml-8">追溯导致 assert failure 的变量值 (slice) 通常可以快速定位到 bug</li>
 </ul>
 </li>
 </ul>
@@ -805,18 +806,18 @@ r
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20363;&#23376;&#65306;&#32500;&#25252;&#29238;&#20146;&#33410;&#28857;&#30340;&#24179;&#34913;&#26641;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">例子：维护父亲节点的平衡树</h2>
 <p class=" font-serif my-1"><img alt="" class="center" src="http://web.cecs.pdx.edu/~sheard/course/Cs163/Graphics/rotation.png" width="640px"></p>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="c1">// &#32467;&#26500;&#32422;&#26463;</span>
-<span class="n">assert</span><span class="p">(</span><span class="n">u</span><span class="o">-&gt;</span><span class="n">parent</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">u</span><span class="w"> </span><span class="o">||</span>
-<span class="w">       </span><span class="n">u</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">left</span><span class="w">  </span><span class="o">==</span><span class="w"> </span><span class="n">u</span><span class="w"> </span><span class="o">||</span>
-<span class="w">       </span><span class="n">u</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">right</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">u</span><span class="p">);</span>
-<span class="n">assert</span><span class="p">(</span><span class="o">!</span><span class="n">u</span><span class="o">-&gt;</span><span class="n">left</span><span class="w">  </span><span class="o">||</span><span class="w"> </span><span class="n">u</span><span class="o">-&gt;</span><span class="n">left</span><span class="o">-&gt;</span><span class="n">parent</span><span class="w">  </span><span class="o">==</span><span class="w"> </span><span class="n">u</span><span class="p">);</span>
-<span class="n">assert</span><span class="p">(</span><span class="o">!</span><span class="n">u</span><span class="o">-&gt;</span><span class="n">right</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">u</span><span class="o">-&gt;</span><span class="n">right</span><span class="o">-&gt;</span><span class="n">parent</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">u</span><span class="p">);</span>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="c1">// 结构约束</span>
+<span class="n">assert</span><span class="p">(</span><span class="n">u</span><span class="o">-></span><span class="n">parent</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">u</span><span class="w"> </span><span class="o">||</span>
+<span class="w">       </span><span class="n">u</span><span class="o">-></span><span class="n">parent</span><span class="o">-></span><span class="n">left</span><span class="w">  </span><span class="o">==</span><span class="w"> </span><span class="n">u</span><span class="w"> </span><span class="o">||</span>
+<span class="w">       </span><span class="n">u</span><span class="o">-></span><span class="n">parent</span><span class="o">-></span><span class="n">right</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">u</span><span class="p">);</span>
+<span class="n">assert</span><span class="p">(</span><span class="o">!</span><span class="n">u</span><span class="o">-></span><span class="n">left</span><span class="w">  </span><span class="o">||</span><span class="w"> </span><span class="n">u</span><span class="o">-></span><span class="n">left</span><span class="o">-></span><span class="n">parent</span><span class="w">  </span><span class="o">==</span><span class="w"> </span><span class="n">u</span><span class="p">);</span>
+<span class="n">assert</span><span class="p">(</span><span class="o">!</span><span class="n">u</span><span class="o">-></span><span class="n">right</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">u</span><span class="o">-></span><span class="n">right</span><span class="o">-></span><span class="n">parent</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">u</span><span class="p">);</span>
 
-<span class="c1">// &#25968;&#20540;&#32422;&#26463;</span>
-<span class="n">assert</span><span class="p">(</span><span class="o">!</span><span class="n">u</span><span class="o">-&gt;</span><span class="n">left</span><span class="w">  </span><span class="o">||</span><span class="w"> </span><span class="n">u</span><span class="o">-&gt;</span><span class="n">left</span><span class="o">-&gt;</span><span class="n">val</span><span class="w">  </span><span class="o">&lt;</span><span class="w"> </span><span class="n">u</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">);</span>
-<span class="n">assert</span><span class="p">(</span><span class="o">!</span><span class="n">u</span><span class="o">-&gt;</span><span class="n">right</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">u</span><span class="o">-&gt;</span><span class="n">right</span><span class="o">-&gt;</span><span class="n">val</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">u</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">);</span>
+<span class="c1">// 数值约束</span>
+<span class="n">assert</span><span class="p">(</span><span class="o">!</span><span class="n">u</span><span class="o">-></span><span class="n">left</span><span class="w">  </span><span class="o">||</span><span class="w"> </span><span class="n">u</span><span class="o">-></span><span class="n">left</span><span class="o">-></span><span class="n">val</span><span class="w">  </span><span class="o"><</span><span class="w"> </span><span class="n">u</span><span class="o">-></span><span class="n">val</span><span class="p">);</span>
+<span class="n">assert</span><span class="p">(</span><span class="o">!</span><span class="n">u</span><span class="o">-></span><span class="n">right</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">u</span><span class="o">-></span><span class="n">right</span><span class="o">-></span><span class="n">val</span><span class="w"> </span><span class="o">></span><span class="w"> </span><span class="n">u</span><span class="o">-></span><span class="n">val</span><span class="p">);</span>
 </code></pre></div></div>
         
       
@@ -828,23 +829,23 @@ r
 
       
         
-        <div><h2 id="nemu" class=" text-xl mt-2 pb-2 font-sans">&#20363;&#23376;&#65306;NEMU &#20013;&#30340;&#26029;&#35328;</h2>
-<p class=" font-serif my-1">&#30475;&#36215;&#26469;&#24456;&#27809;&#24517;&#35201;&#65292;&#20294;&#21487;&#20197;&#25552;&#21069;&#25318;&#25130;&#19968;&#20123;&#26410;&#30693;&#30340; bug</p>
+        <div><h2 id="nemu" class=" text-xl mt-2 pb-2 font-sans">例子：NEMU 中的断言</h2>
+<p class=" font-serif my-1">看起来很没必要，但可以提前拦截一些未知的 bug</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20363;&#22914; memory error</li>
+<li class=" ml-8">例如 memory error</li>
 </ul>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">check_reg_index</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">assert</span><span class="p">(</span><span class="n">index</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">8</span><span class="p">);</span>
+<span class="w">  </span><span class="n">assert</span><span class="p">(</span><span class="n">index</span><span class="w"> </span><span class="o">>=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&&</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="o"><</span><span class="w"> </span><span class="mi">8</span><span class="p">);</span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">index</span><span class="p">;</span>
 <span class="p">}</span>
 <span class="cp">#define reg_l(index) (cpu.gpr[check_reg_index(index)]._32)</span>
 <span class="cp">#define reg_w(index) (cpu.gpr[check_reg_index(index)]._16)</span>
-<span class="cp">#define reg_b(index) (cpu.gpr[check_reg_index(index) &amp; 0x3]._8[index &gt;&gt; 2])</span>
+<span class="cp">#define reg_b(index) (cpu.gpr[check_reg_index(index) & 0x3]._8[index >> 2])</span>
 </code></pre></div>
 
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">Assert</span><span class="p">(</span><span class="n">map</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">addr</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">map</span><span class="o">-&gt;</span><span class="n">high</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">addr</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">map</span><span class="o">-&gt;</span><span class="n">low</span><span class="p">,</span>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">Assert</span><span class="p">(</span><span class="n">map</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="w"> </span><span class="o">&&</span><span class="w"> </span><span class="n">addr</span><span class="w"> </span><span class="o"><=</span><span class="w"> </span><span class="n">map</span><span class="o">-></span><span class="n">high</span><span class="w"> </span><span class="o">&&</span><span class="w"> </span><span class="n">addr</span><span class="w"> </span><span class="o">>=</span><span class="w"> </span><span class="n">map</span><span class="o">-></span><span class="n">low</span><span class="p">,</span>
 <span class="w">    </span><span class="s">"address (0x%08x) is out of bound {%s} [0x%08x, 0x%08x] at pc = "</span><span class="w"> </span><span class="n">FMT_WORD</span><span class="p">,</span>
-<span class="w">    </span><span class="n">addr</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">map</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">map</span><span class="o">-&gt;</span><span class="n">name</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">"???"</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="n">map</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">map</span><span class="o">-&gt;</span><span class="n">low</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="n">map</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">map</span><span class="o">-&gt;</span><span class="n">high</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="n">cpu</span><span class="p">.</span><span class="n">pc</span><span class="p">);</span>
+<span class="w">    </span><span class="n">addr</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">map</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">map</span><span class="o">-></span><span class="n">name</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">"???"</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="n">map</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">map</span><span class="o">-></span><span class="n">low</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="n">map</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">map</span><span class="o">-></span><span class="n">high</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="n">cpu</span><span class="p">.</span><span class="n">pc</span><span class="p">);</span>
 </code></pre></div></div>
         
       
@@ -856,13 +857,13 @@ r
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#31119;&#21033;&#65306;&#26356;&#22810;&#30340;&#26029;&#35328;</h2>
-<p class=" font-serif my-1">&#20320;&#26159;&#21542;&#24076;&#26395;&#22312;&#27599;&#19968;&#27425;&#25351;&#38024;&#35775;&#38382;&#26102;&#65292;&#37117;&#22686;&#21152;&#19968;&#20010;&#26029;&#35328;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">福利：更多的断言</h2>
+<p class=" font-serif my-1">你是否希望在每一次指针访问时，都增加一个断言</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><code>assert(obj-&gt;low &lt;= ptr &amp;&amp; ptr &lt; obj-&gt;high);</code></li>
+<li class=" ml-8"><code>assert(obj->low <= ptr && ptr < obj->high);</code></li>
 </ul>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="nf">ref</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="o">&</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
 <span class="p">}</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">foo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -872,10 +873,10 @@ r
 </code></pre></div>
 
 <hr>
-<p class=" font-serif my-1">&#19968;&#20010;&#31070;&#22855;&#30340;&#32534;&#35793;&#36873;&#39033;</p>
+<p class=" font-serif my-1">一个神奇的编译选项</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><code>-fsanitize=address</code><ul class=" list-disc font-serif">
-<li class=" ml-8">Address Sanitizer; asan &#8220;&#21160;&#24577;&#31243;&#24207;&#20998;&#26512;&#8221;</li>
+<li class=" ml-8">Address Sanitizer; asan “动态程序分析”</li>
 </ul>
 </li>
 </ul></div>
@@ -893,7 +894,7 @@ r
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#24635;&#32467;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">总结</h1></div></div></div>
         
       
       </section>
@@ -904,26 +905,26 @@ r
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#27531;&#37239;&#30340;&#29616;&#23454;&#21644;&#38590;&#21548;&#30340;&#26412;&#36136;</h2>
-<p class=" font-serif my-1">&#36947;&#29702;&#37117;&#25026;&#65292;&#20294;&#20986; bug &#20102;&#65292;&#36824;&#26159;&#19981;&#30693;&#36947;&#24590;&#20040;&#21150;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">残酷的现实和难听的本质</h2>
+<p class=" font-serif my-1">道理都懂，但出 bug 了，还是不知道怎么办</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#19968;&#21477;&#38590;&#21548;&#30340;&#35805;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20320;&#23545;&#20195;&#30721;&#30340;&#20851;&#38190;&#37096;&#20998;&#36824;&#19981;&#29087;&#24713;</li>
-<li class=" ml-8"><red>&#19981;&#30693;&#36947;&#22914;&#20309;&#21028;&#23450;&#31243;&#24207;&#29366;&#24577;&#26159;&#21542;&#27491;&#30830;</red><ul class=" list-disc font-serif">
-<li class=" ml-8">&#23545;&#39033;&#30446;&#32570;&#20047;&#20102;&#35299;</li>
-<li class=" ml-8">&#32570;&#20047;&#22522;&#30784;&#30693;&#35782;</li>
-<li class=" ml-8">&#25265;&#26377; &#8220;&#25105;&#19981;&#29702;&#35299;&#36825;&#20010;&#20063;&#34892;&#8221; &#30340;&#20389;&#24184;&#20449;&#24687;</li>
+<li class=" ml-8">一句难听的话<ul class=" list-disc font-serif">
+<li class=" ml-8">你对代码的关键部分还不熟悉</li>
+<li class=" ml-8"><red>不知道如何判定程序状态是否正确</red><ul class=" list-disc font-serif">
+<li class=" ml-8">对项目缺乏了解</li>
+<li class=" ml-8">缺乏基础知识</li>
+<li class=" ml-8">抱有 “我不理解这个也行” 的侥幸信息</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#12298;&#35745;&#31639;&#26426;&#31995;&#32479;&#22522;&#30784;&#12299;PA &#32473;&#22823;&#23478;&#26368;&#37325;&#35201;&#30340;&#35757;&#32451;</p>
+<p class=" font-serif my-1">《计算机系统基础》PA 给大家最重要的训练</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#28040;&#38500;&#30031;&#24807;&#65292;&#20294;&#26377;&#20123;&#21516;&#23398;&#36824;&#27809;&#33021;&#29702;&#35299;</li>
-<li class=" ml-8">&#21162;&#21147;&#20570;&#21040;&#30693;&#26195;&#25152;&#26377;&#32454;&#33410;</li>
-<li class=" ml-8">&#20026;&#20320;&#33258;&#24049;&#30340;&#20195;&#30721;&#36127;&#36131;</li>
+<li class=" ml-8">消除畏惧，但有些同学还没能理解</li>
+<li class=" ml-8">努力做到知晓所有细节</li>
+<li class=" ml-8">为你自己的代码负责</li>
 </ul></div>
         
       
@@ -935,20 +936,20 @@ r
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#29992;&#22909;&#35843;&#35797;&#29702;&#35770;</h2>
-<p class=" font-serif my-1">&#35843;&#35797;&#29702;&#35770;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">用好调试理论</h2>
+<p class=" font-serif my-1">调试理论</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">Fault &#8594; (&#27979;&#35797;) &#8594; Error &#8594; (&#26029;&#35328;) &#8594; Failure<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20108;&#20998;&#26597;&#25214;&#12289;&#35266;&#23519; trace&#12289;&#8230;&#8230;</li>
+<li class=" ml-8">Fault → (测试) → Error → (断言) → Failure<ul class=" list-disc font-serif">
+<li class=" ml-8">二分查找、观察 trace、……</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#35843;&#35797;&#23454;&#36341;</p>
+<p class=" font-serif my-1">调试实践</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#29702;&#35299;&#31243;&#24207;&#22914;&#20309;&#23436;&#25104;&#23545;&#29616;&#23454;&#19990;&#30028;&#20219;&#21153;&#30340;<red>&#25277;&#35937;</red><ul class=" list-disc font-serif">
-<li class=" ml-8">&#25105;&#20204;&#24456;&#23481;&#26131;&#29992;&#19968;&#23567;&#21477;&#35805;&#26469;&#27010;&#25324;&#19968;&#22823;&#27573;&#31243;&#24207;&#25191;&#34892;&#36807;&#31243;</li>
-<li class=" ml-8">&#24182;&#19988;&#25490;&#38500;/&#30830;&#35748;&#20854;&#20013;&#30340;&#38382;&#39064;</li>
+<li class=" ml-8">理解程序如何完成对现实世界任务的<red>抽象</red><ul class=" list-disc font-serif">
+<li class=" ml-8">我们很容易用一小句话来概括一大段程序执行过程</li>
+<li class=" ml-8">并且排除/确认其中的问题</li>
 </ul>
 </li>
 </ul></div>
@@ -992,5 +993,6 @@ r
 
 
 </body>
+
 
 </html>

@@ -1,0 +1,337 @@
+<!DOCTYPE html><html class="h-100">
+
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="../static/css/base.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com/"></script>
+  <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="../static/img/favicon.png" type="image/x-icon">
+
+  <style>
+    .font-sans {
+      font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+    }
+    .font-serif {
+      font-family: 'Source Serif Pro', 'Songti SC', 'SimSun', 'Serif', serif;
+    }
+  </style>
+  <link rel="stylesheet" href="../static/katex/katex.min.css">
+  <script defer src="../static/katex/katex.min.js"></script>
+  <script defer src="../static/katex/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+            // customised options
+            // • auto-render specific keys, e.g.:
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ],
+            // • rendering keys, e.g.:
+            throwOnError : false
+          });
+      });
+  </script>
+
+
+  
+
+<style>
+.article {
+  -webkit-hyphens: auto;
+}
+form {
+  margin-block-end: 0;
+}
+img {
+  display: inline-block;
+}
+code { font-size: 85%; }
+pre {
+  font-size: 95%;
+  line-height: 120%;
+}
+blockquote {
+  font-size: 95%;
+}
+p {
+  font-size: 105%;
+  text-indent: 2em;
+}
+li {
+  font-size: 105%;
+}
+blockquote p {
+  text-indent: 0em;
+}
+.float-right {
+  padding-left: 10px;
+}
+.float-left {
+  padding-right: 10px;
+}
+a {
+  color: rgb(29 78 216);
+}
+strong {
+  font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+}
+.box        {
+  border-radius: 2px; padding: 1px 4px 2px 4px;
+  font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+  font-size: 95%;
+}
+.box-blue,  .badge-primary  { background-color: rgba(66, 139, 202, 0.5); color: #1d4ed8; }
+.box-green, .badge-success  { background-color: rgba(92, 184, 92, 0.5);  color: #15803d; }
+.box-red,   .badge-danger   { background-color: rgba(217, 83, 79, 0.5);  color: #b91c1c; }
+.box-yellow,.badge-warning  { background-color: rgba(240, 173, 78, 0.5); color: #a16207; }
+.box-gray   { background-color: #a0a0a0; }
+
+.badge {
+  padding: 1 4 1 4;
+  display: inline-block;
+  border-radius: 0.25rem;
+  border: 1px solid;
+}
+.message p {
+  text-indent: 0em;
+  margin-top: 1px;
+}
+.message h1, h2, h3, h4, h5 {
+  font-family: 'Lato', 'SimHei', 'STHeiti', 'SimHei', 'Serif';
+}
+.message h2 {
+  font-size: 120%;
+  margin-top: 5px;
+  margin-bottom: 2px;
+}
+.message li {
+  list-style: disc;
+  margin-left: 2em;
+}
+li > p {
+  text-indent: 0em;
+}
+block-quote h4 {
+  float: left;
+  display: inline-block;
+}
+.center {
+  display: block;
+  margin: auto;
+}
+hr {
+  margin-top: 20px;
+  padding-bottom: 20px;
+}
+
+.fa-gradient {
+	background: -webkit-gradient(linear, left top, left bottom, from(rgb(99, 27, 103)), to(#333));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+</style>
+
+
+  <title>AbstractMachine: 抽象计算机</title>
+</head>
+
+<body class="d-flex flex-column h-100">
+  
+  
+
+<div>
+
+<div class="px-2 py-1 w-full fixed z-50 bg-gradient-to-r from-black via-purple-700 via-purple-500 shadow-lg" style="-webkit-backdrop-filter: saturate(150%) blur(4px); backdrop-filter: saturate(150%) blur(4px)">
+  <form>
+    <a href="../index-2.html"><span class="text-lg px-2 text-white">Yanyan's Wiki</span></a>
+    <a href="../OS/2023/index.html"><span class="text-sm px-2 text-white">操作系统 (2023)</span></a>
+    <input maxlength="9" id="token-input" class="float-right appearance-none border border-transparent px-2 py-1 w-20 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-xs focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent font-mono" type="text" placeholder="TOKEN" oninput="login();">
+  </form>
+</div>
+
+<div class="article container mx-auto md:px-8 lg:px-8 xl:px-8 2xl:px-8 shadow-lg border pb-8 pt-10 max-w-screen-md text-justify divide-y-2 divide-white">
+  <div><h1 id="abstractmachine" class=" text-2xl mt-2 font-sans">AbstractMachine: 抽象计算机</h1>
+<p class=" font-serif my-1"><img alt="" class="float-right" src="../pages/talks/img/full-system.jpg" width="240px"></p>
+<p class=" font-serif my-1">AbstractMachine 是裸机上的 C 语言运行环境，提供 5 组 (15 个) 主要 API，可以实现各类系统软件 (如操作系统)：</p>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">(TRM) <code>putch</code>/<code>halt</code> - 最基础的计算、显示和停机</li>
+<li class=" ml-8">(IOE) <code>ioe_read/ioe_write</code> - I/O 设备管理</li>
+<li class=" ml-8">(CTE) <code>ienabled</code>/<code>iset</code>/<code>yield</code>/<code>kcontext</code> - 中断和异常</li>
+<li class=" ml-8">(VME) <code>protect</code>/<code>unprotect</code>/<code>map</code>/<code>ucontext</code> - 虚存管理</li>
+<li class=" ml-8">(MPE) <code>cpu_count</code>/<code>cpu_current</code>/<code>atomic_xchg</code> - 多处理器</li>
+</ul>
+<hr>
+<ul class=" list-disc font-serif">
+<li class=" ml-8">AbstractMachine 简介<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="AM_Programs.html" class=" text-amber-900">如何为 “裸机” (bare-metal) 编程</a></li>
+<li class=" ml-8"><a href="AM_klib.html" class=" text-amber-900">在 AbstractMachine 上封装库函数</a></li>
+</ul>
+</li>
+<li class=" ml-8">规约与文档<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="AM_Design.html" class=" text-amber-900">AbstractMachine 设计概述</a></li>
+<li class=" ml-8"><a href="AM_Spec-2.html" class=" text-amber-900">AbstractMachine 规约 (Specifications)</a></li>
+<li class=" ml-8"><a href="AM_Devices-2.html" class=" text-amber-900">AbstractMachine 设备规约</a></li>
+</ul>
+</li>
+</ul>
+<div style="display:none">
+
+
+
+## 1. 简介
+
+我们在 C 程序中调用 AbstractMachine API 就能实现操作系统，从而不需要知道底层硬件的中断、虚拟存储等是如何在指令级实现的——这是计算机系统设计与实现中的一种抽象；一个类似的例子是我们在应用程序里调用 libc 库就能完成绝大部分任务，而不需要知道底层的操作系统 API。这样的设计方法在复杂计算机系统的构造中十分常见：底层系统提供**机制** (mechanism)，上层系统利用这些机制实现**策略** (policy)。典型的机制/策略分离的抽象层有指令集体系结构、系统调用、库函数等；AbstractMachine 属于一种硬件抽象层 (hardware abstraction layer, HAL)。
+
+## 2. 安装与配置
+
+### 2.1. 配置 AbstractMachine
+
+对于操作系统实验的同学，`os-workbench` 中已经包含了 AbstractMachine 代码，并且操作系统实验的框架代码已经完成了配置。如果你使用 Debian/Ubuntu 系统，你在编译代码时可能会遇到一些命令执行失败的情况，通常需要以下软件包 (也可能需要其他软件包，请 STFW)：
+
+* `gcc-multilib` (交叉编译用)
+* `libsdl2-dev` (图形库)
+* `qemu-system` (全系统模拟器)
+
+如果你希望建立自己的 AbstractMachine 项目 (例如之后的 Hello World 例子) 或编译运行其他示例代码 (microbench, fceux, litenes, ...) 等，则需要先配置好 `AM_HOME` 环境变量 (请 STFW 什么是环境变量。可以用 `env` 命令查看当前的环境变量)，把它设置为 AbstractMachine 目录的**绝对路径**：
+
+
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">AM_HOME</span><span class="o">=</span>/abs/path/.../os-workbench/abstract-machine
+</code></pre></div>
+
+
+
+你可以把这一行写在 `.bashrc`/`.zshrc` 中，使得不必每次打开终端都重新配置。如果你第一次使用 Linux，这会是一个比较痛苦的过程——你还需要学习 Shell 有关的基础知识。一份不错的入门材料是 MIT 的 “[The Missing Semester of Your CS Education](https://missing.csail.mit.edu/)”。
+
+## 2.2. Hello, AbstractMachine
+
+完成必要软件的安装和正确的 `AM_HOME` 配置后，我们就可以在 AbstractMachine 上编程了。在文件系统的任意目录中创建一个 `.c` 文件和 `Makefile` (参考 `man 3 stdarg`)：
+
+
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="c1">// hello.c</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf"><am.h></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf"><stdarg.h></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">print</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="p">...)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">va_list</span><span class="w"> </span><span class="n">ap</span><span class="p">;</span>
+<span class="w">  </span><span class="n">va_start</span><span class="p">(</span><span class="n">ap</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">);</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(;</span><span class="w"> </span><span class="o">*</span><span class="n">s</span><span class="p">;</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="n">putch</span><span class="p">(</span><span class="o">*</span><span class="n">s</span><span class="p">);</span>
+<span class="w">    </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">va_arg</span><span class="p">(</span><span class="n">ap</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="n">va_end</span><span class="p">(</span><span class="n">ap</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">print</span><span class="p">(</span><span class="s">"</span><span class="se">\"</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">args</span><span class="p">,</span><span class="w"> </span><span class="s">"</span><span class="se">\"</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="s">" from "</span><span class="w"> </span><span class="n">__ISA__</span><span class="w"> </span><span class="s">" program!</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+
+
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="c"># Makefile</span>
+<span class="nv">NAME</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span>hello
+<span class="nv">SRCS</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span>hello.c
+<span class="cp">include $(AM_HOME)/Makefile.app</span>
+</code></pre></div>
+
+
+
+我们就完成了一个**可移植**到多个 “bare-metal” 平台的 Hello World 程序，它们可以直接在模拟器里运行，甚至直接在开发板上运行！当然了，现在编译、链接、运行都会交给 AbstractMachine 中的代码帮忙搞定。
+
+为了编译运行，AbstractMachine 需要知道目标的平台/体系结构，通过 `ARCH` 环境变量指定。例如，我们希望编译出能在 x86-64 (QEMU) 下运行的镜像：
+
+
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>$ make ARCH=x86_64-qemu
+# Building hello-image [x86_64-qemu]
++ CC hello.c
+...
++ CREATE -> build/hello-x86_64-qemu
+</code></pre></div>
+
+
+
+会自动完成编译，得到 `build/` 目录下的若干文件：
+
+
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>build
+├── hello-x86_64-qemu    // 可运行、包含 bootloader 等的磁盘镜像
+├── hello-x86_64-qemu.o  // hello 项目的二进制文件
+└── x86_64-qemu
+    ├── hello.d          // hello.c 依赖的头文件 (gcc -MMD 生成)
+    └── hello.o          // 编译 hello.c 得到的目标文件
+</code></pre></div>
+
+
+
+不妨用 `objdump -d` 命令查看 `hello-x86_64-qemu.o` 反汇编后的代码，是直接运行在裸机上的 C 程序代码，程序的入口是 `_start`。Makefile 也自带了运行功能，传入 `mainargs` 环境变量，即可将参数传递给 `main` 函数：
+
+
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>$ make run ARCH=x86_64-qemu mainargs="Hello World"
+...
+"Hello World" from x86_64 program!
+CPU #0 Halt (00).
+</code></pre></div>
+
+
+
+你可以尝试其他的 `ARCH` 环境变量：`x86-qemu`, `native`，在不同平台下运行。你也可以 export 默认的 `ARCH=x86_64-qemu`，避免每次键入。
+
+> #### 思考题：`__ISA__`
+> 
+> 我们的 Hello World 程序引用了这个奇怪的宏。这个宏不是 C 标准里定义的，那么是谁定义的？当我们设置不同的 `ARCH`，打印的 `__ISA__` 也各不相同。这一定是 Makefile 做的。怎么知道呢？UNIX 世界早就给我们提供了足够的工具来搞定这些日常琐事：
+> 
+>     :::text
+>     find . -type f | xargs grep -ne __ISA__
+> 
+> (请 RTFM 理解这个命令的含义)。我们能定位到 `Makefile` 中的一行代码，将 `__ISA__` 的定义使用 gcc 的 `-D` 选项加入了 `CFLAGS`。
+
+</div></div>
+</div>
+
+<div class="container text-xs py-3">
+  <span class="text-muted">
+    <center><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="../static/img/cc-4.0.png"></a>
+       <a style="color:inherit" href="https://beian.miit.gov.cn/">苏 ICP 备 2020049101 号</a>
+    </center>
+  </span>
+</div>
+
+</div>
+
+<script src="../static/js/jquery.min.js"></script>
+
+<script>
+function get_token() {
+  var match = document.cookie.match(new RegExp('(^| )token=([^;]+)'));
+  if (match) return match[2];
+  else return "";
+}
+var token = get_token();
+var hint = "token", box = $("#token-input");
+
+if (token == "") { }
+else { box.val(token); }
+
+function login() {
+  var token = box.val()
+  if (!token) {
+    document.cookie = ''
+  } else {
+    document.cookie = 'token=' + token + '; expires=Fri, 31 Dec 9999 23:59:59 GMT;'
+  }
+}
+</script>
+
+
+</body>
+
+
+</html>

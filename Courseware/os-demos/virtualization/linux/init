@@ -1,0 +1,56 @@
+#!/bin/busybox sh
+
+# At this point, we only have:
+#   /bin/busybox - the binary
+#   /dev/console - the console device
+BB=/bin/busybox
+
+# Delete this file
+# (Yes, we can do this on UNIX! The file is "removed"
+# after the last reference, the fd, is gone.)
+$BB rm /init
+
+$BB find / -type f
+$BB echo "Unlimited power!!"
+# $BB poweroff -f
+# ----------------------------------------------------
+ 
+# "Create" command-line tools by making symbolic links
+#   try: busybox --list
+for cmd in $($BB --list); do
+    $BB ln -s $BB /bin/$cmd
+done
+
+# Mount procfs and sysfs
+mkdir -p /proc && mount -t proc  none /proc
+mkdir -p /sys  && mount -t sysfs none /sys
+
+# Create devices
+mknod /dev/random  c 1 8
+mknod /dev/urandom c 1 9
+mknod /dev/null    c 1 3
+mknod /dev/tty     c 4 1
+mknod /dev/sda     b 8 0
+
+echo -e "\033[31mInit OK; launch a shell (initramfs).\033[0m"
+
+busybox sh
+
+# Display a countdown
+
+echo -e "\n\n"
+echo -e "\033[31mSwitch root in...\033[0m"
+for sec in $(seq 3 -1 1); do
+    echo $sec; sleep 1
+done
+
+# Switch root to /newroot (a real file system)
+N=/newroot
+
+mkdir -p $N
+mount -t ext4 /dev/sda $N
+
+mkdir -p $N/bin
+cp $BB $N/bin/
+cp $BB /init
+exec switch_root /newroot/ /init

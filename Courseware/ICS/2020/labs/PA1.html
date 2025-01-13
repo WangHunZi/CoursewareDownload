@@ -1,10 +1,11 @@
 <!DOCTYPE html><html class="h-100">
 
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="../../../static/css/base.css" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com/"></script>
   <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
 
@@ -23,14 +24,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -137,7 +138,7 @@ hr {
 </style>
 
 
-  <title>PA1: &#30417;&#35270;&#22120;</title>
+  <title>PA1: 监视器</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -148,55 +149,55 @@ hr {
 
 <div class="px-2 py-1 w-full fixed z-50 bg-gradient-to-r from-black via-purple-700 via-purple-500 shadow-lg" style="-webkit-backdrop-filter: saturate(150%) blur(4px); backdrop-filter: saturate(150%) blur(4px)">
   <form>
-    <a href="../../../index.html"><span class="text-lg px-2 text-white">Yanyan's Wiki</span></a>
-    <a href="../../../OS/2023/index.html"><span class="text-sm px-2 text-white">&#25805;&#20316;&#31995;&#32479; (2023)</span></a>
+    <a href="../../../index-2.html"><span class="text-lg px-2 text-white">Yanyan's Wiki</span></a>
+    <a href="../../../OS/2023/index.html"><span class="text-sm px-2 text-white">操作系统 (2023)</span></a>
     <input maxlength="9" id="token-input" class="float-right appearance-none border border-transparent px-2 py-1 w-20 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-xs focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent font-mono" type="text" placeholder="TOKEN" oninput="login();">
   </form>
 </div>
 
 <div class="article container mx-auto md:px-8 lg:px-8 xl:px-8 2xl:px-8 shadow-lg border pb-8 pt-10 max-w-screen-md text-justify divide-y-2 divide-white">
-  <div><h1 id="pa1" class=" text-2xl mt-2 font-sans">PA1: &#30417;&#35270;&#22120;</h1>
+  <div><h1 id="pa1" class=" text-2xl mt-2 font-sans">PA1: 监视器</h1>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#35831;&#38405;&#35835;<a href="Labs.html" class=" text-amber-900">&#23454;&#39564;&#39035;&#30693;/&#25552;&#20132;&#26041;&#27861;</a>&#21644;<a href="https://nju-projectn.github.io/ics-pa-gitbook/ics2020/PA1.html" class=" text-amber-900">&#23454;&#39564;&#25351;&#21335;</a>&#12290;</p>
+<p class=" font-serif my-1">请阅读<a href="Labs.html" class=" text-amber-900">实验须知/提交方法</a>和<a href="https://nju-projectn.github.io/ics-pa-gitbook/ics2020/PA1.html" class=" text-amber-900">实验指南</a>。</p>
 <p class=" font-serif my-1">Soft deadline:</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">PA 1.1: 2020.9.20 (&#27492;&#20026;&#24314;&#35758;&#30340;&#19981;&#35745;&#20998; deadline)</li>
-<li class=" ml-8">PA 1.2: 2020.9.27 (&#27492;&#20026;&#24314;&#35758;&#30340;&#19981;&#35745;&#20998; deadline)</li>
-<li class=" ml-8">PA 1.3: 2020.10.11 23:59:59 (&#20197;&#27492; deadline &#35745;&#25353;&#26102;&#25552;&#20132;&#22870;&#21169;&#20998;)</li>
+<li class=" ml-8">PA 1.1: 2020.9.20 (此为建议的不计分 deadline)</li>
+<li class=" ml-8">PA 1.2: 2020.9.27 (此为建议的不计分 deadline)</li>
+<li class=" ml-8">PA 1.3: 2020.10.11 23:59:59 (以此 deadline 计按时提交奖励分)</li>
 </ul>
-<p class=" font-serif my-1">&#20320;&#20204;&#21487;&#33021;&#29992;&#21040;&#30340; <a href="https://box.nju.edu.cn/f/3e56938d9d8140a7bb75/?dl=1" class=" text-amber-900">NES Roms</a>&#12290;&#35831;&#20165;&#29992;&#20110;&#27979;&#35797;&#12290;</p>
+<p class=" font-serif my-1">你们可能用到的 <a href="https://box.nju.edu.cn/f/3e56938d9d8140a7bb75/?dl=1" class=" text-amber-900">NES Roms</a>。请仅用于测试。</p>
 </blockquote>
 <p class=" font-serif my-1"><oj-status course="ICS2020" module="PA1"><div class="divide-y divide-dashed">
     <div class="flex font-semibold">
-      ICS2020-PA1 &#25552;&#20132;&#32467;&#26524;
+      ICS2020-PA1 提交结果
     </div>
     
   </div>
 </oj-status></p>
-<h2 id="online-judge" class=" text-xl mt-2 pb-2 font-sans">Online Judge &#35780;&#27979;&#35828;&#26126;</h2>
-<p class=" font-serif my-1">&#38500;&#20102;&#35299;&#21387;&#32553;&#12289;&#25191;&#34892;&#19968;&#20123;&#22522;&#30784;&#30340;&#26816;&#26597;&#22806;&#65292;&#25105;&#20204;&#20250;&#65306;</p>
+<h2 id="online-judge" class=" text-xl mt-2 pb-2 font-sans">Online Judge 评测说明</h2>
+<p class=" font-serif my-1">除了解压缩、执行一些基础的检查外，我们会：</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#23558;&#20320;&#39033;&#30446;&#30340; <code>src</code> &#21644; <code>include</code> &#22797;&#21046;&#21040;&#24037;&#20316;&#30446;&#24405;&#20013;&#65307;</li>
-<li class=" ml-8">&#26681;&#25454; <code>src/</code> &#20013;&#30340;&#20195;&#30721;&#25512;&#26029;&#20320;&#36873;&#25321;&#30340;&#25351;&#20196;&#38598;&#20307;&#31995;&#32467;&#26500; (x86, mips32 &#25110; riscv32)&#65306;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#25105;&#20204;&#20250;&#35748;&#20026;&#20320;&#30456;&#23545;&#20110;&#26694;&#26550;&#20195;&#30721;<strong>&#22686;&#21152;</strong>&#26368;&#22810;&#20195;&#30721;&#34892;&#30340;&#20307;&#31995;&#32467;&#26159;&#20320;&#36873;&#25321;&#30340;&#25351;&#20196;&#38598;&#20307;&#31995;&#32467;&#26500;&#12290;&#22914;&#26524;&#25512;&#26029;&#19981;&#27491;&#30830;&#65292;&#20320;&#21487;&#20197;&#32771;&#34385;&#22312;&#20320;&#36873;&#25321;&#30340;&#25351;&#20196;&#38598;&#20307;&#31995;&#32467;&#26500;&#20013;&#22686;&#21152;&#19968;&#20123;&#20195;&#30721;&#65307;</li>
+<li class=" ml-8">将你项目的 <code>src</code> 和 <code>include</code> 复制到工作目录中；</li>
+<li class=" ml-8">根据 <code>src/</code> 中的代码推断你选择的指令集体系结构 (x86, mips32 或 riscv32)：<ul class=" list-disc font-serif">
+<li class=" ml-8">我们会认为你相对于框架代码<strong>增加</strong>最多代码行的体系结是你选择的指令集体系结构。如果推断不正确，你可以考虑在你选择的指令集体系结构中增加一些代码；</li>
 </ul>
 </li>
-<li class=" ml-8">&#20351;&#29992;&#25105;&#20204;&#30340; Makefile &#32534;&#35793;&#39033;&#30446;&#65292;&#24471;&#21040;&#20108;&#36827;&#21046;&#25991;&#20214;&#65306;<ul class=" list-disc font-serif">
-<li class=" ml-8">Makefile &#34892;&#20026;/&#32534;&#35793;&#36873;&#39033;&#19982;&#26694;&#26550;&#20195;&#30721;&#19968;&#33268;&#65307;</li>
+<li class=" ml-8">使用我们的 Makefile 编译项目，得到二进制文件：<ul class=" list-disc font-serif">
+<li class=" ml-8">Makefile 行为/编译选项与框架代码一致；</li>
 </ul>
 </li>
-<li class=" ml-8">&#25191;&#34892;&#27979;&#35797;&#29992;&#20363;&#65292;&#24182;&#21028;&#23450;&#27491;&#30830;&#24615;&#12290;</li>
+<li class=" ml-8">执行测试用例，并判定正确性。</li>
 </ul>
-<h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#24120;&#35265;&#38382;&#39064;</h2>
+<h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">常见问题</h2>
 <ol class=" list-decimal font-serif">
-<li class=" ml-8">Runtime Error: &#25105;&#20204;&#20250;&#26816;&#26597; NEMU &#21487;&#25191;&#34892;&#25991;&#20214;&#30340;&#36820;&#22238;&#20540;&#12290;&#36981;&#23432; UNIX &#19990;&#30028;&#30340;&#35268;&#23450;&#65292;&#22914;&#26524;&#36820;&#22238;&#20540;&#38750; 0 &#21017;&#34920;&#31034;&#21629;&#20196;&#25191;&#34892;&#20986;&#29616;&#38169;&#35823;&#12290;&#22240;&#27492;&#22312;&#21629;&#20196;&#27491;&#24120;&#36864;&#20986; (&#22914;&#25910;&#21040; <code>q</code> &#21629;&#20196;&#21518;) &#24212;&#24403;&#36820;&#22238; 0&#12290;&#19968;&#20010;&#19981;&#21512;&#36866;&#30340;&#26041;&#27861;&#26159;&#30452;&#25509; <code>exit</code> &#36864;&#20986;&#12290;&#21512;&#36866;&#30340;&#26041;&#24335;&#26159;&#27491;&#30830;&#22320;&#35774;&#32622; <code>nemu_state</code>&#8212;&#8212;&#30452;&#25509;&#36864;&#20986;&#21487;&#33021;&#23548;&#33268;&#37096;&#20998;&#36923;&#36753;&#26410;&#34987;&#25191;&#34892;&#12290;</li>
+<li class=" ml-8">Runtime Error: 我们会检查 NEMU 可执行文件的返回值。遵守 UNIX 世界的规定，如果返回值非 0 则表示命令执行出现错误。因此在命令正常退出 (如收到 <code>q</code> 命令后) 应当返回 0。一个不合适的方法是直接 <code>exit</code> 退出。合适的方式是正确地设置 <code>nemu_state</code>——直接退出可能导致部分逻辑未被执行。</li>
 </ol></div>
 </div>
 
 <div class="container text-xs py-3">
   <span class="text-muted">
     <center><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="../../../static/img/cc-4.0.png"></a>
-    &#160;&#160;&#160;<a style="color:inherit" href="https://beian.miit.gov.cn/">&#33487; ICP &#22791; 2020049101 &#21495;</a>
+       <a style="color:inherit" href="https://beian.miit.gov.cn/">苏 ICP 备 2020049101 号</a>
     </center>
   </span>
 </div>
@@ -229,5 +230,6 @@ function login() {
 
 
 </body>
+
 
 </html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -14597,7 +14598,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Playing-with-Polynomials">Playing with Polynomials<a class="anchor-link" href="polynomials.html#Playing-with-Polynomials">&#182;</a></h1>
+<h1 id="Playing-with-Polynomials">Playing with Polynomials<a class="anchor-link" href="polynomials.html#Playing-with-Polynomials">¶</a></h1>
 </div>
 </div>
 </div>
@@ -14606,7 +14607,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[220]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [220]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span>
@@ -14615,11 +14616,11 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">sympy.polys</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;text&#39;</span><span class="p">,</span> <span class="n">usetex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">sympy</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">'text'</span><span class="p">,</span> <span class="n">usetex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">sympy</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">'x'</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">points</span><span class="o">=</span><span class="p">[],</span> <span class="n">draw_points</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Plot a polynomial f.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Plot a polynomial f."""</span>
 
     <span class="n">xmin</span> <span class="o">=</span> <span class="nb">min</span><span class="p">([</span><span class="n">x_</span> <span class="k">for</span> <span class="n">x_</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">points</span><span class="p">])</span> <span class="o">-</span> <span class="mf">0.1</span>
     <span class="n">xmax</span> <span class="o">=</span> <span class="nb">max</span><span class="p">([</span><span class="n">x_</span> <span class="k">for</span> <span class="n">x_</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">points</span><span class="p">])</span> <span class="o">+</span> <span class="mf">0.1</span>
@@ -14635,8 +14636,8 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
             <span class="p">[</span><span class="n">y_</span> <span class="k">for</span> <span class="n">x_</span><span class="p">,</span> <span class="n">y_</span> <span class="ow">in</span> <span class="n">points</span><span class="p">],</span>
         <span class="p">)</span>
         <span class="k">for</span> <span class="n">x_</span><span class="p">,</span> <span class="n">y_</span> <span class="ow">in</span> <span class="n">points</span><span class="p">:</span>
-            <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x_</span><span class="p">,</span> <span class="n">y_</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;$(</span><span class="si">{</span><span class="n">x_</span><span class="si">}</span><span class="s1">,</span><span class="si">{</span><span class="n">y_</span><span class="si">}</span><span class="s1">)$&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;$y = </span><span class="si">{</span><span class="n">sympy</span><span class="o">.</span><span class="n">latex</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="si">}</span><span class="s1">$&#39;</span><span class="p">)</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x_</span><span class="p">,</span> <span class="n">y_</span><span class="p">,</span> <span class="sa">f</span><span class="s1">'$(</span><span class="si">{</span><span class="n">x_</span><span class="si">}</span><span class="s1">,</span><span class="si">{</span><span class="n">y_</span><span class="si">}</span><span class="s1">)$'</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">'bottom'</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">'center'</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">'$y = </span><span class="si">{</span><span class="n">sympy</span><span class="o">.</span><span class="n">latex</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="si">}</span><span class="s1">$'</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -14651,7 +14652,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="%E6%B1%82%E8%A7%A3%E7%A9%BF%E8%BF%87%E7%BB%99%E5%AE%9A%E7%82%B9%E9%9B%86%E7%9A%84%E5%A4%9A%E9%A1%B9%E5%BC%8F">&#27714;&#35299;&#31359;&#36807;&#32473;&#23450;&#28857;&#38598;&#30340;&#22810;&#39033;&#24335;<a class="anchor-link" href="polynomials.html#%E6%B1%82%E8%A7%A3%E7%A9%BF%E8%BF%87%E7%BB%99%E5%AE%9A%E7%82%B9%E9%9B%86%E7%9A%84%E5%A4%9A%E9%A1%B9%E5%BC%8F">&#182;</a></h2>
+<h2 id="%E6%B1%82%E8%A7%A3%E7%A9%BF%E8%BF%87%E7%BB%99%E5%AE%9A%E7%82%B9%E9%9B%86%E7%9A%84%E5%A4%9A%E9%A1%B9%E5%BC%8F">求解穿过给定点集的多项式<a class="anchor-link" href="polynomials.html#%E6%B1%82%E8%A7%A3%E7%A9%BF%E8%BF%87%E7%BB%99%E5%AE%9A%E7%82%B9%E9%9B%86%E7%9A%84%E5%A4%9A%E9%A1%B9%E5%BC%8F">¶</a></h2>
 </div>
 </div>
 </div>
@@ -14660,12 +14661,12 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[221]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [221]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">interpolate</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">draw_points</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
-    <span class="nb">vars</span> <span class="o">=</span> <span class="n">sympy</span><span class="o">.</span><span class="n">symbols</span><span class="p">([</span><span class="sa">f</span><span class="s1">&#39;a</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)])</span>
+    <span class="nb">vars</span> <span class="o">=</span> <span class="n">sympy</span><span class="o">.</span><span class="n">symbols</span><span class="p">([</span><span class="sa">f</span><span class="s1">'a</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">'</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)])</span>
     <span class="n">cons</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">x_</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">points</span><span class="p">:</span>
         <span class="n">cons</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
@@ -14694,7 +14695,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[258]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [258]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">interpolate</span><span class="p">([(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">)])</span>
@@ -14748,7 +14749,7 @@ class="
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[263]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [263]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">interpolate</span><span class="p">([(</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)])</span>
@@ -14804,7 +14805,7 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="%E5%AF%B9%E5%87%BD%E6%95%B0%E7%9A%84%E8%BF%91%E4%BC%BC">&#23545;&#20989;&#25968;&#30340;&#36817;&#20284;<a class="anchor-link" href="polynomials.html#%E5%AF%B9%E5%87%BD%E6%95%B0%E7%9A%84%E8%BF%91%E4%BC%BC">&#182;</a></h2><p>$y = \sin(x)$</p>
+<h2 id="%E5%AF%B9%E5%87%BD%E6%95%B0%E7%9A%84%E8%BF%91%E4%BC%BC">对函数的近似<a class="anchor-link" href="polynomials.html#%E5%AF%B9%E5%87%BD%E6%95%B0%E7%9A%84%E8%BF%91%E4%BC%BC">¶</a></h2><p>$y = \sin(x)$</p>
 
 </div>
 </div>
@@ -14814,7 +14815,7 @@ class="
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[266]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [266]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
@@ -14872,7 +14873,7 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Lagrangian-Interpolation">Lagrangian Interpolation<a class="anchor-link" href="polynomials.html#Lagrangian-Interpolation">&#182;</a></h2>
+<h2 id="Lagrangian-Interpolation">Lagrangian Interpolation<a class="anchor-link" href="polynomials.html#Lagrangian-Interpolation">¶</a></h2>
 </div>
 </div>
 </div>
@@ -14881,13 +14882,13 @@ class="
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[276]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [276]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">lagrangian_interpolate</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="n">xs</span> <span class="o">=</span> <span class="p">[</span><span class="n">sympy</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;x</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
-    <span class="n">ys</span> <span class="o">=</span> <span class="p">[</span><span class="n">sympy</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;y</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
-    <span class="nb">vars</span> <span class="o">=</span> <span class="p">[</span><span class="n">sympy</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="s1">&#39;abcdefghijklmnopqrst&#39;</span><span class="p">[:</span><span class="n">n</span><span class="p">]]</span>
+    <span class="n">xs</span> <span class="o">=</span> <span class="p">[</span><span class="n">sympy</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="sa">f</span><span class="s1">'x</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
+    <span class="n">ys</span> <span class="o">=</span> <span class="p">[</span><span class="n">sympy</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="sa">f</span><span class="s1">'y</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
+    <span class="nb">vars</span> <span class="o">=</span> <span class="p">[</span><span class="n">sympy</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="s1">'abcdefghijklmnopqrst'</span><span class="p">[:</span><span class="n">n</span><span class="p">]]</span>
     <span class="n">power</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
 
     <span class="n">cons</span> <span class="o">=</span> <span class="p">[]</span>
@@ -14920,7 +14921,7 @@ class="
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[277]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [277]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">lagrangian_interpolate</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
@@ -14959,7 +14960,7 @@ $\displaystyle \frac{x \left(y_{0} - y_{1}\right)}{x_{0} - x_{1}} + \frac{x_{0} 
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[227]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [227]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">lagrangian_interpolate</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
@@ -15000,7 +15001,7 @@ $\displaystyle \frac{x^{2} \left(- x_{0} y_{1} + x_{0} y_{2} + x_{1} y_{0} - x_{
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Fast-Fourier-Transformation">Fast Fourier Transformation<a class="anchor-link" href="polynomials.html#Fast-Fourier-Transformation">&#182;</a></h2>
+<h2 id="Fast-Fourier-Transformation">Fast Fourier Transformation<a class="anchor-link" href="polynomials.html#Fast-Fourier-Transformation">¶</a></h2>
 </div>
 </div>
 </div>
@@ -15009,14 +15010,14 @@ $\displaystyle \frac{x^{2} \left(- x_{0} y_{1} + x_{0} y_{2} + x_{1} y_{0} - x_{
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[236]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [236]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">try_basis</span><span class="p">(</span><span class="n">xs</span><span class="p">):</span>
     <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
     <span class="n">f</span> <span class="o">=</span> <span class="n">lagrangian_interpolate</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">x_</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">xs</span><span class="p">):</span>
-        <span class="n">f</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;x</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">x_</span><span class="p">)</span>
+        <span class="n">f</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="sa">f</span><span class="s1">'x</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">'</span><span class="p">,</span> <span class="n">x_</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">f</span>
 </pre></div>
 
@@ -15042,7 +15043,7 @@ $\displaystyle \frac{x^{2} \left(- x_{0} y_{1} + x_{0} y_{2} + x_{1} y_{0} - x_{
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[237]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [237]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">5</span>
@@ -15094,7 +15095,7 @@ $\displaystyle \frac{x^{4} \cdot \left(12 y_{0} - 48 y_{1} + 72 y_{2} - 48 y_{3}
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[278]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [278]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">xs</span> <span class="o">=</span> <span class="p">[</span><span class="n">sympy</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]</span>
@@ -15146,7 +15147,7 @@ $\displaystyle \frac{9765625 x^{4} \cdot \left(\frac{12 y_{0}}{15625} - \frac{48
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[239]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [239]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">w</span> <span class="o">=</span> <span class="n">sympy</span><span class="o">.</span><span class="n">E</span> <span class="o">**</span> <span class="p">(</span><span class="n">sympy</span><span class="o">.</span><span class="n">I</span> <span class="o">*</span> <span class="n">sympy</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="n">n</span><span class="p">)</span>
@@ -15199,10 +15200,10 @@ $\displaystyle \frac{x^{4} \cdot \left(4 y_{0} + 2 y_{0} e^{- \frac{3 i \pi}{5}}
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[247]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [247]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">coefs</span> <span class="o">=</span> <span class="p">[</span><span class="n">sympy</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="s1">&#39;ABCDEFGHIJKLMNOPQRSTUVWXYZ&#39;</span><span class="p">)]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">coefs</span> <span class="o">=</span> <span class="p">[</span><span class="n">sympy</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="s1">'ABCDEFGHIJKLMNOPQRSTUVWXYZ'</span><span class="p">)]</span>
 <span class="n">f</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="n">f</span> <span class="o">+=</span> <span class="n">coefs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="n">i</span><span class="p">)</span>
@@ -15241,6 +15242,7 @@ $\displaystyle \left[ A + B + C + D + E, \  A + B e^{\frac{i \pi}{5}} + C e^{\fr
 
 </div>
 </body>
+
 
 
 

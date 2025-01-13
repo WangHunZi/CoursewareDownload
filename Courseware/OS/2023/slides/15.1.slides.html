@@ -1,10 +1,11 @@
 <!DOCTYPE html><html class="h-100">
 
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="../../../static/css/base.css" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com/"></script>
   <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
 
@@ -23,14 +24,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +210,7 @@ section .center {
 }
 </style>
 
-  <title>&#32447;&#31243;&#12289;&#36827;&#31243;&#21644;&#25805;&#20316;&#31995;&#32479;</title>
+  <title>线程、进程和操作系统</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,7 +228,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="15.1.slides.html" class=" text-amber-900">&#32447;&#31243;&#12289;&#36827;&#31243;&#21644;&#25805;&#20316;&#31995;&#32479;</a></h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="15.1.slides.html" class=" text-amber-900">线程、进程和操作系统</a></h1></div></div></div>
         
       
       </section>
@@ -238,25 +239,25 @@ section .center {
 
       
         
-        <div><h2 id="threados" class=" text-xl mt-2 pb-2 font-sans">ThreadOS &#20013;&#30340;&#32447;&#31243;&#20999;&#25442;</h2>
-<p class=" font-serif my-1">&#35745;&#31639;&#26426;&#30828;&#20214;&#20063;&#26159;&#29366;&#24577;&#26426;</p>
+        <div><h2 id="threados" class=" text-xl mt-2 pb-2 font-sans">ThreadOS 中的线程切换</h2>
+<p class=" font-serif my-1">计算机硬件也是状态机</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#8220;&#20849;&#20139;&#30340;&#20869;&#23384;&#65292;&#23481;&#32435;&#20102;&#22810;&#20010;&#29366;&#24577;&#26426;&#8221;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20849;&#20139;&#30340;&#20195;&#30721;</li>
-<li class=" ml-8">&#20849;&#20139;&#30340;&#20840;&#23616;&#21464;&#37327;</li>
-<li class=" ml-8">&#21551;&#21160;&#20195;&#30721;&#30340;&#22534;&#26632; (&#20165;&#21551;&#21160;&#20195;&#30721;&#21487;&#29992;)</li>
-<li class=" ml-8">$T_1$ &#30340; <code>Task</code> (&#20165; $T_1$ &#21644;&#20013;&#26029;&#22788;&#29702;&#31243;&#24207;&#21487;&#29992;)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#22534;&#26632; (&#20013;&#26029;&#26102;&#65292;&#23492;&#23384;&#22120;&#20445;&#23384;&#22312;&#22534;&#26632;&#19978;)</li>
+<li class=" ml-8">“共享的内存，容纳了多个状态机”<ul class=" list-disc font-serif">
+<li class=" ml-8">共享的代码</li>
+<li class=" ml-8">共享的全局变量</li>
+<li class=" ml-8">启动代码的堆栈 (仅启动代码可用)</li>
+<li class=" ml-8">$T_1$ 的 <code>Task</code> (仅 $T_1$ 和中断处理程序可用)<ul class=" list-disc font-serif">
+<li class=" ml-8">堆栈 (中断时，寄存器保存在堆栈上)</li>
 </ul>
 </li>
-<li class=" ml-8">$T_2$ &#30340; <code>Task</code> (&#20165; $T_2$ &#21644;&#20013;&#26029;&#22788;&#29702;&#31243;&#24207;&#21487;&#29992;)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#22534;&#26632; (&#20013;&#26029;&#26102;&#65292;&#23492;&#23384;&#22120;&#20445;&#23384;&#22312;&#22534;&#26632;&#19978;)</li>
+<li class=" ml-8">$T_2$ 的 <code>Task</code> (仅 $T_2$ 和中断处理程序可用)<ul class=" list-disc font-serif">
+<li class=" ml-8">堆栈 (中断时，寄存器保存在堆栈上)</li>
 </ul>
 </li>
 </ul>
 </li>
-<li class=" ml-8">&#29366;&#24577;&#36801;&#31227;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#25191;&#34892;&#25351;&#20196;&#25110;&#21709;&#24212;&#20013;&#26029;</li>
+<li class=" ml-8">状态迁移<ul class=" list-disc font-serif">
+<li class=" ml-8">执行指令或响应中断</li>
 </ul>
 </li>
 </ul></div>
@@ -270,28 +271,28 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20160;&#20040;&#26159;&#25805;&#20316;&#31995;&#32479;&#65311;</h2>
-<p class=" font-serif my-1"><red>&#34394;&#25311;&#21270;&#65306;&#25805;&#20316;&#31995;&#32479;&#21516;&#26102;&#20445;&#23384;&#22810;&#20010;&#29366;&#24577;&#26426;</red></p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">什么是操作系统？</h2>
+<p class=" font-serif my-1"><red>虚拟化：操作系统同时保存多个状态机</red></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">C &#31243;&#24207; = &#29366;&#24577;&#26426;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#21021;&#22987;&#29366;&#24577;&#65306;<code>main(argc, argv)</code></li>
-<li class=" ml-8">&#29366;&#24577;&#36801;&#31227;&#65306;&#25351;&#20196;&#25191;&#34892;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#21253;&#25324;&#29305;&#27530;&#30340;&#31995;&#32479;&#35843;&#29992;&#25351;&#20196; syscall</li>
+<li class=" ml-8">C 程序 = 状态机<ul class=" list-disc font-serif">
+<li class=" ml-8">初始状态：<code>main(argc, argv)</code></li>
+<li class=" ml-8">状态迁移：指令执行<ul class=" list-disc font-serif">
+<li class=" ml-8">包括特殊的系统调用指令 syscall</li>
 </ul>
 </li>
 </ul>
 </li>
-<li class=" ml-8">&#26377;&#19968;&#31867;&#29305;&#27530;&#30340;&#31995;&#32479;&#35843;&#29992;&#21487;&#20197;&#31649;&#29702;&#29366;&#24577;&#26426;<ul class=" list-disc font-serif">
+<li class=" ml-8">有一类特殊的系统调用可以管理状态机<ul class=" list-disc font-serif">
 <li class=" ml-8">CreateProcess(exec_file)</li>
 <li class=" ml-8">TerminateProcess()</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#20174;&#32447;&#31243;&#21040;&#36827;&#31243;&#65306;&#34394;&#25311;&#23384;&#20648;&#31995;&#32479;</p>
+<p class=" font-serif my-1">从线程到进程：虚拟存储系统</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#36890;&#36807;&#34394;&#25311;&#20869;&#23384;&#23454;&#29616;&#27599;&#27425; &#8220;&#25343;&#20986;&#26469;&#19968;&#20010;&#25191;&#34892;&#8221;</li>
-<li class=" ml-8">&#20013;&#26029;&#21518;&#36827;&#20837;&#25805;&#20316;&#31995;&#32479;&#20195;&#30721;&#65292;&#8220;&#25442;&#19968;&#20010;&#25191;&#34892;&#8221;</li>
+<li class=" ml-8">通过虚拟内存实现每次 “拿出来一个执行”</li>
+<li class=" ml-8">中断后进入操作系统代码，“换一个执行”</li>
 </ul></div>
         
       
@@ -322,5 +323,6 @@ section .center {
 
 
 </body>
+
 
 </html>

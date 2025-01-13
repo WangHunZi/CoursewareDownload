@@ -1,0 +1,37 @@
+#!/bin/busybox sh
+
+# Now, "/" is the virtual disk--for real
+# systems, we expect installed binaries.
+BB=/bin/busybox
+for cmd in $($BB --list); do
+    $BB ln -s $BB /bin/$cmd
+done
+
+mkdir -p /proc && mount -t proc  none /proc
+mkdir -p /sys  && mount -t sysfs none /sys
+mkdir -p /tmp  && mount -t tmpfs none /tmp
+
+mkdir -p /dev
+mknod /dev/random  c 1 8
+mknod /dev/urandom c 1 9
+mknod /dev/null    c 1 3
+mknod /dev/tty     c 4 1
+mknod /dev/sda     b 8 0
+
+# Configure network
+insmod /modules/e1000.ko
+ip link set lo up
+ip link set eth0 up
+ip addr add 10.0.2.15 dev eth0
+ip route add 10.0.2.0/24 dev eth0
+
+# Prepare the terminal
+echo -e "\033[31mGoodbye, QEMU Console!\033[0m"
+echo -e "\033[H\033[2J" >/dev/tty
+echo -e "JYY's minimal Linux" >/dev/tty
+
+# Switch to terminal
+setsid /bin/sh </dev/tty >/dev/tty 2>&1
+
+sync
+poweroff -f

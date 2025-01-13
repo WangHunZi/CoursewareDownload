@@ -1,0 +1,19 @@
+#!/usr/bin/env python3
+
+import subprocess
+import sys
+
+try:
+    ratio, exe = sys.argv[1:]
+except:
+    print(f'Example: {sys.argv[0]} 10 tetris  # 10X speedup')
+    exit(1)
+
+subprocess.run(
+    [
+        'gdb',
+        '-ex', f'set $gear_ratio = {ratio}',
+        '-x', 'gear-gdb.py',
+        exe,
+    ]
+)

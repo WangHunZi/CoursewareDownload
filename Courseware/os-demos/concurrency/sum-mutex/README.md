@@ -1,0 +1,1 @@
+**使用不同方式求和**：我们对比使用自旋锁 (手工实现)、互斥锁和原子指令之间的 scalability 差异。我们用一个 Python 脚本，对于三个可执行文件：atomic, mutex, spin，我希望分别给它们命令参数 argv[1] 赋值为 1, 2, 4, 8, 16 的五种可能性，并统计 5 次运行时间的中位数。使用 matplot 绘图，将 atomic, mutex, spin 作为三个折线，横轴为 argv[1] 的值，纵轴为时间 (含 error bar)。

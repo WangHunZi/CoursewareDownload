@@ -1,0 +1,19 @@
+#!./exec
+
+{
+    "type": ".exe",
+    "symbols": {
+        "_start": 15
+    },
+    ".load": [
+        "🔢: ff ff ff ff ff ff ff",
+        "🔢: ff ff ff ff ff ff ff",
+        "🔢: 48 c7 c0 3c 00 00 00",
+        "🔢: 48 c7 c7 2a 00 00 00",
+        "             ^",
+        "             |",
+        "          This byte is return code (42).",
+        "🔢: 0f 05 ff ff ff ff ff",
+        "🔢: ff ff ff ff ff ff ff"
+    ]
+}

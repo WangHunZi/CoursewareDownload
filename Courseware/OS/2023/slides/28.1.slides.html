@@ -1,10 +1,11 @@
 <!DOCTYPE html><html class="h-100">
 
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="../../../static/css/base.css" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com/"></script>
   <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
 
@@ -23,14 +24,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +210,7 @@ section .center {
 }
 </style>
 
-  <title>&#30913;&#30424;&#19978;&#30340;&#25968;&#25454;&#32467;&#26500;</title>
+  <title>磁盘上的数据结构</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,7 +228,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="28.1.slides.html" class=" text-amber-900">&#30913;&#30424;&#19978;&#30340;&#25968;&#25454;&#32467;&#26500;</a></h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="28.1.slides.html" class=" text-amber-900">磁盘上的数据结构</a></h1></div></div></div>
         
       
       </section>
@@ -238,22 +239,22 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25991;&#20214;&#31995;&#32479;&#23454;&#29616;</h2>
-<p class=" font-serif my-1">&#25991;&#20214;&#30340;&#23454;&#29616;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">文件系统实现</h2>
+<p class=" font-serif my-1">文件的实现</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25991;&#20214; = &#8220;&#34394;&#25311;&#8221; &#30913;&#30424;</li>
+<li class=" ml-8">文件 = “虚拟” 磁盘</li>
 <li class=" ml-8">API: read, write, ftruncate, ...</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#30446;&#24405;&#30340;&#23454;&#29616;</p>
+<p class=" font-serif my-1">目录的实现</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#30446;&#24405; = &#25991;&#20214;/&#30446;&#24405;&#30340;&#38598;&#21512;</li>
+<li class=" ml-8">目录 = 文件/目录的集合</li>
 <li class=" ml-8">API: mkdir, rmdir, readdir, link, unlink, ...</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#24605;&#32771;&#39064;&#65306;mount &#22914;&#20309;&#23454;&#29616;&#65311;</p>
+<p class=" font-serif my-1">思考题：mount 如何实现？</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#26368;&#22909;&#30001;&#25805;&#20316;&#31995;&#32479;&#32479;&#19968;&#31649;&#29702; (&#32780;&#19981;&#26159;&#30001;&#20855;&#20307;&#30340;&#25991;&#20214;&#31995;&#32479;&#23454;&#29616;)</li>
+<li class=" ml-8">最好由操作系统统一管理 (而不是由具体的文件系统实现)</li>
 </ul></div>
         
       
@@ -265,26 +266,26 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#22914;&#26524;&#26159;&#12298;&#25968;&#25454;&#32467;&#26500;&#12299;&#35838;&#65311;</h2>
-<p class=" font-serif my-1">&#25105;&#20204;&#21487;&#20197;&#20511;&#21161; RAM (Random Access Memory) &#33258;&#30001;&#24067;&#23616;&#30446;&#24405;&#21644;&#25991;&#20214;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">如果是《数据结构》课？</h2>
+<p class=" font-serif my-1">我们可以借助 RAM (Random Access Memory) 自由布局目录和文件</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">FileSystem &#23601;&#26159;&#19968;&#20010; Abstract DataType (ADT)</li>
-<li class=" ml-8">Memory Hierarchy &#22312;&#33510;&#33510;&#25903;&#25745; &#8220;random access&#8221; &#30340;&#20551;&#35937;</li>
+<li class=" ml-8">FileSystem 就是一个 Abstract DataType (ADT)</li>
+<li class=" ml-8">Memory Hierarchy 在苦苦支撑 “random access” 的假象</li>
 </ul>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">FSObject</span><span class="w"> </span><span class="p">{</span>
 <span class="p">};</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">File</span><span class="o">:</span><span class="w"> </span><span class="n">FSObject</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span><span class="w"> </span><span class="n">content</span><span class="p">;</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o"><</span><span class="kt">char</span><span class="o">></span><span class="w"> </span><span class="n">content</span><span class="p">;</span>
 <span class="p">};</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">Directory</span><span class="o">:</span><span class="w"> </span><span class="n">FSObject</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span><span class="n">FSObject</span><span class="o">*&gt;</span><span class="w"> </span><span class="n">children</span><span class="p">;</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o"><</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span><span class="n">FSObject</span><span class="o">*></span><span class="w"> </span><span class="n">children</span><span class="p">;</span>
 <span class="p">};</span>
 </code></pre></div>
 
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#23454;&#29616;&#19978;&#38754;&#30340; API &#23436;&#20840;&#23601;&#26159;&#20010;&#35838;&#21518;&#20064;&#39064;</li>
+<li class=" ml-8">实现上面的 API 完全就是个课后习题</li>
 </ul></div>
         
       
@@ -296,23 +297,23 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#22238;&#21040;&#12298;&#25805;&#20316;&#31995;&#32479;&#12299;&#35838;</h2>
-<p class=" font-serif my-1">&#25105;&#20204;&#27809;&#26377; Random Access Memory</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">回到《操作系统》课</h2>
+<p class=" font-serif my-1">我们没有 Random Access Memory</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25105;&#20204;&#21482;&#26377; <red>block device</red></li>
-<li class=" ml-8">&#20004;&#20010; API<ul class=" list-disc font-serif">
+<li class=" ml-8">我们只有 <red>block device</red></li>
+<li class=" ml-8">两个 API<ul class=" list-disc font-serif">
 <li class=" ml-8"><code>bread(int bid, struct block *b);</code></li>
 <li class=" ml-8"><code>bwrite(int bid, struct block *b);</code></li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#23454;&#29616;&#65306;</p>
+<p class=" font-serif my-1">实现：</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">read, write, ftruncate, ...</li>
 <li class=" ml-8">mkdir, rmdir, readdir, link, unlink, ...<ul class=" list-disc font-serif">
-<li class=" ml-8">&#22914;&#26524;&#29992; block device &#27169;&#25311; RAM&#65292;&#23601;&#20250;&#20986;&#29616;&#20005;&#37325;&#30340;&#35835;/&#20889;&#25918;&#22823;</li>
-<li class=" ml-8">&#25105;&#20204;&#38656;&#35201;&#26356;&#36866;&#21512;&#30913;&#30424;&#30340;&#25968;&#25454;&#32467;&#26500;</li>
+<li class=" ml-8">如果用 block device 模拟 RAM，就会出现严重的读/写放大</li>
+<li class=" ml-8">我们需要更适合磁盘的数据结构</li>
 </ul>
 </li>
 </ul></div>
@@ -326,16 +327,16 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25105;&#20204;&#30340;&#25932;&#20154;&#21644;&#26379;&#21451;</h2>
-<p class=" font-serif my-1">&#25932;&#20154;&#65306;&#35835;/&#20889;&#25918;&#22823;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">我们的敌人和朋友</h2>
+<p class=" font-serif my-1">敌人：读/写放大</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#34987;&#36843;&#35835;&#20889;&#36830;&#32493;&#30340;&#19968;&#22359;&#25968;&#25454;</li>
+<li class=" ml-8">被迫读写连续的一块数据</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#26379;&#21451;&#65306;&#23616;&#37096;&#24615; + &#32531;&#23384;</p>
+<p class=" font-serif my-1">朋友：局部性 + 缓存</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#36866;&#24403;&#22320;&#25490;&#24067;&#25968;&#25454;&#65292;&#20351;&#24471;&#20020;&#36817;&#30340;&#25968;&#25454;&#26377; &#8220;&#19968;&#21516;&#35775;&#38382;&#8221; &#30340;&#20542;&#21521;</li>
-<li class=" ml-8">&#25968;&#25454;&#26242;&#26102;&#20572;&#30041;&#22312;&#20869;&#23384;&#65292;&#24310;&#36831;&#20889;&#22238;</li>
+<li class=" ml-8">适当地排布数据，使得临近的数据有 “一同访问” 的倾向</li>
+<li class=" ml-8">数据暂时停留在内存，延迟写回</li>
 </ul></div>
         
       
@@ -366,5 +367,6 @@ section .center {
 
 
 </body>
+
 
 </html>

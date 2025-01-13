@@ -1,0 +1,41 @@
+#!/bin/bash
+
+python3 gen.py
+
+bash --init-file <( cat << 'EOF'
+
+clear
+echo 欢迎来到《迷宫秘境：命运的试炼》！
+echo 文案作者：GPT-4o
+echo 
+echo 在这片神秘的迷宫中，传说中埋藏着无尽的宝藏与古老的秘密。你，作为被命运选中的勇者，必须穿越这片充满未知与危险的迷宫，揭开隐藏在黑暗中的真相。
+echo 
+echo 每一步都是一场考验，每一个转角都可能是生死攸关的抉择。你将通过输入 Up/Down/Left/Right 来引导你的命运，探索每一个未知的格子，揭示其中的秘密。
+echo 
+echo 在这片迷宫中，《操作系统》课程的知识是你唯一的武器。你能否在这片迷雾重重的秘境中找到出路，成为传说中的英雄？还是会在无尽的黑暗中迷失自我，成为迷宫中的一抹幽魂？
+echo 
+echo 《迷宫秘境：命运的试炼》，你的冒险，从 ls 和 pwd 命令开始！
+
+shopt -s extglob
+export PS1='\n(Explore) '
+cd game/start
+export PATH=.:$PATH
+
+alias ls=' \
+    if ls | grep X > /dev/null; then echo 你被 jyy 吃掉了。; echo Game Over。; exit; fi; \
+    echo You see:; ls --color | grep \\.; \
+    if ls | grep A > /dev/null; then echo 你发现了一个宝藏。; fi; \
+    if ls | grep B > /dev/null; then echo 你发现了一个检查点。; fi; \
+    if ls | grep C > /dev/null; then echo 你发现了《操作系统实验通关指南》。; fi; \
+    echo; echo You can go:; ls --color | grep -v \\. \
+'
+
+alias    Up='cd Up;    clear; echo -n "Going Up... ";    ls'
+alias  Down='cd Down;  clear; echo -n "Going Down... ";  ls'
+alias  Left='cd Left;  clear; echo -n "Going Left... ";  ls'
+alias Right='cd Right; clear; echo -n "Going Right... "; ls'
+
+alias pwd='pwd | sed "s|.*/start||" | sed s/Up/⬆/g | sed s/Down/⬇/g | sed s/Left/⬅/g  | sed s/Right/➡/g'
+
+EOF
+)

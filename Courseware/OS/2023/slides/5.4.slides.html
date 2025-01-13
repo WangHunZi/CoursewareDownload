@@ -1,10 +1,11 @@
 <!DOCTYPE html><html class="h-100">
 
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="../../../static/css/base.css" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com/"></script>
   <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
 
@@ -23,14 +24,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +210,7 @@ section .center {
 }
 </style>
 
-  <title>&#25918;&#24323; (3)&#65306;&#22788;&#29702;&#22120;&#38388;&#30340;&#21487;&#35265;&#24615;</title>
+  <title>放弃 (3)：处理器间的可见性</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,7 +228,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="3" class=" text-2xl mt-2 font-sans"><a href="5.4.slides.html" class=" text-amber-900">&#25918;&#24323; (3)&#65306;&#22788;&#29702;&#22120;&#38388;&#30340;&#21487;&#35265;&#24615;</a></h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="3" class=" text-2xl mt-2 font-sans"><a href="5.4.slides.html" class=" text-amber-900">放弃 (3)：处理器间的可见性</a></h1></div></div></div>
         
       
       </section>
@@ -238,7 +239,7 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20363;&#23376;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">例子</h2>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">T1</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -254,10 +255,10 @@ section .center {
 <span class="p">}</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">&#36941;&#21382;&#27169;&#22411;&#21578;&#35785;&#25105;&#20204;&#65306;01, 10, 11</p>
+<p class=" font-serif my-1">遍历模型告诉我们：01, 10, 11</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><red>&#26426;&#22120;&#27704;&#36828;&#26159;&#23545;&#30340;</red></li>
-<li class=" ml-8">Model checker &#30340;&#32467;&#26524;&#21644;&#23454;&#38469;&#30340;&#32467;&#26524;&#19981;&#21516; &#8594; &#20551;&#35774;&#38169;&#20102;</li>
+<li class=" ml-8"><red>机器永远是对的</red></li>
+<li class=" ml-8">Model checker 的结果和实际的结果不同 → 假设错了</li>
 </ul></div>
         
       
@@ -269,16 +270,16 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#127798;&#65039; &#29616;&#20195;&#22788;&#29702;&#22120;&#20063;&#26159; (&#21160;&#24577;) &#32534;&#35793;&#22120;&#65281;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">🌶️ 现代处理器也是 (动态) 编译器！</h2>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/CAAQA.jpg" width="300px"></p>
-<p class=" font-serif my-1">&#38169;&#35823; (&#31616;&#21270;) &#30340;&#20551;&#35774;</p>
+<p class=" font-serif my-1">错误 (简化) 的假设</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#19968;&#20010; CPU &#25191;&#34892;&#19968;&#26465;&#25351;&#20196;&#21040;&#36798;&#19979;&#19968;&#29366;&#24577;</li>
+<li class=" ml-8">一个 CPU 执行一条指令到达下一状态</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#23454;&#38469;&#30340;&#23454;&#29616;</p>
+<p class=" font-serif my-1">实际的实现</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#30005;&#36335;&#23558;&#36830;&#32493;&#30340;&#25351;&#20196; &#8220;&#32534;&#35793;&#8221; &#25104;&#26356;&#23567;&#30340; $\mu$ops<ul class=" list-disc font-serif">
+<li class=" ml-8">电路将连续的指令 “编译” 成更小的 $\mu$ops<ul class=" list-disc font-serif">
 <li class=" ml-8">RF[9] = load(RF[7] + 400)</li>
 <li class=" ml-8">store(RF[12], RF[13])</li>
 <li class=" ml-8">RF[3] = RF[4] + RF[5]</li>
@@ -286,10 +287,10 @@ section .center {
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#22312;&#20219;&#20309;&#26102;&#21051;&#65292;&#22788;&#29702;&#22120;&#37117;&#32500;&#25252;&#19968;&#20010; $\mu$op &#30340; &#8220;&#27744;&#23376;&#8221;</p>
+<p class=" font-serif my-1">在任何时刻，处理器都维护一个 $\mu$op 的 “池子”</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#19982;&#32534;&#35793;&#22120;&#19968;&#26679;&#65292;&#20570; &#8220;&#39034;&#24207;&#25191;&#34892;&#8221; &#20551;&#35774;&#65306;<red>&#27809;&#26377;&#20854;&#20182;&#22788;&#29702;&#22120; &#8220;&#24178;&#25200;&#8221;</red></li>
-<li class=" ml-8">&#27599;&#19968;&#21608;&#26399;&#25191;&#34892;&#23613;&#21487;&#33021;&#22810;&#30340; $\mu$op - &#22810;&#36335;&#21457;&#23556;&#12289;&#20081;&#24207;&#25191;&#34892;&#12289;&#25353;&#24207;&#25552;&#20132;</li>
+<li class=" ml-8">与编译器一样，做 “顺序执行” 假设：<red>没有其他处理器 “干扰”</red></li>
+<li class=" ml-8">每一周期执行尽可能多的 $\mu$op - 多路发射、乱序执行、按序提交</li>
 </ul></div>
         
       
@@ -301,26 +302,26 @@ section .center {
 
       
         
-        <div><h2 id="3" class=" text-xl mt-2 pb-2 font-sans"><red>&#25918;&#24323; (3)&#65306;&#22810;&#22788;&#29702;&#22120;&#38388;&#20869;&#23384;&#35775;&#38382;&#30340;&#21363;&#26102;&#21487;&#35265;&#24615;</red></h2>
+        <div><h2 id="3" class=" text-xl mt-2 pb-2 font-sans"><red>放弃 (3)：多处理器间内存访问的即时可见性</red></h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#28385;&#36275;&#21333;&#22788;&#29702;&#22120; eventual memory consistency &#30340;&#25191;&#34892;&#65292;&#22312;&#22810;&#22788;&#29702;&#22120;&#31995;&#32479;&#19978;&#21487;&#33021;&#26080;&#27861;&#24207;&#21015;&#21270;&#65281;</p>
+<p class=" font-serif my-1">满足单处理器 eventual memory consistency 的执行，在多处理器系统上可能无法序列化！</p>
 </blockquote>
-<p class=" font-serif my-1">&#24403; $x \ne y$ &#26102;&#65292;&#23545; $x$, $y$ &#30340;&#20869;&#23384;&#35835;&#20889;&#21487;&#20197;&#20132;&#25442;&#39034;&#24207; </p>
+<p class=" font-serif my-1">当 $x \ne y$ 时，对 $x$, $y$ 的内存读写可以交换顺序 </p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#23427;&#20204;&#29978;&#33267;&#21487;&#20197;&#22312;&#21516;&#19968;&#20010;&#21608;&#26399;&#37324;&#23436;&#25104; (&#21482;&#35201; load/store unit &#25903;&#25345;)</li>
-<li class=" ml-8">&#22914;&#26524;&#20889; $x$ &#21457;&#29983; cache miss&#65292;&#21487;&#20197;&#35753;&#35835; $y$ &#20808;&#25191;&#34892;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#28385;&#36275; &#8220;&#23613;&#21487;&#33021;&#25191;&#34892; $\mu$op&#8221; &#30340;&#21407;&#21017;&#65292;&#26368;&#22823;&#21270;&#22788;&#29702;&#22120;&#24615;&#33021;</li>
+<li class=" ml-8">它们甚至可以在同一个周期里完成 (只要 load/store unit 支持)</li>
+<li class=" ml-8">如果写 $x$ 发生 cache miss，可以让读 $y$ 先执行<ul class=" list-disc font-serif">
+<li class=" ml-8">满足 “尽可能执行 $\mu$op” 的原则，最大化处理器性能</li>
 </ul>
 </li>
 </ul>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>     # &lt;-----------+
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>     # <-----------+
 movl $1, (x)   #   |
 movl (y), %eax # --+
 </code></pre></div>
 
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#22312;&#22810;&#22788;&#29702;&#22120;&#19978;&#30340;&#34920;&#29616;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20004;&#20010;&#22788;&#29702;&#22120;&#20998;&#21035;&#30475;&#21040; $y=0$ &#21644; $x=0$</li>
+<li class=" ml-8">在多处理器上的表现<ul class=" list-disc font-serif">
+<li class=" ml-8">两个处理器分别看到 $y=0$ 和 $x=0$</li>
 </ul>
 </li>
 </ul></div>
@@ -334,14 +335,14 @@ movl (y), %eax # --+
 
       
         
-        <div><h2 id="relaxedweak-memory-model" class=" text-xl mt-2 pb-2 font-sans">&#23485;&#26494;&#20869;&#23384;&#27169;&#22411; (Relaxed/Weak Memory Model)</h2>
+        <div><h2 id="relaxedweak-memory-model" class=" text-xl mt-2 pb-2 font-sans">宽松内存模型 (Relaxed/Weak Memory Model)</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#23485;&#26494;&#20869;&#23384;&#27169;&#22411;&#30340;&#30446;&#30340;&#26159;&#20351;&#21333;&#22788;&#29702;&#22120;&#30340;&#25191;&#34892;&#26356;&#39640;&#25928;&#12290;</p>
+<p class=" font-serif my-1">宽松内存模型的目的是使单处理器的执行更高效。</p>
 </blockquote>
-<p class=" font-serif my-1">x86 &#24050;&#32463;&#26159;&#24066;&#38754;&#19978;&#33021;&#20080;&#21040;&#30340; &#8220;&#26368;&#24378;&#8221; &#30340;&#20869;&#23384;&#27169;&#22411;&#20102; &#128514;</p>
+<p class=" font-serif my-1">x86 已经是市面上能买到的 “最强” 的内存模型了 😂</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#36825;&#20063;&#26159; Intel &#33258;&#24049;&#32473;&#33258;&#24049;&#21152;&#30340;&#21253;&#34993;</li>
-<li class=" ml-8">&#30475;&#30475; <a href="https://research.swtch.com/mem-weak@2x.png" class=" text-amber-900">ARM/RISC-V</a> &#21543;&#65292;&#26681;&#26412;&#23601;&#26159;&#20010;&#20998;&#24067;&#24335;&#31995;&#32479;</li>
+<li class=" ml-8">这也是 Intel 自己给自己加的包袱</li>
+<li class=" ml-8">看看 <a href="https://research.swtch.com/mem-weak@2x.png" class=" text-amber-900">ARM/RISC-V</a> 吧，根本就是个分布式系统</li>
 </ul>
 <hr>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/x86-tso.png" width="700px"></p>
@@ -375,5 +376,6 @@ movl (y), %eax # --+
 
 
 </body>
+
 
 </html>

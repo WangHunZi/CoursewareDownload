@@ -1,10 +1,11 @@
 <!DOCTYPE html><html class="h-100">
 
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="../../static/css/base.css" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com/"></script>
   <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="../../static/img/favicon.png" type="image/x-icon">
 
@@ -23,14 +24,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -137,7 +138,7 @@ hr {
 </style>
 
 
-  <title>&#20026; Bare-Metal &#32534;&#31243;&#65306;&#32534;&#35793;&#12289;&#38142;&#25509;&#19982;&#21152;&#36733;</title>
+  <title>为 Bare-Metal 编程：编译、链接与加载</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -148,27 +149,27 @@ hr {
 
 <div class="px-2 py-1 w-full fixed z-50 bg-gradient-to-r from-black via-purple-700 via-purple-500 shadow-lg" style="-webkit-backdrop-filter: saturate(150%) blur(4px); backdrop-filter: saturate(150%) blur(4px)">
   <form>
-    <a href="../../index.html"><span class="text-lg px-2 text-white">Yanyan's Wiki</span></a>
-    <a href="../2023/index.html"><span class="text-sm px-2 text-white">&#25805;&#20316;&#31995;&#32479; (2023)</span></a>
+    <a href="../../index-2.html"><span class="text-lg px-2 text-white">Yanyan's Wiki</span></a>
+    <a href="../2023/index.html"><span class="text-sm px-2 text-white">操作系统 (2023)</span></a>
     <input maxlength="9" id="token-input" class="float-right appearance-none border border-transparent px-2 py-1 w-20 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-xs focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent font-mono" type="text" placeholder="TOKEN" oninput="login();">
   </form>
 </div>
 
 <div class="article container mx-auto md:px-8 lg:px-8 xl:px-8 2xl:px-8 shadow-lg border pb-8 pt-10 max-w-screen-md text-justify divide-y-2 divide-white">
-  <div><h1 id="bare-metal" class=" text-2xl mt-2 font-sans">&#20026; Bare-Metal &#32534;&#31243;&#65306;&#32534;&#35793;&#12289;&#38142;&#25509;&#19982;&#21152;&#36733;</h1>
-<h2 id="1" class=" text-xl mt-2 pb-2 font-sans">1. &#20174;&#19968;&#20010;&#20363;&#23376;&#35828;&#36215;</h2>
+  <div><h1 id="bare-metal" class=" text-2xl mt-2 font-sans">为 Bare-Metal 编程：编译、链接与加载</h1>
+<h2 id="1" class=" text-xl mt-2 pb-2 font-sans">1. 从一个例子说起</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#38405;&#35835;&#26412;&#25991;&#26723;&#38656;&#35201;&#33021;&#22815;&#38405;&#35835;&#27719;&#32534;&#35821;&#35328;&#8212;&#8212;&#19981;&#29992;&#24597;&#65292;&#23427;&#20204;&#20195;&#34920;&#20102;&#29366;&#24577;&#26426;&#30340;&#36801;&#31227;&#20989;&#25968;&#12290;&#22312;&#36935;&#21040;&#19981;&#29087;&#24713;&#30340;&#22320;&#26041;&#65292;&#35831; STFW/RTFM&#12290;</p>
+<p class=" font-serif my-1">阅读本文档需要能够阅读汇编语言——不用怕，它们代表了状态机的迁移函数。在遇到不熟悉的地方，请 STFW/RTFM。</p>
 </blockquote>
-<p class=" font-serif my-1">Bare-metal &#36816;&#34892;&#30340;&#31243;&#24207;&#21644;&#25805;&#20316;&#31995;&#32479;&#19978;&#30340;&#31243;&#24207;&#19981;&#19968;&#26679;&#8212;&#8212;&#24403;&#25105;&#20204;&#38754;&#23545; bare-metal &#30340;&#26102;&#20505;&#65292;&#20960;&#20046;<strong>&#27599;&#19968;&#34892;</strong>&#20195;&#30721;&#37117;&#26159;&#33258;&#24049;&#32534;&#20889;&#30340;&#65292;&#21253;&#25324;&#24211;&#20989;&#25968;&#65292;&#29978;&#33267;&#36830;&#24110;&#25105;&#20204;&#21152;&#36733; <code>main</code> &#20989;&#25968;&#30340;&#20195;&#30721;&#37117;&#38656;&#35201;&#33258;&#24049;&#20889;&#12290;</p>
-<p class=" font-serif my-1">&#22240;&#27492;&#65292;&#24590;&#26679;&#35753; C &#31243;&#24207;&#36816;&#34892;&#36215;&#26469;&#65292;&#26159; &#8220;&#20889;&#25805;&#20316;&#31995;&#32479;&#8221; &#26032;&#25163;&#26368;&#22823;&#30340;&#22256;&#24785;&#20043;&#19968;&#65292;&#22914;&#26524;&#24605;&#32771;&#19968;&#19979;&#65306;</p>
+<p class=" font-serif my-1">Bare-metal 运行的程序和操作系统上的程序不一样——当我们面对 bare-metal 的时候，几乎<strong>每一行</strong>代码都是自己编写的，包括库函数，甚至连帮我们加载 <code>main</code> 函数的代码都需要自己写。</p>
+<p class=" font-serif my-1">因此，怎样让 C 程序运行起来，是 “写操作系统” 新手最大的困惑之一，如果思考一下：</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20026;&#20102;&#20351;&#31243;&#24207;&#33021;&#36816;&#34892;&#65292;&#24403;&#28982;&#38656;&#35201;&#32463;&#36807;&#32534;&#35793;&#38142;&#25509;&#30340;&#36807;&#31243;&#12290;&#23601;&#20551;&#35774;&#26368;&#31616;&#21333;&#30340;&#24773;&#20917;&#65306;&#29983;&#25104;&#38745;&#24577;&#38142;&#25509;&#30340; ELF &#26684;&#24335;&#30340;&#20108;&#36827;&#21046;&#25991;&#20214;&#22909;&#20102;&#12290;</li>
-<li class=" ml-8">&#20108;&#36827;&#21046;&#25991;&#20214;&#20551;&#35774;&#20195;&#30721;&#12289;&#25968;&#25454;&#23384;&#22312;&#20110;&#22320;&#22336;&#31354;&#38388;&#30340;&#25351;&#23450;&#20301;&#32622;&#12290;&#37027;&#20040;&#26159;&#35841;&#26469;&#23436;&#25104;&#36825;&#20214;&#20107;&#65311;</li>
-<li class=" ml-8"><code>main</code> &#22312;&#20108;&#36827;&#21046;&#25991;&#20214;&#20013;&#30340;&#22320;&#22336;&#26159;&#19981;&#22266;&#23450;&#30340;&#12290;&#26159;&#35841;&#35843;&#29992;&#30340; <code>main()</code>&#65311;</li>
-<li class=" ml-8">&#25105;&#20204;&#38656;&#35201;&#33258;&#24049;&#21160;&#25163;&#23454;&#29616;&#21508;&#31181;&#24211;&#20989;&#25968;&#65292;&#37027; <code>printf</code> (&#36755;&#20986;&#21040;&#23631;&#24149;), <code>malloc</code> (&#21160;&#24577;&#20998;&#37197;&#20869;&#23384;)&#21448;&#26159;&#22914;&#20309;&#23454;&#29616;&#30340;&#65311;</li>
+<li class=" ml-8">为了使程序能运行，当然需要经过编译链接的过程。就假设最简单的情况：生成静态链接的 ELF 格式的二进制文件好了。</li>
+<li class=" ml-8">二进制文件假设代码、数据存在于地址空间的指定位置。那么是谁来完成这件事？</li>
+<li class=" ml-8"><code>main</code> 在二进制文件中的地址是不固定的。是谁调用的 <code>main()</code>？</li>
+<li class=" ml-8">我们需要自己动手实现各种库函数，那 <code>printf</code> (输出到屏幕), <code>malloc</code> (动态分配内存)又是如何实现的？</li>
 </ul>
-<p class=" font-serif my-1">&#20026;&#20102;&#29702;&#35299; C &#31243;&#24207;&#26159;&#22914;&#20309;&#36816;&#34892;&#22312;&#35064;&#26426; (bare-metal) &#19978;&#30340;&#65292;&#25105;&#20204;&#39318;&#20808;&#29702;&#35299; C &#31243;&#24207;&#26159;&#22914;&#20309;&#20174;&#28304;&#20195;&#30721; (&#25991;&#26412;&#25991;&#20214;) &#26368;&#32456;&#22312;&#25805;&#20316;&#31995;&#32479;&#19978;&#36816;&#34892;&#36215;&#26469;&#30340;&#12290;&#20026;&#27492;&#65292;&#25105;&#20204;&#35762;&#35299;&#19968;&#20010;&#23567;&#20363;&#23376; (<code>say.c</code> &#21644; <code>main.c</code> &#32452;&#25104;&#30340;&#23567;&#39033;&#30446;) &#22312;&#25805;&#20316;&#31995;&#32479;&#19978;&#20197;&#21450; AbstractMachine &#19978;&#30340;&#32534;&#35793;&#12289;&#38142;&#25509;&#21644;&#21152;&#36733;&#36816;&#34892;&#30340;&#36807;&#31243;&#12290;</p>
+<p class=" font-serif my-1">为了理解 C 程序是如何运行在裸机 (bare-metal) 上的，我们首先理解 C 程序是如何从源代码 (文本文件) 最终在操作系统上运行起来的。为此，我们讲解一个小例子 (<code>say.c</code> 和 <code>main.c</code> 组成的小项目) 在操作系统上以及 AbstractMachine 上的编译、链接和加载运行的过程。</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="c1">// say.c</span>
 <span class="kt">void</span><span class="w"> </span><span class="nf">putch</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="n">ch</span><span class="p">);</span>
 <span class="kt">int</span><span class="w"> </span><span class="nf">putchar</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">ch</span><span class="p">);</span>
@@ -176,9 +177,9 @@ hr {
 <span class="kt">void</span><span class="w"> </span><span class="nf">say</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(;</span><span class="w"> </span><span class="o">*</span><span class="n">s</span><span class="p">;</span><span class="w"> </span><span class="n">s</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="cp">#ifdef __ARCH__</span>
-<span class="w">    </span><span class="n">putch</span><span class="p">(</span><span class="o">*</span><span class="n">s</span><span class="p">);</span><span class="w"> </span><span class="c1">// AbstractMachine&#65292;&#27809;&#26377; libc&#65292;&#35843;&#29992; TRM API &#25171;&#21360;&#23383;&#31526;</span>
+<span class="w">    </span><span class="n">putch</span><span class="p">(</span><span class="o">*</span><span class="n">s</span><span class="p">);</span><span class="w"> </span><span class="c1">// AbstractMachine，没有 libc，调用 TRM API 打印字符</span>
 <span class="cp">#else</span>
-<span class="w">    </span><span class="n">putchar</span><span class="p">(</span><span class="o">*</span><span class="n">s</span><span class="p">);</span><span class="w"> </span><span class="c1">// &#25805;&#20316;&#31995;&#32479;&#65292;&#35843;&#29992; libc &#25171;&#21360;&#23383;&#31526;</span>
+<span class="w">    </span><span class="n">putchar</span><span class="p">(</span><span class="o">*</span><span class="n">s</span><span class="p">);</span><span class="w"> </span><span class="c1">// 操作系统，调用 libc 打印字符</span>
 <span class="cp">#endif</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
@@ -191,15 +192,15 @@ hr {
 <span class="p">}</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">&#20197;&#19979;&#23436;&#25972;&#30340;&#27969;&#31243;&#26159;&#25805;&#20316;&#31995;&#32479;&#19978; (hosted) &#21644; bare-metal &#19978;&#20849;&#21516;&#30340;&#65306;</p>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>main.c  -&gt; &#32534;&#35793; (gcc -c) -&gt; a.o -+ 
+<p class=" font-serif my-1">以下完整的流程是操作系统上 (hosted) 和 bare-metal 上共同的：</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>main.c  -> 编译 (gcc -c) -> a.o -+ 
                                  \
- say.c  -&gt; &#32534;&#35793; (gcc -c) -&gt; b.o  -&gt; &#38142;&#25509; (ld) -&gt; a.out -&gt; &#21152;&#36733; (loader)
+ say.c  -> 编译 (gcc -c) -> b.o  -> 链接 (ld) -> a.out -> 加载 (loader)
 </code></pre></div>
 
-<h2 id="2-c" class=" text-xl mt-2 pb-2 font-sans">2. &#25805;&#20316;&#31995;&#32479;&#19978;&#30340; C &#31243;&#24207;</h2>
-<h3 id="21" class=" text-lg mt-2 pb-2 font-sans">2.1. &#32534;&#35793;</h3>
-<p class=" font-serif my-1">&#25105;&#20204;&#20351;&#29992; gcc &#25226;&#28304;&#20195;&#30721;&#32534;&#35793;&#25104;&#21487;&#37325;&#23450;&#20301;&#30340;&#20108;&#36827;&#21046;&#25991;&#20214;&#65306;</p>
+<h2 id="2-c" class=" text-xl mt-2 pb-2 font-sans">2. 操作系统上的 C 程序</h2>
+<h3 id="21" class=" text-lg mt-2 pb-2 font-sans">2.1. 编译</h3>
+<p class=" font-serif my-1">我们使用 gcc 把源代码编译成可重定位的二进制文件：</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>$ gcc -c -O2 -o main.o main.c
 $ gcc -c -O2 -o say.o say.c
 $ file say.o main.o
@@ -207,33 +208,33 @@ say.o:  ELF 64-bit LSB relocatable, x86-64, version 1 (SYSV), not stripped
 main.o: ELF 64-bit LSB relocatable, x86-64, version 1 (SYSV), not stripped
 </code></pre></div>
 
-<p class=" font-serif my-1">&#8220;relocatable&#8221; &#30340;&#21547;&#20041;&#26159;&#34429;&#28982;&#29983;&#25104;&#20102;&#25351;&#20196;&#24207;&#21015;&#65292;&#20294;&#26242;&#26102;&#36824;&#19981;&#30830;&#23450;&#23427;&#20204;&#22312;&#20108;&#36827;&#21046;&#25991;&#20214;&#20013;&#30340;&#20301;&#32622;&#12290;&#25105;&#20204;&#21487;&#20197;&#26597;&#30475;&#29983;&#25104;&#30340;&#25351;&#20196;&#24207;&#21015;&#65306;</p>
+<p class=" font-serif my-1">“relocatable” 的含义是虽然生成了指令序列，但暂时还不确定它们在二进制文件中的位置。我们可以查看生成的指令序列：</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>$ objdump -d main.o
-0000000000000000 &lt;main&gt;:
-   0:   48 8d 3d 00 00 00 00    lea    0x0(%rip),%rdi        # 7 &lt;main+0x7&gt;
+0000000000000000 <main>:
+   0:   48 8d 3d 00 00 00 00    lea    0x0(%rip),%rdi        # 7 <main+0x7>
    7:   48 83 ec 08             sub    $0x8,%rsp
-   b:   e8 00 00 00 00          callq  10 &lt;main+0x10&gt;
+   b:   e8 00 00 00 00          callq  10 <main+0x10>
   10:   31 c0                   xor    %eax,%eax
   12:   48 83 c4 08             add    $0x8,%rsp
   16:   c3                      retq   
 </code></pre></div>
 
-<p class=" font-serif my-1">&#21487;&#20197;&#30475;&#21040; relocatable &#30340;&#20195;&#30721;&#20174; 0 &#24320;&#22987;&#32534;&#22336;&#65307;&#22240;&#20026; <code>main</code> &#24182;&#19981;&#30693;&#36947; <code>say</code> &#30340;&#20195;&#30721;&#22312;&#20309;&#22788;&#65292;&#25152;&#20197;&#34429;&#28982;&#29983;&#25104;&#20102; opcode &#20026; <code>0xe8</code> &#30340; <code>call</code> &#25351;&#20196; (&#23545;&#24212; <code>say("...")</code> &#30340;&#20989;&#25968;&#35843;&#29992;)&#65292;&#20294;&#27809;&#26377;&#29983;&#25104;&#36339;&#36716;&#30340;&#20559;&#31227;&#37327; (<code>say.c</code> &#20013;&#21521; <code>putchar</code> &#30340;&#35843;&#29992;&#20063;&#29983;&#25104;&#21516;&#26679;&#30340; <code>call</code> &#25351;&#20196;)&#65306;</p>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>   b:   e8 00 00 00 00          callq  10 &lt;main+0x10&gt;
+<p class=" font-serif my-1">可以看到 relocatable 的代码从 0 开始编址；因为 <code>main</code> 并不知道 <code>say</code> 的代码在何处，所以虽然生成了 opcode 为 <code>0xe8</code> 的 <code>call</code> 指令 (对应 <code>say("...")</code> 的函数调用)，但没有生成跳转的偏移量 (<code>say.c</code> 中向 <code>putchar</code> 的调用也生成同样的 <code>call</code> 指令)：</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>   b:   e8 00 00 00 00          callq  10 <main+0x10>
 </code></pre></div>
 
-<p class=" font-serif my-1">&#31867;&#20284;&#30340;&#65292;<code>say</code> &#30340;&#31532;&#19968;&#20010;&#21442;&#25968; (&#36890;&#36807; <code>%rdi</code> &#23492;&#23384;&#22120;&#20256;&#36882;) &#26159;&#36890;&#36807;&#22914;&#19979; <code>lea</code> &#25351;&#20196;&#33719;&#21462;&#30340;&#65292;&#23427;&#30340;&#20301;&#32622;&#21516;&#26679;&#26242;&#26102;&#27809;&#26377;&#30830;&#23450;&#65306;</p>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>   0:   48 8d 3d 00 00 00 00    lea    0x0(%rip),%rdi        # 7 &lt;main+0x7&gt;
+<p class=" font-serif my-1">类似的，<code>say</code> 的第一个参数 (通过 <code>%rdi</code> 寄存器传递) 是通过如下 <code>lea</code> 指令获取的，它的位置同样暂时没有确定：</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>   0:   48 8d 3d 00 00 00 00    lea    0x0(%rip),%rdi        # 7 <main+0x7>
 </code></pre></div>
 
-<h3 id="22" class=" text-lg mt-2 pb-2 font-sans">2.2 &#38142;&#25509;</h3>
-<p class=" font-serif my-1">&#36890;&#24120;&#65292;&#25105;&#20204;&#20351;&#29992; gcc &#24110;&#21161;&#25105;&#20204;&#23436;&#25104;&#38142;&#25509;&#65306;</p>
+<h3 id="22" class=" text-lg mt-2 pb-2 font-sans">2.2 链接</h3>
+<p class=" font-serif my-1">通常，我们使用 gcc 帮助我们完成链接：</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>$ gcc main.o say.o
 $ ./a.out
 hello
 </code></pre></div>
 
-<p class=" font-serif my-1">&#22914;&#26524;&#30452;&#25509;&#20351;&#29992; <code>ld</code> &#21629;&#20196;&#38142;&#25509;&#65292;&#21017;&#20250;&#25253;&#38169;&#65306;</p>
+<p class=" font-serif my-1">如果直接使用 <code>ld</code> 命令链接，则会报错：</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>$ ld main.o say.o
 ld main.o say.o
 ld: warning: cannot find entry symbol _start; defaulting to 00000000004000b0
@@ -241,11 +242,11 @@ say.o: In function `say':
 say.c:(.text+0x15): undefined reference to `putchar'
 </code></pre></div>
 
-<p class=" font-serif my-1">&#39318;&#20808;&#65292;&#25105;&#20204;&#30340;&#31243;&#24207;&#27809;&#26377;&#20837;&#21475; (<code>_start</code>)&#65292;&#20854;&#27425;&#65292;&#25105;&#20204;&#38142;&#25509;&#30340;&#23545;&#35937;&#20013;&#27809;&#26377; <code>putchar</code> &#20989;&#25968;&#12290;&#25105;&#20204;&#21487;&#20197;&#32473; gcc &#20256;&#36882;&#39069;&#22806;&#30340;&#21442;&#25968;&#65292;&#26597;&#30475; <code>ld</code> &#30340;&#36873;&#39033;&#65306;</p>
+<p class=" font-serif my-1">首先，我们的程序没有入口 (<code>_start</code>)，其次，我们链接的对象中没有 <code>putchar</code> 函数。我们可以给 gcc 传递额外的参数，查看 <code>ld</code> 的选项：</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>gcc -Wl,--verbose main.o say.o
 </code></pre></div>
 
-<p class=" font-serif my-1">&#20320;&#20250;&#21457;&#29616;&#38142;&#25509;&#30340;&#36807;&#31243;&#27604;&#24819;&#35937;&#20013;&#22797;&#26434;&#24471;&#22810;&#12290;&#29992;&#20197;&#19979;&#31616;&#21270;&#20102;&#30340;&#21629;&#20196;&#21487;&#20197;&#24471;&#21040;&#21487;&#36816;&#34892;&#30340; hello &#31243;&#24207;&#65306;</p>
+<p class=" font-serif my-1">你会发现链接的过程比想象中复杂得多。用以下简化了的命令可以得到可运行的 hello 程序：</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>$<span class="w"> </span>ld<span class="w"> </span>-dynamic-linker<span class="w"> </span>/lib64/ld-linux-x86-64.so.2<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>/usr/lib/x86_64-linux-gnu/crt1.o<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>/usr/lib/x86_64-linux-gnu/crti.o<span class="w"> </span><span class="se">\</span>
@@ -255,70 +256,70 @@ $<span class="w"> </span>./a.out
 hello
 </code></pre></div>
 
-<p class=" font-serif my-1">&#20026;&#20160;&#20040;&#36825;&#20040;&#22797;&#26434;&#65311;&#36824;&#26377;&#22909;&#22810;&#27809;&#35265;&#36807;&#30340;&#25991;&#20214;&#65281;&#36825;&#26159;&#22240;&#20026;&#25105;&#20204;&#30340;&#20108;&#36827;&#21046;&#25991;&#20214;&#35201;&#36816;&#34892;&#22312;&#25805;&#20316;&#31995;&#32479;&#19978;&#65292;&#23601;&#24517;&#39035;&#36981;&#24490;&#25805;&#20316;&#31995;&#32479;&#30340;&#35268;&#21017;&#65292;&#35843;&#29992;&#25805;&#20316;&#31995;&#32479;&#25552;&#20379;&#30340; API &#23436;&#25104;&#21152;&#36733;&#12290;&#21152;&#36733;&#22120;&#20063;&#26159;&#20195;&#30721;&#30340;&#19968;&#37096;&#20998;&#65292;&#24403;&#28982;&#24212;&#35813;&#34987;&#38142;&#25509;&#36827;&#26469;&#12290;&#38142;&#25509;&#25991;&#20214;&#30340;&#20855;&#20307;&#35299;&#37322;&#65306;</p>
+<p class=" font-serif my-1">为什么这么复杂？还有好多没见过的文件！这是因为我们的二进制文件要运行在操作系统上，就必须遵循操作系统的规则，调用操作系统提供的 API 完成加载。加载器也是代码的一部分，当然应该被链接进来。链接文件的具体解释：</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><code>ld-linux-x86-64.so</code> &#36127;&#36131;&#21160;&#24577;&#38142;&#25509;&#24211;&#30340;&#21152;&#36733;&#65292;&#27809;&#26377;&#23427;&#23601;&#26080;&#27861;&#21152;&#36733;&#21160;&#24577;&#38142;&#25509;&#24211; (libc)&#12290;</li>
-<li class=" ml-8"><code>crt*.o</code> &#26159; C Runtime &#30340;&#32553;&#20889;&#65292;&#21363; C &#31243;&#24207;&#36816;&#34892;&#25152;&#24517;&#39035;&#30340;&#19968;&#20123;&#29615;&#22659;&#65292;&#20363;&#22914;&#31243;&#24207;&#30340;&#20837;&#21475;&#20989;&#25968; <code>_start</code> (&#20108;&#36827;&#21046;&#25991;&#20214;&#24182;&#19981;&#26159;&#20174; <code>main</code> &#24320;&#22987;&#25191;&#34892;&#30340;&#65281;)&#12289;<code>atexit</code> &#27880;&#20876;&#22238;&#35843;&#20989;&#25968;&#30340;&#25191;&#34892;&#31561;&#12290;</li>
-<li class=" ml-8"><code>-lc</code> &#34920;&#31034;&#38142;&#25509; glibc&#12290;</li>
+<li class=" ml-8"><code>ld-linux-x86-64.so</code> 负责动态链接库的加载，没有它就无法加载动态链接库 (libc)。</li>
+<li class=" ml-8"><code>crt*.o</code> 是 C Runtime 的缩写，即 C 程序运行所必须的一些环境，例如程序的入口函数 <code>_start</code> (二进制文件并不是从 <code>main</code> 开始执行的！)、<code>atexit</code> 注册回调函数的执行等。</li>
+<li class=" ml-8"><code>-lc</code> 表示链接 glibc。</li>
 </ul>
-<p class=" font-serif my-1">&#38142;&#25509;&#21518;&#24471;&#21040;&#19968;&#20010; ELF &#26684;&#24335;&#30340;&#21487;&#25191;&#34892;&#25991;&#20214;&#65306;</p>
+<p class=" font-serif my-1">链接后得到一个 ELF 格式的可执行文件：</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>$ file a.out
 a.out: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/l, for GNU/Linux 3.2.0, not stripped
 $ objdump -d a.out
 ...
-0000000000400402 &lt;main&gt;:
+0000000000400402 <main>:
   400402:       55                      push   %rbp
   400403:       48 89 e5                mov    %rsp,%rbp
-  400406:       48 8d 3d c7 00 00 00    lea    0xc7(%rip),%rdi        # 4004d4 &lt;_IO_stdin_used+0x4&gt;
+  400406:       48 8d 3d c7 00 00 00    lea    0xc7(%rip),%rdi        # 4004d4 <_IO_stdin_used+0x4>
   40040d:       b8 00 00 00 00          mov    $0x0,%eax
-  400412:       e8 07 00 00 00          callq  40041e &lt;say&gt;
+  400412:       e8 07 00 00 00          callq  40041e <say>
   400417:       b8 00 00 00 00          mov    $0x0,%eax
   40041c:       5d                      pop    %rbp
   40041d:       c3                      retq   
 
-000000000040041e &lt;say&gt;:
+000000000040041e <say>:
   40041e:       55                      push   %rbp
   40041f:       48 89 e5                mov    %rsp,%rbp
   400422:       48 83 ec 10             sub    $0x10,%rsp
   400426:       48 89 7d f8             mov    %rdi,-0x8(%rbp)
-  40042a:       eb 16                   jmp    400442 &lt;say+0x24&gt;
+  40042a:       eb 16                   jmp    400442 <say+0x24>
   40042c:       48 8b 45 f8             mov    -0x8(%rbp),%rax
   400430:       0f b6 00                movzbl (%rax),%eax
   400433:       0f be c0                movsbl %al,%eax
   400436:       89 c7                   mov    %eax,%edi
-  400438:       e8 83 ff ff ff          callq  4003c0 &lt;putchar@plt&gt;
+  400438:       e8 83 ff ff ff          callq  4003c0 <putchar@plt>
   40043d:       48 83 45 f8 01          addq   $0x1,-0x8(%rbp)
   400442:       48 8b 45 f8             mov    -0x8(%rbp),%rax
   400446:       0f b6 00                movzbl (%rax),%eax
   400449:       84 c0                   test   %al,%al
-  40044b:       75 df                   jne    40042c &lt;say+0xe&gt;
+  40044b:       75 df                   jne    40042c <say+0xe>
   40044d:       90                      nop
   40044e:       c9                      leaveq 
   40044f:       c3                      retq   
 ...
 </code></pre></div>
 
-<h3 id="23" class=" text-lg mt-2 pb-2 font-sans">2.3. &#21152;&#36733;</h3>
+<h3 id="23" class=" text-lg mt-2 pb-2 font-sans">2.3. 加载</h3>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<h4 id="_1" class=" pt-2 pb-2 font-sans float-left text-sm box border mr-1 mt-1 box-blue" style=" padding-bottom: 0;">&#35686;&#21578;&#65306;&#22823;&#37327;&#30340;&#32454;&#33410;</h4>
-<p class=" font-serif my-1">&#31243;&#24207;&#21152;&#36733;&#30340;&#36807;&#31243;&#21313;&#20998;&#22797;&#26434;&#65292;&#29978;&#33267;&#26377;&#19968;&#20123;&#20320;&#30446;&#21069;&#21487;&#33021;&#26242;&#26102;&#38590;&#20197;&#29702;&#35299;&#30340;&#22320;&#26041; (&#20363;&#22914; vvar, vdso, &#21464;&#21270;&#30340; <code>a.out</code> &#31561;)&#12290;&#25105;&#20204;&#20250;&#29992;&#19968;&#23398;&#26399;&#30340;&#35838;&#31243;&#22238;&#31572;&#36825;&#20123;&#38382;&#39064;&#12290;&#25152;&#20197;&#36935;&#21040;&#19981;&#26126;&#30333;&#30340;&#22320;&#26041;&#65292;&#36339;&#36807;&#21363;&#21487;&#12290;&#38543;&#30528;&#35838;&#31243;&#30340;&#36827;&#23637;&#65292;&#20320;&#23545;&#36825;&#20010;&#36807;&#31243;&#30340;&#29702;&#35299;&#20250;&#19981;&#26029;&#21152;&#28145;&#12290;</p>
+<h4 id="_1" class=" pt-2 pb-2 font-sans float-left text-sm box border mr-1 mt-1 box-blue" style=" padding-bottom: 0;">警告：大量的细节</h4>
+<p class=" font-serif my-1">程序加载的过程十分复杂，甚至有一些你目前可能暂时难以理解的地方 (例如 vvar, vdso, 变化的 <code>a.out</code> 等)。我们会用一学期的课程回答这些问题。所以遇到不明白的地方，跳过即可。随着课程的进展，你对这个过程的理解会不断加深。</p>
 </blockquote>
-<p class=" font-serif my-1">&#23436;&#25104;&#38142;&#25509;&#21518;&#65292;&#22312;&#25805;&#20316;&#31995;&#32479;&#30340;&#32456;&#31471;&#31243;&#24207;&#20013;&#20351;&#29992; <code>./a.out</code> &#36816;&#34892;&#25105;&#20204;&#30340;&#31243;&#24207;&#65292;&#27969;&#31243;&#22823;&#33268;&#22914;&#19979; (&#23398;&#23436;&#12298;&#25805;&#20316;&#31995;&#32479;&#12299;&#35838;&#21518;&#65292;&#20320;&#23558;&#20250;&#23545;&#36825;&#20010;&#27969;&#31243;&#26377;&#26356;&#28145;&#20837;&#30340;&#35748;&#35782;)&#65306;</p>
+<p class=" font-serif my-1">完成链接后，在操作系统的终端程序中使用 <code>./a.out</code> 运行我们的程序，流程大致如下 (学完《操作系统》课后，你将会对这个流程有更深入的认识)：</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">Shell &#25509;&#25910;&#21040;&#21629;&#20196;&#21518;&#65292;&#22312;&#25805;&#20316;&#31995;&#32479;&#20013;&#20351;&#29992; <code>fork()</code> &#21019;&#24314;&#19968;&#20010;&#26032;&#30340;&#36827;&#31243;&#12290;</li>
-<li class=" ml-8">&#22312;&#23376;&#36827;&#31243;&#20013;&#20351;&#29992; <code>execve()</code> &#21152;&#36733; <code>a.out</code>&#12290;&#25805;&#20316;&#31995;&#32479;&#20869;&#26680;&#20013;&#30340;&#21152;&#36733;&#22120;&#35782;&#21035;&#20986; <code>a.out</code> &#26159;&#19968;&#20010;&#21160;&#24577;&#38142;&#25509;&#25991;&#20214;&#65292;&#20570;&#20986;&#24517;&#35201;&#30340;&#20869;&#23384;&#26144;&#23556;&#65292;&#20174; <code>ld-linux-x86-64.so</code> &#30340;&#20195;&#30721;&#24320;&#22987;&#25191;&#34892;&#65292;&#25226;&#21160;&#24577;&#38142;&#25509;&#24211;&#26144;&#23556;&#21040;&#36827;&#31243;&#30340;&#22320;&#22336;&#31354;&#38388;&#20013;&#65292;&#28982;&#21518;&#36339;&#36716;&#21040; <code>a.out</code> &#30340; <code>_start</code> &#25191;&#34892;&#65292;&#21021;&#22987;&#21270; C &#35821;&#35328;&#36816;&#34892;&#29615;&#22659;&#65292;&#26368;&#32456;&#24320;&#22987;&#25191;&#34892; <code>main</code>&#12290;</li>
-<li class=" ml-8">&#31243;&#24207;&#36816;&#34892;&#36807;&#31243;&#20013;&#65292;&#22914;&#38656;&#36827;&#34892;&#36755;&#20837;/&#36755;&#20986;&#31561;&#25805;&#20316; (&#22914; libc &#20013;&#30340; <code>putchar</code>)&#65292;&#21017;&#20250;&#20351;&#29992;&#29305;&#27530;&#30340;&#25351;&#20196; (&#20363;&#22914; x86 &#31995;&#32479;&#19978;&#30340; <code>int</code> &#25110;<code>syscall</code>) &#21457;&#20986;&#31995;&#32479;&#35843;&#29992;&#35831;&#27714;&#25805;&#20316;&#31995;&#32479;&#25191;&#34892;&#12290;&#20856;&#22411;&#30340;&#20363;&#23376;&#26159; <code>printf</code> &#20250;&#35843;&#29992; <code>write</code> &#31995;&#32479;&#35843;&#29992;&#65292;&#21521;&#32534;&#21495;&#20026; <code>1</code> &#30340;&#25991;&#20214;&#25551;&#36848;&#31526;&#20889;&#20837;&#25968;&#25454;&#12290;</li>
+<li class=" ml-8">Shell 接收到命令后，在操作系统中使用 <code>fork()</code> 创建一个新的进程。</li>
+<li class=" ml-8">在子进程中使用 <code>execve()</code> 加载 <code>a.out</code>。操作系统内核中的加载器识别出 <code>a.out</code> 是一个动态链接文件，做出必要的内存映射，从 <code>ld-linux-x86-64.so</code> 的代码开始执行，把动态链接库映射到进程的地址空间中，然后跳转到 <code>a.out</code> 的 <code>_start</code> 执行，初始化 C 语言运行环境，最终开始执行 <code>main</code>。</li>
+<li class=" ml-8">程序运行过程中，如需进行输入/输出等操作 (如 libc 中的 <code>putchar</code>)，则会使用特殊的指令 (例如 x86 系统上的 <code>int</code> 或<code>syscall</code>) 发出系统调用请求操作系统执行。典型的例子是 <code>printf</code> 会调用 <code>write</code> 系统调用，向编号为 <code>1</code> 的文件描述符写入数据。</li>
 </ul>
-<p class=" font-serif my-1">&#24590;&#20040;&#22312;&#23454;&#38469;&#30340;&#31995;&#32479;&#19978;&#35266;&#23519;&#19978;&#36848;&#30340;&#34892;&#20026;&#65311;&#25105;&#20204;&#26377;&#35843;&#35797;&#22120;&#65281;gdb &#20026;&#25105;&#20204;&#25552;&#20379;&#20102; <code>starti</code> &#25351;&#20196;&#65292;&#21487;&#20197;&#22312;&#31243;&#24207;&#25191;&#34892;&#31532;&#19968;&#26465;&#25351;&#20196;&#26102;&#23601;&#20572;&#19979;&#65306;</p>
+<p class=" font-serif my-1">怎么在实际的系统上观察上述的行为？我们有调试器！gdb 为我们提供了 <code>starti</code> 指令，可以在程序执行第一条指令时就停下：</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>$ gdb a.out
 GNU gdb (Ubuntu 8.1-0ubuntu3.2) 8.1.0.20180409-git
 ...
-(gdb) starti  # &#21551;&#21160;&#31243;&#24207;&#65292;&#24182;&#22312;&#31532;&#19968;&#26465;&#25351;&#20196;&#19978;&#26242;&#20572;
+(gdb) starti  # 启动程序，并在第一条指令上暂停
 Starting program: /tmp/a/a.out 
 
 Program stopped.
 0x00007ffff7dd6090 in _start () from /lib64/ld-linux-x86-64.so.2
-(gdb) bt f    # backtrace full&#65292;&#25171;&#21360;&#22534;&#26632;&#20449;&#24687;
+(gdb) bt f    # backtrace full，打印堆栈信息
 #0  0x00007ffff7dd6090 in _start () from /lib64/ld-linux-x86-64.so.2
         library_path = 0x0
         version_info = 0
@@ -341,11 +342,11 @@ No symbol table info available.
 ...
 </code></pre></div>
 
-<p class=" font-serif my-1">&#25805;&#20316;&#31995;&#32479;&#30340;&#21152;&#36733;&#22120;&#23436;&#25104;&#20102; <code>ld-linux-x86-64.so.2</code> &#30340;&#21152;&#36733;&#65292;&#24182;&#32473;&#23427;&#20256;&#36882;&#20102;&#30456;&#24212;&#30340;&#21442;&#25968;&#12290;&#25105;&#20204;&#21487;&#20197;&#26597;&#30475;&#27492;&#26102;&#30340;&#36827;&#31243;&#20449;&#24687; (&#36825;&#20123;&#20869;&#23384;&#37117;&#26159;&#25805;&#20316;&#31995;&#32479;&#21152;&#36733;&#30340;)&#65306;</p>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>(gdb) info inferiors  # &#25171;&#21360;&#36827;&#31243;/&#32447;&#31243;&#20449;&#24687;
+<p class=" font-serif my-1">操作系统的加载器完成了 <code>ld-linux-x86-64.so.2</code> 的加载，并给它传递了相应的参数。我们可以查看此时的进程信息 (这些内存都是操作系统加载的)：</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>(gdb) info inferiors  # 打印进程/线程信息
   Num  Description       Executable        
 * 1    process 18137     /tmp/hello/a.out
-(gdb) !cat /proc/18137/maps  # &#25171;&#21360;&#36827;&#31243;&#30340;&#20869;&#23384;&#20449;&#24687;
+(gdb) !cat /proc/18137/maps  # 打印进程的内存信息
 00400000-00401000 r-xp 00000000 08:02 3538982             /tmp/hello/a.out
 00600000-00602000 rw-p 00000000 08:02 3538982             /tmp/hello/a.out
 7ffff7dd5000-7ffff7dfc000 r-xp 00000000 08:02 4985556     /lib/x86_64-linux-gnu/ld-2.27.so
@@ -357,10 +358,10 @@ No symbol table info available.
 ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0   [vsyscall]
 </code></pre></div>
 
-<p class=" font-serif my-1">&#22914;&#26524;&#25105;&#20204;&#22312; <code>_start</code> &#35774;&#32622;&#26029;&#28857;&#65292;&#20250;&#21457;&#29616;&#27492;&#26102;&#24050;&#32463;&#21152;&#36733;&#23436;&#25104;&#65306;</p>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>(gdb) b _start  # breakpoint &#35774;&#32622;&#26029;&#28857;
+<p class=" font-serif my-1">如果我们在 <code>_start</code> 设置断点，会发现此时已经加载完成：</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>(gdb) b _start  # breakpoint 设置断点
 Breakpoint 1 at 0x4003d0
-(gdb) c  # continue &#32487;&#32493;&#25191;&#34892;
+(gdb) c  # continue 继续执行
 Continuing.
 
 Breakpoint 1, 0x00000000004003d0 in _start ()
@@ -384,35 +385,35 @@ Breakpoint 1, 0x00000000004003d0 in _start ()
 ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0   [vsyscall]
 </code></pre></div>
 
-<p class=" font-serif my-1">&#22320;&#22336;&#31354;&#38388;&#20013;&#24050;&#26377; <code>a.out</code>, libc, &#22534;&#21306;&#12289;&#26632;&#21306;&#31561;&#25105;&#20204;&#29087;&#24713;&#30340;&#19996;&#35199;&#65292;libc &#30340; <code>_start</code> &#23436;&#25104;&#21021;&#22987;&#21270;&#21518;&#20250;&#35843;&#29992; <code>main()</code>&#12290;&#36825;&#30495;&#26159;&#19968;&#27573;&#28459;&#38271;&#30340;&#26053;&#36884;&#65281;</p>
-<h2 id="3-bare-metal-c" class=" text-xl mt-2 pb-2 font-sans">3. Bare-Metal &#19978;&#30340; C &#31243;&#24207;</h2>
-<p class=" font-serif my-1">&#23545;&#20110; AbstractMachine &#19978;&#30340;&#31243;&#24207;&#65292;&#25105;&#20204;&#38656;&#35201;&#19968;&#20010; Makefile&#65292;&#23601;&#33021;&#25226; hello &#31243;&#24207;&#32534;&#35793;&#21040; bare-metal &#25191;&#34892;&#65306;</p>
+<p class=" font-serif my-1">地址空间中已有 <code>a.out</code>, libc, 堆区、栈区等我们熟悉的东西，libc 的 <code>_start</code> 完成初始化后会调用 <code>main()</code>。这真是一段漫长的旅途！</p>
+<h2 id="3-bare-metal-c" class=" text-xl mt-2 pb-2 font-sans">3. Bare-Metal 上的 C 程序</h2>
+<p class=" font-serif my-1">对于 AbstractMachine 上的程序，我们需要一个 Makefile，就能把 hello 程序编译到 bare-metal 执行：</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="nv">NAME</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span>hello
 <span class="nv">SRCS</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span>main.c<span class="w"> </span>say.c
 <span class="cp">include $(AM_HOME)/Makefile.app</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">&#22312;&#32456;&#31471;&#20013;&#25191;&#34892; <code>make -nB ARCH=x86_64-qemu</code> &#21487;&#20197;&#26597;&#30475;&#23436;&#25972;&#30340;&#32534;&#35793;&#12289;&#38142;&#25509;&#21040; x86-64 &#30340;&#36807;&#31243; (&#19981;&#23454;&#38469;&#36827;&#34892;&#32534;&#35793;)&#12290;</p>
-<h3 id="31" class=" text-lg mt-2 pb-2 font-sans">3.1. &#32534;&#35793;</h3>
-<p class=" font-serif my-1">&#32534;&#35793;&#22120;&#30340;&#21151;&#33021;&#26159;&#25226; <code>.c</code> &#25991;&#20214;&#32763;&#35793;&#25104;&#21487;&#37325;&#23450;&#20301;&#30340;&#20108;&#36827;&#21046;&#30446;&#26631;&#25991;&#20214; (<code>.o</code>)&#12290;&#36825;&#19968;&#27493;&#23545;&#20110;&#26377;&#26080;&#25805;&#20316;&#31995;&#32479;&#26469;&#35828;&#24046;&#21035;&#24182;&#19981;&#22823;&#65292;&#26368;&#20027;&#35201;&#30340;&#21306;&#21035;&#26159;&#22312; bare-metal &#26159; &#8220;freestanding&#8221; &#30340;&#36816;&#34892;&#29615;&#22659;&#65292;&#27809;&#26377;&#21150;&#27861;&#35843;&#29992;&#20381;&#36182;&#20110;&#25805;&#20316;&#31995;&#32479;&#30340;&#24211;&#20989;&#25968;&#8212;&#8212;&#20320;&#20381;&#28982;&#21487;&#20197;&#22768;&#26126;&#23427;&#20204; (&#20363;&#22914; <code>printf</code>, <code>malloc</code> &#31561;)&#65292;&#20294;&#26368;&#32456;&#23427;&#20204;&#30340;&#20195;&#30721;&#26080;&#27861;&#38142;&#25509;&#12290;</p>
-<p class=" font-serif my-1">&#32534;&#35793;&#22120; (gcc) &#25552;&#20379;&#20102;&#36873;&#39033;&#24110;&#25105;&#20204;&#29983;&#25104;&#19981;&#20381;&#36182;&#25805;&#20316;&#31995;&#32479;&#30340;&#30446;&#26631;&#25991;&#20214;&#65292;&#20363;&#22914;&#23545; <code>-ffreestanding</code> (<code>-fno-hosted</code>) &#36873;&#39033;&#30340;&#25991;&#26723;&#65306;</p>
+<p class=" font-serif my-1">在终端中执行 <code>make -nB ARCH=x86_64-qemu</code> 可以查看完整的编译、链接到 x86-64 的过程 (不实际进行编译)。</p>
+<h3 id="31" class=" text-lg mt-2 pb-2 font-sans">3.1. 编译</h3>
+<p class=" font-serif my-1">编译器的功能是把 <code>.c</code> 文件翻译成可重定位的二进制目标文件 (<code>.o</code>)。这一步对于有无操作系统来说差别并不大，最主要的区别是在 bare-metal 是 “freestanding” 的运行环境，没有办法调用依赖于操作系统的库函数——你依然可以声明它们 (例如 <code>printf</code>, <code>malloc</code> 等)，但最终它们的代码无法链接。</p>
+<p class=" font-serif my-1">编译器 (gcc) 提供了选项帮我们生成不依赖操作系统的目标文件，例如对 <code>-ffreestanding</code> (<code>-fno-hosted</code>) 选项的文档：</p>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
 <p class=" font-serif my-1">Assert that compilation targets a freestanding environment.  This implies <code>-fno-builtin</code>.  A freestanding environment is one in which the standard library may not exist, and program startup may not necessarily be at "main".  The most obvious example is an OS kernel.  This is equivalent to <code>-fno-hosted</code>.</p>
 </blockquote>
-<p class=" font-serif my-1">&#38500;&#20102;&#32534;&#35793;&#22120;&#20570;&#20986;&#19968;&#20123;&#20195;&#30721;&#29983;&#25104;&#30340;&#38480;&#21046;&#20043;&#22806;&#65292;bare-metal &#31243;&#24207;&#30340;&#32534;&#35793;&#21644;&#25805;&#20316;&#31995;&#32479;&#19978;&#31243;&#24207;&#27809;&#26377;&#20219;&#20309;&#21306;&#21035;&#12290;&#20107;&#23454;&#19978;&#65292;&#23545;&#20110;&#25105;&#20204;&#30340;&#31034;&#20363;&#31243;&#24207;&#26469;&#35828;&#65292;<code>main</code> &#21644; <code>say</code> &#32534;&#35793;&#20986;&#30340;&#27719;&#32534;&#20195;&#30721;&#26159;&#23436;&#20840;&#19968;&#33268;&#30340;&#65292;&#38500;&#20102; relocation table &#20013;&#30340;&#37325;&#23450;&#20301;&#20449;&#24687;&#19981;&#21516; (bare-metal &#19978;&#20250;&#35843;&#29992; <code>putch</code> &#32780;&#19981;&#26159; <code>putchar</code>)&#12290;</p>
-<h3 id="32" class=" text-lg mt-2 pb-2 font-sans">3.2. &#38142;&#25509;</h3>
-<p class=" font-serif my-1">&#21487;&#33021;&#20986;&#20046;&#24847;&#26009;&#65292;&#22240;&#20026;&#27809;&#26377;&#25805;&#20316;&#31995;&#32479;&#65292;bare-metal &#31243;&#24207;&#30340;&#38142;&#25509;&#27604;&#25805;&#20316;&#31995;&#32479;&#19978;&#30340;&#24773;&#20917;&#36824;&#31616;&#21333;&#19968;&#20123;&#65281;&#25105;&#20204;&#20351;&#29992;&#30340;&#38142;&#25509;&#21629;&#20196;&#26159;&#65306;</p>
+<p class=" font-serif my-1">除了编译器做出一些代码生成的限制之外，bare-metal 程序的编译和操作系统上程序没有任何区别。事实上，对于我们的示例程序来说，<code>main</code> 和 <code>say</code> 编译出的汇编代码是完全一致的，除了 relocation table 中的重定位信息不同 (bare-metal 上会调用 <code>putch</code> 而不是 <code>putchar</code>)。</p>
+<h3 id="32" class=" text-lg mt-2 pb-2 font-sans">3.2. 链接</h3>
+<p class=" font-serif my-1">可能出乎意料，因为没有操作系统，bare-metal 程序的链接比操作系统上的情况还简单一些！我们使用的链接命令是：</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>$ ld -melf_x86_64 -N -Ttext-segment=0x00100000 -o build/hello-x86_64-qemu.o \
   main.o say.o am-x86_64-qemu.a klib-x86_64-qemu.a
 </code></pre></div>
 
-<p class=" font-serif my-1">&#21482;&#38142;&#25509;&#20102; <code>main.o</code>, <code>say.o</code> &#21644;&#24517;&#35201;&#30340;&#24211;&#20989;&#25968; (AbstractMachine &#21644; klib&#65307;&#22312;&#36825;&#20010;&#20363;&#23376;&#20013;&#65292;&#25105;&#20204;&#29978;&#33267;&#21487;&#20197;&#19981;&#38142;&#25509; klib &#20063;&#33021;&#27491;&#24120;&#36816;&#34892;)&#12290;&#20351;&#29992;&#30340;&#38142;&#25509;&#36873;&#39033;&#65306;</p>
+<p class=" font-serif my-1">只链接了 <code>main.o</code>, <code>say.o</code> 和必要的库函数 (AbstractMachine 和 klib；在这个例子中，我们甚至可以不链接 klib 也能正常运行)。使用的链接选项：</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><code>-melf_x86_64</code>&#65306;&#25351;&#23450;&#38142;&#25509;&#20026; x86_64 ELF &#26684;&#24335;&#65307;</li>
-<li class=" ml-8"><code>-N</code>&#65306;&#26631;&#35760; <code>.text</code> &#21644; <code>.data</code> &#37117;&#21487;&#20889;&#65292;&#36825;&#26679;&#23427;&#20204;&#21487;&#20197;&#19968;&#36215;&#21152;&#36733; (&#32780;&#19981;&#38656;&#35201;&#23545;&#40784;&#21040;&#39029;&#38754;&#36793;&#30028;)&#65292;&#20943;&#23569;&#21487;&#25191;&#34892;&#25991;&#20214;&#30340;&#22823;&#23567;&#65307;</li>
-<li class=" ml-8"><code>-Ttext-segment=0x00100000</code>&#65306;&#25351;&#23450;&#20108;&#36827;&#21046;&#25991;&#20214;&#24212;&#21152;&#36733;&#21040;&#22320;&#22336; <code>0x00100000</code>&#12290;</li>
+<li class=" ml-8"><code>-melf_x86_64</code>：指定链接为 x86_64 ELF 格式；</li>
+<li class=" ml-8"><code>-N</code>：标记 <code>.text</code> 和 <code>.data</code> 都可写，这样它们可以一起加载 (而不需要对齐到页面边界)，减少可执行文件的大小；</li>
+<li class=" ml-8"><code>-Ttext-segment=0x00100000</code>：指定二进制文件应加载到地址 <code>0x00100000</code>。</li>
 </ul>
-<p class=" font-serif my-1">&#20351;&#29992; <code>readelf</code> &#21629;&#20196;&#26597;&#30475; <code>hello-x86_64-qemu.o</code> &#25991;&#20214;&#30340;&#20449;&#24687;&#65306;</p>
+<p class=" font-serif my-1">使用 <code>readelf</code> 命令查看 <code>hello-x86_64-qemu.o</code> 文件的信息：</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>$ readelf -a build/hello-x86_64-qemu.o
 ELF Header:
   Magic:   7f 45 4c 46 02 01 01 00 00 00 00 00 00 00 00 00 
@@ -430,7 +431,7 @@ ELF Header:
   ...
 </code></pre></div>
 
-<p class=" font-serif my-1">&#20854;&#20013;&#30340; program headers &#25551;&#36848;&#20102;&#38656;&#35201;&#21152;&#36733;&#30340;&#37096;&#20998;&#65306;&#21152;&#36733;&#36825;&#20010;&#25991;&#20214;&#30340;&#21152;&#36733;&#22120;&#38656;&#35201;&#25226;&#25991;&#20214;&#20013;&#20174; <code>0xb0</code> (Offset) &#24320;&#22987;&#30340; <code>0x29ac</code> &#23383;&#33410; (<code>FileSiz</code>) &#21152;&#36733;&#21040;&#20869;&#23384;&#30340; <code>0x1000b0</code> &#34394;&#25311;/&#29289;&#29702;&#22320;&#22336; (VirtAddr/PhysAddr)&#65292;&#20869;&#23384;&#20013;&#30340;&#22823;&#23567; <code>0x23f98</code> &#23383;&#33410; (<code>MemSiz</code>&#65292;&#36229;&#36807; <code>FileSiz</code> &#30340;&#20869;&#23384;&#28165;&#38646;)&#65292;&#26631;&#24535;&#20026; RWE (&#21487;&#35835;&#12289;&#21487;&#20889;&#12289;&#21487;&#25191;&#34892;)&#12290;</p>
+<p class=" font-serif my-1">其中的 program headers 描述了需要加载的部分：加载这个文件的加载器需要把文件中从 <code>0xb0</code> (Offset) 开始的 <code>0x29ac</code> 字节 (<code>FileSiz</code>) 加载到内存的 <code>0x1000b0</code> 虚拟/物理地址 (VirtAddr/PhysAddr)，内存中的大小 <code>0x23f98</code> 字节 (<code>MemSiz</code>，超过 <code>FileSiz</code> 的内存清零)，标志为 RWE (可读、可写、可执行)。</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>Program Headers:
   Type           Offset             VirtAddr           PhysAddr
                  FileSiz            MemSiz              Flags  Align
@@ -440,10 +441,10 @@ ELF Header:
                  0x0000000000000000 0x0000000000000000  RWE    0x10
 </code></pre></div>
 
-<p class=" font-serif my-1">&#23454;&#38469;&#19978;&#65292;&#36825;&#20010;&#31243;&#24207;&#21487;&#20197;&#30452;&#25509;&#22312;&#25805;&#20316;&#31995;&#32479;&#19978;&#34987;&#36816;&#34892;&#65281;&#22914;&#26524;&#20320;&#35797;&#30528;&#29992; gdb &#35843;&#35797;&#23427;&#65292;&#20250;&#21457;&#29616;&#31243;&#24207;&#20174; <code>_start</code> (<code>0x100100</code>) &#24320;&#22987;&#25191;&#34892;&#65292;&#20294;&#22312;&#25191;&#34892;&#20102;&#33509;&#24178;&#26465;&#25351;&#20196;&#21518;&#65292;&#22312; <code>movabs %eax,0xb900001000</code> &#26102;&#21457;&#29983;&#20102; Segmentation Fault&#12290;</p>
+<p class=" font-serif my-1">实际上，这个程序可以直接在操作系统上被运行！如果你试着用 gdb 调试它，会发现程序从 <code>_start</code> (<code>0x100100</code>) 开始执行，但在执行了若干条指令后，在 <code>movabs %eax,0xb900001000</code> 时发生了 Segmentation Fault。</p>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<h4 id="_start-movabs" class=" pt-2 pb-2 font-sans float-left text-sm box border mr-1 mt-1 box-blue" style=" padding-bottom: 0;"><code>_start</code> &#37324;&#27809;&#26377; <code>movabs</code>&#65311;</h4>
-<p class=" font-serif my-1">x86-64 AbstractMachine &#19978;&#31243;&#24207;&#30340;&#20837;&#21475;&#22312; <code>start64.S</code> &#25991;&#20214;&#20013;&#65306;</p>
+<h4 id="_start-movabs" class=" pt-2 pb-2 font-sans float-left text-sm box border mr-1 mt-1 box-blue" style=" padding-bottom: 0;"><code>_start</code> 里没有 <code>movabs</code>？</h4>
+<p class=" font-serif my-1">x86-64 AbstractMachine 上程序的入口在 <code>start64.S</code> 文件中：</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="na">.code32</span>
 <span class="na">.globl</span><span class="w"> </span><span class="no">_start</span>
 <span class="nl">_start:</span>
@@ -456,35 +457,35 @@ ELF Header:
 <span class="na">...</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">&#36825;&#26159;&#19968;&#27573; 32-bit &#20195;&#30721;&#8212;&#8212;AbstractMachine &#30340;&#21152;&#36733;&#22120;&#24182;&#27809;&#26377;&#36827;&#20837; 64-bit &#27169;&#24335;&#65307;&#32780; <code>hello-x86_64-qemu.o</code> &#30452;&#25509;&#22312;&#25805;&#20316;&#31995;&#32479;&#19978;&#25191;&#34892;&#26102;&#65292;&#23558;&#20195;&#30721;&#35299;&#26512;&#20026; 64-bit &#27719;&#32534;&#65292;&#22240;&#27492;&#38169;&#35823;&#35299;&#26512;&#20102; 32-bit &#25351;&#20196;&#65292;&#35775;&#38382;&#38750;&#27861;&#20869;&#23384;&#20135;&#29983; Segmentation Fault&#12290;</p>
+<p class=" font-serif my-1">这是一段 32-bit 代码——AbstractMachine 的加载器并没有进入 64-bit 模式；而 <code>hello-x86_64-qemu.o</code> 直接在操作系统上执行时，将代码解析为 64-bit 汇编，因此错误解析了 32-bit 指令，访问非法内存产生 Segmentation Fault。</p>
 </blockquote>
-<p class=" font-serif my-1">&#21482;&#19981;&#36807;&#22240;&#20026;&#36816;&#34892;&#29615;&#22659;&#19981;&#21516;&#65292;&#25191;&#34892;&#21040;&#31995;&#32479;&#25351;&#20196;&#26102;&#65292;&#23646;&#20110;&#38750;&#27861;&#25805;&#20316; crash &#20102;&#12290;&#25105;&#20204;&#38656;&#35201;&#22312; bare-metal &#19978;&#21152;&#36733;&#23427;&#12290;&#25152;&#20197;&#25105;&#20204;&#20250;&#21019;&#24314; <code>hello-x86_64-qemu</code> &#30340;&#38236;&#20687;&#25991;&#20214;&#65306;</p>
+<p class=" font-serif my-1">只不过因为运行环境不同，执行到系统指令时，属于非法操作 crash 了。我们需要在 bare-metal 上加载它。所以我们会创建 <code>hello-x86_64-qemu</code> 的镜像文件：</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="o">(</span><span class="w"> </span>cat<span class="w"> </span>abstract-machine/am/src/x86/qemu/boot/mbr<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>head<span class="w"> </span>-c<span class="w"> </span><span class="m">1024</span><span class="w"> </span>/dev/zero<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>cat<span class="w"> </span>build/hello-x86_64-qemu.o<span class="w"> </span><span class="o">)</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>&gt;<span class="w"> </span>/tmp/hello/build/hello-x86_64-qemu
+<span class="w">  </span>><span class="w"> </span>/tmp/hello/build/hello-x86_64-qemu
 </code></pre></div>
 
-<p class=" font-serif my-1">&#38236;&#20687;&#25991;&#20214;&#26159;&#30001; 512 &#23383;&#33410;&#30340; &#8220;MBR&#8221;&#12289;1024 &#23383;&#33410;&#30340;&#31354;&#30333; (&#29992;&#20110;&#23384;&#25918; <code>main</code> &#20989;&#25968;&#30340;&#21442;&#25968;) &#21644; <code>hello-x86_64-qemu.o</code> &#32452;&#25104;&#30340;&#12290;&#29992; <code>file</code> &#31867;&#22411;&#21487;&#20197;&#35782;&#21035;&#20986;&#23427;&#65306;</p>
+<p class=" font-serif my-1">镜像文件是由 512 字节的 “MBR”、1024 字节的空白 (用于存放 <code>main</code> 函数的参数) 和 <code>hello-x86_64-qemu.o</code> 组成的。用 <code>file</code> 类型可以识别出它：</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>$ file hello-x86_64-qemu
 hello-x86_64-qemu:   DOS/MBR boot sector
 </code></pre></div>
 
-<h3 id="33" class=" text-lg mt-2 pb-2 font-sans">3.3. &#21152;&#36733;</h3>
-<p class=" font-serif my-1">&#25105;&#20204;&#22312; QEMU &#20840;&#31995;&#32479;&#27169;&#25311;&#22120;&#20013;&#36816;&#34892;&#23436;&#25972;&#30340;&#38236;&#20687; <code>hello-x86_64-qemu</code> (&#21253;&#21547; <code>hello-x86_64-qemu.o</code>)&#12290;&#22914;&#26524;&#29992;&#19968;&#20123;&#29305;&#21035;&#30340;&#36873;&#39033;&#65292;&#23601;&#33021;&#36817;&#36317;&#31163;&#35266;&#23519;&#27169;&#25311;&#22120;&#30340;&#25191;&#34892;&#65306;</p>
+<h3 id="33" class=" text-lg mt-2 pb-2 font-sans">3.3. 加载</h3>
+<p class=" font-serif my-1">我们在 QEMU 全系统模拟器中运行完整的镜像 <code>hello-x86_64-qemu</code> (包含 <code>hello-x86_64-qemu.o</code>)。如果用一些特别的选项，就能近距离观察模拟器的执行：</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>$ qemu-system-x86_64 -S -s -serial none -nographic hello-x86_64-qemu
 </code></pre></div>
 
-<p class=" font-serif my-1">&#20854;&#20013;&#65306;</p>
+<p class=" font-serif my-1">其中：</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><code>-S</code> &#22312;&#27169;&#25311;&#22120;&#21021;&#22987;&#21270;&#23436;&#25104; (CPU Reset) &#21518;&#26242;&#20572;</li>
-<li class=" ml-8"><code>-s</code> &#21551;&#21160; gdb &#35843;&#35797;&#26381;&#21153;&#22120;&#65292;&#21487;&#20197;&#20351;&#29992; gdb &#35843;&#35797;&#27169;&#25311;&#22120;&#20013;&#30340;&#31243;&#24207;</li>
-<li class=" ml-8"><code>-serial none</code> &#24573;&#30053;&#20018;&#21475;&#36755;&#20837;/&#36755;&#20986;</li>
-<li class=" ml-8"><code>-nographics</code> &#19981;&#21551;&#21160;&#22270;&#24418;&#30028;&#38754;</li>
+<li class=" ml-8"><code>-S</code> 在模拟器初始化完成 (CPU Reset) 后暂停</li>
+<li class=" ml-8"><code>-s</code> 启动 gdb 调试服务器，可以使用 gdb 调试模拟器中的程序</li>
+<li class=" ml-8"><code>-serial none</code> 忽略串口输入/输出</li>
+<li class=" ml-8"><code>-nographics</code> 不启动图形界面</li>
 </ul>
-<p class=" font-serif my-1">&#25105;&#20204;&#21487;&#20197;&#22312;&#32456;&#31471;&#37324;&#21551;&#21160;&#19968;&#20010; monitor (Online Judge &#23601;&#22788;&#20110;&#36825;&#20010;&#27169;&#24335;)&#12290;&#22312;&#36825;&#37324;&#65292;&#25105;&#20204;&#23601;&#21487;&#20197;&#20687;&#20195;&#30721;&#35838;&#20013;&#35762;&#35299;&#30340;&#37027;&#26679;&#65292;&#30452;&#25509;&#35843;&#35797;&#25972;&#20010; QEMU &#34394;&#25311;&#26426;&#20102;&#65281;</p>
+<p class=" font-serif my-1">我们可以在终端里启动一个 monitor (Online Judge 就处于这个模式)。在这里，我们就可以像代码课中讲解的那样，直接调试整个 QEMU 虚拟机了！</p>
 <h4 id="331-cpu-reset" class=" pt-2 pb-2 font-sans">3.3.1 CPU Reset</h4>
-<p class=" font-serif my-1">&#23601;&#20687; NEMU &#19968;&#26679;&#35843;&#35797;&#34394;&#25311;&#26426;&#65292;&#25105;&#20204;&#20351;&#29992; <code>info registers</code> &#26597;&#30475; CPU Reset &#21518;&#30340;&#23492;&#23384;&#22120;&#29366;&#24577;&#12290;</p>
+<p class=" font-serif my-1">就像 NEMU 一样调试虚拟机，我们使用 <code>info registers</code> 查看 CPU Reset 后的寄存器状态。</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>QEMU 2.11.1 monitor - type 'help' for more information
 (qemu) info registers 
 EAX=00000000 EBX=00000000 ECX=00000000 EDX=00000663
@@ -516,21 +517,21 @@ XMM06=00000000000000000000000000000000 XMM07=00000000000000000000000000000000
 (qemu) 
 </code></pre></div>
 
-<p class=" font-serif my-1">CPU Reset &#21518;&#30340;&#29366;&#24577;&#28041;&#21450;&#24456;&#22810;&#29712;&#30862;&#30340;&#30828;&#20214;&#32454;&#33410;&#65292;&#36825;&#20063;&#26159;&#22823;&#23478;&#24863;&#21040;&#20026; bare-metal &#32534;&#31243;&#24456;&#31070;&#31192;&#30340;&#21407;&#22240;&#12290;&#19981;&#36807;&#31616;&#21333;&#26469;&#35762;&#65292;&#25105;&#20204;&#20851;&#24515;&#30340;&#29366;&#24577;&#21482;&#26377;&#20004;&#20010;&#65306;</p>
+<p class=" font-serif my-1">CPU Reset 后的状态涉及很多琐碎的硬件细节，这也是大家感到为 bare-metal 编程很神秘的原因。不过简单来讲，我们关心的状态只有两个：</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><code>%cr0 = 0x60000010</code>&#65292;&#26368;&#20302;&#20301; <code>PE</code>-bit &#20026; 0&#65292;&#36816;&#34892;&#22312; 16-bit &#27169;&#24335; (&#29616;&#22312; CPU &#30340;&#34892;&#20026;&#23601;&#20687; 8086)</li>
-<li class=" ml-8"><code>%cs = 0xf000</code>, <code>%ip = 0xfff0</code>&#65292;&#30456;&#24403;&#20110; PC &#25351;&#38024;&#20301;&#20110; <code>0xffff0</code></li>
+<li class=" ml-8"><code>%cr0 = 0x60000010</code>，最低位 <code>PE</code>-bit 为 0，运行在 16-bit 模式 (现在 CPU 的行为就像 8086)</li>
+<li class=" ml-8"><code>%cs = 0xf000</code>, <code>%ip = 0xfff0</code>，相当于 PC 指针位于 <code>0xffff0</code></li>
 </ul>
-<p class=" font-serif my-1">&#20320;&#29978;&#33267;&#21487;&#20197;&#26816;&#26597;&#19978;&#38754;&#25171;&#21360;&#20986;&#30340;&#29366;&#24577;&#21644;&#25163;&#20876;&#30340;&#19968;&#33268;&#24615;&#65306;</p>
+<p class=" font-serif my-1">你甚至可以检查上面打印出的状态和手册的一致性：</p>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../pages/OS/img/intel-cpu-reset.png" width="600px"></p>
-<p class=" font-serif my-1">CPU Reset &#21518;&#65292;&#25105;&#20204;&#30340;&#35745;&#31639;&#26426;&#31995;&#32479;&#23601;&#26159;&#19968;&#20010;&#29366;&#24577;&#26426;&#65292;&#25353;&#29031; &#8220;&#27599;&#27425;&#25191;&#34892;&#19968;&#26465;&#25351;&#20196;&#8221; &#30340;&#26041;&#24335;&#24037;&#20316;&#12290;</p>
-<h4 id="332-firmware-master-boot-record" class=" pt-2 pb-2 font-sans">3.3.2. Firmware: &#21152;&#36733; Master Boot Record</h4>
-<p class=" font-serif my-1">&#20301;&#20110; <code>0xffff0</code> &#30340;&#20195;&#30721;&#20197;&#20869;&#23384;&#26144;&#23556;&#30340;&#26041;&#24335;&#26144;&#23556;&#21040;&#21482;&#35835;&#30340;&#23384;&#20648;&#22120; (&#22266;&#20214;&#65292;firmware&#65292;&#20063;&#31216;&#20026; BIOS) &#20013;&#12290;&#22266;&#20214;&#20195;&#30721;&#20250;&#36827;&#34892;&#19968;&#23450;&#30340;&#35745;&#31639;&#26426;&#29366;&#24577;&#26816;&#26597; (&#27604;&#22914;&#33879;&#21517;&#30340; &#8220;Keyboard not found, press any key to continue...&#8221;)&#12290;&#22914;&#26524;&#25105;&#20204;&#22312; gdb &#20013;&#20351;&#29992; <code>target remote localhost:1234</code> &#36830;&#25509;&#21040; qemu (&#40664;&#35748;&#31471;&#21475;&#20026; 1234)&#65292;&#23601;&#21487;&#20197;&#24320;&#22987;&#21333;&#27493;&#35843;&#35797;&#22266;&#20214;&#20195;&#30721;&#12290;</p>
-<p class=" font-serif my-1">&#22312;&#27604;&#36739;&#31616;&#21333;&#30340; Legacy BIOS Firmware (Legacy Boot) &#27169;&#24335;&#65292;&#22266;&#20214;&#20250;&#20381;&#27425;&#25195;&#25551;&#31995;&#32479;&#20013;&#30340;&#23384;&#20648;&#35774;&#22791; (&#30913;&#30424;&#12289;&#20248;&#30424;&#31561;&#65292;Boot Order &#36890;&#24120;&#21487;&#20197;&#35774;&#32622;)&#65292;&#28982;&#21518;&#23558;&#31532;&#19968;&#20010;&#21487;&#21551;&#21160;&#30913;&#30424;&#30340;&#21069; 512 &#23383;&#33410; (&#20027;&#24341;&#23548;&#25159;&#21306;, Master Boot Record, MBR) &#21152;&#36733;&#21040;&#29289;&#29702;&#20869;&#23384;&#30340; <code>0x7c00</code> &#22320;&#22336;&#12290;&#20197;&#19979;&#26159; AMI &#20844;&#21496;&#22312; 1990s &#30340; BIOS Firmware &#30028;&#38754;&#65306;</p>
+<p class=" font-serif my-1">CPU Reset 后，我们的计算机系统就是一个状态机，按照 “每次执行一条指令” 的方式工作。</p>
+<h4 id="332-firmware-master-boot-record" class=" pt-2 pb-2 font-sans">3.3.2. Firmware: 加载 Master Boot Record</h4>
+<p class=" font-serif my-1">位于 <code>0xffff0</code> 的代码以内存映射的方式映射到只读的存储器 (固件，firmware，也称为 BIOS) 中。固件代码会进行一定的计算机状态检查 (比如著名的 “Keyboard not found, press any key to continue...”)。如果我们在 gdb 中使用 <code>target remote localhost:1234</code> 连接到 qemu (默认端口为 1234)，就可以开始单步调试固件代码。</p>
+<p class=" font-serif my-1">在比较简单的 Legacy BIOS Firmware (Legacy Boot) 模式，固件会依次扫描系统中的存储设备 (磁盘、优盘等，Boot Order 通常可以设置)，然后将第一个可启动磁盘的前 512 字节 (主引导扇区, Master Boot Record, MBR) 加载到物理内存的 <code>0x7c00</code> 地址。以下是 AMI 公司在 1990s 的 BIOS Firmware 界面：</p>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../pages/OS/img/bios-firmware.png" width="480px"></p>
-<p class=" font-serif my-1">&#20170;&#22825;&#30340; Firmware &#26377;&#20102; <a href="https://wiki.osdev.org/UEFI" class=" text-amber-900">UEFI &#26631;&#20934;</a>&#65292;&#33021;&#26356;&#22909;&#22320;&#25552;&#20379;&#30828;&#20214;&#30340;&#25277;&#35937;&#12289;&#25903;&#25345;&#22266;&#20214;&#24212;&#29992;&#31243;&#24207;&#8212;&#8212;&#20170;&#22825;&#30340; &#8220;BIOS&#8221; &#29978;&#33267;&#26377;&#28843;&#37239;&#30340;&#22270;&#24418;&#30028;&#38754; (&#19981;&#35201;&#23567;&#30475;&#22270;&#24418;&#30028;&#38754;&#65292;&#33021;&#26174;&#31034;&#22270;&#24418;&#24847;&#21619;&#30528;&#20320;&#24471;&#26377;&#24635;&#32447;&#12289;&#38190;&#30424;&#12289;&#40736;&#26631;&#30340;&#39537;&#21160;&#31243;&#24207;&#8230;&#8230;)&#65292;&#22266;&#20214;&#22797;&#26434;&#31243;&#24230;&#21487;&#27604;&#23567;&#22411;&#25805;&#20316;&#31995;&#32479;&#65307;UEFI &#21152;&#36733;&#22120;&#20063;&#19981;&#20877;&#20165;&#20165;&#21152;&#36733;&#26159; 512 &#23383;&#33410;&#30340; MBR&#65292;&#32780;&#26159;&#33021;&#21152;&#36733;&#20219;&#24847; GPT &#20998;&#21306;&#34920;&#19978;&#30340; FAT &#20998;&#21306;&#20013;&#23384;&#20648;&#30340;&#24212;&#29992;&#12290;&#20170;&#22825;&#30340;&#35745;&#31639;&#26426;&#40664;&#35748;&#37117;&#36890;&#36807; UEFI &#24341;&#23548;&#12290;</p>
-<p class=" font-serif my-1">&#20174;&#23481;&#26131;&#29702;&#35299;&#30340;&#35282;&#24230;&#65292;&#25105;&#20204;&#32534;&#20889;&#25805;&#20316;&#31995;&#32479;&#26102;&#65292;&#20381;&#28982;&#20174; Legacy Boot &#21551;&#21160;&#65292;&#20320;&#21482;&#38656;&#35201;&#30693;&#36947;&#65292;&#22312; x86 &#31995;&#32479;&#19978;&#65292;AbstractMachine &#21644; Firmware &#30340;&#32422;&#23450;&#26159;&#30913;&#30424;&#38236;&#20687;&#30340;&#21069; 512 &#23383;&#33410;&#23558;&#39318;&#20808;&#20250;&#34987;&#21152;&#36733;&#21040;&#29289;&#29702;&#20869;&#23384;&#20013;&#25191;&#34892;&#12290;</p>
-<p class=" font-serif my-1">&#25105;&#20204;&#21487;&#20197;&#36890;&#36807; gdb &#36830;&#25509;&#21040;&#24050;&#32463;&#21551;&#21160; (&#20294;&#26242;&#20572;) &#30340; qemu &#27169;&#25311;&#22120;&#65306;</p>
+<p class=" font-serif my-1">今天的 Firmware 有了 <a href="https://wiki.osdev.org/UEFI" class=" text-amber-900">UEFI 标准</a>，能更好地提供硬件的抽象、支持固件应用程序——今天的 “BIOS” 甚至有炫酷的图形界面 (不要小看图形界面，能显示图形意味着你得有总线、键盘、鼠标的驱动程序……)，固件复杂程度可比小型操作系统；UEFI 加载器也不再仅仅加载是 512 字节的 MBR，而是能加载任意 GPT 分区表上的 FAT 分区中存储的应用。今天的计算机默认都通过 UEFI 引导。</p>
+<p class=" font-serif my-1">从容易理解的角度，我们编写操作系统时，依然从 Legacy Boot 启动，你只需要知道，在 x86 系统上，AbstractMachine 和 Firmware 的约定是磁盘镜像的前 512 字节将首先会被加载到物理内存中执行。</p>
+<p class=" font-serif my-1">我们可以通过 gdb 连接到已经启动 (但暂停) 的 qemu 模拟器：</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>$ gdb
 (gdb) target remote localhost:1234
 Remote debugging using localhost:1234
@@ -542,7 +543,7 @@ Continuing.
 
 Breakpoint 1, 0x0000000000007c00 in ?? ()
 (gdb) x/16i $pc
-=&gt; 0x7c00:  cli    
+=> 0x7c00:  cli    
    0x7c01:  xor    %eax,%eax
    0x7c03:  mov    %eax,%ds
    0x7c05:  mov    %eax,%es
@@ -550,9 +551,9 @@ Breakpoint 1, 0x0000000000007c00 in ?? ()
    ...
 </code></pre></div>
 
-<p class=" font-serif my-1">&#20351;&#29992; <code>layout asm</code> &#36827;&#34892;&#25351;&#20196;&#32423;&#30340;&#35843;&#35797; (&#35843;&#35797; 16-bit code &#26102; disassembler &#20250;&#36935;&#21040;&#19968;&#20123;&#23567;&#40635;&#28902;&#65292;&#20294;&#35843;&#35797;&#30340;&#22522;&#26412;&#21151;&#33021;&#26159;&#27809;&#38382;&#39064;&#30340;&#65307;&#20511;&#21161;&#20854;&#20182;&#24037;&#20855;&#22914; nasm &#21487;&#20197;&#27491;&#30830;&#26597;&#30475;&#20195;&#30721;)&#12290;</p>
-<h4 id="33-boot-loader-elf" class=" pt-2 pb-2 font-sans">3.3 Boot Loader: &#35299;&#26512;&#24182;&#21152;&#36733; ELF &#25991;&#20214;</h4>
-<p class=" font-serif my-1">&#22312; gdb &#20013;&#30475;&#21040;&#30340; <code>0x7c00</code> &#22320;&#22336;&#30340;&#25351;&#20196;&#24207;&#21015;&#26159;&#25105;&#20204;&#30340; boot loader &#20195;&#30721;&#65292;&#23384;&#20648;&#22312;&#30913;&#30424;&#30340;&#21069; 512 &#23383;&#33410;&#12290;x86-64 &#30340; AbstractMachine &#22312;&#36825; 512 &#23383;&#33410;&#20869;&#23436;&#25104; ELF &#25991;&#20214;&#30340;&#21152;&#36733;&#12290;&#36825;&#37096;&#20998;&#20195;&#30721;&#20301;&#20110; <code>am/src/x86/qemu/boot</code>&#65292;&#30001;&#19968;&#37096;&#20998; 16-bit &#27719;&#32534; (<code>start.S</code>)&#65292;&#20027;&#35201;&#37096;&#20998;&#22914;&#19979;&#65306;</p>
+<p class=" font-serif my-1">使用 <code>layout asm</code> 进行指令级的调试 (调试 16-bit code 时 disassembler 会遇到一些小麻烦，但调试的基本功能是没问题的；借助其他工具如 nasm 可以正确查看代码)。</p>
+<h4 id="33-boot-loader-elf" class=" pt-2 pb-2 font-sans">3.3 Boot Loader: 解析并加载 ELF 文件</h4>
+<p class=" font-serif my-1">在 gdb 中看到的 <code>0x7c00</code> 地址的指令序列是我们的 boot loader 代码，存储在磁盘的前 512 字节。x86-64 的 AbstractMachine 在这 512 字节内完成 ELF 文件的加载。这部分代码位于 <code>am/src/x86/qemu/boot</code>，由一部分 16-bit 汇编 (<code>start.S</code>)，主要部分如下：</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="o">.</span><span class="n">code16</span>
 <span class="o">.</span><span class="n">globl</span><span class="w"> </span><span class="n">_start</span>
 <span class="n">_start</span><span class="p">:</span>
@@ -580,12 +581,12 @@ Breakpoint 1, 0x0000000000007c00 in ?? ()
 <span class="w">  </span><span class="n">call</span><span class="w">    </span><span class="n">load_kernel</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">&#36825;&#27573;&#20195;&#30721; (&#19981;&#38656;&#35201;&#29702;&#35299;) &#23601;&#26159;&#20570;&#19968;&#20123;&#24517;&#35201;&#30340;&#22788;&#29702;&#22120;&#35774;&#32622;&#65292;&#20999;&#25442;&#21040; 32-bit &#27169;&#24335;&#65292;&#35774;&#32622;&#21021;&#22987;&#30340;&#26632;&#39030;&#25351;&#38024; (<code>0xa000</code>)&#65292;&#28982;&#21518;&#36339;&#36716;&#21040; 32-bit C &#20195;&#30721; <code>load_kernel</code> &#25191;&#34892;&#12290;<code>load_kernel</code> &#20301;&#20110; <code>main.c</code> (&#26377;&#31616;&#21270;)&#65306;</p>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdint.h&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;elf.h&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;x86.h&gt;</span>
+<p class=" font-serif my-1">这段代码 (不需要理解) 就是做一些必要的处理器设置，切换到 32-bit 模式，设置初始的栈顶指针 (<code>0xa000</code>)，然后跳转到 32-bit C 代码 <code>load_kernel</code> 执行。<code>load_kernel</code> 位于 <code>main.c</code> (有简化)：</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf"><stdint.h></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf"><elf.h></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf"><x86.h></span>
 
-<span class="c1">// &#35843;&#29992; I/O &#25351;&#20196;&#25226;&#30913;&#30424;&#19978;&#30340;&#25968;&#25454;&#35835;&#21040;&#20869;&#23384;&#25351;&#23450;&#20301;&#32622;&#65307;&#20195;&#30721;&#30465;&#30053;</span>
+<span class="c1">// 调用 I/O 指令把磁盘上的数据读到内存指定位置；代码省略</span>
 <span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">copy_from_disk</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">nbytes</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">disk_offset</span><span class="p">);</span>
 
 <span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">load_program</span><span class="p">(</span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">filesz</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">memsz</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">paddr</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">offset</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -597,13 +598,13 @@ Breakpoint 1, 0x0000000000007c00 in ?? ()
 <span class="p">}</span>
 
 <span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">load_elf64</span><span class="p">(</span><span class="n">Elf64_Ehdr</span><span class="w"> </span><span class="o">*</span><span class="n">elf</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">Elf64_Phdr</span><span class="w"> </span><span class="o">*</span><span class="n">ph</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Elf64_Phdr</span><span class="w"> </span><span class="o">*</span><span class="p">)((</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">elf</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">elf</span><span class="o">-&gt;</span><span class="n">e_phoff</span><span class="p">);</span>
-<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">elf</span><span class="o">-&gt;</span><span class="n">e_phnum</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">,</span><span class="w"> </span><span class="n">ph</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Elf64_Phdr</span><span class="w"> </span><span class="o">*</span><span class="n">ph</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Elf64_Phdr</span><span class="w"> </span><span class="o">*</span><span class="p">)((</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">elf</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">elf</span><span class="o">-></span><span class="n">e_phoff</span><span class="p">);</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o"><</span><span class="w"> </span><span class="n">elf</span><span class="o">-></span><span class="n">e_phnum</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">,</span><span class="w"> </span><span class="n">ph</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">load_program</span><span class="p">(</span>
-<span class="w">      </span><span class="p">(</span><span class="kt">uint32_t</span><span class="p">)</span><span class="n">ph</span><span class="o">-&gt;</span><span class="n">p_filesz</span><span class="p">,</span>
-<span class="w">      </span><span class="p">(</span><span class="kt">uint32_t</span><span class="p">)</span><span class="n">ph</span><span class="o">-&gt;</span><span class="n">p_memsz</span><span class="p">,</span>
-<span class="w">      </span><span class="p">(</span><span class="kt">uint32_t</span><span class="p">)</span><span class="n">ph</span><span class="o">-&gt;</span><span class="n">p_paddr</span><span class="p">,</span>
-<span class="w">      </span><span class="p">(</span><span class="kt">uint32_t</span><span class="p">)</span><span class="n">ph</span><span class="o">-&gt;</span><span class="n">p_offset</span>
+<span class="w">      </span><span class="p">(</span><span class="kt">uint32_t</span><span class="p">)</span><span class="n">ph</span><span class="o">-></span><span class="n">p_filesz</span><span class="p">,</span>
+<span class="w">      </span><span class="p">(</span><span class="kt">uint32_t</span><span class="p">)</span><span class="n">ph</span><span class="o">-></span><span class="n">p_memsz</span><span class="p">,</span>
+<span class="w">      </span><span class="p">(</span><span class="kt">uint32_t</span><span class="p">)</span><span class="n">ph</span><span class="o">-></span><span class="n">p_paddr</span><span class="p">,</span>
+<span class="w">      </span><span class="p">(</span><span class="kt">uint32_t</span><span class="p">)</span><span class="n">ph</span><span class="o">-></span><span class="n">p_offset</span>
 <span class="w">    </span><span class="p">);</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
@@ -611,23 +612,23 @@ Breakpoint 1, 0x0000000000007c00 in ?? ()
 <span class="kt">void</span><span class="w"> </span><span class="nf">load_kernel</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">Elf32_Ehdr</span><span class="w"> </span><span class="o">*</span><span class="n">elf32</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="mh">0x8000</span><span class="p">;</span>
 <span class="w">  </span><span class="n">Elf64_Ehdr</span><span class="w"> </span><span class="o">*</span><span class="n">elf64</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="mh">0x8000</span><span class="p">;</span>
-<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">is_ap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">boot_record</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">is_ap</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">is_ap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">boot_record</span><span class="p">()</span><span class="o">-></span><span class="n">is_ap</span><span class="p">;</span>
 
-<span class="w">  </span><span class="c1">// &#23558; ELF &#25991;&#20214;&#30340;&#22836;&#37096;&#21152;&#36733;&#21040;&#29289;&#29702;&#22320;&#22336; 0x8000</span>
+<span class="w">  </span><span class="c1">// 将 ELF 文件的头部加载到物理地址 0x8000</span>
 <span class="w">  </span><span class="n">copy_from_disk</span><span class="p">(</span><span class="n">elf32</span><span class="p">,</span><span class="w"> </span><span class="mi">4096</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
 
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">elf32</span><span class="o">-&gt;</span><span class="n">e_machine</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">EM_X86_64</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// &#21152;&#36733; ELF &#25991;&#20214;</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">elf32</span><span class="o">-></span><span class="n">e_machine</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">EM_X86_64</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 加载 ELF 文件</span>
 <span class="w">    </span><span class="n">load_elf64</span><span class="p">(</span><span class="n">elf64</span><span class="p">);</span>
-<span class="w">    </span><span class="c1">// &#36339;&#36716;&#21040; ELF &#22836;&#25351;&#23450;&#30340;&#20837;&#21475;&#22320;&#22336;&#25191;&#34892;</span>
-<span class="w">    </span><span class="p">((</span><span class="kt">void</span><span class="p">(</span><span class="o">*</span><span class="p">)())(</span><span class="kt">uint32_t</span><span class="p">)</span><span class="n">elf64</span><span class="o">-&gt;</span><span class="n">e_entry</span><span class="p">)();</span>
+<span class="w">    </span><span class="c1">// 跳转到 ELF 头指定的入口地址执行</span>
+<span class="w">    </span><span class="p">((</span><span class="kt">void</span><span class="p">(</span><span class="o">*</span><span class="p">)())(</span><span class="kt">uint32_t</span><span class="p">)</span><span class="n">elf64</span><span class="o">-></span><span class="n">e_entry</span><span class="p">)();</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">&#25105;&#20204;&#29616;&#22312;&#21482;&#38656;&#35201;&#30693;&#36947;&#25105;&#20204;&#32534;&#20889;&#30340;&#36825;&#27573;&#20195;&#30721;&#20250;&#34987;&#32534;&#35793;&#38142;&#25509;&#65292;&#28982;&#21518;&#34987;&#25918;&#32622;&#22312;&#30913;&#30424;&#30340; MBR&#65292;&#20174;&#32780;&#34987;&#22266;&#20214;&#33258;&#21160;&#21152;&#36733;&#25191;&#34892;&#12290;&#22312; <code>load_elf64</code> &#20013;&#65292;&#25105;&#20204;&#26681;&#25454; ELF &#26684;&#24335;&#30340;&#35268;&#23450;&#23558;&#25991;&#20214;&#20869;&#23481;&#36733;&#20837;&#20869;&#23384;&#65292;&#28982;&#21518;&#36339;&#36716;&#21040; ELF &#25991;&#20214;&#30340;&#20837;&#21475;&#65292;&#23601;&#31639;&#23436;&#25104;&#20102; &#8220;hello &#30340;&#21152;&#36733;&#8221;&#12290;</p>
-<h4 id="34-_start-64-bit-long-mode" class=" pt-2 pb-2 font-sans">3.4 <code>_start</code>: &#21021;&#22987;&#21270; 64-bit Long Mode</h4>
-<p class=" font-serif my-1">&#27492;&#26102;&#25105;&#20204;&#30340; hello (&#20197;&#21450;&#26410;&#26469;&#30340; &#8220;&#25805;&#20316;&#31995;&#32479;&#8221;) &#20195;&#30721;&#24050;&#32463;&#24320;&#22987;&#25191;&#34892;&#20102;&#65292;&#19981;&#36807;&#27492;&#26102;&#36824;&#19981;&#33021;&#31435;&#21363;&#25191;&#34892; <code>main</code> &#20989;&#25968;&#8212;&#8212;&#25105;&#20204;&#36824;&#22788;&#20110; 32-bit &#27169;&#24335;&#12290;<code>am/src/x86/qemu/start64.S</code> &#30340;&#20195;&#30721;&#20250;&#23436;&#25104;&#26368;&#21518;&#30340;&#35774;&#32622;&#65292;&#27604;&#36739;&#37325;&#35201;&#30340;&#26159;&#21551;&#21160;&#20998;&#39029; (&#27491;&#30830;&#35774;&#32622;&#22235;&#32423;&#39029;&#34920;)&#12289;&#20999;&#25442;&#21040; x86-64 Long Mode&#65292;&#28982;&#21518;&#36827;&#20837;&#20197;&#19979; 64-bit &#20195;&#30721;&#25191;&#34892;&#65306;</p>
+<p class=" font-serif my-1">我们现在只需要知道我们编写的这段代码会被编译链接，然后被放置在磁盘的 MBR，从而被固件自动加载执行。在 <code>load_elf64</code> 中，我们根据 ELF 格式的规定将文件内容载入内存，然后跳转到 ELF 文件的入口，就算完成了 “hello 的加载”。</p>
+<h4 id="34-_start-64-bit-long-mode" class=" pt-2 pb-2 font-sans">3.4 <code>_start</code>: 初始化 64-bit Long Mode</h4>
+<p class=" font-serif my-1">此时我们的 hello (以及未来的 “操作系统”) 代码已经开始执行了，不过此时还不能立即执行 <code>main</code> 函数——我们还处于 32-bit 模式。<code>am/src/x86/qemu/start64.S</code> 的代码会完成最后的设置，比较重要的是启动分页 (正确设置四级页表)、切换到 x86-64 Long Mode，然后进入以下 64-bit 代码执行：</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="na">.code64</span>
 <span class="nl">_start64:</span>
 <span class="w">  </span><span class="nf">movw</span><span class="w">  </span><span class="no">$0</span><span class="p">,</span><span class="w">  </span><span class="nv">%ax</span>
@@ -642,54 +643,54 @@ Breakpoint 1, 0x0000000000007c00 in ?? ()
 <span class="w">  </span><span class="nf">jmp</span><span class="w">   </span><span class="no">_start_c</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">&#20043;&#21518;&#65292;&#25105;&#20204;&#23601;&#36827;&#20837;&#20102; C &#20195;&#30721;&#30340;&#19990;&#30028;&#65307;&#20294;&#27492;&#26102;&#24182;&#26410;&#23436;&#25104;&#25152;&#26377;&#30340;&#21021;&#22987;&#21270;&#65292;&#22312; <code>trm.c</code> &#20013;&#30340;&#20195;&#30721;&#36824;&#35201;&#23436;&#25104;&#19968;&#31995;&#21015;&#30828;&#20214;/&#36816;&#34892;&#29615;&#22659;&#30340;&#21021;&#22987;&#21270;&#65306;</p>
+<p class=" font-serif my-1">之后，我们就进入了 C 代码的世界；但此时并未完成所有的初始化，在 <code>trm.c</code> 中的代码还要完成一系列硬件/运行环境的初始化：</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">_start_c</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">boot_record</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">is_ap</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// &#31532;&#19968;&#20010;&#22788;&#29702;&#22120;</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">boot_record</span><span class="p">()</span><span class="o">-></span><span class="n">is_ap</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 第一个处理器</span>
 <span class="w">    </span><span class="n">__am_bootcpu_init</span><span class="p">();</span>
 <span class="w">    </span><span class="n">stack_switch_call</span><span class="p">(</span>
-<span class="w">      </span><span class="n">stack_top</span><span class="p">(</span><span class="o">&amp;</span><span class="n">CPU</span><span class="o">-&gt;</span><span class="n">stack</span><span class="p">),</span><span class="w"> </span><span class="c1">// &#20999;&#25442;&#21040; percpu &#30340;&#26632;&#65307;&#24605;&#32771;&#39064;&#65306;&#20026;&#20160;&#20040;&#65311;&#65311;</span>
-<span class="w">      </span><span class="n">call_main</span><span class="p">,</span><span class="w">              </span><span class="c1">// &#25191;&#34892; call_main(args)</span>
+<span class="w">      </span><span class="n">stack_top</span><span class="p">(</span><span class="o">&</span><span class="n">CPU</span><span class="o">-></span><span class="n">stack</span><span class="p">),</span><span class="w"> </span><span class="c1">// 切换到 percpu 的栈；思考题：为什么？？</span>
+<span class="w">      </span><span class="n">call_main</span><span class="p">,</span><span class="w">              </span><span class="c1">// 执行 call_main(args)</span>
 <span class="w">      </span><span class="p">(</span><span class="kt">uintptr_t</span><span class="p">)</span><span class="n">args</span>
 <span class="w">    </span><span class="p">);</span>
 <span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// &#20854;&#20182;&#22788;&#29702;&#22120;</span>
+<span class="w">    </span><span class="c1">// 其他处理器</span>
 <span class="w">    </span><span class="n">__am_othercpu_entry</span><span class="p">();</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">__am_bootcpu_init</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">heap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">__am_heap_init</span><span class="p">();</span><span class="w"> </span><span class="c1">// &#33719;&#24471;&#29289;&#29702;&#20869;&#23384;&#22823;&#23567;</span>
-<span class="w">  </span><span class="n">__am_lapic_init</span><span class="p">();</span><span class="w">        </span><span class="c1">// &#21021;&#22987;&#21270;&#20013;&#26029;&#25511;&#21046;&#22120;</span>
+<span class="w">  </span><span class="n">heap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">__am_heap_init</span><span class="p">();</span><span class="w"> </span><span class="c1">// 获得物理内存大小</span>
+<span class="w">  </span><span class="n">__am_lapic_init</span><span class="p">();</span><span class="w">        </span><span class="c1">// 初始化中断控制器</span>
 <span class="w">  </span><span class="n">__am_ioapic_init</span><span class="p">();</span>
-<span class="w">  </span><span class="n">__am_percpu_init</span><span class="p">();</span><span class="w">       </span><span class="c1">// &#20854;&#20182;&#22788;&#29702;&#22120;&#30456;&#20851;&#30340;&#21021;&#22987;&#21270;</span>
+<span class="w">  </span><span class="n">__am_percpu_init</span><span class="p">();</span><span class="w">       </span><span class="c1">// 其他处理器相关的初始化</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">&#26368;&#21518;&#65292;&#23436;&#25104;&#22534;&#26632;&#20999;&#25442;&#65292;&#28982;&#21518;&#35843;&#29992; <code>call_main</code> &#20989;&#25968;&#65306;</p>
+<p class=" font-serif my-1">最后，完成堆栈切换，然后调用 <code>call_main</code> 函数：</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">call_main</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">halt</span><span class="p">(</span><span class="n">main</span><span class="p">(</span><span class="n">args</span><span class="p">));</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">Say hello &#30340; main &#27492;&#26102;&#25165;&#27491;&#24335;&#24320;&#22987;&#25191;&#34892;&#65292;&#30495;&#26159;&#19968;&#27573;&#28459;&#38271;&#30340;&#26053;&#36884;&#65281;</p>
+<p class=" font-serif my-1">Say hello 的 main 此时才正式开始执行，真是一段漫长的旅途！</p>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<h4 id="_2" class=" pt-2 pb-2 font-sans float-left text-sm box border mr-1 mt-1 box-blue" style=" padding-bottom: 0;">&#25226;&#23427;&#20204;&#37117;&#24536;&#20102;&#21543;&#65281;</h4>
-<p class=" font-serif my-1">&#20316;&#20026;&#23545;&#20320;&#35835;&#21040;&#36825;&#37324;&#32784;&#24515;&#30340;&#22025;&#22870;&#65292;&#20801;&#35768;&#20320;&#25226;&#20043;&#21069;&#21457;&#29983;&#30340;&#20107;&#24773;&#37117;&#24536;&#35760;&#12290;&#20320;&#21482;&#38656;&#35201;&#30693;&#36947;&#22312; <code>main</code> &#20989;&#25968;&#36816;&#34892;&#30340;&#26102;&#20505;&#65292;C &#35821;&#35328;&#30340;&#36816;&#34892;&#26102;&#29615;&#22659;&#24050;&#32463;&#23436;&#20840;&#21021;&#22987;&#21270;&#22909; (&#20195;&#30721;&#12289;&#25968;&#25454;&#12289;&#22534;&#21306;&#12289;&#26632;&#21306;)&#65292;&#24182;&#19988; C &#20195;&#30721;&#21487;&#20197;&#35843;&#29992;&#19968;&#20123;&#24211;&#20989;&#25968;&#12290;</p>
+<h4 id="_2" class=" pt-2 pb-2 font-sans float-left text-sm box border mr-1 mt-1 box-blue" style=" padding-bottom: 0;">把它们都忘了吧！</h4>
+<p class=" font-serif my-1">作为对你读到这里耐心的嘉奖，允许你把之前发生的事情都忘记。你只需要知道在 <code>main</code> 函数运行的时候，C 语言的运行时环境已经完全初始化好 (代码、数据、堆区、栈区)，并且 C 代码可以调用一些库函数。</p>
 </blockquote>
-<h3 id="334-bare-metal" class=" text-lg mt-2 pb-2 font-sans">3.3.4. Bare-Metal &#19978;&#30340;&#31243;&#24207;</h3>
-<p class=" font-serif my-1">C &#31243;&#24207;&#32534;&#35793;&#21518;&#24471;&#21040;&#30340;&#25351;&#20196;&#24207;&#21015;&#32456;&#20110;&#22312; bare-metal &#19978;&#24320;&#22987;&#36816;&#34892;&#12290;</p>
-<p class=" font-serif my-1">&#21644;&#25805;&#20316;&#31995;&#32479;&#19978;&#30340; C &#31243;&#24207;&#19981;&#21516;&#65292;AbstractMachine &#19978;&#30340;&#31243;&#24207;&#23545;&#35745;&#31639;&#26426;&#30828;&#20214;&#31995;&#32479;&#26377;&#23436;&#25972;&#30340;&#25511;&#21046;&#65292;&#29978;&#33267;&#21487;&#20197;&#38142;&#25509;&#27719;&#32534;&#20195;&#30721;&#25110;&#20351;&#29992;&#20869;&#32852;&#27719;&#32534; (inline assembly) &#35775;&#38382;&#31995;&#32479;&#25351;&#20196;&#12290;&#25105;&#20204;&#21487;&#20197;&#22312; bare-metal &#19978;&#32534;&#20889;&#21508;&#31181; non-trival &#30340;&#31243;&#24207;&#65292;&#20363;&#22914;&#20219;&#20309;&#23567;&#28216;&#25103; (&#21442;&#32771; OS Lab 0)&#65292;&#20854;&#20013;&#20351;&#29992; I/O &#25351;&#20196;&#21644; memory-mapped I/O &#30452;&#25509;&#21644;&#29289;&#29702;&#35774;&#22791;&#20132;&#20114;&#65292;&#35835;&#21462;&#31995;&#32479;&#26102;&#38388;&#21644;&#25353;&#38190;&#12289;&#26356;&#26032;&#23631;&#24149;&#12290;</p>
+<h3 id="334-bare-metal" class=" text-lg mt-2 pb-2 font-sans">3.3.4. Bare-Metal 上的程序</h3>
+<p class=" font-serif my-1">C 程序编译后得到的指令序列终于在 bare-metal 上开始运行。</p>
+<p class=" font-serif my-1">和操作系统上的 C 程序不同，AbstractMachine 上的程序对计算机硬件系统有完整的控制，甚至可以链接汇编代码或使用内联汇编 (inline assembly) 访问系统指令。我们可以在 bare-metal 上编写各种 non-trival 的程序，例如任何小游戏 (参考 OS Lab 0)，其中使用 I/O 指令和 memory-mapped I/O 直接和物理设备交互，读取系统时间和按键、更新屏幕。</p>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<h4 id="_3" class=" pt-2 pb-2 font-sans float-left text-sm box border mr-1 mt-1 box-blue" style=" padding-bottom: 0;">&#26368;&#21518;&#65292;&#25805;&#20316;&#31995;&#32479;</h4>
-<p class=" font-serif my-1">&#22312;&#12298;&#25805;&#20316;&#31995;&#32479;&#12299;&#35838;&#31243;&#23454;&#39564;&#20013;&#65292;&#25805;&#20316;&#31995;&#32479;&#20063;&#26159; AbstractMachine &#19978;&#30340;&#19968;&#20010;&#31243;&#24207;&#12290;&#22312;&#25105;&#20204;&#32456;&#20110;&#21487;&#20197;&#25243;&#20986;&#36825;&#20010;&#21313;&#20998;&#32463;&#20856;&#30340;&#35828;&#27861;&#65306;&#8220;<strong>&#25805;&#20316;&#31995;&#32479;&#23601;&#26159;&#19968;&#20010; C &#31243;&#24207;</strong>&#8221;&#12290;&#25805;&#20316;&#31995;&#32479;&#20869;&#26680;&#30340;&#28304;&#20195;&#30721; (&#33509;&#24178; <code>.c</code> &#25991;&#20214;&#21644; AbstractMachien API &#24211;) &#32463;&#36807; (&#21018;&#25165;&#25551;&#36848;&#30340;&#12289;&#28459;&#38271;&#30340;) &#32534;&#35793;&#21644;&#38142;&#25509;&#29983;&#25104;&#20108;&#36827;&#21046;&#25991;&#20214;&#65292;&#28982;&#21518;&#34987;&#20445;&#23384;&#21040;&#23384;&#20648;&#35774;&#22791;&#20013;&#65292;&#30001;&#21152;&#36733;&#22120;&#21152;&#36733;&#36816;&#34892;&#12290;&#20174;&#21407;&#29702;&#19978;&#35828;&#65292;&#25805;&#20316;&#31995;&#32479;&#19981;&#36807;&#22914;&#27492;&#12290;</p>
+<h4 id="_3" class=" pt-2 pb-2 font-sans float-left text-sm box border mr-1 mt-1 box-blue" style=" padding-bottom: 0;">最后，操作系统</h4>
+<p class=" font-serif my-1">在《操作系统》课程实验中，操作系统也是 AbstractMachine 上的一个程序。在我们终于可以抛出这个十分经典的说法：“<strong>操作系统就是一个 C 程序</strong>”。操作系统内核的源代码 (若干 <code>.c</code> 文件和 AbstractMachien API 库) 经过 (刚才描述的、漫长的) 编译和链接生成二进制文件，然后被保存到存储设备中，由加载器加载运行。从原理上说，操作系统不过如此。</p>
 </blockquote></div>
 </div>
 
 <div class="container text-xs py-3">
   <span class="text-muted">
     <center><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="../../static/img/cc-4.0.png"></a>
-    &#160;&#160;&#160;<a style="color:inherit" href="https://beian.miit.gov.cn/">&#33487; ICP &#22791; 2020049101 &#21495;</a>
+       <a style="color:inherit" href="https://beian.miit.gov.cn/">苏 ICP 备 2020049101 号</a>
     </center>
   </span>
 </div>
@@ -722,5 +723,6 @@ function login() {
 
 
 </body>
+
 
 </html>

@@ -1,10 +1,11 @@
 <!DOCTYPE html><html class="h-100">
 
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="../../../static/css/base.css" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com/"></script>
   <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
 
@@ -23,14 +24,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +210,7 @@ section .center {
 }
 </style>
 
-  <title>ext2/UNIX &#25991;&#20214;&#31995;&#32479;</title>
+  <title>ext2/UNIX 文件系统</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,7 +228,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="ext2unix" class=" text-2xl mt-2 font-sans"><a href="28.3.slides.html" class=" text-amber-900">ext2/UNIX &#25991;&#20214;&#31995;&#32479;</a></h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="ext2unix" class=" text-2xl mt-2 font-sans"><a href="28.3.slides.html" class=" text-amber-900">ext2/UNIX 文件系统</a></h1></div></div></div>
         
       
       </section>
@@ -238,8 +239,8 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26356;&#22909;&#30340;&#25991;&#20214;&#31995;&#32479;&#65306;&#38656;&#35201;&#20570;&#21040;&#20160;&#20040;&#65311;</h2>
-<p class=" font-serif my-1">&#19981;&#33021; &#8220;&#23613;&#21892;&#23613;&#32654;&#8221;&#65292;&#20294;&#21487;&#20197;&#22312; &#8220;&#23454;&#38469; workload&#8221; &#19979;&#23613;&#21487;&#33021;&#22909;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">更好的文件系统：需要做到什么？</h2>
+<p class=" font-serif my-1">不能 “尽善尽美”，但可以在 “实际 workload” 下尽可能好</p>
 <table>
 <thead>
 <tr>
@@ -284,21 +285,21 @@ section .center {
 
       
         
-        <div><h2 id="ext2unix" class=" text-xl mt-2 pb-2 font-sans">ext2/UNIX &#25991;&#20214;&#31995;&#32479;</h2>
-<p class=" font-serif my-1">&#25353;&#23545;&#35937;&#26041;&#24335;&#38598;&#20013;&#23384;&#20648;&#25991;&#20214;/&#30446;&#24405;&#20803;&#25968;&#25454;</p>
+        <div><h2 id="ext2unix" class=" text-xl mt-2 pb-2 font-sans">ext2/UNIX 文件系统</h2>
+<p class=" font-serif my-1">按对象方式集中存储文件/目录元数据</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#22686;&#24378;&#23616;&#37096;&#24615; (&#26356;&#26131;&#20110;&#32531;&#23384;)</li>
-<li class=" ml-8">&#25903;&#25345;&#38142;&#25509;</li>
+<li class=" ml-8">增强局部性 (更易于缓存)</li>
+<li class=" ml-8">支持链接</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#20026;&#22823;&#23567;&#25991;&#20214;&#21306;&#20998; fast/slow path</p>
+<p class=" font-serif my-1">为大小文件区分 fast/slow path</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#23567;&#30340;&#26102;&#20505;&#24212;&#35813;&#29992;&#25968;&#32452;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#36830;&#38142;&#34920;&#36941;&#21382;&#37117;&#30465;&#20102;</li>
+<li class=" ml-8">小的时候应该用数组<ul class=" list-disc font-serif">
+<li class=" ml-8">连链表遍历都省了</li>
 </ul>
 </li>
-<li class=" ml-8">&#22823;&#30340;&#26102;&#20505;&#24212;&#35813;&#29992;&#26641; (B-Tree; Radix-Tree; ...)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#24555;&#36895;&#30340;&#38543;&#26426;&#35775;&#38382;</li>
+<li class=" ml-8">大的时候应该用树 (B-Tree; Radix-Tree; ...)<ul class=" list-disc font-serif">
+<li class=" ml-8">快速的随机访问</li>
 </ul>
 </li>
 </ul></div>
@@ -312,14 +313,14 @@ section .center {
 
       
         
-        <div><h2 id="ext2" class=" text-xl mt-2 pb-2 font-sans">ext2: &#30913;&#30424;&#38236;&#20687;&#26684;&#24335;</h2>
-<p class=" font-serif my-1">&#23545;&#30913;&#30424;&#36827;&#34892;&#20998;&#32452;</p>
+        <div><h2 id="ext2" class=" text-xl mt-2 pb-2 font-sans">ext2: 磁盘镜像格式</h2>
+<p class=" font-serif my-1">对磁盘进行分组</p>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/fs-ext2.png" width="600px"></p>
-<p class=" font-serif my-1">&#8220;superblock&#8221;&#65306;&#25991;&#20214;&#31995;&#32479;&#20803;&#25968;&#25454;</p>
+<p class=" font-serif my-1">“superblock”：文件系统元数据</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25991;&#20214; (inode) &#25968;&#37327;</li>
-<li class=" ml-8">block group &#20449;&#24687;<ul class=" list-disc font-serif">
-<li class=" ml-8"><a href="../../../pages/OS/2023/p/ext2.h" class=" text-amber-900">ext2.h</a> &#37324;&#26377;&#20320;&#38656;&#35201;&#30693;&#36947;&#30340;&#19968;&#20999;</li>
+<li class=" ml-8">文件 (inode) 数量</li>
+<li class=" ml-8">block group 信息<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="../../../pages/OS/2023/p/ext2.h" class=" text-amber-900">ext2.h</a> 里有你需要知道的一切</li>
 </ul>
 </li>
 </ul></div>
@@ -345,11 +346,11 @@ section .center {
 
       
         
-        <div><h2 id="ext2" class=" text-xl mt-2 pb-2 font-sans">ext2 &#30446;&#24405;&#25991;&#20214;</h2>
-<p class=" font-serif my-1">&#19982; FAT &#26412;&#36136;&#30456;&#21516;&#65306;&#22312;&#25991;&#20214;&#19978;&#24314;&#31435;&#30446;&#24405;&#30340;&#25968;&#25454;&#32467;&#26500;</p>
+        <div><h2 id="ext2" class=" text-xl mt-2 pb-2 font-sans">ext2 目录文件</h2>
+<p class=" font-serif my-1">与 FAT 本质相同：在文件上建立目录的数据结构</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#27880;&#24847;&#21040; inode &#32479;&#19968;&#23384;&#20648;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#30446;&#24405;&#25991;&#20214;&#20013;&#23384;&#20648;&#25991;&#20214;&#21517;&#21040; inode &#32534;&#21495;&#30340; key-value mapping</li>
+<li class=" ml-8">注意到 inode 统一存储<ul class=" list-disc font-serif">
+<li class=" ml-8">目录文件中存储文件名到 inode 编号的 key-value mapping</li>
 </ul>
 </li>
 </ul>
@@ -364,23 +365,23 @@ section .center {
 
       
         
-        <div><h2 id="ext2" class=" text-xl mt-2 pb-2 font-sans">ext2: &#24615;&#33021;&#19982;&#21487;&#38752;&#24615;</h2>
-<p class=" font-serif my-1">&#23616;&#37096;&#24615;&#19982;&#32531;&#23384;</p>
+        <div><h2 id="ext2" class=" text-xl mt-2 pb-2 font-sans">ext2: 性能与可靠性</h2>
+<p class=" font-serif my-1">局部性与缓存</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">bitmap, inode &#37117;&#26377; &#8220;&#38598;&#20013;&#23384;&#20648;&#8221; &#30340;&#23616;&#37096;&#24615;</li>
-<li class=" ml-8">&#36890;&#36807;&#20869;&#23384;&#32531;&#23384;&#20943;&#23569;&#35835;/&#20889;&#25918;&#22823;</li>
+<li class=" ml-8">bitmap, inode 都有 “集中存储” 的局部性</li>
+<li class=" ml-8">通过内存缓存减少读/写放大</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#22823;&#25991;&#20214;&#30340;&#38543;&#26426;&#35835;&#20889;&#24615;&#33021;&#25552;&#21319;&#26126;&#26174; ($O(1)$)</p>
+<p class=" font-serif my-1">大文件的随机读写性能提升明显 ($O(1)$)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25903;&#25345;&#38142;&#25509; (&#19968;&#23450;&#31243;&#24230;&#20943;&#23569;&#31354;&#38388;&#28010;&#36153;)</li>
-<li class=" ml-8">inode &#22312;&#30913;&#30424;&#19978;&#36830;&#32493;&#23384;&#20648;&#65292;&#20415;&#20110;&#32531;&#23384;/&#39044;&#21462;</li>
-<li class=" ml-8">&#20381;&#28982;&#26377;&#30862;&#29255;&#30340;&#38382;&#39064;</li>
+<li class=" ml-8">支持链接 (一定程度减少空间浪费)</li>
+<li class=" ml-8">inode 在磁盘上连续存储，便于缓存/预取</li>
+<li class=" ml-8">依然有碎片的问题</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#20294;&#21487;&#38752;&#24615;&#20381;&#28982;&#26159;&#20010;&#24456;&#22823;&#30340;&#38382;&#39064;</p>
+<p class=" font-serif my-1">但可靠性依然是个很大的问题</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#23384;&#20648; inode &#30340;&#25968;&#25454;&#22359;&#25439;&#22351;&#26159;&#24456;&#20005;&#37325;&#30340;</li>
+<li class=" ml-8">存储 inode 的数据块损坏是很严重的</li>
 </ul></div>
         
       
@@ -411,5 +412,6 @@ section .center {
 
 
 </body>
+
 
 </html>

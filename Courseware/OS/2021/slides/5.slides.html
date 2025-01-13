@@ -1,10 +1,11 @@
 <!DOCTYPE html><html class="h-100">
 
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="../../../static/css/base.css" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com/"></script>
   <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
 
@@ -23,14 +24,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +210,7 @@ section .center {
 }
 </style>
 
-  <title>&#24182;&#21457;&#25511;&#21046;&#65306;&#20114;&#26021; (2)</title>
+  <title>并发控制：互斥 (2)</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,21 +228,21 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="2" class=" text-2xl mt-2 font-sans">&#24182;&#21457;&#25511;&#21046;&#65306;&#20114;&#26021; (2)</h1>
-<p class=" font-serif my-1"><include src="Slides_Author"><div><div class="py-16">
-<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">&#33931;&#28814;&#23721;</a></p>
+        <div><div class="center middle"><div style="width:100%"><h1 id="2" class=" text-2xl mt-2 font-sans">并发控制：互斥 (2)</h1>
+<p class=" font-serif my-1"><include src="Slides_Author/index.html"><div><div class="py-16">
+<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">蒋炎岩</a></p>
 </div>
 <div class="row">
 <div class="author-affiliation">
-    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#12288;&#12288;&#21335;&#20140;&#22823;&#23398;&#12288;&#12288;</p>
+    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">　　南京大学　　</p>
     <img class="inline-img h-24" src="../../../static/img/nju-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#31185;&#23398;&#19982;&#25216;&#26415;&#31995;</p>
+   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">计算机科学与技术系</p>
     <img class="inline-img h-24" src="../../../static/img/njucs-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#36719;&#20214;&#30740;&#31350;&#25152;</p>
+    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">计算机软件研究所</p>
     <img class="inline-img h-24" src="../../../static/img/ics-logo.png" style="display: inline-block;"></a>
   </div>
 </div></div></include></p></div></div></div>
@@ -255,20 +256,20 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#32972;&#26223;</h2>
-<p class=" font-serif my-1">&#20114;&#26021;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">背景</h2>
+<p class=" font-serif my-1">互斥</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">Peterson &#31639;&#27861;</li>
-<li class=" ml-8">&#21407;&#23376;&#25351;&#20196;&#21644;&#33258;&#26059;&#38145;</li>
+<li class=" ml-8">Peterson 算法</li>
+<li class=" ml-8">原子指令和自旋锁</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#24182;&#21457;&#32534;&#31243;</p>
+<p class=" font-serif my-1">并发编程</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25968;&#25454;&#31454;&#20105;</li>
-<li class=" ml-8">&#24182;&#21457;&#25968;&#25454;&#32467;&#26500;</li>
+<li class=" ml-8">数据竞争</li>
+<li class=" ml-8">并发数据结构</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#22823;&#23478;&#24050;&#32463;&#25484;&#25569;&#20102;&#36234;&#26469;&#36234;&#22810;&#32534;&#20889;&#24182;&#21457;&#31243;&#24207;&#30340;&#24037;&#20855;&#20102;&#65281;</p></div>
+<p class=" font-serif my-1">大家已经掌握了越来越多编写并发程序的工具了！</p></div>
         
       
       </section>
@@ -279,12 +280,12 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26412;&#27425;&#35838;&#20869;&#23481;&#19982;&#30446;&#26631;</h2>
-<p class=" font-serif my-1">&#20351;&#29992;&#25805;&#20316;&#31995;&#32479; (&#21644;&#30828;&#20214;&#26426;&#21046;) &#23454;&#29616;&#38750;&#33258;&#26059;&#30340;&#38145;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">本次课内容与目标</h2>
+<p class=" font-serif my-1">使用操作系统 (和硬件机制) 实现非自旋的锁</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">yield &#38145;</li>
-<li class=" ml-8">&#20114;&#26021;&#38145;</li>
-<li class=" ml-8">futex: &#33258;&#26059; + &#31561;&#24453;</li>
+<li class=" ml-8">yield 锁</li>
+<li class=" ml-8">互斥锁</li>
+<li class=" ml-8">futex: 自旋 + 等待</li>
 </ul></div>
         
       
@@ -300,7 +301,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#22797;&#20064;&#65306;&#33258;&#26059;&#38145;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">复习：自旋锁</h1></div></div></div>
         
       
       </section>
@@ -311,24 +312,24 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20351;&#29992;&#21407;&#23376;&#25351;&#20196;&#23454;&#29616;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">使用原子指令实现</h2>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">table</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">KEY</span><span class="p">;</span>
 <span class="kt">void</span><span class="w"> </span><span class="nf">lock</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="nl">retry</span><span class="p">:</span>
-<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">got</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xchg</span><span class="p">(</span><span class="o">&amp;</span><span class="n">table</span><span class="p">,</span><span class="w"> </span><span class="n">NOTE</span><span class="p">);</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">got</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xchg</span><span class="p">(</span><span class="o">&</span><span class="n">table</span><span class="p">,</span><span class="w"> </span><span class="n">NOTE</span><span class="p">);</span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">got</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">KEY</span><span class="p">)</span>
 <span class="w">    </span><span class="k">goto</span><span class="w"> </span><span class="n">retry</span><span class="p">;</span>
 <span class="w">  </span><span class="n">assert</span><span class="p">(</span><span class="n">got</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">KEY</span><span class="p">);</span>
 <span class="p">}</span>
 <span class="kt">void</span><span class="w"> </span><span class="nf">unlock</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">xchg</span><span class="p">(</span><span class="o">&amp;</span><span class="n">table</span><span class="p">,</span><span class="w"> </span><span class="n">KEY</span><span class="p">)</span>
+<span class="w">  </span><span class="n">xchg</span><span class="p">(</span><span class="o">&</span><span class="n">table</span><span class="p">,</span><span class="w"> </span><span class="n">KEY</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">locked</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="n">spinlock_t</span><span class="p">;</span>
 <span class="cp">#define LOCK_INIT() ((spinlock_t) { .locked = 0 })</span>
-<span class="kt">void</span><span class="w"> </span><span class="nf">spin_lock</span><span class="p">(</span><span class="n">spinlock_t</span><span class="w"> </span><span class="o">*</span><span class="n">lk</span><span class="p">)</span><span class="w">   </span><span class="p">{</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">xchg</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lk</span><span class="o">-&gt;</span><span class="n">locked</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">));</span><span class="w"> </span><span class="p">}</span>
-<span class="kt">void</span><span class="w"> </span><span class="nf">spin_unlock</span><span class="p">(</span><span class="n">spinlock_t</span><span class="w"> </span><span class="o">*</span><span class="n">lk</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">xchg</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lk</span><span class="o">-&gt;</span><span class="n">locked</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">spin_lock</span><span class="p">(</span><span class="n">spinlock_t</span><span class="w"> </span><span class="o">*</span><span class="n">lk</span><span class="p">)</span><span class="w">   </span><span class="p">{</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">xchg</span><span class="p">(</span><span class="o">&</span><span class="n">lk</span><span class="o">-></span><span class="n">locked</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">));</span><span class="w"> </span><span class="p">}</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">spin_unlock</span><span class="p">(</span><span class="n">spinlock_t</span><span class="w"> </span><span class="o">*</span><span class="n">lk</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">xchg</span><span class="p">(</span><span class="o">&</span><span class="n">lk</span><span class="o">-></span><span class="n">locked</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div></div>
         
       
@@ -340,13 +341,13 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#33258;&#26059;&#38145;&#65306;&#24212;&#29992;</h2>
-<p class=" font-serif my-1">&#20445;&#25252;&#24182;&#21457;&#20195;&#30721;&#23433;&#20840;&#12289;&#28040;&#38500;&#25968;&#25454;&#31454;&#20105;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">自旋锁：应用</h2>
+<p class=" font-serif my-1">保护并发代码安全、消除数据竞争</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">deposit/withdraw</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#24182;&#21457;&#25968;&#25454;&#32467;&#26500;</p>
+<p class=" font-serif my-1">并发数据结构</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">malloc/free (<a href="../labs/L1.html" class=" text-amber-900">Lab1</a>)</li>
 </ul></div>
@@ -360,23 +361,23 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#33258;&#26059;&#38145;&#65306;&#28010;&#36153;&#38382;&#39064;</h2>
-<p class=" font-serif my-1">&#22810;&#20010;&#22788;&#29702;&#22120;&#19978;&#30340;&#32447;&#31243;&#20105;&#30456;&#25171;&#21360;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">自旋锁：浪费问题</h2>
+<p class=" font-serif my-1">多个处理器上的线程争相打印</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#21482;&#26377;&#19968;&#20010;&#33021;&#33719;&#24471;&#38145;</li>
-<li class=" ml-8">&#37027;&#20854;&#20182; CPU &#19978;&#30340;&#32447;&#31243;&#23601;&#21482;&#33021;&#22260;&#35266;&#20102;&#65311;</li>
+<li class=" ml-8">只有一个能获得锁</li>
+<li class=" ml-8">那其他 CPU 上的线程就只能围观了？</li>
 </ul>
 <hr>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">thread</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lk</span><span class="p">);</span>
-<span class="w">  </span><span class="c1">// &#21333;&#20010; printf &#20445;&#35777;&#32447;&#31243;&#23433;&#20840;</span>
+<span class="w">  </span><span class="n">lock</span><span class="p">(</span><span class="o">&</span><span class="n">lk</span><span class="p">);</span>
+<span class="w">  </span><span class="c1">// 单个 printf 保证线程安全</span>
 <span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">"LOG: "</span><span class="p">);</span>
 <span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="n">very_long_string</span><span class="p">);</span>
-<span class="w">  </span><span class="n">unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lk</span><span class="p">);</span>
+<span class="w">  </span><span class="n">unlock</span><span class="p">(</span><span class="o">&</span><span class="n">lk</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>$ ./a.out &gt; /mnt/sdcard/a.txt  # printf &#23558;&#38750;&#24120;&#32791;&#26102;
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>$ ./a.out > /mnt/sdcard/a.txt  # printf 将非常耗时
 </code></pre></div></div>
         
       
@@ -388,23 +389,23 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#33258;&#26059;&#38145;&#65306;&#26080;&#27861;&#23481;&#24525;&#30340;&#28010;&#36153;&#38382;&#39064;</h2>
-<p class=" font-serif my-1">&#21035;&#24536;&#20102;&#25805;&#20316;&#31995;&#32479;&#36824;&#31649;&#29702;&#20854;&#20182;&#36827;&#31243;/&#32447;&#31243;&#8230;&#8230;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">自旋锁：无法容忍的浪费问题</h2>
+<p class=" font-serif my-1">别忘了操作系统还管理其他进程/线程……</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25345;&#26377;&#38145;&#30340;&#32447;&#31243;&#20999;&#20986;&#65292;&#8220;&#20840;&#26680;&#22260;&#35266;&#8221;&#65292;CPU &#21033;&#29992;&#29575;&#20026;&#38646;</li>
+<li class=" ml-8">持有锁的线程切出，“全核围观”，CPU 利用率为零</li>
 </ul>
 <hr>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">thread</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lk</span><span class="p">);</span>
-<span class="w">    </span><span class="c1">// ------------ (&#20013;&#26029;&#65307;&#32447;&#31243;&#20999;&#25442;)</span>
+<span class="w">    </span><span class="n">lock</span><span class="p">(</span><span class="o">&</span><span class="n">lk</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// ------------ (中断；线程切换)</span>
 <span class="w">    </span><span class="n">do_something</span><span class="p">();</span>
-<span class="w">    </span><span class="n">unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lk</span><span class="p">);</span>
+<span class="w">    </span><span class="n">unlock</span><span class="p">(</span><span class="o">&</span><span class="n">lk</span><span class="p">);</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">1000</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="n">create</span><span class="p">(</span><span class="kr">thread</span><span class="p">);</span><span class="w"> </span><span class="c1">// &#32447;&#31243; &gt;&gt; CPU</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o"><</span><span class="w"> </span><span class="mi">1000</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="n">create</span><span class="p">(</span><span class="kr">thread</span><span class="p">);</span><span class="w"> </span><span class="c1">// 线程 >> CPU</span>
 <span class="p">}</span>
 </code></pre></div></div>
         
@@ -421,7 +422,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#25913;&#36827;&#33258;&#26059;&#38145;&#30340;&#24615;&#33021;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">改进自旋锁的性能</h1></div></div></div>
         
       
       </section>
@@ -432,20 +433,20 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#38271;&#20020;&#30028;&#21306;&#65306;&#20998;&#26512;</h2>
-<p class=" font-serif my-1">&#25345;&#26377;&#38145;&#30340;&#32447;&#31243;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">长临界区：分析</h2>
+<p class=" font-serif my-1">持有锁的线程</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#21487;&#33021;&#21457;&#29983;&#31995;&#32479;&#35843;&#29992;&#25110;&#20013;&#26029;</li>
-<li class=" ml-8">&#26399;&#38388; CPU &#21487;&#33021;&#20250;&#20999;&#25442;&#21040;&#20854;&#20182;&#32447;&#31243;&#25191;&#34892; <ul class=" list-disc font-serif">
-<li class=" ml-8"><red>&#38145;&#24212;&#35813;&#20445;&#25345;&#25345;&#26377;&#29366;&#24577;</red> (&#20363;&#22914;&#38459;&#27490;&#24182;&#21457;&#30340; printf)</li>
+<li class=" ml-8">可能发生系统调用或中断</li>
+<li class=" ml-8">期间 CPU 可能会切换到其他线程执行 <ul class=" list-disc font-serif">
+<li class=" ml-8"><red>锁应该保持持有状态</red> (例如阻止并发的 printf)</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#31561;&#24453;&#38145;&#30340;&#32447;&#31243;</p>
+<p class=" font-serif my-1">等待锁的线程</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><red>&#33021;&#21542;&#19981;&#24517;&#21344;&#29992;&#22788;&#29702;&#22120;&#33258;&#26059;</red>&#65311;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#22914;&#26524;&#31995;&#32479;&#20013;&#36824;&#26377;&#19981;&#38656;&#35201;&#36825;&#25226;&#38145;&#30340;&#32447;&#31243;&#65292;&#21487;&#33021;&#35753;&#20182;&#20204;&#20808;&#25191;&#34892;</li>
+<li class=" ml-8"><red>能否不必占用处理器自旋</red>？<ul class=" list-disc font-serif">
+<li class=" ml-8">如果系统中还有不需要这把锁的线程，可能让他们先执行</li>
 </ul>
 </li>
 </ul></div>
@@ -459,24 +460,24 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#19968;&#20010;&#24819;&#27861;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">一个想法</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
 <p class=" font-serif my-1">Simply yield!</p>
 </blockquote>
 <hr>
-<p class=" font-serif my-1">&#29992;&#25143;&#36827;&#31243;&#30340;&#20107;&#65292;&#25805;&#20316;&#31995;&#32479;&#23436;&#20840;&#35828;&#20102;&#31639;</p>
+<p class=" font-serif my-1">用户进程的事，操作系统完全说了算</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#8220;syscall&#8221; &#25351;&#20196;&#33021;&#20570;&#20219;&#20309;&#20107;</li>
+<li class=" ml-8">“syscall” 指令能做任何事</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#19982;&#33258;&#26059;&#38145;&#23436;&#20840;&#19968;&#26679;&#65292;&#38500;&#20102;&#22312;&#33258;&#26059;&#22833;&#36133;&#21518;&#22686;&#21152;&#19968;&#27425;&#31995;&#32479;&#35843;&#29992;&#65306;</p>
+<p class=" font-serif my-1">与自旋锁完全一样，除了在自旋失败后增加一次系统调用：</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">yield_lock</span><span class="p">(</span><span class="n">spinlock_t</span><span class="w"> </span><span class="o">*</span><span class="n">lk</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">xchg</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lk</span><span class="o">-&gt;</span><span class="n">locked</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">xchg</span><span class="p">(</span><span class="o">&</span><span class="n">lk</span><span class="o">-></span><span class="n">locked</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">syscall</span><span class="p">(</span><span class="n">SYS_yield</span><span class="p">);</span><span class="w"> </span><span class="c1">// yield() on AbstractMachine</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 <span class="kt">void</span><span class="w"> </span><span class="nf">yield_unlock</span><span class="p">(</span><span class="n">spinlock_t</span><span class="w"> </span><span class="o">*</span><span class="n">lk</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">xchg</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lk</span><span class="o">-&gt;</span><span class="n">locked</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="w">  </span><span class="n">xchg</span><span class="p">(</span><span class="o">&</span><span class="n">lk</span><span class="o">-></span><span class="n">locked</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div></div>
         
@@ -489,23 +490,23 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#19968;&#20010;&#23567;&#20248;&#21270;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">一个小优化</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#22914;&#26524;&#31561;&#24453;&#38145;&#30340;&#32447;&#31243;&#38750;&#24120;&#38750;&#24120;&#22810;&#65292;&#25105;&#20204;&#38656;&#35201; &#8220;&#31354;&#36716;&#19968;&#36718;&#8221; &#25165;&#33021;&#35753;&#30495;&#27491;&#38656;&#35201;&#36816;&#34892;&#30340;&#32447;&#31243;&#25191;&#34892;&#12290;</p>
+<p class=" font-serif my-1">如果等待锁的线程非常非常多，我们需要 “空转一轮” 才能让真正需要运行的线程执行。</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#33021;&#21542;&#24178;&#33030;&#26242;&#20572;&#36825;&#20010;&#32447;&#31243;&#65292;&#31561;&#26377;&#20154;&#35299;&#38145;&#20197;&#21518;&#20877;&#34987;&#35843;&#24230;&#25191;&#34892;&#65311;</li>
+<li class=" ml-8">能否干脆暂停这个线程，等有人解锁以后再被调度执行？</li>
 </ul>
 </blockquote>
 <hr>
-<p class=" font-serif my-1"><red>&#20013;&#26029;/&#31995;&#32479;&#35843;&#29992;&#21518;&#36816;&#34892;&#21738;&#20010;&#32447;&#31243;&#23436;&#20840;&#30001;&#25805;&#20316;&#31995;&#32479;&#20915;&#23450;</red></p>
+<p class=" font-serif my-1"><red>中断/系统调用后运行哪个线程完全由操作系统决定</red></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#8220;Virtualization&#8221;: &#25805;&#20316;&#31995;&#32479;&#20854;&#23454;&#26159; &#8220;&#29366;&#24577;&#26426;&#30340;&#31649;&#29702;&#32773;&#8221;</li>
-<li class=" ml-8">&#22312;&#25805;&#20316;&#31995;&#32479;&#19978;&#21152;&#19968;&#20123; hacking<ul class=" list-disc font-serif">
-<li class=" ml-8">&#25805;&#20316;&#31995;&#32479;&#21487;&#20197;&#30693;&#36947;&#38145;&#30340;&#29366;&#24577;<ul class=" list-disc font-serif">
-<li class=" ml-8">spin-wait &#30340;&#32447;&#31243;&#65292;&#21363;&#20415;&#35843;&#24230;&#25191;&#34892;&#65292;&#20063;&#21482;&#26159; spin + yield</li>
+<li class=" ml-8">“Virtualization”: 操作系统其实是 “状态机的管理者”</li>
+<li class=" ml-8">在操作系统上加一些 hacking<ul class=" list-disc font-serif">
+<li class=" ml-8">操作系统可以知道锁的状态<ul class=" list-disc font-serif">
+<li class=" ml-8">spin-wait 的线程，即便调度执行，也只是 spin + yield</li>
 </ul>
 </li>
-<li class=" ml-8">&#22312;&#32447;&#31243;&#35843;&#24230;&#26102;&#65292;&#22914;&#26524;&#28385;&#36275; <center><code>t-&gt;registers.PC</code> $\in$ <code>yield_lock(lk)</code> $\land$ <code>lk-&gt;locked == 0</code></center> &#23601;&#19981;&#35843;&#24230;&#36825;&#20010;&#32447;&#31243;</li>
+<li class=" ml-8">在线程调度时，如果满足 <center><code>t->registers.PC</code> $\in$ <code>yield_lock(lk)</code> $\land$ <code>lk->locked == 0</code></center> 就不调度这个线程</li>
 </ul>
 </li>
 </ul></div>
@@ -519,19 +520,19 @@ section .center {
 
       
         
-        <div><h2 id="hacking" class=" text-xl mt-2 pb-2 font-sans">&#36825;&#20010; Hacking &#21487;&#20197;&#29992;&#31995;&#32479;&#35843;&#29992;&#23454;&#29616;</h2>
-<p class=" font-serif my-1">&#25552;&#20379;&#20004;&#20010;&#31995;&#32479;&#35843;&#29992;&#65306;</p>
+        <div><h2 id="hacking" class=" text-xl mt-2 pb-2 font-sans">这个 Hacking 可以用系统调用实现</h2>
+<p class=" font-serif my-1">提供两个系统调用：</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><code>mutex_lock(&amp;locked)</code><ul class=" list-disc font-serif">
-<li class=" ml-8">&#22914;&#26524; <code>xchg(&amp;locked, 1) == 1</code>&#65292;&#23601;&#19981;&#20877;&#35843;&#24230;&#24403;&#21069;&#32447;&#31243;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20026;&#24403;&#21069;&#32447;&#31243;&#26631;&#35760;&#19978; &#8220;block on <code>locked</code>&#8221;</li>
+<li class=" ml-8"><code>mutex_lock(&locked)</code><ul class=" list-disc font-serif">
+<li class=" ml-8">如果 <code>xchg(&locked, 1) == 1</code>，就不再调度当前线程<ul class=" list-disc font-serif">
+<li class=" ml-8">为当前线程标记上 “block on <code>locked</code>”</li>
 </ul>
 </li>
 </ul>
 </li>
-<li class=" ml-8"><code>mutex_unlock(&amp;locked)</code><ul class=" list-disc font-serif">
-<li class=" ml-8"><code>xchg(&amp;locked, 0);</code></li>
-<li class=" ml-8">&#22914;&#26524;&#26377; &#8220;block on <code>locked</code>&#8221; &#30340;&#32447;&#31243;&#65292;&#20462;&#25913;&#20854;&#29366;&#24577;&#20026;&#21487;&#35843;&#24230;</li>
+<li class=" ml-8"><code>mutex_unlock(&locked)</code><ul class=" list-disc font-serif">
+<li class=" ml-8"><code>xchg(&locked, 0);</code></li>
+<li class=" ml-8">如果有 “block on <code>locked</code>” 的线程，修改其状态为可调度</li>
 </ul>
 </li>
 </ul></div>
@@ -545,23 +546,23 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25805;&#20316;&#31995;&#32479;&#20869;&#26680;&#20013;&#30340;&#20114;&#26021;&#38145;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">操作系统内核中的互斥锁</h2>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">mutex_lock</span><span class="p">(</span><span class="n">mutexlock_t</span><span class="w"> </span><span class="o">*</span><span class="n">lk</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">lk</span><span class="o">-&gt;</span><span class="n">locked</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">append</span><span class="p">(</span><span class="n">lk</span><span class="o">-&gt;</span><span class="n">wait_list</span><span class="p">,</span><span class="w"> </span><span class="n">current</span><span class="p">);</span><span class="w"> </span><span class="c1">// &#30561;&#30496;</span>
-<span class="w">    </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">BLOCKED</span><span class="p">;</span>
-<span class="w">    </span><span class="n">yield</span><span class="p">();</span><span class="w"> </span><span class="c1">// &#25805;&#20316;&#31995;&#32479;&#25511;&#21046;&#20102;&#20013;&#26029;&#65292;&#26377;&#35843;&#24230;&#26435;</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">lk</span><span class="o">-></span><span class="n">locked</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">append</span><span class="p">(</span><span class="n">lk</span><span class="o">-></span><span class="n">wait_list</span><span class="p">,</span><span class="w"> </span><span class="n">current</span><span class="p">);</span><span class="w"> </span><span class="c1">// 睡眠</span>
+<span class="w">    </span><span class="n">current</span><span class="o">-></span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">BLOCKED</span><span class="p">;</span>
+<span class="w">    </span><span class="n">yield</span><span class="p">();</span><span class="w"> </span><span class="c1">// 操作系统控制了中断，有调度权</span>
 <span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">lk</span><span class="o">-&gt;</span><span class="n">locked</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="n">lk</span><span class="o">-></span><span class="n">locked</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">mutex_unlock</span><span class="p">(</span><span class="n">mutexlock_t</span><span class="w"> </span><span class="o">*</span><span class="n">lk</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">is_empty</span><span class="p">(</span><span class="n">lk</span><span class="o">-&gt;</span><span class="n">wait_list</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">pop_front</span><span class="p">(</span><span class="n">lk</span><span class="o">-&gt;</span><span class="n">wait_list</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RUNNABLE</span><span class="p">;</span><span class="w"> </span><span class="c1">// &#21796;&#37266;</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">is_empty</span><span class="p">(</span><span class="n">lk</span><span class="o">-></span><span class="n">wait_list</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">pop_front</span><span class="p">(</span><span class="n">lk</span><span class="o">-></span><span class="n">wait_list</span><span class="p">)</span><span class="o">-></span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RUNNABLE</span><span class="p">;</span><span class="w"> </span><span class="c1">// 唤醒</span>
 <span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">lk</span><span class="o">-&gt;</span><span class="n">locked</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="n">lk</span><span class="o">-></span><span class="n">locked</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div></div>
@@ -575,26 +576,26 @@ section .center {
 
       
         
-        <div><h2 id="l2" class=" text-xl mt-2 pb-2 font-sans">&#20114;&#26021;&#38145;&#65306;&#28216;&#27891;&#39302;&#30340;&#26356;&#34915;&#23460;&#21327;&#35758; (&#22312; L2 &#20013;&#23454;&#29616;)</h2>
+        <div><h2 id="l2" class=" text-xl mt-2 pb-2 font-sans">互斥锁：游泳馆的更衣室协议 (在 L2 中实现)</h2>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/locker.jpg" width="300px"></p>
-<p class=" font-serif my-1">&#31649;&#29702;&#21592; (&#25805;&#20316;&#31995;&#32479;&#20195;&#30721;) &#26377;&#19968;&#20010;&#25163;&#29615;</p>
+<p class=" font-serif my-1">管理员 (操作系统代码) 有一个手环</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><red>&#31649;&#29702;&#21592;&#29992;&#33258;&#26059;&#38145;&#20445;&#25252;&#21407;&#23376;&#24615;&#12289;&#28040;&#38500;&#25968;&#25454;&#31454;&#20105;</red></li>
-<li class=" ml-8">&#20043;&#21518;&#25105;&#20204;&#23558;&#30475;&#21040;&#19981;&#27490;&#19968;&#20010;&#25163;&#29615;&#30340;&#35774;&#35745;</li>
+<li class=" ml-8"><red>管理员用自旋锁保护原子性、消除数据竞争</red></li>
+<li class=" ml-8">之后我们将看到不止一个手环的设计</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#20219;&#20309;&#20154;&#24819;&#36827;&#20837;&#26356;&#34915;&#23460;&#37117;&#38656;&#35201;&#36890;&#36807;&#31649;&#29702;&#21592;</p>
+<p class=" font-serif my-1">任何人想进入更衣室都需要通过管理员</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20808;&#21040;&#30340;&#20154; (&#32447;&#31243;)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#25104;&#21151;&#33719;&#24471;&#25163;&#29615; &#8594; &#36827;&#20837;&#28216;&#27891;&#39302; (&#32447;&#31243;&#21487;&#34987;&#35843;&#24230;&#25191;&#34892;)</li>
+<li class=" ml-8">先到的人 (线程)<ul class=" list-disc font-serif">
+<li class=" ml-8">成功获得手环 → 进入游泳馆 (线程可被调度执行)</li>
 </ul>
 </li>
-<li class=" ml-8">&#21518;&#21040;&#30340;&#20154; (&#32447;&#31243;)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#19981;&#33021;&#36827;&#20837;&#28216;&#27891;&#39302;&#65292;&#25490;&#38431;&#31561;&#24453; (&#32447;&#31243;&#36827;&#20837;&#38431;&#21015;&#65292;&#19981;&#34987;&#35843;&#24230;&#25191;&#34892;)</li>
+<li class=" ml-8">后到的人 (线程)<ul class=" list-disc font-serif">
+<li class=" ml-8">不能进入游泳馆，排队等待 (线程进入队列，不被调度执行)</li>
 </ul>
 </li>
-<li class=" ml-8">&#27927;&#23436;&#28577;&#20986;&#26469;&#30340;&#20154; (&#32447;&#31243;)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20132;&#36824;&#25163;&#29615;&#32473;&#31649;&#29702;&#21592; &#8594; &#31649;&#29702;&#21592;&#20132;&#32473;&#25490;&#38431;&#30340;&#20154;&#36827;&#20837;&#28216;&#27891;&#39302; (&#31561;&#24453;&#30340;&#32447;&#31243;&#34987;&#21796;&#37266;)</li>
+<li class=" ml-8">洗完澡出来的人 (线程)<ul class=" list-disc font-serif">
+<li class=" ml-8">交还手环给管理员 → 管理员交给排队的人进入游泳馆 (等待的线程被唤醒)</li>
 </ul>
 </li>
 </ul></div>
@@ -623,27 +624,27 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20851;&#20110;&#20114;&#26021;&#30340;&#19968;&#20123;&#20998;&#26512;</h2>
-<p class=" font-serif my-1">&#33258;&#26059;&#38145; (&#32447;&#31243;&#30452;&#25509;&#20849;&#20139; locked)</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">关于互斥的一些分析</h2>
+<p class=" font-serif my-1">自旋锁 (线程直接共享 locked)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#22909;&#22788;&#65306;&#26356;&#24555;&#30340; fast path<ul class=" list-disc font-serif">
-<li class=" ml-8">xchg &#25104;&#21151; &#8594; &#31435;&#21363;&#36827;&#20837;&#20020;&#30028;&#21306;&#65292;&#24320;&#38144;&#24456;&#23567;</li>
+<li class=" ml-8">好处：更快的 fast path<ul class=" list-disc font-serif">
+<li class=" ml-8">xchg 成功 → 立即进入临界区，开销很小</li>
 </ul>
 </li>
-<li class=" ml-8">&#22351;&#22788;&#65306;&#26356;&#24930;&#30340; slow path<ul class=" list-disc font-serif">
-<li class=" ml-8">xchg &#22833;&#36133; &#8594; &#28010;&#36153; CPU &#33258;&#26059;&#31561;&#24453;</li>
+<li class=" ml-8">坏处：更慢的 slow path<ul class=" list-disc font-serif">
+<li class=" ml-8">xchg 失败 → 浪费 CPU 自旋等待</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#30561;&#30496;&#38145; (locked &#20445;&#23384;&#22312;&#25805;&#20316;&#31995;&#32479;&#20869;&#26680;&#65292;&#36890;&#36807;&#31995;&#32479;&#35843;&#29992;&#35775;&#38382;)</p>
+<p class=" font-serif my-1">睡眠锁 (locked 保存在操作系统内核，通过系统调用访问)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#22909;&#22788;&#65306;&#26356;&#24555;&#30340; slow path<ul class=" list-disc font-serif">
-<li class=" ml-8">&#19978;&#38145;&#22833;&#36133;&#32447;&#31243;&#19981;&#20877;&#21344;&#29992; CPU</li>
+<li class=" ml-8">好处：更快的 slow path<ul class=" list-disc font-serif">
+<li class=" ml-8">上锁失败线程不再占用 CPU</li>
 </ul>
 </li>
-<li class=" ml-8">&#22351;&#22788;&#65306;&#26356;&#24930;&#30340; fast path<ul class=" list-disc font-serif">
-<li class=" ml-8">&#21363;&#20415;&#19978;&#38145;&#25104;&#21151;&#20063;&#38656;&#35201;&#36827;&#20986;&#20869;&#26680; (syscall)</li>
+<li class=" ml-8">坏处：更慢的 fast path<ul class=" list-disc font-serif">
+<li class=" ml-8">即便上锁成功也需要进出内核 (syscall)</li>
 </ul>
 </li>
 </ul></div>
@@ -658,17 +659,17 @@ section .center {
       
         
         <div><h2 id="futex-fast-userspace-mutexes" class=" text-xl mt-2 pb-2 font-sans">Futex: Fast Userspace muTexes</h2>
-<p class=" font-serif my-1">&#23567;&#23401;&#23376;&#25165;&#20570;&#36873;&#25321;&#65292;&#25105;&#20840;&#37117;&#35201;</p>
+<p class=" font-serif my-1">小孩子才做选择，我全都要</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">fast path: &#19968;&#26465;&#21407;&#23376;&#25351;&#20196;&#65292;&#19978;&#38145;&#25104;&#21151;&#31435;&#21363;&#36820;&#22238;</li>
-<li class=" ml-8">slow path: &#19978;&#38145;&#22833;&#36133;&#65292;&#25191;&#34892;&#31995;&#32479;&#35843;&#29992;&#30561;&#30496;</li>
+<li class=" ml-8">fast path: 一条原子指令，上锁成功立即返回</li>
+<li class=" ml-8">slow path: 上锁失败，执行系统调用睡眠</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">pthreads &#24211;&#20013;&#30340;&#20114;&#26021;&#38145; (<code>pthread_mutex</code>)</p>
+<p class=" font-serif my-1">pthreads 库中的互斥锁 (<code>pthread_mutex</code>)</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><a href="../../../pages/OS/2021/demos/sum-mutex.c" class=" text-amber-900">sum-mutex.c</a><ul class=" list-disc font-serif">
-<li class=" ml-8">&#35266;&#23519;&#31995;&#32479;&#35843;&#29992;</li>
-<li class=" ml-8">gdb &#35843;&#35797;<ul class=" list-disc font-serif">
+<li class=" ml-8">观察系统调用</li>
+<li class=" ml-8">gdb 调试<ul class=" list-disc font-serif">
 <li class=" ml-8"><code>set scheduler-locking on</code></li>
 <li class=" ml-8"><code>info threads</code>; <code>thread X</code></li>
 </ul>
@@ -688,12 +689,12 @@ section .center {
         
         <div><h2 id="futex-fast-userspace-mutexes-contd" class=" text-xl mt-2 pb-2 font-sans">Futex: Fast Userspace muTexes (cont'd)</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">Futexes are very basic and lend themselves well for building higher-level locking abstractions  such  as mutexes, condition variables, read-write locks, barriers, and semaphores. &#8212;&#8212; futex (7)</p>
+<p class=" font-serif my-1">Futexes are very basic and lend themselves well for building higher-level locking abstractions  such  as mutexes, condition variables, read-write locks, barriers, and semaphores. —— futex (7)</p>
 </blockquote>
 <hr>
-<p class=" font-serif my-1">&#25805;&#20316;&#31995;&#32479;&#20250;&#35774;&#35745;&#24590;&#26679;&#30340;&#25509;&#21475;&#65311;</p>
+<p class=" font-serif my-1">操作系统会设计怎样的接口？</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#31449;&#22312; &#8220;&#29366;&#24577;&#26426;&#35270;&#35282;&#8221; &#32771;&#34385;&#36825;&#20010;&#38382;&#39064;</li>
+<li class=" ml-8">站在 “状态机视角” 考虑这个问题</li>
 </ul></div>
         
       
@@ -705,7 +706,7 @@ section .center {
 
       
         
-        <div><h2 id="futex" class=" text-xl mt-2 pb-2 font-sans">futex &#31995;&#32479;&#35843;&#29992;</h2>
+        <div><h2 id="futex" class=" text-xl mt-2 pb-2 font-sans">futex 系统调用</h2>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">futex</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">uaddr</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">futex_op</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">val</span><span class="p">,</span><span class="w"> </span><span class="p">...);</span>
 </code></pre></div>
 
@@ -716,15 +717,15 @@ section .center {
 <li class=" ml-8"><a href="https://lwn.net/Articles/360699/" class=" text-amber-900">LWN: A futex overview and update</a></li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#20219;&#20309;&#20307;&#31995;&#32467;&#26500;&#19978; <code>uaddr</code> &#37117;&#26159; 4B</p>
+<p class=" font-serif my-1">任何体系结构上 <code>uaddr</code> 都是 4B</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">futex_wait (<code>futex_op == FUTEX_WAIT</code>)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#22914;&#26524; <code>*uaddr == val</code> &#23601;&#30561;&#30496;&#31561;&#24453; <code>futex_wake</code> (&#21407;&#23376;&#23436;&#25104;)</li>
-<li class=" ml-8">&#21542;&#21017;&#36820;&#22238; <code>-EAGAIN</code></li>
+<li class=" ml-8">如果 <code>*uaddr == val</code> 就睡眠等待 <code>futex_wake</code> (原子完成)</li>
+<li class=" ml-8">否则返回 <code>-EAGAIN</code></li>
 </ul>
 </li>
 <li class=" ml-8">futex_wake (<code>futex_op == FUTEX_WAKE</code>)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#21796;&#37266;&#33267;&#22810; <code>val</code> &#20010;&#27491;&#22312;&#30561;&#30496;&#30340;&#32447;&#31243;</li>
+<li class=" ml-8">唤醒至多 <code>val</code> 个正在睡眠的线程</li>
 </ul>
 </li>
 </ul></div>
@@ -738,25 +739,25 @@ section .center {
 
       
         
-        <div><h2 id="futex" class=" text-xl mt-2 pb-2 font-sans">Futex + &#33258;&#26059;</h2>
+        <div><h2 id="futex" class=" text-xl mt-2 pb-2 font-sans">Futex + 自旋</h2>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">futex_lock</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xchg</span><span class="p">(</span><span class="o">&amp;</span><span class="n">locked</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xchg</span><span class="p">(</span><span class="o">&</span><span class="n">locked</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">r</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
-<span class="w">    </span><span class="n">syscall</span><span class="p">(</span><span class="n">SYS_futex</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">locked</span><span class="p">,</span><span class="w"> </span><span class="n">FUTEX_WAIT</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="n">syscall</span><span class="p">(</span><span class="n">SYS_futex</span><span class="p">,</span><span class="w"> </span><span class="o">&</span><span class="n">locked</span><span class="p">,</span><span class="w"> </span><span class="n">FUTEX_WAIT</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">futex_unlock</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">xchg</span><span class="p">(</span><span class="o">&amp;</span><span class="n">locked</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
-<span class="w">  </span><span class="n">syscall</span><span class="p">(</span><span class="n">SYS_futex</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">locked</span><span class="p">,</span><span class="w"> </span><span class="n">FUTEX_WAKE</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">  </span><span class="n">xchg</span><span class="p">(</span><span class="o">&</span><span class="n">locked</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="w">  </span><span class="n">syscall</span><span class="p">(</span><span class="n">SYS_futex</span><span class="p">,</span><span class="w"> </span><span class="o">&</span><span class="n">locked</span><span class="p">,</span><span class="w"> </span><span class="n">FUTEX_WAKE</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <hr>
-<p class=" font-serif my-1">&#20173;&#28982;&#19981;&#26159;&#25105;&#20204;&#24819;&#35201;&#30340; (&#27491;&#30830;&#24615;&#65306;<a href="../../../pages/OS/2021/demos/futex.yaml" class=" text-amber-900">futex.yaml</a>)</p>
+<p class=" font-serif my-1">仍然不是我们想要的 (正确性：<a href="../../../pages/OS/2021/demos/futex.yaml" class=" text-amber-900">futex.yaml</a>)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">unlock &#30340;&#26102;&#20505;&#36824;&#26159;&#26377;&#19968;&#27425; syscall</li>
+<li class=" ml-8">unlock 的时候还是有一次 syscall</li>
 <li class=" ml-8"><a href="../../../pages/OS/manuals/futexes-are-tricky.pdf" class=" text-amber-900">Futexes are tricky</a> by Ulrich Drepper</li>
 </ul></div>
         
@@ -773,7 +774,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#24635;&#32467;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">总结</h1></div></div></div>
         
       
       </section>
@@ -784,17 +785,17 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#24635;&#32467;</h2>
-<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#20869;&#23481;&#19982;&#30446;&#26631;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">总结</h2>
+<p class=" font-serif my-1">本次课内容与目标</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#23454;&#29616;&#38750;&#33258;&#26059;&#30340;&#38145; (&#30561;&#30496; &amp; futex)</li>
+<li class=" ml-8">实现非自旋的锁 (睡眠 & futex)</li>
 </ul>
 <hr>
 <p class=" font-serif my-1">Take-away messages</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25805;&#20316;&#31995;&#32479;&#26377;&#38750;&#24120;&#22823;&#30340;&#26435;&#21147;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#25805;&#20316;&#31995;&#32479;&#26159;&#29366;&#24577;&#26426;&#30340;&#31649;&#29702;&#32773;</li>
-<li class=" ml-8">syscall &#25351;&#20196;&#21487;&#20197;&#20570; &#8220;&#20219;&#20309;&#20107;&#8221;</li>
+<li class=" ml-8">操作系统有非常大的权力<ul class=" list-disc font-serif">
+<li class=" ml-8">操作系统是状态机的管理者</li>
+<li class=" ml-8">syscall 指令可以做 “任何事”</li>
 </ul>
 </li>
 </ul></div>
@@ -827,5 +828,6 @@ section .center {
 
 
 </body>
+
 
 </html>

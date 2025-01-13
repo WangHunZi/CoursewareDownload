@@ -1,10 +1,11 @@
 <!DOCTYPE html><html class="h-100">
 
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="../../../static/css/base.css" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com/"></script>
   <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
 
@@ -23,14 +24,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +210,7 @@ section .center {
 }
 </style>
 
-  <title>&#22797;&#21051;&#32463;&#20856;</title>
+  <title>复刻经典</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,7 +228,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="19.2.slides.html" class=" text-amber-900">&#22797;&#21051;&#32463;&#20856;</a></h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="19.2.slides.html" class=" text-amber-900">复刻经典</a></h1></div></div></div>
         
       
       </section>
@@ -239,25 +240,25 @@ section .center {
       
         
         <div><h2 id="a-zero-dependency-unix-shell-from-xv6" class=" text-xl mt-2 pb-2 font-sans">A Zero-dependency UNIX Shell (from xv6)</h2>
-<p class=" font-serif my-1">Shell &#26159; Kernel &#20043;&#22806;&#30340; &#8220;&#22771;&#8221;</p>
+<p class=" font-serif my-1">Shell 是 Kernel 之外的 “壳”</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#23427;&#20063;&#26159;&#19968;&#20010;<red>&#29366;&#24577;&#26426;</red> (&#21516; minimal.S)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#23436;&#20840;&#22522;&#20110;&#31995;&#32479;&#35843;&#29992; API</li>
+<li class=" ml-8">它也是一个<red>状态机</red> (同 minimal.S)<ul class=" list-disc font-serif">
+<li class=" ml-8">完全基于系统调用 API</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#25105;&#20204;&#31227;&#26893;&#20102; xv6 &#30340; shell</p>
+<p class=" font-serif my-1">我们移植了 xv6 的 shell</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#38646;&#24211;&#20989;&#25968;&#20381;&#36182; (-ffreestanding &#32534;&#35793;&#12289;ld &#38142;&#25509;)</li>
-<li class=" ml-8">&#21487;&#20197;&#20316;&#20026;&#26368;&#23567; Linux &#30340; init &#31243;&#24207;</li>
+<li class=" ml-8">零库函数依赖 (-ffreestanding 编译、ld 链接)</li>
+<li class=" ml-8">可以作为最小 Linux 的 init 程序</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#25903;&#25345;&#30340;&#21151;&#33021;</p>
+<p class=" font-serif my-1">支持的功能</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#37325;&#23450;&#21521;/&#31649;&#36947; <code>ls &gt; a.txt</code>, <code>ls | wc -l</code></li>
-<li class=" ml-8">&#21518;&#21488;&#25191;&#34892; <code>ls &amp;</code></li>
-<li class=" ml-8">&#21629;&#20196;&#32452;&#21512; <code>(echo a ; echo b) | wc -l</code></li>
+<li class=" ml-8">重定向/管道 <code>ls > a.txt</code>, <code>ls | wc -l</code></li>
+<li class=" ml-8">后台执行 <code>ls &</code></li>
+<li class=" ml-8">命令组合 <code>(echo a ; echo b) | wc -l</code></li>
 </ul></div>
         
       
@@ -269,21 +270,21 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#38405;&#35835;&#20195;&#30721;</h2>
-<p class=" font-serif my-1">&#24212;&#35813;&#22914;&#20309;&#38405;&#35835;&#20195;&#30721;&#65311;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">阅读代码</h2>
+<p class=" font-serif my-1">应该如何阅读代码？</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">strace<ul class=" list-disc font-serif">
-<li class=" ml-8">&#36866;&#24403;&#30340;&#20998;&#23631;&#21644;&#36807;&#28388;</li>
-<li class=" ml-8">AI &#20351;&#38405;&#35835;&#25991;&#26723;&#30340;&#25104;&#26412;&#22823;&#24133;&#38477;&#20302;</li>
+<li class=" ml-8">适当的分屏和过滤</li>
+<li class=" ml-8">AI 使阅读文档的成本大幅降低</li>
 </ul>
 </li>
 <li class=" ml-8">gdb<ul class=" list-disc font-serif">
 <li class=" ml-8">AskGPT: How to debug a process that forks children processes in gdb?<ul class=" list-disc font-serif">
-<li class=" ml-8">AI &#20063;&#21487;&#20197;&#24110;&#20320;&#35299;&#37322; (&#19981;&#29992;&#21435;&#28120;&#25991;&#26723;&#20102;)</li>
+<li class=" ml-8">AI 也可以帮你解释 (不用去淘文档了)</li>
 </ul>
 </li>
-<li class=" ml-8">&#20197;&#21450;&#65292;&#23450;&#21046;&#30340; visualization<ul class=" list-disc font-serif">
-<li class=" ml-8">&#23545;&#20110; Shell&#65292;&#25105;&#20204;&#24212;&#35813;&#26174;&#31034;&#20160;&#20040;&#65311;</li>
+<li class=" ml-8">以及，定制的 visualization<ul class=" list-disc font-serif">
+<li class=" ml-8">对于 Shell，我们应该显示什么？</li>
 </ul>
 </li>
 </ul>
@@ -299,7 +300,7 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#29702;&#35299;&#31649;&#36947;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">理解管道</h2>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/pipe.gif" width="800px"></p></div>
         
       
@@ -330,5 +331,6 @@ section .center {
 
 
 </body>
+
 
 </html>

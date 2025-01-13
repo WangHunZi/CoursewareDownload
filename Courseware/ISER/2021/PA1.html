@@ -1,10 +1,11 @@
 <!DOCTYPE html><html class="h-100">
 
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="../../static/css/base.css" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com/"></script>
   <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="../../static/img/favicon.png" type="image/x-icon">
 
@@ -23,14 +24,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -148,8 +149,8 @@ hr {
 
 <div class="px-2 py-1 w-full fixed z-50 bg-gradient-to-r from-black via-purple-700 via-purple-500 shadow-lg" style="-webkit-backdrop-filter: saturate(150%) blur(4px); backdrop-filter: saturate(150%) blur(4px)">
   <form>
-    <a href="../../index.html"><span class="text-lg px-2 text-white">Yanyan's Wiki</span></a>
-    <a href="../../OS/2023/index.html"><span class="text-sm px-2 text-white">&#25805;&#20316;&#31995;&#32479; (2023)</span></a>
+    <a href="../../index-2.html"><span class="text-lg px-2 text-white">Yanyan's Wiki</span></a>
+    <a href="../../OS/2023/index.html"><span class="text-sm px-2 text-white">操作系统 (2023)</span></a>
     <input maxlength="9" id="token-input" class="float-right appearance-none border border-transparent px-2 py-1 w-20 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-xs focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent font-mono" type="text" placeholder="TOKEN" oninput="login();">
   </form>
 </div>
@@ -171,13 +172,13 @@ hr {
 </blockquote>
 <p class=" font-serif my-1"><oj-status course="ISER2021" module="PA1"><div class="divide-y divide-dashed">
     <div class="flex font-semibold">
-      ISER2021-PA1 &#25552;&#20132;&#32467;&#26524;
+      ISER2021-PA1 提交结果
     </div>
     
   </div>
 </oj-status></p>
 <h2 id="1-background" class=" text-xl mt-2 pb-2 font-sans">1. Background</h2>
-<p class=" font-serif my-1">You may have copied other's code in your undergraduate program. Our <a href="https://zhuanlan.zhihu.com/p/40568346" class=" text-amber-900">study</a> indicate that &gt;80% students were suspected of plagiarism in a particular programming assignment at a 985 university, and 53% are verbatim copies with negligible changes! How could you prevent this from happening (by some software engineering research tricks)? In this experiment, let's have fun being evil and identify possible assignment plagiarism by measuring code similarity.</p>
+<p class=" font-serif my-1">You may have copied other's code in your undergraduate program. Our <a href="https://zhuanlan.zhihu.com/p/40568346" class=" text-amber-900">study</a> indicate that >80% students were suspected of plagiarism in a particular programming assignment at a 985 university, and 53% are verbatim copies with negligible changes! How could you prevent this from happening (by some software engineering research tricks)? In this experiment, let's have fun being evil and identify possible assignment plagiarism by measuring code similarity.</p>
 <h2 id="2-the-assignment" class=" text-xl mt-2 pb-2 font-sans">2. The Assignment</h2>
 <p class=" font-serif my-1">Suppose we want to perform a similarity check on some programming assignments on Online Judge to find as many suspects of copied programs as possible. For this experiment, we assume that each program on Online Judge is a single-file C++ program that can be compiled by gcc or clang under the <code>-std=c++17</code> (C++ 17 standard) and <code>-pedantic</code> (reject non-standard programs) options.</p>
 <p class=" font-serif my-1">You can use any major programming language you are familiar with (C/C++/Java/Python/JavaScript/Scala/Rust/Go/...) to implement a command line tool <code>codesim</code> that runs under Linux and is used to compare the similarity of two C++ programs. Your <code>codesim</code>  should be run from the command line, given the filenames of the two programs as arguments, and it outputs a line with a floating-point percentage representing the similarity of the code. The percentages do not need to have an exact meaning, just as high a similarity as possible to the code that is actually copied.</p>
@@ -195,7 +196,7 @@ $ codesim foo.cc bar.cpp
 </ol>
 <p class=" font-serif my-1">We expect you to design/choose an appropriate algorithm (possibly provided by existing tool)  to implement <code>codesim</code>. clang will make your life easier in parsing (modern) C++ code; or you can compile the source code and analyze the assembly or binary. Modern programming languages are exceptionally complex and simple manual implementations are almost unrealistic - so try to avoid reinventing the wheel and implement your algorithm on top of existing projects.</p>
 <h2 id="3-the-algorithm" class=" text-xl mt-2 pb-2 font-sans">3. The Algorithm</h2>
-<p class=" font-serif my-1">Code similarity/plagiarism detection is not a new problem. We encourage you to review some of the existing literatures: copy-paste behavior in software (even in the open source community) is a major cause of low quality code propagation and reduced software maintainability. There are even specific methods for detecting code plagiarism, such as the famous <a href="https://theory.stanford.edu/%7Eaiken/moss/" class=" text-amber-900">MOSS</a>. We encourage you to digest the methods in existing literatures and come up with your own ideas, rather than following their original implementations.</p>
+<p class=" font-serif my-1">Code similarity/plagiarism detection is not a new problem. We encourage you to review some of the existing literatures: copy-paste behavior in software (even in the open source community) is a major cause of low quality code propagation and reduced software maintainability. There are even specific methods for detecting code plagiarism, such as the famous <a href="https://theory.stanford.edu/~aiken/moss/" class=" text-amber-900">MOSS</a>. We encourage you to digest the methods in existing literatures and come up with your own ideas, rather than following their original implementations.</p>
 <h2 id="4-submission" class=" text-xl mt-2 pb-2 font-sans">4. Submission</h2>
 <p class=" font-serif my-1">Upload the following as a zip file (zip or tar).</p>
 <ul class=" list-disc font-serif">
@@ -209,7 +210,7 @@ $ codesim foo.cc bar.cpp
 
 In order to better facilitate subsequent research, it is essential to release the code of your research work as an open source project. Therefore, in this course, we ask you to choose a programming assignment (codesim or jmtrace) and maintain it according to the general standards of open source software. For artifacts, you are **responsible** for the code to the best of your ability, as other researchers may conduct other research based on your code in the future.
 
-&gt; Special note: You can alternatively choose either PA1 (codesim) or PA2 (jmtrace) as the artifact. Please refer to [Artifact Preparation Guide](Artifact) for more information on how to prepare for an artifact.
+> Special note: You can alternatively choose either PA1 (codesim) or PA2 (jmtrace) as the artifact. Please refer to [Artifact Preparation Guide](Artifact) for more information on how to prepare for an artifact.
 
 </div></div>
 </div>
@@ -217,7 +218,7 @@ In order to better facilitate subsequent research, it is essential to release th
 <div class="container text-xs py-3">
   <span class="text-muted">
     <center><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="../../static/img/cc-4.0.png"></a>
-    &#160;&#160;&#160;<a style="color:inherit" href="https://beian.miit.gov.cn/">&#33487; ICP &#22791; 2020049101 &#21495;</a>
+       <a style="color:inherit" href="https://beian.miit.gov.cn/">苏 ICP 备 2020049101 号</a>
     </center>
   </span>
 </div>
@@ -250,5 +251,6 @@ function login() {
 
 
 </body>
+
 
 </html>

@@ -1,10 +1,11 @@
 <!DOCTYPE html><html class="h-100">
 
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="../../../static/css/base.css" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com/"></script>
   <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
 
@@ -23,14 +24,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +210,7 @@ section .center {
 }
 </style>
 
-  <title>Xv6 &#25991;&#20214;&#31995;&#32479;&#23454;&#29616;</title>
+  <title>Xv6 文件系统实现</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,21 +228,21 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="xv6" class=" text-2xl mt-2 font-sans">Xv6 &#25991;&#20214;&#31995;&#32479;&#23454;&#29616;</h1>
-<p class=" font-serif my-1"><include src="Slides_Author"><div><div class="py-16">
-<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">&#33931;&#28814;&#23721;</a></p>
+        <div><div class="center middle"><div style="width:100%"><h1 id="xv6" class=" text-2xl mt-2 font-sans">Xv6 文件系统实现</h1>
+<p class=" font-serif my-1"><include src="Slides_Author/index.html"><div><div class="py-16">
+<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">蒋炎岩</a></p>
 </div>
 <div class="row">
 <div class="author-affiliation">
-    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#12288;&#12288;&#21335;&#20140;&#22823;&#23398;&#12288;&#12288;</p>
+    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">　　南京大学　　</p>
     <img class="inline-img h-24" src="../../../static/img/nju-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#31185;&#23398;&#19982;&#25216;&#26415;&#31995;</p>
+   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">计算机科学与技术系</p>
     <img class="inline-img h-24" src="../../../static/img/njucs-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#36719;&#20214;&#30740;&#31350;&#25152;</p>
+    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">计算机软件研究所</p>
     <img class="inline-img h-24" src="../../../static/img/ics-logo.png" style="display: inline-block;"></a>
   </div>
 </div></div></include></p></div></div></div>
@@ -256,28 +257,28 @@ section .center {
       
         
         <div><h2 id="overview" class=" text-xl mt-2 pb-2 font-sans">Overview</h2>
-<p class=" font-serif my-1">&#22797;&#20064;</p>
+<p class=" font-serif my-1">复习</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25991;&#20214;&#31995;&#32479;&#65306;bread/bwrite &#19978;&#30340;&#25968;&#25454;&#32467;&#26500;<ul class=" list-disc font-serif">
+<li class=" ml-8">文件系统：bread/bwrite 上的数据结构<ul class=" list-disc font-serif">
 <li class=" ml-8">balloc/bfree</li>
-<li class=" ml-8">&#25991;&#20214;&#65306;FAT (&#38142;&#34920;)/UNIX &#25991;&#20214;&#31995;&#32479; (&#32034;&#24341;)</li>
-<li class=" ml-8">&#30446;&#24405;&#25991;&#20214;</li>
+<li class=" ml-8">文件：FAT (链表)/UNIX 文件系统 (索引)</li>
+<li class=" ml-8">目录文件</li>
 </ul>
 </li>
-<li class=" ml-8">&#25345;&#20037;&#25968;&#25454;&#30340;&#21487;&#38752;&#24615;<ul class=" list-disc font-serif">
-<li class=" ml-8">RAID &#21644;&#26085;&#24535;</li>
+<li class=" ml-8">持久数据的可靠性<ul class=" list-disc font-serif">
+<li class=" ml-8">RAID 和日志</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#22238;&#31572;&#30340;&#38382;&#39064;</p>
+<p class=" font-serif my-1">本次课回答的问题</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><strong>Q</strong>: &#21040;&#24213;&#33021;&#19981;&#33021;&#30475;&#19968;&#30475;&#25991;&#20214;&#31995;&#32479;&#23454;&#29616;&#30340;&#20195;&#30721;&#65311;</li>
+<li class=" ml-8"><strong>Q</strong>: 到底能不能看一看文件系统实现的代码？</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#20027;&#35201;&#20869;&#23481;</p>
+<p class=" font-serif my-1">本次课主要内容</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">Xv6 &#25991;&#20214;&#31995;&#32479;&#23454;&#29616;</li>
+<li class=" ml-8">Xv6 文件系统实现</li>
 </ul></div>
         
       
@@ -293,7 +294,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#25991;&#20214;&#31995;&#32479;&#65306;&#22797;&#20064;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">文件系统：复习</h1></div></div></div>
         
       
       </section>
@@ -304,29 +305,29 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#8220;&#30913;&#30424;&#19978;&#30340;&#25968;&#25454;&#32467;&#26500;&#8221;</h2>
-<p class=" font-serif my-1">&#25903;&#25345;&#30340;&#25805;&#20316;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">“磁盘上的数据结构”</h2>
+<p class=" font-serif my-1">支持的操作</p>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/nju-lib.jpg" width="400px"></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#30446;&#24405; (&#32034;&#24341;)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#8220;&#22270;&#20070;&#39302;&#8221; - mkdir, rmdir, link, unlink, open, ...</li>
+<li class=" ml-8">目录 (索引)<ul class=" list-disc font-serif">
+<li class=" ml-8">“图书馆” - mkdir, rmdir, link, unlink, open, ...</li>
 </ul>
 </li>
-<li class=" ml-8">&#25991;&#20214; (&#34394;&#25311;&#30913;&#30424;)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#8220;&#22270;&#20070;&#8221; - read, write, mmap, ...</li>
+<li class=" ml-8">文件 (虚拟磁盘)<ul class=" list-disc font-serif">
+<li class=" ml-8">“图书” - read, write, mmap, ...</li>
 </ul>
 </li>
-<li class=" ml-8">&#25991;&#20214;&#25551;&#36848;&#31526; (&#20559;&#31227;&#37327;)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#8220;&#20070;&#31614;&#8221; - lseek</li>
+<li class=" ml-8">文件描述符 (偏移量)<ul class=" list-disc font-serif">
+<li class=" ml-8">“书签” - lseek</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#23454;&#29616;&#30340;&#26041;&#27861;</p>
+<p class=" font-serif my-1">实现的方法</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">block I/O &#8594; block &#31649;&#29702; &#8594; &#25991;&#20214; &#8594; &#30446;&#24405;&#25991;&#20214;</li>
-<li class=" ml-8">FAT: &#25991;&#20214;&#20449;&#24687; &#8220;&#20998;&#21035;&#8221; &#20445;&#23384;&#22312;&#38142;&#34920;&#21644;&#30446;&#24405;&#39033;&#20013;</li>
-<li class=" ml-8">UNIX &#25991;&#20214;&#31995;&#32479;&#65306;&#38598;&#20013;&#23384;&#20648;&#25991;&#20214;&#23545;&#35937;</li>
+<li class=" ml-8">block I/O → block 管理 → 文件 → 目录文件</li>
+<li class=" ml-8">FAT: 文件信息 “分别” 保存在链表和目录项中</li>
+<li class=" ml-8">UNIX 文件系统：集中存储文件对象</li>
 </ul></div>
         
       
@@ -344,7 +345,7 @@ section .center {
         
         <div><div class="center middle"><div style="width:100%"><h1 id="rtfsc" class=" text-2xl mt-2 font-sans">RTFSC</h1>
 <p class=" font-serif my-1"><br></p>
-<p class=" font-serif my-1">(&#35752;&#35770;&#65306;&#20551;&#35774;&#20320;&#31532;&#19968;&#27425;&#38405;&#35835;&#36825;&#37096;&#20998;&#20195;&#30721;&#65292;&#24212;&#35813;&#24590;&#20040;&#20570;&#65311;)</p></div></div></div>
+<p class=" font-serif my-1">(讨论：假设你第一次阅读这部分代码，应该怎么做？)</p></div></div></div>
         
       
       </section>
@@ -355,17 +356,17 @@ section .center {
 
       
         
-        <div><h2 id="mkfs" class=" text-xl mt-2 pb-2 font-sans">mkfs: &#21019;&#24314;&#25991;&#20214;&#31995;&#32479; (&#26684;&#24335;&#21270;)</h2>
+        <div><h2 id="mkfs" class=" text-xl mt-2 pb-2 font-sans">mkfs: 创建文件系统 (格式化)</h2>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="c1">// Disk layout:</span>
 <span class="c1">// [ boot block | sb block | log | inode blocks</span>
 <span class="c1">//              | free bit map | data blocks ]</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">&#21487;&#20197;&#30693;&#36947;&#27599;&#19968;&#37096;&#20998;&#30340;&#21547;&#20041;</p>
+<p class=" font-serif my-1">可以知道每一部分的含义</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">boot block - &#21551;&#21160;&#21152;&#36733;&#22120;</li>
-<li class=" ml-8">sb block (super block) - &#25991;&#20214;&#31995;&#32479;&#20803;&#25968;&#25454;</li>
-<li class=" ml-8">log - &#26085;&#24535; (&#23849;&#28291;&#24674;&#22797;)</li>
+<li class=" ml-8">boot block - 启动加载器</li>
+<li class=" ml-8">sb block (super block) - 文件系统元数据</li>
+<li class=" ml-8">log - 日志 (崩溃恢复)</li>
 <li class=" ml-8">inode blocks</li>
 <li class=" ml-8">free bitmap - balloc/bfree</li>
 <li class=" ml-8">data blocks<ul class=" list-disc font-serif">
@@ -383,8 +384,8 @@ section .center {
 
       
         
-        <div><h2 id="mkfs-contd" class=" text-xl mt-2 pb-2 font-sans">mkfs: &#21019;&#24314;&#25991;&#20214;&#31995;&#32479; (cont'd)</h2>
-<p class=" font-serif my-1">&#8220;&#21482;&#31649;&#20998;&#37197;&#12289;&#19981;&#31649;&#22238;&#25910;&#8221; (&#31867;&#20284;&#20110;&#26497;&#38480;&#36895;&#36890;)</p>
+        <div><h2 id="mkfs-contd" class=" text-xl mt-2 pb-2 font-sans">mkfs: 创建文件系统 (cont'd)</h2>
+<p class=" font-serif my-1">“只管分配、不管回收” (类似于极限速通)</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">rsect/wsect (bread/bwrite)</li>
 <li class=" ml-8">balloc/bzero</li>
@@ -393,9 +394,9 @@ section .center {
 <li class=" ml-8">rinode/winode</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">RTFSC &#30340;&#27491;&#30830;&#26041;&#24335;</p>
+<p class=" font-serif my-1">RTFSC 的正确方式</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#8220;<red>&#35835;&#20195;&#30721;&#19981;&#22914;&#35835;&#25191;&#34892;</red>&#8221;: <a href="../../../pages/OS/2022/demos/trace.py" class=" text-amber-900">trace.py</a></li>
+<li class=" ml-8">“<red>读代码不如读执行</red>”: <a href="../../../pages/OS/2022/demos/trace.py" class=" text-amber-900">trace.py</a></li>
 <li class=" ml-8"><code>gdb -ex 'source mkfs/trace.py' mkfs/mkfs</code></li>
 </ul></div>
         
@@ -412,7 +413,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#35843;&#35797;&#20195;&#30721;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">调试代码</h1></div></div></div>
         
       
       </section>
@@ -423,23 +424,23 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#35843;&#35797;&#31995;&#32479;&#35843;&#29992;</h2>
-<p class=" font-serif my-1">&#26377;&#24456;&#22810;&#36873;&#25321;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">调试系统调用</h2>
+<p class=" font-serif my-1">有很多选择</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">open - &#36335;&#24452;&#35299;&#26512;&#12289;&#21019;&#24314;&#25991;&#20214;&#25551;&#36848;&#31526;</li>
-<li class=" ml-8">read/write - &#25991;&#20214;&#25551;&#36848;&#31526;&#21644;&#25968;&#25454;&#25805;&#20316;</li>
-<li class=" ml-8">link - &#25991;&#20214;&#20803;&#25968;&#25454;&#25805;&#20316;</li>
+<li class=" ml-8">open - 路径解析、创建文件描述符</li>
+<li class=" ml-8">read/write - 文件描述符和数据操作</li>
+<li class=" ml-8">link - 文件元数据操作</li>
 <li class=" ml-8">...</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#24212;&#35813;&#36873;&#21738;&#19968;&#20010;&#65311;</p>
+<p class=" font-serif my-1">应该选哪一个？</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#21462;&#20915;&#20110;&#20320;&#23545;&#20195;&#30721;&#30340;&#29087;&#24713;&#31243;&#24230;&#21644;&#20449;&#24515;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#26377;&#20449;&#24515;&#21487;&#20197;&#36873;&#22797;&#26434;&#19968;&#20123;&#30340;</li>
-<li class=" ml-8">&#27809;&#26377;&#20449;&#24515;&#21487;&#20197;&#36873;&#31616;&#21333;&#19968;&#20123;&#30340;</li>
+<li class=" ml-8">取决于你对代码的熟悉程度和信心<ul class=" list-disc font-serif">
+<li class=" ml-8">有信心可以选复杂一些的</li>
+<li class=" ml-8">没有信心可以选简单一些的</li>
 </ul>
 </li>
-<li class=" ml-8">&#20294;&#22914;&#26524;&#26377;&#20102;&#21018;&#25165;&#30340;&#38138;&#22443;&#65292;&#24212;&#35813;&#37117;&#26377;&#20449;&#24515;&#65281;</li>
+<li class=" ml-8">但如果有了刚才的铺垫，应该都有信心！</li>
 </ul></div>
         
       
@@ -455,7 +456,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#23849;&#28291;&#24674;&#22797;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">崩溃恢复</h1></div></div></div>
         
       
       </section>
@@ -466,26 +467,26 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#33021;&#21542;&#35753;&#25105;&#20204;&#35843;&#35797;&#23849;&#28291;&#24674;&#22797;&#30340;&#20195;&#30721;&#65311;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">能否让我们调试崩溃恢复的代码？</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#8220;Get out of your comfort zone.&#8221;</p>
+<p class=" font-serif my-1">“Get out of your comfort zone.”</p>
 </blockquote>
-<p class=" font-serif my-1">&#25042;&#24816;&#26159;&#25105;&#20204;&#30340;&#26412;&#24615;</p>
+<p class=" font-serif my-1">懒惰是我们的本性</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#8220;&#35843;&#35797;&#36825;&#37096;&#20998;&#20195;&#30721;&#26377;&#28857;&#23567;&#40635;&#28902;&#8221;</li>
-<li class=" ml-8">&#8220;&#21453;&#27491;&#32771;&#35797;&#20063;&#19981;&#32771;&#65292;&#31639;&#20102;&#21543;&#8221;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#19968;&#23450;&#35201;&#30456;&#20449;<red>&#26159;&#21487;&#20197;&#20248;&#38597;&#22320;&#20570;&#21040;&#30340;</red></li>
+<li class=" ml-8">“调试这部分代码有点小麻烦”</li>
+<li class=" ml-8">“反正考试也不考，算了吧”<ul class=" list-disc font-serif">
+<li class=" ml-8">一定要相信<red>是可以优雅地做到的</red></li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#35838;&#31243;&#20316;&#19994;&#30340;&#24847;&#20041;</p>
+<p class=" font-serif my-1">课程作业的意义</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#36924;&#36843;&#22823;&#23478;&#20811;&#26381;&#25042;&#24816;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#22909;&#20316;&#19994;&#30340;&#35774;&#35745;&#24517;&#39035;&#26159; &#8220;&#19981;&#21507;&#33510;&#20570;&#19981;&#20986;&#26469;&#8221;</li>
+<li class=" ml-8">逼迫大家克服懒惰<ul class=" list-disc font-serif">
+<li class=" ml-8">好作业的设计必须是 “不吃苦做不出来”</li>
 </ul>
 </li>
-<li class=" ml-8">&#33719;&#24471;&#28608;&#21169;&#21644; &#8220;self motivation&#8221;</li>
+<li class=" ml-8">获得激励和 “self motivation”</li>
 </ul></div>
         
       
@@ -497,11 +498,11 @@ section .center {
 
       
         
-        <div><h2 id="fault-injection" class=" text-xl mt-2 pb-2 font-sans">&#25925;&#38556;&#27880;&#20837; (Fault Injection)</h2>
-<p class=" font-serif my-1">Crash = &#8220;&#26029;&#30005;&#8221;</p>
+        <div><h2 id="fault-injection" class=" text-xl mt-2 pb-2 font-sans">故障注入 (Fault Injection)</h2>
+<p class=" font-serif my-1">Crash = “断电”</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">crash</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">--</span><span class="n">count</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">--</span><span class="n">count</span><span class="w"> </span><span class="o"><</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"crash</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
 <span class="w">    </span><span class="o">*</span><span class="p">((</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="mh">0x100000</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x5555</span><span class="p">;</span>
 <span class="w">  </span><span class="p">}</span>
@@ -509,14 +510,14 @@ section .center {
 </code></pre></div>
 
 <ul class=" list-disc font-serif">
-<li class=" ml-8">(&#8220;<a href="https://patchwork.kernel.org/project/linux-riscv/patch/20191107212408.11857-3-hch@lst.de/" class=" text-amber-900">sifive finisher</a>&#8221;)</li>
+<li class=" ml-8">(“<a href="https://patchwork.kernel.org/project/linux-riscv/patch/20191107212408.11857-3-hch@lst.de/" class=" text-amber-900">sifive finisher</a>”)</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">xv6 &#26159;&#30456;&#23545;&#27604;&#36739; deterministic &#30340;</p>
+<p class=" font-serif my-1">xv6 是相对比较 deterministic 的</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#26522;&#20030;&#21487;&#33021;&#30340; count<ul class=" list-disc font-serif">
-<li class=" ml-8">&#25105;&#20204;&#23601;&#24471;&#21040;&#20102;&#19968;&#20010; &#8220;&#27979;&#35797;&#26694;&#26550;&#8221;&#65281;</li>
-<li class=" ml-8">&#25105;&#20204;&#29992;&#31867;&#20284;&#30340; trick &#27169;&#25311;&#24212;&#29992;&#31243;&#24207;&#20889;&#20837;&#25968;&#25454;&#21518;&#30340;&#31995;&#32479;&#23849;&#28291;</li>
+<li class=" ml-8">枚举可能的 count<ul class=" list-disc font-serif">
+<li class=" ml-8">我们就得到了一个 “测试框架”！</li>
+<li class=" ml-8">我们用类似的 trick 模拟应用程序写入数据后的系统崩溃</li>
 </ul>
 </li>
 </ul></div>
@@ -534,7 +535,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#24635;&#32467;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">总结</h1></div></div></div>
         
       
       </section>
@@ -545,21 +546,21 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#24635;&#32467;</h2>
-<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#22238;&#31572;&#30340;&#38382;&#39064;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">总结</h2>
+<p class=" font-serif my-1">本次课回答的问题</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><strong>Q</strong>: &#21040;&#24213;&#24590;&#20040;&#23454;&#29616;&#19968;&#20010;&#30495;&#27491;&#30340;&#25991;&#20214;&#31995;&#32479;&#65311;<ul class=" list-disc font-serif">
-<li class=" ml-8">Xv6 &#25991;&#20214;&#31995;&#32479;&#65306;mkfs; &#31995;&#32479;&#35843;&#29992;&#23454;&#29616;&#21644;&#26085;&#24535;</li>
+<li class=" ml-8"><strong>Q</strong>: 到底怎么实现一个真正的文件系统？<ul class=" list-disc font-serif">
+<li class=" ml-8">Xv6 文件系统：mkfs; 系统调用实现和日志</li>
 </ul>
 </li>
 </ul>
 <hr>
 <p class=" font-serif my-1">Takeaway messages</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#35843;&#35797;&#20195;&#30721;&#30340;&#24314;&#35758;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20808;&#20102;&#35299;&#19968;&#19979;&#20320;&#35201;&#35843;&#35797;&#30340;&#23545;&#35937;</li>
-<li class=" ml-8">&#28982;&#21518;&#20174; trace &#24320;&#22987;</li>
-<li class=" ml-8">&#19981;&#35201;&#24807;&#24597;&#35843;&#35797;&#20219;&#20309;&#19968;&#37096;&#20998;</li>
+<li class=" ml-8">调试代码的建议<ul class=" list-disc font-serif">
+<li class=" ml-8">先了解一下你要调试的对象</li>
+<li class=" ml-8">然后从 trace 开始</li>
+<li class=" ml-8">不要惧怕调试任何一部分</li>
 </ul>
 </li>
 </ul></div>
@@ -603,5 +604,6 @@ section .center {
 
 
 </body>
+
 
 </html>

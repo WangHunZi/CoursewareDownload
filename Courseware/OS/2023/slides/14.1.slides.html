@@ -1,10 +1,11 @@
 <!DOCTYPE html><html class="h-100">
 
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="../../../static/css/base.css" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com/"></script>
   <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
 
@@ -23,14 +24,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +210,7 @@ section .center {
 }
 </style>
 
-  <title>&#22810;&#22788;&#29702;&#22120;&#19978;&#30340;&#25805;&#20316;&#31995;&#32479;&#20869;&#26680;</title>
+  <title>多处理器上的操作系统内核</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,7 +228,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="14.1.slides.html" class=" text-amber-900">&#22810;&#22788;&#29702;&#22120;&#19978;&#30340;&#25805;&#20316;&#31995;&#32479;&#20869;&#26680;</a></h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="14.1.slides.html" class=" text-amber-900">多处理器上的操作系统内核</a></h1></div></div></div>
         
       
       </section>
@@ -239,11 +240,11 @@ section .center {
       
         
         <div><h2 id="abstractmachine-trm" class=" text-xl mt-2 pb-2 font-sans">AbstractMachine: TRM</h2>
-<p class=" font-serif my-1">Turing Machine: &#19968;&#20010;&#22788;&#29702;&#22120;&#65292;&#19968;&#20010;&#22320;&#22336;&#31354;&#38388;</p>
+<p class=" font-serif my-1">Turing Machine: 一个处理器，一个地址空间</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#8220;&#26080;&#24773;&#30340;&#25191;&#34892;&#25351;&#20196;&#30340;&#26426;&#22120;&#8221; (rvemu) &#30340;&#25277;&#35937;</li>
-<li class=" ml-8">&#21487;&#29992;&#30340;&#20869;&#23384;&#26159;&#38745;&#24577;&#21464;&#37327;&#21644; <code>heap</code></li>
-<li class=" ml-8">&#21482;&#33021;&#25191;&#34892;&#35745;&#31639;&#25351;&#20196;&#21644; putch, halt</li>
+<li class=" ml-8">“无情的执行指令的机器” (rvemu) 的抽象</li>
+<li class=" ml-8">可用的内存是静态变量和 <code>heap</code></li>
+<li class=" ml-8">只能执行计算指令和 putch, halt</li>
 </ul>
 <hr>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/turing-machine.gif" width="650px"></p></div>
@@ -258,17 +259,17 @@ section .center {
       
         
         <div><h2 id="abstractmachine-mpe" class=" text-xl mt-2 pb-2 font-sans">AbstractMachine: MPE</h2>
-<p class=" font-serif my-1">Multiprocessing Extension: &#22810;&#20010;&#22788;&#29702;&#22120;&#65292;&#19968;&#20010;&#22320;&#22336;&#31354;&#38388;</p>
+<p class=" font-serif my-1">Multiprocessing Extension: 多个处理器，一个地址空间</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#21487;&#29992;&#30340;&#22320;&#22336;&#31354;&#38388;&#20381;&#28982;&#26159;&#38745;&#24577;&#21464;&#37327;&#21644; <code>heap</code> (&#22788;&#29702;&#22120;&#38388;&#20849;&#20139;)</li>
-<li class=" ml-8">&#8220;&#22810;&#20010; Turing Machine&#65292;&#20849;&#20139;&#19968;&#20010;&#32440;&#24102;&#8221;</li>
+<li class=" ml-8">可用的地址空间依然是静态变量和 <code>heap</code> (处理器间共享)</li>
+<li class=" ml-8">“多个 Turing Machine，共享一个纸带”</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#29366;&#24577;&#26426;&#27169;&#22411;&#21457;&#29983;&#20102;&#25913;&#21464;</p>
+<p class=" font-serif my-1">状态机模型发生了改变</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#29366;&#24577;&#65306;&#20849;&#20139;&#20869;&#23384;&#21644;&#27599;&#20010;&#22788;&#29702;&#22120;&#30340;&#20869;&#37096;&#29366;&#24577; $$(M, R_1, R_2, \ldots, R_n)$$</li>
-<li class=" ml-8">&#29366;&#24577;&#36801;&#31227;&#65306;&#22788;&#29702;&#22120; $t$ &#20998;&#38548;&#20986;&#19968;&#20010; &#8220;&#21333;&#22788;&#29702;&#22120;&#35745;&#31639;&#26426;&#8221;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#25191;&#34892; $(M, R_t) \to (M', R_t')$
+<li class=" ml-8">状态：共享内存和每个处理器的内部状态 $$(M, R_1, R_2, \ldots, R_n)$$</li>
+<li class=" ml-8">状态迁移：处理器 $t$ 分隔出一个 “单处理器计算机”<ul class=" list-disc font-serif">
+<li class=" ml-8">执行 $(M, R_t) \to (M', R_t')$
 $$(M, R_1, R_2, \ldots, R_n) \to (M', R_1, R_2, \ldots, R_t', \ldots, R_n)$$</li>
 </ul>
 </li>
@@ -283,22 +284,22 @@ $$(M, R_1, R_2, \ldots, R_n) \to (M', R_1, R_2, \ldots, R_t', \ldots, R_n)$$</li
 
       
         
-        <div><h2 id="l1" class=" text-xl mt-2 pb-2 font-sans">&#31616;&#26131;&#22810;&#22788;&#29702;&#22120;&#20869;&#26680; (L1 &#30340;&#27169;&#22411;)</h2>
-<p class=" font-serif my-1">&#19982;&#22810;&#32447;&#31243;&#31243;&#24207;&#23436;&#20840;&#19968;&#33268;</p>
+        <div><h2 id="l1" class=" text-xl mt-2 pb-2 font-sans">简易多处理器内核 (L1 的模型)</h2>
+<p class=" font-serif my-1">与多线程程序完全一致</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#21516;&#27493;&#20165;&#33021;&#36890;&#36807;&#21407;&#23376;&#25351;&#20196;&#22914; <code>xchg</code> &#23454;&#29616;</li>
+<li class=" ml-8">同步仅能通过原子指令如 <code>xchg</code> 实现</li>
 </ul>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">uint8_t</span><span class="w"> </span><span class="n">shm</span><span class="p">[</span><span class="n">MEM_SIZE</span><span class="p">];</span><span class="w"> </span><span class="c1">// Shared memory</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">Tprocessor</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">cpu_state</span><span class="w"> </span><span class="n">s</span><span class="p">;</span>
 <span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">fetch_decode_exec</span><span class="p">(</span><span class="o">&amp;</span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="n">shm</span><span class="p">);</span>
+<span class="w">    </span><span class="n">fetch_decode_exec</span><span class="p">(</span><span class="o">&</span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="n">shm</span><span class="p">);</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">NPROC</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o"><</span><span class="w"> </span><span class="n">NPROC</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">create</span><span class="p">(</span><span class="n">Tprocessor</span><span class="p">);</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
@@ -332,5 +333,6 @@ $$(M, R_1, R_2, \ldots, R_n) \to (M', R_1, R_2, \ldots, R_t', \ldots, R_n)$$</li
 
 
 </body>
+
 
 </html>

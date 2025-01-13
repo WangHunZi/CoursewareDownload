@@ -1,10 +1,11 @@
 <!DOCTYPE html><html class="h-100">
 
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="../../../static/css/base.css" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com/"></script>
   <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
 
@@ -23,14 +24,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -238,11 +239,11 @@ section .center {
 
       
         
-        <div><h2 id="1980" class=" text-xl mt-2 pb-2 font-sans">&#35753;&#26102;&#38388;&#22238;&#21040; 1980 &#24180;</h2>
-<p class=" font-serif my-1">5.25" &#36719;&#30424;&#65306;&#21333;&#38754; 180 KiB</p>
+        <div><h2 id="1980" class=" text-xl mt-2 pb-2 font-sans">让时间回到 1980 年</h2>
+<p class=" font-serif my-1">5.25" 软盘：单面 180 KiB</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">360 &#20010; 512B &#25159;&#21306; (sectors)</li>
-<li class=" ml-8">&#22312;&#36825;&#26679;&#30340;&#35774;&#22791;&#19978;&#23454;&#29616;&#25991;&#20214;&#31995;&#32479;&#65292;&#24212;&#35813;&#36873;&#29992;&#24590;&#26679;&#30340;&#25968;&#25454;&#32467;&#26500;&#65311;</li>
+<li class=" ml-8">360 个 512B 扇区 (sectors)</li>
+<li class=" ml-8">在这样的设备上实现文件系统，应该选用怎样的数据结构？</li>
 </ul>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/floppy-drives.jpg" width="600px"></p></div>
         
@@ -255,26 +256,26 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#38656;&#27714;&#20998;&#26512;</h2>
-<p class=" font-serif my-1">&#30456;&#24403;&#23567;&#30340;&#25991;&#20214;&#31995;&#32479;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">需求分析</h2>
+<p class=" font-serif my-1">相当小的文件系统</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#30446;&#24405;&#20013;&#19968;&#33324;&#21482;&#26377;&#20960;&#20010;&#12289;&#21313;&#20960;&#20010;&#25991;&#20214;</li>
-<li class=" ml-8">&#25991;&#20214;&#20197;&#23567;&#25991;&#20214;&#20026;&#20027; (&#20960;&#20010; block &#20197;&#20869;)</li>
+<li class=" ml-8">目录中一般只有几个、十几个文件</li>
+<li class=" ml-8">文件以小文件为主 (几个 block 以内)</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#25991;&#20214;&#30340;&#23454;&#29616;&#26041;&#24335;</p>
+<p class=" font-serif my-1">文件的实现方式</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><code>struct block *</code> &#30340;&#38142;&#34920;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20219;&#20309;&#22797;&#26434;&#30340;&#39640;&#32423;&#25968;&#25454;&#32467;&#26500;&#37117;&#26174;&#24471;&#28010;&#36153;</li>
+<li class=" ml-8"><code>struct block *</code> 的链表<ul class=" list-disc font-serif">
+<li class=" ml-8">任何复杂的高级数据结构都显得浪费</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#30446;&#24405;&#30340;&#23454;&#29616;&#26041;&#24335;</p>
+<p class=" font-serif my-1">目录的实现方式</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#30446;&#24405;&#23601;&#26159;&#19968;&#20010;&#26222;&#36890;&#30340;&#25991;&#20214; (&#34394;&#25311;&#30913;&#30424;&#65307;&#8220;<red>&#30446;&#24405;&#25991;&#20214;</red>&#8221;)</li>
-<li class=" ml-8">&#25805;&#20316;&#31995;&#32479;&#20250;&#23545;&#25991;&#20214;&#30340;&#20869;&#23481;&#20316;&#20026;&#30446;&#24405;&#30340;&#35299;&#35835;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#25991;&#20214;&#20869;&#23481;&#23601;&#26159;&#19968;&#20010; <code>struct dentry[];</code></li>
+<li class=" ml-8">目录就是一个普通的文件 (虚拟磁盘；“<red>目录文件</red>”)</li>
+<li class=" ml-8">操作系统会对文件的内容作为目录的解读<ul class=" list-disc font-serif">
+<li class=" ml-8">文件内容就是一个 <code>struct dentry[];</code></li>
 </ul>
 </li>
 </ul></div>
@@ -288,21 +289,21 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#29992;&#38142;&#34920;&#23384;&#20648;&#25968;&#25454;&#65306;&#20004;&#31181;&#35774;&#35745;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">用链表存储数据：两种设计</h2>
 <ol class=" list-decimal font-serif">
-<li class=" ml-8">&#22312;&#27599;&#20010;&#25968;&#25454;&#22359;&#21518;&#25918;&#32622;&#25351;&#38024;<ul class=" list-disc font-serif">
-<li class=" ml-8"><green>&#20248;&#28857;</green>&#65306;&#23454;&#29616;&#31616;&#21333;&#12289;&#26080;&#39035;&#21333;&#29420;&#24320;&#36767;&#23384;&#20648;&#31354;&#38388;</li>
-<li class=" ml-8"><red>&#32570;&#28857;</red>&#65306;&#25968;&#25454;&#30340;&#22823;&#23567;&#19981;&#26159; $2^k$; &#21333;&#32431;&#30340; lseek &#38656;&#35201;&#35835;&#25972;&#22359;&#25968;&#25454;</li>
+<li class=" ml-8">在每个数据块后放置指针<ul class=" list-disc font-serif">
+<li class=" ml-8"><green>优点</green>：实现简单、无须单独开辟存储空间</li>
+<li class=" ml-8"><red>缺点</red>：数据的大小不是 $2^k$; 单纯的 lseek 需要读整块数据</li>
 </ul>
 </li>
-<li class=" ml-8">&#23558;&#25351;&#38024;&#38598;&#20013;&#23384;&#25918;&#22312;&#25991;&#20214;&#31995;&#32479;&#30340;&#26576;&#20010;&#21306;&#22495;<ul class=" list-disc font-serif">
-<li class=" ml-8"><green>&#20248;&#28857;</green>&#65306;&#23616;&#37096;&#24615;&#22909;&#65307;lseek &#26356;&#24555;</li>
-<li class=" ml-8"><red>&#32570;&#28857;</red>&#65306;&#38598;&#20013;&#23384;&#25918;&#30340;&#25968;&#25454;&#25439;&#22351;&#23558;&#23548;&#33268;&#25968;&#25454;&#20002;&#22833;</li>
+<li class=" ml-8">将指针集中存放在文件系统的某个区域<ul class=" list-disc font-serif">
+<li class=" ml-8"><green>优点</green>：局部性好；lseek 更快</li>
+<li class=" ml-8"><red>缺点</red>：集中存放的数据损坏将导致数据丢失</li>
 </ul>
 </li>
 </ol>
 <hr>
-<p class=" font-serif my-1">&#21738;&#31181;&#26041;&#24335;&#30340;&#32570;&#38519;&#26159;&#33268;&#21629;&#12289;&#38590;&#20197;&#35299;&#20915;&#30340;&#65311;</p></div>
+<p class=" font-serif my-1">哪种方式的缺陷是致命、难以解决的？</p></div>
         
       
       </section>
@@ -313,10 +314,10 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#38598;&#20013;&#20445;&#23384;&#25152;&#26377;&#25351;&#38024;</h2>
-<p class=" font-serif my-1">&#38598;&#20013;&#23384;&#20648;&#30340;&#25351;&#38024;&#23481;&#26131;&#25439;&#22351;&#65311;&#23384; $n$ &#20221;&#23601;&#34892;&#65281;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">集中保存所有指针</h2>
+<p class=" font-serif my-1">集中存储的指针容易损坏？存 $n$ 份就行！</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">FAT-12/16/32 (FAT entry&#65292;&#21363; &#8220;next &#25351;&#38024;&#8221; &#30340;&#22823;&#23567;)</li>
+<li class=" ml-8">FAT-12/16/32 (FAT entry，即 “next 指针” 的大小)</li>
 </ul>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/fat32_layout.gif" width="700px"></p></div>
         
@@ -329,16 +330,16 @@ section .center {
 
       
         
-        <div><h2 id="file-allocation-table" class=" text-xl mt-2 pb-2 font-sans">&#8220;File Allocation Table&#8221; &#25991;&#20214;&#31995;&#32479;</h2>
+        <div><h2 id="file-allocation-table" class=" text-xl mt-2 pb-2 font-sans">“File Allocation Table” 文件系统</h2>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/chat-rtfm.png" width="500px"></p>
-<p class=" font-serif my-1"><a href="../../../pages/OS/manuals/MSFAT-spec.pdf" class=" text-amber-900">RTFM</a> &#24471;&#21040;&#24517;&#35201;&#30340;&#32454;&#33410;</p>
+<p class=" font-serif my-1"><a href="../../../pages/OS/manuals/MSFAT-spec.pdf" class=" text-amber-900">RTFM</a> 得到必要的细节</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#35832;&#22914; tutorial&#12289;&#21338;&#23458;&#37117;&#19981;&#21487;&#38752;</li>
-<li class=" ml-8">&#36824;&#20250;&#20002;&#22833;&#24456;&#22810;&#37325;&#35201;&#30340;&#32454;&#33410;</li>
+<li class=" ml-8">诸如 tutorial、博客都不可靠</li>
+<li class=" ml-8">还会丢失很多重要的细节</li>
 </ul>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">CountofClusters</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">4085</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">CountofClusters</span><span class="w"> </span><span class="o"><</span><span class="w"> </span><span class="mi">4085</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// Volume is FAT12 (2 MiB for 512B cluster)</span>
-<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">CountofCluster</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">65525</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">CountofCluster</span><span class="w"> </span><span class="o"><</span><span class="w"> </span><span class="mi">65525</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// Volume is FAT16 (32 MiB for 512B cluster)</span>
 <span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// Volume is FAT32</span>
@@ -354,8 +355,8 @@ section .center {
 
       
         
-        <div><h2 id="fat" class=" text-xl mt-2 pb-2 font-sans">FAT: &#38142;&#25509;&#23384;&#20648;&#30340;&#25991;&#20214;</h2>
-<p class=" font-serif my-1">&#8220;FAT&#8221; &#30340; &#8220;next&#8221; &#25968;&#32452;</p>
+        <div><h2 id="fat" class=" text-xl mt-2 pb-2 font-sans">FAT: 链接存储的文件</h2>
+<p class=" font-serif my-1">“FAT” 的 “next” 数组</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><code>0</code>: free; <code>2...MAX</code>: allocated; </li>
 <li class=" ml-8"><code>ffffff7</code>: bad cluster; <code>ffffff8-ffffffe</code>, <code>-1</code>: end-of-file</li>
@@ -371,15 +372,15 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#30446;&#24405;&#26641;&#23454;&#29616;&#65306;&#30446;&#24405;&#25991;&#20214;</h2>
-<p class=" font-serif my-1">&#20197;&#26222;&#36890;&#25991;&#20214;&#30340;&#26041;&#24335;&#23384;&#20648; &#8220;&#30446;&#24405;&#8221; &#36825;&#20010;&#25968;&#25454;&#32467;&#26500;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">目录树实现：目录文件</h2>
+<p class=" font-serif my-1">以普通文件的方式存储 “目录” 这个数据结构</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">FAT: &#30446;&#24405; = 32-byte &#23450;&#38271;&#30446;&#24405;&#39033;&#30340;&#38598;&#21512;</li>
-<li class=" ml-8">&#25805;&#20316;&#31995;&#32479;&#22312;&#35299;&#26512;&#26102;&#25226;&#26631;&#35760;&#20026;&#30446;&#24405;&#30340;&#30446;&#24405;&#39033; &#8220;&#24403;&#20570;&#8221; &#30446;&#24405;&#21363;&#21487;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#21487;&#20197;&#29992;&#36830;&#32493;&#30340;&#33509;&#24178;&#20010;&#30446;&#24405;&#39033;&#23384;&#20648; &#8220;&#38271;&#25991;&#20214;&#21517;&#8221;</li>
+<li class=" ml-8">FAT: 目录 = 32-byte 定长目录项的集合</li>
+<li class=" ml-8">操作系统在解析时把标记为目录的目录项 “当做” 目录即可<ul class=" list-disc font-serif">
+<li class=" ml-8">可以用连续的若干个目录项存储 “长文件名”</li>
 </ul>
 </li>
-<li class=" ml-8">&#24605;&#32771;&#39064;&#65306;&#20026;&#20160;&#20040;&#19981;&#25226;&#20803;&#25968;&#25454; (&#22823;&#23567;&#12289;&#25991;&#20214;&#21517;&#12289;&#8230;&#8230;) &#20445;&#23384;&#22312; <code>vector&lt;struct block *&gt; file</code> &#30340;&#22836;&#37096;&#65311;</li>
+<li class=" ml-8">思考题：为什么不把元数据 (大小、文件名、……) 保存在 <code>vector<struct block *> file</code> 的头部？</li>
 </ul>
 <hr>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/FAT-dent.png" width="800px"></p></div>
@@ -394,25 +395,25 @@ section .center {
       
         
         <div><h2 id="talk-is-cheap-show-me-the-code" class=" text-xl mt-2 pb-2 font-sans">Talk is Cheap, Show Me the Code!</h2>
-<p class=" font-serif my-1">&#39318;&#20808;&#65292;&#35266;&#23519; &#8220;&#24555;&#36895;&#26684;&#24335;&#21270;&#8221; (<code>mkfs.fat</code>) &#26159;&#22914;&#20309;&#24037;&#20316;&#30340;</p>
+<p class=" font-serif my-1">首先，观察 “快速格式化” (<code>mkfs.fat</code>) 是如何工作的</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#32769;&#26379;&#21451;&#65306;strace</li>
+<li class=" ml-8">老朋友：strace</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#28982;&#21518;&#65292;&#25226;&#25972;&#20010;&#30913;&#30424;&#38236;&#20687; mmap &#36827;&#20869;&#23384;</p>
+<p class=" font-serif my-1">然后，把整个磁盘镜像 mmap 进内存</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#29031;&#25220;&#25163;&#20876;&#65292;&#36941;&#21382;&#30446;&#24405;&#26641; (fat-tree demo)&#65292;&#35797;&#35797;<a href="https://box.nju.edu.cn/f/0764665b70a34599813c/?dl=1" class=" text-amber-900">&#38236;&#20687;</a></li>
+<li class=" ml-8">照抄手册，遍历目录树 (fat-tree demo)，试试<a href="https://box.nju.edu.cn/f/0764665b70a34599813c/?dl=1" class=" text-amber-900">镜像</a></li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#21478;&#19968;&#20010;&#26377;&#36259;&#30340;&#38382;&#39064;&#65306;&#25991;&#20214;&#31995;&#32479;&#24674;&#22797;</p>
+<p class=" font-serif my-1">另一个有趣的问题：文件系统恢复</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#24555;&#36895;&#26684;&#24335;&#21270; = FAT &#34920;&#20002;&#22833;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#25152;&#26377;&#30340;&#25991;&#20214;&#20869;&#23481; (&#21253;&#25324;&#30446;&#24405;&#25991;&#20214;) &#37117;&#36824;&#22312;</li>
-<li class=" ml-8">&#21482;&#26159;&#22312;&#25968;&#25454;&#32467;&#26500;&#30524;&#37324;&#30475;&#36215;&#26469;&#37117;&#26159; &#8220;free block&#8221;</li>
+<li class=" ml-8">快速格式化 = FAT 表丢失<ul class=" list-disc font-serif">
+<li class=" ml-8">所有的文件内容 (包括目录文件) 都还在</li>
+<li class=" ml-8">只是在数据结构眼里看起来都是 “free block”</li>
 </ul>
 </li>
-<li class=" ml-8">&#39318;&#20808;&#38656;&#35201;&#29468;&#20986;&#25991;&#20214;&#31995;&#32479;&#30340;&#21442;&#25968; (<code>SecPerClus</code>, <code>BytsPerSec</code>, <code>FATSz32</code>, <code>BPB_RootClus</code>, ...)</li>
-<li class=" ml-8">&#26412;&#36136;&#19978;&#26159; cluster &#30340;&#20998;&#31867;&#21644;&#24314;&#31435; &#8220;&#21487;&#33021;&#21518;&#32487;&#20851;&#31995;&#8221;</li>
+<li class=" ml-8">首先需要猜出文件系统的参数 (<code>SecPerClus</code>, <code>BytsPerSec</code>, <code>FATSz32</code>, <code>BPB_RootClus</code>, ...)</li>
+<li class=" ml-8">本质上是 cluster 的分类和建立 “可能后继关系”</li>
 </ul></div>
         
       
@@ -424,28 +425,28 @@ section .center {
 
       
         
-        <div><h2 id="fat" class=" text-xl mt-2 pb-2 font-sans">FAT: &#24615;&#33021;&#19982;&#21487;&#38752;&#24615;</h2>
-<p class=" font-serif my-1">&#24615;&#33021;</p>
+        <div><h2 id="fat" class=" text-xl mt-2 pb-2 font-sans">FAT: 性能与可靠性</h2>
+<p class=" font-serif my-1">性能</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><green>&#65291;</green> &#23567;&#25991;&#20214;&#31616;&#30452;&#22826;&#21512;&#36866;&#20102;</li>
-<li class=" ml-8"><red>&#65293;</red> &#20294;&#22823;&#25991;&#20214;&#30340;&#38543;&#26426;&#35775;&#38382;&#23601;&#19981;&#34892;&#20102;<ul class=" list-disc font-serif">
-<li class=" ml-8">4 GB &#30340;&#25991;&#20214;&#36339;&#21040;&#26411;&#23614; (4 KB cluster) &#26377; $2^{20}$ &#27425;&#38142;&#34920; next &#25805;&#20316;</li>
-<li class=" ml-8">&#32531;&#23384;&#33021;&#37096;&#20998;&#35299;&#20915;&#36825;&#20010;&#38382;&#39064;</li>
+<li class=" ml-8"><green>＋</green> 小文件简直太合适了</li>
+<li class=" ml-8"><red>－</red> 但大文件的随机访问就不行了<ul class=" list-disc font-serif">
+<li class=" ml-8">4 GB 的文件跳到末尾 (4 KB cluster) 有 $2^{20}$ 次链表 next 操作</li>
+<li class=" ml-8">缓存能部分解决这个问题</li>
 </ul>
 </li>
-<li class=" ml-8">&#22312; FAT &#26102;&#20195;&#65292;&#30913;&#30424;&#36830;&#32493;&#35775;&#38382;&#24615;&#33021;&#26356;&#20339;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20351;&#29992;&#26102;&#38388;&#20037;&#30340;&#30913;&#30424;&#20250;&#20135;&#29983;&#30862;&#29255; (fragmentation)<ul class=" list-disc font-serif">
-<li class=" ml-8">malloc &#20063;&#20250;&#20135;&#29983;&#30862;&#29255;&#65292;&#19981;&#36807;&#23545;&#24615;&#33021;&#24433;&#21709;&#19981;&#22826;&#22823;</li>
+<li class=" ml-8">在 FAT 时代，磁盘连续访问性能更佳<ul class=" list-disc font-serif">
+<li class=" ml-8">使用时间久的磁盘会产生碎片 (fragmentation)<ul class=" list-disc font-serif">
+<li class=" ml-8">malloc 也会产生碎片，不过对性能影响不太大</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#21487;&#38752;&#24615;</p>
+<p class=" font-serif my-1">可靠性</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#32500;&#25252;&#33509;&#24178;&#20010; FAT &#30340;&#21103;&#26412;&#38450;&#27490;&#20803;&#25968;&#25454;&#25439;&#22351; (&#39069;&#22806;&#30340;&#24320;&#38144;)</li>
-<li class=" ml-8">&#25439;&#22351;&#30340; cluster &#22312; FAT &#20013;&#26631;&#35760;</li>
+<li class=" ml-8">维护若干个 FAT 的副本防止元数据损坏 (额外的开销)</li>
+<li class=" ml-8">损坏的 cluster 在 FAT 中标记</li>
 </ul></div>
         
       
@@ -476,5 +477,6 @@ section .center {
 
 
 </body>
+
 
 </html>

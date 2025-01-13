@@ -1,10 +1,11 @@
 <!DOCTYPE html><html class="h-100">
 
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="../../../static/css/base.css" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com/"></script>
   <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
 
@@ -23,14 +24,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +210,7 @@ section .center {
 }
 </style>
 
-  <title>&#25918;&#24323; (2)&#65306;&#25191;&#34892;&#39034;&#24207;</title>
+  <title>放弃 (2)：执行顺序</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,7 +228,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="2" class=" text-2xl mt-2 font-sans"><a href="5.3.slides.html" class=" text-amber-900">&#25918;&#24323; (2)&#65306;&#25191;&#34892;&#39034;&#24207;</a></h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="2" class=" text-2xl mt-2 font-sans"><a href="5.3.slides.html" class=" text-amber-900">放弃 (2)：执行顺序</a></h1></div></div></div>
         
       
       </section>
@@ -238,12 +239,12 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20363;&#23376;&#65306;&#27714;&#21644; (&#20877;&#27425;&#20986;&#29616;)</h2>
-<p class=" font-serif my-1">&#20998;&#20004;&#20010;&#32447;&#31243;&#65292;&#35745;&#31639; $1+1+1+\ldots+1$ (&#20849;&#35745; $2n$ &#20010; $1$)</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">例子：求和 (再次出现)</h2>
+<p class=" font-serif my-1">分两个线程，计算 $1+1+1+\ldots+1$ (共计 $2n$ 个 $1$)</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#define N 100000000</span>
 <span class="kt">long</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 
-<span class="kt">void</span><span class="w"> </span><span class="nf">Tsum</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="n">sum</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">Tsum</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o"><</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="n">sum</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">create</span><span class="p">(</span><span class="n">Tsum</span><span class="p">);</span>
@@ -253,10 +254,10 @@ section .center {
 <span class="p">}</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">&#22914;&#26524;&#28155;&#21152;&#32534;&#35793;&#20248;&#21270;&#65311;</p>
+<p class=" font-serif my-1">如果添加编译优化？</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><code>-O1</code>: 100000000 &#128561;&#128561;</li>
-<li class=" ml-8"><code>-O2</code>: 200000000 &#128561;&#128561;&#128561;</li>
+<li class=" ml-8"><code>-O1</code>: 100000000 😱😱</li>
+<li class=" ml-8"><code>-O2</code>: 200000000 😱😱😱</li>
 </ul></div>
         
       
@@ -268,17 +269,17 @@ section .center {
 
       
         
-        <div><h2 id="2" class=" text-xl mt-2 pb-2 font-sans"><red>&#25918;&#24323; (2)&#65306;&#31243;&#24207;&#30340;&#39034;&#24207;&#25191;&#34892;&#20551;&#35774;</red></h2>
+        <div><h2 id="2" class=" text-xl mt-2 pb-2 font-sans"><red>放弃 (2)：程序的顺序执行假设</red></h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#32534;&#35793;&#22120;&#23545;&#20869;&#23384;&#35775;&#38382; &#8220;eventually consistent&#8221; &#30340;&#22788;&#29702;&#23548;&#33268;&#20849;&#20139;&#20869;&#23384;&#20316;&#20026;&#32447;&#31243;&#21516;&#27493;&#24037;&#20855;&#30340;&#22833;&#25928;&#12290;</p>
+<p class=" font-serif my-1">编译器对内存访问 “eventually consistent” 的处理导致共享内存作为线程同步工具的失效。</p>
 </blockquote>
-<p class=" font-serif my-1">&#21018;&#25165;&#30340;&#20363;&#23376;</p>
+<p class=" font-serif my-1">刚才的例子</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><code>-O1</code>: <code>R[eax] = sum; R[eax] += N; sum = R[eax]</code></li>
 <li class=" ml-8"><code>-O2</code>: <code>sum += N;</code></li>
-<li class=" ml-8">(&#20320;&#30340;&#32534;&#35793;&#22120;&#20063;&#35768;&#26159;&#19981;&#21516;&#30340;&#32467;&#26524;)</li>
+<li class=" ml-8">(你的编译器也许是不同的结果)</li>
 </ul>
-<p class=" font-serif my-1">&#21478;&#19968;&#20010;&#20363;&#23376;</p>
+<p class=" font-serif my-1">另一个例子</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">done</span><span class="p">);</span>
 <span class="c1">// would be optimized to</span>
 <span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">done</span><span class="p">)</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
@@ -293,19 +294,19 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20445;&#35777;&#25191;&#34892;&#39034;&#24207;</h2>
-<p class=" font-serif my-1">&#22238;&#24518; &#8220;&#32534;&#35793;&#27491;&#30830;&#24615;&#8221;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">保证执行顺序</h2>
+<p class=" font-serif my-1">回忆 “编译正确性”</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">C &#29366;&#24577;&#21644;&#27719;&#32534;&#29366;&#24577;&#26426;&#30340; &#8220;&#21487;&#35266;&#27979;&#34892;&#20026;&#31561;&#20215;&#8221;</li>
-<li class=" ml-8">&#26041;&#27861; 1&#65306;&#25554;&#20837; &#8220;&#19981;&#21487;&#20248;&#21270;&#8221; &#20195;&#30721;<ul class=" list-disc font-serif">
+<li class=" ml-8">C 状态和汇编状态机的 “可观测行为等价”</li>
+<li class=" ml-8">方法 1：插入 “不可优化” 代码<ul class=" list-disc font-serif">
 <li class=" ml-8"><code>asm volatile ("" ::: "memory");</code> <ul class=" list-disc font-serif">
-<li class=" ml-8">&#8220;Clobbers memory&#8221;</li>
+<li class=" ml-8">“Clobbers memory”</li>
 </ul>
 </li>
 </ul>
 </li>
-<li class=" ml-8">&#26041;&#27861; 2&#65306;&#26631;&#35760;&#21464;&#37327; load/store &#20026;&#19981;&#21487;&#20248;&#21270;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20351;&#29992; <code>volatile</code> &#21464;&#37327;</li>
+<li class=" ml-8">方法 2：标记变量 load/store 为不可优化<ul class=" list-disc font-serif">
+<li class=" ml-8">使用 <code>volatile</code> 变量</li>
 </ul>
 </li>
 </ul>
@@ -343,5 +344,6 @@ section .center {
 
 
 </body>
+
 
 </html>

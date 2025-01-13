@@ -1,10 +1,11 @@
 <!DOCTYPE html><html class="h-100">
 
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="../../../static/css/base.css" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com/"></script>
   <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
 
@@ -23,14 +24,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +210,7 @@ section .center {
 }
 </style>
 
-  <title>Linux &#36827;&#31243;&#30340;&#22320;&#22336;&#31354;&#38388;</title>
+  <title>Linux 进程的地址空间</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,7 +228,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="linux" class=" text-2xl mt-2 font-sans"><a href="17.1.slides.html" class=" text-amber-900">Linux &#36827;&#31243;&#30340;&#22320;&#22336;&#31354;&#38388;</a></h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="linux" class=" text-2xl mt-2 font-sans"><a href="17.1.slides.html" class=" text-amber-900">Linux 进程的地址空间</a></h1></div></div></div>
         
       
       </section>
@@ -238,24 +239,24 @@ section .center {
 
       
         
-        <div><h2 id="linux" class=" text-xl mt-2 pb-2 font-sans">Linux &#36827;&#31243;&#30340;&#22320;&#22336;&#31354;&#38388;</h2>
-<p class=" font-serif my-1">&#20004;&#20010;&#24456;&#22522;&#26412; (&#20294;&#20063;&#24456;&#22256;&#38590;) &#30340;&#38382;&#39064;</p>
+        <div><h2 id="linux" class=" text-xl mt-2 pb-2 font-sans">Linux 进程的地址空间</h2>
+<p class=" font-serif my-1">两个很基本 (但也很困难) 的问题</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20197;&#19979;&#31243;&#24207;&#30340; (&#21487;&#33021;) &#36755;&#20986;&#26159;&#20160;&#20040;&#65311;</li>
+<li class=" ml-8">以下程序的 (可能) 输出是什么？</li>
 </ul>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">printf</span><span class="p">(</span><span class="s">"%p</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="p">);</span>
 </code></pre></div>
 
 <hr>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20309;&#31181;&#25351;&#38024;&#35775;&#38382;&#19981;&#20250;&#24341;&#21457; segmentation fault?</li>
+<li class=" ml-8">何种指针访问不会引发 segmentation fault?</li>
 </ul>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">random</span><span class="p">();</span>
-<span class="o">*</span><span class="n">p</span><span class="p">;</span><span class="w"> </span><span class="c1">// &#20160;&#20040;&#26102;&#20505;&#35775;&#38382;&#21512;&#27861;&#65311; </span>
+<span class="o">*</span><span class="n">p</span><span class="p">;</span><span class="w"> </span><span class="c1">// 什么时候访问合法？ </span>
 </code></pre></div>
 
 <hr>
-<p class=" font-serif my-1">&#36825;&#31181;&#23567;&#38382;&#39064;&#38382; GPT &#23601;&#22909;&#20102;</p></div>
+<p class=" font-serif my-1">这种小问题问 GPT 就好了</p></div>
         
       
       </section>
@@ -266,19 +267,19 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26597;&#30475;&#36827;&#31243;&#30340;&#22320;&#22336;&#31354;&#38388;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">查看进程的地址空间</h2>
 <p class=" font-serif my-1">pmap (1) - report memory of a process</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">Claim: pmap &#26159;&#36890;&#36807;&#35775;&#38382; procfs (<code>/proc/</code>) &#23454;&#29616;&#30340;</li>
-<li class=" ml-8">&#22914;&#20309;&#39564;&#35777;&#36825;&#19968;&#28857;&#65311;</li>
+<li class=" ml-8">Claim: pmap 是通过访问 procfs (<code>/proc/</code>) 实现的</li>
+<li class=" ml-8">如何验证这一点？</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#26597;&#30475;&#36827;&#31243;&#30340;&#22320;&#22336;&#31354;&#38388;</p>
+<p class=" font-serif my-1">查看进程的地址空间</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#31561;&#31243;&#24207;&#36816;&#34892;&#36215;&#26469;&#21518; (gdb)&#65292;&#20351;&#29992; pmap &#21629;&#20196;&#26597;&#30475;&#22320;&#22336;&#31354;&#38388;</li>
-<li class=" ml-8">&#22320;&#22336;&#31354;&#38388;&#26159;<red>&#33509;&#24178;&#36830;&#32493;&#30340; &#8220;&#20869;&#23384;&#27573;&#8221;</red><ul class=" list-disc font-serif">
-<li class=" ml-8">&#8220;&#27573;&#8221; &#30340;&#20869;&#23384;&#21487;&#20197;&#26681;&#25454;&#26435;&#38480;&#35775;&#38382;</li>
-<li class=" ml-8">&#19981;&#22312;&#27573;&#20869;/&#36829;&#21453;&#26435;&#38480;&#30340;&#20869;&#23384;&#35775;&#38382; &#35302;&#21457; SIGSEGV</li>
+<li class=" ml-8">等程序运行起来后 (gdb)，使用 pmap 命令查看地址空间</li>
+<li class=" ml-8">地址空间是<red>若干连续的 “内存段”</red><ul class=" list-disc font-serif">
+<li class=" ml-8">“段” 的内存可以根据权限访问</li>
+<li class=" ml-8">不在段内/违反权限的内存访问 触发 SIGSEGV</li>
 </ul>
 </li>
 </ul></div>
@@ -292,21 +293,21 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25805;&#20316;&#31995;&#32479;&#25552;&#20379;&#26597;&#30475;&#36827;&#31243;&#22320;&#22336;&#31354;&#38388;&#30340;&#26426;&#21046;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">操作系统提供查看进程地址空间的机制</h2>
 <p class=" font-serif my-1">RTFM: <code>/proc/[pid]/maps</code> (man 5 proc)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#36827;&#31243;&#22320;&#22336;&#31354;&#38388;&#20013;&#30340;&#27599;&#19968;&#27573;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#22320;&#22336; (&#33539;&#22260;) &#21644;&#26435;&#38480; (rwxsp)</li>
-<li class=" ml-8">&#23545;&#24212;&#30340;&#25991;&#20214;: offset, dev, inode, pathname<ul class=" list-disc font-serif">
-<li class=" ml-8">TFM &#37324;&#26377;&#26356;&#35814;&#32454;&#30340;&#35299;&#37322;</li>
+<li class=" ml-8">进程地址空间中的每一段<ul class=" list-disc font-serif">
+<li class=" ml-8">地址 (范围) 和权限 (rwxsp)</li>
+<li class=" ml-8">对应的文件: offset, dev, inode, pathname<ul class=" list-disc font-serif">
+<li class=" ml-8">TFM 里有更详细的解释</li>
 </ul>
 </li>
-<li class=" ml-8">&#21644; readelf (<code>-l</code>) &#37324;&#30340;&#20449;&#24687;&#20114;&#30456;&#39564;&#35777;</li>
+<li class=" ml-8">和 readelf (<code>-l</code>) 里的信息互相验证</li>
 </ul>
 </li>
-<li class=" ml-8">&#22909;&#30340;&#26412;&#33021;&#65306;&#20570;&#19968;&#20123;&#20195;&#30721;&#19978;&#30340;&#35843;&#25972;&#65292;&#35266;&#23519; address space &#30340;&#21464;&#21270;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#22534; (bss) &#20869;&#23384;&#30340;&#22823;&#23567;</li>
-<li class=" ml-8">&#26632;&#19978;&#30340;&#22823;&#25968;&#32452; v.s. memory error</li>
+<li class=" ml-8">好的本能：做一些代码上的调整，观察 address space 的变化<ul class=" list-disc font-serif">
+<li class=" ml-8">堆 (bss) 内存的大小</li>
+<li class=" ml-8">栈上的大数组 v.s. memory error</li>
 </ul>
 </li>
 </ul>
@@ -323,7 +324,7 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26356;&#23436;&#25972;&#30340;&#22320;&#22336;&#31354;&#38388;&#26144;&#35937;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">更完整的地址空间映象</h2>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>0000555555554000 r--p     a.out
 0000555555555000 r-xp     a.out
 0000555555556000 r--p     a.out
@@ -334,12 +335,12 @@ section .center {
 00007ffff7f5b000 r--p     libc-2.31.so
 00007ffff7fa9000 r--p     libc-2.31.so
 00007ffff7fad000 rw-p     libc-2.31.so
-00007ffff7faf000 rw-p     (&#36825;&#26159;&#20160;&#20040;&#65311;)
-00007ffff7fcb000 r--p     [vvar] (&#36825;&#21448;&#26159;&#20160;&#20040;&#65311;)
-00007ffff7fce000 r-xp     [vdso] (&#36825;&#21458;&#26159;&#20160;&#20040;&#65311;)
-00007ffff7fcf000 r--p     (&#30465;&#30053;&#30456;&#20284;&#30340; ld-2.31.so)
+00007ffff7faf000 rw-p     (这是什么？)
+00007ffff7fcb000 r--p     [vvar] (这又是什么？)
+00007ffff7fce000 r-xp     [vdso] (这叒是什么？)
+00007ffff7fcf000 r--p     (省略相似的 ld-2.31.so)
 00007ffffffde000 rw-p     [stack]
-ffffffffff600000 --xp     [vsyscall] (&#36825;&#21461;&#26159;&#20160;&#20040;&#65311;)
+ffffffffff600000 --xp     [vsyscall] (这叕是什么？)
 </code></pre></div></div>
         
       
@@ -351,23 +352,23 @@ ffffffffff600000 --xp     [vsyscall] (&#36825;&#21461;&#26159;&#20160;&#20040;&#
 
       
         
-        <div><h2 id="rtfm-5-proc" class=" text-xl mt-2 pb-2 font-sans">RTFM (5 proc): &#25105;&#20204;&#21457;&#29616;&#30340;&#23453;&#34255;</h2>
+        <div><h2 id="rtfm-5-proc" class=" text-xl mt-2 pb-2 font-sans">RTFM (5 proc): 我们发现的宝藏</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">vdso (7): Virtual system calls: &#21482;&#35835;&#30340;&#31995;&#32479;&#35843;&#29992;&#20063;&#35768;&#21487;&#20197;&#19981;&#38519;&#20837;&#20869;&#26680;&#25191;&#34892;&#12290;</p>
+<p class=" font-serif my-1">vdso (7): Virtual system calls: 只读的系统调用也许可以不陷入内核执行。</p>
 </blockquote>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/end-world.jpg" width="400px"> </p>
-<p class=" font-serif my-1">&#26080;&#38656;&#38519;&#20837;&#20869;&#26680;&#30340;&#31995;&#32479;&#35843;&#29992;</p>
+<p class=" font-serif my-1">无需陷入内核的系统调用</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20363;&#23376;: time (2)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#26102;&#38388;&#65306;&#20869;&#26680;&#32500;&#25252;&#31186;&#32423;&#30340;&#26102;&#38388; (&#25152;&#26377;&#36827;&#31243;&#26144;&#23556;&#21516;&#19968;&#20010;&#39029;&#38754;)</li>
+<li class=" ml-8">例子: time (2)<ul class=" list-disc font-serif">
+<li class=" ml-8">时间：内核维护秒级的时间 (所有进程映射同一个页面)</li>
 </ul>
 </li>
-<li class=" ml-8">&#20363;&#23376;: gettimeofday (2)<ul class=" list-disc font-serif">
-<li class=" ml-8"><a href="https://elixir.bootlin.com/linux/latest/source/lib/vdso/gettimeofday.c#L49" class=" text-amber-900">RTFSC</a> (&#38750;&#24120;&#32874;&#26126;&#30340;&#23454;&#29616;)</li>
+<li class=" ml-8">例子: gettimeofday (2)<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="https://elixir.bootlin.com/linux/latest/source/lib/vdso/gettimeofday.c#L49" class=" text-amber-900">RTFSC</a> (非常聪明的实现)</li>
 </ul>
 </li>
-<li class=" ml-8">&#26356;&#22810;&#30340;&#20363;&#23376;&#65306;&#38382; GPT &#21543;&#65281;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#35745;&#31639;&#26426;&#31995;&#32479;&#37324;&#27809;&#26377;&#39764;&#27861;&#65281;&#25105;&#20204;&#29702;&#35299;&#20102;&#36827;&#31243;&#22320;&#22336;&#31354;&#38388;&#30340;<red>&#20840;&#37096;</red>&#65281;</li>
+<li class=" ml-8">更多的例子：问 GPT 吧！<ul class=" list-disc font-serif">
+<li class=" ml-8">计算机系统里没有魔法！我们理解了进程地址空间的<red>全部</red>！</li>
 </ul>
 </li>
 </ul></div>
@@ -400,5 +401,6 @@ ffffffffff600000 --xp     [vsyscall] (&#36825;&#21461;&#26159;&#20160;&#20040;&#
 
 
 </body>
+
 
 </html>

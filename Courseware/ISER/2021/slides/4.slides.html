@@ -1,10 +1,11 @@
 <!DOCTYPE html><html class="h-100">
 
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="../../../static/css/base.css" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com/"></script>
   <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
 
@@ -23,14 +24,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -344,7 +345,7 @@ section .center {
         
         <div><h2 id="the-gnu-project-debugger-gdb" class=" text-xl mt-2 pb-2 font-sans">The GNU Project Debugger (GDB)</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">GDB, the GNU Project debugger, allows you to see what is going on &#8220;inside&#8221; another program while it executes -- or what another program was doing at the moment it crashed.</p>
+<p class=" font-serif my-1">GDB, the GNU Project debugger, allows you to see what is going on “inside” another program while it executes -- or what another program was doing at the moment it crashed.</p>
 </blockquote>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">Start your program, specifying anything that might affect its behavior.</li>
@@ -374,7 +375,7 @@ section .center {
 <hr>
 <p class=" font-serif my-1">Suffices for <em>anything</em></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">GDB captures the entire &#8220;state transition&#8221; procedure of a process</li>
+<li class=" ml-8">GDB captures the entire “state transition” procedure of a process</li>
 </ul></div>
         
       
@@ -398,7 +399,7 @@ section .center {
 <ul class=" list-disc font-serif">
 <li class=" ml-8">patch the instruction! (quite clever idea)<ul class=" list-disc font-serif">
 <li class=" ml-8">make the code writable (thus cannot breakpoint on ROM addresses)</li>
-<li class=" ml-8">patch the instruction with a &#8220;debugger trap&#8221;<ul class=" list-disc font-serif">
+<li class=" ml-8">patch the instruction with a “debugger trap”<ul class=" list-disc font-serif">
 <li class=" ml-8"><code>int $3</code> (<code>0xcc</code> for x86) or <code>ebreak</code> (for risc-v)</li>
 <li class=" ml-8">OS will send a signal to the parent process (gdb)</li>
 </ul>
@@ -419,7 +420,7 @@ section .center {
         
         <div><h2 id="debugger-is-all-dynamic-analyses" class=" text-xl mt-2 pb-2 font-sans">Debugger is <em>ALL</em> Dynamic Analyses</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">Any practical dynamic analysis is a &#8220;simplified&#8221; (and more efficient) debugger.</p>
+<p class=" font-serif my-1">Any practical dynamic analysis is a “simplified” (and more efficient) debugger.</p>
 </blockquote>
 <hr>
 <p class=" font-serif my-1">Virtually, we can do any observation or perturbation on a debugger</p>
@@ -436,7 +437,7 @@ section .center {
 <hr>
 <p class=" font-serif my-1">But single-step execution incurs</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">1000X slowdown and GB/s instruction log &#129300;</li>
+<li class=" ml-8">1000X slowdown and GB/s instruction log 🤔</li>
 </ul></div>
         
       
@@ -465,7 +466,7 @@ section .center {
         
         <div><h2 id="dynamic-analyses-in-se-research" class=" text-xl mt-2 pb-2 font-sans">Dynamic Analyses in SE Research</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">How to implement <blue><em>lightweight logging</em></blue> and <green><em>efficient analysis</em></green> for a specific <red><em>SE research task</em></red>&#65311;</p>
+<p class=" font-serif my-1">How to implement <blue><em>lightweight logging</em></blue> and <green><em>efficient analysis</em></green> for a specific <red><em>SE research task</em></red>？</p>
 </blockquote>
 <hr>
 <p class=" font-serif my-1">Problem space</p>
@@ -502,7 +503,7 @@ section .center {
 <li class=" ml-8">Non-deterministic instructions (e.g., RDRAND)</li>
 <li class=" ml-8">I/O (or system call)</li>
 <li class=" ml-8">Timing of context switch</li>
-<li class=" ml-8">Shared memory &#8592; hard problem; my PhD thesis</li>
+<li class=" ml-8">Shared memory ← hard problem; my PhD thesis</li>
 </ul></div>
         
       
@@ -522,7 +523,7 @@ section .center {
 <ul class=" list-disc font-serif">
 <li class=" ml-8">Use profiler (gprof, perf/systemtap, VisualVM, ...)</li>
 <li class=" ml-8">How to implement?<ul class=" list-disc font-serif">
-<li class=" ml-8">place a lot of &#8220;probes&#8221; in the code<ul class=" list-disc font-serif">
+<li class=" ml-8">place a lot of “probes” in the code<ul class=" list-disc font-serif">
 <li class=" ml-8">function call, system call, interrupt, ...</li>
 <li class=" ml-8">you can implement a profiler in your OSLab!</li>
 </ul>
@@ -596,13 +597,13 @@ section .center {
         <div><h2 id="implementing-ubsanitizer" class=" text-xl mt-2 pb-2 font-sans">Implementing UBSanitizer</h2>
 <p class=" font-serif my-1">Signed integer overflow is undefined behavior</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">Why? &#8594; to support one's complement and weird machines that throw exceptions on overflow</li>
+<li class=" ml-8">Why? → to support one's complement and weird machines that throw exceptions on overflow</li>
 <li class=" ml-8">How to detect them?</li>
 </ul>
 <hr>
 <p class=" font-serif my-1">Add a check on each signed integer operation</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">AST rewrite: <code>foo(i++, j++) + 1</code> &#8594; <code>ADD(foo(INC(i), INC(j)), 1)</code></li>
+<li class=" ml-8">AST rewrite: <code>foo(i++, j++) + 1</code> → <code>ADD(foo(INC(i), INC(j)), 1)</code></li>
 <li class=" ml-8">IR instrumentation: a lot easier</li>
 </ul></div>
         
@@ -624,7 +625,7 @@ section .center {
 </li>
 <li class=" ml-8">Recovery (micro-reboot, Erlang's supervision tree)<ul class=" list-disc font-serif">
 <li class=" ml-8">what to do on Powerpoint crash?</li>
-<li class=" ml-8">recovery at many levels: txbegin/txend &#8594; setjmp/longjmp &#8594; fork</li>
+<li class=" ml-8">recovery at many levels: txbegin/txend → setjmp/longjmp → fork</li>
 </ul>
 </li>
 </ul></div>
@@ -712,5 +713,6 @@ section .center {
 
 
 </body>
+
 
 </html>

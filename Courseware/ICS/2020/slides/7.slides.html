@@ -1,10 +1,11 @@
 <!DOCTYPE html><html class="h-100">
 
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="../../../static/css/base.css" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com/"></script>
   <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
 
@@ -23,14 +24,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +210,7 @@ section .center {
 }
 </style>
 
-  <title>x86-64 &#19982;&#20869;&#32852;&#27719;&#32534;</title>
+  <title>x86-64 与内联汇编</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,21 +228,21 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="x86-64" class=" text-2xl mt-2 font-sans">x86-64 &#19982;&#20869;&#32852;&#27719;&#32534;</h1>
-<p class=" font-serif my-1"><include src="Slides_Author"><div><div class="py-16">
-<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">&#33931;&#28814;&#23721;</a></p>
+        <div><div class="center middle"><div style="width:100%"><h1 id="x86-64" class=" text-2xl mt-2 font-sans">x86-64 与内联汇编</h1>
+<p class=" font-serif my-1"><include src="Slides_Author/index.html"><div><div class="py-16">
+<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">蒋炎岩</a></p>
 </div>
 <div class="row">
 <div class="author-affiliation">
-    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#12288;&#12288;&#21335;&#20140;&#22823;&#23398;&#12288;&#12288;</p>
+    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">　　南京大学　　</p>
     <img class="inline-img h-24" src="../../../static/img/nju-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#31185;&#23398;&#19982;&#25216;&#26415;&#31995;</p>
+   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">计算机科学与技术系</p>
     <img class="inline-img h-24" src="../../../static/img/njucs-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#36719;&#20214;&#30740;&#31350;&#25152;</p>
+    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">计算机软件研究所</p>
     <img class="inline-img h-24" src="../../../static/img/ics-logo.png" style="display: inline-block;"></a>
   </div>
 </div></div></include></p></div></div></div>
@@ -255,16 +256,16 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26412;&#35762;&#27010;&#36848;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">本讲概述</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#35838;&#22530;&#19978;/PA &#20197; x86 (IA32) &#20026;&#20027;&#25480;&#35838;&#65311;</p>
-<p class=" font-serif my-1">&#20170;&#22825;&#36830;&#25163;&#26426;&#37117;&#26159; 64-bit &#20102;&#8230;&#8230;</p>
+<p class=" font-serif my-1">课堂上/PA 以 x86 (IA32) 为主授课？</p>
+<p class=" font-serif my-1">今天连手机都是 64-bit 了……</p>
 </blockquote>
 <hr>
-<p class=" font-serif my-1">&#26412;&#35762;&#20869;&#23481;</p>
+<p class=" font-serif my-1">本讲内容</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#19968;&#20123;&#32972;&#26223;</li>
-<li class=" ml-8">x86-64 &#20307;&#31995;&#32467;&#26500;&#19982;&#27719;&#32534;&#35821;&#35328;</li>
+<li class=" ml-8">一些背景</li>
+<li class=" ml-8">x86-64 体系结构与汇编语言</li>
 <li class=" ml-8">inline assembly</li>
 </ul></div>
         
@@ -281,7 +282,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#26426;&#22120;&#23383;&#38271;&#30340;&#21457;&#23637;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">机器字长的发展</h1></div></div></div>
         
       
       </section>
@@ -292,13 +293,13 @@ section .center {
 
       
         
-        <div><h2 id="word-size" class=" text-xl mt-2 pb-2 font-sans">&#23383;&#38271; (Word Size)</h2>
+        <div><h2 id="word-size" class=" text-xl mt-2 pb-2 font-sans">字长 (Word Size)</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
 <p class=" font-serif my-1">In computing, a word is the natural unit of data used by a particular processor design. The <em>number of bits in a word</em> (the word size, word width, or word length)...</p>
 </blockquote>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#33021;&#30452;&#25509;&#36827;&#34892;&#25972;&#25968;/&#20301;&#36816;&#31639;&#30340;&#22823;&#23567;</li>
-<li class=" ml-8">&#25351;&#38024;&#30340;&#22823;&#23567; (&#32034;&#24341;&#20869;&#23384;&#30340;&#33539;&#22260;)</li>
+<li class=" ml-8">能直接进行整数/位运算的大小</li>
+<li class=" ml-8">指针的大小 (索引内存的范围)</li>
 </ul></div>
         
       
@@ -310,8 +311,8 @@ section .center {
 
       
         
-        <div><h2 id="8-6502" class=" text-xl mt-2 pb-2 font-sans">8 &#20301;&#26426; (6502)</h2>
-<p class=" font-serif my-1">16 bit PC &#23492;&#23384;&#22120; (64 KiB &#23547;&#22336;&#33021;&#21147;&#65292;KiB &#32423;&#20869;&#23384;&#65292;&#26080;&#20056;&#38500;&#27861;/&#28014;&#28857;&#25968;)</p>
+        <div><h2 id="8-6502" class=" text-xl mt-2 pb-2 font-sans">8 位机 (6502)</h2>
+<p class=" font-serif my-1">16 bit PC 寄存器 (64 KiB 寻址能力，KiB 级内存，无乘除法/浮点数)</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">Apple II; Atari 2600; NES; ...</li>
 </ul>
@@ -326,10 +327,10 @@ section .center {
 
       
         
-        <div><h2 id="16-80868088" class=" text-xl mt-2 pb-2 font-sans">16 &#20301;&#26426; (8086/8088)</h2>
-<p class=" font-serif my-1">&#25105;&#20204;&#38656;&#35201;&#26356;&#22823;&#30340;&#20869;&#23384;&#65281;&#26356;&#22823;&#30340;&#25968;&#25454;&#23485;&#24230;&#65281;</p>
+        <div><h2 id="16-80868088" class=" text-xl mt-2 pb-2 font-sans">16 位机 (8086/8088)</h2>
+<p class=" font-serif my-1">我们需要更大的内存！更大的数据宽度！</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">20 bit &#22320;&#22336;&#32447; (&#20004;&#20010;&#23492;&#23384;&#22120;)</li>
+<li class=" ml-8">20 bit 地址线 (两个寄存器)</li>
 </ul>
 <hr>
 <p class=" font-serif my-1"><img alt="" class="center" src="https://cdn.arstechnica.net/wp-content/uploads/2017/07/ibm-pc-5150-print-ad-760x380.jpg" width="800px"></p></div>
@@ -343,10 +344,10 @@ section .center {
 
       
         
-        <div><h2 id="32-intel-x86" class=" text-xl mt-2 pb-2 font-sans">32 &#20301;&#26426; (Intel x86)</h2>
-<p class=" font-serif my-1">8086 &#22788;&#29702;&#22120; 4,096 &#20493;&#30340;&#22320;&#22336;&#31354;&#38388;</p>
+        <div><h2 id="32-intel-x86" class=" text-xl mt-2 pb-2 font-sans">32 位机 (Intel x86)</h2>
+<p class=" font-serif my-1">8086 处理器 4,096 倍的地址空间</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">4 GiB &#20869;&#23384;&#22312; 1980s &#30475;&#36215;&#26469;&#26159;&#38750;&#24120;&#19981;&#21487;&#24605;&#35758;&#30340;</li>
+<li class=" ml-8">4 GiB 内存在 1980s 看起来是非常不可思议的</li>
 </ul>
 <p class=" font-serif my-1"><img alt="" class="center" src="https://s1.gaming-cdn.com/images/products/2172/screenshot/assassins-creed-ii-wallpaper-2.jpg" width="720px"></p></div>
         
@@ -359,12 +360,12 @@ section .center {
 
       
         
-        <div><h2 id="64-x86-64-aarch64-rv64" class=" text-xl mt-2 pb-2 font-sans">64 &#20301;&#26426; (x86-64; AArch64; RV64; ...)</h2>
-<p class=" font-serif my-1">64 &#20301;&#22320;&#22336;&#31354;&#38388;&#33021;&#32034;&#24341; 17,179,869,184 GiB &#20869;&#23384;</p>
+        <div><h2 id="64-x86-64-aarch64-rv64" class=" text-xl mt-2 pb-2 font-sans">64 位机 (x86-64; AArch64; RV64; ...)</h2>
+<p class=" font-serif my-1">64 位地址空间能索引 17,179,869,184 GiB 内存</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25105;&#20204;&#30340;&#26381;&#21153;&#22120;&#26377; 128 GiB &#20869;&#23384;</li>
-<li class=" ml-8">&#30446;&#21069;&#30475;&#36215;&#26469;&#26159;&#38750;&#24120;&#22815;&#29992;&#30340; (PML4)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#29616;&#22312;&#30340;&#22788;&#29702;&#22120;&#19968;&#33324;&#23454;&#29616; 48 bit &#29289;&#29702;&#22320;&#22336; (256 TiB)</li>
+<li class=" ml-8">我们的服务器有 128 GiB 内存</li>
+<li class=" ml-8">目前看起来是非常够用的 (PML4)<ul class=" list-disc font-serif">
+<li class=" ml-8">现在的处理器一般实现 48 bit 物理地址 (256 TiB)</li>
 </ul>
 </li>
 </ul>
@@ -381,7 +382,7 @@ section .center {
       
         
         <div><h2 id="fun-facts" class=" text-xl mt-2 pb-2 font-sans">Fun Facts</h2>
-<p class=" font-serif my-1"><code>int</code> &#31867;&#22411;&#30340;&#38271;&#24230;</p>
+<p class=" font-serif my-1"><code>int</code> 类型的长度</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">8 bit computer: 8 bit</li>
 <li class=" ml-8">16 bit computer: 16 bit</li>
@@ -390,7 +391,7 @@ section .center {
 <li class=" ml-8">JVM (32/64 bit): <red>32 bit</red></li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#22312;&#36923;&#36753;&#19990;&#30028;&#37324;&#25551;&#36848;&#26085;&#24120;&#19990;&#30028;&#65292;2,147,483,647 &#24050;&#32463;&#36275;&#22815;&#22823;&#20102;</p></div>
+<p class=" font-serif my-1">在逻辑世界里描述日常世界，2,147,483,647 已经足够大了</p></div>
         
       
       </section>
@@ -405,7 +406,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="abi" class=" text-2xl mt-2 font-sans">&#27010;&#24565;&#22797;&#20064;&#65306; ABI</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="abi" class=" text-2xl mt-2 font-sans">概念复习： ABI</h1></div></div></div>
         
       
       </section>
@@ -416,20 +417,20 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#31243;&#24207;&#30340;&#26426;&#22120;&#32423;&#34920;&#31034;</h2>
-<p class=" font-serif my-1">&#31243;&#24207;&#32463;&#21382; .c &#8594; .o (&#32534;&#35793;) &#21644; .o &#8594; a.out (&#38142;&#25509;)</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">程序的机器级表示</h2>
+<p class=" font-serif my-1">程序经历 .c → .o (编译) 和 .o → a.out (链接)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#19981;&#21516;&#29256;&#26412;&#12289;&#19981;&#21516;&#32534;&#35793;&#22120;&#12289;&#19981;&#21516;&#35821;&#35328;&#30340;&#20108;&#36827;&#21046;&#25991;&#20214;&#37117;&#21487;&#20197;&#38142;&#25509;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20182;&#20204;&#38656;&#35201;&#19968;&#20010; &#8220;&#20849;&#21516;&#35821;&#35328;&#8221;</li>
+<li class=" ml-8">不同版本、不同编译器、不同语言的二进制文件都可以链接<ul class=" list-disc font-serif">
+<li class=" ml-8">他们需要一个 “共同语言”</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#20363;&#22914;&#25105;&#20204;&#29087;&#24713;&#30340; x86 calling convention</p>
+<p class=" font-serif my-1">例如我们熟悉的 x86 calling convention</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">cdecl (Linux)</li>
 <li class=" ml-8">stdcall (Win32)</li>
-<li class=" ml-8">&#21482;&#35201;&#36981;&#24490;&#26631;&#20934;&#30340;&#20989;&#25968;&#23601;&#21487;&#20197;&#20114;&#30456;&#35843;&#29992;</li>
+<li class=" ml-8">只要遵循标准的函数就可以互相调用</li>
 </ul></div>
         
       
@@ -442,20 +443,20 @@ section .center {
       
         
         <div><h2 id="application-binary-interface-abi" class=" text-xl mt-2 pb-2 font-sans">Application Binary Interface (ABI)</h2>
-<p class=" font-serif my-1">&#21306;&#21035;&#20110; API (Application Programming Interface)</p>
+<p class=" font-serif my-1">区别于 API (Application Programming Interface)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#31243;&#24207;&#28304;&#20195;&#30721;&#20013;&#30340;&#35268;&#33539;</li>
+<li class=" ml-8">程序源代码中的规范</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">ABI&#65306;&#32422;&#23450; binary &#30340;&#34892;&#20026;</p>
+<p class=" font-serif my-1">ABI：约定 binary 的行为</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20108;&#36827;&#21046;&#25991;&#20214;&#30340;&#26684;&#24335;</li>
-<li class=" ml-8">&#20989;&#25968;&#35843;&#29992;&#12289;&#31995;&#32479;&#35843;&#29992;&#8230;&#8230;<ul class=" list-disc font-serif">
-<li class=" ml-8">C &#35821;&#35328;&#35268;&#33539;&#21482;&#23450;&#20041;&#20102;&#36816;&#34892;&#26102;&#20869;&#23384;&#21644;&#20869;&#23384;&#19978;&#30340;&#35745;&#31639;</li>
-<li class=" ml-8"><code>printf</code> &#37117;&#26080;&#27861;&#23454;&#29616;&#65292;&#24517;&#39035;&#20511;&#21161;&#22806;&#37096;&#24211;&#20989;&#25968;</li>
+<li class=" ml-8">二进制文件的格式</li>
+<li class=" ml-8">函数调用、系统调用……<ul class=" list-disc font-serif">
+<li class=" ml-8">C 语言规范只定义了运行时内存和内存上的计算</li>
+<li class=" ml-8"><code>printf</code> 都无法实现，必须借助外部库函数</li>
 </ul>
 </li>
-<li class=" ml-8">&#38142;&#25509;&#12289;&#21152;&#36733;&#30340;&#35268;&#33539;</li>
+<li class=" ml-8">链接、加载的规范</li>
 </ul></div>
         
       
@@ -467,22 +468,22 @@ section .center {
 
       
         
-        <div><h2 id="cdecl" class=" text-xl mt-2 pb-2 font-sans">&#20363;&#23376;&#65306;cdecl &#20989;&#25968;&#35843;&#29992;</h2>
+        <div><h2 id="cdecl" class=" text-xl mt-2 pb-2 font-sans">例子：cdecl 函数调用</h2>
 <p class=" font-serif my-1">caller stack frame:</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25152;&#26377;&#21442;&#25968;&#20197;<red>&#25968;&#32452;</red>&#30340;&#24418;&#24335;&#20445;&#23384;&#22312;&#22534;&#26632;&#19978; (&#25152;&#20197;&#25165;&#26377; &#8220;&#21453;&#24207;&#21387;&#26632;&#8221;)</li>
-<li class=" ml-8">&#28982;&#21518;&#26159;&#36820;&#22238;&#22320;&#22336;</li>
-<li class=" ml-8">&#36339;&#36716;&#21040; callee</li>
+<li class=" ml-8">所有参数以<red>数组</red>的形式保存在堆栈上 (所以才有 “反序压栈”)</li>
+<li class=" ml-8">然后是返回地址</li>
+<li class=" ml-8">跳转到 callee</li>
 </ul>
 <hr>
 <p class=" font-serif my-1">callee:</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">EAX &#20316;&#20026;&#36820;&#22238;&#20540;</li>
-<li class=" ml-8">&#20854;&#20182;&#23492;&#23384;&#22120;&#37117;&#26159; callee save</li>
+<li class=" ml-8">EAX 作为返回值</li>
+<li class=" ml-8">其他寄存器都是 callee save</li>
 </ul>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">bar</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="p">);</span>
 <span class="kt">int</span><span class="w"> </span><span class="nf">foo</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">bar</span><span class="p">(</span><span class="o">&amp;</span><span class="n">x</span><span class="p">);</span>
+<span class="w">  </span><span class="n">bar</span><span class="p">(</span><span class="o">&</span><span class="n">x</span><span class="p">);</span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div></div>
@@ -496,21 +497,21 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#38405;&#35835;&#27719;&#32534;&#20195;&#30721;&#65306;&#8220;&#31526;&#21495;&#25191;&#34892;&#8221;</h2>
-<p class=" font-serif my-1">&#35797;&#30528;&#25226;&#20869;&#23384;/&#23492;&#23384;&#22120;&#29992;&#25968;&#23398;&#31526;&#21495;&#34920;&#31034;&#20986;&#26469;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">阅读汇编代码：“符号执行”</h2>
+<p class=" font-serif my-1">试着把内存/寄存器用数学符号表示出来</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#28982;&#21518;&#20551;&#24819;&#22320; &#8220;&#21333;&#27493;&#25191;&#34892;&#8221; &#31243;&#24207;&#65292;&#29992;&#31526;&#21495;&#20844;&#24335;&#34920;&#31034;&#24403;&#21069;&#31995;&#32479;&#30340;&#29366;&#24577;<ul class=" list-disc font-serif">
+<li class=" ml-8">然后假想地 “单步执行” 程序，用符号公式表示当前系统的状态<ul class=" list-disc font-serif">
 <li class=" ml-8">James C. King. Symbolic execution and program testing. <em>Communications of the ACM</em>, 19(7), 1976.</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#32534;&#35793;&#36873;&#39033;&#65306;<code>-m32 -O2 -fno-pic</code> (&#20415;&#20110;&#22823;&#23478;&#29702;&#35299;)</p>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>000004f0 &lt;foo&gt;:
+<p class=" font-serif my-1">编译选项：<code>-m32 -O2 -fno-pic</code> (便于大家理解)</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>000004f0 <foo>:
  4f0:   83 ec 18                sub    $0x18,%esp
  4f3:   8d 44 24 1c             lea    0x1c(%esp),%eax
  4f7:   50                      push   %eax
- 4f8:   e8 13 00 00 00          call   510 &lt;bar&gt;
+ 4f8:   e8 13 00 00 00          call   510 <bar>
  4fd:   8b 44 24 20             mov    0x20(%esp),%eax
  501:   83 c4 1c                add    $0x1c,%esp
  504:   c3                      ret    
@@ -529,7 +530,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="x86-64" class=" text-2xl mt-2 font-sans">x86-64&#65306;&#23492;&#23384;&#22120;&#19982;&#20989;&#25968;&#35843;&#29992;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="x86-64" class=" text-2xl mt-2 font-sans">x86-64：寄存器与函数调用</h1></div></div></div>
         
       
       </section>
@@ -540,21 +541,21 @@ section .center {
 
       
         
-        <div><h2 id="1-ia32" class=" text-xl mt-2 pb-2 font-sans">&#23492;&#23384;&#22120; (1)&#65306;&#32487;&#25215;&#33258; IA32</h2>
+        <div><h2 id="1-ia32" class=" text-xl mt-2 pb-2 font-sans">寄存器 (1)：继承自 IA32</h2>
 <table>
 <thead>
 <tr>
-<th>&#29992;&#36884;</th>
+<th>用途</th>
 <th>64b</th>
-<th>&#20302;32b</th>
-<th>&#20302;16b</th>
-<th>&#20302;8b</th>
+<th>低32b</th>
+<th>低16b</th>
+<th>低8b</th>
 <th>8-15b</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>&#36820;&#22238;&#20540;</td>
+<td>返回值</td>
 <td>%rax</td>
 <td>%eax</td>
 <td>%ax</td>
@@ -562,7 +563,7 @@ section .center {
 <td>%ah</td>
 </tr>
 <tr>
-<td><red>&#35843;&#29992;&#32773;&#20445;&#23384;</red></td>
+<td><red>调用者保存</red></td>
 <td>%rbx</td>
 <td>%ebx</td>
 <td>%bx</td>
@@ -570,7 +571,7 @@ section .center {
 <td>%bh</td>
 </tr>
 <tr>
-<td>&#21442;&#25968;4</td>
+<td>参数4</td>
 <td>%rcx</td>
 <td>%ecx</td>
 <td>%cx</td>
@@ -578,7 +579,7 @@ section .center {
 <td>%ch</td>
 </tr>
 <tr>
-<td>&#21442;&#25968;3</td>
+<td>参数3</td>
 <td>%rdx</td>
 <td>%edx</td>
 <td>%dx</td>
@@ -586,7 +587,7 @@ section .center {
 <td>%dh</td>
 </tr>
 <tr>
-<td>&#21442;&#25968;2</td>
+<td>参数2</td>
 <td>%rsi</td>
 <td>%esi</td>
 <td>%si</td>
@@ -594,7 +595,7 @@ section .center {
 <td></td>
 </tr>
 <tr>
-<td>&#21442;&#25968;1</td>
+<td>参数1</td>
 <td>%rdi</td>
 <td>%edi</td>
 <td>%di</td>
@@ -602,7 +603,7 @@ section .center {
 <td></td>
 </tr>
 <tr>
-<td><red>&#35843;&#29992;&#32773;&#20445;&#23384;</red></td>
+<td><red>调用者保存</red></td>
 <td>%rbp</td>
 <td>%ebp</td>
 <td>%bp</td>
@@ -610,7 +611,7 @@ section .center {
 <td></td>
 </tr>
 <tr>
-<td>&#26632;&#39030;</td>
+<td>栈顶</td>
 <td>%rsp</td>
 <td>%esp</td>
 <td>%sp</td>
@@ -629,25 +630,25 @@ section .center {
 
       
         
-        <div><h2 id="2" class=" text-xl mt-2 pb-2 font-sans">&#23492;&#23384;&#22120; (2)&#65306;&#26032;&#22686;&#21152;&#30340;&#23492;&#23384;&#22120;</h2>
-<p class=" font-serif my-1">x86-64 &#25193;&#20805;&#20102;&#24456;&#22810;&#23492;&#23384;&#22120;&#65281;</p>
+        <div><h2 id="2" class=" text-xl mt-2 pb-2 font-sans">寄存器 (2)：新增加的寄存器</h2>
+<p class=" font-serif my-1">x86-64 扩充了很多寄存器！</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20110;&#26159;&#20877;&#20063;&#19981;&#29992;&#20687; IA32 &#37027;&#26679;&#65292;&#29992;&#22534;&#26632;&#20256;&#36882;&#21442;&#25968;&#20102;&#65281;&#65281;</li>
+<li class=" ml-8">于是再也不用像 IA32 那样，用堆栈传递参数了！！</li>
 </ul>
 <table>
 <thead>
 <tr>
-<th>&#29992;&#36884;</th>
+<th>用途</th>
 <th>64b</th>
-<th>&#20302;32b</th>
-<th>&#20302;16b</th>
-<th>&#20302;8b</th>
+<th>低32b</th>
+<th>低16b</th>
+<th>低8b</th>
 <th>8-15b</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>&#21442;&#25968;5</td>
+<td>参数5</td>
 <td>%r8</td>
 <td>%r8d</td>
 <td>%r8w</td>
@@ -655,7 +656,7 @@ section .center {
 <td></td>
 </tr>
 <tr>
-<td>&#21442;&#25968;6</td>
+<td>参数6</td>
 <td>%r9</td>
 <td>%r9d</td>
 <td>%r9w</td>
@@ -663,7 +664,7 @@ section .center {
 <td></td>
 </tr>
 <tr>
-<td><red>&#35843;&#29992;&#32773;&#20445;&#23384;</red></td>
+<td><red>调用者保存</red></td>
 <td>%r10</td>
 <td>%r10d</td>
 <td>%r10w</td>
@@ -671,7 +672,7 @@ section .center {
 <td></td>
 </tr>
 <tr>
-<td>&#38142;&#25509;</td>
+<td>链接</td>
 <td>%r11</td>
 <td>%r11d</td>
 <td>%r11w</td>
@@ -687,7 +688,7 @@ section .center {
 <td></td>
 </tr>
 <tr>
-<td><red>&#35843;&#29992;&#32773;&#20445;&#23384;</red></td>
+<td><red>调用者保存</red></td>
 <td>%r13</td>
 <td>%r13d</td>
 <td>%r13w</td>
@@ -695,7 +696,7 @@ section .center {
 <td></td>
 </tr>
 <tr>
-<td><red>&#35843;&#29992;&#32773;&#20445;&#23384;</red></td>
+<td><red>调用者保存</red></td>
 <td>%r14</td>
 <td>%r14d</td>
 <td>%r14w</td>
@@ -703,12 +704,12 @@ section .center {
 <td></td>
 </tr>
 <tr>
-<td><red>&#35843;&#29992;&#32773;&#20445;&#23384;</red></td>
+<td><red>调用者保存</red></td>
 <td>%r15</td>
 <td>%r15d</td>
 <td>%r15w</td>
 <td>%r15b</td>
-<td>(&#27809;&#26377;)</td>
+<td>(没有)</td>
 </tr>
 </tbody>
 </table></div>
@@ -729,14 +730,14 @@ section .center {
 </code></pre></div>
 
 <hr>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>00000510 &lt;add_32&gt;:
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>00000510 <add_32>:
  510:   8b 44 24 08   mov    0x8(%esp),%eax
  514:   03 44 24 04   add    0x4(%esp),%eax
  518:   c3            ret    
 </code></pre></div>
 
 <hr>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>0000000000000630 &lt;add_64&gt;:
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>0000000000000630 <add_64>:
  630:   8d 04 37  lea    (%rdi,%rsi,1),%eax
  633:   c3        retq   
 </code></pre></div></div>
@@ -752,22 +753,22 @@ section .center {
         
         <div><h2 id="max-in-x86-64" class=" text-xl mt-2 pb-2 font-sans">max in x86-64</h2>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">max</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">></span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
 <span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <hr>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>00000514 &lt;max_32&gt;:
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>00000514 <max_32>:
  514:   8b 44 24 04             mov    0x4(%esp),%eax
  518:   3b 44 24 08             cmp    0x8(%esp),%eax
- 51c:   7d 04                   jge    522 &lt;max+0xe&gt;
+ 51c:   7d 04                   jge    522 <max+0xe>
  51e:   8b 44 24 08             mov    0x8(%esp),%eax
  522:   c3                      ret    
 </code></pre></div>
 
 <hr>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>0000000000000640 &lt;max_64&gt;:
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>0000000000000640 <max_64>:
  640:   39 f7                   cmp    %esi,%edi
  642:   89 f0                   mov    %esi,%eax
  644:   0f 4d c7                cmovge %edi,%eax
@@ -783,14 +784,14 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20351;&#29992;&#23492;&#23384;&#22120;&#20256;&#36882;&#20989;&#25968;&#21442;&#25968;&#65306;&#20248;&#21183;</h2>
-<p class=" font-serif my-1">&#25903;&#25345; 6 &#20010;&#21442;&#25968;&#30340;&#20256;&#36882;&#65306;rdi, rsi, rdx, rcx, r8, r9</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">使用寄存器传递函数参数：优势</h2>
+<p class=" font-serif my-1">支持 6 个参数的传递：rdi, rsi, rdx, rcx, r8, r9</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">callee &#21487;&#20197;&#38543;&#24847;&#20462;&#25913;&#36825; 6 &#20010;&#23492;&#23384;&#22120;&#30340;&#20540;</li>
-<li class=" ml-8">&#32534;&#35793;&#22120;&#26377;&#20102;&#26356;&#22823;&#30340;&#35843;&#24230;&#31354;&#38388; (&#22823;&#24133;&#20943;&#23569;&#22534;&#26632;&#20869;&#23384;&#35775;&#38382;)</li>
+<li class=" ml-8">callee 可以随意修改这 6 个寄存器的值</li>
+<li class=" ml-8">编译器有了更大的调度空间 (大幅减少堆栈内存访问)</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#20363;&#23376;&#65306;</p>
+<p class=" font-serif my-1">例子：</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">plus</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stdout</span><span class="p">,</span><span class="w"> </span><span class="s">"%d + %d = %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
 <span class="p">}</span>
@@ -805,22 +806,22 @@ section .center {
 
       
         
-        <div><h2 id="fprintf" class=" text-xl mt-2 pb-2 font-sans">&#20363;&#23376;&#65306;&#35843;&#29992; <code>fprintf</code></h2>
-<p class=" font-serif my-1">&#23454;&#38469;&#35843;&#29992;&#30340;&#26159; <code>__fprintf_chk@plt</code></p>
+        <div><h2 id="fprintf" class=" text-xl mt-2 pb-2 font-sans">例子：调用 <code>fprintf</code></h2>
+<p class=" font-serif my-1">实际调用的是 <code>__fprintf_chk@plt</code></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#38656;&#35201;&#20256;&#36882;&#30340;&#21442;&#25968;&#65306;<code>stdout</code>, <code>%d + %d = %d\n</code>, <code>a</code>, <code>b</code>, <code>a + b</code></li>
+<li class=" ml-8">需要传递的参数：<code>stdout</code>, <code>%d + %d = %d\n</code>, <code>a</code>, <code>b</code>, <code>a + b</code></li>
 <li class=" ml-8">calling convention: rdi, rsi, rdx, rcx, r8, r9</li>
 </ul>
 <hr>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>0000000000000700 &lt;plus&gt;:
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>0000000000000700 <plus>:
  700:   44 8d 0c 37             lea    (%rdi,%rsi,1),%r9d
  704:   89 f9                   mov    %edi,%ecx
- 706:   48 8b 3d 03 09 20 00    mov    0x200903(%rip),%rdi        # 201010 &lt;stdout@@GLIBC_2.2.5&gt;
- 70d:   48 8d 15 b0 00 00 00    lea    0xb0(%rip),%rdx        # 7c4 &lt;_IO_stdin_used+0x4&gt;
+ 706:   48 8b 3d 03 09 20 00    mov    0x200903(%rip),%rdi        # 201010 <stdout@@GLIBC_2.2.5>
+ 70d:   48 8d 15 b0 00 00 00    lea    0xb0(%rip),%rdx        # 7c4 <_IO_stdin_used+0x4>
  714:   41 89 f0                mov    %esi,%r8d
  717:   31 c0                   xor    %eax,%eax
  719:   be 01 00 00 00          mov    $0x1,%esi
- 71e:   e9 5d fe ff ff          jmpq   580 &lt;__fprintf_chk@plt&gt;
+ 71e:   e9 5d fe ff ff          jmpq   580 <__fprintf_chk@plt>
 </code></pre></div></div>
         
       
@@ -832,22 +833,22 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#19968;&#20123;&#26356;&#22810;&#30340;&#20998;&#26512;</h2>
-<p class=" font-serif my-1"><code>plus</code> &#30340;&#26368;&#21518;&#19968;&#26465;&#25351;&#20196;&#65306;</p>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code> 71e:   e9 5d fe ff ff     jmpq   580 &lt;__fprintf_chk@plt&gt;
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">一些更多的分析</h2>
+<p class=" font-serif my-1"><code>plus</code> 的最后一条指令：</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code> 71e:   e9 5d fe ff ff     jmpq   580 <__fprintf_chk@plt>
 </code></pre></div>
 
 <hr>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#24182;&#19981;&#26159;&#35843;&#29992;&#30340; <code>printf</code>&#65292;&#32780;&#26159;&#35843;&#29992;&#30340;<a href="http://refspecs.linuxbase.org/LSB_4.1.0/LSB-Core-generic/LSB-Core-generic/libc---printf-chk-1.html" class=" text-amber-900">&#26377;&#22534;&#26632;&#26816;&#26597;&#30340;&#29256;&#26412;</a><ul class=" list-disc font-serif">
-<li class=" ml-8">&#20934;&#22791;&#21442;&#25968;&#26102;&#26377; <code>mov $0x1, %esi</code></li>
+<li class=" ml-8">并不是调用的 <code>printf</code>，而是调用的<a href="http://refspecs.linuxbase.org/LSB_4.1.0/LSB-Core-generic/LSB-Core-generic/libc---printf-chk-1.html" class=" text-amber-900">有堆栈检查的版本</a><ul class=" list-disc font-serif">
+<li class=" ml-8">准备参数时有 <code>mov $0x1, %esi</code></li>
 </ul>
 </li>
-<li class=" ml-8">&#30452;&#25509; <code>jmp</code> &#26159;&#22240;&#20026;&#20989;&#25968;&#26411;&#23614;&#40664;&#35748;&#26377;&#19968;&#26465; <code>ret</code> &#25351;&#20196;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20511;&#29992;&#20102; <code>__fprintf_chk@plt</code> &#30340; <code>ret</code> &#25351;&#20196;&#36820;&#22238;&#21040; <code>plus</code> &#30340;&#35843;&#29992;&#32773;</li>
-<li class=" ml-8">&#22914;&#26524;&#26377;&#36820;&#22238;&#20540;&#65292;&#23601;&#20250;&#29983;&#25104; <code>call</code> &#25351;&#20196;&#65307;&#22914;&#26524; <code>plus</code> &#36820;&#22238; <code>printf</code> &#30340;&#32467;&#26524;&#65292;&#20381;&#28982;&#26159; <code>jmp</code></li>
-<li class=" ml-8">&#30465;&#30340;&#19981;&#27490;&#26159;&#19968;&#26465;&#25351;&#20196;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#36830;&#32493;&#30340; <code>ret</code> &#23545;&#20998;&#25903;&#39044;&#27979;&#26159;&#24456;&#22823;&#30340;&#25361;&#25112;</li>
+<li class=" ml-8">直接 <code>jmp</code> 是因为函数末尾默认有一条 <code>ret</code> 指令<ul class=" list-disc font-serif">
+<li class=" ml-8">借用了 <code>__fprintf_chk@plt</code> 的 <code>ret</code> 指令返回到 <code>plus</code> 的调用者</li>
+<li class=" ml-8">如果有返回值，就会生成 <code>call</code> 指令；如果 <code>plus</code> 返回 <code>printf</code> 的结果，依然是 <code>jmp</code></li>
+<li class=" ml-8">省的不止是一条指令<ul class=" list-disc font-serif">
+<li class=" ml-8">连续的 <code>ret</code> 对分支预测是很大的挑战</li>
 </ul>
 </li>
 </ul>
@@ -863,9 +864,9 @@ section .center {
 
       
         
-        <div><h2 id="32-printf" class=" text-xl mt-2 pb-2 font-sans">&#23545;&#27604; 32 &#20301; <code>printf</code></h2>
-<p class=" font-serif my-1">&#22909;&#35835;&#65292;&#20294;&#25351;&#20196;&#25191;&#34892;&#36215;&#26469;&#20250;&#31245;&#24930;&#19968;&#20123;</p>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>000005b4 &lt;plus&gt;:
+        <div><h2 id="32-printf" class=" text-xl mt-2 pb-2 font-sans">对比 32 位 <code>printf</code></h2>
+<p class=" font-serif my-1">好读，但指令执行起来会稍慢一些</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>000005b4 <plus>:
  5b4:   83 ec 14                sub    $0x14,%esp
  5b7:   8b 44 24 18             mov    0x18(%esp),%eax
  5bb:   8b 54 24 1c             mov    0x1c(%esp),%edx
@@ -876,7 +877,7 @@ section .center {
  5c5:   68 60 06 00 00          push   $0x660
  5ca:   6a 01                   push   $0x1
  5cc:   ff 35 00 00 00 00       pushl  0x0
- 5d2:   e8 fc ff ff ff          call   5d3 &lt;plus+0x1f&gt;
+ 5d2:   e8 fc ff ff ff          call   5d3 <plus+0x1f>
  5d7:   83 c4 2c                add    $0x2c,%esp
  5da:   c3                      ret    
  5db:   90                      nop
@@ -891,23 +892,23 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#19968;&#20010;&#26377;&#36259;&#30340;&#23567;&#38382;&#39064;</h2>
-<p class=" font-serif my-1">x86-64 <red>&#25353;&#23492;&#23384;&#22120;&#20256;&#36882;&#21442;&#25968;</red></p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">一个有趣的小问题</h2>
+<p class=" font-serif my-1">x86-64 <red>按寄存器传递参数</red></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><code>void f(int x) {... &amp;x ...}</code> &#20250;&#21457;&#29983;&#20160;&#20040;&#65311;</li>
+<li class=" ml-8"><code>void f(int x) {... &x ...}</code> 会发生什么？</li>
 </ul></div>
         
       
          <div class="fragment"> 
         <div><hr>
-<p class=" font-serif my-1">&#32534;&#35793;&#22120;&#20250;&#32473;&#21442;&#25968;&#20998;&#37197;&#20869;&#23384;&#65292;&#20445;&#35777;&#21518;&#32493;&#35775;&#38382;&#21512;&#27861;</p>
+<p class=" font-serif my-1">编译器会给参数分配内存，保证后续访问合法</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#32473;&#32534;&#35793;&#22120;&#24102;&#26469;&#20102;&#36731;&#24494;&#30340;&#36127;&#25285;</li>
-<li class=" ml-8">&#20294;&#32534;&#35793;&#22120;&#24182;&#19981;&#35273;&#24471;&#36825;&#26159;&#36127;&#25285;&#8230;&#8230;</li>
+<li class=" ml-8">给编译器带来了轻微的负担</li>
+<li class=" ml-8">但编译器并不觉得这是负担……</li>
 </ul>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">bar</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="p">);</span>
 <span class="kt">int</span><span class="w"> </span><span class="nf">foo</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">bar</span><span class="p">(</span><span class="o">&amp;</span><span class="n">x</span><span class="p">);</span>
+<span class="w">  </span><span class="n">bar</span><span class="p">(</span><span class="o">&</span><span class="n">x</span><span class="p">);</span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div></div>
@@ -921,7 +922,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="x86-64" class=" text-2xl mt-2 font-sans">x86-64 &#31243;&#24207;&#65306;&#26356;&#22810;&#30340;&#20363;&#23376;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="x86-64" class=" text-2xl mt-2 font-sans">x86-64 程序：更多的例子</h1></div></div></div>
         
       
       </section>
@@ -933,9 +934,9 @@ section .center {
       
         
         <div><h2 id="swap-in-x86-64" class=" text-xl mt-2 pb-2 font-sans"><code>swap</code> in x86-64</h2>
-<p class=" font-serif my-1">&#24635;&#20307;&#26469;&#35828;&#65292;x86-64 &#26159;&#26356;<red>&#29616;&#20195;</red>&#30340;&#20307;&#31995;&#32467;&#26500;&#65292;&#26356;&#31934;&#31616;&#30340;&#25351;&#20196;&#24207;&#21015;</p>
+<p class=" font-serif my-1">总体来说，x86-64 是更<red>现代</red>的体系结构，更精简的指令序列</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><code>void swap(int *x, int *y);</code> &#20132;&#25442;&#20004;&#20010;&#25351;&#38024;&#25351;&#21521;&#30340;&#25968;&#23383;</li>
+<li class=" ml-8"><code>void swap(int *x, int *y);</code> 交换两个指针指向的数字</li>
 </ul>
 <hr>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>mov    0x8(%esp),%edx
@@ -963,9 +964,9 @@ mov    %eax,(%rsi)
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20363;&#23376;&#65306;&#24490;&#29615;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">例子：循环</h2>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">fact</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">                  </span><span class="k">do</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">n</span><span class="o">--</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="w">                  </span><span class="k">do</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">n</span><span class="o">--</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">></span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
 <span class="w">                  </span><span class="k">return</span><span class="w"> </span><span class="n">res</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
 
@@ -979,10 +980,10 @@ mov    %eax,(%rsi)
 <span class="w">      </span><span class="na">repz</span><span class="w"> </span><span class="nf">retq</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">&#20004;&#20010;&#35809;&#24322;&#20195;&#30721;&#65306;</p>
+<p class=" font-serif my-1">两个诡异代码：</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><code>nopl (%rax)</code>&#65306;&#20869;&#23384;&#23545;&#40784; (padding)</li>
-<li class=" ml-8"><code>repz retq</code>&#65306;&#38450;&#27490;&#36830;&#32493;&#20998;&#25903;&#25351;&#20196;</li>
+<li class=" ml-8"><code>nopl (%rax)</code>：内存对齐 (padding)</li>
+<li class=" ml-8"><code>repz retq</code>：防止连续分支指令</li>
 </ul></div>
         
       
@@ -994,20 +995,20 @@ mov    %eax,(%rsi)
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20363;&#23376;&#65306;&#36882;&#24402;</h2>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>0000000000000704 &lt;fib&gt;:
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">例子：递归</h2>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>0000000000000704 <fib>:
  704:   55                      push   %rbp
  705:   53                      push   %rbx
  706:   89 fd                   mov    %edi,%ebp
  708:   31 db                   xor    %ebx,%ebx
  70a:   48 83 ec 08             sub    $0x8,%rsp
  70e:   83 fd 01                cmp    $0x1,%ebp
- 711:   7e 0f                   jle    722 &lt;fib+0x1e&gt;
+ 711:   7e 0f                   jle    722 <fib+0x1e>
  713:   8d 7d ff                lea    -0x1(%rbp),%edi
  716:   83 ed 02                sub    $0x2,%ebp
- 719:   e8 e6 ff ff ff          callq  704 &lt;fib&gt;
+ 719:   e8 e6 ff ff ff          callq  704 <fib>
  71e:   01 c3                   add    %eax,%ebx
- 720:   eb ec                   jmp    70e &lt;fib+0xa&gt;
+ 720:   eb ec                   jmp    70e <fib+0xa>
  722:   8d 43 01                lea    0x1(%rbx),%eax
  725:   5a                      pop    %rdx
  726:   5b                      pop    %rbx
@@ -1039,11 +1040,11 @@ mov    %eax,(%rsi)
 
       
         
-        <div><h2 id="c" class=" text-xl mt-2 pb-2 font-sans">&#22312; C &#20195;&#30721;&#20013;&#23884;&#20837;&#27719;&#32534;</h2>
-<p class=" font-serif my-1">&#32534;&#35793;&#22120;&#65306;&#25226; C &#20195;&#30721; &#8220;&#21407;&#26679;&#32763;&#35793;&#8221; &#25104;&#27719;&#32534;&#20195;&#30721;</p>
+        <div><h2 id="c" class=" text-xl mt-2 pb-2 font-sans">在 C 代码中嵌入汇编</h2>
+<p class=" font-serif my-1">编译器：把 C 代码 “原样翻译” 成汇编代码</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#37027;&#25105;&#20204;&#26159;&#19981;&#26159;&#21487;&#20197;&#22312;&#35821;&#21477;&#20043;&#38388;&#25554;&#20837;&#27719;&#32534;&#21602;&#65311;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#21487;&#20197;&#65281;&#32534;&#35793;&#22120;&#23601;&#20570;&#20010; &#8220;&#22797;&#21046;&#31896;&#36148;&#8221;</li>
+<li class=" ml-8">那我们是不是可以在语句之间插入汇编呢？<ul class=" list-disc font-serif">
+<li class=" ml-8">可以！编译器就做个 “复制粘贴”</li>
 </ul>
 </li>
 </ul>
@@ -1065,7 +1066,7 @@ mov    %eax,(%rsi)
 
       
         
-        <div><h2 id="c" class=" text-xl mt-2 pb-2 font-sans">&#22312;&#27719;&#32534;&#20013;&#35775;&#38382; C &#19990;&#30028;&#30340;&#34920;&#36798;&#24335;</h2>
+        <div><h2 id="c" class=" text-xl mt-2 pb-2 font-sans">在汇编中访问 C 世界的表达式</h2>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">foo</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">z</span><span class="p">;</span>
 <span class="w">  </span><span class="n">x</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="n">y</span><span class="o">++</span><span class="p">;</span>
@@ -1088,13 +1089,13 @@ mov    %eax,(%rsi)
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#19982;&#32534;&#35793;&#22120;&#20132;&#20114;</h2>
-<p class=" font-serif my-1">&#23454;&#38469;&#30340;&#32534;&#35793;&#22120;&#21487;&#33021;&#20250;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">与编译器交互</h2>
+<p class=" font-serif my-1">实际的编译器可能会</p>
 <hr>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#23558;&#26576;&#20010;&#21464;&#37327;&#20998;&#37197;&#32473;&#26576;&#20010;&#23492;&#23384;&#22120;<ul class=" list-disc font-serif">
-<li class=" ml-8">inline assembly &#25913;&#20889;&#23492;&#23384;&#22120;&#23601;&#20250;&#23548;&#33268;&#38169;&#35823;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#8594; clobber list</li>
+<li class=" ml-8">将某个变量分配给某个寄存器<ul class=" list-disc font-serif">
+<li class=" ml-8">inline assembly 改写寄存器就会导致错误<ul class=" list-disc font-serif">
+<li class=" ml-8">→ clobber list</li>
 </ul>
 </li>
 </ul>
@@ -1102,9 +1103,9 @@ mov    %eax,(%rsi)
 </ul>
 <hr>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20195;&#30721;&#20248;&#21270;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20363;&#22914; assembly &#30340;&#36820;&#22238;&#20540;&#27809;&#26377;&#29992;&#21040;&#65292;&#23601;&#21487;&#20197;&#21024;&#38500;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#8594; volatile</li>
+<li class=" ml-8">代码优化<ul class=" list-disc font-serif">
+<li class=" ml-8">例如 assembly 的返回值没有用到，就可以删除<ul class=" list-disc font-serif">
+<li class=" ml-8">→ volatile</li>
 </ul>
 </li>
 </ul>
@@ -1124,7 +1125,7 @@ mov    %eax,(%rsi)
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#24635;&#32467;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">总结</h1></div></div></div>
         
       
       </section>
@@ -1135,22 +1136,22 @@ mov    %eax,(%rsi)
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#23545;&#27719;&#32534;&#24863;&#21040;&#24456;&#30171;&#33510;&#65311;</h2>
-<p class=" font-serif my-1">&#20004;&#20010;&#24314;&#35758;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">对汇编感到很痛苦？</h2>
+<p class=" font-serif my-1">两个建议</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#21407;&#29702;&#65306;&#24819;&#19968;&#24819; YEMU &#21644; NEMU</li>
-<li class=" ml-8">&#23454;&#36341;&#65306;&#8220;&#27169;&#25311;&#35843;&#35797;&#8221;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#25351;&#20196;&#19981;&#36807;&#26159; CPU &#25191;&#34892;&#30340;&#22522;&#26412;&#21333;&#20803;</li>
+<li class=" ml-8">原理：想一想 YEMU 和 NEMU</li>
+<li class=" ml-8">实践：“模拟调试”<ul class=" list-disc font-serif">
+<li class=" ml-8">指令不过是 CPU 执行的基本单元</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#21516;&#26102;&#65292;&#20184;&#20986;&#20063;&#26159;&#24517;&#35201;&#30340;</p>
+<p class=" font-serif my-1">同时，付出也是必要的</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20294;&#20320;&#19968;&#26086;&#25484;&#25569;&#20102;&#20998;&#26512;&#27719;&#32534;&#20195;&#30721;&#30340;&#26041;&#27861;<ul class=" list-disc font-serif">
-<li class=" ml-8">x86-64 &#20063;&#19981;&#21487;&#24597;</li>
-<li class=" ml-8">AArch64 &#20063;&#19981;&#21487;&#24597;</li>
-<li class=" ml-8">&#12298;&#35745;&#31639;&#26426;&#31995;&#32479;&#22522;&#30784;&#20063;&#19981;&#21487;&#24597;&#12299;</li>
+<li class=" ml-8">但你一旦掌握了分析汇编代码的方法<ul class=" list-disc font-serif">
+<li class=" ml-8">x86-64 也不可怕</li>
+<li class=" ml-8">AArch64 也不可怕</li>
+<li class=" ml-8">《计算机系统基础也不可怕》</li>
 </ul>
 </li>
 </ul></div>
@@ -1164,7 +1165,7 @@ mov    %eax,(%rsi)
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="end" class=" text-2xl mt-2 font-sans">End. (&#20320;&#25214;&#23545;&#25163;&#20876;&#20102;&#21527;&#65311;)</h1>
+        <div><div class="center middle"><div style="width:100%"><h1 id="end" class=" text-2xl mt-2 font-sans">End. (你找对手册了吗？)</h1>
 <p class=" font-serif my-1"><a href="https://www.cs.cmu.edu/~fp/courses/15213-s07/misc/asm64-handout.pdf" class=" text-amber-900">x86-64 Machine-Level Programming</a></p>
 <p class=" font-serif my-1"><a href="https://gcc.gnu.org/onlinedocs/gcc-10.2.0/gcc/Using-Assembly-Language-with-C.html" class=" text-amber-900">How to Use Inline Assembly Language in C Code</a></p></div></div></div>
         
@@ -1196,5 +1197,6 @@ mov    %eax,(%rsi)
 
 
 </body>
+
 
 </html>

@@ -1,10 +1,11 @@
 <!DOCTYPE html><html class="h-100">
 
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="../../../static/css/base.css" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com/"></script>
   <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
 
@@ -23,14 +24,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -137,7 +138,7 @@ hr {
 </style>
 
 
-  <title>&#24182;&#21457;&#25511;&#21046;&#65306;&#21516;&#27493;</title>
+  <title>并发控制：同步</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -148,32 +149,32 @@ hr {
 
 <div class="px-2 py-1 w-full fixed z-50 bg-gradient-to-r from-black via-purple-700 via-purple-500 shadow-lg" style="-webkit-backdrop-filter: saturate(150%) blur(4px); backdrop-filter: saturate(150%) blur(4px)">
   <form>
-    <a href="../../../index.html"><span class="text-lg px-2 text-white">Yanyan's Wiki</span></a>
-    <a href="../../2023/index.html"><span class="text-sm px-2 text-white">&#25805;&#20316;&#31995;&#32479; (2023)</span></a>
+    <a href="../../../index-2.html"><span class="text-lg px-2 text-white">Yanyan's Wiki</span></a>
+    <a href="../../2023/index.html"><span class="text-sm px-2 text-white">操作系统 (2023)</span></a>
     <input maxlength="9" id="token-input" class="float-right appearance-none border border-transparent px-2 py-1 w-20 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-xs focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent font-mono" type="text" placeholder="TOKEN" oninput="login();">
   </form>
 </div>
 
 <div class="article container mx-auto md:px-8 lg:px-8 xl:px-8 2xl:px-8 shadow-lg border pb-8 pt-10 max-w-screen-md text-justify divide-y-2 divide-white">
-  <div><h1 id="_1" class=" text-2xl mt-2 font-sans">&#24182;&#21457;&#25511;&#21046;&#65306;&#21516;&#27493;</h1>
+  <div><h1 id="_1" class=" text-2xl mt-2 font-sans">并发控制：同步</h1>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<h4 id="_2" class=" pt-2 pb-2 font-sans float-left text-sm box border mr-1 mt-1 box-blue" style=" padding-bottom: 0;">&#26412;&#35762;&#38405;&#35835;&#26448;&#26009;</h4>
-<p class=" font-serif my-1"><a href="http://pages.cs.wisc.edu/~remzi/OSTEP/" class=" text-amber-900">&#25945;&#31185;&#20070; (Operating Systems: Three Easy Pieces, OSTEP)</a> &#31532; 30-31 &#31456;&#12290;&#25945;&#26448;&#30340;&#26465;&#20214;&#21464;&#37327;&#21644;&#20449;&#21495;&#37327;&#35762;&#24471;&#38750;&#24120;&#26834;&#65292;&#22240;&#27492;&#35831;&#22823;&#23478;&#20180;&#32454;&#38405;&#35835;&#12290;</p>
+<h4 id="_2" class=" pt-2 pb-2 font-sans float-left text-sm box border mr-1 mt-1 box-blue" style=" padding-bottom: 0;">本讲阅读材料</h4>
+<p class=" font-serif my-1"><a href="http://pages.cs.wisc.edu/~remzi/OSTEP/" class=" text-amber-900">教科书 (Operating Systems: Three Easy Pieces, OSTEP)</a> 第 30-31 章。教材的条件变量和信号量讲得非常棒，因此请大家仔细阅读。</p>
 </blockquote>
-<h2 id="1" class=" text-xl mt-2 pb-2 font-sans">1. &#29702;&#35299;&#32447;&#31243;&#21516;&#27493;</h2>
-<p class=" font-serif my-1">&#25152;&#35859; &#8220;&#21516;&#27493;&#8221; &#23601;&#26159;&#22312;&#26576;&#20010;&#26102;&#21051;&#65292;&#20004;&#20010;&#32447;&#31243;&#36798;&#25104;&#19968;&#20010; &#8220;&#20114;&#30456;&#35748;&#21516;&#8221; &#30340;&#29366;&#24577;&#65292;&#20856;&#22411;&#30340;&#22330;&#26223;&#65306;</p>
+<h2 id="1" class=" text-xl mt-2 pb-2 font-sans">1. 理解线程同步</h2>
+<p class=" font-serif my-1">所谓 “同步” 就是在某个时刻，两个线程达成一个 “互相认同” 的状态，典型的场景：</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">(&#19968;&#36215;&#21435;&#32422;&#20250;) NPY: &#31561;&#25105;&#27927;&#20010;&#22836;&#23601;&#20986;&#38376;/&#31561;&#25105;&#25171;&#23436;&#36825;&#23616;&#28216;&#25103;&#23601;&#26469;</li>
-<li class=" ml-8">(&#19968;&#36215;&#21435;&#21507;&#39277;) &#33293;&#21451;&#65306;&#31561;&#25105;&#20889;&#23436;&#36825;&#27573;&#20195;&#30721;&#23601;&#21507;&#39277;</li>
-<li class=" ml-8">(&#19968;&#36215;&#25630;&#31185;&#30740;) &#23548;&#24072;&#65306;&#31561;&#25105;&#20986;&#24046;&#22238;&#26469;&#23601;&#35752;&#35770;&#36825;&#20010;&#35838;&#39064;</li>
+<li class=" ml-8">(一起去约会) NPY: 等我洗个头就出门/等我打完这局游戏就来</li>
+<li class=" ml-8">(一起去吃饭) 舍友：等我写完这段代码就吃饭</li>
+<li class=" ml-8">(一起搞科研) 导师：等我出差回来就讨论这个课题</li>
 </ul>
-<p class=" font-serif my-1">&#32780;&#22312;&#35745;&#31639;&#26426;&#20013;&#65292;&#23454;&#29616;&#21516;&#27493;&#26368;&#22909;&#30340;&#21150;&#27861;&#65292;&#23601;&#26159;&#35753;&#20808;&#21040;&#30340;&#32447;&#31243;&#31561;&#24453;&#65306;</p>
+<p class=" font-serif my-1">而在计算机中，实现同步最好的办法，就是让先到的线程等待：</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">NPY: &#20808;&#27927;&#23436;&#22836;&#30340;&#22899;&#29983;&#31561;&#30007;&#29983;&#29609;&#29609;&#28216;&#25103;&#65307;&#20808;&#25171;&#23436;&#28216;&#25103;&#30340;&#30007;&#29983;&#31561;&#22899;&#29983;&#27927;&#23436;&#22836; (&#30683;&#30462;&#30340;&#26469;&#28304;)</li>
-<li class=" ml-8">&#33293;&#21451;&#65306;&#20808;&#21457;&#36215;&#21507;&#39277;&#35831;&#27714;&#30340;&#35201;&#31561;&#33293;&#21451;&#20889;&#23436;&#20195;&#30721;</li>
-<li class=" ml-8">&#23548;&#24072;&#65306;&#21516;&#23398;&#20320;&#31561;&#31561;&#25105;&#21834;&#21834;&#21834;&#21834;&#21834;&#21834;</li>
+<li class=" ml-8">NPY: 先洗完头的女生等男生玩玩游戏；先打完游戏的男生等女生洗完头 (矛盾的来源)</li>
+<li class=" ml-8">舍友：先发起吃饭请求的要等舍友写完代码</li>
+<li class=" ml-8">导师：同学你等等我啊啊啊啊啊啊</li>
 </ul>
-<p class=" font-serif my-1">&#36890;&#24120;&#65292;&#23454;&#29616;&#24537;&#31561;&#24453; (spinning) &#30340;&#21516;&#27493; (&#31561;&#24453;) &#36890;&#24120;&#37117;&#26159;&#38750;&#24120;&#31616;&#21333;&#30340;&#65292;&#20320;&#38656;&#35201;&#19968;&#20010;&#21464;&#37327; <code>done</code>&#65292;&#28982;&#21518;&#19981;&#26029;&#35810;&#38382;&#26465;&#20214;&#26159;&#21542;&#21457;&#29983;&#21363;&#21487;&#12290;&#22914;&#26524;&#24076;&#26395;&#23454;&#29616; <code>threads.h</code> &#20013;&#32447;&#31243;&#30340;&#21516;&#27493; (main &#31561;&#24453;&#25152;&#26377;&#32447;&#31243;&#36820;&#22238;)&#65292;&#21482;&#38656;&#29992;&#19968;&#20010; <code>flag</code> &#21464;&#37327;&#65292;<code>main_thread</code>&#19981;&#26029;&#22320; spin &#36825;&#20010;&#21464;&#37327;&#65292;&#30452;&#21040;&#35835;&#20986;&#23427;&#26159; <code>1</code>&#65306;</p>
+<p class=" font-serif my-1">通常，实现忙等待 (spinning) 的同步 (等待) 通常都是非常简单的，你需要一个变量 <code>done</code>，然后不断询问条件是否发生即可。如果希望实现 <code>threads.h</code> 中线程的同步 (main 等待所有线程返回)，只需用一个 <code>flag</code> 变量，<code>main_thread</code>不断地 spin 这个变量，直到读出它是 <code>1</code>：</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">done</span><span class="p">[</span><span class="n">nworkers</span><span class="p">];</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">worker</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">tid</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -182,36 +183,36 @@ hr {
 <span class="p">}</span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">tid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">tid</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">nworkers</span><span class="p">;</span><span class="w"> </span><span class="n">tid</span><span class="o">++</span><span class="p">)</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">tid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">tid</span><span class="w"> </span><span class="o"><</span><span class="w"> </span><span class="n">nworkers</span><span class="p">;</span><span class="w"> </span><span class="n">tid</span><span class="o">++</span><span class="p">)</span>
 <span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">done</span><span class="p">[</span><span class="n">tid</span><span class="p">]);</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<h4 id="_3" class=" pt-2 pb-2 font-sans float-left text-sm box border mr-1 mt-1 box-blue" style=" padding-bottom: 0;">&#36824;&#35760;&#24471;&#32534;&#35793;&#20248;&#21270;&#30340;&#25925;&#20107;&#21527;&#65311;</h4>
-<p class=" font-serif my-1">&#25105;&#20204;&#21448;&#22238;&#26469;&#20102;&#65306;</p>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<h4 id="_3" class=" pt-2 pb-2 font-sans float-left text-sm box border mr-1 mt-1 box-blue" style=" padding-bottom: 0;">还记得编译优化的故事吗？</h4>
+<p class=" font-serif my-1">我们又回来了：</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o"><</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
 <span class="w">    </span><span class="n">sum</span><span class="o">++</span><span class="p">;</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">&#36825;&#20040;&#20010;&#31616;&#21333;&#30340;&#24490;&#29615;&#65292;&#22312; <code>-O0</code>, <code>-O1</code>, <code>-O2</code> &#30340;&#26102;&#20505;&#26377;&#25130;&#28982;&#19981;&#21516;&#30340;&#34892;&#20026;&#65292;&#37027;&#19978;&#38754;&#37027;&#20010; spin loop&#8230;&#8230; &#21602;&#65311;</p>
+<p class=" font-serif my-1">这么个简单的循环，在 <code>-O0</code>, <code>-O1</code>, <code>-O2</code> 的时候有截然不同的行为，那上面那个 spin loop…… 呢？</p>
 </blockquote>
-<p class=" font-serif my-1">&#22914;&#26524;&#20320;&#23450;&#20041; <code>int done[];</code>&#65292;gcc &#20250;&#27627; (&#38750;) &#19981; (&#24120;) &#23458; (&#24320;) &#27668; (&#24515;) &#22320;&#25226;&#36825;&#20010;&#24490;&#29615;&#20248;&#21270;&#25104;&#65306;</p>
+<p class=" font-serif my-1">如果你定义 <code>int done[];</code>，gcc 会毫 (非) 不 (常) 客 (开) 气 (心) 地把这个循环优化成：</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="o">%</span><span class="n">eax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">done</span><span class="p">[</span><span class="n">tid</span><span class="p">];</span>
 <span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">%</span><span class="n">eax</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">;</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">&#20063;&#23601;&#26159;&#35828;&#65292;&#22914;&#26524;&#22312;&#24490;&#29615;&#24320;&#22987;&#21069; <code>done[tid]</code> &#36824;&#27809;&#26377;&#20934;&#22791;&#22909;&#65292;&#36825;&#20010;&#24490;&#29615;&#23601;&#38519;&#20837;&#20102;&#27515;&#24490;&#29615;&#12290;&#36825;&#26159;&#22240;&#20026;&#32534;&#35793;&#22120;&#22312;&#36827;&#34892;&#20248;&#21270;&#26102;&#65292;&#26159;&#40664;&#35748;&#21482;&#26377;&#32447;&#31243;&#26412;&#22320;&#30340;&#25968;&#25454;&#27969; (data flow) &#30340;&#8212;&#8212;&#22914;&#26524;&#20551;&#35774;&#26377;&#32447;&#31243;&#38388;&#30340;&#20219;&#24847;&#25968;&#25454;&#27969;&#65292;&#37027;&#20040;&#20960;&#20046;&#20219;&#20309;&#20248;&#21270;&#37117;&#19981;&#27491;&#30830;&#20102;&#12290;</p>
-<p class=" font-serif my-1">&#27491;&#30830;&#30340;&#35299;&#20915;&#21150;&#27861;&#26159;&#25226; <code>done</code> &#23450;&#20041;&#25104; <code>int volatile done[];</code> &#31105;&#27490;&#32534;&#35793;&#22120;&#20248;&#21270;&#23545; <code>done</code> &#30340;&#35835;&#20889;&#12290;<code>volatile</code> &#21644; <code>const</code>&#19968;&#26679;&#65292;&#37117;&#26159; C &#35821;&#35328;&#26631;&#20934;&#30340;&#19968;&#37096;&#20998;&#65292;&#26377;&#20123;&#20844;&#21496;&#22312;&#38754;&#35797;&#31995;&#32479;&#32534;&#31243;&#23703;&#20301;&#30340;&#26102;&#20505;&#20063;&#20250;&#38382;&#36825;&#26679;&#30340;&#38382;&#39064;&#65306;</p>
+<p class=" font-serif my-1">也就是说，如果在循环开始前 <code>done[tid]</code> 还没有准备好，这个循环就陷入了死循环。这是因为编译器在进行优化时，是默认只有线程本地的数据流 (data flow) 的——如果假设有线程间的任意数据流，那么几乎任何优化都不正确了。</p>
+<p class=" font-serif my-1">正确的解决办法是把 <code>done</code> 定义成 <code>int volatile done[];</code> 禁止编译器优化对 <code>done</code> 的读写。<code>volatile</code> 和 <code>const</code>一样，都是 C 语言标准的一部分，有些公司在面试系统编程岗位的时候也会问这样的问题：</p>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<h4 id="c" class=" pt-2 pb-2 font-sans float-left text-sm box border mr-1 mt-1 box-blue" style=" padding-bottom: 0;">&#38754;&#35797;&#39064;&#65306;C &#35821;&#35328;&#30340;&#29305;&#24615;</h4>
-<p class=" font-serif my-1"><code>int f(void(* volatile const g)(int));</code>&#26159;&#20160;&#20040;&#65311;</p>
-<p class=" font-serif my-1">&#30475;&#36215;&#26469;&#26159;&#20010;<strong>&#38750;&#24120;&#26080;&#32842;</strong>&#30340;&#38754;&#35797;&#39064;&#65292;&#23601;&#26159;&#32771;&#37027;&#20123;&#29316;&#35282;&#26094;&#26095;&#37324;&#30340;&#27809;&#29992;&#30340;&#29305;&#24615;&#12290;&#20294;&#22914;&#26524;&#25105;&#20877;&#36861;&#21152;&#19968;&#21477;&#65306;&#22312;&#31995;&#32479;&#36719;&#20214;&#20013;&#65292;&#36825;&#26679;&#30340; <code>volatile</code> &#34920;&#36798;&#24335;&#21487;&#20197;&#29992;&#26469;&#23454;&#29616;&#20160;&#20040;&#26377;&#29992;&#30340;&#29305;&#24615;&#65311;&#22914;&#26524;&#20320;&#33021;&#31572;&#19978;&#65292;&#37027;&#23601;&#26159;&#20010;&#19981;&#23567;&#30340;&#21152;&#20998;&#39033;&#20102;&#12290;</p>
+<h4 id="c" class=" pt-2 pb-2 font-sans float-left text-sm box border mr-1 mt-1 box-blue" style=" padding-bottom: 0;">面试题：C 语言的特性</h4>
+<p class=" font-serif my-1"><code>int f(void(* volatile const g)(int));</code>是什么？</p>
+<p class=" font-serif my-1">看起来是个<strong>非常无聊</strong>的面试题，就是考那些犄角旮旯里的没用的特性。但如果我再追加一句：在系统软件中，这样的 <code>volatile</code> 表达式可以用来实现什么有用的特性？如果你能答上，那就是个不小的加分项了。</p>
 </blockquote>
-<h2 id="2" class=" text-xl mt-2 pb-2 font-sans">2. &#26465;&#20214;&#21464;&#37327;</h2>
-<p class=" font-serif my-1">&#30041;&#24847;&#21040;&#36825;&#37324;&#26377;&#19968;&#20010; &#8220;<red>&#26465;&#20214;</red>&#8221;&#8212;&#8212;&#21516;&#27493;&#20960;&#20046;&#24635;&#26159; &#8220;<red>&#31561;&#24453;&#26576;&#20010;&#26465;&#20214;&#21457;&#29983;</red>&#8221;&#65292;&#22240;&#27492;&#26465;&#20214;&#21464;&#37327;&#23545;&#22823;&#23478;&#26469;&#35828;&#23601;&#21464;&#24471;&#38750;&#24120;&#33258;&#28982;&#20102;&#12290;&#20026;&#20102;&#20943;&#23569;&#24537;&#31561;&#24453;&#36896;&#25104;&#30340;&#28010;&#36153;&#65292;&#25105;&#20204;&#38656;&#35201;&#19968;&#20123;&#39069;&#22806;&#30340; API&#65292;&#33021;&#22312;&#32447;&#31243;&#38656;&#35201;&#31561;&#24453;&#30340;&#26102;&#20505;&#36827;&#20837;&#30561;&#30496;&#29366;&#24577;&#65292;&#24182;&#22312;&#21512;&#36866;&#30340;&#26102;&#20505;&#21796;&#37266;&#8212;&#8212;&#32771;&#34385;&#21040;&#25105;&#20204;&#20960;&#20046;&#24635;&#26159; &#8220;&#31561;&#24453;&#26576;&#20214;&#20107;&#8221; &#21457;&#29983;&#65292;&#35774;&#35745; &#8220;&#31561;&#24453;&#26576;&#20010;&#26465;&#20214;&#8221; &#36825;&#20214;&#20107;&#23601;&#26174;&#24471;&#38750;&#24120;&#21512;&#29702;&#20102;&#12290;</p>
-<h3 id="21" class=" text-lg mt-2 pb-2 font-sans">2.1. &#36991;&#20813;&#24537;&#31561;&#24453;&#65306;&#26465;&#20214;&#21464;&#37327;</h3>
-<p class=" font-serif my-1">&#20351;&#29992;&#33258;&#26059;&#34429;&#28982;&#33021;&#27491;&#30830;&#35299;&#20915;&#21516;&#27493;&#38382;&#39064;&#65292;&#20294;&#20173;&#28982;&#27809;&#26377;&#23436;&#32654;&#22320;&#35299;&#20915;&#22909;&#65306;&#20026;&#20102;&#31561;&#24453; worker threads &#30340;&#32467;&#26463;&#65292;&#20027;&#32447;&#31243;&#22312;&#19968;&#20010; spin loop &#37324;&#65292;&#30333;&#28010;&#36153;&#20102;&#24456;&#22810; CPU &#36164;&#28304;&#12290;&#22240;&#27492;&#33258;&#28982;&#20250;&#24819;&#65292;&#22914;&#26524;&#24211;&#20989;&#25968;/&#25805;&#20316;&#31995;&#32479;&#33021;&#24110;&#21161;&#25105;&#20204;&#23454;&#29616;&#36825;&#26679;&#30340;&#21516;&#27493;&#26426;&#21046;&#23601;&#22909;&#20102;&#8212;&#8212;&#26465;&#20214;&#21464;&#37327; (condition variables, CV)&#65306;</p>
+<h2 id="2" class=" text-xl mt-2 pb-2 font-sans">2. 条件变量</h2>
+<p class=" font-serif my-1">留意到这里有一个 “<red>条件</red>”——同步几乎总是 “<red>等待某个条件发生</red>”，因此条件变量对大家来说就变得非常自然了。为了减少忙等待造成的浪费，我们需要一些额外的 API，能在线程需要等待的时候进入睡眠状态，并在合适的时候唤醒——考虑到我们几乎总是 “等待某件事” 发生，设计 “等待某个条件” 这件事就显得非常合理了。</p>
+<h3 id="21" class=" text-lg mt-2 pb-2 font-sans">2.1. 避免忙等待：条件变量</h3>
+<p class=" font-serif my-1">使用自旋虽然能正确解决同步问题，但仍然没有完美地解决好：为了等待 worker threads 的结束，主线程在一个 spin loop 里，白浪费了很多 CPU 资源。因此自然会想，如果库函数/操作系统能帮助我们实现这样的同步机制就好了——条件变量 (condition variables, CV)：</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="p">:::</span><span class="n">C</span>
 <span class="nb nb-Type">int</span><span class="w"> </span><span class="n">pthread_cond_wait</span><span class="p">(</span><span class="n">pthread_cond_t</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">pthread_mutex_t</span><span class="w"> </span><span class="o">*</span><span class="n">mutex</span><span class="p">);</span>
 <span class="w">  </span><span class="o">//</span><span class="w"> </span><span class="n">Unlock</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">specified</span><span class="w"> </span><span class="n">mutex</span><span class="p">,</span><span class="w"> </span><span class="n">wait</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">condition</span><span class="p">,</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">relock</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">mutex</span><span class="o">.</span>
@@ -221,130 +222,130 @@ hr {
 <span class="w">  </span><span class="o">//</span><span class="w"> </span><span class="n">Unblock</span><span class="w"> </span><span class="n">at</span><span class="w"> </span><span class="n">least</span><span class="w"> </span><span class="n">one</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">threads</span><span class="w"> </span><span class="n">blocked</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">specified</span><span class="w"> </span><span class="n">condition</span><span class="w"> </span><span class="n">variable</span><span class="o">.</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">&#25945;&#31185;&#20070;&#25552;&#20379;&#20102;&#38750;&#24120;&#35814;&#23613;&#30340;&#26465;&#20214;&#21464;&#37327;&#35299;&#37322;&#65292;&#21253;&#25324;&#35838;&#22530;&#19978;&#24050;&#32463;&#35762;&#36807;&#30340;&#19968;&#20123;&#19981;&#33021;&#27491;&#30830;&#24037;&#20316;&#30340;&#20363;&#23376;&#12290;&#33457;&#19968;&#28857;&#26102;&#38388;&#29702;&#35299;&#36825;&#20123;&#20363;&#23376;&#65292;&#36825;&#26159;&#23453;&#36149;&#30340;&#24182;&#21457;&#32534;&#31243;&#32463;&#39564;&#8212;&#8212;&#24403;&#28982;&#65292;&#27604;&#25945;&#31185;&#20070;&#26356;&#22909;&#30340;&#26041;&#24335;&#26159;&#29992;&#29366;&#24577;&#26426; &#8220;&#35777;&#26126;&#8221; &#31243;&#24207;&#30340;&#27491;&#30830;&#24615; (&#25110;&#21542;&#23450;&#27491;&#30830;&#24615;)&#12290;&#36825;&#23545;&#20110;&#22823;&#23478;&#29702;&#35299;&#24182;&#21457;&#31243;&#24207;&#20063;&#26159;&#26377;&#24456;&#22823;&#22909;&#22788;&#30340;&#12290;&#29366;&#24577;&#26426;&#30340;&#35270;&#35282;&#24110;&#21161;&#22823;&#23478;&#25670;&#33073; &#8220;&#23567;&#20316;&#22346;&#8221; &#24335;&#30340;&#32534;&#31243;&#26041;&#24335;&#65292;&#27491;&#30830;&#24615;&#20840;&#38752;&#36816;&#27668;&#65292;&#32780;&#26159;&#25226;&#31243;&#24207;&#27491;&#30830;&#19982;&#21542;&#30340;&#21629;&#36816;&#25484;&#25569;&#22312;&#33258;&#24049;&#25163;&#20013;&#12290;</p>
-<p class=" font-serif my-1">&#25442;&#35328;&#20043;&#65292;&#25105;&#20204;&#22312;&#29702;&#35299;&#24182;&#21457;&#31243;&#24207;&#26102;&#65292;&#30495;&#27491;&#20570;&#30340;&#20107;&#24773;&#26159;<strong>&#23581;&#35797; (&#26522;&#20030;) &#21508;&#31181;&#24182;&#21457;&#31243;&#24207;&#21487;&#33021;&#30340;&#35843;&#24230;</strong>&#12290;&#22312;&#23581;&#35797;&#30340;&#36807;&#31243;&#20013;&#65292;&#20320;&#19968;&#23450;&#20250;&#21457;&#29616;&#20197;&#19979;&#20960;&#20010;&#26377;&#36259;&#30340;&#29616;&#35937;&#65306;</p>
+<p class=" font-serif my-1">教科书提供了非常详尽的条件变量解释，包括课堂上已经讲过的一些不能正确工作的例子。花一点时间理解这些例子，这是宝贵的并发编程经验——当然，比教科书更好的方式是用状态机 “证明” 程序的正确性 (或否定正确性)。这对于大家理解并发程序也是有很大好处的。状态机的视角帮助大家摆脱 “小作坊” 式的编程方式，正确性全靠运气，而是把程序正确与否的命运掌握在自己手中。</p>
+<p class=" font-serif my-1">换言之，我们在理解并发程序时，真正做的事情是<strong>尝试 (枚举) 各种并发程序可能的调度</strong>。在尝试的过程中，你一定会发现以下几个有趣的现象：</p>
 <ol class=" list-decimal font-serif">
-<li class=" ml-8">&#8220;&#31243;&#24207;&#26159;&#20010;&#29366;&#24577;&#26426;&#8221; &#26159;&#23545;&#35745;&#31639;&#26426;&#31995;&#32479;&#26412;&#36136;&#30340;&#29702;&#35299;&#12290;</li>
-<li class=" ml-8">&#20114;&#26021;&#38145;&#26497;&#22823;&#30340;&#38477;&#20302;&#20102;&#29702;&#35299;&#24182;&#21457;&#31243;&#24207;&#25191;&#34892;&#30340;&#38590;&#24230;&#8212;&#8212;&#25105;&#20204;&#21487;&#20197;&#25226;&#34987;&#38145;&#20445;&#25252;&#30340;&#37096;&#20998;&#30475;&#20316;&#19968;&#20010;&#25972;&#20307;&#65292;&#23427;&#20204;&#35201;&#20040;&#25191;&#34892;&#65292;&#35201;&#20040;&#19981;&#25191;&#34892; (&#30001; lock/unlock &#30340;&#35821;&#20041;&#20445;&#35777;)&#12290;&#23601;&#20687;&#35838;&#22530;&#19978;&#30011;&#30340;&#26694;&#26694;&#8212;&#8212;&#23427;&#23454;&#29616;&#20102;&#25628;&#32034;&#31354;&#38388;&#30340;&#32422;&#20943;&#65306;&#25105;&#20204;&#20854;&#23454;&#25214;&#21040;&#20102;&#29366;&#24577;&#31354;&#38388;&#26356;&#22909;&#30340;&#19968;&#31181;&#34920;&#31034;&#26041;&#27861;&#65281;</li>
-<li class=" ml-8">&#24182;&#21457;&#31243;&#24207;&#30340;&#20840;&#23616;&#29366;&#24577;&#26159;&#35299;&#24320;&#38382;&#39064;&#30340;&#38053;&#21273;&#12290;&#19968;&#33324;&#26469;&#35828;&#65292;&#20026;&#20102;&#25351;&#20986;&#24182;&#21457;&#31243;&#24207;&#30340;&#38382;&#39064;&#65292;&#21482;&#38656;&#35201;&#31243;&#24207;&#36798;&#21040;&#26576;&#20010;&#29305;&#23450;&#30340;&#29366;&#24577;&#65292;&#28982;&#21518;&#21457;&#29983;&#19968;&#20123;&#32447;&#31243;&#20043;&#38388;&#30340;&#20132;&#20114;&#12290;&#36825;&#26377;&#28857;&#31867;&#20284;&#20110;&#22823;&#23478;&#20570; OJ &#30340;&#20307;&#39564;&#65306;&#38656;&#35201;&#23613;&#21147;&#26522;&#20030;&#21508;&#31181;&#21508;&#26679;&#30340;&#26497;&#31471;&#24773;&#20917;&#12290;</li>
+<li class=" ml-8">“程序是个状态机” 是对计算机系统本质的理解。</li>
+<li class=" ml-8">互斥锁极大的降低了理解并发程序执行的难度——我们可以把被锁保护的部分看作一个整体，它们要么执行，要么不执行 (由 lock/unlock 的语义保证)。就像课堂上画的框框——它实现了搜索空间的约减：我们其实找到了状态空间更好的一种表示方法！</li>
+<li class=" ml-8">并发程序的全局状态是解开问题的钥匙。一般来说，为了指出并发程序的问题，只需要程序达到某个特定的状态，然后发生一些线程之间的交互。这有点类似于大家做 OJ 的体验：需要尽力枚举各种各样的极端情况。</li>
 </ol>
-<p class=" font-serif my-1">&#26080;&#35770;&#22914;&#20309;&#65292;&#26356;&#22909;&#22320;&#27979;&#35797;&#24182;&#21457;&#31243;&#24207;&#65292;&#25110;&#26159;&#35777;&#26126;&#24182;&#21457;&#31243;&#24207;&#27491;&#30830;&#37117;&#26159;&#38750;&#24120;&#20855;&#26377;&#25361;&#25112;&#24615;&#30340;&#24037;&#20316;&#12290;&#21363;&#20415;&#22312;&#20170;&#22825;&#65292;&#25105;&#20204;&#35774;&#35745;&#30340;&#27979;&#35797;&#31639;&#27861;&#20173;&#28982;&#33021;&#22815;&#33258;&#21160;&#26816;&#20986;&#30495;&#23454;&#31243;&#24207;&#20013;&#21508;&#31181;&#22855;&#22937;&#30340;&#24182;&#21457; bug&#8212;&#8212;&#20063;&#23601;&#26159;&#35828;&#65292;&#21363;&#20415;&#26159;&#26377;&#32463;&#39564;&#30340;&#24320;&#21457;&#32773;&#22312;&#20889;&#23545;&#24182;&#21457;&#31243;&#24207;&#36825;&#20214;&#20107;&#19978;&#65292;&#20063;&#35768;&#24182;&#19981;&#27604;&#22823;&#23478;&#20570;&#24471;&#22909;&#12290;</p>
-<h3 id="22-" class=" text-lg mt-2 pb-2 font-sans">2.2. &#29983;&#20135;&#32773;-&#28040;&#36153;&#32773;&#38382;&#39064;</h3>
-<p class=" font-serif my-1">&#29305;&#21035;&#20540;&#24471;&#19968;&#25552;&#30340;&#26159;&#20854;&#20013;&#30340; &#8220;&#29983;&#20135;&#32773;-&#28040;&#36153;&#32773;&#8221; &#38382;&#39064;&#8212;&#8212;&#36825;&#26159;&#35299;&#20915;&#29616;&#23454;&#20013;&#24182;&#21457;&#38382;&#39064; (&#24213;&#23618;&#23454;&#29616;) &#20013;&#26368;&#26377;&#29992;&#30340;&#27169;&#22411;&#20043;&#19968;&#8212;&#8212;&#22312;&#36825;&#20010;&#27169;&#22411;&#37324;&#65292;&#29983;&#20135;&#32773;&#21644;&#28040;&#36153;&#32773;&#30340;&#36923;&#36753;&#23454;&#29616;&#20102;&#35299;&#32806;&#65292;&#29983;&#20135;&#32773;&#21482;&#36127;&#36131;&#20135;&#29983;&#23545;&#35937; (&#26381;&#21153;&#35831;&#27714;/&#35745;&#31639;&#20219;&#21153;/...)&#65307;&#28040;&#36153;&#32773;&#21482;&#36127;&#36131;&#22788;&#29702;&#12290;&#22312;&#24456;&#22810;&#23454;&#38469;&#30340;&#24182;&#21457;&#31243;&#24207;&#20013;&#20320;&#20063;&#33021;&#30475;&#21040;&#31867;&#20284;&#30340;&#27169;&#24335;&#65292;&#20363;&#22914;&#21508;&#31181;&#21709;&#24212;&#35831;&#27714;&#30340; Web/&#25968;&#25454;&#24211;&#26381;&#21153;&#22120;&#12290;</p>
-<p class=" font-serif my-1">&#25105;&#20204;&#30340;&#35838;&#31243;&#19978;&#23545;&#29983;&#20135;&#32773;-&#28040;&#36153;&#32773;&#38382;&#39064;&#20570;&#20102;&#19968;&#20010;&#24456;&#26377;&#36259;&#30340;&#31616;&#21270;&#65306;&#25226;&#29983;&#20135;&#32773; (&#29983;&#20135;&#35831;&#27714;&#25918;&#20837;&#38431;&#21015;) &#30475;&#20316;&#26159; <code>printf("(");</code>&#65292;&#25226;&#28040;&#36153;&#32773; (&#21462;&#20986;&#35831;&#27714;&#24182;&#22788;&#29702;) &#30475;&#20316;&#26159; <code>printf(")");</code>&#65292;&#25105;&#20204;&#25226; <code>(</code> &#30475;&#25104;&#26159;&#20837;&#38431;&#65292;<code>)</code> &#30475;&#25104;&#26159;&#20986;&#38431;&#65292;&#24182;&#21457;&#31243;&#24207;&#36755;&#20986;&#30340;&#20219;&#24847;&#25324;&#21495;&#24207;&#21015;&#65292;&#22914;&#26524;&#22312;&#19968;&#20010;&#26377;&#38480;&#38431;&#21015;&#30340;&#24847;&#20041;&#19978;&#21512;&#27861;&#65292;&#37027;&#20040;&#23601;&#24517;&#39035;&#28385;&#36275;&#65306;</p>
+<p class=" font-serif my-1">无论如何，更好地测试并发程序，或是证明并发程序正确都是非常具有挑战性的工作。即便在今天，我们设计的测试算法仍然能够自动检出真实程序中各种奇妙的并发 bug——也就是说，即便是有经验的开发者在写对并发程序这件事上，也许并不比大家做得好。</p>
+<h3 id="22-" class=" text-lg mt-2 pb-2 font-sans">2.2. 生产者-消费者问题</h3>
+<p class=" font-serif my-1">特别值得一提的是其中的 “生产者-消费者” 问题——这是解决现实中并发问题 (底层实现) 中最有用的模型之一——在这个模型里，生产者和消费者的逻辑实现了解耦，生产者只负责产生对象 (服务请求/计算任务/...)；消费者只负责处理。在很多实际的并发程序中你也能看到类似的模式，例如各种响应请求的 Web/数据库服务器。</p>
+<p class=" font-serif my-1">我们的课程上对生产者-消费者问题做了一个很有趣的简化：把生产者 (生产请求放入队列) 看作是 <code>printf("(");</code>，把消费者 (取出请求并处理) 看作是 <code>printf(")");</code>，我们把 <code>(</code> 看成是入队，<code>)</code> 看成是出队，并发程序输出的任意括号序列，如果在一个有限队列的意义上合法，那么就必须满足：</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#19968;&#23450;&#26159;&#26576;&#20010;&#21512;&#27861;&#25324;&#21495;&#24207;&#21015;&#30340;&#21069;&#32512;&#65307;</li>
-<li class=" ml-8">&#25324;&#21495;&#23884;&#22871;&#30340;&#28145;&#24230;&#19981;&#36229;&#36807;&#38431;&#21015;&#30340;&#22823;&#23567; <math>n</math>&#12290;</li>
+<li class=" ml-8">一定是某个合法括号序列的前缀；</li>
+<li class=" ml-8">括号嵌套的深度不超过队列的大小 <math>n</math>。</li>
 </ul>
-<p class=" font-serif my-1">&#22312;&#36825;&#26679;&#19968;&#20010;&#26356;&#24178;&#20928;&#30340;&#25968;&#23398;&#27169;&#22411;&#19978;&#65292;&#25105;&#20204;&#29702;&#35299;&#24182;&#21457;&#31243;&#24207;&#23601;&#21464;&#24471;&#26356;&#23481;&#26131;&#19968;&#20123;&#12290;&#38405;&#35835;&#25945;&#35838;&#20070;&#12289;&#35838;&#20214;&#65292;&#30830;&#35748;&#20320;&#25484;&#25569;&#20102;&#29983;&#20135;&#32773;-&#28040;&#36153;&#32773;&#38382;&#39064;&#30340;&#26465;&#20214;&#21464;&#37327;&#35299;&#27861;&#12290;</p>
-<h3 id="23" class=" text-lg mt-2 pb-2 font-sans">2.3. &#19975;&#33021;&#30340;&#26465;&#20214;&#21464;&#37327;&#65306;&#21746; &#9794; &#23398;&#23478;&#21507;&#39277;&#38382;&#39064;</h3>
-<p class=" font-serif my-1">&#20551;&#35774; 5 &#20010;&#21746; &#9794; &#23398;&#23478;&#22312; (Symposium on Systems' Philosophy, SOSP) &#30740;&#35752;&#20250;&#19978;&#30896;&#38754;&#20102;&#65292;&#20182;&#20204;&#25490;&#25104;&#19968;&#20010;&#22278;&#26700;&#21507;&#39277;&#65307;&#21507;&#39277;&#26102;&#38656;&#35201;&#21516;&#26102;&#33719;&#24471;&#24038;&#25163;&#21644;&#21491;&#25163;&#30340;&#21449;&#23376;&#65307;&#21449;&#23376;&#34987;&#21035;&#20154;&#25343;&#36208;&#26102;&#38656;&#35201;&#31561;&#24453;&#12290;&#20551;&#35774;&#27599;&#20010;&#21746;&#23398;&#23478;&#23545;&#24212;&#19968;&#20010;&#32447;&#31243;&#65292;&#22914;&#20309;&#27491;&#30830;&#23454;&#29616;&#23427;&#20204;&#23545;&#20004;&#20010;&#21449;&#23376;&#30340;&#20114;&#26021;&#35775;&#38382;&#65311;&#20320;&#19968;&#23450;&#20250;&#21548;&#35828;&#36807;&#36825;&#20010;&#22823;&#21517;&#40718;&#40718;&#30340;&#32447;&#31243;&#21516;&#27493;&#38382;&#39064;&#12290;</p>
+<p class=" font-serif my-1">在这样一个更干净的数学模型上，我们理解并发程序就变得更容易一些。阅读教课书、课件，确认你掌握了生产者-消费者问题的条件变量解法。</p>
+<h3 id="23" class=" text-lg mt-2 pb-2 font-sans">2.3. 万能的条件变量：哲 ♂ 学家吃饭问题</h3>
+<p class=" font-serif my-1">假设 5 个哲 ♂ 学家在 (Symposium on Systems' Philosophy, SOSP) 研讨会上碰面了，他们排成一个圆桌吃饭；吃饭时需要同时获得左手和右手的叉子；叉子被别人拿走时需要等待。假设每个哲学家对应一个线程，如何正确实现它们对两个叉子的互斥访问？你一定会听说过这个大名鼎鼎的线程同步问题。</p>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/dining-philosophers.jpg" width="400px"></p>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<h4 id="_4" class=" pt-2 pb-2 font-sans float-left text-sm box border mr-1 mt-1 box-blue" style=" padding-bottom: 0;">&#24819;&#35797;&#35797;&#22914;&#20309;&#35299;&#20915;&#65311;</h4>
-<p class=" font-serif my-1">&#20026;&#20102;&#29702;&#35299;&#21746;&#23398;&#23478;&#21507;&#39277;&#38382;&#39064;&#30340;&#38590;&#22788;&#65292;&#19981;&#22952;&#32771;&#34385;&#20197;&#19979;&#20351;&#29992;&#20114;&#26021;&#38145;&#30340;&#31639;&#27861;&#65292;&#23427;&#30340; safety &#27809;&#26377;&#38382;&#39064;&#8212;&#8212;&#24517;&#39035;&#33719;&#24471;&#20004;&#25226;&#21449;&#23376;&#30340;&#38145;&#25165;&#33021;&#21507;&#39277;&#12290;&#20294;&#36825;&#20010;&#31639;&#27861;&#30340; liveness &#26159;&#30001;&#38382;&#39064;&#30340;&#12290;&#20026;&#20160;&#20040;&#65311;&#25552;&#31034;&#65306;&#25152;&#26377;&#21746;&#23398;&#23478;&#21516;&#26102;&#25343;&#36215;&#24038;&#25163;&#30340;&#21449;&#23376;&#8230;&#8230;</p>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="c1">// &#20026;&#27599;&#19968;&#20010;&#21449;&#23376;&#35774;&#32622;&#19968;&#25226;&#38145;</span>
+<h4 id="_4" class=" pt-2 pb-2 font-sans float-left text-sm box border mr-1 mt-1 box-blue" style=" padding-bottom: 0;">想试试如何解决？</h4>
+<p class=" font-serif my-1">为了理解哲学家吃饭问题的难处，不妨考虑以下使用互斥锁的算法，它的 safety 没有问题——必须获得两把叉子的锁才能吃饭。但这个算法的 liveness 是由问题的。为什么？提示：所有哲学家同时拿起左手的叉子……</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="c1">// 为每一个叉子设置一把锁</span>
 <span class="kt">int</span><span class="w"> </span><span class="nf">philosopher</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">mutex_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">locks</span><span class="p">[</span><span class="n">lhs</span><span class="p">(</span><span class="n">id</span><span class="p">)]);</span>
-<span class="w">  </span><span class="n">mutex_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">locks</span><span class="p">[</span><span class="n">rhs</span><span class="p">(</span><span class="n">id</span><span class="p">)]);</span>
+<span class="w">  </span><span class="n">mutex_lock</span><span class="p">(</span><span class="o">&</span><span class="n">locks</span><span class="p">[</span><span class="n">lhs</span><span class="p">(</span><span class="n">id</span><span class="p">)]);</span>
+<span class="w">  </span><span class="n">mutex_lock</span><span class="p">(</span><span class="o">&</span><span class="n">locks</span><span class="p">[</span><span class="n">rhs</span><span class="p">(</span><span class="n">id</span><span class="p">)]);</span>
 <span class="w">  </span><span class="p">...</span>
-<span class="w">  </span><span class="n">mutex_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">locks</span><span class="p">[</span><span class="n">lhs</span><span class="p">(</span><span class="n">id</span><span class="p">)]);</span>
-<span class="w">  </span><span class="n">mutex_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">locks</span><span class="p">[</span><span class="n">rhs</span><span class="p">(</span><span class="n">id</span><span class="p">)]);</span>
+<span class="w">  </span><span class="n">mutex_unlock</span><span class="p">(</span><span class="o">&</span><span class="n">locks</span><span class="p">[</span><span class="n">lhs</span><span class="p">(</span><span class="n">id</span><span class="p">)]);</span>
+<span class="w">  </span><span class="n">mutex_unlock</span><span class="p">(</span><span class="o">&</span><span class="n">locks</span><span class="p">[</span><span class="n">rhs</span><span class="p">(</span><span class="n">id</span><span class="p">)]);</span>
 <span class="p">}</span>
 </code></pre></div>
 
 </blockquote>
-<p class=" font-serif my-1">&#22914;&#26524;&#35201;&#23454;&#29616;&#27491;&#30830;&#30340;&#32447;&#31243;&#21516;&#27493;&#65292;&#19981;&#22952;&#21487;&#20197;&#29992;&#20197;&#19979; &#8220;&#19975;&#33021;&#8221; &#25163;&#27573;&#12290;&#24403;&#19968;&#20010;&#32447;&#31243;&#38656;&#35201;&#21516;&#27493;&#65292;&#31561;&#24453;&#26576;&#20214;&#20107;&#21457;&#29983;&#26102;&#65292;&#25105;&#20204;&#29992;&#19968;&#20010; while &#24490;&#29615; spin (&#31867;&#20284;&#20110;&#20043;&#21069;&#30340;&#24537;&#31561;&#24453;&#65292;&#21482;&#26159;&#22312;&#26465;&#20214;&#19981;&#28385;&#36275;&#26102;&#20250;&#21457;&#29983;&#30561;&#30496;&#65292;&#19981;&#20877;&#28010;&#36153; CPU &#26102;&#38388;&#25191;&#34892;)&#65306;</p>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">mutex_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mutex</span><span class="p">);</span>
+<p class=" font-serif my-1">如果要实现正确的线程同步，不妨可以用以下 “万能” 手段。当一个线程需要同步，等待某件事发生时，我们用一个 while 循环 spin (类似于之前的忙等待，只是在条件不满足时会发生睡眠，不再浪费 CPU 时间执行)：</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">mutex_lock</span><span class="p">(</span><span class="o">&</span><span class="n">mutex</span><span class="p">);</span>
 <span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">cond</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">wait</span><span class="p">(</span><span class="o">&amp;</span><span class="n">cv</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">mutex</span><span class="p">);</span>
+<span class="w">  </span><span class="n">wait</span><span class="p">(</span><span class="o">&</span><span class="n">cv</span><span class="p">,</span><span class="w"> </span><span class="o">&</span><span class="n">mutex</span><span class="p">);</span>
 <span class="p">}</span>
-<span class="n">assert</span><span class="p">(</span><span class="n">cond</span><span class="p">);</span><span class="w"> </span><span class="c1">// &#39034;&#24207;&#65306;while &#24490;&#29615;&#36864;&#20986;&#26102;&#24490;&#29615;&#26465;&#20214;&#20026;&#20551;</span>
-<span class="w">              </span><span class="c1">// &#24182;&#21457;&#65306;mutex &#20445;&#35777;&#20102; cond &#26816;&#26597;&#21644;&#27492;&#22788;&#30340;&#21407;&#23376;&#24615;</span>
-<span class="n">mutex_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mutex</span><span class="p">);</span>
+<span class="n">assert</span><span class="p">(</span><span class="n">cond</span><span class="p">);</span><span class="w"> </span><span class="c1">// 顺序：while 循环退出时循环条件为假</span>
+<span class="w">              </span><span class="c1">// 并发：mutex 保证了 cond 检查和此处的原子性</span>
+<span class="n">mutex_unlock</span><span class="p">(</span><span class="o">&</span><span class="n">mutex</span><span class="p">);</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">&#32780;&#24403;&#20219;&#20309;&#26102;&#20505;&#26465;&#20214;&#21487;&#33021;&#28385;&#36275;&#26102;&#65292;&#37117;&#23567;&#24515;&#22320;&#29992;&#20114;&#26021;&#38145;&#20445;&#25252;&#22909;&#26465;&#20214;&#30340;&#26356;&#26032;&#65292;&#24182;&#21796;&#37266;&#25152;&#26377;&#31561;&#24453;&#30340;&#32447;&#31243; (&#27880;&#24847;&#26159; broadcast; &#22914;&#26524;&#21482;&#26159; signal &#21796;&#37266;&#19968;&#20010;&#32447;&#31243;&#65292;&#27491;&#30830;&#24615;&#26159;&#24471;&#19981;&#21040;&#20445;&#35777;&#30340;&#8212;&#8212;&#21487;&#33021;&#34987;&#21796;&#37266;&#30340;&#32447;&#31243;&#24688;&#22909;&#21457;&#29616;&#26465;&#20214;&#19981;&#28385;&#36275;&#65292;&#32487;&#32493;&#30561;&#30496;)&#65306;</p>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="c1">// &#24403;&#26465;&#20214;&#21487;&#33021;&#28385;&#36275;&#26102;</span>
-<span class="n">mutex_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mutex</span><span class="p">);</span>
-<span class="c1">// &#26356;&#26032; cond &#30456;&#20851;&#30340;&#25968;&#25454;</span>
-<span class="n">broadcast</span><span class="p">(</span><span class="o">&amp;</span><span class="n">cv</span><span class="p">);</span><span class="w"> </span><span class="c1">// &#21796;&#37266;&#25152;&#26377;&#31561;&#24453;&#30340;&#32447;&#31243;</span>
-<span class="n">mutex_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mutex</span><span class="p">);</span>
+<p class=" font-serif my-1">而当任何时候条件可能满足时，都小心地用互斥锁保护好条件的更新，并唤醒所有等待的线程 (注意是 broadcast; 如果只是 signal 唤醒一个线程，正确性是得不到保证的——可能被唤醒的线程恰好发现条件不满足，继续睡眠)：</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="c1">// 当条件可能满足时</span>
+<span class="n">mutex_lock</span><span class="p">(</span><span class="o">&</span><span class="n">mutex</span><span class="p">);</span>
+<span class="c1">// 更新 cond 相关的数据</span>
+<span class="n">broadcast</span><span class="p">(</span><span class="o">&</span><span class="n">cv</span><span class="p">);</span><span class="w"> </span><span class="c1">// 唤醒所有等待的线程</span>
+<span class="n">mutex_unlock</span><span class="p">(</span><span class="o">&</span><span class="n">mutex</span><span class="p">);</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">&#29992;&#36825;&#20010;&#19975;&#33021;&#30340;&#26041;&#27861;&#65292;&#23454;&#29616;&#21746; &#9794; &#23398;&#23478;&#21507;&#39277;&#38382;&#39064;&#23601;&#26131;&#22914;&#21453;&#25484;&#20102;&#65306;</p>
+<p class=" font-serif my-1">用这个万能的方法，实现哲 ♂ 学家吃饭问题就易如反掌了：</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><code>cond</code> &#26159; <code>free[lhs(id)] &amp;&amp; free[rhs(id)]</code> (&#24038;&#25163;&#21644;&#21491;&#25163;&#30340;&#21449;&#23376;&#37117;&#21487;&#29992;)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#22312;&#26465;&#20214;&#28385;&#36275;&#19988;&#20020;&#30028;&#21306;&#27809;&#26377;&#32467;&#26463;&#26102;&#65292;&#31435;&#21363;&#35774;&#32622; <code>free[lhs(id)] = free[rhs(id)] = 0;</code></li>
-<li class=" ml-8">&#22312;&#25918;&#19979;&#21449;&#23376;&#26102;&#20196; <code>free[lhs(id)] = free[rhs(id)] = 1;</code></li>
+<li class=" ml-8"><code>cond</code> 是 <code>free[lhs(id)] && free[rhs(id)]</code> (左手和右手的叉子都可用)<ul class=" list-disc font-serif">
+<li class=" ml-8">在条件满足且临界区没有结束时，立即设置 <code>free[lhs(id)] = free[rhs(id)] = 0;</code></li>
+<li class=" ml-8">在放下叉子时令 <code>free[lhs(id)] = free[rhs(id)] = 1;</code></li>
 </ul>
 </li>
 </ul>
-<p class=" font-serif my-1">&#21482;&#35201;&#20114;&#26021;&#38145;&#20351;&#29992;&#24471;&#24403;&#65292;&#26465;&#20214;&#21464;&#37327;&#23601;&#26159;&#19968;&#20010; &#8220;&#24102;&#30561;&#30496;/&#21796;&#37266;&#30340; spin loop&#8221;&#65292;&#19981;&#20294;&#24615;&#33021;&#19981;&#38169;&#65292;&#27491;&#30830;&#24615;&#36824;&#33021;&#24471;&#21040;&#20445;&#35777;&#12290;</p>
+<p class=" font-serif my-1">只要互斥锁使用得当，条件变量就是一个 “带睡眠/唤醒的 spin loop”，不但性能不错，正确性还能得到保证。</p>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<h4 id="_5" class=" pt-2 pb-2 font-sans float-left text-sm box border mr-1 mt-1 box-blue" style=" padding-bottom: 0;">&#28508;&#22312;&#30340;&#24615;&#33021;&#38382;&#39064;</h4>
-<p class=" font-serif my-1"><em>Premature optimization is the root of all evil.</em> &#8212;&#8212; D. E. Knuth</p>
-<p class=" font-serif my-1">&#22914;&#26524;&#31995;&#32479;&#20013;&#26377;&#24456;&#22810;&#32447;&#31243;&#26102;&#65292;&#20351;&#29992; broadcast &#21796;&#37266;&#25152;&#26377;&#32447;&#31243;&#21487;&#33021;&#20250;&#23548;&#33268;&#24615;&#33021;&#38382;&#39064;&#12290;&#20294;&#36890;&#24120;&#25105;&#20204;&#21487;&#20197;&#36890;&#36807;&#22909;&#30340;&#35774;&#35745;&#26469;&#36991;&#20813;&#8212;&#8212;&#20363;&#22914;&#25286;&#20998;&#20026;&#22810;&#20010;&#26465;&#20214;&#21464;&#37327;&#65292;&#27599;&#20010;&#21482;&#31649;&#29702;&#19968;&#37096;&#20998;&#21449;&#23376;&#12290;&#20107;&#23454;&#19978;&#65292;&#23545;&#20110;&#22797;&#26434;&#30340;&#21516;&#27493;&#38382;&#39064;&#65292;&#21482;&#35201;&#20219;&#21153;&#21010;&#20998;&#24471;&#24403;&#65292;&#29978;&#33267; master/slave &#38598;&#20013;&#31649;&#29702;&#21516;&#27493;&#37117;&#26159;&#21487;&#21462;&#30340;&#8212;&#8212;&#23588;&#20854;&#26159;&#22312;&#29616;&#20195;&#20998;&#24067;&#24335;&#31995;&#32479;&#20013;&#65292;&#29992;&#23569;&#37327;&#30340;&#20803;&#25968;&#25454;&#26381;&#21153;&#22120;&#20027;&#31649;&#21516;&#27493;&#65292;&#32780;&#23481;&#26131;&#24182;&#34892;&#30340;&#20219;&#21153;&#20998;&#24067;&#21040;&#22810;&#21488;&#35745;&#31639;&#26426;&#19978;&#25191;&#34892;&#12290;</p>
+<h4 id="_5" class=" pt-2 pb-2 font-sans float-left text-sm box border mr-1 mt-1 box-blue" style=" padding-bottom: 0;">潜在的性能问题</h4>
+<p class=" font-serif my-1"><em>Premature optimization is the root of all evil.</em> —— D. E. Knuth</p>
+<p class=" font-serif my-1">如果系统中有很多线程时，使用 broadcast 唤醒所有线程可能会导致性能问题。但通常我们可以通过好的设计来避免——例如拆分为多个条件变量，每个只管理一部分叉子。事实上，对于复杂的同步问题，只要任务划分得当，甚至 master/slave 集中管理同步都是可取的——尤其是在现代分布式系统中，用少量的元数据服务器主管同步，而容易并行的任务分布到多台计算机上执行。</p>
 </blockquote>
-<h2 id="3" class=" text-xl mt-2 pb-2 font-sans">3. &#20449;&#21495;&#37327;</h2>
-<h3 id="31" class=" text-lg mt-2 pb-2 font-sans">3.1. &#20449;&#21495;&#37327; = &#20114;&#26021;&#38145; + &#26465;&#20214;&#21464;&#37327; + &#35745;&#25968;&#22120;</h3>
-<p class=" font-serif my-1">&#22797;&#20064;&#25105;&#20204;&#20043;&#21069;&#23454;&#29616;&#29983;&#20135;&#32773;/&#28040;&#36153;&#32773;&#38382;&#39064;&#26102;&#20351;&#29992;&#30340;&#24037;&#20855;&#65306;</p>
+<h2 id="3" class=" text-xl mt-2 pb-2 font-sans">3. 信号量</h2>
+<h3 id="31" class=" text-lg mt-2 pb-2 font-sans">3.1. 信号量 = 互斥锁 + 条件变量 + 计数器</h3>
+<p class=" font-serif my-1">复习我们之前实现生产者/消费者问题时使用的工具：</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20114;&#26021;&#38145; <code>mutex</code> &#29992;&#26469;&#20445;&#35777;&#20195;&#30721;&#30340;&#21407;&#23376;&#24615;&#65307;</li>
-<li class=" ml-8">&#26465;&#20214;&#21464;&#37327; <code>empty</code> &#21644; <code>fill</code> &#29992;&#26469;&#34920;&#31034;&#26159;&#21542;&#26377;&#31354;/&#28385;&#30340;&#32531;&#20914;&#21306;&#65307;</li>
-<li class=" ml-8"><code>count</code> &#35745;&#25968;&#22120;&#29992;&#26469;&#32500;&#25252;&#24403;&#21069;&#31354;&#20313;&#30340;&#32531;&#20914;&#21306;&#30340;&#25968;&#37327;&#12290;</li>
+<li class=" ml-8">互斥锁 <code>mutex</code> 用来保证代码的原子性；</li>
+<li class=" ml-8">条件变量 <code>empty</code> 和 <code>fill</code> 用来表示是否有空/满的缓冲区；</li>
+<li class=" ml-8"><code>count</code> 计数器用来维护当前空余的缓冲区的数量。</li>
 </ul>
-<p class=" font-serif my-1">&#20449;&#21495;&#37327;&#23601;&#26159; &#8220;&#21512;&#19977;&#20026;&#19968;&#8221; &#30340;&#32447;&#31243;&#21516;&#27493;&#25163;&#27573;&#65292;&#22240;&#20026;&#33258;&#24102;&#35745;&#25968;&#22120;&#65292;&#22240;&#27492;&#31649;&#29702; &#8220;&#25968;&#37327;&#22411;&#8221; &#30340;&#36164;&#28304;&#38750;&#24120;&#26041;&#20415;&#12290;&#20449;&#21495;&#37327;&#20063;&#26159;&#19968;&#20010;&#32467;&#26500;&#20307; <code>sem_t</code>&#65292;&#20869;&#37096;&#21253;&#21547;&#19968;&#20010;&#35745;&#25968;&#22120; <code>count</code>&#65292;&#23427;&#30340;&#34892;&#20026;&#26159;&#65306;</p>
-<p class=" font-serif my-1">P (&#21407;&#23376;) &#25805;&#20316;&#26102;&#65292;<code>count</code> &#20943; 1&#65292;&#22914;&#26524;&#35745;&#25968;&#22120;&#25968;&#20540;&#23567;&#20110;&#38646;&#21017;&#32447;&#31243;&#30561;&#30496;&#31561;&#24453;&#12290;</p>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">P</span><span class="p">(</span><span class="n">sem_t</span><span class="w"> </span><span class="o">&amp;</span><span class="n">sem</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">sem</span><span class="o">-&gt;</span><span class="n">count</span><span class="o">--</span><span class="p">;</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">sem</span><span class="o">-&gt;</span><span class="n">count</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">push</span><span class="p">(</span><span class="n">sem</span><span class="o">-&gt;</span><span class="n">queue</span><span class="p">,</span><span class="w"> </span><span class="n">current</span><span class="p">);</span>
+<p class=" font-serif my-1">信号量就是 “合三为一” 的线程同步手段，因为自带计数器，因此管理 “数量型” 的资源非常方便。信号量也是一个结构体 <code>sem_t</code>，内部包含一个计数器 <code>count</code>，它的行为是：</p>
+<p class=" font-serif my-1">P (原子) 操作时，<code>count</code> 减 1，如果计数器数值小于零则线程睡眠等待。</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">P</span><span class="p">(</span><span class="n">sem_t</span><span class="w"> </span><span class="o">&</span><span class="n">sem</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">sem</span><span class="o">-></span><span class="n">count</span><span class="o">--</span><span class="p">;</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">sem</span><span class="o">-></span><span class="n">count</span><span class="w"> </span><span class="o"><</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">push</span><span class="p">(</span><span class="n">sem</span><span class="o">-></span><span class="n">queue</span><span class="p">,</span><span class="w"> </span><span class="n">current</span><span class="p">);</span>
 <span class="w">    </span><span class="n">suspend</span><span class="p">();</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">V (&#21407;&#23376;) &#25805;&#20316;&#26102;&#65292;<code>count</code> &#21152; 1&#65292;&#21516;&#26102;&#22914;&#26524;&#26377;&#27491;&#22312;&#30561;&#30496;&#30340;&#32447;&#31243;&#65292;&#21017;&#25226;&#30561;&#30496;&#30340;&#32447;&#31243;&#21796;&#37266;&#12290;</p>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">V</span><span class="p">(</span><span class="n">sem_t</span><span class="w"> </span><span class="o">&amp;</span><span class="n">sem</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">sem</span><span class="o">-&gt;</span><span class="n">count</span><span class="o">++</span><span class="p">;</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">empty</span><span class="p">(</span><span class="n">sem</span><span class="o">-&gt;</span><span class="n">queue</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">wakeup</span><span class="p">(</span><span class="n">pop</span><span class="p">(</span><span class="n">sem</span><span class="o">-&gt;</span><span class="n">queue</span><span class="p">));</span>
+<p class=" font-serif my-1">V (原子) 操作时，<code>count</code> 加 1，同时如果有正在睡眠的线程，则把睡眠的线程唤醒。</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">V</span><span class="p">(</span><span class="n">sem_t</span><span class="w"> </span><span class="o">&</span><span class="n">sem</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">sem</span><span class="o">-></span><span class="n">count</span><span class="o">++</span><span class="p">;</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">empty</span><span class="p">(</span><span class="n">sem</span><span class="o">-></span><span class="n">queue</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">wakeup</span><span class="p">(</span><span class="n">pop</span><span class="p">(</span><span class="n">sem</span><span class="o">-></span><span class="n">queue</span><span class="p">));</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<h4 id="_6" class=" pt-2 pb-2 font-sans float-left text-sm box border mr-1 mt-1 box-blue" style=" padding-bottom: 0;">&#29992;&#26465;&#20214;&#21464;&#37327;&#12289;&#20114;&#26021;&#38145;&#21644;&#35745;&#25968;&#22120;&#23454;&#29616;&#20449;&#21495;&#37327;</h4>
-<p class=" font-serif my-1">&#20449;&#21495;&#37327;&#30340; P/V &#25805;&#20316;&#33021;&#22815;&#24456;&#33258;&#28982;&#22320;&#29992;&#26465;&#20214;&#21464;&#37327; <code>cond</code>&#12289;&#20114;&#26021;&#38145; <code>mutex</code> &#21644;&#35745;&#25968;&#22120; <code>count</code> &#23454;&#29616;&#12290;&#20320;&#21487;&#20197;&#35797;&#35797;&#65306;&#20320;&#30340;&#23454;&#29616;&#26368;&#22909;&#33021;&#22312;&#26465;&#20214;&#21464;&#37327;&#34987; &#8220;&#20551;&#21796;&#37266;&#8221; &#30340;&#21069;&#25552;&#19979;&#20173;&#28982;&#27491;&#30830;&#12290;</p>
+<h4 id="_6" class=" pt-2 pb-2 font-sans float-left text-sm box border mr-1 mt-1 box-blue" style=" padding-bottom: 0;">用条件变量、互斥锁和计数器实现信号量</h4>
+<p class=" font-serif my-1">信号量的 P/V 操作能够很自然地用条件变量 <code>cond</code>、互斥锁 <code>mutex</code> 和计数器 <code>count</code> 实现。你可以试试：你的实现最好能在条件变量被 “假唤醒” 的前提下仍然正确。</p>
 </blockquote>
-<p class=" font-serif my-1">&#23454;&#38469;&#19978;&#65292;&#20449;&#21495;&#37327;&#21487;&#20197;&#29702;&#35299;&#25104;&#19968;&#20010;&#38145; (&#25163;&#29615;) &#30340; &#8220;&#27744;&#23376;&#8221;&#65292;&#35745;&#25968;&#22120;&#23601;&#26159;<strong>&#38145;&#30340;&#25968;&#37327;</strong>&#12290;&#28982;&#21518;&#25226; P/V &#25805;&#20316;&#30452;&#35266;&#22320;&#29702;&#35299;&#65306;</p>
+<p class=" font-serif my-1">实际上，信号量可以理解成一个锁 (手环) 的 “池子”，计数器就是<strong>锁的数量</strong>。然后把 P/V 操作直观地理解：</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">P &#25805;&#20316;&#23601;&#26159;&#20174;&#27744;&#23376;&#37324;&#21462;&#36208;&#19968;&#25226;&#38145;&#12290;&#22914;&#26524;&#21462;&#25104;&#21151;&#65292;&#32447;&#31243;&#32487;&#32493;&#25191;&#34892;&#65292;&#21542;&#21017;&#23601;&#24517;&#39035;&#31561;&#24453;&#12290;</li>
-<li class=" ml-8">V &#25805;&#20316;&#23601;&#26159;&#25226;&#19968;&#25226;&#38145;&#25918;&#36827;&#27744;&#23376;&#37324;&#12290;&#22914;&#26524;&#26377;&#32447;&#31243;&#22312;&#31561;&#38145;&#65292;&#23427;&#21487;&#20197;&#31435;&#21363;&#21462;&#36208;&#36825;&#25226;&#38145;&#25191;&#34892;&#12290;</li>
+<li class=" ml-8">P 操作就是从池子里取走一把锁。如果取成功，线程继续执行，否则就必须等待。</li>
+<li class=" ml-8">V 操作就是把一把锁放进池子里。如果有线程在等锁，它可以立即取走这把锁执行。</li>
 </ul>
-<p class=" font-serif my-1">&#27744;&#23376;&#37324;&#30340; &#8220;&#38145;&#8221; &#23601;&#26159;&#29992;&#26469;&#21516;&#27493;&#30340;&#36164;&#28304;&#12290;&#22914;&#26524; <code>count</code> &#30340;&#21021;&#22987;&#20540;&#20026; 1&#65292;&#25105;&#20204;&#21487;&#20197;&#30452;&#25509;&#25226; P/V &#24403;&#20316;&#20114;&#26021;&#38145;&#26469;&#20351;&#29992;&#8212;&#8212;&#27744;&#23376;&#37324;&#21482;&#26377;&#19968;&#25226;&#38145;&#65292;&#36827;&#20837;&#20020;&#30028;&#21306;&#24517;&#39035;&#21462;&#24471;&#38145;&#65292;&#20020;&#30028;&#21306;&#32467;&#26463;&#21518;&#24402;&#36824;&#12290;</p>
-<p class=" font-serif my-1">&#20449;&#21495;&#37327;&#21487;&#20197;&#35828;&#26159;&#20026;&#29983;&#20135;&#32773;/&#28040;&#36153;&#32773;&#38382;&#39064;&#37327;&#36523;&#23450;&#21046;&#30340;&#21516;&#27493;&#21407;&#35821; (<a href="../../../pages/OS/2021/demos/producer-consumer.c" class=" text-amber-900"><code>producer-consumer.c</code></a>)</p>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;threads.h&gt;</span>
+<p class=" font-serif my-1">池子里的 “锁” 就是用来同步的资源。如果 <code>count</code> 的初始值为 1，我们可以直接把 P/V 当作互斥锁来使用——池子里只有一把锁，进入临界区必须取得锁，临界区结束后归还。</p>
+<p class=" font-serif my-1">信号量可以说是为生产者/消费者问题量身定制的同步原语 (<a href="../../../pages/OS/2021/demos/producer-consumer.c" class=" text-amber-900"><code>producer-consumer.c</code></a>)</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf"><threads.h></span>
 <span class="n">sem_t</span><span class="w"> </span><span class="n">fill</span><span class="p">,</span><span class="w"> </span><span class="n">empty</span><span class="p">;</span>
 
-<span class="kt">void</span><span class="w"> </span><span class="nf">producer</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">P</span><span class="p">(</span><span class="o">&amp;</span><span class="n">empty</span><span class="p">);</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">"("</span><span class="p">);</span><span class="w"> </span><span class="n">V</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fill</span><span class="p">);</span><span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
-<span class="kt">void</span><span class="w"> </span><span class="nf">consumer</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">P</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fill</span><span class="p">);</span><span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">")"</span><span class="p">);</span><span class="w"> </span><span class="n">V</span><span class="p">(</span><span class="o">&amp;</span><span class="n">empty</span><span class="p">);</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">producer</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">P</span><span class="p">(</span><span class="o">&</span><span class="n">empty</span><span class="p">);</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">"("</span><span class="p">);</span><span class="w"> </span><span class="n">V</span><span class="p">(</span><span class="o">&</span><span class="n">fill</span><span class="p">);</span><span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">consumer</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">P</span><span class="p">(</span><span class="o">&</span><span class="n">fill</span><span class="p">);</span><span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">")"</span><span class="p">);</span><span class="w"> </span><span class="n">V</span><span class="p">(</span><span class="o">&</span><span class="n">empty</span><span class="p">);</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">SEM_INIT</span><span class="p">(</span><span class="n">fill</span><span class="p">,</span><span class="w">  </span><span class="mi">0</span><span class="p">);</span>
 <span class="w">  </span><span class="n">SEM_INIT</span><span class="p">(</span><span class="n">empty</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">);</span>
-<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="n">create</span><span class="p">(</span><span class="n">producer</span><span class="p">);</span>
-<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="n">create</span><span class="p">(</span><span class="n">consumer</span><span class="p">);</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o"><</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="n">create</span><span class="p">(</span><span class="n">producer</span><span class="p">);</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o"><</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="n">create</span><span class="p">(</span><span class="n">consumer</span><span class="p">);</span>
 <span class="w">  </span><span class="n">join</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">&#36825;&#23601;&#25630;&#23450;&#20102;&#65281;&#22914;&#26524;&#25105;&#20204;&#29992;&#21018;&#25165;&#38145;&#30340;&#27744;&#23376;&#30340;&#26041;&#24335;&#26469;&#29702;&#35299;&#65292;&#23601;&#26159;&#29983;&#20135;&#32773;&#24517;&#39035;&#20174; <code>empty</code> &#37324;&#21462;&#24471;&#19968;&#25226;&#38145;&#65292;&#21363;&#20445;&#35777;&#32531;&#20914;&#21306;&#20013;&#26377;&#31354;&#20301;&#65292;&#28982;&#21518;&#21521; <code>fill</code> &#24402;&#36824;&#19968;&#25226;&#38145;&#65307;&#32780;&#28040;&#36153;&#32773;&#21017;&#25191;&#34892;&#23436;&#20840;&#23545;&#31216;&#30340;&#25805;&#20316;&#65292;&#23454;&#29616; <code>P(empty) -&gt; V(fill) -&gt; P(fill) -&gt; V(empty) -&gt; ...</code> &#30340;&#29983;&#20135;-&#28040;&#36153;&#24490;&#29615;&#12290;&#21516;&#26102;&#22240;&#20026;&#27744;&#23376;&#37324;&#30340;&#38145;&#24635;&#20849;&#21482;&#26377; <math>n</math> &#25226;&#65292;&#22240;&#27492;&#32531;&#20914;&#21306;&#25805;&#20316;&#24635;&#26159;&#25104;&#21151;&#12290;</p>
-<p class=" font-serif my-1">&#24403;&#28982;&#22312;&#19978;&#38754;&#30340;&#20363;&#23376;&#37324;&#65292;&#36824;&#26377;&#19968;&#20010;&#28508;&#22312;&#30340;&#38382;&#39064;&#65306;&#25152;&#26377;&#30340; <code>printf</code> &#37117;&#21487;&#33021;&#26159;&#24182;&#21457;&#30340;&#12290;&#22240;&#20026; libc &#20445;&#35777;&#20102; <code>printf</code> &#30340;&#32447;&#31243;&#23433;&#20840;&#24615;&#65292;&#25152;&#20197;&#19978;&#36848;&#25171;&#21360;&#25324;&#21495;&#24207;&#21015;&#30340;&#20195;&#30721;&#26159;&#27491;&#30830;&#30340;&#12290;&#28982;&#32780;&#22914;&#26524;&#20320;&#22312;&#29983;&#20135;&#32773;-&#28040;&#36153;&#32773;&#38382;&#39064;&#20013;&#20351;&#29992;&#20102;&#32531;&#20914;&#21306; (&#20363;&#22914;&#38431;&#21015;)&#65292;&#37027;&#23601;&#38656;&#35201;&#26684;&#22806;&#23567;&#24515;&#38431;&#21015; <code>push</code> &#21644; <code>pop</code> &#30340;&#32447;&#31243;&#23433;&#20840;&#24615;&#12290;</p>
-<h3 id="32-masterslave" class=" text-lg mt-2 pb-2 font-sans">3.2. &#20449;&#21495;&#37327;&#65306;&#23454;&#29616; Master/Slave</h3>
-<p class=" font-serif my-1">&#20449;&#21495;&#37327;&#20351;&#29992;&#27604;&#36739;&#26041;&#20415;&#30340;&#22330;&#26223;&#20687;&#26159; &#8220;&#19981;&#37197;&#23545;&#8221; &#30340;&#20114;&#26021;&#38145;&#8212;&#8212;&#35831;&#27714;&#30340;&#36164;&#28304;&#20219;&#20309;&#26102;&#20505;&#23384;&#22312;&#26102;&#65292;&#23601;&#20351;&#29992; <code>V</code> &#25805;&#20316;&#21796;&#37266;&#19968;&#20010;&#38656;&#35201;&#36164;&#28304;&#30340;&#32447;&#31243;&#65307;&#22914;&#26524;&#27492;&#26102;&#27809;&#26377;&#31561;&#24453;&#30340;&#32447;&#31243;&#65292;&#36164;&#28304;&#23545;&#24212;&#30340; token &#20063;&#20250;&#20445;&#30041;&#19979;&#36733;&#65292;&#19979;&#27425;&#38656;&#35201;&#36164;&#28304;&#30340;&#32447;&#31243;&#21487;&#20197;&#30452;&#25509;&#33719;&#24471;&#12290;</p>
-<p class=" font-serif my-1">&#20363;&#22914;&#65292;&#29992;&#20449;&#21495;&#37327;&#24456;&#23481;&#26131;&#23454;&#29616;&#35838;&#31243;&#19978;&#25552;&#21040;&#30340; master/slave &#32467;&#26500;&#65292;&#20026;&#27599;&#20010;&#32447;&#31243;&#35774;&#32622;&#19968;&#20010; &#8220;&#25918;&#34892;&#8221; &#30340;&#20449;&#21495;&#37327;&#65292;&#22312;&#21457;&#20986;&#35831;&#27714;&#21518;&#31435;&#21363;&#25191;&#34892; <code>P</code> &#25805;&#20316;&#31561;&#24453;&#36825;&#20010;&#20449;&#21495;&#37327;&#65307;&#22312;&#20801;&#35768;&#25918;&#34892;&#26102;&#25191;&#34892; <code>V</code> &#25805;&#20316;&#12290;&#26080;&#35770;&#21452;&#26041;&#35841;&#20808;&#21040;&#36798;&#65292;&#37117;&#33021;&#27491;&#30830;&#23454;&#29616;&#21516;&#27493;&#12290;</p>
+<p class=" font-serif my-1">这就搞定了！如果我们用刚才锁的池子的方式来理解，就是生产者必须从 <code>empty</code> 里取得一把锁，即保证缓冲区中有空位，然后向 <code>fill</code> 归还一把锁；而消费者则执行完全对称的操作，实现 <code>P(empty) -> V(fill) -> P(fill) -> V(empty) -> ...</code> 的生产-消费循环。同时因为池子里的锁总共只有 <math>n</math> 把，因此缓冲区操作总是成功。</p>
+<p class=" font-serif my-1">当然在上面的例子里，还有一个潜在的问题：所有的 <code>printf</code> 都可能是并发的。因为 libc 保证了 <code>printf</code> 的线程安全性，所以上述打印括号序列的代码是正确的。然而如果你在生产者-消费者问题中使用了缓冲区 (例如队列)，那就需要格外小心队列 <code>push</code> 和 <code>pop</code> 的线程安全性。</p>
+<h3 id="32-masterslave" class=" text-lg mt-2 pb-2 font-sans">3.2. 信号量：实现 Master/Slave</h3>
+<p class=" font-serif my-1">信号量使用比较方便的场景像是 “不配对” 的互斥锁——请求的资源任何时候存在时，就使用 <code>V</code> 操作唤醒一个需要资源的线程；如果此时没有等待的线程，资源对应的 token 也会保留下载，下次需要资源的线程可以直接获得。</p>
+<p class=" font-serif my-1">例如，用信号量很容易实现课程上提到的 master/slave 结构，为每个线程设置一个 “放行” 的信号量，在发出请求后立即执行 <code>P</code> 操作等待这个信号量；在允许放行时执行 <code>V</code> 操作。无论双方谁先到达，都能正确实现同步。</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">master</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">P</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
@@ -357,45 +358,45 @@ hr {
 <span class="kt">void</span><span class="w"> </span><span class="nf">slave</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">tid</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">enqueue</span><span class="p">(</span><span class="n">req_queue</span><span class="p">,</span><span class="w"> </span><span class="n">my_request</span><span class="p">);</span>
-<span class="w">    </span><span class="n">P</span><span class="p">(</span><span class="n">read_to_go</span><span class="p">[</span><span class="n">tid</span><span class="p">]);</span><span class="w"> </span><span class="c1">// &#22914;&#26524;&#19981;&#25910;&#21040;&#20801;&#35768;&#23601;&#19981;&#33021;&#25191;&#34892;</span>
+<span class="w">    </span><span class="n">P</span><span class="p">(</span><span class="n">read_to_go</span><span class="p">[</span><span class="n">tid</span><span class="p">]);</span><span class="w"> </span><span class="c1">// 如果不收到允许就不能执行</span>
 <span class="w">    </span><span class="p">...</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">&#22312;&#25805;&#20316;&#31995;&#32479;&#23454;&#39564; (L2) &#20013;&#65292;&#25105;&#20204;&#20250;&#33258;&#24049;&#21160;&#25163;&#23454;&#29616;&#33258;&#26059;&#38145;&#21644;&#20449;&#21495;&#37327;&#65292;&#24182;&#19988;&#22312;&#33258;&#24049;&#30340;&#25805;&#20316;&#31995;&#32479;&#20013;&#20351;&#29992;&#8212;&#8212;&#24456;&#37239;&#21543;&#65281;&#20808;&#35201;&#25226; kalloc/kfree &#20570;&#23545;&#21734;&#65281;</p>
-<h3 id="4" class=" text-lg mt-2 pb-2 font-sans">4. &#21160;&#25163;&#23454;&#36341;</h3>
+<p class=" font-serif my-1">在操作系统实验 (L2) 中，我们会自己动手实现自旋锁和信号量，并且在自己的操作系统中使用——很酷吧！先要把 kalloc/kfree 做对哦！</p>
+<h3 id="4" class=" text-lg mt-2 pb-2 font-sans">4. 动手实践</h3>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<h4 id="_7" class=" pt-2 pb-2 font-sans float-left text-sm box border mr-1 mt-1 box-blue" style=" padding-bottom: 0;">&#19968;&#30475;&#23601;&#25026;&#65292;&#19968;&#20570;&#23601;&#38169;&#65311;</h4>
-<p class=" font-serif my-1">&#23545;&#20110;&#21021;&#27425;&#29087;&#24713;&#24182;&#21457;&#32534;&#31243;&#30340;&#21516;&#23398;&#26469;&#35828;&#65292;&#32451;&#20064;&#26159;&#19981;&#21487;&#23569;&#30340;&#12290;&#24182;&#21457;&#32534;&#31243;&#20174;&#26412;&#36136;&#19978;&#23601;&#21644;&#36807;&#21435;&#30340;&#24605;&#32500;&#26041;&#24335;&#19981;&#21516;&#8212;&#8212;&#8220;&#32534;&#31243;&#8221; &#19968;&#33324;&#25351;&#30340;&#26159;&#39034;&#24207;&#32534;&#31243;&#65292;&#22823;&#23478;&#21482;&#38656;&#35201;&#32771;&#34385;&#29366;&#24577;&#26426; &#8220;&#19968;&#26465;&#32447;&#8221; &#30340;&#25191;&#34892;&#21363;&#21487;&#65292;&#20294;&#24182;&#21457;&#21364;&#35201;&#32771;&#34385; &#8220;&#25152;&#26377;&#21487;&#33021;&#30340;&#25191;&#34892;&#8221;&#12290;&#22240;&#27492;&#65292;&#35831;&#22823;&#23478;&#21153;&#24517;&#29992; pthread API (mutex, conditional variable, semaphore) &#33258;&#24049;&#21160;&#25163;&#23454;&#29616;&#19968;&#20123;&#20114;&#26021;&#38382;&#39064;&#65292;&#20363;&#22914;&#29983;&#20135;&#32773;-&#28040;&#36153;&#32773;&#38382;&#39064;&#65292;&#25110;&#26159;&#19978;&#35838;&#25552;&#21040;&#30340; <a href="https://leetcode.com/problems/building-h2o/" class=" text-amber-900">Building H2O</a> &#31561;&#12290;</p>
-<p class=" font-serif my-1">&#21478;&#19968;&#20010;&#25512;&#33616;&#30340;&#32451;&#20064;&#26159;&#29992; <a href="../../../pages/OS/2021/demos/threads.h" class=" text-amber-900"><code>threads.h</code></a> &#20013;&#22686;&#21152;&#26465;&#20214;&#21464;&#37327;&#30340;&#23553;&#35013; (&#21442;&#32771;&#23545;&#20449;&#21495;&#37327;&#30340;&#23553;&#35013;)&#12290;&#22312;&#12298;&#35745;&#31639;&#26426;&#31995;&#32479;&#22522;&#30784;&#12299;&#21644;&#12298;&#25805;&#20316;&#31995;&#32479;&#12299;&#35838;&#20013;&#65292;&#22823;&#23478;&#19968;&#23450;&#24050;&#32463;&#20307;&#20250;&#21040;&#65292;&#20570;&#22909;&#22522;&#30784;&#35774;&#26045;&#23545;&#20110;&#21518;&#32493; &#8220;&#20570;&#28857;&#20160;&#20040;&#8221; &#26469;&#35828;&#23454;&#22312;&#26159;&#22826;&#37325;&#35201;&#20102;&#12290;</p>
+<h4 id="_7" class=" pt-2 pb-2 font-sans float-left text-sm box border mr-1 mt-1 box-blue" style=" padding-bottom: 0;">一看就懂，一做就错？</h4>
+<p class=" font-serif my-1">对于初次熟悉并发编程的同学来说，练习是不可少的。并发编程从本质上就和过去的思维方式不同——“编程” 一般指的是顺序编程，大家只需要考虑状态机 “一条线” 的执行即可，但并发却要考虑 “所有可能的执行”。因此，请大家务必用 pthread API (mutex, conditional variable, semaphore) 自己动手实现一些互斥问题，例如生产者-消费者问题，或是上课提到的 <a href="https://leetcode.com/problems/building-h2o/" class=" text-amber-900">Building H2O</a> 等。</p>
+<p class=" font-serif my-1">另一个推荐的练习是用 <a href="../../../pages/OS/2021/demos/threads.h" class=" text-amber-900"><code>threads.h</code></a> 中增加条件变量的封装 (参考对信号量的封装)。在《计算机系统基础》和《操作系统》课中，大家一定已经体会到，做好基础设施对于后续 “做点什么” 来说实在是太重要了。</p>
 </blockquote>
-<p class=" font-serif my-1">&#28982;&#21518;&#65292;&#20320;&#21487;&#20197;&#20351;&#29992;&#20320;&#30340;&#20195;&#30721;&#26694;&#26550;&#23454;&#29616;&#19968;&#20123;&#26377;&#36259;&#30340;&#32447;&#31243;&#21516;&#27493;&#38382;&#39064;&#65292;&#20363;&#22914;&#19979;&#38754;&#20063;&#26159;&#19968;&#20010;&#24448;&#24180;&#30340;&#32771;&#39064;&#65306;</p>
+<p class=" font-serif my-1">然后，你可以使用你的代码框架实现一些有趣的线程同步问题，例如下面也是一个往年的考题：</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#31995;&#32479;&#20013;&#26377;&#22235;&#31181;&#32447;&#31243;&#65292;&#20998;&#21035;&#25171;&#21360; <code>[</code>, <code>(</code>, <code>]</code>, <code>)</code>&#65292;&#24182;&#19988;&#25171;&#21360;&#30340;&#36755;&#20986;&#28385;&#36275;&#65306;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#19968;&#23450;&#26159;&#26576;&#20010;&#21512;&#27861;&#25324;&#21495;&#24207;&#21015;&#30340;&#21069;&#32512;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#19981;&#20801;&#35768; <code>)(</code>, <code>(())][</code>, <code>[(])</code></li>
+<li class=" ml-8">系统中有四种线程，分别打印 <code>[</code>, <code>(</code>, <code>]</code>, <code>)</code>，并且打印的输出满足：<ul class=" list-disc font-serif">
+<li class=" ml-8">一定是某个合法括号序列的前缀<ul class=" list-disc font-serif">
+<li class=" ml-8">不允许 <code>)(</code>, <code>(())][</code>, <code>[(])</code></li>
 </ul>
 </li>
-<li class=" ml-8">&#25324;&#21495;&#23884;&#22871;&#30340;&#28145;&#24230;&#19981;&#36229;&#36807; $k$<ul class=" list-disc font-serif">
-<li class=" ml-8">$k = 3$ &#26102;&#65292;&#19981;&#20801;&#35768; <code>[[((</code></li>
+<li class=" ml-8">括号嵌套的深度不超过 $k$<ul class=" list-disc font-serif">
+<li class=" ml-8">$k = 3$ 时，不允许 <code>[[((</code></li>
 </ul>
 </li>
-<li class=" ml-8">&#19981;&#33021;&#20986;&#29616;&#20013;&#25324;&#21495;&#23884;&#22871;&#22312;&#23567;&#25324;&#21495;&#37324;&#30340;&#24773;&#20917;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20801;&#35768;&#65306;<code>[[(())()()]()]</code></li>
-<li class=" ml-8">&#19981;&#20801;&#35768;&#65306;<code>([])</code></li>
-</ul>
-</li>
+<li class=" ml-8">不能出现中括号嵌套在小括号里的情况<ul class=" list-disc font-serif">
+<li class=" ml-8">允许：<code>[[(())()()]()]</code></li>
+<li class=" ml-8">不允许：<code>([])</code></li>
 </ul>
 </li>
 </ul>
-<p class=" font-serif my-1">&#36825;&#20010;&#38382;&#39064;&#23384;&#22312;&#20449;&#21495;&#37327;&#30340;&#35299;&#27861;&#65292;&#20294;&#30456;&#24403; subtle&#12290;&#36935;&#21040;&#22797;&#26434;&#30340;&#21516;&#27493;&#38382;&#39064;&#65292;&#29992;&#26465;&#20214;&#21464;&#37327;&#25110;&#26159; master/slave &#25165;&#26159;&#26356;&#21487;&#38752;&#30340;&#12290;&#21644; &#8220;&#32534;&#31243;&#8221; &#19968;&#26679;&#37325;&#35201;&#30340;&#26159;&#65292;&#20320;&#38656;&#35201;&#32534;&#20889;&#19968;&#20010; checker &#26469;&#26816;&#26597;&#31243;&#24207;&#30340;&#36755;&#20986;&#26159;&#21542;&#21512;&#27861; (&#20320;&#30340;&#31243;&#24207;&#24456;&#21487;&#33021;&#24456;&#23567;&#27010;&#29575;&#25165;&#20986;&#38169;)&#65292;&#20363;&#22914; <code>./a.out | ./checker</code>&#12290;</p></div>
+</li>
+</ul>
+<p class=" font-serif my-1">这个问题存在信号量的解法，但相当 subtle。遇到复杂的同步问题，用条件变量或是 master/slave 才是更可靠的。和 “编程” 一样重要的是，你需要编写一个 checker 来检查程序的输出是否合法 (你的程序很可能很小概率才出错)，例如 <code>./a.out | ./checker</code>。</p></div>
 </div>
 
 <div class="container text-xs py-3">
   <span class="text-muted">
     <center><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="../../../static/img/cc-4.0.png"></a>
-    &#160;&#160;&#160;<a style="color:inherit" href="https://beian.miit.gov.cn/">&#33487; ICP &#22791; 2020049101 &#21495;</a>
+       <a style="color:inherit" href="https://beian.miit.gov.cn/">苏 ICP 备 2020049101 号</a>
     </center>
   </span>
 </div>
@@ -428,5 +429,6 @@ function login() {
 
 
 </body>
+
 
 </html>

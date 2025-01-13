@@ -1,10 +1,11 @@
 <!DOCTYPE html><html class="h-100">
 
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="../../../static/css/base.css" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com/"></script>
   <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
 
@@ -23,14 +24,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +210,7 @@ section .center {
 }
 </style>
 
-  <title>&#20351;&#29992; GDB &#35843;&#35797;&#31243;&#24207;</title>
+  <title>使用 GDB 调试程序</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,7 +228,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="gdb" class=" text-2xl mt-2 font-sans"><a href="8.3.slides.html" class=" text-amber-900">&#20351;&#29992; GDB &#35843;&#35797;&#31243;&#24207;</a></h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="gdb" class=" text-2xl mt-2 font-sans"><a href="8.3.slides.html" class=" text-amber-900">使用 GDB 调试程序</a></h1></div></div></div>
         
       
       </section>
@@ -238,28 +239,28 @@ section .center {
 
       
         
-        <div><h2 id="gdb" class=" text-xl mt-2 pb-2 font-sans">GDB: &#20837;&#38376;</h2>
-<p class=" font-serif my-1">GDB: &#26368;&#24120;&#29992;&#30340;&#21629;&#20196;&#22312; <a href="../../../pages/OS/manuals/gdb-cheat-sheet.pdf" class=" text-amber-900">gdb cheat sheet</a></p>
+        <div><h2 id="gdb" class=" text-xl mt-2 pb-2 font-sans">GDB: 入门</h2>
+<p class=" font-serif my-1">GDB: 最常用的命令在 <a href="../../../pages/OS/manuals/gdb-cheat-sheet.pdf" class=" text-amber-900">gdb cheat sheet</a></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25171;&#21360;&#36148;&#22312;&#30005;&#33041;&#21069;&#65292;&#35843;&#35797;&#26102;&#20505;&#30475;&#19968;&#36941;&#65292;&#24456;&#24555;&#23601;&#22823;&#33268;&#35760;&#20303;&#20102;</li>
+<li class=" ml-8">打印贴在电脑前，调试时候看一遍，很快就大致记住了</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#24819;&#35201;&#26356;&#22909;&#30340;&#20307;&#39564;&#65311;</p>
+<p class=" font-serif my-1">想要更好的体验？</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">GDB &#26412;&#36523;&#20063;&#26159;&#19968;&#20010;&#32534;&#31243;&#35821;&#35328;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#23427;&#29978;&#33267;&#25903;&#25345; Python</li>
-<li class=" ml-8">&#25105;&#20204;&#21487;&#20197;&#25191;&#34892;&#19968;&#20123;&#21021;&#22987;&#21270;&#20195;&#30721; (-x)</li>
+<li class=" ml-8">GDB 本身也是一个编程语言<ul class=" list-disc font-serif">
+<li class=" ml-8">它甚至支持 Python</li>
+<li class=" ml-8">我们可以执行一些初始化代码 (-x)</li>
 </ul>
 </li>
-<li class=" ml-8">&#24211;&#20989;&#25968;&#20063;&#26159;&#20195;&#30721;<ul class=" list-disc font-serif">
-<li class=" ml-8">directory &#21629;&#20196;&#22686;&#21152;&#28304;&#30721;&#36335;&#24452;</li>
+<li class=" ml-8">库函数也是代码<ul class=" list-disc font-serif">
+<li class=" ml-8">directory 命令增加源码路径</li>
 </ul>
 </li>
-<li class=" ml-8">GDB &#26377;&#35768;&#22810;&#21069;&#31471;<ul class=" list-disc font-serif">
+<li class=" ml-8">GDB 有许多前端<ul class=" list-disc font-serif">
 <li class=" ml-8">cgdb, pwndbg, vscode, ...</li>
 </ul>
 </li>
-<li class=" ml-8"><a href="https://sourceware.org/gdb/current/onlinedocs/gdb.html/" class=" text-amber-900">RTFM</a> - M &#27604; ChatGPT &#22909;&#29992;&#22312;&#20110;&#23427;&#19981;&#38656;&#35201; prompt &#19988;<red>&#20840;&#38754;</red></li>
+<li class=" ml-8"><a href="https://sourceware.org/gdb/current/onlinedocs/gdb.html/" class=" text-amber-900">RTFM</a> - M 比 ChatGPT 好用在于它不需要 prompt 且<red>全面</red></li>
 </ul></div>
         
       
@@ -271,26 +272,26 @@ section .center {
 
       
         
-        <div><h2 id="futex-fast-userspace-mutexes" class=" text-xl mt-2 pb-2 font-sans">&#127798;&#65039; Futex: Fast Userspace muTexes</h2>
+        <div><h2 id="futex-fast-userspace-mutexes" class=" text-xl mt-2 pb-2 font-sans">🌶️ Futex: Fast Userspace muTexes</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#23567;&#23401;&#23376;&#25165;&#20570;&#36873;&#25321;&#12290;&#25805;&#20316;&#31995;&#32479;&#24403;&#28982;&#26159;&#20840;&#37117;&#35201;&#21862;&#65281;</p>
+<p class=" font-serif my-1">小孩子才做选择。操作系统当然是全都要啦！</p>
 </blockquote>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">Fast path: &#19968;&#26465;&#21407;&#23376;&#25351;&#20196;&#65292;&#19978;&#38145;&#25104;&#21151;&#31435;&#21363;&#36820;&#22238;</li>
-<li class=" ml-8">Slow path: &#19978;&#38145;&#22833;&#36133;&#65292;&#25191;&#34892;&#31995;&#32479;&#35843;&#29992;&#30561;&#30496;<ul class=" list-disc font-serif">
-<li class=" ml-8"><red>&#24615;&#33021;&#20248;&#21270;&#30340;&#26368;&#24120;&#35265;&#25216;&#24039;</red><ul class=" list-disc font-serif">
-<li class=" ml-8">&#30475; average (frequent) case &#32780;&#19981;&#26159; worst case</li>
+<li class=" ml-8">Fast path: 一条原子指令，上锁成功立即返回</li>
+<li class=" ml-8">Slow path: 上锁失败，执行系统调用睡眠<ul class=" list-disc font-serif">
+<li class=" ml-8"><red>性能优化的最常见技巧</red><ul class=" list-disc font-serif">
+<li class=" ml-8">看 average (frequent) case 而不是 worst case</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">POSIX &#32447;&#31243;&#24211;&#20013;&#30340;&#20114;&#26021;&#38145; (<code>pthread_mutex</code>)</p>
+<p class=" font-serif my-1">POSIX 线程库中的互斥锁 (<code>pthread_mutex</code>)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#35266;&#23519;&#32447;&#31243;&#24211;&#20013;&#30340; lock/unlock &#34892;&#20026;<ol class=" list-decimal font-serif">
-<li class=" ml-8">Mutex &#27809;&#26377;&#20105;&#25250;&#30340;&#24773;&#20917;</li>
-<li class=" ml-8">Mutex &#26377;&#20105;&#25250;&#30340;&#24773;&#20917;</li>
+<li class=" ml-8">观察线程库中的 lock/unlock 行为<ol class=" list-decimal font-serif">
+<li class=" ml-8">Mutex 没有争抢的情况</li>
+<li class=" ml-8">Mutex 有争抢的情况</li>
 </ol>
 </li>
 </ul></div>
@@ -304,24 +305,24 @@ section .center {
 
       
         
-        <div><h2 id="futex-fast-userspace-mutexes-contd" class=" text-xl mt-2 pb-2 font-sans">&#127798;&#65039; Futex: Fast Userspace muTexes (cont'd)</h2>
-<p class=" font-serif my-1">&#19968;&#20010;&#31616;&#21333;&#30340;&#35774;&#35745;&#65306;&#20808;&#22312;&#29992;&#25143;&#31354;&#38388;&#33258;&#26059;</p>
+        <div><h2 id="futex-fast-userspace-mutexes-contd" class=" text-xl mt-2 pb-2 font-sans">🌶️ Futex: Fast Userspace muTexes (cont'd)</h2>
+<p class=" font-serif my-1">一个简单的设计：先在用户空间自旋</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#22914;&#26524;&#33719;&#24471;&#38145;&#65292;&#30452;&#25509;&#36827;&#20837; (Fast Path&#65292;&#26080;&#31995;&#32479;&#35843;&#29992;)</li>
-<li class=" ml-8">&#26410;&#33021;&#33719;&#24471;&#38145;&#65292;&#31995;&#32479;&#35843;&#29992; (Slow Path)</li>
-<li class=" ml-8">&#35299;&#38145;&#21518;&#29992;&#31995;&#32479;&#35843;&#29992;&#21796;&#37266;&#28508;&#22312;&#30340; Slow Path &#32447;&#31243;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#26356;&#22909;&#30340;&#35774;&#35745;&#21487;&#20197;&#24443;&#24213;&#28040;&#38500; fast-path &#30340;&#31995;&#32479;&#35843;&#29992;</li>
+<li class=" ml-8">如果获得锁，直接进入 (Fast Path，无系统调用)</li>
+<li class=" ml-8">未能获得锁，系统调用 (Slow Path)</li>
+<li class=" ml-8">解锁后用系统调用唤醒潜在的 Slow Path 线程<ul class=" list-disc font-serif">
+<li class=" ml-8">更好的设计可以彻底消除 fast-path 的系统调用</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">RTFM (&#21149;&#36864;)</p>
+<p class=" font-serif my-1">RTFM (劝退)</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">futex (7), futex (2)</li>
 <li class=" ml-8"><a href="https://lwn.net/Articles/360699/" class=" text-amber-900">A futex overview and update</a> (LWN)</li>
-<li class=" ml-8"><a href="../../../pages/OS/manuals/futexes-are-tricky.pdf" class=" text-amber-900">Futexes are tricky</a> (&#35770; model checker &#30340;&#37325;&#35201;&#24615;)</li>
-<li class=" ml-8">(&#25105;&#20204;&#19981;&#35762;&#24182;&#21457;&#31639;&#27861;)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20294;&#25105;&#20204;&#21487;&#20197;&#35843;&#35797;&#23427;&#30340;&#23454;&#29616;</li>
+<li class=" ml-8"><a href="../../../pages/OS/manuals/futexes-are-tricky.pdf" class=" text-amber-900">Futexes are tricky</a> (论 model checker 的重要性)</li>
+<li class=" ml-8">(我们不讲并发算法)<ul class=" list-disc font-serif">
+<li class=" ml-8">但我们可以调试它的实现</li>
 </ul>
 </li>
 </ul></div>
@@ -354,5 +355,6 @@ section .center {
 
 
 </body>
+
 
 </html>

@@ -1,10 +1,11 @@
 <!DOCTYPE html><html class="h-100">
 
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="../../../static/css/base.css" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com/"></script>
   <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
 
@@ -23,14 +24,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +210,7 @@ section .center {
 }
 </style>
 
-  <title>&#35843;&#35797;&#29702;&#35770;&#65306;&#24212;&#29992;</title>
+  <title>调试理论：应用</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,7 +228,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="8.4.slides.html" class=" text-amber-900">&#35843;&#35797;&#29702;&#35770;&#65306;&#24212;&#29992;</a></h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="8.4.slides.html" class=" text-amber-900">调试理论：应用</a></h1></div></div></div>
         
       
       </section>
@@ -238,20 +239,20 @@ section .center {
 
       
         
-        <div><h2 id="again" class=" text-xl mt-2 pb-2 font-sans">&#35843;&#35797;&#29702;&#35770;&#65306;&#24212;&#29992; (Again)</h2>
-<p class=" font-serif my-1"></p><center>&#38656;&#27714; &#8594; &#35774;&#35745; &#8594; &#20195;&#30721; &#8594; Fault &#8594; Error &#8594; Failure</center>
+        <div><h2 id="again" class=" text-xl mt-2 pb-2 font-sans">调试理论：应用 (Again)</h2>
+<p class=" font-serif my-1"></p><center>需求 → 设计 → 代码 → Fault → Error → Failure</center>
 <hr>
-<p class=" font-serif my-1">&#8220;Technical Debt&#8221;</p>
+<p class=" font-serif my-1">“Technical Debt”</p>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#27599;&#24403;&#20320;&#20889;&#20986;&#19981;&#22909;&#32500;&#25252;&#30340;&#20195;&#30721;&#65292;&#20320;&#37117;&#22312;&#32473;&#20320;&#26410;&#26469;&#30340;&#35843;&#35797;/&#38656;&#27714;&#21464;&#26356;&#25366;&#22353;&#12290;</p>
+<p class=" font-serif my-1">每当你写出不好维护的代码，你都在给你未来的调试/需求变更挖坑。</p>
 </blockquote>
 <hr>
-<p class=" font-serif my-1">&#20013;&#26538;&#20102;&#65311;</p>
+<p class=" font-serif my-1">中枪了？</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20026;&#20102;&#24555;&#28857;&#36305;&#31243;&#24207;&#65292;&#38543;&#20415;&#20889;&#30340; klib</li>
-<li class=" ml-8">&#20026;&#20102;&#36214;&#32039;&#23454;&#29616;&#25351;&#20196;&#65292;&#38543;&#25163;&#20889;&#30340;&#20195;&#30721;</li>
-<li class=" ml-8">&#20026;&#20102;&#24212;&#20184;&#32769;&#26495;&#65292;&#38543;&#20415;&#20889;&#30340;&#31995;&#32479;&#23454;&#29616;<ul class=" list-disc font-serif">
-<li class=" ml-8">jyy &#30340; code review: <del>&#26085;&#24120;&#34880;&#21387;&#21319;&#39640;&#26102;&#38388;</del></li>
+<li class=" ml-8">为了快点跑程序，随便写的 klib</li>
+<li class=" ml-8">为了赶紧实现指令，随手写的代码</li>
+<li class=" ml-8">为了应付老板，随便写的系统实现<ul class=" list-disc font-serif">
+<li class=" ml-8">jyy 的 code review: <del>日常血压升高时间</del></li>
 </ul>
 </li>
 </ul></div>
@@ -265,30 +266,30 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#32534;&#31243;&#22522;&#26412;&#20934;&#21017;&#65306;&#22238;&#39038;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">编程基本准则：回顾</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">Programs are meant to be read by humans (AIs) and only incidentally for computers to execute. &#8212; <em>D. E. Knuth</em></p>
-<p class=" font-serif my-1">(&#31243;&#24207;&#39318;&#20808;&#26159;&#25343;&#32473;&#20154;&#35835;&#30340;&#65292;&#20854;&#27425;&#25165;&#26159;&#34987;&#26426;&#22120;&#25191;&#34892;&#12290;)</p>
+<p class=" font-serif my-1">Programs are meant to be read by humans (AIs) and only incidentally for computers to execute. — <em>D. E. Knuth</em></p>
+<p class=" font-serif my-1">(程序首先是拿给人读的，其次才是被机器执行。)</p>
 </blockquote>
-<p class=" font-serif my-1">&#22909;&#30340;&#31243;&#24207;</p>
+<p class=" font-serif my-1">好的程序</p>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="https://learning.oreilly.com/library/cover/9781449318482/250w/" width="200px"></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#19981;&#35328;&#33258;&#26126;&#65306;&#33021;&#30693;&#36947;&#26159;&#20570;&#20160;&#20040;&#30340; (<em>specification</em>)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#22240;&#27492;&#20195;&#30721;<red>&#39118;&#26684;</red>&#24456;&#37325;&#35201;</li>
+<li class=" ml-8">不言自明：能知道是做什么的 (<em>specification</em>)<ul class=" list-disc font-serif">
+<li class=" ml-8">因此代码<red>风格</red>很重要</li>
 </ul>
 </li>
 </ul>
 <hr>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#19981;&#35328;&#33258;&#35777;&#65306;&#33021;&#30830;&#35748;&#20195;&#30721;&#21644; specification &#19968;&#33268;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#22240;&#27492;&#20195;&#30721;&#20013;&#30340;<red>&#36923;&#36753;&#27969;</red>&#24456;&#37325;&#35201;</li>
+<li class=" ml-8">不言自证：能确认代码和 specification 一致<ul class=" list-disc font-serif">
+<li class=" ml-8">因此代码中的<red>逻辑流</red>很重要</li>
 </ul>
 </li>
 </ul>
 <hr>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20154;&#31867;&#26032;&#32426;&#20803;&#30340;&#35780;&#21028;&#26631;&#20934;<ul class=" list-disc font-serif">
-<li class=" ml-8">AI &#26159;&#21542;&#33021;&#27491;&#30830;&#29702;&#35299;/&#32500;&#25252;&#20320;&#30340;&#20195;&#30721;</li>
+<li class=" ml-8">人类新纪元的评判标准<ul class=" list-disc font-serif">
+<li class=" ml-8">AI 是否能正确理解/维护你的代码</li>
 </ul>
 </li>
 </ul></div>
@@ -302,19 +303,19 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#35843;&#35797;&#29702;&#35770;&#30340;&#26368;&#37325;&#35201;&#24212;&#29992;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">调试理论的最重要应用</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1"><red>&#20889;&#22909;&#35835;&#12289;&#26131;&#39564;&#35777;&#30340;&#20195;&#30721;</red></p>
-<p class=" font-serif my-1"><red>&#22312;&#20195;&#30721;&#20013;&#28155;&#21152;&#26356;&#22810;&#30340;&#26029;&#35328; (assertions)</red></p>
+<p class=" font-serif my-1"><red>写好读、易验证的代码</red></p>
+<p class=" font-serif my-1"><red>在代码中添加更多的断言 (assertions)</red></p>
 </blockquote>
 <hr>
-<p class=" font-serif my-1">&#26029;&#35328;&#30340;&#24847;&#20041;</p>
+<p class=" font-serif my-1">断言的意义</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25226;&#20195;&#30721;&#20013;&#38544;&#34255;&#30340; specification &#20889;&#20986;&#26469;<ul class=" list-disc font-serif">
-<li class=" ml-8">Fault &#8594; Error (&#38752;&#27979;&#35797;)</li>
-<li class=" ml-8">Error &#8594; Failure (&#38752;&#26029;&#35328;)<ul class=" list-disc font-serif">
-<li class=" ml-8"><red>Error &#26292;&#38706;&#30340;&#36234;&#26202;&#65292;&#36234;&#38590;&#35843;&#35797;</red></li>
-<li class=" ml-8">&#36861;&#28335;&#23548;&#33268; assert failure &#30340;&#21464;&#37327;&#20540; (slice) &#36890;&#24120;&#21487;&#20197;&#24555;&#36895;&#23450;&#20301;&#21040; bug</li>
+<li class=" ml-8">把代码中隐藏的 specification 写出来<ul class=" list-disc font-serif">
+<li class=" ml-8">Fault → Error (靠测试)</li>
+<li class=" ml-8">Error → Failure (靠断言)<ul class=" list-disc font-serif">
+<li class=" ml-8"><red>Error 暴露的越晚，越难调试</red></li>
+<li class=" ml-8">追溯导致 assert failure 的变量值 (slice) 通常可以快速定位到 bug</li>
 </ul>
 </li>
 </ul>
@@ -330,18 +331,18 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20363;&#23376;&#65306;&#32500;&#25252;&#29238;&#20146;&#33410;&#28857;&#30340;&#24179;&#34913;&#26641;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">例子：维护父亲节点的平衡树</h2>
 <p class=" font-serif my-1"><img alt="" class="center" src="http://web.cecs.pdx.edu/~sheard/course/Cs163/Graphics/rotation.png" width="640px"></p>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="c1">// &#32467;&#26500;&#32422;&#26463;</span>
-<span class="n">assert</span><span class="p">(</span><span class="n">u</span><span class="o">-&gt;</span><span class="n">parent</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">u</span><span class="w"> </span><span class="o">||</span>
-<span class="w">       </span><span class="n">u</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">left</span><span class="w">  </span><span class="o">==</span><span class="w"> </span><span class="n">u</span><span class="w"> </span><span class="o">||</span>
-<span class="w">       </span><span class="n">u</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">right</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">u</span><span class="p">);</span>
-<span class="n">assert</span><span class="p">(</span><span class="o">!</span><span class="n">u</span><span class="o">-&gt;</span><span class="n">left</span><span class="w">  </span><span class="o">||</span><span class="w"> </span><span class="n">u</span><span class="o">-&gt;</span><span class="n">left</span><span class="o">-&gt;</span><span class="n">parent</span><span class="w">  </span><span class="o">==</span><span class="w"> </span><span class="n">u</span><span class="p">);</span>
-<span class="n">assert</span><span class="p">(</span><span class="o">!</span><span class="n">u</span><span class="o">-&gt;</span><span class="n">right</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">u</span><span class="o">-&gt;</span><span class="n">right</span><span class="o">-&gt;</span><span class="n">parent</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">u</span><span class="p">);</span>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="c1">// 结构约束</span>
+<span class="n">assert</span><span class="p">(</span><span class="n">u</span><span class="o">-></span><span class="n">parent</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">u</span><span class="w"> </span><span class="o">||</span>
+<span class="w">       </span><span class="n">u</span><span class="o">-></span><span class="n">parent</span><span class="o">-></span><span class="n">left</span><span class="w">  </span><span class="o">==</span><span class="w"> </span><span class="n">u</span><span class="w"> </span><span class="o">||</span>
+<span class="w">       </span><span class="n">u</span><span class="o">-></span><span class="n">parent</span><span class="o">-></span><span class="n">right</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">u</span><span class="p">);</span>
+<span class="n">assert</span><span class="p">(</span><span class="o">!</span><span class="n">u</span><span class="o">-></span><span class="n">left</span><span class="w">  </span><span class="o">||</span><span class="w"> </span><span class="n">u</span><span class="o">-></span><span class="n">left</span><span class="o">-></span><span class="n">parent</span><span class="w">  </span><span class="o">==</span><span class="w"> </span><span class="n">u</span><span class="p">);</span>
+<span class="n">assert</span><span class="p">(</span><span class="o">!</span><span class="n">u</span><span class="o">-></span><span class="n">right</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">u</span><span class="o">-></span><span class="n">right</span><span class="o">-></span><span class="n">parent</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">u</span><span class="p">);</span>
 
-<span class="c1">// &#25968;&#20540;&#32422;&#26463;</span>
-<span class="n">assert</span><span class="p">(</span><span class="o">!</span><span class="n">u</span><span class="o">-&gt;</span><span class="n">left</span><span class="w">  </span><span class="o">||</span><span class="w"> </span><span class="n">u</span><span class="o">-&gt;</span><span class="n">left</span><span class="o">-&gt;</span><span class="n">val</span><span class="w">  </span><span class="o">&lt;</span><span class="w"> </span><span class="n">u</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">);</span>
-<span class="n">assert</span><span class="p">(</span><span class="o">!</span><span class="n">u</span><span class="o">-&gt;</span><span class="n">right</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">u</span><span class="o">-&gt;</span><span class="n">right</span><span class="o">-&gt;</span><span class="n">val</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">u</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">);</span>
+<span class="c1">// 数值约束</span>
+<span class="n">assert</span><span class="p">(</span><span class="o">!</span><span class="n">u</span><span class="o">-></span><span class="n">left</span><span class="w">  </span><span class="o">||</span><span class="w"> </span><span class="n">u</span><span class="o">-></span><span class="n">left</span><span class="o">-></span><span class="n">val</span><span class="w">  </span><span class="o"><</span><span class="w"> </span><span class="n">u</span><span class="o">-></span><span class="n">val</span><span class="p">);</span>
+<span class="n">assert</span><span class="p">(</span><span class="o">!</span><span class="n">u</span><span class="o">-></span><span class="n">right</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">u</span><span class="o">-></span><span class="n">right</span><span class="o">-></span><span class="n">val</span><span class="w"> </span><span class="o">></span><span class="w"> </span><span class="n">u</span><span class="o">-></span><span class="n">val</span><span class="p">);</span>
 </code></pre></div></div>
         
       
@@ -353,13 +354,13 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#31119;&#21033;&#65306;&#26356;&#22810;&#30340;&#26029;&#35328;</h2>
-<p class=" font-serif my-1">&#20320;&#26159;&#21542;&#24076;&#26395;&#22312;&#27599;&#19968;&#27425;&#25351;&#38024;&#35775;&#38382;&#26102;&#65292;&#37117;&#22686;&#21152;&#19968;&#20010;&#26029;&#35328;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">福利：更多的断言</h2>
+<p class=" font-serif my-1">你是否希望在每一次指针访问时，都增加一个断言</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><code>assert(obj-&gt;low &lt;= ptr &amp;&amp; ptr &lt; obj-&gt;high);</code></li>
+<li class=" ml-8"><code>assert(obj->low <= ptr && ptr < obj->high);</code></li>
 </ul>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="nf">ref</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="o">&</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
 <span class="p">}</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">foo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -369,10 +370,10 @@ section .center {
 </code></pre></div>
 
 <hr>
-<p class=" font-serif my-1">&#19968;&#20010;&#31070;&#22855;&#30340;&#32534;&#35793;&#36873;&#39033;</p>
+<p class=" font-serif my-1">一个神奇的编译选项</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><code>-fsanitize=address</code><ul class=" list-disc font-serif">
-<li class=" ml-8">Address Sanitizer; asan &#8220;&#21160;&#24577;&#31243;&#24207;&#20998;&#26512;&#8221;</li>
+<li class=" ml-8">Address Sanitizer; asan “动态程序分析”</li>
 </ul>
 </li>
 </ul></div>
@@ -405,5 +406,6 @@ section .center {
 
 
 </body>
+
 
 </html>

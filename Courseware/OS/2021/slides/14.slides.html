@@ -1,10 +1,11 @@
 <!DOCTYPE html><html class="h-100">
 
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="../../../static/css/base.css" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com/"></script>
   <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
 
@@ -23,14 +24,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +210,7 @@ section .center {
 }
 </style>
 
-  <title>&#25991;&#20214;&#31995;&#32479; API</title>
+  <title>文件系统 API</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,21 +228,21 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="api" class=" text-2xl mt-2 font-sans">&#25991;&#20214;&#31995;&#32479; API</h1>
-<p class=" font-serif my-1"><include src="Slides_Author"><div><div class="py-16">
-<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">&#33931;&#28814;&#23721;</a></p>
+        <div><div class="center middle"><div style="width:100%"><h1 id="api" class=" text-2xl mt-2 font-sans">文件系统 API</h1>
+<p class=" font-serif my-1"><include src="Slides_Author/index.html"><div><div class="py-16">
+<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">蒋炎岩</a></p>
 </div>
 <div class="row">
 <div class="author-affiliation">
-    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#12288;&#12288;&#21335;&#20140;&#22823;&#23398;&#12288;&#12288;</p>
+    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">　　南京大学　　</p>
     <img class="inline-img h-24" src="../../../static/img/nju-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#31185;&#23398;&#19982;&#25216;&#26415;&#31995;</p>
+   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">计算机科学与技术系</p>
     <img class="inline-img h-24" src="../../../static/img/njucs-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#36719;&#20214;&#30740;&#31350;&#25152;</p>
+    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">计算机软件研究所</p>
     <img class="inline-img h-24" src="../../../static/img/ics-logo.png" style="display: inline-block;"></a>
   </div>
 </div></div></include></p></div></div></div>
@@ -255,22 +256,22 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#32972;&#26223;</h2>
-<p class=" font-serif my-1">&#30828;&#20214;&#35270;&#35282;&#65306;&#8220;&#25345;&#20037;&#21270;&#8221; &#30340;&#23618;&#23618;&#25277;&#35937;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">背景</h2>
+<p class=" font-serif my-1">硬件视角：“持久化” 的层层抽象</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#29289;&#29702;&#23618; 1-bit &#30340;&#23384;&#20648;</li>
-<li class=" ml-8">&#35774;&#22791;&#23618; I/O &#35774;&#22791; (&#23492;&#23384;&#22120;)</li>
-<li class=" ml-8">&#39537;&#21160;&#23618; (&#21487;&#35835;/&#20889;/&#25511;&#21046;&#30340;&#23545;&#35937;)</li>
+<li class=" ml-8">物理层 1-bit 的存储</li>
+<li class=" ml-8">设备层 I/O 设备 (寄存器)</li>
+<li class=" ml-8">驱动层 (可读/写/控制的对象)</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#29992;&#25143; (&#24212;&#29992;&#31243;&#24207;) &#35270;&#35282;&#65306;&#23545;&#35937; + API</p>
+<p class=" font-serif my-1">用户 (应用程序) 视角：对象 + API</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><code>C:\Program Files\...</code></li>
 <li class=" ml-8"><code>/etc/apt/sources.list</code></li>
 <li class=" ml-8"><code>/bin/bash</code>...</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#20013;&#38388;&#30340;&#37096;&#20998;&#65306;&#25991;&#20214;&#31995;&#32479;</p></div>
+<p class=" font-serif my-1">中间的部分：文件系统</p></div>
         
       
       </section>
@@ -281,12 +282,12 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26412;&#27425;&#35838;&#20869;&#23481;&#19982;&#30446;&#26631;</h2>
-<p class=" font-serif my-1">&#29702;&#35299; &#8220;&#25991;&#20214;&#31995;&#32479;&#8221; &#30340;&#35774;&#35745;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">本次课内容与目标</h2>
+<p class=" font-serif my-1">理解 “文件系统” 的设计</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#8220;&#25991;&#20214;&#31995;&#32479;&#8221; &#30340;&#38656;&#27714;&#20998;&#26512;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#38656;&#35201;&#20160;&#20040;&#23545;&#35937;</li>
-<li class=" ml-8">&#25552;&#20379;&#20160;&#20040; API</li>
+<li class=" ml-8">“文件系统” 的需求分析<ul class=" list-disc font-serif">
+<li class=" ml-8">需要什么对象</li>
+<li class=" ml-8">提供什么 API</li>
 </ul>
 </li>
 </ul></div>
@@ -304,7 +305,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#20026;&#20160;&#20040;&#38656;&#35201;&#25991;&#20214;&#31995;&#32479;&#65311;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">为什么需要文件系统？</h1></div></div></div>
         
       
       </section>
@@ -315,27 +316,27 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20026;&#20160;&#20040;&#38656;&#35201;&#25991;&#20214;&#31995;&#32479;&#65311;</h2>
-<p class=" font-serif my-1"><del>&#25105;&#37117;&#26377;&#21507;&#39281;&#31359;&#26262;&#20102;&#65292;&#36824;&#35201;&#20160;&#20040;&#35745;&#31639;&#26426;&#65311;</del></p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">为什么需要文件系统？</h2>
+<p class=" font-serif my-1"><del>我都有吃饱穿暖了，还要什么计算机？</del></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#35745;&#31639;&#26426;&#65306;&#36741;&#21161;&#20154;&#31867;&#26356;&#22909;&#22320;&#23436;&#25104;&#29289;&#29702;&#19990;&#30028;&#20013;&#30340;&#20219;&#21153;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#24320;&#26426;&#20197;&#21518;&#65292;&#24517;&#39035;&#24471;&#26377;&#28857; &#8220;&#20195;&#34920;&#29289;&#29702;&#19990;&#30028;&#8221; &#30340;&#19996;&#35199;</li>
+<li class=" ml-8">计算机：辅助人类更好地完成物理世界中的任务<ul class=" list-disc font-serif">
+<li class=" ml-8">开机以后，必须得有点 “代表物理世界” 的东西</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#8220;&#24320;&#26426;&#8221; &#21518;&#25805;&#20316;&#31995;&#32479;&#20013;&#24212;&#35813;&#26377;&#30340;&#23545;&#35937;</p>
+<p class=" font-serif my-1">“开机” 后操作系统中应该有的对象</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#21508;&#31867;&#25968;&#25454;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#12298;&#25805;&#20316;&#31995;&#32479;&#12299;&#28857;&#21517;&#20876;/&#25104;&#32489;&#21333;/Online Judge &#32467;&#26524;/...</li>
-<li class=" ml-8">&#22788;&#29702;&#36825;&#20123;&#25968;&#25454;&#30340;&#31243;&#24207;<ul class=" list-disc font-serif">
+<li class=" ml-8">各类数据<ul class=" list-disc font-serif">
+<li class=" ml-8">《操作系统》点名册/成绩单/Online Judge 结果/...</li>
+<li class=" ml-8">处理这些数据的程序<ul class=" list-disc font-serif">
 <li class=" ml-8">wc, grep, vim, LibreOffice, ...</li>
 <li class=" ml-8">libc, X11, gnome-settings-manager, ...</li>
 </ul>
 </li>
 </ul>
 </li>
-<li class=" ml-8">&#36825;&#20123; &#8220;&#23545;&#35937;&#8221; &#24212;&#35813;&#34987;&#25345;&#20037;&#22320;&#20445;&#23384;&#22312;&#20171;&#36136;&#19978;</li>
+<li class=" ml-8">这些 “对象” 应该被持久地保存在介质上</li>
 </ul></div>
         
       
@@ -347,24 +348,24 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25991;&#20214;&#31995;&#32479;&#30340;&#35806;&#29983;</h2>
-<p class=" font-serif my-1">&#27809;&#38382;&#39064;&#65281;&#25105;&#20204;&#24050;&#32463;&#35762;&#36807; 1-bit &#30340;&#23384;&#20648;&#20102;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">文件系统的诞生</h2>
+<p class=" font-serif my-1">没问题！我们已经讲过 1-bit 的存储了</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20294;&#35753;&#24212;&#29992;&#31243;&#24207;&#30452;&#25509;&#36890;&#36807;&#39537;&#21160;&#35775;&#38382;&#23384;&#20648;&#35774;&#22791; (1950s)&#65311;</li>
+<li class=" ml-8">但让应用程序直接通过驱动访问存储设备 (1950s)？</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#20170;&#22825;&#30340;&#31995;&#32479;&#20013;&#26377;&#19981;&#27490;&#19968;&#20010;&#31243;&#24207;</p>
+<p class=" font-serif my-1">今天的系统中有不止一个程序</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#27599;&#20010;&#31243;&#24207;&#36824;&#38656;&#35201;&#32771;&#34385;&#21508;&#31181;&#35775;&#38382;&#26435;&#38480;&#12289;&#24182;&#21457;&#25511;&#21046;&#8230;&#8230;</li>
-<li class=" ml-8">&#31243;&#24207;&#20986; bug &#20102;&#65292;&#19981;&#23567;&#24515;&#24324;&#22351;&#20102;&#25972;&#22359;&#30913;&#30424;</li>
+<li class=" ml-8">每个程序还需要考虑各种访问权限、并发控制……</li>
+<li class=" ml-8">程序出 bug 了，不小心弄坏了整块磁盘</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#25991;&#20214;&#31995;&#32479;&#65306;&#35774;&#35745;&#30446;&#26631;</p>
+<p class=" font-serif my-1">文件系统：设计目标</p>
 <ol class=" list-decimal font-serif">
-<li class=" ml-8">&#25552;&#20379;&#21512;&#29702;&#30340; API &#20351;&#22810;&#20010;&#24212;&#29992;&#31243;&#24207;&#33021;&#20849;&#20139;&#25968;&#25454;</li>
-<li class=" ml-8">&#25552;&#20379;&#19968;&#23450;&#30340;&#38548;&#31163;&#65292;&#20351;&#24694;&#24847;/&#20986;&#38169;&#31243;&#24207;&#30340;&#20260;&#23475;&#19981;&#33021;&#20219;&#24847;&#25193;&#22823;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#36825;&#23601;&#26159;&#25991;&#20214;&#31995;&#32479;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20320;&#20250;&#24590;&#20040;&#21150;&#65311;</li>
+<li class=" ml-8">提供合理的 API 使多个应用程序能共享数据</li>
+<li class=" ml-8">提供一定的隔离，使恶意/出错程序的伤害不能任意扩大<ul class=" list-disc font-serif">
+<li class=" ml-8">这就是文件系统<ul class=" list-disc font-serif">
+<li class=" ml-8">你会怎么办？</li>
 </ul>
 </li>
 </ul>
@@ -380,24 +381,24 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25991;&#20214;&#31995;&#32479;&#65306;&#23384;&#20648;&#35774;&#22791;&#30340;&#34394;&#25311;&#21270;</h2>
-<p class=" font-serif my-1">&#30913;&#30424; (I/O &#35774;&#22791;) = &#19968;&#20010;&#21487;&#20197;&#35835;/&#20889;&#30340;&#23383;&#33410;&#24207;&#21015;</p>
-<p class=" font-serif my-1"><red>&#34394;&#25311;&#30913;&#30424;</red> (&#25991;&#20214;) = &#19968;&#20010;&#21487;&#20197;&#35835;/&#20889;/&#30340;&#21160;&#24577;&#23383;&#33410;&#24207;&#21015;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">文件系统：存储设备的虚拟化</h2>
+<p class=" font-serif my-1">磁盘 (I/O 设备) = 一个可以读/写的字节序列</p>
+<p class=" font-serif my-1"><red>虚拟磁盘</red> (文件) = 一个可以读/写/的动态字节序列</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><code>std::vector&lt;char&gt;</code></li>
-<li class=" ml-8">&#31867;&#27604;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#36827;&#31243;&#25277;&#35937;&#65306;&#19968;&#20010; CPU &#8594; &#22312;&#26102;&#38388;&#19978;&#20849;&#20139;</li>
-<li class=" ml-8">&#34394;&#25311;&#23384;&#20648;&#65306;&#19968;&#20221;&#20869;&#23384; &#8594; &#21010;&#20998;&#32473;&#22810;&#20010;&#34394;&#25311;&#22320;&#22336;&#31354;&#38388;</li>
-<li class=" ml-8">&#25991;&#20214;&#31995;&#32479;&#65306;&#19968;&#20010;&#29289;&#29702;&#30913;&#30424; &#8594; &#22810;&#20010;&#34394;&#25311;&#30913;&#30424;</li>
+<li class=" ml-8"><code>std::vector<char></code></li>
+<li class=" ml-8">类比<ul class=" list-disc font-serif">
+<li class=" ml-8">进程抽象：一个 CPU → 在时间上共享</li>
+<li class=" ml-8">虚拟存储：一份内存 → 划分给多个虚拟地址空间</li>
+<li class=" ml-8">文件系统：一个物理磁盘 → 多个虚拟磁盘</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#25991;&#20214;&#31995;&#32479; API: &#34394;&#25311;&#30913;&#30424;&#31649;&#29702;</p>
+<p class=" font-serif my-1">文件系统 API: 虚拟磁盘管理</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#38656;&#35201;&#35299;&#20915;&#30340;&#38382;&#39064;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#34394;&#25311;&#30913;&#30424;&#30340;&#21629;&#21517;&#12289;&#26597;&#25214;&#12289;&#26435;&#38480;</li>
-<li class=" ml-8">&#34394;&#25311;&#30913;&#30424;&#30340;&#25805;&#20316; (&#35835;&#20889;)</li>
+<li class=" ml-8">需要解决的问题<ul class=" list-disc font-serif">
+<li class=" ml-8">虚拟磁盘的命名、查找、权限</li>
+<li class=" ml-8">虚拟磁盘的操作 (读写)</li>
 </ul>
 </li>
 </ul></div>
@@ -415,7 +416,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#34394;&#25311;&#30913;&#30424;&#65306;&#21629;&#21517;&#31649;&#29702;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">虚拟磁盘：命名管理</h1></div></div></div>
         
       
       </section>
@@ -426,27 +427,27 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#34394;&#25311;&#30913;&#30424;&#65306;&#21629;&#21517;&#31649;&#29702;</h2>
-<p class=" font-serif my-1">&#25991;&#20214;&#31995;&#32479; = &#8220;&#34394;&#25311;&#30913;&#30424;&#21517;&#8221; &#21040; &#8220;&#34394;&#25311;&#30913;&#30424;&#23545;&#35937;&#8221; &#30340;&#26144;&#23556;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">虚拟磁盘：命名管理</h2>
+<p class=" font-serif my-1">文件系统 = “虚拟磁盘名” 到 “虚拟磁盘对象” 的映射</p>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/dir-tree.png" width="300px"></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#22914;&#26524;&#25105;&#26377;&#20960;&#30334;&#19975;&#20010;&#25991;&#20214;&#65311;</li>
+<li class=" ml-8">如果我有几百万个文件？</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#23616;&#37096;&#24615;&#26469;&#24110;&#24537;&#65281;</p>
+<p class=" font-serif my-1">局部性来帮忙！</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#30446;&#24405;&#65306;&#25991;&#20214;/&#30446;&#24405;&#30340;&#38598;&#21512; (&#24418;&#25104;&#19968;&#26869;&#26641;)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#36923;&#36753;&#30456;&#20851;&#30340;&#25968;&#25454;&#23384;&#25918;&#22312;&#30456;&#36817;&#30340;&#30446;&#24405;</li>
+<li class=" ml-8">目录：文件/目录的集合 (形成一棵树)<ul class=" list-disc font-serif">
+<li class=" ml-8">逻辑相关的数据存放在相近的目录</li>
 </ul>
 </li>
 </ul>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>.
-&#9492;&#9472;&#9472; &#23398;&#20064;&#36164;&#26009;
-    &#9500;&#9472;&#9472; .&#23398;&#20064;&#36164;&#26009;(&#38544;&#34255;)
-    &#9500;&#9472;&#9472; &#38382;&#39064;&#27714;&#35299;1
-    &#9500;&#9472;&#9472; &#38382;&#39064;&#27714;&#35299;2
-    &#9500;&#9472;&#9472; &#38382;&#39064;&#27714;&#35299;3
-    &#9492;&#9472;&#9472; &#38382;&#39064;&#27714;&#35299;4
+└── 学习资料
+    ├── .学习资料(隐藏)
+    ├── 问题求解1
+    ├── 问题求解2
+    ├── 问题求解3
+    └── 问题求解4
 </code></pre></div></div>
         
       
@@ -458,29 +459,29 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25991;&#20214;&#31995;&#32479;&#30340; &#8220;&#26681;&#8221;</h2>
-<p class=" font-serif my-1">&#26641;&#24635;&#24471;&#26377;&#20010;&#26681;&#32467;&#28857;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">文件系统的 “根”</h2>
+<p class=" font-serif my-1">树总得有个根结点</p>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/IBM-PC-5150.jpg" width="400px"></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">Windows: &#27599;&#20010;&#39537;&#21160;&#22120;&#26159;&#19968;&#26869;&#26641;<ul class=" list-disc font-serif">
-<li class=" ml-8"><code>C:\</code> &#8220;C &#30424;&#26681;&#30446;&#24405;&#8221;<ul class=" list-disc font-serif">
+<li class=" ml-8">Windows: 每个驱动器是一棵树<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>C:\</code> “C 盘根目录”<ul class=" list-disc font-serif">
 <li class=" ml-8"><code>C:\Program Files\</code>, <code>C:\Windows</code>, <code>C:\Users</code>, ...</li>
 </ul>
 </li>
-<li class=" ml-8"><code>D:\</code> &#8220;D &#30424;&#26681;&#30446;&#24405;&#8221;<ul class=" list-disc font-serif">
-<li class=" ml-8"><code>D:\&#23398;&#20064;&#36164;&#26009;\</code></li>
+<li class=" ml-8"><code>D:\</code> “D 盘根目录”<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>D:\学习资料\</code></li>
 </ul>
 </li>
-<li class=" ml-8">&#20248;&#30424;&#20998;&#37197;&#32473;&#26032;&#30340;&#30424;&#31526;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20026;&#20160;&#20040;&#27809;&#26377; <code>A:\</code>, <code>B:\</code>?</li>
-<li class=" ml-8">&#31616;&#21333;&#12289;&#31895;&#26292;&#12289;&#26041;&#20415;&#65292;&#20294; <code>game.iso</code> &#19968;&#24230;&#38750;&#24120;&#40635;&#28902;&#8230;&#8230;</li>
+<li class=" ml-8">优盘分配给新的盘符<ul class=" list-disc font-serif">
+<li class=" ml-8">为什么没有 <code>A:\</code>, <code>B:\</code>?</li>
+<li class=" ml-8">简单、粗暴、方便，但 <code>game.iso</code> 一度非常麻烦……</li>
 </ul>
 </li>
 </ul>
 </li>
 <li class=" ml-8">UNIX/Linux<ul class=" list-disc font-serif">
-<li class=" ml-8">&#21482;&#26377;&#19968;&#20010;&#26681; <code>/</code>&#12290;&#20854;&#20182;&#27809;&#26377;&#20102;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#31532;&#20108;&#20010;&#35774;&#22791;&#21602;&#65311;&#20248;&#30424;&#21602;&#65311;&#65311;&#65311;</li>
+<li class=" ml-8">只有一个根 <code>/</code>。其他没有了<ul class=" list-disc font-serif">
+<li class=" ml-8">第二个设备呢？优盘呢？？？</li>
 </ul>
 </li>
 </ul>
@@ -496,30 +497,30 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25991;&#20214;&#31995;&#32479;&#30340;&#25346;&#36733;&#65306;&#19968;&#20010;&#26377;&#36259;&#30340;&#35774;&#35745;</h2>
-<p class=" font-serif my-1"><red>UNIX &#20801;&#35768;&#20219;&#20309;&#19968;&#20010;&#30446;&#24405;&#37117;&#21487;&#20197; &#8220;&#25346;&#36733;&#8221; &#19968;&#20010;&#35774;&#22791;&#20195;&#34920;&#30340;&#30446;&#24405;&#26641;</red></p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">文件系统的挂载：一个有趣的设计</h2>
+<p class=" font-serif my-1"><red>UNIX 允许任何一个目录都可以 “挂载” 一个设备代表的目录树</red></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#38750;&#24120;&#28789;&#27963;&#30340;&#35774;&#35745;&#65307;&#20805;&#20998;&#21033;&#29992;&#20102;&#30446;&#24405;&#30340;&#23616;&#37096;&#24615;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#25105;&#30340; 128G &#20248;&#30424;&#20998;&#25104;&#20102;&#20004;&#20010; 64G &#20998;&#21306; (Linux <code>/</code> &#21644; exFAT)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#21487;&#20197;&#30452;&#25509;&#20351;&#29992; <code>mount</code> &#21629;&#20196; &#8220;&#25346;&#36733;&#8221; &#21040;&#19968;&#20010;&#30446;&#24405;&#19978;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#30446;&#24405;&#37324;&#21407;&#20808;&#30340;&#20869;&#23481;&#20250;&#26242;&#26102;&#28040;&#22833; (&#20294;&#19981;&#20250;&#20002;&#22833;)</li>
+<li class=" ml-8">非常灵活的设计；充分利用了目录的局部性<ul class=" list-disc font-serif">
+<li class=" ml-8">我的 128G 优盘分成了两个 64G 分区 (Linux <code>/</code> 和 exFAT)<ul class=" list-disc font-serif">
+<li class=" ml-8">可以直接使用 <code>mount</code> 命令 “挂载” 到一个目录上<ul class=" list-disc font-serif">
+<li class=" ml-8">目录里原先的内容会暂时消失 (但不会丢失)</li>
 </ul>
 </li>
 </ul>
 </li>
-<li class=" ml-8"><code>/</code>, <code>/home</code>, <code>/var</code> &#21487;&#20197;&#26159;&#29420;&#31435;&#30340;&#30913;&#30424;</li>
+<li class=" ml-8"><code>/</code>, <code>/home</code>, <code>/var</code> 可以是独立的磁盘</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#22914;&#20309; mount &#19968;&#20010;&#25991;&#20214;&#65311;</p>
+<p class=" font-serif my-1">如何 mount 一个文件？</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><a href="../../../pages/OS/2021/demos/disk-img.tar.gz" class=" text-amber-900">disk-img.tar.gz</a> &#30340;&#25346;&#36733;&#65306;&#21019;&#24314;&#19968;&#20010; &#8220;loopback&#8221; &#35774;&#22791;<ul class=" list-disc font-serif">
-<li class=" ml-8">lsblk &#21487;&#20197;&#30475;&#21040;</li>
+<li class=" ml-8"><a href="../../../pages/OS/2021/demos/disk-img.tar.gzip" class=" text-amber-900">disk-img.tar.gz</a> 的挂载：创建一个 “loopback” 设备<ul class=" list-disc font-serif">
+<li class=" ml-8">lsblk 可以看到</li>
 </ul>
 </li>
-<li class=" ml-8">&#28982;&#21518;&#23601;&#21464;&#25104;&#25346;&#36733;&#35774;&#22791;&#20102;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#21487;&#20197; strace &#19968;&#19979;&#65292;&#30475;&#30475;&#25805;&#20316;&#31995;&#32479;&#25552;&#20379;&#20102;&#21738;&#20123; API</li>
+<li class=" ml-8">然后就变成挂载设备了<ul class=" list-disc font-serif">
+<li class=" ml-8">可以 strace 一下，看看操作系统提供了哪些 API</li>
 </ul>
 </li>
 </ul></div>
@@ -538,7 +539,7 @@ section .center {
 <ul class=" list-disc font-serif">
 <li class=" ml-8">Software to predict the location of installed files and directories, and</li>
 <li class=" ml-8">Users to predict the location of installed files and directories<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20363;&#22914; macOS &#34429;&#28982;&#26159; UNIX &#30340;&#20869;&#26680; (BSD), &#20294;&#23601;&#19981;&#36981;&#24490; Linux FHS</li>
+<li class=" ml-8">例如 macOS 虽然是 UNIX 的内核 (BSD), 但就不遵循 Linux FHS</li>
 </ul>
 </li>
 </ul>
@@ -557,7 +558,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="api" class=" text-2xl mt-2 font-sans">&#30446;&#24405; API (&#31995;&#32479;&#35843;&#29992;)</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="api" class=" text-2xl mt-2 font-sans">目录 API (系统调用)</h1></div></div></div>
         
       
       </section>
@@ -568,26 +569,26 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#30446;&#24405;&#31649;&#29702;&#65306;&#21019;&#24314;/&#21024;&#38500;/&#36941;&#21382;</h2>
-<p class=" font-serif my-1">&#36825;&#20010;&#31616;&#21333;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">目录管理：创建/删除/遍历</h2>
+<p class=" font-serif my-1">这个简单</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">mkdir<ul class=" list-disc font-serif">
-<li class=" ml-8">&#21019;&#24314;&#19968;&#20010;&#30446;&#24405;</li>
-<li class=" ml-8">&#21487;&#20197;&#35774;&#32622;&#35775;&#38382;&#26435;&#38480;</li>
+<li class=" ml-8">创建一个目录</li>
+<li class=" ml-8">可以设置访问权限</li>
 </ul>
 </li>
 <li class=" ml-8">rmdir<ul class=" list-disc font-serif">
-<li class=" ml-8">&#21024;&#38500;&#19968;&#20010;&#31354;&#30446;&#24405;</li>
-<li class=" ml-8">&#27809;&#26377; &#8220;&#36882;&#24402;&#21024;&#38500;&#8221; &#30340;&#31995;&#32479;&#35843;&#29992;<ul class=" list-disc font-serif">
-<li class=" ml-8">(&#24212;&#29992;&#23618;&#33021;&#23454;&#29616;&#30340;&#65292;&#23601;&#19981;&#35201;&#22312;&#25805;&#20316;&#31995;&#32479;&#23618;&#23454;&#29616;)</li>
-<li class=" ml-8"><code>rm -rf</code> &#20250;&#36941;&#21382;&#30446;&#24405;&#65292;&#36880;&#20010;&#21024;&#38500; (&#35797;&#35797; strace)</li>
+<li class=" ml-8">删除一个空目录</li>
+<li class=" ml-8">没有 “递归删除” 的系统调用<ul class=" list-disc font-serif">
+<li class=" ml-8">(应用层能实现的，就不要在操作系统层实现)</li>
+<li class=" ml-8"><code>rm -rf</code> 会遍历目录，逐个删除 (试试 strace)</li>
 </ul>
 </li>
 </ul>
 </li>
 <li class=" ml-8">getdents<ul class=" list-disc font-serif">
-<li class=" ml-8">&#36820;&#22238; <code>count</code> &#20010;&#30446;&#24405;&#39033; (ls, find, tree &#37117;&#20351;&#29992;&#36825;&#20010;)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20197;&#28857;&#24320;&#22836;&#30340;&#30446;&#24405;&#20250;&#34987;&#31995;&#32479;&#35843;&#29992;&#36820;&#22238;&#65292;&#21482;&#26159; ls &#27809;&#26377;&#26174;&#31034;</li>
+<li class=" ml-8">返回 <code>count</code> 个目录项 (ls, find, tree 都使用这个)<ul class=" list-disc font-serif">
+<li class=" ml-8">以点开头的目录会被系统调用返回，只是 ls 没有显示</li>
 </ul>
 </li>
 </ul>
@@ -603,27 +604,27 @@ section .center {
 
       
         
-        <div><h2 id="hard" class=" text-xl mt-2 pb-2 font-sans">&#30828; (hard) &#38142;&#25509;</h2>
-<p class=" font-serif my-1">&#38656;&#27714;&#65306;&#31995;&#32479;&#20013;&#21487;&#33021;&#26377;&#21516;&#19968;&#20010;&#36816;&#34892;&#24211;&#30340;&#22810;&#20010;&#29256;&#26412;</p>
+        <div><h2 id="hard" class=" text-xl mt-2 pb-2 font-sans">硬 (hard) 链接</h2>
+<p class=" font-serif my-1">需求：系统中可能有同一个运行库的多个版本</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><code>libc-2.27.so</code>, <code>libc-2.26.so</code>, ...</li>
-<li class=" ml-8">&#36824;&#38656;&#35201;&#19968;&#20010; &#8220;&#24403;&#21069;&#29256;&#26412;&#30340; libc&#8221;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#31243;&#24207;&#38656;&#35201;&#38142;&#25509; &#8220;<code>libc.so.6</code>&#8221;</li>
-<li class=" ml-8">&#33021;&#21542;&#36991;&#20813;&#25991;&#20214;&#30340;&#19968;&#20221;&#25335;&#36125;&#65311;</li>
+<li class=" ml-8">还需要一个 “当前版本的 libc”<ul class=" list-disc font-serif">
+<li class=" ml-8">程序需要链接 “<code>libc.so.6</code>”</li>
+<li class=" ml-8">能否避免文件的一份拷贝？</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#30828;&#36830;&#25509;&#65306;&#20801;&#35768;&#19968;&#20010;&#25991;&#20214;&#34987;&#22810;&#20010;&#30446;&#24405;&#24341;&#29992;</p>
+<p class=" font-serif my-1">硬连接：允许一个文件被多个目录引用</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#30446;&#24405;&#20013;&#20165;&#23384;&#20648;&#25351;&#21521;&#25991;&#20214;&#25968;&#25454;&#30340;&#25351;&#38024;</li>
-<li class=" ml-8">&#38142;&#25509;&#30446;&#24405; &#10060;</li>
-<li class=" ml-8">&#36328;&#25991;&#20214;&#31995;&#32479; &#10060;</li>
+<li class=" ml-8">目录中仅存储指向文件数据的指针</li>
+<li class=" ml-8">链接目录 ❌</li>
+<li class=" ml-8">跨文件系统 ❌</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#23567;&#30693;&#35782;&#65306;&#20854;&#23454;&#25152;&#26377;&#30340;&#25991;&#20214;&#37117;&#26159;&#30828;&#36830;&#25509; (<code>ls -i</code> &#26597;&#30475;)</p>
+<p class=" font-serif my-1">小知识：其实所有的文件都是硬连接 (<code>ls -i</code> 查看)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#21024;&#38500;&#30340;&#31995;&#32479;&#35843;&#29992;&#31216;&#20026; &#8220;unlink&#8221; (&#24341;&#29992;&#35745;&#25968;)</li>
+<li class=" ml-8">删除的系统调用称为 “unlink” (引用计数)</li>
 </ul></div>
         
       
@@ -635,20 +636,20 @@ section .center {
 
       
         
-        <div><h2 id="symbolic" class=" text-xl mt-2 pb-2 font-sans">&#36719; (symbolic) &#38142;&#25509;</h2>
-<p class=" font-serif my-1">&#36719;&#38142;&#25509;&#65306;&#22312;&#25991;&#20214;&#37324;&#23384;&#20648;&#19968;&#20010; &#8220;&#36339;&#36716;&#25552;&#31034;&#8221;</p>
+        <div><h2 id="symbolic" class=" text-xl mt-2 pb-2 font-sans">软 (symbolic) 链接</h2>
+<p class=" font-serif my-1">软链接：在文件里存储一个 “跳转提示”</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#36719;&#38142;&#25509;&#20063;&#26159;&#19968;&#20010;&#25991;&#20214;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#24403;&#24341;&#29992;&#36825;&#20010;&#25991;&#20214;&#26102;&#65292;&#21435;&#25214;&#21478;&#19968;&#20010;&#25991;&#20214;</li>
-<li class=" ml-8">&#21478;&#19968;&#20010;&#25991;&#20214;&#30340;&#32477;&#23545;/&#30456;&#23545;&#36335;&#24452;&#20197;&#25991;&#26412;&#24418;&#24335;&#23384;&#20648;&#22312;&#25991;&#20214;&#37324;</li>
-<li class=" ml-8">&#21487;&#20197;&#36328;&#25991;&#20214;&#31995;&#32479;&#12289;&#21487;&#20197;&#38142;&#25509;&#30446;&#24405;&#12289;&#8230;&#8230;</li>
+<li class=" ml-8">软链接也是一个文件<ul class=" list-disc font-serif">
+<li class=" ml-8">当引用这个文件时，去找另一个文件</li>
+<li class=" ml-8">另一个文件的绝对/相对路径以文本形式存储在文件里</li>
+<li class=" ml-8">可以跨文件系统、可以链接目录、……</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1"><code>ln -s</code> &#21019;&#24314;&#36719;&#38142;&#25509;</p>
+<p class=" font-serif my-1"><code>ln -s</code> 创建软链接</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><code>symlink</code> &#31995;&#32479;&#35843;&#29992;</li>
+<li class=" ml-8"><code>symlink</code> 系统调用</li>
 </ul></div>
         
       
@@ -660,27 +661,27 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#36719;&#38142;&#25509;&#24102;&#26469;&#30340;&#40635;&#28902;</h2>
-<p class=" font-serif my-1">&#36719;&#38142;&#25509;&#21487;&#20197;&#38543;&#24847;&#21019;&#24314; (&#24403;&#21069;&#21487;&#33021;&#19981;&#21512;&#27861;&#65307;&#20294;&#26410;&#26469;&#21487;&#33021;&#21512;&#27861;)</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">软链接带来的麻烦</h2>
+<p class=" font-serif my-1">软链接可以随意创建 (当前可能不合法；但未来可能合法)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25805;&#20316;&#31995;&#32479;&#22312;&#22788;&#29702;&#36719;&#38142;&#25509;&#26102;&#20250;&#25191;&#34892;&#36335;&#24452;&#35299;&#26512;</li>
-<li class=" ml-8">&#24847;&#24819;&#19981;&#21040;&#30340;&#22797;&#26434;&#24615; &#128514;</li>
+<li class=" ml-8">操作系统在处理软链接时会执行路径解析</li>
+<li class=" ml-8">意想不到的复杂性 😂</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#20801;&#35768;&#22810;&#27425;&#38388;&#25509;&#38142;&#25509;</p>
+<p class=" font-serif my-1">允许多次间接链接</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">a &#8594; b &#8594; c (&#36882;&#24402;&#35299;&#26512;)</li>
+<li class=" ml-8">a → b → c (递归解析)</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#21487;&#20197;&#21019;&#24314;&#36719;&#36830;&#25509;&#30340;&#30828;&#38142;&#25509; (&#22240;&#20026;&#36719;&#38142;&#25509;&#20063;&#26159;&#25991;&#20214;)</p>
+<p class=" font-serif my-1">可以创建软连接的硬链接 (因为软链接也是文件)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><code>ls -i</code> &#21487;&#20197;&#30475;&#21040; </li>
+<li class=" ml-8"><code>ls -i</code> 可以看到 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#31526;&#21495;&#38142;&#25509;&#25104;&#29615;&#65311;</p>
+<p class=" font-serif my-1">符号链接成环？</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><code>ln -s . a</code></li>
-<li class=" ml-8">&#25152;&#26377;&#22788;&#29702;&#31526;&#21495;&#38142;&#25509;&#30340;&#31243;&#24207; (tree, find, ...) &#37117;&#35201;&#32771;&#34385;&#36882;&#24402;&#30340;&#24773;&#20917;</li>
+<li class=" ml-8">所有处理符号链接的程序 (tree, find, ...) 都要考虑递归的情况</li>
 </ul></div>
         
       
@@ -692,21 +693,21 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#36827;&#31243;&#30340; &#8220;&#24403;&#21069;&#30446;&#24405;&#8221;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">进程的 “当前目录”</h2>
 <p class=" font-serif my-1">working/current directory</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><code>pwd</code> &#21629;&#20196;&#25110; <code>$PWD</code> &#29615;&#22659;&#21464;&#37327;&#21487;&#20197;&#26597;&#30475;</li>
-<li class=" ml-8"><code>chdir</code> &#31995;&#32479;&#35843;&#29992;&#20462;&#25913;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#23545;&#24212; shell &#20013;&#30340; cd</li>
-<li class=" ml-8">&#27880;&#24847; cd &#26159; shell &#30340;&#20869;&#37096;&#21629;&#20196;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#19981;&#23384;&#22312; <code>/bin/cd</code></li>
+<li class=" ml-8"><code>pwd</code> 命令或 <code>$PWD</code> 环境变量可以查看</li>
+<li class=" ml-8"><code>chdir</code> 系统调用修改<ul class=" list-disc font-serif">
+<li class=" ml-8">对应 shell 中的 cd</li>
+<li class=" ml-8">注意 cd 是 shell 的内部命令<ul class=" list-disc font-serif">
+<li class=" ml-8">不存在 <code>/bin/cd</code></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#38382;&#39064;&#65306;&#32447;&#31243;&#26159;&#20849;&#20139; working directory, &#36824;&#26159;&#21508;&#33258;&#29420;&#31435;&#25345;&#26377;&#19968;&#20010;&#65311;</p></div>
+<p class=" font-serif my-1">问题：线程是共享 working directory, 还是各自独立持有一个？</p></div>
         
       
       </section>
@@ -721,7 +722,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="api" class=" text-2xl mt-2 font-sans">&#25991;&#20214; API (&#31995;&#32479;&#35843;&#29992;)</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="api" class=" text-2xl mt-2 font-sans">文件 API (系统调用)</h1></div></div></div>
         
       
       </section>
@@ -732,19 +733,19 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#22797;&#20064;&#65306;&#25991;&#20214;&#21644;&#25991;&#20214;&#25551;&#36848;&#31526;</h2>
-<p class=" font-serif my-1">&#25991;&#20214;&#65306;&#34394;&#25311;&#30340;&#30913;&#30424;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">复习：文件和文件描述符</h2>
+<p class=" font-serif my-1">文件：虚拟的磁盘</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#30913;&#30424;&#26159;&#19968;&#20010; &#8220;&#23383;&#33410;&#24207;&#21015;&#8221;</li>
-<li class=" ml-8">&#25903;&#25345;&#35835;/&#20889;&#25805;&#20316;</li>
+<li class=" ml-8">磁盘是一个 “字节序列”</li>
+<li class=" ml-8">支持读/写操作</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#25991;&#20214;&#25551;&#36848;&#31526;&#65306;&#36827;&#31243;&#35775;&#38382;&#25991;&#20214; (&#25805;&#20316;&#31995;&#32479;&#23545;&#35937;) &#30340; &#8220;&#25351;&#38024;&#8221;</p>
+<p class=" font-serif my-1">文件描述符：进程访问文件 (操作系统对象) 的 “指针”</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#36890;&#36807; <code>open</code>/<code>pipe</code> &#33719;&#24471;</li>
-<li class=" ml-8">&#36890;&#36807; close &#37322;&#25918;</li>
-<li class=" ml-8">&#36890;&#36807; dup/dup2 &#22797;&#21046;</li>
-<li class=" ml-8">fork &#26102;&#32487;&#25215;</li>
+<li class=" ml-8">通过 <code>open</code>/<code>pipe</code> 获得</li>
+<li class=" ml-8">通过 close 释放</li>
+<li class=" ml-8">通过 dup/dup2 复制</li>
+<li class=" ml-8">fork 时继承</li>
 </ul></div>
         
       
@@ -756,24 +757,24 @@ section .center {
 
       
         
-        <div><h2 id="mmap" class=" text-xl mt-2 pb-2 font-sans">&#22797;&#20064;&#65306;mmap</h2>
-<p class=" font-serif my-1">&#20351;&#29992; open &#25171;&#24320;&#19968;&#20010;&#25991;&#20214;&#21518;</p>
+        <div><h2 id="mmap" class=" text-xl mt-2 pb-2 font-sans">复习：mmap</h2>
+<p class=" font-serif my-1">使用 open 打开一个文件后</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#29992; <code>MAP_SHARED</code> &#23558;&#25991;&#20214;&#26144;&#23556;&#21040;&#22320;&#22336;&#31354;&#38388;&#20013;</li>
-<li class=" ml-8">&#29992; <code>MAP_PRIVATE</code> &#21019;&#24314;&#19968;&#20010; copy-on-write &#30340;&#21103;&#26412;</li>
+<li class=" ml-8">用 <code>MAP_SHARED</code> 将文件映射到地址空间中</li>
+<li class=" ml-8">用 <code>MAP_PRIVATE</code> 创建一个 copy-on-write 的副本</li>
 </ul>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="nf">mmap</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">addr</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">length</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">prot</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">flags</span><span class="p">,</span>
-<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="kt">off_t</span><span class="w"> </span><span class="n">offset</span><span class="p">);</span><span class="w"> </span><span class="c1">// &#26144;&#23556; fd &#30340; offset &#24320;&#22987;&#30340; length &#23383;&#33410;</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="kt">off_t</span><span class="w"> </span><span class="n">offset</span><span class="p">);</span><span class="w"> </span><span class="c1">// 映射 fd 的 offset 开始的 length 字节</span>
 <span class="kt">int</span><span class="w"> </span><span class="nf">munmap</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">addr</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">length</span><span class="p">);</span>
 <span class="kt">int</span><span class="w"> </span><span class="nf">msync</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">addr</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">length</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">flags</span><span class="p">);</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">&#23567;&#38382;&#39064;&#65306;</p>
+<p class=" font-serif my-1">小问题：</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#26144;&#23556;&#30340;&#38271;&#24230;&#36229;&#36807;&#25991;&#20214;&#22823;&#23567;&#20250;&#21457;&#29983;&#20160;&#20040;&#65311;<ul class=" list-disc font-serif">
-<li class=" ml-8">(RTFM, &#8220;Errors&#8221; section): <strong><code>SIGBUS</code></strong>...<ul class=" list-disc font-serif">
-<li class=" ml-8">bus error &#30340;&#24120;&#35265;&#26469;&#28304; (M5)</li>
-<li class=" ml-8">ftruncate &#21487;&#20197;&#25913;&#21464;&#25991;&#20214;&#22823;&#23567;</li>
+<li class=" ml-8">映射的长度超过文件大小会发生什么？<ul class=" list-disc font-serif">
+<li class=" ml-8">(RTFM, “Errors” section): <strong><code>SIGBUS</code></strong>...<ul class=" list-disc font-serif">
+<li class=" ml-8">bus error 的常见来源 (M5)</li>
+<li class=" ml-8">ftruncate 可以改变文件大小</li>
 </ul>
 </li>
 </ul>
@@ -789,17 +790,17 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25991;&#20214;&#35775;&#38382;&#30340;&#28216;&#26631; (&#20559;&#31227;&#37327;)</h2>
-<p class=" font-serif my-1">&#25991;&#20214;&#30340;&#35835;&#20889;&#33258;&#24102; &#8220;&#28216;&#26631;&#8221;&#65292;&#36825;&#26679;&#23601;&#19981;&#29992;&#27599;&#27425;&#37117;&#25351;&#23450;&#25991;&#20214;&#35835;/&#20889;&#21040;&#21738;&#37324;&#20102;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">文件访问的游标 (偏移量)</h2>
+<p class=" font-serif my-1">文件的读写自带 “游标”，这样就不用每次都指定文件读/写到哪里了</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#26041;&#20415;&#20102;&#31243;&#24207;&#21592;&#39034;&#24207;&#35775;&#38382;&#25991;&#20214;</li>
+<li class=" ml-8">方便了程序员顺序访问文件</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#20363;&#23376;</p>
+<p class=" font-serif my-1">例子</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><code>read(fd, buf, 512);</code> - &#31532;&#19968;&#20010; 512 &#23383;&#33410;</li>
-<li class=" ml-8"><code>read(fd, buf, 512);</code> - &#31532;&#20108;&#20010; 512 &#23383;&#33410;</li>
-<li class=" ml-8"><code>lseek(fd, -1, SEEK_END);</code> - &#26368;&#21518;&#19968;&#20010;&#23383;&#33410;<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>read(fd, buf, 512);</code> - 第一个 512 字节</li>
+<li class=" ml-8"><code>read(fd, buf, 512);</code> - 第二个 512 字节</li>
+<li class=" ml-8"><code>lseek(fd, -1, SEEK_END);</code> - 最后一个字节<ul class=" list-disc font-serif">
 <li class=" ml-8">so far, so good</li>
 </ul>
 </li>
@@ -814,10 +815,10 @@ section .center {
 
       
         
-        <div><h2 id="1" class=" text-xl mt-2 pb-2 font-sans">&#20559;&#31227;&#37327;&#31649;&#29702;&#65306;&#27809;&#37027;&#20040;&#31616;&#21333; (1)</h2>
-<p class=" font-serif my-1">mmap, lseek, ftruncate &#20114;&#30456;&#20132;&#20114;&#30340;&#24773;&#20917;</p>
+        <div><h2 id="1" class=" text-xl mt-2 pb-2 font-sans">偏移量管理：没那么简单 (1)</h2>
+<p class=" font-serif my-1">mmap, lseek, ftruncate 互相交互的情况</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#21021;&#22987;&#26102;&#25991;&#20214;&#22823;&#23567;&#20026; 0<ol class=" list-decimal font-serif">
+<li class=" ml-8">初始时文件大小为 0<ol class=" list-decimal font-serif">
 <li class=" ml-8">mmap (<code>length</code> = 2 MiB)</li>
 <li class=" ml-8">lseek to 3 MiB (<code>SEEK_SET</code>)</li>
 <li class=" ml-8">ftruncate to 1 MiB</li>
@@ -825,10 +826,10 @@ section .center {
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#22312;&#20219;&#20309;&#26102;&#21051;&#65292;&#20889;&#20837;&#25968;&#25454;&#30340;&#34892;&#20026;&#26159;&#20160;&#20040;&#65311;</p>
+<p class=" font-serif my-1">在任何时刻，写入数据的行为是什么？</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">blog posts &#19981;&#20250;&#21578;&#35785;&#20320;&#20840;&#37096;</li>
-<li class=" ml-8">RTFM &amp; &#20570;&#23454;&#39564;&#65281;</li>
+<li class=" ml-8">blog posts 不会告诉你全部</li>
+<li class=" ml-8">RTFM & 做实验！</li>
 </ul></div>
         
       
@@ -840,24 +841,24 @@ section .center {
 
       
         
-        <div><h2 id="2" class=" text-xl mt-2 pb-2 font-sans">&#20559;&#31227;&#37327;&#31649;&#29702;&#65306;&#27809;&#37027;&#20040;&#31616;&#21333; (2)</h2>
+        <div><h2 id="2" class=" text-xl mt-2 pb-2 font-sans">偏移量管理：没那么简单 (2)</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1"><red>&#25991;&#20214;&#25551;&#36848;&#31526;&#22312; fork &#26102;&#20250;&#34987;&#23376;&#36827;&#31243;&#32487;&#25215;&#12290;</red></p>
+<p class=" font-serif my-1"><red>文件描述符在 fork 时会被子进程继承。</red></p>
 </blockquote>
-<p class=" font-serif my-1">&#29238;&#23376;&#36827;&#31243;&#24212;&#35813;&#20849;&#29992;&#20559;&#31227;&#37327;&#65292;&#36824;&#26159;&#24212;&#35813;&#21508;&#33258;&#25345;&#26377;&#20559;&#31227;&#37327;&#65311;</p>
+<p class=" font-serif my-1">父子进程应该共用偏移量，还是应该各自持有偏移量？</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#36825;&#20915;&#23450;&#20102; <code>offset</code> &#23384;&#20648;&#22312;&#21738;&#37324;</li>
+<li class=" ml-8">这决定了 <code>offset</code> 存储在哪里</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#32771;&#34385;&#24212;&#29992;&#22330;&#26223;</p>
+<p class=" font-serif my-1">考虑应用场景</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#29238;&#23376;&#36827;&#31243;&#21516;&#26102;&#20889;&#20837;&#25991;&#20214;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#21508;&#33258;&#25345;&#26377;&#20559;&#31227;&#37327; &#8594; &#29238;&#23376;&#36827;&#31243;&#38656;&#35201;&#21327;&#35843;&#20559;&#31227;&#37327;&#30340;&#31454;&#20105;<ul class=" list-disc font-serif">
+<li class=" ml-8">父子进程同时写入文件<ul class=" list-disc font-serif">
+<li class=" ml-8">各自持有偏移量 → 父子进程需要协调偏移量的竞争<ul class=" list-disc font-serif">
 <li class=" ml-8">(race condition)</li>
 </ul>
 </li>
-<li class=" ml-8">&#20849;&#20139;&#20559;&#31227;&#37327; &#8594; &#25805;&#20316;&#31995;&#32479;&#31649;&#29702;&#20559;&#31227;&#37327;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#34429;&#28982;&#20173;&#28982;&#20849;&#20139;&#65292;&#20294;&#25805;&#20316;&#31995;&#32479;&#20445;&#35777; <code>write</code> &#30340;&#21407;&#23376;&#24615; &#9989;</li>
+<li class=" ml-8">共享偏移量 → 操作系统管理偏移量<ul class=" list-disc font-serif">
+<li class=" ml-8">虽然仍然共享，但操作系统保证 <code>write</code> 的原子性 ✅</li>
 </ul>
 </li>
 </ul>
@@ -873,23 +874,23 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20559;&#31227;&#37327;&#31649;&#29702;&#65306;&#34892;&#20026;</h2>
-<p class=" font-serif my-1">&#25805;&#20316;&#31995;&#32479;&#30340;&#27599;&#19968;&#20010; API &#37117;&#21487;&#33021;&#21644;&#20854;&#20182; API &#26377;&#20132;&#20114; &#128514;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">偏移量管理：行为</h2>
+<p class=" font-serif my-1">操作系统的每一个 API 都可能和其他 API 有交互 😂</p>
 <ol class=" list-decimal font-serif">
-<li class=" ml-8">open &#26102;&#65292;&#33719;&#24471;&#19968;&#20010;&#29420;&#31435;&#30340; offset</li>
-<li class=" ml-8">dup &#26102;&#65292;&#20004;&#20010;&#25991;&#20214;&#25551;&#36848;&#31526;&#20849;&#20139; offset</li>
-<li class=" ml-8">fork &#26102;&#65292;&#29238;&#23376;&#36827;&#31243;&#20849;&#20139; offset</li>
-<li class=" ml-8">execve &#26102;&#25991;&#20214;&#25551;&#36848;&#31526;&#19981;&#21464;</li>
-<li class=" ml-8"><code>O_APPEND</code> &#26041;&#24335;&#25171;&#24320;&#30340;&#25991;&#20214;&#65292;&#20559;&#31227;&#37327;&#27704;&#36828;&#22312;&#26368;&#21518; (&#26080;&#35770;&#26159;&#21542; fork)<ul class=" list-disc font-serif">
+<li class=" ml-8">open 时，获得一个独立的 offset</li>
+<li class=" ml-8">dup 时，两个文件描述符共享 offset</li>
+<li class=" ml-8">fork 时，父子进程共享 offset</li>
+<li class=" ml-8">execve 时文件描述符不变</li>
+<li class=" ml-8"><code>O_APPEND</code> 方式打开的文件，偏移量永远在最后 (无论是否 fork)<ul class=" list-disc font-serif">
 <li class=" ml-8">modification of the file offset and the write operation  are  performed  as  a single atomic step</li>
 </ul>
 </li>
 </ol>
 <hr>
-<p class=" font-serif my-1">&#36825;&#20063;&#26159; fork &#34987;&#25209;&#35780;&#30340;&#19968;&#20010;&#21407;&#22240;</p>
+<p class=" font-serif my-1">这也是 fork 被批评的一个原因</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">(&#22312;&#24403;&#26102;) &#22909;&#30340;&#35774;&#35745;&#21487;&#33021;&#25104;&#20026;&#31995;&#32479;&#28436;&#21270;&#36807;&#31243;&#20013;&#30340;&#21253;&#34993;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20170;&#22825;&#30340; fork &#21487;&#35859;&#26159; &#8220;&#34917;&#19969;&#28385;&#28385;&#8221;&#65307;<a href="https://dl.acm.org/doi/10.1145/3317550.3321435" class=" text-amber-900">A <code>fork()</code> in the road</a></li>
+<li class=" ml-8">(在当时) 好的设计可能成为系统演化过程中的包袱<ul class=" list-disc font-serif">
+<li class=" ml-8">今天的 fork 可谓是 “补丁满满”；<a href="https://dl.acm.org/doi/10.1145/3317550.3321435" class=" text-amber-900">A <code>fork()</code> in the road</a></li>
 </ul>
 </li>
 </ul></div>
@@ -907,7 +908,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#24635;&#32467;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">总结</h1></div></div></div>
         
       
       </section>
@@ -918,11 +919,11 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#24635;&#32467;</h2>
-<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#20869;&#23481;&#19982;&#30446;&#26631;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">总结</h2>
+<p class=" font-serif my-1">本次课内容与目标</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#29702;&#35299; &#8220;&#25991;&#20214;&#31995;&#32479;&#8221; &#30340;&#35774;&#35745;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#35774;&#22791;&#12289;&#25991;&#20214;&#21644;&#30446;&#24405;</li>
+<li class=" ml-8">理解 “文件系统” 的设计<ul class=" list-disc font-serif">
+<li class=" ml-8">设备、文件和目录</li>
 <li class=" ml-8">mount, chdir, mkdir, rmdir, link, unlink, symlink, open, mmap, read, write, lseek, ftruncate, ...</li>
 </ul>
 </li>
@@ -930,8 +931,8 @@ section .center {
 <hr>
 <p class=" font-serif my-1">Takeaway messages</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#19968;&#20010;&#32463;&#20856;&#30340;&#35774;&#35745;&#65306;&#31616;&#27905;&#12289;&#36890;&#29992;&#12289;&#23500;&#26377;&#36828;&#35265;</li>
-<li class=" ml-8">&#20294;&#26080;&#35770;&#22810;&#20040;&#26377;&#36828;&#35265;&#65292;&#22312;&#26102;&#38388;&#38754;&#21069;&#37117;&#20250;&#21315;&#30126;&#30334;&#23380;</li>
+<li class=" ml-8">一个经典的设计：简洁、通用、富有远见</li>
+<li class=" ml-8">但无论多么有远见，在时间面前都会千疮百孔</li>
 </ul></div>
         
       
@@ -962,5 +963,6 @@ section .center {
 
 
 </body>
+
 
 </html>

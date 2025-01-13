@@ -1,10 +1,11 @@
 <!DOCTYPE html><html class="h-100">
 
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="../../../static/css/base.css" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com/"></script>
   <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
 
@@ -23,14 +24,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -238,14 +239,14 @@ section .center {
 
       
         
-        <div><h2 id="raid" class=" text-xl mt-2 pb-2 font-sans">RAID: &#23384;&#20648;&#35774;&#22791;&#30340;&#34394;&#25311;&#21270;</h2>
-<p class=" font-serif my-1">&#24615;&#33021;&#21644;&#21487;&#38752;&#24615;&#65292;&#25105;&#20204;&#33021;&#19981;&#33021;&#20840;&#37117;&#35201;&#21602;&#65311;</p>
+        <div><h2 id="raid" class=" text-xl mt-2 pb-2 font-sans">RAID: 存储设备的虚拟化</h2>
+<p class=" font-serif my-1">性能和可靠性，我们能不能全都要呢？</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">Redundant Array of Inexpensive (<em>Independent</em>) Disks (RAID)</li>
-<li class=" ml-8">&#25226;&#22810;&#20010; (&#19981;&#21487;&#38752;&#30340;) &#30913;&#30424;&#34394;&#25311;&#25104;&#19968;&#22359;<red>&#38750;&#24120;&#21487;&#38752;&#19988;&#24615;&#33021;&#26497;&#39640;</red>&#30340;&#34394;&#25311;&#30913;&#30424;<ul class=" list-disc font-serif">
+<li class=" ml-8">把多个 (不可靠的) 磁盘虚拟成一块<red>非常可靠且性能极高</red>的虚拟磁盘<ul class=" list-disc font-serif">
 <li class=" ml-8"><a href="https://dl.acm.org/doi/10.1145/971701.50214" class=" text-amber-900">A case for redundant arrays of inexpensive disks (RAID)</a> (SIGMOD'88)</li>
-<li class=" ml-8">&#19968;&#20010; &#8220;&#21453;&#21521;&#8221; &#30340;&#34394;&#25311;&#21270;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#31867;&#27604;&#65306;&#36827;&#31243;/&#34394;&#23384;/&#25991;&#20214;&#25226; &#8220;&#19968;&#20010;&#35774;&#22791;&#8221; &#34394;&#25311;&#25104;&#22810;&#20221;</li>
+<li class=" ml-8">一个 “反向” 的虚拟化<ul class=" list-disc font-serif">
+<li class=" ml-8">类比：进程/虚存/文件把 “一个设备” 虚拟成多份</li>
 </ul>
 </li>
 </ul>
@@ -253,10 +254,10 @@ section .center {
 </ul>
 <hr>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/IBM3380.jpg" width="230px"></p>
-<p class=" font-serif my-1">&#36941;&#22320;&#26159;&#40644;&#37329;&#30340;&#24180;&#20195;&#65306;&#20945;&#20960;&#22359;&#30424;&#65292;&#25472;&#32763;&#25972;&#20010;&#20135;&#19994;&#38142;&#65281;</p>
+<p class=" font-serif my-1">遍地是黄金的年代：凑几块盘，掀翻整个产业链！</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#8220;Single Large Expensive Disks&#8221; (IBM 3380), v.s.</li>
-<li class=" ml-8">&#8220;Redundant Array of Inexpensive Disks&#8221;</li>
+<li class=" ml-8">“Single Large Expensive Disks” (IBM 3380), v.s.</li>
+<li class=" ml-8">“Redundant Array of Inexpensive Disks”</li>
 </ul></div>
         
       
@@ -269,24 +270,24 @@ section .center {
       
         
         <div><h2 id="raid-design-space" class=" text-xl mt-2 pb-2 font-sans">RAID: Design Space</h2>
-<p class=" font-serif my-1">RAID (&#34394;&#25311;&#21270;) = &#34394;&#25311;&#30913;&#30424;&#22359;&#21040;&#29289;&#29702;&#30913;&#30424;&#22359;&#30340; &#8220;&#26144;&#23556;&#8221;&#12290;</p>
+<p class=" font-serif my-1">RAID (虚拟化) = 虚拟磁盘块到物理磁盘块的 “映射”。</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#34394;&#25311;&#30913;&#30424;&#22359;&#21487;&#20197;&#23384;&#20648;&#22312;&#20219;&#20309;&#34394;&#25311;&#30913;&#30424;&#19978;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#34394;&#25311;&#30913;&#30424;&#21487;&#20197;<red>&#24182;&#34892;</red></li>
-<li class=" ml-8">&#23384;&#20648; $&gt;1$ &#20221;&#21363;&#21487;&#23454;&#29616;&#23481;&#38169;</li>
+<li class=" ml-8">虚拟磁盘块可以存储在任何虚拟磁盘上<ul class=" list-disc font-serif">
+<li class=" ml-8">虚拟磁盘可以<red>并行</red></li>
+<li class=" ml-8">存储 $>1$ 份即可实现容错</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">RAID-0&#65306;&#26356;&#22823;&#30340;&#23481;&#37327;&#12289;&#26356;&#24555;&#30340;&#36895;&#24230;</p>
+<p class=" font-serif my-1">RAID-0：更大的容量、更快的速度</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#35835;&#36895;&#24230; x 2&#65307;&#20889;&#36895;&#24230; x 2</li>
+<li class=" ml-8">读速度 x 2；写速度 x 2</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">RAID-1&#65306;&#38236;&#20687; (&#23481;&#38169;)</p>
+<p class=" font-serif my-1">RAID-1：镜像 (容错)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20445;&#25345;&#20004;&#22359;&#30424;&#23436;&#20840;&#19968;&#26679;</li>
-<li class=" ml-8">&#35835;&#36895;&#24230; x 2&#65307;&#20889;&#36895;&#24230;&#20445;&#25345;&#19968;&#33268;</li>
+<li class=" ml-8">保持两块盘完全一样</li>
+<li class=" ml-8">读速度 x 2；写速度保持一致</li>
 </ul></div>
         
       
@@ -298,14 +299,14 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#23481;&#38169;&#30340;&#20195;&#20215;</h2>
-<p class=" font-serif my-1">&#28010;&#36153;&#20102;&#19968;&#22359;&#30424;&#30340;&#23481;&#37327;&#8230;&#8230;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">容错的代价</h2>
+<p class=" font-serif my-1">浪费了一块盘的容量……</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#22914;&#26524;&#25105;&#20204;&#26377; 100 &#22359;&#30424;</li>
-<li class=" ml-8">&#20294;&#20551;&#35774;&#19981;&#20250;&#26377;&#20004;&#22359;&#30424;&#21516;&#26102; fail-stop&#65311;</li>
+<li class=" ml-8">如果我们有 100 块盘</li>
+<li class=" ml-8">但假设不会有两块盘同时 fail-stop？</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#33021;&#19981;&#33021;&#21482;&#29992; 1-bit &#30340;&#20887;&#20313;&#65292;&#24674;&#22797;&#20986;&#19968;&#20010;&#20002;&#22833;&#30340; bit&#65311;</p>
+<p class=" font-serif my-1">能不能只用 1-bit 的冗余，恢复出一个丢失的 bit？</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">$x = a \oplus b \oplus c \oplus d$<ul class=" list-disc font-serif">
 <li class=" ml-8">$a = x \oplus b \oplus c \oplus d$</li>
@@ -314,8 +315,8 @@ section .center {
 <li class=" ml-8">$d = a \oplus b \oplus c \oplus x$</li>
 </ul>
 </li>
-<li class=" ml-8">100 &#22359;&#30424;&#37324;&#65292;99 &#22359;&#30424;&#37117;&#26159;&#25968;&#25454;&#65281;<ul class=" list-disc font-serif">
-<li class=" ml-8">Caveat: random write &#24615;&#33021;</li>
+<li class=" ml-8">100 块盘里，99 块盘都是数据！<ul class=" list-disc font-serif">
+<li class=" ml-8">Caveat: random write 性能</li>
 </ul>
 </li>
 </ul></div>
@@ -330,7 +331,7 @@ section .center {
       
         
         <div><h2 id="raid-5-rotating-parity" class=" text-xl mt-2 pb-2 font-sans">RAID-5: Rotating Parity</h2>
-<p class=" font-serif my-1">&#8220;&#20132;&#38169;&#25490;&#21015;&#8221; parity block!</p>
+<p class=" font-serif my-1">“交错排列” parity block!</p>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/raid5.png" width="800px"></p></div>
         
       
@@ -342,27 +343,27 @@ section .center {
 
       
         
-        <div><h2 id="raid" class=" text-xl mt-2 pb-2 font-sans">RAID: &#35752;&#35770;</h2>
-<p class=" font-serif my-1">&#26356;&#24555;&#12289;&#26356;&#21487;&#38752;&#12289;&#36817;&#20046;&#20813;&#36153;&#30340;&#22823;&#23481;&#37327;&#30913;&#30424;</p>
+        <div><h2 id="raid" class=" text-xl mt-2 pb-2 font-sans">RAID: 讨论</h2>
+<p class=" font-serif my-1">更快、更可靠、近乎免费的大容量磁盘</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#38761;&#20102; &#8220;&#39640;&#21487;&#38752;&#24615;&#30913;&#30424;&#8221; &#30340;&#21629;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#25104;&#20026;&#20170;&#22825;&#26381;&#21153;&#22120;&#30340;&#26631;&#20934;&#37197;&#32622;</li>
+<li class=" ml-8">革了 “高可靠性磁盘” 的命<ul class=" list-disc font-serif">
+<li class=" ml-8">成为今天服务器的标准配置</li>
 </ul>
 </li>
-<li class=" ml-8">&#31867;&#20284;&#30340;&#37324;&#31243;&#30865;<ul class=" list-disc font-serif">
-<li class=" ml-8"><a href="https://dl.acm.org/doi/10.1145/1165389.945450" class=" text-amber-900">The Google file system</a> (SOSP'03) &#21644; <a href="https://dl.acm.org/doi/10.5555/1251254.1251264" class=" text-amber-900">MapReduce: Simplified data processing on large clusters</a> (OSDI'04) &#24320;&#21551; &#8220;&#22823;&#25968;&#25454;&#8221; &#26102;&#20195;</li>
+<li class=" ml-8">类似的里程碑<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="https://dl.acm.org/doi/10.1145/1165389.945450" class=" text-amber-900">The Google file system</a> (SOSP'03) 和 <a href="https://dl.acm.org/doi/10.5555/1251254.1251264" class=" text-amber-900">MapReduce: Simplified data processing on large clusters</a> (OSDI'04) 开启 “大数据” 时代</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">RAID &#30340;&#21487;&#38752;&#24615;</p>
+<p class=" font-serif my-1">RAID 的可靠性</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">RAID &#31995;&#32479;&#21457;&#29983;&#26029;&#30005;&#65311;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20363;&#23376;&#65306;RAID-1 &#38236;&#20687;&#30424;&#20986;&#29616;&#19981;&#19968;&#33268;&#30340;&#25968;&#25454;</li>
+<li class=" ml-8">RAID 系统发生断电？<ul class=" list-disc font-serif">
+<li class=" ml-8">例子：RAID-1 镜像盘出现不一致的数据</li>
 </ul>
 </li>
-<li class=" ml-8">&#26816;&#27979;&#21040;&#30913;&#30424;&#22351;&#65311;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#33258;&#21160;&#37325;&#32452;</li>
+<li class=" ml-8">检测到磁盘坏？<ul class=" list-disc font-serif">
+<li class=" ml-8">自动重组</li>
 </ul>
 </li>
 </ul></div>
@@ -395,5 +396,6 @@ section .center {
 
 
 </body>
+
 
 </html>

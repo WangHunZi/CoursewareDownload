@@ -1,10 +1,11 @@
 <!DOCTYPE html><html class="h-100">
 
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="../../../static/css/base.css" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com/"></script>
   <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
 
@@ -23,14 +24,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +210,7 @@ section .center {
 }
 </style>
 
-  <title>&#21407;&#23376;&#25351;&#20196;</title>
+  <title>原子指令</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,7 +228,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="6.3.slides.html" class=" text-amber-900">&#21407;&#23376;&#25351;&#20196;</a></h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="6.3.slides.html" class=" text-amber-900">原子指令</a></h1></div></div></div>
         
       
       </section>
@@ -238,8 +239,8 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#24182;&#21457;&#32534;&#31243;&#22256;&#38590;&#30340;&#35299;&#20915;</h2>
-<p class=" font-serif my-1">&#26222;&#36890;&#30340;&#21464;&#37327;&#35835;&#20889;&#22312;&#32534;&#35793;&#22120; + &#22788;&#29702;&#22120;&#30340;&#21452;&#37325;&#20248;&#21270;&#19979;&#34892;&#20026;&#21464;&#24471;&#22797;&#26434;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">并发编程困难的解决</h2>
+<p class=" font-serif my-1">普通的变量读写在编译器 + 处理器的双重优化下行为变得复杂</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="nl">retry</span><span class="p">:</span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">locked</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">UNLOCK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">goto</span><span class="w"> </span><span class="n">retry</span><span class="p">;</span>
@@ -248,9 +249,9 @@ section .center {
 </code></pre></div>
 
 <hr>
-<p class=" font-serif my-1">&#35299;&#20915;&#26041;&#27861;&#65306;&#32534;&#35793;&#22120;&#21644;&#30828;&#20214;&#20849;&#21516;&#25552;&#20379;<red>&#19981;&#21487;&#20248;&#21270;&#12289;&#19981;&#21487;&#25171;&#26029;</red>&#30340;&#25351;&#20196;</p>
+<p class=" font-serif my-1">解决方法：编译器和硬件共同提供<red>不可优化、不可打断</red>的指令</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#8220;&#21407;&#23376;&#25351;&#20196;&#8221; + compiler barrier</li>
+<li class=" ml-8">“原子指令” + compiler barrier</li>
 </ul></div>
         
       
@@ -262,12 +263,12 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#23454;&#29616;&#27491;&#30830;&#30340;&#27714;&#21644;</h2>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">实现正确的求和</h2>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o"><</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
 <span class="w">  </span><span class="k">asm</span><span class="w"> </span><span class="k">volatile</span><span class="p">(</span><span class="s">"lock incq %0"</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">"+m"</span><span class="p">(</span><span class="n">sum</span><span class="p">));</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">&#8220;Bus lock&#8221;&#8212;&#8212;&#20174; 80386 &#24320;&#22987;&#24341;&#20837; (bus control signal)</p>
+<p class=" font-serif my-1">“Bus lock”——从 80386 开始引入 (bus control signal)</p>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/80486-arch.jpg" width="650px"></p></div>
         
       
@@ -279,20 +280,20 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#127798;&#65039; &#32534;&#35793;&#22120;&#21644;&#30828;&#20214;&#30340;&#21327;&#20316;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">🌶️ 编译器和硬件的协作</h2>
 <p class=" font-serif my-1">Acquire/release semantics</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#23545;&#20110;&#19968;&#23545;&#37197;&#23545;&#30340; release-acquire<ul class=" list-disc font-serif">
-<li class=" ml-8">(&#36923;&#36753;&#19978;) release &#20043;&#21069;&#30340; store &#37117;&#23545; acquire &#20043;&#21518;&#30340; load &#21487;&#35265;</li>
+<li class=" ml-8">对于一对配对的 release-acquire<ul class=" list-disc font-serif">
+<li class=" ml-8">(逻辑上) release 之前的 store 都对 acquire 之后的 load 可见</li>
 <li class=" ml-8"><a href="https://davekilian.com/acquire-release.html" class=" text-amber-900">Making Sense of Acquire-Release Semantics</a></li>
 </ul>
 </li>
 <li class=" ml-8">std::atomic<ul class=" list-disc font-serif">
 <li class=" ml-8">std::memory_order_acquire: guarantees that subsequent loads are not moved before the current load or any preceding loads.</li>
 <li class=" ml-8">std::memory_order_release: preceding stores are not moved past the current store or any subsequent stores.</li>
-<li class=" ml-8"><code>x.load()</code>/<code>x.store()</code> &#20250;&#26681;&#25454; <a href="https://en.cppreference.com/w/cpp/atomic/memory_order" class=" text-amber-900">memory order</a> &#25554;&#20837; fence</li>
-<li class=" ml-8"><code>x.fetch_add()</code> &#23558;&#20250;&#20445;&#35777; cst (sequentially consistent)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#21435; <a href="https://godbolt.org/" class=" text-amber-900">godbolt</a> &#19978;&#35797;&#19968;&#19979;&#21543;</li>
+<li class=" ml-8"><code>x.load()</code>/<code>x.store()</code> 会根据 <a href="https://en.cppreference.com/w/cpp/atomic/memory_order" class=" text-amber-900">memory order</a> 插入 fence</li>
+<li class=" ml-8"><code>x.fetch_add()</code> 将会保证 cst (sequentially consistent)<ul class=" list-disc font-serif">
+<li class=" ml-8">去 <a href="https://godbolt.org/" class=" text-amber-900">godbolt</a> 上试一下吧</li>
 </ul>
 </li>
 </ul>
@@ -327,5 +328,6 @@ section .center {
 
 
 </body>
+
 
 </html>

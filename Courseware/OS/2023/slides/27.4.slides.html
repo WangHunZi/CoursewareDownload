@@ -1,10 +1,11 @@
 <!DOCTYPE html><html class="h-100">
 
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="../../../static/css/base.css" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com/"></script>
   <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
 
@@ -23,14 +24,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +210,7 @@ section .center {
 }
 </style>
 
-  <title>&#30446;&#24405;&#26641;&#31649;&#29702;</title>
+  <title>目录树管理</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,7 +228,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="27.4.slides.html" class=" text-amber-900">&#30446;&#24405;&#26641;&#31649;&#29702;</a></h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="27.4.slides.html" class=" text-amber-900">目录树管理</a></h1></div></div></div>
         
       
       </section>
@@ -238,8 +239,8 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#34394;&#25311;&#30913;&#30424;&#37027;&#20040;&#22810;&#65292;&#24590;&#20040;&#25214;&#21040;&#24819;&#35201;&#30340;&#65311;</h2>
-<p class=" font-serif my-1">&#20449;&#24687;&#30340;&#23616;&#37096;&#24615;&#65306;&#23558;&#34394;&#25311;&#30913;&#30424; (&#25991;&#20214;) &#32452;&#32455;&#25104;&#23618;&#27425;&#32467;&#26500;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">虚拟磁盘那么多，怎么找到想要的？</h2>
+<p class=" font-serif my-1">信息的局部性：将虚拟磁盘 (文件) 组织成层次结构</p>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/nju-lib.jpg" width="800px"></p></div>
         
       
@@ -251,19 +252,19 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#21033;&#29992;&#20449;&#24687;&#30340;&#23616;&#37096;&#24615;&#32452;&#32455;&#34394;&#25311;&#30913;&#30424;</h2>
-<p class=" font-serif my-1">&#30446;&#24405;&#26641;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">利用信息的局部性组织虚拟磁盘</h2>
+<p class=" font-serif my-1">目录树</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#36923;&#36753;&#30456;&#20851;&#30340;&#25968;&#25454;&#23384;&#25918;&#22312;&#30456;&#36817;&#30340;&#30446;&#24405;</li>
+<li class=" ml-8">逻辑相关的数据存放在相近的目录</li>
 </ul>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>.
-&#9492;&#9472;&#9472; &#23398;&#20064;&#36164;&#26009;
-    &#9500;&#9472;&#9472; .&#23398;&#20064;&#36164;&#26009;(&#38544;&#34255;)
-    &#9500;&#9472;&#9472; &#38382;&#39064;&#27714;&#35299;1
-    &#9500;&#9472;&#9472; &#38382;&#39064;&#27714;&#35299;2
-    &#9500;&#9472;&#9472; &#38382;&#39064;&#27714;&#35299;3
-    &#9500;&#9472;&#9472; &#38382;&#39064;&#27714;&#35299;4
-    &#9492;&#9472;&#9472; &#25805;&#20316;&#31995;&#32479;
+└── 学习资料
+    ├── .学习资料(隐藏)
+    ├── 问题求解1
+    ├── 问题求解2
+    ├── 问题求解3
+    ├── 问题求解4
+    └── 操作系统
 </code></pre></div></div>
         
       
@@ -275,26 +276,26 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25991;&#20214;&#31995;&#32479;&#30340; &#8220;&#26681;&#8221;</h2>
-<p class=" font-serif my-1">&#26641;&#24635;&#24471;&#26377;&#20010;&#26681;&#32467;&#28857;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">文件系统的 “根”</h2>
+<p class=" font-serif my-1">树总得有个根结点</p>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/IBM-PC-5150.jpg" width="350px"></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">Windows: &#27599;&#20010;<red>&#35774;&#22791;</red> (&#39537;&#21160;&#22120;) &#26159;&#19968;&#26869;&#26641;<ul class=" list-disc font-serif">
-<li class=" ml-8"><code>C:\</code> &#8220;C &#30424;&#26681;&#30446;&#24405;&#8221;<ul class=" list-disc font-serif">
+<li class=" ml-8">Windows: 每个<red>设备</red> (驱动器) 是一棵树<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>C:\</code> “C 盘根目录”<ul class=" list-disc font-serif">
 <li class=" ml-8"><code>C:\Program Files\</code>, <code>C:\Windows</code>, <code>C:\Users</code>, ...</li>
 </ul>
 </li>
-<li class=" ml-8">&#20248;&#30424;&#20998;&#37197;&#32473;&#26032;&#30340;&#30424;&#31526;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20026;&#20160;&#20040;&#27809;&#26377; <code>A:\</code>, <code>B:\</code>?</li>
-<li class=" ml-8">&#31616;&#21333;&#12289;&#31895;&#26292;&#12289;&#26041;&#20415;&#65292;&#20294; <code>game.iso</code> &#19968;&#24230;&#38750;&#24120;&#40635;&#28902;&#8230;&#8230;</li>
+<li class=" ml-8">优盘分配给新的盘符<ul class=" list-disc font-serif">
+<li class=" ml-8">为什么没有 <code>A:\</code>, <code>B:\</code>?</li>
+<li class=" ml-8">简单、粗暴、方便，但 <code>game.iso</code> 一度非常麻烦……</li>
 </ul>
 </li>
 </ul>
 </li>
 <li class=" ml-8">UNIX/Linux<ul class=" list-disc font-serif">
-<li class=" ml-8">&#21482;&#26377;&#19968;&#20010;&#26681; <code>/</code><ul class=" list-disc font-serif">
-<li class=" ml-8">&#31532;&#20108;&#20010;&#35774;&#22791;&#21602;&#65311;</li>
-<li class=" ml-8">&#20248;&#30424;&#21602;&#65311;&#65311;&#65311;</li>
+<li class=" ml-8">只有一个根 <code>/</code><ul class=" list-disc font-serif">
+<li class=" ml-8">第二个设备呢？</li>
+<li class=" ml-8">优盘呢？？？</li>
 </ul>
 </li>
 </ul>
@@ -310,20 +311,20 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#30446;&#24405;&#26641;&#30340;&#25340;&#25509;</h2>
-<p class=" font-serif my-1">UNIX: &#20801;&#35768;&#20219;&#24847;&#30446;&#24405; &#8220;&#25346;&#36733; (mount)&#8221; &#19968;&#20010;<red>&#35774;&#22791;</red>&#20195;&#34920;&#30340;&#30446;&#24405;&#26641;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">目录树的拼接</h2>
+<p class=" font-serif my-1">UNIX: 允许任意目录 “挂载 (mount)” 一个<red>设备</red>代表的目录树</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#38750;&#24120;&#28789;&#27963;&#30340;&#35774;&#35745;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#21487;&#20197;&#25226;&#35774;&#22791;&#25346;&#36733;&#21040;&#20219;&#20309;&#24819;&#35201;&#30340;&#20301;&#32622;</li>
-<li class=" ml-8">Linux &#23433;&#35013;&#26102;&#30340; &#8220;mount point&#8221;<ul class=" list-disc font-serif">
-<li class=" ml-8"><code>/</code>, <code>/home</code>, <code>/var</code> &#21487;&#20197;&#26159;&#29420;&#31435;&#30340;&#30913;&#30424;&#35774;&#22791;</li>
+<li class=" ml-8">非常灵活的设计<ul class=" list-disc font-serif">
+<li class=" ml-8">可以把设备挂载到任何想要的位置</li>
+<li class=" ml-8">Linux 安装时的 “mount point”<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>/</code>, <code>/home</code>, <code>/var</code> 可以是独立的磁盘设备</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">mount &#31995;&#32479;&#35843;&#29992;</p>
+<p class=" font-serif my-1">mount 系统调用</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">mount</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">source</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">target</span><span class="p">,</span>
 <span class="w">          </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">filesystemtype</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">mountflags</span><span class="p">,</span>
 <span class="w">          </span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">data</span><span class="p">);</span>
@@ -331,7 +332,7 @@ section .center {
 
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><code>mount /dev/sdb /mnt</code> (RTFM)<ul class=" list-disc font-serif">
-<li class=" ml-8">Linux mount &#24037;&#20855;&#33021;&#33258;&#21160;&#26816;&#27979;&#25991;&#20214;&#31995;&#32479; (busybox &#19981;&#33021;)</li>
+<li class=" ml-8">Linux mount 工具能自动检测文件系统 (busybox 不能)</li>
 </ul>
 </li>
 </ul></div>
@@ -345,18 +346,18 @@ section .center {
 
       
         
-        <div><h2 id="linux" class=" text-xl mt-2 pb-2 font-sans">&#30495;&#27491;&#30340; Linux &#21551;&#21160;&#27969;&#31243;</h2>
-<p class=" font-serif my-1">Linux-minimal &#36816;&#34892;&#22312; &#8220;initramfs&#8221; &#27169;&#24335;</p>
+        <div><h2 id="linux" class=" text-xl mt-2 pb-2 font-sans">真正的 Linux 启动流程</h2>
+<p class=" font-serif my-1">Linux-minimal 运行在 “initramfs” 模式</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">Initial RAM file system</li>
-<li class=" ml-8">&#23436;&#25972;&#30340;&#25991;&#20214;&#31995;&#32479;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#21487;&#20197;&#21253;&#21547;&#35774;&#22791;&#39537;&#21160;&#31561;&#20219;&#20309;&#25991;&#20214;</li>
-<li class=" ml-8">&#20294;&#19981;&#20855;&#26377; &#8220;&#25345;&#20037;&#21270;&#8221; &#30340;&#33021;&#21147;</li>
+<li class=" ml-8">完整的文件系统<ul class=" list-disc font-serif">
+<li class=" ml-8">可以包含设备驱动等任何文件</li>
+<li class=" ml-8">但不具有 “持久化” 的能力</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#26368;&#23567; &#8220;&#30495;&#27491;&#8221; Linux &#30340;&#21551;&#21160;&#27969;&#31243;</p>
+<p class=" font-serif my-1">最小 “真正” Linux 的启动流程</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span>/bin
 busybox<span class="w"> </span>mknod<span class="w"> </span>/dev/sda<span class="w"> </span>b<span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">0</span>
 busybox<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/newroot
@@ -364,7 +365,7 @@ busybox<span class="w"> </span>mount<span class="w"> </span>-t<span class="w"> <
 <span class="nb">exec</span><span class="w"> </span>busybox<span class="w"> </span>switch_root<span class="w"> </span>/newroot/<span class="w"> </span>/etc/init
 </code></pre></div>
 
-<p class=" font-serif my-1">&#36890;&#36807; <code>pivot_root</code> (2) &#23454;&#29616;&#26681;&#25991;&#20214;&#31995;&#32479;&#30340;&#20999;&#25442;</p></div>
+<p class=" font-serif my-1">通过 <code>pivot_root</code> (2) 实现根文件系统的切换</p></div>
         
       
       </section>
@@ -375,22 +376,22 @@ busybox<span class="w"> </span>mount<span class="w"> </span>-t<span class="w"> <
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25991;&#20214;&#30340;&#25346;&#36733;</h2>
-<p class=" font-serif my-1">&#25991;&#20214;&#30340;&#25346;&#36733;&#24341;&#20837;&#20102;&#19968;&#20010;&#24494;&#22937;&#30340;&#24490;&#29615;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">文件的挂载</h2>
+<p class=" font-serif my-1">文件的挂载引入了一个微妙的循环</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25991;&#20214; = &#30913;&#30424;&#19978;&#30340;&#34394;&#25311;&#30913;&#30424;</li>
-<li class=" ml-8">&#25346;&#36733;&#25991;&#20214; = &#22312;&#34394;&#25311;&#30913;&#30424;&#19978;&#34394;&#25311;&#20986;&#30340;&#34394;&#25311;&#30913;&#30424; &#129300;</li>
+<li class=" ml-8">文件 = 磁盘上的虚拟磁盘</li>
+<li class=" ml-8">挂载文件 = 在虚拟磁盘上虚拟出的虚拟磁盘 🤔</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">Linux &#30340;&#22788;&#29702;&#26041;&#24335;</p>
+<p class=" font-serif my-1">Linux 的处理方式</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#21019;&#24314;&#19968;&#20010; loopback (&#22238;&#29615;) &#35774;&#22791;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#35774;&#22791;&#39537;&#21160;&#25226;&#35774;&#22791;&#30340; read/write &#32763;&#35793;&#25104;&#25991;&#20214;&#30340; read/write</li>
+<li class=" ml-8">创建一个 loopback (回环) 设备<ul class=" list-disc font-serif">
+<li class=" ml-8">设备驱动把设备的 read/write 翻译成文件的 read/write</li>
 </ul>
 </li>
-<li class=" ml-8">&#35266;&#23519; <a href="../../../pages/OS/2021/demos/disk-img.tar.gz" class=" text-amber-900">disk-img.tar.gz</a> &#30340;&#25346;&#36733;<ul class=" list-disc font-serif">
-<li class=" ml-8">lsblk &#26597;&#30475;&#31995;&#32479;&#20013;&#30340; block devices (strace)</li>
-<li class=" ml-8">strace &#35266;&#23519;&#25346;&#36733;&#30340;&#27969;&#31243;<ul class=" list-disc font-serif">
+<li class=" ml-8">观察 <a href="../../../pages/OS/2021/demos/disk-img.tar.gzip" class=" text-amber-900">disk-img.tar.gz</a> 的挂载<ul class=" list-disc font-serif">
+<li class=" ml-8">lsblk 查看系统中的 block devices (strace)</li>
+<li class=" ml-8">strace 观察挂载的流程<ul class=" list-disc font-serif">
 <li class=" ml-8"><code>ioctl(3, LOOP_CTL_GET_FREE)</code></li>
 <li class=" ml-8"><code>ioctl(4, LOOP_SET_FD, 3)</code></li>
 </ul>
@@ -412,7 +413,7 @@ busybox<span class="w"> </span>mount<span class="w"> </span>-t<span class="w"> <
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
 <p class=" font-serif my-1">FHS enables <em>software and user</em> to predict the location of installed files and directories.</p>
 </blockquote>
-<p class=" font-serif my-1">&#20363;&#23376;&#65306;macOS &#26159; UNIX &#30340;&#20869;&#26680; (BSD), &#20294;&#19981;&#36981;&#24490; Linux FHS</p>
+<p class=" font-serif my-1">例子：macOS 是 UNIX 的内核 (BSD), 但不遵循 Linux FHS</p>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/fhs.jpg" width="700px"></p></div>
         
       
@@ -424,26 +425,26 @@ busybox<span class="w"> </span>mount<span class="w"> </span>-t<span class="w"> <
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#30446;&#24405;&#31649;&#29702;&#65306;&#21019;&#24314;/&#21024;&#38500;/&#36941;&#21382;</h2>
-<p class=" font-serif my-1">&#36825;&#20010;&#31616;&#21333;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">目录管理：创建/删除/遍历</h2>
+<p class=" font-serif my-1">这个简单</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">mkdir<ul class=" list-disc font-serif">
-<li class=" ml-8">&#21019;&#24314;&#19968;&#20010;&#30446;&#24405;</li>
-<li class=" ml-8">&#21487;&#20197;&#35774;&#32622;&#35775;&#38382;&#26435;&#38480;</li>
+<li class=" ml-8">创建一个目录</li>
+<li class=" ml-8">可以设置访问权限</li>
 </ul>
 </li>
 <li class=" ml-8">rmdir<ul class=" list-disc font-serif">
-<li class=" ml-8">&#21024;&#38500;&#19968;&#20010;&#31354;&#30446;&#24405;</li>
-<li class=" ml-8">&#27809;&#26377; &#8220;&#36882;&#24402;&#21024;&#38500;&#8221; &#30340;&#31995;&#32479;&#35843;&#29992;<ul class=" list-disc font-serif">
-<li class=" ml-8">(&#24212;&#29992;&#23618;&#33021;&#23454;&#29616;&#30340;&#65292;&#23601;&#19981;&#35201;&#22312;&#25805;&#20316;&#31995;&#32479;&#23618;&#23454;&#29616;)</li>
-<li class=" ml-8"><code>rm -rf</code> &#20250;&#36941;&#21382;&#30446;&#24405;&#65292;&#36880;&#20010;&#21024;&#38500; (&#35797;&#35797; strace)</li>
+<li class=" ml-8">删除一个空目录</li>
+<li class=" ml-8">没有 “递归删除” 的系统调用<ul class=" list-disc font-serif">
+<li class=" ml-8">(应用层能实现的，就不要在操作系统层实现)</li>
+<li class=" ml-8"><code>rm -rf</code> 会遍历目录，逐个删除 (试试 strace)</li>
 </ul>
 </li>
 </ul>
 </li>
 <li class=" ml-8">getdents<ul class=" list-disc font-serif">
-<li class=" ml-8">&#36820;&#22238; <code>count</code> &#20010;&#30446;&#24405;&#39033; (ls, find, tree &#37117;&#20351;&#29992;&#36825;&#20010;)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20197;&#28857;&#24320;&#22836;&#30340;&#30446;&#24405;&#20250;&#34987;&#31995;&#32479;&#35843;&#29992;&#36820;&#22238;&#65292;&#21482;&#26159; ls &#27809;&#26377;&#26174;&#31034;</li>
+<li class=" ml-8">返回 <code>count</code> 个目录项 (ls, find, tree 都使用这个)<ul class=" list-disc font-serif">
+<li class=" ml-8">以点开头的目录会被系统调用返回，只是 ls 没有显示</li>
 </ul>
 </li>
 </ul>
@@ -459,8 +460,8 @@ busybox<span class="w"> </span>mount<span class="w"> </span>-t<span class="w"> <
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26356;&#20154;&#31867;&#21451;&#22909;&#30340;&#30446;&#24405;&#35775;&#38382;&#26041;&#24335;</h2>
-<p class=" font-serif my-1">&#21512;&#36866;&#30340; API + &#21512;&#36866;&#30340;&#32534;&#31243;&#35821;&#35328;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">更人类友好的目录访问方式</h2>
+<p class=" font-serif my-1">合适的 API + 合适的编程语言</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><a href="https://www.gnu.org/software/libc/manual/html_node/Calling-Glob.html" class=" text-amber-900">Globbing</a></li>
 </ul>
@@ -480,26 +481,26 @@ busybox<span class="w"> </span>mount<span class="w"> </span>-t<span class="w"> <
 
       
         
-        <div><h2 id="hard" class=" text-xl mt-2 pb-2 font-sans">&#30828; (hard) &#38142;&#25509;</h2>
-<p class=" font-serif my-1">&#38656;&#27714;&#65306;&#31995;&#32479;&#20013;&#21487;&#33021;&#26377;&#21516;&#19968;&#20010;&#36816;&#34892;&#24211;&#30340;&#22810;&#20010;&#29256;&#26412;</p>
+        <div><h2 id="hard" class=" text-xl mt-2 pb-2 font-sans">硬 (hard) 链接</h2>
+<p class=" font-serif my-1">需求：系统中可能有同一个运行库的多个版本</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><code>libc-2.27.so</code>, <code>libc-2.26.so</code>, ...</li>
-<li class=" ml-8">&#36824;&#38656;&#35201;&#19968;&#20010; &#8220;&#24403;&#21069;&#29256;&#26412;&#30340; libc&#8221;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#31243;&#24207;&#38656;&#35201;&#38142;&#25509; &#8220;<code>libc.so.6</code>&#8221;&#65292;&#33021;&#21542;&#36991;&#20813;&#25991;&#20214;&#30340;&#19968;&#20221;&#25335;&#36125;&#65311;</li>
+<li class=" ml-8">还需要一个 “当前版本的 libc”<ul class=" list-disc font-serif">
+<li class=" ml-8">程序需要链接 “<code>libc.so.6</code>”，能否避免文件的一份拷贝？</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#30828;&#36830;&#25509;&#65306;&#20801;&#35768;&#19968;&#20010;&#25991;&#20214;&#34987;&#22810;&#20010;&#30446;&#24405;&#24341;&#29992;</p>
+<p class=" font-serif my-1">硬连接：允许一个文件被多个目录引用</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#30446;&#24405;&#20013;&#20165;&#23384;&#20648;&#25351;&#21521;&#25991;&#20214;&#25968;&#25454;&#30340;&#25351;&#38024;</li>
-<li class=" ml-8">&#38142;&#25509;&#30446;&#24405; &#10060;</li>
-<li class=" ml-8">&#36328;&#25991;&#20214;&#31995;&#32479; &#10060;</li>
+<li class=" ml-8">目录中仅存储指向文件数据的指针</li>
+<li class=" ml-8">链接目录 ❌</li>
+<li class=" ml-8">跨文件系统 ❌</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#22823;&#37096;&#20998; UNIX &#25991;&#20214;&#31995;&#32479;&#25152;&#26377;&#25991;&#20214;&#37117;&#26159;&#30828;&#36830;&#25509; (<code>ls -i</code> &#26597;&#30475;)</p>
+<p class=" font-serif my-1">大部分 UNIX 文件系统所有文件都是硬连接 (<code>ls -i</code> 查看)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#21024;&#38500;&#30340;&#31995;&#32479;&#35843;&#29992;&#31216;&#20026; &#8220;unlink&#8221; (&#24341;&#29992;&#35745;&#25968;)</li>
+<li class=" ml-8">删除的系统调用称为 “unlink” (引用计数)</li>
 </ul></div>
         
       
@@ -511,26 +512,26 @@ busybox<span class="w"> </span>mount<span class="w"> </span>-t<span class="w"> <
 
       
         
-        <div><h2 id="symbolic" class=" text-xl mt-2 pb-2 font-sans">&#36719; (symbolic) &#38142;&#25509;</h2>
-<p class=" font-serif my-1">&#36719;&#38142;&#25509;&#65306;&#22312;&#25991;&#20214;&#37324;&#23384;&#20648;&#19968;&#20010; &#8220;&#36339;&#36716;&#25552;&#31034;&#8221;</p>
+        <div><h2 id="symbolic" class=" text-xl mt-2 pb-2 font-sans">软 (symbolic) 链接</h2>
+<p class=" font-serif my-1">软链接：在文件里存储一个 “跳转提示”</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#36719;&#38142;&#25509;&#20063;&#26159;&#19968;&#20010;&#25991;&#20214;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#24403;&#24341;&#29992;&#36825;&#20010;&#25991;&#20214;&#26102;&#65292;&#21435;&#25214;&#21478;&#19968;&#20010;&#25991;&#20214;</li>
-<li class=" ml-8">&#21478;&#19968;&#20010;&#25991;&#20214;&#30340;&#32477;&#23545;/&#30456;&#23545;&#36335;&#24452;&#20197;&#25991;&#26412;&#24418;&#24335;&#23384;&#20648;&#22312;&#25991;&#20214;&#37324;</li>
-<li class=" ml-8">&#21487;&#20197;&#36328;&#25991;&#20214;&#31995;&#32479;&#12289;&#21487;&#20197;&#38142;&#25509;&#30446;&#24405;&#12289;&#8230;&#8230;</li>
+<li class=" ml-8">软链接也是一个文件<ul class=" list-disc font-serif">
+<li class=" ml-8">当引用这个文件时，去找另一个文件</li>
+<li class=" ml-8">另一个文件的绝对/相对路径以文本形式存储在文件里</li>
+<li class=" ml-8">可以跨文件系统、可以链接目录、……</li>
 </ul>
 </li>
-<li class=" ml-8">&#31867;&#20284; &#8220;&#24555;&#25463;&#26041;&#24335;&#8221;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#38142;&#25509;&#25351;&#21521;&#30340;&#20301;&#32622;&#24403;&#21069;&#19981;&#23384;&#22312;&#20063;&#27809;&#20851;&#31995;</li>
-<li class=" ml-8"><code>~/usb</code> &#8594; <code>/media/jyy-usb</code></li>
-<li class=" ml-8"><code>~/Desktop</code> &#8594; <code>/mnt/c/Users/jyy/Desktop</code> (WSL)</li>
+<li class=" ml-8">类似 “快捷方式”<ul class=" list-disc font-serif">
+<li class=" ml-8">链接指向的位置当前不存在也没关系</li>
+<li class=" ml-8"><code>~/usb</code> → <code>/media/jyy-usb</code></li>
+<li class=" ml-8"><code>~/Desktop</code> → <code>/mnt/c/Users/jyy/Desktop</code> (WSL)</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1"><code>ln -s</code> &#21019;&#24314;&#36719;&#38142;&#25509;</p>
+<p class=" font-serif my-1"><code>ln -s</code> 创建软链接</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><code>symlink</code> &#31995;&#32479;&#35843;&#29992;</li>
+<li class=" ml-8"><code>symlink</code> 系统调用</li>
 </ul></div>
         
       
@@ -542,25 +543,25 @@ busybox<span class="w"> </span>mount<span class="w"> </span>-t<span class="w"> <
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#36719;&#38142;&#25509;&#24102;&#26469;&#30340;&#40635;&#28902;</h2>
-<p class=" font-serif my-1">&#8220;&#20219;&#24847;&#38142;&#25509;&#8221; &#20801;&#35768;&#21019;&#24314;&#20219;&#24847;&#26377;&#21521;&#22270; &#128514;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">软链接带来的麻烦</h2>
+<p class=" font-serif my-1">“任意链接” 允许创建任意有向图 😂</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20801;&#35768;&#22810;&#27425;&#38388;&#25509;&#38142;&#25509;<ul class=" list-disc font-serif">
-<li class=" ml-8">a &#8594; b &#8594; c (&#36882;&#24402;&#35299;&#26512;)</li>
+<li class=" ml-8">允许多次间接链接<ul class=" list-disc font-serif">
+<li class=" ml-8">a → b → c (递归解析)</li>
 </ul>
 </li>
-<li class=" ml-8">&#21487;&#20197;&#21019;&#24314;&#36719;&#36830;&#25509;&#30340;&#30828;&#38142;&#25509; (&#22240;&#20026;&#36719;&#38142;&#25509;&#20063;&#26159;&#25991;&#20214;)<ul class=" list-disc font-serif">
-<li class=" ml-8"><code>ls -i</code> &#21487;&#20197;&#30475;&#21040; </li>
+<li class=" ml-8">可以创建软连接的硬链接 (因为软链接也是文件)<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>ls -i</code> 可以看到 </li>
 </ul>
 </li>
-<li class=" ml-8">&#20801;&#35768;&#25104;&#29615;<ul class=" list-disc font-serif">
+<li class=" ml-8">允许成环<ul class=" list-disc font-serif">
 <li class=" ml-8"><code>find -L A | tr -d '/'</code></li>
-<li class=" ml-8">&#21487;&#20197;&#20570;&#25104;&#19968;&#20010; &#8220;&#36855;&#23467;&#28216;&#25103;&#8221;<ul class=" list-disc font-serif">
-<li class=" ml-8">ssh &#36827;&#20837;&#28216;&#25103;&#65292;&#36827;&#20837;&#21517;&#20026; end &#30340;&#30446;&#24405;&#32988;&#21033;</li>
-<li class=" ml-8">&#21482;&#20801;&#35768; ls (-i), cd, pwd</li>
+<li class=" ml-8">可以做成一个 “迷宫游戏”<ul class=" list-disc font-serif">
+<li class=" ml-8">ssh 进入游戏，进入名为 end 的目录胜利</li>
+<li class=" ml-8">只允许 ls (-i), cd, pwd</li>
 </ul>
 </li>
-<li class=" ml-8">&#25152;&#26377;&#22788;&#29702;&#31526;&#21495;&#38142;&#25509;&#30340;&#31243;&#24207; (tree, find, ...) &#37117;&#35201;&#32771;&#34385;&#36882;&#24402;&#30340;&#24773;&#20917;</li>
+<li class=" ml-8">所有处理符号链接的程序 (tree, find, ...) 都要考虑递归的情况</li>
 </ul>
 </li>
 </ul></div>
@@ -593,5 +594,6 @@ busybox<span class="w"> </span>mount<span class="w"> </span>-t<span class="w"> <
 
 
 </body>
+
 
 </html>

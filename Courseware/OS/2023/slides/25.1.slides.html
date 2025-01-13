@@ -1,10 +1,11 @@
 <!DOCTYPE html><html class="h-100">
 
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="../../../static/css/base.css" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com/"></script>
   <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
 
@@ -23,14 +24,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +210,7 @@ section .center {
 }
 </style>
 
-  <title>&#23384;&#20648;&#31995;&#32479;&#21407;&#29702;</title>
+  <title>存储系统原理</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,7 +228,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="25.1.slides.html" class=" text-amber-900">&#23384;&#20648;&#31995;&#32479;&#21407;&#29702;</a></h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="25.1.slides.html" class=" text-amber-900">存储系统原理</a></h1></div></div></div>
         
       
       </section>
@@ -238,24 +239,24 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20026;&#20160;&#20040;&#20250;&#26377;&#20869;&#23384;&#21644;&#22806;&#23384;&#65311;</h2>
-<p class=" font-serif my-1">&#25105;&#20204;&#30340;&#29366;&#24577;&#26426; $(M, R)$</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">为什么会有内存和外存？</h2>
+<p class=" font-serif my-1">我们的状态机 $(M, R)$</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">Memory &#20869;&#23384;</li>
-<li class=" ml-8">Registers &#23492;&#23384;&#22120; (&#21407;&#21017;&#19978;&#21487;&#20197;&#19981;&#38656;&#35201;)</li>
+<li class=" ml-8">Memory 内存</li>
+<li class=" ml-8">Registers 寄存器 (原则上可以不需要)</li>
 </ul>
 <hr>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/mechanical-tm.jpg" width="400px"></p>
-<p class=" font-serif my-1">&#23384;&#20648; &#8220;&#24403;&#21069;&#29366;&#24577;&#8221; &#30340;&#38656;&#27714;</p>
+<p class=" font-serif my-1">存储 “当前状态” 的需求</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#21487;&#20197;&#23547;&#22336;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#26681;&#25454;&#32534;&#21495;&#35835;&#20889;&#25968;&#25454;</li>
+<li class=" ml-8">可以寻址<ul class=" list-disc font-serif">
+<li class=" ml-8">根据编号读写数据</li>
 </ul>
 </li>
-<li class=" ml-8">&#35775;&#38382;&#36895;&#24230;&#23613;&#21487;&#33021;&#24555;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#36234;&#24555;&#23601;&#24847;&#21619;&#30528;&#36234;&#38590; persist</li>
-<li class=" ml-8">&#24178;&#23384;&#20801;&#35768;<red>&#29366;&#24577;&#22312;&#25481;&#30005;&#21518;&#20002;&#22833;</red><ul class=" list-disc font-serif">
-<li class=" ml-8">&#26426;&#26800;&#29609;&#20855;&#23601;&#27809;&#26377;&#36825;&#20010;&#28902;&#24700;</li>
+<li class=" ml-8">访问速度尽可能快<ul class=" list-disc font-serif">
+<li class=" ml-8">越快就意味着越难 persist</li>
+<li class=" ml-8">干存允许<red>状态在掉电后丢失</red><ul class=" list-disc font-serif">
+<li class=" ml-8">机械玩具就没有这个烦恼</li>
 </ul>
 </li>
 </ul>
@@ -271,25 +272,25 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#8220;&#24403;&#21069;&#29366;&#24577;&#8221; &#30340;&#23384;&#20648;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">“当前状态” 的存储</h2>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/throw-ball.gif" width="300px"></p>
-<p class=" font-serif my-1">Delay line: &#32499;&#23376;</p>
+<p class=" font-serif my-1">Delay line: 绳子</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#22240;&#20026;&#20449;&#21495;&#34928;&#20943;&#65292;&#38656;&#35201;&#25345;&#32493;&#25918;&#22823;</li>
+<li class=" ml-8">因为信号衰减，需要持续放大</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">Magnetic core: <a href="https://corememoryshield.com/index.html" class=" text-amber-900">&#30913;&#38081;</a></p>
+<p class=" font-serif my-1">Magnetic core: <a href="https://corememoryshield.com/index.html" class=" text-amber-900">磁铁</a></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#8220;Segmentation fault (core dumped)&#8221;</li>
-<li class=" ml-8">&#20160;&#20040;&#26159; core dump&#65311;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#19968;&#31181; non-volatile memory <img alt="" class="float-right" src="../../../pages/OS/img/core-memory.jpg" width="300px"></li>
+<li class=" ml-8">“Segmentation fault (core dumped)”</li>
+<li class=" ml-8">什么是 core dump？<ul class=" list-disc font-serif">
+<li class=" ml-8">一种 non-volatile memory <img alt="" class="float-right" src="../../../pages/OS/img/core-memory.jpg" width="300px"></li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">SRAM/DRAM: Flip-Flop &#21644;&#30005;&#23481;</p>
+<p class=" font-serif my-1">SRAM/DRAM: Flip-Flop 和电容</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20170;&#22825;&#30340;&#23454;&#29616;&#26041;&#26696;</li>
+<li class=" ml-8">今天的实现方案</li>
 </ul></div>
         
       
@@ -301,20 +302,20 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#24320;&#22987;&#25345;&#20037;&#21270;&#20043;&#26053;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">开始持久化之旅</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">Persistence: &#8220;<em>A firm or obstinate continuance in a course of action in spite of difficulty or opposition</em>.&#8221;</p>
-<p class=" font-serif my-1"><red>&#38500;&#20102; &#8220;&#24403;&#21069;&#29366;&#24577;&#8221;&#65292;&#25105;&#20204;&#24076;&#26395;&#26356;&#22823;&#12289;&#26356;&#22810;&#30340;&#25968;&#25454;&#33021; &#8220;&#30041;&#19979;&#26469;&#8221;</red> (&#24182;&#19988;&#34987;&#25805;&#20316;&#31995;&#32479;&#26377;&#25928;&#22320;&#31649;&#29702;&#36215;&#26469;)</p>
+<p class=" font-serif my-1">Persistence: “<em>A firm or obstinate continuance in a course of action in spite of difficulty or opposition</em>.”</p>
+<p class=" font-serif my-1"><red>除了 “当前状态”，我们希望更大、更多的数据能 “留下来”</red> (并且被操作系统有效地管理起来)</p>
 </blockquote>
-<p class=" font-serif my-1">&#25345;&#20037;&#21270;&#30340;&#31532;&#19968;&#35838;&#65306;&#25345;&#20037;&#23384;&#20648;&#20171;&#36136;</p>
+<p class=" font-serif my-1">持久化的第一课：持久存储介质</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#26500;&#25104;&#19968;&#20999;&#25991;&#20214;&#30340;&#22522;&#30784;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#36923;&#36753;&#19978;&#26159;&#19968;&#20010; bit/byte array</li>
-<li class=" ml-8">&#26681;&#25454;&#23616;&#37096;&#24615;&#21407;&#29702;&#65292;&#20801;&#35768;&#25105;&#20204;&#25353; &#8220;&#22823;&#22359;&#8221; &#35835;&#20889;</li>
+<li class=" ml-8">构成一切文件的基础<ul class=" list-disc font-serif">
+<li class=" ml-8">逻辑上是一个 bit/byte array</li>
+<li class=" ml-8">根据局部性原理，允许我们按 “大块” 读写</li>
 </ul>
 </li>
-<li class=" ml-8">&#35780;&#20215;&#26041;&#27861;&#65306;&#20215;&#26684;&#12289;&#23481;&#37327;&#12289;&#36895;&#24230;&#12289;&#21487;&#38752;&#24615;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20877;&#27425;&#35265;&#35777;&#20154;&#31867;&#25991;&#26126;&#30340;&#39640;&#20809;&#26102;&#21051;&#65281;</li>
+<li class=" ml-8">评价方法：价格、容量、速度、可靠性<ul class=" list-disc font-serif">
+<li class=" ml-8">再次见证人类文明的高光时刻！</li>
 </ul>
 </li>
 </ul></div>
@@ -347,5 +348,6 @@ section .center {
 
 
 </body>
+
 
 </html>

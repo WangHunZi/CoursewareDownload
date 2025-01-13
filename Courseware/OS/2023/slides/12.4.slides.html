@@ -1,10 +1,11 @@
 <!DOCTYPE html><html class="h-100">
 
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="../../../static/css/base.css" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com/"></script>
   <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
 
@@ -23,14 +24,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +210,7 @@ section .center {
 }
 </style>
 
-  <title>&#21407;&#23376;&#24615;&#21644;&#39034;&#24207;&#36829;&#21453;</title>
+  <title>原子性和顺序违反</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,7 +228,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="12.4.slides.html" class=" text-amber-900">&#21407;&#23376;&#24615;&#21644;&#39034;&#24207;&#36829;&#21453;</a></h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="12.4.slides.html" class=" text-amber-900">原子性和顺序违反</a></h1></div></div></div>
         
       
       </section>
@@ -238,27 +239,27 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#24182;&#21457;&#32534;&#31243;&#30340;&#26412;&#36136;</h2>
-<p class=" font-serif my-1">&#20154;&#31867;&#26159; sequential creature</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">并发编程的本质</h2>
+<p class=" font-serif my-1">人类是 sequential creature</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25105;&#20204;&#21482;&#33021;&#29992; sequential &#30340;&#26041;&#24335;&#26469;&#29702;&#35299;&#24182;&#21457;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#31243;&#24207;&#20998;&#25104;&#33509;&#24178; &#8220;&#22359;&#8221;&#65292;&#27599;&#19968;&#22359;&#30475;&#36215;&#26469;&#37117;&#27809;&#34987;&#25171;&#26029; (&#21407;&#23376;)</li>
-<li class=" ml-8">&#20855;&#26377;&#36923;&#36753;&#20808;&#21518;&#30340; &#8220;&#22359;&#8221; &#34987;&#27491;&#30830;&#21516;&#27493;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20363;&#23376;&#65306;produce &#8594; (happens-before) &#8594; consume</li>
+<li class=" ml-8">我们只能用 sequential 的方式来理解并发<ul class=" list-disc font-serif">
+<li class=" ml-8">程序分成若干 “块”，每一块看起来都没被打断 (原子)</li>
+<li class=" ml-8">具有逻辑先后的 “块” 被正确同步<ul class=" list-disc font-serif">
+<li class=" ml-8">例子：produce → (happens-before) → consume</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#24182;&#21457;&#25511;&#21046;&#30340;&#26426;&#21046;&#23436;&#20840;&#26159; &#8220;&#21518;&#26524;&#33258;&#36127;&#8221; &#30340;</p>
+<p class=" font-serif my-1">并发控制的机制完全是 “后果自负” 的</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20114;&#26021;&#38145; (lock/unlock) &#23454;&#29616;&#21407;&#23376;&#24615;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#24536;&#35760;&#19978;&#38145;&#8212;&#8212;&#21407;&#23376;&#24615;&#36829;&#21453; (Atomicity Violation, AV)</li>
+<li class=" ml-8">互斥锁 (lock/unlock) 实现原子性<ul class=" list-disc font-serif">
+<li class=" ml-8">忘记上锁——原子性违反 (Atomicity Violation, AV)</li>
 </ul>
 </li>
-<li class=" ml-8">&#26465;&#20214;&#21464;&#37327;/&#20449;&#21495;&#37327; (wait/signal) &#23454;&#29616;&#20808;&#21518;&#39034;&#24207;&#21516;&#27493;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#24536;&#35760;&#21516;&#27493;&#8212;&#8212;&#39034;&#24207;&#36829;&#21453; (Order Violation, OV)</li>
+<li class=" ml-8">条件变量/信号量 (wait/signal) 实现先后顺序同步<ul class=" list-disc font-serif">
+<li class=" ml-8">忘记同步——顺序违反 (Order Violation, OV)</li>
 </ul>
 </li>
 </ul></div>
@@ -272,19 +273,19 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#37027;&#20040;&#65292;&#31243;&#24207;&#21592;&#29992;&#30340;&#23545;&#19981;&#23545;&#21602;&#65311;</h2>
-<p class=" font-serif my-1">&#8220;Empirical study&#8221; &#23454;&#35777;&#30740;&#31350;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">那么，程序员用的对不对呢？</h2>
+<p class=" font-serif my-1">“Empirical study” 实证研究</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25910;&#38598;&#20102; 105 &#20010;&#30495;&#23454;&#31995;&#32479;&#30340;&#24182;&#21457; bugs<ul class=" list-disc font-serif">
+<li class=" ml-8">收集了 105 个真实系统的并发 bugs<ul class=" list-disc font-serif">
 <li class=" ml-8">MySQL (14/9), Apache (13/4), Mozilla (41/16), OpenOffice (6/2)</li>
-<li class=" ml-8">&#35266;&#23519;&#26159;&#21542;&#23384;&#22312;&#26377;&#24847;&#20041;&#30340;&#32467;&#35770;</li>
+<li class=" ml-8">观察是否存在有意义的结论</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1"><red>97% &#30340;&#38750;&#27515;&#38145;&#24182;&#21457; bug &#37117;&#26159;&#21407;&#23376;&#24615;&#25110;&#39034;&#24207;&#38169;&#35823;</red></p>
+<p class=" font-serif my-1"><red>97% 的非死锁并发 bug 都是原子性或顺序错误</red></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#8220;&#20154;&#31867;&#30340;&#30830;&#26159; sequential creature&#8221;</li>
+<li class=" ml-8">“人类的确是 sequential creature”</li>
 <li class=" ml-8"><a href="https://dl.acm.org/doi/10.1145/1346281.1346323" class=" text-amber-900">Learning from mistakes - A comprehensive study on real world concurrency bug characteristics</a> (ASPLOS'08, Most Influential Paper Award)</li>
 </ul></div>
         
@@ -297,13 +298,13 @@ section .center {
 
       
         
-        <div><h2 id="av" class=" text-xl mt-2 pb-2 font-sans">&#21407;&#23376;&#24615;&#36829;&#21453; (AV)</h2>
-<p class=" font-serif my-1">&#8220;ABA&#8221;</p>
+        <div><h2 id="av" class=" text-xl mt-2 pb-2 font-sans">原子性违反 (AV)</h2>
+<p class=" font-serif my-1">“ABA”</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25105;&#20197;&#20026;&#19968;&#27573;&#20195;&#30721;&#27809;&#21861;&#20107;&#21602;&#65292;&#20294;&#34987;&#20154;&#24378;&#21183;&#25554;&#20837;&#20102;</li>
-<li class=" ml-8">&#21363;&#20415;&#20998;&#21035;&#19978;&#38145; (&#28040;&#38500;&#25968;&#25454;&#31454;&#20105;)&#65292;&#20381;&#28982;&#26159; AV<ul class=" list-disc font-serif">
-<li class=" ml-8">Diablo I &#37324;&#22797;&#21046;&#29289;&#21697;&#30340;&#20363;&#23376;</li>
-<li class=" ml-8">Therac-25 &#20013; &#8220;&#31227;&#21160; Mirror + &#35774;&#32622;&#29366;&#24577;&#8221;</li>
+<li class=" ml-8">我以为一段代码没啥事呢，但被人强势插入了</li>
+<li class=" ml-8">即便分别上锁 (消除数据竞争)，依然是 AV<ul class=" list-disc font-serif">
+<li class=" ml-8">Diablo I 里复制物品的例子</li>
+<li class=" ml-8">Therac-25 中 “移动 Mirror + 设置状态”</li>
 </ul>
 </li>
 </ul>
@@ -318,14 +319,14 @@ section .center {
 
       
         
-        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">&#21407;&#23376;&#24615;&#36829;&#21453; (cont'd)</h2>
-<p class=" font-serif my-1">&#25805;&#20316;&#31995;&#32479;&#20013;&#36824;&#26377;&#26356;&#22810;&#30340;&#20849;&#20139;&#29366;&#24577;</p>
+        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">原子性违反 (cont'd)</h2>
+<p class=" font-serif my-1">操作系统中还有更多的共享状态</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#8220;TOCTTOU&#8221; - time of check to time of use</li>
+<li class=" ml-8">“TOCTTOU” - time of check to time of use</li>
 </ul>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/tocttou.png" width="640px"></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><a href="https://www.usenix.org/legacy/events/fast05/tech/full_papers/wei/wei.pdf" class=" text-amber-900">TOCTTOU vulnerabilities in UNIX-style file systems: An anatomical study</a> (FAST'05); &#25105;&#20204;&#21487;&#20197;&#29992;&#36827;&#31243;&#27169;&#22411;&#22797;&#29616;&#36825;&#20010;&#38382;&#39064;&#65281;</li>
+<li class=" ml-8"><a href="https://www.usenix.org/legacy/events/fast05/tech/full_papers/wei/wei.pdf" class=" text-amber-900">TOCTTOU vulnerabilities in UNIX-style file systems: An anatomical study</a> (FAST'05); 我们可以用进程模型复现这个问题！</li>
 </ul></div>
         
       
@@ -337,11 +338,11 @@ section .center {
 
       
         
-        <div><h2 id="ov" class=" text-xl mt-2 pb-2 font-sans">&#39034;&#24207;&#36829;&#21453; (OV)</h2>
-<p class=" font-serif my-1">&#8220;BA&#8221;</p>
+        <div><h2 id="ov" class=" text-xl mt-2 pb-2 font-sans">顺序违反 (OV)</h2>
+<p class=" font-serif my-1">“BA”</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#24590;&#20040;&#23601;&#27809;&#25353;&#25105;&#39044;&#24819;&#30340;&#39034;&#24207;&#26469;&#21602;&#65311;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20363;&#23376;&#65306;concurrent use after free  </li>
+<li class=" ml-8">怎么就没按我预想的顺序来呢？<ul class=" list-disc font-serif">
+<li class=" ml-8">例子：concurrent use after free  </li>
 </ul>
 </li>
 </ul>
@@ -375,5 +376,6 @@ section .center {
 
 
 </body>
+
 
 </html>

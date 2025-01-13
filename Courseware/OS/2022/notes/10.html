@@ -1,10 +1,11 @@
 <!DOCTYPE html><html class="h-100">
 
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="../../../static/css/base.css" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com/"></script>
   <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
 
@@ -23,14 +24,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -137,7 +138,7 @@ hr {
 </style>
 
 
-  <title>&#26412;&#21608;&#38405;&#35835;&#26448;&#26009;</title>
+  <title>本周阅读材料</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -148,29 +149,29 @@ hr {
 
 <div class="px-2 py-1 w-full fixed z-50 bg-gradient-to-r from-black via-purple-700 via-purple-500 shadow-lg" style="-webkit-backdrop-filter: saturate(150%) blur(4px); backdrop-filter: saturate(150%) blur(4px)">
   <form>
-    <a href="../../../index.html"><span class="text-lg px-2 text-white">Yanyan's Wiki</span></a>
-    <a href="../../2023/index.html"><span class="text-sm px-2 text-white">&#25805;&#20316;&#31995;&#32479; (2023)</span></a>
+    <a href="../../../index-2.html"><span class="text-lg px-2 text-white">Yanyan's Wiki</span></a>
+    <a href="../../2023/index.html"><span class="text-sm px-2 text-white">操作系统 (2023)</span></a>
     <input maxlength="9" id="token-input" class="float-right appearance-none border border-transparent px-2 py-1 w-20 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-xs focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent font-mono" type="text" placeholder="TOKEN" oninput="login();">
   </form>
 </div>
 
 <div class="article container mx-auto md:px-8 lg:px-8 xl:px-8 2xl:px-8 shadow-lg border pb-8 pt-10 max-w-screen-md text-justify divide-y-2 divide-white">
-  <div><h1 id="_1" class=" text-2xl mt-2 font-sans">&#26412;&#21608;&#38405;&#35835;&#26448;&#26009;</h1>
-<h2 id="xv6" class=" text-xl mt-2 pb-2 font-sans">&#38405;&#35835;&#21644;&#35843;&#35797; xv6 &#20195;&#30721;</h2>
-<p class=" font-serif my-1">&#39318;&#20808;&#65292;&#30830;&#20445;&#20320;&#23436;&#25972;&#20102;&#27491;&#30830;&#30340;&#37197;&#32622;&#65292;&#29702;&#35299; xv6 &#30340; Makefile&#65292;&#20934;&#22791;&#22909;&#24037;&#20855;&#26159;&#19968;&#20999;&#30340;&#22522;&#30784;&#65292;&#20363;&#22914;&#20320;&#21487;&#20197;&#37197;&#32622; vscode&#65292;&#25110;&#32773;&#20219;&#20309;&#20320;&#21916;&#27426;&#30340; IDE&#65292;&#37197;&#32622;&#23436;&#25104;&#21518;&#21487;&#20197;&#33258;&#30001;&#22320;&#36339;&#36716;&#21644;&#35843;&#35797;&#65306;</p>
+  <div><h1 id="_1" class=" text-2xl mt-2 font-sans">本周阅读材料</h1>
+<h2 id="xv6" class=" text-xl mt-2 pb-2 font-sans">阅读和调试 xv6 代码</h2>
+<p class=" font-serif my-1">首先，确保你完整了正确的配置，理解 xv6 的 Makefile，准备好工具是一切的基础，例如你可以配置 vscode，或者任何你喜欢的 IDE，配置完成后可以自由地跳转和调试：</p>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/xv6-vscode.png" width="640px"></p>
-<p class=" font-serif my-1">&#24403;&#28982;&#65292;&#22914;&#26524;&#20320;&#21916;&#27426; gdb TUI&#65292;&#23427;&#26356;&#31283;&#23450;&#65292;&#23450;&#21046;&#36215;&#26469;&#20063;&#26356;&#23481;&#26131;&#19968;&#20123; (&#20363;&#22914;&#21487;&#20197;&#20351;&#29992; Python &#23450;&#21046;)&#65292;&#20351;&#29992; IDE &#20598;&#23572;&#20250;&#26377;&#19968;&#20123;&#23567;&#25705;&#25830;&#8212;&#8212;&#20320;&#21487;&#33021;&#38656;&#35201;&#19968;&#20123;&#39069;&#22806;&#30340;&#37197;&#32622;&#12290;</p>
-<p class=" font-serif my-1">&#28982;&#21518;&#65292;&#30830;&#20445;&#20320;&#29702;&#35299;&#20102; xv6 &#31995;&#32479;&#35843;&#29992;&#30340;&#36807;&#31243;&#21644;&#31995;&#32479;&#35843;&#29992;&#36820;&#22238;&#30340;&#36807;&#31243; (&#19978;&#35838;&#26102;&#25105;&#20204;&#25552;&#21040;&#31995;&#32479;&#35843;&#29992;&#36820;&#22238;&#26159;&#31995;&#32479;&#35843;&#29992;&#30340;&#36870;&#36807;&#31243;&#65307;&#20294;&#20854;&#20013; xv6 &#36824;&#25552;&#20379;&#20102;&#31934;&#24039;&#30340;&#35843;&#24230;&#31639;&#27861;&#65292;&#35831;&#22823;&#23478;&#21153;&#24517;&#21442;&#32771;&#25163;&#20876;&#29702;&#35299;&#20854;&#20013;&#31934;&#22937;)&#12290;</p>
+<p class=" font-serif my-1">当然，如果你喜欢 gdb TUI，它更稳定，定制起来也更容易一些 (例如可以使用 Python 定制)，使用 IDE 偶尔会有一些小摩擦——你可能需要一些额外的配置。</p>
+<p class=" font-serif my-1">然后，确保你理解了 xv6 系统调用的过程和系统调用返回的过程 (上课时我们提到系统调用返回是系统调用的逆过程；但其中 xv6 还提供了精巧的调度算法，请大家务必参考手册理解其中精妙)。</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#38468;&#25163;&#20876;&#65306;<a href="../../../pages/OS/manuals/xv6-riscv-rev2.pdf" class=" text-amber-900">xv6: A simple, Unix-like teaching operating system</a></li>
+<li class=" ml-8">附手册：<a href="../../../pages/OS/manuals/xv6-riscv-rev2.pdf" class=" text-amber-900">xv6: A simple, Unix-like teaching operating system</a></li>
 </ul>
-<p class=" font-serif my-1">&#20320;&#22312;&#20570;&#25805;&#20316;&#31995;&#32479;&#23454;&#39564;&#26102;&#36935;&#21040;&#20219;&#20309;&#22256;&#38590;&#65292;&#37117;&#21487;&#20197;&#21442;&#32771; xv6 &#30340;&#23454;&#29616;&#65281;</p></div>
+<p class=" font-serif my-1">你在做操作系统实验时遇到任何困难，都可以参考 xv6 的实现！</p></div>
 </div>
 
 <div class="container text-xs py-3">
   <span class="text-muted">
     <center><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="../../../static/img/cc-4.0.png"></a>
-    &#160;&#160;&#160;<a style="color:inherit" href="https://beian.miit.gov.cn/">&#33487; ICP &#22791; 2020049101 &#21495;</a>
+       <a style="color:inherit" href="https://beian.miit.gov.cn/">苏 ICP 备 2020049101 号</a>
     </center>
   </span>
 </div>
@@ -203,5 +204,6 @@ function login() {
 
 
 </body>
+
 
 </html>

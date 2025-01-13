@@ -1,10 +1,11 @@
 <!DOCTYPE html><html class="h-100">
 
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="../../../static/css/base.css" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com/"></script>
   <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
 
@@ -23,14 +24,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +210,7 @@ section .center {
 }
 </style>
 
-  <title>&#127798;&#65039; ELF &#21160;&#24577;&#38142;&#25509;&#19982;&#21152;&#36733;</title>
+  <title>🌶️ ELF 动态链接与加载</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,7 +228,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="elf" class=" text-2xl mt-2 font-sans"><a href="22.2.slides.html" class=" text-amber-900">&#65039;&#127798;&#65039; ELF &#21160;&#24577;&#38142;&#25509;&#19982;&#21152;&#36733;</a></h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="elf" class=" text-2xl mt-2 font-sans"><a href="22.2.slides.html" class=" text-amber-900">️🌶️ ELF 动态链接与加载</a></h1></div></div></div>
         
       
       </section>
@@ -239,20 +240,20 @@ section .center {
       
         
         <div><h2 id="executable-linkable-format" class=" text-xl mt-2 pb-2 font-sans">Executable Linkable Format</h2>
-<p class=" font-serif my-1">ELF &#21644; &#8220;dl&#8221; &#27809;&#26377;&#26412;&#36136;&#21306;&#21035;</p>
+<p class=" font-serif my-1">ELF 和 “dl” 没有本质区别</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#24403;&#28982;&#65292;&#26377;&#28023;&#37327;&#24037;&#31243;&#23454;&#36341;&#19978;&#30340;&#32454;&#33410;</li>
-<li class=" ml-8">&#19982; 99.9% &#30340;&#31243;&#24207;&#21592;&#26080;&#20851;</li>
+<li class=" ml-8">当然，有海量工程实践上的细节</li>
+<li class=" ml-8">与 99.9% 的程序员无关</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#8220;&#29366;&#24577;&#26426;&#21021;&#22987;&#29366;&#24577;&#8221; &#8594; &#33021;&#22815;&#21487;&#35270;&#21270;</p>
+<p class=" font-serif my-1">“状态机初始状态” → 能够可视化</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">ldd - Print shared object dependencies<ul class=" list-disc font-serif">
-<li class=" ml-8">SEE ALSO &#19968;&#30452;&#26159;&#25163;&#20876;&#37324;&#30340;&#23453;&#34255;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20063;&#35768;&#26377;&#19968;&#20010;&#26356;&#22909;&#30340; &#8220;&#30693;&#35782;&#32593;&#32476;&#8221;&#65311;</li>
+<li class=" ml-8">SEE ALSO 一直是手册里的宝藏<ul class=" list-disc font-serif">
+<li class=" ml-8">也许有一个更好的 “知识网络”？</li>
 </ul>
 </li>
-<li class=" ml-8">&#25351;&#21521;&#20102; ld.so (8)</li>
+<li class=" ml-8">指向了 ld.so (8)</li>
 </ul>
 </li>
 </ul></div>
@@ -266,19 +267,19 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26356;&#22810;&#30340;&#32454;&#33410;</h2>
-<p class=" font-serif my-1">&#23545;&#20110;&#19968;&#20010;&#21160;&#24577;&#38142;&#25509;&#30340;&#20108;&#36827;&#21046;&#25991;&#20214;&#65292;execve &#21518;&#30340;&#31532;&#19968;&#26465;&#25351;&#20196;&#22312;&#21738;&#37324;&#65311;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">更多的细节</h2>
+<p class=" font-serif my-1">对于一个动态链接的二进制文件，execve 后的第一条指令在哪里？</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#36825;&#31181;&#38382;&#39064;&#65292;&#20877;&#20063;&#19981;&#38656;&#35201;&#32769;&#24072;&#25945;&#20102;<ul class=" list-disc font-serif">
+<li class=" ml-8">这种问题，再也不需要老师教了<ul class=" list-disc font-serif">
 <li class=" ml-8">What are the first a few steps exected after execve() of a ELF dynamic link binary?</li>
 <li class=" ml-8">How can I compile an ELF binary that use an alternative dynamic loader than the default ld.so?<ul class=" list-disc font-serif">
-<li class=" ml-8">&#25105;&#20204;&#31435;&#21363;&#21487;&#20197;&#20570;&#19968;&#20010;&#23454;&#39564;&#65292;&#30475; GPT &#32473;&#25105;&#20204;&#30340;&#31572;&#26696;&#23545;&#19981;&#23545;</li>
+<li class=" ml-8">我们立即可以做一个实验，看 GPT 给我们的答案对不对</li>
 </ul>
 </li>
-<li class=" ml-8">&#20174;&#27492; &#8220;&#30693;&#35782;&#8221; &#19981;&#20877;&#26159;&#22721;&#22418;&#21644;&#31105;&#21306;</li>
+<li class=" ml-8">从此 “知识” 不再是壁垒和禁区</li>
 </ul>
 </li>
-<li class=" ml-8">&#28982;&#21518; readelf &#30340;&#36755;&#20986;&#23601;&#33021; &#8220;&#30475;&#24471;&#25026;&#8221; &#20102;</li>
+<li class=" ml-8">然后 readelf 的输出就能 “看得懂” 了</li>
 </ul></div>
         
       
@@ -290,7 +291,7 @@ section .center {
 
       
         
-        <div><h2 id="plt" class=" text-xl mt-2 pb-2 font-sans">&#37325;&#26032;&#24605;&#32771; PLT &#30340;&#35774;&#35745;</h2>
+        <div><h2 id="plt" class=" text-xl mt-2 pb-2 font-sans">重新思考 PLT 的设计</h2>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>puts@PLT:
   endbr64
   bnd jmpq *GOT[n]  // *offset(%rip)
@@ -298,20 +299,20 @@ section .center {
 
 <ul class=" list-disc font-serif">
 <li class=" ml-8">What is the bnd prefix for jmp instruction in x86-64?<ul class=" list-disc font-serif">
-<li class=" ml-8">Intel MPX (&#19968;&#20010;&#20598;&#28982;&#30340;&#26426;&#20250;&#65292;&#31435;&#21363;&#36827;&#20837;&#29616;&#20195;&#25805;&#20316;&#31995;&#32479;&#30340;&#39046;&#22495;)</li>
+<li class=" ml-8">Intel MPX (一个偶然的机会，立即进入现代操作系统的领域)</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#19968;&#20010;&#26377;&#36259; (&#19988;&#26681;&#26412;) &#30340;&#38382;&#39064;</p>
+<p class=" font-serif my-1">一个有趣 (且根本) 的问题</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#24211;&#20989;&#25968;&#35843;&#29992;&#30475;&#36215;&#26469; &#8220;&#24456;&#28010;&#36153;&#8221;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#36830;&#32493;&#30340;&#36339;&#36716;</li>
+<li class=" ml-8">库函数调用看起来 “很浪费”<ul class=" list-disc font-serif">
+<li class=" ml-8">连续的跳转</li>
 </ul>
 </li>
-<li class=" ml-8">&#20026;&#20160;&#20040;&#19981;&#22312;&#21152;&#36733;&#26102;&#25191;&#34892;&#38745;&#24577;&#38142;&#25509;&#65311;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#25226;&#25351;&#20196;&#20013;&#30340;&#31435;&#21363;&#25968;&#26367;&#25442;&#25104;&#36339;&#36716;&#22320;&#22336;&#65292;&#36825;&#26679;&#23601;&#36991;&#20813;&#20102;&#26597;&#34920;&#65311;</li>
-<li class=" ml-8">(&#36825;&#20040;&#20570;&#26377;&#20160;&#20040;&#24433;&#21709;&#65311;)</li>
+<li class=" ml-8">为什么不在加载时执行静态链接？<ul class=" list-disc font-serif">
+<li class=" ml-8">把指令中的立即数替换成跳转地址，这样就避免了查表？</li>
+<li class=" ml-8">(这么做有什么影响？)</li>
 </ul>
 </li>
 </ul></div>
@@ -325,22 +326,22 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20195;&#30721;&#35299;&#20915;&#20102;&#65292;&#25968;&#25454;&#21602;&#65311;</h2>
-<p class=" font-serif my-1">&#22914;&#26524;&#25105;&#33258;&#24049;&#30340;&#20849;&#20139;&#24211;&#35201;&#20351;&#29992;&#25968;&#25454;&#65311;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">代码解决了，数据呢？</h2>
+<p class=" font-serif my-1">如果我自己的共享库要使用数据？</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">extern</span><span class="w"> </span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">stdout</span><span class="p">;</span>
 <span class="k">extern</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">__lib_private</span><span class="p">;</span>
 </code></pre></div>
 
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#23545;&#20110; stdout&#65292;&#26080;&#35770;&#22810;&#23569;&#24211;&#65292;&#37117;&#21482;&#26377;&#19968;&#20010;&#21103;&#26412;&#65292;&#24517;&#39035;&#26597;&#34920;</li>
-<li class=" ml-8">&#23545;&#20110; buf&#65292;&#21487;&#20197;&#30452;&#25509;&#32763;&#35793;&#25104; PC &#30456;&#23545;&#23547;&#22336;</li>
+<li class=" ml-8">对于 stdout，无论多少库，都只有一个副本，必须查表</li>
+<li class=" ml-8">对于 buf，可以直接翻译成 PC 相对寻址</li>
 </ul>
-<p class=" font-serif my-1">&#36825;&#20010;&#38382;&#39064; GPT-4 &#31572;&#38169;&#20102;</p>
+<p class=" font-serif my-1">这个问题 GPT-4 答错了</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">-fPIC &#40664;&#35748;&#20250;&#20026;&#25152;&#26377; extern &#25968;&#25454;&#22686;&#21152;&#19968;&#23618;&#38388;&#25509;&#35775;&#38382;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#27492;&#26102;&#20849;&#20139;&#24211;&#20013;&#21482;&#26377;&#23427;&#30340;&#22320;&#22336;&#65292;&#38656;&#35201;&#37325;&#23450;&#20301;</li>
-<li class=" ml-8">&#21487;&#20197;&#36890;&#36807; <code>__attribute__((visibility("hidden")))</code> &#25511;&#21046;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#25152;&#20197;&#24211;&#38656;&#35201;&#39069;&#22806;&#30340;&#32534;&#30721;&#35268;&#33539;&#26469;&#32452;&#32455;&#21464;&#37327;</li>
+<li class=" ml-8">-fPIC 默认会为所有 extern 数据增加一层间接访问<ul class=" list-disc font-serif">
+<li class=" ml-8">此时共享库中只有它的地址，需要重定位</li>
+<li class=" ml-8">可以通过 <code>__attribute__((visibility("hidden")))</code> 控制<ul class=" list-disc font-serif">
+<li class=" ml-8">所以库需要额外的编码规范来组织变量</li>
 </ul>
 </li>
 </ul>
@@ -375,5 +376,6 @@ section .center {
 
 
 </body>
+
 
 </html>

@@ -1,10 +1,11 @@
 <!DOCTYPE html><html class="h-100">
 
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="../../../static/css/base.css" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com/"></script>
   <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
 
@@ -23,14 +24,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +210,7 @@ section .center {
 }
 </style>
 
-  <title>&#21160;&#24577;&#38142;&#25509;&#21644;&#21152;&#36733;</title>
+  <title>动态链接和加载</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,7 +228,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="21.3.slides.html" class=" text-amber-900">&#21160;&#24577;&#38142;&#25509;&#21644;&#21152;&#36733;</a></h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="21.3.slides.html" class=" text-amber-900">动态链接和加载</a></h1></div></div></div>
         
       
       </section>
@@ -238,28 +239,28 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#8220;&#25286;&#35299;&#24212;&#29992;&#31243;&#24207;&#8221; &#30340;&#38656;&#27714;</h2>
-<p class=" font-serif my-1">&#23454;&#29616;&#36816;&#34892;&#24211;&#21644;&#24212;&#29992;&#20195;&#30721;&#20998;&#31163;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">“拆解应用程序” 的需求</h2>
+<p class=" font-serif my-1">实现运行库和应用代码分离</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">Linux &#20013;&#32477;&#22823;&#37096;&#20998;&#24212;&#29992;&#37117;&#26159;&#21160;&#24577;&#38142;&#25509;&#30340;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#31995;&#32479;&#20013;&#21482;&#26377;&#19968;&#20221; libc</li>
+<li class=" ml-8">Linux 中绝大部分应用都是动态链接的<ul class=" list-disc font-serif">
+<li class=" ml-8">系统中只有一份 libc</li>
 </ul>
 </li>
-<li class=" ml-8">Library &#20445;&#25345;&#25509;&#21475;&#30340;&#21521;&#21518;&#20860;&#23481;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#34917;&#19969;&#21457;&#24067;&#21518;&#19981;&#20877;&#38656;&#35201;&#37325;&#32534;&#35793;&#25152;&#26377;&#20381;&#36182;&#30340;&#24212;&#29992;</li>
-<li class=" ml-8"><a href="https://semver.org" class=" text-amber-900">Semantic Versioning</a><ul class=" list-disc font-serif">
-<li class=" ml-8">&#8220;Compatible&#8221; &#26159;&#20010;&#26377;&#20123;&#24494;&#22937;&#30340;&#23450;&#20041;</li>
+<li class=" ml-8">Library 保持接口的向后兼容<ul class=" list-disc font-serif">
+<li class=" ml-8">补丁发布后不再需要重编译所有依赖的应用</li>
+<li class=" ml-8"><a href="https://semver.org/" class=" text-amber-900">Semantic Versioning</a><ul class=" list-disc font-serif">
+<li class=" ml-8">“Compatible” 是个有些微妙的定义</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#22823;&#22411;&#39033;&#30446;&#20869;&#37096;&#20063;&#21487;&#20197;&#20869;&#37096;&#20998;&#35299;</p>
+<p class=" font-serif my-1">大型项目内部也可以内部分解</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#32534;&#35793;&#19968;&#37096;&#20998;&#65292;&#19981;&#29992;&#37325;&#26032;&#38142;&#25509;</li>
+<li class=" ml-8">编译一部分，不用重新链接</li>
 <li class=" ml-8">libjvm.so, libart.so, ...<ul class=" list-disc font-serif">
-<li class=" ml-8">NEMU: &#8220;&#25226; CPU &#25554;&#19978;&#20027;&#26495;&#8221;</li>
+<li class=" ml-8">NEMU: “把 CPU 插上主板”</li>
 </ul>
 </li>
 </ul></div>
@@ -273,11 +274,11 @@ section .center {
 
       
         
-        <div><h2 id="elf" class=" text-xl mt-2 pb-2 font-sans">&#21160;&#24577;&#38142;&#25509;&#65306;&#20170;&#22825;&#19981;&#35762; ELF</h2>
-<p class=" font-serif my-1">&#21644; ELF battle &#30340;&#27599;&#19968;&#24180;&#65306;&#35762;&#30528;&#35762;&#30528;&#23601;&#35762;&#19981;&#19979;&#21435;&#20102;</p>
+        <div><h2 id="elf" class=" text-xl mt-2 pb-2 font-sans">动态链接：今天不讲 ELF</h2>
+<p class=" font-serif my-1">和 ELF battle 的每一年：讲着讲着就讲不下去了</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#27599;&#21477;&#35805;&#37117;&#27809;&#35828;&#38169;&#65292;&#20294;&#27809;&#20154;&#33021;&#36319;&#19978;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#26681;&#26412;&#21407;&#22240;&#65306;&#27010;&#24565;&#19978;&#32039;&#23494;&#30456;&#20851;&#30340;&#19996;&#35199;&#22312;&#23454;&#29616;&#20013;&#34987; &#8220;&#25286;&#25955;&#8221; &#20102;<ul class=" list-disc font-serif">
+<li class=" ml-8">每句话都没说错，但没人能跟上<ul class=" list-disc font-serif">
+<li class=" ml-8">根本原因：概念上紧密相关的东西在实现中被 “拆散” 了<ul class=" list-disc font-serif">
 <li class=" ml-8"><code>GOT[0]</code>, <code>GOT[1]</code>, ... ???</li>
 </ul>
 </li>
@@ -285,14 +286,14 @@ section .center {
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#25442;&#19968;&#31181;&#26041;&#27861;</p>
+<p class=" font-serif my-1">换一种方法</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#22914;&#26524;&#32534;&#35793;&#22120;&#12289;&#38142;&#25509;&#22120;&#12289;&#21152;&#36733;&#22120;&#37117;&#21463;&#20320;&#25511;&#21046;</li>
-<li class=" ml-8">&#20320;&#24590;&#20040;&#35774;&#35745;&#12289;&#23454;&#29616;&#19968;&#20010; &#8220;&#26368;&#30452;&#35266;&#8221; &#30340;&#21160;&#24577;&#38142;&#25509;&#26684;&#24335;&#65311;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20877;&#21435;&#32771;&#34385;&#24590;&#20040;&#25913;&#36827;&#23427;&#65292;&#20320;&#23601;&#24471;&#21040;&#20102; ELF&#65281;</li>
+<li class=" ml-8">如果编译器、链接器、加载器都受你控制</li>
+<li class=" ml-8">你怎么设计、实现一个 “最直观” 的动态链接格式？<ul class=" list-disc font-serif">
+<li class=" ml-8">再去考虑怎么改进它，你就得到了 ELF！</li>
 </ul>
 </li>
-<li class=" ml-8"><red>&#20551;&#35774;&#32534;&#35793;&#22120;&#21487;&#20197;&#20026;&#20320;&#29983;&#25104;&#20301;&#32622;&#26080;&#20851;&#20195;&#30721; (PIC)</red></li>
+<li class=" ml-8"><red>假设编译器可以为你生成位置无关代码 (PIC)</red></li>
 </ul></div>
         
       
@@ -304,21 +305,21 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#35774;&#35745;&#19968;&#20010;&#26032;&#30340;&#20108;&#36827;&#21046;&#25991;&#20214;&#26684;&#24335;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">设计一个新的二进制文件格式</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1"><red>&#21160;&#24577;&#38142;&#25509;&#30340;&#31526;&#21495;&#26597;&#34920;&#23601;&#34892;&#20102;&#22043;</red>&#12290;</p>
+<p class=" font-serif my-1"><red>动态链接的符号查表就行了嘛</red>。</p>
 </blockquote>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>DL_HEAD
 
-LOAD("libc.dl") # &#21152;&#36733;&#21160;&#24577;&#24211;
-IMPORT(putchar) # &#21152;&#36733;&#22806;&#37096;&#31526;&#21495;
-EXPORT(hello)   # &#20026;&#21160;&#24577;&#24211;&#23548;&#20986;&#31526;&#21495;
+LOAD("libc.dl") # 加载动态库
+IMPORT(putchar) # 加载外部符号
+EXPORT(hello)   # 为动态库导出符号
 
 DL_CODE
 
 hello:
   ...
-  call DSYM(putchar) # &#21160;&#24577;&#38142;&#25509;&#31526;&#21495;
+  call DSYM(putchar) # 动态链接符号
   ...
 
 DL_END
@@ -333,27 +334,27 @@ DL_END
 
       
         
-        <div><h2 id="dl" class=" text-xl mt-2 pb-2 font-sans">&#29992;&#26368;&#23567;&#20195;&#20215;&#20026; <code>.dl</code> &#25991;&#20214;&#37197;&#40784;&#20840;&#22871;&#24037;&#20855;&#38142;</h2>
-<p class=" font-serif my-1">&#32534;&#35793;&#22120;</p>
+        <div><h2 id="dl" class=" text-xl mt-2 pb-2 font-sans">用最小代价为 <code>.dl</code> 文件配齐全套工具链</h2>
+<p class=" font-serif my-1">编译器</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#24320;&#23616;&#19968;&#26465;&#29399;&#65292;&#20986;&#38376;&#20840;&#38752;&#20599; (GCC, GNU as)</li>
+<li class=" ml-8">开局一条狗，出门全靠偷 (GCC, GNU as)</li>
 </ul>
 <hr>
 <p class=" font-serif my-1">binutils</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">ld = objcopy (&#20599;&#26469;&#30340;)</li>
-<li class=" ml-8">as = GNU as (&#20599;&#26469;&#30340;)</li>
-<li class=" ml-8">&#21097;&#19979;&#30340;&#23601;&#38656;&#35201;&#33258;&#24049;&#21160;&#25163;&#20102;<ul class=" list-disc font-serif">
+<li class=" ml-8">ld = objcopy (偷来的)</li>
+<li class=" ml-8">as = GNU as (偷来的)</li>
+<li class=" ml-8">剩下的就需要自己动手了<ul class=" list-disc font-serif">
 <li class=" ml-8">readdl (readelf)</li>
 <li class=" ml-8">objdump</li>
-<li class=" ml-8">&#20320;&#21516;&#26679;&#21487;&#20197;&#23665;&#23528; addr2line, nm, objcopy, ...</li>
+<li class=" ml-8">你同样可以山寨 addr2line, nm, objcopy, ...</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#21644;&#26368;&#37325;&#35201;&#30340;<red>&#21152;&#36733;&#22120;</red></p>
+<p class=" font-serif my-1">和最重要的<red>加载器</red></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#36825;&#20010;&#20063;&#24471;&#33258;&#24049;&#21160;&#25163;&#20102;</li>
+<li class=" ml-8">这个也得自己动手了</li>
 </ul></div>
         
       
@@ -365,28 +366,28 @@ DL_END
 
       
         
-        <div><h2 id="dl" class=" text-xl mt-2 pb-2 font-sans">&#35299;&#20915; dl &#25991;&#20214;&#30340;&#35774;&#35745;&#32570;&#38519;</h2>
-<p class=" font-serif my-1">&#23384;&#20648;&#20445;&#25252;&#21644;&#21152;&#36733;&#20301;&#32622;</p>
+        <div><h2 id="dl" class=" text-xl mt-2 pb-2 font-sans">解决 dl 文件的设计缺陷</h2>
+<p class=" font-serif my-1">存储保护和加载位置</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20801;&#35768;&#23558; .dl &#20013;&#30340;&#19968;&#37096;&#20998;&#20197;&#26576;&#20010;&#25351;&#23450;&#30340;&#26435;&#38480;&#26144;&#23556;&#21040;&#20869;&#23384;&#30340;&#26576;&#20010;&#20301;&#32622; (program header table)</li>
+<li class=" ml-8">允许将 .dl 中的一部分以某个指定的权限映射到内存的某个位置 (program header table)</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#20801;&#35768;&#33258;&#30001;&#25351;&#23450;&#21152;&#36733;&#22120; (&#32780;&#19981;&#26159; dlbox)</p>
+<p class=" font-serif my-1">允许自由指定加载器 (而不是 dlbox)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#21152;&#20837; INTERP</li>
+<li class=" ml-8">加入 INTERP</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#31354;&#38388;&#28010;&#36153;</p>
+<p class=" font-serif my-1">空间浪费</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#23383;&#31526;&#20018;&#23384;&#20648;&#22312;&#24120;&#37327;&#27744;&#65292;&#32479;&#19968;&#36890;&#36807; &#8220;&#25351;&#38024;&#8221; &#35775;&#38382;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#36825;&#26159;&#24102;&#26469; ELF &#25991;&#20214;&#38590;&#35835;&#30340;&#26368;&#26681;&#26412;&#21407;&#22240;</li>
+<li class=" ml-8">字符串存储在常量池，统一通过 “指针” 访问<ul class=" list-disc font-serif">
+<li class=" ml-8">这是带来 ELF 文件难读的最根本原因</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#20854;&#20182;&#65306;&#19981;&#37027;&#20040;&#37325;&#35201;</p>
+<p class=" font-serif my-1">其他：不那么重要</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25353;&#38656; RTFM/RTFSC</li>
+<li class=" ml-8">按需 RTFM/RTFSC</li>
 </ul></div>
         
       
@@ -398,24 +399,24 @@ DL_END
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#21478;&#19968;&#20010;&#37325;&#35201;&#30340;&#32570;&#38519;&#65306;&#24615;&#33021;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">另一个重要的缺陷：性能</h2>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#define DSYM(sym)   *sym(%rip)</span>
 </code></pre></div>
 
 <hr>
-<p class=" font-serif my-1">DSYM &#26159;&#38388;&#25509;&#20869;&#23384;&#35775;&#38382;</p>
+<p class=" font-serif my-1">DSYM 是间接内存访问</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">extern</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">foo</span><span class="p">();</span>
 <span class="n">foo</span><span class="p">();</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">&#19968;&#31181;&#20889;&#27861;&#65292;&#20004;&#31181;&#24773;&#20917;</p>
+<p class=" font-serif my-1">一种写法，两种情况</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#26469;&#33258;&#20854;&#20182;&#32534;&#35793;&#21333;&#20803; (&#38745;&#24577;&#38142;&#25509;)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#30452;&#25509; PC &#30456;&#23545;&#36339;&#36716;&#21363;&#21487;</li>
+<li class=" ml-8">来自其他编译单元 (静态链接)<ul class=" list-disc font-serif">
+<li class=" ml-8">直接 PC 相对跳转即可</li>
 </ul>
 </li>
-<li class=" ml-8">&#21160;&#24577;&#38142;&#25509;&#24211;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#24517;&#39035;&#26597;&#34920; (&#32534;&#35793;&#26102;&#19981;&#33021;&#20915;&#23450;)</li>
+<li class=" ml-8">动态链接库<ul class=" list-disc font-serif">
+<li class=" ml-8">必须查表 (编译时不能决定)</li>
 </ul>
 </li>
 </ul></div>
@@ -448,5 +449,6 @@ DL_END
 
 
 </body>
+
 
 </html>

@@ -1,0 +1,1 @@
+**查看系统分区**：通常，EFI 分区位于磁盘的头部。我们可以看到这些分区，并用 mount 命令查看和更改其中的文件。EFI 分区中允许存放可执行文件，它们可以进一步扫描硬件并完成启动。在课堂演示中，我们使用了 [rEFInd Boot Manger](https://www.rodsbooks.com/refind/)。我们甚至可以使用 objdump 反汇编 PE 二进制文件的代码 (但 Linux 系统无法加载它们)。

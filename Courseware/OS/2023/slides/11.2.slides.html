@@ -1,10 +1,11 @@
 <!DOCTYPE html><html class="h-100">
 
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="../../../static/css/base.css" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com/"></script>
   <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
 
@@ -23,14 +24,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +210,7 @@ section .center {
 }
 </style>
 
-  <title>&#25968;&#25454;&#20013;&#24515;&#37324;&#30340;&#24182;&#21457;&#32534;&#31243;</title>
+  <title>数据中心里的并发编程</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,10 +228,10 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="11.2.slides.html" class=" text-amber-900">&#25968;&#25454;&#20013;&#24515;&#37324;&#30340;&#24182;&#21457;&#32534;&#31243;</a></h1>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="11.2.slides.html" class=" text-amber-900">数据中心里的并发编程</a></h1>
 <p class=" font-serif my-1"><br></p>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/datacenter.jpg" width="700px"></p>
-<p class=" font-serif my-1"></p><center>Google &#30340;&#25968;&#25454;&#20013;&#24515;</center></div></div></div>
+<p class=" font-serif my-1"></p><center>Google 的数据中心</center></div></div></div>
         
       
       </section>
@@ -241,22 +242,22 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25968;&#25454;&#20013;&#24515;&#31243;&#24207;&#65306;&#29305;&#28857;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">数据中心程序：特点</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#8220;A network of computing and storage resources that enable the delivery of <em>shared</em> applications and data.&#8221; (CISCO)</p>
+<p class=" font-serif my-1">“A network of computing and storage resources that enable the delivery of <em>shared</em> applications and data.” (CISCO)</p>
 </blockquote>
-<p class=" font-serif my-1">&#20197;&#25968;&#25454; (&#23384;&#20648;) &#20026;&#20013;&#24515;</p>
+<p class=" font-serif my-1">以数据 (存储) 为中心</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20114;&#32852;&#32593;&#32034;&#24341;&#19982;&#25628;&#32034;<ul class=" list-disc font-serif">
+<li class=" ml-8">互联网索引与搜索<ul class=" list-disc font-serif">
 <li class=" ml-8">Google</li>
 </ul>
 </li>
-<li class=" ml-8">&#31038;&#20132;&#32593;&#32476;<ul class=" list-disc font-serif">
+<li class=" ml-8">社交网络<ul class=" list-disc font-serif">
 <li class=" ml-8">Facebook/Twitter</li>
 </ul>
 </li>
-<li class=" ml-8">&#25903;&#25745;&#21508;&#31867;&#20114;&#32852;&#32593;&#24212;&#29992;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#36890;&#20449; (&#24494;&#20449;/QQ)&#12289;&#25903;&#20184; (&#25903;&#20184;&#23453;)&#12289;&#28216;&#25103;/&#32593;&#30424;/&#8230;&#8230;</li>
+<li class=" ml-8">支撑各类互联网应用<ul class=" list-disc font-serif">
+<li class=" ml-8">通信 (微信/QQ)、支付 (支付宝)、游戏/网盘/……</li>
 </ul>
 </li>
 </ul></div>
@@ -270,13 +271,13 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25968;&#25454;&#20013;&#24515;&#65306;&#20851;&#38190;&#38382;&#39064;</h2>
-<p class=" font-serif my-1">&#22914;&#20309;&#23454;&#29616;&#39640;&#21487;&#38752;&#12289;&#20302;&#24310;&#36831;&#30340;&#22810;&#21103;&#26412;&#20998;&#24067;&#24335;&#23384;&#20648;&#21644;&#35745;&#31639;&#31995;&#32479;&#65311;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">数据中心：关键问题</h2>
+<p class=" font-serif my-1">如何实现高可靠、低延迟的多副本分布式存储和计算系统？</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#22312;&#26381;&#21153;&#28023;&#37327;&#22320;&#29702;&#20998;&#24067;&#35831;&#27714;&#30340;&#21069;&#25552;&#19979;&#65292;&#19977;&#32773;&#19981;&#21487;&#20860;&#24471;&#65306;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#25968;&#25454;&#35201;&#20445;&#25345;&#19968;&#33268; (Consistency)</li>
-<li class=" ml-8">&#26381;&#21153;&#26102;&#21051;&#20445;&#25345;&#21487;&#29992; (Availability)</li>
-<li class=" ml-8">&#23481;&#24525;&#26426;&#22120;&#31163;&#32447; (Partition tolerance)</li>
+<li class=" ml-8">在服务海量地理分布请求的前提下，三者不可兼得：<ul class=" list-disc font-serif">
+<li class=" ml-8">数据要保持一致 (Consistency)</li>
+<li class=" ml-8">服务时刻保持可用 (Availability)</li>
+<li class=" ml-8">容忍机器离线 (Partition tolerance)</li>
 </ul>
 </li>
 </ul>
@@ -291,24 +292,24 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25968;&#25454;&#20013;&#24515;&#31243;&#24207;&#19978;&#30340;&#21333;&#26426;&#31243;&#24207;</h2>
-<p class=" font-serif my-1">&#20107;&#20214;&#39537;&#21160; + &#39640;&#24182;&#21457;&#65306;<red>&#31995;&#32479;&#35843;&#29992;&#23494;&#38598;</red>&#19988;<red>&#24310;&#36831;&#19981;&#30830;&#23450;</red></p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">数据中心程序上的单机程序</h2>
+<p class=" font-serif my-1">事件驱动 + 高并发：<red>系统调用密集</red>且<red>延迟不确定</red></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#32593;&#32476;&#25968;&#25454;&#35835;&#20889;</li>
-<li class=" ml-8">&#25345;&#20037;&#23384;&#20648;&#35835;&#20889;</li>
-<li class=" ml-8">&#21333;&#26426;&#31243;&#24207;&#30446;&#26631;&#65306;&#23613;&#21487;&#33021;&#22810;&#22320;&#26381;&#21153;&#24182;&#34892;&#30340;&#35831;&#27714;<ul class=" list-disc font-serif">
-<li class=" ml-8">QPS: &#21534;&#21520;&#37327;</li>
-<li class=" ml-8">Tail latency: &#19968;&#20010;&#35831;&#27714;&#24930;&#20102;&#65292;&#20854;&#20182;&#35831;&#27714;&#19981;&#33021;&#24930;</li>
+<li class=" ml-8">网络数据读写</li>
+<li class=" ml-8">持久存储读写</li>
+<li class=" ml-8">单机程序目标：尽可能多地服务并行的请求<ul class=" list-disc font-serif">
+<li class=" ml-8">QPS: 吞吐量</li>
+<li class=" ml-8">Tail latency: 一个请求慢了，其他请求不能慢</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#20551;&#35774;&#26377;&#25968;&#21315;/&#25968;&#19975;&#20010;&#35831;&#27714;&#21516;&#26102;&#21040;&#36798;&#26381;&#21153;&#22120;&#8230;&#8230;</p>
+<p class=" font-serif my-1">假设有数千/数万个请求同时到达服务器……</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#32447;&#31243;&#33021;&#22815;&#23454;&#29616;&#24182;&#34892;&#22788;&#29702;</li>
-<li class=" ml-8">&#20294;&#36828;&#22810;&#20110;&#22788;&#29702;&#22120;&#25968;&#37327;&#30340;&#32447;&#31243;&#23548;&#33268;&#24615;&#33021;&#38382;&#39064;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20999;&#25442;&#24320;&#38144;</li>
-<li class=" ml-8">&#32500;&#25252;&#24320;&#38144;</li>
+<li class=" ml-8">线程能够实现并行处理</li>
+<li class=" ml-8">但远多于处理器数量的线程导致性能问题<ul class=" list-disc font-serif">
+<li class=" ml-8">切换开销</li>
+<li class=" ml-8">维护开销</li>
 </ul>
 </li>
 </ul></div>
@@ -322,24 +323,24 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#21327;&#31243;&#65306;&#25805;&#20316;&#31995;&#32479; &#8220;&#19981;&#24863;&#30693;&#8221; &#30340;&#19978;&#19979;&#25991;&#20999;&#25442;</h2>
-<p class=" font-serif my-1">&#21644;&#32447;&#31243;&#27010;&#24565;&#30456;&#21516; (&#29420;&#31435;&#22534;&#26632;&#12289;&#20849;&#20139;&#20869;&#23384;)</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">协程：操作系统 “不感知” 的上下文切换</h2>
+<p class=" font-serif my-1">和线程概念相同 (独立堆栈、共享内存)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20294; &#8220;&#19968;&#30452;&#25191;&#34892;&#8221;&#65292;&#30452;&#21040; <code>yield()</code> &#20027;&#21160;&#25918;&#24323;&#22788;&#29702;&#22120;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#26377;&#32534;&#35793;&#22120;&#36741;&#21161;&#65292;&#20999;&#25442;&#24320;&#38144;&#20302;<ul class=" list-disc font-serif">
-<li class=" ml-8">yield() &#26159;&#20989;&#25968;&#35843;&#29992;&#65292;&#21482;&#38656;&#20445;&#23384;/&#24674;&#22797; &#8220;callee saved&#8221; &#23492;&#23384;&#22120;</li>
-<li class=" ml-8">&#32447;&#31243;&#20999;&#25442;&#38656;&#35201;&#20445;&#23384;/&#24674;&#22797;&#20840;&#37096;&#23492;&#23384;&#22120;</li>
+<li class=" ml-8">但 “一直执行”，直到 <code>yield()</code> 主动放弃处理器<ul class=" list-disc font-serif">
+<li class=" ml-8">有编译器辅助，切换开销低<ul class=" list-disc font-serif">
+<li class=" ml-8">yield() 是函数调用，只需保存/恢复 “callee saved” 寄存器</li>
+<li class=" ml-8">线程切换需要保存/恢复全部寄存器</li>
 </ul>
 </li>
-<li class=" ml-8">&#20294;&#31561;&#24453; I/O &#26102;&#65292;&#20854;&#20182;&#21327;&#31243;&#23601;&#19981;&#33021;&#36816;&#34892;&#20102;&#8230;&#8230;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#22833;&#21435;&#20102;&#24182;&#34892;</li>
+<li class=" ml-8">但等待 I/O 时，其他协程就不能运行了……<ul class=" list-disc font-serif">
+<li class=" ml-8">失去了并行</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 <hr>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="c1">// &#21482;&#21487;&#33021;&#26159; 1122 &#25110; 2211</span>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="c1">// 只可能是 1122 或 2211</span>
 <span class="kt">void</span><span class="w"> </span><span class="nf">T1</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">send</span><span class="p">(</span><span class="s">"1"</span><span class="p">);</span><span class="w"> </span><span class="n">send</span><span class="p">(</span><span class="s">"1"</span><span class="p">);</span><span class="w"> </span><span class="n">yield</span><span class="p">();</span><span class="w"> </span><span class="p">}</span>
 <span class="kt">void</span><span class="w"> </span><span class="nf">T2</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">send</span><span class="p">(</span><span class="s">"2"</span><span class="p">);</span><span class="w"> </span><span class="n">send</span><span class="p">(</span><span class="s">"2"</span><span class="p">);</span><span class="w"> </span><span class="n">yield</span><span class="p">();</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div></div>
@@ -353,18 +354,18 @@ section .center {
 
       
         
-        <div><h2 id="go-goroutine" class=" text-xl mt-2 pb-2 font-sans">Go &#21644; Goroutine</h2>
+        <div><h2 id="go-goroutine" class=" text-xl mt-2 pb-2 font-sans">Go 和 Goroutine</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">Go: &#23567;&#23401;&#23376;&#25165;&#20570;&#36873;&#25321;&#65292;&#22810;&#22788;&#29702;&#22120;&#24182;&#34892;&#21644;&#36731;&#37327;&#32423;&#24182;&#21457;&#25105;&#20840;&#37117;&#35201;&#65281;</p>
+<p class=" font-serif my-1">Go: 小孩子才做选择，多处理器并行和轻量级并发我全都要！</p>
 </blockquote>
-<p class=" font-serif my-1">Goroutine: &#27010;&#24565;&#19978;&#26159;&#32447;&#31243;&#65292;&#23454;&#38469;&#26159;&#32447;&#31243;&#21644;&#21327;&#31243;&#30340;&#28151;&#21512;&#20307;</p>
+<p class=" font-serif my-1">Goroutine: 概念上是线程，实际是线程和协程的混合体</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#27599;&#20010; CPU &#19978;&#26377;&#19968;&#20010; Go Worker&#65292;&#33258;&#30001;&#35843;&#24230; goroutines</li>
-<li class=" ml-8">&#25191;&#34892;&#21040; blocking API &#26102; (&#20363;&#22914; sleep, read)<ul class=" list-disc font-serif">
-<li class=" ml-8">Go Worker &#20599;&#20599;&#25913;&#25104; non-blocking &#30340;&#29256;&#26412;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#25104;&#21151; &#8594; &#31435;&#21363;&#32487;&#32493;&#25191;&#34892;</li>
-<li class=" ml-8">&#22833;&#36133; &#8594; &#31435;&#21363; yield &#21040;&#21478;&#19968;&#20010;&#38656;&#35201; CPU &#30340; goroutine<ul class=" list-disc font-serif">
-<li class=" ml-8">&#22826;&#24039;&#22937;&#20102;&#65281;CPU &#21644;&#25805;&#20316;&#31995;&#32479;&#20840;&#37096;&#29992;&#21040; 100%</li>
+<li class=" ml-8">每个 CPU 上有一个 Go Worker，自由调度 goroutines</li>
+<li class=" ml-8">执行到 blocking API 时 (例如 sleep, read)<ul class=" list-disc font-serif">
+<li class=" ml-8">Go Worker 偷偷改成 non-blocking 的版本<ul class=" list-disc font-serif">
+<li class=" ml-8">成功 → 立即继续执行</li>
+<li class=" ml-8">失败 → 立即 yield 到另一个需要 CPU 的 goroutine<ul class=" list-disc font-serif">
+<li class=" ml-8">太巧妙了！CPU 和操作系统全部用到 100%</li>
 </ul>
 </li>
 </ul>
@@ -373,7 +374,7 @@ section .center {
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#20363;&#23376;</p>
+<p class=" font-serif my-1">例子</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">Fibonacci number from <a href="https://books.studygolang.com/gopl-zh/ch9/ch9-08.html" class=" text-amber-900"><em>The Go Programming Language</em> (ch 9.8)</a></li>
 </ul></div>
@@ -387,23 +388,23 @@ section .center {
 
       
         
-        <div><h2 id="go" class=" text-xl mt-2 pb-2 font-sans">Go &#35821;&#35328;&#20013;&#30340;&#21516;&#27493;</h2>
+        <div><h2 id="go" class=" text-xl mt-2 pb-2 font-sans">Go 语言中的同步</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">Do not communicate by sharing memory; instead, share memory by communicating. &#8212;&#8212;<em>Effective Go</em></p>
+<p class=" font-serif my-1">Do not communicate by sharing memory; instead, share memory by communicating. ——<em>Effective Go</em></p>
 </blockquote>
-<p class=" font-serif my-1">&#20849;&#20139;&#20869;&#23384; = &#19975;&#24694;&#20043;&#28304;</p>
+<p class=" font-serif my-1">共享内存 = 万恶之源</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20449;&#21495;&#37327;/&#26465;&#20214;&#21464;&#37327;&#65306;&#23454;&#29616;&#20102;&#21516;&#27493;&#65292;&#20294;&#27809;&#26377;&#23454;&#29616; &#8220;&#36890;&#20449;&#8221;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#25968;&#25454;&#20256;&#36882;&#23436;&#20840;&#38752;&#25163;&#24037; (&#27809;&#19978;&#38145;&#23601;&#38169;&#20102;)</li>
+<li class=" ml-8">信号量/条件变量：实现了同步，但没有实现 “通信”<ul class=" list-disc font-serif">
+<li class=" ml-8">数据传递完全靠手工 (没上锁就错了)</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#20294; UNIX &#26102;&#20195;&#23601;&#26377;&#19968;&#20010;&#23454;&#29616;&#24182;&#34892;&#30340;&#26426;&#21046;&#20102;</p>
+<p class=" font-serif my-1">但 UNIX 时代就有一个实现并行的机制了</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><code>cat *.txt | wc -l</code><ul class=" list-disc font-serif">
-<li class=" ml-8">&#31649;&#36947;&#26159;&#19968;&#20010;&#22825;&#28982;&#30340;&#29983;&#20135;&#32773;/&#28040;&#36153;&#32773;&#65281;</li>
-<li class=" ml-8">&#20026;&#20160;&#20040;&#19981;&#29992; &#8220;&#31649;&#36947;&#8221; &#23454;&#29616;&#21327;&#31243;/&#32447;&#31243;&#38388;&#30340;&#21516;&#27493; + &#36890;&#20449;&#21602;&#65311;<ul class=" list-disc font-serif">
+<li class=" ml-8">管道是一个天然的生产者/消费者！</li>
+<li class=" ml-8">为什么不用 “管道” 实现协程/线程间的同步 + 通信呢？<ul class=" list-disc font-serif">
 <li class=" ml-8">Channels in Go</li>
 </ul>
 </li>
@@ -439,5 +440,6 @@ section .center {
 
 
 </body>
+
 
 </html>

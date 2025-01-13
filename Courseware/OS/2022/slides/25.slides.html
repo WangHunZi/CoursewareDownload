@@ -1,10 +1,11 @@
 <!DOCTYPE html><html class="h-100">
 
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="../../../static/css/base.css" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com/"></script>
   <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
 
@@ -23,14 +24,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +210,7 @@ section .center {
 }
 </style>
 
-  <title>&#35774;&#22791;&#39537;&#21160;&#31243;&#24207;</title>
+  <title>设备驱动程序</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,21 +228,21 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#35774;&#22791;&#39537;&#21160;&#31243;&#24207;</h1>
-<p class=" font-serif my-1"><include src="Slides_Author"><div><div class="py-16">
-<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">&#33931;&#28814;&#23721;</a></p>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">设备驱动程序</h1>
+<p class=" font-serif my-1"><include src="Slides_Author/index.html"><div><div class="py-16">
+<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">蒋炎岩</a></p>
 </div>
 <div class="row">
 <div class="author-affiliation">
-    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#12288;&#12288;&#21335;&#20140;&#22823;&#23398;&#12288;&#12288;</p>
+    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">　　南京大学　　</p>
     <img class="inline-img h-24" src="../../../static/img/nju-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#31185;&#23398;&#19982;&#25216;&#26415;&#31995;</p>
+   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">计算机科学与技术系</p>
     <img class="inline-img h-24" src="../../../static/img/njucs-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#36719;&#20214;&#30740;&#31350;&#25152;</p>
+    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">计算机软件研究所</p>
     <img class="inline-img h-24" src="../../../static/img/ics-logo.png" style="display: inline-block;"></a>
   </div>
 </div></div></include></p></div></div></div>
@@ -257,23 +258,23 @@ section .center {
         
         <div><h2 id="overview" class=" text-xl mt-2 pb-2 font-sans">Overview</h2>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/canonical-device.png" width="500px"></p>
-<p class=" font-serif my-1">&#22797;&#20064;</p>
+<p class=" font-serif my-1">复习</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">I/O &#35774;&#22791;&#65306;&#19968;&#32452;&#23492;&#23384;&#22120;&#21644;&#21327;&#35758;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20018;&#21475;/&#38190;&#30424;/&#30913;&#30424;/&#25171;&#21360;&#26426;/&#24635;&#32447;/&#20013;&#26029;&#25511;&#21046;&#22120;/DMA/GPU</li>
+<li class=" ml-8">I/O 设备：一组寄存器和协议<ul class=" list-disc font-serif">
+<li class=" ml-8">串口/键盘/磁盘/打印机/总线/中断控制器/DMA/GPU</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#22238;&#31572;&#30340;&#38382;&#39064;</p>
+<p class=" font-serif my-1">本次课回答的问题</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><strong>Q</strong>: &#25805;&#20316;&#31995;&#32479;&#22914;&#20309;&#20351;&#24212;&#29992;&#31243;&#24207;&#33021;&#35775;&#38382;&#36825;&#20123;&#35774;&#22791;&#65311;</li>
+<li class=" ml-8"><strong>Q</strong>: 操作系统如何使应用程序能访问这些设备？</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#20027;&#35201;&#20869;&#23481;</p>
+<p class=" font-serif my-1">本次课主要内容</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20160;&#20040;&#26159;&#35774;&#22791;&#39537;&#21160;&#31243;&#24207;</li>
-<li class=" ml-8">Linux &#35774;&#22791;&#25277;&#35937;</li>
+<li class=" ml-8">什么是设备驱动程序</li>
+<li class=" ml-8">Linux 设备抽象</li>
 </ul></div>
         
       
@@ -289,7 +290,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#35774;&#22791;&#39537;&#21160;&#31243;&#24207;&#21407;&#29702;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">设备驱动程序原理</h1></div></div></div>
         
       
       </section>
@@ -300,24 +301,24 @@ section .center {
 
       
         
-        <div><h2 id="io" class=" text-xl mt-2 pb-2 font-sans">I/O &#35774;&#22791;&#30340;&#25277;&#35937;</h2>
-<p class=" font-serif my-1">I/O &#35774;&#22791;&#30340;&#20027;&#35201;&#21151;&#33021;&#65306;<red>&#36755;&#20837;&#21644;&#36755;&#20986;</red></p>
+        <div><h2 id="io" class=" text-xl mt-2 pb-2 font-sans">I/O 设备的抽象</h2>
+<p class=" font-serif my-1">I/O 设备的主要功能：<red>输入和输出</red></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#8220;&#33021;&#22815;&#35835; (read) &#20889; (write) &#30340;<red>&#23383;&#33410;&#24207;&#21015; (&#27969;&#25110;&#25968;&#32452;)</red>&#8221;</li>
-<li class=" ml-8">&#24120;&#35265;&#30340;&#35774;&#22791;&#37117;&#28385;&#36275;&#36825;&#20010;&#27169;&#22411;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#32456;&#31471;/&#20018;&#21475; - &#23383;&#33410;&#27969;</li>
-<li class=" ml-8">&#25171;&#21360;&#26426; - &#23383;&#33410;&#27969; (&#20363;&#22914; <a href="../../../pages/OS/2022/demos/page.ps" class=" text-amber-900">PostScript &#25991;&#20214;</a>)</li>
-<li class=" ml-8">&#30828;&#30424; - &#23383;&#33410;&#25968;&#32452; (&#25353;&#22359;&#35775;&#38382;)</li>
-<li class=" ml-8">GPU - &#23383;&#33410;&#27969; (&#25511;&#21046;) + &#23383;&#33410;&#25968;&#32452; (&#26174;&#23384;)</li>
+<li class=" ml-8">“能够读 (read) 写 (write) 的<red>字节序列 (流或数组)</red>”</li>
+<li class=" ml-8">常见的设备都满足这个模型<ul class=" list-disc font-serif">
+<li class=" ml-8">终端/串口 - 字节流</li>
+<li class=" ml-8">打印机 - 字节流 (例如 <a href="../../../pages/OS/2022/demos/page.ps" class=" text-amber-900">PostScript 文件</a>)</li>
+<li class=" ml-8">硬盘 - 字节数组 (按块访问)</li>
+<li class=" ml-8">GPU - 字节流 (控制) + 字节数组 (显存)</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#25805;&#20316;&#31995;&#32479;&#65306;&#35774;&#22791; = &#25903;&#25345;&#21508;&#31867;&#25805;&#20316;&#30340;&#23545;&#35937; (&#25991;&#20214;)</p>
+<p class=" font-serif my-1">操作系统：设备 = 支持各类操作的对象 (文件)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">read - &#20174;&#35774;&#22791;&#26576;&#20010;&#25351;&#23450;&#30340;&#20301;&#32622;&#35835;&#20986;&#25968;&#25454;</li>
-<li class=" ml-8">write - &#21521;&#35774;&#22791;&#26576;&#20010;&#25351;&#23450;&#20301;&#32622;&#20889;&#20837;&#25968;&#25454;</li>
-<li class=" ml-8">ioctl - &#35835;&#21462;/&#35774;&#32622;&#35774;&#22791;&#30340;&#29366;&#24577;</li>
+<li class=" ml-8">read - 从设备某个指定的位置读出数据</li>
+<li class=" ml-8">write - 向设备某个指定位置写入数据</li>
+<li class=" ml-8">ioctl - 读取/设置设备的状态</li>
 </ul></div>
         
       
@@ -329,22 +330,22 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#35774;&#22791;&#39537;&#21160;&#31243;&#24207;</h2>
-<p class=" font-serif my-1">&#25226;&#31995;&#32479;&#35843;&#29992; (read/write/ioctl/...) &#8220;&#32763;&#35793;&#8221; &#25104;&#19982;&#35774;&#22791;&#23492;&#23384;&#22120;&#30340;&#20132;&#20114;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">设备驱动程序</h2>
+<p class=" font-serif my-1">把系统调用 (read/write/ioctl/...) “翻译” 成与设备寄存器的交互</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#23601;&#26159;&#19968;&#27573;&#26222;&#36890;&#30340;&#20869;&#26680;&#20195;&#30721;</li>
-<li class=" ml-8">&#20294;&#21487;&#33021;&#20250;&#30561;&#30496; (&#20363;&#22914; P &#20449;&#21495;&#37327;&#65292;&#31561;&#24453;&#20013;&#26029;&#20013;&#30340; V &#25805;&#20316;&#21796;&#37266;)</li>
+<li class=" ml-8">就是一段普通的内核代码</li>
+<li class=" ml-8">但可能会睡眠 (例如 P 信号量，等待中断中的 V 操作唤醒)</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#20363;&#23376;&#65306;<code>/dev/</code> &#20013;&#30340;&#23545;&#35937;</p>
+<p class=" font-serif my-1">例子：<code>/dev/</code> 中的对象</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><code>/dev/pts/[x]</code> - pseudo terminal</li>
-<li class=" ml-8"><code>/dev/zero</code> - &#8220;&#38646;&#8221; &#35774;&#22791;</li>
-<li class=" ml-8"><code>/dev/null</code> - &#8220;null&#8221; &#35774;&#22791;</li>
-<li class=" ml-8"><code>/dev/random</code>, <code>/dev/urandom</code> - &#38543;&#26426;&#25968;&#29983;&#25104;&#22120;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#35797;&#19968;&#35797;&#65306;<code>head -c 512 [device] | xxd</code></li>
-<li class=" ml-8">&#20197;&#21450;&#35266;&#23519;&#23427;&#20204;&#30340; strace<ul class=" list-disc font-serif">
-<li class=" ml-8">&#33021;&#30475;&#21040;&#35775;&#38382;&#35774;&#22791;&#30340;&#31995;&#32479;&#35843;&#29992;</li>
+<li class=" ml-8"><code>/dev/zero</code> - “零” 设备</li>
+<li class=" ml-8"><code>/dev/null</code> - “null” 设备</li>
+<li class=" ml-8"><code>/dev/random</code>, <code>/dev/urandom</code> - 随机数生成器<ul class=" list-disc font-serif">
+<li class=" ml-8">试一试：<code>head -c 512 [device] | xxd</code></li>
+<li class=" ml-8">以及观察它们的 strace<ul class=" list-disc font-serif">
+<li class=" ml-8">能看到访问设备的系统调用</li>
 </ul>
 </li>
 </ul>
@@ -360,15 +361,15 @@ section .center {
 
       
         
-        <div><h2 id="lab-2" class=" text-xl mt-2 pb-2 font-sans">&#20363;&#23376;: Lab 2 &#35774;&#22791;&#39537;&#21160;</h2>
-<p class=" font-serif my-1">&#35774;&#22791;&#27169;&#22411;</p>
+        <div><h2 id="lab-2" class=" text-xl mt-2 pb-2 font-sans">例子: Lab 2 设备驱动</h2>
+<p class=" font-serif my-1">设备模型</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#31616;&#21270;&#30340;&#20551;&#35774;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#35774;&#22791;&#20174;&#31995;&#32479;&#21551;&#21160;&#26102;&#23601;&#23384;&#22312;&#19988;&#19981;&#20250;&#28040;&#22833;</li>
+<li class=" ml-8">简化的假设<ul class=" list-disc font-serif">
+<li class=" ml-8">设备从系统启动时就存在且不会消失</li>
 </ul>
 </li>
-<li class=" ml-8">&#25903;&#25345;&#35835;/&#20889;&#20004;&#31181;&#25805;&#20316; <ul class=" list-disc font-serif">
-<li class=" ml-8">&#22312;&#26080;&#25968;&#25454;&#25110;&#25968;&#25454;&#26410;&#23601;&#32490;&#26102;&#20250;&#31561;&#24453; (P &#25805;&#20316;)</li>
+<li class=" ml-8">支持读/写两种操作 <ul class=" list-disc font-serif">
+<li class=" ml-8">在无数据或数据未就绪时会等待 (P 操作)</li>
 </ul>
 </li>
 </ul>
@@ -379,10 +380,10 @@ section .center {
 <span class="p">}</span><span class="w"> </span><span class="n">devops_t</span><span class="p">;</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">I/O &#35774;&#22791;&#30475;&#36215;&#26469;&#26159;&#20010; &#8220;&#40657;&#30418;&#23376;&#8221;</p>
+<p class=" font-serif my-1">I/O 设备看起来是个 “黑盒子”</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20889;&#38169;&#20219;&#20309;&#20195;&#30721;&#23601; simply &#8220;not work&#8221;</li>
-<li class=" ml-8">&#35774;&#22791;&#39537;&#21160;&#65306;Linux &#20869;&#26680;&#20013;&#26368;&#22810;&#20063;&#26159;&#36136;&#37327;&#26368;&#20302;&#30340;&#20195;&#30721;</li>
+<li class=" ml-8">写错任何代码就 simply “not work”</li>
+<li class=" ml-8">设备驱动：Linux 内核中最多也是质量最低的代码</li>
 </ul></div>
         
       
@@ -394,26 +395,26 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#23383;&#33410;&#27969;/&#23383;&#33410;&#24207;&#21015;&#25277;&#35937;&#30340;&#32570;&#28857;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">字节流/字节序列抽象的缺点</h2>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/pmd.gif" width="400px"></p>
-<p class=" font-serif my-1">&#35774;&#22791;&#19981;&#20165;&#20165;&#26159;&#25968;&#25454;&#65292;&#36824;&#26377;<red>&#25511;&#21046;</red></p>
+<p class=" font-serif my-1">设备不仅仅是数据，还有<red>控制</red></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#23588;&#20854;&#26159;&#35774;&#22791;&#30340;&#38468;&#21152;&#21151;&#33021;&#21644;&#37197;&#32622;</li>
-<li class=" ml-8">&#25152;&#26377;&#39069;&#22806;&#21151;&#33021;&#20840;&#37096;&#20381;&#36182; ioctl<ul class=" list-disc font-serif">
-<li class=" ml-8">&#8220;Arguments, returns, and semantics of ioctl() vary according to the device driver in question&#8221;</li>
-<li class=" ml-8">&#26080;&#27604;&#22797;&#26434;&#30340; &#8220;hidden specifications&#8221;</li>
+<li class=" ml-8">尤其是设备的附加功能和配置</li>
+<li class=" ml-8">所有额外功能全部依赖 ioctl<ul class=" list-disc font-serif">
+<li class=" ml-8">“Arguments, returns, and semantics of ioctl() vary according to the device driver in question”</li>
+<li class=" ml-8">无比复杂的 “hidden specifications”</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#20363;&#23376;</p>
+<p class=" font-serif my-1">例子</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25171;&#21360;&#26426;&#30340;&#25171;&#21360;&#36136;&#37327;/&#36827;&#32440;/&#21452;&#38754;&#25511;&#21046;&#12289;&#21345;&#32440;&#12289;&#28165;&#27905;&#12289;&#33258;&#21160;&#35013;&#35746;&#8230;&#8230;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#19968;&#21488;&#20960;&#21313;&#19975;&#30340;&#25171;&#21360;&#26426;&#21487;&#19981;&#26159;&#37027;&#20040;&#31616;&#21333; &#128514;</li>
+<li class=" ml-8">打印机的打印质量/进纸/双面控制、卡纸、清洁、自动装订……<ul class=" list-disc font-serif">
+<li class=" ml-8">一台几十万的打印机可不是那么简单 😂</li>
 </ul>
 </li>
-<li class=" ml-8">&#38190;&#30424;&#30340;&#36305;&#39532;&#28783;&#12289;&#37325;&#22797;&#36895;&#24230;&#12289;&#23439;&#32534;&#31243;&#8230;&#8230;</li>
-<li class=" ml-8">&#30913;&#30424;&#30340;&#20581;&#24247;&#29366;&#20917;&#12289;&#32531;&#23384;&#25511;&#21046;&#8230;&#8230;</li>
+<li class=" ml-8">键盘的跑马灯、重复速度、宏编程……</li>
+<li class=" ml-8">磁盘的健康状况、缓存控制……</li>
 </ul></div>
         
       
@@ -425,23 +426,23 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20363;&#23376;&#65306;&#32456;&#31471;</h2>
-<p class=" font-serif my-1">&#8220;&#23383;&#33410;&#27969;&#8221; &#20197;&#20869;&#30340;&#21151;&#33021;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">例子：终端</h2>
+<p class=" font-serif my-1">“字节流” 以内的功能</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">ANSI Escape Code</li>
-<li class=" ml-8"><a href="../../../pages/OS/2022/demos/logisim.c" class=" text-amber-900">logisim.c</a> &#21644; <a href="../../../pages/OS/2022/demos/seven-seg.py" class=" text-amber-900">seven-seg.py</a></li>
+<li class=" ml-8"><a href="../../../pages/OS/2022/demos/logisim.c" class=" text-amber-900">logisim.c</a> 和 <a href="../../../pages/OS/2022/demos/seven-seg.py" class=" text-amber-900">seven-seg.py</a></li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#8220;&#23383;&#33410;&#27969;&#8221; &#20197;&#22806;&#30340;&#21151;&#33021;</p>
+<p class=" font-serif my-1">“字节流” 以外的功能</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">stty -a<ul class=" list-disc font-serif">
-<li class=" ml-8">&#32456;&#31471;&#22823;&#23567;&#24590;&#20040;&#30693;&#36947;&#65311;</li>
-<li class=" ml-8">&#32456;&#31471;&#22823;&#23567;&#21464;&#21270;&#21448;&#24590;&#20040;&#30693;&#36947;&#65311;</li>
+<li class=" ml-8">终端大小怎么知道？</li>
+<li class=" ml-8">终端大小变化又怎么知道？</li>
 </ul>
 </li>
 <li class=" ml-8">isatty (3), termios (3)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#22823;&#37096;&#20998;&#37117;&#26159; ioctl &#23454;&#29616;&#30340;</li>
-<li class=" ml-8">&#36825;&#25165;&#26159;&#27700;&#38754;&#19979;&#30340;&#20912;&#23665;&#30340;&#19968;&#35282;</li>
+<li class=" ml-8">大部分都是 ioctl 实现的</li>
+<li class=" ml-8">这才是水面下的冰山的一角</li>
 </ul>
 </li>
 </ul></div>
@@ -459,7 +460,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="linux" class=" text-2xl mt-2 font-sans">Linux &#35774;&#22791;&#39537;&#21160;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="linux" class=" text-2xl mt-2 font-sans">Linux 设备驱动</h1></div></div></div>
         
       
       </section>
@@ -471,14 +472,14 @@ section .center {
       
         
         <div><h2 id="nuclear-launcher" class=" text-xl mt-2 pb-2 font-sans">Nuclear Launcher</h2>
-<p class=" font-serif my-1">&#25105;&#20204;&#24076;&#26395;&#23454;&#29616;&#19968;&#20010;&#26368;&#31616;&#21333;&#30340; &#8220;&#36719;&#20214;&#23450;&#20041;&#26680;&#24377;&#8221;</p>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;fcntl.h&gt;</span>
+<p class=" font-serif my-1">我们希望实现一个最简单的 “软件定义核弹”</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf"><fcntl.h></span>
 
 <span class="cp">#define SECRET "\x01\x14\x05\x14"</span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">open</span><span class="p">(</span><span class="s">"/dev/nuke"</span><span class="p">,</span><span class="w"> </span><span class="n">O_WRONLY</span><span class="p">);</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">fd</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">fd</span><span class="w"> </span><span class="o">></span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">write</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="n">SECRET</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">SECRET</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
 <span class="w">    </span><span class="n">close</span><span class="p">(</span><span class="n">fd</span><span class="p">);</span>
 <span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
@@ -496,27 +497,27 @@ section .center {
 
       
         
-        <div><h2 id="nuclear-launcher" class=" text-xl mt-2 pb-2 font-sans">&#23454;&#29616; Nuclear Launcher</h2>
-<p class=" font-serif my-1">&#20869;&#26680;&#27169;&#22359;&#65306;&#19968;&#27573;&#21487;&#20197;&#34987;&#20869;&#26680;&#21160;&#24577;&#21152;&#36733;&#25191;&#34892;&#30340;&#20195;&#30721;</p>
+        <div><h2 id="nuclear-launcher" class=" text-xl mt-2 pb-2 font-sans">实现 Nuclear Launcher</h2>
+<p class=" font-serif my-1">内核模块：一段可以被内核动态加载执行的代码</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><a href="../labs/M4.html" class=" text-amber-900">M4 - crepl</a><ul class=" list-disc font-serif">
-<li class=" ml-8">&#20063;&#23601;&#26159;&#25226;&#25991;&#20214;&#20869;&#23481;&#25644;&#36816;&#21040;&#20869;&#23384;</li>
-<li class=" ml-8">&#28982;&#21518; export &#19968;&#20123;&#31526;&#21495; (&#22320;&#22336;)</li>
+<li class=" ml-8">也就是把文件内容搬运到内存</li>
+<li class=" ml-8">然后 export 一些符号 (地址)</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1"><a href="../../../pages/OS/2022/demos/launcher.c" class=" text-amber-900">launcher.c</a>: &#39537;&#21160;&#31243;&#24207;&#27169;&#22359;</p>
+<p class=" font-serif my-1"><a href="../../../pages/OS/2022/demos/launcher.c" class=" text-amber-900">launcher.c</a>: 驱动程序模块</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">Everything is a file<ul class=" list-disc font-serif">
-<li class=" ml-8">&#35774;&#22791;&#39537;&#21160;&#23601;&#26159;&#23454;&#29616;&#20102; <code>struct file_operations</code> &#30340;&#23545;&#35937;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#25226;&#25991;&#20214;&#25805;&#20316;&#32763;&#35793;&#25104;&#35774;&#22791;&#25511;&#21046;&#21327;&#35758;</li>
+<li class=" ml-8">设备驱动就是实现了 <code>struct file_operations</code> 的对象<ul class=" list-disc font-serif">
+<li class=" ml-8">把文件操作翻译成设备控制协议</li>
 </ul>
 </li>
 </ul>
 </li>
-<li class=" ml-8">&#22312;&#20869;&#26680;&#20013;&#21021;&#22987;&#21270;&#12289;&#27880;&#20876;&#35774;&#22791;<ul class=" list-disc font-serif">
-<li class=" ml-8"><red>&#31995;&#32479;&#35843;&#29992;&#30452;&#25509;&#20197;&#20989;&#25968;&#35843;&#29992;&#30340;&#26041;&#24335;&#25191;&#34892;&#39537;&#21160;&#20195;&#30721;</red></li>
+<li class=" ml-8">在内核中初始化、注册设备<ul class=" list-disc font-serif">
+<li class=" ml-8"><red>系统调用直接以函数调用的方式执行驱动代码</red></li>
 </ul>
 </li>
 </ul></div>
@@ -530,7 +531,7 @@ section .center {
 
       
         
-        <div><h2 id="file-operations" class=" text-xl mt-2 pb-2 font-sans">&#26356;&#22810;&#30340; File Operations</h2>
+        <div><h2 id="file-operations" class=" text-xl mt-2 pb-2 font-sans">更多的 File Operations</h2>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">file_operations</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">module</span><span class="w"> </span><span class="o">*</span><span class="n">owner</span><span class="p">;</span>
 <span class="w">  </span><span class="n">loff_t</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">llseek</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">file</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">loff_t</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">);</span>
@@ -559,23 +560,23 @@ section .center {
 
       
         
-        <div><h2 id="ioctl" class=" text-xl mt-2 pb-2 font-sans">&#20026;&#20160;&#20040;&#26377;&#20004;&#20010; ioctl?</h2>
+        <div><h2 id="ioctl" class=" text-xl mt-2 pb-2 font-sans">为什么有两个 ioctl?</h2>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">long</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">unlocked_ioctl</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">file</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="p">);</span>
 <span class="kt">long</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">compat_ioctl</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">file</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="p">);</span>
 </code></pre></div>
 
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><code>unlocked_ioctl</code>: BKL (Big Kernel Lock) &#26102;&#20195;&#30340;&#36951;&#20135;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#21333;&#22788;&#29702;&#22120;&#26102;&#20195;&#21482;&#26377; <code>ioctl</code></li>
-<li class=" ml-8">&#20043;&#21518;&#24341;&#20837;&#20102; BKL, <code>ioctl</code> &#25191;&#34892;&#26102;&#40664;&#35748;&#25345;&#26377; BKL</li>
-<li class=" ml-8">(2.6.11) &#39640;&#24615;&#33021;&#30340;&#39537;&#21160;&#21487;&#20197;&#36890;&#36807; <code>unlocked_ioctl</code> &#36991;&#20813;&#38145;</li>
-<li class=" ml-8">(2.6.36) <code>ioctl</code> &#20174; <code>struct file_operations</code> &#20013;&#31227;&#38500;</li>
+<li class=" ml-8"><code>unlocked_ioctl</code>: BKL (Big Kernel Lock) 时代的遗产<ul class=" list-disc font-serif">
+<li class=" ml-8">单处理器时代只有 <code>ioctl</code></li>
+<li class=" ml-8">之后引入了 BKL, <code>ioctl</code> 执行时默认持有 BKL</li>
+<li class=" ml-8">(2.6.11) 高性能的驱动可以通过 <code>unlocked_ioctl</code> 避免锁</li>
+<li class=" ml-8">(2.6.36) <code>ioctl</code> 从 <code>struct file_operations</code> 中移除</li>
 </ul>
 </li>
-<li class=" ml-8"><code>compact_ioctl</code>: &#26426;&#22120;&#23383;&#38271;&#30340;&#20860;&#23481;&#24615;<ul class=" list-disc font-serif">
-<li class=" ml-8">32-bit &#31243;&#24207;&#22312; 64-bit &#31995;&#32479;&#19978;&#21487;&#20197; ioctl</li>
-<li class=" ml-8">&#27492;&#26102;&#24212;&#29992;&#31243;&#24207;&#21644;&#25805;&#20316;&#31995;&#32479;&#23545; ioctl &#25968;&#25454;&#32467;&#26500;&#30340;&#35299;&#35835;&#21487;&#33021;&#19981;&#21516; (tty)</li>
-<li class=" ml-8">(&#35843;&#29992;&#27492;&#20860;&#23481;&#27169;&#24335;)</li>
+<li class=" ml-8"><code>compact_ioctl</code>: 机器字长的兼容性<ul class=" list-disc font-serif">
+<li class=" ml-8">32-bit 程序在 64-bit 系统上可以 ioctl</li>
+<li class=" ml-8">此时应用程序和操作系统对 ioctl 数据结构的解读可能不同 (tty)</li>
+<li class=" ml-8">(调用此兼容模式)</li>
 </ul>
 </li>
 </ul></div>
@@ -593,7 +594,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="gpu" class=" text-2xl mt-2 font-sans">&#20026; GPU &#32534;&#31243;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="gpu" class=" text-2xl mt-2 font-sans">为 GPU 编程</h1></div></div></div>
         
       
       </section>
@@ -604,19 +605,19 @@ section .center {
 
       
         
-        <div><h2 id="gpu" class=" text-xl mt-2 pb-2 font-sans">&#20026; GPU &#32534;&#31243;</h2>
+        <div><h2 id="gpu" class=" text-xl mt-2 pb-2 font-sans">为 GPU 编程</h2>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/GPU-arch.png" width="400px"></p>
 <p class=" font-serif my-1">Single Instruction, Multiple Thread</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#35768;&#22810;&#32447;&#31243;&#37117;&#25191;&#34892;&#30456;&#21516;&#25351;&#20196;</li>
-<li class=" ml-8">&#20294;&#27599;&#19968;&#20010;&#32447;&#31243;&#21448;&#26377;&#19968;&#20123; thread-local data (&#20363;&#22914;&#32534;&#21495;)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#38750;&#24120;&#31934;&#24039;&#30340;&#35774;&#35745;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#19968;&#20010; PC&#65292;&#19968;&#22534;&#25968;&#25454;</li>
-<li class=" ml-8">VLIW &#21644; SIMD &#30340;&#32487;&#20219;&#32773;</li>
+<li class=" ml-8">许多线程都执行相同指令</li>
+<li class=" ml-8">但每一个线程又有一些 thread-local data (例如编号)<ul class=" list-disc font-serif">
+<li class=" ml-8">非常精巧的设计<ul class=" list-disc font-serif">
+<li class=" ml-8">一个 PC，一堆数据</li>
+<li class=" ml-8">VLIW 和 SIMD 的继任者</li>
 </ul>
 </li>
-<li class=" ml-8">&#25353;&#29031; &#8220;Warp, &#32447;&#31243;&#26463;&#8221; &#25191;&#34892;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20998;&#25903;&#24590;&#20040;&#21150;&#65311;</li>
+<li class=" ml-8">按照 “Warp, 线程束” 执行<ul class=" list-disc font-serif">
+<li class=" ml-8">分支怎么办？</li>
 </ul>
 </li>
 </ul>
@@ -633,20 +634,20 @@ section .center {
       
         
         <div><h2 id="mandelbrot-again" class=" text-xl mt-2 pb-2 font-sans">Mandelbrot, Again</h2>
-<p class=" font-serif my-1"><a href="../../../pages/OS/2022/demos/mandelbrot.cu" class=" text-amber-900">mandelbrot.cu</a> &#21644; GPU &#24778;&#20154;&#30340;&#35745;&#31639;&#21147;</p>
+<p class=" font-serif my-1"><a href="../../../pages/OS/2022/demos/mandelbrot.cu" class=" text-amber-900">mandelbrot.cu</a> 和 GPU 惊人的计算力</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">16 &#20159;&#20687;&#32032;&#12289;&#27599;&#20687;&#32032;&#36845;&#20195; 100 &#27425;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20998;&#21040; 512x512 = 262,144 &#32447;&#31243;&#35745;&#31639;</li>
+<li class=" ml-8">16 亿像素、每像素迭代 100 次<ul class=" list-disc font-serif">
+<li class=" ml-8">分到 512x512 = 262,144 线程计算</li>
 </ul>
 </li>
-<li class=" ml-8">&#27599;&#20010;&#32447;&#31243;&#35745;&#31639; mandelbrot &#30340;&#19968;&#23567;&#37096;&#20998;<ul class=" list-disc font-serif">
+<li class=" ml-8">每个线程计算 mandelbrot 的一小部分<ul class=" list-disc font-serif">
 <li class=" ml-8"><a href="../../../pages/OS/img/mandelbrot-12800.webp" class=" text-amber-900">mandelbrot-12800.webp</a></li>
-<li class=" ml-8">(&#24863;&#35874; doowzs &#20511;&#29992;&#30340;&#26426;&#22120;)</li>
+<li class=" ml-8">(感谢 doowzs 借用的机器)</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">nvprof &#32467;&#26524;</p>
+<p class=" font-serif my-1">nvprof 结果</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>==2994086== Profiling result:
 Time(%)      Time   Name
  95.75%  1.76911s   mandelbrot_kernel
@@ -666,22 +667,22 @@ Time(%)      Time   Name
         <div><h2 id="mandelbrot-again-contd" class=" text-xl mt-2 pb-2 font-sans">Mandelbrot, Again (cont'd)</h2>
 <p class=" font-serif my-1">RTFM: <a href="../../../pages/OS/manuals/ptx-isa-7.7.pdf" class=" text-amber-900">Parallel Thread Execution ISA Application Guide</a></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#23601;&#26159;&#20010;&#25351;&#20196;&#38598;</li>
-<li class=" ml-8">&#20877;&#32534;&#35793;&#25104; SASS (&#26426;&#22120;&#30721;)<ul class=" list-disc font-serif">
+<li class=" ml-8">就是个指令集</li>
+<li class=" ml-8">再编译成 SASS (机器码)<ul class=" list-disc font-serif">
 <li class=" ml-8">cuobjdump --dump-ptx / --dump-sass</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#35813;&#26377;&#30340;&#24037;&#20855;&#37117;&#26377;</p>
+<p class=" font-serif my-1">该有的工具都有</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">gcc &#8594; nvcc</li>
-<li class=" ml-8">binutils &#8594; cuobjdump</li>
-<li class=" ml-8">gdb &#8594; cuda-gdb<ul class=" list-disc font-serif">
-<li class=" ml-8">&#21487;&#20197;&#30452;&#25509;&#35843;&#35797; GPU &#19978;&#30340;&#20195;&#30721;&#65281;</li>
+<li class=" ml-8">gcc → nvcc</li>
+<li class=" ml-8">binutils → cuobjdump</li>
+<li class=" ml-8">gdb → cuda-gdb<ul class=" list-disc font-serif">
+<li class=" ml-8">可以直接调试 GPU 上的代码！</li>
 </ul>
 </li>
-<li class=" ml-8">perf &#8594; nvprof</li>
+<li class=" ml-8">perf → nvprof</li>
 <li class=" ml-8">...</li>
 </ul></div>
         
@@ -694,25 +695,25 @@ Time(%)      Time   Name
 
       
         
-        <div><h2 id="gpu" class=" text-xl mt-2 pb-2 font-sans">GPU &#39537;&#21160;&#31243;&#24207;</h2>
-<p class=" font-serif my-1">GPU &#39537;&#21160;&#38750;&#24120;&#22797;&#26434;</p>
+        <div><h2 id="gpu" class=" text-xl mt-2 pb-2 font-sans">GPU 驱动程序</h2>
+<p class=" font-serif my-1">GPU 驱动非常复杂</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20840;&#22871;&#30340;&#24037;&#20855;&#38142;<ul class=" list-disc font-serif">
-<li class=" ml-8">Just-in-time &#31243;&#24207;&#32534;&#35793;</li>
+<li class=" ml-8">全套的工具链<ul class=" list-disc font-serif">
+<li class=" ml-8">Just-in-time 程序编译</li>
 <li class=" ml-8">Profiler</li>
 <li class=" ml-8">...</li>
 </ul>
 </li>
-<li class=" ml-8">API &#30340;&#23454;&#29616;<ul class=" list-disc font-serif">
+<li class=" ml-8">API 的实现<ul class=" list-disc font-serif">
 <li class=" ml-8">cudaMemcpy, cudaMalloc, ...</li>
-<li class=" ml-8">Kernel &#30340;&#25191;&#34892;</li>
-<li class=" ml-8">&#22823;&#37096;&#20998;&#36890;&#36807; ioctl &#23454;&#29616;</li>
+<li class=" ml-8">Kernel 的执行</li>
+<li class=" ml-8">大部分通过 ioctl 实现</li>
 </ul>
 </li>
-<li class=" ml-8">&#35774;&#22791;&#30340;&#36866;&#37197;</li>
+<li class=" ml-8">设备的适配</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">NVIDIA &#22312; 2022 &#24180;&#24320;&#28304;&#20102;&#39537;&#21160;&#65281;(<a href="https://www.bilibili.com/video/BV1YF41177V6" class=" text-amber-900">&#21517;&#22330;&#38754;</a>)</p></div>
+<p class=" font-serif my-1">NVIDIA 在 2022 年开源了驱动！(<a href="https://www.bilibili.com/video/BV1YF41177V6" class=" text-amber-900">名场面</a>)</p></div>
         
       
       </section>
@@ -727,7 +728,7 @@ Time(%)      Time   Name
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#23384;&#20648;&#35774;&#22791;&#30340;&#25277;&#35937;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">存储设备的抽象</h1></div></div></div>
         
       
       </section>
@@ -738,29 +739,29 @@ Time(%)      Time   Name
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#23384;&#20648;&#35774;&#22791;&#30340;&#25277;&#35937;</h2>
-<p class=" font-serif my-1">&#30913;&#30424; (&#23384;&#20648;&#35774;&#22791;) &#30340;&#35775;&#38382;&#29305;&#24615;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">存储设备的抽象</h2>
+<p class=" font-serif my-1">磁盘 (存储设备) 的访问特性</p>
 <ol class=" list-decimal font-serif">
-<li class=" ml-8">&#20197;&#25968;&#25454;&#22359; (block) &#20026;&#21333;&#20301;&#35775;&#38382;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20256;&#36755;&#26377; &#8220;&#26368;&#23567;&#21333;&#20803;&#8221;&#65292;&#19981;&#25903;&#25345;&#20219;&#24847;&#38543;&#26426;&#35775;&#38382;</li>
-<li class=" ml-8">&#26368;&#20339;&#30340;&#20256;&#36755;&#27169;&#24335;&#19982;&#35774;&#22791;&#30456;&#20851; (HDD v.s. SSD)</li>
+<li class=" ml-8">以数据块 (block) 为单位访问<ul class=" list-disc font-serif">
+<li class=" ml-8">传输有 “最小单元”，不支持任意随机访问</li>
+<li class=" ml-8">最佳的传输模式与设备相关 (HDD v.s. SSD)</li>
 </ul>
 </li>
-<li class=" ml-8">&#22823;&#21534;&#21520;&#37327;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20351;&#29992; DMA &#20256;&#36865;&#25968;&#25454;</li>
+<li class=" ml-8">大吞吐量<ul class=" list-disc font-serif">
+<li class=" ml-8">使用 DMA 传送数据</li>
 </ul>
 </li>
-<li class=" ml-8"><red>&#24212;&#29992;&#31243;&#24207;&#19981;&#30452;&#25509;&#35775;&#38382;</red><ul class=" list-disc font-serif">
-<li class=" ml-8">&#35775;&#38382;&#32773;&#36890;&#24120;&#26159;&#25991;&#20214;&#31995;&#32479; (&#32500;&#25252;&#30913;&#30424;&#19978;&#30340;&#25968;&#25454;&#32467;&#26500;)</li>
-<li class=" ml-8">&#22823;&#37327;&#24182;&#21457;&#30340;&#35775;&#38382; (&#25805;&#20316;&#31995;&#32479;&#20013;&#30340;&#36827;&#31243;&#37117;&#35201;&#35775;&#38382;&#25991;&#20214;&#31995;&#32479;)</li>
+<li class=" ml-8"><red>应用程序不直接访问</red><ul class=" list-disc font-serif">
+<li class=" ml-8">访问者通常是文件系统 (维护磁盘上的数据结构)</li>
+<li class=" ml-8">大量并发的访问 (操作系统中的进程都要访问文件系统)</li>
 </ul>
 </li>
 </ol>
 <hr>
-<p class=" font-serif my-1">&#23545;&#27604;&#19968;&#19979;&#32456;&#31471;&#21644; GPU&#65292;&#30340;&#30830;&#26159;&#24456;&#19981;&#19968;&#26679;&#30340;&#35774;&#22791;</p>
+<p class=" font-serif my-1">对比一下终端和 GPU，的确是很不一样的设备</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#32456;&#31471;&#65306;&#23567;&#25968;&#25454;&#37327;&#12289;&#30452;&#25509;&#27969;&#24335;&#20256;&#36755;</li>
-<li class=" ml-8">GPU&#65306;&#22823;&#25968;&#25454;&#37327;&#12289;DMA &#20256;&#36755;</li>
+<li class=" ml-8">终端：小数据量、直接流式传输</li>
+<li class=" ml-8">GPU：大数据量、DMA 传输</li>
 </ul></div>
         
       
@@ -773,10 +774,10 @@ Time(%)      Time   Name
       
         
         <div><h2 id="linux-block-io-layer" class=" text-xl mt-2 pb-2 font-sans">Linux Block I/O Layer</h2>
-<p class=" font-serif my-1">&#25991;&#20214;&#31995;&#32479;&#21644;&#30913;&#30424;&#35774;&#22791;&#20043;&#38388;&#30340;&#25509;&#21475;</p>
+<p class=" font-serif my-1">文件系统和磁盘设备之间的接口</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#21253;&#21547; &#8220;I/O &#35843;&#24230;&#22120;&#8221;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#26366;&#32463;&#30340; &#8220;&#30005;&#26799;&#8221; &#35843;&#24230;&#22120;</li>
+<li class=" ml-8">包含 “I/O 调度器”<ul class=" list-disc font-serif">
+<li class=" ml-8">曾经的 “电梯” 调度器</li>
 </ul>
 </li>
 </ul>
@@ -791,22 +792,22 @@ Time(%)      Time   Name
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#22359;&#35774;&#22791;&#65306;&#25345;&#20037;&#25968;&#25454;&#30340;&#21487;&#38752;&#24615;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">块设备：持久数据的可靠性</h2>
 <p class=" font-serif my-1">Many storage devices, ... come with <em>volatile write back caches</em></p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">the devices signal I/O completion to the operating system before data actually has hit the non-volatile storage</li>
 <li class=" ml-8">this behavior obviously <em>speeds up</em> various workloads, but ... <em>data integrity</em>...</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#25105;&#20204;&#24403;&#28982;&#21487;&#20197;&#25552;&#20379;&#19968;&#20010; ioctl</p>
+<p class=" font-serif my-1">我们当然可以提供一个 ioctl</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20294; block layer &#25552;&#20379;&#20102;&#26356;&#26041;&#20415;&#30340;&#26426;&#21046;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#22312; block I/O &#25552;&#20132;&#26102;<ul class=" list-disc font-serif">
-<li class=" ml-8"><code>| REQ_PREFLUSH</code> &#20043;&#21069;&#30340;&#25968;&#25454;&#33853;&#30424;&#21518;&#25165;&#24320;&#22987;</li>
-<li class=" ml-8"><code>| REQ_FUA</code> (force unit access)&#65292;&#25968;&#25454;&#33853;&#30424;&#21518;&#25165;&#36820;&#22238;</li>
+<li class=" ml-8">但 block layer 提供了更方便的机制<ul class=" list-disc font-serif">
+<li class=" ml-8">在 block I/O 提交时<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>| REQ_PREFLUSH</code> 之前的数据落盘后才开始</li>
+<li class=" ml-8"><code>| REQ_FUA</code> (force unit access)，数据落盘后才返回</li>
 </ul>
 </li>
-<li class=" ml-8">&#35774;&#22791;&#39537;&#21160;&#31243;&#24207;&#20250;&#25226;&#36825;&#20123; flags &#32763;&#35793;&#25104;&#30913;&#30424; (SSD) &#30340;&#25511;&#21046;&#25351;&#20196;</li>
+<li class=" ml-8">设备驱动程序会把这些 flags 翻译成磁盘 (SSD) 的控制指令</li>
 </ul>
 </li>
 </ul></div>
@@ -820,19 +821,19 @@ Time(%)      Time   Name
 
       
         
-        <div><h2 id="block-io" class=" text-xl mt-2 pb-2 font-sans">Block I/O: &#25345;&#20037;&#21270;&#30340;&#36215;&#28857;</h2>
-<p class=" font-serif my-1">&#25991;&#20214;&#31995;&#32479;</p>
+        <div><h2 id="block-io" class=" text-xl mt-2 pb-2 font-sans">Block I/O: 持久化的起点</h2>
+<p class=" font-serif my-1">文件系统</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><red>&#22312; Block I/O API &#19978;&#26500;&#24314;&#30340;&#25345;&#20037;&#25968;&#25454;&#32467;&#26500;</red></li>
+<li class=" ml-8"><red>在 Block I/O API 上构建的持久数据结构</red></li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#23454;&#29616;&#25991;&#20214;&#31995;&#32479;</p>
+<p class=" font-serif my-1">实现文件系统</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">bread</li>
 <li class=" ml-8">bwrite</li>
 <li class=" ml-8">bflush</li>
-<li class=" ml-8">&#25903;&#25345;&#25991;&#20214;/&#30446;&#24405;&#25805;&#20316;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20320;&#21487;&#33021;&#24050;&#32463;&#24819;&#21040;&#24212;&#35813;&#24590;&#20040;&#20570;&#20102;&#65281;</li>
+<li class=" ml-8">支持文件/目录操作<ul class=" list-disc font-serif">
+<li class=" ml-8">你可能已经想到应该怎么做了！</li>
 </ul>
 </li>
 </ul></div>
@@ -850,7 +851,7 @@ Time(%)      Time   Name
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#24635;&#32467;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">总结</h1></div></div></div>
         
       
       </section>
@@ -861,18 +862,18 @@ Time(%)      Time   Name
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#24635;&#32467;</h2>
-<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#22238;&#31572;&#30340;&#38382;&#39064;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">总结</h2>
+<p class=" font-serif my-1">本次课回答的问题</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><strong>Q</strong>: &#25805;&#20316;&#31995;&#32479;&#22914;&#20309;&#20351;&#24212;&#29992;&#31243;&#24207;&#33021;&#35775;&#38382; I/O &#35774;&#22791;&#65311;</li>
+<li class=" ml-8"><strong>Q</strong>: 操作系统如何使应用程序能访问 I/O 设备？</li>
 </ul>
 <hr>
 <p class=" font-serif my-1">Takeaway messages</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#35774;&#22791;&#39537;&#21160;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#25226; read/write/ioctl &#32763;&#35793;&#25104;&#35774;&#22791;&#21548;&#24471;&#25026;&#30340;&#21327;&#35758;</li>
-<li class=" ml-8">&#23383;&#31526;&#35774;&#22791; (&#20018;&#21475;&#12289;GPU) + DMA</li>
-<li class=" ml-8">&#22359;&#35774;&#22791; (&#30913;&#30424;)</li>
+<li class=" ml-8">设备驱动<ul class=" list-disc font-serif">
+<li class=" ml-8">把 read/write/ioctl 翻译成设备听得懂的协议</li>
+<li class=" ml-8">字符设备 (串口、GPU) + DMA</li>
+<li class=" ml-8">块设备 (磁盘)</li>
 </ul>
 </li>
 </ul></div>
@@ -905,5 +906,6 @@ Time(%)      Time   Name
 
 
 </body>
+
 
 </html>

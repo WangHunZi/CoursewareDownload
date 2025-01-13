@@ -1,8 +1,9 @@
 <html lang="en">
+
 <head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>25. &#23384;&#20648;&#35774;&#22791;&#21407;&#29702;</title>
+<title>25. 存储设备原理</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
@@ -6454,7 +6455,7 @@ cell outputs.
 
 .jp-Notebook .jp-Cell.jp-mod-dirty .jp-InputPrompt::before {
   color: var(--jp-warn-color1);
-  content: '&#8226;';
+  content: '•';
 }
 
 .jp-Notebook .jp-Cell.jp-mod-active.jp-mod-dirty .jp-Collapser {
@@ -7491,7 +7492,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[1]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">mosaic</span> <span class="kn">import</span> <span class="o">*</span>
@@ -7663,18 +7664,18 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-InputPrompt jp-InputArea-prompt">
 </div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="25.-%E5%AD%98%E5%82%A8%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86">25. &#23384;&#20648;&#35774;&#22791;&#21407;&#29702;<a class="anchor-link" href="lect25.ipynb.html#25.-%E5%AD%98%E5%82%A8%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86">&#182;</a>
+<h1 id="25.-%E5%AD%98%E5%82%A8%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86">25. 存储设备原理<a class="anchor-link" href="#25.-%E5%AD%98%E5%82%A8%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86">¶</a>
 </h1>
-<p><strong>Changelog &amp; &#21453;&#39304;</strong></p>
+<p><strong>Changelog & 反馈</strong></p>
 <ul>
-<li><a href="https://www.zhihu.com/question/602083441/answer/3038238487">&#32972;&#38149;&#36275;&#22815;&#22810;&#27425;&#65292;&#32456;&#20110;&#20986;&#38149;&#20102;</a></li>
-<li>&#34987;&#32593;&#32476;&#22353;&#24808;&#20102;&#65306;&#23616;&#22495;&#32593;&#20004;&#36793;&#21516;&#26102; RST</li>
+<li><a href="https://www.zhihu.com/question/602083441/answer/3038238487">背锅足够多次，终于出锅了</a></li>
+<li>被网络坑惨了：局域网两边同时 RST</li>
 </ul>
-<p><strong>&#32972;&#26223;&#22238;&#39038;</strong>&#65306;&#25805;&#20316;&#31995;&#32479;&#20013;&#26377;&#19968;&#31867;&#38750;&#24120;&#37325;&#35201;&#30340;&#23545;&#35937;&#65306;&#23384;&#20648;&#20102;&#25968;&#25454;&#30340;&#25991;&#20214;&#12290;&#34429;&#28982;&#25105;&#20204;&#20174;&#20351;&#29992;&#35745;&#31639;&#26426;&#30340;&#19968;&#24320;&#22987;&#23601;&#21644;&#25991;&#20214;&#25171;&#20132;&#36947;&#65292;&#20294;&#30452;&#21040;&#12298;&#25805;&#20316;&#31995;&#32479;&#12299;&#35838;&#31243;&#30340;&#26368;&#21518;&#65292;&#25105;&#20204;&#25165;&#35762;&#35299;&#25991;&#20214;&#26159;&#22914;&#20309;&#22312;&#35745;&#31639;&#26426;&#20013;&#23454;&#29616;&#30340;&#12290;&#20026;&#20102;&#23454;&#29616;&#25991;&#20214;&#65292;&#25105;&#20204;&#39318;&#20808;&#38656;&#35201;&#20102;&#35299;&#25968;&#25454;&#26159;&#22914;&#25345;&#20037;&#20309;&#20445;&#30340;&#12290;</p>
-<p><strong>&#26412;&#35762;&#20869;&#23481;</strong>&#65306;</p>
+<p><strong>背景回顾</strong>：操作系统中有一类非常重要的对象：存储了数据的文件。虽然我们从使用计算机的一开始就和文件打交道，但直到《操作系统》课程的最后，我们才讲解文件是如何在计算机中实现的。为了实现文件，我们首先需要了解数据是如持久何保的。</p>
+<p><strong>本讲内容</strong>：</p>
 <ul>
-<li>&#23384;&#20648;&#31995;&#32479;&#21407;&#29702;</li>
-<li>&#25345;&#20037;&#25968;&#25454;&#30340;&#23384;&#20648;&#65306;&#30913;&#12289;&#20809;&#12289;&#30005;</li>
+<li>存储系统原理</li>
+<li>持久数据的存储：磁、光、电</li>
 </ul>
 </div>
 </div>
@@ -7685,7 +7686,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[2]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'25.1'</span><span class="p">)</span>
@@ -7714,7 +7715,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'25.2'</span><span class="p">)</span>
@@ -7743,7 +7744,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'25.3'</span><span class="p">)</span>
@@ -7772,7 +7773,7 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[5]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">slideshow</span><span class="p">(</span><span class="s1">'25.4'</span><span class="p">)</span>
@@ -7804,20 +7805,20 @@ body { margin-left: auto; margin-right: auto; }
 <div class="jp-InputPrompt jp-InputArea-prompt">
 </div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Take-away-Messages">Take-away Messages<a class="anchor-link" href="lect25.ipynb.html#Take-away-Messages">&#182;</a>
+<h2 id="Take-away-Messages">Take-away Messages<a class="anchor-link" href="#Take-away-Messages">¶</a>
 </h2>
-<p>&#26080;&#35770;&#26159;&#20869;&#23384;&#36824;&#26159;&#25345;&#20037;&#23384;&#20648;&#65292;&#26368;&#32456;&#32988;&#20986;&#30340;&#20173;&#28982;&#26159;&#30005;&#8212;&#8212;&#23427;&#30340;&#23494;&#24230;&#21644;&#36895;&#24230;&#26159;&#20854;&#20182;&#20171;&#36136;&#38590;&#20197;&#27604;&#25311;&#30340;&#12290;&#20294;&#21516;&#26102;&#25105;&#20204;&#20063;&#30475;&#21040;&#65292;NAND Flash &#20316;&#20026;&#25345;&#20037;&#23384;&#20648;&#26102;&#26377;&#30528;&#24040;&#22823;&#30340;&#32570;&#38519;&#8212;&#8212;&#20889;&#20837;&#23551;&#21629;&#12290;&#20294;&#25105;&#20204;&#20063;&#30475;&#21040;&#20102;&#24037;&#19994;&#30028;&#31455;&#28982;&#25954;&#20110;&#35797;&#21046;&#36825;&#26679;&#36328;&#26102;&#20195;&#30340;&#20135;&#21697;&#65292;&#22312;&#21313;&#22810;&#24180;&#30340;&#20105;&#35758;&#20013;&#32456;&#31350;&#25104;&#20026;&#20102;&#20170;&#22825;&#23384;&#20648;&#30340;&#20027;&#35282;&#12290;&#22914;&#26524;&#26356;&#24555;&#30340; non-volatile memory &#21040;&#26469;&#65292;&#25105;&#20204;&#30340;&#35745;&#31639;&#26426;&#31995;&#32479;&#26159;&#21542;&#20250;&#21457;&#29983;&#32763;&#22825;&#35206;&#22320;&#30340;&#21464;&#21270;&#65311;</p>
+<p>无论是内存还是持久存储，最终胜出的仍然是电——它的密度和速度是其他介质难以比拟的。但同时我们也看到，NAND Flash 作为持久存储时有着巨大的缺陷——写入寿命。但我们也看到了工业界竟然敢于试制这样跨时代的产品，在十多年的争议中终究成为了今天存储的主角。如果更快的 non-volatile memory 到来，我们的计算机系统是否会发生翻天覆地的变化？</p>
 <ul>
 <li>
 <a href="https://dl.acm.org/doi/10.5555/1991596.1991599">Operating system implications of fast, cheap, non-volatile memory</a> (HotOS'13)</li>
 </ul>
-<p>&#20197;&#21450;&#65292;&#27426;&#36814;&#21040;&#22823;&#23478;&#38405;&#35835;&#35838;&#22530;&#20013;&#30340;&#19968;&#20123; blogs&#65292;&#20197;&#21450;&#33258;&#24049;&#25910;&#38598;&#19968;&#20123;&#26377;&#36259;&#30340;&#36164;&#26009;&#65292;&#20363;&#22914; <a href="https://www.scientificamerican.com/article/how-do-rewriteable-cds-wo/">How do rewriteable CDs work?</a> &#21644; <a href="https://codecapsule.com/2014/02/12/coding-for-ssds-part-1-introduction-and-table-of-contents/">Coding for SSDs</a>&#12290;&#28023;&#37327;&#30340;&#38405;&#35835;&#24110;&#21161;&#20320;&#24418;&#25104;&#27491;&#30830;&#30340; &#8220;&#35745;&#31639;&#26426;&#31185;&#23398;&#19990;&#30028;&#35266;&#8221;&#65292;&#29992;&#35745;&#31639;&#26426;&#31185;&#23398;&#30340;&#26041;&#24335;&#22788;&#29702;&#38382;&#39064;&#12290;</p>
-<h4 id="1.-%E9%98%85%E8%AF%BB%E6%9D%90%E6%96%99">1. &#38405;&#35835;&#26448;&#26009;<a class="anchor-link" href="lect25.ipynb.html#1.-%E9%98%85%E8%AF%BB%E6%9D%90%E6%96%99">&#182;</a>
+<p>以及，欢迎到大家阅读课堂中的一些 blogs，以及自己收集一些有趣的资料，例如 <a href="https://www.scientificamerican.com/article/how-do-rewriteable-cds-wo/">How do rewriteable CDs work?</a> 和 <a href="https://codecapsule.com/2014/02/12/coding-for-ssds-part-1-introduction-and-table-of-contents/">Coding for SSDs</a>。海量的阅读帮助你形成正确的 “计算机科学世界观”，用计算机科学的方式处理问题。</p>
+<h4 id="1.-%E9%98%85%E8%AF%BB%E6%9D%90%E6%96%99">1. 阅读材料<a class="anchor-link" href="#1.-%E9%98%85%E8%AF%BB%E6%9D%90%E6%96%99">¶</a>
 </h4>
-<p>&#25945;&#31185;&#20070; <a href="https://pages.cs.wisc.edu/~remzi/OSTEP/">Operating Systems: Three Easy Pieces</a>:</p>
+<p>教科书 <a href="https://pages.cs.wisc.edu/~remzi/OSTEP/">Operating Systems: Three Easy Pieces</a>:</p>
 <ul>
-<li>&#31532; 37 &#31456; - Hard Disk Drives</li>
-<li>&#31532; 44 &#31456; - Flash-based SSDs</li>
+<li>第 37 章 - Hard Disk Drives</li>
+<li>第 44 章 - Flash-based SSDs</li>
 </ul>
 </div>
 </div>
@@ -7830,10 +7831,11 @@ body { margin-left: auto; margin-right: auto; }
   <span class="text-muted">
     <center>
 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="../../../static/img/cc-4.0.png"></a>
-    &#160;&#160;&#160;<a style="color:inherit" href="https://beian.miit.gov.cn/">&#33487; ICP &#22791; 2020049101 &#21495;</a>
+       <a style="color:inherit" href="https://beian.miit.gov.cn/">苏 ICP 备 2020049101 号</a>
     </center>
   </span>
 </div>
 </body>
 </body>
+
 </html>

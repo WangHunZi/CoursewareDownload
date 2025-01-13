@@ -1,10 +1,11 @@
 <!DOCTYPE html><html class="h-100">
 
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="../../../static/css/base.css" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com/"></script>
   <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
 
@@ -23,14 +24,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +210,7 @@ section .center {
 }
 </style>
 
-  <title>&#20013;&#26029;&#26426;&#21046;</title>
+  <title>中断机制</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,7 +228,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="14.2.slides.html" class=" text-amber-900">&#20013;&#26029;&#26426;&#21046;</a></h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="14.2.slides.html" class=" text-amber-900">中断机制</a></h1></div></div></div>
         
       
       </section>
@@ -238,23 +239,23 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#29702;&#35299;&#20013;&#26029;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">理解中断</h2>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/6502-pinout.jpg" width="350px"></p>
-<p class=" font-serif my-1">&#30828;&#20214;&#19978;&#30340;&#20013;&#26029;&#65306;&#19968;&#26681;&#32447;</p>
+<p class=" font-serif my-1">硬件上的中断：一根线</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">$\overline{\textrm{IRQ}}$, $\overline{\textrm{NMI}}$ (&#36793;&#27839;&#35302;&#21457;&#65292;&#20302;&#30005;&#24179;&#26377;&#25928;)</li>
-<li class=" ml-8">&#8220;&#21578;&#35785;&#22788;&#29702;&#22120;&#65306;&#20572;&#20572;&#65292;&#26377;&#20107;&#26469;&#20102;&#8221;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#21097;&#19979;&#30340;&#34892;&#20026;&#20132;&#32473;&#22788;&#29702;&#22120;&#22788;&#29702;</li>
+<li class=" ml-8">$\overline{\textrm{IRQ}}$, $\overline{\textrm{NMI}}$ (边沿触发，低电平有效)</li>
+<li class=" ml-8">“告诉处理器：停停，有事来了”<ul class=" list-disc font-serif">
+<li class=" ml-8">剩下的行为交给处理器处理</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#23454;&#38469;&#30340;&#22788;&#29702;&#22120;&#24182;&#19981;&#26159; &#8220;&#26080;&#24773;&#22320;&#25191;&#34892;&#25351;&#20196;&#8221;</p>
+<p class=" font-serif my-1">实际的处理器并不是 “无情地执行指令”</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#26080;&#24773;&#30340;&#25191;&#34892;&#25351;&#20196;</li>
-<li class=" ml-8">&#21516;&#26102;&#26377;&#24773;&#22320;&#21709;&#24212;&#22806;&#37096;&#30340;&#25171;&#26029;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20320;&#22312;&#22270;&#20070;&#39302;&#38519;&#20837;&#20102;&#33258;&#20064;&#30340;&#27515;&#24490;&#29615;&#8230;&#8230;</li>
-<li class=" ml-8">&#28165;&#22330;&#30340;&#20445;&#23433;&#25171;&#26029;&#20102;&#20320;</li>
+<li class=" ml-8">无情的执行指令</li>
+<li class=" ml-8">同时有情地响应外部的打断<ul class=" list-disc font-serif">
+<li class=" ml-8">你在图书馆陷入了自习的死循环……</li>
+<li class=" ml-8">清场的保安打断了你</li>
 </ul>
 </li>
 </ul></div>
@@ -268,23 +269,23 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#22788;&#29702;&#22120;&#30340;&#20013;&#26029;&#34892;&#20026;</h2>
-<p class=" font-serif my-1">&#8220;&#21709;&#24212;&#8221;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">处理器的中断行为</h2>
+<p class=" font-serif my-1">“响应”</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#39318;&#20808;&#26816;&#26597;&#22788;&#29702;&#22120;&#37197;&#32622;&#26159;&#21542;&#20801;&#35768;&#20013;&#26029;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#22914;&#26524;&#22788;&#29702;&#22120;&#20851;&#38381;&#20013;&#26029;&#65292;&#21017;&#24573;&#30053;</li>
+<li class=" ml-8">首先检查处理器配置是否允许中断<ul class=" list-disc font-serif">
+<li class=" ml-8">如果处理器关闭中断，则忽略</li>
 </ul>
 </li>
 <li class=" ml-8">x86 Family<ul class=" list-disc font-serif">
-<li class=" ml-8">&#35810;&#38382;&#20013;&#26029;&#25511;&#21046;&#22120;&#33719;&#24471;&#20013;&#26029;&#21495; n</li>
-<li class=" ml-8">&#20445;&#23384; CS, RIP, RFLAGS, SS, RSP &#21040;&#22534;&#26632;</li>
-<li class=" ml-8">&#36339;&#36716;&#21040; <code>IDT[n]</code> &#25351;&#23450;&#30340;&#22320;&#22336;&#65292;&#24182;&#35774;&#32622;&#22788;&#29702;&#22120;&#29366;&#24577; (&#20363;&#22914;&#20851;&#38381;&#20013;&#26029;)</li>
+<li class=" ml-8">询问中断控制器获得中断号 n</li>
+<li class=" ml-8">保存 CS, RIP, RFLAGS, SS, RSP 到堆栈</li>
+<li class=" ml-8">跳转到 <code>IDT[n]</code> 指定的地址，并设置处理器状态 (例如关闭中断)</li>
 </ul>
 </li>
 <li class=" ml-8">RISC-V (M-Mode)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#26816;&#26597; mie &#26159;&#21542;&#23631;&#34109;&#27492;&#27425;&#20013;&#26029;</li>
-<li class=" ml-8">&#36339;&#36716; <code>PC = (mtvec &amp; ~0xf)</code></li>
-<li class=" ml-8">&#26356;&#26032; <code>mcause.Interrupt = 1</code></li>
+<li class=" ml-8">检查 mie 是否屏蔽此次中断</li>
+<li class=" ml-8">跳转 <code>PC = (mtvec & ~0xf)</code></li>
+<li class=" ml-8">更新 <code>mcause.Interrupt = 1</code></li>
 </ul>
 </li>
 </ul></div>
@@ -298,8 +299,8 @@ section .center {
 
       
         
-        <div><h2 id="risc-v-m-mode-rtfsc" class=" text-xl mt-2 pb-2 font-sans">RISC-V M-Mode &#20013;&#26029;&#34892;&#20026; RTFSC</h2>
-<p class=" font-serif my-1">&#8220;&#26356;&#22810;&#30340;&#22788;&#29702;&#22120;&#20869;&#37096;&#29366;&#24577;&#8221;</p>
+        <div><h2 id="risc-v-m-mode-rtfsc" class=" text-xl mt-2 pb-2 font-sans">RISC-V M-Mode 中断行为 RTFSC</h2>
+<p class=" font-serif my-1">“更多的处理器内部状态”</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">TFM <a href="https://riscv.org/wp-content/uploads/2019/08/riscv-privileged-20190608-1.pdf" class=" text-amber-900">Volume II: Privileged Architecture</a></li>
 </ul>
@@ -327,24 +328,24 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20013;&#26029;&#65306;&#22880;&#23450;&#25805;&#20316;&#31995;&#32479; &#8220;&#38712;&#20027;&#22320;&#20301;&#8221; &#30340;&#26426;&#21046;</h2>
-<p class=" font-serif my-1">&#25805;&#20316;&#31995;&#32479;&#20869;&#26680; (&#20195;&#30721;)</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">中断：奠定操作系统 “霸主地位” 的机制</h2>
+<p class=" font-serif my-1">操作系统内核 (代码)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#24819;&#24320;&#23601;&#24320;&#65292;&#24819;&#20851;&#23601;&#20851;</li>
+<li class=" ml-8">想开就开，想关就关</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#24212;&#29992;&#31243;&#24207;</p>
+<p class=" font-serif my-1">应用程序</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#23545;&#19981;&#36215;&#65292;&#27809;&#26377;&#20013;&#26029;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#22312; gdb &#37324;&#21487;&#20197;&#30475;&#21040; flags &#23492;&#23384;&#22120; (<code>FL_IF</code>)</li>
-<li class=" ml-8"><a href="https://www.felixcloutier.com/x86/cli" class=" text-amber-900">CLI &#8212; Clear Interrupt Flag</a><ul class=" list-disc font-serif">
+<li class=" ml-8">对不起，没有中断<ul class=" list-disc font-serif">
+<li class=" ml-8">在 gdb 里可以看到 flags 寄存器 (<code>FL_IF</code>)</li>
+<li class=" ml-8"><a href="https://www.felixcloutier.com/x86/cli" class=" text-amber-900">CLI — Clear Interrupt Flag</a><ul class=" list-disc font-serif">
 <li class=" ml-8"><code>#GP(0)</code> If CPL is greater than IOPL and less than 3</li>
-<li class=" ml-8">&#35797;&#19968;&#35797; <code>asm volatile ("cli");</code></li>
+<li class=" ml-8">试一试 <code>asm volatile ("cli");</code></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class=" ml-8">&#27515;&#24490;&#29615;&#20063;&#21487;&#20197;&#34987;&#25171;&#26029;</li>
+<li class=" ml-8">死循环也可以被打断</li>
 </ul></div>
         
       
@@ -356,10 +357,10 @@ section .center {
 
       
         
-        <div><h2 id="abstractmachine-api" class=" text-xl mt-2 pb-2 font-sans">AbstractMachine &#20013;&#26029; API</h2>
-<p class=" font-serif my-1">&#38548;&#31163;&#20986;&#19968;&#22359; &#8220;&#22788;&#29702;&#20107;&#20214;&#8221; &#30340;&#20195;&#30721;&#25191;&#34892;&#26102;&#31354;</p>
+        <div><h2 id="abstractmachine-api" class=" text-xl mt-2 pb-2 font-sans">AbstractMachine 中断 API</h2>
+<p class=" font-serif my-1">隔离出一块 “处理事件” 的代码执行时空</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25191;&#34892;&#23436;&#21518;&#65292;&#21487;&#20197;&#36820;&#22238;&#21040;&#34987;&#20013;&#26029;&#30340;&#20195;&#30721;&#32487;&#32493;&#25191;&#34892;</li>
+<li class=" ml-8">执行完后，可以返回到被中断的代码继续执行</li>
 </ul>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="nf">cte_init</span><span class="p">(</span><span class="n">Context</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="n">handler</span><span class="p">)(</span><span class="n">Event</span><span class="w"> </span><span class="n">ev</span><span class="p">,</span><span class="w"> </span><span class="n">Context</span><span class="w"> </span><span class="o">*</span><span class="n">ctx</span><span class="p">));</span>
 <span class="kt">bool</span><span class="w"> </span><span class="nf">ienabled</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
@@ -367,12 +368,12 @@ section .center {
 </code></pre></div>
 
 <hr>
-<p class=" font-serif my-1">&#20013;&#26029;&#24341;&#20837;&#20102;&#24182;&#21457;</p>
+<p class=" font-serif my-1">中断引入了并发</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#26368;&#26089;&#25805;&#20316;&#31995;&#32479;&#30340;&#24182;&#21457;&#24615;&#23601;&#26159;&#26469;&#33258;&#20110;&#20013;&#26029; (&#32780;&#19981;&#26159;&#22810;&#22788;&#29702;&#22120;)</li>
-<li class=" ml-8">&#20851;&#38381;&#20013;&#26029;&#23601;&#33021;&#23454;&#29616;&#20114;&#26021;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#31995;&#32479;&#20013;&#21482;&#26377;&#19968;&#20010;&#22788;&#29702;&#22120;&#65292;&#27704;&#36828;&#19981;&#20250;&#34987;&#25171;&#26029;</li>
-<li class=" ml-8">&#20851;&#20013;&#26029;&#23454;&#29616;&#20102; &#8220;stop the world&#8221;</li>
+<li class=" ml-8">最早操作系统的并发性就是来自于中断 (而不是多处理器)</li>
+<li class=" ml-8">关闭中断就能实现互斥<ul class=" list-disc font-serif">
+<li class=" ml-8">系统中只有一个处理器，永远不会被打断</li>
+<li class=" ml-8">关中断实现了 “stop the world”</li>
 </ul>
 </li>
 </ul></div>
@@ -386,25 +387,25 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#30495;&#27491;&#30340;&#35745;&#31639;&#26426;&#31995;&#32479;&#27169;&#22411;</h2>
-<p class=" font-serif my-1">&#29366;&#24577;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">真正的计算机系统模型</h2>
+<p class=" font-serif my-1">状态</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20849;&#20139;&#20869;&#23384;&#21644;&#27599;&#20010;&#22788;&#29702;&#22120;&#30340;&#20869;&#37096;&#29366;&#24577; $(M, R_1, R_2, \ldots, R_n)$</li>
+<li class=" ml-8">共享内存和每个处理器的内部状态 $(M, R_1, R_2, \ldots, R_n)$</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#29366;&#24577;&#36801;&#31227;</p>
+<p class=" font-serif my-1">状态迁移</p>
 <ol class=" list-decimal font-serif">
-<li class=" ml-8">&#22788;&#29702;&#22120; $t$ &#25191;&#34892;&#19968;&#27493; $(M, R_t) \to (M', R_t')$<ul class=" list-disc font-serif">
-<li class=" ml-8">&#26032;&#29366;&#24577;&#20026; $(M', R_1, R_2, \ldots, R_t', \ldots, R_n) $</li>
+<li class=" ml-8">处理器 $t$ 执行一步 $(M, R_t) \to (M', R_t')$<ul class=" list-disc font-serif">
+<li class=" ml-8">新状态为 $(M', R_1, R_2, \ldots, R_t', \ldots, R_n) $</li>
 </ul>
 </li>
-<li class=" ml-8">&#22788;&#29702;&#22120; $t$ &#21709;&#24212;&#20013;&#26029;</li>
+<li class=" ml-8">处理器 $t$ 响应中断</li>
 </ol>
 <hr>
-<p class=" font-serif my-1">&#20551;&#35774; race-freedom</p>
+<p class=" font-serif my-1">假设 race-freedom</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#19981;&#20250;&#21457;&#29983; relaxed memory behavior</li>
-<li class=" ml-8">&#27169;&#22411;&#33021;&#35302;&#21457;&#30340;&#34892;&#20026;&#23601;&#26159;&#30495;&#23454;&#31995;&#32479;&#33021;&#35302;&#21457;&#30340;&#25152;&#26377;&#34892;&#20026;</li>
+<li class=" ml-8">不会发生 relaxed memory behavior</li>
+<li class=" ml-8">模型能触发的行为就是真实系统能触发的所有行为</li>
 </ul></div>
         
       
@@ -416,19 +417,19 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20363;&#23376;&#65306;&#23454;&#29616;&#20013;&#26029;&#23433;&#20840;&#30340;&#33258;&#26059;&#38145;</h2>
-<p class=" font-serif my-1">&#23454;&#29616;&#21407;&#23376;&#24615;&#65306;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">例子：实现中断安全的自旋锁</h2>
+<p class=" font-serif my-1">实现原子性：</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">printf</span><span class="p">(</span><span class="s">"Hello</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
 </code></pre></div>
 
 <ul class=" list-disc font-serif">
-<li class=" ml-8">printf &#26102;&#21487;&#33021;&#21457;&#29983;&#20013;&#26029;</li>
-<li class=" ml-8">&#22810;&#20010;&#22788;&#29702;&#22120;&#21487;&#33021;&#21516;&#26102;&#25191;&#34892; printf</li>
+<li class=" ml-8">printf 时可能发生中断</li>
+<li class=" ml-8">多个处理器可能同时执行 printf</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#36825;&#20214;&#20107;&#27809;&#26377;&#22823;&#23478;&#24819;&#30340;&#31616;&#21333;</p>
+<p class=" font-serif my-1">这件事没有大家想的简单</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#22810;&#22788;&#29702;&#22120;&#21644;&#20013;&#26029;&#26159;&#20004;&#20010;&#24182;&#21457;&#26469;&#28304;</li>
+<li class=" ml-8">多处理器和中断是两个并发来源</li>
 </ul></div>
         
       
@@ -459,5 +460,6 @@ section .center {
 
 
 </body>
+
 
 </html>

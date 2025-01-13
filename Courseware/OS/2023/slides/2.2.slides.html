@@ -1,10 +1,11 @@
 <!DOCTYPE html><html class="h-100">
 
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="../../../static/css/base.css" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com/"></script>
   <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
 
@@ -23,14 +24,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +210,7 @@ section .center {
 }
 </style>
 
-  <title>&#29702;&#35299;&#39640;&#32423;&#35821;&#35328;&#31243;&#24207;</title>
+  <title>理解高级语言程序</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,7 +228,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="2.2.slides.html" class=" text-amber-900">&#29702;&#35299;&#39640;&#32423;&#35821;&#35328;&#31243;&#24207;</a></h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="2.2.slides.html" class=" text-amber-900">理解高级语言程序</a></h1></div></div></div>
         
       
       </section>
@@ -238,16 +239,16 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20160;&#20040;&#26159;&#31243;&#24207;&#65311;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">什么是程序？</h2>
 <p class=" font-serif my-1">Hmm....</p>
 <hr>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="https://cs.nju.edu.cn/hongjin/me.png" width="200px"></p>
-<p class=" font-serif my-1">&#20320;&#38656;&#35201;&#12298;<a href="https://hongjin-liang.github.io/teaching/semantics/index.html" class=" text-amber-900">&#31243;&#24207;&#35774;&#35745;&#35821;&#35328;&#30340;&#24418;&#24335;&#35821;&#20041;</a>&#12299;</p>
+<p class=" font-serif my-1">你需要《<a href="https://hongjin-liang.github.io/teaching/semantics/index.html" class=" text-amber-900">程序设计语言的形式语义</a>》</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">by &#26753;&#32418;&#29822; &#127913;</li>
+<li class=" ml-8">by 梁红瑾 🎩</li>
 <li class=" ml-8">$\lambda$-calculus, operational semantics, Hoare logic, separation logic</li>
-<li class=" ml-8">&#20837;&#22260; &#8220;&#20320;&#22312;&#21335;&#20140;&#22823;&#23398;&#19978;&#36807;&#26368;&#29275;&#30340;&#35838;&#26159;&#20160;&#20040;&#65311;&#8221; &#30693;&#20046;&#39640;&#31080;&#31572;&#26696;<ul class=" list-disc font-serif">
-<li class=" ml-8"><del>&#24403;&#28982;&#65292;&#25105;&#20063;&#21402;&#39068;&#26080;&#32827;&#22320;&#20837;&#22260;&#20102;</del></li>
+<li class=" ml-8">入围 “你在南京大学上过最牛的课是什么？” 知乎高票答案<ul class=" list-disc font-serif">
+<li class=" ml-8"><del>当然，我也厚颜无耻地入围了</del></li>
 </ul>
 </li>
 </ul></div>
@@ -261,12 +262,12 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans"><del>&#19981;&#65292;&#20320;&#19981;&#38656;&#35201;</del></h2>
-<p class=" font-serif my-1">&#20320;&#33021;&#20889;&#19968;&#20010; C &#35821;&#35328;&#20195;&#30721;&#30340; &#8220;&#35299;&#37322;&#22120;&#8221; &#21527;&#65311;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans"><del>不，你不需要</del></h2>
+<p class=" font-serif my-1">你能写一个 C 语言代码的 “解释器” 吗？</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#22914;&#26524;&#33021;&#65292;&#20320;&#23601;&#23436;&#20840;&#29702;&#35299;&#20102;&#39640;&#32423;&#35821;&#35328;</li>
-<li class=" ml-8">&#21644; &#8220;&#30005;&#36335;&#27169;&#25311;&#22120;&#8221;&#12289;&#8220;RISC-V &#27169;&#25311;&#22120;&#8221; &#31867;&#20284;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#23454;&#29616; gdb &#37324;&#30340; &#8220;&#21333;&#27493;&#25191;&#34892;&#8221;</li>
+<li class=" ml-8">如果能，你就完全理解了高级语言</li>
+<li class=" ml-8">和 “电路模拟器”、“RISC-V 模拟器” 类似<ul class=" list-disc font-serif">
+<li class=" ml-8">实现 gdb 里的 “单步执行”</li>
 </ul>
 </li>
 </ul>
@@ -277,9 +278,9 @@ section .center {
 </code></pre></div>
 
 <hr>
-<p class=" font-serif my-1">&#8220;&#35299;&#37322;&#22120;&#8221; &#30340;&#20363;&#23376;&#65306;&#29992;&#22522;&#30784;&#32467;&#26500;&#27169;&#25311;&#20989;&#25968;&#35843;&#29992;&#21644;&#36882;&#24402;</p>
+<p class=" font-serif my-1">“解释器” 的例子：用基础结构模拟函数调用和递归</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#35797;&#35797;&#27721;&#35834;&#22612;&#21543;</li>
+<li class=" ml-8">试试汉诺塔吧</li>
 </ul></div>
         
       
@@ -291,17 +292,17 @@ section .center {
 
       
         
-        <div><h2 id="90" class=" text-xl mt-2 pb-2 font-sans">&#36825;&#20010;&#38382;&#39064;&#24050;&#32463;&#36229;&#20986;&#20102; 90% &#31243;&#24207;&#21592;&#30340;&#33021;&#21147;&#33539;&#22260;</h2>
-<p class=" font-serif my-1">ChatGPT &#31455;&#28982;&#25913;&#20889;&#23545;&#20102;&#65281;&#32780;&#19988;&#32473;&#20986;&#20102;&#38750;&#24120;&#20248;&#38597; (&#20294;&#20063;&#26377;&#32570;&#38519;) &#30340;&#23454;&#29616;</p>
+        <div><h2 id="90" class=" text-xl mt-2 pb-2 font-sans">这个问题已经超出了 90% 程序员的能力范围</h2>
+<p class=" font-serif my-1">ChatGPT 竟然改写对了！而且给出了非常优雅 (但也有缺陷) 的实现</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">hanoi_non_recursive</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">from</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">to</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">via</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">Element</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">from</span><span class="p">;</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">to</span><span class="p">;</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">via</span><span class="p">;</span><span class="w"> </span><span class="p">};</span>
-<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">stack</span><span class="o">&lt;</span><span class="n">Element</span><span class="o">&gt;</span><span class="w"> </span><span class="n">elements</span><span class="p">;</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">stack</span><span class="o"><</span><span class="n">Element</span><span class="o">></span><span class="w"> </span><span class="n">elements</span><span class="p">;</span>
 <span class="w">  </span><span class="n">elements</span><span class="p">.</span><span class="n">push</span><span class="p">({</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">from</span><span class="p">,</span><span class="w"> </span><span class="n">to</span><span class="p">,</span><span class="w"> </span><span class="n">via</span><span class="p">});</span>
 <span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">elements</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">elements</span><span class="p">.</span><span class="n">top</span><span class="p">();</span>
 <span class="w">    </span><span class="n">elements</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="n">printf</span><span class="p">(</span><span class="s">"%c -&gt; %c</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">from</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">to</span><span class="p">);</span>
+<span class="w">      </span><span class="n">printf</span><span class="p">(</span><span class="s">"%c -> %c</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">from</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">to</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="n">elements</span><span class="p">.</span><span class="n">push</span><span class="p">({</span><span class="n">e</span><span class="p">.</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">via</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">to</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">from</span><span class="p">});</span>
 <span class="w">      </span><span class="n">elements</span><span class="p">.</span><span class="n">push</span><span class="p">({</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">from</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">to</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">via</span><span class="p">});</span>
@@ -320,21 +321,21 @@ section .center {
 
       
         
-        <div><h2 id="chatgpt" class=" text-xl mt-2 pb-2 font-sans">&#24403;&#28982;&#65292;ChatGPT &#20063;&#27809;&#33021;&#23436;&#20840;&#29702;&#35299;</h2>
-<p class=" font-serif my-1">&#32473;&#20102;&#20182;&#19968;&#20010;&#26356;&#38590;&#30340;&#39064;&#65292;&#26524;&#28982;&#32763;&#36710;&#20102; (&#24605;&#36335;&#22522;&#26412;&#27491;&#30830;&#65292;&#20294;&#19981;&#20877;&#20248;&#38597;)</p>
+        <div><h2 id="chatgpt" class=" text-xl mt-2 pb-2 font-sans">当然，ChatGPT 也没能完全理解</h2>
+<p class=" font-serif my-1">给了他一个更难的题，果然翻车了 (思路基本正确，但不再优雅)</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o"><=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">g</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">g</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o"><=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">g</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <hr>
-<p class=" font-serif my-1">(&#20320;&#20204;&#20250;&#20889;&#36825;&#20010;&#30340;&#38750;&#36882;&#24402;&#21527;)</p></div>
+<p class=" font-serif my-1">(你们会写这个的非递归吗)</p></div>
         
       
       </section>
@@ -345,26 +346,26 @@ section .center {
 
       
         
-        <div><h2 id="c" class=" text-xl mt-2 pb-2 font-sans">&#31616;&#21333; C &#31243;&#24207;&#30340;&#29366;&#24577;&#26426;&#27169;&#22411; (&#35821;&#20041;)</h2>
-<p class=" font-serif my-1">&#23545; C &#31243;&#24207;&#20570;&#20986;&#31616;&#21270;</p>
+        <div><h2 id="c" class=" text-xl mt-2 pb-2 font-sans">简单 C 程序的状态机模型 (语义)</h2>
+<p class=" font-serif my-1">对 C 程序做出简化</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#31616;&#21270;&#65306;&#25913;&#20889;&#25104;&#27599;&#26465;&#35821;&#21477;&#33267;&#22810;&#19968;&#27425;&#36816;&#31639;/&#20989;&#25968;&#35843;&#29992;&#30340;&#24418;&#24335;<ul class=" list-disc font-serif">
-<li class=" ml-8"><a href="https://cil-project.github.io/cil/" class=" text-amber-900">&#30495;&#30340;&#26377;&#36825;&#31181;&#24037;&#20855;</a> (C Intermediate Language) &#21644;<a href="https://gitlab.com/zsaleeba/picoc" class=" text-amber-900">&#35299;&#37322;&#22120;</a></li>
+<li class=" ml-8">简化：改写成每条语句至多一次运算/函数调用的形式<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="https://cil-project.github.io/cil/" class=" text-amber-900">真的有这种工具</a> (C Intermediate Language) 和<a href="https://gitlab.com/zsaleeba/picoc" class=" text-amber-900">解释器</a></li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#29366;&#24577;&#26426;&#23450;&#20041;</p>
+<p class=" font-serif my-1">状态机定义</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#29366;&#24577; = &#22534; + &#26632;</li>
-<li class=" ml-8">&#21021;&#22987;&#29366;&#24577; = <code>main</code> &#30340;&#31532;&#19968;&#26465;&#35821;&#21477;</li>
-<li class=" ml-8">&#29366;&#24577;&#36801;&#31227; = &#25191;&#34892;&#19968;&#26465;&#35821;&#21477;&#20013;&#30340;&#19968;&#23567;&#27493;</li>
+<li class=" ml-8">状态 = 堆 + 栈</li>
+<li class=" ml-8">初始状态 = <code>main</code> 的第一条语句</li>
+<li class=" ml-8">状态迁移 = 执行一条语句中的一小步</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">(&#36825;&#36824;&#21482;&#26159; &#8220;&#31895;&#27973;&#8221; &#30340;&#29702;&#35299;)</p>
+<p class=" font-serif my-1">(这还只是 “粗浅” 的理解)</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><red>Talk is cheap. Show me the code.</red> (Linus Torvalds)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20219;&#20309;&#30495;&#27491;&#30340;&#29702;&#35299;&#37117;&#24212;&#35813;&#33853;&#21040;&#21487;&#20197;&#25191;&#34892;&#30340;&#20195;&#30721;</li>
+<li class=" ml-8">任何真正的理解都应该落到可以执行的代码</li>
 </ul>
 </li>
 </ul></div>
@@ -378,25 +379,25 @@ section .center {
 
       
         
-        <div><h2 id="c" class=" text-xl mt-2 pb-2 font-sans">&#31616;&#21333; C &#31243;&#24207;&#30340;&#29366;&#24577;&#26426;&#27169;&#22411; (&#35821;&#20041;)</h2>
-<p class=" font-serif my-1">&#29366;&#24577; </p>
+        <div><h2 id="c" class=" text-xl mt-2 pb-2 font-sans">简单 C 程序的状态机模型 (语义)</h2>
+<p class=" font-serif my-1">状态 </p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">Stack frame &#30340;&#21015;&#34920; + &#20840;&#23616;&#21464;&#37327;</li>
+<li class=" ml-8">Stack frame 的列表 + 全局变量</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#21021;&#22987;&#29366;&#24577;</p>
+<p class=" font-serif my-1">初始状态</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20165;&#26377;&#19968;&#20010; frame: <code>main(argc, argv)</code> &#65307;&#20840;&#23616;&#21464;&#37327;&#20026;&#21021;&#22987;&#20540;</li>
+<li class=" ml-8">仅有一个 frame: <code>main(argc, argv)</code> ；全局变量为初始值</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#29366;&#24577;&#36801;&#31227;</p>
+<p class=" font-serif my-1">状态迁移</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25191;&#34892; frames.top.PC &#22788;&#30340;&#31616;&#21333;&#35821;&#21477;</li>
-<li class=" ml-8">&#20989;&#25968;&#35843;&#29992; = push frame (frame.PC = &#20837;&#21475;)</li>
-<li class=" ml-8">&#20989;&#25968;&#36820;&#22238; = pop frame</li>
+<li class=" ml-8">执行 frames.top.PC 处的简单语句</li>
+<li class=" ml-8">函数调用 = push frame (frame.PC = 入口)</li>
+<li class=" ml-8">函数返回 = pop frame</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#28982;&#21518;&#30475;&#30475;&#25105;&#20204;&#30340;&#38750;&#36882;&#24402;&#27721;&#35834;&#22612; (&#26356;&#26412;&#36136;)</p></div>
+<p class=" font-serif my-1">然后看看我们的非递归汉诺塔 (更本质)</p></div>
         
       
       </section>
@@ -426,5 +427,6 @@ section .center {
 
 
 </body>
+
 
 </html>

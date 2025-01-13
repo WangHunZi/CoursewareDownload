@@ -1,10 +1,11 @@
 <!DOCTYPE html><html class="h-100">
 
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="../../../static/css/base.css" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com/"></script>
   <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
 
@@ -23,14 +24,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +210,7 @@ section .center {
 }
 </style>
 
-  <title>&#29366;&#24577;&#26426;&#27169;&#22411;&#30340;&#24212;&#29992;</title>
+  <title>状态机模型的应用</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,21 +228,21 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#29366;&#24577;&#26426;&#27169;&#22411;&#30340;&#24212;&#29992;</h1>
-<p class=" font-serif my-1"><include src="Slides_Author"><div><div class="py-16">
-<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">&#33931;&#28814;&#23721;</a></p>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">状态机模型的应用</h1>
+<p class=" font-serif my-1"><include src="Slides_Author/index.html"><div><div class="py-16">
+<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">蒋炎岩</a></p>
 </div>
 <div class="row">
 <div class="author-affiliation">
-    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#12288;&#12288;&#21335;&#20140;&#22823;&#23398;&#12288;&#12288;</p>
+    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">　　南京大学　　</p>
     <img class="inline-img h-24" src="../../../static/img/nju-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#31185;&#23398;&#19982;&#25216;&#26415;&#31995;</p>
+   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">计算机科学与技术系</p>
     <img class="inline-img h-24" src="../../../static/img/njucs-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#36719;&#20214;&#30740;&#31350;&#25152;</p>
+    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">计算机软件研究所</p>
     <img class="inline-img h-24" src="../../../static/img/ics-logo.png" style="display: inline-block;"></a>
   </div>
 </div></div></include></p></div></div></div>
@@ -256,28 +257,28 @@ section .center {
       
         
         <div><h2 id="overview" class=" text-xl mt-2 pb-2 font-sans">Overview</h2>
-<p class=" font-serif my-1">&#22797;&#20064;</p>
+<p class=" font-serif my-1">复习</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#29366;&#24577;&#26426;&#65306;&#29702;&#35770;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#25968;&#23383;&#30005;&#36335;&#65306;<a href="../../../pages/OS/2022/demos/logisim.c" class=" text-amber-900">logisim.c</a> &#21644; <a href="../../../pages/OS/2022/demos/seven-seg.py" class=" text-amber-900">seven-seg.py</a></li>
-<li class=" ml-8">Model checker: &#29702;&#35299;&#24182;&#21457;&#31243;&#24207;&#25191;&#34892;&#30340;&#26032;&#26041;&#27861;</li>
+<li class=" ml-8">状态机：理论<ul class=" list-disc font-serif">
+<li class=" ml-8">数字电路：<a href="../../../pages/OS/2022/demos/logisim.c" class=" text-amber-900">logisim.c</a> 和 <a href="../../../pages/OS/2022/demos/seven-seg.py" class=" text-amber-900">seven-seg.py</a></li>
+<li class=" ml-8">Model checker: 理解并发程序执行的新方法</li>
 </ul>
 </li>
-<li class=" ml-8">&#29366;&#24577;&#26426;&#65306;&#23454;&#36341;<ul class=" list-disc font-serif">
+<li class=" ml-8">状态机：实践<ul class=" list-disc font-serif">
 <li class=" ml-8"><a href="../../../pages/OS/2022/demos/thread-os.c" class=" text-amber-900">thread-os.c</a></li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#22238;&#31572;&#30340;&#38382;&#39064;</p>
+<p class=" font-serif my-1">本次课回答的问题</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><strong>Q</strong>: &#29366;&#24577;&#26426;&#27169;&#22411;&#22914;&#27492;&#26377;&#29992;&#65292;&#36824;&#33021;&#26356;&#26377;&#29992;&#19968;&#28857;&#21527;&#65311;</li>
+<li class=" ml-8"><strong>Q</strong>: 状态机模型如此有用，还能更有用一点吗？</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#20027;&#35201;&#20869;&#23481;</p>
+<p class=" font-serif my-1">本次课主要内容</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#32456;&#20110;&#20570;&#23436;&#20102;&#38138;&#22443;&#65292;&#26159;&#26102;&#20505;&#35753;&#20320;&#24863;&#21463;&#21040; &#8220;&#30495;&#27491;&#30340;&#21147;&#37327;&#8221; &#20102;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#37117;&#26159;&#27809;&#29992;&#30340;&#20869;&#23481;&#65292;&#24403;&#25105;&#21475;&#32993;&#23601;&#34892;&#20102;</li>
+<li class=" ml-8">终于做完了铺垫，是时候让你感受到 “真正的力量” 了<ul class=" list-disc font-serif">
+<li class=" ml-8">都是没用的内容，当我口胡就行了</li>
 </ul>
 </li>
 </ul></div>
@@ -295,7 +296,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#29366;&#24577;&#26426;&#65306;&#29702;&#35299;&#25105;&#20204;&#30340;&#19990;&#30028;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">状态机：理解我们的世界</h1></div></div></div>
         
       
       </section>
@@ -306,14 +307,14 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#21746; &#9794; &#23398;&#25506;&#35752;</h2>
-<p class=" font-serif my-1">&#25105;&#20204;&#30340;&#29289;&#29702;&#19990;&#30028;&#26159; &#8220;&#30830;&#23450;&#35268;&#21017;&#8221; &#30340;&#29366;&#24577;&#26426;&#21527;&#65311;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">哲 ♂ 学探讨</h2>
+<p class=" font-serif my-1">我们的物理世界是 “确定规则” 的状态机吗？</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#23439;&#35266;&#29289;&#29702;&#19990;&#30028;&#36817;&#20284;&#20110; deterministic &#30340;&#29366;&#24577;&#26426; (&#32463;&#20856;&#21147;&#23398;)</li>
-<li class=" ml-8">&#24494;&#35266;&#19990;&#30028;&#21487;&#33021;&#26159; non-deterministic &#30340; (&#37327;&#23376;&#21147;&#23398;)</li>
+<li class=" ml-8">宏观物理世界近似于 deterministic 的状态机 (经典力学)</li>
+<li class=" ml-8">微观世界可能是 non-deterministic 的 (量子力学)</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#25226;&#29289;&#29702;&#19990;&#30028;&#24314;&#27169;&#25104;&#22522;&#26412;&#31890;&#23376;&#30340;&#36816;&#21160;</p>
+<p class=" font-serif my-1">把物理世界建模成基本粒子的运动</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><a href="https://playgameoflife.com/" class=" text-amber-900">Conway's game of life</a></li>
 </ul></div>
@@ -327,24 +328,24 @@ section .center {
 
       
         
-        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">&#21746; &#9794; &#23398;&#25506;&#35752; (cont'd)</h2>
-<p class=" font-serif my-1">&#21487;&#20197;&#22312;&#36825;&#20010;&#27169;&#22411;&#19978;&#20005;&#32899;&#22320;&#23450;&#20041;&#24456;&#22810;&#27010;&#24565;&#65306;&#39044;&#27979;&#26410;&#26469;&#12289;&#26102;&#38388;&#26053;&#34892;&#8230;&#8230;</p>
+        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">哲 ♂ 学探讨 (cont'd)</h2>
+<p class=" font-serif my-1">可以在这个模型上严肃地定义很多概念：预测未来、时间旅行……</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25104;&#20026;&#20320;&#29702;&#35299;&#29289;&#29702; (&#21644;&#35745;&#31639;&#26426;) &#19990;&#30028;&#30340;&#21442;&#32771;</li>
+<li class=" ml-8">成为你理解物理 (和计算机) 世界的参考</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#20363;&#23376;</p>
+<p class=" font-serif my-1">例子</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">Cellular automata &#19981;&#25903;&#25345; &#8220;&#26102;&#38388;&#26053;&#34892;&#8221;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#24590;&#20040;&#28155;&#21152;&#19968;&#20010;&#20844;&#29702;&#20351;&#23427;&#21487;&#20197;&#25903;&#25345;&#65311;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#24179;&#34892;&#23431;&#23449;</li>
-<li class=" ml-8">&#22914;&#26524;&#19990;&#30028;&#32447;&#38656;&#35201;&#21512;&#24182;&#65311;&#21487;&#20197;<a href="https://www.scientificamerican.com/article/time-travel-simulation-resolves-grandfather-paradox/" class=" text-amber-900">&#25910;&#25947;&#20110;&#26576;&#20010;&#20998;&#24067;</a></li>
+<li class=" ml-8">Cellular automata 不支持 “时间旅行”<ul class=" list-disc font-serif">
+<li class=" ml-8">怎么添加一个公理使它可以支持？<ul class=" list-disc font-serif">
+<li class=" ml-8">平行宇宙</li>
+<li class=" ml-8">如果世界线需要合并？可以<a href="https://www.scientificamerican.com/article/time-travel-simulation-resolves-grandfather-paradox/" class=" text-amber-900">收敛于某个分布</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class=" ml-8">Cellular automata &#19981;&#25903;&#25345; &#8220;&#39044;&#27979;&#22806;&#26469;&#8221;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#33021;&#21542;&#28155;&#21152;&#19968;&#20010; syscall &#20351;&#23427;&#25903;&#25345;&#65311;<ul class=" list-disc font-serif">
+<li class=" ml-8">Cellular automata 不支持 “预测外来”<ul class=" list-disc font-serif">
+<li class=" ml-8">能否添加一个 syscall 使它支持？<ul class=" list-disc font-serif">
 <li class=" ml-8"><a href="https://www.scottaaronson.com/papers/philos.pdf" class=" text-amber-900">Why philosophers should care about computational complexity, Ch. 10</a></li>
 </ul>
 </li>
@@ -361,20 +362,20 @@ section .center {
 
       
         
-        <div><h2 id="cpu" class=" text-xl mt-2 pb-2 font-sans">&#29366;&#24577;&#26426;&#27169;&#22411;&#65306;&#29702;&#35299;&#32534;&#35793;&#22120;&#21644;&#29616;&#20195; CPU</h2>
-<p class=" font-serif my-1">&#32534;&#35793;&#22120;&#65306;&#28304;&#20195;&#30721; $S$ (&#29366;&#24577;&#26426;) &#8594; &#20108;&#36827;&#21046;&#20195;&#30721; $C$ (&#29366;&#24577;&#26426;)
+        <div><h2 id="cpu" class=" text-xl mt-2 pb-2 font-sans">状态机模型：理解编译器和现代 CPU</h2>
+<p class=" font-serif my-1">编译器：源代码 $S$ (状态机) → 二进制代码 $C$ (状态机)
 $$C = \textrm{compile}(S)$$</p>
-<p class=" font-serif my-1">&#32534;&#35793; (&#20248;&#21270;) &#30340;&#27491;&#30830;&#24615; (Soundness): </p>
+<p class=" font-serif my-1">编译 (优化) 的正确性 (Soundness): </p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><red>$S$ &#19982; $C$ &#30340;&#21487;&#35266;&#27979;&#34892;&#20026;&#20005;&#26684;&#19968;&#33268;</red><ul class=" list-disc font-serif">
+<li class=" ml-8"><red>$S$ 与 $C$ 的可观测行为严格一致</red><ul class=" list-disc font-serif">
 <li class=" ml-8">system calls; volatile variable loads/stores; termination</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#36229;&#26631;&#37327; (superscalar)/&#20081;&#24207;&#25191;&#34892;&#22788;&#29702;&#22120;</p>
+<p class=" font-serif my-1">超标量 (superscalar)/乱序执行处理器</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20801;&#35768;&#22312;&#29366;&#24577;&#26426;&#19978; &#8220;&#36339;&#36291;&#8221;</li>
+<li class=" ml-8">允许在状态机上 “跳跃”</li>
 <li class=" ml-8"><a href="../../../pages/OS/2022/demos/ilp-demo.c" class=" text-amber-900">ilp-demo.c</a></li>
 </ul></div>
         
@@ -391,7 +392,7 @@ $$C = \textrm{compile}(S)$$</p>
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#26597;&#30475;&#29366;&#24577;&#26426;&#25191;&#34892;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">查看状态机执行</h1></div></div></div>
         
       
       </section>
@@ -402,15 +403,15 @@ $$C = \textrm{compile}(S)$$</p>
 
       
         
-        <div><h2 id="trace" class=" text-xl mt-2 pb-2 font-sans">Trace &#21644;&#35843;&#35797;&#22120;</h2>
-<p class=" font-serif my-1">&#31243;&#24207;&#25191;&#34892; = &#29366;&#24577;&#26426;&#25191;&#34892;</p>
+        <div><h2 id="trace" class=" text-xl mt-2 pb-2 font-sans">Trace 和调试器</h2>
+<p class=" font-serif my-1">程序执行 = 状态机执行</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25105;&#20204;&#33021;&#19981;&#33021; &#8220;hack&#8221; &#36827;&#36825;&#20010;&#29366;&#24577;&#26426;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#35266;&#23519;&#29366;&#24577;&#26426;&#30340;&#25191;&#34892;<ul class=" list-disc font-serif">
+<li class=" ml-8">我们能不能 “hack” 进这个状态机<ul class=" list-disc font-serif">
+<li class=" ml-8">观察状态机的执行<ul class=" list-disc font-serif">
 <li class=" ml-8">strace/gdb</li>
 </ul>
 </li>
-<li class=" ml-8">&#29978;&#33267;&#35760;&#24405;&#21644;<red>&#25913;&#21464;</red>&#29366;&#24577;&#26426;&#30340;&#25191;&#34892;</li>
+<li class=" ml-8">甚至记录和<red>改变</red>状态机的执行</li>
 </ul>
 </li>
 </ul></div>
@@ -424,12 +425,12 @@ $$C = \textrm{compile}(S)$$</p>
 
       
         
-        <div><h2 id="1-time-travel-debugging" class=" text-xl mt-2 pb-2 font-sans">&#24212;&#29992; (1): Time-Travel Debugging</h2>
-<p class=" font-serif my-1">&#31243;&#24207;&#25191;&#34892;&#26159;&#38543;&#26102;&#38388; &#8220;&#21069;&#36827;&#8221; &#30340; $ s_0 \to s_1 \to s_2 \to \ldots $</p>
+        <div><h2 id="1-time-travel-debugging" class=" text-xl mt-2 pb-2 font-sans">应用 (1): Time-Travel Debugging</h2>
+<p class=" font-serif my-1">程序执行是随时间 “前进” 的 $ s_0 \to s_1 \to s_2 \to \ldots $</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#33021;&#21542;&#22312;&#26102;&#38388;&#19978; &#8220;&#21518;&#36864;&#8221;&#65311; (time-travel)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#32463;&#24120; gdb &#19981;&#23567;&#24515; step &#36807;&#20102;&#65292;&#20174;&#22836;&#20877;&#26469;&#8230;&#8230;</li>
-<li class=" ml-8">&#35760;&#24405;&#25152;&#26377;&#30340; $s_i$&#65292;&#23601;&#33021;&#23454;&#29616;&#20219;&#24847;&#30340; time-traveling</li>
+<li class=" ml-8">能否在时间上 “后退”？ (time-travel)<ul class=" list-disc font-serif">
+<li class=" ml-8">经常 gdb 不小心 step 过了，从头再来……</li>
+<li class=" ml-8">记录所有的 $s_i$，就能实现任意的 time-traveling</li>
 </ul>
 </li>
 </ul></div>
@@ -437,13 +438,13 @@ $$C = \textrm{compile}(S)$$</p>
       
          <div class="fragment"> 
         <div><hr>
-<p class=" font-serif my-1">&#35760;&#24405;&#25152;&#26377; $s_i$ &#30340;&#24320;&#38144;&#22826;&#22823; ($s_i$ &#30001;&#20869;&#23384; + &#23492;&#23384;&#22120;&#32452;&#25104;)</p>
+<p class=" font-serif my-1">记录所有 $s_i$ 的开销太大 ($s_i$ 由内存 + 寄存器组成)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20294;<red>&#19968;&#26465;&#25351;&#20196;&#30340; side-effect &#36890;&#24120;&#26377;&#38480;</red><ul class=" list-disc font-serif">
-<li class=" ml-8">&#21482;&#35760;&#24405;&#21021;&#22987;&#29366;&#24577;&#65292;&#21644;&#27599;&#26465;&#25351;&#20196;&#21069;&#21518;&#29366;&#24577;&#30340; diff</li>
+<li class=" ml-8">但<red>一条指令的 side-effect 通常有限</red><ul class=" list-disc font-serif">
+<li class=" ml-8">只记录初始状态，和每条指令前后状态的 diff</li>
 <li class=" ml-8">$s_0, \Delta_0, \Delta_1, \ldots $</li>
-<li class=" ml-8">&#27491;&#21521;&#25191;&#34892;&#65306;$s_{i+1} = s_i + \Delta_0$</li>
-<li class=" ml-8">&#21453;&#21521;&#25191;&#34892;&#65306;$s_{i-1} = s_i e \Delta_0^{-1}$</li>
+<li class=" ml-8">正向执行：$s_{i+1} = s_i + \Delta_0$</li>
+<li class=" ml-8">反向执行：$s_{i-1} = s_i e \Delta_0^{-1}$</li>
 </ul>
 </li>
 </ul></div>
@@ -457,18 +458,18 @@ $$C = \textrm{compile}(S)$$</p>
 
       
         
-        <div><h2 id="1-time-travel-debugging-contd" class=" text-xl mt-2 pb-2 font-sans">&#24212;&#29992; (1): Time-Travel Debugging (cont'd)</h2>
-<p class=" font-serif my-1">gdb &#30340;&#38544;&#34255;&#21151;&#33021; (&#22823;&#23478;&#35835;&#36807; gdb &#30340;&#25163;&#20876;&#20102;&#21527;&#65311;)</p>
+        <div><h2 id="1-time-travel-debugging-contd" class=" text-xl mt-2 pb-2 font-sans">应用 (1): Time-Travel Debugging (cont'd)</h2>
+<p class=" font-serif my-1">gdb 的隐藏功能 (大家读过 gdb 的手册了吗？)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><code>record full</code> - &#24320;&#22987;&#35760;&#24405;</li>
-<li class=" ml-8"><code>record stop</code> - &#32467;&#26463;&#35760;&#24405;</li>
-<li class=" ml-8"><code>reverse-step</code>/<code>reverse-stepi</code> - &#8220;&#26102;&#38388;&#26053;&#34892;&#35843;&#35797;&#8221;</li>
+<li class=" ml-8"><code>record full</code> - 开始记录</li>
+<li class=" ml-8"><code>record stop</code> - 结束记录</li>
+<li class=" ml-8"><code>reverse-step</code>/<code>reverse-stepi</code> - “时间旅行调试”</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#20363;&#23376;&#65306;&#35843;&#35797; <a href="../../../pages/OS/2022/demos/rdrand.c" class=" text-amber-900">rdrand.c</a></p>
+<p class=" font-serif my-1">例子：调试 <a href="../../../pages/OS/2022/demos/rdrand.c" class=" text-amber-900">rdrand.c</a></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">Reverse execution &#19981;&#26159;&#19975;&#33021;&#30340;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#26377;&#20123;&#22797;&#26434;&#30340;&#25351;&#20196; (syscall) &#26080;&#27861;&#20445;&#35777;</li>
+<li class=" ml-8">Reverse execution 不是万能的<ul class=" list-disc font-serif">
+<li class=" ml-8">有些复杂的指令 (syscall) 无法保证</li>
 </ul>
 </li>
 </ul></div>
@@ -482,13 +483,13 @@ $$C = \textrm{compile}(S)$$</p>
 
       
         
-        <div><h2 id="2-record-replay" class=" text-xl mt-2 pb-2 font-sans">&#24212;&#29992; (2): Record &amp; Replay</h2>
-<p class=" font-serif my-1">&#22312;&#31243;&#24207;&#25191;&#34892;&#26102;&#35760;&#24405;&#20449;&#24687;&#65292;&#32467;&#26463;&#21518;&#37325;&#29616;&#31243;&#24207;&#30340;&#34892;&#20026;</p>
+        <div><h2 id="2-record-replay" class=" text-xl mt-2 pb-2 font-sans">应用 (2): Record & Replay</h2>
+<p class=" font-serif my-1">在程序执行时记录信息，结束后重现程序的行为</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#30830;&#23450;&#30340;&#31243;&#24207;&#19981;&#38656;&#35201;&#20219;&#20309;&#35760;&#24405;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20551;&#35774; $s_0$ &#25191;&#34892; 1,000,000 &#26465;&#30830;&#23450;&#30340;&#25351;&#20196;&#21518;&#24471;&#21040; $s'$<ul class=" list-disc font-serif">
-<li class=" ml-8">&#37027;&#20040;&#21482;&#35201;&#35760;&#24405; $s_0$ &#21644; 1,000,000</li>
-<li class=" ml-8">&#23601;&#33021;&#36890;&#36807; &#8220;&#20877;&#25191;&#34892;&#19968;&#27425;&#8221; &#25512;&#23548;&#20986; $s'$</li>
+<li class=" ml-8">确定的程序不需要任何记录<ul class=" list-disc font-serif">
+<li class=" ml-8">假设 $s_0$ 执行 1,000,000 条确定的指令后得到 $s'$<ul class=" list-disc font-serif">
+<li class=" ml-8">那么只要记录 $s_0$ 和 1,000,000</li>
+<li class=" ml-8">就能通过 “再执行一次” 推导出 $s'$</li>
 </ul>
 </li>
 </ul>
@@ -504,10 +505,10 @@ $$C = \textrm{compile}(S)$$</p>
 
       
         
-        <div><h2 id="2-record-replay-contd" class=" text-xl mt-2 pb-2 font-sans">&#24212;&#29992; (2): Record &amp; Replay (cont'd)</h2>
-<p class=" font-serif my-1">Record &amp; Replay: &#21482;&#38656;&#35760;&#24405; non-deterministic &#30340;&#25351;&#20196;&#30340;<red>&#25928;&#26524;</red></p>
+        <div><h2 id="2-record-replay-contd" class=" text-xl mt-2 pb-2 font-sans">应用 (2): Record & Replay (cont'd)</h2>
+<p class=" font-serif my-1">Record & Replay: 只需记录 non-deterministic 的指令的<red>效果</red></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">(&#21333;&#32447;&#31243;) &#24212;&#29992;&#31243;&#24207;<ul class=" list-disc font-serif">
+<li class=" ml-8">(单线程) 应用程序<ul class=" list-disc font-serif">
 <li class=" ml-8">syscall, rdrand, rdtsc, ...</li>
 <li class=" ml-8">rr (Mozilla)<ul class=" list-disc font-serif">
 <li class=" ml-8"><a href="10.slides.html" class=" text-amber-900">To catch a failure: The record-and-replay approach to debugging</a> (CACM'20)</li>
@@ -515,10 +516,10 @@ $$C = \textrm{compile}(S)$$</p>
 </li>
 </ul>
 </li>
-<li class=" ml-8">(&#21333;&#22788;&#29702;&#22120;) &#25805;&#20316;&#31995;&#32479;<ul class=" list-disc font-serif">
-<li class=" ml-8">mmio, in, out, rdrand, rdtsc, &#20013;&#26029;, ...</li>
+<li class=" ml-8">(单处理器) 操作系统<ul class=" list-disc font-serif">
+<li class=" ml-8">mmio, in, out, rdrand, rdtsc, 中断, ...</li>
 <li class=" ml-8">QEMU (<code>-icount shift=auto,rr=record,rrfile=replay.bin</code>)<ul class=" list-disc font-serif">
-<li class=" ml-8"><a href="10.slides.html" class=" text-amber-900">ReVirt: Enabling intrusion analysis through virtual-machine logging and replay</a> (OSDI'02, Best Paper &#127941;)</li>
+<li class=" ml-8"><a href="10.slides.html" class=" text-amber-900">ReVirt: Enabling intrusion analysis through virtual-machine logging and replay</a> (OSDI'02, Best Paper 🏅)</li>
 </ul>
 </li>
 </ul>
@@ -538,7 +539,7 @@ $$C = \textrm{compile}(S)$$</p>
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#37319;&#26679;&#29366;&#24577;&#26426;&#25191;&#34892;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">采样状态机执行</h1></div></div></div>
         
       
       </section>
@@ -549,21 +550,21 @@ $$C = \textrm{compile}(S)$$</p>
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20851;&#20110;&#24615;&#33021;&#20248;&#21270;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">关于性能优化</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
 <p class=" font-serif my-1">Premature optimization is the root of all evil. (D. E. Knuth)</p>
 </blockquote>
-<p class=" font-serif my-1">&#37027;&#21040;&#24213;&#24590;&#20040;&#26679;&#25165;&#31639; mature &#21602;&#65311;</p>
+<p class=" font-serif my-1">那到底怎么样才算 mature 呢？</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#29366;&#24577;&#26426;&#30340;&#25191;&#34892;&#38656;&#35201;&#26102;&#38388;&#65307;&#23545;&#35937;&#38656;&#35201;&#21344;&#29992;&#31354;&#38388;</li>
-<li class=" ml-8">&#38656;&#35201;&#29702;&#35299;&#22909; &#8220;&#26102;&#38388;&#33457;&#22312;&#21738;&#37324;&#8221;&#12289;&#8220;&#20160;&#20040;&#23545;&#35937;&#21344;&#29992;&#20102;&#31354;&#38388;&#8221;</li>
+<li class=" ml-8">状态机的执行需要时间；对象需要占用空间</li>
+<li class=" ml-8">需要理解好 “时间花在哪里”、“什么对象占用了空间”</li>
 </ul>
 <hr>
 <p class=" font-serif my-1"><img alt="" class="float-right px-4" src="../../../pages/OS/img/safari-profiling.png" width="500px"></p>
-<p class=" font-serif my-1">&#25105;&#20204;&#38656;&#35201;&#30495;&#23454;&#25191;&#34892;&#30340;<red>&#24615;&#33021;&#25688;&#35201;</red>&#65281;</p>
+<p class=" font-serif my-1">我们需要真实执行的<red>性能摘要</red>！</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#26412;&#36136;&#30340;&#22238;&#31572;&#65306;&#8220;&#20026;&#20102;&#20570;&#26576;&#20214;&#20107;&#21040;&#24213;&#33457;&#21435;&#20102;&#22810;&#23569;&#36164;&#28304;&#8221;</li>
-<li class=" ml-8">&#31616;&#21270;&#30340;&#22238;&#31572;&#65306;&#8220;&#19968;&#27573;&#26102;&#38388;&#20869;&#36164;&#28304;&#30340;&#28040;&#32791;&#24773;&#20917;&#8221;</li>
+<li class=" ml-8">本质的回答：“为了做某件事到底花去了多少资源”</li>
+<li class=" ml-8">简化的回答：“一段时间内资源的消耗情况”</li>
 </ul></div>
         
       
@@ -575,23 +576,23 @@ $$C = \textrm{compile}(S)$$</p>
 
       
         
-        <div><h2 id="profiler" class=" text-xl mt-2 pb-2 font-sans">Profiler &#21644;&#24615;&#33021;&#25688;&#35201;</h2>
+        <div><h2 id="profiler" class=" text-xl mt-2 pb-2 font-sans">Profiler 和性能摘要</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#24615;&#33021;&#25688;&#35201;&#38656;&#35201;&#23545;&#31243;&#24207;&#25191;&#34892;&#24615;&#33021;&#24433;&#21709;&#26368;&#23567;&#65292;&#24448;&#24448;&#19981;&#38656;&#35201; full trace&#12290;</p>
+<p class=" font-serif my-1">性能摘要需要对程序执行性能影响最小，往往不需要 full trace。</p>
 </blockquote>
-<p class=" font-serif my-1">&#38548;&#19968;&#27573;&#26102;&#38388; &#8220;&#26242;&#20572;&#8221; &#31243;&#24207;&#12289;&#35266;&#23519;&#29366;&#24577;&#26426;&#30340;&#25191;&#34892;</p>
+<p class=" font-serif my-1">隔一段时间 “暂停” 程序、观察状态机的执行</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20013;&#26029;&#23601;&#21487;&#20197;&#20570;&#21040;</li>
-<li class=" ml-8">&#23558;&#29366;&#24577; $s \to s'$ &#8220;&#35760;&#36134;&#8221;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#25191;&#34892;&#30340;&#35821;&#21477;</li>
-<li class=" ml-8">&#20989;&#25968;&#35843;&#29992;&#26632;</li>
-<li class=" ml-8">&#26381;&#21153;&#30340;&#35831;&#27714;</li>
+<li class=" ml-8">中断就可以做到</li>
+<li class=" ml-8">将状态 $s \to s'$ “记账”<ul class=" list-disc font-serif">
+<li class=" ml-8">执行的语句</li>
+<li class=" ml-8">函数调用栈</li>
+<li class=" ml-8">服务的请求</li>
 </ul>
 </li>
-<li class=" ml-8">&#24471;&#21040;&#32479;&#35745;&#24847;&#20041;&#30340;&#24615;&#33021;&#25688;&#35201;</li>
+<li class=" ml-8">得到统计意义的性能摘要</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#20363;&#23376;&#65306;Linux Kernel perf (&#25903;&#25345;&#30828;&#20214; PMU) - <a href="../../../pages/OS/2022/demos/ilp-demo.c" class=" text-amber-900">ilp-demo.c</a></p>
+<p class=" font-serif my-1">例子：Linux Kernel perf (支持硬件 PMU) - <a href="../../../pages/OS/2022/demos/ilp-demo.c" class=" text-amber-900">ilp-demo.c</a></p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">perf list, perf stat (-e), perf record, perf report</li>
 </ul></div>
@@ -605,21 +606,21 @@ $$C = \textrm{compile}(S)$$</p>
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#23454;&#38469;&#20013;&#30340;&#24615;&#33021;&#20248;&#21270;</h2>
-<p class=" font-serif my-1">&#20320;&#20204;&#36935;&#21040;&#30340;&#22823;&#37096;&#20998;&#24773;&#20917;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">实际中的性能优化</h2>
+<p class=" font-serif my-1">你们遇到的大部分情况</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20108;&#20843;&#23450;&#24459;&#65306;80% &#30340;&#26102;&#38388;&#28040;&#32791;&#22312;&#38750;&#24120;&#38598;&#20013;&#30340;&#20960;&#22788;&#20195;&#30721;</li>
-<li class=" ml-8">L1 (pmm): &#23567;&#20869;&#23384;&#20998;&#37197;&#26102;&#30340; lock contention<ul class=" list-disc font-serif">
-<li class=" ml-8">profiler &#30452;&#25509;&#24110;&#20320;&#35299;&#20915;&#38382;&#39064;</li>
+<li class=" ml-8">二八定律：80% 的时间消耗在非常集中的几处代码</li>
+<li class=" ml-8">L1 (pmm): 小内存分配时的 lock contention<ul class=" list-disc font-serif">
+<li class=" ml-8">profiler 直接帮你解决问题</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#24037;&#19994;&#30028;&#36935;&#21040;&#30340;&#22823;&#37096;&#20998;&#24773;&#20917;</p>
+<p class=" font-serif my-1">工业界遇到的大部分情况</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#26408;&#26742;&#25928;&#24212;&#65306;&#27599;&#20010;&#37096;&#20998;&#37117;&#24050;&#32463; tune &#21040;&#23616;&#37096;&#26368;&#20248;&#20102;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#21097;&#19979;&#30340;&#37096;&#20998;&#35201;&#20040; profiler &#20449;&#24687;&#19981;&#23436;&#25972;&#65292;&#35201;&#20040;&#23601;&#19981;&#22909;&#35299;&#20915;</li>
-<li class=" ml-8">(&#24037;&#31243;&#24072;&#25972;&#22825;&#37117;&#23545;&#30528; profiler &#30475;&#24471;&#22836;&#37117;&#22823;&#20102;)</li>
+<li class=" ml-8">木桶效应：每个部分都已经 tune 到局部最优了<ul class=" list-disc font-serif">
+<li class=" ml-8">剩下的部分要么 profiler 信息不完整，要么就不好解决</li>
+<li class=" ml-8">(工程师整天都对着 profiler 看得头都大了)</li>
 <li class=" ml-8"><a href="https://cacm.acm.org/magazines/2016/6/202665-the-flame-graph/fulltext" class=" text-amber-900">The flame graph</a> (CACM'16)</li>
 </ul>
 </li>
@@ -649,18 +650,18 @@ $$C = \textrm{compile}(S)$$</p>
 
       
         
-        <div><h2 id="model-checker" class=" text-xl mt-2 pb-2 font-sans">Model Checker &#30340;&#23041;&#21147;&#22823;&#23478;&#24050;&#32463;&#30693;&#36947;&#20102;</h2>
-<p class=" font-serif my-1">150 &#34892;&#20195;&#30721;&#30340; <a href="../../../pages/OS/2022/demos/model-checker.py" class=" text-amber-900">model-checker.py</a></p>
+        <div><h2 id="model-checker" class=" text-xl mt-2 pb-2 font-sans">Model Checker 的威力大家已经知道了</h2>
+<p class=" font-serif my-1">150 行代码的 <a href="../../../pages/OS/2022/demos/model-checker.py" class=" text-amber-900">model-checker.py</a></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#35777;&#23436;&#25152;&#26377;&#12298;&#25805;&#20316;&#31995;&#32479;&#12299;&#35838;&#19978;&#28041;&#21450;&#30340;&#24182;&#21457;&#31243;&#24207;</li>
-<li class=" ml-8">&#22797;&#29616; OSTEP &#25945;&#31185;&#20070;&#19978;&#30340;&#24182;&#21457; bug (&#26465;&#20214;&#21464;&#37327;&#38169;&#35823;&#21796;&#37266;)</li>
+<li class=" ml-8">证完所有《操作系统》课上涉及的并发程序</li>
+<li class=" ml-8">复现 OSTEP 教科书上的并发 bug (条件变量错误唤醒)</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#19968;&#20123;&#30495;&#27491;&#30340; model checkers</p>
+<p class=" font-serif my-1">一些真正的 model checkers</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><a href="https://lamport.azurewebsites.net/tla/tla.html" class=" text-amber-900">TLA+</a> by Leslie Lamport; </li>
-<li class=" ml-8"><a href="https://ti.arc.nasa.gov/tech/rse/vandv/jpf/" class=" text-amber-900">Java PathFinder (JFP)</a> &#21644; <a href="http://spinroot.com" class=" text-amber-900">SPIN</a><ul class=" list-disc font-serif">
-<li class=" ml-8">&#23427;&#20204;&#37117;&#21916;&#27426;&#29992; Peterson &#31639;&#27861;&#20570; tutorial &#128513;</li>
+<li class=" ml-8"><a href="https://ti.arc.nasa.gov/tech/rse/vandv/jpf/" class=" text-amber-900">Java PathFinder (JFP)</a> 和 <a href="http://spinroot.com/" class=" text-amber-900">SPIN</a><ul class=" list-disc font-serif">
+<li class=" ml-8">它们都喜欢用 Peterson 算法做 tutorial 😁</li>
 </ul>
 </li>
 </ul></div>
@@ -674,22 +675,22 @@ $$C = \textrm{compile}(S)$$</p>
 
       
         
-        <div><h2 id="model-checker" class=" text-xl mt-2 pb-2 font-sans">Model Checker: &#19981;&#20165;&#26159;&#24182;&#21457;</h2>
-<p class=" font-serif my-1">&#20219;&#20309; &#8220;non-deterministic&#8221; &#30340;&#29366;&#24577;&#26426;&#37117;&#21487;&#20197;&#26816;&#26597;</p>
+        <div><h2 id="model-checker" class=" text-xl mt-2 pb-2 font-sans">Model Checker: 不仅是并发</h2>
+<p class=" font-serif my-1">任何 “non-deterministic” 的状态机都可以检查</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">u32</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rdrand</span><span class="p">();</span>
 <span class="n">u32</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rdrand</span><span class="p">();</span>
-<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">y</span><span class="p">)</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">></span><span class="w"> </span><span class="n">y</span><span class="p">)</span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">65</span><span class="p">)</span>
 <span class="w">    </span><span class="n">bug</span><span class="p">();</span>
 <span class="p">...</span>
-<span class="n">assert</span><span class="p">(</span><span class="n">ptr</span><span class="p">);</span><span class="w"> </span><span class="c1">// &#21487;&#33021;&#31354;&#25351;&#38024;&#21527;&#65311;</span>
+<span class="n">assert</span><span class="p">(</span><span class="n">ptr</span><span class="p">);</span><span class="w"> </span><span class="c1">// 可能空指针吗？</span>
 </code></pre></div>
 
 <hr>
-<p class=" font-serif my-1">&#26356;&#39640;&#25928;&#30340; Model Checker: &#8220;&#23558;&#30456;&#20284;&#29366;&#24577;&#21512;&#24182;&#8221;</p>
+<p class=" font-serif my-1">更高效的 Model Checker: “将相似状态合并”</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><a href="https://dl.acm.org/doi/10.5555/1855741.1855756" class=" text-amber-900">KLEE: Unassisted and automatic generation of high-coverage tests for complex systems programs</a> (OSDI'08, Best Paper &#127941;)</li>
-<li class=" ml-8">&#22522;&#20110; LLVM bitcode &#35299;&#37322;&#22120;&#23454;&#29616;</li>
+<li class=" ml-8"><a href="https://dl.acm.org/doi/10.5555/1855741.1855756" class=" text-amber-900">KLEE: Unassisted and automatic generation of high-coverage tests for complex systems programs</a> (OSDI'08, Best Paper 🏅)</li>
+<li class=" ml-8">基于 LLVM bitcode 解释器实现</li>
 </ul></div>
         
       
@@ -705,7 +706,7 @@ $$C = \textrm{compile}(S)$$</p>
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#24635;&#32467;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">总结</h1></div></div></div>
         
       
       </section>
@@ -716,19 +717,19 @@ $$C = \textrm{compile}(S)$$</p>
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#24635;&#32467;</h2>
-<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#22238;&#31572;&#30340;&#38382;&#39064;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">总结</h2>
+<p class=" font-serif my-1">本次课回答的问题</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><strong>Q</strong>: &#29366;&#24577;&#26426;&#30340;&#35270;&#35282;&#32473;&#20102;&#25105;&#20204;&#20160;&#20040;&#65311;</li>
+<li class=" ml-8"><strong>Q</strong>: 状态机的视角给了我们什么？</li>
 </ul>
 <hr>
 <p class=" font-serif my-1">Take-away messages</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#32534;&#31243; (&#29366;&#24577;&#26426;) &#23601;&#26159;&#20840;&#19990;&#30028;</li>
-<li class=" ml-8">&#29366;&#24577;&#26426;&#21487;&#20197;&#24110;&#25105;&#20204;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#24314;&#31435;&#29289;&#29702;&#19990;&#30028;&#30340;&#20844;&#29702;&#20307;&#31995;</li>
-<li class=" ml-8">&#29702;&#35299;&#35843;&#35797;&#22120;&#12289;Trace, profiler</li>
-<li class=" ml-8">&#33258;&#21160;&#20998;&#26512;&#31243;&#24207;&#30340;&#25191;&#34892; (model checker)</li>
+<li class=" ml-8">编程 (状态机) 就是全世界</li>
+<li class=" ml-8">状态机可以帮我们<ul class=" list-disc font-serif">
+<li class=" ml-8">建立物理世界的公理体系</li>
+<li class=" ml-8">理解调试器、Trace, profiler</li>
+<li class=" ml-8">自动分析程序的执行 (model checker)</li>
 </ul>
 </li>
 </ul></div>
@@ -772,5 +773,6 @@ $$C = \textrm{compile}(S)$$</p>
 
 
 </body>
+
 
 </html>

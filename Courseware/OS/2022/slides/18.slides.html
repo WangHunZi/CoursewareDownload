@@ -1,10 +1,11 @@
 <!DOCTYPE html><html class="h-100">
 
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="../../../static/css/base.css" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com/"></script>
   <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
 
@@ -23,14 +24,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +210,7 @@ section .center {
 }
 </style>
 
-  <title>xv6 &#20195;&#30721;&#23548;&#35835;</title>
+  <title>xv6 代码导读</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,21 +228,21 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="xv6" class=" text-2xl mt-2 font-sans">xv6 &#20195;&#30721;&#23548;&#35835;</h1>
-<p class=" font-serif my-1"><include src="Slides_Author"><div><div class="py-16">
-<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">&#33931;&#28814;&#23721;</a></p>
+        <div><div class="center middle"><div style="width:100%"><h1 id="xv6" class=" text-2xl mt-2 font-sans">xv6 代码导读</h1>
+<p class=" font-serif my-1"><include src="Slides_Author/index.html"><div><div class="py-16">
+<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">蒋炎岩</a></p>
 </div>
 <div class="row">
 <div class="author-affiliation">
-    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#12288;&#12288;&#21335;&#20140;&#22823;&#23398;&#12288;&#12288;</p>
+    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">　　南京大学　　</p>
     <img class="inline-img h-24" src="../../../static/img/nju-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#31185;&#23398;&#19982;&#25216;&#26415;&#31995;</p>
+   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">计算机科学与技术系</p>
     <img class="inline-img h-24" src="../../../static/img/njucs-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#36719;&#20214;&#30740;&#31350;&#25152;</p>
+    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">计算机软件研究所</p>
     <img class="inline-img h-24" src="../../../static/img/ics-logo.png" style="display: inline-block;"></a>
   </div>
 </div></div></include></p></div></div></div>
@@ -256,23 +257,23 @@ section .center {
       
         
         <div><h2 id="overview" class=" text-xl mt-2 pb-2 font-sans">Overview</h2>
-<p class=" font-serif my-1">&#22797;&#20064;</p>
+<p class=" font-serif my-1">复习</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#24212;&#29992;&#35270;&#35282;&#30340;&#25805;&#20316;&#31995;&#32479;&#65306;&#23545;&#35937; + API<ul class=" list-disc font-serif">
-<li class=" ml-8">&#25226;&#25805;&#20316;&#31995;&#32479;&#24403;&#25552;&#20379;&#26381;&#21153;&#30340; &#8220;&#40657;&#30418;&#23376;&#8221; </li>
+<li class=" ml-8">应用视角的操作系统：对象 + API<ul class=" list-disc font-serif">
+<li class=" ml-8">把操作系统当提供服务的 “黑盒子” </li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#22238;&#31572;&#30340;&#38382;&#39064;</p>
+<p class=" font-serif my-1">本次课回答的问题</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><strong>Q</strong>: &#22914;&#20309;&#29702;&#35299; &#8220;&#25805;&#20316;&#31995;&#32479;&#23601;&#26159; C &#31243;&#24207;&#8221;&#65311;</li>
+<li class=" ml-8"><strong>Q</strong>: 如何理解 “操作系统就是 C 程序”？</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#20027;&#35201;&#20869;&#23481;</p>
+<p class=" font-serif my-1">本次课主要内容</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">xv6 &#31616;&#20171;</li>
-<li class=" ml-8">xv6 &#20195;&#30721;&#23548;&#35835;</li>
+<li class=" ml-8">xv6 简介</li>
+<li class=" ml-8">xv6 代码导读</li>
 </ul></div>
         
       
@@ -288,7 +289,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="xv6" class=" text-2xl mt-2 font-sans">xv6 &#31616;&#20171;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="xv6" class=" text-2xl mt-2 font-sans">xv6 简介</h1></div></div></div>
         
       
       </section>
@@ -299,11 +300,11 @@ section .center {
 
       
         
-        <div><h2 id="unix" class=" text-xl mt-2 pb-2 font-sans">UNIX &#20256;&#22855;</h2>
-<p class=" font-serif my-1">&#19968;&#19975;&#34892;&#20195;&#30721;&#24471;&#21040;&#19968;&#20010;&#30495;&#27491;&#30340;&#12289;&#22909;&#29992;&#30340;&#25805;&#20316;&#31995;&#32479;</p>
+        <div><h2 id="unix" class=" text-xl mt-2 pb-2 font-sans">UNIX 传奇</h2>
+<p class=" font-serif my-1">一万行代码得到一个真正的、好用的操作系统</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><a href="https://dl.acm.org/doi/10.1145/357980.358014" class=" text-amber-900">The UNIX time sharing system</a> (SOSP'73 and CACM'74)</li>
-<li class=" ml-8">&#20813;&#36153;&#25480;&#26435;&#32473;&#39640;&#26657;&#20351;&#29992;&#65292;&#23427;&#23454;&#22312;&#22826;&#36866;&#21512;&#25945;&#23398;&#20102;&#65281;<ul class=" list-disc font-serif">
+<li class=" ml-8">免费授权给高校使用，它实在太适合教学了！<ul class=" list-disc font-serif">
 <li class=" ml-8"><a href="../../../pages/OS/manuals/unix-v6-book.pdf" class=" text-amber-900">UNIX v6 book</a></li>
 </ul>
 </li>
@@ -320,22 +321,22 @@ section .center {
 
       
         
-        <div><h2 id="xv6-unix-v6" class=" text-xl mt-2 pb-2 font-sans">xv6: UNIX v6 &#30340;&#29616;&#20195; &#8220;&#20811;&#38534;&#8221;</h2>
-<p class=" font-serif my-1">&#25509;&#36817;&#23436;&#25972;&#30340; UNIX Shell &#20307;&#39564;</p>
+        <div><h2 id="xv6-unix-v6" class=" text-xl mt-2 pb-2 font-sans">xv6: UNIX v6 的现代 “克隆”</h2>
+<p class=" font-serif my-1">接近完整的 UNIX Shell 体验</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#22522;&#26412;&#24037;&#20855;&#38598; (wc, echo, cat, ...)</li>
-<li class=" ml-8">&#21629;&#20196;&#25191;&#34892;&#12289;&#31649;&#36947;&#12289;&#37325;&#23450;&#21521;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#25903;&#25345;&#22810;&#22788;&#29702;&#22120;</li>
+<li class=" ml-8">基本工具集 (wc, echo, cat, ...)</li>
+<li class=" ml-8">命令执行、管道、重定向<ul class=" list-disc font-serif">
+<li class=" ml-8">支持多处理器</li>
 <li class=" ml-8">Now in RISC-V!</li>
 </ul>
 </li>
 </ul>
 <hr>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/vt100.jpg" width="300px"></p>
-<p class=" font-serif my-1">&#23427;&#30495;&#30340;&#26159;&#19968;&#20010; &#8220;&#21487;&#29992;&#8221; &#30340;&#25805;&#20316;&#31995;&#32479;&#65281;</p>
+<p class=" font-serif my-1">它真的是一个 “可用” 的操作系统！</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#26102;&#38388;&#22238;&#21040; 1970s</li>
-<li class=" ml-8">&#36825;&#20123;&#31995;&#32479;&#35843;&#29992;&#23601;&#36275;&#22815;&#25903;&#25745;&#21018;&#25165;&#25552;&#21040;&#30340;&#24212;&#29992;<ul class=" list-disc font-serif">
+<li class=" ml-8">时间回到 1970s</li>
+<li class=" ml-8">这些系统调用就足够支撑刚才提到的应用<ul class=" list-disc font-serif">
 <li class=" ml-8">cc, as, ld, vi, sed, awk, troff, lp, ...</li>
 </ul>
 </li>
@@ -350,8 +351,8 @@ section .center {
 
       
         
-        <div><h2 id="xv6-api" class=" text-xl mt-2 pb-2 font-sans">xv6 &#31995;&#32479;&#35843;&#29992; API</h2>
-<p class=" font-serif my-1">21 &#20010;&#31995;&#32479;&#35843;&#29992; (&#21442;&#32771; <a href="../../../pages/OS/2022/demos/sh-xv6.c" class=" text-amber-900">sh-xv6.c</a> &#20351;&#29992;&#30340;&#31995;&#32479;&#35843;&#29992;)</p>
+        <div><h2 id="xv6-api" class=" text-xl mt-2 pb-2 font-sans">xv6 系统调用 API</h2>
+<p class=" font-serif my-1">21 个系统调用 (参考 <a href="../../../pages/OS/2022/demos/sh-xv6.c" class=" text-amber-900">sh-xv6.c</a> 使用的系统调用)</p>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/xv6-syscalls.png" width="900px"></p></div>
         
       
@@ -363,23 +364,23 @@ section .center {
 
       
         
-        <div><h2 id="xv6" class=" text-xl mt-2 pb-2 font-sans">xv6 &#31995;&#32479;&#23454;&#29616;</h2>
-<p class=" font-serif my-1">&#36825;&#26159;&#19968;&#20221;&#21253;&#21547;&#20102;&#24456;&#22810; Good Practice &#30340;&#20195;&#30721;</p>
+        <div><h2 id="xv6" class=" text-xl mt-2 pb-2 font-sans">xv6 系统实现</h2>
+<p class=" font-serif my-1">这是一份包含了很多 Good Practice 的代码</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#23545;&#21021;&#23398;&#32773;&#26469;&#35828;&#26356;&#20687;&#26159;&#19968;&#20010; &#8220;&#33402;&#26415;&#21697;&#8221;</li>
-<li class=" ml-8">&#20174;&#20195;&#30721;&#37324;&#21560;&#21462;&#26234;&#24935;</li>
+<li class=" ml-8">对初学者来说更像是一个 “艺术品”</li>
+<li class=" ml-8">从代码里吸取智慧</li>
 </ul>
 <hr>
 <p class=" font-serif my-1">RTFM</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><a href="../../../pages/OS/manuals/xv6-riscv-rev2.pdf" class=" text-amber-900">xv6: A simple, Unix-like teaching operating system</a></li>
-<li class=" ml-8"><red>&#23453;&#34255;&#25163;&#20876;</red>&#65292;&#21253;&#21547;&#20102;&#25152;&#26377;&#32454;&#33410;&#21644; &#8220;&#20026;&#20160;&#20040;&#35201;&#36825;&#20040;&#20570;&#8221;&#65292;&#25512;&#33616;&#38405;&#35835;</li>
+<li class=" ml-8"><red>宝藏手册</red>，包含了所有细节和 “为什么要这么做”，推荐阅读</li>
 </ul>
 <hr>
 <p class=" font-serif my-1">RTFSC</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><a href="https://github.com/mit-pdos/xv6-riscv" class=" text-amber-900">xv6-riscv</a></li>
-<li class=" ml-8">&#20250;&#20998;&#20960;&#27425;&#35838;&#35762;&#35299;</li>
+<li class=" ml-8">会分几次课讲解</li>
 </ul></div>
         
       
@@ -391,24 +392,24 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#39033;&#30446;&#26500;&#24314;&#19982;&#36816;&#34892;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">项目构建与运行</h2>
 <p class=" font-serif my-1">RTFSC: Makefile</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#30456;&#27604; AbstractMachine (&#36328;&#24179;&#21488;/&#20307;&#31995;&#32467;&#26500;) &#23481;&#26131;&#24456;&#22810;</li>
-<li class=" ml-8">&#20808;&#25214;&#21040;&#26500;&#24314;&#30446;&#26631;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#28982;&#21518;&#32769;&#35268;&#30697;: <code>make -nB</code></li>
-<li class=" ml-8">&#20320;&#21487;&#20197;&#26681;&#25454;&#38656;&#35201;&#20462;&#25913;&#19968;&#20123;&#37197;&#32622;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20248;&#21270;&#31561;&#32423;&#12289;CPU &#25968;&#12289;&#32534;&#35793;&#25351;&#20196;&#31561;</li>
+<li class=" ml-8">相比 AbstractMachine (跨平台/体系结构) 容易很多</li>
+<li class=" ml-8">先找到构建目标<ul class=" list-disc font-serif">
+<li class=" ml-8">然后老规矩: <code>make -nB</code></li>
+<li class=" ml-8">你可以根据需要修改一些配置<ul class=" list-disc font-serif">
+<li class=" ml-8">优化等级、CPU 数、编译指令等</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#22797;&#20064;&#65306;&#8220;&#31243;&#24207;&#30340;&#25191;&#34892; (&#29366;&#24577;&#21464;&#21270;&#24207;&#21015;) &#26377;&#26102;&#27604;&#20195;&#30721; (&#29366;&#24577;&#26426;) &#26356;&#23481;&#26131;&#29702;&#35299;&#8221;</p>
+<p class=" font-serif my-1">复习：“程序的执行 (状态变化序列) 有时比代码 (状态机) 更容易理解”</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#21487;&#20197;&#29992;&#20110;&#37197;&#21046; vscode<ul class=" list-disc font-serif">
-<li class=" ml-8">Quick quiz: &#22914;&#20309;&#33258;&#21160;&#29983;&#25104; <code>compile_commands.json</code>?</li>
+<li class=" ml-8">可以用于配制 vscode<ul class=" list-disc font-serif">
+<li class=" ml-8">Quick quiz: 如何自动生成 <code>compile_commands.json</code>?</li>
 </ul>
 </li>
 </ul></div>
@@ -426,7 +427,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="xv6" class=" text-2xl mt-2 font-sans">xv6 &#20013;&#30340;&#36827;&#31243;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="xv6" class=" text-2xl mt-2 font-sans">xv6 中的进程</h1></div></div></div>
         
       
       </section>
@@ -437,25 +438,25 @@ section .center {
 
       
         
-        <div><h2 id="xv6" class=" text-xl mt-2 pb-2 font-sans">xv6 &#36827;&#31243;&#30340;&#22320;&#22336;&#31354;&#38388;</h2>
+        <div><h2 id="xv6" class=" text-xl mt-2 pb-2 font-sans">xv6 进程的地址空间</h2>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/xv6-process-memory.png" width="300px"></p>
-<p class=" font-serif my-1">&#22238;&#39038;&#65306;&#36827;&#31243; = &#36816;&#34892;&#30340;&#29366;&#24577;&#26426; (user/)</p>
+<p class=" font-serif my-1">回顾：进程 = 运行的状态机 (user/)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">gcc/ld &#21019;&#24314;&#65306;&#20195;&#30721;&#12289;&#25968;&#25454;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#21442;&#32771; ldscript</li>
+<li class=" ml-8">gcc/ld 创建：代码、数据<ul class=" list-disc font-serif">
+<li class=" ml-8">参考 ldscript</li>
 </ul>
 </li>
-<li class=" ml-8">&#36816;&#34892;&#26102;&#20998;&#37197;&#65306;&#22534;&#26632; <ul class=" list-disc font-serif">
-<li class=" ml-8">&#21253;&#21547; exec &#30340;&#21442;&#25968;</li>
+<li class=" ml-8">运行时分配：堆栈 <ul class=" list-disc font-serif">
+<li class=" ml-8">包含 exec 的参数</li>
 </ul>
 </li>
-<li class=" ml-8">&#20363;&#23376;&#65306;<code>init.c</code> &#21644; <code>sh.c</code> (<a href="../../../pages/OS/2022/demos/sh-xv6.c" class=" text-amber-900">sh-xv6.c</a> &#30340;&#30495;&#36523;)</li>
+<li class=" ml-8">例子：<code>init.c</code> 和 <code>sh.c</code> (<a href="../../../pages/OS/2022/demos/sh-xv6.c" class=" text-amber-900">sh-xv6.c</a> 的真身)</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">MAXVA &#22788;&#26377;&#20004;&#20010;&#31070;&#22855;&#30340;&#39029;&#38754;</p>
+<p class=" font-serif my-1">MAXVA 处有两个神奇的页面</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">Trampoline &#21644; trapframe<ul class=" list-disc font-serif">
-<li class=" ml-8">&#30001;&#25805;&#20316;&#31995;&#32479;&#20998;&#37197;&#65292;&#29992;&#25143;&#36827;&#31243;&#26080;&#26435;&#35775;&#38382;</li>
+<li class=" ml-8">Trampoline 和 trapframe<ul class=" list-disc font-serif">
+<li class=" ml-8">由操作系统分配，用户进程无权访问</li>
 </ul>
 </li>
 </ul></div>
@@ -469,28 +470,28 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#35843;&#35797;&#29992;&#25143;&#20195;&#30721;</h2>
-<p class=" font-serif my-1">&#35797;&#19968;&#35797; init &#36827;&#31243;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">调试用户代码</h2>
+<p class=" font-serif my-1">试一试 init 进程</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><code>proc.c</code> &#20013;&#21253;&#21547;&#19968;&#27573; initcode<ul class=" list-disc font-serif">
-<li class=" ml-8">&#25105;&#20204;&#21487;&#20197;&#35843;&#35797;&#23427;&#65281;(<code>b *0</code>)</li>
-<li class=" ml-8">&#31995;&#32479;&#35843;&#29992;&#23454;&#29616;&#65306;&#32534;&#21495;&#25918;&#20837; a7 &#23492;&#23384;&#22120;&#65292;&#25191;&#34892; ecall &#25351;&#20196;<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>proc.c</code> 中包含一段 initcode<ul class=" list-disc font-serif">
+<li class=" ml-8">我们可以调试它！(<code>b *0</code>)</li>
+<li class=" ml-8">系统调用实现：编号放入 a7 寄存器，执行 ecall 指令<ul class=" list-disc font-serif">
 <li class=" ml-8">man 2 syscall</li>
 </ul>
 </li>
 </ul>
 </li>
-<li class=" ml-8">&#28982;&#21518;&#20877;&#35843;&#35797; <code>_init</code><ul class=" list-disc font-serif">
-<li class=" ml-8"><code>add-symbol-file user/_init</code> &#21152;&#36733;&#35843;&#35797;&#20449;&#24687;</li>
+<li class=" ml-8">然后再调试 <code>_init</code><ul class=" list-disc font-serif">
+<li class=" ml-8"><code>add-symbol-file user/_init</code> 加载调试信息</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#20351;&#29992; QEMU </p>
+<p class=" font-serif my-1">使用 QEMU </p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#26597;&#30475;&#22320;&#22336;&#31354;&#38388; <code>info mem</code></li>
-<li class=" ml-8">&#23545;&#29031;&#25163;&#20876;&#65292;&#26597;&#30475;&#23492;&#23384;&#22120;&#65292;&#20363;&#22914; <code>p/x $stvec</code><ul class=" list-disc font-serif">
-<li class=" ml-8">&#21487;&#20197;&#25171;&#19978;&#26029;&#28857; (<code>b *$stvec</code>)</li>
+<li class=" ml-8">查看地址空间 <code>info mem</code></li>
+<li class=" ml-8">对照手册，查看寄存器，例如 <code>p/x $stvec</code><ul class=" list-disc font-serif">
+<li class=" ml-8">可以打上断点 (<code>b *$stvec</code>)</li>
 </ul>
 </li>
 </ul></div>
@@ -508,7 +509,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="xv6" class=" text-2xl mt-2 font-sans">xv6 &#31995;&#32479;&#35843;&#29992;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="xv6" class=" text-2xl mt-2 font-sans">xv6 系统调用</h1></div></div></div>
         
       
       </section>
@@ -519,20 +520,20 @@ section .center {
 
       
         
-        <div><h2 id="xv6" class=" text-xl mt-2 pb-2 font-sans">xv6 &#31995;&#32479;&#35843;&#29992;</h2>
-<p class=" font-serif my-1">RISC-V user-level ecall &#25351;&#20196;</p>
+        <div><h2 id="xv6" class=" text-xl mt-2 pb-2 font-sans">xv6 系统调用</h2>
+<p class=" font-serif my-1">RISC-V user-level ecall 指令</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20851;&#38381;&#20013;&#26029;</li>
-<li class=" ml-8">&#22797;&#21046; \$pc &#21040; \$sepc</li>
-<li class=" ml-8">&#35774;&#32622; \$sstatus &#20026; S-mode</li>
-<li class=" ml-8">&#35774;&#32622; \$scause &#20026; trap &#30340;&#21407;&#22240; (ecall, 8)</li>
-<li class=" ml-8">&#36339;&#36716;&#21040; $stvec (\$pc = \$stvec) </li>
+<li class=" ml-8">关闭中断</li>
+<li class=" ml-8">复制 \$pc 到 \$sepc</li>
+<li class=" ml-8">设置 \$sstatus 为 S-mode</li>
+<li class=" ml-8">设置 \$scause 为 trap 的原因 (ecall, 8)</li>
+<li class=" ml-8">跳转到 $stvec (\$pc = \$stvec) </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#22312; xv6 &#20013;</p>
+<p class=" font-serif my-1">在 xv6 中</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">Trampoline: $stvec = 0x3ffffff000 (&#21482;&#35835;)</li>
-<li class=" ml-8">Trapframe (0x3fffffe000): &#20445;&#23384;&#36827;&#31243;&#23492;&#23384;&#22120;&#29616;&#22330;&#30340;&#20869;&#23384;</li>
+<li class=" ml-8">Trampoline: $stvec = 0x3ffffff000 (只读)</li>
+<li class=" ml-8">Trapframe (0x3fffffe000): 保存进程寄存器现场的内存</li>
 </ul></div>
         
       
@@ -544,20 +545,20 @@ section .center {
 
       
         
-        <div><h2 id="trampoline" class=" text-xl mt-2 pb-2 font-sans">Trampoline (&#36339;&#26495;)</h2>
-<p class=" font-serif my-1">trampoline.S (&#27719;&#32534;&#20195;&#30721;)</p>
+        <div><h2 id="trampoline" class=" text-xl mt-2 pb-2 font-sans">Trampoline (跳板)</h2>
+<p class=" font-serif my-1">trampoline.S (汇编代码)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#23545; ecall &#30636;&#38388;&#30340;&#29366;&#24577;&#20570;&#24555;&#29031;<ul class=" list-disc font-serif">
-<li class=" ml-8"><red>&#22635;&#20805; <code>struct trapframe</code><red> (proc.h)</red></red></li>
-<li class=" ml-8">&#21033;&#29992; \$sscratch (S-mode scratch) &#20445;&#23384;&#25152;&#26377;&#23492;&#23384;&#22120;</li>
-<li class=" ml-8">&#20999;&#25442;&#21040;&#20869;&#26680;&#26632; (&#30456;&#24403;&#20110;&#20999;&#25442;&#21040;&#36827;&#31243;&#23545;&#24212;&#30340; &#8220;&#20869;&#26680;&#32447;&#31243;&#8221;, <a href="../labs/L2.html" class=" text-amber-900">L2</a>)</li>
-<li class=" ml-8">&#20999;&#25442;&#21040;&#20869;&#26680;&#22320;&#22336;&#31354;&#38388;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20462;&#25913; \$satp (S-mode address translation and protection)</li>
+<li class=" ml-8">对 ecall 瞬间的状态做快照<ul class=" list-disc font-serif">
+<li class=" ml-8"><red>填充 <code>struct trapframe</code><red> (proc.h)</red></red></li>
+<li class=" ml-8">利用 \$sscratch (S-mode scratch) 保存所有寄存器</li>
+<li class=" ml-8">切换到内核栈 (相当于切换到进程对应的 “内核线程”, <a href="../labs/L2.html" class=" text-amber-900">L2</a>)</li>
+<li class=" ml-8">切换到内核地址空间<ul class=" list-disc font-serif">
+<li class=" ml-8">修改 \$satp (S-mode address translation and protection)</li>
 <li class=" ml-8">sfence.vma</li>
 </ul>
 </li>
-<li class=" ml-8">&#36339;&#36716;&#21040; <code>tf-&gt;kernel_trap</code><ul class=" list-disc font-serif">
-<li class=" ml-8">&#30171;&#33510;&#26102;&#38388;&#35299;&#38500;&#65292;&#36827;&#20837; C &#20195;&#30721;</li>
+<li class=" ml-8">跳转到 <code>tf->kernel_trap</code><ul class=" list-disc font-serif">
+<li class=" ml-8">痛苦时间解除，进入 C 代码</li>
 </ul>
 </li>
 </ul>
@@ -573,25 +574,25 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#31995;&#32479;&#35843;&#29992;&#22788;&#29702;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">系统调用处理</h2>
 <p class=" font-serif my-1"><code>struct proc *p = myproc()</code></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25105;&#20204;&#21487;&#20197;&#22312; gdb &#20013;&#26597;&#30475; &#8220;&#36827;&#31243;&#8221; &#22312;&#25805;&#20316;&#31995;&#32479;&#20869;&#30340;&#25968;&#25454;&#32467;&#26500;&#34920;&#31034;<ul class=" list-disc font-serif">
+<li class=" ml-8">我们可以在 gdb 中查看 “进程” 在操作系统内的数据结构表示<ul class=" list-disc font-serif">
 <li class=" ml-8"><code>p/x *p</code><ul class=" list-disc font-serif">
-<li class=" ml-8">&#21487;&#20197;&#30475;&#21040; trapframe &#30340;&#22320;&#22336; (&#21644;&#22320;&#22336;&#31354;&#38388;&#20013;&#26144;&#23556;&#30340;&#23436;&#20840;&#19968;&#26679;)</li>
+<li class=" ml-8">可以看到 trapframe 的地址 (和地址空间中映射的完全一样)</li>
 </ul>
 </li>
-<li class=" ml-8"><code>p/x *p-&gt;trapframe</code> (a7 = 0x7)</li>
+<li class=" ml-8"><code>p/x *p->trapframe</code> (a7 = 0x7)</li>
 </ul>
 </li>
-<li class=" ml-8">&#26816;&#26597; <code>scause == 8</code> (syscall)<ul class=" list-disc font-serif">
-<li class=" ml-8">\$epc += 4 (&#26356;&#27491;&#36820;&#22238;&#22320;&#22336;)</li>
-<li class=" ml-8">&#25171;&#24320;&#20013;&#26029;</li>
-<li class=" ml-8">&#25191;&#34892;&#31995;&#32479;&#35843;&#29992;</li>
+<li class=" ml-8">检查 <code>scause == 8</code> (syscall)<ul class=" list-disc font-serif">
+<li class=" ml-8">\$epc += 4 (更正返回地址)</li>
+<li class=" ml-8">打开中断</li>
+<li class=" ml-8">执行系统调用</li>
 </ul>
 </li>
-<li class=" ml-8"><code>usertrapret()</code> &#36820;&#22238;<ul class=" list-disc font-serif">
-<li class=" ml-8">ecall &#30340;&#36870;&#25805;&#20316;</li>
+<li class=" ml-8"><code>usertrapret()</code> 返回<ul class=" list-disc font-serif">
+<li class=" ml-8">ecall 的逆操作</li>
 </ul>
 </li>
 </ul></div>
@@ -609,7 +610,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#24635;&#32467;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">总结</h1></div></div></div>
         
       
       </section>
@@ -620,17 +621,17 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#24635;&#32467;</h2>
-<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#22238;&#31572;&#30340;&#38382;&#39064;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">总结</h2>
+<p class=" font-serif my-1">本次课回答的问题</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><strong>Q</strong>: &#22914;&#20309;&#29702;&#35299; &#8220;&#25805;&#20316;&#31995;&#32479;&#23601;&#26159; C &#31243;&#24207;&#8221;&#65311;</li>
+<li class=" ml-8"><strong>Q</strong>: 如何理解 “操作系统就是 C 程序”？</li>
 </ul>
 <hr>
 <p class=" font-serif my-1">Take-away messages</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">Talk is cheap. Show me the code.</li>
 <li class=" ml-8"><a href="../../../pages/OS/manuals/xv6-riscv-rev2.pdf" class=" text-amber-900">RTFM</a>, <a href="https://github.com/mit-pdos/xv6-riscv" class=" text-amber-900">RTFSC</a></li>
-<li class=" ml-8">&#29992;&#22909;&#29616;&#20195;&#24037;&#20855;<ul class=" list-disc font-serif">
+<li class=" ml-8">用好现代工具<ul class=" list-disc font-serif">
 <li class=" ml-8">gdb tui + python, vscode, ...</li>
 </ul>
 </li>
@@ -675,5 +676,6 @@ section .center {
 
 
 </body>
+
 
 </html>

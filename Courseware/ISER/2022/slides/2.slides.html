@@ -1,10 +1,11 @@
 <!DOCTYPE html><html class="h-100">
 
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="../../../static/css/base.css" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com/"></script>
   <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
 
@@ -23,14 +24,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -283,8 +284,8 @@ section .center {
 <p class=" font-serif my-1">A program for translating programs to lower-level programs</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">Examples <ul class=" list-disc font-serif">
-<li class=" ml-8">C (<a href="../../../pages/ISER/2022/slides/BNF-C.html" class=" text-amber-900">The syntax of C in Backus-Naur Form</a>) &#8594; assembly (.S)</li>
-<li class=" ml-8">Java (<a href="https://docs.oracle.com/javase/specs/jls/se19/html/jls-19.html" class=" text-amber-900">Java Language Specification</a>) &#8594; bytecode (.class)<ul class=" list-disc font-serif">
+<li class=" ml-8">C (<a href="../../../pages/ISER/2022/slides/BNF-C.html" class=" text-amber-900">The syntax of C in Backus-Naur Form</a>) → assembly (.S)</li>
+<li class=" ml-8">Java (<a href="https://docs.oracle.com/javase/specs/jls/se19/html/jls-19.html" class=" text-amber-900">Java Language Specification</a>) → bytecode (.class)<ul class=" list-disc font-serif">
 <li class=" ml-8">(Bytecode is further just-in-time/<a href="https://openjdk.org/jeps/295" class=" text-amber-900">ahead-of-time</a> compiled)</li>
 </ul>
 </li>
@@ -346,7 +347,7 @@ section .center {
 <hr>
 <p class=" font-serif my-1">Rewriting rules and <em>iterate until fixed point</em></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">Inlining (<a href="https://dl.acm.org/doi/10.1145/3503222.3507744" class=" text-amber-900">ASPLOS'22</a> &#127941;)</li>
+<li class=" ml-8">Inlining (<a href="https://dl.acm.org/doi/10.1145/3503222.3507744" class=" text-amber-900">ASPLOS'22</a> 🏅)</li>
 <li class=" ml-8">Constant Propagation</li>
 <li class=" ml-8">Dead Code Elimination</li>
 <li class=" ml-8">(Problems remain open)</li>
@@ -365,7 +366,7 @@ section .center {
 <p class=" font-serif my-1">Create an optimized compiler</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><a href="../../../pages/ISER/2022/slides/demos/ecc-opt.py" class=" text-amber-900">ecc-opt.py</a></li>
-<li class=" ml-8">By &#8220;program synthesis&#8221;!<ul class=" list-disc font-serif">
+<li class=" ml-8">By “program synthesis”!<ul class=" list-disc font-serif">
 <li class=" ml-8">Constraint solving for equivalent code templates</li>
 <li class=" ml-8">A quick reference to <a href="https://ericpony.github.io/z3py-tutorial/guide-examples.htm" class=" text-amber-900">Z3 Python API</a></li>
 </ul>
@@ -404,19 +405,19 @@ section .center {
         
         <div><h2 id="semantics-of-expressions" class=" text-xl mt-2 pb-2 font-sans">Semantics of Expressions</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">Can we &#8220;know better&#8221; about an expression's value?</p>
+<p class=" font-serif my-1">Can we “know better” about an expression's value?</p>
 </blockquote>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>?sum: product
-    | sum "+" product   -&gt; add
+    | sum "+" product   -> add
 ?product: atom
-    | product "*" atom  -&gt; mul
-?atom: NUMBER           -&gt; num
+    | product "*" atom  -> mul
+?atom: NUMBER           -> num
      | "(" sum ")"
 </code></pre></div>
 
-<p class=" font-serif my-1">Semantics: the &#8220;value&#8221; of expressions</p>
+<p class=" font-serif my-1">Semantics: the “value” of expressions</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><code>eval('3 + 4 * 5') &#8594; 23</code> (expressions are trees!)<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>eval('3 + 4 * 5') → 23</code> (expressions are trees!)<ul class=" list-disc font-serif">
 <li class=" ml-8">$\llbracket E + P \rrbracket = \llbracket E \rrbracket + \llbracket P \rrbracket$, $\llbracket E \times P \rrbracket = \llbracket E \rrbracket \times \llbracket P \rrbracket$, $\llbracket (E) \rrbracket = \llbracket E \rrbracket$</li>
 <li class=" ml-8">$\llbracket n \rrbracket = n$ (this is the base case!)</li>
 </ul>
@@ -433,17 +434,17 @@ section .center {
       
         
         <div><h2 id="semantics-of-expressions-with-variables" class=" text-xl mt-2 pb-2 font-sans">Semantics of Expressions, with Variables</h2>
-<p class=" font-serif my-1"><code>eval('x + y * z') &#8594; ?</code></p>
+<p class=" font-serif my-1"><code>eval('x + y * z') → ?</code></p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">Introducing the <red><em>program state</em></red><ul class=" list-disc font-serif">
 <li class=" ml-8">Example: $\sigma = \{ x \mapsto 1, y \mapsto 2, z\mapsto 3\}$</li>
 </ul>
 </li>
 <li class=" ml-8">Semantics of expressions, with variables<ul class=" list-disc font-serif">
-<li class=" ml-8">&#8220;Expression value given variable assignments&#8221;</li>
+<li class=" ml-8">“Expression value given variable assignments”</li>
 <li class=" ml-8">$\llbracket v \rrbracket_\sigma = \sigma(v)$</li>
 <li class=" ml-8"><code>eval('x + y * z')</code> under $\sigma$<ul class=" list-disc font-serif">
-<li class=" ml-8"><code>eval('1 + 2 * 3') &#8594; 4</code></li>
+<li class=" ml-8"><code>eval('1 + 2 * 3') → 4</code></li>
 </ul>
 </li>
 </ul>
@@ -522,9 +523,9 @@ $$\llbracket \textbf{while}\ b\ {\bf do}\ c \rrbracket_\sigma =
         <div><h2 id="operational-semantics" class=" text-xl mt-2 pb-2 font-sans">Operational Semantics</h2>
 <p class=" font-serif my-1">We can define a small step of evaluation</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">Each step &#8220;reduces&#8221; the program a little bit</li>
+<li class=" ml-8">Each step “reduces” the program a little bit</li>
 <li class=" ml-8">Inferences rules: premises satisfied $\to$ conclusion is also satisfied<ul class=" list-disc font-serif">
-<li class=" ml-8">There is a &#8220;proof tree&#8221;!</li>
+<li class=" ml-8">There is a “proof tree”!</li>
 </ul>
 </li>
 </ul>
@@ -622,7 +623,7 @@ $$</li>
 </li>
 <li class=" ml-8">All theorems can be <em>checked</em> by a proof assistant<ul class=" list-disc font-serif">
 <li class=" ml-8">An interpreter can be automatically deduced<ul class=" list-disc font-serif">
-<li class=" ml-8">Further reading: <a href="http://softwarefoundations.cis.upenn.edu" class=" text-amber-900">Software Foundations</a></li>
+<li class=" ml-8">Further reading: <a href="http://softwarefoundations.cis.upenn.edu/" class=" text-amber-900">Software Foundations</a></li>
 </ul>
 </li>
 <li class=" ml-8">Verified systems<ul class=" list-disc font-serif">
@@ -649,7 +650,7 @@ $$</li>
 <li class=" ml-8">See the semantics of call/ret: <a href="../../../pages/OS/2022/demos/hanoi-nr.c" class=" text-amber-900">hanoi-nr.c</a></li>
 </ul>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">hanoi</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">from</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">to</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">via</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">"%c -&gt; %c</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">from</span><span class="p">,</span><span class="w"> </span><span class="n">to</span><span class="p">);</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">"%c -> %c</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">from</span><span class="p">,</span><span class="w"> </span><span class="n">to</span><span class="p">);</span>
 <span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">hanoi</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">from</span><span class="p">,</span><span class="w"> </span><span class="n">via</span><span class="p">,</span><span class="w"> </span><span class="n">to</span><span class="p">);</span>
 <span class="w">    </span><span class="n">hanoi</span><span class="p">(</span><span class="w">    </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">from</span><span class="p">,</span><span class="w"> </span><span class="n">to</span><span class="p">,</span><span class="w"> </span><span class="n">via</span><span class="p">);</span>
@@ -697,5 +698,6 @@ $$</li>
 
 
 </body>
+
 
 </html>

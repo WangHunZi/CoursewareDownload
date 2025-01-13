@@ -1,10 +1,11 @@
 <!DOCTYPE html><html class="h-100">
 
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="../../../static/css/base.css" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com/"></script>
   <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
 
@@ -23,14 +24,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -137,7 +138,7 @@ hr {
 </style>
 
 
-  <title>Lab2: x86-64 &#20869;&#32852;&#27719;&#32534;</title>
+  <title>Lab2: x86-64 内联汇编</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -148,50 +149,50 @@ hr {
 
 <div class="px-2 py-1 w-full fixed z-50 bg-gradient-to-r from-black via-purple-700 via-purple-500 shadow-lg" style="-webkit-backdrop-filter: saturate(150%) blur(4px); backdrop-filter: saturate(150%) blur(4px)">
   <form>
-    <a href="../../../index.html"><span class="text-lg px-2 text-white">Yanyan's Wiki</span></a>
-    <a href="../../../OS/2023/index.html"><span class="text-sm px-2 text-white">&#25805;&#20316;&#31995;&#32479; (2023)</span></a>
+    <a href="../../../index-2.html"><span class="text-lg px-2 text-white">Yanyan's Wiki</span></a>
+    <a href="../../../OS/2023/index.html"><span class="text-sm px-2 text-white">操作系统 (2023)</span></a>
     <input maxlength="9" id="token-input" class="float-right appearance-none border border-transparent px-2 py-1 w-20 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-xs focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent font-mono" type="text" placeholder="TOKEN" oninput="login();">
   </form>
 </div>
 
 <div class="article container mx-auto md:px-8 lg:px-8 xl:px-8 2xl:px-8 shadow-lg border pb-8 pt-10 max-w-screen-md text-justify divide-y-2 divide-white">
-  <div><h1 id="lab2-x86-64" class=" text-2xl mt-2 font-sans">Lab2: x86-64 &#20869;&#32852;&#27719;&#32534;</h1>
+  <div><h1 id="lab2-x86-64" class=" text-2xl mt-2 font-sans">Lab2: x86-64 内联汇编</h1>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<h4 id="_1" class=" pt-2 pb-2 font-sans float-left text-sm box border mr-1 mt-1 box-blue" style=" padding-bottom: 0;">&#23567;&#23454;&#39564;&#35828;&#26126;</h4>
-<p class=" font-serif my-1">&#23567;&#23454;&#39564; (Labs) &#26159; ICS &#36825;&#38376;&#35838;&#31243;&#37324;&#30340;&#19968;&#20123;&#32508;&#21512;&#32534;&#31243;&#39064;&#65292;&#26088;&#22312;&#32467;&#21512;&#35838;&#22530;&#30693;&#35782;&#35299;&#20915;&#19968;&#20123;&#23454;&#38469;&#20013;&#30340;&#38382;&#39064;&#12290;&#22240;&#20026;&#38382;&#39064;&#26469;&#33258;&#23454;&#38469;&#65292;&#25152;&#20197;&#26377;&#26102;&#20505;&#26410;&#24517;&#33021;&#31435;&#21363;&#22312;&#35838;&#26412;&#19978;&#25214;&#21040;&#30456;&#20851;&#30693;&#35782;&#30340;&#31572;&#26696;&#65292;&#32780;&#26159;&#38656;&#35201; &#8220;&#27963;&#23398;&#27963;&#29992;&#8221;&#12290;&#22240;&#27492;&#65292;&#22823;&#23478;&#38656;&#35201;&#21033;&#29992;&#20114;&#32852;&#32593;&#19978;&#30340;&#30693;&#35782;&#35299;&#20915;&#36825;&#20123;&#38382;&#39064;&#65292;&#20294;<strong>&#19981;&#35201;</strong>&#35797;&#22270;&#30452;&#25509;&#25628;&#32034;&#36825;&#20123;&#38382;&#39064;&#30340;&#31572;&#26696;&#65292;&#21363;&#20415;&#26377;&#20063;&#19981;&#35201;&#28857;&#36827;&#21435; (&#20063;&#35831;&#33258;&#35273;&#19981;&#35201;&#20844;&#24320;&#21457;&#24067;&#31572;&#26696;)&#12290;</p>
-<p class=" font-serif my-1">Soft deadline: 2020 &#24180; 11 &#26376; 15 &#26085; 23:59:59&#12290;</p>
+<h4 id="_1" class=" pt-2 pb-2 font-sans float-left text-sm box border mr-1 mt-1 box-blue" style=" padding-bottom: 0;">小实验说明</h4>
+<p class=" font-serif my-1">小实验 (Labs) 是 ICS 这门课程里的一些综合编程题，旨在结合课堂知识解决一些实际中的问题。因为问题来自实际，所以有时候未必能立即在课本上找到相关知识的答案，而是需要 “活学活用”。因此，大家需要利用互联网上的知识解决这些问题，但<strong>不要</strong>试图直接搜索这些问题的答案，即便有也不要点进去 (也请自觉不要公开发布答案)。</p>
+<p class=" font-serif my-1">Soft deadline: 2020 年 11 月 15 日 23:59:59。</p>
 </blockquote>
-<h2 id="1" class=" text-xl mt-2 pb-2 font-sans">1. &#32972;&#26223;</h2>
-<p class=" font-serif my-1">C &#35821;&#35328;&#20316;&#20026;&#19968;&#31181; &#8220;&#39640;&#32423;&#30340;&#20302;&#32423;&#35821;&#35328;&#8221;&#65292;&#20854;&#20013;&#19968;&#20010;&#24456;&#22823;&#30340;&#29305;&#24615;&#23601;&#26159;&#33021;&#26080;&#32541;&#22320;&#21644;&#27719;&#32534;&#35821;&#35328;&#20132;&#20114;&#65292;&#21363;&#22312;&#31243;&#24207;&#20013;&#23884;&#20837; (inline) &#27719;&#32534;&#12290;&#23884;&#20837;&#30340;&#27719;&#32534;&#20195;&#30721;&#29978;&#33267;&#21487;&#20197;&#21442;&#19982;&#21040;&#32534;&#35793;&#22120;&#20248;&#21270;&#20013; (&#23884;&#20837;&#30340;&#25351;&#20196;&#19981;&#33021;&#34987;&#25913;&#21464;&#65292;&#20294;&#23884;&#20837;&#30340;&#27719;&#32534;&#21487;&#33021;&#34987;&#31227;&#21160;&#12289;&#21024;&#38500;&#31561;)&#12290;&#22312;&#36825;&#20010;&#23454;&#39564;&#20013;&#65292;&#25105;&#20204;&#20307;&#39564;&#22914;&#20309;&#30452;&#25509;&#22312; C &#35821;&#35328;&#37324;&#21512;&#29702;&#22320;&#19982;&#32534;&#35793;&#22120;&#20132;&#20114;&#65292;&#30452;&#25509;&#25805;&#32437;&#26426;&#22120;&#12290;</p>
-<h2 id="2" class=" text-xl mt-2 pb-2 font-sans">2. &#23454;&#39564;&#35201;&#27714;</h2>
-<h3 id="21" class=" text-lg mt-2 pb-2 font-sans">2.1 &#23454;&#39564;&#20869;&#23481;</h3>
+<h2 id="1" class=" text-xl mt-2 pb-2 font-sans">1. 背景</h2>
+<p class=" font-serif my-1">C 语言作为一种 “高级的低级语言”，其中一个很大的特性就是能无缝地和汇编语言交互，即在程序中嵌入 (inline) 汇编。嵌入的汇编代码甚至可以参与到编译器优化中 (嵌入的指令不能被改变，但嵌入的汇编可能被移动、删除等)。在这个实验中，我们体验如何直接在 C 语言里合理地与编译器交互，直接操纵机器。</p>
+<h2 id="2" class=" text-xl mt-2 pb-2 font-sans">2. 实验要求</h2>
+<h3 id="21" class=" text-lg mt-2 pb-2 font-sans">2.1 实验内容</h3>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#22312;&#26412;&#23454;&#39564;&#20013;&#65292;&#25152;&#26377;&#20989;&#25968;&#30340;&#25152;&#26377;&#37096;&#20998;&#37117;&#24517;&#39035;&#20351;&#29992; inline assembly &#23454;&#29616;&#12290;&#38500;&#23450;&#20041;&#20020;&#26102;&#21464;&#37327; (&#21487;&#20197;&#36171;&#24120;&#37327;&#21021;&#20540;) &#21644; return &#36820;&#22238;&#20020;&#26102;&#21464;&#37327;/&#21442;&#25968;&#22806;&#65292;&#19981;&#24471;&#20351;&#29992;&#20219;&#20309;&#34920;&#36798;&#24335;/&#26465;&#20214;/&#24490;&#29615;&#31561; C &#35821;&#35328;&#25104;&#20998;&#12290;</p>
-<p class=" font-serif my-1">&#27880;&#24847; Online Judge &#21482;&#26816;&#26597;&#23454;&#29616;&#30340;&#27491;&#30830;&#24615;&#12290;&#25105;&#20204;&#20250;&#20154;&#24037;&#26816;&#26597;&#23454;&#39564;&#20195;&#30721;&#65292;&#30830;&#20445;&#26159;&#20351;&#29992;&#20869;&#32852;&#27719;&#32534;&#23454;&#29616;&#30340;&#12290;</p>
+<p class=" font-serif my-1">在本实验中，所有函数的所有部分都必须使用 inline assembly 实现。除定义临时变量 (可以赋常量初值) 和 return 返回临时变量/参数外，不得使用任何表达式/条件/循环等 C 语言成分。</p>
+<p class=" font-serif my-1">注意 Online Judge 只检查实现的正确性。我们会人工检查实验代码，确保是使用内联汇编实现的。</p>
 </blockquote>
-<p class=" font-serif my-1">&#26412;&#23454;&#39564;&#20511;&#21161; x86-64 &#20869;&#32852;&#27719;&#32534;&#23454;&#29616;&#20197;&#19979;&#20989;&#25968; (&#26694;&#26550;&#24050;&#22312; <code>asm-impl.c</code>) &#20013;&#65306;</p>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="c1">// &#36820;&#22238;&#26377;&#31526;&#21495; 64 &#20301;&#25972;&#25968; a + b &#30340;&#25968;&#20540;</span>
+<p class=" font-serif my-1">本实验借助 x86-64 内联汇编实现以下函数 (框架已在 <code>asm-impl.c</code>) 中：</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="c1">// 返回有符号 64 位整数 a + b 的数值</span>
 <span class="kt">int64_t</span><span class="w"> </span><span class="nf">asm_add</span><span class="p">(</span><span class="kt">int64_t</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int64_t</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
 
-<span class="c1">// &#36820;&#22238;&#26080;&#31526;&#21495; 64 &#20301;&#25972;&#25968; x &#20108;&#36827;&#21046;&#34920;&#31034;&#20013; 1 &#30340;&#25968;&#37327;</span>
+<span class="c1">// 返回无符号 64 位整数 x 二进制表示中 1 的数量</span>
 <span class="kt">int</span><span class="w"> </span><span class="nf">asm_popcnt</span><span class="p">(</span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">x</span><span class="p">);</span>
 
-<span class="c1">// C &#26631;&#20934;&#24211;&#20013;&#30340; memcpy&#65292;&#29992;&#20110;&#22797;&#21046;&#20004;&#27573;&#19981;&#30456;&#20132;&#30340;&#20869;&#23384;</span>
+<span class="c1">// C 标准库中的 memcpy，用于复制两段不相交的内存</span>
 <span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="nf">asm_memcpy</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">dest</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">src</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">n</span><span class="p">);</span>
 
-<span class="c1">// C &#26631;&#20934;&#24211;&#20013;&#30340; setjmp/longjmp&#65292;&#29992;&#20110;&#25511;&#21046;&#27969;&#38271;&#36339;&#36716;</span>
+<span class="c1">// C 标准库中的 setjmp/longjmp，用于控制流长跳转</span>
 <span class="kt">int</span><span class="w"> </span><span class="nf">asm_setjmp</span><span class="p">(</span><span class="n">asm_jmp_buf</span><span class="w"> </span><span class="n">env</span><span class="p">);</span>
 <span class="kt">void</span><span class="w"> </span><span class="nf">asm_longjmp</span><span class="p">(</span><span class="n">asm_jmp_buf</span><span class="w"> </span><span class="n">env</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">val</span><span class="p">);</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">&#21069;&#38754;&#19977;&#20010;&#20989;&#25968;&#30340;&#34892;&#20026;&#38750;&#24120;&#26126;&#30830;&#65292;&#20320;&#21482;&#38656;&#29992;&#27719;&#32534;&#23454;&#29616;&#20197;&#19979;&#20989;&#25968;&#30340;&#34892;&#20026;&#21363;&#21487;&#65292;&#36890;&#36807;&#38405;&#35835;&#20363;&#23376;&#21644;&#25991;&#26723;&#65292;&#29087;&#24713;&#20869;&#32852;&#27719;&#32534;&#30340;&#20889;&#27861;&#65306;</p>
+<p class=" font-serif my-1">前面三个函数的行为非常明确，你只需用汇编实现以下函数的行为即可，通过阅读例子和文档，熟悉内联汇编的写法：</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">int64_t</span><span class="w"> </span><span class="nf">asm_add</span><span class="p">(</span><span class="kt">int64_t</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int64_t</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
 <span class="p">}</span>
 <span class="kt">int</span><span class="w"> </span><span class="nf">asm_popcnt</span><span class="p">(</span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">64</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">x</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="n">s</span><span class="o">++</span><span class="p">;</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o"><</span><span class="w"> </span><span class="mi">64</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">x</span><span class="w"> </span><span class="o">>></span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">&</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="n">s</span><span class="o">++</span><span class="p">;</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">s</span><span class="p">;</span>
 <span class="p">}</span>
@@ -200,30 +201,30 @@ hr {
 <span class="p">}</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">&#22823;&#23478;&#21487;&#33021;&#23545; <code>setjmp</code>/<code>longjmp</code> &#27604;&#36739;&#38476;&#29983;&#65292;&#23646;&#20110;&#19981;&#22826;&#24120;&#29992;&#30340; C &#26631;&#20934;&#24211;&#20989;&#25968;&#12290;&#21644;&#19968;&#23545;&#20989;&#25968;&#29992;&#20110;&#23454;&#29616;&#25511;&#21046;&#27969;&#30340;&#38271;&#36339;&#36716;&#12290;&#23427;&#20204;&#30340;&#22768;&#26126;&#21253;&#21547;&#22312; <code>setjmp.h</code>&#65292;&#25163;&#20876; (<code>man setjmp</code>) &#30340;&#20869;&#23481;&#19982;&#25105;&#20204;&#38656;&#35201;&#23454;&#29616;&#30340; <code>asm_setjmp</code>/<code>asm_longjmp</code> &#34892;&#20026;&#19968;&#33268;&#65306;</p>
+<p class=" font-serif my-1">大家可能对 <code>setjmp</code>/<code>longjmp</code> 比较陌生，属于不太常用的 C 标准库函数。和一对函数用于实现控制流的长跳转。它们的声明包含在 <code>setjmp.h</code>，手册 (<code>man setjmp</code>) 的内容与我们需要实现的 <code>asm_setjmp</code>/<code>asm_longjmp</code> 行为一致：</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">setjmp</span><span class="p">(</span><span class="kt">jmp_buf</span><span class="w"> </span><span class="n">env</span><span class="p">);</span>
 <span class="kt">void</span><span class="w"> </span><span class="nf">longjmp</span><span class="p">(</span><span class="kt">jmp_buf</span><span class="w"> </span><span class="n">env</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">val</span><span class="p">);</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">&#20197;&#19979;&#25688;&#33258;&#25163;&#20876; setjmp (3):</p>
+<p class=" font-serif my-1">以下摘自手册 setjmp (3):</p>
 <p class=" font-serif my-1"><code>setjmp</code>/<code>longjmp</code> functions are used for performing "nonlocal gotos": transferring execution from one          function to a predetermined location in another function.  The <code>setjmp()</code> function dynamically  establishes  the          target to which control will later be transferred, and <code>longjmp()</code> performs the transfer of execution.</p>
 <p class=" font-serif my-1">The  <code>setjmp()</code>  function saves various information about the calling environment (typically, the stack pointer,          the instruction pointer, possibly the values of other registers and the signal mask) in  the  buffer  env  for          later use by <code>longjmp()</code>.  In this case, <code>setjmp()</code> returns 0.</p>
 <p class=" font-serif my-1">The  <code>longjmp()</code> function uses the information saved in <code>env</code> to transfer control back to the point where <code>setjmp()</code>          was called and to restore ("rewind") the stack to its state at the time of the <code>setjmp()</code>  call.   In  addition,          and  depending  on  the  implementation (see NOTES), the values of some other registers and the process signal          mask may be restored to their state at the time of the <code>setjmp()</code> call.</p>
 <p class=" font-serif my-1">Following a successful <code>longjmp()</code>, execution continues as if <code>setjmp()</code> had returned for  a  second  time.   This          "fake"  return can be distinguished from a true <code>setjmp()</code> call because the "fake" return returns the value provided in <code>val</code>.  If the programmer mistakenly passes the value <code>0</code> in <code>val</code>, the "fake" return will  instead  return <code>1</code>.                  </p>
-<p class=" font-serif my-1">&#31616;&#21333;&#26469;&#35828;&#65292;<code>setjmp</code> &#20250;&#22312;&#35843;&#29992;&#26102;&#23545;&#24403;&#21069;&#31243;&#24207;&#30340;&#36816;&#34892;&#29366;&#24577;&#20570;&#19968;&#20010;<strong>&#36731;&#37327;&#32423;&#24555;&#29031;</strong> (&#20445;&#23384;&#22312; <code>env</code> &#21442;&#25968;&#20013;)&#65292;&#24182;&#36820;&#22238; <code>0</code>&#12290;&#21482;&#35201; <code>setjmp</code> &#26102;&#35843;&#29992;&#30340;&#20989;&#25968;&#19981;&#36820;&#22238;&#65292;&#31243;&#24207;&#22312;&#36816;&#34892;&#36807;&#31243;&#20013;&#21487;&#20197;&#38543;&#26102;&#35843;&#29992; <code>longjmp</code> &#36339;&#36716;&#21040; <code>setjmp</code> &#24555;&#29031;&#26102;&#30340;&#31243;&#24207;&#29366;&#24577;&#65292;&#26080;&#35770;&#20013;&#38388;&#38388;&#38548;&#20102;&#22810;&#23569;&#20989;&#25968;&#35843;&#29992;&#65292;&#24182;&#19988;&#32473; <code>setjmp</code> &#19968;&#20010;&#29305;&#23450;&#30340;&#36820;&#22238;&#20540;&#12290;&#25105;&#20204;&#21487;&#20197;&#36890;&#36807;&#19979;&#38754;&#30340;&#23567;&#20363;&#23376;&#29702;&#35299; <code>setjmp</code>/<code>longjmp</code> &#30340;&#34892;&#20026;&#65306;</p>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;setjmp.h&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<p class=" font-serif my-1">简单来说，<code>setjmp</code> 会在调用时对当前程序的运行状态做一个<strong>轻量级快照</strong> (保存在 <code>env</code> 参数中)，并返回 <code>0</code>。只要 <code>setjmp</code> 时调用的函数不返回，程序在运行过程中可以随时调用 <code>longjmp</code> 跳转到 <code>setjmp</code> 快照时的程序状态，无论中间间隔了多少函数调用，并且给 <code>setjmp</code> 一个特定的返回值。我们可以通过下面的小例子理解 <code>setjmp</code>/<code>longjmp</code> 的行为：</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf"><setjmp.h></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf"><stdio.h></span>
 
 <span class="kt">jmp_buf</span><span class="w"> </span><span class="n">env</span><span class="p">;</span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">8</span><span class="p">)</span><span class="w"> </span><span class="n">longjmp</span><span class="p">(</span><span class="n">env</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">);</span><span class="w"> </span><span class="c1">// &#26576;&#20010;&#26465;&#20214;&#36798;&#25104;&#26102;&#65292;&#24674;&#22797;&#24555;&#29031;</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">>=</span><span class="w"> </span><span class="mi">8</span><span class="p">)</span><span class="w"> </span><span class="n">longjmp</span><span class="p">(</span><span class="n">env</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">);</span><span class="w"> </span><span class="c1">// 某个条件达成时，恢复快照</span>
 <span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">"Call f(%d)</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">);</span>
 <span class="w">  </span><span class="n">f</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">setjmp</span><span class="p">(</span><span class="n">env</span><span class="p">);</span><span class="w"> </span><span class="c1">// &#24555;&#29031;</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">setjmp</span><span class="p">(</span><span class="n">env</span><span class="p">);</span><span class="w"> </span><span class="c1">// 快照</span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">r</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">f</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
 <span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// longjmp goes here</span>
@@ -232,37 +233,37 @@ hr {
 <span class="p">}</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">&#21033;&#29992; <code>setjmp</code>/<code>longjmp</code>&#65292;&#22823;&#23478;&#21487;&#20197;&#22312;&#32534;&#20889;&#36882;&#24402;&#25628;&#32034; (DFS) &#26102;&#65292;&#22312;&#25214;&#21040;&#19968;&#20010;&#21512;&#27861;&#35299;&#20197;&#21518;&#31435;&#21363;&#36864;&#20986;&#36882;&#24402;&#12290;<code>setjmp</code>/<code>longjmp</code> &#20063;&#26159;&#35745;&#31639;&#26426;&#31995;&#32479;&#30740;&#31350;&#20013;&#19968;&#20010;&#26377;&#29992;&#30340; hacking &#25216;&#24039;&#8212;&#8212;&#23427;&#33021;&#20197;&#38750;&#24120;&#23567;&#30340;&#20195;&#20215;&#23454;&#29616;&#36827;&#31243;&#29366;&#24577;&#30340;&#24555;&#29031;&#12290;&#35831;&#22823;&#23478; STFW &#29702;&#35299; <code>jmp_buf</code> &#30340;&#23450;&#20041;&#21644;&#36825;&#20004;&#20010;&#20989;&#25968;&#30340;&#29992;&#27861;&#12290;&#22312;&#26412;&#23454;&#39564;&#20013;&#65292;&#29992;&#20869;&#32852;&#27719;&#32534;&#23454;&#29616; <code>asm_setjmp</code> &#24555;&#29031;&#12289; <code>asm_longjmp</code> &#38271;&#36339;&#36716;&#65292;&#20294;&#26080;&#38656;&#32771;&#34385;&#20449;&#21495; (&#20449;&#21495;&#26426;&#21046;&#23558;&#22312;&#21518;&#32493;&#35838;&#31243;&#20013;&#20171;&#32461;)&#12290;</p>
+<p class=" font-serif my-1">利用 <code>setjmp</code>/<code>longjmp</code>，大家可以在编写递归搜索 (DFS) 时，在找到一个合法解以后立即退出递归。<code>setjmp</code>/<code>longjmp</code> 也是计算机系统研究中一个有用的 hacking 技巧——它能以非常小的代价实现进程状态的快照。请大家 STFW 理解 <code>jmp_buf</code> 的定义和这两个函数的用法。在本实验中，用内联汇编实现 <code>asm_setjmp</code> 快照、 <code>asm_longjmp</code> 长跳转，但无需考虑信号 (信号机制将在后续课程中介绍)。</p>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<h4 id="_2" class=" pt-2 pb-2 font-sans float-left text-sm box border mr-1 mt-1 box-blue" style=" padding-bottom: 0;">&#24120;&#35265;&#30340;&#22256;&#24785;&#65306;&#36825;&#29609;&#24847;&#26377;&#21861;&#29992;&#65311;</h4>
-<p class=" font-serif my-1">&#24403;&#22823;&#23478; STFW &#26102;&#65292;&#21487;&#33021;&#20250;&#21457;&#29616;&#29702;&#35299; <code>setjmp</code>/<code>longjmp</code> &#26102;&#36935;&#21040;&#19968;&#23450;&#30340;&#22256;&#38590;&#65292;&#24182;&#19988;&#19981;&#30693;&#36947;&#25105;&#20204;&#21040;&#24213;&#20026;&#20160;&#20040;&#35201;&#29992;&#36825;&#26679;&#30340;&#20316;&#19994;&#25240;&#30952;&#22823;&#23478;&#12290;&#27492;&#26102;&#19968;&#23450;&#26159;&#24819;&#25918;&#24323;&#30340;&#8212;&#8212;&#25265;&#19968;&#19979;&#22823;&#33151;&#12289;&#21435;&#32593;&#19978;&#25214;&#19968;&#20010;&#31572;&#26696;&#23601;&#23436;&#20107;&#20102;&#12290;&#20107;&#23454;&#19978;&#65292;&#36825;&#20010;&#23454;&#39564;&#24110;&#21161;&#20320;&#22312;&#29992;&#25143;&#24577;&#29702;&#35299; &#8220;&#36827;&#31243;&#30340;&#29366;&#24577;&#8221;&#8212;&#8212;&#22312;&#20320;&#23436;&#25104;&#23454;&#39564;&#20197;&#21518;&#65292;&#20854;&#23454;&#20320;&#20854;&#23454;&#20063;&#25484;&#25569;&#20102;&#25805;&#20316;&#31995;&#32479;&#22914;&#20309;&#22312;&#19968;&#20010; CPU &#19978;&#27169;&#25311;&#20986;&#22810;&#20010;&#31243;&#24207;&#21516;&#26102;&#36816;&#34892;&#30340;&#20551;&#35937;&#8212;&#8212;&#23436;&#25104;&#36825;&#20010;&#23454;&#39564;&#20250;&#23545;&#31243;&#24207;&#30340;&#26426;&#22120;&#32423;&#34920;&#31034;&#26377;&#20840;&#26032;&#12289;&#28145;&#21051;&#30340;&#29702;&#35299;&#12290;</p>
+<h4 id="_2" class=" pt-2 pb-2 font-sans float-left text-sm box border mr-1 mt-1 box-blue" style=" padding-bottom: 0;">常见的困惑：这玩意有啥用？</h4>
+<p class=" font-serif my-1">当大家 STFW 时，可能会发现理解 <code>setjmp</code>/<code>longjmp</code> 时遇到一定的困难，并且不知道我们到底为什么要用这样的作业折磨大家。此时一定是想放弃的——抱一下大腿、去网上找一个答案就完事了。事实上，这个实验帮助你在用户态理解 “进程的状态”——在你完成实验以后，其实你其实也掌握了操作系统如何在一个 CPU 上模拟出多个程序同时运行的假象——完成这个实验会对程序的机器级表示有全新、深刻的理解。</p>
 </blockquote>
-<h3 id="22" class=" text-lg mt-2 pb-2 font-sans">2.2 &#20195;&#30721;&#33719;&#21462;&#19982;&#25552;&#20132;</h3>
+<h3 id="22" class=" text-lg mt-2 pb-2 font-sans">2.2 代码获取与提交</h3>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
 <h4 id="academic-integrity" class=" pt-2 pb-2 font-sans float-left text-sm box border mr-1 mt-1 box-blue" style=" padding-bottom: 0;">Academic Integrity</h4>
-<p class=" font-serif my-1">&#20174;&#32593;&#19978;&#25110;&#21035;&#20154;&#37027;&#37324;&#22797;&#21046;&#20960;&#34892;&#20195;&#30721;&#38750;&#24120;&#31616;&#21333;&#8212;&#8212;&#20294;&#20320;&#22914;&#26524;&#36981;&#23432; academic integrity&#65292;&#33258;&#24049;&#23581;&#35797;&#23436;&#25104;&#65292;&#23601;&#20250;&#36935;&#21040;&#24040;&#22823;&#30340;&#22256;&#38590; (&#23588;&#20854;&#22914;&#26524;&#20320;&#27809;&#26377;&#35797;&#30528;&#29992;&#27491;&#30830;&#30340;&#24037;&#20855;&#12289;&#27491;&#30830;&#30340;&#26041;&#27861;&#35786;&#26029;&#38382;&#39064;)&#12290;&#36825;&#26159;&#25105;&#20204;&#32473;&#20320;&#24517;&#35201;&#30340;<strong>&#35757;&#32451;</strong>&#12290;</p>
-<p class=" font-serif my-1">&#35831;&#20351;&#29992;&#25105;&#20204;&#30340; <code>Makefile</code> &#32534;&#35793; (&#22312;&#23454;&#39564;&#30446;&#24405;&#20013;&#25191;&#34892; <code>make</code>)&#65292;&#30830;&#20445; Git &#35760;&#24405;&#23436;&#25972;&#12290;</p>
+<p class=" font-serif my-1">从网上或别人那里复制几行代码非常简单——但你如果遵守 academic integrity，自己尝试完成，就会遇到巨大的困难 (尤其如果你没有试着用正确的工具、正确的方法诊断问题)。这是我们给你必要的<strong>训练</strong>。</p>
+<p class=" font-serif my-1">请使用我们的 <code>Makefile</code> 编译 (在实验目录中执行 <code>make</code>)，确保 Git 记录完整。</p>
 </blockquote>
-<p class=" font-serif my-1">&#22312; Lab1 &#30340; ics-workbench &#20013;&#65292;&#22312;&#32456;&#31471;&#25191;&#34892;</p>
+<p class=" font-serif my-1">在 Lab1 的 ics-workbench 中，在终端执行</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>git pull origin lab2
 </code></pre></div>
 
-<p class=" font-serif my-1">&#21487;&#20197;&#33719;&#24471;&#23454;&#39564;&#30340;&#26694;&#26550;&#20195;&#30721;&#12290;&#25552;&#20132;&#26041;&#27861;&#21516; Lab1: &#22312;&#23454;&#39564;&#30340;&#24037;&#20316;&#30446;&#24405;&#20013;&#25191;&#34892; <code>make submit</code>&#12290;&#38656;&#35201;&#35774;&#32622; <code>STUID</code> (&#23398;&#21495;) &#21644; <code>STUNAME</code> (&#20013;&#25991;&#22995;&#21517;) &#29615;&#22659;&#21464;&#37327;&#12290;</p>
+<p class=" font-serif my-1">可以获得实验的框架代码。提交方法同 Lab1: 在实验的工作目录中执行 <code>make submit</code>。需要设置 <code>STUID</code> (学号) 和 <code>STUNAME</code> (中文姓名) 环境变量。</p>
 <p class=" font-serif my-1"><oj-status course="ICS2020" module="Lab2"><div class="divide-y divide-dashed">
     <div class="flex font-semibold">
-      ICS2020-Lab2 &#25552;&#20132;&#32467;&#26524;
+      ICS2020-Lab2 提交结果
     </div>
     
   </div>
 </oj-status></p>
-<h3 id="23" class=" text-lg mt-2 pb-2 font-sans">2.3 &#35780;&#20998;&#19982;&#27491;&#30830;&#24615;&#26631;&#20934;</h3>
-<p class=" font-serif my-1">&#22312;&#20320;&#25552;&#20132;&#30340;&#20195;&#30721;&#20013;&#65292;<code>asm-impl.c</code> &#24212;&#35813;&#21482;&#21253;&#21547;&#20195;&#30721;&#30340;&#12290;<code>asm_jmp_buf</code> &#35831;&#23450;&#20041;&#22312; <code>asm.h</code> &#20013;&#12290;&#20854;&#20182;&#20195;&#30721; (&#22914;&#27979;&#35797;&#20195;&#30721;) &#35831;&#23384;&#25918;&#22312;&#20854;&#20182;&#25991;&#20214;&#20013;&#65292;&#20197;&#20813;&#22240;&#21253;&#21547;&#31105;&#27490;&#30340;&#25805;&#20316;&#34987; Online Judge &#25298;&#32477;&#12290;&#25105;&#20204;&#20250;&#23558;&#20320;&#30340; <code>asm-impl.c</code> &#21644; <code>asm.h</code> &#22797;&#21046;&#21040;&#25351;&#23450;&#20301;&#32622;&#12290;</p>
-<p class=" font-serif my-1">Labs &#23436;&#20840;&#23458;&#35266;&#35780;&#20998;&#65307;&#35780;&#20998;&#26041;&#27861;&#35831;&#38405;&#35835;<a href="Labs.html" class=" text-amber-900">&#23454;&#39564;&#39035;&#30693;</a>&#12290;&#25105;&#20204;&#30340;&#27979;&#35797;&#29992;&#20363;&#20998;&#20026; Easy &#21644; Hard&#12290;Easy &#29992;&#20363;&#19981;&#28041;&#21450; <code>setjmp</code>/<code>longjmp</code>&#8212;&#8212;&#22914;&#26524; <code>setjmp</code>/<code>longjmp</code> &#23545;&#20320;&#26469;&#35828;&#23454;&#22312;&#22826;&#22256;&#38590;&#65292;&#19981;&#22952;&#20808;&#35797;&#35797;&#20854;&#20182;&#30340;&#20989;&#25968;&#12290;</p>
-<h3 id="24" class=" text-lg mt-2 pb-2 font-sans">2.4 &#24120;&#35265;&#38382;&#39064;</h3>
+<h3 id="23" class=" text-lg mt-2 pb-2 font-sans">2.3 评分与正确性标准</h3>
+<p class=" font-serif my-1">在你提交的代码中，<code>asm-impl.c</code> 应该只包含代码的。<code>asm_jmp_buf</code> 请定义在 <code>asm.h</code> 中。其他代码 (如测试代码) 请存放在其他文件中，以免因包含禁止的操作被 Online Judge 拒绝。我们会将你的 <code>asm-impl.c</code> 和 <code>asm.h</code> 复制到指定位置。</p>
+<p class=" font-serif my-1">Labs 完全客观评分；评分方法请阅读<a href="Labs.html" class=" text-amber-900">实验须知</a>。我们的测试用例分为 Easy 和 Hard。Easy 用例不涉及 <code>setjmp</code>/<code>longjmp</code>——如果 <code>setjmp</code>/<code>longjmp</code> 对你来说实在太困难，不妨先试试其他的函数。</p>
+<h3 id="24" class=" text-lg mt-2 pb-2 font-sans">2.4 常见问题</h3>
 <p class=" font-serif my-1">(TBD)</p>
-<h2 id="3-inline-assembly" class=" text-xl mt-2 pb-2 font-sans">3. &#20869;&#32852;&#27719;&#32534; (Inline Assembly)</h2>
-<h3 id="31" class=" text-lg mt-2 pb-2 font-sans">3.1 &#20808;&#30475;&#19968;&#20010;&#20363;&#23376;</h3>
-<p class=" font-serif my-1">&#22312;&#35299;&#37322;&#20869;&#32852;&#27719;&#32534;&#30340;&#35821;&#27861;&#31561;&#20043;&#21069;&#65292;&#25105;&#20204;&#20808;&#30475;&#19968;&#20010;&#23454;&#29616; &#8220;&#21152;&#19968;&#8221; &#30340;&#20363;&#23376;&#65306;</p>
+<h2 id="3-inline-assembly" class=" text-xl mt-2 pb-2 font-sans">3. 内联汇编 (Inline Assembly)</h2>
+<h3 id="31" class=" text-lg mt-2 pb-2 font-sans">3.1 先看一个例子</h3>
+<p class=" font-serif my-1">在解释内联汇编的语法等之前，我们先看一个实现 “加一” 的例子：</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">inc</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">asm</span><span class="w"> </span><span class="p">(</span><span class="s">"incl %[t];"</span>
 <span class="w">       </span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="w"> </span><span class="s">"+r"</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -271,36 +272,36 @@ hr {
 <span class="p">}</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">&#20854;&#20013;&#65292;&#20869;&#32852;&#27719;&#32534;&#26159;&#19968;&#26465; <code>incl</code> &#25351;&#20196;&#65292;&#23427;&#29992; &#8220;<code>[t]</code>&#8221; &#25351;&#23450;&#20102;&#19968;&#20010;&#21517;&#20026; &#8220;t&#8221; &#30340;&#25805;&#20316;&#25968; (operand)&#65292;&#23427;&#33021;&#22815;&#34987;&#20998;&#37197;&#21040;&#20219;&#24847;&#23492;&#23384;&#22120;&#65292;&#24182;&#19988;&#21516;&#26102;&#20316;&#20026;&#36755;&#20837;&#21644;&#36755;&#20986; (<code>"+r"</code>)&#65292;&#22312;&#20869;&#32852;&#27719;&#32534;&#34987;&#35843;&#29992;&#21069;&#65292;&#32534;&#35793;&#22120;&#20250;&#30830;&#20445; <code>%[t]</code> &#23492;&#23384;&#22120;&#30340;&#20540;&#26159; <code>x</code> &#30340;&#25968;&#20540;&#12290;&#23427;&#20250;&#34987;&#32534;&#35793;&#25104;&#22914;&#19979;&#27719;&#32534;&#20195;&#30721; (&#20351;&#29992; <code>-Os</code> &#20248;&#21270;&#22823;&#23567;)&#65306;</p>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="mo">0000000000000000</span><span class="w"> </span><span class="o">&lt;</span><span class="n">inc</span><span class="o">&gt;:</span>
+<p class=" font-serif my-1">其中，内联汇编是一条 <code>incl</code> 指令，它用 “<code>[t]</code>” 指定了一个名为 “t” 的操作数 (operand)，它能够被分配到任意寄存器，并且同时作为输入和输出 (<code>"+r"</code>)，在内联汇编被调用前，编译器会确保 <code>%[t]</code> 寄存器的值是 <code>x</code> 的数值。它会被编译成如下汇编代码 (使用 <code>-Os</code> 优化大小)：</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="mo">0000000000000000</span><span class="w"> </span><span class="o"><</span><span class="n">inc</span><span class="o">>:</span>
 <span class="w">   </span><span class="mi">0</span><span class="o">:</span><span class="w">   </span><span class="mi">89</span><span class="w"> </span><span class="n">f8</span><span class="w">                   </span><span class="n">mov</span><span class="w">    </span><span class="o">%</span><span class="n">edi</span><span class="p">,</span><span class="o">%</span><span class="n">eax</span>
 <span class="w">   </span><span class="mi">2</span><span class="o">:</span><span class="w">   </span><span class="n">ff</span><span class="w"> </span><span class="n">c0</span><span class="w">                   </span><span class="n">inc</span><span class="w">    </span><span class="o">%</span><span class="n">eax</span>
 <span class="w">   </span><span class="mi">4</span><span class="o">:</span><span class="w">   </span><span class="n">c3</span><span class="w">                      </span><span class="n">retq</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">&#22312;&#19978;&#36848;&#20195;&#30721;&#20013;&#65292;<code>[t]</code> &#34987;&#20998;&#37197;&#20026;&#20102; <code>eax</code> &#23492;&#23384;&#22120;&#12290;&#22240;&#27492;<strong>&#20869;&#32852;&#27719;&#32534;&#25552;&#20379;&#20102;&#19968;&#31181;&#22312; C &#37324;&#25171;&#20010;&#27719;&#32534; &#8220;&#34917;&#19969;&#8221;&#65292;&#21448;&#21487;&#20197;&#21644; C &#35821;&#35328;&#19990;&#30028;&#37324;&#30340;&#34920;&#36798;&#24335;/&#21464;&#37327;&#20132;&#20114;&#30340;&#26426;&#21046;</strong>&#12290;</p>
-<h3 id="32" class=" text-lg mt-2 pb-2 font-sans">3.2 &#29702;&#35299;&#20869;&#32852;&#27719;&#32534;</h3>
-<p class=" font-serif my-1">&#22823;&#23478;&#24212;&#35813;&#36824;&#35760;&#24471;&#65292;&#29421;&#20041;&#30340; &#8220;&#32534;&#35793;&#8221; &#21482;&#23436;&#25104; .c &#21040; .s &#30340;&#36716;&#25442;&#12290;&#25442;&#21477;&#35805;&#35828;&#65292;&#29421;&#20041;&#30340;&#32534;&#35793;&#22120;&#20854;&#23454;&#24182;&#19981;&#31649; .s &#21040; .o &#30340;&#29983;&#25104;&#8212;&#8212;&#23427;<strong>&#23436;&#20840;&#19981;&#30693;&#36947;</strong>&#27719;&#32534;&#20195;&#30721;&#30340;&#21547;&#20041;&#65281;&#22240;&#27492;&#65292;&#22914;&#26524;&#25105;&#20204;&#32771;&#34385;&#19968;&#20010;&#27809;&#26377;&#32534;&#35793;&#20248;&#21270;&#65292;&#32780;&#26159;&#30452;&#25509; &#8220;&#30452;&#25509;&#32763;&#35793;&#8221; C &#35821;&#35328;&#21040;&#27719;&#32534;&#30340;&#32534;&#35793;&#22120;&#65292;&#23427;&#30475;&#21040;&#36825;&#20040;&#19968;&#27573;&#20195;&#30721;&#65306;</p>
+<p class=" font-serif my-1">在上述代码中，<code>[t]</code> 被分配为了 <code>eax</code> 寄存器。因此<strong>内联汇编提供了一种在 C 里打个汇编 “补丁”，又可以和 C 语言世界里的表达式/变量交互的机制</strong>。</p>
+<h3 id="32" class=" text-lg mt-2 pb-2 font-sans">3.2 理解内联汇编</h3>
+<p class=" font-serif my-1">大家应该还记得，狭义的 “编译” 只完成 .c 到 .s 的转换。换句话说，狭义的编译器其实并不管 .s 到 .o 的生成——它<strong>完全不知道</strong>汇编代码的含义！因此，如果我们考虑一个没有编译优化，而是直接 “直接翻译” C 语言到汇编的编译器，它看到这么一段代码：</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">foo</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">asm</span><span class="w"> </span><span class="p">(</span><span class="s">"incl %[t]"</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="w"> </span><span class="s">"+r"</span><span class="p">(</span><span class="n">i</span><span class="p">));</span><span class="w"> </span><span class="c1">// &#27719;&#32534;&#23454;&#29616;&#30340;i++;</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o"><</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">asm</span><span class="w"> </span><span class="p">(</span><span class="s">"incl %[t]"</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="w"> </span><span class="s">"+r"</span><span class="p">(</span><span class="n">i</span><span class="p">));</span><span class="w"> </span><span class="c1">// 汇编实现的i++;</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">&#19981;&#31649;&#19977;&#19971;&#20108;&#21313;&#19968;&#23601;&#20808;&#30452;&#25509;&#32763;&#35793;&#20986;&#19968;&#20010;&#24490;&#29615; (&#20551;&#35774;&#25226;&#24490;&#29615;&#21464;&#37327;&#25918;&#22312; <code>eax</code> &#23492;&#23384;&#22120;)&#65306;</p>
+<p class=" font-serif my-1">不管三七二十一就先直接翻译出一个循环 (假设把循环变量放在 <code>eax</code> 寄存器)：</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>  mov  $0x0, %eax
 .loop:
   cmp  %edi, %eax
   jge  .ret
-  // &#24490;&#29615;&#20307;
+  // 循环体
   add  $0x1, %eax
   jmp  .loop
 .ret:
   retq   
 </code></pre></div>
 
-<p class=" font-serif my-1">&#28982;&#21518;&#19979;&#19968;&#27493;&#26159;&#25226;&#20869;&#32852;&#27719;&#32534; &#8220;&#31896;&#36148;&#8221; &#21040;&#24490;&#29615;&#20307;&#37324;&#65292;&#24182;&#19988;&#28385;&#36275;&#20869;&#32852;&#27719;&#32534;&#25351;&#23450;&#30340;&#26465;&#20214; (&#22312;&#36825;&#37324;&#65292;&#25105;&#20204;&#24076;&#26395;&#21464;&#37327; <code>i</code> &#22312;&#26576;&#20010;&#23492;&#23384;&#22120;&#20013;&#65292;&#21018;&#22909;&#36825;&#24050;&#32463;&#34987;&#28385;&#36275;&#20102;&#65292;<code>i</code> &#22312; <code>eax</code> &#23492;&#23384;&#22120;&#65292;&#20110;&#26159;&#24490;&#29615;&#20307;&#37324;&#21482;&#38656;&#35201;&#22635;&#20837;&#19968;&#26465; <code>incl</code> &#25351;&#20196;&#21363;&#21487;)&#65306;</p>
+<p class=" font-serif my-1">然后下一步是把内联汇编 “粘贴” 到循环体里，并且满足内联汇编指定的条件 (在这里，我们希望变量 <code>i</code> 在某个寄存器中，刚好这已经被满足了，<code>i</code> 在 <code>eax</code> 寄存器，于是循环体里只需要填入一条 <code>incl</code> 指令即可)：</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>  mov  $0x0, %eax
 .loop:
   cmp  %edi, %eax
@@ -312,20 +313,20 @@ hr {
   retq   
 </code></pre></div>
 
-<p class=" font-serif my-1">&#21516;&#23398;&#20204;&#19981;&#22952;&#21487;&#20197;&#22312;&#24490;&#29615;&#20307;&#37324;&#22686;&#21152;&#20854;&#20182;&#20195;&#30721; (&#20363;&#22914; <code>printf("i = %d\n", i);</code>)&#65292;&#35266;&#23519;&#27719;&#32534;&#20195;&#30721;&#21457;&#29983;&#30340;&#21464;&#21270;&#8212;&#8212;&#20869;&#32852;&#27719;&#32534;&#30340;&#20027;&#35201;&#21151;&#33021;&#26159;&#22312; C &#37324; &#8220;&#23884;&#20837;&#8221; &#19968;&#27573;&#21487;&#20197;&#21644; C &#20132;&#20114;&#30340;&#20195;&#30721;&#12290;</p>
-<h3 id="33" class=" text-lg mt-2 pb-2 font-sans">3.3 &#20869;&#32852;&#27719;&#32534;</h3>
-<p class=" font-serif my-1">&#20934;&#30830;&#22320;&#35828;&#65292;&#32534;&#35793;&#22120;&#20250;&#25226;&#20869;&#32852;&#30340;&#20195;&#30721;&#25104;&#19968;&#20010;&#40657;&#30418;&#23376; (&#20320;&#29978;&#33267;&#21487;&#20197;&#20351;&#29992; <code>.byte</code> &#30452;&#25509;&#29992;&#20108;&#36827;&#21046;&#26041;&#24335;&#20070;&#20889;&#25351;&#20196;&#24207;&#21015;)&#65292;&#28982;&#21518;&#32534;&#35793;&#22120;&#20250;&#29983;&#25104;&#28385;&#36275;&#20869;&#32852;&#27719;&#32534;&#35201;&#27714;&#30340;&#20195;&#30721;&#12290;&#22312;&#26412;&#23454;&#39564;&#20013;&#65292;&#25105;&#20204;&#21482;&#38656;&#35201;&#29992;&#21040;&#22914;&#19979;&#30340;&#20869;&#32852;&#27719;&#32534;&#35821;&#27861; (&#20869;&#32852;&#27719;&#32534;&#21487;&#20197;&#36339;&#36716;&#21040;&#31243;&#24207;&#30340;&#20854;&#20182;&#37096;&#20998;&#65292;&#19981;&#36807;&#25105;&#20204;&#26242;&#26102;&#29992;&#19981;&#21040;)</p>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">asm</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="c1">// 1. &#27719;&#32534;&#20195;&#30721; (&#23383;&#31526;&#20018;)</span>
-<span class="w">    </span><span class="o">:</span><span class="w"> </span><span class="c1">// 2. &#27719;&#32534;&#20195;&#30721;&#30340;&#36755;&#20986;&#25805;&#20316;&#25968;</span>
-<span class="w">    </span><span class="o">:</span><span class="w"> </span><span class="c1">// 3. &#27719;&#32534;&#20195;&#30721;&#30340;&#36755;&#20837;&#25805;&#20316;&#25968;</span>
-<span class="w">    </span><span class="o">:</span><span class="w"> </span><span class="c1">// 4. &#27719;&#32534;&#20195;&#30721;&#21487;&#33021;&#25913;&#20889;&#30340;&#23492;&#23384;&#22120; (clobber)</span>
+<p class=" font-serif my-1">同学们不妨可以在循环体里增加其他代码 (例如 <code>printf("i = %d\n", i);</code>)，观察汇编代码发生的变化——内联汇编的主要功能是在 C 里 “嵌入” 一段可以和 C 交互的代码。</p>
+<h3 id="33" class=" text-lg mt-2 pb-2 font-sans">3.3 内联汇编</h3>
+<p class=" font-serif my-1">准确地说，编译器会把内联的代码成一个黑盒子 (你甚至可以使用 <code>.byte</code> 直接用二进制方式书写指令序列)，然后编译器会生成满足内联汇编要求的代码。在本实验中，我们只需要用到如下的内联汇编语法 (内联汇编可以跳转到程序的其他部分，不过我们暂时用不到)</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">asm</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="c1">// 1. 汇编代码 (字符串)</span>
+<span class="w">    </span><span class="o">:</span><span class="w"> </span><span class="c1">// 2. 汇编代码的输出操作数</span>
+<span class="w">    </span><span class="o">:</span><span class="w"> </span><span class="c1">// 3. 汇编代码的输入操作数</span>
+<span class="w">    </span><span class="o">:</span><span class="w"> </span><span class="c1">// 4. 汇编代码可能改写的寄存器 (clobber)</span>
 <span class="w">    </span><span class="p">);</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">&#20854;&#20013;&#65306;</p>
+<p class=" font-serif my-1">其中：</p>
 <ol class=" list-decimal font-serif">
 <li class=" ml-8">
-<p class=" font-serif my-1">&#27719;&#32534;&#20195;&#30721;&#23601;&#26159;&#19968;&#20010;&#26222;&#36890;&#30340; C &#23383;&#31526;&#20018;&#12290;&#27719;&#32534;&#20195;&#30721;&#20250;&#21407;&#26679;&#20256;&#36882;&#32473;&#27719;&#32534;&#22120; (assembler)&#12290;&#27719;&#32534;&#20195;&#30721;&#29992;&#25442;&#34892;&#25110; &#8220;;&#8221; &#38548;&#24320;&#65292;&#22240;&#27492;&#22914;&#26524;&#35201;&#20070;&#20889;&#22810;&#34892;&#30340;&#27719;&#32534;&#65292;&#21487;&#20197;&#20511;&#21161; C &#35821;&#35328;&#39044;&#32534;&#35793;&#23383;&#31526;&#20018;&#25340;&#25509;&#65306;</p>
+<p class=" font-serif my-1">汇编代码就是一个普通的 C 字符串。汇编代码会原样传递给汇编器 (assembler)。汇编代码用换行或 “;” 隔开，因此如果要书写多行的汇编，可以借助 C 语言预编译字符串拼接：</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">asm</span><span class="w"> </span><span class="p">(</span><span class="s">"movl $1, %eax</span><span class="se">\n</span><span class="s">"</span>
 <span class="w">     </span><span class="s">"movl $1, %ebx;"</span>
 <span class="w">     </span><span class="s">"movl $1, %ecx;"</span>
@@ -334,15 +335,15 @@ hr {
 
 </li>
 <li class=" ml-8">
-<p class=" font-serif my-1">&#36755;&#20986;&#25805;&#20316;&#25968;&#65292;&#30456;&#24403;&#20110; &#8220;&#21578;&#35785;&#8221; &#32534;&#35793;&#22120;&#20869;&#32852;&#27719;&#32534;&#30340;&#32467;&#26524;&#25918;&#22312;&#20102;&#21738;&#37324;&#65292;&#24182;&#19988;&#24076;&#26395;&#25226;&#23427;&#20204;&#22797;&#21046;&#32473; C &#35821;&#35328;&#19990;&#30028;&#37324;&#30340;&#20160;&#20040;&#21464;&#37327;&#12290;&#20043;&#21069;&#30340; <code>"+r"(x)</code> &#30340;&#21547;&#20041;&#23601;&#26159;&#21578;&#35785; gcc &#21487;&#20197;&#20219;&#24847;&#36873;&#25321;&#23492;&#23384;&#22120;&#65292;&#20294;&#36755;&#20986;&#32473; <code>x</code> &#21464;&#37327;&#65307;</p>
+<p class=" font-serif my-1">输出操作数，相当于 “告诉” 编译器内联汇编的结果放在了哪里，并且希望把它们复制给 C 语言世界里的什么变量。之前的 <code>"+r"(x)</code> 的含义就是告诉 gcc 可以任意选择寄存器，但输出给 <code>x</code> 变量；</p>
 </li>
-<li class=" ml-8">&#36755;&#20837;&#25805;&#20316;&#25968;&#65292;&#29992;&#20110;&#25226; C &#35821;&#35328;&#19990;&#30028;&#20013;&#30340;&#21464;&#37327;&#20540;&#20256;&#36882;&#36827;&#20869;&#32852;&#27719;&#32534;&#65292;&#20363;&#22914; <code>"a"(x)</code> &#34920;&#31034;&#25226; <code>x</code> &#30340;&#20540;&#22797;&#21046;&#32473; <code>rax</code> &#23492;&#23384;&#22120;&#12290;</li>
-<li class=" ml-8">&#27719;&#32534;&#20195;&#30721;&#20013;&#21487;&#33021;&#20462;&#25913;&#30340;&#23492;&#23384;&#22120;&#12290;&#32534;&#35793;&#22120;&#22312;&#23558; C &#20195;&#30721;&#32534;&#35793;&#25104;&#27719;&#32534;&#20195;&#30721;&#26102;&#65292;&#20250;&#20026;&#23616;&#37096;&#21464;&#37327;&#21644;&#20020;&#26102;&#32467;&#26524;&#20998;&#37197;&#23492;&#23384;&#22120;&#25110;&#22534;&#26632;&#19978;&#30340;&#20869;&#23384;&#12290;&#22240;&#27492;&#65292;&#20869;&#32852;&#27719;&#32534;&#24517;&#39035;&#19981;&#36951;&#28431;&#22320;&#22768;&#26126;&#23427;&#20204;&#21487;&#33021;&#20250;&#20462;&#25913;&#30340;&#23492;&#23384;&#22120;&#65292;&#21542;&#21017;&#21487;&#33021;&#20250;&#20135;&#29983;&#27585;&#28781;&#24615;&#30340;&#21518;&#26524;&#12290;</li>
+<li class=" ml-8">输入操作数，用于把 C 语言世界中的变量值传递进内联汇编，例如 <code>"a"(x)</code> 表示把 <code>x</code> 的值复制给 <code>rax</code> 寄存器。</li>
+<li class=" ml-8">汇编代码中可能修改的寄存器。编译器在将 C 代码编译成汇编代码时，会为局部变量和临时结果分配寄存器或堆栈上的内存。因此，内联汇编必须不遗漏地声明它们可能会修改的寄存器，否则可能会产生毁灭性的后果。</li>
 </ol>
-<p class=" font-serif my-1">&#22240;&#27492;&#65292;&#20320;&#24517;&#39035;&#38750;&#24120;&#35880;&#24910;&#22320; &#8220;&#21578;&#35785;&#8221; &#32534;&#35793;&#22120;&#27719;&#32534;&#20195;&#30721;&#30340;&#34892;&#20026;&#8212;&#8212;&#40657;&#30418;&#23376;&#30340;&#36755;&#20837;&#12289;&#36755;&#20986;&#26159;&#20160;&#20040;&#65292;&#20197;&#21450;&#40657;&#30418;&#23376;&#21487;&#33021;&#24433;&#21709;&#30340;&#23492;&#23384;&#22120; (clobber)&#12290;&#24102;&#30528;&#36825;&#20010;&#22522;&#26412;&#27010;&#24565;&#65292;&#38405;&#35835;&#25991;&#26723;&#26102;&#24212;&#35813;&#19981;&#20877;&#24863;&#21040;&#22256;&#38590;&#20102;&#12290;</p>
-<p class=" font-serif my-1">&#30001;&#20110;&#20869;&#32852;&#27719;&#32534;&#26159;&#19968;&#20010;&#34892;&#20026;&#26126;&#30830;&#30340; &#8220;&#40657;&#30418;&#23376;&#8221;&#65292;&#22240;&#27492;&#32534;&#35793;&#22120;&#33021;&#23545;&#20869;&#32852;&#27719;&#32534;&#36827;&#34892;&#30456;&#24403;&#31243;&#24230;&#30340;&#20248;&#21270;&#65292;&#20363;&#22914;&#22914;&#26524;&#25105;&#20204;&#23558;&#21018;&#25165;&#30340;&#20195;&#30721;&#31245;&#20316;&#20462;&#25913;&#65306;</p>
+<p class=" font-serif my-1">因此，你必须非常谨慎地 “告诉” 编译器汇编代码的行为——黑盒子的输入、输出是什么，以及黑盒子可能影响的寄存器 (clobber)。带着这个基本概念，阅读文档时应该不再感到困难了。</p>
+<p class=" font-serif my-1">由于内联汇编是一个行为明确的 “黑盒子”，因此编译器能对内联汇编进行相当程度的优化，例如如果我们将刚才的代码稍作修改：</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">inc</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o"><</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">asm</span><span class="w"> </span><span class="p">(</span><span class="s">"incl %[x];"</span>
 <span class="w">         </span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="w"> </span><span class="s">"+r"</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 <span class="w">        </span><span class="p">);</span>
@@ -351,43 +352,43 @@ hr {
 <span class="p">}</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">&#32534;&#35793;&#21518;&#20250;&#24471;&#21040;&#22914;&#19979;&#32467;&#26524;&#65306;</p>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>0000000000000000 &lt;inc&gt;:
+<p class=" font-serif my-1">编译后会得到如下结果：</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code>0000000000000000 <inc>:
    0:   89 f0                   mov    %esi,%eax
    2:   31 d2                   xor    %edx,%edx
    4:   39 fa                   cmp    %edi,%edx
-   6:   7d 06                   jge    e &lt;inc+0xe&gt;
+   6:   7d 06                   jge    e <inc+0xe>
    8:   ff c0                   inc    %eax
    a:   ff c2                   inc    %edx
-   c:   eb f6                   jmp    4 &lt;inc+0x4&gt;
+   c:   eb f6                   jmp    4 <inc+0x4>
    e:   c3                      retq
 </code></pre></div>
 
-<p class=" font-serif my-1">&#21487;&#20197;&#30475;&#21040;&#65292;gcc &#20381;&#28982;&#27491;&#30830;&#22320;&#25226; <code>x</code> &#20998;&#37197;&#32473;&#20102; <code>eax</code> &#23492;&#23384;&#22120;&#65292;&#24182;&#23558;&#24490;&#29615;&#21464;&#37327;&#20998;&#37197;&#32473;&#20102; <code>edx</code> &#23492;&#23384;&#22120;&#12290;</p>
-<h3 id="34" class=" text-lg mt-2 pb-2 font-sans">3.4 &#25991;&#26723;&#19982;&#31119;&#21033;</h3>
-<p class=" font-serif my-1">&#22312;&#36825;&#20010;&#23454;&#39564;&#20013;&#65292;&#20320;&#38656;&#35201; RTFM&#12290;&#25105;&#20204;&#25552;&#20379;&#20102;&#19968;&#20123;&#32534;&#20889;&#20869;&#32852;&#27719;&#32534;&#26102;&#24120;&#29992;&#30340;&#25991;&#26723;&#12290;&#22312;&#20570;&#36825;&#20010;&#23454;&#39564;&#30340;&#36807;&#31243;&#20013;&#65292;&#20320;&#20250;&#21457;&#29616;&#23448;&#26041;&#25991;&#26723;&#36824;&#26159;&#26368;&#22909;&#29992;&#30340;&#65306;</p>
+<p class=" font-serif my-1">可以看到，gcc 依然正确地把 <code>x</code> 分配给了 <code>eax</code> 寄存器，并将循环变量分配给了 <code>edx</code> 寄存器。</p>
+<h3 id="34" class=" text-lg mt-2 pb-2 font-sans">3.4 文档与福利</h3>
+<p class=" font-serif my-1">在这个实验中，你需要 RTFM。我们提供了一些编写内联汇编时常用的文档。在做这个实验的过程中，你会发现官方文档还是最好用的：</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">GCC &#23448;&#26041;&#25991;&#26723;&#65306;<a href="https://gcc.gnu.org/onlinedocs/gcc/Using-Assembly-Language-with-C.html" class=" text-amber-900">How to Use Inline Assembly Language in C Code</a>&#65292;&#26435;&#23041;&#12289;&#20840;&#38754;&#12290;</li>
-<li class=" ml-8"><a href="https://ibiblio.org/gferg/ldp/GCC-Inline-Assembly-HOWTO.html" class=" text-amber-900">GCC-Inline-Assembly-HOWTO</a>&#65292;&#26356;&#23481;&#26131;&#19978;&#25163;&#65292;&#26377;&#30456;&#24403;&#22810;&#30340;&#20363;&#23376;&#20379;&#22823;&#23478;&#23398;&#20064;&#21644;&#21442;&#32771;&#65292;&#20294;&#37096;&#20998;&#20869;&#23481;&#36807;&#26102; (&#23569;&#37327;&#20195;&#30721;&#26080;&#27861;&#22312;&#24403;&#21069; gcc &#32534;&#35793;&#36890;&#36807;)&#12290;</li>
+<li class=" ml-8">GCC 官方文档：<a href="https://gcc.gnu.org/onlinedocs/gcc/Using-Assembly-Language-with-C.html" class=" text-amber-900">How to Use Inline Assembly Language in C Code</a>，权威、全面。</li>
+<li class=" ml-8"><a href="https://ibiblio.org/gferg/ldp/GCC-Inline-Assembly-HOWTO.html" class=" text-amber-900">GCC-Inline-Assembly-HOWTO</a>，更容易上手，有相当多的例子供大家学习和参考，但部分内容过时 (少量代码无法在当前 gcc 编译通过)。</li>
 </ul>
-<p class=" font-serif my-1">&#20197;&#21450;&#65292;&#26080;&#35770;&#22914;&#20309;&#65292;&#20320;&#20204;&#37117;&#20250;&#22312;&#23454;&#29616; <code>setjmp</code>/<code>longjmp</code> (&#20197;&#21450;&#20854;&#20182;&#20989;&#25968;) &#26102;&#36935;&#21040;&#24040;&#22823;&#30340;&#22256;&#38590;&#65292;&#20986;&#29616;&#38169;&#35823;&#30340;&#35745;&#31639;&#12289;segmentation fault &#31561;&#8230;&#8230;&#24590;&#20040;&#21150;&#65311;&#30447;&#30528;&#27719;&#32534;&#20195;&#30721;&#27515;&#30475;&#65311;</p>
-<p class=" font-serif my-1">&#19981;&#35201;&#24536;&#35760;&#65306;&#22312;&#20320;&#24863;&#21040;&#19981;&#29245;&#30340;&#26102;&#20505;&#65292;&#19968;&#23450;&#26377;&#24037;&#20855;&#21487;&#20197;&#24110;&#20320;&#12290;&#22914;&#26524;&#24819;&#25490;&#26597;&#33258;&#24049;&#30340;&#27719;&#32534;&#21738;&#37324;&#38169;&#20102;&#65292;&#26368;&#22909;&#30340;&#21150;&#27861;&#23601;&#26159;&#36305;&#19968;&#36305;&#65292;&#35843;&#35797;&#23427;&#8212;&#8212;&#20320;&#30340;&#27719;&#32534;&#19981;&#20250;&#24456;&#38271;&#65292;&#22914;&#26524;&#33021;&#21160;&#24577;&#22312;&#36816;&#34892;&#26102;&#26816;&#26597;&#31243;&#24207;&#30340;&#25191;&#34892;&#27969;&#21644;&#23492;&#23384;&#22120;&#30340;&#20540;&#65292;&#37027;&#30495;&#26159;&#20877;&#22909;&#19981;&#36807;&#20102;&#12290;&#22909;&#28040;&#24687;&#26159; gdb &#23601;&#33021;&#24110;&#25105;&#20204;&#25630;&#23450;&#65281;&#20197;&#19979;&#23601;&#26159;&#19968;&#20010;&#35843;&#35797;&#27719;&#32534;&#30340;&#20363;&#23376; (&#26469;&#33258; Rust &#23448;&#26041;&#25991;&#26723;&#65307;&#35843;&#35797;&#36828;&#31243;&#27719;&#32534;&#20195;&#30721;)&#65306;</p>
+<p class=" font-serif my-1">以及，无论如何，你们都会在实现 <code>setjmp</code>/<code>longjmp</code> (以及其他函数) 时遇到巨大的困难，出现错误的计算、segmentation fault 等……怎么办？盯着汇编代码死看？</p>
+<p class=" font-serif my-1">不要忘记：在你感到不爽的时候，一定有工具可以帮你。如果想排查自己的汇编哪里错了，最好的办法就是跑一跑，调试它——你的汇编不会很长，如果能动态在运行时检查程序的执行流和寄存器的值，那真是再好不过了。好消息是 gdb 就能帮我们搞定！以下就是一个调试汇编的例子 (来自 Rust 官方文档；调试远程汇编代码)：</p>
 <p class=" font-serif my-1"><img alt="" class="center" src="https://docs.rust-embedded.org/discovery/assets/gdb-layout-asm.png" width="500px"></p>
-<p class=" font-serif my-1">&#24403;&#28982;&#65292;&#20320;&#20063;&#21487;&#20197;&#29992;&#20854;&#20182;&#31532;&#19977;&#26041;&#30340;&#24037;&#20855;&#65292;&#20363;&#22914; cgdb:</p>
+<p class=" font-serif my-1">当然，你也可以用其他第三方的工具，例如 cgdb:</p>
 <p class=" font-serif my-1"><img alt="" class="center" src="http://cgdb.github.io/images/screenshot_debugging.png" width="500px"></p>
-<p class=" font-serif my-1">&#24590;&#20040;&#26679;&#65292;&#38750;&#24120;&#26041;&#20415;&#21543;&#65311;&#32473;&#22823;&#23478;&#20004;&#20010;&#26377;&#29992;&#30340;&#31373;&#38376;&#65306;</p>
+<p class=" font-serif my-1">怎么样，非常方便吧？给大家两个有用的窍门：</p>
 <ol class=" list-decimal font-serif">
-<li class=" ml-8">&#20351;&#29992; gdb &#33050;&#26412; (&#21487;&#20197;&#30452;&#25509;&#29992; <code>-ex</code> &#20256;&#36882;&#32473; gdb)&#65292;&#20174;&#32780;&#19981;&#24517;&#27599;&#27425;&#37117;&#37325;&#22797;&#38190;&#20837;&#22823;&#37327;&#30340;&#21629;&#20196; (<code>file asm-64</code>, <code>b asm_setjmp</code> &#31561;&#31561;)&#65307;</li>
-<li class=" ml-8">&#20351;&#29992; asm layout (&#24819;&#21516;&#26102;&#35266;&#30475;&#23492;&#23384;&#22120;&#30340;&#25968;&#20540;&#21487;&#20197;&#20351;&#29992; regs layout)&#65292;&#37197;&#21512;&#19968;&#20010;&#36275;&#22815;&#22823;&#30340;&#32456;&#31471;&#31383;&#21475;&#65292;&#33021;&#22815;&#26356;&#26041;&#20415;&#22320;&#35843;&#35797;&#27719;&#32534;&#20195;&#30721;&#12289;&#35266;&#23519;&#27599;&#26465;&#27719;&#32534;&#25351;&#20196;&#25191;&#34892;&#21518;&#23492;&#23384;&#22120;&#29616;&#22330;&#30340;&#21464;&#21270;&#12290;&#36825;&#23545;&#20110;&#20320;&#29702;&#35299;&#20320;&#20889;&#30340;&#20869;&#32852;&#27719;&#32534;&#26159;&#21542;&#31526;&#21512;&#39044;&#26399;&#65307;</li>
-<li class=" ml-8">&#22312;&#35843;&#35797;&#30340;&#26102;&#20505;&#23613;&#21487;&#33021;&#20351;&#29992;&#31616;&#21333;&#30340;&#27979;&#35797;&#29992;&#20363;&#12289;&#31934;&#31616;&#20320;&#30340;&#20195;&#30721;&#65292;&#20943;&#23569;&#20854;&#20182;&#20195;&#30721; (&#20363;&#22914; <code>printf</code>) &#23545;&#20320;&#30340;&#24178;&#25200;&#12290;&#20320;&#21487;&#20197;&#20351;&#29992;&#23439;&#26469;&#25511;&#21046;&#36825;&#20123;&#20195;&#30721;&#30340;&#39044;&#32534;&#35793;&#12290;</li>
+<li class=" ml-8">使用 gdb 脚本 (可以直接用 <code>-ex</code> 传递给 gdb)，从而不必每次都重复键入大量的命令 (<code>file asm-64</code>, <code>b asm_setjmp</code> 等等)；</li>
+<li class=" ml-8">使用 asm layout (想同时观看寄存器的数值可以使用 regs layout)，配合一个足够大的终端窗口，能够更方便地调试汇编代码、观察每条汇编指令执行后寄存器现场的变化。这对于你理解你写的内联汇编是否符合预期；</li>
+<li class=" ml-8">在调试的时候尽可能使用简单的测试用例、精简你的代码，减少其他代码 (例如 <code>printf</code>) 对你的干扰。你可以使用宏来控制这些代码的预编译。</li>
 </ol>
-<p class=" font-serif my-1">&#36890;&#36807;&#36825;&#20010;&#20363;&#23376;&#65292;&#20320;&#29702;&#35299;&#21040; STFW &#26159;&#38750;&#24120;&#37325;&#35201;&#30340;&#8212;&#8212;&#22909;&#30340;&#24037;&#20855;&#33021;&#26497;&#22823;&#25552;&#39640;&#20320;&#30340;&#25928;&#29575;&#65292;&#21363;&#20415;&#26377;&#32463;&#39564;&#30340;&#31243;&#24207;&#21592;&#65292;&#20351;&#29992;&#20102;&#21512;&#36866;&#30340;&#24037;&#20855;&#20063;&#33021;&#26377;&#25968;&#20493;&#30340;&#25928;&#29575;&#25552;&#21319;&#12290;</p></div>
+<p class=" font-serif my-1">通过这个例子，你理解到 STFW 是非常重要的——好的工具能极大提高你的效率，即便有经验的程序员，使用了合适的工具也能有数倍的效率提升。</p></div>
 </div>
 
 <div class="container text-xs py-3">
   <span class="text-muted">
     <center><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="../../../static/img/cc-4.0.png"></a>
-    &#160;&#160;&#160;<a style="color:inherit" href="https://beian.miit.gov.cn/">&#33487; ICP &#22791; 2020049101 &#21495;</a>
+       <a style="color:inherit" href="https://beian.miit.gov.cn/">苏 ICP 备 2020049101 号</a>
     </center>
   </span>
 </div>
@@ -420,5 +421,6 @@ function login() {
 
 
 </body>
+
 
 </html>

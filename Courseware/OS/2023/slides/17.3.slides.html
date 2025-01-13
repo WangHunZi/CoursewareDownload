@@ -1,10 +1,11 @@
 <!DOCTYPE html><html class="h-100">
 
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="../../../static/css/base.css" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com/"></script>
   <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
 
@@ -23,14 +24,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +210,7 @@ section .center {
 }
 </style>
 
-  <title>&#20837;&#20405;&#36827;&#31243;&#22320;&#22336;&#31354;&#38388;&#65306;&#28216;&#25103;&#22806;&#25346;</title>
+  <title>入侵进程地址空间：游戏外挂</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,7 +228,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="17.3.slides.html" class=" text-amber-900">&#127798;&#65039; &#20837;&#20405;&#36827;&#31243;&#22320;&#22336;&#31354;&#38388;</a></h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="17.3.slides.html" class=" text-amber-900">🌶️ 入侵进程地址空间</a></h1></div></div></div>
         
       
       </section>
@@ -239,26 +240,26 @@ section .center {
       
         
         <div><h2 id="hacking-address-spaces" class=" text-xl mt-2 pb-2 font-sans">Hacking Address Spaces</h2>
-<p class=" font-serif my-1">&#36827;&#31243; ($M, R$ &#29366;&#24577;&#26426;) &#22312; &#8220;&#26080;&#24773;&#25191;&#34892;&#25351;&#20196;&#26426;&#22120;&#8221; &#19978;&#25191;&#34892;</p>
+<p class=" font-serif my-1">进程 ($M, R$ 状态机) 在 “无情执行指令机器” 上执行</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#29366;&#24577;&#26426;&#26159;&#19968;&#20010;&#23553;&#38381;&#19990;&#30028;</li>
-<li class=" ml-8"><red>&#20294;&#22914;&#26524;&#20801;&#35768;&#19968;&#20010;&#36827;&#31243;&#23545;&#20854;&#20182;&#36827;&#31243;&#30340;&#22320;&#22336;&#31354;&#38388;&#26377;&#35775;&#38382;&#26435;</red>&#65311;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#24847;&#21619;&#30528;&#21487;&#20197;&#20219;&#24847;&#25913;&#21464;&#21478;&#19968;&#20010;&#31243;&#24207;&#30340;&#34892;&#20026;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#21548;&#36215;&#26469;&#23601;&#24456; cool</li>
+<li class=" ml-8">状态机是一个封闭世界</li>
+<li class=" ml-8"><red>但如果允许一个进程对其他进程的地址空间有访问权</red>？<ul class=" list-disc font-serif">
+<li class=" ml-8">意味着可以任意改变另一个程序的行为<ul class=" list-disc font-serif">
+<li class=" ml-8">听起来就很 cool</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#19968;&#20123;&#20837;&#20405;&#36827;&#31243;&#22320;&#22336;&#31354;&#38388;&#30340;&#20363;&#23376;</p>
+<p class=" font-serif my-1">一些入侵进程地址空间的例子</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#35843;&#35797;&#22120; (gdb)<ul class=" list-disc font-serif">
-<li class=" ml-8">gdb &#21487;&#20197;&#20219;&#24847;&#35266;&#27979;&#21644;&#20462;&#25913;&#31243;&#24207;&#30340;&#29366;&#24577;</li>
+<li class=" ml-8">调试器 (gdb)<ul class=" list-disc font-serif">
+<li class=" ml-8">gdb 可以任意观测和修改程序的状态</li>
 </ul>
 </li>
 <li class=" ml-8">Profiler (perf)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#21512;&#29702;&#30340;&#38656;&#27714;&#65292;&#25805;&#20316;&#31995;&#32479;&#23601;&#24517;&#39035;&#25903;&#25345; &#8594; Ask GPT!</li>
+<li class=" ml-8">合理的需求，操作系统就必须支持 → Ask GPT!</li>
 </ul>
 </li>
 </ul></div>
@@ -272,17 +273,17 @@ section .center {
 
       
         
-        <div><h2 id="0" class=" text-xl mt-2 pb-2 font-sans">&#20837;&#20405;&#36827;&#31243;&#22320;&#22336;&#31354;&#38388; (0): &#37329;&#25163;&#25351;</h2>
-<p class=" font-serif my-1">&#22914;&#26524;&#25105;&#20204;&#33021;&#30452;&#25509;&#29289;&#29702;&#21163;&#25345;&#20869;&#23384;&#65292;&#19981;&#23601;&#37117;&#35299;&#20915;&#20102;&#21527;&#65311;</p>
+        <div><h2 id="0" class=" text-xl mt-2 pb-2 font-sans">入侵进程地址空间 (0): 金手指</h2>
+<p class=" font-serif my-1">如果我们能直接物理劫持内存，不就都解决了吗？</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#21548;&#36215;&#26469;&#24456;&#31163;&#35889;&#65292;&#20294; &#8220;&#21345;&#24102;&#26426;&#8221; &#26102;&#20195;&#30340;&#30830;&#21487;&#20197;&#20570;&#21040;&#65281;</li>
+<li class=" ml-8">听起来很离谱，但 “卡带机” 时代的确可以做到！</li>
 </ul>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/game-genie-connect.jpg" width="900px"></p>
-<p class=" font-serif my-1">Game Genie: &#19968;&#20010; Look-up Table (LUT)</p>
+<p class=" font-serif my-1">Game Genie: 一个 Look-up Table (LUT)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#24403; CPU &#35835;&#22320;&#22336; $a$ &#26102;&#35835;&#21040; $x$&#65292;&#21017;&#26367;&#25442;&#20026; $y$<ul class=" list-disc font-serif">
-<li class=" ml-8"><a href="https://tuxnes.sourceforge.net/gamegenie.html" class=" text-amber-900">NES Game Genie Technical Notes</a> (<a href="https://patents.google.com/patent/EP0402067A2/en" class=" text-amber-900">&#19987;&#21033;</a>, <a href="https://www.howtogeek.com/706248/what-was-the-game-genie-cheat-device-and-how-did-it-work/" class=" text-amber-900">How did it work?</a>)</li>
-<li class=" ml-8">&#20170;&#22825;&#25105;&#20204;&#26377; <a href="https://perf.wiki.kernel.org/index.php/Perf_tools_support_for_Intel%C2%AE_Processor_Trace" class=" text-amber-900">Intel Processor Trace</a></li>
+<li class=" ml-8">当 CPU 读地址 $a$ 时读到 $x$，则替换为 $y$<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="https://tuxnes.sourceforge.net/gamegenie.html" class=" text-amber-900">NES Game Genie Technical Notes</a> (<a href="https://patents.google.com/patent/EP0402067A2/en" class=" text-amber-900">专利</a>, <a href="https://www.howtogeek.com/706248/what-was-the-game-genie-cheat-device-and-how-did-it-work/" class=" text-amber-900">How did it work?</a>)</li>
+<li class=" ml-8">今天我们有 <a href="https://perf.wiki.kernel.org/index.php/Perf_tools_support_for_Intel®_Processor_Trace" class=" text-amber-900">Intel Processor Trace</a></li>
 </ul>
 </li>
 </ul></div>
@@ -296,14 +297,14 @@ section .center {
 
       
         
-        <div><h2 id="1" class=" text-xl mt-2 pb-2 font-sans">&#20837;&#20405;&#36827;&#31243;&#22320;&#22336;&#31354;&#38388; (1): &#37329;&#23665;&#28216;&#20384;</h2>
-<p class=" font-serif my-1"><red>&#22312;&#36827;&#31243;&#30340;&#20869;&#23384;&#20013;&#25214;&#21040;&#20195;&#34920; &#8220;&#37329;&#38065;&#8221;&#12289;&#8220;&#29983;&#21629;&#8221; &#30340;&#37325;&#35201;&#23646;&#24615;&#24182;&#19988;&#25913;&#25481;</red></p>
+        <div><h2 id="1" class=" text-xl mt-2 pb-2 font-sans">入侵进程地址空间 (1): 金山游侠</h2>
+<p class=" font-serif my-1"><red>在进程的内存中找到代表 “金钱”、“生命” 的重要属性并且改掉</red></p>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/knight.jpg" width="500px"></p>
 <hr>
-<p class=" font-serif my-1">&#21253;&#21547;&#38750;&#24120;&#36148;&#24515;&#30340; &#8220;&#28216;&#25103;&#20869;&#21628;&#21483;&#8221; &#21151;&#33021;</p>
+<p class=" font-serif my-1">包含非常贴心的 “游戏内呼叫” 功能</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#23427;&#23601;&#26159;&#28216;&#25103;&#30340; (&#38409;&#21106;&#29256;) &#8220;&#35843;&#35797;&#22120;&#8221;</li>
-<li class=" ml-8">&#25105;&#20204;&#20063;&#21487;&#20197;&#22312; Linux &#20013;&#23454;&#29616;&#23427; (man 5 proc)</li>
+<li class=" ml-8">它就是游戏的 (阉割版) “调试器”</li>
+<li class=" ml-8">我们也可以在 Linux 中实现它 (man 5 proc)</li>
 </ul></div>
         
       
@@ -315,16 +316,16 @@ section .center {
 
       
         
-        <div><h2 id="2" class=" text-xl mt-2 pb-2 font-sans">&#20837;&#20405;&#36827;&#31243;&#22320;&#22336;&#31354;&#38388; (2): &#25353;&#38190;&#31934;&#28789;</h2>
-<p class=" font-serif my-1"><red>&#22823;&#37327;&#37325;&#22797;&#22266;&#23450;&#30340;&#20219;&#21153; (&#20363;&#22914; 2 &#31186; 17 &#26538;)</red></p>
+        <div><h2 id="2" class=" text-xl mt-2 pb-2 font-sans">入侵进程地址空间 (2): 按键精灵</h2>
+<p class=" font-serif my-1"><red>大量重复固定的任务 (例如 2 秒 17 枪)</red></p>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/ajjl.jpg" width="600px"></p>
 <hr>
-<p class=" font-serif my-1">&#36825;&#20010;&#31616;&#21333;&#65292;&#23601;&#26159;&#32473;&#36827;&#31243;&#21457;&#36865;&#38190;&#30424;/&#40736;&#26631;&#20107;&#20214;</p>
+<p class=" font-serif my-1">这个简单，就是给进程发送键盘/鼠标事件</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20570;&#20010;&#39537;&#21160; (&#21487;&#32534;&#31243;&#38190;&#30424;/&#40736;&#26631;)</li>
-<li class=" ml-8">&#21033;&#29992;&#25805;&#20316;&#31995;&#32479;/&#31383;&#21475;&#31649;&#29702;&#22120;&#25552;&#20379;&#30340; API<ul class=" list-disc font-serif">
-<li class=" ml-8"><a href="https://github.com/jordansissel/xdotool" class=" text-amber-900">xdotool</a> (&#25105;&#20204;&#29992;&#36825;&#29609;&#24847;&#27979;&#35797; vscode &#30340;&#25554;&#20214;)</li>
-<li class=" ml-8"><a href="https://www.kernel.org/doc/html/latest/input/input.html" class=" text-amber-900">evdev</a> (&#25353;&#38190;&#26174;&#31034;&#33050;&#26412;&#65307;&#20027;&#25773;&#24120;&#29992;)</li>
+<li class=" ml-8">做个驱动 (可编程键盘/鼠标)</li>
+<li class=" ml-8">利用操作系统/窗口管理器提供的 API<ul class=" list-disc font-serif">
+<li class=" ml-8"><a href="https://github.com/jordansissel/xdotool" class=" text-amber-900">xdotool</a> (我们用这玩意测试 vscode 的插件)</li>
+<li class=" ml-8"><a href="https://www.kernel.org/doc/html/latest/input/input.html" class=" text-amber-900">evdev</a> (按键显示脚本；主播常用)</li>
 </ul>
 </li>
 </ul></div>
@@ -338,18 +339,18 @@ section .center {
 
       
         
-        <div><h2 id="3" class=" text-xl mt-2 pb-2 font-sans">&#20837;&#20405;&#36827;&#31243;&#22320;&#22336;&#31354;&#38388; (3): &#21464;&#36895;&#40831;&#36718;</h2>
-<p class=" font-serif my-1"><red>&#35843;&#25972;&#28216;&#25103;&#30340;&#36923;&#36753;&#26356;&#26032;&#36895;&#24230;</red></p>
+        <div><h2 id="3" class=" text-xl mt-2 pb-2 font-sans">入侵进程地址空间 (3): 变速齿轮</h2>
+<p class=" font-serif my-1"><red>调整游戏的逻辑更新速度</red></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#27604;&#22914;<a href="https://baike.baidu.com/item/%E5%8F%B0%E6%B9%BE%E5%A4%A9%E5%A0%82%E9%B8%9F%E8%B5%84%E8%AE%AF%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8/8443017" class=" text-amber-900">&#26576;&#31070;&#31192;&#20844;&#21496;</a>&#24930;&#21040;&#38590;&#20197;&#24525;&#21463;&#30340;&#36305;&#22270;&#21644;&#25112;&#26007;</li>
+<li class=" ml-8">比如<a href="https://baike.baidu.com/item/台湾天堂鸟资讯有限公司/8443017" class=" text-amber-900">某神秘公司</a>慢到难以忍受的跑图和战斗</li>
 </ul>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/speed-up.jpg" width="500px"></p>
 <hr>
-<p class=" font-serif my-1">&#26412;&#36136;&#65306;&#31243;&#24207;&#26159;&#29366;&#24577;&#26426;</p>
+<p class=" font-serif my-1">本质：程序是状态机</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#38500;&#20102; syscall&#65292;&#26159;&#19981;&#33021;&#24863;&#30693;&#26102;&#38388;&#30340;</li>
-<li class=" ml-8">&#21482;&#35201; &#8220;&#21163;&#25345;&#8221; &#21644;&#26102;&#38388;&#30456;&#20851;&#30340; syscall&#65292;&#23601;&#33021;&#25913;&#21464;&#31243;&#24207;&#23545;&#26102;&#38388;&#30340;&#35748;&#35782;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#21407;&#21017;&#19978;&#31243;&#24207;&#20173;&#28982;&#21487;&#20197;&#29992;&#38388;&#25509;&#20449;&#24687; &#8220;&#24863;&#30693;&#8221; &#30340; (&#23601;&#24819;&#34920;&#35843;&#24930;&#20102;&#19968;&#26679;)</li>
+<li class=" ml-8">除了 syscall，是不能感知时间的</li>
+<li class=" ml-8">只要 “劫持” 和时间相关的 syscall，就能改变程序对时间的认识<ul class=" list-disc font-serif">
+<li class=" ml-8">原则上程序仍然可以用间接信息 “感知” 的 (就想表调慢了一样)</li>
 </ul>
 </li>
 </ul></div>
@@ -363,24 +364,24 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#23450;&#21046;&#28216;&#25103;&#22806;&#25346;</h2>
-<p class=" font-serif my-1">&#8220;&#21163;&#25345;&#20195;&#30721;&#8221; &#30340;&#26412;&#36136;&#26159; debugger &#34892;&#20026;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">定制游戏外挂</h2>
+<p class=" font-serif my-1">“劫持代码” 的本质是 debugger 行为</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#28216;&#25103;&#20063;&#26159;&#31243;&#24207;&#65292;&#20063;&#26159;&#29366;&#24577;&#26426;</li>
-<li class=" ml-8">&#22806;&#25346;&#23601;&#26159; &#8220;&#20026;&#36825;&#20010;&#28216;&#25103;&#19987;&#38376;&#35774;&#35745;&#30340; gdb&#8221;</li>
+<li class=" ml-8">游戏也是程序，也是状态机</li>
+<li class=" ml-8">外挂就是 “为这个游戏专门设计的 gdb”</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#20462;&#25913; API &#35843;&#29992;&#30340;&#20540;</p>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">set_alarm</span><span class="p">(</span><span class="mi">1000</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">FPS</span><span class="p">);</span><span class="w"> </span><span class="c1">// &#24076;&#26395;&#25913;&#25104; 100 / FPS</span>
+<p class=" font-serif my-1">修改 API 调用的值</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">set_alarm</span><span class="p">(</span><span class="mi">1000</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">FPS</span><span class="p">);</span><span class="w"> </span><span class="c1">// 希望改成 100 / FPS</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">&#38145;&#23450;&#29983;&#21629;&#20540;</p>
+<p class=" font-serif my-1">锁定生命值</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#26368;&#31616;&#21333;&#30340;&#29983;&#21629;&#20540;&#38145;&#23450;&#26159; spin modify</li>
-<li class=" ml-8">&#36824;&#26159;&#21487;&#33021;&#20986;&#29616; <code>hp &lt; 0</code> &#30340;&#21028;&#23450; (&#23588;&#20854;&#26159;&#19968;&#20992;&#31186;&#30340;&#26102;&#20505;)</li>
+<li class=" ml-8">最简单的生命值锁定是 spin modify</li>
+<li class=" ml-8">还是可能出现 <code>hp < 0</code> 的判定 (尤其是一刀秒的时候)</li>
 </ul>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">hp</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">damage</span><span class="p">;</span><span class="w"> </span><span class="c1">// &#24076;&#26395; &#8220;&#28040;&#38500;&#8221; &#27492;&#27425;&#20462;&#25913;</span>
-<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">hp</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="n">game_over</span><span class="p">();</span>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">hp</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">damage</span><span class="p">;</span><span class="w"> </span><span class="c1">// 希望 “消除” 此次修改</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">hp</span><span class="w"> </span><span class="o"><</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="n">game_over</span><span class="p">();</span>
 </code></pre></div></div>
         
       
@@ -392,8 +393,8 @@ section .center {
 
       
         
-        <div><h2 id="hooking" class=" text-xl mt-2 pb-2 font-sans">&#20195;&#30721;&#27880;&#20837; (hooking)</h2>
-<p class=" font-serif my-1">&#29992;&#19968;&#27573;&#20195;&#30721; &#8220;&#21246;&#20303;&#8221; &#31243;&#24207;&#30340;&#25191;&#34892;</p>
+        <div><h2 id="hooking" class=" text-xl mt-2 pb-2 font-sans">代码注入 (hooking)</h2>
+<p class=" font-serif my-1">用一段代码 “勾住” 程序的执行</p>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/waigua.gif" width="600px"></p>
 <p class=" font-serif my-1"></p><center>
 <video width="600" height="337" controls="controls" src="../../../pages/OS/img/game-hack.mp4" type="video/mp4"></video>
@@ -427,5 +428,6 @@ section .center {
 
 
 </body>
+
 
 </html>

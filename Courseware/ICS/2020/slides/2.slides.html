@@ -1,10 +1,11 @@
 <!DOCTYPE html><html class="h-100">
 
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="../../../static/css/base.css" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com/"></script>
   <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
 
@@ -23,14 +24,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +210,7 @@ section .center {
 }
 </style>
 
-  <title>C &#35821;&#35328;&#25342;&#36951; (1): &#26426;&#21046;</title>
+  <title>C 语言拾遗 (1): 机制</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,21 +228,21 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="c-1" class=" text-2xl mt-2 font-sans">C &#35821;&#35328;&#25342;&#36951; (1): &#26426;&#21046;</h1>
-<p class=" font-serif my-1"><include src="Slides_Author"><div><div class="py-16">
-<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">&#33931;&#28814;&#23721;</a></p>
+        <div><div class="center middle"><div style="width:100%"><h1 id="c-1" class=" text-2xl mt-2 font-sans">C 语言拾遗 (1): 机制</h1>
+<p class=" font-serif my-1"><include src="Slides_Author/index.html"><div><div class="py-16">
+<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">蒋炎岩</a></p>
 </div>
 <div class="row">
 <div class="author-affiliation">
-    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#12288;&#12288;&#21335;&#20140;&#22823;&#23398;&#12288;&#12288;</p>
+    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">　　南京大学　　</p>
     <img class="inline-img h-24" src="../../../static/img/nju-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#31185;&#23398;&#19982;&#25216;&#26415;&#31995;</p>
+   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">计算机科学与技术系</p>
     <img class="inline-img h-24" src="../../../static/img/njucs-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#36719;&#20214;&#30740;&#31350;&#25152;</p>
+    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">计算机软件研究所</p>
     <img class="inline-img h-24" src="../../../static/img/ics-logo.png" style="display: inline-block;"></a>
   </div>
 </div></div></include></p></div></div></div>
@@ -255,31 +256,31 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26412;&#35762;&#27010;&#36848;</h2>
-<p class=" font-serif my-1">&#22312; IDE &#37324;&#65292;&#20026;&#20160;&#20040;&#25353;&#19968;&#20010;&#38190;&#65292;&#23601;&#33021;&#32534;&#35793;&#36816;&#34892;&#65311;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">本讲概述</h2>
+<p class=" font-serif my-1">在 IDE 里，为什么按一个键，就能编译运行？</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#32534;&#35793;&#12289;&#38142;&#25509;<ul class=" list-disc font-serif">
-<li class=" ml-8">.c &#8594; &#39044;&#32534;&#35793; &#8594; .i &#8594; &#32534;&#35793; &#8594; .s &#8594; &#27719;&#32534; &#8594; .o &#8594; &#38142;&#25509; &#8594; a.out</li>
+<li class=" ml-8">编译、链接<ul class=" list-disc font-serif">
+<li class=" ml-8">.c → 预编译 → .i → 编译 → .s → 汇编 → .o → 链接 → a.out</li>
 </ul>
 </li>
-<li class=" ml-8">&#21152;&#36733;&#25191;&#34892;<ul class=" list-disc font-serif">
+<li class=" ml-8">加载执行<ul class=" list-disc font-serif">
 <li class=" ml-8"><code>./a.out</code></li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#32972;&#21518;&#26159;&#36890;&#36807;<red>&#35843;&#29992;&#21629;&#20196;&#34892;&#24037;&#20855;</red>&#23436;&#25104;&#30340;</p>
+<p class=" font-serif my-1">背后是通过<red>调用命令行工具</red>完成的</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">RTFM: <code>gcc --help</code>; <code>man gcc</code><ul class=" list-disc font-serif">
-<li class=" ml-8">&#25511;&#21046;&#34892;&#20026;&#30340;&#19977;&#20010;&#36873;&#39033;&#65306;<code>-E</code>, <code>-S</code>, <code>-c</code></li>
+<li class=" ml-8">控制行为的三个选项：<code>-E</code>, <code>-S</code>, <code>-c</code></li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#26412;&#27425;&#35838;&#31243;</p>
+<p class=" font-serif my-1">本次课程</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#39044;&#28909;&#65306;&#32534;&#35793;&#12289;&#38142;&#25509;&#12289;&#21152;&#36733;&#21040;&#24213;&#20570;&#20102;&#20160;&#20040;&#65311;</li>
-<li class=" ml-8">RTFSC &#26102;&#38656;&#35201;&#20851;&#27880;&#30340; C &#35821;&#35328;&#29305;&#24615;</li>
+<li class=" ml-8">预热：编译、链接、加载到底做了什么？</li>
+<li class=" ml-8">RTFSC 时需要关注的 C 语言特性</li>
 </ul></div>
         
       
@@ -295,7 +296,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="c" class=" text-2xl mt-2 font-sans">&#36827;&#20837; C &#35821;&#35328;&#20043;&#21069;&#65306;&#39044;&#32534;&#35793;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="c" class=" text-2xl mt-2 font-sans">进入 C 语言之前：预编译</h1></div></div></div>
         
       
       </section>
@@ -306,21 +307,21 @@ section .center {
 
       
         
-        <div><h2 id="include" class=" text-xl mt-2 pb-2 font-sans"><code>#include &lt;&gt;</code> &#25351;&#20196;</h2>
-<p class=" font-serif my-1">&#20197;&#19979;&#20195;&#30721;&#26377;&#20160;&#20040;&#21306;&#21035;&#65311;</p>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+        <div><h2 id="include" class=" text-xl mt-2 pb-2 font-sans"><code>#include <></code> 指令</h2>
+<p class=" font-serif my-1">以下代码有什么区别？</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf"><stdio.h></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">"stdio.h"</span>
 </code></pre></div>
 
 <hr>
-<p class=" font-serif my-1">&#20026;&#20160;&#20040;&#22312;&#27809;&#26377;&#23433;&#35013;&#24211;&#26102;&#20250;&#21457;&#29983;&#38169;&#35823;&#65311;</p>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;SDL2/SDL2.h&gt;</span>
+<p class=" font-serif my-1">为什么在没有安装库时会发生错误？</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf"><SDL2/SDL2.h></span>
 </code></pre></div>
 
 <hr>
-<p class=" font-serif my-1">&#20320;&#21487;&#33021;&#22312;&#20070;/&#38405;&#35835;&#26448;&#26009;&#19978;&#20102;&#35299;&#36807;&#19968;&#20123;&#30456;&#20851;&#30340;&#30693;&#35782;</p>
+<p class=" font-serif my-1">你可能在书/阅读材料上了解过一些相关的知识</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20294;&#26356;&#22909;&#30340;&#21150;&#27861;&#26159;<red>&#38405;&#35835;&#21629;&#20196;&#30340;&#26085;&#24535;</red></li>
+<li class=" ml-8">但更好的办法是<red>阅读命令的日志</red></li>
 <li class=" ml-8"><code>gcc --verbose a.c</code></li>
 </ul></div>
         
@@ -333,12 +334,12 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26377;&#36259;&#30340;&#39044;&#32534;&#35793;</h2>
-<p class=" font-serif my-1">&#20197;&#19979;&#20195;&#30721;&#20250;&#36755;&#20986;&#20160;&#20040;&#65311;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">有趣的预编译</h2>
+<p class=" font-serif my-1">以下代码会输出什么？</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20026;&#20160;&#20040;&#65311;</li>
+<li class=" ml-8">为什么？</li>
 </ul>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf"><stdio.h></span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="cp">#if aa == bb</span>
@@ -358,17 +359,17 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#23439;&#23450;&#20041;&#19982;&#23637;&#24320;</h2>
-<p class=" font-serif my-1">&#23439;&#23637;&#24320;&#65306;&#36890;&#36807;<red>&#22797;&#21046;/&#31896;&#36148;</red>&#25913;&#21464;&#20195;&#30721;&#30340;&#24418;&#24577;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">宏定义与展开</h2>
+<p class=" font-serif my-1">宏展开：通过<red>复制/粘贴</red>改变代码的形态</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><code>#include</code> &#8594; &#31896;&#36148;&#25991;&#20214;</li>
-<li class=" ml-8"><code>aa</code>, <code>bb</code> &#8594; &#31896;&#36148;&#31526;&#21495;</li>
+<li class=" ml-8"><code>#include</code> → 粘贴文件</li>
+<li class=" ml-8"><code>aa</code>, <code>bb</code> → 粘贴符号</li>
 </ul></div>
         
       
          <div class="fragment"> 
         <div><hr>
-<p class=" font-serif my-1">&#30693;&#20046;&#38382;&#39064;&#65306;&#22914;&#20309;&#25630;&#22446;&#19968;&#20010; OJ&#65311;</p>
+<p class=" font-serif my-1">知乎问题：如何搞垮一个 OJ？</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#define A "aaaaaaaaaa"</span>
 <span class="cp">#define TEN(A) A A A A A A A A A A</span>
 <span class="cp">#define B TEN(A)</span>
@@ -389,13 +390,13 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#23439;&#23450;&#20041;&#19982;&#23637;&#24320;</h2>
-<p class=" font-serif my-1">&#22914;&#20309;&#36530;&#36807; Online Judge &#30340;&#20851;&#38190;&#23383;&#36807;&#28388;&#65311;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">宏定义与展开</h2>
+<p class=" font-serif my-1">如何躲过 Online Judge 的关键字过滤？</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#define SYSTEM sys ## tem</span>
 </code></pre></div>
 
 <hr>
-<p class=" font-serif my-1">&#22914;&#20309;&#27585;&#25481;&#19968;&#20010;&#36523;&#36793;&#30340;&#21516;&#23398;&#65311;</p>
+<p class=" font-serif my-1">如何毁掉一个身边的同学？</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#define true (__LINE__ % 16 != 0)</span>
 </code></pre></div></div>
         
@@ -408,7 +409,7 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#23439;&#23450;&#20041;&#19982;&#23637;&#24320;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">宏定义与展开</h2>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#define s (((((((((((((((( 0</span>
 <span class="cp">#define _ * 2)</span>
 <span class="cp">#define X * 2 + 1)</span>
@@ -437,12 +438,12 @@ section .center {
       
         
         <div><h2 id="x-macros" class=" text-xl mt-2 pb-2 font-sans">X-Macros</h2>
-<p class=" font-serif my-1">&#23439;&#23637;&#24320;&#65306;&#36890;&#36807;<red>&#22797;&#21046;/&#31896;&#36148;</red>&#25913;&#21464;&#20195;&#30721;&#30340;&#24418;&#24577;</p>
+<p class=" font-serif my-1">宏展开：通过<red>复制/粘贴</red>改变代码的形态</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#21453;&#22797;&#31896;&#36148;&#65292;&#30452;&#21040;&#27809;&#26377;&#23439;&#21487;&#20197;&#23637;&#24320;&#20026;&#27490;</li>
+<li class=" ml-8">反复粘贴，直到没有宏可以展开为止</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#20363;&#23376;&#65306;X-macro</p>
+<p class=" font-serif my-1">例子：X-macro</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#define NAMES(X) \</span>
 <span class="cp">  X(Tom) X(Jerry) X(Tyke) X(Spike)</span>
 
@@ -461,24 +462,24 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26377;&#36259;&#30340;&#39044;&#32534;&#35793;</h2>
-<p class=" font-serif my-1">&#21457;&#29983;&#22312;&#23454;&#38469;&#32534;&#35793;&#20043;&#21069;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">有趣的预编译</h2>
+<p class=" font-serif my-1">发生在实际编译之前</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20063;&#31216;&#20026;&#20803;&#32534;&#31243; (meta-programming)<ul class=" list-disc font-serif">
-<li class=" ml-8">gcc &#30340;&#39044;&#22788;&#29702;&#22120;&#21516;&#26679;&#21487;&#20197;&#22788;&#29702;&#27719;&#32534;&#20195;&#30721;</li>
-<li class=" ml-8">C++ &#20013;&#30340;&#27169;&#26495;&#20803;&#32534;&#31243;; Rust &#30340; macros; ...</li>
+<li class=" ml-8">也称为元编程 (meta-programming)<ul class=" list-disc font-serif">
+<li class=" ml-8">gcc 的预处理器同样可以处理汇编代码</li>
+<li class=" ml-8">C++ 中的模板元编程; Rust 的 macros; ...</li>
 </ul>
 </li>
 </ul>
 <hr>
 <p class=" font-serif my-1">Pros</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25552;&#20379;&#28789;&#27963;&#30340;&#29992;&#27861; (X-macros)</li>
-<li class=" ml-8">&#25509;&#36817;&#33258;&#28982;&#35821;&#35328;&#30340;&#20889;&#27861;</li>
+<li class=" ml-8">提供灵活的用法 (X-macros)</li>
+<li class=" ml-8">接近自然语言的写法</li>
 </ul>
 <p class=" font-serif my-1">Cons</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#30772;&#22351;&#21487;&#35835;&#24615; <a href="https://www.ioccc.org/" class=" text-amber-900">IOCCC</a>&#12289;&#31243;&#24207;&#20998;&#26512; (&#34917;&#20840;)&#12289;&#8230;&#8230;</li>
+<li class=" ml-8">破坏可读性 <a href="https://www.ioccc.org/" class=" text-amber-900">IOCCC</a>、程序分析 (补全)、……</li>
 </ul>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="cp">#define L (</span>
 <span class="kt">int</span><span class="w"> </span><span class="n">main</span><span class="w"> </span><span class="n">L</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">puts</span><span class="w"> </span><span class="n">L</span><span class="w"> </span><span class="s">"Hello, World"</span><span class="w"> </span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
@@ -497,9 +498,9 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#32534;&#35793;&#19982;&#38142;&#25509;</h1>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">编译与链接</h1>
 <p class=" font-serif my-1"><br></p>
-<p class=" font-serif my-1">(&#20808;&#34892;&#21095;&#36879;&#26412;&#23398;&#26399;&#30340;&#20027;&#35201;&#20869;&#23481;)</p></div></div></div>
+<p class=" font-serif my-1">(先行剧透本学期的主要内容)</p></div></div></div>
         
       
       </section>
@@ -510,18 +511,18 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#32534;&#35793;</h2>
-<p class=" font-serif my-1">&#19968;&#20010;&#19981;&#24102;&#20248;&#21270;&#30340;&#31616;&#26131; (&#29702;&#24819;) &#32534;&#35793;&#22120;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">编译</h2>
+<p class=" font-serif my-1">一个不带优化的简易 (理想) 编译器</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><red>C &#20195;&#30721;&#30340;&#36830;&#32493;&#19968;&#27573;</red>&#24635;&#33021;&#25214;&#21040;&#23545;&#24212;&#30340;<red>&#19968;&#27573;&#36830;&#32493;&#30340;&#26426;&#22120;&#25351;&#20196;</red><ul class=" list-disc font-serif">
-<li class=" ml-8">&#36825;&#23601;&#26159;&#20026;&#20160;&#20040;&#22823;&#23478;&#20250;&#35273;&#24471; C &#26159;&#39640;&#32423;&#30340;&#27719;&#32534;&#35821;&#35328;&#65281;</li>
+<li class=" ml-8"><red>C 代码的连续一段</red>总能找到对应的<red>一段连续的机器指令</red><ul class=" list-disc font-serif">
+<li class=" ml-8">这就是为什么大家会觉得 C 是高级的汇编语言！</li>
 </ul>
 </li>
 </ul>
 <hr>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">foo</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o"><=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">sum</span><span class="p">;</span>
@@ -537,11 +538,11 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#38142;&#25509;</h2>
-<p class=" font-serif my-1">&#23558;&#22810;&#20010;&#20108;&#36827;&#21046;&#30446;&#26631;&#20195;&#30721;&#25340;&#25509;&#22312;&#19968;&#36215;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">链接</h2>
+<p class=" font-serif my-1">将多个二进制目标代码拼接在一起</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">C &#20013;&#31216;&#20026;&#32534;&#35793;&#21333;&#20803; (compilation unit)</li>
-<li class=" ml-8">&#29978;&#33267;&#21487;&#20197;&#38142;&#25509; C++, <a href="https://rust-embedded.github.io/book/interoperability/rust-with-c.html" class=" text-amber-900">rust</a>, ... &#20195;&#30721;</li>
+<li class=" ml-8">C 中称为编译单元 (compilation unit)</li>
+<li class=" ml-8">甚至可以链接 C++, <a href="https://rust-embedded.github.io/book/interoperability/rust-with-c.html" class=" text-amber-900">rust</a>, ... 代码</li>
 </ul>
 <hr>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">extern</span><span class="w"> </span><span class="s">"C"</span><span class="w"> </span><span class="p">{</span>
@@ -563,7 +564,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="c" class=" text-2xl mt-2 font-sans">&#21152;&#36733;&#65306;&#36827;&#20837; C &#35821;&#35328;&#30340;&#19990;&#30028;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="c" class=" text-2xl mt-2 font-sans">加载：进入 C 语言的世界</h1></div></div></div>
         
       
       </section>
@@ -574,25 +575,25 @@ section .center {
 
       
         
-        <div><h2 id="c" class=" text-xl mt-2 pb-2 font-sans">C &#31243;&#24207;&#25191;&#34892;&#30340;&#20004;&#20010;&#35270;&#35282;</h2>
-<p class=" font-serif my-1">&#38745;&#24577;&#65306;<red>C &#20195;&#30721;&#30340;&#36830;&#32493;&#19968;&#27573;</red>&#24635;&#33021;&#23545;&#24212;&#21040;<red>&#19968;&#27573;&#36830;&#32493;&#30340;&#26426;&#22120;&#25351;&#20196;</red></p>
-<p class=" font-serif my-1">&#21160;&#24577;&#65306;<red>C &#20195;&#30721;&#25191;&#34892;&#30340;&#29366;&#24577;</red>&#24635;&#33021;&#23545;&#24212;&#21040;<red>&#26426;&#22120;&#30340;&#29366;&#24577;</red></p>
+        <div><h2 id="c" class=" text-xl mt-2 pb-2 font-sans">C 程序执行的两个视角</h2>
+<p class=" font-serif my-1">静态：<red>C 代码的连续一段</red>总能对应到<red>一段连续的机器指令</red></p>
+<p class=" font-serif my-1">动态：<red>C 代码执行的状态</red>总能对应到<red>机器的状态</red></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#28304;&#20195;&#30721;&#35270;&#35282;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20989;&#25968;&#12289;&#21464;&#37327;&#12289;&#25351;&#38024;&#8230;&#8230;</li>
+<li class=" ml-8">源代码视角<ul class=" list-disc font-serif">
+<li class=" ml-8">函数、变量、指针……</li>
 </ul>
 </li>
-<li class=" ml-8">&#26426;&#22120;&#25351;&#20196;&#35270;&#35282;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#23492;&#23384;&#22120;&#12289;&#20869;&#23384;&#12289;&#22320;&#22336;&#8230;&#8230;</li>
+<li class=" ml-8">机器指令视角<ul class=" list-disc font-serif">
+<li class=" ml-8">寄存器、内存、地址……</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#20004;&#20010;&#35270;&#35282;&#30340;&#20849;&#21516;&#20043;&#22788;&#65306;<red>&#20869;&#23384;</red></p>
+<p class=" font-serif my-1">两个视角的共同之处：<red>内存</red></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20195;&#30721;&#12289;&#21464;&#37327; (&#28304;&#20195;&#30721;&#35270;&#35282;) = &#22320;&#22336; + &#38271;&#24230; (&#26426;&#22120;&#25351;&#20196;&#35270;&#35282;)</li>
-<li class=" ml-8">(&#19981;&#22826;&#20005;&#35880;&#22320;) &#20869;&#23384; = &#20195;&#30721; + &#25968;&#25454; + &#22534;&#26632;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#22240;&#27492;&#29702;&#35299; C &#31243;&#24207;&#25191;&#34892;&#26368;&#37325;&#35201;&#30340;&#23601;&#26159;<red>&#20869;&#23384;&#27169;&#22411;</red></li>
+<li class=" ml-8">代码、变量 (源代码视角) = 地址 + 长度 (机器指令视角)</li>
+<li class=" ml-8">(不太严谨地) 内存 = 代码 + 数据 + 堆栈<ul class=" list-disc font-serif">
+<li class=" ml-8">因此理解 C 程序执行最重要的就是<red>内存模型</red></li>
 </ul>
 </li>
 </ul></div>
@@ -606,21 +607,21 @@ section .center {
 
       
         
-        <div><h2 id="main" class=" text-xl mt-2 pb-2 font-sans">&#20174; <code>main</code> &#20989;&#25968;&#24320;&#22987;&#25191;&#34892;</h2>
-<p class=" font-serif my-1">&#26631;&#20934;&#35268;&#23450; C &#31243;&#24207;&#20174; <code>main</code> &#24320;&#22987;&#25191;&#34892;</p>
+        <div><h2 id="main" class=" text-xl mt-2 pb-2 font-sans">从 <code>main</code> 函数开始执行</h2>
+<p class=" font-serif my-1">标准规定 C 程序从 <code>main</code> 开始执行</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">(&#24605;&#32771;&#39064;&#65306;&#35841;&#35843;&#29992;&#30340; <code>main</code>&#65311;&#36827;&#31243;&#25191;&#34892;&#30340;&#31532;&#19968;&#26465;&#25351;&#20196;&#26159;&#20160;&#20040;&#65311;)</li>
+<li class=" ml-8">(思考题：谁调用的 <code>main</code>？进程执行的第一条指令是什么？)</li>
 </ul>
 <hr>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[]);</span>
 </code></pre></div>
 
 <ul class=" list-disc font-serif">
-<li class=" ml-8">argc (argument count): &#21442;&#25968;&#20010;&#25968;</li>
-<li class=" ml-8">argv (argument vector): &#21442;&#25968;&#21015;&#34920; (NULL&#32467;&#26463;)</li>
+<li class=" ml-8">argc (argument count): 参数个数</li>
+<li class=" ml-8">argv (argument vector): 参数列表 (NULL结束)</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#19978;&#27425;&#35838;&#24050;&#32463;&#28436;&#31034;&#36807;</p>
+<p class=" font-serif my-1">上次课已经演示过</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><code>ls -al</code> (<code>argc = 2, argv = ["ls", "-al", NULL]</code>)</li>
 </ul></div>
@@ -634,19 +635,19 @@ section .center {
 
       
         
-        <div><h2 id="main-argc-argv" class=" text-xl mt-2 pb-2 font-sans"><code>main</code>, <code>argc</code> &#21644; <code>argv</code></h2>
-<p class=" font-serif my-1">&#19968;&#20999;&#30342;&#21487;&#21462;&#22320;&#22336;&#65281;</p>
+        <div><h2 id="main-argc-argv" class=" text-xl mt-2 pb-2 font-sans"><code>main</code>, <code>argc</code> 和 <code>argv</code></h2>
+<p class=" font-serif my-1">一切皆可取地址！</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">printptr</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">"p = %p;  *p = %016lx</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="kt">long</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">p</span><span class="p">);</span>
 <span class="p">}</span>
 <span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">printptr</span><span class="p">(</span><span class="n">main</span><span class="p">);</span><span class="w">  </span><span class="c1">// &#20195;&#30721;</span>
-<span class="w">  </span><span class="n">printptr</span><span class="p">(</span><span class="o">&amp;</span><span class="n">main</span><span class="p">);</span>
-<span class="w">  </span><span class="n">printptr</span><span class="p">(</span><span class="o">&amp;</span><span class="n">x</span><span class="p">);</span><span class="w">    </span><span class="c1">// &#25968;&#25454;</span>
-<span class="w">  </span><span class="n">printptr</span><span class="p">(</span><span class="o">&amp;</span><span class="n">argc</span><span class="p">);</span><span class="w"> </span><span class="c1">// &#22534;&#26632;</span>
+<span class="w">  </span><span class="n">printptr</span><span class="p">(</span><span class="n">main</span><span class="p">);</span><span class="w">  </span><span class="c1">// 代码</span>
+<span class="w">  </span><span class="n">printptr</span><span class="p">(</span><span class="o">&</span><span class="n">main</span><span class="p">);</span>
+<span class="w">  </span><span class="n">printptr</span><span class="p">(</span><span class="o">&</span><span class="n">x</span><span class="p">);</span><span class="w">    </span><span class="c1">// 数据</span>
+<span class="w">  </span><span class="n">printptr</span><span class="p">(</span><span class="o">&</span><span class="n">argc</span><span class="p">);</span><span class="w"> </span><span class="c1">// 堆栈</span>
 <span class="w">  </span><span class="n">printptr</span><span class="p">(</span><span class="n">argv</span><span class="p">);</span>
-<span class="w">  </span><span class="n">printptr</span><span class="p">(</span><span class="o">&amp;</span><span class="n">argv</span><span class="p">);</span>
+<span class="w">  </span><span class="n">printptr</span><span class="p">(</span><span class="o">&</span><span class="n">argv</span><span class="p">);</span>
 <span class="w">  </span><span class="n">printptr</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
 <span class="p">}</span>
 </code></pre></div></div>
@@ -661,17 +662,17 @@ section .center {
       
         
         <div><h2 id="c-type-system" class=" text-xl mt-2 pb-2 font-sans">C Type System</h2>
-<p class=" font-serif my-1"><red>&#31867;&#22411;</red>&#65306;&#23545;&#19968;&#27573;&#20869;&#23384;&#30340;<red>&#35299;&#35835;&#26041;&#24335;</red></p>
+<p class=" font-serif my-1"><red>类型</red>：对一段内存的<red>解读方式</red></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#38750;&#24120; &#8220;&#27719;&#32534;&#8221;&#8212;&#8212;&#27809;&#26377; class, polymorphism, type traits, ...</li>
-<li class=" ml-8">C &#37324;&#25152;&#26377;&#30340;&#25968;&#25454;&#37117;&#21487;&#20197;&#29702;&#35299;&#25104;&#26159;<red>&#22320;&#22336; (&#25351;&#38024;) + &#31867;&#22411; (&#23545;&#22320;&#22336;&#30340;&#35299;&#35835;)</red></li>
+<li class=" ml-8">非常 “汇编”——没有 class, polymorphism, type traits, ...</li>
+<li class=" ml-8">C 里所有的数据都可以理解成是<red>地址 (指针) + 类型 (对地址的解读)</red></li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#20363;&#23376; (&#26159;&#19981;&#26159;&#24863;&#21040;&#23398;&#20102;&#20551;&#30340; C &#35821;&#35328;)</p>
+<p class=" font-serif my-1">例子 (是不是感到学了假的 C 语言)</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">f</span><span class="p">)(</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">[])</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">main</span><span class="p">;</span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">argc</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="o">***</span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">argv</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">first</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="n">ch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">];</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="o">***</span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&</span><span class="n">argv</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">first</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="n">ch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">];</span>
 <span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"arg = </span><span class="se">\"</span><span class="s">%s</span><span class="se">\"</span><span class="s">;  ch = '%c'</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">first</span><span class="p">,</span><span class="w"> </span><span class="n">ch</span><span class="p">);</span>
 <span class="w">    </span><span class="n">assert</span><span class="p">(</span><span class="o">***</span><span class="n">a</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">ch</span><span class="p">);</span>
 <span class="w">    </span><span class="n">f</span><span class="p">(</span><span class="n">argc</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
@@ -695,10 +696,10 @@ section .center {
         <div><div class="center middle"><div style="width:100%"><h1 id="end" class=" text-2xl mt-2 font-sans">End.</h1>
 <p class=" font-serif my-1"><br></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">C &#35821;&#35328;<red>&#31616;&#21333;</red> (&#22312;&#21487;&#25511;&#26102;&#38388;&#25104;&#26412;&#37324;&#21487;&#20197;&#31934;&#36890;)</li>
-<li class=" ml-8">C &#35821;&#35328;<red>&#36890;&#29992;</red> (&#22823;&#37327;&#31995;&#32479;&#26159;&#29992; C &#35821;&#35328;&#32534;&#20889;&#30340;)</li>
-<li class=" ml-8">C &#35821;&#35328;<red>&#23454;&#29616;&#23545;&#24213;&#23618;&#26426;&#22120;&#30340;&#31934;&#30830;&#25511;&#21046;</red> (<a href="https://openharmony.gitee.com/openharmony" class=" text-amber-900">&#40511;&#33945;</a>)</li>
-<li class=" ml-8">&#25512;&#33616;&#38405;&#35835;&#65306;<a href="https://www.oreilly.com/library/view/the-art-of/9781449318482/" class=" text-amber-900">The Art of Readable Code</a></li>
+<li class=" ml-8">C 语言<red>简单</red> (在可控时间成本里可以精通)</li>
+<li class=" ml-8">C 语言<red>通用</red> (大量系统是用 C 语言编写的)</li>
+<li class=" ml-8">C 语言<red>实现对底层机器的精确控制</red> (<a href="https://openharmony.gitee.com/openharmony" class=" text-amber-900">鸿蒙</a>)</li>
+<li class=" ml-8">推荐阅读：<a href="https://www.oreilly.com/library/view/the-art-of/9781449318482/" class=" text-amber-900">The Art of Readable Code</a></li>
 </ul></div></div></div>
         
       
@@ -729,5 +730,6 @@ section .center {
 
 
 </body>
+
 
 </html>

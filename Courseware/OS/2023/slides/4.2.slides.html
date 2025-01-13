@@ -1,10 +1,11 @@
 <!DOCTYPE html><html class="h-100">
 
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="../../../static/css/base.css" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com/"></script>
   <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
 
@@ -23,14 +24,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +210,7 @@ section .center {
 }
 </style>
 
-  <title>&#25805;&#20316;&#31995;&#32479; &#8220;&#29609;&#20855;&#8221;&#65306;&#35774;&#35745;&#19982;&#23454;&#29616;</title>
+  <title>操作系统 “玩具”：设计与实现</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,7 +228,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="4.2.slides.html" class=" text-amber-900">&#25805;&#20316;&#31995;&#32479; &#8220;&#29609;&#20855;&#8221;&#65306;&#35774;&#35745;&#19982;&#23454;&#29616;</a></h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans"><a href="4.2.slides.html" class=" text-amber-900">操作系统 “玩具”：设计与实现</a></h1></div></div></div>
         
       
       </section>
@@ -238,18 +239,18 @@ section .center {
 
       
         
-        <div><h2 id="api" class=" text-xl mt-2 pb-2 font-sans">&#25805;&#20316;&#31995;&#32479;&#29609;&#20855;&#65306;API</h2>
-<p class=" font-serif my-1">&#22235;&#20010; &#8220;&#31995;&#32479;&#35843;&#29992;&#8221; API</p>
+        <div><h2 id="api" class=" text-xl mt-2 pb-2 font-sans">操作系统玩具：API</h2>
+<p class=" font-serif my-1">四个 “系统调用” API</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">choose(xs): &#36820;&#22238; <code>xs</code> &#20013;&#30340;&#19968;&#20010;&#38543;&#26426;&#36873;&#39033;</li>
-<li class=" ml-8">write(s): &#36755;&#20986;&#23383;&#31526;&#20018; <code>s</code></li>
-<li class=" ml-8">spawn(fn): &#21019;&#24314;&#19968;&#20010;&#21487;&#36816;&#34892;&#30340;&#29366;&#24577;&#26426; <code>fn</code></li>
-<li class=" ml-8">sched(): &#38543;&#26426;&#20999;&#25442;&#21040;&#20219;&#24847;&#29366;&#24577;&#26426;&#25191;&#34892;</li>
+<li class=" ml-8">choose(xs): 返回 <code>xs</code> 中的一个随机选项</li>
+<li class=" ml-8">write(s): 输出字符串 <code>s</code></li>
+<li class=" ml-8">spawn(fn): 创建一个可运行的状态机 <code>fn</code></li>
+<li class=" ml-8">sched(): 随机切换到任意状态机执行</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#38500;&#27492;&#20043;&#22806;&#65292;&#25152;&#26377;&#30340;&#20195;&#30721;&#37117;&#26159;&#30830;&#23450; (deterministic) &#30340;&#32431;&#31929;&#35745;&#31639;</p>
+<p class=" font-serif my-1">除此之外，所有的代码都是确定 (deterministic) 的纯粹计算</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20801;&#35768;&#20351;&#29992; list, dict &#31561;&#25968;&#25454;&#32467;&#26500;</li>
+<li class=" ml-8">允许使用 list, dict 等数据结构</li>
 </ul></div>
         
       
@@ -261,8 +262,8 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25805;&#20316;&#31995;&#32479;&#29609;&#20855;&#65306;&#24212;&#29992;&#31243;&#24207;</h2>
-<p class=" font-serif my-1">&#25805;&#20316;&#31995;&#32479;&#29609;&#20855;&#65306;<red>&#25105;&#20204;&#21487;&#20197;&#21160;&#25163;&#25226;&#29366;&#24577;&#26426;&#30011;&#20986;&#26469;</red>&#65281;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">操作系统玩具：应用程序</h2>
+<p class=" font-serif my-1">操作系统玩具：<red>我们可以动手把状态机画出来</red>！</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
 
 <span class="k">def</span> <span class="nf">Tprint</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
@@ -289,24 +290,24 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#23454;&#29616;&#31995;&#32479;&#35843;&#29992;</h2>
-<p class=" font-serif my-1">&#26377;&#20123; &#8220;&#31995;&#32479;&#35843;&#29992;&#8221; &#30340;&#23454;&#29616;&#26159;&#26174;&#32780;&#26131;&#35265;&#30340;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">实现系统调用</h2>
+<p class=" font-serif my-1">有些 “系统调用” 的实现是显而易见的</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">def</span> <span class="nf">sys_write</span><span class="p">(</span><span class="n">s</span><span class="p">):</span> <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">sys_choose</span><span class="p">(</span><span class="n">xs</span><span class="p">):</span> <span class="k">return</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">sys_spawn</span><span class="p">(</span><span class="n">t</span><span class="p">):</span> <span class="n">runnables</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
 </code></pre></div>
 
 <hr>
-<p class=" font-serif my-1">&#26377;&#20123;&#23601;&#22256;&#38590;&#20102;</p>
+<p class=" font-serif my-1">有些就困难了</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">def</span> <span class="nf">sys_sched</span><span class="p">():</span>
     <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">'No idea how'</span><span class="p">)</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">&#25105;&#20204;&#38656;&#35201;</p>
+<p class=" font-serif my-1">我们需要</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#23553;&#23384;&#24403;&#21069;&#29366;&#24577;&#26426;&#30340;&#29366;&#24577;</li>
-<li class=" ml-8">&#24674;&#22797;&#21478;&#19968;&#20010; &#8220;&#34987;&#23553;&#23384;&#8221; &#29366;&#24577;&#26426;&#30340;&#25191;&#34892;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#27809;&#38169;&#65292;&#25105;&#20204;&#31163;&#30495;&#27491;&#30340; &#8220;&#20998;&#26102;&#25805;&#20316;&#31995;&#32479;&#8221; &#23601;&#21482;&#24046;&#36825;&#19968;&#27493;</li>
+<li class=" ml-8">封存当前状态机的状态</li>
+<li class=" ml-8">恢复另一个 “被封存” 状态机的执行<ul class=" list-disc font-serif">
+<li class=" ml-8">没错，我们离真正的 “分时操作系统” 就只差这一步</li>
 </ul>
 </li>
 </ul></div>
@@ -320,23 +321,23 @@ section .center {
 
       
         
-        <div><h2 id="python" class=" text-xl mt-2 pb-2 font-sans">&#65039;&#127798;&#65039; &#20511;&#29992; Python &#30340;&#35821;&#35328;&#26426;&#21046;</h2>
-<p class=" font-serif my-1">Generator objects (&#26080;&#26632;&#21327;&#31243;/&#36731;&#37327;&#32423;&#32447;&#31243;/...)</p>
+        <div><h2 id="python" class=" text-xl mt-2 pb-2 font-sans">️🌶️ 借用 Python 的语言机制</h2>
+<p class=" font-serif my-1">Generator objects (无栈协程/轻量级线程/...)</p>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">def</span> <span class="nf">numbers</span><span class="p">():</span>
     <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-        <span class="n">ret</span> <span class="o">=</span> <span class="k">yield</span> <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">i</span><span class="si">:</span><span class="s1">b</span><span class="si">}</span><span class="s1">'</span>  <span class="c1"># &#8220;&#23553;&#23384;&#8221; &#29366;&#24577;&#26426;&#29366;&#24577;</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="k">yield</span> <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">i</span><span class="si">:</span><span class="s1">b</span><span class="si">}</span><span class="s1">'</span>  <span class="c1"># “封存” 状态机状态</span>
         <span class="n">i</span> <span class="o">+=</span> <span class="n">ret</span>
 </code></pre></div>
 
 <hr>
-<p class=" font-serif my-1">&#20351;&#29992;&#26041;&#27861;&#65306;</p>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">n</span> <span class="o">=</span> <span class="n">numbers</span><span class="p">()</span>  <span class="c1"># &#23553;&#23384;&#29366;&#24577;&#26426;&#21021;&#22987;&#29366;&#24577;</span>
-<span class="n">n</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>  <span class="c1"># &#24674;&#22797;&#23553;&#23384;&#30340;&#29366;&#24577;</span>
-<span class="n">n</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># &#24674;&#22797;&#23553;&#23384;&#30340;&#29366;&#24577; (&#24182;&#20256;&#20837;&#36820;&#22238;&#20540;)</span>
+<p class=" font-serif my-1">使用方法：</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="n">n</span> <span class="o">=</span> <span class="n">numbers</span><span class="p">()</span>  <span class="c1"># 封存状态机初始状态</span>
+<span class="n">n</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>  <span class="c1"># 恢复封存的状态</span>
+<span class="n">n</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># 恢复封存的状态 (并传入返回值)</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">&#23436;&#32654;&#36866;&#21512;&#25105;&#20204;&#23454;&#29616;&#25805;&#20316;&#31995;&#32479;&#29609;&#20855; (os-model.py)</p></div>
+<p class=" font-serif my-1">完美适合我们实现操作系统玩具 (os-model.py)</p></div>
         
       
       </section>
@@ -347,15 +348,15 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#29609;&#20855;&#30340;&#24847;&#20041;</h2>
-<p class=" font-serif my-1">&#25105;&#20204;&#24182;&#27809;&#26377;&#33073;&#31163;&#30495;&#23454;&#30340;&#25805;&#20316;&#31995;&#32479;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">玩具的意义</h2>
+<p class=" font-serif my-1">我们并没有脱离真实的操作系统</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#8220;&#31616;&#21270;&#8221; &#20102;&#25805;&#20316;&#31995;&#32479;&#30340; API<ul class=" list-disc font-serif">
-<li class=" ml-8">&#22312;&#26242;&#26102;&#19981;&#35201;&#36807;&#24230;&#20851;&#27880;&#32454;&#33410;&#30340;&#26102;&#20505;&#29702;&#35299;&#25805;&#20316;&#31995;&#32479;</li>
+<li class=" ml-8">“简化” 了操作系统的 API<ul class=" list-disc font-serif">
+<li class=" ml-8">在暂时不要过度关注细节的时候理解操作系统</li>
 </ul>
 </li>
-<li class=" ml-8">&#32454;&#33410;&#20063;&#20250;&#26377;&#30340;&#65292;&#20294;&#19981;&#26159;&#29616;&#22312;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#23398;&#20064;&#36335;&#32447;&#65306;&#20808; 100% &#29702;&#35299;&#29609;&#20855;&#65292;&#20877;&#29702;&#35299;&#30495;&#23454;&#31995;&#32479;&#21644;&#29609;&#20855;&#30340;&#24046;&#24322;</li>
+<li class=" ml-8">细节也会有的，但不是现在<ul class=" list-disc font-serif">
+<li class=" ml-8">学习路线：先 100% 理解玩具，再理解真实系统和玩具的差异</li>
 </ul>
 </li>
 </ul>
@@ -364,7 +365,7 @@ section .center {
 <span class="kt">int</span><span class="w"> </span><span class="nf">sys_choose</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">rand</span><span class="p">()</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">sys_spawn</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="n">fn</span><span class="p">)(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">),</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">pthread_create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">threads</span><span class="p">[</span><span class="n">nthreads</span><span class="o">++</span><span class="p">],</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">fn</span><span class="p">,</span><span class="w"> </span><span class="n">args</span><span class="p">);</span>
+<span class="w">    </span><span class="n">pthread_create</span><span class="p">(</span><span class="o">&</span><span class="n">threads</span><span class="p">[</span><span class="n">nthreads</span><span class="o">++</span><span class="p">],</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">fn</span><span class="p">,</span><span class="w"> </span><span class="n">args</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div></div>
         
@@ -396,5 +397,6 @@ section .center {
 
 
 </body>
+
 
 </html>

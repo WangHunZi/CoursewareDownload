@@ -1,10 +1,11 @@
 <!DOCTYPE html><html class="h-100">
 
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="../../../static/css/base.css" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com/"></script>
   <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
 
@@ -23,14 +24,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +210,7 @@ section .center {
 }
 </style>
 
-  <title>AbstractMachine &#36873;&#35762;</title>
+  <title>AbstractMachine 选讲</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,21 +228,21 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="abstractmachine" class=" text-2xl mt-2 font-sans">AbstractMachine &#36873;&#35762;</h1>
-<p class=" font-serif my-1"><include src="Slides_Author"><div><div class="py-16">
-<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">&#33931;&#28814;&#23721;</a></p>
+        <div><div class="center middle"><div style="width:100%"><h1 id="abstractmachine" class=" text-2xl mt-2 font-sans">AbstractMachine 选讲</h1>
+<p class=" font-serif my-1"><include src="Slides_Author/index.html"><div><div class="py-16">
+<p class=" font-serif my-1"><a href="http://ics.nju.edu.cn/~jyy" class=" text-amber-900">蒋炎岩</a></p>
 </div>
 <div class="row">
 <div class="author-affiliation">
-    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#12288;&#12288;&#21335;&#20140;&#22823;&#23398;&#12288;&#12288;</p>
+    <a href="http://www.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">　　南京大学　　</p>
     <img class="inline-img h-24" src="../../../static/img/nju-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#31185;&#23398;&#19982;&#25216;&#26415;&#31995;</p>
+   <a href="http://cs.nju.edu.cn/" class=" text-amber-900"><p class=" font-serif my-1">计算机科学与技术系</p>
     <img class="inline-img h-24" src="../../../static/img/njucs-logo.jpg" style="display: inline-block;"></a>
   </div>
 <div class="author-affiliation">
-    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">&#35745;&#31639;&#26426;&#36719;&#20214;&#30740;&#31350;&#25152;</p>
+    <a href="https://cs.nju.edu.cn/ics/" class=" text-amber-900"><p class=" font-serif my-1">计算机软件研究所</p>
     <img class="inline-img h-24" src="../../../static/img/ics-logo.png" style="display: inline-block;"></a>
   </div>
 </div></div></include></p></div></div></div>
@@ -255,15 +256,15 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#26412;&#35762;&#27010;&#36848;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">本讲概述</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#22256;&#24785;&#65306;&#20026;&#20160;&#20040;&#38656;&#35201; AbstractMachine?</p>
+<p class=" font-serif my-1">困惑：为什么需要 AbstractMachine?</p>
 </blockquote>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#22797;&#26434;&#31995;&#32479;&#30340;&#26500;&#36896;&#19982;&#35299;&#37322;</li>
-<li class=" ml-8">&#29702;&#35299;&#35745;&#31639;&#26426;&#31995;&#32479;</li>
-<li class=" ml-8">&#29702;&#35299; AbstractMachine</li>
-<li class=" ml-8">&#20195;&#30721;&#23548;&#35835;</li>
+<li class=" ml-8">复杂系统的构造与解释</li>
+<li class=" ml-8">理解计算机系统</li>
+<li class=" ml-8">理解 AbstractMachine</li>
+<li class=" ml-8">代码导读</li>
 </ul></div>
         
       
@@ -279,7 +280,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#22797;&#26434;&#31995;&#32479;&#30340;&#26500;&#36896;&#19982;&#35299;&#37322;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">复杂系统的构造与解释</h1></div></div></div>
         
       
       </section>
@@ -290,28 +291,28 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#12298;&#35745;&#31639;&#26426;&#31995;&#32479;&#22522;&#30784;&#12299;&#21040;&#24213;&#23398;&#20160;&#20040;&#65311;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">《计算机系统基础》到底学什么？</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#19968;&#21477;&#35805;&#30340; take-away message: &#8220;&#35745;&#31639;&#26426;&#31995;&#32479;&#26159;&#19968;&#20010;&#29366;&#24577;&#26426;&#8221;&#12290;</p>
+<p class=" font-serif my-1">一句话的 take-away message: “计算机系统是一个状态机”。</p>
 </blockquote>
 <hr>
-<p class=" font-serif my-1">&#26356;&#20855;&#20307;&#19968;&#28857;&#65311;</p></div>
+<p class=" font-serif my-1">更具体一点？</p></div>
         
       
          <div class="fragment"> 
         <div><ul class=" list-disc font-serif">
-<li class=" ml-8">&#29366;&#24577;&#26426;&#30340;&#29366;&#24577;&#26159;&#20160;&#20040;&#65311;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20869;&#23384; + &#23492;&#23384;&#22120; + (&#22806;&#37096;&#35774;&#22791;&#29366;&#24577;)</li>
+<li class=" ml-8">状态机的状态是什么？<ul class=" list-disc font-serif">
+<li class=" ml-8">内存 + 寄存器 + (外部设备状态)</li>
 </ul>
 </li>
-<li class=" ml-8">&#29366;&#24577;&#26426;&#30340;&#34892;&#20026;&#26159;&#20160;&#20040;&#65311;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#21462;&#25351;&#20196; + &#35793;&#30721; + &#25191;&#34892;</li>
-<li class=" ml-8">&#36755;&#20837;/&#36755;&#20986;&#35774;&#22791;&#35775;&#38382;</li>
-<li class=" ml-8">&#20013;&#26029; + &#24322;&#24120;&#25511;&#21046;&#27969;</li>
-<li class=" ml-8">&#22320;&#22336;&#36716;&#25442;</li>
+<li class=" ml-8">状态机的行为是什么？<ul class=" list-disc font-serif">
+<li class=" ml-8">取指令 + 译码 + 执行</li>
+<li class=" ml-8">输入/输出设备访问</li>
+<li class=" ml-8">中断 + 异常控制流</li>
+<li class=" ml-8">地址转换</li>
 </ul>
 </li>
-<li class=" ml-8"><red>(&#26159;&#21542;&#24863;&#21040;&#39550;&#39533;&#19981;&#20102;&#65311;)</red></li>
+<li class=" ml-8"><red>(是否感到驾驭不了？)</red></li>
 </ul></div>
          </div> 
       
@@ -323,14 +324,14 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#22797;&#26434;&#20013;&#38544;&#34255;&#30340;&#31209;&#24207;</h2>
-<p class=" font-serif my-1">&#29702;&#35299;/&#26500;&#36896;&#19968;&#20010;&#22797;&#26434;&#31995;&#32479; (&#25805;&#20316;&#31995;&#32479;/&#22788;&#29702;&#22120;/&#33322;&#27597;)&#65311;</p></div>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">复杂中隐藏的秩序</h2>
+<p class=" font-serif my-1">理解/构造一个复杂系统 (操作系统/处理器/航母)？</p></div>
         
       
          <div class="fragment"> 
         <div><ul class=" list-disc font-serif">
-<li class=" ml-8">USS Midway (CV-41); 1945 &#24180;&#39318;&#33322;&#65292;&#8220;&#27801;&#28448;&#39118;&#26292;&#8221; &#34892;&#21160;&#21518;&#36864;&#24441;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#33328;&#33337;&#37197;&#32622;&#65307;&#36164;&#28304;&#31649;&#29702;/&#35843;&#24230;&#65307;&#23481;&#38169;&#8230;&#8230;</li>
+<li class=" ml-8">USS Midway (CV-41); 1945 年首航，“沙漠风暴” 行动后退役<ul class=" list-disc font-serif">
+<li class=" ml-8">舰船配置；资源管理/调度；容错……</li>
 </ul>
 </li>
 </ul>
@@ -348,9 +349,9 @@ section .center {
 
       
         
-        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">&#22797;&#26434;&#20013;&#38544;&#34255;&#30340;&#31209;&#24207; (cont'd)</h2>
+        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">复杂中隐藏的秩序 (cont'd)</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#33322;&#27597;&#19981;&#26159;&#19968;&#22825;&#36896;&#25104;&#30340;&#12290;</p>
+<p class=" font-serif my-1">航母不是一天造成的。</p>
 </blockquote>
 <p class=" font-serif my-1"><img alt="" class="center" src="https://www.history.navy.mil/content/history/nhhc/our-collections/photography/numerical-list-of-images/nhhc-series/nh-series/NH-93000/NH-93181/_jcr_content/mediaitem/image.img.jpg/1437722455383.jpg" width="500px"></p>
 <p class=" font-serif my-1"></p><center>(picture: history.navy.mil)</center></div>
@@ -364,9 +365,9 @@ section .center {
 
       
         
-        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">&#22797;&#26434;&#20013;&#38544;&#34255;&#30340;&#31209;&#24207; (cont'd)</h2>
+        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">复杂中隐藏的秩序 (cont'd)</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#37319;&#30719;&#33337;&#32487;&#25215;&#20102;&#33322;&#28023;&#26102;&#20195;&#30340;&#35774;&#35745;&#12290;</p>
+<p class=" font-serif my-1">采矿船继承了航海时代的设计。</p>
 </blockquote>
 <p class=" font-serif my-1"><img alt="" class="center" src="https://cdn.onlyinyourstate.com/wp-content/uploads/2019/03/53155874_781213188902595_7083146204980183040_o-700x525.jpg" width="600px"></p>
 <p class=" font-serif my-1"></p><center>(picture: onlyinyourstate.com)</center></div>
@@ -380,21 +381,21 @@ section .center {
 
       
         
-        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">&#22797;&#26434;&#20013;&#38544;&#34255;&#30340;&#31209;&#24207; (cont'd)</h2>
+        <div><h2 id="contd" class=" text-xl mt-2 pb-2 font-sans">复杂中隐藏的秩序 (cont'd)</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#22797;&#26434;&#31995;&#32479;&#30340;&#28436;&#21270;&#36890;&#24120;&#26159; <em>evolutionary</em> &#30340;&#32780;&#19981;&#26159; <em>revolutionary</em> &#30340;&#12290;</p>
+<p class=" font-serif my-1">复杂系统的演化通常是 <em>evolutionary</em> 的而不是 <em>revolutionary</em> 的。</p>
 </blockquote>
-<p class=" font-serif my-1">&#26080;&#27861;&#31532;&#19968;&#27425;&#23601;&#35774;&#35745;&#20986; &#8220;&#32477;&#23545;&#23436;&#32654;&#8221; &#30340;&#22797;&#26434;&#31995;&#32479;</p>
+<p class=" font-serif my-1">无法第一次就设计出 “绝对完美” 的复杂系统</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">(&#22240;&#20026;&#29615;&#22659;&#19968;&#30452;&#22312;&#21464;)</li>
+<li class=" ml-8">(因为环境一直在变)</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#23454;&#38469;&#24773;&#20917;&#65306;&#20174; minimal, simple, and usable &#30340;&#31995;&#32479;&#19981;&#26029;&#32463;&#36807; local modifications (trial and errors)</p>
+<p class=" font-serif my-1">实际情况：从 minimal, simple, and usable 的系统不断经过 local modifications (trial and errors)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#35745;&#31639;&#26426;&#30828;&#20214;</li>
-<li class=" ml-8">&#25805;&#20316;&#31995;&#32479;</li>
-<li class=" ml-8">&#32534;&#35793;&#22120;/&#31243;&#24207;&#35774;&#35745;&#35821;&#35328;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#38656;&#27714;&#21644;&#31995;&#32479;&#35774;&#35745;/&#23454;&#29616;&#34746;&#26059;&#24335;&#36845;&#20195;</li>
+<li class=" ml-8">计算机硬件</li>
+<li class=" ml-8">操作系统</li>
+<li class=" ml-8">编译器/程序设计语言<ul class=" list-disc font-serif">
+<li class=" ml-8">需求和系统设计/实现螺旋式迭代</li>
 </ul>
 </li>
 </ul></div>
@@ -412,7 +413,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#29702;&#35299;&#35745;&#31639;&#26426;&#31995;&#32479;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">理解计算机系统</h1></div></div></div>
         
       
       </section>
@@ -423,20 +424,20 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#22312;&#35745;&#31639;&#26426;&#35806;&#29983;&#20043;&#21069;&#8230;&#8230;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">在计算机诞生之前……</h2>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="http://www.craftinginterpreters.com/image/control-flow/turing-machine.png" width="480px"></p>
-<p class=" font-serif my-1">Alan Turing's &#8220;machine&#8221; (1936)</p>
+<p class=" font-serif my-1">Alan Turing's “machine” (1936)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#24182;&#27809;&#26377;&#30495;&#27491; &#8220;&#36896;&#20986;&#26469;&#8221;</li>
-<li class=" ml-8">&#32440;&#24102; + &#33258;&#21160;&#26426;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#32440;&#24102; <code>map&lt;int,int&gt; mem</code></li>
-<li class=" ml-8">&#35835;&#20889;&#22836; <code>pos</code></li>
-<li class=" ml-8">&#33258;&#21160;&#26426; (&#31243;&#24207;)<ul class=" list-disc font-serif">
-<li class=" ml-8">(&#31227;&#21160;&#35835;&#20889;&#22836;) <code>pos++</code>, <code>pos--</code></li>
-<li class=" ml-8">(&#20889;&#20869;&#23384;) <code>mem[pos] = 0</code>, <code>mem[pos] = 1</code></li>
-<li class=" ml-8">(&#35835;&#20869;&#23384;) <code>if (mem[pos]) { } else { }</code></li>
-<li class=" ml-8">(&#36339;&#36716;) <code>goto label</code></li>
-<li class=" ml-8">(&#32456;&#27490;) <code>halt()</code></li>
+<li class=" ml-8">并没有真正 “造出来”</li>
+<li class=" ml-8">纸带 + 自动机<ul class=" list-disc font-serif">
+<li class=" ml-8">纸带 <code>map<int,int> mem</code></li>
+<li class=" ml-8">读写头 <code>pos</code></li>
+<li class=" ml-8">自动机 (程序)<ul class=" list-disc font-serif">
+<li class=" ml-8">(移动读写头) <code>pos++</code>, <code>pos--</code></li>
+<li class=" ml-8">(写内存) <code>mem[pos] = 0</code>, <code>mem[pos] = 1</code></li>
+<li class=" ml-8">(读内存) <code>if (mem[pos]) { } else { }</code></li>
+<li class=" ml-8">(跳转) <code>goto label</code></li>
+<li class=" ml-8">(终止) <code>halt()</code></li>
 </ul>
 </li>
 </ul>
@@ -452,14 +453,14 @@ section .center {
 
       
         
-        <div><h2 id="eniac-turing-machine" class=" text-xl mt-2 pb-2 font-sans">ENIAC: &#20154;&#31867;&#21487;&#29992;&#30340; Turing Machine</h2>
+        <div><h2 id="eniac-turing-machine" class=" text-xl mt-2 pb-2 font-sans">ENIAC: 人类可用的 Turing Machine</h2>
 <p class=" font-serif my-1"><img alt="" class="center" src="http://www.columbia.edu/cu/computinghistory/eniac1.jpg" width="600px"></p>
 <p class=" font-serif my-1"><a href="https://www.cs.drexel.edu/~bls96/eniac/" class=" text-amber-900">ENIAC Simulator by Brian L. Stuart</a></p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">20 word (not bit) memory</li>
-<li class=" ml-8">&#33258;&#24102; &#8220;&#23492;&#23384;&#8221; &#30340;&#29366;&#24577; (&#23492;&#23384;&#22120;)</li>
-<li class=" ml-8">&#25903;&#25345;&#31639;&#25968;&#36816;&#31639;</li>
-<li class=" ml-8">&#25903;&#25345;&#32440;&#24102; (&#20018;&#34892;) &#36755;&#20837;&#36755;&#20986;</li>
+<li class=" ml-8">自带 “寄存” 的状态 (寄存器)</li>
+<li class=" ml-8">支持算数运算</li>
+<li class=" ml-8">支持纸带 (串行) 输入输出</li>
 </ul></div>
         
       
@@ -471,17 +472,17 @@ section .center {
 
       
         
-        <div><h2 id="von-neumann-machine" class=" text-xl mt-2 pb-2 font-sans">von Neumann Machine: &#23384;&#20648;&#31243;&#24207;&#25511;&#21046;</h2>
+        <div><h2 id="von-neumann-machine" class=" text-xl mt-2 pb-2 font-sans">von Neumann Machine: 存储程序控制</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#21487;&#20197;&#25226;&#29366;&#24577;&#26426;&#30340;&#24418;&#24577;&#20445;&#23384;&#22312;&#23384;&#20648;&#22120;&#37324;&#65292;&#32780;&#19981;&#35201;&#27599;&#27425;&#37325;&#26032;&#35774;&#32622;&#12290;</p>
+<p class=" font-serif my-1">可以把状态机的形态保存在存储器里，而不要每次重新设置。</p>
 </blockquote>
 <hr>
-<p class=" font-serif my-1">&#35745;&#31639;&#26426;&#30340;&#35774;&#35745;&#21463;&#21040;&#25968;&#23383;&#30005;&#36335;&#23454;&#29616;&#30340;&#21046;&#32422;</p>
+<p class=" font-serif my-1">计算机的设计受到数字电路实现的制约</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25191;&#34892;&#19968;&#20010;&#21160;&#20316; (&#25351;&#20196;) &#21482;&#33021;&#35775;&#38382;&#26377;&#38480;&#25968;&#37327;&#30340;&#23384;&#20648;&#22120;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#24120;&#29992;&#30340;&#20020;&#26102;&#23384;&#20648; (&#23492;&#23384;&#22120;&#65307;&#21253;&#25324; PC)</li>
-<li class=" ml-8">&#26356;&#22823;&#30340;&#12289;&#32534;&#22336;&#30340;&#20869;&#23384;</li>
-<li class=" ml-8">(&#26159;&#19981;&#26159;&#24819;&#36215;&#20102; YEMU?)</li>
+<li class=" ml-8">执行一个动作 (指令) 只能访问有限数量的存储器<ul class=" list-disc font-serif">
+<li class=" ml-8">常用的临时存储 (寄存器；包括 PC)</li>
+<li class=" ml-8">更大的、编址的内存</li>
+<li class=" ml-8">(是不是想起了 YEMU?)</li>
 </ul>
 </li>
 </ul></div>
@@ -495,15 +496,15 @@ section .center {
 
       
         
-        <div><h2 id="von-neumann-machine-io" class=" text-xl mt-2 pb-2 font-sans">von Neumann Machine: &#26356;&#22810;&#30340; I/O &#35774;&#22791;</h2>
+        <div><h2 id="von-neumann-machine-io" class=" text-xl mt-2 pb-2 font-sans">von Neumann Machine: 更多的 I/O 设备</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#23384;&#20648;&#31243;&#24207;&#30340;&#36890;&#29992;&#24615;&#30495;&#27491;&#25472;&#36215;&#20102;&#35745;&#31639;&#26426;&#36208;&#21521;&#20840;&#39046;&#22495;&#30340;&#38761;&#21629;&#12290;</p>
+<p class=" font-serif my-1">存储程序的通用性真正掀起了计算机走向全领域的革命。</p>
 </blockquote>
 <p class=" font-serif my-1"><img alt="" class="center" src="https://www.computer-history.info/Page4.dir/pages/IBM.704.dir/images/IBM709.jpg" width="480px"></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#21482;&#35201;&#22686;&#21152; in &#21644; out &#25351;&#20196;&#65292;&#23601;&#21487;&#20197;&#21644;&#29289;&#29702;&#19990;&#30028;&#24314;&#31435;&#26080;&#38480;&#30340;&#32852;&#31995;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#25345;&#20037;&#23384;&#20648; (&#30913;&#24102;&#12289;&#30913;&#30424;&#8230;&#8230;)</li>
-<li class=" ml-8">&#35835;&#21345;&#22120;&#12289;&#25171;&#21360;&#26426;&#8230;&#8230;</li>
+<li class=" ml-8">只要增加 in 和 out 指令，就可以和物理世界建立无限的联系<ul class=" list-disc font-serif">
+<li class=" ml-8">持久存储 (磁带、磁盘……)</li>
+<li class=" ml-8">读卡器、打印机……</li>
 </ul>
 </li>
 </ul></div>
@@ -517,28 +518,28 @@ section .center {
 
       
         
-        <div><h2 id="io" class=" text-xl mt-2 pb-2 font-sans">&#20013;&#26029;&#65306;&#24357;&#34917; I/O &#35774;&#22791;&#30340;&#36895;&#24230;&#32570;&#38519;</h2>
-<p class=" font-serif my-1">CPU cycles &#23454;&#22312;&#22826;&#29645;&#36149;&#20102;</p>
+        <div><h2 id="io" class=" text-xl mt-2 pb-2 font-sans">中断：弥补 I/O 设备的速度缺陷</h2>
+<p class=" font-serif my-1">CPU cycles 实在太珍贵了</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#19981;&#33021;&#29992;&#26469;&#28010;&#36153;&#22312;&#31561; I/O &#35774;&#22791;&#23436;&#25104;&#19978;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#25317;&#26377;&#26426;&#26800;&#37096;&#20214;&#30340; I/O &#35774;&#22791;&#30456;&#27604;&#20110; CPU &#26469;&#35828;&#23454;&#22312;&#22826;&#24930;&#20102;</li>
+<li class=" ml-8">不能用来浪费在等 I/O 设备完成上<ul class=" list-disc font-serif">
+<li class=" ml-8">拥有机械部件的 I/O 设备相比于 CPU 来说实在太慢了</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#20013;&#26029; = &#30828;&#20214;&#39537;&#21160;&#30340;&#20989;&#25968;&#35843;&#29992;</p>
+<p class=" font-serif my-1">中断 = 硬件驱动的函数调用</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#30456;&#24403;&#20110;&#22312;&#27599;&#26465;&#35821;&#21477;&#21518;&#37117;&#25554;&#20837;</li>
+<li class=" ml-8">相当于在每条语句后都插入</li>
 </ul>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pending_io</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">int_enabled</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pending_io</span><span class="w"> </span><span class="o">&&</span><span class="w"> </span><span class="n">int_enabled</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">interrupt_handler</span><span class="p">();</span>
 <span class="w">  </span><span class="n">pending_io</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <ul class=" list-disc font-serif">
-<li class=" ml-8">(&#30828;&#20214;&#19978;&#22909;&#20687;&#19981;&#22826;&#38590;&#23454;&#29616;)<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20110;&#26159;&#23601;&#26377;&#20102;&#26368;&#26089;&#30340;&#25805;&#20316;&#31995;&#32479;&#65306;&#31649;&#29702; I/O &#35774;&#22791;&#30340;&#24211;&#20195;&#30721;</li>
+<li class=" ml-8">(硬件上好像不太难实现)<ul class=" list-disc font-serif">
+<li class=" ml-8">于是就有了最早的操作系统：管理 I/O 设备的库代码</li>
 </ul>
 </li>
 </ul></div>
@@ -552,27 +553,27 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20013;&#26029; + &#26356;&#22823;&#30340;&#20869;&#23384; = &#20998;&#26102;&#22810;&#32447;&#31243;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">中断 + 更大的内存 = 分时多线程</h2>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">foo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">"a"</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
 <span class="kt">void</span><span class="w"> </span><span class="nf">bar</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">"b"</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">&#33021;&#21542;&#35753; <code>foo()</code> &#21644; <code>bar()</code> &#8220;&#21516;&#26102;&#8221; &#22312;&#22788;&#29702;&#22120;&#19978;&#25191;&#34892;&#65311;</p></div>
+<p class=" font-serif my-1">能否让 <code>foo()</code> 和 <code>bar()</code> “同时” 在处理器上执行？</p></div>
         
       
          <div class="fragment"> 
         <div><ul class=" list-disc font-serif">
-<li class=" ml-8">&#20511;&#21161;&#27599;&#26465;&#35821;&#21477;&#21518;&#34987;&#21160;&#25554;&#20837;&#30340; <code>interrupt_handler()</code> &#35843;&#29992;</li>
+<li class=" ml-8">借助每条语句后被动插入的 <code>interrupt_handler()</code> 调用</li>
 </ul>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">interrupt_handler</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">dump_regs</span><span class="p">(</span><span class="n">current</span><span class="o">-&gt;</span><span class="n">regs</span><span class="p">);</span>
-<span class="w">  </span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">current</span><span class="o">-&gt;</span><span class="n">func</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">foo</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">bar</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">foo</span><span class="p">;</span><span class="w"> </span>
-<span class="w">  </span><span class="n">restore_regs</span><span class="p">(</span><span class="n">current</span><span class="o">-&gt;</span><span class="n">regs</span><span class="p">);</span>
+<span class="w">  </span><span class="n">dump_regs</span><span class="p">(</span><span class="n">current</span><span class="o">-></span><span class="n">regs</span><span class="p">);</span>
+<span class="w">  </span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">current</span><span class="o">-></span><span class="n">func</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">foo</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">bar</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">foo</span><span class="p">;</span><span class="w"> </span>
+<span class="w">  </span><span class="n">restore_regs</span><span class="p">(</span><span class="n">current</span><span class="o">-></span><span class="n">regs</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25805;&#20316;&#31995;&#32479;&#32972;&#36127;&#20102; &#8220;&#35843;&#24230;&#8221; &#30340;&#32844;&#36131;</li>
+<li class=" ml-8">操作系统背负了 “调度” 的职责</li>
 </ul></div>
          </div> 
       
@@ -584,22 +585,22 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20998;&#26102;&#22810;&#32447;&#31243; + &#34394;&#25311;&#23384;&#20648; = &#36827;&#31243;</h2>
-<p class=" font-serif my-1">&#35753; <code>foo()</code> &#21644; <code>bar()</code> &#30340;&#25191;&#34892;&#20114;&#30456;&#19981;&#21463;&#24433;&#21709;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">分时多线程 + 虚拟存储 = 进程</h2>
+<p class=" font-serif my-1">让 <code>foo()</code> 和 <code>bar()</code> 的执行互相不受影响</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#22312;&#35745;&#31639;&#26426;&#31995;&#32479;&#37324;&#22686;&#21152;&#26144;&#23556;&#20989;&#25968; $f_\texttt{foo}$, $f_\texttt{bar}$<ul class=" list-disc font-serif">
-<li class=" ml-8"><code>foo</code> &#35775;&#38382;&#20869;&#23384;&#22320;&#22336; $m$ &#26102;&#65292;&#23558;&#34987;&#37325;&#23450;&#20301;&#21040; $f_\texttt{foo}(m)$</li>
-<li class=" ml-8"><code>bar</code> &#35775;&#38382;&#20869;&#23384;&#22320;&#22336; $m$ &#26102;&#65292;&#23558;&#34987;&#37325;&#23450;&#20301;&#21040; $f_\texttt{bar}(m)$</li>
+<li class=" ml-8">在计算机系统里增加映射函数 $f_\texttt{foo}$, $f_\texttt{bar}$<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>foo</code> 访问内存地址 $m$ 时，将被重定位到 $f_\texttt{foo}(m)$</li>
+<li class=" ml-8"><code>bar</code> 访问内存地址 $m$ 时，将被重定位到 $f_\texttt{bar}(m)$</li>
 </ul>
 </li>
 </ul>
 <hr>
 <ul class=" list-disc font-serif">
-<li class=" ml-8"><code>foo</code> &#21644; <code>bar</code> &#26412;&#36523;&#26080;&#26435;&#31649;&#29702; $f$<ul class=" list-disc font-serif">
-<li class=" ml-8">&#25805;&#20316;&#31995;&#32479;&#38656;&#35201;&#23436;&#25104;&#36827;&#31243;&#12289;&#23384;&#20648;&#12289;&#25991;&#20214;&#30340;&#31649;&#29702;</li>
-<li class=" ml-8">UNIX &#35806;&#29983; (&#23601;&#26159;&#25105;&#20204;&#20170;&#22825;&#30340;&#36827;&#31243;; Android app; ...)<ul class=" list-disc font-serif">
+<li class=" ml-8"><code>foo</code> 和 <code>bar</code> 本身无权管理 $f$<ul class=" list-disc font-serif">
+<li class=" ml-8">操作系统需要完成进程、存储、文件的管理</li>
+<li class=" ml-8">UNIX 诞生 (就是我们今天的进程; Android app; ...)<ul class=" list-disc font-serif">
 <li class=" ml-8"><code>gcc a.c</code></li>
-<li class=" ml-8"><code>readelf -a a.out</code> &#8594; &#20108;&#36827;&#21046;&#25991;&#20214;&#30340;&#20840;&#37096;&#20449;&#24687;</li>
+<li class=" ml-8"><code>readelf -a a.out</code> → 二进制文件的全部信息</li>
 </ul>
 </li>
 </ul>
@@ -615,11 +616,11 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#25925;&#20107;&#20854;&#23454;&#27809;&#26377;&#20572;&#27490;&#8230;&#8230;</h2>
-<p class=" font-serif my-1">&#38754;&#23545;&#26377;&#38480;&#30340;&#21151;&#32791;&#12289;&#38590;&#20197;&#25913;&#36827;&#30340;&#21046;&#31243;&#12289;&#26080;&#27861;&#25552;&#21319;&#30340;&#39057;&#29575;&#12289;&#24212;&#29992;&#30340;&#38656;&#27714;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">故事其实没有停止……</h2>
+<p class=" font-serif my-1">面对有限的功耗、难以改进的制程、无法提升的频率、应用的需求</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#22810;&#22788;&#29702;&#22120;&#12289;big.LITTLE&#12289;&#24322;&#26500;&#22788;&#29702;&#22120; (GPU, NPU, ...)</li>
-<li class=" ml-8">&#21333;&#25351;&#20196;&#22810;&#25968;&#25454; (MMX, SSE, AVX, ...), &#34394;&#25311;&#21270; (VT; EL0/1/2/3), &#23433;&#20840;&#25191;&#34892;&#29615;&#22659; (TrustZone; SGX), ...</li>
+<li class=" ml-8">多处理器、big.LITTLE、异构处理器 (GPU, NPU, ...)</li>
+<li class=" ml-8">单指令多数据 (MMX, SSE, AVX, ...), 虚拟化 (VT; EL0/1/2/3), 安全执行环境 (TrustZone; SGX), ...</li>
 </ul>
 <p class=" font-serif my-1"><img alt="" class="center" src="https://www.karlrupp.net/wp-content/uploads/2015/06/40-years-processor-trend.png" width="600px"></p></div>
         
@@ -636,9 +637,9 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="abstractmachine" class=" text-2xl mt-2 font-sans">&#28436;&#21270;&#35270;&#35282;&#30340; AbstractMachine</h1>
+        <div><div class="center middle"><div style="width:100%"><h1 id="abstractmachine" class=" text-2xl mt-2 font-sans">演化视角的 AbstractMachine</h1>
 <hr>
-<p class=" font-serif my-1">&#22914;&#26524;&#25105;&#20204;&#21482;&#26159;&#20026;&#20102;<red>&#20351;&#29992;</red>&#35745;&#31639;&#26426;&#31995;&#32479;&#65292;&#32780;&#19981;&#20851;&#24515;&#23427;&#30340;<red>&#23454;&#29616;</red>&#65311;</p></div></div></div>
+<p class=" font-serif my-1">如果我们只是为了<red>使用</red>计算机系统，而不关心它的<red>实现</red>？</p></div></div></div>
         
       
       </section>
@@ -651,18 +652,18 @@ section .center {
         
         <div><h2 id="turing-machine-trm" class=" text-xl mt-2 pb-2 font-sans">Turing Machine (TRM)</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#20219;&#20309;&#32534;&#31243;&#35821;&#35328;&#32534;&#35793;&#21518;&#37117;&#34920;&#36798;&#20102; &#8220;&#20869;&#23384;&#19978;&#30340;&#35745;&#31639;&#8221;&#12290;</p>
+<p class=" font-serif my-1">任何编程语言编译后都表达了 “内存上的计算”。</p>
 </blockquote>
-<p class=" font-serif my-1">&#19968;&#27573; C (C++ w/o RTTI, Rust, ...) &#31243;&#24207;</p>
+<p class=" font-serif my-1">一段 C (C++ w/o RTTI, Rust, ...) 程序</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#23427;&#20063;&#26159;&#19968;&#20010;<red>&#29366;&#24577;&#26426;</red><ul class=" list-disc font-serif">
-<li class=" ml-8">&#22238;&#21040;&#20102;&#35838;&#31243;&#30340; take-away message</li>
+<li class=" ml-8">它也是一个<red>状态机</red><ul class=" list-disc font-serif">
+<li class=" ml-8">回到了课程的 take-away message</li>
 </ul>
 </li>
-<li class=" ml-8">&#20174; <code>main</code> &#24320;&#22987;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#19968;&#27573;&#33258;&#30001;&#20869;&#23384; <code>heap</code></li>
-<li class=" ml-8">&#38543;&#26102;&#21487;&#20197;&#32456;&#27490; <code>halt</code></li>
-<li class=" ml-8">&#38543;&#26102;&#21487;&#20197;&#36755;&#20986; <code>putch</code></li>
+<li class=" ml-8">从 <code>main</code> 开始<ul class=" list-disc font-serif">
+<li class=" ml-8">一段自由内存 <code>heap</code></li>
+<li class=" ml-8">随时可以终止 <code>halt</code></li>
+<li class=" ml-8">随时可以输出 <code>putch</code></li>
 </ul>
 </li>
 </ul></div>
@@ -678,13 +679,13 @@ section .center {
         
         <div><h2 id="io-extension-ioe" class=" text-xl mt-2 pb-2 font-sans">I/O Extension (IOE)</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#35745;&#31639;&#26426;&#22312;&#28436;&#21270;&#30340;&#36807;&#31243;&#20013;&#22810;&#20102; in &#21644; out &#25351;&#20196;&#12290;</p>
+<p class=" font-serif my-1">计算机在演化的过程中多了 in 和 out 指令。</p>
 </blockquote>
-<p class=" font-serif my-1">&#25105;&#20204;&#20063;&#37197;&#19978; read &#21644; write &#19981;&#23601;&#22909;&#20102;&#65311;</p>
+<p class=" font-serif my-1">我们也配上 read 和 write 不就好了？</p>
 <hr>
-<p class=" font-serif my-1">&#19968;&#20010;&#38750;&#24120;&#31616;&#21270;&#30340;&#35774;&#22791;&#27169;&#22411;</p>
+<p class=" font-serif my-1">一个非常简化的设备模型</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20294;&#36275;&#22815;&#25903;&#25345;&#35768;&#22810; non-trivial &#30340;&#36719;&#20214;&#20102; (&#20363;&#22914; LiteNES)</li>
+<li class=" ml-8">但足够支持许多 non-trivial 的软件了 (例如 LiteNES)</li>
 </ul></div>
         
       
@@ -697,22 +698,22 @@ section .center {
       
         
         <div><h2 id="context-extension-cte" class=" text-xl mt-2 pb-2 font-sans">Context Extension (CTE)</h2>
-<p class=" font-serif my-1">&#30456;&#24403;&#20110;&#22312;&#27599;&#26465;&#25351;&#20196;&#20043;&#21518;&#37117;&#25554;&#20837;&#20102;&#24322;&#24120;/&#20013;&#26029;&#30340;&#26816;&#26597;</p>
+<p class=" font-serif my-1">相当于在每条指令之后都插入了异常/中断的检查</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25105;&#20204;&#30340;&#20195;&#30721;&#20250;&#33258;&#21160;&#20445;&#23384;&#24322;&#24120;/&#20013;&#26029;&#36820;&#22238;&#30340;&#22788;&#29702;&#22120;&#29366;&#24577; (context)</li>
+<li class=" ml-8">我们的代码会自动保存异常/中断返回的处理器状态 (context)</li>
 </ul>
 <hr>
 <div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="c1">// after each instruction</span>
 <span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">has_exception</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">exception_handler</span><span class="p">();</span>
 <span class="p">}</span>
-<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">has_interrupt</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">int_enabled</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">has_interrupt</span><span class="w"> </span><span class="o">&&</span><span class="w"> </span><span class="n">int_enabled</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">interrupt_handler</span><span class="p">();</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#27492;&#26102; &#8220;&#35745;&#31639;&#26426;&#31995;&#32479;&#8221; &#23545;&#24212;&#30340;&#29366;&#24577;&#26426;&#21457;&#29983;&#20102;&#24590;&#26679;&#30340;&#25913;&#21464;&#65311;<ul class=" list-disc font-serif">
+<li class=" ml-8">此时 “计算机系统” 对应的状态机发生了怎样的改变？<ul class=" list-disc font-serif">
 <li class=" ml-8"><a href="../../../pages/ICS/2020/demos/thread-os.c" class=" text-amber-900">thread-os.c</a></li>
 </ul>
 </li>
@@ -727,24 +728,24 @@ section .center {
 
       
         
-        <div><h2 id="abstractmachine" class=" text-xl mt-2 pb-2 font-sans">AbstractMachine &#30340;&#35774;&#35745;&#21462;&#33293;</h2>
-<p class=" font-serif my-1">&#25552;&#20379;<red>&#26368;&#23569;</red>&#26426;&#21046;&#20197;&#23454;&#29616;&#29616;&#20195;&#35745;&#31639;&#26426;&#31995;&#32479;&#36719;&#20214;</p>
+        <div><h2 id="abstractmachine" class=" text-xl mt-2 pb-2 font-sans">AbstractMachine 的设计取舍</h2>
+<p class=" font-serif my-1">提供<red>最少</red>机制以实现现代计算机系统软件</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">TRM (&#31243;&#24207;&#25152;&#38656;&#26368;&#23567;&#30340;&#36816;&#34892;&#29615;&#22659;)</li>
-<li class=" ml-8">IOE (&#20165;&#25552;&#20379;&#19968;&#20123;&#31995;&#32479;&#26080;&#20851;&#30340;&#35774;&#22791;&#25277;&#35937;)</li>
-<li class=" ml-8">CTE (&#31616;&#21270;&#12289;&#32479;&#19968;&#12289;&#30456;&#23545;&#20302;&#25928;&#30340;&#20013;&#26029;&#22788;&#29702;)</li>
-<li class=" ml-8">VME (&#22522;&#20110;&#39029;&#30340;&#26144;&#23556;&#65292;&#24573;&#30053;&#30828;&#20214;&#23454;&#29616;)</li>
-<li class=" ml-8">MPE (&#20551;&#35774; race-freedom&#12289;&#31616;&#21270;&#30340;&#31995;&#32479;&#27169;&#22411;)</li>
+<li class=" ml-8">TRM (程序所需最小的运行环境)</li>
+<li class=" ml-8">IOE (仅提供一些系统无关的设备抽象)</li>
+<li class=" ml-8">CTE (简化、统一、相对低效的中断处理)</li>
+<li class=" ml-8">VME (基于页的映射，忽略硬件实现)</li>
+<li class=" ml-8">MPE (假设 race-freedom、简化的系统模型)</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#25105;&#20204;&#30340;&#35774;&#35745;&#20570;&#20102;&#24590;&#26679;&#30340;&#21462;&#33293;&#65311;</p>
+<p class=" font-serif my-1">我们的设计做了怎样的取舍？</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#24471;&#21040;&#65306;&#32479;&#19968;&#31616;&#27905;&#30340;&#25509;&#21475;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#36866;&#21512;&#25945;&#23398;&#65307;&#36328;&#20307;&#31995;&#32467;&#26500;&#23384;&#27963; (&#29978;&#33267;&#26377; native)</li>
+<li class=" ml-8">得到：统一简洁的接口<ul class=" list-disc font-serif">
+<li class=" ml-8">适合教学；跨体系结构存活 (甚至有 native)</li>
 </ul>
 </li>
-<li class=" ml-8">&#22833;&#21435;&#65306;&#23454;&#38469;&#31995;&#32479;&#30340;&#29305;&#24615;&#25903;&#25345;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#19981;&#36830;&#32493;&#30340;&#20869;&#23384;&#12289;&#28909;&#25554;&#25300;&#20869;&#23384;&#12289;Access/Dirty Bit&#8230;&#8230;</li>
+<li class=" ml-8">失去：实际系统的特性支持<ul class=" list-disc font-serif">
+<li class=" ml-8">不连续的内存、热插拔内存、Access/Dirty Bit……</li>
 </ul>
 </li>
 </ul></div>
@@ -762,7 +763,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#20195;&#30721;&#23548;&#35835;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">代码导读</h1></div></div></div>
         
       
       </section>
@@ -777,7 +778,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">&#24635;&#32467;</h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="_1" class=" text-2xl mt-2 font-sans">总结</h1></div></div></div>
         
       
       </section>
@@ -788,17 +789,17 @@ section .center {
 
       
         
-        <div><h2 id="1-pa" class=" text-xl mt-2 pb-2 font-sans">&#20843;&#21350; (1): PA &#30340;&#30001;&#26469;</h2>
-<p class=" font-serif my-1">yzh &#35273;&#24471;&#8230;&#8230;&#22909;&#20687;&#21482;&#26377; OS &#19981;&#22815;&#21170;&#21834;</p>
+        <div><h2 id="1-pa" class=" text-xl mt-2 pb-2 font-sans">八卦 (1): PA 的由来</h2>
+<p class=" font-serif my-1">yzh 觉得……好像只有 OS 不够劲啊</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#32780;&#19988; OSLab &#19978;&#26469;&#23601;&#25226; x86 &#30340;&#25163;&#20876;&#20002;&#32473;&#20320;&#22909;&#20687;&#19981;&#22826;&#22909;&#29609;</li>
+<li class=" ml-8">而且 OSLab 上来就把 x86 的手册丢给你好像不太好玩</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#37027;&#23601;&#35753;&#22823;&#23478;&#22909;&#22909;&#35835;&#35835; x86 &#25163;&#20876;&#21543;&#8230;&#8230;&#37027;&#8230;&#8230;</p>
+<p class=" font-serif my-1">那就让大家好好读读 x86 手册吧……那……</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#23601;&#20570;&#20010;&#27169;&#25311;&#22120;&#22909;&#21862;&#65292;&#21453;&#27491;&#23601;&#26159;&#29031;&#30528;&#25163;&#20876;&#20889;&#19968;&#36941;&#30340;&#20107;</li>
-<li class=" ml-8">&#20110;&#26159;&#23601;&#26377;&#20102; PA: &#31616;&#26131; x86 &#20840;&#31995;&#32479;&#27169;&#25311;&#22120;</li>
-<li class=" ml-8">&#30446;&#30340;&#26159;&#35753;&#22823;&#23478;&#30693;&#36947;&#8220;&#20160;&#20040;&#26159;&#35745;&#31639;&#26426;&#8221;</li>
+<li class=" ml-8">就做个模拟器好啦，反正就是照着手册写一遍的事</li>
+<li class=" ml-8">于是就有了 PA: 简易 x86 全系统模拟器</li>
+<li class=" ml-8">目的是让大家知道“什么是计算机”</li>
 </ul></div>
         
       
@@ -810,21 +811,21 @@ section .center {
 
       
         
-        <div><h2 id="2-pa" class=" text-xl mt-2 pb-2 font-sans">&#20843;&#21350; (2): PA &#30340;&#21518;&#32493;</h2>
+        <div><h2 id="2-pa" class=" text-xl mt-2 pb-2 font-sans">八卦 (2): PA 的后续</h2>
 <blockquote class=" bg-gray-200 p-2 rounded mb-2 mt-2 mx-4">
-<p class=" font-serif my-1">&#35273;&#24471;&#34429;&#28982;&#20307;&#31995;&#37324;&#30340;&#30830;&#20160;&#20040;&#37117;&#26377;&#20102;&#65292;&#20294;&#36824;&#26159;&#19981;&#22815;&#21170;&#21834;&#65292;&#19981;&#22914;&#29609;&#20010;&#22823;&#30340;&#65311;</p>
+<p class=" font-serif my-1">觉得虽然体系里的确什么都有了，但还是不够劲啊，不如玩个大的？</p>
 </blockquote>
 <p class=" font-serif my-1"></p><center>
-&#33258;&#24049;&#20889;&#20010; CPU
-<p class=" font-serif my-1">&#19978;&#38754;&#36305;&#33258;&#24049;&#30340; OS</p>
-<p class=" font-serif my-1">&#19978;&#38754;&#36305;&#33258;&#24049;&#32534;&#35793;&#22120;&#32534;&#35793;&#20986;&#26469;&#30340;&#24212;&#29992;&#31243;&#24207;</p>
-<p class=" font-serif my-1">&#24212;&#29992;&#31243;&#24207;&#21487;&#20197;&#26159; NEMU</p>
-<p class=" font-serif my-1">NEMU &#21448;&#36305;&#33258;&#24049;&#30340; OS&#8230;&#8230;
+自己写个 CPU
+<p class=" font-serif my-1">上面跑自己的 OS</p>
+<p class=" font-serif my-1">上面跑自己编译器编译出来的应用程序</p>
+<p class=" font-serif my-1">应用程序可以是 NEMU</p>
+<p class=" font-serif my-1">NEMU 又跑自己的 OS……
 </p></center>
 <hr>
-<p class=" font-serif my-1">&#22909;&#21543;&#25105;&#25215;&#35748;&#36825;&#26377;&#28857;&#28843;&#37239;</p>
+<p class=" font-serif my-1">好吧我承认这有点炫酷</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20294;&#29992; Verilog (Chisel) &#20889;&#20010; x86 &#30340; CPU &#22909;&#20687;&#22840;&#24352;&#20102;&#28857;&#8230;&#8230;</li>
+<li class=" ml-8">但用 Verilog (Chisel) 写个 x86 的 CPU 好像夸张了点……</li>
 </ul></div>
         
       
@@ -836,21 +837,21 @@ section .center {
 
       
         
-        <div><h2 id="abstractmachine" class=" text-xl mt-2 pb-2 font-sans">AbstractMachine: &#28436;&#21270;&#35266;&#28857;&#30340;&#31995;&#32479;&#25277;&#35937;</h2>
-<p class=" font-serif my-1">&#25277;&#35937;&#24102;&#26469;&#30340;&#22909;&#22788;</p>
+        <div><h2 id="abstractmachine" class=" text-xl mt-2 pb-2 font-sans">AbstractMachine: 演化观点的系统抽象</h2>
+<p class=" font-serif my-1">抽象带来的好处</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20889;&#25805;&#20316;&#31995;&#32479;&#20877;&#20063;&#19981;&#29992;&#27719;&#32534;&#20102;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#22914;&#26524;&#20320;&#20204;&#30475;&#36807;&#19968;&#20123; &#8220;&#33258;&#24049;&#21160;&#25163;&#20889;&#25805;&#20316;&#31995;&#32479;&#8221; &#31867;&#30340;&#20070;&#65292;&#21069;&#38754;&#35762; x86 &#30340;&#37096;&#20998;&#23601;&#26681;&#26412;&#19981;&#24819;&#30475;&#19979;&#21435;&#20102;</li>
+<li class=" ml-8">写操作系统再也不用汇编了<ul class=" list-disc font-serif">
+<li class=" ml-8">如果你们看过一些 “自己动手写操作系统” 类的书，前面讲 x86 的部分就根本不想看下去了</li>
 </ul>
 </li>
-<li class=" ml-8">&#22312;&#27491;&#30830;&#30340;&#25277;&#35937;&#23618;&#19978;&#20889;&#20195;&#30721;&#33021;&#20943;&#23569;&#32454;&#33410;&#32416;&#32467;</li>
-<li class=" ml-8">&#36719;&#20214;&#27491;&#30830;&#24615;&#21487;&#20197;&#20114;&#30456;&#39564;&#35777;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#36719;&#20214;&#22312; native &#35843;&#35797;&#65292;&#35843;&#35797;&#22909;&#20102;&#20877;&#19978;&#20307;&#31995;&#32467;&#26500;&#36816;&#34892;</li>
+<li class=" ml-8">在正确的抽象层上写代码能减少细节纠结</li>
+<li class=" ml-8">软件正确性可以互相验证<ul class=" list-disc font-serif">
+<li class=" ml-8">软件在 native 调试，调试好了再上体系结构运行</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#22312;&#25277;&#35937;&#23618;&#19978;&#24037;&#20316;&#24102;&#26469;&#30340;&#39069;&#22806;&#22909;&#22788;</p>
+<p class=" font-serif my-1">在抽象层上工作带来的额外好处</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">trace</li>
 <li class=" ml-8">model checking</li>
@@ -866,13 +867,13 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="end" class=" text-2xl mt-2 font-sans">End. (&#36825;&#26159;&#35745;&#31639;&#26426;&#31995;&#32479;&#30340;&#23436;&#25972;&#25925;&#20107;)</h1>
+        <div><div class="center middle"><div style="width:100%"><h1 id="end" class=" text-2xl mt-2 font-sans">End. (这是计算机系统的完整故事)</h1>
 <hr>
-<p class=" font-serif my-1">&#26412;&#23398;&#26399; (ICS)</p>
-<p class=" font-serif my-1">&#23454;&#29616; x86/riscv/mips &#19978;&#30340; AbstractMachine API</p>
+<p class=" font-serif my-1">本学期 (ICS)</p>
+<p class=" font-serif my-1">实现 x86/riscv/mips 上的 AbstractMachine API</p>
 <hr>
-<p class=" font-serif my-1">&#19979;&#23398;&#26399; (OS)</p>
-<p class=" font-serif my-1">&#22522;&#20110; AbstractMachine &#23454;&#29616;&#22810;&#22788;&#29702;&#22120;&#25805;&#20316;&#31995;&#32479;</p></div></div></div>
+<p class=" font-serif my-1">下学期 (OS)</p>
+<p class=" font-serif my-1">基于 AbstractMachine 实现多处理器操作系统</p></div></div></div>
         
       
       </section>
@@ -902,5 +903,6 @@ section .center {
 
 
 </body>
+
 
 </html>

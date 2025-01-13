@@ -1,10 +1,11 @@
 <!DOCTYPE html><html class="h-100">
 
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="../../../static/css/base.css" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com/"></script>
   <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
 
@@ -23,14 +24,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -227,7 +228,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="dma" class=" text-2xl mt-2 font-sans"><a href="26.2.slides.html" class=" text-amber-900">&#24635;&#32447;&#12289;&#20013;&#26029;&#25511;&#21046;&#22120;&#21644; DMA</a></h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="dma" class=" text-2xl mt-2 font-sans"><a href="26.2.slides.html" class=" text-amber-900">总线、中断控制器和 DMA</a></h1></div></div></div>
         
       
       </section>
@@ -238,28 +239,28 @@ section .center {
 
       
         
-        <div><h2 id="io" class=" text-xl mt-2 pb-2 font-sans">&#36234;&#26469;&#36234;&#22810;&#30340; I/O &#35774;&#22791;</h2>
-<p class=" font-serif my-1">&#22914;&#26524;&#20320;&#21482;&#36896; &#8220;&#19968;&#21488;&#35745;&#31639;&#26426;&#8221;</p>
+        <div><h2 id="io" class=" text-xl mt-2 pb-2 font-sans">越来越多的 I/O 设备</h2>
+<p class=" font-serif my-1">如果你只造 “一台计算机”</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#38543;&#20415;&#32473;&#27599;&#20010;&#35774;&#22791;&#23450;&#19968;&#20010;&#31471;&#21475;/&#22320;&#22336;&#65292;&#29992; mux &#36830;&#25509;&#21040; CPU &#23601;&#34892;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20320;&#20204;&#30340;&#23454;&#39564; (AbstractMachine) &#21644;&#33258;&#21046; CPU &#23601;&#26159;&#36825;&#20040;&#20570;&#30340;</li>
+<li class=" ml-8">随便给每个设备定一个端口/地址，用 mux 连接到 CPU 就行<ul class=" list-disc font-serif">
+<li class=" ml-8">你们的实验 (AbstractMachine) 和自制 CPU 就是这么做的</li>
 </ul>
 </li>
 </ul>
 <hr>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/apple2-inside.jpg" width="500px">
-&#20294;&#22914;&#26524;&#20320;&#24076;&#26395;&#32473;&#26410;&#26469;&#30041;&#28857;&#31354;&#38388;&#65311;</p>
+但如果你希望给未来留点空间？</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#24819;&#21334;&#22823;&#20215;&#38065;&#30340; &#8220;&#22823;&#22411;&#26426;&#8221;<ul class=" list-disc font-serif">
+<li class=" ml-8">想卖大价钱的 “大型机”<ul class=" list-disc font-serif">
 <li class=" ml-8">IBM, DEC, ...</li>
 </ul>
 </li>
-<li class=" ml-8">&#36710;&#24211;&#37324;&#36896;&#20986;&#26469;&#30340; &#8220;&#24494;&#22411;&#26426;&#8221;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#21517;&#22402;&#38738;&#21490;&#30340;&#26790;&#24819;&#23478;</li>
+<li class=" ml-8">车库里造出来的 “微型机”<ul class=" list-disc font-serif">
+<li class=" ml-8">名垂青史的梦想家</li>
 </ul>
 </li>
-<li class=" ml-8">&#37117;&#24076;&#26395;&#25509;&#20837;&#26356;&#22810; I/O &#35774;&#22791;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#29978;&#33267;&#26159;<red>&#26410;&#30693;</red>&#30340;&#35774;&#22791;&#65292;&#20294;<red>&#19981;&#24076;&#26395;&#25913;&#21464; CPU</red>&#65311;</li>
+<li class=" ml-8">都希望接入更多 I/O 设备<ul class=" list-disc font-serif">
+<li class=" ml-8">甚至是<red>未知</red>的设备，但<red>不希望改变 CPU</red>？</li>
 </ul>
 </li>
 </ul></div>
@@ -273,25 +274,25 @@ section .center {
 
       
         
-        <div><h2 id="io" class=" text-xl mt-2 pb-2 font-sans">&#24635;&#32447;&#65306;&#19968;&#20010;&#29305;&#27530;&#30340; I/O &#35774;&#22791;</h2>
-<p class=" font-serif my-1">&#25552;&#20379;<red>&#35774;&#22791;&#30340;&#27880;&#20876;</red>&#21644;<red>&#22320;&#22336;&#21040;&#35774;&#22791;&#30340;&#36716;&#21457;</red></p>
+        <div><h2 id="io" class=" text-xl mt-2 pb-2 font-sans">总线：一个特殊的 I/O 设备</h2>
+<p class=" font-serif my-1">提供<red>设备的注册</red>和<red>地址到设备的转发</red></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25226;&#25910;&#21040;&#30340;&#22320;&#22336; (&#24635;&#32447;&#22320;&#22336;) &#21644;&#25968;&#25454;&#36716;&#21457;&#21040;&#30456;&#24212;&#30340;&#35774;&#22791;&#19978;</li>
-<li class=" ml-8">&#20363;&#23376;: port I/O &#30340;&#31471;&#21475;&#23601;&#26159;&#24635;&#32447;&#19978;&#30340;&#22320;&#22336;<ul class=" list-disc font-serif">
-<li class=" ml-8">IBM PC &#30340; CPU &#20854;&#23454;&#21482;&#30475;&#21040;&#36825;&#19968;&#20010; I/O &#35774;&#22791;</li>
+<li class=" ml-8">把收到的地址 (总线地址) 和数据转发到相应的设备上</li>
+<li class=" ml-8">例子: port I/O 的端口就是总线上的地址<ul class=" list-disc font-serif">
+<li class=" ml-8">IBM PC 的 CPU 其实只看到这一个 I/O 设备</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1"><red>&#36825;&#26679; CPU &#21482;&#38656;&#35201;&#30452;&#36830;&#19968;&#20010;&#24635;&#32447;</red> &#23601;&#34892;&#20102;&#65281;</p>
+<p class=" font-serif my-1"><red>这样 CPU 只需要直连一个总线</red> 就行了！</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20170;&#22825; PCI &#24635;&#32447;&#32937;&#36127;&#20102;&#36825;&#20010;&#20219;&#21153;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#24635;&#32447;&#21487;&#20197;&#26725;&#25509;&#20854;&#20182;&#24635;&#32447; (&#20363;&#22914; PCI &#8594; USB)</li>
+<li class=" ml-8">今天 PCI 总线肩负了这个任务<ul class=" list-disc font-serif">
+<li class=" ml-8">总线可以桥接其他总线 (例如 PCI → USB)</li>
 </ul>
 </li>
-<li class=" ml-8"><code>lspci -tv</code> &#21644; <code>lsusb -tv</code>: &#26597;&#30475;&#31995;&#32479;&#20013;&#24635;&#32447;&#19978;&#30340;&#35774;&#22791;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#27010;&#24565;&#31616;&#21333;&#65292;&#23454;&#38469;&#38750;&#24120;&#22797;&#26434;&#8230;&#8230;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#30005;&#27668;&#29305;&#24615;&#12289;burst &#20256;&#36755;&#12289;&#20013;&#26029;&#12289;<a href="https://www.bilibili.com/video/BV12J411i7ed/" class=" text-amber-900">Plug and Play</a>&#8230;&#8230;</li>
+<li class=" ml-8"><code>lspci -tv</code> 和 <code>lsusb -tv</code>: 查看系统中总线上的设备<ul class=" list-disc font-serif">
+<li class=" ml-8">概念简单，实际非常复杂……<ul class=" list-disc font-serif">
+<li class=" ml-8">电气特性、burst 传输、中断、<a href="https://www.bilibili.com/video/BV12J411i7ed/" class=" text-amber-900">Plug and Play</a>……</li>
 </ul>
 </li>
 </ul>
@@ -307,27 +308,27 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20013;&#26029;&#25511;&#21046;&#22120;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">中断控制器</h2>
 <p class=" font-serif my-1"><img alt="" class="float-right" src="../../../pages/OS/img/6502-pinout.jpg" width="300px"></p>
-<p class=" font-serif my-1">CPU &#26377;&#19968;&#20010;&#20013;&#26029;&#24341;&#33050;</p>
+<p class=" font-serif my-1">CPU 有一个中断引脚</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25910;&#21040;&#26576;&#20010;&#29305;&#23450;&#30340;&#30005;&#20449;&#21495;&#20250;&#35302;&#21457;&#20013;&#26029;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20445;&#23384; 5 &#20010;&#23492;&#23384;&#22120; (cs, rip, rflags, ss, rsp)</li>
-<li class=" ml-8">&#36339;&#36716;&#21040;&#20013;&#26029;&#21521;&#37327;&#34920;&#23545;&#24212;&#39033;&#25191;&#34892;</li>
+<li class=" ml-8">收到某个特定的电信号会触发中断<ul class=" list-disc font-serif">
+<li class=" ml-8">保存 5 个寄存器 (cs, rip, rflags, ss, rsp)</li>
+<li class=" ml-8">跳转到中断向量表对应项执行</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#31995;&#32479;&#20013;&#30340;&#20854;&#20182;&#35774;&#22791;&#21487;&#20197;&#21521;&#20013;&#26029;&#25511;&#21046;&#22120;&#36830;&#32447;</p>
+<p class=" font-serif my-1">系统中的其他设备可以向中断控制器连线</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8">Intel 8259 PIC<ul class=" list-disc font-serif">
 <li class=" ml-8">programmable interrupt controller</li>
-<li class=" ml-8">&#21487;&#20197;&#35774;&#32622;&#20013;&#26029;&#23631;&#34109;&#12289;&#20013;&#26029;&#35302;&#21457;&#31561;&#8230;&#8230;</li>
+<li class=" ml-8">可以设置中断屏蔽、中断触发等……</li>
 </ul>
 </li>
 <li class=" ml-8">APIC (Advanced PIC)<ul class=" list-disc font-serif">
-<li class=" ml-8">local APIC: &#20013;&#26029;&#21521;&#37327;&#34920;, IPI, &#26102;&#38047;, &#8230;&#8230;</li>
-<li class=" ml-8">I/O APIC: &#20854;&#20182; I/O &#35774;&#22791;</li>
+<li class=" ml-8">local APIC: 中断向量表, IPI, 时钟, ……</li>
+<li class=" ml-8">I/O APIC: 其他 I/O 设备</li>
 </ul>
 </li>
 </ul></div>
@@ -341,25 +342,25 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#20013;&#26029;&#27809;&#33021;&#35299;&#30340;&#38382;&#39064;</h2>
-<p class=" font-serif my-1">&#20551;&#35774;&#31243;&#24207;&#24076;&#26395;&#20889;&#20837; 1 GB &#30340;&#25968;&#25454;&#21040;&#30913;&#30424;</p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">中断没能解的问题</h2>
+<p class=" font-serif my-1">假设程序希望写入 1 GB 的数据到磁盘</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#21363;&#20415;&#30913;&#30424;&#24050;&#32463;&#20934;&#22791;&#22909;&#65292;&#20381;&#28982;&#38656;&#35201;&#38750;&#24120;&#28010;&#36153;&#32531;&#24930;&#30340;&#24490;&#29615;</li>
-<li class=" ml-8">out &#25351;&#20196;&#20889;&#20837;&#30340;&#26159;&#35774;&#22791;&#32531;&#20914;&#21306;&#65292;&#38656;&#35201;&#21435;&#24635;&#32447;&#19978;&#32469;&#19968;&#22280;<ul class=" list-disc font-serif">
-<li class=" ml-8">cache disable; store &#20854;&#23454;&#24456;&#24930;&#30340;</li>
+<li class=" ml-8">即便磁盘已经准备好，依然需要非常浪费缓慢的循环</li>
+<li class=" ml-8">out 指令写入的是设备缓冲区，需要去总线上绕一圈<ul class=" list-disc font-serif">
+<li class=" ml-8">cache disable; store 其实很慢的</li>
 </ul>
 </li>
 </ul>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">GB</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o"><</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">GB</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">outl</span><span class="p">(</span><span class="n">PORT</span><span class="p">,</span><span class="w"> </span><span class="p">((</span><span class="n">u32</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">buf</span><span class="p">)[</span><span class="n">i</span><span class="p">]);</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <hr>
-<p class=" font-serif my-1">&#33021;&#21542;&#25226; CPU &#20174;&#25191;&#34892;&#24490;&#29615;&#20013;&#35299;&#25918;&#20986;&#26469;&#65311;</p>
+<p class=" font-serif my-1">能否把 CPU 从执行循环中解放出来？</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#27604;&#22914;&#65292;&#22312;&#31995;&#32479;&#37324;&#24449;&#29992;&#19968;&#20010;&#23567; CPU&#65292;&#19987;&#38376;&#22797;&#21046;&#25968;&#25454;?</li>
-<li class=" ml-8">&#22909;&#20687; <code>memcpy_to_port(ATA0, buf, length);</code></li>
+<li class=" ml-8">比如，在系统里征用一个小 CPU，专门复制数据?</li>
+<li class=" ml-8">好像 <code>memcpy_to_port(ATA0, buf, length);</code></li>
 </ul></div>
         
       
@@ -372,23 +373,23 @@ section .center {
       
         
         <div><h2 id="direct-memory-access-dma" class=" text-xl mt-2 pb-2 font-sans">Direct Memory Access (DMA)</h2>
-<p class=" font-serif my-1">DMA: <red>&#19968;&#20010;&#19987;&#38376;&#25191;&#34892; &#8220;<code>memcpy</code>&#8221; &#31243;&#24207;&#30340; CPU</red></p>
+<p class=" font-serif my-1">DMA: <red>一个专门执行 “<code>memcpy</code>” 程序的 CPU</red></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#21152;&#19968;&#20010;&#36890;&#29992;&#22788;&#29702;&#22120;&#22826;&#28010;&#36153;&#65292;&#19981;&#22914;&#21152;&#19968;&#20010;&#31616;&#21333;&#30340;</li>
+<li class=" ml-8">加一个通用处理器太浪费，不如加一个简单的</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#25903;&#25345;&#30340;&#20960;&#31181; <code>memcpy</code></p>
+<p class=" font-serif my-1">支持的几种 <code>memcpy</code></p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">memory &#8594; memory</li>
-<li class=" ml-8">memory &#8594; device (register)</li>
-<li class=" ml-8">device (register) &#8594; memory<ul class=" list-disc font-serif">
-<li class=" ml-8">&#23454;&#38469;&#23454;&#29616;&#65306;&#30452;&#25509;&#25226; DMA &#25511;&#21046;&#22120;&#36830;&#25509;&#22312;&#24635;&#32447;&#21644;&#20869;&#23384;&#19978;</li>
+<li class=" ml-8">memory → memory</li>
+<li class=" ml-8">memory → device (register)</li>
+<li class=" ml-8">device (register) → memory<ul class=" list-disc font-serif">
+<li class=" ml-8">实际实现：直接把 DMA 控制器连接在总线和内存上</li>
 <li class=" ml-8"><a href="../../../pages/OS/manuals/i8237a.pdf" class=" text-amber-900">Intel 8237A</a></li>
 </ul>
 </li>
 </ul>
 <hr>
-<p class=" font-serif my-1">PCI &#24635;&#32447;&#25903;&#25345; DMA</p>
+<p class=" font-serif my-1">PCI 总线支持 DMA</p>
 <ul class=" list-disc font-serif">
 <li class=" ml-8"><code>sudo cat /proc/iomem</code></li>
 </ul></div>
@@ -421,5 +422,6 @@ section .center {
 
 
 </body>
+
 
 </html>

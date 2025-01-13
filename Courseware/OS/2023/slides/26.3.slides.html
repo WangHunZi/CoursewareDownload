@@ -1,10 +1,11 @@
 <!DOCTYPE html><html class="h-100">
 
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="../../../static/css/base.css" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com/"></script>
   <link href="https://fonts.font.im/css?family=Source+Serif+Pro%7CLato%7CInconsolata" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="../../../static/img/favicon.png" type="image/x-icon">
 
@@ -23,14 +24,14 @@
       document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body, {
             // customised options
-            // &#8226; auto-render specific keys, e.g.:
+            // • auto-render specific keys, e.g.:
             delimiters: [
                 {left: '$$', right: '$$', display: true},
                 {left: '$', right: '$', display: false},
                 {left: '\\(', right: '\\)', display: false},
                 {left: '\\[', right: '\\]', display: true}
             ],
-            // &#8226; rendering keys, e.g.:
+            // • rendering keys, e.g.:
             throwOnError : false
           });
       });
@@ -209,7 +210,7 @@ section .center {
 }
 </style>
 
-  <title>GPU &#21644;&#21152;&#36895;&#22120;</title>
+  <title>GPU 和加速器</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -227,7 +228,7 @@ section .center {
 
       
         
-        <div><div class="center middle"><div style="width:100%"><h1 id="gpu" class=" text-2xl mt-2 font-sans"><a href="26.3.slides.html" class=" text-amber-900">GPU &#21644;&#21152;&#36895;&#22120;</a></h1></div></div></div>
+        <div><div class="center middle"><div style="width:100%"><h1 id="gpu" class=" text-2xl mt-2 font-sans"><a href="26.3.slides.html" class=" text-amber-900">GPU 和加速器</a></h1></div></div></div>
         
       
       </section>
@@ -238,25 +239,25 @@ section .center {
 
       
         
-        <div><h2 id="io" class=" text-xl mt-2 pb-2 font-sans">I/O &#35774;&#22791;&#21644;&#35745;&#31639;&#26426;&#20043;&#38388;&#30340;&#36793;&#30028;&#36880;&#28176;&#27169;&#31946;</h2>
-<p class=" font-serif my-1">DMA &#19981;&#23601;&#26159;&#19968;&#20010; &#8220;&#20570;&#19968;&#20214;&#29305;&#21035;&#20107;&#24773;&#8221; &#30340; CPU &#21527;</p>
+        <div><h2 id="io" class=" text-xl mt-2 pb-2 font-sans">I/O 设备和计算机之间的边界逐渐模糊</h2>
+<p class=" font-serif my-1">DMA 不就是一个 “做一件特别事情” 的 CPU 吗</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#37027;&#20040;&#25105;&#20204;&#36824;&#21487;&#20197;&#26377;&#20570;&#21508;&#31181;&#20107;&#24773;&#30340; &#8220;CPU&#8221; &#21834;</li>
+<li class=" ml-8">那么我们还可以有做各种事情的 “CPU” 啊</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#20363;&#22914;&#65292;&#26174;&#31034;&#22270;&#24418;</p>
-<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">H</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">W</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span>
-<span class="w">    </span><span class="n">putchar</span><span class="p">(</span><span class="n">j</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="sc">'*'</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="sc">' '</span><span class="p">);</span>
+<p class=" font-serif my-1">例如，显示图形</p>
+<div class="codehilite"><pre class=" bg-gray-100 overflow-x-auto rounded p-2 mb-2 mt-2"><span></span><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o"><=</span><span class="w"> </span><span class="n">H</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o"><=</span><span class="w"> </span><span class="n">W</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span>
+<span class="w">    </span><span class="n">putchar</span><span class="p">(</span><span class="n">j</span><span class="w"> </span><span class="o"><=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="sc">'*'</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="sc">' '</span><span class="p">);</span>
 <span class="w">  </span><span class="n">putchar</span><span class="p">(</span><span class="sc">'\n'</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p class=" font-serif my-1">&#38590;&#21150;&#30340;&#26159;&#24615;&#33021;&#65306;NES: 6502 @ 1.79Mhz; IPC = 0.43</p>
+<p class=" font-serif my-1">难办的是性能：NES: 6502 @ 1.79Mhz; IPC = 0.43</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#23631;&#24149;&#20849;&#26377; 256 x 240 = 61K &#20687;&#32032; (256 &#33394;)</li>
-<li class=" ml-8">60FPS &#8594; &#27599;&#19968;&#24103;&#24517;&#39035;&#22312; ~10K &#26465;&#25351;&#20196;&#20869;&#23436;&#25104;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#22914;&#20309;&#22312;&#26377;&#38480;&#30340; CPU &#36816;&#31639;&#21147;&#19979;&#23454;&#29616; 60Hz&#65311;</li>
+<li class=" ml-8">屏幕共有 256 x 240 = 61K 像素 (256 色)</li>
+<li class=" ml-8">60FPS → 每一帧必须在 ~10K 条指令内完成<ul class=" list-disc font-serif">
+<li class=" ml-8">如何在有限的 CPU 运算力下实现 60Hz？</li>
 </ul>
 </li>
 </ul></div>
@@ -286,14 +287,14 @@ section .center {
 
 </div>
 
-<p class=" font-serif my-1">CPU &#21482;<red>&#25551;&#36848;</red> 8x8 &#8220;&#36148;&#22359;&#8221; &#30340;&#25670;&#25918;&#26041;&#27861;</p>
+<p class=" font-serif my-1">CPU 只<red>描述</red> 8x8 “贴块” 的摆放方法</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#32972;&#26223;&#26159; &#8220;&#22823;&#22270;&#8221; &#30340;&#19968;&#37096;&#20998;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#27599;&#34892;&#30340;&#21069;&#26223;&#22359;&#19981;&#36229;&#36807; 8 &#20010;</li>
+<li class=" ml-8">背景是 “大图” 的一部分<ul class=" list-disc font-serif">
+<li class=" ml-8">每行的前景块不超过 8 个</li>
 </ul>
 </li>
-<li class=" ml-8">PPU &#23436;&#25104;&#22270;&#24418;&#30340;&#32472;&#21046;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#19968;&#20010;&#24182;&#34892;&#24230;&#26356;&#39640;&#30340; &#8220;CPU&#8221;</li>
+<li class=" ml-8">PPU 完成图形的绘制<ul class=" list-disc font-serif">
+<li class=" ml-8">一个并行度更高的 “CPU”</li>
 </ul>
 </li>
 </ul></div>
@@ -307,10 +308,10 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#22312;&#21463;&#38480;&#30340;&#26426;&#33021;&#19979;&#25552;&#20379;&#20016;&#23500;&#30340;&#22270;&#24418;</h2>
-<p class=" font-serif my-1">&#21069;&#26223;&#65306;<a href="https://www.zhihu.com/question/38528261" class=" text-amber-900">&#12298;&#39746;&#26007;&#32599;&#12299;&#65288;Contra&#65289;&#20013;&#35282;&#33394;&#20026;&#20160;&#20040;&#35201;&#12300;&#33821;&#33673;&#24335;&#23624;&#33151;&#20463;&#21351;&#12301;&#65311;</a></p>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">在受限的机能下提供丰富的图形</h2>
+<p class=" font-serif my-1">前景：<a href="https://www.zhihu.com/question/38528261" class=" text-amber-900">《魂斗罗》（Contra）中角色为什么要「萝莉式屈腿俯卧」？</a></p>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/contra.jpg" width="300px"></p>
-<p class=" font-serif my-1">&#32972;&#26223;&#65306;&#8220;&#21367;&#36724;&#8221; &#25805;&#20316;</p>
+<p class=" font-serif my-1">背景：“卷轴” 操作</p>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/nes-scroll.gif" width="800px"></p></div>
         
       
@@ -322,25 +323,25 @@ section .center {
 
       
         
-        <div><h2 id="2d" class=" text-xl mt-2 pb-2 font-sans">&#26356;&#22909;&#30340; 2D &#28216;&#25103;&#24341;&#25806;</h2>
-<p class=" font-serif my-1">&#22914;&#26524;&#25105;&#20204;&#26377;&#26356;&#22810;&#30340;&#26230;&#20307;&#31649;&#65311;</p>
+        <div><h2 id="2d" class=" text-xl mt-2 pb-2 font-sans">更好的 2D 游戏引擎</h2>
+<p class=" font-serif my-1">如果我们有更多的晶体管？</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">NES PPU &#30340;&#26412;&#36136;&#26159;&#21644;&#22352;&#26631;&#36724;&#24179;&#34892;&#30340; &#8220;&#36148;&#22359;&#22359;&#8221;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#23454;&#29616;&#19978;&#21482;&#38656;&#35201;&#21152;&#27861;&#21644;&#20301;&#36816;&#31639;</li>
+<li class=" ml-8">NES PPU 的本质是和坐标轴平行的 “贴块块”<ul class=" list-disc font-serif">
+<li class=" ml-8">实现上只需要加法和位运算</li>
 </ul>
 </li>
-<li class=" ml-8">&#26356;&#24378;&#22823;&#30340;&#35745;&#31639;&#33021;&#21147; = &#26356;&#22797;&#26434;&#30340;&#22270;&#24418;&#32472;&#21046;</li>
+<li class=" ml-8">更强大的计算能力 = 更复杂的图形绘制</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">2D &#22270;&#24418;&#21152;&#36895;&#30828;&#20214;&#65306;&#22270;&#29255;&#30340; &#8220;&#35009;&#21098;&#8221; + &#8220;&#25340;&#36148;&#8221;</p>
+<p class=" font-serif my-1">2D 图形加速硬件：图片的 “裁剪” + “拼贴”</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#25903;&#25345;&#26059;&#36716;&#12289;&#26448;&#36136;&#26144;&#23556; (&#32553;&#25918;)&#12289;&#21518;&#22788;&#29702;&#12289;&#8230;&#8230;</li>
+<li class=" ml-8">支持旋转、材质映射 (缩放)、后处理、……</li>
 </ul>
 <hr>
-<p class=" font-serif my-1">&#23454;&#29616; 3D</p>
+<p class=" font-serif my-1">实现 3D</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#19977;&#32500;&#31354;&#38388;&#20013;&#30340;&#22810;&#36793;&#24418;&#65292;&#22312;&#35270;&#24179;&#38754;&#19978;&#20063;&#26159;&#22810;&#36793;&#24418;<ul class=" list-disc font-serif">
-<li class=" ml-8">Thm. &#20219;&#20309; $n$ &#36793;&#24418;&#37117;&#21487;&#20197;&#20998;&#35299;&#25104; $n-2$ &#20010;&#19977;&#35282;&#24418;</li>
+<li class=" ml-8">三维空间中的多边形，在视平面上也是多边形<ul class=" list-disc font-serif">
+<li class=" ml-8">Thm. 任何 $n$ 边形都可以分解成 $n-2$ 个三角形</li>
 </ul>
 </li>
 </ul></div>
@@ -354,11 +355,11 @@ section .center {
 
       
         
-        <div><h2 id="3d" class=" text-xl mt-2 pb-2 font-sans">&#20197;&#20551;&#20081;&#30495;&#30340;&#21098;&#36148; 3D</h2>
+        <div><h2 id="3d" class=" text-xl mt-2 pb-2 font-sans">以假乱真的剪贴 3D</h2>
 <p class=" font-serif my-1">GameBoy Advance</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">4 &#23618;&#32972;&#26223;; 128 &#20010;&#21098;&#36148; objects; 32 &#20010; affine objects<ul class=" list-disc font-serif">
-<li class=" ml-8">CPU &#32473;&#20986;&#25551;&#36848;&#65307;GPU &#32472;&#21046; (&#25191;&#34892; &#8220;&#19968;&#20010;&#31243;&#24207;&#8221; &#30340; CPU)</li>
+<li class=" ml-8">4 层背景; 128 个剪贴 objects; 32 个 affine objects<ul class=" list-disc font-serif">
+<li class=" ml-8">CPU 给出描述；GPU 绘制 (执行 “一个程序” 的 CPU)</li>
 </ul>
 </li>
 </ul>
@@ -374,17 +375,17 @@ section .center {
 
       
         
-        <div><h2 id="3d" class=" text-xl mt-2 pb-2 font-sans">&#20294;&#25105;&#20204;&#36824;&#26159;&#38656;&#35201;&#30495;&#27491;&#30340; 3D</h2>
-<p class=" font-serif my-1">&#19977;&#32500;&#31354;&#38388;&#20013;&#30340;&#19977;&#35282;&#24418;&#38656;&#35201;&#27491;&#30830;&#28210;&#26579;</p>
+        <div><h2 id="3d" class=" text-xl mt-2 pb-2 font-sans">但我们还是需要真正的 3D</h2>
+<p class=" font-serif my-1">三维空间中的三角形需要正确渲染</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#36825;&#26102;&#20505;&#24314;&#27169;&#30340;&#19996;&#35199;&#23601;&#22810;&#20102;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20960;&#20309;&#12289;&#26448;&#36136;&#12289;&#36148;&#22270;&#12289;&#20809;&#28304;&#12289;&#8230;&#8230;</li>
-<li class=" ml-8">Rendering pipeline &#37324;&#22823;&#37096;&#20998;&#25805;&#20316;&#37117;&#26159; massive parallel &#30340;</li>
+<li class=" ml-8">这时候建模的东西就多了<ul class=" list-disc font-serif">
+<li class=" ml-8">几何、材质、贴图、光源、……</li>
+<li class=" ml-8">Rendering pipeline 里大部分操作都是 massive parallel 的</li>
 </ul>
 </li>
 </ul>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/texture-mapping.jpg" width="900px"></p>
-<p class=" font-serif my-1"></p><center>&#8220;Perspective correct&#8221; texture mapping (Wikipedia)</center></div>
+<p class=" font-serif my-1"></p><center>“Perspective correct” texture mapping (Wikipedia)</center></div>
         
       
       </section>
@@ -395,7 +396,7 @@ section .center {
 
       
         
-        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">&#39064;&#22806;&#35805;&#65306;&#22914;&#27492;&#20016;&#23500;&#30340;&#22270;&#24418;&#26159;&#24590;&#20040;&#26469;&#30340;&#65311;</h2>
+        <div><h2 id="_1" class=" text-xl mt-2 pb-2 font-sans">题外话：如此丰富的图形是怎么来的？</h2>
 <p class=" font-serif my-1"><img alt="" class="center" src="../../../pages/OS/img/assassins-creed.jpg" width="960px"></p></div>
         
       
@@ -407,13 +408,13 @@ section .center {
 
       
         
-        <div><h2 id="ps" class=" text-xl mt-2 pb-2 font-sans">&#31572;&#26696;&#65306;&#20840;&#38752; PS (&#21518;&#22788;&#29702;)</h2>
-<p class=" font-serif my-1">&#20363;&#23376;&#65306;GLSL (Shading Language)</p>
+        <div><h2 id="ps" class=" text-xl mt-2 pb-2 font-sans">答案：全靠 PS (后处理)</h2>
+<p class=" font-serif my-1">例子：GLSL (Shading Language)</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#20351; &#8220;shader program&#8221; &#21487;&#20197;&#22312; GPU &#19978;&#25191;&#34892;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#21487;&#20197;&#20316;&#29992;&#22312;&#21508;&#20010;&#28210;&#26579;&#32423;&#21035;&#19978;&#65306;vertex, fragment, pixel shader</li>
-<li class=" ml-8">&#30456;&#24403;&#20110;&#19968;&#20010; &#8220;PS&#8221; &#31243;&#24207;&#65292;&#31639;&#20986;&#27599;&#20010;&#37096;&#20998;&#30340;&#20809;&#29031;&#21464;&#21270;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#20840;&#23616;&#20809;&#29031;&#12289;&#21453;&#23556;&#12289;&#38452;&#24433;&#12289;&#29615;&#22659;&#20809;&#36974;&#32617;&#8230;&#8230;</li>
+<li class=" ml-8">使 “shader program” 可以在 GPU 上执行<ul class=" list-disc font-serif">
+<li class=" ml-8">可以作用在各个渲染级别上：vertex, fragment, pixel shader</li>
+<li class=" ml-8">相当于一个 “PS” 程序，算出每个部分的光照变化<ul class=" list-disc font-serif">
+<li class=" ml-8">全局光照、反射、阴影、环境光遮罩……</li>
 </ul>
 </li>
 </ul>
@@ -430,25 +431,25 @@ section .center {
 
       
         
-        <div><h2 id="gpu" class=" text-xl mt-2 pb-2 font-sans">&#29616;&#20195; GPU: &#19968;&#20010;&#36890;&#29992;&#35745;&#31639;&#35774;&#22791;</h2>
-<p class=" font-serif my-1">&#19968;&#20010;&#23436;&#25972;&#30340;&#20247;&#26680;&#22810;&#22788;&#29702;&#22120;&#31995;&#32479;</p>
+        <div><h2 id="gpu" class=" text-xl mt-2 pb-2 font-sans">现代 GPU: 一个通用计算设备</h2>
+<p class=" font-serif my-1">一个完整的众核多处理器系统</p>
 <ul class=" list-disc font-serif">
-<li class=" ml-8">&#27880;&#37325;&#22823;&#37327;&#24182;&#34892;&#30456;&#20284;&#30340;&#20219;&#21153; <ul class=" list-disc font-serif">
-<li class=" ml-8">&#31243;&#24207;&#20351;&#29992;&#20363;&#22914; OpenGL, CUDA, OpenCL, ... &#20070;&#20889;</li>
+<li class=" ml-8">注重大量并行相似的任务 <ul class=" list-disc font-serif">
+<li class=" ml-8">程序使用例如 OpenGL, CUDA, OpenCL, ... 书写</li>
 </ul>
 </li>
-<li class=" ml-8">&#31243;&#24207;&#20445;&#23384;&#22312;&#20869;&#23384; (&#26174;&#23384;) &#20013;<ul class=" list-disc font-serif">
-<li class=" ml-8">nvcc (LLVM) &#20998;&#20004;&#20010;&#37096;&#20998;<ul class=" list-disc font-serif">
-<li class=" ml-8">main &#32534;&#35793;/&#38142;&#25509;&#25104;&#26412;&#22320;&#21487;&#25191;&#34892;&#30340; ELF</li>
-<li class=" ml-8">kernel &#32534;&#35793;&#25104; GPU &#25351;&#20196; (<a href="https://docs.nvidia.com/cuda/parallel-thread-execution/index.html" class=" text-amber-900">PTX</a>; &#36865;&#32473;&#39537;&#21160;)</li>
-<li class=" ml-8">&#25903;&#25345;&#30697;&#38453;&#36816;&#31639; (Tensor Cores)</li>
+<li class=" ml-8">程序保存在内存 (显存) 中<ul class=" list-disc font-serif">
+<li class=" ml-8">nvcc (LLVM) 分两个部分<ul class=" list-disc font-serif">
+<li class=" ml-8">main 编译/链接成本地可执行的 ELF</li>
+<li class=" ml-8">kernel 编译成 GPU 指令 (<a href="https://docs.nvidia.com/cuda/parallel-thread-execution/index.html" class=" text-amber-900">PTX</a>; 送给驱动)</li>
+<li class=" ml-8">支持矩阵运算 (Tensor Cores)</li>
 </ul>
 </li>
 </ul>
 </li>
-<li class=" ml-8">&#25968;&#25454;&#20063;&#20445;&#23384;&#22312;&#20869;&#23384; (&#26174;&#23384;) &#20013;<ul class=" list-disc font-serif">
-<li class=" ml-8">&#21487;&#20197;&#36755;&#20986;&#21040;&#35270;&#39057;&#25509;&#21475; (DP, HDMI, ...)</li>
-<li class=" ml-8">&#20063;&#21487;&#20197;&#36890;&#36807; DMA &#20256;&#22238;&#31995;&#32479;&#20869;&#23384;</li>
+<li class=" ml-8">数据也保存在内存 (显存) 中<ul class=" list-disc font-serif">
+<li class=" ml-8">可以输出到视频接口 (DP, HDMI, ...)</li>
+<li class=" ml-8">也可以通过 DMA 传回系统内存</li>
 </ul>
 </li>
 </ul></div>
@@ -481,5 +482,6 @@ section .center {
 
 
 </body>
+
 
 </html>
